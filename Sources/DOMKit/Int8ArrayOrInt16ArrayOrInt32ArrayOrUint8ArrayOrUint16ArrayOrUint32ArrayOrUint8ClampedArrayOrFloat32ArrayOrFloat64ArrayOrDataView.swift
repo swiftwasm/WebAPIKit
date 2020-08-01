@@ -3,7 +3,6 @@
  * The following code is auto generated using webidl2swift
  */
 
-import ECMAScript
 import JavaScriptKit
 
 public enum Int8ArrayOrInt16ArrayOrInt32ArrayOrUint8ArrayOrUint16ArrayOrUint32ArrayOrUint8ClampedArrayOrFloat32ArrayOrFloat64ArrayOrDataView: JSValueEncodable, JSValueDecodable {
