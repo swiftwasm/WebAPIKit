@@ -16,7 +16,7 @@ let package = Package(
     targets: [
         .target(
             name: "DOMKit",
-            dependencies: []),
+            dependencies: ["JavaScriptKit"]),
         .testTarget(
             name: "DOMKitTests",
             dependencies: ["DOMKit"]),
