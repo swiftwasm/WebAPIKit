@@ -10,10 +10,10 @@ public protocol ElementContentEditable: JSBridgedType {}
 public extension ElementContentEditable {
     var contentEditable: String {
         get {
-            return objectRef.contentEditable.fromJSValue()
+          return objectRef.contentEditable.string!
         }
         set {
-            objectRef.contentEditable = newValue.jsValue()
+          objectRef.contentEditable = newValue.jsValue()
         }
     }
 

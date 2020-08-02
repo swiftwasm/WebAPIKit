@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "JavaScriptKit",
-        "repositoryURL": "https://github.com/kateinoigakukun/JavaScriptKit.git",
+        "repositoryURL": "https://github.com/j-f1/forked-JavaScriptKit.git",
         "state": {
-          "branch": "c90e82f",
-          "revision": "c90e82fe1d576a2ccd1aae798380bf80be7885fb",
+          "branch": "663c091",
+          "revision": "663c0918b4dcdd21c2f52e044c2e47f060386ce9",
           "version": null
         }
       }
