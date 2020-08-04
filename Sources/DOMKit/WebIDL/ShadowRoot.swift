@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.ShadowRoot.function! }

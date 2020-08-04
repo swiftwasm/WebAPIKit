@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public enum ArrayBufferViewOrArrayBuffer: JSValueEncodable, JSValueDecodable {
     public static func canDecode(from jsValue: JSValue) -> Bool {
@@ -23,10 +24,10 @@ public enum ArrayBufferViewOrArrayBuffer: JSValueEncodable, JSValueDecodable {
         }
     }
 
-    public func jsValue() -> JSValue {
+    public subscript(jsValue _: ()) -> JSValue {
         switch self {
-        case let .arrayBufferView(v): return v.jsValue()
-        case let .arrayBuffer(v): return v.jsValue()
+        case let .arrayBufferView(v): return JSValue(from: v)
+        case let .arrayBuffer(v): return JSValue(from: v)
         }
     }
 }

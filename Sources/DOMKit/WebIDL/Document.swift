@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class Document: Node, DocumentOrShadowRoot, NonElementParentNode, ParentNode, XPathEvaluatorBase {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.Document.function! }
@@ -23,7 +24,7 @@ public class Document: Node, DocumentOrShadowRoot, NonElementParentNode, ParentN
     }
 
     public convenience init() {
-        self.init(objectRef: Document.classRef.new())
+        self.init(objectRef: Document.classRef(.new))
     }
 
     @ReadonlyAttribute
@@ -57,23 +58,23 @@ public class Document: Node, DocumentOrShadowRoot, NonElementParentNode, ParentN
     public var documentElement: Element?
 
     public func getElementsByTagName(qualifiedName: String) -> HTMLCollection {
-        return objectRef.getElementsByTagName!(qualifiedName.jsValue()).fromJSValue()
+        return objectRef.getElementsByTagName!(JSValue(from: qualifiedName)).fromJSValue()
     }
 
     public func getElementsByTagNameNS(namespace: String?, localName: String) -> HTMLCollection {
-        return objectRef.getElementsByTagNameNS!(namespace.jsValue(), localName.jsValue()).fromJSValue()
+        return objectRef.getElementsByTagNameNS!(JSValue(from: namespace), JSValue(from: localName)).fromJSValue()
     }
 
     public func getElementsByClassName(classNames: String) -> HTMLCollection {
-        return objectRef.getElementsByClassName!(classNames.jsValue()).fromJSValue()
+        return objectRef.getElementsByClassName!(JSValue(from: classNames)).fromJSValue()
     }
 
     public func createElement(localName: String, options: StringOrElementCreationOptions = [:]) -> Element {
-        return objectRef.createElement!(localName.jsValue(), options.jsValue()).fromJSValue()
+        return objectRef.createElement!(JSValue(from: localName), JSValue(from: options)).fromJSValue()
     }
 
     public func createElementNS(namespace: String?, qualifiedName: String, options: StringOrElementCreationOptions = [:]) -> Element {
-        return objectRef.createElementNS!(namespace.jsValue(), qualifiedName.jsValue(), options.jsValue()).fromJSValue()
+        return objectRef.createElementNS!(JSValue(from: namespace), JSValue(from: qualifiedName), JSValue(from: options)).fromJSValue()
     }
 
     public func createDocumentFragment() -> DocumentFragment {
@@ -81,39 +82,39 @@ public class Document: Node, DocumentOrShadowRoot, NonElementParentNode, ParentN
     }
 
     public func createTextNode(data: String) -> Text {
-        return objectRef.createTextNode!(data.jsValue()).fromJSValue()
+        return objectRef.createTextNode!(JSValue(from: data)).fromJSValue()
     }
 
     public func createCDATASection(data: String) -> CDATASection {
-        return objectRef.createCDATASection!(data.jsValue()).fromJSValue()
+        return objectRef.createCDATASection!(JSValue(from: data)).fromJSValue()
     }
 
     public func createComment(data: String) -> Comment {
-        return objectRef.createComment!(data.jsValue()).fromJSValue()
+        return objectRef.createComment!(JSValue(from: data)).fromJSValue()
     }
 
     public func createProcessingInstruction(target: String, data: String) -> ProcessingInstruction {
-        return objectRef.createProcessingInstruction!(target.jsValue(), data.jsValue()).fromJSValue()
+        return objectRef.createProcessingInstruction!(JSValue(from: target), JSValue(from: data)).fromJSValue()
     }
 
     public func importNode(node: Node, deep: Bool = false) -> Node {
-        return objectRef.importNode!(node.jsValue(), deep.jsValue()).fromJSValue()
+        return objectRef.importNode!(JSValue(from: node), JSValue(from: deep)).fromJSValue()
     }
 
     public func adoptNode(node: Node) -> Node {
-        return objectRef.adoptNode!(node.jsValue()).fromJSValue()
+        return objectRef.adoptNode!(JSValue(from: node)).fromJSValue()
     }
 
     public func createAttribute(localName: String) -> Attr {
-        return objectRef.createAttribute!(localName.jsValue()).fromJSValue()
+        return objectRef.createAttribute!(JSValue(from: localName)).fromJSValue()
     }
 
     public func createAttributeNS(namespace: String?, qualifiedName: String) -> Attr {
-        return objectRef.createAttributeNS!(namespace.jsValue(), qualifiedName.jsValue()).fromJSValue()
+        return objectRef.createAttributeNS!(JSValue(from: namespace), JSValue(from: qualifiedName)).fromJSValue()
     }
 
     public func createEvent(interface: String) -> Event {
-        return objectRef.createEvent!(interface.jsValue()).fromJSValue()
+        return objectRef.createEvent!(JSValue(from: interface)).fromJSValue()
     }
 
     public func createRange() -> Range {
@@ -121,10 +122,10 @@ public class Document: Node, DocumentOrShadowRoot, NonElementParentNode, ParentN
     }
 
     public func createNodeIterator<NodeFilterType: NodeFilter>(root: Node, whatToShow: UInt32 = 4_294_967_295, filter: NodeFilterType? = nil) -> NodeIterator {
-        return objectRef.createNodeIterator!(root.jsValue(), whatToShow.jsValue(), filter.jsValue()).fromJSValue()
+        return objectRef.createNodeIterator!(JSValue(from: root), JSValue(from: whatToShow), JSValue(from: filter)).fromJSValue()
     }
 
     public func createTreeWalker<NodeFilterType: NodeFilter>(root: Node, whatToShow: UInt32 = 4_294_967_295, filter: NodeFilterType? = nil) -> TreeWalker {
-        return objectRef.createTreeWalker!(root.jsValue(), whatToShow.jsValue(), filter.jsValue()).fromJSValue()
+        return objectRef.createTreeWalker!(JSValue(from: root), JSValue(from: whatToShow), JSValue(from: filter)).fromJSValue()
     }
 }

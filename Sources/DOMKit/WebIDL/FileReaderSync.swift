@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class FileReaderSync: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.FileReaderSync.function! }
@@ -15,26 +16,26 @@ public class FileReaderSync: JSBridgedType {
     }
 
     public convenience init() {
-        self.init(objectRef: FileReaderSync.classRef.new())
+        self.init(objectRef: FileReaderSync.classRef(.new))
     }
 
     public func readAsArrayBuffer(blob: Blob) -> ArrayBuffer {
-        return objectRef.readAsArrayBuffer!(blob.jsValue()).fromJSValue()
+        return objectRef.readAsArrayBuffer!(JSValue(from: blob)).fromJSValue()
     }
 
     public func readAsBinaryString(blob: Blob) -> String {
-        return objectRef.readAsBinaryString!(blob.jsValue()).fromJSValue()
+        return objectRef.readAsBinaryString!(JSValue(from: blob)).fromJSValue()
     }
 
     public func readAsText(blob: Blob, encoding: String) -> String {
-        return objectRef.readAsText!(blob.jsValue(), encoding.jsValue()).fromJSValue()
+        return objectRef.readAsText!(JSValue(from: blob), JSValue(from: encoding)).fromJSValue()
     }
 
     public func readAsText(blob: Blob) -> String {
-        return objectRef.readAsText!(blob.jsValue()).fromJSValue()
+        return objectRef.readAsText!(JSValue(from: blob)).fromJSValue()
     }
 
     public func readAsDataURL(blob: Blob) -> String {
-        return objectRef.readAsDataURL!(blob.jsValue()).fromJSValue()
+        return objectRef.readAsDataURL!(JSValue(from: blob)).fromJSValue()
     }
 }

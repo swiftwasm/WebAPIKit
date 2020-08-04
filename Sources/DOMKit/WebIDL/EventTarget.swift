@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class EventTarget: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.EventTarget.function! }
@@ -15,18 +16,18 @@ public class EventTarget: JSBridgedType {
     }
 
     public convenience init() {
-        self.init(objectRef: EventTarget.classRef.new())
+        self.init(objectRef: EventTarget.classRef(.new))
     }
 
     public func addEventListener<EventListenerType: EventListener>(type: String, callback: EventListenerType?, options: AddEventListenerOptionsOrBool = [:]) -> Void {
-        _ = objectRef.addEventListener!(type.jsValue(), callback.jsValue(), options.jsValue())
+        _ = objectRef.addEventListener!(JSValue(from: type), JSValue(from: callback), JSValue(from: options))
     }
 
     public func removeEventListener<EventListenerType: EventListener>(type: String, callback: EventListenerType?, options: EventListenerOptionsOrBool = [:]) -> Void {
-        _ = objectRef.removeEventListener!(type.jsValue(), callback.jsValue(), options.jsValue())
+        _ = objectRef.removeEventListener!(JSValue(from: type), JSValue(from: callback), JSValue(from: options))
     }
 
     public func dispatchEvent(event: Event) -> Bool {
-        return objectRef.dispatchEvent!(event.jsValue()).fromJSValue()
+        return objectRef.dispatchEvent!(JSValue(from: event)).fromJSValue()
     }
 }

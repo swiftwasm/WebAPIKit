@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class MutationRecord: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.MutationRecord.function! }

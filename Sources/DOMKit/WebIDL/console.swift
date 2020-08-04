@@ -4,17 +4,19 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public enum console {
     public static var objectRef: JSObjectRef {
         return JSObjectRef.global.console.object!
     }
-     public static func assert(condition: Bool = false, data: AnyJSValueCodable...) {
-        _ = objectRef.assert!(condition.jsValue(), data.jsValue())
+
+    public static func assert(condition: Bool = false, data: AnyJSValueCodable...) {
+        _ = objectRef.assert!(JSValue(from: condition), JSValue(from: data))
     }
 
     public static func assert(condition: Bool = false) {
-        _ = objectRef.assert!(condition.jsValue())
+        _ = objectRef.assert!(JSValue(from: condition))
     }
 
     public static func clear() {
@@ -22,7 +24,7 @@ public enum console {
     }
 
     public static func debug(data: AnyJSValueCodable...) {
-        _ = objectRef.debug!(data.jsValue())
+        _ = objectRef.debug!(JSValue(from: data))
     }
 
     public static func debug() {
@@ -30,7 +32,7 @@ public enum console {
     }
 
     public static func error(data: AnyJSValueCodable...) {
-        _ = objectRef.error!(data.jsValue())
+        _ = objectRef.error!(JSValue(from: data))
     }
 
     public static func error() {
@@ -38,7 +40,7 @@ public enum console {
     }
 
     public static func info(data: AnyJSValueCodable...) {
-        _ = objectRef.info!(data.jsValue())
+        _ = objectRef.info!(JSValue(from: data))
     }
 
     public static func info() {
@@ -46,7 +48,7 @@ public enum console {
     }
 
     public static func log(data: AnyJSValueCodable...) {
-        _ = objectRef.log!(data.jsValue())
+        _ = objectRef.log!(JSValue(from: data))
     }
 
     public static func log() {
@@ -54,11 +56,11 @@ public enum console {
     }
 
     public static func table(tabularData: AnyJSValueCodable, properties: [String]) {
-        _ = objectRef.table!(tabularData.jsValue(), properties.jsValue())
+        _ = objectRef.table!(JSValue(from: tabularData), JSValue(from: properties))
     }
 
     public static func table(tabularData: AnyJSValueCodable) {
-        _ = objectRef.table!(tabularData.jsValue())
+        _ = objectRef.table!(JSValue(from: tabularData))
     }
 
     public static func table() {
@@ -66,7 +68,7 @@ public enum console {
     }
 
     public static func trace(data: AnyJSValueCodable...) {
-        _ = objectRef.trace!(data.jsValue())
+        _ = objectRef.trace!(JSValue(from: data))
     }
 
     public static func trace() {
@@ -74,7 +76,7 @@ public enum console {
     }
 
     public static func warn(data: AnyJSValueCodable...) {
-        _ = objectRef.warn!(data.jsValue())
+        _ = objectRef.warn!(JSValue(from: data))
     }
 
     public static func warn() {
@@ -82,11 +84,11 @@ public enum console {
     }
 
     public static func dir(item: AnyJSValueCodable, options: AnyJSValueCodable?) {
-        _ = objectRef.dir!(item.jsValue(), options.jsValue())
+        _ = objectRef.dir!(JSValue(from: item), JSValue(from: options))
     }
 
     public static func dir(item: AnyJSValueCodable) {
-        _ = objectRef.dir!(item.jsValue())
+        _ = objectRef.dir!(JSValue(from: item))
     }
 
     public static func dir() {
@@ -94,7 +96,7 @@ public enum console {
     }
 
     public static func dirxml(data: AnyJSValueCodable...) {
-        _ = objectRef.dirxml!(data.jsValue())
+        _ = objectRef.dirxml!(JSValue(from: data))
     }
 
     public static func dirxml() {
@@ -102,15 +104,15 @@ public enum console {
     }
 
     public static func count(label: String = "default") {
-        _ = objectRef.count!(label.jsValue())
+        _ = objectRef.count!(JSValue(from: label))
     }
 
     public static func countReset(label: String = "default") {
-        _ = objectRef.countReset!(label.jsValue())
+        _ = objectRef.countReset!(JSValue(from: label))
     }
 
     public static func group(data: AnyJSValueCodable...) {
-        _ = objectRef.group!(data.jsValue())
+        _ = objectRef.group!(JSValue(from: data))
     }
 
     public static func group() {
@@ -118,7 +120,7 @@ public enum console {
     }
 
     public static func groupCollapsed(data: AnyJSValueCodable...) {
-        _ = objectRef.groupCollapsed!(data.jsValue())
+        _ = objectRef.groupCollapsed!(JSValue(from: data))
     }
 
     public static func groupCollapsed() {
@@ -130,18 +132,18 @@ public enum console {
     }
 
     public static func time(label: String = "default") {
-        _ = objectRef.time!(label.jsValue())
+        _ = objectRef.time!(JSValue(from: label))
     }
 
     public static func timeLog(label: String = "default", data: AnyJSValueCodable...) {
-        _ = objectRef.timeLog!(label.jsValue(), data.jsValue())
+        _ = objectRef.timeLog!(JSValue(from: label), JSValue(from: data))
     }
 
     public static func timeLog(label: String = "default") {
-        _ = objectRef.timeLog!(label.jsValue())
+        _ = objectRef.timeLog!(JSValue(from: label))
     }
 
     public static func timeEnd(label: String = "default") {
-        _ = objectRef.timeEnd!(label.jsValue())
+        _ = objectRef.timeEnd!(JSValue(from: label))
     }
 }

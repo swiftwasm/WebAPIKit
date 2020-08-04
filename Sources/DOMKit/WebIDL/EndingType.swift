@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public enum EndingType: String, JSValueCodable {
     public static func canDecode(from jsValue: JSValue) -> Bool {
@@ -20,7 +21,7 @@ public enum EndingType: String, JSValueCodable {
         self = value
     }
 
-    public func jsValue() -> JSValue {
-        return rawValue.jsValue()
+    public subscript(jsValue _: ()) -> JSValue {
+        return JSValue(from: rawValue)
     }
 }

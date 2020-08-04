@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class RadioNodeList: NodeList {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.RadioNodeList.function! }

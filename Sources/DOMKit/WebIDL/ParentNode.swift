@@ -4,8 +4,9 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
-public protocol ParentNode: JSBridgedType {}
+public protocol ParentNode: JSAbstractBridgedType {}
 
 public extension ParentNode {
     var children: HTMLCollection {
@@ -25,7 +26,7 @@ public extension ParentNode {
     }
 
     func prepend(nodes: NodeOrString...) {
-        _ = objectRef.prepend!(nodes.jsValue())
+        _ = objectRef.prepend!(JSValue(from: nodes))
     }
 
     func prepend() {
@@ -33,7 +34,7 @@ public extension ParentNode {
     }
 
     func append(nodes: NodeOrString...) {
-        _ = objectRef.append!(nodes.jsValue())
+        _ = objectRef.append!(JSValue(from: nodes))
     }
 
     func append() {
@@ -41,10 +42,10 @@ public extension ParentNode {
     }
 
     func querySelector(selectors: String) -> Element? {
-        return objectRef.querySelector!(selectors.jsValue()).fromJSValue()
+        return objectRef.querySelector!(JSValue(from: selectors)).fromJSValue()
     }
 
     func querySelectorAll(selectors: String) -> NodeList {
-        return objectRef.querySelectorAll!(selectors.jsValue()).fromJSValue()
+        return objectRef.querySelectorAll!(JSValue(from: selectors)).fromJSValue()
     }
 }

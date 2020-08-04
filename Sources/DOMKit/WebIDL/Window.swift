@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class Window: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.Window.function! }

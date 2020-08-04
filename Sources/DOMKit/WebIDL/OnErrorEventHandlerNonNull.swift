@@ -4,5 +4,6 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public typealias OnErrorEventHandlerNonNull = ((EventOrString, String, UInt32, UInt32, AnyJSValueCodable) -> AnyJSValueCodable)

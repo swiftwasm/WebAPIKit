@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class NodeList: JSBridgedType, Sequence {
     public class var classRef: JSFunctionRef { JSObjectRef.global.NodeList.function! }

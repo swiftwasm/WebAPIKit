@@ -4,294 +4,295 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
-public protocol WindowEventHandlers: JSBridgedType {}
+public protocol WindowEventHandlers: JSAbstractBridgedType {}
 
 public extension WindowEventHandlers {
     var onafterprint: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onafterprint"] as JSFunctionRef? else {
+            guard let function = objectRef.onafterprint.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onafterprint"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onafterprint = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onafterprint"] = .null
+                objectRef.onafterprint = .null
             }
         }
     }
 
     var onbeforeprint: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onbeforeprint"] as JSFunctionRef? else {
+            guard let function = objectRef.onbeforeprint.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onbeforeprint"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onbeforeprint = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onbeforeprint"] = .null
+                objectRef.onbeforeprint = .null
             }
         }
     }
 
     var onbeforeunload: OnBeforeUnloadEventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onbeforeunload"] as JSFunctionRef? else {
+            guard let function = objectRef.onbeforeunload.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onbeforeunload"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onbeforeunload = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onbeforeunload"] = .null
+                objectRef.onbeforeunload = .null
             }
         }
     }
 
     var onhashchange: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onhashchange"] as JSFunctionRef? else {
+            guard let function = objectRef.onhashchange.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onhashchange"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onhashchange = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onhashchange"] = .null
+                objectRef.onhashchange = .null
             }
         }
     }
 
     var onlanguagechange: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onlanguagechange"] as JSFunctionRef? else {
+            guard let function = objectRef.onlanguagechange.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onlanguagechange"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onlanguagechange = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onlanguagechange"] = .null
+                objectRef.onlanguagechange = .null
             }
         }
     }
 
     var onmessage: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onmessage"] as JSFunctionRef? else {
+            guard let function = objectRef.onmessage.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onmessage"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onmessage = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onmessage"] = .null
+                objectRef.onmessage = .null
             }
         }
     }
 
     var onmessageerror: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onmessageerror"] as JSFunctionRef? else {
+            guard let function = objectRef.onmessageerror.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onmessageerror"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onmessageerror = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onmessageerror"] = .null
+                objectRef.onmessageerror = .null
             }
         }
     }
 
     var onoffline: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onoffline"] as JSFunctionRef? else {
+            guard let function = objectRef.onoffline.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onoffline"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onoffline = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onoffline"] = .null
+                objectRef.onoffline = .null
             }
         }
     }
 
     var ononline: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "ononline"] as JSFunctionRef? else {
+            guard let function = objectRef.ononline.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "ononline"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.ononline = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "ononline"] = .null
+                objectRef.ononline = .null
             }
         }
     }
 
     var onpagehide: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onpagehide"] as JSFunctionRef? else {
+            guard let function = objectRef.onpagehide.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onpagehide"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onpagehide = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onpagehide"] = .null
+                objectRef.onpagehide = .null
             }
         }
     }
 
     var onpageshow: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onpageshow"] as JSFunctionRef? else {
+            guard let function = objectRef.onpageshow.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onpageshow"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onpageshow = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onpageshow"] = .null
+                objectRef.onpageshow = .null
             }
         }
     }
 
     var onpopstate: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onpopstate"] as JSFunctionRef? else {
+            guard let function = objectRef.onpopstate.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onpopstate"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onpopstate = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onpopstate"] = .null
+                objectRef.onpopstate = .null
             }
         }
     }
 
     var onrejectionhandled: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onrejectionhandled"] as JSFunctionRef? else {
+            guard let function = objectRef.onrejectionhandled.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onrejectionhandled"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onrejectionhandled = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onrejectionhandled"] = .null
+                objectRef.onrejectionhandled = .null
             }
         }
     }
 
     var onstorage: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onstorage"] as JSFunctionRef? else {
+            guard let function = objectRef.onstorage.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onstorage"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onstorage = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onstorage"] = .null
+                objectRef.onstorage = .null
             }
         }
     }
 
     var onunhandledrejection: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onunhandledrejection"] as JSFunctionRef? else {
+            guard let function = objectRef.onunhandledrejection.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onunhandledrejection"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onunhandledrejection = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onunhandledrejection"] = .null
+                objectRef.onunhandledrejection = .null
             }
         }
     }
 
     var onunload: EventHandler {
         get {
-            guard let function = objectRef[dynamicMember: "onunload"] as JSFunctionRef? else {
+            guard let function = objectRef.onunload.function else {
                 return nil
             }
-            return { arg0 in function.dynamicallyCall(withArguments: [arg0]).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue() }
         }
         set {
             if let newValue = newValue {
-                objectRef[dynamicMember: "onunload"] = JSFunctionRef.from { arguments in
-                    newValue(arguments[0].fromJSValue()).jsValue()
-                }.jsValue()
+                objectRef.onunload = JSValue(from: JSClosure { arguments in
+                    JSValue(from: newValue(arguments[0].fromJSValue()))
+                })
             } else {
-                objectRef[dynamicMember: "onunload"] = .null
+                objectRef.onunload = .null
             }
         }
     }

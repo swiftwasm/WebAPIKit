@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class Node: EventTarget {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.Node.function! }
@@ -66,7 +67,7 @@ public class Node: EventTarget {
     public var ownerDocument: Document?
 
     public func getRootNode(options: GetRootNodeOptions = [:]) -> Node {
-        return objectRef.getRootNode!(options.jsValue()).fromJSValue()
+        return objectRef.getRootNode!(JSValue(from: options)).fromJSValue()
     }
 
     @ReadonlyAttribute
@@ -105,15 +106,15 @@ public class Node: EventTarget {
     }
 
     public func cloneNode(deep: Bool = false) -> Node {
-        return objectRef.cloneNode!(deep.jsValue()).fromJSValue()
+        return objectRef.cloneNode!(JSValue(from: deep)).fromJSValue()
     }
 
     public func isEqualNode(otherNode: Node?) -> Bool {
-        return objectRef.isEqualNode!(otherNode.jsValue()).fromJSValue()
+        return objectRef.isEqualNode!(JSValue(from: otherNode)).fromJSValue()
     }
 
     public func isSameNode(otherNode: Node?) -> Bool {
-        return objectRef.isSameNode!(otherNode.jsValue()).fromJSValue()
+        return objectRef.isSameNode!(JSValue(from: otherNode)).fromJSValue()
     }
 
     public let DOCUMENT_POSITION_DISCONNECTED: UInt16 = 1
@@ -129,38 +130,38 @@ public class Node: EventTarget {
     public let DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: UInt16 = 32
 
     public func compareDocumentPosition(other: Node) -> UInt16 {
-        return objectRef.compareDocumentPosition!(other.jsValue()).fromJSValue()
+        return objectRef.compareDocumentPosition!(JSValue(from: other)).fromJSValue()
     }
 
     public func contains(other: Node?) -> Bool {
-        return objectRef.contains!(other.jsValue()).fromJSValue()
+        return objectRef.contains!(JSValue(from: other)).fromJSValue()
     }
 
     public func lookupPrefix(namespace: String?) -> String? {
-        return objectRef.lookupPrefix!(namespace.jsValue()).fromJSValue()
+        return objectRef.lookupPrefix!(JSValue(from: namespace)).fromJSValue()
     }
 
     public func lookupNamespaceURI(prefix: String?) -> String? {
-        return objectRef.lookupNamespaceURI!(prefix.jsValue()).fromJSValue()
+        return objectRef.lookupNamespaceURI!(JSValue(from: prefix)).fromJSValue()
     }
 
     public func isDefaultNamespace(namespace: String?) -> Bool {
-        return objectRef.isDefaultNamespace!(namespace.jsValue()).fromJSValue()
+        return objectRef.isDefaultNamespace!(JSValue(from: namespace)).fromJSValue()
     }
 
     public func insertBefore(node: Node, child: Node?) -> Node {
-        return objectRef.insertBefore!(node.jsValue(), child.jsValue()).fromJSValue()
+        return objectRef.insertBefore!(JSValue(from: node), JSValue(from: child)).fromJSValue()
     }
 
     public func appendChild(node: Node) -> Node {
-        return objectRef.appendChild!(node.jsValue()).fromJSValue()
+        return objectRef.appendChild!(JSValue(from: node)).fromJSValue()
     }
 
     public func replaceChild(node: Node, child: Node) -> Node {
-        return objectRef.replaceChild!(node.jsValue(), child.jsValue()).fromJSValue()
+        return objectRef.replaceChild!(JSValue(from: node), JSValue(from: child)).fromJSValue()
     }
 
     public func removeChild(child: Node) -> Node {
-        return objectRef.removeChild!(child.jsValue()).fromJSValue()
+        return objectRef.removeChild!(JSValue(from: child)).fromJSValue()
     }
 }

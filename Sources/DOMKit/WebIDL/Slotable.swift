@@ -4,8 +4,9 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
-public protocol Slotable: JSBridgedType {}
+public protocol Slotable: JSAbstractBridgedType {}
 
 public extension Slotable {
     var assignedSlot: HTMLSlotElement? {

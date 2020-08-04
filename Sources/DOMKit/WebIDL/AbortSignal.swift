@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class AbortSignal: EventTarget {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.AbortSignal.function! }

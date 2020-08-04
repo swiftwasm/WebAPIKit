@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class CDATASection: Text {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.CDATASection.function! }

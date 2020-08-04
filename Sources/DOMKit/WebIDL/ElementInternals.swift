@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class ElementInternals: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.ElementInternals.function! }
@@ -20,26 +21,26 @@ public class ElementInternals: JSBridgedType {
     }
 
     public func setFormValue(value: FileOrStringOrFormData?, state: FileOrStringOrFormData?) {
-        _ = objectRef.setFormValue!(value.jsValue(), state.jsValue())
+        _ = objectRef.setFormValue!(JSValue(from: value), JSValue(from: state))
     }
 
     public func setFormValue(value: FileOrStringOrFormData?) {
-        _ = objectRef.setFormValue!(value.jsValue())
+        _ = objectRef.setFormValue!(JSValue(from: value))
     }
 
     @ReadonlyAttribute
     public var form: HTMLFormElement?
 
     public func setValidity(flags: ValidityStateFlags, message: String, anchor: HTMLElement) {
-        _ = objectRef.setValidity!(flags.jsValue(), message.jsValue(), anchor.jsValue())
+        _ = objectRef.setValidity!(JSValue(from: flags), JSValue(from: message), JSValue(from: anchor))
     }
 
     public func setValidity(flags: ValidityStateFlags, message: String) {
-        _ = objectRef.setValidity!(flags.jsValue(), message.jsValue())
+        _ = objectRef.setValidity!(JSValue(from: flags), JSValue(from: message))
     }
 
     public func setValidity(flags: ValidityStateFlags) {
-        _ = objectRef.setValidity!(flags.jsValue())
+        _ = objectRef.setValidity!(JSValue(from: flags))
     }
 
     @ReadonlyAttribute

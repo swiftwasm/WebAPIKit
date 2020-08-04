@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class Event: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.Event.function! }
@@ -28,7 +29,7 @@ public class Event: JSBridgedType {
     }
 
     public convenience init(type: String, eventInitDict: EventInit = [:]) {
-        self.init(objectRef: Event.classRef.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(objectRef: Event.classRef(new: JSValue(from: type), JSValue(from: eventInitDict)))
     }
 
     @ReadonlyAttribute
@@ -95,6 +96,6 @@ public class Event: JSBridgedType {
     public var timeStamp: DOMHighResTimeStamp
 
     public func initEvent(type: String, bubbles: Bool = false, cancelable: Bool = false) {
-        _ = objectRef.initEvent!(type.jsValue(), bubbles.jsValue(), cancelable.jsValue())
+        _ = objectRef.initEvent!(JSValue(from: type), JSValue(from: bubbles), JSValue(from: cancelable))
     }
 }

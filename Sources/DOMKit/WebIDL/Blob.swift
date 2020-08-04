@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class Blob: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.Blob.function! }
@@ -17,11 +18,11 @@ public class Blob: JSBridgedType {
     }
 
     public convenience init(blobParts: [BlobPart], options: BlobPropertyBag = [:]) {
-        self.init(objectRef: Blob.classRef.new(blobParts.jsValue(), options.jsValue()))
+        self.init(objectRef: Blob.classRef(new: JSValue(from: blobParts), JSValue(from: options)))
     }
 
     public convenience init() {
-        self.init(objectRef: Blob.classRef.new())
+        self.init(objectRef: Blob.classRef(.new))
     }
 
     @ReadonlyAttribute
@@ -31,15 +32,15 @@ public class Blob: JSBridgedType {
     public var type: String
 
     public func slice(start: Int64, end: Int64, contentType: String) -> Blob {
-        return objectRef.slice!(start.jsValue(), end.jsValue(), contentType.jsValue()).fromJSValue()
+        return objectRef.slice!(JSValue(from: start), JSValue(from: end), JSValue(from: contentType)).fromJSValue()
     }
 
     public func slice(start: Int64, end: Int64) -> Blob {
-        return objectRef.slice!(start.jsValue(), end.jsValue()).fromJSValue()
+        return objectRef.slice!(JSValue(from: start), JSValue(from: end)).fromJSValue()
     }
 
     public func slice(start: Int64) -> Blob {
-        return objectRef.slice!(start.jsValue()).fromJSValue()
+        return objectRef.slice!(JSValue(from: start)).fromJSValue()
     }
 
     public func slice() -> Blob {

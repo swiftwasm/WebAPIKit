@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class FileReader: EventTarget {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.FileReader.function! }
@@ -22,27 +23,27 @@ public class FileReader: EventTarget {
     }
 
     public convenience init() {
-        self.init(objectRef: FileReader.classRef.new())
+        self.init(objectRef: FileReader.classRef(.new))
     }
 
     public func readAsArrayBuffer(blob: Blob) {
-        _ = objectRef.readAsArrayBuffer!(blob.jsValue())
+        _ = objectRef.readAsArrayBuffer!(JSValue(from: blob))
     }
 
     public func readAsBinaryString(blob: Blob) {
-        _ = objectRef.readAsBinaryString!(blob.jsValue())
+        _ = objectRef.readAsBinaryString!(JSValue(from: blob))
     }
 
     public func readAsText(blob: Blob, encoding: String) {
-        _ = objectRef.readAsText!(blob.jsValue(), encoding.jsValue())
+        _ = objectRef.readAsText!(JSValue(from: blob), JSValue(from: encoding))
     }
 
     public func readAsText(blob: Blob) {
-        _ = objectRef.readAsText!(blob.jsValue())
+        _ = objectRef.readAsText!(JSValue(from: blob))
     }
 
     public func readAsDataURL(blob: Blob) {
-        _ = objectRef.readAsDataURL!(blob.jsValue())
+        _ = objectRef.readAsDataURL!(JSValue(from: blob))
     }
 
     public func abort() {

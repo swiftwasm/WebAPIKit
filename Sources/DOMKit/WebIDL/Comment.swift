@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class Comment: CharacterData {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.Comment.function! }
@@ -13,6 +14,6 @@ public class Comment: CharacterData {
     }
 
     public convenience init(data: String = "") {
-        self.init(objectRef: Comment.classRef.new(data.jsValue()))
+        self.init(objectRef: Comment.classRef(new: JSValue(from: data)))
     }
 }

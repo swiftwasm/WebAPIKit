@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class HTMLFormControlsCollection: HTMLCollection {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLFormControlsCollection.function! }
@@ -12,7 +13,7 @@ public class HTMLFormControlsCollection: HTMLCollection {
         super.init(objectRef: objectRef)
     }
 
-    public subscript(name: String) -> RadioNodeListOrElement?? {
-        return objectRef[dynamicMember: name].fromJSValue()
+    public subscript(_: String) -> RadioNodeListOrElement?? {
+        return objectRef.name.fromJSValue()
     }
 }

@@ -4,8 +4,11 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 class AnyNodeFilter: JSBridgedType, NodeFilter {
+    public class var classRef: JSFunctionRef { JSObjectRef.global.NodeFilter.function! }
+
     let objectRef: JSObjectRef
 
     required init(objectRef: JSObjectRef) {
@@ -13,6 +16,6 @@ class AnyNodeFilter: JSBridgedType, NodeFilter {
     }
 
     public func acceptNode(node: Node) -> UInt16 {
-        return objectRef.acceptNode!(node.jsValue()).fromJSValue()
+        return objectRef.acceptNode!(JSValue(from: node)).fromJSValue()
     }
 }

@@ -4,8 +4,11 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 class AnyParentNode: JSBridgedType, ParentNode {
+    public class var classRef: JSFunctionRef { JSObjectRef.global.ParentNode.function! }
+
     let objectRef: JSObjectRef
 
     required init(objectRef: JSObjectRef) {

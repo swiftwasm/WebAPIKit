@@ -4,8 +4,9 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
-public protocol NonDocumentTypeChildNode: JSBridgedType {}
+public protocol NonDocumentTypeChildNode: JSAbstractBridgedType {}
 
 public extension NonDocumentTypeChildNode {
     var previousElementSibling: Element? {

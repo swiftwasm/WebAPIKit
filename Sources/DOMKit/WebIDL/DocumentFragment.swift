@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class DocumentFragment: Node, NonElementParentNode, ParentNode {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.DocumentFragment.function! }
@@ -13,6 +14,6 @@ public class DocumentFragment: Node, NonElementParentNode, ParentNode {
     }
 
     public convenience init() {
-        self.init(objectRef: DocumentFragment.classRef.new())
+        self.init(objectRef: DocumentFragment.classRef(.new))
     }
 }

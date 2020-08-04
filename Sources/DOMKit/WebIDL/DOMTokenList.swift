@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class DOMTokenList: JSBridgedType, Sequence {
     public class var classRef: JSFunctionRef { JSObjectRef.global.DOMTokenList.function! }
@@ -21,11 +22,11 @@ public class DOMTokenList: JSBridgedType, Sequence {
     public var length: UInt32
 
     public func contains(token: String) -> Bool {
-        return objectRef.contains!(token.jsValue()).fromJSValue()
+        return objectRef.contains!(JSValue(from: token)).fromJSValue()
     }
 
     public func add(tokens: String...) {
-        _ = objectRef.add!(tokens.jsValue())
+        _ = objectRef.add!(JSValue(from: tokens))
     }
 
     public func add() {
@@ -33,7 +34,7 @@ public class DOMTokenList: JSBridgedType, Sequence {
     }
 
     public func remove(tokens: String...) {
-        _ = objectRef.remove!(tokens.jsValue())
+        _ = objectRef.remove!(JSValue(from: tokens))
     }
 
     public func remove() {
@@ -41,19 +42,19 @@ public class DOMTokenList: JSBridgedType, Sequence {
     }
 
     public func toggle(token: String, force: Bool) -> Bool {
-        return objectRef.toggle!(token.jsValue(), force.jsValue()).fromJSValue()
+        return objectRef.toggle!(JSValue(from: token), JSValue(from: force)).fromJSValue()
     }
 
     public func toggle(token: String) -> Bool {
-        return objectRef.toggle!(token.jsValue()).fromJSValue()
+        return objectRef.toggle!(JSValue(from: token)).fromJSValue()
     }
 
     public func replace(token: String, newToken: String) -> Bool {
-        return objectRef.replace!(token.jsValue(), newToken.jsValue()).fromJSValue()
+        return objectRef.replace!(JSValue(from: token), JSValue(from: newToken)).fromJSValue()
     }
 
     public func supports(token: String) -> Bool {
-        return objectRef.supports!(token.jsValue()).fromJSValue()
+        return objectRef.supports!(JSValue(from: token)).fromJSValue()
     }
 
     public func makeIterator() -> ValueIterableIterator<DOMTokenList> { return ValueIterableIterator(sequence: self) }

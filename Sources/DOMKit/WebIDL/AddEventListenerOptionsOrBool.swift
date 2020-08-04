@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public enum AddEventListenerOptionsOrBool: JSValueEncodable, JSValueDecodable, ExpressibleByBooleanLiteral, ExpressibleByDictionaryLiteral {
     public static func canDecode(from jsValue: JSValue) -> Bool {
@@ -31,10 +32,10 @@ public enum AddEventListenerOptionsOrBool: JSValueEncodable, JSValueDecodable, E
         self = .bool(value)
     }
 
-    public func jsValue() -> JSValue {
+    public subscript(jsValue _: ()) -> JSValue {
         switch self {
-        case let .addEventListenerOptions(v): return v.jsValue()
-        case let .bool(v): return v.jsValue()
+        case let .addEventListenerOptions(v): return JSValue(from: v)
+        case let .bool(v): return JSValue(from: v)
         }
     }
 }

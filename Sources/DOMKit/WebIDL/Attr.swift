@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class Attr: Node {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.Attr.function! }

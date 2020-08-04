@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class Text: CharacterData, Slotable {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.Text.function! }
@@ -14,11 +15,11 @@ public class Text: CharacterData, Slotable {
     }
 
     public convenience init(data: String = "") {
-        self.init(objectRef: Text.classRef.new(data.jsValue()))
+        self.init(objectRef: Text.classRef(new: JSValue(from: data)))
     }
 
     public func splitText(offset: UInt32) -> Text {
-        return objectRef.splitText!(offset.jsValue()).fromJSValue()
+        return objectRef.splitText!(JSValue(from: offset)).fromJSValue()
     }
 
     @ReadonlyAttribute

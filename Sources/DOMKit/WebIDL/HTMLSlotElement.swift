@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class HTMLSlotElement: HTMLElement {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLSlotElement.function! }
@@ -14,17 +15,17 @@ public class HTMLSlotElement: HTMLElement {
     }
 
     public convenience init() {
-        self.init(objectRef: HTMLSlotElement.classRef.new())
+        self.init(objectRef: HTMLSlotElement.classRef(.new))
     }
 
     @ReadWriteAttribute
     public var name: String
 
     public func assignedNodes(options: AssignedNodesOptions = [:]) -> [Node] {
-        return objectRef.assignedNodes!(options.jsValue()).fromJSValue()
+        return objectRef.assignedNodes!(JSValue(from: options)).fromJSValue()
     }
 
     public func assignedElements(options: AssignedNodesOptions = [:]) -> [Element] {
-        return objectRef.assignedElements!(options.jsValue()).fromJSValue()
+        return objectRef.assignedElements!(JSValue(from: options)).fromJSValue()
     }
 }

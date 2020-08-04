@@ -4,7 +4,8 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
-public protocol EventListener: JSBridgedType {
+public protocol EventListener: JSAbstractBridgedType {
     func handleEvent(event: Event) -> Void
 }

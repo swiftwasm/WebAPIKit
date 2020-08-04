@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class DOMException: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.DOMException.function! }
@@ -18,7 +19,7 @@ public class DOMException: JSBridgedType {
     }
 
     public convenience init(message: String = "", name: String = "Error") {
-        self.init(objectRef: DOMException.classRef.new(message.jsValue(), name.jsValue()))
+        self.init(objectRef: DOMException.classRef(new: JSValue(from: message), JSValue(from: name)))
     }
 
     @ReadonlyAttribute

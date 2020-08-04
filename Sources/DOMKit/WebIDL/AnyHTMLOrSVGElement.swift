@@ -4,8 +4,11 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 class AnyHTMLOrSVGElement: JSBridgedType, HTMLOrSVGElement {
+    public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLOrSVGElement.function! }
+
     let objectRef: JSObjectRef
 
     required init(objectRef: JSObjectRef) {

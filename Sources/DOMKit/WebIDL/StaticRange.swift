@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class StaticRange: AbstractRange {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.StaticRange.function! }
@@ -13,6 +14,6 @@ public class StaticRange: AbstractRange {
     }
 
     public convenience init(init: StaticRangeInit) {
-        self.init(objectRef: StaticRange.classRef.new(`init`.jsValue()))
+        self.init(objectRef: StaticRange.classRef(new: JSValue(from: `init`)))
     }
 }

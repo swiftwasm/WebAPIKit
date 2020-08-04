@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class XPathResult: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.XPathResult.function! }
@@ -67,6 +68,6 @@ public class XPathResult: JSBridgedType {
     }
 
     public func snapshotItem(index: UInt32) -> Node? {
-        return objectRef.snapshotItem!(index.jsValue()).fromJSValue()
+        return objectRef.snapshotItem!(JSValue(from: index)).fromJSValue()
     }
 }

@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLElement.function! }
@@ -24,7 +25,7 @@ public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementConte
     }
 
     public convenience init() {
-        self.init(objectRef: HTMLElement.classRef.new())
+        self.init(objectRef: HTMLElement.classRef(.new))
     }
 
     @ReadWriteAttribute

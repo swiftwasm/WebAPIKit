@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class DOMStringMap: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.DOMStringMap.function! }
@@ -14,12 +15,12 @@ public class DOMStringMap: JSBridgedType {
         self.objectRef = objectRef
     }
 
-    public subscript(name: String) -> String? {
+    public subscript(_: String) -> String? {
         get {
-            return objectRef[dynamicMember: name].fromJSValue()
+            return objectRef.name.fromJSValue()
         }
         set {
-            objectRef[dynamicMember: name] = newValue.jsValue()
+            objectRef.name = JSValue(from: newValue)
         }
     }
 }

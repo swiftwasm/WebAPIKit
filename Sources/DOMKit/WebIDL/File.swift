@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class File: Blob {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.File.function! }
@@ -15,7 +16,7 @@ public class File: Blob {
     }
 
     public convenience init(fileBits: [BlobPart], fileName: String, options: FilePropertyBag = [:]) {
-        self.init(objectRef: File.classRef.new(fileBits.jsValue(), fileName.jsValue(), options.jsValue()))
+        self.init(objectRef: File.classRef(new: JSValue(from: fileBits), JSValue(from: fileName), JSValue(from: options)))
     }
 
     @ReadonlyAttribute

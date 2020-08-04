@@ -4,8 +4,9 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
-public protocol HTMLOrSVGElement: JSBridgedType {}
+public protocol HTMLOrSVGElement: JSAbstractBridgedType {}
 
 public extension HTMLOrSVGElement {
     var dataset: DOMStringMap {
@@ -17,7 +18,7 @@ public extension HTMLOrSVGElement {
             return objectRef.nonce.fromJSValue()
         }
         set {
-            objectRef.nonce = newValue.jsValue()
+            objectRef.nonce = JSValue(from: newValue)
         }
     }
 
@@ -26,7 +27,7 @@ public extension HTMLOrSVGElement {
             return objectRef.autofocus.fromJSValue()
         }
         set {
-            objectRef.autofocus = newValue.jsValue()
+            objectRef.autofocus = JSValue(from: newValue)
         }
     }
 
@@ -35,12 +36,12 @@ public extension HTMLOrSVGElement {
             return objectRef.tabIndex.fromJSValue()
         }
         set {
-            objectRef.tabIndex = newValue.jsValue()
+            objectRef.tabIndex = JSValue(from: newValue)
         }
     }
 
     func focus(options: FocusOptions = [:]) {
-        _ = objectRef.focus!(options.jsValue())
+        _ = objectRef.focus!(JSValue(from: options))
     }
 
     func blur() {

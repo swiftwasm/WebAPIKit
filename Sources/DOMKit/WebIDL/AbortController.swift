@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class AbortController: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.AbortController.function! }
@@ -16,7 +17,7 @@ public class AbortController: JSBridgedType {
     }
 
     public convenience init() {
-        self.init(objectRef: AbortController.classRef.new())
+        self.init(objectRef: AbortController.classRef(.new))
     }
 
     @ReadonlyAttribute

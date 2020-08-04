@@ -4,5 +4,6 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public typealias MutationCallback = (([MutationRecord], MutationObserver) -> Void)

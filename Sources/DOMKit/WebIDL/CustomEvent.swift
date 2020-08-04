@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class CustomEvent: Event {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.CustomEvent.function! }
@@ -14,13 +15,13 @@ public class CustomEvent: Event {
     }
 
     public convenience init(type: String, eventInitDict: CustomEventInit = [:]) {
-        self.init(objectRef: CustomEvent.classRef.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(objectRef: CustomEvent.classRef(new: JSValue(from: type), JSValue(from: eventInitDict)))
     }
 
     @ReadonlyAttribute
     public var detail: AnyJSValueCodable
 
     public func initCustomEvent(type: String, bubbles: Bool = false, cancelable: Bool = false, detail: AnyJSValueCodable = nil) {
-        _ = objectRef.initCustomEvent!(type.jsValue(), bubbles.jsValue(), cancelable.jsValue(), detail.jsValue())
+        _ = objectRef.initCustomEvent!(JSValue(from: type), JSValue(from: bubbles), JSValue(from: cancelable), JSValue(from: detail))
     }
 }

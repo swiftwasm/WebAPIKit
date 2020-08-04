@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class CharacterData: Node, ChildNode, NonDocumentTypeChildNode {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.CharacterData.function! }
@@ -21,22 +22,22 @@ public class CharacterData: Node, ChildNode, NonDocumentTypeChildNode {
     public var length: UInt32
 
     public func substringData(offset: UInt32, count: UInt32) -> String {
-        return objectRef.substringData!(offset.jsValue(), count.jsValue()).fromJSValue()
+        return objectRef.substringData!(JSValue(from: offset), JSValue(from: count)).fromJSValue()
     }
 
     public func appendData(data: String) {
-        _ = objectRef.appendData!(data.jsValue())
+        _ = objectRef.appendData!(JSValue(from: data))
     }
 
     public func insertData(offset: UInt32, data: String) {
-        _ = objectRef.insertData!(offset.jsValue(), data.jsValue())
+        _ = objectRef.insertData!(JSValue(from: offset), JSValue(from: data))
     }
 
     public func deleteData(offset: UInt32, count: UInt32) {
-        _ = objectRef.deleteData!(offset.jsValue(), count.jsValue())
+        _ = objectRef.deleteData!(JSValue(from: offset), JSValue(from: count))
     }
 
     public func replaceData(offset: UInt32, count: UInt32, data: String) {
-        _ = objectRef.replaceData!(offset.jsValue(), count.jsValue(), data.jsValue())
+        _ = objectRef.replaceData!(JSValue(from: offset), JSValue(from: count), JSValue(from: data))
     }
 }

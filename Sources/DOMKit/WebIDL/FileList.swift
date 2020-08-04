@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class FileList: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.FileList.function! }

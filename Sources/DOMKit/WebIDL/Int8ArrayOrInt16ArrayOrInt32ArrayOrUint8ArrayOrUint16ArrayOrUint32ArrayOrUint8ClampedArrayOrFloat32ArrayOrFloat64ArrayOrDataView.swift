@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public enum Int8ArrayOrInt16ArrayOrInt32ArrayOrUint8ArrayOrUint16ArrayOrUint32ArrayOrUint8ClampedArrayOrFloat32ArrayOrFloat64ArrayOrDataView: JSValueEncodable, JSValueDecodable {
     public static func canDecode(from jsValue: JSValue) -> Bool {
@@ -47,18 +48,18 @@ public enum Int8ArrayOrInt16ArrayOrInt32ArrayOrUint8ArrayOrUint16ArrayOrUint32Ar
         }
     }
 
-    public func jsValue() -> JSValue {
+    public subscript(jsValue _: ()) -> JSValue {
         switch self {
-        case let .int8Array(v): return v.jsValue()
-        case let .int16Array(v): return v.jsValue()
-        case let .int32Array(v): return v.jsValue()
-        case let .uint8Array(v): return v.jsValue()
-        case let .uint16Array(v): return v.jsValue()
-        case let .uint32Array(v): return v.jsValue()
-        case let .uint8ClampedArray(v): return v.jsValue()
-        case let .float32Array(v): return v.jsValue()
-        case let .float64Array(v): return v.jsValue()
-        case let .dataView(v): return v.jsValue()
+        case let .int8Array(v): return JSValue(from: v)
+        case let .int16Array(v): return JSValue(from: v)
+        case let .int32Array(v): return JSValue(from: v)
+        case let .uint8Array(v): return JSValue(from: v)
+        case let .uint16Array(v): return JSValue(from: v)
+        case let .uint32Array(v): return JSValue(from: v)
+        case let .uint8ClampedArray(v): return JSValue(from: v)
+        case let .float32Array(v): return JSValue(from: v)
+        case let .float64Array(v): return JSValue(from: v)
+        case let .dataView(v): return JSValue(from: v)
         }
     }
 }

@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class Range: AbstractRange {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.Range.function! }
@@ -14,46 +15,46 @@ public class Range: AbstractRange {
     }
 
     public convenience init() {
-        self.init(objectRef: Range.classRef.new())
+        self.init(objectRef: Range.classRef(.new))
     }
 
     @ReadonlyAttribute
     public var commonAncestorContainer: Node
 
     public func setStart(node: Node, offset: UInt32) {
-        _ = objectRef.setStart!(node.jsValue(), offset.jsValue())
+        _ = objectRef.setStart!(JSValue(from: node), JSValue(from: offset))
     }
 
     public func setEnd(node: Node, offset: UInt32) {
-        _ = objectRef.setEnd!(node.jsValue(), offset.jsValue())
+        _ = objectRef.setEnd!(JSValue(from: node), JSValue(from: offset))
     }
 
     public func setStartBefore(node: Node) {
-        _ = objectRef.setStartBefore!(node.jsValue())
+        _ = objectRef.setStartBefore!(JSValue(from: node))
     }
 
     public func setStartAfter(node: Node) {
-        _ = objectRef.setStartAfter!(node.jsValue())
+        _ = objectRef.setStartAfter!(JSValue(from: node))
     }
 
     public func setEndBefore(node: Node) {
-        _ = objectRef.setEndBefore!(node.jsValue())
+        _ = objectRef.setEndBefore!(JSValue(from: node))
     }
 
     public func setEndAfter(node: Node) {
-        _ = objectRef.setEndAfter!(node.jsValue())
+        _ = objectRef.setEndAfter!(JSValue(from: node))
     }
 
     public func collapse(toStart: Bool = false) {
-        _ = objectRef.collapse!(toStart.jsValue())
+        _ = objectRef.collapse!(JSValue(from: toStart))
     }
 
     public func selectNode(node: Node) {
-        _ = objectRef.selectNode!(node.jsValue())
+        _ = objectRef.selectNode!(JSValue(from: node))
     }
 
     public func selectNodeContents(node: Node) {
-        _ = objectRef.selectNodeContents!(node.jsValue())
+        _ = objectRef.selectNodeContents!(JSValue(from: node))
     }
 
     public let START_TO_START: UInt16 = 0
@@ -65,7 +66,7 @@ public class Range: AbstractRange {
     public let END_TO_START: UInt16 = 3
 
     public func compareBoundaryPoints(how: UInt16, sourceRange: Range) -> Int16 {
-        return objectRef.compareBoundaryPoints!(how.jsValue(), sourceRange.jsValue()).fromJSValue()
+        return objectRef.compareBoundaryPoints!(JSValue(from: how), JSValue(from: sourceRange)).fromJSValue()
     }
 
     public func deleteContents() {
@@ -81,11 +82,11 @@ public class Range: AbstractRange {
     }
 
     public func insertNode(node: Node) {
-        _ = objectRef.insertNode!(node.jsValue())
+        _ = objectRef.insertNode!(JSValue(from: node))
     }
 
     public func surroundContents(newParent: Node) {
-        _ = objectRef.surroundContents!(newParent.jsValue())
+        _ = objectRef.surroundContents!(JSValue(from: newParent))
     }
 
     public func cloneRange() -> Range {
@@ -97,14 +98,14 @@ public class Range: AbstractRange {
     }
 
     public func isPointInRange(node: Node, offset: UInt32) -> Bool {
-        return objectRef.isPointInRange!(node.jsValue(), offset.jsValue()).fromJSValue()
+        return objectRef.isPointInRange!(JSValue(from: node), JSValue(from: offset)).fromJSValue()
     }
 
     public func comparePoint(node: Node, offset: UInt32) -> Int16 {
-        return objectRef.comparePoint!(node.jsValue(), offset.jsValue()).fromJSValue()
+        return objectRef.comparePoint!(JSValue(from: node), JSValue(from: offset)).fromJSValue()
     }
 
     public func intersectsNode(node: Node) -> Bool {
-        return objectRef.intersectsNode!(node.jsValue()).fromJSValue()
+        return objectRef.intersectsNode!(JSValue(from: node)).fromJSValue()
     }
 }

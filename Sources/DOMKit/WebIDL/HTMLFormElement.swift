@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class HTMLFormElement: HTMLElement {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLFormElement.function! }
@@ -25,12 +26,12 @@ public class HTMLFormElement: HTMLElement {
         super.init(objectRef: objectRef)
     }
 
-    public subscript(name: String) -> RadioNodeListOrElement? {
-        return objectRef[dynamicMember: name].fromJSValue()
+    public subscript(_: String) -> RadioNodeListOrElement? {
+        return objectRef.name.fromJSValue()
     }
 
     public convenience init() {
-        self.init(objectRef: HTMLFormElement.classRef.new())
+        self.init(objectRef: HTMLFormElement.classRef(.new))
     }
 
     @ReadWriteAttribute
@@ -77,7 +78,7 @@ public class HTMLFormElement: HTMLElement {
     }
 
     public func requestSubmit(submitter: HTMLElement? = nil) {
-        _ = objectRef.requestSubmit!(submitter.jsValue())
+        _ = objectRef.requestSubmit!(JSValue(from: submitter))
     }
 
     public func reset() {

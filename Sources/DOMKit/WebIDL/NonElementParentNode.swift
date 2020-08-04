@@ -4,11 +4,12 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
-public protocol NonElementParentNode: JSBridgedType {}
+public protocol NonElementParentNode: JSAbstractBridgedType {}
 
 public extension NonElementParentNode {
     func getElementById(elementId: String) -> Element? {
-        return objectRef.getElementById!(elementId.jsValue()).fromJSValue()
+        return objectRef.getElementById!(JSValue(from: elementId)).fromJSValue()
     }
 }

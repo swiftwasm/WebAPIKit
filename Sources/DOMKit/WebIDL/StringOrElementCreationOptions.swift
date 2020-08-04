@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public enum StringOrElementCreationOptions: JSValueEncodable, JSValueDecodable, ExpressibleByDictionaryLiteral, ExpressibleByStringLiteral {
     public static func canDecode(from jsValue: JSValue) -> Bool {
@@ -31,10 +32,10 @@ public enum StringOrElementCreationOptions: JSValueEncodable, JSValueDecodable, 
         self = .elementCreationOptions(.init(uniqueKeysWithValues: elements))
     }
 
-    public func jsValue() -> JSValue {
+    public subscript(jsValue _: ()) -> JSValue {
         switch self {
-        case let .string(v): return v.jsValue()
-        case let .elementCreationOptions(v): return v.jsValue()
+        case let .string(v): return JSValue(from: v)
+        case let .elementCreationOptions(v): return JSValue(from: v)
         }
     }
 }

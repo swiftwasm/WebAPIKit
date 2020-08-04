@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class DOMImplementation: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.DOMImplementation.function! }
@@ -15,15 +16,15 @@ public class DOMImplementation: JSBridgedType {
     }
 
     public func createDocumentType(qualifiedName: String, publicId: String, systemId: String) -> DocumentType {
-        return objectRef.createDocumentType!(qualifiedName.jsValue(), publicId.jsValue(), systemId.jsValue()).fromJSValue()
+        return objectRef.createDocumentType!(JSValue(from: qualifiedName), JSValue(from: publicId), JSValue(from: systemId)).fromJSValue()
     }
 
     public func createDocument(namespace: String?, qualifiedName: String, doctype: DocumentType? = nil) -> XMLDocument {
-        return objectRef.createDocument!(namespace.jsValue(), qualifiedName.jsValue(), doctype.jsValue()).fromJSValue()
+        return objectRef.createDocument!(JSValue(from: namespace), JSValue(from: qualifiedName), JSValue(from: doctype)).fromJSValue()
     }
 
     public func createHTMLDocument(title: String) -> Document {
-        return objectRef.createHTMLDocument!(title.jsValue()).fromJSValue()
+        return objectRef.createHTMLDocument!(JSValue(from: title)).fromJSValue()
     }
 
     public func createHTMLDocument() -> Document {

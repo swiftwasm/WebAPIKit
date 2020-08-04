@@ -4,5 +4,6 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public typealias OnBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull?

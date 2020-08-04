@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public enum BufferSourceOrBlobOrString: JSValueEncodable, JSValueDecodable, ExpressibleByStringLiteral {
     public static func canDecode(from jsValue: JSValue) -> Bool {
@@ -30,11 +31,11 @@ public enum BufferSourceOrBlobOrString: JSValueEncodable, JSValueDecodable, Expr
         self = .string(value)
     }
 
-    public func jsValue() -> JSValue {
+    public subscript(jsValue _: ()) -> JSValue {
         switch self {
-        case let .bufferSource(v): return v.jsValue()
-        case let .blob(v): return v.jsValue()
-        case let .string(v): return v.jsValue()
+        case let .bufferSource(v): return JSValue(from: v)
+        case let .blob(v): return JSValue(from: v)
+        case let .string(v): return JSValue(from: v)
         }
     }
 }

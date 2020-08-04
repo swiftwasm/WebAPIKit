@@ -4,8 +4,11 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 class AnyXPathNSResolver: JSBridgedType, XPathNSResolver {
+    public class var classRef: JSFunctionRef { JSObjectRef.global.XPathNSResolver.function! }
+
     let objectRef: JSObjectRef
 
     required init(objectRef: JSObjectRef) {
@@ -13,6 +16,6 @@ class AnyXPathNSResolver: JSBridgedType, XPathNSResolver {
     }
 
     public func lookupNamespaceURI(prefix: String?) -> String? {
-        return objectRef.lookupNamespaceURI!(prefix.jsValue()).fromJSValue()
+        return objectRef.lookupNamespaceURI!(JSValue(from: prefix)).fromJSValue()
     }
 }

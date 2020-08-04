@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class ProcessingInstruction: CharacterData {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.ProcessingInstruction.function! }

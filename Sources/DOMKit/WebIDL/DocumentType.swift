@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class DocumentType: Node, ChildNode {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.DocumentType.function! }

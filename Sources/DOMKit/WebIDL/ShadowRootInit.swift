@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public struct ShadowRootInit: ExpressibleByDictionaryLiteral, JSValueCodable {
     public static func canDecode(from jsValue: JSValue) -> Bool {
@@ -34,7 +35,7 @@ public struct ShadowRootInit: ExpressibleByDictionaryLiteral, JSValueCodable {
         dictionary = jsValue.fromJSValue()
     }
 
-    public func jsValue() -> JSValue {
-        return dictionary.jsValue()
+    public subscript(jsValue _: ()) -> JSValue {
+        return JSValue(from: dictionary)
     }
 }

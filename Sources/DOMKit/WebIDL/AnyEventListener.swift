@@ -4,8 +4,11 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 class AnyEventListener: JSBridgedType, EventListener {
+    public class var classRef: JSFunctionRef { JSObjectRef.global.EventListener.function! }
+
     let objectRef: JSObjectRef
 
     required init(objectRef: JSObjectRef) {
@@ -13,6 +16,6 @@ class AnyEventListener: JSBridgedType, EventListener {
     }
 
     public func handleEvent(event: Event) {
-        _ = objectRef.handleEvent!(event.jsValue())
+        _ = objectRef.handleEvent!(JSValue(from: event))
     }
 }

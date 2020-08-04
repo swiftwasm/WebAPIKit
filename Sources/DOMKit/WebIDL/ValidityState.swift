@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class ValidityState: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.ValidityState.function! }

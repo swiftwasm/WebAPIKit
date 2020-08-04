@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class HTMLCollection: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLCollection.function! }
@@ -15,8 +16,8 @@ public class HTMLCollection: JSBridgedType {
         self.objectRef = objectRef
     }
 
-    public subscript(name: String) -> Element?? {
-        return objectRef[dynamicMember: name].fromJSValue()
+    public subscript(_: String) -> Element?? {
+        return objectRef.name.fromJSValue()
     }
 
     @ReadonlyAttribute

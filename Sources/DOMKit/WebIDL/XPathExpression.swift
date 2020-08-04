@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class XPathExpression: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.XPathExpression.function! }
@@ -15,6 +16,6 @@ public class XPathExpression: JSBridgedType {
     }
 
     public func evaluate(contextNode: Node, type: UInt16 = 0, result: XPathResult? = nil) -> XPathResult {
-        return objectRef.evaluate!(contextNode.jsValue(), type.jsValue(), result.jsValue()).fromJSValue()
+        return objectRef.evaluate!(JSValue(from: contextNode), JSValue(from: type), JSValue(from: result)).fromJSValue()
     }
 }

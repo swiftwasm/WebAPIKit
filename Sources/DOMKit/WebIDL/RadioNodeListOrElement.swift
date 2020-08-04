@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public enum RadioNodeListOrElement: JSValueEncodable, JSValueDecodable {
     public static func canDecode(from jsValue: JSValue) -> Bool {
@@ -23,10 +24,10 @@ public enum RadioNodeListOrElement: JSValueEncodable, JSValueDecodable {
         }
     }
 
-    public func jsValue() -> JSValue {
+    public subscript(jsValue _: ()) -> JSValue {
         switch self {
-        case let .radioNodeList(v): return v.jsValue()
-        case let .element(v): return v.jsValue()
+        case let .radioNodeList(v): return JSValue(from: v)
+        case let .element(v): return JSValue(from: v)
         }
     }
 }

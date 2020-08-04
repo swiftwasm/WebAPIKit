@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class FormData: JSBridgedType, KeyValueSequence {
     public class var classRef: JSFunctionRef { JSObjectRef.global.FormData.function! }
@@ -17,51 +18,51 @@ public class FormData: JSBridgedType, KeyValueSequence {
     public typealias Value = FormDataEntryValue
 
     public convenience init(form: HTMLFormElement) {
-        self.init(objectRef: FormData.classRef.new(form.jsValue()))
+        self.init(objectRef: FormData.classRef(new: JSValue(from: form)))
     }
 
     public convenience init() {
-        self.init(objectRef: FormData.classRef.new())
+        self.init(objectRef: FormData.classRef(.new))
     }
 
     public func append(name: String, value: String) {
-        _ = objectRef.append!(name.jsValue(), value.jsValue())
+        _ = objectRef.append!(JSValue(from: name), JSValue(from: value))
     }
 
     public func append(name: String, blobValue: Blob, filename: String) {
-        _ = objectRef.append!(name.jsValue(), blobValue.jsValue(), filename.jsValue())
+        _ = objectRef.append!(JSValue(from: name), JSValue(from: blobValue), JSValue(from: filename))
     }
 
     public func append(name: String, blobValue: Blob) {
-        _ = objectRef.append!(name.jsValue(), blobValue.jsValue())
+        _ = objectRef.append!(JSValue(from: name), JSValue(from: blobValue))
     }
 
     public func delete(name: String) {
-        _ = objectRef.delete!(name.jsValue())
+        _ = objectRef.delete!(JSValue(from: name))
     }
 
     public func get(name: String) -> FormDataEntryValue? {
-        return objectRef.get!(name.jsValue()).fromJSValue()
+        return objectRef.get!(JSValue(from: name)).fromJSValue()
     }
 
     public func getAll(name: String) -> [FormDataEntryValue] {
-        return objectRef.getAll!(name.jsValue()).fromJSValue()
+        return objectRef.getAll!(JSValue(from: name)).fromJSValue()
     }
 
     public func has(name: String) -> Bool {
-        return objectRef.has!(name.jsValue()).fromJSValue()
+        return objectRef.has!(JSValue(from: name)).fromJSValue()
     }
 
     public func set(name: String, value: String) {
-        _ = objectRef.set!(name.jsValue(), value.jsValue())
+        _ = objectRef.set!(JSValue(from: name), JSValue(from: value))
     }
 
     public func set(name: String, blobValue: Blob, filename: String) {
-        _ = objectRef.set!(name.jsValue(), blobValue.jsValue(), filename.jsValue())
+        _ = objectRef.set!(JSValue(from: name), JSValue(from: blobValue), JSValue(from: filename))
     }
 
     public func set(name: String, blobValue: Blob) {
-        _ = objectRef.set!(name.jsValue(), blobValue.jsValue())
+        _ = objectRef.set!(JSValue(from: name), JSValue(from: blobValue))
     }
 
     public func makeIterator() -> PairIterableIterator<FormData> { return PairIterableIterator(sequence: self) }

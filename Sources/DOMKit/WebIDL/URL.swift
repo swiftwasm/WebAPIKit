@@ -4,6 +4,7 @@
  */
 
 import JavaScriptKit
+// import ECMAScript
 
 public class URL: JSBridgedType {
     public class var classRef: JSFunctionRef { JSObjectRef.global.URL.function! }
