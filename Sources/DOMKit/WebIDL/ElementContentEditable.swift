@@ -4,39 +4,38 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol ElementContentEditable: JSAbstractBridgedType {}
+public protocol ElementContentEditable: JSBridgedClass {}
 
 public extension ElementContentEditable {
     var contentEditable: String {
         get {
-            return objectRef.contentEditable.fromJSValue()
+            return objectRef.contentEditable.fromJSValue()!
         }
         set {
-            objectRef.contentEditable = JSValue(from: newValue)
+            objectRef.contentEditable = newValue.jsValue()
         }
     }
 
     var enterKeyHint: String {
         get {
-            return objectRef.enterKeyHint.fromJSValue()
+            return objectRef.enterKeyHint.fromJSValue()!
         }
         set {
-            objectRef.enterKeyHint = JSValue(from: newValue)
+            objectRef.enterKeyHint = newValue.jsValue()
         }
     }
 
     var isContentEditable: Bool {
-        return objectRef.isContentEditable.fromJSValue()
+        return objectRef.isContentEditable.fromJSValue()!
     }
 
     var inputMode: String {
         get {
-            return objectRef.inputMode.fromJSValue()
+            return objectRef.inputMode.fromJSValue()!
         }
         set {
-            objectRef.inputMode = JSValue(from: newValue)
+            objectRef.inputMode = newValue.jsValue()
         }
     }
 }

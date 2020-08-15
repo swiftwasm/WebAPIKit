@@ -4,12 +4,11 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class FileReader: EventTarget {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.FileReader.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _readyState = ReadonlyAttribute(objectRef: objectRef, name: "readyState")
         _result = ReadonlyAttribute(objectRef: objectRef, name: "result")
         _error = ReadonlyAttribute(objectRef: objectRef, name: "error")
@@ -19,31 +18,31 @@ public class FileReader: EventTarget {
         _onabort = OptionalClosureHandler(objectRef: objectRef, name: "onabort")
         _onerror = OptionalClosureHandler(objectRef: objectRef, name: "onerror")
         _onloadend = OptionalClosureHandler(objectRef: objectRef, name: "onloadend")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     public convenience init() {
-        self.init(objectRef: FileReader.classRef(.new))
+        self.init(withCompatibleObject: FileReader.classRef.new())
     }
 
     public func readAsArrayBuffer(blob: Blob) {
-        _ = objectRef.readAsArrayBuffer!(JSValue(from: blob))
+        _ = objectRef.readAsArrayBuffer!(blob.jsValue())
     }
 
     public func readAsBinaryString(blob: Blob) {
-        _ = objectRef.readAsBinaryString!(JSValue(from: blob))
+        _ = objectRef.readAsBinaryString!(blob.jsValue())
     }
 
     public func readAsText(blob: Blob, encoding: String) {
-        _ = objectRef.readAsText!(JSValue(from: blob), JSValue(from: encoding))
+        _ = objectRef.readAsText!(blob.jsValue(), encoding.jsValue())
     }
 
     public func readAsText(blob: Blob) {
-        _ = objectRef.readAsText!(JSValue(from: blob))
+        _ = objectRef.readAsText!(blob.jsValue())
     }
 
     public func readAsDataURL(blob: Blob) {
-        _ = objectRef.readAsDataURL!(JSValue(from: blob))
+        _ = objectRef.readAsDataURL!(blob.jsValue())
     }
 
     public func abort() {

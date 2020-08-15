@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-class AnyWindowEventHandlers: JSBridgedType, WindowEventHandlers {
+class AnyWindowEventHandlers: JSBridgedClass, WindowEventHandlers {
     public class var classRef: JSFunctionRef { JSObjectRef.global.WindowEventHandlers.function! }
 
     let objectRef: JSObjectRef
 
-    required init(objectRef: JSObjectRef) {
+    required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 }

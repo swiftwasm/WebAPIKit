@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class ProcessingInstruction: CharacterData {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.ProcessingInstruction.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _target = ReadonlyAttribute(objectRef: objectRef, name: "target")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     @ReadonlyAttribute

@@ -4,29 +4,28 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol ParentNode: JSAbstractBridgedType {}
+public protocol ParentNode: JSBridgedClass {}
 
 public extension ParentNode {
     var children: HTMLCollection {
-        return objectRef.children.fromJSValue()
+        return objectRef.children.fromJSValue()!
     }
 
     var firstElementChild: Element? {
-        return objectRef.firstElementChild.fromJSValue()
+        return objectRef.firstElementChild.fromJSValue()!
     }
 
     var lastElementChild: Element? {
-        return objectRef.lastElementChild.fromJSValue()
+        return objectRef.lastElementChild.fromJSValue()!
     }
 
     var childElementCount: UInt32 {
-        return objectRef.childElementCount.fromJSValue()
+        return objectRef.childElementCount.fromJSValue()!
     }
 
     func prepend(nodes: NodeOrString...) {
-        _ = objectRef.prepend!(JSValue(from: nodes))
+        _ = objectRef.prepend!(nodes.jsValue())
     }
 
     func prepend() {
@@ -34,7 +33,7 @@ public extension ParentNode {
     }
 
     func append(nodes: NodeOrString...) {
-        _ = objectRef.append!(JSValue(from: nodes))
+        _ = objectRef.append!(nodes.jsValue())
     }
 
     func append() {
@@ -42,10 +41,10 @@ public extension ParentNode {
     }
 
     func querySelector(selectors: String) -> Element? {
-        return objectRef.querySelector!(JSValue(from: selectors)).fromJSValue()
+        return objectRef.querySelector!(selectors.jsValue()).fromJSValue()!
     }
 
     func querySelectorAll(selectors: String) -> NodeList {
-        return objectRef.querySelectorAll!(JSValue(from: selectors)).fromJSValue()
+        return objectRef.querySelectorAll!(selectors.jsValue()).fromJSValue()!
     }
 }

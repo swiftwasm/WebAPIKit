@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class XPathResult: JSBridgedType {
+public class XPathResult: JSBridgedClass {
     public class var classRef: JSFunctionRef { JSObjectRef.global.XPathResult.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _resultType = ReadonlyAttribute(objectRef: objectRef, name: "resultType")
         _numberValue = ReadonlyAttribute(objectRef: objectRef, name: "numberValue")
         _stringValue = ReadonlyAttribute(objectRef: objectRef, name: "stringValue")
@@ -64,10 +63,10 @@ public class XPathResult: JSBridgedType {
     public var snapshotLength: UInt32
 
     public func iterateNext() -> Node? {
-        return objectRef.iterateNext!().fromJSValue()
+        return objectRef.iterateNext!().fromJSValue()!
     }
 
     public func snapshotItem(index: UInt32) -> Node? {
-        return objectRef.snapshotItem!(JSValue(from: index)).fromJSValue()
+        return objectRef.snapshotItem!(index.jsValue()).fromJSValue()!
     }
 }

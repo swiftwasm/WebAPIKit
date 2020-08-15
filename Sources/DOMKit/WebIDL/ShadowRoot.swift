@@ -4,16 +4,15 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.ShadowRoot.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _mode = ReadonlyAttribute(objectRef: objectRef, name: "mode")
         _host = ReadonlyAttribute(objectRef: objectRef, name: "host")
         _onslotchange = OptionalClosureHandler(objectRef: objectRef, name: "onslotchange")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     @ReadonlyAttribute

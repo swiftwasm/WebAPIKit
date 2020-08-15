@@ -4,21 +4,16 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public enum StringOrElementCreationOptions: JSValueEncodable, JSValueDecodable, ExpressibleByDictionaryLiteral, ExpressibleByStringLiteral {
-    public static func canDecode(from jsValue: JSValue) -> Bool {
-        return String.canDecode(from: jsValue) || ElementCreationOptions.canDecode(from: jsValue)
-    }
-
+public enum StringOrElementCreationOptions: JSBridgedType, ExpressibleByDictionaryLiteral, ExpressibleByStringLiteral {
     case string(String)
     case elementCreationOptions(ElementCreationOptions)
 
-    public init(jsValue: JSValue) {
-        if String.canDecode(from: jsValue) {
-            self = .string(jsValue.fromJSValue())
-        } else if ElementCreationOptions.canDecode(from: jsValue) {
-            self = .elementCreationOptions(jsValue.fromJSValue())
+    public init?(from value: JSValue) {
+        if let decoded: String = value.fromJSValue() {
+            self = .string(decoded)
+        } else if let decoded: ElementCreationOptions = value.fromJSValue() {
+            self = .elementCreationOptions(decoded)
         } else {
             fatalError()
         }
@@ -32,10 +27,12 @@ public enum StringOrElementCreationOptions: JSValueEncodable, JSValueDecodable, 
         self = .elementCreationOptions(.init(uniqueKeysWithValues: elements))
     }
 
-    public subscript(jsValue _: ()) -> JSValue {
+    public var value: JSValue { jsValue() }
+
+    public func jsValue() -> JSValue {
         switch self {
-        case let .string(v): return JSValue(from: v)
-        case let .elementCreationOptions(v): return JSValue(from: v)
+        case let .string(v): return v.jsValue()
+        case let .elementCreationOptions(v): return v.jsValue()
         }
     }
 }

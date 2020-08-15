@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class NodeIterator: JSBridgedType {
+public class NodeIterator: JSBridgedClass {
     public class var classRef: JSFunctionRef { JSObjectRef.global.NodeIterator.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _root = ReadonlyAttribute(objectRef: objectRef, name: "root")
         _referenceNode = ReadonlyAttribute(objectRef: objectRef, name: "referenceNode")
         _pointerBeforeReferenceNode = ReadonlyAttribute(objectRef: objectRef, name: "pointerBeforeReferenceNode")
@@ -32,15 +31,15 @@ public class NodeIterator: JSBridgedType {
     public var whatToShow: UInt32
 
     public var filter: NodeFilter? {
-        return objectRef.filter.fromJSValue() as AnyNodeFilter?
+        return objectRef.filter.fromJSValue()! as AnyNodeFilter?
     }
 
     public func nextNode() -> Node? {
-        return objectRef.nextNode!().fromJSValue()
+        return objectRef.nextNode!().fromJSValue()!
     }
 
     public func previousNode() -> Node? {
-        return objectRef.previousNode!().fromJSValue()
+        return objectRef.previousNode!().fromJSValue()!
     }
 
     public func detach() {

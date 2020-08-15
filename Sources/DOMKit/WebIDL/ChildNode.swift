@@ -4,13 +4,12 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol ChildNode: JSAbstractBridgedType {}
+public protocol ChildNode: JSBridgedClass {}
 
 public extension ChildNode {
     func before(nodes: NodeOrString...) {
-        _ = objectRef.before!(JSValue(from: nodes))
+        _ = objectRef.before!(nodes.jsValue())
     }
 
     func before() {
@@ -18,7 +17,7 @@ public extension ChildNode {
     }
 
     func after(nodes: NodeOrString...) {
-        _ = objectRef.after!(JSValue(from: nodes))
+        _ = objectRef.after!(nodes.jsValue())
     }
 
     func after() {
@@ -26,7 +25,7 @@ public extension ChildNode {
     }
 
     func replaceWith(nodes: NodeOrString...) {
-        _ = objectRef.replaceWith!(JSValue(from: nodes))
+        _ = objectRef.replaceWith!(nodes.jsValue())
     }
 
     func replaceWith() {

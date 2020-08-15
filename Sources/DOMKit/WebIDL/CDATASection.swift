@@ -4,12 +4,11 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class CDATASection: Text {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.CDATASection.function! }
 
-    public required init(objectRef: JSObjectRef) {
-        super.init(objectRef: objectRef)
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
+        super.init(withCompatibleObject: objectRef)
     }
 }

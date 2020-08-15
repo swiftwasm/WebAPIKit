@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-class AnyNonElementParentNode: JSBridgedType, NonElementParentNode {
+class AnyNonElementParentNode: JSBridgedClass, NonElementParentNode {
     public class var classRef: JSFunctionRef { JSObjectRef.global.NonElementParentNode.function! }
 
     let objectRef: JSObjectRef
 
-    required init(objectRef: JSObjectRef) {
+    required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 }

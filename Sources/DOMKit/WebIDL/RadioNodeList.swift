@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class RadioNodeList: NodeList {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.RadioNodeList.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _value = ReadWriteAttribute(objectRef: objectRef, name: "value")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     @ReadWriteAttribute

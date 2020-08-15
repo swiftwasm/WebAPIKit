@@ -4,6 +4,5 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public typealias BufferSource = ArrayBufferViewOrArrayBuffer

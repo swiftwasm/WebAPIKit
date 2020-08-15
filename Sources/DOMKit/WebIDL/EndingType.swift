@@ -4,24 +4,19 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public enum EndingType: String, JSValueCodable {
-    public static func canDecode(from jsValue: JSValue) -> Bool {
-        return jsValue.isString
+    public static func construct(from jsValue: JSValue) -> EndingType? {
+        if let string = jsValue.string,
+            let value = EndingType(rawValue: string) {
+            return value
+        }
+        return nil
     }
 
     case transparent
     case native
-
-    public init(jsValue: JSValue) {
-        guard let value = EndingType(rawValue: jsValue.fromJSValue()) else {
-            fatalError()
-        }
-        self = value
-    }
-
-    public subscript(jsValue _: ()) -> JSValue {
-        return JSValue(from: rawValue)
+    public func jsValue() -> JSValue {
+        return rawValue.jsValue()
     }
 }

@@ -4,21 +4,16 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public enum StringOrArrayBuffer: JSValueEncodable, JSValueDecodable, ExpressibleByStringLiteral {
-    public static func canDecode(from jsValue: JSValue) -> Bool {
-        return String.canDecode(from: jsValue) || ArrayBuffer.canDecode(from: jsValue)
-    }
-
+public enum StringOrArrayBuffer: JSBridgedType, ExpressibleByStringLiteral {
     case string(String)
     case arrayBuffer(ArrayBuffer)
 
-    public init(jsValue: JSValue) {
-        if String.canDecode(from: jsValue) {
-            self = .string(jsValue.fromJSValue())
-        } else if ArrayBuffer.canDecode(from: jsValue) {
-            self = .arrayBuffer(jsValue.fromJSValue())
+    public init?(from value: JSValue) {
+        if let decoded: String = value.fromJSValue() {
+            self = .string(decoded)
+        } else if let decoded: ArrayBuffer = value.fromJSValue() {
+            self = .arrayBuffer(decoded)
         } else {
             fatalError()
         }
@@ -28,10 +23,12 @@ public enum StringOrArrayBuffer: JSValueEncodable, JSValueDecodable, Expressible
         self = .string(value)
     }
 
-    public subscript(jsValue _: ()) -> JSValue {
+    public var value: JSValue { jsValue() }
+
+    public func jsValue() -> JSValue {
         switch self {
-        case let .string(v): return JSValue(from: v)
-        case let .arrayBuffer(v): return JSValue(from: v)
+        case let .string(v): return v.jsValue()
+        case let .arrayBuffer(v): return v.jsValue()
         }
     }
 }

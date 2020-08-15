@@ -4,6 +4,5 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol DocumentOrShadowRoot: JSAbstractBridgedType {}
+public protocol DocumentOrShadowRoot: JSBridgedClass {}

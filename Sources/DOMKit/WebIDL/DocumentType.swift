@@ -4,16 +4,15 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class DocumentType: Node, ChildNode {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.DocumentType.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _name = ReadonlyAttribute(objectRef: objectRef, name: "name")
         _publicId = ReadonlyAttribute(objectRef: objectRef, name: "publicId")
         _systemId = ReadonlyAttribute(objectRef: objectRef, name: "systemId")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     @ReadonlyAttribute

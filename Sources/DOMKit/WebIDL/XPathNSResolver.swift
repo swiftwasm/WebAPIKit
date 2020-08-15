@@ -4,8 +4,7 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol XPathNSResolver: JSAbstractBridgedType {
+public protocol XPathNSResolver: JSBridgedType {
     func lookupNamespaceURI(prefix: String?) -> String?
 }

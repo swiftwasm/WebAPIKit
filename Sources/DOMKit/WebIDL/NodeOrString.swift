@@ -4,21 +4,16 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public enum NodeOrString: JSValueEncodable, JSValueDecodable, ExpressibleByStringLiteral {
-    public static func canDecode(from jsValue: JSValue) -> Bool {
-        return Node.canDecode(from: jsValue) || String.canDecode(from: jsValue)
-    }
-
+public enum NodeOrString: JSBridgedType, ExpressibleByStringLiteral {
     case node(Node)
     case string(String)
 
-    public init(jsValue: JSValue) {
-        if Node.canDecode(from: jsValue) {
-            self = .node(jsValue.fromJSValue())
-        } else if String.canDecode(from: jsValue) {
-            self = .string(jsValue.fromJSValue())
+    public init?(from value: JSValue) {
+        if let decoded: Node = value.fromJSValue() {
+            self = .node(decoded)
+        } else if let decoded: String = value.fromJSValue() {
+            self = .string(decoded)
         } else {
             fatalError()
         }
@@ -28,10 +23,12 @@ public enum NodeOrString: JSValueEncodable, JSValueDecodable, ExpressibleByStrin
         self = .string(value)
     }
 
-    public subscript(jsValue _: ()) -> JSValue {
+    public var value: JSValue { jsValue() }
+
+    public func jsValue() -> JSValue {
         switch self {
-        case let .node(v): return JSValue(from: v)
-        case let .string(v): return JSValue(from: v)
+        case let .node(v): return v.jsValue()
+        case let .string(v): return v.jsValue()
         }
     }
 }

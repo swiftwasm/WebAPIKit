@@ -4,12 +4,11 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class HTMLFormElement: HTMLElement {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLFormElement.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _acceptCharset = ReadWriteAttribute(objectRef: objectRef, name: "acceptCharset")
         _action = ReadWriteAttribute(objectRef: objectRef, name: "action")
         _autocomplete = ReadWriteAttribute(objectRef: objectRef, name: "autocomplete")
@@ -23,15 +22,15 @@ public class HTMLFormElement: HTMLElement {
         _relList = ReadonlyAttribute(objectRef: objectRef, name: "relList")
         _elements = ReadonlyAttribute(objectRef: objectRef, name: "elements")
         _length = ReadonlyAttribute(objectRef: objectRef, name: "length")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     public subscript(_: String) -> RadioNodeListOrElement? {
-        return objectRef.name.fromJSValue()
+        return objectRef.name.fromJSValue()!
     }
 
     public convenience init() {
-        self.init(objectRef: HTMLFormElement.classRef(.new))
+        self.init(withCompatibleObject: HTMLFormElement.classRef.new())
     }
 
     @ReadWriteAttribute
@@ -78,7 +77,7 @@ public class HTMLFormElement: HTMLElement {
     }
 
     public func requestSubmit(submitter: HTMLElement? = nil) {
-        _ = objectRef.requestSubmit!(JSValue(from: submitter))
+        _ = objectRef.requestSubmit!(submitter.jsValue())
     }
 
     public func reset() {
@@ -86,10 +85,10 @@ public class HTMLFormElement: HTMLElement {
     }
 
     public func checkValidity() -> Bool {
-        return objectRef.checkValidity!().fromJSValue()
+        return objectRef.checkValidity!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        return objectRef.reportValidity!().fromJSValue()
+        return objectRef.reportValidity!().fromJSValue()!
     }
 }

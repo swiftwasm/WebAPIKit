@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-class AnyXPathEvaluatorBase: JSBridgedType, XPathEvaluatorBase {
+class AnyXPathEvaluatorBase: JSBridgedClass, XPathEvaluatorBase {
     public class var classRef: JSFunctionRef { JSObjectRef.global.XPathEvaluatorBase.function! }
 
     let objectRef: JSObjectRef
 
-    required init(objectRef: JSObjectRef) {
+    required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 }

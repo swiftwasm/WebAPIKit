@@ -4,12 +4,11 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class Node: EventTarget {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.Node.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _nodeType = ReadonlyAttribute(objectRef: objectRef, name: "nodeType")
         _nodeName = ReadonlyAttribute(objectRef: objectRef, name: "nodeName")
         _baseURI = ReadonlyAttribute(objectRef: objectRef, name: "baseURI")
@@ -24,7 +23,7 @@ public class Node: EventTarget {
         _nextSibling = ReadonlyAttribute(objectRef: objectRef, name: "nextSibling")
         _nodeValue = ReadWriteAttribute(objectRef: objectRef, name: "nodeValue")
         _textContent = ReadWriteAttribute(objectRef: objectRef, name: "textContent")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     public let ELEMENT_NODE: UInt16 = 1
@@ -67,7 +66,7 @@ public class Node: EventTarget {
     public var ownerDocument: Document?
 
     public func getRootNode(options: GetRootNodeOptions = [:]) -> Node {
-        return objectRef.getRootNode!(JSValue(from: options)).fromJSValue()
+        return objectRef.getRootNode!(options.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -77,7 +76,7 @@ public class Node: EventTarget {
     public var parentElement: Element?
 
     public func hasChildNodes() -> Bool {
-        return objectRef.hasChildNodes!().fromJSValue()
+        return objectRef.hasChildNodes!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -106,15 +105,15 @@ public class Node: EventTarget {
     }
 
     public func cloneNode(deep: Bool = false) -> Node {
-        return objectRef.cloneNode!(JSValue(from: deep)).fromJSValue()
+        return objectRef.cloneNode!(deep.jsValue()).fromJSValue()!
     }
 
     public func isEqualNode(otherNode: Node?) -> Bool {
-        return objectRef.isEqualNode!(JSValue(from: otherNode)).fromJSValue()
+        return objectRef.isEqualNode!(otherNode.jsValue()).fromJSValue()!
     }
 
     public func isSameNode(otherNode: Node?) -> Bool {
-        return objectRef.isSameNode!(JSValue(from: otherNode)).fromJSValue()
+        return objectRef.isSameNode!(otherNode.jsValue()).fromJSValue()!
     }
 
     public let DOCUMENT_POSITION_DISCONNECTED: UInt16 = 1
@@ -130,38 +129,38 @@ public class Node: EventTarget {
     public let DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: UInt16 = 32
 
     public func compareDocumentPosition(other: Node) -> UInt16 {
-        return objectRef.compareDocumentPosition!(JSValue(from: other)).fromJSValue()
+        return objectRef.compareDocumentPosition!(other.jsValue()).fromJSValue()!
     }
 
     public func contains(other: Node?) -> Bool {
-        return objectRef.contains!(JSValue(from: other)).fromJSValue()
+        return objectRef.contains!(other.jsValue()).fromJSValue()!
     }
 
     public func lookupPrefix(namespace: String?) -> String? {
-        return objectRef.lookupPrefix!(JSValue(from: namespace)).fromJSValue()
+        return objectRef.lookupPrefix!(namespace.jsValue()).fromJSValue()!
     }
 
     public func lookupNamespaceURI(prefix: String?) -> String? {
-        return objectRef.lookupNamespaceURI!(JSValue(from: prefix)).fromJSValue()
+        return objectRef.lookupNamespaceURI!(prefix.jsValue()).fromJSValue()!
     }
 
     public func isDefaultNamespace(namespace: String?) -> Bool {
-        return objectRef.isDefaultNamespace!(JSValue(from: namespace)).fromJSValue()
+        return objectRef.isDefaultNamespace!(namespace.jsValue()).fromJSValue()!
     }
 
     public func insertBefore(node: Node, child: Node?) -> Node {
-        return objectRef.insertBefore!(JSValue(from: node), JSValue(from: child)).fromJSValue()
+        return objectRef.insertBefore!(node.jsValue(), child.jsValue()).fromJSValue()!
     }
 
     public func appendChild(node: Node) -> Node {
-        return objectRef.appendChild!(JSValue(from: node)).fromJSValue()
+        return objectRef.appendChild!(node.jsValue()).fromJSValue()!
     }
 
     public func replaceChild(node: Node, child: Node) -> Node {
-        return objectRef.replaceChild!(JSValue(from: node), JSValue(from: child)).fromJSValue()
+        return objectRef.replaceChild!(node.jsValue(), child.jsValue()).fromJSValue()!
     }
 
     public func removeChild(child: Node) -> Node {
-        return objectRef.removeChild!(JSValue(from: child)).fromJSValue()
+        return objectRef.removeChild!(child.jsValue()).fromJSValue()!
     }
 }

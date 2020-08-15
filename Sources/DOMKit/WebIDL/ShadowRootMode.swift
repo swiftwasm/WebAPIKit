@@ -4,24 +4,19 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public enum ShadowRootMode: String, JSValueCodable {
-    public static func canDecode(from jsValue: JSValue) -> Bool {
-        return jsValue.isString
+    public static func construct(from jsValue: JSValue) -> ShadowRootMode? {
+        if let string = jsValue.string,
+            let value = ShadowRootMode(rawValue: string) {
+            return value
+        }
+        return nil
     }
 
     case open
     case closed
-
-    public init(jsValue: JSValue) {
-        guard let value = ShadowRootMode(rawValue: jsValue.fromJSValue()) else {
-            fatalError()
-        }
-        self = value
-    }
-
-    public subscript(jsValue _: ()) -> JSValue {
-        return JSValue(from: rawValue)
+    public func jsValue() -> JSValue {
+        return rawValue.jsValue()
     }
 }

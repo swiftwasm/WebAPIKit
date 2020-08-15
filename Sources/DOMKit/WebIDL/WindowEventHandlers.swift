@@ -4,9 +4,8 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol WindowEventHandlers: JSAbstractBridgedType {}
+public protocol WindowEventHandlers: JSBridgedClass {}
 
 public extension WindowEventHandlers {
     var onafterprint: EventHandler {
@@ -14,13 +13,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onafterprint.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onafterprint = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onafterprint = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onafterprint = .null
             }
@@ -32,13 +31,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onbeforeprint.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onbeforeprint = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onbeforeprint = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onbeforeprint = .null
             }
@@ -50,13 +49,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onbeforeunload.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onbeforeunload = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onbeforeunload = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onbeforeunload = .null
             }
@@ -68,13 +67,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onhashchange.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onhashchange = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onhashchange = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onhashchange = .null
             }
@@ -86,13 +85,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onlanguagechange.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onlanguagechange = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onlanguagechange = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onlanguagechange = .null
             }
@@ -104,13 +103,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onmessage.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmessage = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onmessage = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onmessage = .null
             }
@@ -122,13 +121,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onmessageerror.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmessageerror = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onmessageerror = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onmessageerror = .null
             }
@@ -140,13 +139,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onoffline.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onoffline = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onoffline = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onoffline = .null
             }
@@ -158,13 +157,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.ononline.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ononline = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ononline = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ononline = .null
             }
@@ -176,13 +175,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onpagehide.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onpagehide = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onpagehide = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onpagehide = .null
             }
@@ -194,13 +193,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onpageshow.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onpageshow = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onpageshow = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onpageshow = .null
             }
@@ -212,13 +211,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onpopstate.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onpopstate = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onpopstate = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onpopstate = .null
             }
@@ -230,13 +229,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onrejectionhandled.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onrejectionhandled = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onrejectionhandled = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onrejectionhandled = .null
             }
@@ -248,13 +247,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onstorage.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onstorage = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onstorage = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onstorage = .null
             }
@@ -266,13 +265,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onunhandledrejection.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onunhandledrejection = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onunhandledrejection = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onunhandledrejection = .null
             }
@@ -284,13 +283,13 @@ public extension WindowEventHandlers {
             guard let function = objectRef.onunload.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onunload = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onunload = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onunload = .null
             }

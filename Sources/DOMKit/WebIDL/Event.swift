@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class Event: JSBridgedType {
+public class Event: JSBridgedClass {
     public class var classRef: JSFunctionRef { JSObjectRef.global.Event.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _type = ReadonlyAttribute(objectRef: objectRef, name: "type")
         _target = ReadonlyAttribute(objectRef: objectRef, name: "target")
         _srcElement = ReadonlyAttribute(objectRef: objectRef, name: "srcElement")
@@ -29,7 +28,7 @@ public class Event: JSBridgedType {
     }
 
     public convenience init(type: String, eventInitDict: EventInit = [:]) {
-        self.init(objectRef: Event.classRef(new: JSValue(from: type), JSValue(from: eventInitDict)))
+        self.init(withCompatibleObject: Event.classRef.new(type.jsValue(), eventInitDict.jsValue()))
     }
 
     @ReadonlyAttribute
@@ -45,7 +44,7 @@ public class Event: JSBridgedType {
     public var currentTarget: EventTarget?
 
     public func composedPath() -> [EventTarget] {
-        return objectRef.composedPath!().fromJSValue()
+        return objectRef.composedPath!().fromJSValue()!
     }
 
     public let NONE: UInt16 = 0
@@ -96,6 +95,6 @@ public class Event: JSBridgedType {
     public var timeStamp: DOMHighResTimeStamp
 
     public func initEvent(type: String, bubbles: Bool = false, cancelable: Bool = false) {
-        _ = objectRef.initEvent!(JSValue(from: type), JSValue(from: bubbles), JSValue(from: cancelable))
+        _ = objectRef.initEvent!(type.jsValue(), bubbles.jsValue(), cancelable.jsValue())
     }
 }

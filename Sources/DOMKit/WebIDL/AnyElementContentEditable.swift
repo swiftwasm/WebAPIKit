@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-class AnyElementContentEditable: JSBridgedType, ElementContentEditable {
+class AnyElementContentEditable: JSBridgedClass, ElementContentEditable {
     public class var classRef: JSFunctionRef { JSObjectRef.global.ElementContentEditable.function! }
 
     let objectRef: JSObjectRef
 
-    required init(objectRef: JSObjectRef) {
+    required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 }

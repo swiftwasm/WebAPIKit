@@ -4,30 +4,27 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public enum RadioNodeListOrElement: JSValueEncodable, JSValueDecodable {
-    public static func canDecode(from jsValue: JSValue) -> Bool {
-        return RadioNodeList.canDecode(from: jsValue) || Element.canDecode(from: jsValue)
-    }
-
+public enum RadioNodeListOrElement: JSBridgedType {
     case radioNodeList(RadioNodeList)
     case element(Element)
 
-    public init(jsValue: JSValue) {
-        if RadioNodeList.canDecode(from: jsValue) {
-            self = .radioNodeList(jsValue.fromJSValue())
-        } else if Element.canDecode(from: jsValue) {
-            self = .element(jsValue.fromJSValue())
+    public init?(from value: JSValue) {
+        if let decoded: RadioNodeList = value.fromJSValue() {
+            self = .radioNodeList(decoded)
+        } else if let decoded: Element = value.fromJSValue() {
+            self = .element(decoded)
         } else {
             fatalError()
         }
     }
 
-    public subscript(jsValue _: ()) -> JSValue {
+    public var value: JSValue { jsValue() }
+
+    public func jsValue() -> JSValue {
         switch self {
-        case let .radioNodeList(v): return JSValue(from: v)
-        case let .element(v): return JSValue(from: v)
+        case let .radioNodeList(v): return v.jsValue()
+        case let .element(v): return v.jsValue()
         }
     }
 }

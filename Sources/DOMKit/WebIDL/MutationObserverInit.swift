@@ -4,13 +4,8 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public struct MutationObserverInit: ExpressibleByDictionaryLiteral, JSValueCodable {
-    public static func canDecode(from jsValue: JSValue) -> Bool {
-        return jsValue.isObject
-    }
-
+public struct MutationObserverInit: ExpressibleByDictionaryLiteral, JSBridgedType {
     public enum Key: String, Hashable {
         case childList, attributes, characterData, subtree, attributeOldValue, characterDataOldValue, attributeFilter
     }
@@ -31,11 +26,16 @@ public struct MutationObserverInit: ExpressibleByDictionaryLiteral, JSValueCodab
         dictionary[key.rawValue]
     }
 
-    public init(jsValue: JSValue) {
-        dictionary = jsValue.fromJSValue()
+    public init?(from value: JSValue) {
+        if let dictionary: [String: AnyJSValueCodable] = value.fromJSValue() {
+            self.dictionary = dictionary
+        }
+        return nil
     }
 
-    public subscript(jsValue _: ()) -> JSValue {
-        return JSValue(from: dictionary)
+    public var value: JSValue { jsValue() }
+
+    public func jsValue() -> JSValue {
+        return dictionary.jsValue()
     }
 }

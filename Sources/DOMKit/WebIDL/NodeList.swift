@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class NodeList: JSBridgedType, Sequence {
+public class NodeList: JSBridgedClass, Sequence {
     public class var classRef: JSFunctionRef { JSObjectRef.global.NodeList.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _length = ReadonlyAttribute(objectRef: objectRef, name: "length")
         self.objectRef = objectRef
     }

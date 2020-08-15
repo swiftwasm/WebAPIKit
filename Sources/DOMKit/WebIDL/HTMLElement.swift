@@ -4,12 +4,11 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLElement.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _title = ReadWriteAttribute(objectRef: objectRef, name: "title")
         _lang = ReadWriteAttribute(objectRef: objectRef, name: "lang")
         _translate = ReadWriteAttribute(objectRef: objectRef, name: "translate")
@@ -21,11 +20,11 @@ public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementConte
         _spellcheck = ReadWriteAttribute(objectRef: objectRef, name: "spellcheck")
         _autocapitalize = ReadWriteAttribute(objectRef: objectRef, name: "autocapitalize")
         _innerText = ReadWriteAttribute(objectRef: objectRef, name: "innerText")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     public convenience init() {
-        self.init(objectRef: HTMLElement.classRef(.new))
+        self.init(withCompatibleObject: HTMLElement.classRef.new())
     }
 
     @ReadWriteAttribute
@@ -66,6 +65,6 @@ public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementConte
     public var innerText: String
 
     public func attachInternals() -> ElementInternals {
-        return objectRef.attachInternals!().fromJSValue()
+        return objectRef.attachInternals!().fromJSValue()!
     }
 }

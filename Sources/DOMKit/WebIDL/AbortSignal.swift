@@ -4,15 +4,14 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class AbortSignal: EventTarget {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.AbortSignal.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _aborted = ReadonlyAttribute(objectRef: objectRef, name: "aborted")
         _onabort = OptionalClosureHandler(objectRef: objectRef, name: "onabort")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     @ReadonlyAttribute

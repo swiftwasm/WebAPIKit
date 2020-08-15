@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-class AnyChildNode: JSBridgedType, ChildNode {
+class AnyChildNode: JSBridgedClass, ChildNode {
     public class var classRef: JSFunctionRef { JSObjectRef.global.ChildNode.function! }
 
     let objectRef: JSObjectRef
 
-    required init(objectRef: JSObjectRef) {
+    required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 }

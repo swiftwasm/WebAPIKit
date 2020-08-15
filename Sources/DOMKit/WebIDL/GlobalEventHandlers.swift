@@ -4,9 +4,8 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol GlobalEventHandlers: JSAbstractBridgedType {}
+public protocol GlobalEventHandlers: JSBridgedClass {}
 
 public extension GlobalEventHandlers {
     var onabort: EventHandler {
@@ -14,13 +13,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onabort.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onabort = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onabort = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onabort = .null
             }
@@ -32,13 +31,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onauxclick.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onauxclick = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onauxclick = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onauxclick = .null
             }
@@ -50,13 +49,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onblur.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onblur = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onblur = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onblur = .null
             }
@@ -68,13 +67,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.oncancel.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.oncancel = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.oncancel = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.oncancel = .null
             }
@@ -86,13 +85,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.oncanplay.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.oncanplay = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.oncanplay = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.oncanplay = .null
             }
@@ -104,13 +103,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.oncanplaythrough.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.oncanplaythrough = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.oncanplaythrough = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.oncanplaythrough = .null
             }
@@ -122,13 +121,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onchange.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onchange = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onchange = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onchange = .null
             }
@@ -140,13 +139,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onclick.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onclick = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onclick = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onclick = .null
             }
@@ -158,13 +157,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onclose.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onclose = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onclose = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onclose = .null
             }
@@ -176,13 +175,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.oncontextmenu.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.oncontextmenu = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.oncontextmenu = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.oncontextmenu = .null
             }
@@ -194,13 +193,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.oncuechange.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.oncuechange = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.oncuechange = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.oncuechange = .null
             }
@@ -212,13 +211,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondblclick.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondblclick = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondblclick = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondblclick = .null
             }
@@ -230,13 +229,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondrag.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondrag = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondrag = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondrag = .null
             }
@@ -248,13 +247,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondragend.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondragend = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondragend = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondragend = .null
             }
@@ -266,13 +265,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondragenter.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondragenter = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondragenter = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondragenter = .null
             }
@@ -284,13 +283,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondragexit.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondragexit = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondragexit = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondragexit = .null
             }
@@ -302,13 +301,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondragleave.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondragleave = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondragleave = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondragleave = .null
             }
@@ -320,13 +319,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondragover.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondragover = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondragover = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondragover = .null
             }
@@ -338,13 +337,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondragstart.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondragstart = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondragstart = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondragstart = .null
             }
@@ -356,13 +355,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondrop.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondrop = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondrop = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondrop = .null
             }
@@ -374,13 +373,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ondurationchange.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ondurationchange = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ondurationchange = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ondurationchange = .null
             }
@@ -392,13 +391,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onemptied.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onemptied = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onemptied = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onemptied = .null
             }
@@ -410,13 +409,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onended.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onended = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onended = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onended = .null
             }
@@ -428,13 +427,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onerror.function else {
                 return nil
             }
-            return { arg0, arg1, arg2, arg3, arg4 in function(arg0, arg1, arg2, arg3, arg4).fromJSValue() }
+            return { arg0, arg1, arg2, arg3, arg4 in function(arg0, arg1, arg2, arg3, arg4).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onerror = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue(), arguments[1].fromJSValue(), arguments[2].fromJSValue(), arguments[3].fromJSValue(), arguments[4].fromJSValue()))
-                })
+                objectRef.onerror = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!, arguments[1].fromJSValue()!, arguments[2].fromJSValue()!, arguments[3].fromJSValue()!, arguments[4].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onerror = .null
             }
@@ -446,13 +445,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onfocus.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onfocus = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onfocus = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onfocus = .null
             }
@@ -464,13 +463,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onformdata.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onformdata = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onformdata = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onformdata = .null
             }
@@ -482,13 +481,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.oninput.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.oninput = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.oninput = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.oninput = .null
             }
@@ -500,13 +499,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.oninvalid.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.oninvalid = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.oninvalid = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.oninvalid = .null
             }
@@ -518,13 +517,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onkeydown.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onkeydown = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onkeydown = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onkeydown = .null
             }
@@ -536,13 +535,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onkeypress.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onkeypress = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onkeypress = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onkeypress = .null
             }
@@ -554,13 +553,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onkeyup.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onkeyup = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onkeyup = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onkeyup = .null
             }
@@ -572,13 +571,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onload.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onload = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onload = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onload = .null
             }
@@ -590,13 +589,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onloadeddata.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onloadeddata = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onloadeddata = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onloadeddata = .null
             }
@@ -608,13 +607,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onloadedmetadata.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onloadedmetadata = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onloadedmetadata = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onloadedmetadata = .null
             }
@@ -626,13 +625,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onloadstart.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onloadstart = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onloadstart = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onloadstart = .null
             }
@@ -644,13 +643,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onmousedown.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmousedown = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onmousedown = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onmousedown = .null
             }
@@ -662,13 +661,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onmouseenter.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmouseenter = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onmouseenter = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onmouseenter = .null
             }
@@ -680,13 +679,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onmouseleave.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmouseleave = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onmouseleave = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onmouseleave = .null
             }
@@ -698,13 +697,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onmousemove.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmousemove = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onmousemove = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onmousemove = .null
             }
@@ -716,13 +715,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onmouseout.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmouseout = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onmouseout = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onmouseout = .null
             }
@@ -734,13 +733,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onmouseover.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmouseover = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onmouseover = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onmouseover = .null
             }
@@ -752,13 +751,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onmouseup.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmouseup = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onmouseup = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onmouseup = .null
             }
@@ -770,13 +769,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onpause.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onpause = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onpause = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onpause = .null
             }
@@ -788,13 +787,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onplay.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onplay = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onplay = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onplay = .null
             }
@@ -806,13 +805,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onplaying.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onplaying = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onplaying = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onplaying = .null
             }
@@ -824,13 +823,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onprogress.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onprogress = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onprogress = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onprogress = .null
             }
@@ -842,13 +841,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onratechange.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onratechange = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onratechange = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onratechange = .null
             }
@@ -860,13 +859,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onreset.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onreset = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onreset = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onreset = .null
             }
@@ -878,13 +877,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onresize.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onresize = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onresize = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onresize = .null
             }
@@ -896,13 +895,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onscroll.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onscroll = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onscroll = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onscroll = .null
             }
@@ -914,13 +913,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onsecuritypolicyviolation.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onsecuritypolicyviolation = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onsecuritypolicyviolation = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onsecuritypolicyviolation = .null
             }
@@ -932,13 +931,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onseeked.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onseeked = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onseeked = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onseeked = .null
             }
@@ -950,13 +949,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onseeking.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onseeking = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onseeking = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onseeking = .null
             }
@@ -968,13 +967,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onselect.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onselect = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onselect = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onselect = .null
             }
@@ -986,13 +985,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onslotchange.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onslotchange = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onslotchange = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onslotchange = .null
             }
@@ -1004,13 +1003,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onstalled.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onstalled = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onstalled = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onstalled = .null
             }
@@ -1022,13 +1021,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onsubmit.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onsubmit = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onsubmit = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onsubmit = .null
             }
@@ -1040,13 +1039,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onsuspend.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onsuspend = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onsuspend = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onsuspend = .null
             }
@@ -1058,13 +1057,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ontimeupdate.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ontimeupdate = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ontimeupdate = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ontimeupdate = .null
             }
@@ -1076,13 +1075,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.ontoggle.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ontoggle = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.ontoggle = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.ontoggle = .null
             }
@@ -1094,13 +1093,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onvolumechange.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onvolumechange = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onvolumechange = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onvolumechange = .null
             }
@@ -1112,13 +1111,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onwaiting.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onwaiting = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onwaiting = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onwaiting = .null
             }
@@ -1130,13 +1129,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onwebkitanimationend.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onwebkitanimationend = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onwebkitanimationend = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onwebkitanimationend = .null
             }
@@ -1148,13 +1147,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onwebkitanimationiteration.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onwebkitanimationiteration = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onwebkitanimationiteration = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onwebkitanimationiteration = .null
             }
@@ -1166,13 +1165,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onwebkitanimationstart.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onwebkitanimationstart = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onwebkitanimationstart = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onwebkitanimationstart = .null
             }
@@ -1184,13 +1183,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onwebkittransitionend.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onwebkittransitionend = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onwebkittransitionend = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onwebkittransitionend = .null
             }
@@ -1202,13 +1201,13 @@ public extension GlobalEventHandlers {
             guard let function = objectRef.onwheel.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onwheel = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onwheel = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onwheel = .null
             }

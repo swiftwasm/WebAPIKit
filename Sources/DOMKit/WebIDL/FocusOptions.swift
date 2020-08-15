@@ -4,13 +4,8 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public struct FocusOptions: ExpressibleByDictionaryLiteral, JSValueCodable {
-    public static func canDecode(from jsValue: JSValue) -> Bool {
-        return jsValue.isObject
-    }
-
+public struct FocusOptions: ExpressibleByDictionaryLiteral, JSBridgedType {
     public enum Key: String, Hashable {
         case preventScroll
     }
@@ -31,11 +26,16 @@ public struct FocusOptions: ExpressibleByDictionaryLiteral, JSValueCodable {
         dictionary[key.rawValue]
     }
 
-    public init(jsValue: JSValue) {
-        dictionary = jsValue.fromJSValue()
+    public init?(from value: JSValue) {
+        if let dictionary: [String: AnyJSValueCodable] = value.fromJSValue() {
+            self.dictionary = dictionary
+        }
+        return nil
     }
 
-    public subscript(jsValue _: ()) -> JSValue {
-        return JSValue(from: dictionary)
+    public var value: JSValue { jsValue() }
+
+    public func jsValue() -> JSValue {
+        return dictionary.jsValue()
     }
 }

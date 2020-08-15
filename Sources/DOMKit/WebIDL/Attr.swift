@@ -4,12 +4,11 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class Attr: Node {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.Attr.function! }
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _namespaceURI = ReadonlyAttribute(objectRef: objectRef, name: "namespaceURI")
         _prefix = ReadonlyAttribute(objectRef: objectRef, name: "prefix")
         _localName = ReadonlyAttribute(objectRef: objectRef, name: "localName")
@@ -17,7 +16,7 @@ public class Attr: Node {
         _value = ReadWriteAttribute(objectRef: objectRef, name: "value")
         _ownerElement = ReadonlyAttribute(objectRef: objectRef, name: "ownerElement")
         _specified = ReadonlyAttribute(objectRef: objectRef, name: "specified")
-        super.init(objectRef: objectRef)
+        super.init(withCompatibleObject: objectRef)
     }
 
     @ReadonlyAttribute

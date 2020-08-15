@@ -4,44 +4,43 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol HTMLOrSVGElement: JSAbstractBridgedType {}
+public protocol HTMLOrSVGElement: JSBridgedClass {}
 
 public extension HTMLOrSVGElement {
     var dataset: DOMStringMap {
-        return objectRef.dataset.fromJSValue()
+        return objectRef.dataset.fromJSValue()!
     }
 
     var nonce: String {
         get {
-            return objectRef.nonce.fromJSValue()
+            return objectRef.nonce.fromJSValue()!
         }
         set {
-            objectRef.nonce = JSValue(from: newValue)
+            objectRef.nonce = newValue.jsValue()
         }
     }
 
     var autofocus: Bool {
         get {
-            return objectRef.autofocus.fromJSValue()
+            return objectRef.autofocus.fromJSValue()!
         }
         set {
-            objectRef.autofocus = JSValue(from: newValue)
+            objectRef.autofocus = newValue.jsValue()
         }
     }
 
     var tabIndex: Int32 {
         get {
-            return objectRef.tabIndex.fromJSValue()
+            return objectRef.tabIndex.fromJSValue()!
         }
         set {
-            objectRef.tabIndex = JSValue(from: newValue)
+            objectRef.tabIndex = newValue.jsValue()
         }
     }
 
     func focus(options: FocusOptions = [:]) {
-        _ = objectRef.focus!(JSValue(from: options))
+        _ = objectRef.focus!(options.jsValue())
     }
 
     func blur() {

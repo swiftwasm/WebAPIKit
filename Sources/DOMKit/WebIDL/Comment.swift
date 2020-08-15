@@ -4,16 +4,15 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
 public class Comment: CharacterData {
     override public class var classRef: JSFunctionRef { JSObjectRef.global.Comment.function! }
 
-    public required init(objectRef: JSObjectRef) {
-        super.init(objectRef: objectRef)
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
+        super.init(withCompatibleObject: objectRef)
     }
 
     public convenience init(data: String = "") {
-        self.init(objectRef: Comment.classRef(new: JSValue(from: data)))
+        self.init(withCompatibleObject: Comment.classRef.new(data.jsValue()))
     }
 }

@@ -4,25 +4,25 @@
 
 import JavaScriptKit
 
-public class Date: JSBridgedType {
+public class Date: JSBridgedClass {
 
     public class var classRef: JSFunctionRef { JSObjectRef.global.Date.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 
     public convenience init() {
-        self.init(objectRef: Date.classRef(.new))
+        self.init(withCompatibleObject: Date.classRef.new())
     }
 
     public func toDateString() -> String {
-        return objectRef.toDateString!().fromJSValue()
+        return objectRef.toDateString!().fromJSValue()!
     }
 
     public func getTime() -> Double {
-        return objectRef.getTime!().fromJSValue()
+        return objectRef.getTime!().fromJSValue()!
     }
 }

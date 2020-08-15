@@ -4,9 +4,8 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol NodeFilter: JSAbstractBridgedType {
+public protocol NodeFilter: JSBridgedType {
     func acceptNode(node: Node) -> UInt16
 }
 

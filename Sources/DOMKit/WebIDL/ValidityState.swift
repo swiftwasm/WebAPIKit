@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class ValidityState: JSBridgedType {
+public class ValidityState: JSBridgedClass {
     public class var classRef: JSFunctionRef { JSObjectRef.global.ValidityState.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _valueMissing = ReadonlyAttribute(objectRef: objectRef, name: "valueMissing")
         _typeMismatch = ReadonlyAttribute(objectRef: objectRef, name: "typeMismatch")
         _patternMismatch = ReadonlyAttribute(objectRef: objectRef, name: "patternMismatch")

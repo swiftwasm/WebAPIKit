@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class MutationRecord: JSBridgedType {
+public class MutationRecord: JSBridgedClass {
     public class var classRef: JSFunctionRef { JSObjectRef.global.MutationRecord.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _type = ReadonlyAttribute(objectRef: objectRef, name: "type")
         _target = ReadonlyAttribute(objectRef: objectRef, name: "target")
         _addedNodes = ReadonlyAttribute(objectRef: objectRef, name: "addedNodes")

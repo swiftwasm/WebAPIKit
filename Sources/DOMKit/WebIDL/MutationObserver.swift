@@ -4,23 +4,22 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class MutationObserver: JSBridgedType {
+public class MutationObserver: JSBridgedClass {
     public class var classRef: JSFunctionRef { JSObjectRef.global.MutationObserver.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 
     public convenience init(callback: @escaping MutationCallback) {
-        self.init(objectRef: MutationObserver.classRef(new: JSClosure { callback($0[0].fromJSValue(), $0[1].fromJSValue()); return .undefined }))
+        self.init(withCompatibleObject: MutationObserver.classRef.new(JSClosure { callback($0[0].fromJSValue()!, $0[1].fromJSValue()!) }))
     }
 
     public func observe(target: Node, options: MutationObserverInit = [:]) {
-        _ = objectRef.observe!(JSValue(from: target), JSValue(from: options))
+        _ = objectRef.observe!(target.jsValue(), options.jsValue())
     }
 
     public func disconnect() {
@@ -28,6 +27,6 @@ public class MutationObserver: JSBridgedType {
     }
 
     public func takeRecords() -> [MutationRecord] {
-        return objectRef.takeRecords!().fromJSValue()
+        return objectRef.takeRecords!().fromJSValue()!
     }
 }

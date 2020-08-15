@@ -4,54 +4,7 @@
 
 import JavaScriptKit
 
-public protocol TypedArray: class, JSBridgedType, ExpressibleByArrayLiteral where ArrayLiteralElement == Element {
-
-    associatedtype Element: TypedArrayElement & JSValueEncodable & JSValueDecodable
-    static var classRef: JSFunctionRef { get }
-}
-
-extension TypedArray {
-
-    public static var bytesPerElement: Double {
-        return classRef.BYTES_PER_ELEMENT.fromJSValue()
-    }
-
-    public static var name: String {
-        return classRef.name.fromJSValue()
-    }
-
-    public subscript(_ index: Int) -> Element {
-        get {
-            return objectRef[index].fromJSValue()
-        }
-        set {
-            objectRef[index] = JSValue(from: newValue)
-        }
-    }
-
-    public init(length: Int) {
-        self.init(objectRef: Self.classRef(new: length))
-    }
-
-    public init(arrayLiteral elements: Element...) {
-
-        self.init(elements)
-    }
-
-    public init(_ array: [Element]) {
-        self.init(objectRef: JSObjectRef.createTypedArray(array))
-    }
-
-    public init<Type: Strideable>(_ stride: StrideTo<Type>) where Element == Type {
-
-        let array = stride.map {
-            $0
-        }
-        self.init(array)
-    }
-}
-
-public class Float64Array: TypedArray {
+public class Float64Array: JSTypedArray {
 
     public typealias Element = Double
 
@@ -64,7 +17,7 @@ public class Float64Array: TypedArray {
     }
 }
 
-public class Float32Array: TypedArray {
+public class Float32Array: JSTypedArray {
 
     public typealias Element = Float
 
@@ -77,7 +30,7 @@ public class Float32Array: TypedArray {
     }
 }
 
-public class Uint32Array: TypedArray {
+public class Uint32Array: JSTypedArray {
 
     public typealias Element = UInt32
 

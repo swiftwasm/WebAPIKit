@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-class AnyDocumentAndElementEventHandlers: JSBridgedType, DocumentAndElementEventHandlers {
+class AnyDocumentAndElementEventHandlers: JSBridgedClass, DocumentAndElementEventHandlers {
     public class var classRef: JSFunctionRef { JSObjectRef.global.DocumentAndElementEventHandlers.function! }
 
     let objectRef: JSObjectRef
 
-    required init(objectRef: JSObjectRef) {
+    required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 }

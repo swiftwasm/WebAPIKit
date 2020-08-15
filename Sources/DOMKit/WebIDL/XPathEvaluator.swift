@@ -4,18 +4,17 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class XPathEvaluator: JSBridgedType, XPathEvaluatorBase {
+public class XPathEvaluator: JSBridgedClass, XPathEvaluatorBase {
     public class var classRef: JSFunctionRef { JSObjectRef.global.XPathEvaluator.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 
     public convenience init() {
-        self.init(objectRef: XPathEvaluator.classRef(.new))
+        self.init(withCompatibleObject: XPathEvaluator.classRef.new())
     }
 }

@@ -4,9 +4,8 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol DocumentAndElementEventHandlers: JSAbstractBridgedType {}
+public protocol DocumentAndElementEventHandlers: JSBridgedClass {}
 
 public extension DocumentAndElementEventHandlers {
     var oncopy: EventHandler {
@@ -14,13 +13,13 @@ public extension DocumentAndElementEventHandlers {
             guard let function = objectRef.oncopy.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.oncopy = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.oncopy = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.oncopy = .null
             }
@@ -32,13 +31,13 @@ public extension DocumentAndElementEventHandlers {
             guard let function = objectRef.oncut.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.oncut = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.oncut = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.oncut = .null
             }
@@ -50,13 +49,13 @@ public extension DocumentAndElementEventHandlers {
             guard let function = objectRef.onpaste.function else {
                 return nil
             }
-            return { arg0 in function(arg0).fromJSValue() }
+            return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onpaste = JSValue(from: JSClosure { arguments in
-                    JSValue(from: newValue(arguments[0].fromJSValue()))
-                })
+                objectRef.onpaste = JSClosure { arguments in
+                    newValue(arguments[0].fromJSValue()!).jsValue()
+                }.jsValue()
             } else {
                 objectRef.onpaste = .null
             }

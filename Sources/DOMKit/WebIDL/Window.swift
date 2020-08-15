@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class Window: JSBridgedType {
+public class Window: JSBridgedClass {
     public class var classRef: JSFunctionRef { JSObjectRef.global.Window.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _event = ReadonlyAttribute(objectRef: objectRef, name: "event")
         self.objectRef = objectRef
     }

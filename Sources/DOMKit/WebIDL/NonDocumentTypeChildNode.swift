@@ -4,16 +4,15 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol NonDocumentTypeChildNode: JSAbstractBridgedType {}
+public protocol NonDocumentTypeChildNode: JSBridgedClass {}
 
 public extension NonDocumentTypeChildNode {
     var previousElementSibling: Element? {
-        return objectRef.previousElementSibling.fromJSValue()
+        return objectRef.previousElementSibling.fromJSValue()!
     }
 
     var nextElementSibling: Element? {
-        return objectRef.nextElementSibling.fromJSValue()
+        return objectRef.nextElementSibling.fromJSValue()!
     }
 }

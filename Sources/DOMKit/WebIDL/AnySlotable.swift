@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-class AnySlotable: JSBridgedType, Slotable {
+class AnySlotable: JSBridgedClass, Slotable {
     public class var classRef: JSFunctionRef { JSObjectRef.global.Slotable.function! }
 
     let objectRef: JSObjectRef
 
-    required init(objectRef: JSObjectRef) {
+    required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 }

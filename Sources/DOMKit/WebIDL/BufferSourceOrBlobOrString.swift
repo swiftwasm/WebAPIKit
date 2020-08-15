@@ -4,24 +4,19 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public enum BufferSourceOrBlobOrString: JSValueEncodable, JSValueDecodable, ExpressibleByStringLiteral {
-    public static func canDecode(from jsValue: JSValue) -> Bool {
-        return BufferSource.canDecode(from: jsValue) || Blob.canDecode(from: jsValue) || String.canDecode(from: jsValue)
-    }
-
+public enum BufferSourceOrBlobOrString: JSBridgedType, ExpressibleByStringLiteral {
     case bufferSource(BufferSource)
     case blob(Blob)
     case string(String)
 
-    public init(jsValue: JSValue) {
-        if BufferSource.canDecode(from: jsValue) {
-            self = .bufferSource(jsValue.fromJSValue())
-        } else if Blob.canDecode(from: jsValue) {
-            self = .blob(jsValue.fromJSValue())
-        } else if String.canDecode(from: jsValue) {
-            self = .string(jsValue.fromJSValue())
+    public init?(from value: JSValue) {
+        if let decoded: BufferSource = value.fromJSValue() {
+            self = .bufferSource(decoded)
+        } else if let decoded: Blob = value.fromJSValue() {
+            self = .blob(decoded)
+        } else if let decoded: String = value.fromJSValue() {
+            self = .string(decoded)
         } else {
             fatalError()
         }
@@ -31,11 +26,13 @@ public enum BufferSourceOrBlobOrString: JSValueEncodable, JSValueDecodable, Expr
         self = .string(value)
     }
 
-    public subscript(jsValue _: ()) -> JSValue {
+    public var value: JSValue { jsValue() }
+
+    public func jsValue() -> JSValue {
         switch self {
-        case let .bufferSource(v): return JSValue(from: v)
-        case let .blob(v): return JSValue(from: v)
-        case let .string(v): return JSValue(from: v)
+        case let .bufferSource(v): return v.jsValue()
+        case let .blob(v): return v.jsValue()
+        case let .string(v): return v.jsValue()
         }
     }
 }

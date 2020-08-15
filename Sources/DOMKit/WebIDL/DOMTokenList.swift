@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class DOMTokenList: JSBridgedType, Sequence {
+public class DOMTokenList: JSBridgedClass, Sequence {
     public class var classRef: JSFunctionRef { JSObjectRef.global.DOMTokenList.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _length = ReadonlyAttribute(objectRef: objectRef, name: "length")
         self.objectRef = objectRef
     }
@@ -22,11 +21,11 @@ public class DOMTokenList: JSBridgedType, Sequence {
     public var length: UInt32
 
     public func contains(token: String) -> Bool {
-        return objectRef.contains!(JSValue(from: token)).fromJSValue()
+        return objectRef.contains!(token.jsValue()).fromJSValue()!
     }
 
     public func add(tokens: String...) {
-        _ = objectRef.add!(JSValue(from: tokens))
+        _ = objectRef.add!(tokens.jsValue())
     }
 
     public func add() {
@@ -34,7 +33,7 @@ public class DOMTokenList: JSBridgedType, Sequence {
     }
 
     public func remove(tokens: String...) {
-        _ = objectRef.remove!(JSValue(from: tokens))
+        _ = objectRef.remove!(tokens.jsValue())
     }
 
     public func remove() {
@@ -42,19 +41,19 @@ public class DOMTokenList: JSBridgedType, Sequence {
     }
 
     public func toggle(token: String, force: Bool) -> Bool {
-        return objectRef.toggle!(JSValue(from: token), JSValue(from: force)).fromJSValue()
+        return objectRef.toggle!(token.jsValue(), force.jsValue()).fromJSValue()!
     }
 
     public func toggle(token: String) -> Bool {
-        return objectRef.toggle!(JSValue(from: token)).fromJSValue()
+        return objectRef.toggle!(token.jsValue()).fromJSValue()!
     }
 
     public func replace(token: String, newToken: String) -> Bool {
-        return objectRef.replace!(JSValue(from: token), JSValue(from: newToken)).fromJSValue()
+        return objectRef.replace!(token.jsValue(), newToken.jsValue()).fromJSValue()!
     }
 
     public func supports(token: String) -> Bool {
-        return objectRef.supports!(JSValue(from: token)).fromJSValue()
+        return objectRef.supports!(token.jsValue()).fromJSValue()!
     }
 
     public func makeIterator() -> ValueIterableIterator<DOMTokenList> { return ValueIterableIterator(sequence: self) }

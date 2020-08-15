@@ -4,14 +4,13 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public class AbstractRange: JSBridgedType {
+public class AbstractRange: JSBridgedClass {
     public class var classRef: JSFunctionRef { JSObjectRef.global.AbstractRange.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         _startContainer = ReadonlyAttribute(objectRef: objectRef, name: "startContainer")
         _startOffset = ReadonlyAttribute(objectRef: objectRef, name: "startOffset")
         _endContainer = ReadonlyAttribute(objectRef: objectRef, name: "endContainer")

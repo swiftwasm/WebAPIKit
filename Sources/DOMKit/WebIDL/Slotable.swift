@@ -4,12 +4,11 @@
  */
 
 import JavaScriptKit
-// import ECMAScript
 
-public protocol Slotable: JSAbstractBridgedType {}
+public protocol Slotable: JSBridgedClass {}
 
 public extension Slotable {
     var assignedSlot: HTMLSlotElement? {
-        return objectRef.assignedSlot.fromJSValue()
+        return objectRef.assignedSlot.fromJSValue()!
     }
 }

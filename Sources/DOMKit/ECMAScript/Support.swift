@@ -4,25 +4,25 @@
 
 import JavaScriptKit
 
-public class Promise<Type>: JSBridgedType {
+public class Promise<Type>: JSBridgedClass {
 
     public static var classRef: JSFunctionRef { JSObjectRef.global.Promise.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
 
         self.objectRef = objectRef
     }
 }
 
-public class ReadableStream: JSBridgedType {
+public class ReadableStream: JSBridgedClass {
 
     public static var classRef: JSFunctionRef { JSObjectRef.global.ReadableStream.function! }
 
     public let objectRef: JSObjectRef
 
-    public required init(objectRef: JSObjectRef) {
+    public required init(withCompatibleObject objectRef: JSObjectRef) {
         self.objectRef = objectRef
     }
 
@@ -32,7 +32,7 @@ public class ReadableStream: JSBridgedType {
     }
 }
 
-@propertyWrapper public struct ClosureHandler<ArgumentType: JSValueEncodable & JSValueDecodable, ReturnType: JSValueEncodable & JSValueDecodable> {
+@propertyWrapper public struct ClosureHandler<ArgumentType: JSValueCodable, ReturnType: JSValueCodable> {
 
     let objectRef: JSObjectRef
     let name: String
@@ -44,15 +44,15 @@ public class ReadableStream: JSBridgedType {
 
     public var wrappedValue: (ArgumentType) -> ReturnType {
         get {
-            { arg in objectRef[name]!(arg).fromJSValue() }
+            { arg in objectRef[name]!(arg).fromJSValue()! }
         }
         set {
-            objectRef[name] = JSValue(from: JSClosure { JSValue(from: newValue($0[0].fromJSValue())) })
+            objectRef[name] = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }.jsValue()
         }
     }
 }
 
-@propertyWrapper public struct OptionalClosureHandler<ArgumentType: JSValueEncodable & JSValueDecodable, ReturnType: JSValueEncodable & JSValueDecodable> {
+@propertyWrapper public struct OptionalClosureHandler<ArgumentType: JSValueCodable, ReturnType: JSValueCodable> {
 
     let objectRef: JSObjectRef
     let name: String
@@ -67,11 +67,11 @@ public class ReadableStream: JSBridgedType {
             guard let function = objectRef[name].function else {
                 return nil
             }
-            return { function(JSValue(from: $0)).fromJSValue() }
+            return { function($0.jsValue()).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef[name] = JSValue(from: JSClosure { JSValue(from: newValue($0[0].fromJSValue())) })
+                objectRef[name] = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }.jsValue()
             } else {
                 objectRef[name] = .null
             }
@@ -79,7 +79,7 @@ public class ReadableStream: JSBridgedType {
     }
 }
 
-@propertyWrapper public struct ReadWriteAttribute<Wrapped: JSValueEncodable & JSValueDecodable> {
+@propertyWrapper public struct ReadWriteAttribute<Wrapped: JSValueCodable> {
 
     let objectRef: JSObjectRef
     let name: String
@@ -91,15 +91,15 @@ public class ReadableStream: JSBridgedType {
 
     public var wrappedValue: Wrapped {
         get {
-            return objectRef[name].fromJSValue()
+            return objectRef[name].fromJSValue()!
         }
         set {
-            objectRef[name] = JSValue(from: newValue)
+            objectRef[name] = newValue.jsValue()
         }
     }
 }
 
-@propertyWrapper public struct ReadonlyAttribute<Wrapped: JSValueDecodable> {
+@propertyWrapper public struct ReadonlyAttribute<Wrapped: JSValueConstructible> {
 
     let objectRef: JSObjectRef
     let name: String
@@ -111,12 +111,12 @@ public class ReadableStream: JSBridgedType {
 
     public var wrappedValue: Wrapped {
         get {
-            return objectRef[name].fromJSValue()
+            return objectRef[name].fromJSValue()!
         }
     }
 }
 
-public class ValueIterableIterator<SequenceType: JSBridgedType & Sequence>: IteratorProtocol where SequenceType.Element: JSValueDecodable {
+public class ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: IteratorProtocol where SequenceType.Element: JSValueConstructible {
 
     private var index: Int = 0
     private let sequence: SequenceType
@@ -142,7 +142,7 @@ public protocol KeyValueSequence: Sequence where Element == (String, Value) {
     associatedtype Value
 }
 
-public class PairIterableIterator<SequenceType: JSBridgedType & KeyValueSequence>: IteratorProtocol where SequenceType.Value: JSValueDecodable {
+public class PairIterableIterator<SequenceType: JSBridgedClass & KeyValueSequence>: IteratorProtocol where SequenceType.Value: JSValueConstructible {
 
     private let iterator: JSObjectRef
     private let sequence: SequenceType
@@ -160,7 +160,7 @@ public class PairIterableIterator<SequenceType: JSBridgedType & KeyValueSequence
             return nil
         }
 
-        let keyValue: [AnyJSValueCodable] = next.value.fromJSValue()
-        return (keyValue[0].fromJSValue(), keyValue[1].fromJSValue())
+        let keyValue: [AnyJSValueCodable] = next.value.fromJSValue()!
+        return (keyValue[0].fromJSValue()!, keyValue[1].fromJSValue()!)
     }
 }
