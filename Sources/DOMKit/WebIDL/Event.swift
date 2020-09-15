@@ -6,29 +6,29 @@
 import JavaScriptKit
 
 public class Event: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.Event.function! }
+    public class var constructor: JSFunction { JSObject.global.Event.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _type = ReadonlyAttribute(objectRef: objectRef, name: "type")
-        _target = ReadonlyAttribute(objectRef: objectRef, name: "target")
-        _srcElement = ReadonlyAttribute(objectRef: objectRef, name: "srcElement")
-        _currentTarget = ReadonlyAttribute(objectRef: objectRef, name: "currentTarget")
-        _eventPhase = ReadonlyAttribute(objectRef: objectRef, name: "eventPhase")
-        _cancelBubble = ReadWriteAttribute(objectRef: objectRef, name: "cancelBubble")
-        _bubbles = ReadonlyAttribute(objectRef: objectRef, name: "bubbles")
-        _cancelable = ReadonlyAttribute(objectRef: objectRef, name: "cancelable")
-        _returnValue = ReadWriteAttribute(objectRef: objectRef, name: "returnValue")
-        _defaultPrevented = ReadonlyAttribute(objectRef: objectRef, name: "defaultPrevented")
-        _composed = ReadonlyAttribute(objectRef: objectRef, name: "composed")
-        _isTrusted = ReadonlyAttribute(objectRef: objectRef, name: "isTrusted")
-        _timeStamp = ReadonlyAttribute(objectRef: objectRef, name: "timeStamp")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _type = ReadonlyAttribute(jsObject: jsObject, name: "type")
+        _target = ReadonlyAttribute(jsObject: jsObject, name: "target")
+        _srcElement = ReadonlyAttribute(jsObject: jsObject, name: "srcElement")
+        _currentTarget = ReadonlyAttribute(jsObject: jsObject, name: "currentTarget")
+        _eventPhase = ReadonlyAttribute(jsObject: jsObject, name: "eventPhase")
+        _cancelBubble = ReadWriteAttribute(jsObject: jsObject, name: "cancelBubble")
+        _bubbles = ReadonlyAttribute(jsObject: jsObject, name: "bubbles")
+        _cancelable = ReadonlyAttribute(jsObject: jsObject, name: "cancelable")
+        _returnValue = ReadWriteAttribute(jsObject: jsObject, name: "returnValue")
+        _defaultPrevented = ReadonlyAttribute(jsObject: jsObject, name: "defaultPrevented")
+        _composed = ReadonlyAttribute(jsObject: jsObject, name: "composed")
+        _isTrusted = ReadonlyAttribute(jsObject: jsObject, name: "isTrusted")
+        _timeStamp = ReadonlyAttribute(jsObject: jsObject, name: "timeStamp")
+        self.jsObject = jsObject
     }
 
     public convenience init(type: String, eventInitDict: EventInit = [:]) {
-        self.init(withCompatibleObject: Event.classRef.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(withCompatibleObject: Event.constructor.new(type.jsValue(), eventInitDict.jsValue()))
     }
 
     @ReadonlyAttribute
@@ -44,7 +44,7 @@ public class Event: JSBridgedClass {
     public var currentTarget: EventTarget?
 
     public func composedPath() -> [EventTarget] {
-        return objectRef.composedPath!().fromJSValue()!
+        return jsObject.composedPath!().fromJSValue()!
     }
 
     public let NONE: UInt16 = 0
@@ -59,14 +59,14 @@ public class Event: JSBridgedClass {
     public var eventPhase: UInt16
 
     public func stopPropagation() {
-        _ = objectRef.stopPropagation!()
+        _ = jsObject.stopPropagation!()
     }
 
     @ReadWriteAttribute
     public var cancelBubble: Bool
 
     public func stopImmediatePropagation() {
-        _ = objectRef.stopImmediatePropagation!()
+        _ = jsObject.stopImmediatePropagation!()
     }
 
     @ReadonlyAttribute
@@ -79,7 +79,7 @@ public class Event: JSBridgedClass {
     public var returnValue: Bool
 
     public func preventDefault() {
-        _ = objectRef.preventDefault!()
+        _ = jsObject.preventDefault!()
     }
 
     @ReadonlyAttribute
@@ -95,6 +95,6 @@ public class Event: JSBridgedClass {
     public var timeStamp: DOMHighResTimeStamp
 
     public func initEvent(type: String, bubbles: Bool = false, cancelable: Bool = false) {
-        _ = objectRef.initEvent!(type.jsValue(), bubbles.jsValue(), cancelable.jsValue())
+        _ = jsObject.initEvent!(type.jsValue(), bubbles.jsValue(), cancelable.jsValue())
     }
 }

@@ -6,16 +6,16 @@
 import JavaScriptKit
 
 public class File: Blob {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.File.function! }
+    override public class var constructor: JSFunction { JSObject.global.File.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _name = ReadonlyAttribute(objectRef: objectRef, name: "name")
-        _lastModified = ReadonlyAttribute(objectRef: objectRef, name: "lastModified")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _name = ReadonlyAttribute(jsObject: jsObject, name: "name")
+        _lastModified = ReadonlyAttribute(jsObject: jsObject, name: "lastModified")
+        super.init(withCompatibleObject: jsObject)
     }
 
     public convenience init(fileBits: [BlobPart], fileName: String, options: FilePropertyBag = [:]) {
-        self.init(withCompatibleObject: File.classRef.new(fileBits.jsValue(), fileName.jsValue(), options.jsValue()))
+        self.init(withCompatibleObject: File.constructor.new(fileBits.jsValue(), fileName.jsValue(), options.jsValue()))
     }
 
     @ReadonlyAttribute

@@ -6,12 +6,12 @@
 import JavaScriptKit
 
 public class CharacterData: Node, ChildNode, NonDocumentTypeChildNode {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.CharacterData.function! }
+    override public class var constructor: JSFunction { JSObject.global.CharacterData.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _data = ReadWriteAttribute(objectRef: objectRef, name: "data")
-        _length = ReadonlyAttribute(objectRef: objectRef, name: "length")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _data = ReadWriteAttribute(jsObject: jsObject, name: "data")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        super.init(withCompatibleObject: jsObject)
     }
 
     @ReadWriteAttribute
@@ -21,22 +21,22 @@ public class CharacterData: Node, ChildNode, NonDocumentTypeChildNode {
     public var length: UInt32
 
     public func substringData(offset: UInt32, count: UInt32) -> String {
-        return objectRef.substringData!(offset.jsValue(), count.jsValue()).fromJSValue()!
+        return jsObject.substringData!(offset.jsValue(), count.jsValue()).fromJSValue()!
     }
 
     public func appendData(data: String) {
-        _ = objectRef.appendData!(data.jsValue())
+        _ = jsObject.appendData!(data.jsValue())
     }
 
     public func insertData(offset: UInt32, data: String) {
-        _ = objectRef.insertData!(offset.jsValue(), data.jsValue())
+        _ = jsObject.insertData!(offset.jsValue(), data.jsValue())
     }
 
     public func deleteData(offset: UInt32, count: UInt32) {
-        _ = objectRef.deleteData!(offset.jsValue(), count.jsValue())
+        _ = jsObject.deleteData!(offset.jsValue(), count.jsValue())
     }
 
     public func replaceData(offset: UInt32, count: UInt32, data: String) {
-        _ = objectRef.replaceData!(offset.jsValue(), count.jsValue(), data.jsValue())
+        _ = jsObject.replaceData!(offset.jsValue(), count.jsValue(), data.jsValue())
     }
 }

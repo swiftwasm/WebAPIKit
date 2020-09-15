@@ -6,11 +6,11 @@
 import JavaScriptKit
 
 public class ProcessingInstruction: CharacterData {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.ProcessingInstruction.function! }
+    override public class var constructor: JSFunction { JSObject.global.ProcessingInstruction.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _target = ReadonlyAttribute(objectRef: objectRef, name: "target")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _target = ReadonlyAttribute(jsObject: jsObject, name: "target")
+        super.init(withCompatibleObject: jsObject)
     }
 
     @ReadonlyAttribute

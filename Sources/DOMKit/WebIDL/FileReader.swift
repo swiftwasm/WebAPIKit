@@ -6,47 +6,47 @@
 import JavaScriptKit
 
 public class FileReader: EventTarget {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.FileReader.function! }
+    override public class var constructor: JSFunction { JSObject.global.FileReader.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _readyState = ReadonlyAttribute(objectRef: objectRef, name: "readyState")
-        _result = ReadonlyAttribute(objectRef: objectRef, name: "result")
-        _error = ReadonlyAttribute(objectRef: objectRef, name: "error")
-        _onloadstart = OptionalClosureHandler(objectRef: objectRef, name: "onloadstart")
-        _onprogress = OptionalClosureHandler(objectRef: objectRef, name: "onprogress")
-        _onload = OptionalClosureHandler(objectRef: objectRef, name: "onload")
-        _onabort = OptionalClosureHandler(objectRef: objectRef, name: "onabort")
-        _onerror = OptionalClosureHandler(objectRef: objectRef, name: "onerror")
-        _onloadend = OptionalClosureHandler(objectRef: objectRef, name: "onloadend")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: "readyState")
+        _result = ReadonlyAttribute(jsObject: jsObject, name: "result")
+        _error = ReadonlyAttribute(jsObject: jsObject, name: "error")
+        _onloadstart = OptionalClosureHandler(jsObject: jsObject, name: "onloadstart")
+        _onprogress = OptionalClosureHandler(jsObject: jsObject, name: "onprogress")
+        _onload = OptionalClosureHandler(jsObject: jsObject, name: "onload")
+        _onabort = OptionalClosureHandler(jsObject: jsObject, name: "onabort")
+        _onerror = OptionalClosureHandler(jsObject: jsObject, name: "onerror")
+        _onloadend = OptionalClosureHandler(jsObject: jsObject, name: "onloadend")
+        super.init(withCompatibleObject: jsObject)
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: FileReader.classRef.new())
+        self.init(withCompatibleObject: FileReader.constructor.new())
     }
 
     public func readAsArrayBuffer(blob: Blob) {
-        _ = objectRef.readAsArrayBuffer!(blob.jsValue())
+        _ = jsObject.readAsArrayBuffer!(blob.jsValue())
     }
 
     public func readAsBinaryString(blob: Blob) {
-        _ = objectRef.readAsBinaryString!(blob.jsValue())
+        _ = jsObject.readAsBinaryString!(blob.jsValue())
     }
 
     public func readAsText(blob: Blob, encoding: String) {
-        _ = objectRef.readAsText!(blob.jsValue(), encoding.jsValue())
+        _ = jsObject.readAsText!(blob.jsValue(), encoding.jsValue())
     }
 
     public func readAsText(blob: Blob) {
-        _ = objectRef.readAsText!(blob.jsValue())
+        _ = jsObject.readAsText!(blob.jsValue())
     }
 
     public func readAsDataURL(blob: Blob) {
-        _ = objectRef.readAsDataURL!(blob.jsValue())
+        _ = jsObject.readAsDataURL!(blob.jsValue())
     }
 
     public func abort() {
-        _ = objectRef.abort!()
+        _ = jsObject.abort!()
     }
 
     public let EMPTY: UInt16 = 0

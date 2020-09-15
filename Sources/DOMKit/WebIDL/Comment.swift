@@ -6,13 +6,13 @@
 import JavaScriptKit
 
 public class Comment: CharacterData {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.Comment.function! }
+    override public class var constructor: JSFunction { JSObject.global.Comment.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        super.init(withCompatibleObject: jsObject)
     }
 
     public convenience init(data: String = "") {
-        self.init(withCompatibleObject: Comment.classRef.new(data.jsValue()))
+        self.init(withCompatibleObject: Comment.constructor.new(data.jsValue()))
     }
 }

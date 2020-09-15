@@ -6,11 +6,11 @@
 import JavaScriptKit
 
 public class RadioNodeList: NodeList {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.RadioNodeList.function! }
+    override public class var constructor: JSFunction { JSObject.global.RadioNodeList.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _value = ReadWriteAttribute(objectRef: objectRef, name: "value")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
+        super.init(withCompatibleObject: jsObject)
     }
 
     @ReadWriteAttribute

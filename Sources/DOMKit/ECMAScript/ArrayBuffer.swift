@@ -17,19 +17,19 @@ public typealias Float64Array = JSTypedArray<Float64>
 
 public class ArrayBuffer: JSBridgedClass {
 
-    public class var classRef: JSFunctionRef { JSObjectRef.global.ArrayBuffer.function! }
+    public class var constructor: JSFunction { JSObject.global.ArrayBuffer.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public convenience init(length: Int) {
-        self.init(withCompatibleObject: Self.classRef.new( length))
+        self.init(withCompatibleObject: Self.constructor.new( length))
     }
 
     public static func isView(_ object: AnyJSValueCodable) -> Bool {
-        return JSObjectRef.global.ArrayBuffer.object!.isView!(object).fromJSValue()!
+        return JSObject.global.ArrayBuffer.object!.isView!(object).fromJSValue()!
     }
 }

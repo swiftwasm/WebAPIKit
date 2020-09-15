@@ -6,74 +6,74 @@ import JavaScriptKit
 
 public class Promise<Type>: JSBridgedClass {
 
-    public static var classRef: JSFunctionRef { JSObjectRef.global.Promise.function! }
+    public static var constructor: JSFunction { JSObject.global.Promise.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
+    public required init(withCompatibleObject jsObject: JSObject) {
 
-        self.objectRef = objectRef
+        self.jsObject = jsObject
     }
 }
 
 public class ReadableStream: JSBridgedClass {
 
-    public static var classRef: JSFunctionRef { JSObjectRef.global.ReadableStream.function! }
+    public static var constructor: JSFunction { JSObject.global.ReadableStream.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public subscript(dynamicMember name: String) -> JSValue {
-        get { objectRef[name] }
-        set { objectRef[name] = newValue }
+        get { jsObject[name] }
+        set { jsObject[name] = newValue }
     }
 }
 
 @propertyWrapper public struct ClosureHandler<ArgumentType: JSValueCodable, ReturnType: JSValueCodable> {
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
     let name: String
 
-    public init(objectRef: JSObjectRef, name: String) {
-        self.objectRef = objectRef
+    public init(jsObject: JSObject, name: String) {
+        self.jsObject = jsObject
         self.name = name
     }
 
     public var wrappedValue: (ArgumentType) -> ReturnType {
         get {
-            { arg in objectRef[name]!(arg).fromJSValue()! }
+            { arg in jsObject[name]!(arg).fromJSValue()! }
         }
         set {
-            objectRef[name] = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }.jsValue()
+            jsObject[name] = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }.jsValue()
         }
     }
 }
 
 @propertyWrapper public struct OptionalClosureHandler<ArgumentType: JSValueCodable, ReturnType: JSValueCodable> {
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
     let name: String
 
-    public init(objectRef: JSObjectRef, name: String) {
-        self.objectRef = objectRef
+    public init(jsObject: JSObject, name: String) {
+        self.jsObject = jsObject
         self.name = name
     }
 
     public var wrappedValue: ((ArgumentType) -> ReturnType)? {
         get {
-            guard let function = objectRef[name].function else {
+            guard let function = jsObject[name].function else {
                 return nil
             }
             return { function($0.jsValue()).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef[name] = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }.jsValue()
+                jsObject[name] = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }.jsValue()
             } else {
-                objectRef[name] = .null
+                jsObject[name] = .null
             }
         }
     }
@@ -81,37 +81,37 @@ public class ReadableStream: JSBridgedClass {
 
 @propertyWrapper public struct ReadWriteAttribute<Wrapped: JSValueCodable> {
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
     let name: String
 
-    public init(objectRef: JSObjectRef, name: String) {
-        self.objectRef = objectRef
+    public init(jsObject: JSObject, name: String) {
+        self.jsObject = jsObject
         self.name = name
     }
 
     public var wrappedValue: Wrapped {
         get {
-            return objectRef[name].fromJSValue()!
+            return jsObject[name].fromJSValue()!
         }
         set {
-            objectRef[name] = newValue.jsValue()
+            jsObject[name] = newValue.jsValue()
         }
     }
 }
 
 @propertyWrapper public struct ReadonlyAttribute<Wrapped: JSValueConstructible> {
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
     let name: String
 
-    public init(objectRef: JSObjectRef, name: String) {
-        self.objectRef = objectRef
+    public init(jsObject: JSObject, name: String) {
+        self.jsObject = jsObject
         self.name = name
     }
 
     public var wrappedValue: Wrapped {
         get {
-            return objectRef[name].fromJSValue()!
+            return jsObject[name].fromJSValue()!
         }
     }
 }
@@ -129,7 +129,7 @@ public class ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: Ite
         defer {
             index += 1
         }
-        let value = sequence.objectRef[index]
+        let value = sequence.jsObject[index]
         guard value != .undefined else {
             return nil
         }
@@ -144,17 +144,17 @@ public protocol KeyValueSequence: Sequence where Element == (String, Value) {
 
 public class PairIterableIterator<SequenceType: JSBridgedClass & KeyValueSequence>: IteratorProtocol where SequenceType.Value: JSValueConstructible {
 
-    private let iterator: JSObjectRef
+    private let iterator: JSObject
     private let sequence: SequenceType
 
     public init(sequence: SequenceType) {
         self.sequence = sequence
-        self.iterator = sequence.objectRef.entries!().object!
+        self.iterator = sequence.jsObject.entries!().object!
     }
 
     public func next() -> SequenceType.Element? {
 
-        let next: JSObjectRef = iterator.next!().object!
+        let next: JSObject = iterator.next!().object!
 
         guard next.done.boolean! == false else {
             return nil

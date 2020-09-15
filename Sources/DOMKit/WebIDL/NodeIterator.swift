@@ -6,16 +6,16 @@
 import JavaScriptKit
 
 public class NodeIterator: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.NodeIterator.function! }
+    public class var constructor: JSFunction { JSObject.global.NodeIterator.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _root = ReadonlyAttribute(objectRef: objectRef, name: "root")
-        _referenceNode = ReadonlyAttribute(objectRef: objectRef, name: "referenceNode")
-        _pointerBeforeReferenceNode = ReadonlyAttribute(objectRef: objectRef, name: "pointerBeforeReferenceNode")
-        _whatToShow = ReadonlyAttribute(objectRef: objectRef, name: "whatToShow")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _root = ReadonlyAttribute(jsObject: jsObject, name: "root")
+        _referenceNode = ReadonlyAttribute(jsObject: jsObject, name: "referenceNode")
+        _pointerBeforeReferenceNode = ReadonlyAttribute(jsObject: jsObject, name: "pointerBeforeReferenceNode")
+        _whatToShow = ReadonlyAttribute(jsObject: jsObject, name: "whatToShow")
+        self.jsObject = jsObject
     }
 
     @ReadonlyAttribute
@@ -31,18 +31,18 @@ public class NodeIterator: JSBridgedClass {
     public var whatToShow: UInt32
 
     public var filter: NodeFilter? {
-        return objectRef.filter.fromJSValue()! as AnyNodeFilter?
+        return jsObject.filter.fromJSValue()! as AnyNodeFilter?
     }
 
     public func nextNode() -> Node? {
-        return objectRef.nextNode!().fromJSValue()!
+        return jsObject.nextNode!().fromJSValue()!
     }
 
     public func previousNode() -> Node? {
-        return objectRef.previousNode!().fromJSValue()!
+        return jsObject.previousNode!().fromJSValue()!
     }
 
     public func detach() {
-        _ = objectRef.detach!()
+        _ = jsObject.detach!()
     }
 }

@@ -6,20 +6,20 @@
 import JavaScriptKit
 
 public class DOMStringMap: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.DOMStringMap.function! }
+    public class var constructor: JSFunction { JSObject.global.DOMStringMap.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public subscript(_: String) -> String? {
         get {
-            return objectRef.name.fromJSValue()!
+            return jsObject.name.fromJSValue()!
         }
         set {
-            objectRef.name = newValue.jsValue()
+            jsObject.name = newValue.jsValue()
         }
     }
 }

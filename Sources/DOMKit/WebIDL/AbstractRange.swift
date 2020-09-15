@@ -6,17 +6,17 @@
 import JavaScriptKit
 
 public class AbstractRange: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.AbstractRange.function! }
+    public class var constructor: JSFunction { JSObject.global.AbstractRange.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _startContainer = ReadonlyAttribute(objectRef: objectRef, name: "startContainer")
-        _startOffset = ReadonlyAttribute(objectRef: objectRef, name: "startOffset")
-        _endContainer = ReadonlyAttribute(objectRef: objectRef, name: "endContainer")
-        _endOffset = ReadonlyAttribute(objectRef: objectRef, name: "endOffset")
-        _collapsed = ReadonlyAttribute(objectRef: objectRef, name: "collapsed")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _startContainer = ReadonlyAttribute(jsObject: jsObject, name: "startContainer")
+        _startOffset = ReadonlyAttribute(jsObject: jsObject, name: "startOffset")
+        _endContainer = ReadonlyAttribute(jsObject: jsObject, name: "endContainer")
+        _endOffset = ReadonlyAttribute(jsObject: jsObject, name: "endOffset")
+        _collapsed = ReadonlyAttribute(jsObject: jsObject, name: "collapsed")
+        self.jsObject = jsObject
     }
 
     @ReadonlyAttribute

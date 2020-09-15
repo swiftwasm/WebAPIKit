@@ -6,23 +6,23 @@
 import JavaScriptKit
 
 public class ValidityState: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.ValidityState.function! }
+    public class var constructor: JSFunction { JSObject.global.ValidityState.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _valueMissing = ReadonlyAttribute(objectRef: objectRef, name: "valueMissing")
-        _typeMismatch = ReadonlyAttribute(objectRef: objectRef, name: "typeMismatch")
-        _patternMismatch = ReadonlyAttribute(objectRef: objectRef, name: "patternMismatch")
-        _tooLong = ReadonlyAttribute(objectRef: objectRef, name: "tooLong")
-        _tooShort = ReadonlyAttribute(objectRef: objectRef, name: "tooShort")
-        _rangeUnderflow = ReadonlyAttribute(objectRef: objectRef, name: "rangeUnderflow")
-        _rangeOverflow = ReadonlyAttribute(objectRef: objectRef, name: "rangeOverflow")
-        _stepMismatch = ReadonlyAttribute(objectRef: objectRef, name: "stepMismatch")
-        _badInput = ReadonlyAttribute(objectRef: objectRef, name: "badInput")
-        _customError = ReadonlyAttribute(objectRef: objectRef, name: "customError")
-        _valid = ReadonlyAttribute(objectRef: objectRef, name: "valid")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _valueMissing = ReadonlyAttribute(jsObject: jsObject, name: "valueMissing")
+        _typeMismatch = ReadonlyAttribute(jsObject: jsObject, name: "typeMismatch")
+        _patternMismatch = ReadonlyAttribute(jsObject: jsObject, name: "patternMismatch")
+        _tooLong = ReadonlyAttribute(jsObject: jsObject, name: "tooLong")
+        _tooShort = ReadonlyAttribute(jsObject: jsObject, name: "tooShort")
+        _rangeUnderflow = ReadonlyAttribute(jsObject: jsObject, name: "rangeUnderflow")
+        _rangeOverflow = ReadonlyAttribute(jsObject: jsObject, name: "rangeOverflow")
+        _stepMismatch = ReadonlyAttribute(jsObject: jsObject, name: "stepMismatch")
+        _badInput = ReadonlyAttribute(jsObject: jsObject, name: "badInput")
+        _customError = ReadonlyAttribute(jsObject: jsObject, name: "customError")
+        _valid = ReadonlyAttribute(jsObject: jsObject, name: "valid")
+        self.jsObject = jsObject
     }
 
     @ReadonlyAttribute

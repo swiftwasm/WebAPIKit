@@ -6,15 +6,15 @@
 import JavaScriptKit
 
 public class TreeWalker: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.TreeWalker.function! }
+    public class var constructor: JSFunction { JSObject.global.TreeWalker.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _root = ReadonlyAttribute(objectRef: objectRef, name: "root")
-        _whatToShow = ReadonlyAttribute(objectRef: objectRef, name: "whatToShow")
-        _currentNode = ReadWriteAttribute(objectRef: objectRef, name: "currentNode")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _root = ReadonlyAttribute(jsObject: jsObject, name: "root")
+        _whatToShow = ReadonlyAttribute(jsObject: jsObject, name: "whatToShow")
+        _currentNode = ReadWriteAttribute(jsObject: jsObject, name: "currentNode")
+        self.jsObject = jsObject
     }
 
     @ReadonlyAttribute
@@ -24,37 +24,37 @@ public class TreeWalker: JSBridgedClass {
     public var whatToShow: UInt32
 
     public var filter: NodeFilter? {
-        return objectRef.filter.fromJSValue()! as AnyNodeFilter?
+        return jsObject.filter.fromJSValue()! as AnyNodeFilter?
     }
 
     @ReadWriteAttribute
     public var currentNode: Node
 
     public func parentNode() -> Node? {
-        return objectRef.parentNode!().fromJSValue()!
+        return jsObject.parentNode!().fromJSValue()!
     }
 
     public func firstChild() -> Node? {
-        return objectRef.firstChild!().fromJSValue()!
+        return jsObject.firstChild!().fromJSValue()!
     }
 
     public func lastChild() -> Node? {
-        return objectRef.lastChild!().fromJSValue()!
+        return jsObject.lastChild!().fromJSValue()!
     }
 
     public func previousSibling() -> Node? {
-        return objectRef.previousSibling!().fromJSValue()!
+        return jsObject.previousSibling!().fromJSValue()!
     }
 
     public func nextSibling() -> Node? {
-        return objectRef.nextSibling!().fromJSValue()!
+        return jsObject.nextSibling!().fromJSValue()!
     }
 
     public func previousNode() -> Node? {
-        return objectRef.previousNode!().fromJSValue()!
+        return jsObject.previousNode!().fromJSValue()!
     }
 
     public func nextNode() -> Node? {
-        return objectRef.nextNode!().fromJSValue()!
+        return jsObject.nextNode!().fromJSValue()!
     }
 }

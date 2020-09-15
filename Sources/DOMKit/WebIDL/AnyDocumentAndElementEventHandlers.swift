@@ -6,11 +6,11 @@
 import JavaScriptKit
 
 class AnyDocumentAndElementEventHandlers: JSBridgedClass, DocumentAndElementEventHandlers {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.DocumentAndElementEventHandlers.function! }
+    public class var constructor: JSFunction { JSObject.global.DocumentAndElementEventHandlers.function! }
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
 
-    required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }

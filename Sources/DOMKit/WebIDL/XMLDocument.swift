@@ -6,9 +6,9 @@
 import JavaScriptKit
 
 public class XMLDocument: Document {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.XMLDocument.function! }
+    override public class var constructor: JSFunction { JSObject.global.XMLDocument.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        super.init(withCompatibleObject: jsObject)
     }
 }

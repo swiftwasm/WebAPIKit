@@ -6,23 +6,23 @@
 import JavaScriptKit
 
 public class AbortController: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.AbortController.function! }
+    public class var constructor: JSFunction { JSObject.global.AbortController.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _signal = ReadonlyAttribute(objectRef: objectRef, name: "signal")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _signal = ReadonlyAttribute(jsObject: jsObject, name: "signal")
+        self.jsObject = jsObject
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: AbortController.classRef.new())
+        self.init(withCompatibleObject: AbortController.constructor.new())
     }
 
     @ReadonlyAttribute
     public var signal: AbortSignal
 
     public func abort() {
-        _ = objectRef.abort!()
+        _ = jsObject.abort!()
     }
 }

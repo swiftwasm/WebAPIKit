@@ -6,11 +6,11 @@
 import JavaScriptKit
 
 public class URL: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.URL.function! }
+    public class var constructor: JSFunction { JSObject.global.URL.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }

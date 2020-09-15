@@ -11,7 +11,7 @@ let package = Package(
             targets: ["DOMKit"]),
     ],
     dependencies: [
-        .package(name: "JavaScriptKit", url: "https://github.com/j-f1/forked-JavaScriptKit.git", .revision("745bb00")),
+        .package(name: "JavaScriptKit", url: "https://github.com/j-f1/forked-JavaScriptKit.git", .revision("b62b78e")),
     ],
     targets: [
         .target(

@@ -6,13 +6,13 @@
 import JavaScriptKit
 
 public class FileList: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.FileList.function! }
+    public class var constructor: JSFunction { JSObject.global.FileList.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _length = ReadonlyAttribute(objectRef: objectRef, name: "length")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        self.jsObject = jsObject
     }
 
     @ReadonlyAttribute

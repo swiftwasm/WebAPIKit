@@ -10,32 +10,32 @@ public protocol ElementContentEditable: JSBridgedClass {}
 public extension ElementContentEditable {
     var contentEditable: String {
         get {
-            return objectRef.contentEditable.fromJSValue()!
+            return jsObject.contentEditable.fromJSValue()!
         }
         set {
-            objectRef.contentEditable = newValue.jsValue()
+            jsObject.contentEditable = newValue.jsValue()
         }
     }
 
     var enterKeyHint: String {
         get {
-            return objectRef.enterKeyHint.fromJSValue()!
+            return jsObject.enterKeyHint.fromJSValue()!
         }
         set {
-            objectRef.enterKeyHint = newValue.jsValue()
+            jsObject.enterKeyHint = newValue.jsValue()
         }
     }
 
     var isContentEditable: Bool {
-        return objectRef.isContentEditable.fromJSValue()!
+        return jsObject.isContentEditable.fromJSValue()!
     }
 
     var inputMode: String {
         get {
-            return objectRef.inputMode.fromJSValue()!
+            return jsObject.inputMode.fromJSValue()!
         }
         set {
-            objectRef.inputMode = newValue.jsValue()
+            jsObject.inputMode = newValue.jsValue()
         }
     }
 }

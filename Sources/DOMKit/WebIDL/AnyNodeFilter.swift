@@ -6,15 +6,15 @@
 import JavaScriptKit
 
 class AnyNodeFilter: JSBridgedClass, NodeFilter {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.NodeFilter.function! }
+    public class var constructor: JSFunction { JSObject.global.NodeFilter.function! }
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
 
-    required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public func acceptNode(node: Node) -> UInt16 {
-        return objectRef.acceptNode!(node.jsValue()).fromJSValue()!
+        return jsObject.acceptNode!(node.jsValue()).fromJSValue()!
     }
 }

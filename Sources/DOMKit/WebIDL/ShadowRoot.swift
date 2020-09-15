@@ -6,13 +6,13 @@
 import JavaScriptKit
 
 public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.ShadowRoot.function! }
+    override public class var constructor: JSFunction { JSObject.global.ShadowRoot.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _mode = ReadonlyAttribute(objectRef: objectRef, name: "mode")
-        _host = ReadonlyAttribute(objectRef: objectRef, name: "host")
-        _onslotchange = OptionalClosureHandler(objectRef: objectRef, name: "onslotchange")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _mode = ReadonlyAttribute(jsObject: jsObject, name: "mode")
+        _host = ReadonlyAttribute(jsObject: jsObject, name: "host")
+        _onslotchange = OptionalClosureHandler(jsObject: jsObject, name: "onslotchange")
+        super.init(withCompatibleObject: jsObject)
     }
 
     @ReadonlyAttribute

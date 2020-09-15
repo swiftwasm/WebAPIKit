@@ -6,21 +6,21 @@
 import JavaScriptKit
 
 public class MutationRecord: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.MutationRecord.function! }
+    public class var constructor: JSFunction { JSObject.global.MutationRecord.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _type = ReadonlyAttribute(objectRef: objectRef, name: "type")
-        _target = ReadonlyAttribute(objectRef: objectRef, name: "target")
-        _addedNodes = ReadonlyAttribute(objectRef: objectRef, name: "addedNodes")
-        _removedNodes = ReadonlyAttribute(objectRef: objectRef, name: "removedNodes")
-        _previousSibling = ReadonlyAttribute(objectRef: objectRef, name: "previousSibling")
-        _nextSibling = ReadonlyAttribute(objectRef: objectRef, name: "nextSibling")
-        _attributeName = ReadonlyAttribute(objectRef: objectRef, name: "attributeName")
-        _attributeNamespace = ReadonlyAttribute(objectRef: objectRef, name: "attributeNamespace")
-        _oldValue = ReadonlyAttribute(objectRef: objectRef, name: "oldValue")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _type = ReadonlyAttribute(jsObject: jsObject, name: "type")
+        _target = ReadonlyAttribute(jsObject: jsObject, name: "target")
+        _addedNodes = ReadonlyAttribute(jsObject: jsObject, name: "addedNodes")
+        _removedNodes = ReadonlyAttribute(jsObject: jsObject, name: "removedNodes")
+        _previousSibling = ReadonlyAttribute(jsObject: jsObject, name: "previousSibling")
+        _nextSibling = ReadonlyAttribute(jsObject: jsObject, name: "nextSibling")
+        _attributeName = ReadonlyAttribute(jsObject: jsObject, name: "attributeName")
+        _attributeNamespace = ReadonlyAttribute(jsObject: jsObject, name: "attributeNamespace")
+        _oldValue = ReadonlyAttribute(jsObject: jsObject, name: "oldValue")
+        self.jsObject = jsObject
     }
 
     @ReadonlyAttribute

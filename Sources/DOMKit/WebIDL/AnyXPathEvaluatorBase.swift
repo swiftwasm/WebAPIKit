@@ -6,11 +6,11 @@
 import JavaScriptKit
 
 class AnyXPathEvaluatorBase: JSBridgedClass, XPathEvaluatorBase {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.XPathEvaluatorBase.function! }
+    public class var constructor: JSFunction { JSObject.global.XPathEvaluatorBase.function! }
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
 
-    required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }

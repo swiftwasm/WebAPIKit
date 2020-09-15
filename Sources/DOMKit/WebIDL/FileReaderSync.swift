@@ -6,35 +6,35 @@
 import JavaScriptKit
 
 public class FileReaderSync: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.FileReaderSync.function! }
+    public class var constructor: JSFunction { JSObject.global.FileReaderSync.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: FileReaderSync.classRef.new())
+        self.init(withCompatibleObject: FileReaderSync.constructor.new())
     }
 
     public func readAsArrayBuffer(blob: Blob) -> ArrayBuffer {
-        return objectRef.readAsArrayBuffer!(blob.jsValue()).fromJSValue()!
+        return jsObject.readAsArrayBuffer!(blob.jsValue()).fromJSValue()!
     }
 
     public func readAsBinaryString(blob: Blob) -> String {
-        return objectRef.readAsBinaryString!(blob.jsValue()).fromJSValue()!
+        return jsObject.readAsBinaryString!(blob.jsValue()).fromJSValue()!
     }
 
     public func readAsText(blob: Blob, encoding: String) -> String {
-        return objectRef.readAsText!(blob.jsValue(), encoding.jsValue()).fromJSValue()!
+        return jsObject.readAsText!(blob.jsValue(), encoding.jsValue()).fromJSValue()!
     }
 
     public func readAsText(blob: Blob) -> String {
-        return objectRef.readAsText!(blob.jsValue()).fromJSValue()!
+        return jsObject.readAsText!(blob.jsValue()).fromJSValue()!
     }
 
     public func readAsDataURL(blob: Blob) -> String {
-        return objectRef.readAsDataURL!(blob.jsValue()).fromJSValue()!
+        return jsObject.readAsDataURL!(blob.jsValue()).fromJSValue()!
     }
 }

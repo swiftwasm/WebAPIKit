@@ -6,19 +6,19 @@
 import JavaScriptKit
 
 public class XPathResult: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.XPathResult.function! }
+    public class var constructor: JSFunction { JSObject.global.XPathResult.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _resultType = ReadonlyAttribute(objectRef: objectRef, name: "resultType")
-        _numberValue = ReadonlyAttribute(objectRef: objectRef, name: "numberValue")
-        _stringValue = ReadonlyAttribute(objectRef: objectRef, name: "stringValue")
-        _booleanValue = ReadonlyAttribute(objectRef: objectRef, name: "booleanValue")
-        _singleNodeValue = ReadonlyAttribute(objectRef: objectRef, name: "singleNodeValue")
-        _invalidIteratorState = ReadonlyAttribute(objectRef: objectRef, name: "invalidIteratorState")
-        _snapshotLength = ReadonlyAttribute(objectRef: objectRef, name: "snapshotLength")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _resultType = ReadonlyAttribute(jsObject: jsObject, name: "resultType")
+        _numberValue = ReadonlyAttribute(jsObject: jsObject, name: "numberValue")
+        _stringValue = ReadonlyAttribute(jsObject: jsObject, name: "stringValue")
+        _booleanValue = ReadonlyAttribute(jsObject: jsObject, name: "booleanValue")
+        _singleNodeValue = ReadonlyAttribute(jsObject: jsObject, name: "singleNodeValue")
+        _invalidIteratorState = ReadonlyAttribute(jsObject: jsObject, name: "invalidIteratorState")
+        _snapshotLength = ReadonlyAttribute(jsObject: jsObject, name: "snapshotLength")
+        self.jsObject = jsObject
     }
 
     public let ANY_TYPE: UInt16 = 0
@@ -63,10 +63,10 @@ public class XPathResult: JSBridgedClass {
     public var snapshotLength: UInt32
 
     public func iterateNext() -> Node? {
-        return objectRef.iterateNext!().fromJSValue()!
+        return jsObject.iterateNext!().fromJSValue()!
     }
 
     public func snapshotItem(index: UInt32) -> Node? {
-        return objectRef.snapshotItem!(index.jsValue()).fromJSValue()!
+        return jsObject.snapshotItem!(index.jsValue()).fromJSValue()!
     }
 }

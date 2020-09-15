@@ -6,62 +6,62 @@
 import JavaScriptKit
 
 public class FormData: JSBridgedClass, KeyValueSequence {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.FormData.function! }
+    public class var constructor: JSFunction { JSObject.global.FormData.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public typealias Value = FormDataEntryValue
 
     public convenience init(form: HTMLFormElement) {
-        self.init(withCompatibleObject: FormData.classRef.new(form.jsValue()))
+        self.init(withCompatibleObject: FormData.constructor.new(form.jsValue()))
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: FormData.classRef.new())
+        self.init(withCompatibleObject: FormData.constructor.new())
     }
 
     public func append(name: String, value: String) {
-        _ = objectRef.append!(name.jsValue(), value.jsValue())
+        _ = jsObject.append!(name.jsValue(), value.jsValue())
     }
 
     public func append(name: String, blobValue: Blob, filename: String) {
-        _ = objectRef.append!(name.jsValue(), blobValue.jsValue(), filename.jsValue())
+        _ = jsObject.append!(name.jsValue(), blobValue.jsValue(), filename.jsValue())
     }
 
     public func append(name: String, blobValue: Blob) {
-        _ = objectRef.append!(name.jsValue(), blobValue.jsValue())
+        _ = jsObject.append!(name.jsValue(), blobValue.jsValue())
     }
 
     public func delete(name: String) {
-        _ = objectRef.delete!(name.jsValue())
+        _ = jsObject.delete!(name.jsValue())
     }
 
     public func get(name: String) -> FormDataEntryValue? {
-        return objectRef.get!(name.jsValue()).fromJSValue()!
+        return jsObject.get!(name.jsValue()).fromJSValue()!
     }
 
     public func getAll(name: String) -> [FormDataEntryValue] {
-        return objectRef.getAll!(name.jsValue()).fromJSValue()!
+        return jsObject.getAll!(name.jsValue()).fromJSValue()!
     }
 
     public func has(name: String) -> Bool {
-        return objectRef.has!(name.jsValue()).fromJSValue()!
+        return jsObject.has!(name.jsValue()).fromJSValue()!
     }
 
     public func set(name: String, value: String) {
-        _ = objectRef.set!(name.jsValue(), value.jsValue())
+        _ = jsObject.set!(name.jsValue(), value.jsValue())
     }
 
     public func set(name: String, blobValue: Blob, filename: String) {
-        _ = objectRef.set!(name.jsValue(), blobValue.jsValue(), filename.jsValue())
+        _ = jsObject.set!(name.jsValue(), blobValue.jsValue(), filename.jsValue())
     }
 
     public func set(name: String, blobValue: Blob) {
-        _ = objectRef.set!(name.jsValue(), blobValue.jsValue())
+        _ = jsObject.set!(name.jsValue(), blobValue.jsValue())
     }
 
     public func makeIterator() -> PairIterableIterator<FormData> { return PairIterableIterator(sequence: self) }

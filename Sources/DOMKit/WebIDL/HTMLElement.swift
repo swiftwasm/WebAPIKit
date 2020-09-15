@@ -6,25 +6,25 @@
 import JavaScriptKit
 
 public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLElement.function! }
+    override public class var constructor: JSFunction { JSObject.global.HTMLElement.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _title = ReadWriteAttribute(objectRef: objectRef, name: "title")
-        _lang = ReadWriteAttribute(objectRef: objectRef, name: "lang")
-        _translate = ReadWriteAttribute(objectRef: objectRef, name: "translate")
-        _dir = ReadWriteAttribute(objectRef: objectRef, name: "dir")
-        _hidden = ReadWriteAttribute(objectRef: objectRef, name: "hidden")
-        _accessKey = ReadWriteAttribute(objectRef: objectRef, name: "accessKey")
-        _accessKeyLabel = ReadonlyAttribute(objectRef: objectRef, name: "accessKeyLabel")
-        _draggable = ReadWriteAttribute(objectRef: objectRef, name: "draggable")
-        _spellcheck = ReadWriteAttribute(objectRef: objectRef, name: "spellcheck")
-        _autocapitalize = ReadWriteAttribute(objectRef: objectRef, name: "autocapitalize")
-        _innerText = ReadWriteAttribute(objectRef: objectRef, name: "innerText")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _title = ReadWriteAttribute(jsObject: jsObject, name: "title")
+        _lang = ReadWriteAttribute(jsObject: jsObject, name: "lang")
+        _translate = ReadWriteAttribute(jsObject: jsObject, name: "translate")
+        _dir = ReadWriteAttribute(jsObject: jsObject, name: "dir")
+        _hidden = ReadWriteAttribute(jsObject: jsObject, name: "hidden")
+        _accessKey = ReadWriteAttribute(jsObject: jsObject, name: "accessKey")
+        _accessKeyLabel = ReadonlyAttribute(jsObject: jsObject, name: "accessKeyLabel")
+        _draggable = ReadWriteAttribute(jsObject: jsObject, name: "draggable")
+        _spellcheck = ReadWriteAttribute(jsObject: jsObject, name: "spellcheck")
+        _autocapitalize = ReadWriteAttribute(jsObject: jsObject, name: "autocapitalize")
+        _innerText = ReadWriteAttribute(jsObject: jsObject, name: "innerText")
+        super.init(withCompatibleObject: jsObject)
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: HTMLElement.classRef.new())
+        self.init(withCompatibleObject: HTMLElement.constructor.new())
     }
 
     @ReadWriteAttribute
@@ -43,7 +43,7 @@ public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementConte
     public var hidden: Bool
 
     public func click() {
-        _ = objectRef.click!()
+        _ = jsObject.click!()
     }
 
     @ReadWriteAttribute
@@ -65,6 +65,6 @@ public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementConte
     public var innerText: String
 
     public func attachInternals() -> ElementInternals {
-        return objectRef.attachInternals!().fromJSValue()!
+        return jsObject.attachInternals!().fromJSValue()!
     }
 }

@@ -8,12 +8,12 @@ public class Float64Array: JSTypedArray {
 
     public typealias Element = Double
 
-    public static let classRef: JSFunctionRef = { JSObjectRef.global.Float64Array.function! }()
+    public static let constructor: JSFunction = { JSObject.global.Float64Array.function! }()
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }
 
@@ -21,12 +21,12 @@ public class Float32Array: JSTypedArray {
 
     public typealias Element = Float
 
-    public static let classRef: JSFunctionRef = { JSObjectRef.global.Float32Array.function! }()
+    public static let constructor: JSFunction = { JSObject.global.Float32Array.function! }()
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }
 
@@ -34,87 +34,87 @@ public class Uint32Array: JSTypedArray {
 
     public typealias Element = UInt32
 
-    public static let classRef: JSFunctionRef = { JSObjectRef.global.Uint32Array.function! }()
+    public static let constructor: JSFunction = { JSObject.global.Uint32Array.function! }()
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }
 
-public class Uint16Array: TypedArray {
+public class Uint16Array: JSTypedArray {
 
     public typealias Element = UInt16
 
-    public static let classRef: JSFunctionRef = { JSObjectRef.global.Uint16Array.function! }()
+    public static let constructor: JSFunction = { JSObject.global.Uint16Array.function! }()
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }
 
-public class Uint8Array: TypedArray {
+public class Uint8Array: JSTypedArray {
 
     public typealias Element = UInt8
 
-    public static let classRef: JSFunctionRef = { JSObjectRef.global.Uint8Array.function! }()
+    public static let constructor: JSFunction = { JSObject.global.Uint8Array.function! }()
 
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }
 
-public class Int32Array: TypedArray {
+public class Int32Array: JSTypedArray {
 
     public typealias Element = Int32
 
-    public static let classRef: JSFunctionRef = { JSObjectRef.global.Int32Array.function! }()
+    public static let constructor: JSFunction = { JSObject.global.Int32Array.function! }()
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }
 
-public class Int16Array: TypedArray {
+public class Int16Array: JSTypedArray {
 
     public typealias Element = Int16
 
-    public static let classRef: JSFunctionRef = { JSObjectRef.global.Int16Array.function! }()
-    public let objectRef: JSObjectRef
+    public static let constructor: JSFunction = { JSObject.global.Int16Array.function! }()
+    public let jsObject: JSObject
 
-    public required init(objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }
 
-public class Int8Array: TypedArray {
+public class Int8Array: JSTypedArray {
 
     public typealias Element = Int8
 
-    public static let classRef: JSFunctionRef = { JSObjectRef.global.Int8Array.function! }()
-    public let objectRef: JSObjectRef
+    public static let constructor: JSFunction = { JSObject.global.Int8Array.function! }()
+    public let jsObject: JSObject
 
-    public required init(objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }
 
-public class Uint8ClampedArray: TypedArray {
+public class Uint8ClampedArray: JSTypedArray {
 
     public typealias Element = UInt8
 
-    public static let classRef: JSFunctionRef = { JSObjectRef.global.Uint8ClampedArray.function! }()
-    public let objectRef: JSObjectRef
+    public static let constructor: JSFunction = { JSObject.global.Uint8ClampedArray.function! }()
+    public let jsObject: JSObject
 
-    public required init(objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }

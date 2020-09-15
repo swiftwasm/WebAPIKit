@@ -6,13 +6,13 @@
 import JavaScriptKit
 
 public class Window: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.Window.function! }
+    public class var constructor: JSFunction { JSObject.global.Window.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _event = ReadonlyAttribute(objectRef: objectRef, name: "event")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _event = ReadonlyAttribute(jsObject: jsObject, name: "event")
+        self.jsObject = jsObject
     }
 
     @ReadonlyAttribute

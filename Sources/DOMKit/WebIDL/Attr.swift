@@ -6,17 +6,17 @@
 import JavaScriptKit
 
 public class Attr: Node {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.Attr.function! }
+    override public class var constructor: JSFunction { JSObject.global.Attr.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _namespaceURI = ReadonlyAttribute(objectRef: objectRef, name: "namespaceURI")
-        _prefix = ReadonlyAttribute(objectRef: objectRef, name: "prefix")
-        _localName = ReadonlyAttribute(objectRef: objectRef, name: "localName")
-        _name = ReadonlyAttribute(objectRef: objectRef, name: "name")
-        _value = ReadWriteAttribute(objectRef: objectRef, name: "value")
-        _ownerElement = ReadonlyAttribute(objectRef: objectRef, name: "ownerElement")
-        _specified = ReadonlyAttribute(objectRef: objectRef, name: "specified")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: "namespaceURI")
+        _prefix = ReadonlyAttribute(jsObject: jsObject, name: "prefix")
+        _localName = ReadonlyAttribute(jsObject: jsObject, name: "localName")
+        _name = ReadonlyAttribute(jsObject: jsObject, name: "name")
+        _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
+        _ownerElement = ReadonlyAttribute(jsObject: jsObject, name: "ownerElement")
+        _specified = ReadonlyAttribute(jsObject: jsObject, name: "specified")
+        super.init(withCompatibleObject: jsObject)
     }
 
     @ReadonlyAttribute

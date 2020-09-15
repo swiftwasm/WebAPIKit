@@ -9,6 +9,6 @@ public protocol NonElementParentNode: JSBridgedClass {}
 
 public extension NonElementParentNode {
     func getElementById(elementId: String) -> Element? {
-        return objectRef.getElementById!(elementId.jsValue()).fromJSValue()!
+        return jsObject.getElementById!(elementId.jsValue()).fromJSValue()!
     }
 }

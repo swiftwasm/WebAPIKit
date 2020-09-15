@@ -6,17 +6,17 @@
 import JavaScriptKit
 
 public class HTMLCollection: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLCollection.function! }
+    public class var constructor: JSFunction { JSObject.global.HTMLCollection.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _length = ReadonlyAttribute(objectRef: objectRef, name: "length")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        self.jsObject = jsObject
     }
 
     public subscript(_: String) -> Element?? {
-        return objectRef.name.fromJSValue()!
+        return jsObject.name.fromJSValue()!
     }
 
     @ReadonlyAttribute

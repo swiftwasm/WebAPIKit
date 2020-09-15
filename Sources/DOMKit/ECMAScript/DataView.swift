@@ -6,30 +6,30 @@ import JavaScriptKit
 
 public class DataView: JSBridgedClass {
 
-    public class var classRef: JSFunctionRef { JSObjectRef.global.DataView.function! }
+    public class var constructor: JSFunction { JSObject.global.DataView.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _buffer = ReadonlyAttribute(objectRef: objectRef, name: "buffer")
-        _byteOffset = ReadonlyAttribute(objectRef: objectRef, name: "byteOffset")
-        _byteLength = ReadonlyAttribute(objectRef: objectRef, name: "byteLength")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _buffer = ReadonlyAttribute(jsObject: jsObject, name: "buffer")
+        _byteOffset = ReadonlyAttribute(jsObject: jsObject, name: "byteOffset")
+        _byteLength = ReadonlyAttribute(jsObject: jsObject, name: "byteLength")
+        self.jsObject = jsObject
     }
 
     public convenience init(buffer: ArrayBuffer) {
 
-        self.init(withCompatibleObject: DataView.classRef.new(buffer.jsValue()))
+        self.init(withCompatibleObject: DataView.constructor.new(buffer.jsValue()))
     }
 
     public convenience init(buffer: ArrayBuffer, byteOffset: UInt32) {
 
-        self.init(withCompatibleObject: DataView.classRef.new(buffer.jsValue(), byteOffset.jsValue()))
+        self.init(withCompatibleObject: DataView.constructor.new(buffer.jsValue(), byteOffset.jsValue()))
     }
 
     public convenience init(buffer: ArrayBuffer, byteOffset: UInt32, byteLength: UInt32) {
 
-        self.init(withCompatibleObject: DataView.classRef.new(buffer.jsValue(), byteOffset.jsValue(), byteLength.jsValue()))
+        self.init(withCompatibleObject: DataView.constructor.new(buffer.jsValue(), byteOffset.jsValue(), byteLength.jsValue()))
     }
 
     @ReadonlyAttribute
@@ -44,128 +44,128 @@ public class DataView: JSBridgedClass {
 
     public func getFloat32(byteOffset: UInt32) -> Float {
 
-        return objectRef.getFloat32!(byteOffset.jsValue()).fromJSValue()!
+        return jsObject.getFloat32!(byteOffset.jsValue()).fromJSValue()!
     }
 
     public func getFloat32(byteOffset: UInt32, littleEndian: Bool) -> Float {
 
-        return objectRef.getFloat32!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
+        return jsObject.getFloat32!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
     }
 
     public func getFloat64(byteOffset: UInt32) -> Double {
 
-        return objectRef.getFloat64!(byteOffset.jsValue()).fromJSValue()!
+        return jsObject.getFloat64!(byteOffset.jsValue()).fromJSValue()!
     }
 
     public func getFloat64(byteOffset: UInt32, littleEndian: Bool) -> Double {
 
-        return objectRef.getFloat64!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
+        return jsObject.getFloat64!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
     }
 
     public func getUint8(byteOffset: UInt32) -> UInt8 {
 
-        return objectRef.getUint8!(byteOffset.jsValue()).fromJSValue()!
+        return jsObject.getUint8!(byteOffset.jsValue()).fromJSValue()!
     }
 
     public func getUint16(byteOffset: UInt32) -> UInt16 {
 
-        return objectRef.getUint16!(byteOffset.jsValue()).fromJSValue()!
+        return jsObject.getUint16!(byteOffset.jsValue()).fromJSValue()!
     }
 
     public func getUint16(byteOffset: UInt32, littleEndian: Bool) -> UInt16 {
 
-        return objectRef.getUint16!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
+        return jsObject.getUint16!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
     }
 
     public func getUint32(byteOffset: UInt32) -> UInt32 {
 
-        return objectRef.getUint32!(byteOffset.jsValue()).fromJSValue()!
+        return jsObject.getUint32!(byteOffset.jsValue()).fromJSValue()!
     }
 
     public func getUint32(byteOffset: UInt32, littleEndian: Bool) -> UInt32 {
 
-        return objectRef.getUint32!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
+        return jsObject.getUint32!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
     }
 
     public func getInt8(byteOffset: UInt32) -> Int8 {
 
-        return objectRef.getInt8!(byteOffset.jsValue()).fromJSValue()!
+        return jsObject.getInt8!(byteOffset.jsValue()).fromJSValue()!
     }
 
     public func getInt16(byteOffset: UInt32) -> Int16 {
 
-        return objectRef.getInt16!(byteOffset.jsValue()).fromJSValue()!
+        return jsObject.getInt16!(byteOffset.jsValue()).fromJSValue()!
     }
 
     public func getInt16(byteOffset: UInt32, littleEndian: Bool) -> Int16 {
 
-        return objectRef.getInt16!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
+        return jsObject.getInt16!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
     }
 
     public func getInt32(byteOffset: UInt32) -> Int32 {
 
-        return objectRef.getInt32!(byteOffset.jsValue()).fromJSValue()!
+        return jsObject.getInt32!(byteOffset.jsValue()).fromJSValue()!
     }
 
     public func getInt32(byteOffset: UInt32, littleEndian: Bool) -> Int32 {
 
-        return objectRef.getInt32!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
+        return jsObject.getInt32!(byteOffset.jsValue(), littleEndian.jsValue()).fromJSValue()!
     }
 
     public func setUint8(byteOffset: UInt32, value: UInt8) {
-        _ = objectRef.setUint8!(byteOffset.jsValue(), value.jsValue())
+        _ = jsObject.setUint8!(byteOffset.jsValue(), value.jsValue())
     }
 
     public func setUint16(byteOffset: UInt32, value: UInt16) {
-        _ = objectRef.setUint16!(byteOffset.jsValue(), value.jsValue())
+        _ = jsObject.setUint16!(byteOffset.jsValue(), value.jsValue())
     }
 
     public func setUint16(byteOffset: UInt32, value: UInt16, littleEndian: Bool) {
-        _ = objectRef.setUint16!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
+        _ = jsObject.setUint16!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
     }
 
     public func setUint32(byteOffset: UInt32, value: UInt32) {
-        _ = objectRef.setUint32!(byteOffset.jsValue(), value.jsValue())
+        _ = jsObject.setUint32!(byteOffset.jsValue(), value.jsValue())
     }
 
     public func setUint32(byteOffset: UInt32, value: UInt32, littleEndian: Bool) {
-        _ = objectRef.setUint32!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
+        _ = jsObject.setUint32!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
     }
 
     public func setInt8(byteOffset: UInt32, value: Int8) {
-        _ = objectRef.setUint8!(byteOffset.jsValue(), value.jsValue())
+        _ = jsObject.setUint8!(byteOffset.jsValue(), value.jsValue())
     }
 
     public func setInt16(byteOffset: UInt32, value: Int16) {
-        _ = objectRef.setInt16!(byteOffset.jsValue(), value.jsValue())
+        _ = jsObject.setInt16!(byteOffset.jsValue(), value.jsValue())
     }
 
     public func setInt16(byteOffset: UInt32, value: Int16, littleEndian: Bool) {
-        _ = objectRef.setInt16!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
+        _ = jsObject.setInt16!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
     }
 
     public func setInt32(byteOffset: UInt32, value: Int32) {
-        _ = objectRef.setInt32!(byteOffset.jsValue(), value.jsValue())
+        _ = jsObject.setInt32!(byteOffset.jsValue(), value.jsValue())
     }
 
     public func setInt32(byteOffset: UInt32, value: Int32, littleEndian: Bool) {
-        _ = objectRef.setInt32!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
+        _ = jsObject.setInt32!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
     }
 
     public func setFloat32(byteOffset: UInt32, value: Float) {
-        _ = objectRef.setFloat32!(byteOffset.jsValue(), value.jsValue())
+        _ = jsObject.setFloat32!(byteOffset.jsValue(), value.jsValue())
     }
 
     public func setFloat32(byteOffset: UInt32, value: Float, littleEndian: Bool) {
-        _ = objectRef.setFloat32!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
+        _ = jsObject.setFloat32!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
     }
 
     public func setFloat64(byteOffset: UInt32, value: Double) {
-        _ = objectRef.setFloat64!(byteOffset.jsValue(), value.jsValue())
+        _ = jsObject.setFloat64!(byteOffset.jsValue(), value.jsValue())
     }
 
     public func setFloat64(byteOffset: UInt32, value: Double, littleEndian: Bool) {
-        _ = objectRef.setFloat64!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
+        _ = jsObject.setFloat64!(byteOffset.jsValue(), value.jsValue(), littleEndian.jsValue())
     }
 }
 

@@ -6,21 +6,21 @@
 import JavaScriptKit
 
 public class CustomEvent: Event {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.CustomEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global.CustomEvent.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _detail = ReadonlyAttribute(objectRef: objectRef, name: "detail")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _detail = ReadonlyAttribute(jsObject: jsObject, name: "detail")
+        super.init(withCompatibleObject: jsObject)
     }
 
     public convenience init(type: String, eventInitDict: CustomEventInit = [:]) {
-        self.init(withCompatibleObject: CustomEvent.classRef.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(withCompatibleObject: CustomEvent.constructor.new(type.jsValue(), eventInitDict.jsValue()))
     }
 
     @ReadonlyAttribute
     public var detail: AnyJSValueCodable
 
     public func initCustomEvent(type: String, bubbles: Bool = false, cancelable: Bool = false, detail: AnyJSValueCodable = nil) {
-        _ = objectRef.initCustomEvent!(type.jsValue(), bubbles.jsValue(), cancelable.jsValue(), detail.jsValue())
+        _ = jsObject.initCustomEvent!(type.jsValue(), bubbles.jsValue(), cancelable.jsValue(), detail.jsValue())
     }
 }

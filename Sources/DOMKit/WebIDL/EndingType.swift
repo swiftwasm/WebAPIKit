@@ -8,7 +8,8 @@ import JavaScriptKit
 public enum EndingType: String, JSValueCodable {
     public static func construct(from jsValue: JSValue) -> EndingType? {
         if let string = jsValue.string,
-            let value = EndingType(rawValue: string) {
+            let value = EndingType(rawValue: string)
+        {
             return value
         }
         return nil

@@ -6,9 +6,9 @@
 import JavaScriptKit
 
 public class CDATASection: Text {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.CDATASection.function! }
+    override public class var constructor: JSFunction { JSObject.global.CDATASection.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        super.init(withCompatibleObject: jsObject)
     }
 }

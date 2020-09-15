@@ -6,15 +6,15 @@
 import JavaScriptKit
 
 public class XPathEvaluator: JSBridgedClass, XPathEvaluatorBase {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.XPathEvaluator.function! }
+    public class var constructor: JSFunction { JSObject.global.XPathEvaluator.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: XPathEvaluator.classRef.new())
+        self.init(withCompatibleObject: XPathEvaluator.constructor.new())
     }
 }

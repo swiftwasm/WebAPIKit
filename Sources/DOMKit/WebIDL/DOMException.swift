@@ -6,19 +6,19 @@
 import JavaScriptKit
 
 public class DOMException: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.DOMException.function! }
+    public class var constructor: JSFunction { JSObject.global.DOMException.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _name = ReadonlyAttribute(objectRef: objectRef, name: "name")
-        _message = ReadonlyAttribute(objectRef: objectRef, name: "message")
-        _code = ReadonlyAttribute(objectRef: objectRef, name: "code")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _name = ReadonlyAttribute(jsObject: jsObject, name: "name")
+        _message = ReadonlyAttribute(jsObject: jsObject, name: "message")
+        _code = ReadonlyAttribute(jsObject: jsObject, name: "code")
+        self.jsObject = jsObject
     }
 
     public convenience init(message: String = "", name: String = "Error") {
-        self.init(withCompatibleObject: DOMException.classRef.new(message.jsValue(), name.jsValue()))
+        self.init(withCompatibleObject: DOMException.constructor.new(message.jsValue(), name.jsValue()))
     }
 
     @ReadonlyAttribute

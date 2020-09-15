@@ -6,11 +6,11 @@
 import JavaScriptKit
 
 class AnyHTMLOrSVGElement: JSBridgedClass, HTMLOrSVGElement {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLOrSVGElement.function! }
+    public class var constructor: JSFunction { JSObject.global.HTMLOrSVGElement.function! }
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
 
-    required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }

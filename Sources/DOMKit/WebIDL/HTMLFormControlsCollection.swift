@@ -6,13 +6,13 @@
 import JavaScriptKit
 
 public class HTMLFormControlsCollection: HTMLCollection {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLFormControlsCollection.function! }
+    override public class var constructor: JSFunction { JSObject.global.HTMLFormControlsCollection.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        super.init(withCompatibleObject: jsObject)
     }
 
     public subscript(_: String) -> RadioNodeListOrElement?? {
-        return objectRef.name.fromJSValue()!
+        return jsObject.name.fromJSValue()!
     }
 }

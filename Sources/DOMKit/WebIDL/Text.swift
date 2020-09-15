@@ -6,19 +6,19 @@
 import JavaScriptKit
 
 public class Text: CharacterData, Slotable {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.Text.function! }
+    override public class var constructor: JSFunction { JSObject.global.Text.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _wholeText = ReadonlyAttribute(objectRef: objectRef, name: "wholeText")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _wholeText = ReadonlyAttribute(jsObject: jsObject, name: "wholeText")
+        super.init(withCompatibleObject: jsObject)
     }
 
     public convenience init(data: String = "") {
-        self.init(withCompatibleObject: Text.classRef.new(data.jsValue()))
+        self.init(withCompatibleObject: Text.constructor.new(data.jsValue()))
     }
 
     public func splitText(offset: UInt32) -> Text {
-        return objectRef.splitText!(offset.jsValue()).fromJSValue()!
+        return jsObject.splitText!(offset.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute

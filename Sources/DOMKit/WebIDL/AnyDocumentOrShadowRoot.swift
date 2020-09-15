@@ -6,11 +6,11 @@
 import JavaScriptKit
 
 class AnyDocumentOrShadowRoot: JSBridgedClass, DocumentOrShadowRoot {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.DocumentOrShadowRoot.function! }
+    public class var constructor: JSFunction { JSObject.global.DocumentOrShadowRoot.function! }
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
 
-    required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }

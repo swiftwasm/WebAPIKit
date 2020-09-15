@@ -6,15 +6,15 @@
 import JavaScriptKit
 
 class AnyEventListener: JSBridgedClass, EventListener {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.EventListener.function! }
+    public class var constructor: JSFunction { JSObject.global.EventListener.function! }
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
 
-    required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public func handleEvent(event: Event) {
-        _ = objectRef.handleEvent!(event.jsValue())
+        _ = jsObject.handleEvent!(event.jsValue())
     }
 }

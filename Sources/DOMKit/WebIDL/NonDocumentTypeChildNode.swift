@@ -9,10 +9,10 @@ public protocol NonDocumentTypeChildNode: JSBridgedClass {}
 
 public extension NonDocumentTypeChildNode {
     var previousElementSibling: Element? {
-        return objectRef.previousElementSibling.fromJSValue()!
+        return jsObject.previousElementSibling.fromJSValue()!
     }
 
     var nextElementSibling: Element? {
-        return objectRef.nextElementSibling.fromJSValue()!
+        return jsObject.nextElementSibling.fromJSValue()!
     }
 }

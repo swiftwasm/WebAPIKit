@@ -10,288 +10,288 @@ public protocol WindowEventHandlers: JSBridgedClass {}
 public extension WindowEventHandlers {
     var onafterprint: EventHandler {
         get {
-            guard let function = objectRef.onafterprint.function else {
+            guard let function = jsObject.onafterprint.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onafterprint = JSClosure { arguments in
+                jsObject.onafterprint = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onafterprint = .null
+                jsObject.onafterprint = .null
             }
         }
     }
 
     var onbeforeprint: EventHandler {
         get {
-            guard let function = objectRef.onbeforeprint.function else {
+            guard let function = jsObject.onbeforeprint.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onbeforeprint = JSClosure { arguments in
+                jsObject.onbeforeprint = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onbeforeprint = .null
+                jsObject.onbeforeprint = .null
             }
         }
     }
 
     var onbeforeunload: OnBeforeUnloadEventHandler {
         get {
-            guard let function = objectRef.onbeforeunload.function else {
+            guard let function = jsObject.onbeforeunload.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onbeforeunload = JSClosure { arguments in
+                jsObject.onbeforeunload = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onbeforeunload = .null
+                jsObject.onbeforeunload = .null
             }
         }
     }
 
     var onhashchange: EventHandler {
         get {
-            guard let function = objectRef.onhashchange.function else {
+            guard let function = jsObject.onhashchange.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onhashchange = JSClosure { arguments in
+                jsObject.onhashchange = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onhashchange = .null
+                jsObject.onhashchange = .null
             }
         }
     }
 
     var onlanguagechange: EventHandler {
         get {
-            guard let function = objectRef.onlanguagechange.function else {
+            guard let function = jsObject.onlanguagechange.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onlanguagechange = JSClosure { arguments in
+                jsObject.onlanguagechange = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onlanguagechange = .null
+                jsObject.onlanguagechange = .null
             }
         }
     }
 
     var onmessage: EventHandler {
         get {
-            guard let function = objectRef.onmessage.function else {
+            guard let function = jsObject.onmessage.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmessage = JSClosure { arguments in
+                jsObject.onmessage = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onmessage = .null
+                jsObject.onmessage = .null
             }
         }
     }
 
     var onmessageerror: EventHandler {
         get {
-            guard let function = objectRef.onmessageerror.function else {
+            guard let function = jsObject.onmessageerror.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onmessageerror = JSClosure { arguments in
+                jsObject.onmessageerror = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onmessageerror = .null
+                jsObject.onmessageerror = .null
             }
         }
     }
 
     var onoffline: EventHandler {
         get {
-            guard let function = objectRef.onoffline.function else {
+            guard let function = jsObject.onoffline.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onoffline = JSClosure { arguments in
+                jsObject.onoffline = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onoffline = .null
+                jsObject.onoffline = .null
             }
         }
     }
 
     var ononline: EventHandler {
         get {
-            guard let function = objectRef.ononline.function else {
+            guard let function = jsObject.ononline.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.ononline = JSClosure { arguments in
+                jsObject.ononline = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.ononline = .null
+                jsObject.ononline = .null
             }
         }
     }
 
     var onpagehide: EventHandler {
         get {
-            guard let function = objectRef.onpagehide.function else {
+            guard let function = jsObject.onpagehide.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onpagehide = JSClosure { arguments in
+                jsObject.onpagehide = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onpagehide = .null
+                jsObject.onpagehide = .null
             }
         }
     }
 
     var onpageshow: EventHandler {
         get {
-            guard let function = objectRef.onpageshow.function else {
+            guard let function = jsObject.onpageshow.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onpageshow = JSClosure { arguments in
+                jsObject.onpageshow = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onpageshow = .null
+                jsObject.onpageshow = .null
             }
         }
     }
 
     var onpopstate: EventHandler {
         get {
-            guard let function = objectRef.onpopstate.function else {
+            guard let function = jsObject.onpopstate.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onpopstate = JSClosure { arguments in
+                jsObject.onpopstate = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onpopstate = .null
+                jsObject.onpopstate = .null
             }
         }
     }
 
     var onrejectionhandled: EventHandler {
         get {
-            guard let function = objectRef.onrejectionhandled.function else {
+            guard let function = jsObject.onrejectionhandled.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onrejectionhandled = JSClosure { arguments in
+                jsObject.onrejectionhandled = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onrejectionhandled = .null
+                jsObject.onrejectionhandled = .null
             }
         }
     }
 
     var onstorage: EventHandler {
         get {
-            guard let function = objectRef.onstorage.function else {
+            guard let function = jsObject.onstorage.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onstorage = JSClosure { arguments in
+                jsObject.onstorage = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onstorage = .null
+                jsObject.onstorage = .null
             }
         }
     }
 
     var onunhandledrejection: EventHandler {
         get {
-            guard let function = objectRef.onunhandledrejection.function else {
+            guard let function = jsObject.onunhandledrejection.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onunhandledrejection = JSClosure { arguments in
+                jsObject.onunhandledrejection = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onunhandledrejection = .null
+                jsObject.onunhandledrejection = .null
             }
         }
     }
 
     var onunload: EventHandler {
         get {
-            guard let function = objectRef.onunload.function else {
+            guard let function = jsObject.onunload.function else {
                 return nil
             }
             return { arg0 in function(arg0).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
-                objectRef.onunload = JSClosure { arguments in
+                jsObject.onunload = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
                 }.jsValue()
             } else {
-                objectRef.onunload = .null
+                jsObject.onunload = .null
             }
         }
     }

@@ -6,11 +6,11 @@
 import JavaScriptKit
 
 class AnyElementContentEditable: JSBridgedClass, ElementContentEditable {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.ElementContentEditable.function! }
+    public class var constructor: JSFunction { JSObject.global.ElementContentEditable.function! }
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
 
-    required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 }

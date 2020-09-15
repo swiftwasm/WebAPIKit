@@ -6,40 +6,40 @@
 import JavaScriptKit
 
 public class ElementInternals: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.ElementInternals.function! }
+    public class var constructor: JSFunction { JSObject.global.ElementInternals.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _form = ReadonlyAttribute(objectRef: objectRef, name: "form")
-        _willValidate = ReadonlyAttribute(objectRef: objectRef, name: "willValidate")
-        _validity = ReadonlyAttribute(objectRef: objectRef, name: "validity")
-        _validationMessage = ReadonlyAttribute(objectRef: objectRef, name: "validationMessage")
-        _labels = ReadonlyAttribute(objectRef: objectRef, name: "labels")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _form = ReadonlyAttribute(jsObject: jsObject, name: "form")
+        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: "willValidate")
+        _validity = ReadonlyAttribute(jsObject: jsObject, name: "validity")
+        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: "validationMessage")
+        _labels = ReadonlyAttribute(jsObject: jsObject, name: "labels")
+        self.jsObject = jsObject
     }
 
     public func setFormValue(value: FileOrStringOrFormData?, state: FileOrStringOrFormData?) {
-        _ = objectRef.setFormValue!(value.jsValue(), state.jsValue())
+        _ = jsObject.setFormValue!(value.jsValue(), state.jsValue())
     }
 
     public func setFormValue(value: FileOrStringOrFormData?) {
-        _ = objectRef.setFormValue!(value.jsValue())
+        _ = jsObject.setFormValue!(value.jsValue())
     }
 
     @ReadonlyAttribute
     public var form: HTMLFormElement?
 
     public func setValidity(flags: ValidityStateFlags, message: String, anchor: HTMLElement) {
-        _ = objectRef.setValidity!(flags.jsValue(), message.jsValue(), anchor.jsValue())
+        _ = jsObject.setValidity!(flags.jsValue(), message.jsValue(), anchor.jsValue())
     }
 
     public func setValidity(flags: ValidityStateFlags, message: String) {
-        _ = objectRef.setValidity!(flags.jsValue(), message.jsValue())
+        _ = jsObject.setValidity!(flags.jsValue(), message.jsValue())
     }
 
     public func setValidity(flags: ValidityStateFlags) {
-        _ = objectRef.setValidity!(flags.jsValue())
+        _ = jsObject.setValidity!(flags.jsValue())
     }
 
     @ReadonlyAttribute
@@ -52,11 +52,11 @@ public class ElementInternals: JSBridgedClass {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        return objectRef.checkValidity!().fromJSValue()!
+        return jsObject.checkValidity!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        return objectRef.reportValidity!().fromJSValue()!
+        return jsObject.reportValidity!().fromJSValue()!
     }
 
     @ReadonlyAttribute

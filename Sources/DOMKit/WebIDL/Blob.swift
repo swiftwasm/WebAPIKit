@@ -6,22 +6,22 @@
 import JavaScriptKit
 
 public class Blob: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.Blob.function! }
+    public class var constructor: JSFunction { JSObject.global.Blob.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _size = ReadonlyAttribute(objectRef: objectRef, name: "size")
-        _type = ReadonlyAttribute(objectRef: objectRef, name: "type")
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _size = ReadonlyAttribute(jsObject: jsObject, name: "size")
+        _type = ReadonlyAttribute(jsObject: jsObject, name: "type")
+        self.jsObject = jsObject
     }
 
     public convenience init(blobParts: [BlobPart], options: BlobPropertyBag = [:]) {
-        self.init(withCompatibleObject: Blob.classRef.new(blobParts.jsValue(), options.jsValue()))
+        self.init(withCompatibleObject: Blob.constructor.new(blobParts.jsValue(), options.jsValue()))
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: Blob.classRef.new())
+        self.init(withCompatibleObject: Blob.constructor.new())
     }
 
     @ReadonlyAttribute
@@ -31,30 +31,30 @@ public class Blob: JSBridgedClass {
     public var type: String
 
     public func slice(start: Int64, end: Int64, contentType: String) -> Blob {
-        return objectRef.slice!(start.jsValue(), end.jsValue(), contentType.jsValue()).fromJSValue()!
+        return jsObject.slice!(start.jsValue(), end.jsValue(), contentType.jsValue()).fromJSValue()!
     }
 
     public func slice(start: Int64, end: Int64) -> Blob {
-        return objectRef.slice!(start.jsValue(), end.jsValue()).fromJSValue()!
+        return jsObject.slice!(start.jsValue(), end.jsValue()).fromJSValue()!
     }
 
     public func slice(start: Int64) -> Blob {
-        return objectRef.slice!(start.jsValue()).fromJSValue()!
+        return jsObject.slice!(start.jsValue()).fromJSValue()!
     }
 
     public func slice() -> Blob {
-        return objectRef.slice!().fromJSValue()!
+        return jsObject.slice!().fromJSValue()!
     }
 
     public func stream() -> ReadableStream {
-        return objectRef.stream!().fromJSValue()!
+        return jsObject.stream!().fromJSValue()!
     }
 
     public func text() -> Promise<String> {
-        return objectRef.text!().fromJSValue()!
+        return jsObject.text!().fromJSValue()!
     }
 
     public func arrayBuffer() -> Promise<ArrayBuffer> {
-        return objectRef.arrayBuffer!().fromJSValue()!
+        return jsObject.arrayBuffer!().fromJSValue()!
     }
 }

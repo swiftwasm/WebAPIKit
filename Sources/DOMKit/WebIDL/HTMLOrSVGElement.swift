@@ -9,41 +9,41 @@ public protocol HTMLOrSVGElement: JSBridgedClass {}
 
 public extension HTMLOrSVGElement {
     var dataset: DOMStringMap {
-        return objectRef.dataset.fromJSValue()!
+        return jsObject.dataset.fromJSValue()!
     }
 
     var nonce: String {
         get {
-            return objectRef.nonce.fromJSValue()!
+            return jsObject.nonce.fromJSValue()!
         }
         set {
-            objectRef.nonce = newValue.jsValue()
+            jsObject.nonce = newValue.jsValue()
         }
     }
 
     var autofocus: Bool {
         get {
-            return objectRef.autofocus.fromJSValue()!
+            return jsObject.autofocus.fromJSValue()!
         }
         set {
-            objectRef.autofocus = newValue.jsValue()
+            jsObject.autofocus = newValue.jsValue()
         }
     }
 
     var tabIndex: Int32 {
         get {
-            return objectRef.tabIndex.fromJSValue()!
+            return jsObject.tabIndex.fromJSValue()!
         }
         set {
-            objectRef.tabIndex = newValue.jsValue()
+            jsObject.tabIndex = newValue.jsValue()
         }
     }
 
     func focus(options: FocusOptions = [:]) {
-        _ = objectRef.focus!(options.jsValue())
+        _ = jsObject.focus!(options.jsValue())
     }
 
     func blur() {
-        _ = objectRef.blur!()
+        _ = jsObject.blur!()
     }
 }

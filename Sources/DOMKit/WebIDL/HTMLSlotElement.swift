@@ -6,25 +6,25 @@
 import JavaScriptKit
 
 public class HTMLSlotElement: HTMLElement {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.HTMLSlotElement.function! }
+    override public class var constructor: JSFunction { JSObject.global.HTMLSlotElement.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _name = ReadWriteAttribute(objectRef: objectRef, name: "name")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _name = ReadWriteAttribute(jsObject: jsObject, name: "name")
+        super.init(withCompatibleObject: jsObject)
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: HTMLSlotElement.classRef.new())
+        self.init(withCompatibleObject: HTMLSlotElement.constructor.new())
     }
 
     @ReadWriteAttribute
     public var name: String
 
     public func assignedNodes(options: AssignedNodesOptions = [:]) -> [Node] {
-        return objectRef.assignedNodes!(options.jsValue()).fromJSValue()!
+        return jsObject.assignedNodes!(options.jsValue()).fromJSValue()!
     }
 
     public func assignedElements(options: AssignedNodesOptions = [:]) -> [Element] {
-        return objectRef.assignedElements!(options.jsValue()).fromJSValue()!
+        return jsObject.assignedElements!(options.jsValue()).fromJSValue()!
     }
 }

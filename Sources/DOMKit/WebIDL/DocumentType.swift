@@ -6,13 +6,13 @@
 import JavaScriptKit
 
 public class DocumentType: Node, ChildNode {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.DocumentType.function! }
+    override public class var constructor: JSFunction { JSObject.global.DocumentType.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _name = ReadonlyAttribute(objectRef: objectRef, name: "name")
-        _publicId = ReadonlyAttribute(objectRef: objectRef, name: "publicId")
-        _systemId = ReadonlyAttribute(objectRef: objectRef, name: "systemId")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _name = ReadonlyAttribute(jsObject: jsObject, name: "name")
+        _publicId = ReadonlyAttribute(jsObject: jsObject, name: "publicId")
+        _systemId = ReadonlyAttribute(jsObject: jsObject, name: "systemId")
+        super.init(withCompatibleObject: jsObject)
     }
 
     @ReadonlyAttribute

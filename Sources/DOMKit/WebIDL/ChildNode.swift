@@ -9,30 +9,30 @@ public protocol ChildNode: JSBridgedClass {}
 
 public extension ChildNode {
     func before(nodes: NodeOrString...) {
-        _ = objectRef.before!(nodes.jsValue())
+        _ = jsObject.before!(nodes.jsValue())
     }
 
     func before() {
-        _ = objectRef.before!()
+        _ = jsObject.before!()
     }
 
     func after(nodes: NodeOrString...) {
-        _ = objectRef.after!(nodes.jsValue())
+        _ = jsObject.after!(nodes.jsValue())
     }
 
     func after() {
-        _ = objectRef.after!()
+        _ = jsObject.after!()
     }
 
     func replaceWith(nodes: NodeOrString...) {
-        _ = objectRef.replaceWith!(nodes.jsValue())
+        _ = jsObject.replaceWith!(nodes.jsValue())
     }
 
     func replaceWith() {
-        _ = objectRef.replaceWith!()
+        _ = jsObject.replaceWith!()
     }
 
     func remove() {
-        _ = objectRef.remove!()
+        _ = jsObject.remove!()
     }
 }

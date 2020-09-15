@@ -6,15 +6,15 @@
 import JavaScriptKit
 
 class AnyXPathNSResolver: JSBridgedClass, XPathNSResolver {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.XPathNSResolver.function! }
+    public class var constructor: JSFunction { JSObject.global.XPathNSResolver.function! }
 
-    let objectRef: JSObjectRef
+    let jsObject: JSObject
 
-    required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public func lookupNamespaceURI(prefix: String?) -> String? {
-        return objectRef.lookupNamespaceURI!(prefix.jsValue()).fromJSValue()!
+        return jsObject.lookupNamespaceURI!(prefix.jsValue()).fromJSValue()!
     }
 }

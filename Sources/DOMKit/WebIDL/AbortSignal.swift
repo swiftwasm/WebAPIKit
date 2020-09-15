@@ -6,12 +6,12 @@
 import JavaScriptKit
 
 public class AbortSignal: EventTarget {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.AbortSignal.function! }
+    override public class var constructor: JSFunction { JSObject.global.AbortSignal.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _aborted = ReadonlyAttribute(objectRef: objectRef, name: "aborted")
-        _onabort = OptionalClosureHandler(objectRef: objectRef, name: "onabort")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _aborted = ReadonlyAttribute(jsObject: jsObject, name: "aborted")
+        _onabort = OptionalClosureHandler(jsObject: jsObject, name: "onabort")
+        super.init(withCompatibleObject: jsObject)
     }
 
     @ReadonlyAttribute

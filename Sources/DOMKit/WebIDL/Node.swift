@@ -6,24 +6,24 @@
 import JavaScriptKit
 
 public class Node: EventTarget {
-    override public class var classRef: JSFunctionRef { JSObjectRef.global.Node.function! }
+    override public class var constructor: JSFunction { JSObject.global.Node.function! }
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        _nodeType = ReadonlyAttribute(objectRef: objectRef, name: "nodeType")
-        _nodeName = ReadonlyAttribute(objectRef: objectRef, name: "nodeName")
-        _baseURI = ReadonlyAttribute(objectRef: objectRef, name: "baseURI")
-        _isConnected = ReadonlyAttribute(objectRef: objectRef, name: "isConnected")
-        _ownerDocument = ReadonlyAttribute(objectRef: objectRef, name: "ownerDocument")
-        _parentNode = ReadonlyAttribute(objectRef: objectRef, name: "parentNode")
-        _parentElement = ReadonlyAttribute(objectRef: objectRef, name: "parentElement")
-        _childNodes = ReadonlyAttribute(objectRef: objectRef, name: "childNodes")
-        _firstChild = ReadonlyAttribute(objectRef: objectRef, name: "firstChild")
-        _lastChild = ReadonlyAttribute(objectRef: objectRef, name: "lastChild")
-        _previousSibling = ReadonlyAttribute(objectRef: objectRef, name: "previousSibling")
-        _nextSibling = ReadonlyAttribute(objectRef: objectRef, name: "nextSibling")
-        _nodeValue = ReadWriteAttribute(objectRef: objectRef, name: "nodeValue")
-        _textContent = ReadWriteAttribute(objectRef: objectRef, name: "textContent")
-        super.init(withCompatibleObject: objectRef)
+    public required init(withCompatibleObject jsObject: JSObject) {
+        _nodeType = ReadonlyAttribute(jsObject: jsObject, name: "nodeType")
+        _nodeName = ReadonlyAttribute(jsObject: jsObject, name: "nodeName")
+        _baseURI = ReadonlyAttribute(jsObject: jsObject, name: "baseURI")
+        _isConnected = ReadonlyAttribute(jsObject: jsObject, name: "isConnected")
+        _ownerDocument = ReadonlyAttribute(jsObject: jsObject, name: "ownerDocument")
+        _parentNode = ReadonlyAttribute(jsObject: jsObject, name: "parentNode")
+        _parentElement = ReadonlyAttribute(jsObject: jsObject, name: "parentElement")
+        _childNodes = ReadonlyAttribute(jsObject: jsObject, name: "childNodes")
+        _firstChild = ReadonlyAttribute(jsObject: jsObject, name: "firstChild")
+        _lastChild = ReadonlyAttribute(jsObject: jsObject, name: "lastChild")
+        _previousSibling = ReadonlyAttribute(jsObject: jsObject, name: "previousSibling")
+        _nextSibling = ReadonlyAttribute(jsObject: jsObject, name: "nextSibling")
+        _nodeValue = ReadWriteAttribute(jsObject: jsObject, name: "nodeValue")
+        _textContent = ReadWriteAttribute(jsObject: jsObject, name: "textContent")
+        super.init(withCompatibleObject: jsObject)
     }
 
     public let ELEMENT_NODE: UInt16 = 1
@@ -66,7 +66,7 @@ public class Node: EventTarget {
     public var ownerDocument: Document?
 
     public func getRootNode(options: GetRootNodeOptions = [:]) -> Node {
-        return objectRef.getRootNode!(options.jsValue()).fromJSValue()!
+        return jsObject.getRootNode!(options.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -76,7 +76,7 @@ public class Node: EventTarget {
     public var parentElement: Element?
 
     public func hasChildNodes() -> Bool {
-        return objectRef.hasChildNodes!().fromJSValue()!
+        return jsObject.hasChildNodes!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -101,19 +101,19 @@ public class Node: EventTarget {
     public var textContent: String?
 
     public func normalize() {
-        _ = objectRef.normalize!()
+        _ = jsObject.normalize!()
     }
 
     public func cloneNode(deep: Bool = false) -> Node {
-        return objectRef.cloneNode!(deep.jsValue()).fromJSValue()!
+        return jsObject.cloneNode!(deep.jsValue()).fromJSValue()!
     }
 
     public func isEqualNode(otherNode: Node?) -> Bool {
-        return objectRef.isEqualNode!(otherNode.jsValue()).fromJSValue()!
+        return jsObject.isEqualNode!(otherNode.jsValue()).fromJSValue()!
     }
 
     public func isSameNode(otherNode: Node?) -> Bool {
-        return objectRef.isSameNode!(otherNode.jsValue()).fromJSValue()!
+        return jsObject.isSameNode!(otherNode.jsValue()).fromJSValue()!
     }
 
     public let DOCUMENT_POSITION_DISCONNECTED: UInt16 = 1
@@ -129,38 +129,38 @@ public class Node: EventTarget {
     public let DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: UInt16 = 32
 
     public func compareDocumentPosition(other: Node) -> UInt16 {
-        return objectRef.compareDocumentPosition!(other.jsValue()).fromJSValue()!
+        return jsObject.compareDocumentPosition!(other.jsValue()).fromJSValue()!
     }
 
     public func contains(other: Node?) -> Bool {
-        return objectRef.contains!(other.jsValue()).fromJSValue()!
+        return jsObject.contains!(other.jsValue()).fromJSValue()!
     }
 
     public func lookupPrefix(namespace: String?) -> String? {
-        return objectRef.lookupPrefix!(namespace.jsValue()).fromJSValue()!
+        return jsObject.lookupPrefix!(namespace.jsValue()).fromJSValue()!
     }
 
     public func lookupNamespaceURI(prefix: String?) -> String? {
-        return objectRef.lookupNamespaceURI!(prefix.jsValue()).fromJSValue()!
+        return jsObject.lookupNamespaceURI!(prefix.jsValue()).fromJSValue()!
     }
 
     public func isDefaultNamespace(namespace: String?) -> Bool {
-        return objectRef.isDefaultNamespace!(namespace.jsValue()).fromJSValue()!
+        return jsObject.isDefaultNamespace!(namespace.jsValue()).fromJSValue()!
     }
 
     public func insertBefore(node: Node, child: Node?) -> Node {
-        return objectRef.insertBefore!(node.jsValue(), child.jsValue()).fromJSValue()!
+        return jsObject.insertBefore!(node.jsValue(), child.jsValue()).fromJSValue()!
     }
 
     public func appendChild(node: Node) -> Node {
-        return objectRef.appendChild!(node.jsValue()).fromJSValue()!
+        return jsObject.appendChild!(node.jsValue()).fromJSValue()!
     }
 
     public func replaceChild(node: Node, child: Node) -> Node {
-        return objectRef.replaceChild!(node.jsValue(), child.jsValue()).fromJSValue()!
+        return jsObject.replaceChild!(node.jsValue(), child.jsValue()).fromJSValue()!
     }
 
     public func removeChild(child: Node) -> Node {
-        return objectRef.removeChild!(child.jsValue()).fromJSValue()!
+        return jsObject.removeChild!(child.jsValue()).fromJSValue()!
     }
 }

@@ -6,143 +6,143 @@
 import JavaScriptKit
 
 public enum console {
-    public static var objectRef: JSObjectRef {
-        return JSObjectRef.global.console.object!
+    public static var jsObject: JSObject {
+        return JSObject.global.console.object!
     }
 
     public static func assert(condition: Bool = false, data: AnyJSValueCodable...) {
-        _ = objectRef.assert!(condition.jsValue(), data.jsValue())
+        _ = jsObject.assert!(condition.jsValue(), data.jsValue())
     }
 
     public static func assert(condition: Bool = false) {
-        _ = objectRef.assert!(condition.jsValue())
+        _ = jsObject.assert!(condition.jsValue())
     }
 
     public static func clear() {
-        _ = objectRef.clear!()
+        _ = jsObject.clear!()
     }
 
     public static func debug(data: AnyJSValueCodable...) {
-        _ = objectRef.debug!(data.jsValue())
+        _ = jsObject.debug!(data.jsValue())
     }
 
     public static func debug() {
-        _ = objectRef.debug!()
+        _ = jsObject.debug!()
     }
 
     public static func error(data: AnyJSValueCodable...) {
-        _ = objectRef.error!(data.jsValue())
+        _ = jsObject.error!(data.jsValue())
     }
 
     public static func error() {
-        _ = objectRef.error!()
+        _ = jsObject.error!()
     }
 
     public static func info(data: AnyJSValueCodable...) {
-        _ = objectRef.info!(data.jsValue())
+        _ = jsObject.info!(data.jsValue())
     }
 
     public static func info() {
-        _ = objectRef.info!()
+        _ = jsObject.info!()
     }
 
     public static func log(data: AnyJSValueCodable...) {
-        _ = objectRef.log!(data.jsValue())
+        _ = jsObject.log!(data.jsValue())
     }
 
     public static func log() {
-        _ = objectRef.log!()
+        _ = jsObject.log!()
     }
 
     public static func table(tabularData: AnyJSValueCodable, properties: [String]) {
-        _ = objectRef.table!(tabularData.jsValue(), properties.jsValue())
+        _ = jsObject.table!(tabularData.jsValue(), properties.jsValue())
     }
 
     public static func table(tabularData: AnyJSValueCodable) {
-        _ = objectRef.table!(tabularData.jsValue())
+        _ = jsObject.table!(tabularData.jsValue())
     }
 
     public static func table() {
-        _ = objectRef.table!()
+        _ = jsObject.table!()
     }
 
     public static func trace(data: AnyJSValueCodable...) {
-        _ = objectRef.trace!(data.jsValue())
+        _ = jsObject.trace!(data.jsValue())
     }
 
     public static func trace() {
-        _ = objectRef.trace!()
+        _ = jsObject.trace!()
     }
 
     public static func warn(data: AnyJSValueCodable...) {
-        _ = objectRef.warn!(data.jsValue())
+        _ = jsObject.warn!(data.jsValue())
     }
 
     public static func warn() {
-        _ = objectRef.warn!()
+        _ = jsObject.warn!()
     }
 
     public static func dir(item: AnyJSValueCodable, options: AnyJSValueCodable?) {
-        _ = objectRef.dir!(item.jsValue(), options.jsValue())
+        _ = jsObject.dir!(item.jsValue(), options.jsValue())
     }
 
     public static func dir(item: AnyJSValueCodable) {
-        _ = objectRef.dir!(item.jsValue())
+        _ = jsObject.dir!(item.jsValue())
     }
 
     public static func dir() {
-        _ = objectRef.dir!()
+        _ = jsObject.dir!()
     }
 
     public static func dirxml(data: AnyJSValueCodable...) {
-        _ = objectRef.dirxml!(data.jsValue())
+        _ = jsObject.dirxml!(data.jsValue())
     }
 
     public static func dirxml() {
-        _ = objectRef.dirxml!()
+        _ = jsObject.dirxml!()
     }
 
     public static func count(label: String = "default") {
-        _ = objectRef.count!(label.jsValue())
+        _ = jsObject.count!(label.jsValue())
     }
 
     public static func countReset(label: String = "default") {
-        _ = objectRef.countReset!(label.jsValue())
+        _ = jsObject.countReset!(label.jsValue())
     }
 
     public static func group(data: AnyJSValueCodable...) {
-        _ = objectRef.group!(data.jsValue())
+        _ = jsObject.group!(data.jsValue())
     }
 
     public static func group() {
-        _ = objectRef.group!()
+        _ = jsObject.group!()
     }
 
     public static func groupCollapsed(data: AnyJSValueCodable...) {
-        _ = objectRef.groupCollapsed!(data.jsValue())
+        _ = jsObject.groupCollapsed!(data.jsValue())
     }
 
     public static func groupCollapsed() {
-        _ = objectRef.groupCollapsed!()
+        _ = jsObject.groupCollapsed!()
     }
 
     public static func groupEnd() {
-        _ = objectRef.groupEnd!()
+        _ = jsObject.groupEnd!()
     }
 
     public static func time(label: String = "default") {
-        _ = objectRef.time!(label.jsValue())
+        _ = jsObject.time!(label.jsValue())
     }
 
     public static func timeLog(label: String = "default", data: AnyJSValueCodable...) {
-        _ = objectRef.timeLog!(label.jsValue(), data.jsValue())
+        _ = jsObject.timeLog!(label.jsValue(), data.jsValue())
     }
 
     public static func timeLog(label: String = "default") {
-        _ = objectRef.timeLog!(label.jsValue())
+        _ = jsObject.timeLog!(label.jsValue())
     }
 
     public static func timeEnd(label: String = "default") {
-        _ = objectRef.timeEnd!(label.jsValue())
+        _ = jsObject.timeEnd!(label.jsValue())
     }
 }

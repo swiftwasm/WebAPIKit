@@ -6,15 +6,15 @@
 import JavaScriptKit
 
 public class XPathExpression: JSBridgedClass {
-    public class var classRef: JSFunctionRef { JSObjectRef.global.XPathExpression.function! }
+    public class var constructor: JSFunction { JSObject.global.XPathExpression.function! }
 
-    public let objectRef: JSObjectRef
+    public let jsObject: JSObject
 
-    public required init(withCompatibleObject objectRef: JSObjectRef) {
-        self.objectRef = objectRef
+    public required init(withCompatibleObject jsObject: JSObject) {
+        self.jsObject = jsObject
     }
 
     public func evaluate(contextNode: Node, type: UInt16 = 0, result: XPathResult? = nil) -> XPathResult {
-        return objectRef.evaluate!(contextNode.jsValue(), type.jsValue(), result.jsValue()).fromJSValue()!
+        return jsObject.evaluate!(contextNode.jsValue(), type.jsValue(), result.jsValue()).fromJSValue()!
     }
 }
