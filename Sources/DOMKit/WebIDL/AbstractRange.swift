@@ -10,7 +10,7 @@ public class AbstractRange: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _startContainer = ReadonlyAttribute(jsObject: jsObject, name: "startContainer")
         _startOffset = ReadonlyAttribute(jsObject: jsObject, name: "startOffset")
         _endContainer = ReadonlyAttribute(jsObject: jsObject, name: "endContainer")

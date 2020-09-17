@@ -10,7 +10,7 @@ public class TreeWalker: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _root = ReadonlyAttribute(jsObject: jsObject, name: "root")
         _whatToShow = ReadonlyAttribute(jsObject: jsObject, name: "whatToShow")
         _currentNode = ReadWriteAttribute(jsObject: jsObject, name: "currentNode")

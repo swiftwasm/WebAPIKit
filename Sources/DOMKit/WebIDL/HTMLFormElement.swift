@@ -8,7 +8,7 @@ import JavaScriptKit
 public class HTMLFormElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLFormElement.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _acceptCharset = ReadWriteAttribute(jsObject: jsObject, name: "acceptCharset")
         _action = ReadWriteAttribute(jsObject: jsObject, name: "action")
         _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: "autocomplete")
@@ -22,7 +22,7 @@ public class HTMLFormElement: HTMLElement {
         _relList = ReadonlyAttribute(jsObject: jsObject, name: "relList")
         _elements = ReadonlyAttribute(jsObject: jsObject, name: "elements")
         _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public subscript(_: String) -> RadioNodeListOrElement? {
@@ -30,7 +30,7 @@ public class HTMLFormElement: HTMLElement {
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: HTMLFormElement.constructor.new())
+        self.init(unsafelyWrapping: HTMLFormElement.constructor.new())
     }
 
     @ReadWriteAttribute

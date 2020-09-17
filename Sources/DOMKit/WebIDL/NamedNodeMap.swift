@@ -10,7 +10,7 @@ public class NamedNodeMap: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
         self.jsObject = jsObject
     }

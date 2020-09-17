@@ -8,13 +8,13 @@ import JavaScriptKit
 public class HTMLSlotElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLSlotElement.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadWriteAttribute(jsObject: jsObject, name: "name")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: HTMLSlotElement.constructor.new())
+        self.init(unsafelyWrapping: HTMLSlotElement.constructor.new())
     }
 
     @ReadWriteAttribute

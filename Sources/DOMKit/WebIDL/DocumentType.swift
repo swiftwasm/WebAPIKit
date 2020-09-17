@@ -8,11 +8,11 @@ import JavaScriptKit
 public class DocumentType: Node, ChildNode {
     override public class var constructor: JSFunction { JSObject.global.DocumentType.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: "name")
         _publicId = ReadonlyAttribute(jsObject: jsObject, name: "publicId")
         _systemId = ReadonlyAttribute(jsObject: jsObject, name: "systemId")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute

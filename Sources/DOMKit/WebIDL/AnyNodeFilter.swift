@@ -10,7 +10,7 @@ class AnyNodeFilter: JSBridgedClass, NodeFilter {
 
     let jsObject: JSObject
 
-    required init(withCompatibleObject jsObject: JSObject) {
+    required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 

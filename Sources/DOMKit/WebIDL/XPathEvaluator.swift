@@ -10,11 +10,11 @@ public class XPathEvaluator: JSBridgedClass, XPathEvaluatorBase {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: XPathEvaluator.constructor.new())
+        self.init(unsafelyWrapping: XPathEvaluator.constructor.new())
     }
 }

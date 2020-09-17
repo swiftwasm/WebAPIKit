@@ -10,7 +10,7 @@ public class MutationRecord: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadonlyAttribute(jsObject: jsObject, name: "type")
         _target = ReadonlyAttribute(jsObject: jsObject, name: "target")
         _addedNodes = ReadonlyAttribute(jsObject: jsObject, name: "addedNodes")

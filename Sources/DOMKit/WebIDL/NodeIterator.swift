@@ -10,7 +10,7 @@ public class NodeIterator: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _root = ReadonlyAttribute(jsObject: jsObject, name: "root")
         _referenceNode = ReadonlyAttribute(jsObject: jsObject, name: "referenceNode")
         _pointerBeforeReferenceNode = ReadonlyAttribute(jsObject: jsObject, name: "pointerBeforeReferenceNode")

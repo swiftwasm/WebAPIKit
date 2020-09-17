@@ -8,7 +8,7 @@ import JavaScriptKit
 public class FileReader: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.FileReader.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: "readyState")
         _result = ReadonlyAttribute(jsObject: jsObject, name: "result")
         _error = ReadonlyAttribute(jsObject: jsObject, name: "error")
@@ -18,11 +18,11 @@ public class FileReader: EventTarget {
         _onabort = OptionalClosureHandler(jsObject: jsObject, name: "onabort")
         _onerror = OptionalClosureHandler(jsObject: jsObject, name: "onerror")
         _onloadend = OptionalClosureHandler(jsObject: jsObject, name: "onloadend")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: FileReader.constructor.new())
+        self.init(unsafelyWrapping: FileReader.constructor.new())
     }
 
     public func readAsArrayBuffer(blob: Blob) {

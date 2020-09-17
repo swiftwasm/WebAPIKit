@@ -10,12 +10,12 @@ public class FileReaderSync: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: FileReaderSync.constructor.new())
+        self.init(unsafelyWrapping: FileReaderSync.constructor.new())
     }
 
     public func readAsArrayBuffer(blob: Blob) -> ArrayBuffer {

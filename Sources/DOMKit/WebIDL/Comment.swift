@@ -8,11 +8,11 @@ import JavaScriptKit
 public class Comment: CharacterData {
     override public class var constructor: JSFunction { JSObject.global.Comment.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
-        super.init(withCompatibleObject: jsObject)
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public convenience init(data: String = "") {
-        self.init(withCompatibleObject: Comment.constructor.new(data.jsValue()))
+        self.init(unsafelyWrapping: Comment.constructor.new(data.jsValue()))
     }
 }

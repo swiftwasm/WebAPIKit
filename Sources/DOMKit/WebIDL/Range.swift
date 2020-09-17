@@ -8,13 +8,13 @@ import JavaScriptKit
 public class Range: AbstractRange {
     override public class var constructor: JSFunction { JSObject.global.Range.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _commonAncestorContainer = ReadonlyAttribute(jsObject: jsObject, name: "commonAncestorContainer")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: Range.constructor.new())
+        self.init(unsafelyWrapping: Range.constructor.new())
     }
 
     @ReadonlyAttribute

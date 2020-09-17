@@ -10,7 +10,7 @@ public class ElementInternals: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _form = ReadonlyAttribute(jsObject: jsObject, name: "form")
         _willValidate = ReadonlyAttribute(jsObject: jsObject, name: "willValidate")
         _validity = ReadonlyAttribute(jsObject: jsObject, name: "validity")

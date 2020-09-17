@@ -8,13 +8,13 @@ import JavaScriptKit
 public class CustomEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.CustomEvent.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _detail = ReadonlyAttribute(jsObject: jsObject, name: "detail")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public convenience init(type: String, eventInitDict: CustomEventInit = [:]) {
-        self.init(withCompatibleObject: CustomEvent.constructor.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(unsafelyWrapping: CustomEvent.constructor.new(type.jsValue(), eventInitDict.jsValue()))
     }
 
     @ReadonlyAttribute

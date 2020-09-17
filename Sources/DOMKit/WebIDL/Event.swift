@@ -10,7 +10,7 @@ public class Event: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadonlyAttribute(jsObject: jsObject, name: "type")
         _target = ReadonlyAttribute(jsObject: jsObject, name: "target")
         _srcElement = ReadonlyAttribute(jsObject: jsObject, name: "srcElement")
@@ -28,7 +28,7 @@ public class Event: JSBridgedClass {
     }
 
     public convenience init(type: String, eventInitDict: EventInit = [:]) {
-        self.init(withCompatibleObject: Event.constructor.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(unsafelyWrapping: Event.constructor.new(type.jsValue(), eventInitDict.jsValue()))
     }
 
     @ReadonlyAttribute

@@ -8,7 +8,7 @@ import JavaScriptKit
 public class Element: Node, ChildNode, NonDocumentTypeChildNode, ParentNode, Slotable {
     override public class var constructor: JSFunction { JSObject.global.Element.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: "namespaceURI")
         _prefix = ReadonlyAttribute(jsObject: jsObject, name: "prefix")
         _localName = ReadonlyAttribute(jsObject: jsObject, name: "localName")
@@ -19,7 +19,7 @@ public class Element: Node, ChildNode, NonDocumentTypeChildNode, ParentNode, Slo
         _slot = ReadWriteAttribute(jsObject: jsObject, name: "slot")
         _attributes = ReadonlyAttribute(jsObject: jsObject, name: "attributes")
         _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: "shadowRoot")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute

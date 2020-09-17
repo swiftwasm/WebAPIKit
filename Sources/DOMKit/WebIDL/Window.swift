@@ -10,7 +10,7 @@ public class Window: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _event = ReadonlyAttribute(jsObject: jsObject, name: "event")
         self.jsObject = jsObject
     }

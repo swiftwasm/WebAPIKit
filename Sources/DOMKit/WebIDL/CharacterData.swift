@@ -8,10 +8,10 @@ import JavaScriptKit
 public class CharacterData: Node, ChildNode, NonDocumentTypeChildNode {
     override public class var constructor: JSFunction { JSObject.global.CharacterData.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadWriteAttribute(jsObject: jsObject, name: "data")
         _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadWriteAttribute

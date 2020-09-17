@@ -8,7 +8,7 @@ import JavaScriptKit
 public class Document: Node, DocumentOrShadowRoot, NonElementParentNode, ParentNode, XPathEvaluatorBase {
     override public class var constructor: JSFunction { JSObject.global.Document.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _implementation = ReadonlyAttribute(jsObject: jsObject, name: "implementation")
         _URL = ReadonlyAttribute(jsObject: jsObject, name: "URL")
         _documentURI = ReadonlyAttribute(jsObject: jsObject, name: "documentURI")
@@ -19,11 +19,11 @@ public class Document: Node, DocumentOrShadowRoot, NonElementParentNode, ParentN
         _contentType = ReadonlyAttribute(jsObject: jsObject, name: "contentType")
         _doctype = ReadonlyAttribute(jsObject: jsObject, name: "doctype")
         _documentElement = ReadonlyAttribute(jsObject: jsObject, name: "documentElement")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: Document.constructor.new())
+        self.init(unsafelyWrapping: Document.constructor.new())
     }
 
     @ReadonlyAttribute

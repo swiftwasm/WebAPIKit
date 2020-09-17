@@ -8,7 +8,7 @@ import JavaScriptKit
 public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLElement.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _title = ReadWriteAttribute(jsObject: jsObject, name: "title")
         _lang = ReadWriteAttribute(jsObject: jsObject, name: "lang")
         _translate = ReadWriteAttribute(jsObject: jsObject, name: "translate")
@@ -20,11 +20,11 @@ public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementConte
         _spellcheck = ReadWriteAttribute(jsObject: jsObject, name: "spellcheck")
         _autocapitalize = ReadWriteAttribute(jsObject: jsObject, name: "autocapitalize")
         _innerText = ReadWriteAttribute(jsObject: jsObject, name: "innerText")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: HTMLElement.constructor.new())
+        self.init(unsafelyWrapping: HTMLElement.constructor.new())
     }
 
     @ReadWriteAttribute

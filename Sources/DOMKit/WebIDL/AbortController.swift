@@ -10,13 +10,13 @@ public class AbortController: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _signal = ReadonlyAttribute(jsObject: jsObject, name: "signal")
         self.jsObject = jsObject
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: AbortController.constructor.new())
+        self.init(unsafelyWrapping: AbortController.constructor.new())
     }
 
     @ReadonlyAttribute

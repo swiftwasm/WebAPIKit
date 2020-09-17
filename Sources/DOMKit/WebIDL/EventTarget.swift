@@ -10,12 +10,12 @@ public class EventTarget: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: EventTarget.constructor.new())
+        self.init(unsafelyWrapping: EventTarget.constructor.new())
     }
 
     public func addEventListener<EventListenerType: EventListener>(type: String, callback: EventListenerType?, options: AddEventListenerOptionsOrBool = [:]) -> Void {

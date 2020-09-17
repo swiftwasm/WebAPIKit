@@ -10,7 +10,7 @@ class AnyNonDocumentTypeChildNode: JSBridgedClass, NonDocumentTypeChildNode {
 
     let jsObject: JSObject
 
-    required init(withCompatibleObject jsObject: JSObject) {
+    required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 }

@@ -10,18 +10,18 @@ public class FormData: JSBridgedClass, KeyValueSequence {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 
     public typealias Value = FormDataEntryValue
 
     public convenience init(form: HTMLFormElement) {
-        self.init(withCompatibleObject: FormData.constructor.new(form.jsValue()))
+        self.init(unsafelyWrapping: FormData.constructor.new(form.jsValue()))
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: FormData.constructor.new())
+        self.init(unsafelyWrapping: FormData.constructor.new())
     }
 
     public func append(name: String, value: String) {

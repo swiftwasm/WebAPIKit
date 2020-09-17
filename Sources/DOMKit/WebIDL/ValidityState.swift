@@ -10,7 +10,7 @@ public class ValidityState: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _valueMissing = ReadonlyAttribute(jsObject: jsObject, name: "valueMissing")
         _typeMismatch = ReadonlyAttribute(jsObject: jsObject, name: "typeMismatch")
         _patternMismatch = ReadonlyAttribute(jsObject: jsObject, name: "patternMismatch")

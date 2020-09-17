@@ -10,7 +10,7 @@ public class DOMException: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: "name")
         _message = ReadonlyAttribute(jsObject: jsObject, name: "message")
         _code = ReadonlyAttribute(jsObject: jsObject, name: "code")
@@ -18,7 +18,7 @@ public class DOMException: JSBridgedClass {
     }
 
     public convenience init(message: String = "", name: String = "Error") {
-        self.init(withCompatibleObject: DOMException.constructor.new(message.jsValue(), name.jsValue()))
+        self.init(unsafelyWrapping: DOMException.constructor.new(message.jsValue(), name.jsValue()))
     }
 
     @ReadonlyAttribute

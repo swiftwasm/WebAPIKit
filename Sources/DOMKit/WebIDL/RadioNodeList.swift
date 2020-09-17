@@ -8,9 +8,9 @@ import JavaScriptKit
 public class RadioNodeList: NodeList {
     override public class var constructor: JSFunction { JSObject.global.RadioNodeList.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadWriteAttribute

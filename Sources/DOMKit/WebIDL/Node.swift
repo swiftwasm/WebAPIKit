@@ -8,7 +8,7 @@ import JavaScriptKit
 public class Node: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.Node.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _nodeType = ReadonlyAttribute(jsObject: jsObject, name: "nodeType")
         _nodeName = ReadonlyAttribute(jsObject: jsObject, name: "nodeName")
         _baseURI = ReadonlyAttribute(jsObject: jsObject, name: "baseURI")
@@ -23,7 +23,7 @@ public class Node: EventTarget {
         _nextSibling = ReadonlyAttribute(jsObject: jsObject, name: "nextSibling")
         _nodeValue = ReadWriteAttribute(jsObject: jsObject, name: "nodeValue")
         _textContent = ReadWriteAttribute(jsObject: jsObject, name: "textContent")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public let ELEMENT_NODE: UInt16 = 1

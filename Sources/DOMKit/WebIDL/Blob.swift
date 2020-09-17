@@ -10,18 +10,18 @@ public class Blob: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _size = ReadonlyAttribute(jsObject: jsObject, name: "size")
         _type = ReadonlyAttribute(jsObject: jsObject, name: "type")
         self.jsObject = jsObject
     }
 
     public convenience init(blobParts: [BlobPart], options: BlobPropertyBag = [:]) {
-        self.init(withCompatibleObject: Blob.constructor.new(blobParts.jsValue(), options.jsValue()))
+        self.init(unsafelyWrapping: Blob.constructor.new(blobParts.jsValue(), options.jsValue()))
     }
 
     public convenience init() {
-        self.init(withCompatibleObject: Blob.constructor.new())
+        self.init(unsafelyWrapping: Blob.constructor.new())
     }
 
     @ReadonlyAttribute

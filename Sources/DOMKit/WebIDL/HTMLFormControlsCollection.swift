@@ -8,8 +8,8 @@ import JavaScriptKit
 public class HTMLFormControlsCollection: HTMLCollection {
     override public class var constructor: JSFunction { JSObject.global.HTMLFormControlsCollection.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
-        super.init(withCompatibleObject: jsObject)
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public subscript(_: String) -> RadioNodeListOrElement?? {

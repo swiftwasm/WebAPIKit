@@ -10,7 +10,7 @@ public class XPathResult: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _resultType = ReadonlyAttribute(jsObject: jsObject, name: "resultType")
         _numberValue = ReadonlyAttribute(jsObject: jsObject, name: "numberValue")
         _stringValue = ReadonlyAttribute(jsObject: jsObject, name: "stringValue")

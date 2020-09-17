@@ -8,7 +8,7 @@ import JavaScriptKit
 public class Attr: Node {
     override public class var constructor: JSFunction { JSObject.global.Attr.function! }
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: "namespaceURI")
         _prefix = ReadonlyAttribute(jsObject: jsObject, name: "prefix")
         _localName = ReadonlyAttribute(jsObject: jsObject, name: "localName")
@@ -16,7 +16,7 @@ public class Attr: Node {
         _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
         _ownerElement = ReadonlyAttribute(jsObject: jsObject, name: "ownerElement")
         _specified = ReadonlyAttribute(jsObject: jsObject, name: "specified")
-        super.init(withCompatibleObject: jsObject)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute
