@@ -10,7 +10,7 @@ public class DataView: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         _buffer = ReadonlyAttribute(jsObject: jsObject, name: "buffer")
         _byteOffset = ReadonlyAttribute(jsObject: jsObject, name: "byteOffset")
         _byteLength = ReadonlyAttribute(jsObject: jsObject, name: "byteLength")
@@ -19,17 +19,17 @@ public class DataView: JSBridgedClass {
 
     public convenience init(buffer: ArrayBuffer) {
 
-        self.init(withCompatibleObject: DataView.constructor.new(buffer.jsValue()))
+        self.init(unsafelyWrapping: DataView.constructor.new(buffer.jsValue()))
     }
 
     public convenience init(buffer: ArrayBuffer, byteOffset: UInt32) {
 
-        self.init(withCompatibleObject: DataView.constructor.new(buffer.jsValue(), byteOffset.jsValue()))
+        self.init(unsafelyWrapping: DataView.constructor.new(buffer.jsValue(), byteOffset.jsValue()))
     }
 
     public convenience init(buffer: ArrayBuffer, byteOffset: UInt32, byteLength: UInt32) {
 
-        self.init(withCompatibleObject: DataView.constructor.new(buffer.jsValue(), byteOffset.jsValue(), byteLength.jsValue()))
+        self.init(unsafelyWrapping: DataView.constructor.new(buffer.jsValue(), byteOffset.jsValue(), byteLength.jsValue()))
     }
 
     @ReadonlyAttribute

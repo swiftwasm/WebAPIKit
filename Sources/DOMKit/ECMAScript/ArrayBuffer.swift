@@ -21,12 +21,12 @@ public class ArrayBuffer: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 
     public convenience init(length: Int) {
-        self.init(withCompatibleObject: Self.constructor.new( length))
+        self.init(unsafelyWrapping: Self.constructor.new( length))
     }
 
     public static func isView(_ object: JSValueCodable) -> Bool {

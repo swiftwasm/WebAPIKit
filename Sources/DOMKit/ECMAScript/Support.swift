@@ -10,7 +10,7 @@ public class Promise<Type>: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
 
         self.jsObject = jsObject
     }
@@ -22,7 +22,7 @@ public class ReadableStream: JSBridgedClass {
 
     public let jsObject: JSObject
 
-    public required init(withCompatibleObject jsObject: JSObject) {
+    public required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 
@@ -160,7 +160,7 @@ public class PairIterableIterator<SequenceType: JSBridgedClass & KeyValueSequenc
             return nil
         }
 
-        let keyValue: [AnyJSValueCodable] = next.value.fromJSValue()!
+        let keyValue: [JSValue] = next.value.fromJSValue()!
         return (keyValue[0].fromJSValue()!, keyValue[1].fromJSValue()!)
     }
 }
