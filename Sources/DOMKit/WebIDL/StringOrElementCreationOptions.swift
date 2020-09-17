@@ -15,7 +15,7 @@ public enum StringOrElementCreationOptions: JSBridgedType, ExpressibleByDictiona
         } else if let decoded: ElementCreationOptions = value.fromJSValue() {
             self = .elementCreationOptions(decoded)
         } else {
-            fatalError()
+            return nil
         }
     }
 

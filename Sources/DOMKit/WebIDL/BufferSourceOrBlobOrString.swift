@@ -18,7 +18,7 @@ public enum BufferSourceOrBlobOrString: JSBridgedType, ExpressibleByStringLitera
         } else if let decoded: String = value.fromJSValue() {
             self = .string(decoded)
         } else {
-            fatalError()
+            return nil
         }
     }
 

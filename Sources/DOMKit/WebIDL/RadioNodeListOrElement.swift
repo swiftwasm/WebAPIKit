@@ -15,7 +15,7 @@ public enum RadioNodeListOrElement: JSBridgedType {
         } else if let decoded: Element = value.fromJSValue() {
             self = .element(decoded)
         } else {
-            fatalError()
+            return nil
         }
     }
 

@@ -39,7 +39,7 @@ public enum Int8ArrayOrInt16ArrayOrInt32ArrayOrUint8ArrayOrUint16ArrayOrUint32Ar
         } else if let decoded: DataView = value.fromJSValue() {
             self = .dataView(decoded)
         } else {
-            fatalError()
+            return nil
         }
     }
 

@@ -15,7 +15,7 @@ public enum StringOrArrayBuffer: JSBridgedType, ExpressibleByStringLiteral {
         } else if let decoded: ArrayBuffer = value.fromJSValue() {
             self = .arrayBuffer(decoded)
         } else {
-            fatalError()
+            return nil
         }
     }
 

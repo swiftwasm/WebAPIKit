@@ -15,7 +15,7 @@ public enum EventListenerOptionsOrBool: JSBridgedType, ExpressibleByBooleanLiter
         } else if let decoded: Bool = value.fromJSValue() {
             self = .bool(decoded)
         } else {
-            fatalError()
+            return nil
         }
     }
 

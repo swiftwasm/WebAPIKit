@@ -18,7 +18,7 @@ public enum FileOrStringOrFormData: JSBridgedType, ExpressibleByStringLiteral {
         } else if let decoded: FormData = value.fromJSValue() {
             self = .formData(decoded)
         } else {
-            fatalError()
+            return nil
         }
     }
 

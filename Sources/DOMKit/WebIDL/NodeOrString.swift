@@ -15,7 +15,7 @@ public enum NodeOrString: JSBridgedType, ExpressibleByStringLiteral {
         } else if let decoded: String = value.fromJSValue() {
             self = .string(decoded)
         } else {
-            fatalError()
+            return nil
         }
     }
 
