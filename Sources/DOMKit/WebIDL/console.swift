@@ -10,7 +10,7 @@ public enum console {
         return JSObject.global.console.object!
     }
 
-    public static func assert(condition: Bool = false, data: AnyJSValueCodable...) {
+    public static func assert(condition: Bool = false, data: JSValue...) {
         _ = jsObject.assert!(condition.jsValue(), data.jsValue())
     }
 
@@ -22,7 +22,7 @@ public enum console {
         _ = jsObject.clear!()
     }
 
-    public static func debug(data: AnyJSValueCodable...) {
+    public static func debug(data: JSValue...) {
         _ = jsObject.debug!(data.jsValue())
     }
 
@@ -30,7 +30,7 @@ public enum console {
         _ = jsObject.debug!()
     }
 
-    public static func error(data: AnyJSValueCodable...) {
+    public static func error(data: JSValue...) {
         _ = jsObject.error!(data.jsValue())
     }
 
@@ -38,7 +38,7 @@ public enum console {
         _ = jsObject.error!()
     }
 
-    public static func info(data: AnyJSValueCodable...) {
+    public static func info(data: JSValue...) {
         _ = jsObject.info!(data.jsValue())
     }
 
@@ -46,7 +46,7 @@ public enum console {
         _ = jsObject.info!()
     }
 
-    public static func log(data: AnyJSValueCodable...) {
+    public static func log(data: JSValue...) {
         _ = jsObject.log!(data.jsValue())
     }
 
@@ -54,11 +54,11 @@ public enum console {
         _ = jsObject.log!()
     }
 
-    public static func table(tabularData: AnyJSValueCodable, properties: [String]) {
+    public static func table(tabularData: JSValue, properties: [String]) {
         _ = jsObject.table!(tabularData.jsValue(), properties.jsValue())
     }
 
-    public static func table(tabularData: AnyJSValueCodable) {
+    public static func table(tabularData: JSValue) {
         _ = jsObject.table!(tabularData.jsValue())
     }
 
@@ -66,7 +66,7 @@ public enum console {
         _ = jsObject.table!()
     }
 
-    public static func trace(data: AnyJSValueCodable...) {
+    public static func trace(data: JSValue...) {
         _ = jsObject.trace!(data.jsValue())
     }
 
@@ -74,7 +74,7 @@ public enum console {
         _ = jsObject.trace!()
     }
 
-    public static func warn(data: AnyJSValueCodable...) {
+    public static func warn(data: JSValue...) {
         _ = jsObject.warn!(data.jsValue())
     }
 
@@ -82,11 +82,11 @@ public enum console {
         _ = jsObject.warn!()
     }
 
-    public static func dir(item: AnyJSValueCodable, options: AnyJSValueCodable?) {
+    public static func dir(item: JSValue, options: JSValue?) {
         _ = jsObject.dir!(item.jsValue(), options.jsValue())
     }
 
-    public static func dir(item: AnyJSValueCodable) {
+    public static func dir(item: JSValue) {
         _ = jsObject.dir!(item.jsValue())
     }
 
@@ -94,7 +94,7 @@ public enum console {
         _ = jsObject.dir!()
     }
 
-    public static func dirxml(data: AnyJSValueCodable...) {
+    public static func dirxml(data: JSValue...) {
         _ = jsObject.dirxml!(data.jsValue())
     }
 
@@ -110,7 +110,7 @@ public enum console {
         _ = jsObject.countReset!(label.jsValue())
     }
 
-    public static func group(data: AnyJSValueCodable...) {
+    public static func group(data: JSValue...) {
         _ = jsObject.group!(data.jsValue())
     }
 
@@ -118,7 +118,7 @@ public enum console {
         _ = jsObject.group!()
     }
 
-    public static func groupCollapsed(data: AnyJSValueCodable...) {
+    public static func groupCollapsed(data: JSValue...) {
         _ = jsObject.groupCollapsed!(data.jsValue())
     }
 
@@ -134,7 +134,7 @@ public enum console {
         _ = jsObject.time!(label.jsValue())
     }
 
-    public static func timeLog(label: String = "default", data: AnyJSValueCodable...) {
+    public static func timeLog(label: String = "default", data: JSValue...) {
         _ = jsObject.timeLog!(label.jsValue(), data.jsValue())
     }
 

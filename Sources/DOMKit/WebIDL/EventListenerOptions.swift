@@ -10,24 +10,22 @@ public struct EventListenerOptions: ExpressibleByDictionaryLiteral, JSBridgedTyp
         case capture
     }
 
-    public typealias Value = AnyJSValueCodable
+    private let dictionary: [String: JSValue]
 
-    private let dictionary: [String: AnyJSValueCodable]
-
-    public init(uniqueKeysWithValues elements: [(Key, Value)]) {
-        dictionary = Dictionary(uniqueKeysWithValues: elements.map { ($0.0.rawValue, $0.1) })
+    public init(uniqueKeysWithValues elements: [(Key, JSValueConvertible)]) {
+        dictionary = Dictionary(uniqueKeysWithValues: elements.map { ($0.0.rawValue, $0.1.jsValue()) })
     }
 
-    public init(dictionaryLiteral elements: (Key, AnyJSValueCodable)...) {
-        dictionary = Dictionary(uniqueKeysWithValues: elements.map { ($0.0.rawValue, $0.1) })
+    public init(dictionaryLiteral elements: (Key, JSValueConvertible)...) {
+        dictionary = Dictionary(uniqueKeysWithValues: elements.map { ($0.0.rawValue, $0.1.jsValue()) })
     }
 
-    subscript(_ key: Key) -> AnyJSValueCodable? {
+    subscript(_ key: Key) -> JSValue? {
         dictionary[key.rawValue]
     }
 
     public init?(from value: JSValue) {
-        if let dictionary: [String: AnyJSValueCodable] = value.fromJSValue() {
+        if let dictionary: [String: JSValue] = value.fromJSValue() {
             self.dictionary = dictionary
         }
         return nil

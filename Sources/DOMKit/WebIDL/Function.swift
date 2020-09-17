@@ -5,4 +5,4 @@
 
 import JavaScriptKit
 
-public typealias Function = ((AnyJSValueCodable) -> AnyJSValueCodable)
+public typealias Function = ((JSValue) -> JSValue)

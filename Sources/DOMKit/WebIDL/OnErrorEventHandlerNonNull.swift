@@ -5,4 +5,4 @@
 
 import JavaScriptKit
 
-public typealias OnErrorEventHandlerNonNull = ((EventOrString, String, UInt32, UInt32, AnyJSValueCodable) -> AnyJSValueCodable)
+public typealias OnErrorEventHandlerNonNull = ((EventOrString, String, UInt32, UInt32, JSValue) -> JSValue)

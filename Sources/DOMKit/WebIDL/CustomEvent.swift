@@ -18,9 +18,9 @@ public class CustomEvent: Event {
     }
 
     @ReadonlyAttribute
-    public var detail: AnyJSValueCodable
+    public var detail: JSValue
 
-    public func initCustomEvent(type: String, bubbles: Bool = false, cancelable: Bool = false, detail: AnyJSValueCodable = nil) {
+    public func initCustomEvent(type: String, bubbles: Bool = false, cancelable: Bool = false, detail: JSValue = nil) {
         _ = jsObject.initCustomEvent!(type.jsValue(), bubbles.jsValue(), cancelable.jsValue(), detail.jsValue())
     }
 }

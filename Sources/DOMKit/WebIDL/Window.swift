@@ -16,5 +16,5 @@ public class Window: JSBridgedClass {
     }
 
     @ReadonlyAttribute
-    public var event: AnyJSValueCodable
+    public var event: JSValue
 }

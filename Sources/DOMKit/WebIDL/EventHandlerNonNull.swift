@@ -5,4 +5,4 @@
 
 import JavaScriptKit
 
-public typealias EventHandlerNonNull = ((Event) -> AnyJSValueCodable)
+public typealias EventHandlerNonNull = ((Event) -> JSValue)
