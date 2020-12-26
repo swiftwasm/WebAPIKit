@@ -5,7 +5,7 @@
 
 import JavaScriptKit
 
-public enum EndingType: String, JSValueCodable {
+public enum EndingType: String, JSValueCompatible {
     public static func construct(from jsValue: JSValue) -> EndingType? {
         if let string = jsValue.string,
             let value = EndingType(rawValue: string)

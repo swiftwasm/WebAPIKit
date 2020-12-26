@@ -6,5 +6,5 @@
 import JavaScriptKit
 
 public protocol EventListener: JSBridgedType {
-    func handleEvent(event: Event) -> Void
+    func handleEvent(event: Event)
 }

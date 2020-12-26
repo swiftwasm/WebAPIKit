@@ -5,8 +5,10 @@
 
 import JavaScriptKit
 
-public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
+public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementContentEditable, HTMLOrSVGElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLElement.function! }
+
+    var eventHandlerClosures = [String: JSClosure]()
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _title = ReadWriteAttribute(jsObject: jsObject, name: "title")
@@ -66,5 +68,11 @@ public class HTMLElement: Element, DocumentAndElementEventHandlers, ElementConte
 
     public func attachInternals() -> ElementInternals {
         return jsObject.attachInternals!().fromJSValue()!
+    }
+
+    deinit {
+        for (_, closure) in eventHandlerClosures {
+            closure.release()
+        }
     }
 }
