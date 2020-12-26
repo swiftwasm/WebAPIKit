@@ -43,34 +43,20 @@ public class ReadableStream: JSBridgedClass {
     }
 }
 
-@propertyWrapper public struct ClosureHandler<ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible> {
+@propertyWrapper public final class OptionalClosureHandler<ArgumentType, ReturnType> 
+where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {
 
     let jsObject: JSObject
     let name: String
+    var closure: JSClosure?
 
     public init(jsObject: JSObject, name: String) {
         self.jsObject = jsObject
         self.name = name
     }
 
-    public var wrappedValue: (ArgumentType) -> ReturnType {
-        get {
-            { arg in jsObject[name]!(arg).fromJSValue()! }
-        }
-        set {
-            jsObject[name] = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }.jsValue()
-        }
-    }
-}
-
-@propertyWrapper public struct OptionalClosureHandler<ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible> {
-
-    let jsObject: JSObject
-    let name: String
-
-    public init(jsObject: JSObject, name: String) {
-        self.jsObject = jsObject
-        self.name = name
+    deinit {
+        closure?.release()
     }
 
     public var wrappedValue: ((ArgumentType) -> ReturnType)? {
@@ -81,8 +67,13 @@ public class ReadableStream: JSBridgedClass {
             return { function($0.jsValue()).fromJSValue()! }
         }
         set {
+            if let closure = closure {
+                closure.release()
+            }
             if let newValue = newValue {
-                jsObject[name] = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }.jsValue()
+                let closure = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }
+                jsObject[name] = closure.jsValue()
+                self.closure = closure
             } else {
                 jsObject[name] = .null
             }
