@@ -4,13 +4,8 @@
 
 import JavaScriptKit
 
-public class Global {
-    public let jsObject = JSObject.global
-    public let document: Document
-
-    init() {
-         document = Document(unsafelyWrapping: jsObject.document.object!)
-    }
+public extension Window {
+    public var document: Document { Document(unsafelyWrapping: jsObject.document.object!) }
 }
 
 public extension Document {
@@ -25,7 +20,7 @@ public extension HTMLElement {
     }
 }
 
-public let global = Global()
+public let globalThis = Window(from: JSObject.global.jsValue())!
 
 public class ReadableStream: JSBridgedClass {
 
