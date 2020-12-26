@@ -29,7 +29,7 @@ public class ArrayBuffer: JSBridgedClass {
         self.init(unsafelyWrapping: Self.constructor.new( length))
     }
 
-    public static func isView(_ object: JSValueCodable) -> Bool {
-        return JSObject.global.ArrayBuffer.object!.isView!(object).fromJSValue()!
+    public static func isView(_ object: JSValueCompatible) -> Bool {
+        JSObject.global.ArrayBuffer.object!.isView!(object).fromJSValue()!
     }
 }

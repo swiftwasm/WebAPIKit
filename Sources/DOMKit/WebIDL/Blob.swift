@@ -50,11 +50,11 @@ public class Blob: JSBridgedClass {
         return jsObject.stream!().fromJSValue()!
     }
 
-    public func text() -> Promise<String> {
+    public func text() -> JSPromise<String, JSError> {
         return jsObject.text!().fromJSValue()!
     }
 
-    public func arrayBuffer() -> Promise<ArrayBuffer> {
+    public func arrayBuffer() -> JSPromise<ArrayBuffer, JSError> {
         return jsObject.arrayBuffer!().fromJSValue()!
     }
 }
