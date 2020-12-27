@@ -1,0 +1,22 @@
+name: Build and test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  macos_test:
+    runs-on: macos-11.0
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run the test suite on macOS
+        shell: bash
+        run: |
+          set -ex
+          sudo xcode-select --switch /Applications/Xcode_12.3.app/Contents/Developer/
+          
+          brew install swiftwasm/tap/carton
+
+          carton test --environment defaultBrowser

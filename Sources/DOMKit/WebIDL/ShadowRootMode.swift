@@ -5,7 +5,7 @@
 
 import JavaScriptKit
 
-public enum ShadowRootMode: String, JSValueCodable {
+public enum ShadowRootMode: String, JSValueCompatible {
     public static func construct(from jsValue: JSValue) -> ShadowRootMode? {
         if let string = jsValue.string,
             let value = ShadowRootMode(rawValue: string)

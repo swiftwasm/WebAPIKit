@@ -1,19 +1,17 @@
 import XCTest
-import JavaScriptKit
-@testable import DOMKit
+import DOMKit
 
 final class DOMKitTests: XCTestCase {
     func testExample() {
         let document = globalThis.document
         let button = document.createElement(localName: "button")
-        button.textContent = "Hello, world"
-        button.addEventListener(type: "click", callback: { event in
+        button.textContent = "Hello, world!"
+        button.addEventListener(type: "click") { event in
             (event.target as? HTMLElement)?.textContent = "Clicked!"
-        })
+        }
         _ = document.querySelector(selectors: "body")?.appendChild(node: button)
-    }
 
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+        let queriedButton = document.querySelector(selectors: "body button")
+        XCTAssertEqual(button.textContent, "Hello, world!")
+    }
 }

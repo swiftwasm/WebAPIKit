@@ -9,13 +9,20 @@ public class MutationObserver: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MutationObserver.function! }
 
     public let jsObject: JSObject
+    var closure: JSClosure?
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 
     public convenience init(callback: @escaping MutationCallback) {
-        self.init(unsafelyWrapping: MutationObserver.constructor.new(JSClosure { callback($0[0].fromJSValue()!, $0[1].fromJSValue()!) }))
+        let closure = JSClosure { callback($0[0].fromJSValue()!, $0[1].fromJSValue()!) }
+        self.init(unsafelyWrapping: MutationObserver.constructor.new(closure))
+        self.closure = closure
+    }
+
+    deinit {
+        closure?.release()
     }
 
     public func observe(target: Node, options: MutationObserverInit = [:]) {

@@ -5,9 +5,7 @@
 
 import JavaScriptKit
 
-public protocol GlobalEventHandlers: JSBridgedClass {}
-
-public extension GlobalEventHandlers {
+public extension HTMLElement {
     var onabort: EventHandler {
         get {
             guard let function = jsObject.onabort.function else {
@@ -17,9 +15,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onabort = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onabort"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onabort"] = closure
+                jsObject.onabort = closure.jsValue()
             } else {
                 jsObject.onabort = .null
             }
@@ -35,9 +38,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onauxclick = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onauxclick"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onauxclick"] = closure
+                jsObject.onauxclick = closure.jsValue()
             } else {
                 jsObject.onauxclick = .null
             }
@@ -53,9 +61,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onblur = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onblur"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onblur"] = closure
+                jsObject.onblur = closure.jsValue()
             } else {
                 jsObject.onblur = .null
             }
@@ -71,9 +84,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.oncancel = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["oncancel"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["oncancel"] = closure
+                jsObject.oncancel = closure.jsValue()
             } else {
                 jsObject.oncancel = .null
             }
@@ -89,9 +107,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.oncanplay = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["oncanplay"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["oncanplay"] = closure
+                jsObject.oncanplay = closure.jsValue()
             } else {
                 jsObject.oncanplay = .null
             }
@@ -107,9 +130,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.oncanplaythrough = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["oncanplaythrough"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["oncanplaythrough"] = closure
+                jsObject.oncanplaythrough = closure.jsValue()
             } else {
                 jsObject.oncanplaythrough = .null
             }
@@ -125,9 +153,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onchange = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onchange"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onchange"] = closure
+                jsObject.onchange = closure.jsValue()
             } else {
                 jsObject.onchange = .null
             }
@@ -143,9 +176,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onclick = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onclick"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onclick"] = closure
+                jsObject.onclick = closure.jsValue()
             } else {
                 jsObject.onclick = .null
             }
@@ -161,9 +199,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onclose = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onclose"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onclose"] = closure
+                jsObject.onclose = closure.jsValue()
             } else {
                 jsObject.onclose = .null
             }
@@ -179,9 +222,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.oncontextmenu = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["oncontextmenu"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["oncontextmenu"] = closure
+                jsObject.oncontextmenu = closure.jsValue()
             } else {
                 jsObject.oncontextmenu = .null
             }
@@ -197,9 +245,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.oncuechange = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["oncuechange"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["oncuechange"] = closure
+                jsObject.oncuechange = closure.jsValue()
             } else {
                 jsObject.oncuechange = .null
             }
@@ -215,9 +268,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondblclick = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondblclick"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondblclick"] = closure
+                jsObject.ondblclick = closure.jsValue()
             } else {
                 jsObject.ondblclick = .null
             }
@@ -233,9 +291,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondrag = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondrag"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondrag"] = closure
+                jsObject.ondrag = closure.jsValue()
             } else {
                 jsObject.ondrag = .null
             }
@@ -251,9 +314,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondragend = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondragend"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondragend"] = closure
+                jsObject.ondragend = closure.jsValue()
             } else {
                 jsObject.ondragend = .null
             }
@@ -269,9 +337,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondragenter = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondragenter"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondragenter"] = closure
+                jsObject.ondragenter = closure.jsValue()
             } else {
                 jsObject.ondragenter = .null
             }
@@ -287,9 +360,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondragexit = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondragexit"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondragexit"] = closure
+                jsObject.ondragexit = closure.jsValue()
             } else {
                 jsObject.ondragexit = .null
             }
@@ -305,9 +383,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondragleave = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondragleave"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondragleave"] = closure
+                jsObject.ondragleave = closure.jsValue()
             } else {
                 jsObject.ondragleave = .null
             }
@@ -323,9 +406,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondragover = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondragover"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondragover"] = closure
+                jsObject.ondragover = closure.jsValue()
             } else {
                 jsObject.ondragover = .null
             }
@@ -341,9 +429,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondragstart = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondragstart"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondragstart"] = closure
+                jsObject.ondragstart = closure.jsValue()
             } else {
                 jsObject.ondragstart = .null
             }
@@ -359,9 +452,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondrop = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondrop"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondrop"] = closure
+                jsObject.ondrop = closure.jsValue()
             } else {
                 jsObject.ondrop = .null
             }
@@ -377,9 +475,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ondurationchange = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ondurationchange"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ondurationchange"] = closure
+                jsObject.ondurationchange = closure.jsValue()
             } else {
                 jsObject.ondurationchange = .null
             }
@@ -395,9 +498,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onemptied = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onemptied"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onemptied"] = closure
+                jsObject.onemptied = closure.jsValue()
             } else {
                 jsObject.onemptied = .null
             }
@@ -413,9 +521,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onended = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onended"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onended"] = closure
+                jsObject.onended = closure.jsValue()
             } else {
                 jsObject.onended = .null
             }
@@ -431,9 +544,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onerror = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!, arguments[1].fromJSValue()!, arguments[2].fromJSValue()!, arguments[3].fromJSValue()!, arguments[4].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onerror"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onerror"] = closure
+                jsObject.onerror = closure.jsValue()
             } else {
                 jsObject.onerror = .null
             }
@@ -449,9 +567,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onfocus = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onfocus"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onfocus"] = closure
+                jsObject.onfocus = closure.jsValue()
             } else {
                 jsObject.onfocus = .null
             }
@@ -467,9 +590,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onformdata = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onformdata"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onformdata"] = closure
+                jsObject.onformdata = closure.jsValue()
             } else {
                 jsObject.onformdata = .null
             }
@@ -485,9 +613,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.oninput = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["oninput"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["oninput"] = closure
+                jsObject.oninput = closure.jsValue()
             } else {
                 jsObject.oninput = .null
             }
@@ -503,9 +636,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.oninvalid = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["oninvalid"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["oninvalid"] = closure
+                jsObject.oninvalid = closure.jsValue()
             } else {
                 jsObject.oninvalid = .null
             }
@@ -521,9 +659,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onkeydown = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onkeydown"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onkeydown"] = closure
+                jsObject.onkeydown = closure.jsValue()
             } else {
                 jsObject.onkeydown = .null
             }
@@ -539,9 +682,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onkeypress = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onkeypress"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onkeypress"] = closure
+                jsObject.onkeypress = closure.jsValue()
             } else {
                 jsObject.onkeypress = .null
             }
@@ -557,9 +705,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onkeyup = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onkeyup"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onkeyup"] = closure
+                jsObject.onkeyup = closure.jsValue()
             } else {
                 jsObject.onkeyup = .null
             }
@@ -575,9 +728,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onload = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onload"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onload"] = closure
+                jsObject.onload = closure.jsValue()
             } else {
                 jsObject.onload = .null
             }
@@ -593,9 +751,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onloadeddata = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onloadeddata"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onloadeddata"] = closure
+                jsObject.onloadeddata = closure.jsValue()
             } else {
                 jsObject.onloadeddata = .null
             }
@@ -611,9 +774,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onloadedmetadata = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onloadedmetadata"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onloadedmetadata"] = closure
+                jsObject.onloadedmetadata = closure.jsValue()
             } else {
                 jsObject.onloadedmetadata = .null
             }
@@ -629,9 +797,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onloadstart = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onloadstart"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onloadstart"] = closure
+                jsObject.onloadstart = closure.jsValue()
             } else {
                 jsObject.onloadstart = .null
             }
@@ -647,9 +820,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onmousedown = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onmousedown"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onmousedown"] = closure
+                jsObject.onmousedown = closure.jsValue()
             } else {
                 jsObject.onmousedown = .null
             }
@@ -665,9 +843,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onmouseenter = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onmouseenter"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onmouseenter"] = closure
+                jsObject.onmouseenter = closure.jsValue()
             } else {
                 jsObject.onmouseenter = .null
             }
@@ -683,9 +866,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onmouseleave = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onmouseleave"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onmouseleave"] = closure
+                jsObject.onmouseleave = closure.jsValue()
             } else {
                 jsObject.onmouseleave = .null
             }
@@ -701,9 +889,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onmousemove = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onmousemove"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onmousemove"] = closure
+                jsObject.onmousemove = closure.jsValue()
             } else {
                 jsObject.onmousemove = .null
             }
@@ -719,9 +912,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onmouseout = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onmouseout"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onmouseout"] = closure
+                jsObject.onmouseout = closure.jsValue()
             } else {
                 jsObject.onmouseout = .null
             }
@@ -737,9 +935,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onmouseover = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onmouseover"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onmouseover"] = closure
+                jsObject.onmouseover = closure.jsValue()
             } else {
                 jsObject.onmouseover = .null
             }
@@ -755,9 +958,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onmouseup = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onmouseup"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onmouseup"] = closure
+                jsObject.onmouseup = closure.jsValue()
             } else {
                 jsObject.onmouseup = .null
             }
@@ -773,9 +981,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onpause = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onpause"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onpause"] = closure
+                jsObject.onpause = closure.jsValue()
             } else {
                 jsObject.onpause = .null
             }
@@ -791,9 +1004,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onplay = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onplay"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onplay"] = closure
+                jsObject.onplay = closure.jsValue()
             } else {
                 jsObject.onplay = .null
             }
@@ -809,9 +1027,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onplaying = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onplaying"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onplaying"] = closure
+                jsObject.onplaying = closure.jsValue()
             } else {
                 jsObject.onplaying = .null
             }
@@ -827,9 +1050,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onprogress = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onprogress"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onprogress"] = closure
+                jsObject.onprogress = closure.jsValue()
             } else {
                 jsObject.onprogress = .null
             }
@@ -845,9 +1073,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onratechange = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onratechange"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onratechange"] = closure
+                jsObject.onratechange = closure.jsValue()
             } else {
                 jsObject.onratechange = .null
             }
@@ -863,9 +1096,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onreset = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onreset"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onreset"] = closure
+                jsObject.onreset = closure.jsValue()
             } else {
                 jsObject.onreset = .null
             }
@@ -881,9 +1119,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onresize = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onresize"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onresize"] = closure
+                jsObject.onresize = closure.jsValue()
             } else {
                 jsObject.onresize = .null
             }
@@ -899,9 +1142,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onscroll = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onscroll"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onscroll"] = closure
+                jsObject.onscroll = closure.jsValue()
             } else {
                 jsObject.onscroll = .null
             }
@@ -917,9 +1165,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onsecuritypolicyviolation = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onsecuritypolicyviolation"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onsecuritypolicyviolation"] = closure
+                jsObject.onsecuritypolicyviolation = closure.jsValue()
             } else {
                 jsObject.onsecuritypolicyviolation = .null
             }
@@ -935,9 +1188,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onseeked = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onseeked"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onseeked"] = closure
+                jsObject.onseeked = closure.jsValue()
             } else {
                 jsObject.onseeked = .null
             }
@@ -953,9 +1211,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onseeking = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onseeking"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onseeking"] = closure
+                jsObject.onseeking = closure.jsValue()
             } else {
                 jsObject.onseeking = .null
             }
@@ -971,9 +1234,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onselect = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onselect"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onselect"] = closure
+                jsObject.onselect = closure.jsValue()
             } else {
                 jsObject.onselect = .null
             }
@@ -989,9 +1257,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onslotchange = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onslotchange"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onslotchange"] = closure
+                jsObject.onslotchange = closure.jsValue()
             } else {
                 jsObject.onslotchange = .null
             }
@@ -1007,9 +1280,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onstalled = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onstalled"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onstalled"] = closure
+                jsObject.onstalled = closure.jsValue()
             } else {
                 jsObject.onstalled = .null
             }
@@ -1025,9 +1303,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onsubmit = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onsubmit"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onsubmit"] = closure
+                jsObject.onsubmit = closure.jsValue()
             } else {
                 jsObject.onsubmit = .null
             }
@@ -1043,9 +1326,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onsuspend = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onsuspend"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onsuspend"] = closure
+                jsObject.onsuspend = closure.jsValue()
             } else {
                 jsObject.onsuspend = .null
             }
@@ -1061,9 +1349,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ontimeupdate = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ontimeupdate"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ontimeupdate"] = closure
+                jsObject.ontimeupdate = closure.jsValue()
             } else {
                 jsObject.ontimeupdate = .null
             }
@@ -1079,9 +1372,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.ontoggle = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["ontoggle"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["ontoggle"] = closure
+                jsObject.ontoggle = closure.jsValue()
             } else {
                 jsObject.ontoggle = .null
             }
@@ -1097,9 +1395,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onvolumechange = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onvolumechange"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onvolumechange"] = closure
+                jsObject.onvolumechange = closure.jsValue()
             } else {
                 jsObject.onvolumechange = .null
             }
@@ -1115,9 +1418,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onwaiting = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onwaiting"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onwaiting"] = closure
+                jsObject.onwaiting = closure.jsValue()
             } else {
                 jsObject.onwaiting = .null
             }
@@ -1133,9 +1441,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onwebkitanimationend = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onwebkitanimationend"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onwebkitanimationend"] = closure
+                jsObject.onwebkitanimationend = closure.jsValue()
             } else {
                 jsObject.onwebkitanimationend = .null
             }
@@ -1151,9 +1464,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onwebkitanimationiteration = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onwebkitanimationiteration"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onwebkitanimationiteration"] = closure
+                jsObject.onwebkitanimationiteration = closure.jsValue()
             } else {
                 jsObject.onwebkitanimationiteration = .null
             }
@@ -1169,9 +1487,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onwebkitanimationstart = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onwebkitanimationstart"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onwebkitanimationstart"] = closure
+                jsObject.onwebkitanimationstart = closure.jsValue()
             } else {
                 jsObject.onwebkitanimationstart = .null
             }
@@ -1187,9 +1510,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onwebkittransitionend = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onwebkittransitionend"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onwebkittransitionend"] = closure
+                jsObject.onwebkittransitionend = closure.jsValue()
             } else {
                 jsObject.onwebkittransitionend = .null
             }
@@ -1205,9 +1533,14 @@ public extension GlobalEventHandlers {
         }
         set {
             if let newValue = newValue {
-                jsObject.onwheel = JSClosure { arguments in
+                let closure = JSClosure { arguments in
                     newValue(arguments[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                }
+                if let oldClosure = eventHandlerClosures["onwheel"] {
+                    oldClosure.release()
+                }
+                eventHandlerClosures["onwheel"] = closure
+                jsObject.onwheel = closure.jsValue()
             } else {
                 jsObject.onwheel = .null
             }
