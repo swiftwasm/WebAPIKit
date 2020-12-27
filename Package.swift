@@ -6,14 +6,24 @@ import PackageDescription
 let package = Package(
     name: "DOMKit",
     products: [
+        .executable(
+            name: "DOMKitDemo",
+            targets: ["DOMKitDemo"]),
         .library(
             name: "DOMKit",
             targets: ["DOMKit"]),
     ],
     dependencies: [
-        .package(name: "JavaScriptKit", url: "https://github.com/j-f1/forked-JavaScriptKit.git", .revision("4429d88")),
+        .package(
+            name: "JavaScriptKit",
+            url: "https://github.com/swiftwasm/JavaScriptKit.git",
+            .upToNextMinor(from: "0.9.0")),
     ],
     targets: [
+        .target(
+            name: "DOMKitDemo",
+            dependencies: ["DOMKit"]
+        ),
         .target(
             name: "DOMKit",
             dependencies: ["JavaScriptKit"]),

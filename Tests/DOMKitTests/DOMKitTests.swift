@@ -4,7 +4,7 @@ import JavaScriptKit
 
 final class DOMKitTests: XCTestCase {
     func testExample() {
-        let document = DOMKit.Document(from: JSObject.global.document)!
+        let document = globalThis.document
         let button = document.createElement(localName: "button")
         button.textContent = "Hello, world"
         button.addEventListener(type: "click", callback: { event in

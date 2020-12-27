@@ -4,17 +4,23 @@
 
 import JavaScriptKit
 
-public class Promise<Type>: JSBridgedClass {
+public extension Window {
+    public var document: Document { Document(unsafelyWrapping: jsObject.document.object!) }
+}
 
-    public static var constructor: JSFunction { JSObject.global.Promise.function! }
-
-    public let jsObject: JSObject
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-
-        self.jsObject = jsObject
+public extension Document {
+    var body: HTMLElement {
+        .init(unsafelyWrapping: jsObject.body.object!)
     }
 }
+
+public extension HTMLElement {
+    convenience init?(from element: Element) {
+        self.init(from: .object(element.jsObject))
+    }
+}
+
+public let globalThis = Window(from: JSObject.global.jsValue())!
 
 public class ReadableStream: JSBridgedClass {
 
@@ -32,7 +38,7 @@ public class ReadableStream: JSBridgedClass {
     }
 }
 
-@propertyWrapper public struct ClosureHandler<ArgumentType: JSValueCodable, ReturnType: JSValueCodable> {
+@propertyWrapper public struct ClosureHandler<ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible> {
 
     let jsObject: JSObject
     let name: String
@@ -52,7 +58,7 @@ public class ReadableStream: JSBridgedClass {
     }
 }
 
-@propertyWrapper public struct OptionalClosureHandler<ArgumentType: JSValueCodable, ReturnType: JSValueCodable> {
+@propertyWrapper public struct OptionalClosureHandler<ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible> {
 
     let jsObject: JSObject
     let name: String
@@ -79,7 +85,7 @@ public class ReadableStream: JSBridgedClass {
     }
 }
 
-@propertyWrapper public struct ReadWriteAttribute<Wrapped: JSValueCodable> {
+@propertyWrapper public struct ReadWriteAttribute<Wrapped: JSValueCompatible> {
 
     let jsObject: JSObject
     let name: String
@@ -99,7 +105,7 @@ public class ReadableStream: JSBridgedClass {
     }
 }
 
-@propertyWrapper public struct ReadonlyAttribute<Wrapped: JSValueConstructible> {
+@propertyWrapper public struct ReadonlyAttribute<Wrapped: ConstructibleFromJSValue> {
 
     let jsObject: JSObject
     let name: String
@@ -116,7 +122,7 @@ public class ReadableStream: JSBridgedClass {
     }
 }
 
-public class ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: IteratorProtocol where SequenceType.Element: JSValueConstructible {
+public class ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: IteratorProtocol where SequenceType.Element: ConstructibleFromJSValue {
 
     private var index: Int = 0
     private let sequence: SequenceType
@@ -142,7 +148,7 @@ public protocol KeyValueSequence: Sequence where Element == (String, Value) {
     associatedtype Value
 }
 
-public class PairIterableIterator<SequenceType: JSBridgedClass & KeyValueSequence>: IteratorProtocol where SequenceType.Value: JSValueConstructible {
+public class PairIterableIterator<SequenceType: JSBridgedClass & KeyValueSequence>: IteratorProtocol where SequenceType.Value: ConstructibleFromJSValue {
 
     private let iterator: JSObject
     private let sequence: SequenceType
