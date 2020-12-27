@@ -26,7 +26,8 @@ bs-to-idl/from-github.sh https://github.com/w3c/fxtf-drafts/blob/master/geometry
 bs-to-idl/from-github.sh https://github.com/w3c/aria/blob/master/index.html webidl-sources/aria.webidl &
 bs-to-idl/from-github.sh https://github.com/w3c/aria/blob/master/index.html webidl-sources/aria.webidl &
 bs-to-idl/from-github.sh https://github.com/w3c/csswg-drafts/blob/master/cssom-1/Overview.bs webidl-sources/cssom.webidl &
-curl https://www.khronos.org/registry/webgl/specs/1.0.2/webgl.idl > webidl-sources/webgl.webidl
+curl https://www.khronos.org/registry/webgl/specs/1.0.3/webgl.idl > webidl-sources/webgl.webidl
+curl https://www.khronos.org/registry/webgl/specs/2.0/webgl2.idl > webidl-sources/webgl2.webidl
 
 # TODO: remove HTML comments from ARIA spec IDL
 # TODO: https://github.com/w3c/media-source/
