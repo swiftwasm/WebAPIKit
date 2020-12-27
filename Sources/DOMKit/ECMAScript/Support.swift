@@ -40,7 +40,6 @@ public class ReadableStream: JSBridgedClass {
 
 @propertyWrapper public final class OptionalClosureHandler<ArgumentType, ReturnType> 
 where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {
-
     let jsObject: JSObject
     let name: String
     var closure: JSClosure?
