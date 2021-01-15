@@ -40,5 +40,4 @@ wait
 
 
 # Not currently used:
-# bs-to-idl/from-github.sh https://github.com/whatwg/xhr/blob/master/xhr.bs webidl-sources/xhr.webidl &
 # bs-to-idl/from-github.sh https://github.com/whatwg/storage/blob/master/storage.bs webidl-sources/storage.webidl &
