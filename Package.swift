@@ -17,7 +17,7 @@ let package = Package(
         .package(
             name: "JavaScriptKit",
             url: "https://github.com/swiftwasm/JavaScriptKit.git",
-            .upToNextMinor(from: "0.10.0")),
+            .upToNextMinor(from: "0.11.1")),
     ],
     targets: [
         .target(
