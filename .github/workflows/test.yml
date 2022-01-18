@@ -19,4 +19,4 @@ jobs:
           
           brew install swiftwasm/tap/carton
 
-          carton test --environment defaultBrowser
+          carton bundle
