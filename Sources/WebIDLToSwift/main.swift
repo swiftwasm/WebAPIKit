@@ -3,8 +3,8 @@ import WebIDL
 
 do {
     let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
-    let idl = try JSONDecoder().decode(GenericCollection<IDLNode>.self, from: data)
-    print(idl.array[0])
+    let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
+    print(idl)
 } catch {
     switch error as? DecodingError {
     case .dataCorrupted(let ctx), .typeMismatch(_, let ctx):
@@ -16,8 +16,6 @@ do {
         print("Key \(key.stringValue) not found")
         debugContext(ctx)
     case nil, .some:
-        print(error.localizedDescription)
-    case .some:
         print(error.localizedDescription)
     }
 }

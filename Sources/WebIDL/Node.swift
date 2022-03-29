@@ -7,6 +7,7 @@ var idlTypes: [String: IDLNode.Type] = [
     "argument": IDLArgument.self,
     "attribute": IDLAttribute.self,
     "callback": IDLCallback.self,
+    "callback interface": IDLCallbackInterface.self,
     "const": IDLConstant.self,
     "constructor": IDLConstructor.self,
     "maplike": IDLMapLikeDeclaration.self,
@@ -17,6 +18,7 @@ var idlTypes: [String: IDLNode.Type] = [
     "includes": IDLIncludes.self,
     "interface": IDLInterface.self,
     "interface mixin": IDLInterfaceMixin.self,
+    "namespace": IDLNamespace.self,
     "operation": IDLOperation.self,
     "typedef": IDLTypedef.self,
 ]

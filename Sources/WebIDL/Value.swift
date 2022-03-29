@@ -7,7 +7,7 @@ public enum IDLValue: Decodable {
     case infinity(negative: Bool)
     case nan
     case sequence
-    case dictionary(IDLDictionary)
+    case dictionary
 
     private enum CodingKeys: String, CodingKey {
         case type
@@ -34,7 +34,7 @@ public enum IDLValue: Decodable {
         case "sequence":
             self = .sequence
         case "dictionary":
-            self = .dictionary(try container.decode(IDLDictionary.self, forKey: .value))
+            self = .dictionary
         default:
             throw DecodingError.dataCorrupted(
                 DecodingError.Context(

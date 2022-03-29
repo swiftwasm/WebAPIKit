@@ -44,7 +44,7 @@ public struct IDLExtendedAttribute: Decodable {
                 self = .integer(try container.decode(String.self, forKey: .value))
             case "integer-list":
                 self = .integerList(try container.decode([ValueContainer].self, forKey: .value).map(\.value))
-            case "wildcard":
+            case "*":
                 self = .wildcard
             default:
                 throw DecodingError.dataCorruptedError(
