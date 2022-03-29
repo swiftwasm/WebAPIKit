@@ -10,12 +10,18 @@ extension IDLArgument: SwiftRepresentable {
     }
 }
 
-extension IDLAttribute: SwiftRepresentable {
+extension IDLAttribute: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         """
         @\(readonly ? "ReadonlyAttribute" : "ReadWriteAttribute")
         public\(raw: Context.static ? " static" : "") var \(name): \(idlType)
         """
+    }
+
+    var initializer: SwiftSource? {
+        assert(!Context.static)
+        let wrapper: SwiftSource = readonly ? "ReadonlyAttribute" : "ReadWriteAttribute"
+        return "_\(name) = \(wrapper)(jsObject: jsObject, name: \"\(name)\")"
     }
 }
 
@@ -89,6 +95,10 @@ extension IDLCallbackInterface: SwiftRepresentable {
     }
 }
 
+protocol Initializable {
+    var initializer: SwiftSource? { get }
+}
+
 extension IDLInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         let constructor: SwiftSource = "JSObject.global.\(name).function!"
@@ -110,12 +120,23 @@ extension IDLInterface: SwiftRepresentable {
                 \(inheritance == nil ? "public let jsObject: JSObject" : "")
 
                 public required init(unsafelyWrapping jsObject: JSObject) {
+                    \(memberInits.joined(separator: "\n"))
                     \(inheritance == nil ? "self.jsObject = jsObject" : "super.init(unsafelyWrapping: jsObject)")
                 }
 
                 \(body)
             }
             """
+        }
+    }
+
+    var memberInits: [SwiftSource] {
+        members.compactMap {
+            if let alt = $0 as? Initializable {
+                return alt.initializer
+            } else {
+                fatalError("Add Initializable conformance to \(Swift.type(of: $0))")
+            }
         }
     }
 }
@@ -135,15 +156,17 @@ extension IDLInterfaceMixin: SwiftRepresentable {
     }
 }
 
-extension IDLConstant: SwiftRepresentable {
+extension IDLConstant: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         """
         public static let \(name): \(idlType) = \(value)
         """
     }
+
+    var initializer: SwiftSource? { nil }
 }
 
-extension IDLConstructor: SwiftRepresentable {
+extension IDLConstructor: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         assert(!Context.static)
         let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
@@ -154,6 +177,8 @@ extension IDLConstructor: SwiftRepresentable {
         }
         """
     }
+
+    var initializer: SwiftSource? { nil }
 }
 
 extension IDLIncludes: SwiftRepresentable {
@@ -165,12 +190,14 @@ extension IDLIncludes: SwiftRepresentable {
     }
 }
 
-extension IDLIterableDeclaration: SwiftRepresentable {
+extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         """
         /* [make me iterable plz] */
         """
     }
+
+    var initializer: SwiftSource? { nil }
 }
 
 extension IDLNamespace: SwiftRepresentable {
@@ -199,7 +226,7 @@ extension IDLNamespace: SwiftRepresentable {
     }
 }
 
-extension IDLOperation: SwiftRepresentable {
+extension IDLOperation: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         if special.isEmpty {
             return defaultRepresentation
@@ -243,6 +270,8 @@ extension IDLOperation: SwiftRepresentable {
         }
         """
     }
+
+    var initializer: SwiftSource? { nil }
 }
 
 let typeNameMap = [

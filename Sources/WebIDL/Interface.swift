@@ -19,6 +19,7 @@ public struct IDLCallbackInterface: IDLNode {
 }
 
 public protocol IDLInterfaceMember: IDLNode {}
+
 extension IDLAttribute: IDLInterfaceMember {}
 extension IDLConstant: IDLInterfaceMember {}
 extension IDLConstructor: IDLInterfaceMember {}
