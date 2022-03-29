@@ -284,6 +284,7 @@ let typeNameMap = [
     "boolean": "Bool",
     "any": "JSValue",
     "DOMString": "String",
+    "USVString": "String",
     "object": "JSObject",
     "undefined": "Void",
     "double": "Double",

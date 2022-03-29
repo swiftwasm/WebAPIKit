@@ -7,9 +7,14 @@ do {
     for (i, node) in ["dom", "hr-time", "html"].flatMap({ idl[$0]!.array }).enumerated() {
         let name = Mirror(reflecting: node).children.first { $0.label == "name" }?.value as? String
         if let name = name {
-            let content = "import JavaScriptKit\n\n" + toSwift(node).source
+            let content = toSwift(node).source
             let path = "/Users/jed/Documents/github-clones/Tokamak/DOMKit/Sources/DOMKit/WebIDL/" + name + ".swift"
-            try content.write(toFile: path, atomically: true, encoding: .utf8)
+            if FileManager.default.fileExists(atPath: path) {
+                let oldContent = try String(contentsOfFile: path)
+                try (oldContent + "\n\n/* --- */\n\n" + content).write(toFile: path, atomically: true, encoding: .utf8)
+            } else {
+                try ("import JavaScriptKit\n\n" + content).write(toFile: path, atomically: true, encoding: .utf8)
+            }
         } else if !(node is IDLIncludes) {
             print(Mirror(reflecting: node).children.map(\.label))
         }
