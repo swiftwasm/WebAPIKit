@@ -42,7 +42,7 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation {
             output += toSwift(value).source
         }
 
-        mutating func appendInterpolation(_ values: [SwiftSource]) {
+        mutating func appendInterpolation(lines values: [SwiftSource]) {
             output += values.map(\.source).joined(separator: "\n")
         }
 
@@ -70,7 +70,7 @@ extension String {
     var camelized: String {
         guard !isEmpty else { return "_empty" }
 
-        let parts = self.components(separatedBy: CharacterSet.alphanumerics.inverted)
+        let parts = components(separatedBy: CharacterSet.alphanumerics.inverted)
         let first = parts.first!.lowercasingFirst
         let rest = parts.dropFirst().map(\.uppercasingFirst)
 

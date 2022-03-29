@@ -13,7 +13,21 @@ func toSwift<T>(_ value: T) -> SwiftSource {
     }
 }
 
-let swiftKeywords: Set = ["init", "where", "protocol", "struct", "class", "enum", "func", "static", "is", "default"]
+let swiftKeywords: Set = [
+    "init",
+    "where",
+    "protocol",
+    "struct",
+    "class",
+    "enum",
+    "func",
+    "static",
+    "is",
+    "as",
+    "default",
+    "defer",
+    "self",
+]
 
 extension String: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {

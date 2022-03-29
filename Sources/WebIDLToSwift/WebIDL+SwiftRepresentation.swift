@@ -21,7 +21,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
     var initializer: SwiftSource? {
         assert(!Context.static)
         let wrapper: SwiftSource = readonly ? "ReadonlyAttribute" : "ReadWriteAttribute"
-        return "_\(name) = \(wrapper)(jsObject: jsObject, name: \"\(name)\")"
+        return "_\(raw: name) = \(wrapper)(jsObject: jsObject, name: \"\(raw: name)\")"
     }
 }
 
@@ -65,8 +65,8 @@ extension IDLEnum: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
         public enum \(name): String, JSValueCompatible {
-            \(cases.map { name -> SwiftSource in
-                "case \(name.camelized) = \"\(name)\""
+            \(lines: cases.map { name -> SwiftSource in
+                "case \(name.camelized) = \"\(raw: name)\""
             })
 
             public static func construct(from jsValue: JSValue) -> \(name)? {
@@ -101,35 +101,27 @@ protocol Initializable {
     var initializer: SwiftSource? { get }
 }
 
-extension IDLInterface: SwiftRepresentable {
+extension MergedInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         let constructor: SwiftSource = "JSObject.global.\(name).function!"
         let body = Context.withState(.instance(constructor: constructor, this: "jsObject")) {
             members.map(toSwift).joined(separator: "\n\n")
         }
-        if partial {
-            assert(inheritance == nil)
-            return """
-            public extension \(name) {
-                \(body)
+
+        return """
+        public class \(name): \(inheritance.isEmpty ? "JSBridgedClass" : inheritance.joined(separator: ", ")) {
+            public\(inheritance.isEmpty ? "" : " override") class var constructor: JSFunction { \(constructor) }
+
+            \(inheritance.isEmpty ? "public let jsObject: JSObject" : "")
+
+            public required init(unsafelyWrapping jsObject: JSObject) {
+                \(memberInits.joined(separator: "\n"))
+                \(inheritance.isEmpty ? "self.jsObject = jsObject" : "super.init(unsafelyWrapping: jsObject)")
             }
-            """
-        } else {
-            return """
-            public class \(name): \(inheritance ?? "JSBridgedClass") {
-                public\(inheritance == nil ? "" : " override") class var constructor: JSFunction { \(constructor) }
 
-                \(inheritance == nil ? "public let jsObject: JSObject" : "")
-
-                public required init(unsafelyWrapping jsObject: JSObject) {
-                    \(memberInits.joined(separator: "\n"))
-                    \(inheritance == nil ? "self.jsObject = jsObject" : "super.init(unsafelyWrapping: jsObject)")
-                }
-
-                \(body)
-            }
-            """
+            \(body)
         }
+        """
     }
 
     var memberInits: [SwiftSource] {
@@ -253,7 +245,13 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
     private var defaultRepresentation: SwiftSource {
         let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
-        let args = arguments.map { SwiftSource("\($0.name.swiftRepresentation).jsValue()") }.joined(separator: ", ")
+        let args = arguments.map { arg -> SwiftSource in
+            if arg.optional {
+                return "\(arg.name)?.jsValue() ?? .undefined"
+            } else {
+                return "\(arg.name).jsValue()"
+            }
+        }.joined(separator: ", ")
         let call: SwiftSource = "\(Context.this)[\"\(raw: name!)\"]!(\(args))"
         let body: SwiftSource
         if idlType?.swiftRepresentation.source == "Void" {
