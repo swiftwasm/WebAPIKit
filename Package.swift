@@ -12,6 +12,7 @@ let package = Package(
         .library(
             name: "DOMKit",
             targets: ["DOMKit"]),
+        .library(name: "WebIDL", targets: ["WebIDL"]),
     ],
     dependencies: [
         .package(
@@ -27,6 +28,7 @@ let package = Package(
         .target(
             name: "DOMKit",
             dependencies: ["JavaScriptKit"]),
+        .target(name: "WebIDL"),
         .testTarget(
             name: "DOMKitTests",
             dependencies: ["DOMKit"]),
