@@ -8,7 +8,10 @@ extension IDLArgument: SwiftRepresentable {
 
 extension IDLNamespace: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let body = members.map { "static \(toSwift($0))" }.joined(separator: "\n")
+        let this: SwiftSource = "JSObject.global.\(name).object!"
+        let body = Context.withState(.static(this: this)) {
+            members.map(toSwift).joined(separator: "\n")
+        }
         if partial {
             return """
             extension \(name) {
@@ -19,7 +22,7 @@ extension IDLNamespace: SwiftRepresentable {
             return """
             public enum \(name) {
                 public static var jsObject: JSObject {
-                    JSObject.global.\(name).object!
+                    \(this)
                 }
 
                 \(body)
@@ -32,8 +35,8 @@ extension IDLNamespace: SwiftRepresentable {
 extension IDLOperation: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
-        func \(name!)(\(arguments.map(\.swiftRepresentation).joined(separator: ", "))) -> \(idlType) {
-            // TODO
+        \(raw: Context.static ? "static" : "") func \(name!)(\(arguments.map(\.swiftRepresentation).joined(separator: ", "))) -> \(idlType!) {
+            \(Context.this).\(name!)(\(arguments.map(\.name.swiftRepresentation).joined(separator: ", ")))
         }
         """
     }
@@ -64,7 +67,7 @@ extension IDLType: SwiftRepresentable {
                 fatalError("Unsupported type \(name)")
             }
         case let .union(types):
-            return "union(\(types.map(\.swiftRepresentation).joined(separator: ", ")))"
+            fatalError("Union types are unsupported")
         }
     }
 }

@@ -28,8 +28,18 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation {
             output += literal
         }
 
+        mutating func appendInterpolation(raw value: String) {
+            output += value
+        }
+
         mutating func appendInterpolation<T>(_ value: T) {
             output += toSwift(value).source
+        }
+
+        mutating func appendInterpolation<T>(state: Context.State, _ value: T) {
+            Context.withState(state) {
+                output += toSwift(value).source
+            }
         }
     }
 }
