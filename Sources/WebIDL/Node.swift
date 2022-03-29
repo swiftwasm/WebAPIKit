@@ -25,29 +25,20 @@ private enum TypeKey: String, CodingKey {
     case type
 }
 
-extension Decoder {
-    func decodeIDLNode() throws -> IDLNode {
-        try container(keyedBy: TypeKey.self).decodeIDLNode()
-    }
-}
-
-extension UnkeyedDecodingContainer {
-    mutating func decodeIDLNode() throws -> IDLNode {
-        try nestedContainer(keyedBy: TypeKey.self).decodeIDLNode()
-    }
-}
-
-private extension KeyedDecodingContainer where Key == TypeKey {
-    func decodeIDLNode() throws -> IDLNode {
-        let type = try decode(String.self, forKey: .type)
+struct IDLNodeDecoder: Decodable {
+    let node: IDLNode
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: TypeKey.self)
+        let type = try container.decode(String.self, forKey: .type)
         guard let idlType = idlTypes[type] else {
-            throw DecodingError.dataCorruptedError(
-                forKey: .type,
-                in: self,
-                debugDescription: "Unknown IDL type: \(type)"
+            throw DecodingError.dataCorrupted(
+                DecodingError.Context(
+                    codingPath: container.codingPath,
+                    debugDescription: "Unknown type: \(type)"
+                )
             )
         }
 
-        return try idlType.init(from: superDecoder())
+        node = try idlType.init(from: decoder)
     }
 }

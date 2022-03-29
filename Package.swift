@@ -13,6 +13,7 @@ let package = Package(
             name: "DOMKit",
             targets: ["DOMKit"]),
         .library(name: "WebIDL", targets: ["WebIDL"]),
+        .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
     dependencies: [
         .package(
@@ -29,6 +30,11 @@ let package = Package(
             name: "DOMKit",
             dependencies: ["JavaScriptKit"]),
         .target(name: "WebIDL"),
+        .target(
+            name: "WebIDLToSwift",
+            dependencies: ["WebIDL"],
+            resources: [.copy("data.json")]
+        ),
         .testTarget(
             name: "DOMKitTests",
             dependencies: ["DOMKit"]),
