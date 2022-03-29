@@ -183,15 +183,6 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
     var initializer: SwiftSource? { nil }
 }
 
-extension IDLIncludes: SwiftRepresentable {
-    var swiftRepresentation: SwiftSource {
-        ""
-        // """
-        // // TODO: IDLIncludes (\(includes) from \(target))
-        // """
-    }
-}
-
 extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         """
