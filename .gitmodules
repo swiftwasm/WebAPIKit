@@ -1,0 +1,6 @@
+[submodule "deps/webidl2swift"]
+	path = deps/webidl2swift
+	url = https://github.com/Apodini/webidl2swift
+[submodule "deps/bs-to-idl"]
+	path = deps/bs-to-idl
+	url = https://github.com/j-f1/bs-to-idl
