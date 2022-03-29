@@ -4,9 +4,15 @@ import WebIDL
 do {
     let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
-    for node in idl["console"]!.array {
+    for (i, node) in idl["web-animations"]!.enumerated() {
         print(toSwift(node).source)
     }
+//    for (name, nodes) in idl {
+//        if name.starts(with: "WEBGL_") { continue }
+//        for (i, node) in nodes.enumerated() {
+//            print(toSwift(node).source)
+//        }
+//    }
 } catch {
     switch error as? DecodingError {
     case .dataCorrupted(let ctx), .typeMismatch(_, let ctx):
