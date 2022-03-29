@@ -4,7 +4,9 @@ import WebIDL
 do {
     let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
-    print(idl)
+    for node in idl["console"]!.array {
+        print(toSwift(node).source)
+    }
 } catch {
     switch error as? DecodingError {
     case .dataCorrupted(let ctx), .typeMismatch(_, let ctx):
