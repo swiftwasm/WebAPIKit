@@ -1,6 +1,6 @@
 @dynamicMemberLookup
 enum Context {
-    private(set) static var current = State(static: false)
+    private(set) static var current = State()
 
     private static var stack: [State] = []
     static func withState<T>(_ new: State, body: () throws -> T) rethrows -> T {
@@ -19,7 +19,7 @@ enum Context {
     }
 
     struct State {
-        private(set) var `static`: Bool
+        private(set) var `static` = false
         private(set) var constructor: SwiftSource!
         private(set) var this: SwiftSource!
 
