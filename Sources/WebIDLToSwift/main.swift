@@ -4,7 +4,8 @@ import WebIDL
 do {
     let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
-    for (i, node) in idl["web-animations"]!.enumerated() {
+    for (i, node) in idl["dom"]!.enumerated() {
+        let name = Mirror(reflecting: node).children.first { $0.label == "name" }?.value as? String
         print(toSwift(node).source)
     }
 //    for (name, nodes) in idl {

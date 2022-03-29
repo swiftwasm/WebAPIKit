@@ -9,9 +9,7 @@ extension IDLArgument: SwiftRepresentable {
 extension IDLAttribute: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
-        \(raw: Context.static ? "static" : "") var \(name): \(idlType) {
-            // TODO
-        }
+        \(raw: Context.static ? "static" : "") var \(name): \(idlType) { /* todo: attribute accessors */ }
         """
     }
 }
@@ -29,7 +27,7 @@ extension IDLDictionary: SwiftRepresentable {
     private var swiftInit: SwiftSource {
         """
         convenience init(\(members.map { SwiftSource("\($0.name): \($0.idlType)") }.joined(separator: ", "))) {
-            let object = JSObject.global.new()
+            let object = JSObject.global.Object.function!.new()
             \(members.map { SwiftSource("object[\"\(raw: $0.name)\"] = \($0.name).jsValue()") }.joined(separator: "\n"))
             self = object
         }
@@ -59,6 +57,20 @@ extension IDLEnum: SwiftRepresentable {
             \(raw: cases.map { "case \(SwiftSource($0).source)" }.joined(separator: "\n"))
         }
         """
+    }
+}
+
+extension IDLCallback: SwiftRepresentable {
+    var swiftRepresentation: SwiftSource {
+        """
+        typealias \(name) = (\(arguments.map(\.idlType.swiftRepresentation).joined(separator: ", "))) -> \(idlType)
+        """
+    }
+}
+
+extension IDLCallbackInterface: SwiftRepresentable {
+    var swiftRepresentation: SwiftSource {
+        "/* [unsupported callback interface: \(name)] */"
     }
 }
 
@@ -100,14 +112,23 @@ extension IDLInterface: SwiftRepresentable {
 
 extension IDLInterfaceMixin: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let this: SwiftSource = "JSObject.global.\(name).object!"
-        let body = Context.withState(.static(this: this)) {
-            members.map(toSwift).joined(separator: "\n")
-        }
-        return """
-        extension \(name) {
-            \(body)
-        }
+        // let this: SwiftSource = "JSObject.global.\(name).object!"
+        // let body = Context.withState(.static(this: this)) {
+        //     members.map(toSwift).joined(separator: "\n")
+        // }
+        // return """
+        // extension \(name) {
+        //     \(body)
+        // }
+        // """
+        "/* [unsupported interface mixin: \(name)] */"
+    }
+}
+
+extension IDLConstant: SwiftRepresentable {
+    var swiftRepresentation: SwiftSource {
+        """
+        public static let \(name): \(idlType) = \(value)
         """
     }
 }
@@ -115,10 +136,29 @@ extension IDLInterfaceMixin: SwiftRepresentable {
 extension IDLConstructor: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         assert(!Context.static)
+        let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
+        let args = arguments.map(\.name.swiftRepresentation).joined(separator: ", ")
         return """
-        convenience init(\(arguments.map(\.swiftRepresentation).joined(separator: ", "))) {
-            self.init(unsafelyWrapping: \(Context.constructor).new(\(arguments.map(\.name.swiftRepresentation).joined(separator: ", "))))
+        convenience init(\(params)) {
+            self.init(unsafelyWrapping: \(Context.constructor).new(\(args)))
         }
+        """
+    }
+}
+
+extension IDLIncludes: SwiftRepresentable {
+    var swiftRepresentation: SwiftSource {
+        ""
+        // """
+        // // TODO: IDLIncludes (\(includes) from \(target))
+        // """
+    }
+}
+
+extension IDLIterableDeclaration: SwiftRepresentable {
+    var swiftRepresentation: SwiftSource {
+        """
+        /* [make me iterable plz] */
         """
     }
 }
@@ -152,13 +192,7 @@ extension IDLNamespace: SwiftRepresentable {
 extension IDLOperation: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         if special.isEmpty {
-            let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
-            let args = arguments.map(\.name.swiftRepresentation).joined(separator: ", ")
-            return """
-            \(raw: Context.static ? "static" : "") func \(name!)(\(params)) -> \(idlType!) {
-                \(Context.this).\(name!)(\(args)).fromJSValue()
-            }
-            """
+            return defaultRepresentation
         } else {
             switch special {
             case "stringifier":
@@ -167,10 +201,30 @@ extension IDLOperation: SwiftRepresentable {
                     \(Context.this).toString().fromJSValue()
                 }
                 """
+            case "static":
+                return Context.withState(.static(this: Context.constructor)) {
+                    defaultRepresentation
+                }
+            case "getter":
+                return """
+                var \(name!): \(idlType!) {
+                    \(Context.this)["\(raw: name!)"].fromJSValue()
+                }
+                """
             default:
                 fatalError("Unsupported special operation \(special)")
             }
         }
+    }
+
+    private var defaultRepresentation: SwiftSource {
+        let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
+        let args = arguments.map(\.name.swiftRepresentation).joined(separator: ", ")
+        return """
+        \(raw: Context.static ? "static" : "") func \(name!)(\(params)) -> \(idlType!) {
+            \(Context.this).\(name!)(\(args)).fromJSValue()
+        }
+        """
     }
 }
 
@@ -182,6 +236,10 @@ let typeNameMap = [
     "undefined": "Void",
     "double": "Double",
     "unrestricted double": "Double",
+    "unsigned short": "Double",
+    "unsigned long": "Double",
+    "unsigned long long": "Double",
+    "short": "Double",
 ]
 
 extension IDLType: SwiftRepresentable {
@@ -201,11 +259,14 @@ extension IDLType: SwiftRepresentable {
             if let typeName = typeNameMap[name] {
                 return "\(typeName)"
             } else {
-                print("Unsupported type: \(name)")
+                if name == name.lowercased() {
+                    fatalError("Unsupported type: \(name)")
+                }
                 return "\(name)"
             }
         case let .union(types):
-            fatalError("Union types are unsupported")
+            // print("union", types)
+            return "<unsupported-union>"
         }
     }
 }
@@ -213,5 +274,28 @@ extension IDLType: SwiftRepresentable {
 extension IDLTypedef: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         "typealias \(name) = \(idlType)"
+    }
+}
+
+extension IDLValue: SwiftRepresentable {
+    var swiftRepresentation: SwiftSource {
+        switch self {
+        case let .string(value):
+            return .raw(value)
+        case let .number(value):
+            return .raw(value)
+        case let .boolean(value):
+            return "\(value)"
+        case .null:
+            fatalError("`null` is not supported as a value in Swift")
+        case let .infinity(negative):
+            return negative ? "-.infinity" : ".infinity"
+        case .nan:
+            return ".nan"
+        case .sequence:
+            return "[]"
+        case .dictionary:
+            return "[:]"
+        }
     }
 }

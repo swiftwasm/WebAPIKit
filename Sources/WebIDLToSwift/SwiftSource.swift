@@ -17,6 +17,10 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation {
         source
     }
 
+    static func raw(_ value: String) -> SwiftSource {
+        SwiftSource(value)
+    }
+
     struct StringInterpolation: StringInterpolationProtocol {
         fileprivate var output = ""
 
