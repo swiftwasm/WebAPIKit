@@ -2,14 +2,18 @@ import WebIDL
 
 extension IDLArgument: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        "\(name): \(idlType)"
+        if optional {
+            return "\(name): \(idlType)"
+        } else {
+            return "\(name): \(idlType)? = nil"
+        }
     }
 }
 
 extension IDLAttribute: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
-        \(raw: Context.static ? "static" : "") var \(name): \(idlType) { /* todo: attribute accessors */ }
+        public\(raw: Context.static ? " static" : "") var \(name): \(idlType) { /* todo: attribute accessors */ }
         """
     }
 }
@@ -26,7 +30,7 @@ extension IDLDictionary: SwiftRepresentable {
 
     private var swiftInit: SwiftSource {
         """
-        convenience init(\(members.map { SwiftSource("\($0.name): \($0.idlType)") }.joined(separator: ", "))) {
+        public onvenience init(\(members.map { SwiftSource("\($0.name): \($0.idlType)") }.joined(separator: ", "))) {
             let object = JSObject.global.Object.function!.new()
             \(members.map { SwiftSource("object[\"\(raw: $0.name)\"] = \($0.name).jsValue()") }.joined(separator: "\n"))
             self = object
@@ -37,7 +41,7 @@ extension IDLDictionary: SwiftRepresentable {
     private var swiftMembers: [SwiftSource] {
         members.map {
             """
-            var \($0.name): \($0.idlType) {
+            public var \($0.name): \($0.idlType) {
                 get {
                     self["\(raw: $0.name)"].fromJSValue()
                 }
@@ -53,7 +57,7 @@ extension IDLDictionary: SwiftRepresentable {
 extension IDLEnum: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
-        enum \(name) {
+        public enum \(name) {
             \(raw: cases.map { "case \(SwiftSource($0).source)" }.joined(separator: "\n"))
         }
         """
@@ -62,8 +66,9 @@ extension IDLEnum: SwiftRepresentable {
 
 extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        """
-        typealias \(name) = (\(arguments.map(\.idlType.swiftRepresentation).joined(separator: ", "))) -> \(idlType)
+        let args = arguments.map(\.idlType.swiftRepresentation).joined(separator: ", ")
+        return """
+        public typealias \(name) = (\(args)) -> \(idlType)
         """
     }
 }
@@ -83,24 +88,24 @@ extension IDLInterface: SwiftRepresentable {
         if partial {
             assert(inheritance == nil)
             return """
-            extension \(name) {
+            public extension \(name) {
                 \(body)
             }
             """
         } else {
             let requiredInit = """
-            required init(unsafelyWrapping jsObject: JSObject) {
+            public required init(unsafelyWrapping jsObject: JSObject) {
                 self.jsObject = jsObject
             }
             """
 
             return """
-            class \(name): \(inheritance ?? "JSBridgedClass") {
-                static var constructor: JSFunction {
+            public class \(name): \(inheritance ?? "JSBridgedClass") {
+                public static var constructor: JSFunction {
                     \(constructor)
                 }
 
-                let jsObject: JSObject
+                public let jsObject: JSObject
                 \(inheritance == nil ? requiredInit : "")
 
                 \(body)
@@ -139,8 +144,8 @@ extension IDLConstructor: SwiftRepresentable {
         let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
         let args = arguments.map(\.name.swiftRepresentation).joined(separator: ", ")
         return """
-        convenience init(\(params)) {
-            self.init(unsafelyWrapping: \(Context.constructor).new(\(args)))
+        public convenience init(\(params)) {
+            self.init(unsafelyWrapping: Self.constructor.new(\(args)))
         }
         """
     }
@@ -171,7 +176,7 @@ extension IDLNamespace: SwiftRepresentable {
         }
         if partial {
             return """
-            extension \(name) {
+            public extension \(name) {
                 \(body)
             }
             """
@@ -197,7 +202,7 @@ extension IDLOperation: SwiftRepresentable {
             switch special {
             case "stringifier":
                 return """
-                var description: String {
+                public var description: String {
                     \(Context.this).toString().fromJSValue()
                 }
                 """
@@ -207,7 +212,7 @@ extension IDLOperation: SwiftRepresentable {
                 }
             case "getter":
                 return """
-                var \(name!): \(idlType!) {
+                public var \(name!): \(idlType!) {
                     \(Context.this)["\(raw: name!)"].fromJSValue()
                 }
                 """
@@ -221,7 +226,7 @@ extension IDLOperation: SwiftRepresentable {
         let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
         let args = arguments.map(\.name.swiftRepresentation).joined(separator: ", ")
         return """
-        \(raw: Context.static ? "static" : "") func \(name!)(\(params)) -> \(idlType!) {
+        public\(raw: Context.static ? " static" : "") func \(name!)(\(params)) -> \(idlType!) {
             \(Context.this).\(name!)(\(args)).fromJSValue()
         }
         """
@@ -230,7 +235,7 @@ extension IDLOperation: SwiftRepresentable {
 
 let typeNameMap = [
     "boolean": "Bool",
-    "any": "Any",
+    "any": "ConvertibleToJSValue",
     "DOMString": "String",
     "object": "JSObject",
     "undefined": "Void",
@@ -273,7 +278,7 @@ extension IDLType: SwiftRepresentable {
 
 extension IDLTypedef: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        "typealias \(name) = \(idlType)"
+        "public typealias \(name) = \(idlType)"
     }
 }
 
