@@ -297,6 +297,13 @@ let typeNameMap = [
 
 extension IDLType: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
+        if nullable {
+            return "\(baseType)?"
+        }
+        return baseType
+    }
+
+    var baseType: SwiftSource {
         switch value {
         case let .generic(name, args):
             switch name {
