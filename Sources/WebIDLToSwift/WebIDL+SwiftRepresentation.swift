@@ -65,7 +65,9 @@ extension IDLEnum: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
         public enum \(name): String, JSValueCompatible {
-            \(raw: cases.map { "case \(SwiftSource($0).source)" }.joined(separator: "\n"))
+            \(cases.map { name -> SwiftSource in
+                "case \(name.camelized) = \"\(name)\""
+            })
 
             public static func construct(from jsValue: JSValue) -> \(name)? {
                 if let string = jsValue.string {

@@ -1,3 +1,5 @@
+import Foundation
+
 struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation {
     let source: String
 
@@ -40,6 +42,10 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation {
             output += toSwift(value).source
         }
 
+        mutating func appendInterpolation(_ values: [SwiftSource]) {
+            output += values.map(\.source).joined(separator: "\n")
+        }
+
         mutating func appendInterpolation<T>(state: Context.State, _ value: T) {
             Context.withState(state) {
                 output += toSwift(value).source
@@ -57,5 +63,30 @@ extension Array where Element == SwiftSource {
 extension SwiftSource: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         self
+    }
+}
+
+extension String {
+    var camelized: String {
+        guard !isEmpty else { return "_empty" }
+
+        let parts = self.components(separatedBy: CharacterSet.alphanumerics.inverted)
+        let first = parts.first!.lowercasingFirst
+        let rest = parts.dropFirst().map(\.uppercasingFirst)
+
+        let result = ([first] + rest).joined()
+        if result.first!.isNumber {
+            return "_" + result
+        } else {
+            return result
+        }
+    }
+
+    private var uppercasingFirst: String {
+        prefix(1).uppercased() + dropFirst()
+    }
+
+    private var lowercasingFirst: String {
+        prefix(1).lowercased() + dropFirst()
     }
 }
