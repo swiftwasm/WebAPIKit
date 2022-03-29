@@ -15,6 +15,6 @@ cd deps
 cd webidl2swift/
 swift run webidl2swift -i ../webidl-sources -o ../output --no-pretty-print
 cd ../../
-cp deps/output/WebAPI/Sources/WebAPI/* ./Sources/DOMKit/WebIDL/
+cp deps/output/WebIDL/Sources/WebIDL/* ./Sources/DOMKit/WebIDL/
 swiftformat ./Sources/DOMKit/WebIDL/
 ```
