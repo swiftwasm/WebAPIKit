@@ -4,7 +4,7 @@ import WebIDL
 do {
     let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
-    for (i, node) in (idl["dom"]!.array + idl["hr-time"]!.array).enumerated() {
+    for (i, node) in ["dom", "hr-time", "html"].flatMap({ idl[$0]!.array }).enumerated() {
         let name = Mirror(reflecting: node).children.first { $0.label == "name" }?.value as? String
         if let name = name {
             let content = "import JavaScriptKit\n\n" + toSwift(node).source

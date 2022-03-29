@@ -248,6 +248,10 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                     \(Context.this)["\(raw: name!)"].fromJSValue()!
                 }
                 """
+            case "setter":
+                return "/* unsupported setter for keys of type \(arguments[0].idlType.swiftRepresentation.source) */"
+            case "deleter":
+                return "/* unsupported deleter for keys of type \(arguments[0].idlType.swiftRepresentation.source) */"
             default:
                 fatalError("Unsupported special operation \(special)")
             }
@@ -286,6 +290,7 @@ let typeNameMap = [
     "unsigned long": "Double",
     "unsigned long long": "Double",
     "short": "Double",
+    "long": "Double",
 ]
 
 extension IDLType: SwiftRepresentable {
@@ -295,9 +300,14 @@ extension IDLType: SwiftRepresentable {
             switch name {
             case "sequence":
                 return "[\(args[0])]"
+            case "FrozenArray":
+                // ???
+                return "[\(args[0])]"
             case "Promise":
                 // TODO: async
                 return "JSPromise"
+            case "record":
+                return "[\(args[0]): \(args[1])]"
             default:
                 fatalError("Unsupported generic type: \(name)")
             }
