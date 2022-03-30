@@ -77,7 +77,9 @@ public class ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: Ite
 }
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public class ValueIterableAsyncIterator<SequenceType: JSBridgedClass & AsyncSequence>: AsyncIteratorProtocol where SequenceType.Element: ConstructibleFromJSValue {
+public class ValueIterableAsyncIterator<SequenceType: JSBridgedClass & AsyncSequence>: AsyncIteratorProtocol
+    where SequenceType.Element: ConstructibleFromJSValue
+{
     private var index: Int = 0
     private let sequence: SequenceType
 
@@ -95,7 +97,9 @@ public protocol KeyValueSequence: Sequence where Element == (String, Value) {
     associatedtype Value
 }
 
-public class PairIterableIterator<SequenceType: JSBridgedClass & KeyValueSequence>: IteratorProtocol where SequenceType.Value: ConstructibleFromJSValue {
+public class PairIterableIterator<SequenceType: JSBridgedClass & KeyValueSequence>: IteratorProtocol
+    where SequenceType.Value: ConstructibleFromJSValue
+{
     private let iterator: JSObject
     private let sequence: SequenceType
 
