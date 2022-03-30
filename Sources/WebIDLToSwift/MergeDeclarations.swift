@@ -1,5 +1,7 @@
 import WebIDL
 
+let ignoredTypedefs: Set<String> = ["Function"]
+
 func addAsync(_ members: [IDLNode]) -> [IDLNode] {
     members.flatMap { member -> [IDLNode] in
         if let operation = member as? IDLOperation,
@@ -116,7 +118,8 @@ func merge(declarations: [IDLNode]) -> (
 
     print("unhandled callback interfaces", all(IDLCallbackInterface.self).map(\.name))
 
-    let allTypes: [IDLTypealias] = all(IDLTypedef.self) + all(IDLCallback.self)
+    var allTypes: [IDLTypealias] = all(IDLTypedef.self) + all(IDLCallback.self)
+    allTypes.removeAll(where: { ignoredTypedefs.contains($0.name) })
     let mergedTypes = Dictionary(uniqueKeysWithValues: allTypes.map { ($0.name, $0) })
 
     let arrays: [DeclarationFile] =
@@ -126,7 +129,7 @@ func merge(declarations: [IDLNode]) -> (
             + Array(mergedNamespaces.values)
     return (
         arrays
-            + [Typedefs(typedefs: all(IDLTypedef.self) + all(IDLCallback.self))]
+            + [Typedefs(typedefs: allTypes)]
             + all(IDLEnum.self),
         mergedInterfaces,
         mergedTypes
@@ -179,7 +182,7 @@ struct Typedefs: DeclarationFile, SwiftRepresentable {
     let typedefs: [IDLTypealias]
 
     var swiftRepresentation: SwiftSource {
-        "\(lines: typedefs.map(toSwift))"
+        "\(lines: typedefs.filter { !ignoredTypedefs.contains($0.name) }.map(toSwift))"
     }
 }
 

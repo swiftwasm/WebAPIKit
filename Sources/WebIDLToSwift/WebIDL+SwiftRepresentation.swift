@@ -444,6 +444,7 @@ let typeNameMap = [
     "short": "Int16",
     "long": "Int32",
     "long long": "Int64",
+    "Function": "JSFunction",
 ]
 
 extension IDLType: SwiftRepresentable {
