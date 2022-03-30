@@ -54,8 +54,8 @@ extension IDLDictionary: SwiftRepresentable {
         public init(\(members.map { SwiftSource("\($0.name): \($0.idlType)") }.joined(separator: ", "))) {
             let object = JSObject.global.Object.function!.new()
             \(lines: members.map { "object[\"\(raw: $0.name)\"] = \($0.name).jsValue()" })
+            \(lines: members.map { "_\(raw: $0.name) = ReadWriteAttribute(jsObject: object, name: \"\(raw: $0.name)\")" })
             super.init(cloning: object)
-            \(lines: members.map { "_\(raw: $0.name) = ReadWriteAttribute(jsObject: self, name: \"\(raw: $0.name)\")" })
         }
         """
     }
