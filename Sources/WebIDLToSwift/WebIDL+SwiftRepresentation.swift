@@ -98,7 +98,7 @@ extension IDLEnum: SwiftRepresentable {
                 "case \(name.camelized) = \"\(raw: name)\""
             })
 
-            public static func construct(from jsValue: JSValue) -> \(name)? {
+            public static func construct(from jsValue: JSValue) -> Self? {
                 if let string = jsValue.string {
                     return Self(rawValue: string)
                 }
@@ -133,7 +133,7 @@ protocol Initializable {
 extension MergedInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         let constructor: SwiftSource = "JSObject.global.\(name).function!"
-        let body = Context.withState(.instance(constructor: constructor, this: "jsObject")) {
+        let body = Context.withState(.instance(constructor: constructor, this: "jsObject", className: "\(name)")) {
             members.map { member in
                 let isOverride: Bool
                 if let memberName = (member as? IDLNamed)?.name {
@@ -234,7 +234,7 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
 extension IDLNamespace: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         let this: SwiftSource = "JSObject.global.\(name).object!"
-        let body = Context.withState(.static(this: this, inClass: false)) {
+        let body = Context.withState(.static(this: this, inClass: false, className: "\(name)")) {
             members.map(toSwift).joined(separator: "\n\n")
         }
         if partial {
@@ -271,7 +271,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                 }
                 """
             case "static":
-                return Context.withState(.static(this: "constructor")) {
+                return Context.withState(.static(this: "constructor", className: Context.className)) {
                     defaultRepresentation
                 }
             case "getter":
@@ -318,8 +318,18 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         }
         let accessModifier: SwiftSource = Context.static ? (Context.inClass ? " class" : " static") : ""
         let overrideModifier: SwiftSource = Context.override ? "override " : ""
+        var returnType = idlType!.swiftRepresentation
+        if returnType == Context.className {
+            returnType = "Self"
+        }
+        if Context.override, Context.static {
+            return """
+            // [illegal static override]
+            // func \(name)(\(params)) -> \(returnType)
+            """
+        }
         return """
-        \(overrideModifier)public\(accessModifier) func \(name)(\(params)) -> \(idlType!) {
+        \(overrideModifier)public\(accessModifier) func \(name)(\(params)) -> \(returnType) {
             \(lines: argsInit)
             \(body)
         }

@@ -1,6 +1,6 @@
 import Foundation
 
-struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation {
+struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation, Equatable {
     let source: String
 
     init(_ value: String) {
