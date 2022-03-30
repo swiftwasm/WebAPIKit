@@ -90,7 +90,7 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue(), $1.jsValue(), $2.jsValue(), $3.jsValue(), $4.fromJSValue()).fromJSValue()! }
+            return { function($0.jsValue(), $1.jsValue(), $2.jsValue(), $3.jsValue(), $4.jsValue()).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
