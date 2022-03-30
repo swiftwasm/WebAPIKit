@@ -184,7 +184,15 @@ extension MergedInterface: SwiftRepresentable {
     }
 
     var memberInits: [SwiftSource] {
-        members.compactMap {
+        members.filter { member in
+            if let ignored = Context.ignored[name],
+               let memberName = (member as? IDLNamed)?.name
+            {
+                return !ignored.contains(memberName)
+            } else {
+                return true
+            }
+        }.compactMap {
             if let alt = $0 as? Initializable {
                 return alt.initializer
             } else {
@@ -220,6 +228,9 @@ extension IDLConstant: SwiftRepresentable, Initializable {
 extension IDLConstructor: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         assert(!Context.static)
+        if Context.ignored[Context.className.source]?.contains("<constructor>") ?? false {
+            return "// [constructor ignored]"
+        }
         let args: [SwiftSource] = arguments.map {
             "\($0.name)\($0.optional ? "?" : "").jsValue() \($0.optional ? " ?? .undefined" : "")"
         }
@@ -271,6 +282,11 @@ extension IDLNamespace: SwiftRepresentable {
 
 extension IDLOperation: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
+        if Context.ignored[Context.className.source]?.contains(name) ?? false {
+            return """
+            // [\(name) is ignored]
+            """
+        }
         if special.isEmpty {
             return defaultRepresentation
         } else {

@@ -1,8 +1,23 @@
 import Foundation
 import WebIDL
 
-let ignored: [String: Set<String>] = [:
-    // unsupported function types
+let ignored: [String: Set<String>] = [
+    // functions as parameters are unsupported
+    "EventTarget": ["addEventListener", "removeEventListener"],
+    "HTMLCanvasElement": ["toBlob"],
+    "AnimationFrameProvider": ["requestAnimationFrame"],
+    "DataTransferItem": ["getAsString"],
+    "WindowOrWorkerGlobalScope": ["queueMicrotask"],
+    "MutationObserver": ["<constructor>"],
+    "CustomElementRegistry": ["define"],
+    // NodeFilter
+    "Document": ["createNodeIterator", "createTreeWalker"],
+    "TreeWalker": ["filter"],
+    "NodeIterator": ["filter"],
+    // invalid overload in Swift
+    "BeforeUnloadEvent": ["returnValue"],
+    // XPathNSResolver
+    "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
 ]
 
 do {
