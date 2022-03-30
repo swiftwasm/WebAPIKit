@@ -43,7 +43,7 @@ func merge(declarations: [IDLNode]) -> [DeclarationFile] {
     })
 
     print("unhandled callback interfaces", all(IDLCallbackInterface.self).map(\.name))
-    return Array(mergedInterfaces.values)
+    return Array(mergedInterfaces.values) + Array(mergedDictionaries.values)
         + [Typedefs(typedefs: all(IDLTypedef.self) + all(IDLCallback.self))]
         + all(IDLEnum.self)
         + all(IDLNamespace.self)

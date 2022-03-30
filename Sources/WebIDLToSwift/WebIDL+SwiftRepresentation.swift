@@ -39,7 +39,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
     }
 }
 
-extension IDLDictionary: SwiftRepresentable {
+extension MergedDictionary: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
         public class \(name): JSObject {
