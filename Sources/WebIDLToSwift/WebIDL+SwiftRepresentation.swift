@@ -249,7 +249,7 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
         if async {
             return """
             public typealias Element = \(idlType[0])
-            @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+            @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
             public func makeAsyncIterator() -> ValueIterableAsyncIterator<\(Context.className)> {
                 ValueIterableAsyncIterator(sequence: self)
             }
@@ -413,12 +413,12 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
         let (prep, call) = operation.defaultBody
         let result: SwiftSource
         if returnType.swiftRepresentation.source == "Void" {
-            result = "_ = try await _promise.value"
+            result = "_ = try await _promise.get()"
         } else {
-            result = "return try await _promise.value.fromJSValue()!"
+            result = "return try await _promise.get().fromJSValue()!"
         }
         return """
-        @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+        @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
         \(operation.nameAndParams) async throws -> \(returnType) {
             \(prep)
             let _promise: JSPromise = \(call).fromJSValue()!
