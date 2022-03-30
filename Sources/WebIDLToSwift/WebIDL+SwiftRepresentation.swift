@@ -43,9 +43,9 @@ extension IDLDictionary: SwiftRepresentable {
     private var swiftInit: SwiftSource {
         """
         public convenience init(\(members.map { SwiftSource("\($0.name): \($0.idlType)") }.joined(separator: ", "))) {
-            \(lines: members.map { "_\($0.name) = ReadWriteAttribute(jsObject: object, name: \"\(raw: $0.name)\")" })
             let object = JSObject.global.Object.function!.new()
             \(lines: members.map { "object[\"\(raw: $0.name)\"] = \($0.name).jsValue()" })
+            \(lines: members.map { "_\(raw: $0.name) = ReadWriteAttribute(jsObject: object, name: \"\(raw: $0.name)\")" })
             self = object
         }
         """
@@ -228,11 +228,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                     defaultRepresentation
                 }
             case "getter":
-                return """
-                public var \(name!): \(idlType!) {
-                    \(Context.this)["\(raw: name!)"].fromJSValue()!
-                }
-                """
+                return "/* unsupported getter for keys of type \(arguments[0].idlType.swiftRepresentation.source) */"
             case "setter":
                 return "/* unsupported setter for keys of type \(arguments[0].idlType.swiftRepresentation.source) */"
             case "deleter":
