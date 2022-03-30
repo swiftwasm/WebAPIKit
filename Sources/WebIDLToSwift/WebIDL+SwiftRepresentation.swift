@@ -134,7 +134,7 @@ extension IDLCallback: SwiftRepresentable {
 
 extension IDLCallbackInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        "/* [unsupported callback interface: \(name)] */"
+        "// XXX: unsupported callback interface: \(name)"
     }
 }
 
@@ -150,7 +150,7 @@ extension MergedInterface: SwiftRepresentable {
                 let isOverride: Bool
                 if let memberName = (member as? IDLNamed)?.name {
                     if Context.ignored[name]?.contains(memberName) ?? false {
-                        return "// [\(memberName) is ignored]"
+                        return "// XXX: member '\(memberName)' is ignored"
                     }
                     isOverride = parentClasses.flatMap {
                         Context.interfaces[$0]?.members ?? []
@@ -229,7 +229,7 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         assert(!Context.static)
         if Context.ignored[Context.className.source]?.contains("<constructor>") ?? false {
-            return "// [constructor ignored]"
+            return "// XXX: constructor is ignored"
         }
         let args: [SwiftSource] = arguments.map {
             "\($0.name)\($0.optional ? "?" : "").jsValue() \($0.optional ? " ?? .undefined" : "")"
@@ -288,7 +288,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         if Context.ignored[Context.className.source]?.contains(name) ?? false {
             return """
-            // [\(name) is ignored]
+            // XXX: method '\(name)' is ignored
             """
         }
         if special.isEmpty {
@@ -307,11 +307,11 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                     defaultRepresentation
                 }
             case "getter":
-                return "/* unsupported getter for keys of type \(arguments[0].idlType.swiftRepresentation.source) */"
+                return "// XXX: unsupported getter for keys of type \(arguments[0].idlType.swiftRepresentation.source)"
             case "setter":
-                return "/* unsupported setter for keys of type \(arguments[0].idlType.swiftRepresentation.source) */"
+                return "// XXX: unsupported setter for keys of type \(arguments[0].idlType.swiftRepresentation.source)"
             case "deleter":
-                return "/* unsupported deleter for keys of type \(arguments[0].idlType.swiftRepresentation.source) */"
+                return "// XXX: unsupported deleter for keys of type \(arguments[0].idlType.swiftRepresentation.source)"
             default:
                 fatalError("Unsupported special operation \(special)")
             }
@@ -356,7 +356,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         }
         if Context.override, Context.static {
             return """
-            // [illegal static override]
+            // XXX: illegal static override
             // func \(name)(\(sequence: params)) -> \(returnType)
             """
         }
@@ -426,7 +426,7 @@ extension IDLType: SwiftRepresentable {
                 return "\(name)"
             }
         case let .union(types):
-            // print("union", types)
+            print("union", types.count)
             return "__UNSUPPORTED_UNION__"
         }
     }
