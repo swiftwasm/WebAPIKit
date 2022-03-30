@@ -37,8 +37,8 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
 @propertyWrapper public final class OptionalClosureHandler<ArgumentType, ReturnType>
     where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible
 {
-    let jsObject: JSObject
-    let name: String
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: String
 
     public init(jsObject: JSObject, name: String) {
         self.jsObject = jsObject
@@ -50,7 +50,7 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
         set { OptionalClosureHandler[name, in: jsObject] = newValue }
     }
 
-    @inlinable static subscript(name: String, in jsObject: JSObject) -> ((ArgumentType) -> ReturnType)? {
+    @inlinable public static subscript(name: String, in jsObject: JSObject) -> ((ArgumentType) -> ReturnType)? {
         get {
             guard let function = jsObject[name].function else {
                 return nil
@@ -69,8 +69,8 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
 }
 
 @propertyWrapper public struct ReadWriteAttribute<Wrapped: JSValueCompatible> {
-    let jsObject: JSObject
-    let name: String
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: String
 
     public init(jsObject: JSObject, name: String) {
         self.jsObject = jsObject
@@ -78,14 +78,19 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
     }
 
     @inlinable public var wrappedValue: Wrapped {
+        get { ReadWriteAttribute[name, in: jsObject] }
+        set { ReadWriteAttribute[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: String, in jsObject: JSObject) -> Wrapped {
         get { jsObject[name].fromJSValue()! }
         set { jsObject[name] = newValue.jsValue() }
     }
 }
 
 @propertyWrapper public struct ReadonlyAttribute<Wrapped: ConstructibleFromJSValue> {
-    let jsObject: JSObject
-    let name: String
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: String
 
     public init(jsObject: JSObject, name: String) {
         self.jsObject = jsObject
@@ -93,6 +98,10 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
     }
 
     @inlinable public var wrappedValue: Wrapped {
+        ReadonlyAttribute[name, in: jsObject]
+    }
+
+    @inlinable public static subscript(name: String, in jsObject: JSObject) -> Wrapped {
         jsObject[name].fromJSValue()!
     }
 }
