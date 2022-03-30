@@ -57,6 +57,9 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
             partialResult.members += interface.members
         }
         interface.mixins = includes[interface.name, default: []]
+        if interface.members.contains(where: { $0 is IDLIterableDeclaration }) {
+            interface.mixins.append("Sequence")
+        }
         return interface
     }
 

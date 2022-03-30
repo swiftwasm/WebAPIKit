@@ -246,8 +246,12 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
 
 extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
-        """
-        /* [make me iterable plz] */
+        assert(!async)
+        return """
+        public typealias Element = \(idlType[0])
+        public func makeIterator() -> ValueIterableIterator<\(Context.className)> {
+            ValueIterableIterator(sequence: self)
+        }
         """
     }
 
