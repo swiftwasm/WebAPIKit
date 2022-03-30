@@ -16,7 +16,7 @@ extension IDLArgument: SwiftRepresentable {
 }
 
 extension IDLAttribute: SwiftRepresentable, Initializable {
-    var propertyWrapper: SwiftSource {
+    private var propertyWrapper: SwiftSource {
         if readonly {
             return "ReadonlyAttribute"
         }
@@ -26,16 +26,32 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
         return "ReadWriteAttribute"
     }
 
+    private var wrapperName: SwiftSource {
+        "_\(raw: name)"
+    }
+
     var swiftRepresentation: SwiftSource {
-        """
-        @\(propertyWrapper)
-        public\(raw: Context.static ? " static" : "") var \(name): \(idlType)
-        """
+        assert(!Context.static)
+        if Context.override {
+            // can't do property wrappers on override declarations
+            return """
+            private var \(wrapperName): \(propertyWrapper)<\(idlType)>
+            override public var \(name): \(idlType) {
+                get { \(wrapperName).wrappedValue }
+                set { \(wrapperName).wrappedValue = newValue }
+            }
+            """
+        } else {
+            return """
+            @\(propertyWrapper)
+            public var \(name): \(idlType)
+            """
+        }
     }
 
     var initializer: SwiftSource? {
         assert(!Context.static)
-        return "_\(raw: name) = \(propertyWrapper)(jsObject: jsObject, name: \"\(raw: name)\")"
+        return "\(wrapperName) = \(propertyWrapper)(jsObject: jsObject, name: \"\(raw: name)\")"
     }
 }
 
@@ -54,7 +70,11 @@ extension MergedDictionary: SwiftRepresentable {
         public init(\(members.map { SwiftSource("\($0.name): \($0.idlType)") }.joined(separator: ", "))) {
             let object = JSObject.global.Object.function!.new()
             \(lines: members.map { "object[\"\(raw: $0.name)\"] = \($0.name).jsValue()" })
-            \(lines: members.map { "_\(raw: $0.name) = ReadWriteAttribute(jsObject: object, name: \"\(raw: $0.name)\")" })
+            \(lines: members.map {
+                """
+                _\(raw: $0.name) = ReadWriteAttribute(jsObject: object, name: "\(raw: $0.name)")
+                """
+            })
             super.init(cloning: object)
         }
         """
@@ -114,7 +134,21 @@ extension MergedInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         let constructor: SwiftSource = "JSObject.global.\(name).function!"
         let body = Context.withState(.instance(constructor: constructor, this: "jsObject")) {
-            members.map(toSwift).joined(separator: "\n\n")
+            members.map { member in
+                let isOverride: Bool
+                if let memberName = (member as? IDLNamed)?.name {
+                    isOverride = inheritance.flatMap {
+                        Context.interfaces[$0]?.members ?? []
+                    }.contains {
+                        memberName == ($0 as? IDLNamed)?.name
+                    }
+                } else {
+                    isOverride = false
+                }
+                return Context.withState(.override(isOverride)) {
+                    toSwift(member)
+                }
+            }.joined(separator: "\n\n")
         }
 
         return """
@@ -228,6 +262,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         if special.isEmpty {
             return defaultRepresentation
         } else {
+            assert(!Context.static)
             switch special {
             case "stringifier":
                 return """
@@ -281,9 +316,10 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         } else {
             body = "return \(call).fromJSValue()!"
         }
-        let accessModifier = Context.static ? (Context.inClass ? " class" : " static") : ""
+        let accessModifier: SwiftSource = Context.static ? (Context.inClass ? " class" : " static") : ""
+        let overrideModifier: SwiftSource = Context.override ? "override " : ""
         return """
-        public\(raw: accessModifier) func \(name)(\(params)) -> \(idlType!) {
+        \(overrideModifier)public\(accessModifier) func \(name)(\(params)) -> \(idlType!) {
             \(lines: argsInit)
             \(body)
         }

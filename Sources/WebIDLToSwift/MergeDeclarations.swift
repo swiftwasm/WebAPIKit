@@ -1,6 +1,6 @@
 import WebIDL
 
-func merge(declarations: [IDLNode]) -> [DeclarationFile] {
+func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfaces: [String: MergedInterface]) {
     let byType: [String: [IDLNode]] = declarations.reduce(into: [:]) { partialResult, node in
         partialResult[type(of: node).type, default: []].append(node)
     }
@@ -8,7 +8,7 @@ func merge(declarations: [IDLNode]) -> [DeclarationFile] {
     //     let name = Mirror(reflecting: node).children.first { $0.label == "name" }?.value as? String
     //     partialResult[name, default: []].append(node)
     // }
-//    print(byName.filter { $0.value.count > 1 }.map { "\($0.key ?? "<nil>"): \($0.value.map { type(of: $0).type }))" }.joined(separator: "\n"))
+    // print(byName.filter { $0.value.count > 1 }.map { "\($0.key ?? "<nil>"): \($0.value.map { type(of: $0).type }))" }.joined(separator: "\n"))
     // ["interface mixin", "interface", "includes"]
 
     func all<T: IDLNode>(_: T.Type) -> [T] {
@@ -22,7 +22,7 @@ func merge(declarations: [IDLNode]) -> [DeclarationFile] {
     })
     print("unhandled mixins", mixins.map(\.key))
 
-    var mergedInterfaces = Dictionary(all(IDLInterface.self).map {
+    let mergedInterfaces = Dictionary(all(IDLInterface.self).map {
         ($0.name, MergedInterface(
             name: $0.name,
             inheritance: [$0.inheritance].compactMap { $0 },
@@ -32,7 +32,7 @@ func merge(declarations: [IDLNode]) -> [DeclarationFile] {
         MergedInterface(name: $0.name, inheritance: $0.inheritance + $1.inheritance, members: $0.members + $1.members)
     })
 
-    var mergedDictionaries = Dictionary(all(IDLDictionary.self).map {
+    let mergedDictionaries = Dictionary(all(IDLDictionary.self).map {
         ($0.name, MergedDictionary(
             name: $0.name,
             inheritance: [$0.inheritance].compactMap { $0 },
@@ -43,10 +43,13 @@ func merge(declarations: [IDLNode]) -> [DeclarationFile] {
     })
 
     print("unhandled callback interfaces", all(IDLCallbackInterface.self).map(\.name))
-    return Array(mergedInterfaces.values) + Array(mergedDictionaries.values)
-        + [Typedefs(typedefs: all(IDLTypedef.self) + all(IDLCallback.self))]
-        + all(IDLEnum.self)
-        + all(IDLNamespace.self)
+    return (
+        Array(mergedInterfaces.values) + Array(mergedDictionaries.values)
+            + [Typedefs(typedefs: all(IDLTypedef.self) + all(IDLCallback.self))]
+            + all(IDLEnum.self)
+            + all(IDLNamespace.self),
+        mergedInterfaces
+    )
 }
 
 protocol DeclarationFile {}

@@ -23,6 +23,8 @@ enum Context {
         private(set) var inClass = false
         private(set) var constructor: SwiftSource!
         private(set) var this: SwiftSource!
+        private(set) var interfaces: [String: MergedInterface]!
+        private(set) var override = false
 
         static func `static`(this: SwiftSource, inClass: Bool = Context.inClass) -> Self {
             var newState = Context.current
@@ -37,6 +39,18 @@ enum Context {
             newState.static = false
             newState.constructor = constructor
             newState.this = this
+            return newState
+        }
+
+        static func override(_ isOverride: Bool) -> Self {
+            var newState = Context.current
+            newState.override = isOverride
+            return newState
+        }
+
+        static func interfaces(_ interfaces: [String: MergedInterface]) -> Self {
+            var newState = Context.current
+            newState.interfaces = interfaces
             return newState
         }
     }

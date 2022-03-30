@@ -8,11 +8,14 @@ do {
         "dom", "hr-time", "html", "console", "FileAPI", "geometry", "webidl", "fetch", "xhr",
         "referrer-policy", "uievents",
     ].flatMap { idl[$0]!.array }
-    for (i, node) in merge(declarations: declarations).enumerated() {
+    let merged = merge(declarations: declarations)
+    for (i, node) in merged.declarations.enumerated() {
         guard let name = Mirror(reflecting: node).children.first(where: { $0.label == "name" })?.value as? String else {
             fatalError("Cannot find name for \(node)")
         }
-        let content = toSwift(node).source
+        let content = Context.withState(.interfaces(merged.interfaces)) {
+            toSwift(node).source
+        }
         let path = "/Users/jed/Documents/github-clones/Tokamak/DOMKit/Sources/DOMKit/WebIDL/" + name + ".swift"
         if FileManager.default.fileExists(atPath: path) {
             fatalError("file already exists for \(name)")
