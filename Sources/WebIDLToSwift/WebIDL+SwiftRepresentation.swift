@@ -356,6 +356,7 @@ let typeNameMap = [
     "any": "JSValue",
     "DOMString": "String",
     "USVString": "String",
+    "CSSOMString": "String",
     "ByteString": "String",
     "object": "JSObject",
     "undefined": "Void",
@@ -384,7 +385,7 @@ extension IDLType: SwiftRepresentable {
             switch name {
             case "sequence":
                 return "[\(args[0])]"
-            case "FrozenArray":
+            case "FrozenArray", "ObservableArray":
                 // ???
                 return "[\(args[0])]"
             case "Promise":

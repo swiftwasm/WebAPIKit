@@ -1,12 +1,8 @@
 import Foundation
 import WebIDL
 
-let ignored: [String: Set<String>] = [
+let ignored: [String: Set<String>] = [:
     // unsupported function types
-    "HTMLCanvasElement": ["toBlob"],
-    "DataTransferItem": ["getAsString"],
-    "WorkerGlobalScope": ["onerror"],
-    "CustomElementRegistry": ["define"],
 ]
 
 do {
@@ -14,7 +10,7 @@ do {
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
     let declarations = [
         "dom", "hr-time", "html", "console", "FileAPI", "geometry", "webidl", "fetch", "xhr",
-        "referrer-policy", "uievents", "wai-aria",
+        "referrer-policy", "uievents", "wai-aria", "cssom",
     ].flatMap { idl[$0]!.array }
     let merged = merge(declarations: declarations)
     for (i, node) in merged.declarations.enumerated() {
