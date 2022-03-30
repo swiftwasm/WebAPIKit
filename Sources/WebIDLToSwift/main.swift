@@ -30,7 +30,7 @@ import JavaScriptEventLoop
 """
 
 func writeFile(named name: String, content: String) throws {
-    let path = "/Users/jed/Documents/github-clones/Tokamak/DOMKit/Sources/DOMKit/WebIDL/" + name + ".swift"
+    let path = "Sources/DOMKit/WebIDL/" + name + ".swift"
     if FileManager.default.fileExists(atPath: path) {
         fatalError("file already exists for \(name)")
     } else {
@@ -38,7 +38,7 @@ func writeFile(named name: String, content: String) throws {
     }
 }
 
-do {
+func generateIDLBindings() throws {
     let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
     let declarations = [
@@ -55,25 +55,27 @@ do {
         }
         try writeFile(named: name, content: content)
     }
+}
 
+func generateClosureTypes() throws {
+    let argCounts = Context.requiredClosureArgCounts.sorted()
     let closureTypesContent: SwiftSource = """
     /* variadic generics please */
     public enum ClosureAttribute {
         // MARK: Required closures
-        \(lines: Context.requiredClosureArgCounts.sorted().map { ClosureWrapper(nullable: false, argCount: $0).swiftRepresentation })
+        \(lines: argCounts.map { ClosureWrapper(nullable: false, argCount: $0).swiftRepresentation })
 
-        // MARK: Optional closures
-        \(lines: Context.requiredClosureArgCounts.sorted().map { ClosureWrapper(nullable: true, argCount: $0).swiftRepresentation })
+        // MARK: - Optional closures
+        \(lines: argCounts.map { ClosureWrapper(nullable: true, argCount: $0).swiftRepresentation })
     }
     """
 
     try writeFile(named: "ClosureAttribute", content: closureTypesContent.source)
-//    for (name, nodes) in idl {
-//        if name.starts(with: "WEBGL_") { continue }
-//        for (i, node) in nodes.enumerated() {
-//            print(toSwift(node).source)
-//        }
-//    }
+}
+
+do {
+    try generateIDLBindings()
+    try generateClosureTypes()
 } catch {
     switch error as? DecodingError {
     case let .dataCorrupted(ctx), let .typeMismatch(_, ctx):
