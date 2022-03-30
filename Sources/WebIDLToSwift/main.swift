@@ -6,7 +6,7 @@ do {
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
     let declarations = [
         "dom", "hr-time", "html", "console", "FileAPI", "geometry", "webidl", "fetch", "xhr",
-        "referrer-policy",
+        "referrer-policy", "uievents",
     ].flatMap { idl[$0]!.array }
     for (i, node) in merge(declarations: declarations).enumerated() {
         guard let name = Mirror(reflecting: node).children.first(where: { $0.label == "name" })?.value as? String else {
