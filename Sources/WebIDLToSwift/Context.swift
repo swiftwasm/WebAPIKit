@@ -21,7 +21,7 @@ enum Context {
     struct State {
         private(set) var `static` = false
         private(set) var inClass = false
-        private(set) var constructor: SwiftSource!
+        private(set) var constructor: SwiftSource?
         private(set) var this: SwiftSource!
         private(set) var className: SwiftSource!
         private(set) var interfaces: [String: MergedInterface]!
@@ -37,7 +37,7 @@ enum Context {
             return newState
         }
 
-        static func instance(constructor: SwiftSource!, this: SwiftSource, className: SwiftSource) -> Self {
+        static func instance(constructor: SwiftSource?, this: SwiftSource, className: SwiftSource) -> Self {
             var newState = Context.current
             newState.static = false
             newState.constructor = constructor

@@ -41,6 +41,14 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
                 set { \(wrapperName).wrappedValue = newValue }
             }
             """
+        } else if Context.constructor == nil {
+            // can't do property wrappers on extensions
+            return """
+            public var \(name): \(idlType) {
+                get { \(propertyWrapper)["\(raw: name)", in: jsObject] }
+                set { \(propertyWrapper)["\(raw: name)", in: jsObject] = newValue }
+            }
+            """
         } else {
             return """
             @\(propertyWrapper)
