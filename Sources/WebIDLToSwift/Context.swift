@@ -37,7 +37,7 @@ enum Context {
             return newState
         }
 
-        static func instance(constructor: SwiftSource, this: SwiftSource, className: SwiftSource) -> Self {
+        static func instance(constructor: SwiftSource!, this: SwiftSource, className: SwiftSource) -> Self {
             var newState = Context.current
             newState.static = false
             newState.constructor = constructor

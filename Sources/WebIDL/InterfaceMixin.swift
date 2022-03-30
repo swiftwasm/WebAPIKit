@@ -6,7 +6,7 @@ public struct IDLInterfaceMixin: IDLNode, IDLNamed {
     public let extAttrs: [IDLExtendedAttribute]
 }
 
-public protocol IDLInterfaceMixinMember: IDLNode {}
+public protocol IDLInterfaceMixinMember: IDLNode, IDLNamed {}
 extension IDLAttribute: IDLInterfaceMixinMember {}
 extension IDLConstant: IDLInterfaceMixinMember {}
 extension IDLOperation: IDLInterfaceMixinMember {}

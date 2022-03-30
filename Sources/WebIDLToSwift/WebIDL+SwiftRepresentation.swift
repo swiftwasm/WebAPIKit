@@ -181,18 +181,16 @@ extension MergedInterface: SwiftRepresentable {
     }
 }
 
-extension IDLInterfaceMixin: SwiftRepresentable {
+extension MergedMixin: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        // let this: SwiftSource = "JSObject.global.\(name).object!"
-        // let body = Context.withState(.static(this: this)) {
-        //     members.map(toSwift).joined(separator: "\n\n")
-        // }
-        // return """
-        // extension \(name) {
-        //     \(body)
-        // }
-        // """
-        "/* [unsupported interface mixin: \(name)] */"
+        Context.withState(.instance(constructor: nil, this: "jsObject", className: "\(name)")) {
+            """
+            public protocol \(name): JSBridgedClass {}
+            public extension \(name) {
+                \(members.map(toSwift).joined(separator: "\n\n"))
+            }
+            """
+        }
     }
 }
 

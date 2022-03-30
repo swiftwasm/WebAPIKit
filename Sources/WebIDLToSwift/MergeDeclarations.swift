@@ -20,7 +20,6 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
     }, uniquingKeysWith: {
         MergedMixin(name: $0.name, members: $0.members + $1.members)
     })
-    print("unhandled mixins", mixins.map(\.key))
 
     let mergedInterfaces = Dictionary(all(IDLInterface.self).map {
         ($0.name, MergedInterface(
@@ -43,8 +42,9 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
     })
 
     print("unhandled callback interfaces", all(IDLCallbackInterface.self).map(\.name))
+    let arrays: [DeclarationFile] = Array(mergedInterfaces.values) + Array(mergedDictionaries.values) + Array(mixins.values)
     return (
-        Array(mergedInterfaces.values) + Array(mergedDictionaries.values)
+        arrays
             + [Typedefs(typedefs: all(IDLTypedef.self) + all(IDLCallback.self))]
             + all(IDLEnum.self)
             + all(IDLNamespace.self),
@@ -57,7 +57,7 @@ protocol DeclarationFile {}
 extension IDLEnum: DeclarationFile {}
 extension IDLNamespace: DeclarationFile {}
 
-struct MergedMixin {
+struct MergedMixin: DeclarationFile {
     let name: String
     var members: [IDLInterfaceMixinMember]
 }
