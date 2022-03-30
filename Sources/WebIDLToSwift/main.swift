@@ -9,7 +9,8 @@ let ignored: [String: Set<String>] = [
     "DataTransferItem": ["getAsString"],
     "WindowOrWorkerGlobalScope": ["queueMicrotask"],
     "MutationObserver": ["<constructor>"],
-    "CustomElementRegistry": ["define"],
+    // functions as return types are unsupported
+    "CustomElementRegistry": ["define", "whenDefined"],
     // NodeFilter
     "Document": ["createNodeIterator", "createTreeWalker"],
     "TreeWalker": ["filter"],
