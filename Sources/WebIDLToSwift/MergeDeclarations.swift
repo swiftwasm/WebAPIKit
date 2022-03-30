@@ -1,5 +1,17 @@
 import WebIDL
 
+func addAsync(_ members: [IDLNode]) -> [IDLNode] {
+    members.flatMap { member -> [IDLNode] in
+        if let operation = member as? IDLOperation,
+           case .generic("Promise", _) = operation.idlType?.value
+        {
+            return [member, AsyncOperation(operation: operation)]
+        } else {
+            return [member]
+        }
+    }
+}
+
 func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfaces: [String: MergedInterface]) {
     let byType: [String: [IDLNode]] = declarations.reduce(into: [:]) { partialResult, node in
         partialResult[type(of: node).type, default: []].append(node)
@@ -30,7 +42,10 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
 
     let mixins = Dictionary(
         grouping: all(IDLInterfaceMixin.self).map {
-            MergedMixin(name: $0.name, members: $0.members.array as! [IDLInterfaceMixinMember])
+            MergedMixin(
+                name: $0.name,
+                members: addAsync($0.members.array) as! [IDLInterfaceMixinMember]
+            )
         },
         by: \.name
     ).mapValues {
@@ -47,7 +62,7 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
             MergedInterface(
                 name: $0.name,
                 parentClasses: [$0.inheritance].compactMap { $0 },
-                members: $0.members.array as! [IDLInterfaceMember]
+                members: addAsync($0.members.array) as! [IDLInterfaceMember]
             )
         },
         by: \.name
@@ -83,7 +98,10 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
 
     let mergedNamespaces = Dictionary(
         grouping: all(IDLNamespace.self).map {
-            MergedNamespace(name: $0.name, members: $0.members.array as! [IDLNamespaceMember])
+            MergedNamespace(
+                name: $0.name,
+                members: addAsync($0.members.array) as! [IDLNamespaceMember]
+            )
         },
         by: \.name
     ).mapValues {
@@ -109,6 +127,20 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
 protocol DeclarationFile {}
 
 extension IDLEnum: DeclarationFile {}
+
+struct AsyncOperation: IDLNode, IDLNamespaceMember, IDLInterfaceMember, IDLInterfaceMixinMember, IDLNamed {
+    static var type: String { "" }
+    var extAttrs: [IDLExtendedAttribute] { operation.extAttrs }
+    var name: String { operation.name }
+    let operation: IDLOperation
+    var returnType: IDLType {
+        guard case let .generic("Promise", values) = operation.idlType?.value else {
+            print(operation)
+            fatalError("Return type of async function \(name) is not a Promise")
+        }
+        return values.first!
+    }
+}
 
 struct MergedNamespace: DeclarationFile {
     let name: String

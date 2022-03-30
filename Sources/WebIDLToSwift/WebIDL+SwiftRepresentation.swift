@@ -249,6 +249,7 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
         if async {
             return """
             public typealias Element = \(idlType[0])
+            @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
             public func makeAsyncIterator() -> ValueIterableAsyncIterator<\(Context.className)> {
                 ValueIterableAsyncIterator(sequence: self)
             }
@@ -326,10 +327,9 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         }
     }
 
-    private var defaultRepresentation: SwiftSource {
-        let params = arguments.map(\.swiftRepresentation)
+    fileprivate var defaultBody: (prep: SwiftSource, call: SwiftSource) {
         let args: [SwiftSource]
-        let argsInit: [SwiftSource]
+        let prep: [SwiftSource]
         if arguments.count <= 5 {
             args = arguments.map { arg in
                 if arg.optional {
@@ -338,10 +338,10 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                     return "\(arg.name).jsValue()"
                 }
             }
-            argsInit = []
+            prep = []
         } else {
             args = (0 ..< arguments.count).map { "_arg\(String($0))" }
-            argsInit = arguments.enumerated().map { i, arg in
+            prep = arguments.enumerated().map { i, arg in
                 if arg.optional {
                     return "let _arg\(String(i)) = \(arg.name)?.jsValue() ?? .undefined"
                 } else {
@@ -349,15 +349,22 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                 }
             }
         }
-        let call: SwiftSource = "\(Context.this)[\"\(raw: name)\"]!(\(sequence: args))"
-        let body: SwiftSource
-        if idlType?.swiftRepresentation.source == "Void" {
-            body = "_ = \(call)"
-        } else {
-            body = "return \(call).fromJSValue()!"
-        }
+
+        return (
+            prep: "\(lines: prep)",
+            call: "\(Context.this)[\"\(raw: name)\"]!(\(sequence: args))"
+        )
+    }
+
+    fileprivate var nameAndParams: SwiftSource {
         let accessModifier: SwiftSource = Context.static ? (Context.inClass ? " class" : " static") : ""
         let overrideModifier: SwiftSource = Context.override ? "override " : ""
+        return """
+        \(overrideModifier)public\(accessModifier) func \(name)(\(sequence: arguments.map(\.swiftRepresentation)))
+        """
+    }
+
+    private var defaultRepresentation: SwiftSource {
         var returnType = idlType!.swiftRepresentation
         if returnType == Context.className {
             returnType = "Self"
@@ -365,13 +372,57 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         if Context.override, Context.static {
             return """
             // XXX: illegal static override
-            // func \(name)(\(sequence: params)) -> \(returnType)
+            // \(nameAndParams) -> \(returnType)
             """
         }
+
+        let (prep, call) = defaultBody
+
+        let body: SwiftSource
+        if idlType?.swiftRepresentation.source == "Void" {
+            body = "_ = \(call)"
+        } else {
+            body = "return \(call).fromJSValue()!"
+        }
+
         return """
-        \(overrideModifier)public\(accessModifier) func \(name)(\(sequence: params)) -> \(returnType) {
-            \(lines: argsInit)
+        \(nameAndParams) -> \(returnType) {
+            \(prep)
             \(body)
+        }
+        """
+    }
+
+    var initializer: SwiftSource? { nil }
+}
+
+extension AsyncOperation: SwiftRepresentable, Initializable {
+    var swiftRepresentation: SwiftSource {
+        if Context.ignored[Context.className.source]?.contains(name) ?? false {
+            // covered by non-async operation
+            return ""
+        }
+        assert(operation.special.isEmpty)
+        if Context.override, Context.static {
+            return """
+            // XXX: illegal static override
+            // \(operation.nameAndParams) async -> \(returnType)
+            """
+        }
+
+        let (prep, call) = operation.defaultBody
+        let result: SwiftSource
+        if returnType.swiftRepresentation.source == "Void" {
+            result = "_ = try await _promise.value"
+        } else {
+            result = "return try await _promise.value.fromJSValue()!"
+        }
+        return """
+        @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+        \(operation.nameAndParams) async throws -> \(returnType) {
+            \(prep)
+            let _promise: JSPromise = \(call).fromJSValue()!
+            \(result)
         }
         """
     }
