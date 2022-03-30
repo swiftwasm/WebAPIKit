@@ -25,6 +25,7 @@ enum Context {
         private(set) var this: SwiftSource!
         private(set) var className: SwiftSource!
         private(set) var interfaces: [String: MergedInterface]!
+        private(set) var ignored: [String: Set<String>]!
         private(set) var override = false
 
         static func `static`(this: SwiftSource, inClass: Bool = Context.inClass, className: SwiftSource) -> Self {
@@ -51,9 +52,10 @@ enum Context {
             return newState
         }
 
-        static func interfaces(_ interfaces: [String: MergedInterface]) -> Self {
+        static func root(interfaces: [String: MergedInterface], ignored: [String: Set<String>]) -> Self {
             var newState = Context.current
             newState.interfaces = interfaces
+            newState.ignored = ignored
             return newState
         }
     }

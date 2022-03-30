@@ -34,7 +34,7 @@ public class ReadableStream: JSBridgedClass {
 }
 
 
-typealias Uint8ClampedArray = JSUInt8ClampedArray
+public typealias Uint8ClampedArray = JSUInt8ClampedArray
 
 @propertyWrapper public final class OptionalClosureHandler<ArgumentType, ReturnType>
 where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {

@@ -1,6 +1,14 @@
 import Foundation
 import WebIDL
 
+let ignored: [String: Set<String>] = [
+    // unsupported function types
+    "HTMLCanvasElement": ["toBlob"],
+    "DataTransferItem": ["getAsString"],
+    "WorkerGlobalScope": ["onerror"],
+    "CustomElementRegistry": ["define"],
+]
+
 do {
     let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
@@ -13,7 +21,7 @@ do {
         guard let name = Mirror(reflecting: node).children.first(where: { $0.label == "name" })?.value as? String else {
             fatalError("Cannot find name for \(node)")
         }
-        let content = Context.withState(.interfaces(merged.interfaces)) {
+        let content = Context.withState(.root(interfaces: merged.interfaces, ignored: ignored)) {
             toSwift(node).source
         }
         let path = "/Users/jed/Documents/github-clones/Tokamak/DOMKit/Sources/DOMKit/WebIDL/" + name + ".swift"

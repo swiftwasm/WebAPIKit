@@ -137,6 +137,9 @@ extension MergedInterface: SwiftRepresentable {
             members.map { member in
                 let isOverride: Bool
                 if let memberName = (member as? IDLNamed)?.name {
+                    if Context.ignored[name]?.contains(memberName) ?? false {
+                        return "// [\(memberName) is ignored]"
+                    }
                     isOverride = inheritance.flatMap {
                         Context.interfaces[$0]?.members ?? []
                     }.contains {
