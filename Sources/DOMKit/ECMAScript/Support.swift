@@ -18,7 +18,6 @@ public extension HTMLElement {
 public let globalThis = Window(from: JSObject.global.jsValue())!
 
 public class ReadableStream: JSBridgedClass {
-
     public static var constructor: JSFunction { JSObject.global.ReadableStream.function! }
 
     public let jsObject: JSObject
@@ -32,7 +31,6 @@ public class ReadableStream: JSBridgedClass {
         set { jsObject[name] = newValue }
     }
 }
-
 
 public typealias Uint8ClampedArray = JSUInt8ClampedArray
 
@@ -77,18 +75,13 @@ where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {
         self.name = name
     }
 
-    public var wrappedValue: Wrapped {
-        get {
-            return jsObject[name].fromJSValue()!
-        }
-        set {
-            jsObject[name] = newValue.jsValue()
-        }
+    @inlinable public var wrappedValue: Wrapped {
+        get { jsObject[name].fromJSValue()! }
+        set { jsObject[name] = newValue.jsValue() }
     }
 }
 
 @propertyWrapper public struct ReadonlyAttribute<Wrapped: ConstructibleFromJSValue> {
-
     let jsObject: JSObject
     let name: String
 
@@ -97,15 +90,12 @@ where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {
         self.name = name
     }
 
-    public var wrappedValue: Wrapped {
-        get {
-            return jsObject[name].fromJSValue()!
-        }
+    @inlinable public var wrappedValue: Wrapped {
+        jsObject[name].fromJSValue()!
     }
 }
 
 public class ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: IteratorProtocol where SequenceType.Element: ConstructibleFromJSValue {
-
     private var index: Int = 0
     private let sequence: SequenceType
 
@@ -131,17 +121,15 @@ public protocol KeyValueSequence: Sequence where Element == (String, Value) {
 }
 
 public class PairIterableIterator<SequenceType: JSBridgedClass & KeyValueSequence>: IteratorProtocol where SequenceType.Value: ConstructibleFromJSValue {
-
     private let iterator: JSObject
     private let sequence: SequenceType
 
     public init(sequence: SequenceType) {
         self.sequence = sequence
-        self.iterator = sequence.jsObject.entries!().object!
+        iterator = sequence.jsObject.entries!().object!
     }
 
     public func next() -> SequenceType.Element? {
-
         let next: JSObject = iterator.next!().object!
 
         guard next.done.boolean! == false else {
