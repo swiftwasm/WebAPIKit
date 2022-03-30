@@ -29,8 +29,10 @@ import JavaScriptEventLoop
 \n
 """
 
+let outDir = "Sources/DOMKit/WebIDL/"
+
 func writeFile(named name: String, content: String) throws {
-    let path = "Sources/DOMKit/WebIDL/" + name + ".swift"
+    let path = outDir + name + ".swift"
     if FileManager.default.fileExists(atPath: path) {
         fatalError("file already exists for \(name)")
     } else {
@@ -38,9 +40,13 @@ func writeFile(named name: String, content: String) throws {
     }
 }
 
-func generateIDLBindings() throws {
-    let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
-    let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
+func cleanOutputFolder() throws {
+    for file in try FileManager.default.contentsOfDirectory(atPath: outDir) {
+        try FileManager.default.removeItem(atPath: outDir + file)
+    }
+}
+
+func generateIDLBindings(idl: [String: GenericCollection<IDLNode>]) throws {
     let declarations = [
         "dom", "hr-time", "html", "console", "FileAPI", "geometry", "webidl", "fetch", "xhr",
         "referrer-policy", "uievents", "wai-aria", "cssom", "css-conditional", "streams",
@@ -74,7 +80,11 @@ func generateClosureTypes() throws {
 }
 
 do {
-    try generateIDLBindings()
+    let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
+    let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
+
+    try cleanOutputFolder()
+    try generateIDLBindings(idl: idl)
     try generateClosureTypes()
 } catch {
     switch error as? DecodingError {

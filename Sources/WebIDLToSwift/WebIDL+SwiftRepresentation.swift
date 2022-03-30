@@ -488,7 +488,7 @@ extension IDLType: SwiftRepresentable {
                 return "\(name)"
             }
         case let .union(types):
-            print("union", types.count)
+            // print("union", types.count)
             return "__UNSUPPORTED_UNION__"
         }
     }
