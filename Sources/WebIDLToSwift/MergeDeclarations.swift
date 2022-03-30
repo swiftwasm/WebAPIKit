@@ -4,42 +4,79 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
     let byType: [String: [IDLNode]] = declarations.reduce(into: [:]) { partialResult, node in
         partialResult[type(of: node).type, default: []].append(node)
     }
+
+    let missedTypes = Set(declarations.map { type(of: $0).type })
+        .symmetricDifference([
+            IDLInterfaceMixin.type,
+            IDLInterface.type,
+            IDLDictionary.type,
+            IDLCallbackInterface.type,
+            IDLIncludes.type,
+            IDLEnum.type, IDLNamespace.type,
+            IDLTypedef.type, IDLCallback.type,
+        ])
+    if !missedTypes.isEmpty {
+        print("missed types!", missedTypes)
+    }
     // let byName: [String?: [IDLNode]] = declarations.reduce(into: [:]) { partialResult, node in
     //     let name = Mirror(reflecting: node).children.first { $0.label == "name" }?.value as? String
     //     partialResult[name, default: []].append(node)
     // }
     // print(byName.filter { $0.value.count > 1 }.map { "\($0.key ?? "<nil>"): \($0.value.map { type(of: $0).type }))" }.joined(separator: "\n"))
-    // ["interface mixin", "interface", "includes"]
 
     func all<T: IDLNode>(_: T.Type) -> [T] {
         byType[T.type]!.map { $0 as! T }
     }
 
-    let mixins = Dictionary(all(IDLInterfaceMixin.self).map {
-        ($0.name, MergedMixin(name: $0.name, members: $0.members.array as! [IDLInterfaceMixinMember]))
-    }, uniquingKeysWith: {
-        MergedMixin(name: $0.name, members: $0.members + $1.members)
-    })
+    let mixins = Dictionary(
+        grouping: all(IDLInterfaceMixin.self).map {
+            MergedMixin(name: $0.name, members: $0.members.array as! [IDLInterfaceMixinMember])
+        },
+        by: \.name
+    ).mapValues {
+        $0.dropFirst().reduce(into: $0.first!) { partialResult, mixin in
+            partialResult.members += mixin.members
+        }
+    }
 
-    let mergedInterfaces = Dictionary(all(IDLInterface.self).map {
-        ($0.name, MergedInterface(
-            name: $0.name,
-            inheritance: [$0.inheritance].compactMap { $0 },
-            members: $0.members.array as! [IDLInterfaceMember]
-        ))
-    }, uniquingKeysWith: {
-        MergedInterface(name: $0.name, inheritance: $0.inheritance + $1.inheritance, members: $0.members + $1.members)
-    })
+    let includes = Dictionary(grouping: all(IDLIncludes.self)) { $0.target }
+        .mapValues { $0.map(\.includes) }
 
-    let mergedDictionaries = Dictionary(all(IDLDictionary.self).map {
-        ($0.name, MergedDictionary(
-            name: $0.name,
-            inheritance: [$0.inheritance].compactMap { $0 },
-            members: $0.members
-        ))
-    }, uniquingKeysWith: {
-        MergedDictionary(name: $0.name, inheritance: $0.inheritance + $1.inheritance, members: $0.members + $1.members)
-    })
+    let mergedInterfaces = Dictionary(
+        grouping: all(IDLInterface.self).map {
+            MergedInterface(
+                name: $0.name,
+                inheritance: [$0.inheritance].compactMap { $0 },
+                members: $0.members.array as! [IDLInterfaceMember]
+            )
+        },
+        by: \.name
+    ).mapValues { toMerge -> MergedInterface in
+        var interface = toMerge.dropFirst().reduce(into: toMerge.first!) { partialResult, interface in
+            partialResult.inheritance += interface.inheritance
+            partialResult.members += interface.members
+        }
+        interface.inheritance += includes[interface.name, default: []]
+        return interface
+    }
+
+    let mergedDictionaries = Dictionary(
+        grouping: all(IDLDictionary.self).map {
+            MergedDictionary(
+                name: $0.name,
+                inheritance: [$0.inheritance].compactMap { $0 },
+                members: $0.members
+            )
+        },
+        by: \.name
+    ).mapValues { toMerge -> MergedDictionary in
+        var dict = toMerge.dropFirst().reduce(into: toMerge.first!) { partialResult, interface in
+            partialResult.inheritance += interface.inheritance
+            partialResult.members += interface.members
+        }
+        dict.inheritance += includes[dict.name, default: []]
+        return dict
+    }
 
     print("unhandled callback interfaces", all(IDLCallbackInterface.self).map(\.name))
     let arrays: [DeclarationFile] = Array(mergedInterfaces.values) + Array(mergedDictionaries.values) + Array(mixins.values)
