@@ -309,7 +309,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             }
             argsInit = []
         } else {
-            args = (0 ..< arguments.count).map { "_jskit\(String($0))" }
+            args = (0 ..< arguments.count).map { "_arg\(String($0))" }
             argsInit = arguments.enumerated().map { i, arg in
                 if arg.optional {
                     return "let _arg\(String(i)) = \(arg.name)?.jsValue() ?? .undefined"
