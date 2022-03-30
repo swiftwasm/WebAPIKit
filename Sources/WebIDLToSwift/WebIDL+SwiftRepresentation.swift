@@ -246,13 +246,21 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
 
 extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
-        assert(!async)
-        return """
-        public typealias Element = \(idlType[0])
-        public func makeIterator() -> ValueIterableIterator<\(Context.className)> {
-            ValueIterableIterator(sequence: self)
+        if async {
+            return """
+            public typealias Element = \(idlType[0])
+            public func makeAsyncIterator() -> ValueIterableAsyncIterator<\(Context.className)> {
+                ValueIterableAsyncIterator(sequence: self)
+            }
+            """
+        } else {
+            return """
+            public typealias Element = \(idlType[0])
+            public func makeIterator() -> ValueIterableIterator<\(Context.className)> {
+                ValueIterableIterator(sequence: self)
+            }
+            """
         }
-        """
     }
 
     var initializer: SwiftSource? { nil }
