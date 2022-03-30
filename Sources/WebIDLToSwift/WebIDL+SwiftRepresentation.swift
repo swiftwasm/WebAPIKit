@@ -71,12 +71,18 @@ extension MergedDictionary: SwiftRepresentable {
 
     private var swiftInit: SwiftSource {
         """
-        public init(\(sequence: members.map { "\($0.name): \($0.idlType)" })) {
+        public init(\(sequence: members.map { "\($0.name): \($0.idlType.isFunction ? "@escaping " : "")\($0.idlType)" })) {
             let object = JSObject.global.Object.function!.new()
             \(lines: members.map {
-                """
-                object[\(quoted: $0.name)] = \($0.name).jsValue()
-                """
+                if $0.idlType.isFunction {
+                    return """
+                    \($0.idlType.propertyWrapper(readonly: false))[\(quoted: $0.name), in: object] = \($0.name)
+                    """
+                } else {
+                    return """
+                    object[\(quoted: $0.name)] = \($0.name).jsValue()
+                    """
+                }
             })
             \(lines: members.map {
                 """
@@ -485,6 +491,22 @@ extension IDLType: SwiftRepresentable {
             print("union", types.count)
             return "__UNSUPPORTED_UNION__"
         }
+    }
+
+    var isFunction: Bool {
+        if case let .single(name) = value {
+            if Context.types[name] is IDLCallback {
+                return true
+            }
+            if let ref = Context.types[name] as? IDLTypedef,
+               case let .single(name) = ref.idlType.value,
+               Context.types[name] is IDLCallback
+            {
+                assert(ref.idlType.nullable)
+                return true
+            }
+        }
+        return false
     }
 
     func propertyWrapper(readonly: Bool) -> SwiftSource {
