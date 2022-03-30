@@ -13,6 +13,7 @@ func main() {
         try IDLBuilder.generateIDLBindings(idl: idl)
         print("Generating closure property wrappers...")
         try IDLBuilder.generateClosureTypes()
+        SwiftFormatter.run()
         print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
     } catch {
         handleDecodingError(error)
