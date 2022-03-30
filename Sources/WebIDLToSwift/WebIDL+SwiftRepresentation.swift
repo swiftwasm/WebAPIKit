@@ -253,22 +253,38 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
     private var defaultRepresentation: SwiftSource {
         let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
-        let args = arguments.map { arg -> SwiftSource in
-            if arg.optional {
-                return "\(arg.name)?.jsValue() ?? .undefined"
-            } else {
-                return "\(arg.name).jsValue()"
+        let args: [SwiftSource]
+        let argsInit: [SwiftSource]
+        if arguments.count <= 5 {
+            args = arguments.map { arg in
+                if arg.optional {
+                    return "\(arg.name)?.jsValue() ?? .undefined"
+                } else {
+                    return "\(arg.name).jsValue()"
+                }
             }
-        }.joined(separator: ", ")
-        let call: SwiftSource = "\(Context.this)[\"\(raw: name!)\"]!(\(args))"
+            argsInit = []
+        } else {
+            args = (0 ..< arguments.count).map { "_jskit\(String($0))" }
+            argsInit = arguments.enumerated().map { i, arg in
+                if arg.optional {
+                    return "let _jskit\(String(i)) = \(arg.name)?.jsValue() ?? .undefined"
+                } else {
+                    return "let _jskit\(String(i)) = \(arg.name).jsValue()"
+                }
+            }
+        }
+        let call: SwiftSource = "\(Context.this)[\"\(raw: name!)\"]!(\(args.joined(separator: ", ")))"
         let body: SwiftSource
         if idlType?.swiftRepresentation.source == "Void" {
             body = "_ = \(call)"
         } else {
-            body = "\(call).fromJSValue()!"
+            body = "return \(call).fromJSValue()!"
         }
+        let accessModifier = Context.static ? (Context.inClass ? " class" : " static") : ""
         return """
-        public\(raw: Context.static ? (Context.inClass ? " class" : " static") : "") func \(name!)(\(params)) -> \(idlType!) {
+        public\(raw: accessModifier) func \(name!)(\(params)) -> \(idlType!) {
+            \(lines: argsInit)
             \(body)
         }
         """
