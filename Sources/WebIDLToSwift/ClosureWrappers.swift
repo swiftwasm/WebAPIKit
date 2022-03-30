@@ -40,7 +40,7 @@ struct ClosureWrapper: SwiftRepresentable, Equatable {
 
     private var setter: SwiftSource {
         let setClosure: SwiftSource = """
-            jsObject[name] = JSClosure {
+            jsObject[name] = JSClosure { \(argCount == 0 ? "_ in" : "")
                 newValue(\(sequence: indexes.map { "$0[\($0)].fromJSValue()!" })).jsValue()
             }.jsValue()
         """
