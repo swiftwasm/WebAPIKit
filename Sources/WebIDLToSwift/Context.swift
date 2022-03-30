@@ -20,13 +20,15 @@ enum Context {
 
     struct State {
         private(set) var `static` = false
+        private(set) var inClass = false
         private(set) var constructor: SwiftSource!
         private(set) var this: SwiftSource!
 
-        static func `static`(this: SwiftSource) -> Self {
+        static func `static`(this: SwiftSource, inClass: Bool = Context.inClass) -> Self {
             var newState = Context.current
             newState.static = true
             newState.this = this
+            newState.inClass = inClass
             return newState
         }
 

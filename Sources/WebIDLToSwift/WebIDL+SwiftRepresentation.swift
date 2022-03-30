@@ -200,7 +200,7 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
 extension IDLNamespace: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         let this: SwiftSource = "JSObject.global.\(name).object!"
-        let body = Context.withState(.static(this: this)) {
+        let body = Context.withState(.static(this: this, inClass: false)) {
             members.map(toSwift).joined(separator: "\n\n")
         }
         if partial {
@@ -268,7 +268,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             body = "\(call).fromJSValue()!"
         }
         return """
-        public\(raw: Context.static ? " static" : "") func \(name!)(\(params)) -> \(idlType!) {
+        public\(raw: Context.static ? (Context.inClass ? " class" : " static") : "") func \(name!)(\(params)) -> \(idlType!) {
             \(body)
         }
         """

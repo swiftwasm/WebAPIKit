@@ -27,6 +27,7 @@ let swiftKeywords: Set = [
     "default",
     "defer",
     "self",
+    "repeat",
 ]
 
 extension String: SwiftRepresentable {
