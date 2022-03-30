@@ -38,7 +38,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
             private var \(wrapperName): \(propertyWrapper)<\(idlType)>
             override public var \(name): \(idlType) {
                 get { \(wrapperName).wrappedValue }
-                set { \(wrapperName).wrappedValue = newValue }
+                \(readonly ? "" : "set { \(wrapperName).wrappedValue = newValue }")
             }
             """
         } else if Context.constructor == nil {
@@ -46,7 +46,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
             return """
             public var \(name): \(idlType) {
                 get { \(propertyWrapper)["\(raw: name)", in: jsObject] }
-                set { \(propertyWrapper)["\(raw: name)", in: jsObject] = newValue }
+                \(readonly ? "" : "set { \(propertyWrapper)[\"\(raw: name)\", in: jsObject] = newValue }")
             }
             """
         } else {
