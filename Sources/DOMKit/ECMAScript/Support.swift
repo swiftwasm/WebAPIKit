@@ -62,7 +62,8 @@ public class ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: Ite
     private let iterator: JSObject
 
     public init(sequence: SequenceType) {
-        iterator = sequence.jsObject[JSObject.global.Symbol.object!.iterator]!().object!
+        // TODO: fetch the actual symbol
+        iterator = sequence.jsObject[JSObject.global.Symbol.object!.iterator.string!]!().object!
     }
 
     public func next() -> SequenceType.Element? {
@@ -90,32 +91,5 @@ public class ValueIterableAsyncIterator<SequenceType: JSBridgedClass & AsyncSequ
     public func next() async -> SequenceType.Element? {
         // TODO: implement
         nil
-    }
-}
-
-public protocol KeyValueSequence: Sequence where Element == (String, Value) {
-    associatedtype Value
-}
-
-public class PairIterableIterator<SequenceType: JSBridgedClass & KeyValueSequence>: IteratorProtocol
-    where SequenceType.Value: ConstructibleFromJSValue
-{
-    private let iterator: JSObject
-    private let sequence: SequenceType
-
-    public init(sequence: SequenceType) {
-        self.sequence = sequence
-        iterator = sequence.jsObject.entries!().object!
-    }
-
-    public func next() -> SequenceType.Element? {
-        let next: JSObject = iterator.next!().object!
-
-        guard next.done.boolean! == false else {
-            return nil
-        }
-
-        let keyValue: [JSValue] = next.value.fromJSValue()!
-        return (keyValue[0].fromJSValue()!, keyValue[1].fromJSValue()!)
     }
 }
