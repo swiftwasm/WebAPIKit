@@ -124,7 +124,7 @@ extension IDLEnum: SwiftRepresentable {
 extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
-        public typealias \(name) = (\(sequence: arguments.map(\.idlType.swiftRepresentation)) -> \(idlType)
+        public typealias \(name) = (\(sequence: arguments.map(\.idlType.swiftRepresentation))) -> \(idlType)
         """
     }
 }
