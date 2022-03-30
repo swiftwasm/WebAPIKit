@@ -307,7 +307,15 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                     defaultRepresentation
                 }
             case "getter":
-                return "// XXX: unsupported getter for keys of type \(arguments[0].idlType.swiftRepresentation.source)"
+                var keyType = toSwift(arguments[0].idlType)
+                if keyType == "UInt32" {
+                    keyType = "Int"
+                }
+                return """
+                public subscript(key: \(keyType)) -> \(idlType!) {
+                    jsObject[key].fromJSValue()\(idlType!.nullable ? "" : "!")
+                }
+                """
             case "setter":
                 return "// XXX: unsupported setter for keys of type \(arguments[0].idlType.swiftRepresentation.source)"
             case "deleter":
