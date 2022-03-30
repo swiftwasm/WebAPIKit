@@ -1,5 +1,5 @@
 /// https://github.com/w3c/webidl2.js/#arguments
-public struct IDLArgument: IDLNode {
+public struct IDLArgument: IDLNode, IDLNamed {
     public static let type = "argument"
     public let `default`: IDLValue?
     public let optional: Bool

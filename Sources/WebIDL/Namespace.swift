@@ -1,5 +1,5 @@
 /// https://github.com/w3c/webidl2.js#namespace
-public struct IDLNamespace: IDLNode {
+public struct IDLNamespace: IDLNode, IDLNamed {
     public static let type = "namespace"
     public let name: String
     public let partial: Bool

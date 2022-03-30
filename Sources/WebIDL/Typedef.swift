@@ -1,4 +1,4 @@
-public struct IDLTypedef: IDLNode {
+public struct IDLTypedef: IDLNode, IDLNamed {
     public static let type = "typedef"
     public let name: String
     public let idlType: IDLType

@@ -1,5 +1,5 @@
 /// https://github.com/w3c/webidl2.js#interface
-public struct IDLInterface: IDLNode {
+public struct IDLInterface: IDLNode, IDLNamed {
     public static let type = "interface"
     public let name: String
     public let partial: Bool

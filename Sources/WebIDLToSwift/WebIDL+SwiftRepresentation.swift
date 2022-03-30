@@ -274,7 +274,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                 }
             }
         }
-        let call: SwiftSource = "\(Context.this)[\"\(raw: name!)\"]!(\(args.joined(separator: ", ")))"
+        let call: SwiftSource = "\(Context.this)[\"\(raw: name)\"]!(\(args.joined(separator: ", ")))"
         let body: SwiftSource
         if idlType?.swiftRepresentation.source == "Void" {
             body = "_ = \(call)"
@@ -283,7 +283,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         }
         let accessModifier = Context.static ? (Context.inClass ? " class" : " static") : ""
         return """
-        public\(raw: accessModifier) func \(name!)(\(params)) -> \(idlType!) {
+        public\(raw: accessModifier) func \(name)(\(params)) -> \(idlType!) {
             \(lines: argsInit)
             \(body)
         }

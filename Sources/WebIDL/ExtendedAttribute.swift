@@ -1,5 +1,5 @@
 /// https://github.com/w3c/webidl2.js/#extended-attributes
-public struct IDLExtendedAttribute: Decodable {
+public struct IDLExtendedAttribute: Decodable, IDLNamed {
     public let name: String
     public let arguments: [IDLArgument]
     public let rhs: RHS?

@@ -1,4 +1,4 @@
-public struct IDLEnum: IDLNode {
+public struct IDLEnum: IDLNode, IDLNamed {
     public static let type = "enum"
     public let name: String
     private let values: [Value]

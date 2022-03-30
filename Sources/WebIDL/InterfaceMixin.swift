@@ -1,4 +1,4 @@
-public struct IDLInterfaceMixin: IDLNode {
+public struct IDLInterfaceMixin: IDLNode, IDLNamed {
     public static let type = "interface mixin"
     public let name: String
     public let partial: Bool

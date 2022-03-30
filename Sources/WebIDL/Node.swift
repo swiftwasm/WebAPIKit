@@ -3,6 +3,10 @@ public protocol IDLNode: Decodable {
     var extAttrs: [IDLExtendedAttribute] { get }
 }
 
+public protocol IDLNamed {
+    var name: String { get }
+}
+
 var idlTypes: [String: IDLNode.Type] = [
     "argument": IDLArgument.self,
     "attribute": IDLAttribute.self,

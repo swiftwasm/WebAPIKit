@@ -1,4 +1,4 @@
-public struct IDLConstant: IDLNode {
+public struct IDLConstant: IDLNode, IDLNamed {
     public static let type = "const"
     public let name: String
     public let idlType: IDLType
