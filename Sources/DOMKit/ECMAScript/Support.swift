@@ -35,17 +35,22 @@ public class ReadableStream: JSBridgedClass {
 public typealias Uint8ClampedArray = JSUInt8ClampedArray
 
 @propertyWrapper public final class OptionalClosureHandler<ArgumentType, ReturnType>
-where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {
+    where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible
+{
     let jsObject: JSObject
     let name: String
-    var closure: JSClosure?
 
     public init(jsObject: JSObject, name: String) {
         self.jsObject = jsObject
         self.name = name
     }
 
-    public var wrappedValue: ((ArgumentType) -> ReturnType)? {
+    @inlinable public var wrappedValue: ((ArgumentType) -> ReturnType)? {
+        get { OptionalClosureHandler[name, in: jsObject] }
+        set { OptionalClosureHandler[name, in: jsObject] = newValue }
+    }
+
+    @inlinable static subscript(name: String, in jsObject: JSObject) -> ((ArgumentType) -> ReturnType)? {
         get {
             guard let function = jsObject[name].function else {
                 return nil
@@ -56,17 +61,14 @@ where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {
             if let newValue = newValue {
                 let closure = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }
                 jsObject[name] = closure.jsValue()
-                self.closure = closure
             } else {
                 jsObject[name] = .null
-                self.closure = nil
             }
         }
     }
 }
 
 @propertyWrapper public struct ReadWriteAttribute<Wrapped: JSValueCompatible> {
-
     let jsObject: JSObject
     let name: String
 
