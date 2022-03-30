@@ -17,21 +17,6 @@ public extension HTMLElement {
 
 public let globalThis = Window(from: JSObject.global.jsValue())!
 
-public class ReadableStream: JSBridgedClass {
-    public static var constructor: JSFunction { JSObject.global.ReadableStream.function! }
-
-    public let jsObject: JSObject
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        self.jsObject = jsObject
-    }
-
-    public subscript(dynamicMember name: String) -> JSValue {
-        get { jsObject[name] }
-        set { jsObject[name] = newValue }
-    }
-}
-
 public typealias Uint8ClampedArray = JSUInt8ClampedArray
 
 @propertyWrapper public final class OptionalClosureAttribute<ArgumentType, ReturnType>
