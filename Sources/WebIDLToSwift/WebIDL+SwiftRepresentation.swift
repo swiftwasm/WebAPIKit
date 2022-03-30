@@ -62,7 +62,9 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
 
     var initializer: SwiftSource? {
         assert(!Context.static)
-        return "\(wrapperName) = \(propertyWrapper)(jsObject: jsObject, name: \"\(raw: name)\")"
+        return """
+        \(wrapperName) = \(idlType.propertyWrapper(readonly: readonly))(jsObject: jsObject, name: \(quoted: name))
+        """
     }
 }
 
@@ -82,7 +84,7 @@ extension MergedDictionary: SwiftRepresentable {
             let object = JSObject.global.Object.function!.new()
             \(lines: members.map {
                 """
-                object["\(raw: $0.name)"] = \($0.name).jsValue()
+                object[\(quoted: $0.name)] = \($0.name).jsValue()
                 """
             })
             \(lines: members.map {
@@ -109,7 +111,7 @@ extension IDLEnum: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
         public enum \(name): String, JSValueCompatible {
-            \(lines: cases.map { "case \($0.camelized) = \"\(raw: $0)\"" })
+            \(lines: cases.map { "case \($0.camelized) = \(quoted: $0)" })
 
             public static func construct(from jsValue: JSValue) -> Self? {
                 if let string = jsValue.string {
@@ -352,7 +354,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
         return (
             prep: "\(lines: prep)",
-            call: "\(Context.this)[\"\(raw: name)\"]!(\(sequence: args))"
+            call: "\(Context.this)[\(quoted: name)]!(\(sequence: args))"
         )
     }
 

@@ -30,13 +30,16 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation, E
             output.reserveCapacity(literalCapacity * 2)
         }
 
-
         mutating func appendLiteral(_ literal: String) {
             output += literal
         }
 
         mutating func appendInterpolation(raw value: String) {
             output += value
+        }
+
+        mutating func appendInterpolation(quoted value: String) {
+            output += "\"\(value)\""
         }
 
         mutating func appendInterpolation(_ source: SwiftSource) {
