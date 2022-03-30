@@ -121,7 +121,9 @@ extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         Context.requiredClosureArgCounts.insert(arguments.count)
         return """
-        public typealias \(name) = (\(sequence: arguments.map(\.idlType.swiftRepresentation))) -> \(idlType)
+        public typealias \(name) = (\(sequence: arguments.map {
+            "\($0.idlType.swiftRepresentation)\($0.variadic ? "..." : "")"
+        })) -> \(idlType)
         """
     }
 }
