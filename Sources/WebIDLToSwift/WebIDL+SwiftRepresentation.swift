@@ -485,22 +485,27 @@ extension IDLType: SwiftRepresentable {
     }
 
     func propertyWrapper(readonly: Bool) -> SwiftSource {
-        if readonly {
-            return "ReadonlyAttribute"
-        }
+        // TODO: handle readonly closure properties
+        // (should they be a JSFunction? or a closure? or something else?))
         if case let .single(name) = value {
+            let readonlyComment: SwiftSource = readonly ? " /* XXX: should be readonly! */ " : ""
             if let callback = Context.types[name] as? IDLCallback {
-                return "ClosureAttribute.Required\(String(callback.arguments.count))"
+                return "ClosureAttribute.Required\(String(callback.arguments.count))\(readonlyComment)"
             }
             if let ref = Context.types[name] as? IDLTypedef,
                case let .single(name) = ref.idlType.value,
                let callback = Context.types[name] as? IDLCallback
             {
                 assert(ref.idlType.nullable)
-                return "ClosureAttribute.Optional\(String(callback.arguments.count))"
+                return "ClosureAttribute.Optional\(String(callback.arguments.count))\(readonlyComment)"
             }
         }
-        return "ReadWriteAttribute"
+
+        if readonly {
+            return "ReadonlyAttribute"
+        } else {
+            return "ReadWriteAttribute"
+        }
     }
 }
 
