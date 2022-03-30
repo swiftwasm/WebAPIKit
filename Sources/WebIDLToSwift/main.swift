@@ -28,6 +28,15 @@ import JavaScriptEventLoop
 \n
 """
 
+func writeFile(named name: String, content: String) throws {
+    let path = "/Users/jed/Documents/github-clones/Tokamak/DOMKit/Sources/DOMKit/WebIDL/" + name + ".swift"
+    if FileManager.default.fileExists(atPath: path) {
+        fatalError("file already exists for \(name)")
+    } else {
+        try (preamble + content).write(toFile: path, atomically: true, encoding: .utf8)
+    }
+}
+
 do {
     let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
@@ -40,16 +49,24 @@ do {
         guard let name = Mirror(reflecting: node).children.first(where: { $0.label == "name" })?.value as? String else {
             fatalError("Cannot find name for \(node)")
         }
-        let content = Context.withState(.root(interfaces: merged.interfaces, ignored: ignored)) {
+        let content = Context.withState(.root(interfaces: merged.interfaces, ignored: ignored, types: merged.types)) {
             toSwift(node).source
         }
-        let path = "/Users/jed/Documents/github-clones/Tokamak/DOMKit/Sources/DOMKit/WebIDL/" + name + ".swift"
-        if FileManager.default.fileExists(atPath: path) {
-            fatalError("file already exists for \(name)")
-        } else {
-            try (preamble + content).write(toFile: path, atomically: true, encoding: .utf8)
-        }
+        try writeFile(named: name, content: content)
     }
+
+    let closureTypesContent: SwiftSource = """
+    /* variadic generics please */
+    public enum ClosureAttribute {
+        // MARK: Required closures
+        \(lines: Context.requiredClosureArgCounts.sorted().map { ClosureWrapper(nullable: false, argCount: $0).swiftRepresentation })
+
+        // MARK: Optional closures
+        \(lines: Context.requiredClosureArgCounts.sorted().map { ClosureWrapper(nullable: true, argCount: $0).swiftRepresentation })
+    }
+    """
+
+    try writeFile(named: "ClosureAttribute", content: closureTypesContent.source)
 //    for (name, nodes) in idl {
 //        if name.starts(with: "WEBGL_") { continue }
 //        for (i, node) in nodes.enumerated() {

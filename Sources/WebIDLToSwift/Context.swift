@@ -2,6 +2,8 @@
 enum Context {
     private(set) static var current = State()
 
+    static var requiredClosureArgCounts: Set<Int> = []
+
     private static var stack: [State] = []
     static func withState<T>(_ new: State, body: () throws -> T) rethrows -> T {
         stack.append(current)
@@ -26,6 +28,7 @@ enum Context {
         private(set) var className: SwiftSource!
         private(set) var interfaces: [String: MergedInterface]!
         private(set) var ignored: [String: Set<String>]!
+        private(set) var types: [String: IDLTypealias]!
         private(set) var override = false
 
         static func `static`(this: SwiftSource, inClass: Bool = Context.inClass, className: SwiftSource) -> Self {
@@ -52,10 +55,15 @@ enum Context {
             return newState
         }
 
-        static func root(interfaces: [String: MergedInterface], ignored: [String: Set<String>]) -> Self {
+        static func root(
+            interfaces: [String: MergedInterface],
+            ignored: [String: Set<String>],
+            types: [String: IDLTypealias]
+        ) -> Self {
             var newState = Context.current
             newState.interfaces = interfaces
             newState.ignored = ignored
+            newState.types = types
             return newState
         }
     }

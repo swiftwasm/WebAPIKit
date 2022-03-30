@@ -12,7 +12,11 @@ func addAsync(_ members: [IDLNode]) -> [IDLNode] {
     }
 }
 
-func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfaces: [String: MergedInterface]) {
+func merge(declarations: [IDLNode]) -> (
+    declarations: [DeclarationFile],
+    interfaces: [String: MergedInterface],
+    types: [String: IDLTypealias]
+) {
     let byType: [String: [IDLNode]] = declarations.reduce(into: [:]) { partialResult, node in
         partialResult[type(of: node).type, default: []].append(node)
     }
@@ -111,6 +115,10 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
     }
 
     print("unhandled callback interfaces", all(IDLCallbackInterface.self).map(\.name))
+
+    let allTypes: [IDLTypealias] = all(IDLTypedef.self) + all(IDLCallback.self)
+    let mergedTypes = Dictionary(uniqueKeysWithValues: allTypes.map { ($0.name, $0) })
+
     let arrays: [DeclarationFile] =
         Array(mergedInterfaces.values)
             + Array(mergedDictionaries.values)
@@ -120,7 +128,8 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
         arrays
             + [Typedefs(typedefs: all(IDLTypedef.self) + all(IDLCallback.self))]
             + all(IDLEnum.self),
-        mergedInterfaces
+        mergedInterfaces,
+        mergedTypes
     )
 }
 
@@ -167,9 +176,16 @@ struct MergedInterface: DeclarationFile {
 
 struct Typedefs: DeclarationFile, SwiftRepresentable {
     let name = "Typedefs"
-    let typedefs: [IDLNode]
+    let typedefs: [IDLTypealias]
 
     var swiftRepresentation: SwiftSource {
         "\(lines: typedefs.map(toSwift))"
     }
 }
+
+protocol IDLTypealias: IDLNode, IDLNamed {
+    var idlType: IDLType { get }
+}
+
+extension IDLCallback: IDLTypealias {}
+extension IDLTypedef: IDLTypealias {}

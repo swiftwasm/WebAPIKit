@@ -16,19 +16,6 @@ extension IDLArgument: SwiftRepresentable {
 }
 
 extension IDLAttribute: SwiftRepresentable, Initializable {
-    private var propertyWrapper: SwiftSource {
-        if readonly {
-            return "ReadonlyAttribute"
-        }
-        if case let .single(name) = idlType.value, ["EventHandler", "OnBeforeUnloadEventHandler"].contains(name) {
-            return "OptionalClosureAttribute"
-        }
-        if case let .single(name) = idlType.value, name == "OnErrorEventHandler" {
-            return "OnErrorEventHandlerAttribute"
-        }
-        return "ReadWriteAttribute"
-    }
-
     private var wrapperName: SwiftSource {
         "_\(raw: name)"
     }
@@ -38,7 +25,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
         if Context.override {
             // can't do property wrappers on override declarations
             return """
-            private var \(wrapperName): \(propertyWrapper)<\(idlType)>
+            private var \(wrapperName): \(idlType.propertyWrapper(readonly: readonly))<\(idlType)>
             override public var \(name): \(idlType) {
                 get { \(wrapperName).wrappedValue }
                 \(readonly ? "" : "set { \(wrapperName).wrappedValue = newValue }")
@@ -46,15 +33,19 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
             """
         } else if Context.constructor == nil {
             // can't do property wrappers on extensions
+            let setter: SwiftSource = """
+            set { \(idlType.propertyWrapper(readonly: readonly))[\(quoted: name), in: jsObject] = newValue }
+            """
+
             return """
             public var \(name): \(idlType) {
-                get { \(propertyWrapper)["\(raw: name)", in: jsObject] }
-                \(readonly ? "" : "set { \(propertyWrapper)[\"\(raw: name)\", in: jsObject] = newValue }")
+                get { \(idlType.propertyWrapper(readonly: readonly))[\(quoted: name), in: jsObject] }
+                \(readonly ? "" : setter)
             }
             """
         } else {
             return """
-            @\(propertyWrapper)
+            @\(idlType.propertyWrapper(readonly: readonly))
             public var \(name): \(idlType)
             """
         }
@@ -89,7 +80,7 @@ extension MergedDictionary: SwiftRepresentable {
             })
             \(lines: members.map {
                 """
-                _\(raw: $0.name) = ReadWriteAttribute(jsObject: object, name: "\(raw: $0.name)")
+                _\(raw: $0.name) = \($0.idlType.propertyWrapper(readonly: false))(jsObject: object, name: \(quoted: $0.name))
                 """
             })
             super.init(cloning: object)
@@ -100,7 +91,7 @@ extension MergedDictionary: SwiftRepresentable {
     private var swiftMembers: [SwiftSource] {
         members.map {
             """
-            @ReadWriteAttribute
+            @\($0.idlType.propertyWrapper(readonly: false))
             public var \($0.name): \($0.idlType)
             """
         }
@@ -128,7 +119,8 @@ extension IDLEnum: SwiftRepresentable {
 
 extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        """
+        Context.requiredClosureArgCounts.insert(arguments.count)
+        return """
         public typealias \(name) = (\(sequence: arguments.map(\.idlType.swiftRepresentation))) -> \(idlType)
         """
     }
@@ -490,6 +482,25 @@ extension IDLType: SwiftRepresentable {
             print("union", types.count)
             return "__UNSUPPORTED_UNION__"
         }
+    }
+
+    func propertyWrapper(readonly: Bool) -> SwiftSource {
+        if readonly {
+            return "ReadonlyAttribute"
+        }
+        if case let .single(name) = value {
+            if let callback = Context.types[name] as? IDLCallback {
+                return "ClosureAttribute.Required\(String(callback.arguments.count))"
+            }
+            if let ref = Context.types[name] as? IDLTypedef,
+               case let .single(name) = ref.idlType.value,
+               let callback = Context.types[name] as? IDLCallback
+            {
+                assert(ref.idlType.nullable)
+                return "ClosureAttribute.Optional\(String(callback.arguments.count))"
+            }
+        }
+        return "ReadWriteAttribute"
     }
 }
 
