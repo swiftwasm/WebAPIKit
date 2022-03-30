@@ -81,13 +81,27 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
         return dict
     }
 
+    let mergedNamespaces = Dictionary(
+        grouping: all(IDLNamespace.self).map {
+            MergedNamespace(name: $0.name, members: $0.members.array as! [IDLNamespaceMember])
+        },
+        by: \.name
+    ).mapValues {
+        $0.dropFirst().reduce(into: $0.first!) { partialResult, namespace in
+            partialResult.members += namespace.members
+        }
+    }
+
     print("unhandled callback interfaces", all(IDLCallbackInterface.self).map(\.name))
-    let arrays: [DeclarationFile] = Array(mergedInterfaces.values) + Array(mergedDictionaries.values) + Array(mixins.values)
+    let arrays: [DeclarationFile] =
+        Array(mergedInterfaces.values)
+            + Array(mergedDictionaries.values)
+            + Array(mixins.values)
+            + Array(mergedNamespaces.values)
     return (
         arrays
             + [Typedefs(typedefs: all(IDLTypedef.self) + all(IDLCallback.self))]
-            + all(IDLEnum.self)
-            + all(IDLNamespace.self),
+            + all(IDLEnum.self),
         mergedInterfaces
     )
 }
@@ -95,7 +109,11 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
 protocol DeclarationFile {}
 
 extension IDLEnum: DeclarationFile {}
-extension IDLNamespace: DeclarationFile {}
+
+struct MergedNamespace: DeclarationFile {
+    let name: String
+    var members: [IDLNamespaceMember]
+}
 
 struct MergedMixin: DeclarationFile {
     let name: String

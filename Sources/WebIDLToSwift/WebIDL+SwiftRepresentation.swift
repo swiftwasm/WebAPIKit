@@ -258,29 +258,21 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
     var initializer: SwiftSource? { nil }
 }
 
-extension IDLNamespace: SwiftRepresentable {
+extension MergedNamespace: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         let this: SwiftSource = "JSObject.global.\(name).object!"
         let body = Context.withState(.static(this: this, inClass: false, className: "\(name)")) {
             members.map(toSwift).joined(separator: "\n\n")
         }
-        if partial {
-            return """
-            public extension \(name) {
-                \(body)
+        return """
+        public enum \(name) {
+            public static var jsObject: JSObject {
+                \(this)
             }
-            """
-        } else {
-            return """
-            public enum \(name) {
-                public static var jsObject: JSObject {
-                    \(this)
-                }
 
-                \(body)
-            }
-            """
+            \(body)
         }
+        """
     }
 }
 
