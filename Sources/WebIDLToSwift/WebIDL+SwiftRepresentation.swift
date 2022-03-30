@@ -75,9 +75,13 @@ extension MergedDictionary: SwiftRepresentable {
 
     private var swiftInit: SwiftSource {
         """
-        public init(\(members.map { SwiftSource("\($0.name): \($0.idlType)") }.joined(separator: ", "))) {
+        public init(\(sequence: members.map { "\($0.name): \($0.idlType)" })) {
             let object = JSObject.global.Object.function!.new()
-            \(lines: members.map { "object[\"\(raw: $0.name)\"] = \($0.name).jsValue()" })
+            \(lines: members.map {
+                """
+                object["\(raw: $0.name)"] = \($0.name).jsValue()
+                """
+            })
             \(lines: members.map {
                 """
                 _\(raw: $0.name) = ReadWriteAttribute(jsObject: object, name: "\(raw: $0.name)")
@@ -102,9 +106,7 @@ extension IDLEnum: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
         public enum \(name): String, JSValueCompatible {
-            \(lines: cases.map { name -> SwiftSource in
-                "case \(name.camelized) = \"\(raw: name)\""
-            })
+            \(lines: cases.map { "case \($0.camelized) = \"\(raw: $0)\"" })
 
             public static func construct(from jsValue: JSValue) -> Self? {
                 if let string = jsValue.string {
@@ -121,9 +123,8 @@ extension IDLEnum: SwiftRepresentable {
 
 extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let args = arguments.map(\.idlType.swiftRepresentation).joined(separator: ", ")
-        return """
-        public typealias \(name) = (\(args)) -> \(idlType)
+        """
+        public typealias \(name) = (\(sequence: arguments.map(\.idlType.swiftRepresentation)) -> \(idlType)
         """
     }
 }
@@ -215,14 +216,12 @@ extension IDLConstant: SwiftRepresentable, Initializable {
 extension IDLConstructor: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         assert(!Context.static)
-        let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
-        let args = arguments.map {
-            let conversion: SwiftSource = "\($0.optional ? "?" : "").jsValue() \($0.optional ? " ?? .undefined" : "")"
-            return SwiftSource("\($0.name)\(conversion)")
-        }.joined(separator: ", ")
+        let args: [SwiftSource] = arguments.map {
+            "\($0.name)\($0.optional ? "?" : "").jsValue() \($0.optional ? " ?? .undefined" : "")"
+        }
         return """
-        public convenience init(\(params)) {
-            self.init(unsafelyWrapping: Self.constructor.new(\(args)))
+        public convenience init(\(sequence: arguments.map(\.swiftRepresentation))) {
+            self.init(unsafelyWrapping: Self.constructor.new(\(sequence: args)))
         }
         """
     }
@@ -296,7 +295,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
     }
 
     private var defaultRepresentation: SwiftSource {
-        let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
+        let params = arguments.map(\.swiftRepresentation)
         let args: [SwiftSource]
         let argsInit: [SwiftSource]
         if arguments.count <= 5 {
@@ -312,13 +311,13 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             args = (0 ..< arguments.count).map { "_jskit\(String($0))" }
             argsInit = arguments.enumerated().map { i, arg in
                 if arg.optional {
-                    return "let _jskit\(String(i)) = \(arg.name)?.jsValue() ?? .undefined"
+                    return "let _arg\(String(i)) = \(arg.name)?.jsValue() ?? .undefined"
                 } else {
-                    return "let _jskit\(String(i)) = \(arg.name).jsValue()"
+                    return "let _arg\(String(i)) = \(arg.name).jsValue()"
                 }
             }
         }
-        let call: SwiftSource = "\(Context.this)[\"\(raw: name)\"]!(\(args.joined(separator: ", ")))"
+        let call: SwiftSource = "\(Context.this)[\"\(raw: name)\"]!(\(sequence: args))"
         let body: SwiftSource
         if idlType?.swiftRepresentation.source == "Void" {
             body = "_ = \(call)"
@@ -334,11 +333,11 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         if Context.override, Context.static {
             return """
             // [illegal static override]
-            // func \(name)(\(params)) -> \(returnType)
+            // func \(name)(\(sequence: params)) -> \(returnType)
             """
         }
         return """
-        \(overrideModifier)public\(accessModifier) func \(name)(\(params)) -> \(returnType) {
+        \(overrideModifier)public\(accessModifier) func \(name)(\(sequence: params)) -> \(returnType) {
             \(lines: argsInit)
             \(body)
         }

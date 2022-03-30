@@ -30,6 +30,7 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation, E
             output.reserveCapacity(literalCapacity * 2)
         }
 
+
         mutating func appendLiteral(_ literal: String) {
             output += literal
         }
@@ -38,8 +39,17 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation, E
             output += value
         }
 
+        mutating func appendInterpolation(_ source: SwiftSource) {
+            output += source.source
+        }
+
+        @_disfavoredOverload
         mutating func appendInterpolation<T>(_ value: T) {
             output += toSwift(value).source
+        }
+
+        mutating func appendInterpolation(sequence values: [SwiftSource]) {
+            output += values.map(\.source).joined(separator: ", ")
         }
 
         mutating func appendInterpolation(lines values: [SwiftSource]) {
