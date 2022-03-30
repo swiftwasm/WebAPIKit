@@ -173,7 +173,10 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         assert(!Context.static)
         let params = arguments.map(\.swiftRepresentation).joined(separator: ", ")
-        let args = arguments.map(\.name.swiftRepresentation).joined(separator: ", ")
+        let args = arguments.map {
+            let conversion: SwiftSource = "\($0.optional ? "?" : "").jsValue() \($0.optional ? " ?? .undefined" : "")"
+            return SwiftSource("\($0.name)\(conversion)")
+        }.joined(separator: ", ")
         return """
         public convenience init(\(params)) {
             self.init(unsafelyWrapping: Self.constructor.new(\(args)))
