@@ -23,17 +23,14 @@ let package = Package(
     targets: [
         .target(
             name: "DOMKitDemo",
-            dependencies: ["DOMKit"]
-        ),
+            dependencies: ["DOMKit"]),
         .target(
             name: "DOMKit",
             dependencies: ["JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
         .target(name: "WebIDL"),
         .target(
             name: "WebIDLToSwift",
-            dependencies: ["WebIDL"],
-            resources: [.copy("data.json")]
-        ),
+            dependencies: ["WebIDL"]),
         .testTarget(
             name: "DOMKitTests",
             dependencies: ["DOMKit"]),

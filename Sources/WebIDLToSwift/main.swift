@@ -5,12 +5,15 @@ main()
 
 func main() {
     do {
-        let data = try Data(contentsOf: Bundle.module.url(forResource: "data", withExtension: "json")!)
-        let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
-
+        let startTime = Date()
+        let idl = try IDLParser.parseIDL()
+        print("Removing old files...")
         try IDLBuilder.cleanOutputFolder()
+        print("Generating bindings...")
         try IDLBuilder.generateIDLBindings(idl: idl)
+        print("Generating closure property wrappers...")
         try IDLBuilder.generateClosureTypes()
+        print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
     } catch {
         handleDecodingError(error)
     }
