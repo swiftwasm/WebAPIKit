@@ -471,7 +471,6 @@ extension IDLType: SwiftRepresentable {
                 // ???
                 return "[\(args[0])]"
             case "Promise":
-                // TODO: async
                 return "JSPromise"
             case "record":
                 return "[\(args[0]): \(args[1])]"
