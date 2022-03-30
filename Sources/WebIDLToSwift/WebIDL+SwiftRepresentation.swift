@@ -16,17 +16,26 @@ extension IDLArgument: SwiftRepresentable {
 }
 
 extension IDLAttribute: SwiftRepresentable, Initializable {
+    var propertyWrapper: SwiftSource {
+        if readonly {
+            return "ReadonlyAttribute"
+        }
+        if case let .single(name) = idlType.value, name == "EventHandler" {
+            return "OptionalClosureHandler"
+        }
+        return "ReadWriteAttribute"
+    }
+
     var swiftRepresentation: SwiftSource {
         """
-        @\(readonly ? "ReadonlyAttribute" : "ReadWriteAttribute")
+        @\(propertyWrapper)
         public\(raw: Context.static ? " static" : "") var \(name): \(idlType)
         """
     }
 
     var initializer: SwiftSource? {
         assert(!Context.static)
-        let wrapper: SwiftSource = readonly ? "ReadonlyAttribute" : "ReadWriteAttribute"
-        return "_\(raw: name) = \(wrapper)(jsObject: jsObject, name: \"\(raw: name)\")"
+        return "_\(raw: name) = \(propertyWrapper)(jsObject: jsObject, name: \"\(raw: name)\")"
     }
 }
 
@@ -42,11 +51,11 @@ extension IDLDictionary: SwiftRepresentable {
 
     private var swiftInit: SwiftSource {
         """
-        public convenience init(\(members.map { SwiftSource("\($0.name): \($0.idlType)") }.joined(separator: ", "))) {
+        public init(\(members.map { SwiftSource("\($0.name): \($0.idlType)") }.joined(separator: ", "))) {
             let object = JSObject.global.Object.function!.new()
             \(lines: members.map { "object[\"\(raw: $0.name)\"] = \($0.name).jsValue()" })
-            \(lines: members.map { "_\(raw: $0.name) = ReadWriteAttribute(jsObject: object, name: \"\(raw: $0.name)\")" })
-            self = object
+            super.init(cloning: object)
+            \(lines: members.map { "_\(raw: $0.name) = ReadWriteAttribute(jsObject: self, name: \"\(raw: $0.name)\")" })
         }
         """
     }
@@ -224,7 +233,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                 }
                 """
             case "static":
-                return Context.withState(.static(this: Context.constructor)) {
+                return Context.withState(.static(this: "constructor")) {
                     defaultRepresentation
                 }
             case "getter":
@@ -270,6 +279,7 @@ let typeNameMap = [
     "any": "JSValue",
     "DOMString": "String",
     "USVString": "String",
+    "ByteString": "String",
     "object": "JSObject",
     "undefined": "Void",
     "double": "Double",
@@ -279,6 +289,7 @@ let typeNameMap = [
     "unsigned long long": "Double",
     "short": "Double",
     "long": "Double",
+    "long long": "Double",
 ]
 
 extension IDLType: SwiftRepresentable {
