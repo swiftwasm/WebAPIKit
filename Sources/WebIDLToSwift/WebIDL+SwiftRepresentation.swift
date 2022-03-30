@@ -149,7 +149,7 @@ extension MergedInterface: SwiftRepresentable {
                     if Context.ignored[name]?.contains(memberName) ?? false {
                         return "// [\(memberName) is ignored]"
                     }
-                    isOverride = inheritance.flatMap {
+                    isOverride = parentClasses.flatMap {
                         Context.interfaces[$0]?.members ?? []
                     }.contains {
                         memberName == ($0 as? IDLNamed)?.name
@@ -163,15 +163,16 @@ extension MergedInterface: SwiftRepresentable {
             }.joined(separator: "\n\n")
         }
 
+        let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
         return """
-        public class \(name): \(inheritance.isEmpty ? "JSBridgedClass" : inheritance.joined(separator: ", ")) {
-            public\(inheritance.isEmpty ? "" : " override") class var constructor: JSFunction { \(constructor) }
+        public class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
+            public\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction { \(constructor) }
 
-            \(inheritance.isEmpty ? "public let jsObject: JSObject" : "")
+            \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
 
             public required init(unsafelyWrapping jsObject: JSObject) {
                 \(memberInits.joined(separator: "\n"))
-                \(inheritance.isEmpty ? "self.jsObject = jsObject" : "super.init(unsafelyWrapping: jsObject)")
+                \(parentClasses.isEmpty ? "self.jsObject = jsObject" : "super.init(unsafelyWrapping: jsObject)")
             }
 
             \(body)

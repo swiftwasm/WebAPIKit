@@ -46,17 +46,17 @@ func merge(declarations: [IDLNode]) -> (declarations: [DeclarationFile], interfa
         grouping: all(IDLInterface.self).map {
             MergedInterface(
                 name: $0.name,
-                inheritance: [$0.inheritance].compactMap { $0 },
+                parentClasses: [$0.inheritance].compactMap { $0 },
                 members: $0.members.array as! [IDLInterfaceMember]
             )
         },
         by: \.name
     ).mapValues { toMerge -> MergedInterface in
         var interface = toMerge.dropFirst().reduce(into: toMerge.first!) { partialResult, interface in
-            partialResult.inheritance += interface.inheritance
+            partialResult.parentClasses += interface.parentClasses
             partialResult.members += interface.members
         }
-        interface.inheritance += includes[interface.name, default: []]
+        interface.mixins = includes[interface.name, default: []]
         return interface
     }
 
@@ -107,7 +107,8 @@ struct MergedDictionary: DeclarationFile {
 
 struct MergedInterface: DeclarationFile {
     let name: String
-    var inheritance: [String]
+    var parentClasses: [String]
+    var mixins: [String] = []
     var members: [IDLInterfaceMember]
 }
 
