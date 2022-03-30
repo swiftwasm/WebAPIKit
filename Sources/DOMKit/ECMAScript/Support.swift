@@ -4,15 +4,10 @@
 
 import JavaScriptKit
 
-public extension Window {
-    public var document: Document { Document(unsafelyWrapping: jsObject.document.object!) }
-}
+/* TODO: fix this */
+public typealias __UNSUPPORTED_UNION__ = JSValue
 
-public extension Document {
-    var body: HTMLElement {
-        .init(unsafelyWrapping: jsObject.body.object!)
-    }
-}
+public typealias WindowProxy = Window
 
 public extension HTMLElement {
     convenience init?(from element: Element) {
@@ -36,6 +31,10 @@ public class ReadableStream: JSBridgedClass {
         get { jsObject[name] }
         set { jsObject[name] = newValue }
     }
+}
+
+public class Uint8ClampedArray: JSTypedArray<UInt8> {
+    public static override var constructor: JSFunction { JSObject.global.Uint8ClampedArray.function! }
 }
 
 @propertyWrapper public final class OptionalClosureHandler<ArgumentType, ReturnType> 
