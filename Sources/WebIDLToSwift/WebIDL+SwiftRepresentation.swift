@@ -20,8 +20,11 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
         if readonly {
             return "ReadonlyAttribute"
         }
-        if case let .single(name) = idlType.value, name == "EventHandler" {
-            return "OptionalClosureHandler"
+        if case let .single(name) = idlType.value, ["EventHandler", "OnBeforeUnloadEventHandler"].contains(name) {
+            return "OptionalClosureAttribute"
+        }
+        if case let .single(name) = idlType.value, name == "OnErrorEventHandler" {
+            return "OnErrorEventHandlerAttribute"
         }
         return "ReadWriteAttribute"
     }

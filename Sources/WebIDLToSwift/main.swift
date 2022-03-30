@@ -14,7 +14,7 @@ do {
     let idl = try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
     let declarations = [
         "dom", "hr-time", "html", "console", "FileAPI", "geometry", "webidl", "fetch", "xhr",
-        "referrer-policy", "uievents",
+        "referrer-policy", "uievents", "wai-aria",
     ].flatMap { idl[$0]!.array }
     let merged = merge(declarations: declarations)
     for (i, node) in merged.declarations.enumerated() {

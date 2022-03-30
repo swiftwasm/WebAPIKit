@@ -34,7 +34,7 @@ public class ReadableStream: JSBridgedClass {
 
 public typealias Uint8ClampedArray = JSUInt8ClampedArray
 
-@propertyWrapper public final class OptionalClosureHandler<ArgumentType, ReturnType>
+@propertyWrapper public final class OptionalClosureAttribute<ArgumentType, ReturnType>
     where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible
 {
     @usableFromInline let jsObject: JSObject
@@ -46,8 +46,8 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
     }
 
     @inlinable public var wrappedValue: ((ArgumentType) -> ReturnType)? {
-        get { OptionalClosureHandler[name, in: jsObject] }
-        set { OptionalClosureHandler[name, in: jsObject] = newValue }
+        get { OptionalClosureAttribute[name, in: jsObject] }
+        set { OptionalClosureAttribute[name, in: jsObject] = newValue }
     }
 
     @inlinable public static subscript(name: String, in jsObject: JSObject) -> ((ArgumentType) -> ReturnType)? {
@@ -60,6 +60,49 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
         set {
             if let newValue = newValue {
                 let closure = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }
+                jsObject[name] = closure.jsValue()
+            } else {
+                jsObject[name] = .null
+            }
+        }
+    }
+}
+
+/* variadic generics please */
+@propertyWrapper public final class OnErrorEventHandlerAttribute {
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: String
+
+    public init(jsObject: JSObject, name: String) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: ((JSValue, String, UInt32, UInt32, JSValue) -> JSValue)? {
+        get { OnErrorEventHandlerAttribute[name, in: jsObject] }
+        set { OnErrorEventHandlerAttribute[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: String, in jsObject: JSObject)
+        -> ((JSValue, String, UInt32, UInt32, JSValue) -> JSValue)?
+    {
+        get {
+            guard let function = jsObject[name].function else {
+                return nil
+            }
+            return { function($0.jsValue(), $1.jsValue(), $2.jsValue(), $3.jsValue(), $4.fromJSValue()).fromJSValue()! }
+        }
+        set {
+            if let newValue = newValue {
+                let closure = JSClosure {
+                    newValue(
+                        $0[0].fromJSValue()!,
+                        $0[1].fromJSValue()!,
+                        $0[2].fromJSValue()!,
+                        $0[3].fromJSValue()!,
+                        $0[4].fromJSValue()!
+                    ).jsValue()
+                }
                 jsObject[name] = closure.jsValue()
             } else {
                 jsObject[name] = .null
