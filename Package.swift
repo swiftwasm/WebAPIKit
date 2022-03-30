@@ -17,7 +17,6 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            name: "JavaScriptKit",
             url: "https://github.com/swiftwasm/JavaScriptKit.git",
             .branch("jed/open-object")),
     ],
@@ -28,7 +27,7 @@ let package = Package(
         ),
         .target(
             name: "DOMKit",
-            dependencies: ["JavaScriptKit"]),
+            dependencies: ["JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
         .target(name: "WebIDL"),
         .target(
             name: "WebIDLToSwift",
