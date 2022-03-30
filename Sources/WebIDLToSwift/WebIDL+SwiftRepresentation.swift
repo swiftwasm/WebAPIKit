@@ -285,14 +285,15 @@ let typeNameMap = [
     "ByteString": "String",
     "object": "JSObject",
     "undefined": "Void",
+    "float": "Float",
     "double": "Double",
     "unrestricted double": "Double",
-    "unsigned short": "Double",
-    "unsigned long": "Double",
-    "unsigned long long": "Double",
-    "short": "Double",
-    "long": "Double",
-    "long long": "Double",
+    "unsigned short": "UInt16",
+    "unsigned long": "UInt32",
+    "unsigned long long": "UInt64",
+    "short": "Int16",
+    "long": "Int32",
+    "long long": "Int64",
 ]
 
 extension IDLType: SwiftRepresentable {
