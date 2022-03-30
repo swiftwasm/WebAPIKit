@@ -19,7 +19,7 @@ let package = Package(
         .package(
             name: "JavaScriptKit",
             url: "https://github.com/swiftwasm/JavaScriptKit.git",
-            .upToNextMinor(from: "0.9.0")),
+            .branch("jed/open-object")),
     ],
     targets: [
         .target(
