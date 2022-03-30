@@ -33,11 +33,10 @@ public class ReadableStream: JSBridgedClass {
     }
 }
 
-public class Uint8ClampedArray: JSTypedArray<UInt8> {
-    public static override var constructor: JSFunction { JSObject.global.Uint8ClampedArray.function! }
-}
 
-@propertyWrapper public final class OptionalClosureHandler<ArgumentType, ReturnType> 
+typealias Uint8ClampedArray = JSUInt8ClampedArray
+
+@propertyWrapper public final class OptionalClosureHandler<ArgumentType, ReturnType>
 where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {
     let jsObject: JSObject
     let name: String
@@ -48,10 +47,6 @@ where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {
         self.name = name
     }
 
-    deinit {
-        closure?.release()
-    }
-
     public var wrappedValue: ((ArgumentType) -> ReturnType)? {
         get {
             guard let function = jsObject[name].function else {
@@ -60,15 +55,13 @@ where ArgumentType: JSValueCompatible, ReturnType: JSValueCompatible {
             return { function($0.jsValue()).fromJSValue()! }
         }
         set {
-            if let closure = closure {
-                closure.release()
-            }
             if let newValue = newValue {
                 let closure = JSClosure { newValue($0[0].fromJSValue()!).jsValue() }
                 jsObject[name] = closure.jsValue()
                 self.closure = closure
             } else {
                 jsObject[name] = .null
+                self.closure = nil
             }
         }
     }
