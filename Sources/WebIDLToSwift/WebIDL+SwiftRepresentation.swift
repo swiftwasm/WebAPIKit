@@ -2,10 +2,15 @@ import WebIDL
 
 extension IDLArgument: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
+        let type: SwiftSource = variadic ? "\(idlType)..." : "\(idlType)"
         if optional {
-            return "\(name): \(idlType)? = nil"
+            if idlType.nullable {
+                return "\(name): \(type) = nil"
+            } else {
+                return "\(name): \(type)? = nil"
+            }
         } else {
-            return "\(name): \(idlType)"
+            return "\(name): \(type)"
         }
     }
 }
