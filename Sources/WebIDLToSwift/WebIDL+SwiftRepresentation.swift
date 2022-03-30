@@ -432,28 +432,28 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
     var initializer: SwiftSource? { nil }
 }
 
-let typeNameMap = [
-    "boolean": "Bool",
-    "any": "JSValue",
-    "DOMString": "String",
-    "USVString": "String",
-    "CSSOMString": "String",
-    "ByteString": "String",
-    "object": "JSObject",
-    "undefined": "Void",
-    "float": "Float",
-    "double": "Double",
-    "unrestricted double": "Double",
-    "unsigned short": "UInt16",
-    "unsigned long": "UInt32",
-    "unsigned long long": "UInt64",
-    "short": "Int16",
-    "long": "Int32",
-    "long long": "Int64",
-    "Function": "JSFunction",
-]
-
 extension IDLType: SwiftRepresentable {
+    private static let typeNameMap = [
+        "boolean": "Bool",
+        "any": "JSValue",
+        "DOMString": "String",
+        "USVString": "String",
+        "CSSOMString": "String",
+        "ByteString": "String",
+        "object": "JSObject",
+        "undefined": "Void",
+        "float": "Float",
+        "double": "Double",
+        "unrestricted double": "Double",
+        "unsigned short": "UInt16",
+        "unsigned long": "UInt32",
+        "unsigned long long": "UInt64",
+        "short": "Int16",
+        "long": "Int32",
+        "long long": "Int64",
+        "Function": "JSFunction",
+    ]
+
     var swiftRepresentation: SwiftSource {
         if nullable {
             return "\(baseType)?"
@@ -479,7 +479,7 @@ extension IDLType: SwiftRepresentable {
                 fatalError("Unsupported generic type: \(name)")
             }
         case let .single(name):
-            if let typeName = typeNameMap[name] {
+            if let typeName = Self.typeNameMap[name] {
                 return "\(typeName)"
             } else {
                 if name == name.lowercased() {
