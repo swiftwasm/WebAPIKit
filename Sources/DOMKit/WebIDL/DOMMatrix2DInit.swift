@@ -4,36 +4,51 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMMatrix2DInit: BridgedDictionary {
+    private enum Keys {
+        static let a: JSString = "a"
+        static let f: JSString = "f"
+        static let m41: JSString = "m41"
+        static let m22: JSString = "m22"
+        static let m42: JSString = "m42"
+        static let m21: JSString = "m21"
+        static let b: JSString = "b"
+        static let d: JSString = "d"
+        static let e: JSString = "e"
+        static let c: JSString = "c"
+        static let m12: JSString = "m12"
+        static let m11: JSString = "m11"
+    }
+
     public convenience init(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double, m11: Double, m12: Double, m21: Double, m22: Double, m41: Double, m42: Double) {
         let object = JSObject.global.Object.function!.new()
-        object["a"] = a.jsValue()
-        object["b"] = b.jsValue()
-        object["c"] = c.jsValue()
-        object["d"] = d.jsValue()
-        object["e"] = e.jsValue()
-        object["f"] = f.jsValue()
-        object["m11"] = m11.jsValue()
-        object["m12"] = m12.jsValue()
-        object["m21"] = m21.jsValue()
-        object["m22"] = m22.jsValue()
-        object["m41"] = m41.jsValue()
-        object["m42"] = m42.jsValue()
+        object[Keys.a] = a.jsValue()
+        object[Keys.b] = b.jsValue()
+        object[Keys.c] = c.jsValue()
+        object[Keys.d] = d.jsValue()
+        object[Keys.e] = e.jsValue()
+        object[Keys.f] = f.jsValue()
+        object[Keys.m11] = m11.jsValue()
+        object[Keys.m12] = m12.jsValue()
+        object[Keys.m21] = m21.jsValue()
+        object[Keys.m22] = m22.jsValue()
+        object[Keys.m41] = m41.jsValue()
+        object[Keys.m42] = m42.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _a = ReadWriteAttribute(jsObject: object, name: "a")
-        _b = ReadWriteAttribute(jsObject: object, name: "b")
-        _c = ReadWriteAttribute(jsObject: object, name: "c")
-        _d = ReadWriteAttribute(jsObject: object, name: "d")
-        _e = ReadWriteAttribute(jsObject: object, name: "e")
-        _f = ReadWriteAttribute(jsObject: object, name: "f")
-        _m11 = ReadWriteAttribute(jsObject: object, name: "m11")
-        _m12 = ReadWriteAttribute(jsObject: object, name: "m12")
-        _m21 = ReadWriteAttribute(jsObject: object, name: "m21")
-        _m22 = ReadWriteAttribute(jsObject: object, name: "m22")
-        _m41 = ReadWriteAttribute(jsObject: object, name: "m41")
-        _m42 = ReadWriteAttribute(jsObject: object, name: "m42")
+        _a = ReadWriteAttribute(jsObject: object, name: Keys.a)
+        _b = ReadWriteAttribute(jsObject: object, name: Keys.b)
+        _c = ReadWriteAttribute(jsObject: object, name: Keys.c)
+        _d = ReadWriteAttribute(jsObject: object, name: Keys.d)
+        _e = ReadWriteAttribute(jsObject: object, name: Keys.e)
+        _f = ReadWriteAttribute(jsObject: object, name: Keys.f)
+        _m11 = ReadWriteAttribute(jsObject: object, name: Keys.m11)
+        _m12 = ReadWriteAttribute(jsObject: object, name: Keys.m12)
+        _m21 = ReadWriteAttribute(jsObject: object, name: Keys.m21)
+        _m22 = ReadWriteAttribute(jsObject: object, name: Keys.m22)
+        _m41 = ReadWriteAttribute(jsObject: object, name: Keys.m41)
+        _m42 = ReadWriteAttribute(jsObject: object, name: Keys.m42)
         super.init(unsafelyWrapping: object)
     }
 

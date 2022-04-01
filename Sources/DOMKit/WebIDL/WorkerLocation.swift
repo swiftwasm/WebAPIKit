@@ -6,18 +6,30 @@ import JavaScriptKit
 public class WorkerLocation: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.WorkerLocation.function! }
 
+    private enum Keys {
+        static let href: JSString = "href"
+        static let host: JSString = "host"
+        static let search: JSString = "search"
+        static let origin: JSString = "origin"
+        static let hash: JSString = "hash"
+        static let `protocol`: JSString = "protocol"
+        static let pathname: JSString = "pathname"
+        static let port: JSString = "port"
+        static let hostname: JSString = "hostname"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _href = ReadonlyAttribute(jsObject: jsObject, name: "href")
-        _origin = ReadonlyAttribute(jsObject: jsObject, name: "origin")
-        _protocol = ReadonlyAttribute(jsObject: jsObject, name: "protocol")
-        _host = ReadonlyAttribute(jsObject: jsObject, name: "host")
-        _hostname = ReadonlyAttribute(jsObject: jsObject, name: "hostname")
-        _port = ReadonlyAttribute(jsObject: jsObject, name: "port")
-        _pathname = ReadonlyAttribute(jsObject: jsObject, name: "pathname")
-        _search = ReadonlyAttribute(jsObject: jsObject, name: "search")
-        _hash = ReadonlyAttribute(jsObject: jsObject, name: "hash")
+        _href = ReadonlyAttribute(jsObject: jsObject, name: Keys.href)
+        _origin = ReadonlyAttribute(jsObject: jsObject, name: Keys.origin)
+        _protocol = ReadonlyAttribute(jsObject: jsObject, name: Keys.protocol)
+        _host = ReadonlyAttribute(jsObject: jsObject, name: Keys.host)
+        _hostname = ReadonlyAttribute(jsObject: jsObject, name: Keys.hostname)
+        _port = ReadonlyAttribute(jsObject: jsObject, name: Keys.port)
+        _pathname = ReadonlyAttribute(jsObject: jsObject, name: Keys.pathname)
+        _search = ReadonlyAttribute(jsObject: jsObject, name: Keys.search)
+        _hash = ReadonlyAttribute(jsObject: jsObject, name: Keys.hash)
         self.jsObject = jsObject
     }
 

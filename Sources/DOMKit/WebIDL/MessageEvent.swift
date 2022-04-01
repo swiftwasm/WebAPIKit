@@ -6,12 +6,21 @@ import JavaScriptKit
 public class MessageEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.MessageEvent.function! }
 
+    private enum Keys {
+        static let initMessageEvent: JSString = "initMessageEvent"
+        static let origin: JSString = "origin"
+        static let source: JSString = "source"
+        static let data: JSString = "data"
+        static let ports: JSString = "ports"
+        static let lastEventId: JSString = "lastEventId"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _data = ReadonlyAttribute(jsObject: jsObject, name: "data")
-        _origin = ReadonlyAttribute(jsObject: jsObject, name: "origin")
-        _lastEventId = ReadonlyAttribute(jsObject: jsObject, name: "lastEventId")
-        _source = ReadonlyAttribute(jsObject: jsObject, name: "source")
-        _ports = ReadonlyAttribute(jsObject: jsObject, name: "ports")
+        _data = ReadonlyAttribute(jsObject: jsObject, name: Keys.data)
+        _origin = ReadonlyAttribute(jsObject: jsObject, name: Keys.origin)
+        _lastEventId = ReadonlyAttribute(jsObject: jsObject, name: Keys.lastEventId)
+        _source = ReadonlyAttribute(jsObject: jsObject, name: Keys.source)
+        _ports = ReadonlyAttribute(jsObject: jsObject, name: Keys.ports)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -43,6 +52,6 @@ public class MessageEvent: Event {
         let _arg5 = lastEventId?.jsValue() ?? .undefined
         let _arg6 = source?.jsValue() ?? .undefined
         let _arg7 = ports?.jsValue() ?? .undefined
-        _ = jsObject["initMessageEvent"]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        _ = jsObject[Keys.initMessageEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
     }
 }

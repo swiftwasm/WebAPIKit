@@ -3,21 +3,28 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let isContextLost: JSString = "isContextLost"
+    static let save: JSString = "save"
+    static let reset: JSString = "reset"
+    static let restore: JSString = "restore"
+}
+
 public protocol CanvasState: JSBridgedClass {}
 public extension CanvasState {
     func save() {
-        _ = jsObject["save"]!()
+        _ = jsObject[Keys.save]!()
     }
 
     func restore() {
-        _ = jsObject["restore"]!()
+        _ = jsObject[Keys.restore]!()
     }
 
     func reset() {
-        _ = jsObject["reset"]!()
+        _ = jsObject[Keys.reset]!()
     }
 
     func isContextLost() -> Bool {
-        jsObject["isContextLost"]!().fromJSValue()!
+        jsObject[Keys.isContextLost]!().fromJSValue()!
     }
 }

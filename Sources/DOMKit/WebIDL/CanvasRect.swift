@@ -3,17 +3,23 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let strokeRect: JSString = "strokeRect"
+    static let clearRect: JSString = "clearRect"
+    static let fillRect: JSString = "fillRect"
+}
+
 public protocol CanvasRect: JSBridgedClass {}
 public extension CanvasRect {
     func clearRect(x: Double, y: Double, w: Double, h: Double) {
-        _ = jsObject["clearRect"]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
+        _ = jsObject[Keys.clearRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
     }
 
     func fillRect(x: Double, y: Double, w: Double, h: Double) {
-        _ = jsObject["fillRect"]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
+        _ = jsObject[Keys.fillRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
     }
 
     func strokeRect(x: Double, y: Double, w: Double, h: Double) {
-        _ = jsObject["strokeRect"]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
+        _ = jsObject[Keys.strokeRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
     }
 }

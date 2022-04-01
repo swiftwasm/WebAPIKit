@@ -4,22 +4,30 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Transformer: BridgedDictionary {
+    private enum Keys {
+        static let writableType: JSString = "writableType"
+        static let start: JSString = "start"
+        static let flush: JSString = "flush"
+        static let transform: JSString = "transform"
+        static let readableType: JSString = "readableType"
+    }
+
     public convenience init(start: @escaping TransformerStartCallback, transform: @escaping TransformerTransformCallback, flush: @escaping TransformerFlushCallback, readableType: JSValue, writableType: JSValue) {
         let object = JSObject.global.Object.function!.new()
-        ClosureAttribute.Required1["start", in: object] = start
-        ClosureAttribute.Required2["transform", in: object] = transform
-        ClosureAttribute.Required1["flush", in: object] = flush
-        object["readableType"] = readableType.jsValue()
-        object["writableType"] = writableType.jsValue()
+        ClosureAttribute.Required1[Keys.start, in: object] = start
+        ClosureAttribute.Required2[Keys.transform, in: object] = transform
+        ClosureAttribute.Required1[Keys.flush, in: object] = flush
+        object[Keys.readableType] = readableType.jsValue()
+        object[Keys.writableType] = writableType.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _start = ClosureAttribute.Required1(jsObject: object, name: "start")
-        _transform = ClosureAttribute.Required2(jsObject: object, name: "transform")
-        _flush = ClosureAttribute.Required1(jsObject: object, name: "flush")
-        _readableType = ReadWriteAttribute(jsObject: object, name: "readableType")
-        _writableType = ReadWriteAttribute(jsObject: object, name: "writableType")
+        _start = ClosureAttribute.Required1(jsObject: object, name: Keys.start)
+        _transform = ClosureAttribute.Required2(jsObject: object, name: Keys.transform)
+        _flush = ClosureAttribute.Required1(jsObject: object, name: Keys.flush)
+        _readableType = ReadWriteAttribute(jsObject: object, name: Keys.readableType)
+        _writableType = ReadWriteAttribute(jsObject: object, name: Keys.writableType)
         super.init(unsafelyWrapping: object)
     }
 

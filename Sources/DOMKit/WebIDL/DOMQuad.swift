@@ -6,13 +6,24 @@ import JavaScriptKit
 public class DOMQuad: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMQuad.function! }
 
+    private enum Keys {
+        static let p1: JSString = "p1"
+        static let p2: JSString = "p2"
+        static let getBounds: JSString = "getBounds"
+        static let toJSON: JSString = "toJSON"
+        static let p3: JSString = "p3"
+        static let fromRect: JSString = "fromRect"
+        static let p4: JSString = "p4"
+        static let fromQuad: JSString = "fromQuad"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _p1 = ReadonlyAttribute(jsObject: jsObject, name: "p1")
-        _p2 = ReadonlyAttribute(jsObject: jsObject, name: "p2")
-        _p3 = ReadonlyAttribute(jsObject: jsObject, name: "p3")
-        _p4 = ReadonlyAttribute(jsObject: jsObject, name: "p4")
+        _p1 = ReadonlyAttribute(jsObject: jsObject, name: Keys.p1)
+        _p2 = ReadonlyAttribute(jsObject: jsObject, name: Keys.p2)
+        _p3 = ReadonlyAttribute(jsObject: jsObject, name: Keys.p3)
+        _p4 = ReadonlyAttribute(jsObject: jsObject, name: Keys.p4)
         self.jsObject = jsObject
     }
 
@@ -21,11 +32,11 @@ public class DOMQuad: JSBridgedClass {
     }
 
     public static func fromRect(other: DOMRectInit? = nil) -> Self {
-        constructor["fromRect"]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        constructor[Keys.fromRect]!(other?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public static func fromQuad(other: DOMQuadInit? = nil) -> Self {
-        constructor["fromQuad"]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        constructor[Keys.fromQuad]!(other?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -41,10 +52,10 @@ public class DOMQuad: JSBridgedClass {
     public var p4: DOMPoint
 
     public func getBounds() -> DOMRect {
-        jsObject["getBounds"]!().fromJSValue()!
+        jsObject[Keys.getBounds]!().fromJSValue()!
     }
 
     public func toJSON() -> JSObject {
-        jsObject["toJSON"]!().fromJSValue()!
+        jsObject[Keys.toJSON]!().fromJSValue()!
     }
 }

@@ -6,11 +6,19 @@ import JavaScriptKit
 public class MediaList: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MediaList.function! }
 
+    private enum Keys {
+        static let appendMedium: JSString = "appendMedium"
+        static let deleteMedium: JSString = "deleteMedium"
+        static let length: JSString = "length"
+        static let item: JSString = "item"
+        static let mediaText: JSString = "mediaText"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _mediaText = ReadWriteAttribute(jsObject: jsObject, name: "mediaText")
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        _mediaText = ReadWriteAttribute(jsObject: jsObject, name: Keys.mediaText)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
         self.jsObject = jsObject
     }
 
@@ -25,10 +33,10 @@ public class MediaList: JSBridgedClass {
     }
 
     public func appendMedium(medium: String) {
-        _ = jsObject["appendMedium"]!(medium.jsValue())
+        _ = jsObject[Keys.appendMedium]!(medium.jsValue())
     }
 
     public func deleteMedium(medium: String) {
-        _ = jsObject["deleteMedium"]!(medium.jsValue())
+        _ = jsObject[Keys.deleteMedium]!(medium.jsValue())
     }
 }

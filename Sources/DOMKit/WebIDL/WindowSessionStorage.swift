@@ -3,7 +3,11 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let sessionStorage: JSString = "sessionStorage"
+}
+
 public protocol WindowSessionStorage: JSBridgedClass {}
 public extension WindowSessionStorage {
-    var sessionStorage: Storage { ReadonlyAttribute["sessionStorage", in: jsObject] }
+    var sessionStorage: Storage { ReadonlyAttribute[Keys.sessionStorage, in: jsObject] }
 }

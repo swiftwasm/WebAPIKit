@@ -6,24 +6,43 @@ import JavaScriptKit
 public class Request: JSBridgedClass, Body {
     public class var constructor: JSFunction { JSObject.global.Request.function! }
 
+    private enum Keys {
+        static let clone: JSString = "clone"
+        static let referrer: JSString = "referrer"
+        static let redirect: JSString = "redirect"
+        static let signal: JSString = "signal"
+        static let mode: JSString = "mode"
+        static let isHistoryNavigation: JSString = "isHistoryNavigation"
+        static let keepalive: JSString = "keepalive"
+        static let cache: JSString = "cache"
+        static let credentials: JSString = "credentials"
+        static let headers: JSString = "headers"
+        static let url: JSString = "url"
+        static let integrity: JSString = "integrity"
+        static let destination: JSString = "destination"
+        static let method: JSString = "method"
+        static let referrerPolicy: JSString = "referrerPolicy"
+        static let isReloadNavigation: JSString = "isReloadNavigation"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _method = ReadonlyAttribute(jsObject: jsObject, name: "method")
-        _url = ReadonlyAttribute(jsObject: jsObject, name: "url")
-        _headers = ReadonlyAttribute(jsObject: jsObject, name: "headers")
-        _destination = ReadonlyAttribute(jsObject: jsObject, name: "destination")
-        _referrer = ReadonlyAttribute(jsObject: jsObject, name: "referrer")
-        _referrerPolicy = ReadonlyAttribute(jsObject: jsObject, name: "referrerPolicy")
-        _mode = ReadonlyAttribute(jsObject: jsObject, name: "mode")
-        _credentials = ReadonlyAttribute(jsObject: jsObject, name: "credentials")
-        _cache = ReadonlyAttribute(jsObject: jsObject, name: "cache")
-        _redirect = ReadonlyAttribute(jsObject: jsObject, name: "redirect")
-        _integrity = ReadonlyAttribute(jsObject: jsObject, name: "integrity")
-        _keepalive = ReadonlyAttribute(jsObject: jsObject, name: "keepalive")
-        _isReloadNavigation = ReadonlyAttribute(jsObject: jsObject, name: "isReloadNavigation")
-        _isHistoryNavigation = ReadonlyAttribute(jsObject: jsObject, name: "isHistoryNavigation")
-        _signal = ReadonlyAttribute(jsObject: jsObject, name: "signal")
+        _method = ReadonlyAttribute(jsObject: jsObject, name: Keys.method)
+        _url = ReadonlyAttribute(jsObject: jsObject, name: Keys.url)
+        _headers = ReadonlyAttribute(jsObject: jsObject, name: Keys.headers)
+        _destination = ReadonlyAttribute(jsObject: jsObject, name: Keys.destination)
+        _referrer = ReadonlyAttribute(jsObject: jsObject, name: Keys.referrer)
+        _referrerPolicy = ReadonlyAttribute(jsObject: jsObject, name: Keys.referrerPolicy)
+        _mode = ReadonlyAttribute(jsObject: jsObject, name: Keys.mode)
+        _credentials = ReadonlyAttribute(jsObject: jsObject, name: Keys.credentials)
+        _cache = ReadonlyAttribute(jsObject: jsObject, name: Keys.cache)
+        _redirect = ReadonlyAttribute(jsObject: jsObject, name: Keys.redirect)
+        _integrity = ReadonlyAttribute(jsObject: jsObject, name: Keys.integrity)
+        _keepalive = ReadonlyAttribute(jsObject: jsObject, name: Keys.keepalive)
+        _isReloadNavigation = ReadonlyAttribute(jsObject: jsObject, name: Keys.isReloadNavigation)
+        _isHistoryNavigation = ReadonlyAttribute(jsObject: jsObject, name: Keys.isHistoryNavigation)
+        _signal = ReadonlyAttribute(jsObject: jsObject, name: Keys.signal)
         self.jsObject = jsObject
     }
 
@@ -77,6 +96,6 @@ public class Request: JSBridgedClass, Body {
     public var signal: AbortSignal
 
     public func clone() -> Self {
-        jsObject["clone"]!().fromJSValue()!
+        jsObject[Keys.clone]!().fromJSValue()!
     }
 }

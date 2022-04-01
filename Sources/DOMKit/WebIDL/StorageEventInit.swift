@@ -4,22 +4,30 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StorageEventInit: BridgedDictionary {
+    private enum Keys {
+        static let key: JSString = "key"
+        static let url: JSString = "url"
+        static let oldValue: JSString = "oldValue"
+        static let newValue: JSString = "newValue"
+        static let storageArea: JSString = "storageArea"
+    }
+
     public convenience init(key: String?, oldValue: String?, newValue: String?, url: String, storageArea: Storage?) {
         let object = JSObject.global.Object.function!.new()
-        object["key"] = key.jsValue()
-        object["oldValue"] = oldValue.jsValue()
-        object["newValue"] = newValue.jsValue()
-        object["url"] = url.jsValue()
-        object["storageArea"] = storageArea.jsValue()
+        object[Keys.key] = key.jsValue()
+        object[Keys.oldValue] = oldValue.jsValue()
+        object[Keys.newValue] = newValue.jsValue()
+        object[Keys.url] = url.jsValue()
+        object[Keys.storageArea] = storageArea.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _key = ReadWriteAttribute(jsObject: object, name: "key")
-        _oldValue = ReadWriteAttribute(jsObject: object, name: "oldValue")
-        _newValue = ReadWriteAttribute(jsObject: object, name: "newValue")
-        _url = ReadWriteAttribute(jsObject: object, name: "url")
-        _storageArea = ReadWriteAttribute(jsObject: object, name: "storageArea")
+        _key = ReadWriteAttribute(jsObject: object, name: Keys.key)
+        _oldValue = ReadWriteAttribute(jsObject: object, name: Keys.oldValue)
+        _newValue = ReadWriteAttribute(jsObject: object, name: Keys.newValue)
+        _url = ReadWriteAttribute(jsObject: object, name: Keys.url)
+        _storageArea = ReadWriteAttribute(jsObject: object, name: Keys.storageArea)
         super.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,15 @@ import JavaScriptKit
 public class HTMLSlotElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLSlotElement.function! }
 
+    private enum Keys {
+        static let assignedNodes: JSString = "assignedNodes"
+        static let name: JSString = "name"
+        static let assign: JSString = "assign"
+        static let assignedElements: JSString = "assignedElements"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadWriteAttribute(jsObject: jsObject, name: "name")
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -19,14 +26,14 @@ public class HTMLSlotElement: HTMLElement {
     public var name: String
 
     public func assignedNodes(options: AssignedNodesOptions? = nil) -> [Node] {
-        jsObject["assignedNodes"]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.assignedNodes]!(options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func assignedElements(options: AssignedNodesOptions? = nil) -> [Element] {
-        jsObject["assignedElements"]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.assignedElements]!(options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func assign(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject["assign"]!(nodes.jsValue())
+        _ = jsObject[Keys.assign]!(nodes.jsValue())
     }
 }

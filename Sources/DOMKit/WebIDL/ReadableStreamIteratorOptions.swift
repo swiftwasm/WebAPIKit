@@ -4,14 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamIteratorOptions: BridgedDictionary {
+    private enum Keys {
+        static let preventCancel: JSString = "preventCancel"
+    }
+
     public convenience init(preventCancel: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object["preventCancel"] = preventCancel.jsValue()
+        object[Keys.preventCancel] = preventCancel.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _preventCancel = ReadWriteAttribute(jsObject: object, name: "preventCancel")
+        _preventCancel = ReadWriteAttribute(jsObject: object, name: Keys.preventCancel)
         super.init(unsafelyWrapping: object)
     }
 

@@ -9,6 +9,10 @@ public typealias __UNSUPPORTED_UNION__ = JSValue
 
 public typealias WindowProxy = Window
 
+internal enum Strings {
+    static let toString: JSString = "toString"
+}
+
 public extension HTMLElement {
     convenience init?(from element: Element) {
         self.init(from: .object(element.jsObject))
@@ -44,9 +48,9 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
 
 @propertyWrapper public struct ReadWriteAttribute<Wrapped: JSValueCompatible> {
     @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: String
+    @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: String) {
+    public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -56,7 +60,7 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
         set { ReadWriteAttribute[name, in: jsObject] = newValue }
     }
 
-    @inlinable public static subscript(name: String, in jsObject: JSObject) -> Wrapped {
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> Wrapped {
         get { jsObject[name].fromJSValue()! }
         set { jsObject[name] = newValue.jsValue() }
     }
@@ -64,9 +68,9 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
 
 @propertyWrapper public struct ReadonlyAttribute<Wrapped: ConstructibleFromJSValue> {
     @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: String
+    @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: String) {
+    public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -75,7 +79,7 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
         ReadonlyAttribute[name, in: jsObject]
     }
 
-    @inlinable public static subscript(name: String, in jsObject: JSObject) -> Wrapped {
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> Wrapped {
         jsObject[name].fromJSValue()!
     }
 }

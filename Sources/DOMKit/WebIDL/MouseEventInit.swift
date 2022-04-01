@@ -4,26 +4,36 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MouseEventInit: BridgedDictionary {
+    private enum Keys {
+        static let button: JSString = "button"
+        static let relatedTarget: JSString = "relatedTarget"
+        static let clientY: JSString = "clientY"
+        static let clientX: JSString = "clientX"
+        static let buttons: JSString = "buttons"
+        static let screenY: JSString = "screenY"
+        static let screenX: JSString = "screenX"
+    }
+
     public convenience init(screenX: Int32, screenY: Int32, clientX: Int32, clientY: Int32, button: Int16, buttons: UInt16, relatedTarget: EventTarget?) {
         let object = JSObject.global.Object.function!.new()
-        object["screenX"] = screenX.jsValue()
-        object["screenY"] = screenY.jsValue()
-        object["clientX"] = clientX.jsValue()
-        object["clientY"] = clientY.jsValue()
-        object["button"] = button.jsValue()
-        object["buttons"] = buttons.jsValue()
-        object["relatedTarget"] = relatedTarget.jsValue()
+        object[Keys.screenX] = screenX.jsValue()
+        object[Keys.screenY] = screenY.jsValue()
+        object[Keys.clientX] = clientX.jsValue()
+        object[Keys.clientY] = clientY.jsValue()
+        object[Keys.button] = button.jsValue()
+        object[Keys.buttons] = buttons.jsValue()
+        object[Keys.relatedTarget] = relatedTarget.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _screenX = ReadWriteAttribute(jsObject: object, name: "screenX")
-        _screenY = ReadWriteAttribute(jsObject: object, name: "screenY")
-        _clientX = ReadWriteAttribute(jsObject: object, name: "clientX")
-        _clientY = ReadWriteAttribute(jsObject: object, name: "clientY")
-        _button = ReadWriteAttribute(jsObject: object, name: "button")
-        _buttons = ReadWriteAttribute(jsObject: object, name: "buttons")
-        _relatedTarget = ReadWriteAttribute(jsObject: object, name: "relatedTarget")
+        _screenX = ReadWriteAttribute(jsObject: object, name: Keys.screenX)
+        _screenY = ReadWriteAttribute(jsObject: object, name: Keys.screenY)
+        _clientX = ReadWriteAttribute(jsObject: object, name: Keys.clientX)
+        _clientY = ReadWriteAttribute(jsObject: object, name: Keys.clientY)
+        _button = ReadWriteAttribute(jsObject: object, name: Keys.button)
+        _buttons = ReadWriteAttribute(jsObject: object, name: Keys.buttons)
+        _relatedTarget = ReadWriteAttribute(jsObject: object, name: Keys.relatedTarget)
         super.init(unsafelyWrapping: object)
     }
 

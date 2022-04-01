@@ -6,10 +6,15 @@ import JavaScriptKit
 public class WritableStreamDefaultController: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.WritableStreamDefaultController.function! }
 
+    private enum Keys {
+        static let error: JSString = "error"
+        static let signal: JSString = "signal"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _signal = ReadonlyAttribute(jsObject: jsObject, name: "signal")
+        _signal = ReadonlyAttribute(jsObject: jsObject, name: Keys.signal)
         self.jsObject = jsObject
     }
 
@@ -17,6 +22,6 @@ public class WritableStreamDefaultController: JSBridgedClass {
     public var signal: AbortSignal
 
     public func error(e: JSValue? = nil) {
-        _ = jsObject["error"]!(e?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.error]!(e?.jsValue() ?? .undefined)
     }
 }

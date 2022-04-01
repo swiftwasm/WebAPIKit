@@ -3,15 +3,19 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ScrollRestoration: String, JSValueCompatible {
-    case auto
-    case manual
+public enum ScrollRestoration: JSString, JSValueCompatible {
+    case auto = "auto"
+    case manual = "manual"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

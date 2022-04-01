@@ -6,6 +6,13 @@ import JavaScriptKit
 public class FileReaderSync: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.FileReaderSync.function! }
 
+    private enum Keys {
+        static let readAsText: JSString = "readAsText"
+        static let readAsBinaryString: JSString = "readAsBinaryString"
+        static let readAsArrayBuffer: JSString = "readAsArrayBuffer"
+        static let readAsDataURL: JSString = "readAsDataURL"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -17,18 +24,18 @@ public class FileReaderSync: JSBridgedClass {
     }
 
     public func readAsArrayBuffer(blob: Blob) -> ArrayBuffer {
-        jsObject["readAsArrayBuffer"]!(blob.jsValue()).fromJSValue()!
+        jsObject[Keys.readAsArrayBuffer]!(blob.jsValue()).fromJSValue()!
     }
 
     public func readAsBinaryString(blob: Blob) -> String {
-        jsObject["readAsBinaryString"]!(blob.jsValue()).fromJSValue()!
+        jsObject[Keys.readAsBinaryString]!(blob.jsValue()).fromJSValue()!
     }
 
     public func readAsText(blob: Blob, encoding: String? = nil) -> String {
-        jsObject["readAsText"]!(blob.jsValue(), encoding?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.readAsText]!(blob.jsValue(), encoding?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func readAsDataURL(blob: Blob) -> String {
-        jsObject["readAsDataURL"]!(blob.jsValue()).fromJSValue()!
+        jsObject[Keys.readAsDataURL]!(blob.jsValue()).fromJSValue()!
     }
 }

@@ -3,20 +3,26 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let onpaste: JSString = "onpaste"
+    static let oncopy: JSString = "oncopy"
+    static let oncut: JSString = "oncut"
+}
+
 public protocol DocumentAndElementEventHandlers: JSBridgedClass {}
 public extension DocumentAndElementEventHandlers {
     var oncopy: EventHandler {
-        get { ClosureAttribute.Optional1["oncopy", in: jsObject] }
-        set { ClosureAttribute.Optional1["oncopy", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oncopy, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oncopy, in: jsObject] = newValue }
     }
 
     var oncut: EventHandler {
-        get { ClosureAttribute.Optional1["oncut", in: jsObject] }
-        set { ClosureAttribute.Optional1["oncut", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oncut, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oncut, in: jsObject] = newValue }
     }
 
     var onpaste: EventHandler {
-        get { ClosureAttribute.Optional1["onpaste", in: jsObject] }
-        set { ClosureAttribute.Optional1["onpaste", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onpaste, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onpaste, in: jsObject] = newValue }
     }
 }

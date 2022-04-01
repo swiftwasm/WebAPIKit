@@ -3,33 +3,37 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum RequestDestination: String, JSValueCompatible {
+public enum RequestDestination: JSString, JSValueCompatible {
     case _empty = ""
-    case audio
-    case audioworklet
-    case document
-    case embed
-    case font
-    case frame
-    case iframe
-    case image
-    case manifest
-    case object
-    case paintworklet
-    case report
-    case script
-    case sharedworker
-    case style
-    case track
-    case video
-    case worker
-    case xslt
+    case audio = "audio"
+    case audioworklet = "audioworklet"
+    case document = "document"
+    case embed = "embed"
+    case font = "font"
+    case frame = "frame"
+    case iframe = "iframe"
+    case image = "image"
+    case manifest = "manifest"
+    case object = "object"
+    case paintworklet = "paintworklet"
+    case report = "report"
+    case script = "script"
+    case sharedworker = "sharedworker"
+    case style = "style"
+    case track = "track"
+    case video = "video"
+    case worker = "worker"
+    case xslt = "xslt"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

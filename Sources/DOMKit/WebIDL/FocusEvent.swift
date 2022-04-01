@@ -6,8 +6,12 @@ import JavaScriptKit
 public class FocusEvent: UIEvent {
     override public class var constructor: JSFunction { JSObject.global.FocusEvent.function! }
 
+    private enum Keys {
+        static let relatedTarget: JSString = "relatedTarget"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _relatedTarget = ReadonlyAttribute(jsObject: jsObject, name: "relatedTarget")
+        _relatedTarget = ReadonlyAttribute(jsObject: jsObject, name: Keys.relatedTarget)
         super.init(unsafelyWrapping: jsObject)
     }
 

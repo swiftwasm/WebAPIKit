@@ -4,14 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FilePropertyBag: BridgedDictionary {
+    private enum Keys {
+        static let lastModified: JSString = "lastModified"
+    }
+
     public convenience init(lastModified: Int64) {
         let object = JSObject.global.Object.function!.new()
-        object["lastModified"] = lastModified.jsValue()
+        object[Keys.lastModified] = lastModified.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _lastModified = ReadWriteAttribute(jsObject: object, name: "lastModified")
+        _lastModified = ReadWriteAttribute(jsObject: object, name: Keys.lastModified)
         super.init(unsafelyWrapping: object)
     }
 

@@ -6,10 +6,16 @@ import JavaScriptKit
 public class DOMStringList: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMStringList.function! }
 
+    private enum Keys {
+        static let length: JSString = "length"
+        static let contains: JSString = "contains"
+        static let item: JSString = "item"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
         self.jsObject = jsObject
     }
 
@@ -21,6 +27,6 @@ public class DOMStringList: JSBridgedClass {
     }
 
     public func contains(string: String) -> Bool {
-        jsObject["contains"]!(string.jsValue()).fromJSValue()!
+        jsObject[Keys.contains]!(string.jsValue()).fromJSValue()!
     }
 }

@@ -3,59 +3,69 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let body: JSString = "body"
+    static let json: JSString = "json"
+    static let arrayBuffer: JSString = "arrayBuffer"
+    static let formData: JSString = "formData"
+    static let bodyUsed: JSString = "bodyUsed"
+    static let blob: JSString = "blob"
+    static let text: JSString = "text"
+}
+
 public protocol Body: JSBridgedClass {}
 public extension Body {
-    var body: ReadableStream? { ReadonlyAttribute["body", in: jsObject] }
+    var body: ReadableStream? { ReadonlyAttribute[Keys.body, in: jsObject] }
 
-    var bodyUsed: Bool { ReadonlyAttribute["bodyUsed", in: jsObject] }
+    var bodyUsed: Bool { ReadonlyAttribute[Keys.bodyUsed, in: jsObject] }
 
     func arrayBuffer() -> JSPromise {
-        jsObject["arrayBuffer"]!().fromJSValue()!
+        jsObject[Keys.arrayBuffer]!().fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func arrayBuffer() async throws -> ArrayBuffer {
-        let _promise: JSPromise = jsObject["arrayBuffer"]!().fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.arrayBuffer]!().fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     func blob() -> JSPromise {
-        jsObject["blob"]!().fromJSValue()!
+        jsObject[Keys.blob]!().fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func blob() async throws -> Blob {
-        let _promise: JSPromise = jsObject["blob"]!().fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.blob]!().fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     func formData() -> JSPromise {
-        jsObject["formData"]!().fromJSValue()!
+        jsObject[Keys.formData]!().fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func formData() async throws -> FormData {
-        let _promise: JSPromise = jsObject["formData"]!().fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.formData]!().fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     func json() -> JSPromise {
-        jsObject["json"]!().fromJSValue()!
+        jsObject[Keys.json]!().fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func json() async throws -> JSValue {
-        let _promise: JSPromise = jsObject["json"]!().fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.json]!().fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     func text() -> JSPromise {
-        jsObject["text"]!().fromJSValue()!
+        jsObject[Keys.text]!().fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func text() async throws -> String {
-        let _promise: JSPromise = jsObject["text"]!().fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.text]!().fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

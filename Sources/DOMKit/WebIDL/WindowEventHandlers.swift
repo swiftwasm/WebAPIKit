@@ -3,85 +3,104 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let onbeforeunload: JSString = "onbeforeunload"
+    static let onafterprint: JSString = "onafterprint"
+    static let onstorage: JSString = "onstorage"
+    static let onmessage: JSString = "onmessage"
+    static let onmessageerror: JSString = "onmessageerror"
+    static let onunhandledrejection: JSString = "onunhandledrejection"
+    static let onlanguagechange: JSString = "onlanguagechange"
+    static let onhashchange: JSString = "onhashchange"
+    static let onbeforeprint: JSString = "onbeforeprint"
+    static let onoffline: JSString = "onoffline"
+    static let ononline: JSString = "ononline"
+    static let onpopstate: JSString = "onpopstate"
+    static let onpagehide: JSString = "onpagehide"
+    static let onpageshow: JSString = "onpageshow"
+    static let onrejectionhandled: JSString = "onrejectionhandled"
+    static let onunload: JSString = "onunload"
+}
+
 public protocol WindowEventHandlers: JSBridgedClass {}
 public extension WindowEventHandlers {
     var onafterprint: EventHandler {
-        get { ClosureAttribute.Optional1["onafterprint", in: jsObject] }
-        set { ClosureAttribute.Optional1["onafterprint", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onafterprint, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onafterprint, in: jsObject] = newValue }
     }
 
     var onbeforeprint: EventHandler {
-        get { ClosureAttribute.Optional1["onbeforeprint", in: jsObject] }
-        set { ClosureAttribute.Optional1["onbeforeprint", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onbeforeprint, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onbeforeprint, in: jsObject] = newValue }
     }
 
     var onbeforeunload: OnBeforeUnloadEventHandler {
-        get { ClosureAttribute.Optional1["onbeforeunload", in: jsObject] }
-        set { ClosureAttribute.Optional1["onbeforeunload", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onbeforeunload, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onbeforeunload, in: jsObject] = newValue }
     }
 
     var onhashchange: EventHandler {
-        get { ClosureAttribute.Optional1["onhashchange", in: jsObject] }
-        set { ClosureAttribute.Optional1["onhashchange", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onhashchange, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onhashchange, in: jsObject] = newValue }
     }
 
     var onlanguagechange: EventHandler {
-        get { ClosureAttribute.Optional1["onlanguagechange", in: jsObject] }
-        set { ClosureAttribute.Optional1["onlanguagechange", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onlanguagechange, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onlanguagechange, in: jsObject] = newValue }
     }
 
     var onmessage: EventHandler {
-        get { ClosureAttribute.Optional1["onmessage", in: jsObject] }
-        set { ClosureAttribute.Optional1["onmessage", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onmessage, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onmessage, in: jsObject] = newValue }
     }
 
     var onmessageerror: EventHandler {
-        get { ClosureAttribute.Optional1["onmessageerror", in: jsObject] }
-        set { ClosureAttribute.Optional1["onmessageerror", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onmessageerror, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onmessageerror, in: jsObject] = newValue }
     }
 
     var onoffline: EventHandler {
-        get { ClosureAttribute.Optional1["onoffline", in: jsObject] }
-        set { ClosureAttribute.Optional1["onoffline", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onoffline, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onoffline, in: jsObject] = newValue }
     }
 
     var ononline: EventHandler {
-        get { ClosureAttribute.Optional1["ononline", in: jsObject] }
-        set { ClosureAttribute.Optional1["ononline", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ononline, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ononline, in: jsObject] = newValue }
     }
 
     var onpagehide: EventHandler {
-        get { ClosureAttribute.Optional1["onpagehide", in: jsObject] }
-        set { ClosureAttribute.Optional1["onpagehide", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onpagehide, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onpagehide, in: jsObject] = newValue }
     }
 
     var onpageshow: EventHandler {
-        get { ClosureAttribute.Optional1["onpageshow", in: jsObject] }
-        set { ClosureAttribute.Optional1["onpageshow", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onpageshow, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onpageshow, in: jsObject] = newValue }
     }
 
     var onpopstate: EventHandler {
-        get { ClosureAttribute.Optional1["onpopstate", in: jsObject] }
-        set { ClosureAttribute.Optional1["onpopstate", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onpopstate, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onpopstate, in: jsObject] = newValue }
     }
 
     var onrejectionhandled: EventHandler {
-        get { ClosureAttribute.Optional1["onrejectionhandled", in: jsObject] }
-        set { ClosureAttribute.Optional1["onrejectionhandled", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onrejectionhandled, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onrejectionhandled, in: jsObject] = newValue }
     }
 
     var onstorage: EventHandler {
-        get { ClosureAttribute.Optional1["onstorage", in: jsObject] }
-        set { ClosureAttribute.Optional1["onstorage", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onstorage, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onstorage, in: jsObject] = newValue }
     }
 
     var onunhandledrejection: EventHandler {
-        get { ClosureAttribute.Optional1["onunhandledrejection", in: jsObject] }
-        set { ClosureAttribute.Optional1["onunhandledrejection", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onunhandledrejection, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onunhandledrejection, in: jsObject] = newValue }
     }
 
     var onunload: EventHandler {
-        get { ClosureAttribute.Optional1["onunload", in: jsObject] }
-        set { ClosureAttribute.Optional1["onunload", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onunload, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onunload, in: jsObject] = newValue }
     }
 }

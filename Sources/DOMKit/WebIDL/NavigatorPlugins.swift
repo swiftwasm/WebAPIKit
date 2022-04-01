@@ -3,15 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let pdfViewerEnabled: JSString = "pdfViewerEnabled"
+    static let plugins: JSString = "plugins"
+    static let mimeTypes: JSString = "mimeTypes"
+    static let javaEnabled: JSString = "javaEnabled"
+}
+
 public protocol NavigatorPlugins: JSBridgedClass {}
 public extension NavigatorPlugins {
-    var plugins: PluginArray { ReadonlyAttribute["plugins", in: jsObject] }
+    var plugins: PluginArray { ReadonlyAttribute[Keys.plugins, in: jsObject] }
 
-    var mimeTypes: MimeTypeArray { ReadonlyAttribute["mimeTypes", in: jsObject] }
+    var mimeTypes: MimeTypeArray { ReadonlyAttribute[Keys.mimeTypes, in: jsObject] }
 
     func javaEnabled() -> Bool {
-        jsObject["javaEnabled"]!().fromJSValue()!
+        jsObject[Keys.javaEnabled]!().fromJSValue()!
     }
 
-    var pdfViewerEnabled: Bool { ReadonlyAttribute["pdfViewerEnabled", in: jsObject] }
+    var pdfViewerEnabled: Bool { ReadonlyAttribute[Keys.pdfViewerEnabled, in: jsObject] }
 }

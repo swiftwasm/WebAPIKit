@@ -3,15 +3,19 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum SlotAssignmentMode: String, JSValueCompatible {
-    case manual
-    case named
+public enum SlotAssignmentMode: JSString, JSValueCompatible {
+    case manual = "manual"
+    case named = "named"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

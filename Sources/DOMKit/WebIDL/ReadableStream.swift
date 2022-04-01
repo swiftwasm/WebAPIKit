@@ -6,10 +6,19 @@ import JavaScriptKit
 public class ReadableStream: JSBridgedClass, AsyncSequence {
     public class var constructor: JSFunction { JSObject.global.ReadableStream.function! }
 
+    private enum Keys {
+        static let pipeTo: JSString = "pipeTo"
+        static let pipeThrough: JSString = "pipeThrough"
+        static let cancel: JSString = "cancel"
+        static let getReader: JSString = "getReader"
+        static let tee: JSString = "tee"
+        static let locked: JSString = "locked"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _locked = ReadonlyAttribute(jsObject: jsObject, name: "locked")
+        _locked = ReadonlyAttribute(jsObject: jsObject, name: Keys.locked)
         self.jsObject = jsObject
     }
 
@@ -21,35 +30,35 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
     public var locked: Bool
 
     public func cancel(reason: JSValue? = nil) -> JSPromise {
-        jsObject["cancel"]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.cancel]!(reason?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func cancel(reason: JSValue? = nil) async throws {
-        let _promise: JSPromise = jsObject["cancel"]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.cancel]!(reason?.jsValue() ?? .undefined).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getReader(options: ReadableStreamGetReaderOptions? = nil) -> ReadableStreamReader {
-        jsObject["getReader"]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.getReader]!(options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func pipeThrough(transform: ReadableWritablePair, options: StreamPipeOptions? = nil) -> Self {
-        jsObject["pipeThrough"]!(transform.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.pipeThrough]!(transform.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func pipeTo(destination: WritableStream, options: StreamPipeOptions? = nil) -> JSPromise {
-        jsObject["pipeTo"]!(destination.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.pipeTo]!(destination.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func pipeTo(destination: WritableStream, options: StreamPipeOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject["pipeTo"]!(destination.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.pipeTo]!(destination.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func tee() -> [ReadableStream] {
-        jsObject["tee"]!().fromJSValue()!
+        jsObject[Keys.tee]!().fromJSValue()!
     }
 
     public typealias Element = JSValue

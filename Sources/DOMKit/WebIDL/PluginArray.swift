@@ -6,15 +6,22 @@ import JavaScriptKit
 public class PluginArray: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.PluginArray.function! }
 
+    private enum Keys {
+        static let length: JSString = "length"
+        static let refresh: JSString = "refresh"
+        static let item: JSString = "item"
+        static let namedItem: JSString = "namedItem"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
         self.jsObject = jsObject
     }
 
     public func refresh() {
-        _ = jsObject["refresh"]!()
+        _ = jsObject[Keys.refresh]!()
     }
 
     @ReadonlyAttribute

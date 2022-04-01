@@ -3,7 +3,11 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let cookieEnabled: JSString = "cookieEnabled"
+}
+
 public protocol NavigatorCookies: JSBridgedClass {}
 public extension NavigatorCookies {
-    var cookieEnabled: Bool { ReadonlyAttribute["cookieEnabled", in: jsObject] }
+    var cookieEnabled: Bool { ReadonlyAttribute[Keys.cookieEnabled, in: jsObject] }
 }

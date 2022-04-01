@@ -6,21 +6,47 @@ import JavaScriptKit
 public class HTMLTableElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableElement.function! }
 
+    private enum Keys {
+        static let createTFoot: JSString = "createTFoot"
+        static let deleteRow: JSString = "deleteRow"
+        static let createTBody: JSString = "createTBody"
+        static let cellSpacing: JSString = "cellSpacing"
+        static let align: JSString = "align"
+        static let tHead: JSString = "tHead"
+        static let tFoot: JSString = "tFoot"
+        static let frame: JSString = "frame"
+        static let createTHead: JSString = "createTHead"
+        static let border: JSString = "border"
+        static let rules: JSString = "rules"
+        static let bgColor: JSString = "bgColor"
+        static let caption: JSString = "caption"
+        static let deleteTFoot: JSString = "deleteTFoot"
+        static let width: JSString = "width"
+        static let cellPadding: JSString = "cellPadding"
+        static let deleteTHead: JSString = "deleteTHead"
+        static let deleteCaption: JSString = "deleteCaption"
+        static let tBodies: JSString = "tBodies"
+        static let createCaption: JSString = "createCaption"
+        static let rows: JSString = "rows"
+        static let insertRow: JSString = "insertRow"
+        static let summary: JSString = "summary"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _caption = ReadWriteAttribute(jsObject: jsObject, name: "caption")
-        _tHead = ReadWriteAttribute(jsObject: jsObject, name: "tHead")
-        _tFoot = ReadWriteAttribute(jsObject: jsObject, name: "tFoot")
-        _tBodies = ReadonlyAttribute(jsObject: jsObject, name: "tBodies")
-        _rows = ReadonlyAttribute(jsObject: jsObject, name: "rows")
-        _align = ReadWriteAttribute(jsObject: jsObject, name: "align")
-        _border = ReadWriteAttribute(jsObject: jsObject, name: "border")
-        _frame = ReadWriteAttribute(jsObject: jsObject, name: "frame")
-        _rules = ReadWriteAttribute(jsObject: jsObject, name: "rules")
-        _summary = ReadWriteAttribute(jsObject: jsObject, name: "summary")
-        _width = ReadWriteAttribute(jsObject: jsObject, name: "width")
-        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: "bgColor")
-        _cellPadding = ReadWriteAttribute(jsObject: jsObject, name: "cellPadding")
-        _cellSpacing = ReadWriteAttribute(jsObject: jsObject, name: "cellSpacing")
+        _caption = ReadWriteAttribute(jsObject: jsObject, name: Keys.caption)
+        _tHead = ReadWriteAttribute(jsObject: jsObject, name: Keys.tHead)
+        _tFoot = ReadWriteAttribute(jsObject: jsObject, name: Keys.tFoot)
+        _tBodies = ReadonlyAttribute(jsObject: jsObject, name: Keys.tBodies)
+        _rows = ReadonlyAttribute(jsObject: jsObject, name: Keys.rows)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
+        _border = ReadWriteAttribute(jsObject: jsObject, name: Keys.border)
+        _frame = ReadWriteAttribute(jsObject: jsObject, name: Keys.frame)
+        _rules = ReadWriteAttribute(jsObject: jsObject, name: Keys.rules)
+        _summary = ReadWriteAttribute(jsObject: jsObject, name: Keys.summary)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
+        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.bgColor)
+        _cellPadding = ReadWriteAttribute(jsObject: jsObject, name: Keys.cellPadding)
+        _cellSpacing = ReadWriteAttribute(jsObject: jsObject, name: Keys.cellSpacing)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -32,51 +58,51 @@ public class HTMLTableElement: HTMLElement {
     public var caption: HTMLTableCaptionElement?
 
     public func createCaption() -> HTMLTableCaptionElement {
-        jsObject["createCaption"]!().fromJSValue()!
+        jsObject[Keys.createCaption]!().fromJSValue()!
     }
 
     public func deleteCaption() {
-        _ = jsObject["deleteCaption"]!()
+        _ = jsObject[Keys.deleteCaption]!()
     }
 
     @ReadWriteAttribute
     public var tHead: HTMLTableSectionElement?
 
     public func createTHead() -> HTMLTableSectionElement {
-        jsObject["createTHead"]!().fromJSValue()!
+        jsObject[Keys.createTHead]!().fromJSValue()!
     }
 
     public func deleteTHead() {
-        _ = jsObject["deleteTHead"]!()
+        _ = jsObject[Keys.deleteTHead]!()
     }
 
     @ReadWriteAttribute
     public var tFoot: HTMLTableSectionElement?
 
     public func createTFoot() -> HTMLTableSectionElement {
-        jsObject["createTFoot"]!().fromJSValue()!
+        jsObject[Keys.createTFoot]!().fromJSValue()!
     }
 
     public func deleteTFoot() {
-        _ = jsObject["deleteTFoot"]!()
+        _ = jsObject[Keys.deleteTFoot]!()
     }
 
     @ReadonlyAttribute
     public var tBodies: HTMLCollection
 
     public func createTBody() -> HTMLTableSectionElement {
-        jsObject["createTBody"]!().fromJSValue()!
+        jsObject[Keys.createTBody]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var rows: HTMLCollection
 
     public func insertRow(index: Int32? = nil) -> HTMLTableRowElement {
-        jsObject["insertRow"]!(index?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.insertRow]!(index?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func deleteRow(index: Int32) {
-        _ = jsObject["deleteRow"]!(index.jsValue())
+        _ = jsObject[Keys.deleteRow]!(index.jsValue())
     }
 
     @ReadWriteAttribute

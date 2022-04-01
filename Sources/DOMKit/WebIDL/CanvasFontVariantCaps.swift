@@ -3,20 +3,24 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasFontVariantCaps: String, JSValueCompatible {
-    case normal
+public enum CanvasFontVariantCaps: JSString, JSValueCompatible {
+    case normal = "normal"
     case smallCaps = "small-caps"
     case allSmallCaps = "all-small-caps"
     case petiteCaps = "petite-caps"
     case allPetiteCaps = "all-petite-caps"
-    case unicase
+    case unicase = "unicase"
     case titlingCaps = "titling-caps"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

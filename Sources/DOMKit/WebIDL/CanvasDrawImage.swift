@@ -3,14 +3,18 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let drawImage: JSString = "drawImage"
+}
+
 public protocol CanvasDrawImage: JSBridgedClass {}
 public extension CanvasDrawImage {
     func drawImage(image: CanvasImageSource, dx: Double, dy: Double) {
-        _ = jsObject["drawImage"]!(image.jsValue(), dx.jsValue(), dy.jsValue())
+        _ = jsObject[Keys.drawImage]!(image.jsValue(), dx.jsValue(), dy.jsValue())
     }
 
     func drawImage(image: CanvasImageSource, dx: Double, dy: Double, dw: Double, dh: Double) {
-        _ = jsObject["drawImage"]!(image.jsValue(), dx.jsValue(), dy.jsValue(), dw.jsValue(), dh.jsValue())
+        _ = jsObject[Keys.drawImage]!(image.jsValue(), dx.jsValue(), dy.jsValue(), dw.jsValue(), dh.jsValue())
     }
 
     func drawImage(image: CanvasImageSource, sx: Double, sy: Double, sw: Double, sh: Double, dx: Double, dy: Double, dw: Double, dh: Double) {
@@ -23,6 +27,6 @@ public extension CanvasDrawImage {
         let _arg6 = dy.jsValue()
         let _arg7 = dw.jsValue()
         let _arg8 = dh.jsValue()
-        _ = jsObject["drawImage"]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        _ = jsObject[Keys.drawImage]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
     }
 }

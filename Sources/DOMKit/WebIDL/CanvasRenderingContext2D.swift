@@ -6,10 +6,15 @@ import JavaScriptKit
 public class CanvasRenderingContext2D: JSBridgedClass, CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasUserInterface, CanvasText, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasTextDrawingStyles, CanvasPath {
     public class var constructor: JSFunction { JSObject.global.CanvasRenderingContext2D.function! }
 
+    private enum Keys {
+        static let canvas: JSString = "canvas"
+        static let getContextAttributes: JSString = "getContextAttributes"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _canvas = ReadonlyAttribute(jsObject: jsObject, name: "canvas")
+        _canvas = ReadonlyAttribute(jsObject: jsObject, name: Keys.canvas)
         self.jsObject = jsObject
     }
 
@@ -17,6 +22,6 @@ public class CanvasRenderingContext2D: JSBridgedClass, CanvasState, CanvasTransf
     public var canvas: HTMLCanvasElement
 
     public func getContextAttributes() -> CanvasRenderingContext2DSettings {
-        jsObject["getContextAttributes"]!().fromJSValue()!
+        jsObject[Keys.getContextAttributes]!().fromJSValue()!
     }
 }

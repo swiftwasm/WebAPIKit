@@ -3,7 +3,11 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let localStorage: JSString = "localStorage"
+}
+
 public protocol WindowLocalStorage: JSBridgedClass {}
 public extension WindowLocalStorage {
-    var localStorage: Storage { ReadonlyAttribute["localStorage", in: jsObject] }
+    var localStorage: Storage { ReadonlyAttribute[Keys.localStorage, in: jsObject] }
 }

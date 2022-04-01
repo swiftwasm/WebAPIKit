@@ -6,6 +6,10 @@ import JavaScriptKit
 public class CanvasPattern: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.CanvasPattern.function! }
 
+    private enum Keys {
+        static let setTransform: JSString = "setTransform"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -13,6 +17,6 @@ public class CanvasPattern: JSBridgedClass {
     }
 
     public func setTransform(transform: DOMMatrix2DInit? = nil) {
-        _ = jsObject["setTransform"]!(transform?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.setTransform]!(transform?.jsValue() ?? .undefined)
     }
 }

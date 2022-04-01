@@ -65,9 +65,9 @@ struct ClosureWrapper: SwiftRepresentable, Equatable {
         {
 
             @usableFromInline let jsObject: JSObject
-            @usableFromInline let name: String
+            @usableFromInline let name: JSString
 
-            public init(jsObject: JSObject, name: String) {
+            public init(jsObject: JSObject, name: JSString) {
                 self.jsObject = jsObject
                 self.name = name
             }
@@ -77,7 +77,7 @@ struct ClosureWrapper: SwiftRepresentable, Equatable {
                 set { \(name)[name, in: jsObject] = newValue }
             }
 
-            @inlinable public static subscript(name: String, in jsObject: JSObject) -> \(closureType) {
+            @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> \(closureType) {
                 get {
                     \(getter)
                 }

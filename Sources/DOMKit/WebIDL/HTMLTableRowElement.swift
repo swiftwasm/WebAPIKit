@@ -6,15 +6,28 @@ import JavaScriptKit
 public class HTMLTableRowElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableRowElement.function! }
 
+    private enum Keys {
+        static let vAlign: JSString = "vAlign"
+        static let sectionRowIndex: JSString = "sectionRowIndex"
+        static let rowIndex: JSString = "rowIndex"
+        static let cells: JSString = "cells"
+        static let insertCell: JSString = "insertCell"
+        static let deleteCell: JSString = "deleteCell"
+        static let align: JSString = "align"
+        static let ch: JSString = "ch"
+        static let bgColor: JSString = "bgColor"
+        static let chOff: JSString = "chOff"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _rowIndex = ReadonlyAttribute(jsObject: jsObject, name: "rowIndex")
-        _sectionRowIndex = ReadonlyAttribute(jsObject: jsObject, name: "sectionRowIndex")
-        _cells = ReadonlyAttribute(jsObject: jsObject, name: "cells")
-        _align = ReadWriteAttribute(jsObject: jsObject, name: "align")
-        _ch = ReadWriteAttribute(jsObject: jsObject, name: "ch")
-        _chOff = ReadWriteAttribute(jsObject: jsObject, name: "chOff")
-        _vAlign = ReadWriteAttribute(jsObject: jsObject, name: "vAlign")
-        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: "bgColor")
+        _rowIndex = ReadonlyAttribute(jsObject: jsObject, name: Keys.rowIndex)
+        _sectionRowIndex = ReadonlyAttribute(jsObject: jsObject, name: Keys.sectionRowIndex)
+        _cells = ReadonlyAttribute(jsObject: jsObject, name: Keys.cells)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
+        _ch = ReadWriteAttribute(jsObject: jsObject, name: Keys.ch)
+        _chOff = ReadWriteAttribute(jsObject: jsObject, name: Keys.chOff)
+        _vAlign = ReadWriteAttribute(jsObject: jsObject, name: Keys.vAlign)
+        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.bgColor)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -32,11 +45,11 @@ public class HTMLTableRowElement: HTMLElement {
     public var cells: HTMLCollection
 
     public func insertCell(index: Int32? = nil) -> HTMLTableCellElement {
-        jsObject["insertCell"]!(index?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.insertCell]!(index?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func deleteCell(index: Int32) {
-        _ = jsObject["deleteCell"]!(index.jsValue())
+        _ = jsObject[Keys.deleteCell]!(index.jsValue())
     }
 
     @ReadWriteAttribute

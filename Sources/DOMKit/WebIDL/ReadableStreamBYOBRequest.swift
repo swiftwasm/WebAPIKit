@@ -6,10 +6,16 @@ import JavaScriptKit
 public class ReadableStreamBYOBRequest: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ReadableStreamBYOBRequest.function! }
 
+    private enum Keys {
+        static let respond: JSString = "respond"
+        static let respondWithNewView: JSString = "respondWithNewView"
+        static let view: JSString = "view"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _view = ReadonlyAttribute(jsObject: jsObject, name: "view")
+        _view = ReadonlyAttribute(jsObject: jsObject, name: Keys.view)
         self.jsObject = jsObject
     }
 
@@ -17,10 +23,10 @@ public class ReadableStreamBYOBRequest: JSBridgedClass {
     public var view: ArrayBufferView?
 
     public func respond(bytesWritten: UInt64) {
-        _ = jsObject["respond"]!(bytesWritten.jsValue())
+        _ = jsObject[Keys.respond]!(bytesWritten.jsValue())
     }
 
     public func respondWithNewView(view: ArrayBufferView) {
-        _ = jsObject["respondWithNewView"]!(view.jsValue())
+        _ = jsObject[Keys.respondWithNewView]!(view.jsValue())
     }
 }

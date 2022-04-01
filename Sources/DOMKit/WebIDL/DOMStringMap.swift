@@ -6,6 +6,8 @@ import JavaScriptKit
 public class DOMStringMap: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMStringMap.function! }
 
+    private enum Keys {}
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {

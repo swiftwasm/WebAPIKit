@@ -6,21 +6,41 @@ import JavaScriptKit
 public class HTMLButtonElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLButtonElement.function! }
 
+    private enum Keys {
+        static let formMethod: JSString = "formMethod"
+        static let setCustomValidity: JSString = "setCustomValidity"
+        static let name: JSString = "name"
+        static let reportValidity: JSString = "reportValidity"
+        static let labels: JSString = "labels"
+        static let willValidate: JSString = "willValidate"
+        static let formNoValidate: JSString = "formNoValidate"
+        static let formTarget: JSString = "formTarget"
+        static let value: JSString = "value"
+        static let checkValidity: JSString = "checkValidity"
+        static let type: JSString = "type"
+        static let disabled: JSString = "disabled"
+        static let validity: JSString = "validity"
+        static let formEnctype: JSString = "formEnctype"
+        static let form: JSString = "form"
+        static let formAction: JSString = "formAction"
+        static let validationMessage: JSString = "validationMessage"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: "disabled")
-        _form = ReadonlyAttribute(jsObject: jsObject, name: "form")
-        _formAction = ReadWriteAttribute(jsObject: jsObject, name: "formAction")
-        _formEnctype = ReadWriteAttribute(jsObject: jsObject, name: "formEnctype")
-        _formMethod = ReadWriteAttribute(jsObject: jsObject, name: "formMethod")
-        _formNoValidate = ReadWriteAttribute(jsObject: jsObject, name: "formNoValidate")
-        _formTarget = ReadWriteAttribute(jsObject: jsObject, name: "formTarget")
-        _name = ReadWriteAttribute(jsObject: jsObject, name: "name")
-        _type = ReadWriteAttribute(jsObject: jsObject, name: "type")
-        _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
-        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: "willValidate")
-        _validity = ReadonlyAttribute(jsObject: jsObject, name: "validity")
-        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: "validationMessage")
-        _labels = ReadonlyAttribute(jsObject: jsObject, name: "labels")
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
+        _formAction = ReadWriteAttribute(jsObject: jsObject, name: Keys.formAction)
+        _formEnctype = ReadWriteAttribute(jsObject: jsObject, name: Keys.formEnctype)
+        _formMethod = ReadWriteAttribute(jsObject: jsObject, name: Keys.formMethod)
+        _formNoValidate = ReadWriteAttribute(jsObject: jsObject, name: Keys.formNoValidate)
+        _formTarget = ReadWriteAttribute(jsObject: jsObject, name: Keys.formTarget)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
+        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Keys.willValidate)
+        _validity = ReadonlyAttribute(jsObject: jsObject, name: Keys.validity)
+        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Keys.validationMessage)
+        _labels = ReadonlyAttribute(jsObject: jsObject, name: Keys.labels)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -68,15 +88,15 @@ public class HTMLButtonElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject["checkValidity"]!().fromJSValue()!
+        jsObject[Keys.checkValidity]!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject["reportValidity"]!().fromJSValue()!
+        jsObject[Keys.reportValidity]!().fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject["setCustomValidity"]!(error.jsValue())
+        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
     }
 
     @ReadonlyAttribute

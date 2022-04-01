@@ -3,57 +3,71 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let `protocol`: JSString = "protocol"
+    static let pathname: JSString = "pathname"
+    static let password: JSString = "password"
+    static let origin: JSString = "origin"
+    static let username: JSString = "username"
+    static let hash: JSString = "hash"
+    static let href: JSString = "href"
+    static let host: JSString = "host"
+    static let hostname: JSString = "hostname"
+    static let port: JSString = "port"
+    static let search: JSString = "search"
+}
+
 public protocol HTMLHyperlinkElementUtils: JSBridgedClass {}
 public extension HTMLHyperlinkElementUtils {
     var href: String {
-        get { ReadWriteAttribute["href", in: jsObject] }
-        set { ReadWriteAttribute["href", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.href, in: jsObject] }
+        set { ReadWriteAttribute[Keys.href, in: jsObject] = newValue }
     }
 
-    var origin: String { ReadonlyAttribute["origin", in: jsObject] }
+    var origin: String { ReadonlyAttribute[Keys.origin, in: jsObject] }
 
     var `protocol`: String {
-        get { ReadWriteAttribute["protocol", in: jsObject] }
-        set { ReadWriteAttribute["protocol", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.protocol, in: jsObject] }
+        set { ReadWriteAttribute[Keys.protocol, in: jsObject] = newValue }
     }
 
     var username: String {
-        get { ReadWriteAttribute["username", in: jsObject] }
-        set { ReadWriteAttribute["username", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.username, in: jsObject] }
+        set { ReadWriteAttribute[Keys.username, in: jsObject] = newValue }
     }
 
     var password: String {
-        get { ReadWriteAttribute["password", in: jsObject] }
-        set { ReadWriteAttribute["password", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.password, in: jsObject] }
+        set { ReadWriteAttribute[Keys.password, in: jsObject] = newValue }
     }
 
     var host: String {
-        get { ReadWriteAttribute["host", in: jsObject] }
-        set { ReadWriteAttribute["host", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.host, in: jsObject] }
+        set { ReadWriteAttribute[Keys.host, in: jsObject] = newValue }
     }
 
     var hostname: String {
-        get { ReadWriteAttribute["hostname", in: jsObject] }
-        set { ReadWriteAttribute["hostname", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.hostname, in: jsObject] }
+        set { ReadWriteAttribute[Keys.hostname, in: jsObject] = newValue }
     }
 
     var port: String {
-        get { ReadWriteAttribute["port", in: jsObject] }
-        set { ReadWriteAttribute["port", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.port, in: jsObject] }
+        set { ReadWriteAttribute[Keys.port, in: jsObject] = newValue }
     }
 
     var pathname: String {
-        get { ReadWriteAttribute["pathname", in: jsObject] }
-        set { ReadWriteAttribute["pathname", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.pathname, in: jsObject] }
+        set { ReadWriteAttribute[Keys.pathname, in: jsObject] = newValue }
     }
 
     var search: String {
-        get { ReadWriteAttribute["search", in: jsObject] }
-        set { ReadWriteAttribute["search", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.search, in: jsObject] }
+        set { ReadWriteAttribute[Keys.search, in: jsObject] = newValue }
     }
 
     var hash: String {
-        get { ReadWriteAttribute["hash", in: jsObject] }
-        set { ReadWriteAttribute["hash", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.hash, in: jsObject] }
+        set { ReadWriteAttribute[Keys.hash, in: jsObject] = newValue }
     }
 }

@@ -11,9 +11,9 @@ public enum ClosureAttribute {
         where ReturnType: JSValueCompatible
     {
         @usableFromInline let jsObject: JSObject
-        @usableFromInline let name: String
+        @usableFromInline let name: JSString
 
-        public init(jsObject: JSObject, name: String) {
+        public init(jsObject: JSObject, name: JSString) {
             self.jsObject = jsObject
             self.name = name
         }
@@ -23,7 +23,7 @@ public enum ClosureAttribute {
             set { Required0[name, in: jsObject] = newValue }
         }
 
-        @inlinable public static subscript(name: String, in jsObject: JSObject) -> () -> ReturnType {
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> () -> ReturnType {
             get {
                 let function = jsObject[name].function!
                 return { function().fromJSValue()! }
@@ -40,9 +40,9 @@ public enum ClosureAttribute {
         where A0: JSValueCompatible, ReturnType: JSValueCompatible
     {
         @usableFromInline let jsObject: JSObject
-        @usableFromInline let name: String
+        @usableFromInline let name: JSString
 
-        public init(jsObject: JSObject, name: String) {
+        public init(jsObject: JSObject, name: JSString) {
             self.jsObject = jsObject
             self.name = name
         }
@@ -52,7 +52,7 @@ public enum ClosureAttribute {
             set { Required1[name, in: jsObject] = newValue }
         }
 
-        @inlinable public static subscript(name: String, in jsObject: JSObject) -> (A0) -> ReturnType {
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0) -> ReturnType {
             get {
                 let function = jsObject[name].function!
                 return { function($0.jsValue()).fromJSValue()! }
@@ -69,9 +69,9 @@ public enum ClosureAttribute {
         where A0: JSValueCompatible, A1: JSValueCompatible, ReturnType: JSValueCompatible
     {
         @usableFromInline let jsObject: JSObject
-        @usableFromInline let name: String
+        @usableFromInline let name: JSString
 
-        public init(jsObject: JSObject, name: String) {
+        public init(jsObject: JSObject, name: JSString) {
             self.jsObject = jsObject
             self.name = name
         }
@@ -81,7 +81,7 @@ public enum ClosureAttribute {
             set { Required2[name, in: jsObject] = newValue }
         }
 
-        @inlinable public static subscript(name: String, in jsObject: JSObject) -> (A0, A1) -> ReturnType {
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1) -> ReturnType {
             get {
                 let function = jsObject[name].function!
                 return { function($0.jsValue(), $1.jsValue()).fromJSValue()! }
@@ -98,9 +98,9 @@ public enum ClosureAttribute {
         where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
     {
         @usableFromInline let jsObject: JSObject
-        @usableFromInline let name: String
+        @usableFromInline let name: JSString
 
-        public init(jsObject: JSObject, name: String) {
+        public init(jsObject: JSObject, name: JSString) {
             self.jsObject = jsObject
             self.name = name
         }
@@ -110,7 +110,7 @@ public enum ClosureAttribute {
             set { Required5[name, in: jsObject] = newValue }
         }
 
-        @inlinable public static subscript(name: String, in jsObject: JSObject) -> (A0, A1, A2, A3, A4) -> ReturnType {
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2, A3, A4) -> ReturnType {
             get {
                 let function = jsObject[name].function!
                 return { function($0.jsValue(), $1.jsValue(), $2.jsValue(), $3.jsValue(), $4.jsValue()).fromJSValue()! }
@@ -129,9 +129,9 @@ public enum ClosureAttribute {
         where ReturnType: JSValueCompatible
     {
         @usableFromInline let jsObject: JSObject
-        @usableFromInline let name: String
+        @usableFromInline let name: JSString
 
-        public init(jsObject: JSObject, name: String) {
+        public init(jsObject: JSObject, name: JSString) {
             self.jsObject = jsObject
             self.name = name
         }
@@ -141,7 +141,7 @@ public enum ClosureAttribute {
             set { Optional0[name, in: jsObject] = newValue }
         }
 
-        @inlinable public static subscript(name: String, in jsObject: JSObject) -> (() -> ReturnType)? {
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (() -> ReturnType)? {
             get {
                 guard let function = jsObject[name].function else {
                     return nil
@@ -164,9 +164,9 @@ public enum ClosureAttribute {
         where A0: JSValueCompatible, ReturnType: JSValueCompatible
     {
         @usableFromInline let jsObject: JSObject
-        @usableFromInline let name: String
+        @usableFromInline let name: JSString
 
-        public init(jsObject: JSObject, name: String) {
+        public init(jsObject: JSObject, name: JSString) {
             self.jsObject = jsObject
             self.name = name
         }
@@ -176,7 +176,7 @@ public enum ClosureAttribute {
             set { Optional1[name, in: jsObject] = newValue }
         }
 
-        @inlinable public static subscript(name: String, in jsObject: JSObject) -> ((A0) -> ReturnType)? {
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0) -> ReturnType)? {
             get {
                 guard let function = jsObject[name].function else {
                     return nil
@@ -199,9 +199,9 @@ public enum ClosureAttribute {
         where A0: JSValueCompatible, A1: JSValueCompatible, ReturnType: JSValueCompatible
     {
         @usableFromInline let jsObject: JSObject
-        @usableFromInline let name: String
+        @usableFromInline let name: JSString
 
-        public init(jsObject: JSObject, name: String) {
+        public init(jsObject: JSObject, name: JSString) {
             self.jsObject = jsObject
             self.name = name
         }
@@ -211,7 +211,7 @@ public enum ClosureAttribute {
             set { Optional2[name, in: jsObject] = newValue }
         }
 
-        @inlinable public static subscript(name: String, in jsObject: JSObject) -> ((A0, A1) -> ReturnType)? {
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1) -> ReturnType)? {
             get {
                 guard let function = jsObject[name].function else {
                     return nil
@@ -234,9 +234,9 @@ public enum ClosureAttribute {
         where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
     {
         @usableFromInline let jsObject: JSObject
-        @usableFromInline let name: String
+        @usableFromInline let name: JSString
 
-        public init(jsObject: JSObject, name: String) {
+        public init(jsObject: JSObject, name: JSString) {
             self.jsObject = jsObject
             self.name = name
         }
@@ -246,7 +246,7 @@ public enum ClosureAttribute {
             set { Optional5[name, in: jsObject] = newValue }
         }
 
-        @inlinable public static subscript(name: String, in jsObject: JSObject) -> ((A0, A1, A2, A3, A4) -> ReturnType)? {
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1, A2, A3, A4) -> ReturnType)? {
             get {
                 guard let function = jsObject[name].function else {
                     return nil

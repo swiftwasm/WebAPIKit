@@ -6,8 +6,12 @@ import JavaScriptKit
 public class RadioNodeList: NodeList {
     override public class var constructor: JSFunction { JSObject.global.RadioNodeList.function! }
 
+    private enum Keys {
+        static let value: JSString = "value"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
         super.init(unsafelyWrapping: jsObject)
     }
 

@@ -4,14 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FocusEventInit: BridgedDictionary {
+    private enum Keys {
+        static let relatedTarget: JSString = "relatedTarget"
+    }
+
     public convenience init(relatedTarget: EventTarget?) {
         let object = JSObject.global.Object.function!.new()
-        object["relatedTarget"] = relatedTarget.jsValue()
+        object[Keys.relatedTarget] = relatedTarget.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _relatedTarget = ReadWriteAttribute(jsObject: object, name: "relatedTarget")
+        _relatedTarget = ReadWriteAttribute(jsObject: object, name: Keys.relatedTarget)
         super.init(unsafelyWrapping: object)
     }
 

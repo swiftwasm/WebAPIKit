@@ -4,18 +4,24 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSStyleSheetInit: BridgedDictionary {
+    private enum Keys {
+        static let baseURL: JSString = "baseURL"
+        static let disabled: JSString = "disabled"
+        static let media: JSString = "media"
+    }
+
     public convenience init(baseURL: String, media: __UNSUPPORTED_UNION__, disabled: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object["baseURL"] = baseURL.jsValue()
-        object["media"] = media.jsValue()
-        object["disabled"] = disabled.jsValue()
+        object[Keys.baseURL] = baseURL.jsValue()
+        object[Keys.media] = media.jsValue()
+        object[Keys.disabled] = disabled.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _baseURL = ReadWriteAttribute(jsObject: object, name: "baseURL")
-        _media = ReadWriteAttribute(jsObject: object, name: "media")
-        _disabled = ReadWriteAttribute(jsObject: object, name: "disabled")
+        _baseURL = ReadWriteAttribute(jsObject: object, name: Keys.baseURL)
+        _media = ReadWriteAttribute(jsObject: object, name: Keys.media)
+        _disabled = ReadWriteAttribute(jsObject: object, name: Keys.disabled)
         super.init(unsafelyWrapping: object)
     }
 

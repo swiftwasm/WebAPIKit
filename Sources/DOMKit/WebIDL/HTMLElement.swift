@@ -6,20 +6,38 @@ import JavaScriptKit
 public class HTMLElement: Element, GlobalEventHandlers, DocumentAndElementEventHandlers, ElementContentEditable, HTMLOrSVGElement, ElementCSSInlineStyle {
     override public class var constructor: JSFunction { JSObject.global.HTMLElement.function! }
 
+    private enum Keys {
+        static let attachInternals: JSString = "attachInternals"
+        static let title: JSString = "title"
+        static let spellcheck: JSString = "spellcheck"
+        static let translate: JSString = "translate"
+        static let hidden: JSString = "hidden"
+        static let click: JSString = "click"
+        static let draggable: JSString = "draggable"
+        static let dir: JSString = "dir"
+        static let accessKey: JSString = "accessKey"
+        static let innerText: JSString = "innerText"
+        static let autocapitalize: JSString = "autocapitalize"
+        static let outerText: JSString = "outerText"
+        static let inert: JSString = "inert"
+        static let lang: JSString = "lang"
+        static let accessKeyLabel: JSString = "accessKeyLabel"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _title = ReadWriteAttribute(jsObject: jsObject, name: "title")
-        _lang = ReadWriteAttribute(jsObject: jsObject, name: "lang")
-        _translate = ReadWriteAttribute(jsObject: jsObject, name: "translate")
-        _dir = ReadWriteAttribute(jsObject: jsObject, name: "dir")
-        _hidden = ReadWriteAttribute(jsObject: jsObject, name: "hidden")
-        _inert = ReadWriteAttribute(jsObject: jsObject, name: "inert")
-        _accessKey = ReadWriteAttribute(jsObject: jsObject, name: "accessKey")
-        _accessKeyLabel = ReadonlyAttribute(jsObject: jsObject, name: "accessKeyLabel")
-        _draggable = ReadWriteAttribute(jsObject: jsObject, name: "draggable")
-        _spellcheck = ReadWriteAttribute(jsObject: jsObject, name: "spellcheck")
-        _autocapitalize = ReadWriteAttribute(jsObject: jsObject, name: "autocapitalize")
-        _innerText = ReadWriteAttribute(jsObject: jsObject, name: "innerText")
-        _outerText = ReadWriteAttribute(jsObject: jsObject, name: "outerText")
+        _title = ReadWriteAttribute(jsObject: jsObject, name: Keys.title)
+        _lang = ReadWriteAttribute(jsObject: jsObject, name: Keys.lang)
+        _translate = ReadWriteAttribute(jsObject: jsObject, name: Keys.translate)
+        _dir = ReadWriteAttribute(jsObject: jsObject, name: Keys.dir)
+        _hidden = ReadWriteAttribute(jsObject: jsObject, name: Keys.hidden)
+        _inert = ReadWriteAttribute(jsObject: jsObject, name: Keys.inert)
+        _accessKey = ReadWriteAttribute(jsObject: jsObject, name: Keys.accessKey)
+        _accessKeyLabel = ReadonlyAttribute(jsObject: jsObject, name: Keys.accessKeyLabel)
+        _draggable = ReadWriteAttribute(jsObject: jsObject, name: Keys.draggable)
+        _spellcheck = ReadWriteAttribute(jsObject: jsObject, name: Keys.spellcheck)
+        _autocapitalize = ReadWriteAttribute(jsObject: jsObject, name: Keys.autocapitalize)
+        _innerText = ReadWriteAttribute(jsObject: jsObject, name: Keys.innerText)
+        _outerText = ReadWriteAttribute(jsObject: jsObject, name: Keys.outerText)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -46,7 +64,7 @@ public class HTMLElement: Element, GlobalEventHandlers, DocumentAndElementEventH
     public var inert: Bool
 
     public func click() {
-        _ = jsObject["click"]!()
+        _ = jsObject[Keys.click]!()
     }
 
     @ReadWriteAttribute
@@ -71,6 +89,6 @@ public class HTMLElement: Element, GlobalEventHandlers, DocumentAndElementEventH
     public var outerText: String
 
     public func attachInternals() -> ElementInternals {
-        jsObject["attachInternals"]!().fromJSValue()!
+        jsObject[Keys.attachInternals]!().fromJSValue()!
     }
 }

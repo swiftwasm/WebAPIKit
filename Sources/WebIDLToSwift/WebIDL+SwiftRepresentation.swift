@@ -34,12 +34,12 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
         } else if Context.constructor == nil {
             // can't do property wrappers on extensions
             let setter: SwiftSource = """
-            set { \(idlType.propertyWrapper(readonly: readonly))[\(quoted: name), in: jsObject] = newValue }
+            set { \(idlType.propertyWrapper(readonly: readonly))[Keys.\(name: name), in: jsObject] = newValue }
             """
 
             return """
             public var \(name: name): \(idlType) {
-                get { \(idlType.propertyWrapper(readonly: readonly))[\(quoted: name), in: jsObject] }
+                get { \(idlType.propertyWrapper(readonly: readonly))[Keys.\(name: name), in: jsObject] }
                 \(readonly ? "" : setter)
             }
             """
@@ -54,15 +54,25 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
     var initializer: SwiftSource? {
         assert(!Context.static)
         return """
-        \(wrapperName) = \(idlType.propertyWrapper(readonly: readonly))(jsObject: jsObject, name: \(quoted: name))
+        \(wrapperName) = \(idlType.propertyWrapper(readonly: readonly))(jsObject: jsObject, name: Keys.\(name: name))
         """
     }
+}
+
+private func printKeys(_ keys: [IDLNamed]) -> SwiftSource {
+    let validKeys = Set(keys.map(\.name).filter { !$0.isEmpty })
+    return """
+    private enum Keys {
+        \(lines: validKeys.map { "static let \(name: $0): JSString = \(quoted: $0)" })
+    }
+    """
 }
 
 extension MergedDictionary: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
         public class \(name: name): BridgedDictionary {
+            \(printKeys(members))
             \(swiftInit)
             \(swiftMembers.joined(separator: "\n\n"))
         }
@@ -85,11 +95,11 @@ extension MergedDictionary: SwiftRepresentable {
             \(lines: membersWithPropertyWrapper.map { member, wrapper in
                 if member.idlType.isFunction {
                     return """
-                    \(wrapper)[\(quoted: member.name), in: object] = \(name: member.name)
+                    \(wrapper)[Keys.\(name: member.name), in: object] = \(name: member.name)
                     """
                 } else {
                     return """
-                    object[\(quoted: member.name)] = \(name: member.name).jsValue()
+                    object[Keys.\(name: member.name)] = \(name: member.name).jsValue()
                     """
                 }
             })
@@ -98,7 +108,7 @@ extension MergedDictionary: SwiftRepresentable {
 
         public required init(unsafelyWrapping object: JSObject) {
             \(lines: membersWithPropertyWrapper.map { member, wrapper in
-                "_\(raw: member.name) = \(wrapper)(jsObject: object, name: \(quoted: member.name))"
+                "_\(raw: member.name) = \(wrapper)(jsObject: object, name: Keys.\(name: member.name))"
             })
             super.init(unsafelyWrapping: object)
         }
@@ -122,10 +132,14 @@ extension IDLEnum: SwiftRepresentable {
             \(lines: cases.map { "case \(name: $0.camelized) = \(quoted: $0)" })
 
             public static func construct(from jsValue: JSValue) -> Self? {
-                if let string = jsValue.string {
+                if let string = jsValue.jsString {
                     return Self(rawValue: string)
                 }
                 return nil
+            }
+
+            public init?(rawValue: String) {
+                self.init(rawValue: JSString(rawValue))
             }
 
             public func jsValue() -> JSValue { rawValue.jsValue() }
@@ -187,6 +201,8 @@ extension MergedInterface: SwiftRepresentable {
         public class \(name: name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
             public\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction { \(constructor) }
 
+            \(printKeys(members.compactMap { $0 as? IDLNamed }))
+
             \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
 
             public required init(unsafelyWrapping jsObject: JSObject) {
@@ -222,6 +238,8 @@ extension MergedMixin: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         Context.withState(.instance(constructor: nil, this: "jsObject", className: "\(name: name)")) {
             """
+            \(printKeys(members))
+
             public protocol \(name: name): JSBridgedClass {}
             public extension \(name: name) {
                 \(members.map(toSwift).joined(separator: "\n\n"))
@@ -291,6 +309,7 @@ extension MergedNamespace: SwiftRepresentable {
         }
         return """
         public enum \(name: name) {
+            \(printKeys(members.compactMap { $0 as? IDLNamed }))
             public static var jsObject: JSObject {
                 \(this)
             }
@@ -316,7 +335,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             case "stringifier":
                 return """
                 public var description: String {
-                    \(Context.this)["toString"]!().fromJSValue()!
+                    \(Context.this)[Strings.toString]!().fromJSValue()!
                 }
                 """
             case "static":
@@ -368,7 +387,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
         return (
             prep: "\(lines: prep)",
-            call: "\(Context.this)[\(quoted: name)]!(\(sequence: args))"
+            call: "\(Context.this)[Keys.\(name: name)]!(\(sequence: args))"
         )
     }
 

@@ -6,10 +6,15 @@ import JavaScriptKit
 public class StyleSheetList: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.StyleSheetList.function! }
 
+    private enum Keys {
+        static let item: JSString = "item"
+        static let length: JSString = "length"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
         self.jsObject = jsObject
     }
 

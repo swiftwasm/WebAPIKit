@@ -6,11 +6,19 @@ import JavaScriptKit
 public class TextTrackList: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.TextTrackList.function! }
 
+    private enum Keys {
+        static let onremovetrack: JSString = "onremovetrack"
+        static let onaddtrack: JSString = "onaddtrack"
+        static let onchange: JSString = "onchange"
+        static let length: JSString = "length"
+        static let getTrackById: JSString = "getTrackById"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: "onchange")
-        _onaddtrack = ClosureAttribute.Optional1(jsObject: jsObject, name: "onaddtrack")
-        _onremovetrack = ClosureAttribute.Optional1(jsObject: jsObject, name: "onremovetrack")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onchange)
+        _onaddtrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onaddtrack)
+        _onremovetrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onremovetrack)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -22,7 +30,7 @@ public class TextTrackList: EventTarget {
     }
 
     public func getTrackById(id: String) -> TextTrack? {
-        jsObject["getTrackById"]!(id.jsValue()).fromJSValue()!
+        jsObject[Keys.getTrackById]!(id.jsValue()).fromJSValue()!
     }
 
     @ClosureAttribute.Optional1

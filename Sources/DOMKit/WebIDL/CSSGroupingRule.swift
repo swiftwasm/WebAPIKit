@@ -6,8 +6,14 @@ import JavaScriptKit
 public class CSSGroupingRule: CSSRule {
     override public class var constructor: JSFunction { JSObject.global.CSSGroupingRule.function! }
 
+    private enum Keys {
+        static let cssRules: JSString = "cssRules"
+        static let deleteRule: JSString = "deleteRule"
+        static let insertRule: JSString = "insertRule"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _cssRules = ReadonlyAttribute(jsObject: jsObject, name: "cssRules")
+        _cssRules = ReadonlyAttribute(jsObject: jsObject, name: Keys.cssRules)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -15,10 +21,10 @@ public class CSSGroupingRule: CSSRule {
     public var cssRules: CSSRuleList
 
     public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
-        jsObject["insertRule"]!(rule.jsValue(), index?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.insertRule]!(rule.jsValue(), index?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func deleteRule(index: UInt32) {
-        _ = jsObject["deleteRule"]!(index.jsValue())
+        _ = jsObject[Keys.deleteRule]!(index.jsValue())
     }
 }

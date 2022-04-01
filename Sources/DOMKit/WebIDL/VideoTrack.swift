@@ -6,14 +6,22 @@ import JavaScriptKit
 public class VideoTrack: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.VideoTrack.function! }
 
+    private enum Keys {
+        static let selected: JSString = "selected"
+        static let language: JSString = "language"
+        static let kind: JSString = "kind"
+        static let id: JSString = "id"
+        static let label: JSString = "label"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _id = ReadonlyAttribute(jsObject: jsObject, name: "id")
-        _kind = ReadonlyAttribute(jsObject: jsObject, name: "kind")
-        _label = ReadonlyAttribute(jsObject: jsObject, name: "label")
-        _language = ReadonlyAttribute(jsObject: jsObject, name: "language")
-        _selected = ReadWriteAttribute(jsObject: jsObject, name: "selected")
+        _id = ReadonlyAttribute(jsObject: jsObject, name: Keys.id)
+        _kind = ReadonlyAttribute(jsObject: jsObject, name: Keys.kind)
+        _label = ReadonlyAttribute(jsObject: jsObject, name: Keys.label)
+        _language = ReadonlyAttribute(jsObject: jsObject, name: Keys.language)
+        _selected = ReadWriteAttribute(jsObject: jsObject, name: Keys.selected)
         self.jsObject = jsObject
     }
 

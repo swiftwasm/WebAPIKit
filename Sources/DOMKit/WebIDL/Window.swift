@@ -6,33 +6,75 @@ import JavaScriptKit
 public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, WindowOrWorkerGlobalScope, AnimationFrameProvider, WindowSessionStorage, WindowLocalStorage {
     override public class var constructor: JSFunction { JSObject.global.Window.function! }
 
+    private enum Keys {
+        static let print: JSString = "print"
+        static let name: JSString = "name"
+        static let `self`: JSString = "self"
+        static let document: JSString = "document"
+        static let status: JSString = "status"
+        static let close: JSString = "close"
+        static let opener: JSString = "opener"
+        static let menubar: JSString = "menubar"
+        static let personalbar: JSString = "personalbar"
+        static let clientInformation: JSString = "clientInformation"
+        static let focus: JSString = "focus"
+        static let parent: JSString = "parent"
+        static let top: JSString = "top"
+        static let location: JSString = "location"
+        static let alert: JSString = "alert"
+        static let window: JSString = "window"
+        static let locationbar: JSString = "locationbar"
+        static let closed: JSString = "closed"
+        static let customElements: JSString = "customElements"
+        static let frameElement: JSString = "frameElement"
+        static let statusbar: JSString = "statusbar"
+        static let open: JSString = "open"
+        static let navigator: JSString = "navigator"
+        static let history: JSString = "history"
+        static let length: JSString = "length"
+        static let releaseEvents: JSString = "releaseEvents"
+        static let postMessage: JSString = "postMessage"
+        static let external: JSString = "external"
+        static let getComputedStyle: JSString = "getComputedStyle"
+        static let blur: JSString = "blur"
+        static let stop: JSString = "stop"
+        static let originAgentCluster: JSString = "originAgentCluster"
+        static let confirm: JSString = "confirm"
+        static let frames: JSString = "frames"
+        static let captureEvents: JSString = "captureEvents"
+        static let event: JSString = "event"
+        static let prompt: JSString = "prompt"
+        static let toolbar: JSString = "toolbar"
+        static let scrollbars: JSString = "scrollbars"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _event = ReadonlyAttribute(jsObject: jsObject, name: "event")
-        _window = ReadonlyAttribute(jsObject: jsObject, name: "window")
-        _self = ReadonlyAttribute(jsObject: jsObject, name: "self")
-        _document = ReadonlyAttribute(jsObject: jsObject, name: "document")
-        _name = ReadWriteAttribute(jsObject: jsObject, name: "name")
-        _location = ReadonlyAttribute(jsObject: jsObject, name: "location")
-        _history = ReadonlyAttribute(jsObject: jsObject, name: "history")
-        _customElements = ReadonlyAttribute(jsObject: jsObject, name: "customElements")
-        _locationbar = ReadonlyAttribute(jsObject: jsObject, name: "locationbar")
-        _menubar = ReadonlyAttribute(jsObject: jsObject, name: "menubar")
-        _personalbar = ReadonlyAttribute(jsObject: jsObject, name: "personalbar")
-        _scrollbars = ReadonlyAttribute(jsObject: jsObject, name: "scrollbars")
-        _statusbar = ReadonlyAttribute(jsObject: jsObject, name: "statusbar")
-        _toolbar = ReadonlyAttribute(jsObject: jsObject, name: "toolbar")
-        _status = ReadWriteAttribute(jsObject: jsObject, name: "status")
-        _closed = ReadonlyAttribute(jsObject: jsObject, name: "closed")
-        _frames = ReadonlyAttribute(jsObject: jsObject, name: "frames")
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
-        _top = ReadonlyAttribute(jsObject: jsObject, name: "top")
-        _opener = ReadWriteAttribute(jsObject: jsObject, name: "opener")
-        _parent = ReadonlyAttribute(jsObject: jsObject, name: "parent")
-        _frameElement = ReadonlyAttribute(jsObject: jsObject, name: "frameElement")
-        _navigator = ReadonlyAttribute(jsObject: jsObject, name: "navigator")
-        _clientInformation = ReadonlyAttribute(jsObject: jsObject, name: "clientInformation")
-        _originAgentCluster = ReadonlyAttribute(jsObject: jsObject, name: "originAgentCluster")
-        _external = ReadonlyAttribute(jsObject: jsObject, name: "external")
+        _event = ReadonlyAttribute(jsObject: jsObject, name: Keys.event)
+        _window = ReadonlyAttribute(jsObject: jsObject, name: Keys.window)
+        _self = ReadonlyAttribute(jsObject: jsObject, name: Keys.self)
+        _document = ReadonlyAttribute(jsObject: jsObject, name: Keys.document)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
+        _location = ReadonlyAttribute(jsObject: jsObject, name: Keys.location)
+        _history = ReadonlyAttribute(jsObject: jsObject, name: Keys.history)
+        _customElements = ReadonlyAttribute(jsObject: jsObject, name: Keys.customElements)
+        _locationbar = ReadonlyAttribute(jsObject: jsObject, name: Keys.locationbar)
+        _menubar = ReadonlyAttribute(jsObject: jsObject, name: Keys.menubar)
+        _personalbar = ReadonlyAttribute(jsObject: jsObject, name: Keys.personalbar)
+        _scrollbars = ReadonlyAttribute(jsObject: jsObject, name: Keys.scrollbars)
+        _statusbar = ReadonlyAttribute(jsObject: jsObject, name: Keys.statusbar)
+        _toolbar = ReadonlyAttribute(jsObject: jsObject, name: Keys.toolbar)
+        _status = ReadWriteAttribute(jsObject: jsObject, name: Keys.status)
+        _closed = ReadonlyAttribute(jsObject: jsObject, name: Keys.closed)
+        _frames = ReadonlyAttribute(jsObject: jsObject, name: Keys.frames)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _top = ReadonlyAttribute(jsObject: jsObject, name: Keys.top)
+        _opener = ReadWriteAttribute(jsObject: jsObject, name: Keys.opener)
+        _parent = ReadonlyAttribute(jsObject: jsObject, name: Keys.parent)
+        _frameElement = ReadonlyAttribute(jsObject: jsObject, name: Keys.frameElement)
+        _navigator = ReadonlyAttribute(jsObject: jsObject, name: Keys.navigator)
+        _clientInformation = ReadonlyAttribute(jsObject: jsObject, name: Keys.clientInformation)
+        _originAgentCluster = ReadonlyAttribute(jsObject: jsObject, name: Keys.originAgentCluster)
+        _external = ReadonlyAttribute(jsObject: jsObject, name: Keys.external)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -82,22 +124,22 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var status: String
 
     public func close() {
-        _ = jsObject["close"]!()
+        _ = jsObject[Keys.close]!()
     }
 
     @ReadonlyAttribute
     public var closed: Bool
 
     public func stop() {
-        _ = jsObject["stop"]!()
+        _ = jsObject[Keys.stop]!()
     }
 
     public func focus() {
-        _ = jsObject["focus"]!()
+        _ = jsObject[Keys.focus]!()
     }
 
     public func blur() {
-        _ = jsObject["blur"]!()
+        _ = jsObject[Keys.blur]!()
     }
 
     @ReadonlyAttribute
@@ -119,7 +161,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var frameElement: Element?
 
     public func open(url: String? = nil, target: String? = nil, features: String? = nil) -> WindowProxy? {
-        jsObject["open"]!(url?.jsValue() ?? .undefined, target?.jsValue() ?? .undefined, features?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.open]!(url?.jsValue() ?? .undefined, target?.jsValue() ?? .undefined, features?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public subscript(key: String) -> JSObject {
@@ -136,45 +178,45 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var originAgentCluster: Bool
 
     public func alert() {
-        _ = jsObject["alert"]!()
+        _ = jsObject[Keys.alert]!()
     }
 
     public func alert(message: String) {
-        _ = jsObject["alert"]!(message.jsValue())
+        _ = jsObject[Keys.alert]!(message.jsValue())
     }
 
     public func confirm(message: String? = nil) -> Bool {
-        jsObject["confirm"]!(message?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.confirm]!(message?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func prompt(message: String? = nil, default: String? = nil) -> String? {
-        jsObject["prompt"]!(message?.jsValue() ?? .undefined, `default`?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.prompt]!(message?.jsValue() ?? .undefined, `default`?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func print() {
-        _ = jsObject["print"]!()
+        _ = jsObject[Keys.print]!()
     }
 
     public func postMessage(message: JSValue, targetOrigin: String, transfer: [JSObject]? = nil) {
-        _ = jsObject["postMessage"]!(message.jsValue(), targetOrigin.jsValue(), transfer?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.postMessage]!(message.jsValue(), targetOrigin.jsValue(), transfer?.jsValue() ?? .undefined)
     }
 
     public func postMessage(message: JSValue, options: WindowPostMessageOptions? = nil) {
-        _ = jsObject["postMessage"]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
     }
 
     public func captureEvents() {
-        _ = jsObject["captureEvents"]!()
+        _ = jsObject[Keys.captureEvents]!()
     }
 
     public func releaseEvents() {
-        _ = jsObject["releaseEvents"]!()
+        _ = jsObject[Keys.releaseEvents]!()
     }
 
     @ReadonlyAttribute
     public var external: External
 
     public func getComputedStyle(elt: Element, pseudoElt: String? = nil) -> CSSStyleDeclaration {
-        jsObject["getComputedStyle"]!(elt.jsValue(), pseudoElt?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.getComputedStyle]!(elt.jsValue(), pseudoElt?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

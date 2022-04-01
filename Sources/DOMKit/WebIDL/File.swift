@@ -6,9 +6,14 @@ import JavaScriptKit
 public class File: Blob {
     override public class var constructor: JSFunction { JSObject.global.File.function! }
 
+    private enum Keys {
+        static let lastModified: JSString = "lastModified"
+        static let name: JSString = "name"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadonlyAttribute(jsObject: jsObject, name: "name")
-        _lastModified = ReadonlyAttribute(jsObject: jsObject, name: "lastModified")
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Keys.name)
+        _lastModified = ReadonlyAttribute(jsObject: jsObject, name: Keys.lastModified)
         super.init(unsafelyWrapping: jsObject)
     }
 

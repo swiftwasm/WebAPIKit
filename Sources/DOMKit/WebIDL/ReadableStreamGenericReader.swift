@@ -3,17 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let cancel: JSString = "cancel"
+    static let closed: JSString = "closed"
+}
+
 public protocol ReadableStreamGenericReader: JSBridgedClass {}
 public extension ReadableStreamGenericReader {
-    var closed: JSPromise { ReadonlyAttribute["closed", in: jsObject] }
+    var closed: JSPromise { ReadonlyAttribute[Keys.closed, in: jsObject] }
 
     func cancel(reason: JSValue? = nil) -> JSPromise {
-        jsObject["cancel"]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.cancel]!(reason?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func cancel(reason: JSValue? = nil) async throws {
-        let _promise: JSPromise = jsObject["cancel"]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.cancel]!(reason?.jsValue() ?? .undefined).fromJSValue()!
         _ = try await _promise.get()
     }
 }

@@ -6,13 +6,24 @@ import JavaScriptKit
 public class NodeIterator: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.NodeIterator.function! }
 
+    private enum Keys {
+        static let filter: JSString = "filter"
+        static let whatToShow: JSString = "whatToShow"
+        static let previousNode: JSString = "previousNode"
+        static let root: JSString = "root"
+        static let pointerBeforeReferenceNode: JSString = "pointerBeforeReferenceNode"
+        static let nextNode: JSString = "nextNode"
+        static let detach: JSString = "detach"
+        static let referenceNode: JSString = "referenceNode"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _root = ReadonlyAttribute(jsObject: jsObject, name: "root")
-        _referenceNode = ReadonlyAttribute(jsObject: jsObject, name: "referenceNode")
-        _pointerBeforeReferenceNode = ReadonlyAttribute(jsObject: jsObject, name: "pointerBeforeReferenceNode")
-        _whatToShow = ReadonlyAttribute(jsObject: jsObject, name: "whatToShow")
+        _root = ReadonlyAttribute(jsObject: jsObject, name: Keys.root)
+        _referenceNode = ReadonlyAttribute(jsObject: jsObject, name: Keys.referenceNode)
+        _pointerBeforeReferenceNode = ReadonlyAttribute(jsObject: jsObject, name: Keys.pointerBeforeReferenceNode)
+        _whatToShow = ReadonlyAttribute(jsObject: jsObject, name: Keys.whatToShow)
         self.jsObject = jsObject
     }
 
@@ -31,14 +42,14 @@ public class NodeIterator: JSBridgedClass {
     // XXX: member 'filter' is ignored
 
     public func nextNode() -> Node? {
-        jsObject["nextNode"]!().fromJSValue()!
+        jsObject[Keys.nextNode]!().fromJSValue()!
     }
 
     public func previousNode() -> Node? {
-        jsObject["previousNode"]!().fromJSValue()!
+        jsObject[Keys.previousNode]!().fromJSValue()!
     }
 
     public func detach() {
-        _ = jsObject["detach"]!()
+        _ = jsObject[Keys.detach]!()
     }
 }

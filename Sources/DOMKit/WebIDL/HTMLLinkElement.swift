@@ -6,25 +6,46 @@ import JavaScriptKit
 public class HTMLLinkElement: HTMLElement, LinkStyle {
     override public class var constructor: JSFunction { JSObject.global.HTMLLinkElement.function! }
 
+    private enum Keys {
+        static let type: JSString = "type"
+        static let hreflang: JSString = "hreflang"
+        static let charset: JSString = "charset"
+        static let target: JSString = "target"
+        static let rev: JSString = "rev"
+        static let href: JSString = "href"
+        static let media: JSString = "media"
+        static let relList: JSString = "relList"
+        static let imageSizes: JSString = "imageSizes"
+        static let crossOrigin: JSString = "crossOrigin"
+        static let blocking: JSString = "blocking"
+        static let referrerPolicy: JSString = "referrerPolicy"
+        static let `as`: JSString = "as"
+        static let integrity: JSString = "integrity"
+        static let rel: JSString = "rel"
+        static let sizes: JSString = "sizes"
+        static let imageSrcset: JSString = "imageSrcset"
+        static let disabled: JSString = "disabled"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _href = ReadWriteAttribute(jsObject: jsObject, name: "href")
-        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: "crossOrigin")
-        _rel = ReadWriteAttribute(jsObject: jsObject, name: "rel")
-        _as = ReadWriteAttribute(jsObject: jsObject, name: "as")
-        _relList = ReadonlyAttribute(jsObject: jsObject, name: "relList")
-        _media = ReadWriteAttribute(jsObject: jsObject, name: "media")
-        _integrity = ReadWriteAttribute(jsObject: jsObject, name: "integrity")
-        _hreflang = ReadWriteAttribute(jsObject: jsObject, name: "hreflang")
-        _type = ReadWriteAttribute(jsObject: jsObject, name: "type")
-        _sizes = ReadonlyAttribute(jsObject: jsObject, name: "sizes")
-        _imageSrcset = ReadWriteAttribute(jsObject: jsObject, name: "imageSrcset")
-        _imageSizes = ReadWriteAttribute(jsObject: jsObject, name: "imageSizes")
-        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: "referrerPolicy")
-        _blocking = ReadonlyAttribute(jsObject: jsObject, name: "blocking")
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: "disabled")
-        _charset = ReadWriteAttribute(jsObject: jsObject, name: "charset")
-        _rev = ReadWriteAttribute(jsObject: jsObject, name: "rev")
-        _target = ReadWriteAttribute(jsObject: jsObject, name: "target")
+        _href = ReadWriteAttribute(jsObject: jsObject, name: Keys.href)
+        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: Keys.crossOrigin)
+        _rel = ReadWriteAttribute(jsObject: jsObject, name: Keys.rel)
+        _as = ReadWriteAttribute(jsObject: jsObject, name: Keys.as)
+        _relList = ReadonlyAttribute(jsObject: jsObject, name: Keys.relList)
+        _media = ReadWriteAttribute(jsObject: jsObject, name: Keys.media)
+        _integrity = ReadWriteAttribute(jsObject: jsObject, name: Keys.integrity)
+        _hreflang = ReadWriteAttribute(jsObject: jsObject, name: Keys.hreflang)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
+        _sizes = ReadonlyAttribute(jsObject: jsObject, name: Keys.sizes)
+        _imageSrcset = ReadWriteAttribute(jsObject: jsObject, name: Keys.imageSrcset)
+        _imageSizes = ReadWriteAttribute(jsObject: jsObject, name: Keys.imageSizes)
+        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Keys.referrerPolicy)
+        _blocking = ReadonlyAttribute(jsObject: jsObject, name: Keys.blocking)
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
+        _charset = ReadWriteAttribute(jsObject: jsObject, name: Keys.charset)
+        _rev = ReadWriteAttribute(jsObject: jsObject, name: Keys.rev)
+        _target = ReadWriteAttribute(jsObject: jsObject, name: Keys.target)
         super.init(unsafelyWrapping: jsObject)
     }
 

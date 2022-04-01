@@ -6,6 +6,15 @@ import JavaScriptKit
 public class FormData: JSBridgedClass, Sequence {
     public class var constructor: JSFunction { JSObject.global.FormData.function! }
 
+    private enum Keys {
+        static let set: JSString = "set"
+        static let get: JSString = "get"
+        static let append: JSString = "append"
+        static let delete: JSString = "delete"
+        static let has: JSString = "has"
+        static let getAll: JSString = "getAll"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -17,35 +26,35 @@ public class FormData: JSBridgedClass, Sequence {
     }
 
     public func append(name: String, value: String) {
-        _ = jsObject["append"]!(name.jsValue(), value.jsValue())
+        _ = jsObject[Keys.append]!(name.jsValue(), value.jsValue())
     }
 
     public func append(name: String, blobValue: Blob, filename: String? = nil) {
-        _ = jsObject["append"]!(name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.append]!(name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined)
     }
 
     public func delete(name: String) {
-        _ = jsObject["delete"]!(name.jsValue())
+        _ = jsObject[Keys.delete]!(name.jsValue())
     }
 
     public func get(name: String) -> FormDataEntryValue? {
-        jsObject["get"]!(name.jsValue()).fromJSValue()!
+        jsObject[Keys.get]!(name.jsValue()).fromJSValue()!
     }
 
     public func getAll(name: String) -> [FormDataEntryValue] {
-        jsObject["getAll"]!(name.jsValue()).fromJSValue()!
+        jsObject[Keys.getAll]!(name.jsValue()).fromJSValue()!
     }
 
     public func has(name: String) -> Bool {
-        jsObject["has"]!(name.jsValue()).fromJSValue()!
+        jsObject[Keys.has]!(name.jsValue()).fromJSValue()!
     }
 
     public func set(name: String, value: String) {
-        _ = jsObject["set"]!(name.jsValue(), value.jsValue())
+        _ = jsObject[Keys.set]!(name.jsValue(), value.jsValue())
     }
 
     public func set(name: String, blobValue: Blob, filename: String? = nil) {
-        _ = jsObject["set"]!(name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.set]!(name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined)
     }
 
     public typealias Element = String

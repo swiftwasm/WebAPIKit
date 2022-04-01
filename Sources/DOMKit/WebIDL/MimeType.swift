@@ -6,13 +6,20 @@ import JavaScriptKit
 public class MimeType: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MimeType.function! }
 
+    private enum Keys {
+        static let enabledPlugin: JSString = "enabledPlugin"
+        static let type: JSString = "type"
+        static let description: JSString = "description"
+        static let suffixes: JSString = "suffixes"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _type = ReadonlyAttribute(jsObject: jsObject, name: "type")
-        _description = ReadonlyAttribute(jsObject: jsObject, name: "description")
-        _suffixes = ReadonlyAttribute(jsObject: jsObject, name: "suffixes")
-        _enabledPlugin = ReadonlyAttribute(jsObject: jsObject, name: "enabledPlugin")
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
+        _description = ReadonlyAttribute(jsObject: jsObject, name: Keys.description)
+        _suffixes = ReadonlyAttribute(jsObject: jsObject, name: Keys.suffixes)
+        _enabledPlugin = ReadonlyAttribute(jsObject: jsObject, name: Keys.enabledPlugin)
         self.jsObject = jsObject
     }
 

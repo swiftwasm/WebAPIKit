@@ -6,21 +6,71 @@ import JavaScriptKit
 public class Node: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.Node.function! }
 
+    private enum Keys {
+        static let hasChildNodes: JSString = "hasChildNodes"
+        static let previousSibling: JSString = "previousSibling"
+        static let DOCUMENT_POSITION_DISCONNECTED: JSString = "DOCUMENT_POSITION_DISCONNECTED"
+        static let DOCUMENT_POSITION_PRECEDING: JSString = "DOCUMENT_POSITION_PRECEDING"
+        static let DOCUMENT_POSITION_CONTAINED_BY: JSString = "DOCUMENT_POSITION_CONTAINED_BY"
+        static let compareDocumentPosition: JSString = "compareDocumentPosition"
+        static let getRootNode: JSString = "getRootNode"
+        static let DOCUMENT_TYPE_NODE: JSString = "DOCUMENT_TYPE_NODE"
+        static let lookupPrefix: JSString = "lookupPrefix"
+        static let TEXT_NODE: JSString = "TEXT_NODE"
+        static let lookupNamespaceURI: JSString = "lookupNamespaceURI"
+        static let isDefaultNamespace: JSString = "isDefaultNamespace"
+        static let normalize: JSString = "normalize"
+        static let insertBefore: JSString = "insertBefore"
+        static let ATTRIBUTE_NODE: JSString = "ATTRIBUTE_NODE"
+        static let replaceChild: JSString = "replaceChild"
+        static let parentElement: JSString = "parentElement"
+        static let isEqualNode: JSString = "isEqualNode"
+        static let textContent: JSString = "textContent"
+        static let PROCESSING_INSTRUCTION_NODE: JSString = "PROCESSING_INSTRUCTION_NODE"
+        static let ENTITY_REFERENCE_NODE: JSString = "ENTITY_REFERENCE_NODE"
+        static let lastChild: JSString = "lastChild"
+        static let DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: JSString = "DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC"
+        static let nodeValue: JSString = "nodeValue"
+        static let appendChild: JSString = "appendChild"
+        static let DOCUMENT_FRAGMENT_NODE: JSString = "DOCUMENT_FRAGMENT_NODE"
+        static let firstChild: JSString = "firstChild"
+        static let nodeName: JSString = "nodeName"
+        static let CDATA_SECTION_NODE: JSString = "CDATA_SECTION_NODE"
+        static let isConnected: JSString = "isConnected"
+        static let ENTITY_NODE: JSString = "ENTITY_NODE"
+        static let ELEMENT_NODE: JSString = "ELEMENT_NODE"
+        static let DOCUMENT_POSITION_FOLLOWING: JSString = "DOCUMENT_POSITION_FOLLOWING"
+        static let nodeType: JSString = "nodeType"
+        static let contains: JSString = "contains"
+        static let removeChild: JSString = "removeChild"
+        static let NOTATION_NODE: JSString = "NOTATION_NODE"
+        static let isSameNode: JSString = "isSameNode"
+        static let DOCUMENT_NODE: JSString = "DOCUMENT_NODE"
+        static let nextSibling: JSString = "nextSibling"
+        static let cloneNode: JSString = "cloneNode"
+        static let parentNode: JSString = "parentNode"
+        static let childNodes: JSString = "childNodes"
+        static let COMMENT_NODE: JSString = "COMMENT_NODE"
+        static let baseURI: JSString = "baseURI"
+        static let ownerDocument: JSString = "ownerDocument"
+        static let DOCUMENT_POSITION_CONTAINS: JSString = "DOCUMENT_POSITION_CONTAINS"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _nodeType = ReadonlyAttribute(jsObject: jsObject, name: "nodeType")
-        _nodeName = ReadonlyAttribute(jsObject: jsObject, name: "nodeName")
-        _baseURI = ReadonlyAttribute(jsObject: jsObject, name: "baseURI")
-        _isConnected = ReadonlyAttribute(jsObject: jsObject, name: "isConnected")
-        _ownerDocument = ReadonlyAttribute(jsObject: jsObject, name: "ownerDocument")
-        _parentNode = ReadonlyAttribute(jsObject: jsObject, name: "parentNode")
-        _parentElement = ReadonlyAttribute(jsObject: jsObject, name: "parentElement")
-        _childNodes = ReadonlyAttribute(jsObject: jsObject, name: "childNodes")
-        _firstChild = ReadonlyAttribute(jsObject: jsObject, name: "firstChild")
-        _lastChild = ReadonlyAttribute(jsObject: jsObject, name: "lastChild")
-        _previousSibling = ReadonlyAttribute(jsObject: jsObject, name: "previousSibling")
-        _nextSibling = ReadonlyAttribute(jsObject: jsObject, name: "nextSibling")
-        _nodeValue = ReadWriteAttribute(jsObject: jsObject, name: "nodeValue")
-        _textContent = ReadWriteAttribute(jsObject: jsObject, name: "textContent")
+        _nodeType = ReadonlyAttribute(jsObject: jsObject, name: Keys.nodeType)
+        _nodeName = ReadonlyAttribute(jsObject: jsObject, name: Keys.nodeName)
+        _baseURI = ReadonlyAttribute(jsObject: jsObject, name: Keys.baseURI)
+        _isConnected = ReadonlyAttribute(jsObject: jsObject, name: Keys.isConnected)
+        _ownerDocument = ReadonlyAttribute(jsObject: jsObject, name: Keys.ownerDocument)
+        _parentNode = ReadonlyAttribute(jsObject: jsObject, name: Keys.parentNode)
+        _parentElement = ReadonlyAttribute(jsObject: jsObject, name: Keys.parentElement)
+        _childNodes = ReadonlyAttribute(jsObject: jsObject, name: Keys.childNodes)
+        _firstChild = ReadonlyAttribute(jsObject: jsObject, name: Keys.firstChild)
+        _lastChild = ReadonlyAttribute(jsObject: jsObject, name: Keys.lastChild)
+        _previousSibling = ReadonlyAttribute(jsObject: jsObject, name: Keys.previousSibling)
+        _nextSibling = ReadonlyAttribute(jsObject: jsObject, name: Keys.nextSibling)
+        _nodeValue = ReadWriteAttribute(jsObject: jsObject, name: Keys.nodeValue)
+        _textContent = ReadWriteAttribute(jsObject: jsObject, name: Keys.textContent)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -64,7 +114,7 @@ public class Node: EventTarget {
     public var ownerDocument: Document?
 
     public func getRootNode(options: GetRootNodeOptions? = nil) -> Self {
-        jsObject["getRootNode"]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.getRootNode]!(options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -74,7 +124,7 @@ public class Node: EventTarget {
     public var parentElement: Element?
 
     public func hasChildNodes() -> Bool {
-        jsObject["hasChildNodes"]!().fromJSValue()!
+        jsObject[Keys.hasChildNodes]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -99,19 +149,19 @@ public class Node: EventTarget {
     public var textContent: String?
 
     public func normalize() {
-        _ = jsObject["normalize"]!()
+        _ = jsObject[Keys.normalize]!()
     }
 
     public func cloneNode(deep: Bool? = nil) -> Self {
-        jsObject["cloneNode"]!(deep?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.cloneNode]!(deep?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func isEqualNode(otherNode: Node?) -> Bool {
-        jsObject["isEqualNode"]!(otherNode.jsValue()).fromJSValue()!
+        jsObject[Keys.isEqualNode]!(otherNode.jsValue()).fromJSValue()!
     }
 
     public func isSameNode(otherNode: Node?) -> Bool {
-        jsObject["isSameNode"]!(otherNode.jsValue()).fromJSValue()!
+        jsObject[Keys.isSameNode]!(otherNode.jsValue()).fromJSValue()!
     }
 
     public static let DOCUMENT_POSITION_DISCONNECTED: UInt16 = 0x01
@@ -127,38 +177,38 @@ public class Node: EventTarget {
     public static let DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: UInt16 = 0x20
 
     public func compareDocumentPosition(other: Node) -> UInt16 {
-        jsObject["compareDocumentPosition"]!(other.jsValue()).fromJSValue()!
+        jsObject[Keys.compareDocumentPosition]!(other.jsValue()).fromJSValue()!
     }
 
     public func contains(other: Node?) -> Bool {
-        jsObject["contains"]!(other.jsValue()).fromJSValue()!
+        jsObject[Keys.contains]!(other.jsValue()).fromJSValue()!
     }
 
     public func lookupPrefix(namespace: String?) -> String? {
-        jsObject["lookupPrefix"]!(namespace.jsValue()).fromJSValue()!
+        jsObject[Keys.lookupPrefix]!(namespace.jsValue()).fromJSValue()!
     }
 
     public func lookupNamespaceURI(prefix: String?) -> String? {
-        jsObject["lookupNamespaceURI"]!(prefix.jsValue()).fromJSValue()!
+        jsObject[Keys.lookupNamespaceURI]!(prefix.jsValue()).fromJSValue()!
     }
 
     public func isDefaultNamespace(namespace: String?) -> Bool {
-        jsObject["isDefaultNamespace"]!(namespace.jsValue()).fromJSValue()!
+        jsObject[Keys.isDefaultNamespace]!(namespace.jsValue()).fromJSValue()!
     }
 
     public func insertBefore(node: Node, child: Node?) -> Self {
-        jsObject["insertBefore"]!(node.jsValue(), child.jsValue()).fromJSValue()!
+        jsObject[Keys.insertBefore]!(node.jsValue(), child.jsValue()).fromJSValue()!
     }
 
     public func appendChild(node: Node) -> Self {
-        jsObject["appendChild"]!(node.jsValue()).fromJSValue()!
+        jsObject[Keys.appendChild]!(node.jsValue()).fromJSValue()!
     }
 
     public func replaceChild(node: Node, child: Node) -> Self {
-        jsObject["replaceChild"]!(node.jsValue(), child.jsValue()).fromJSValue()!
+        jsObject[Keys.replaceChild]!(node.jsValue(), child.jsValue()).fromJSValue()!
     }
 
     public func removeChild(child: Node) -> Self {
-        jsObject["removeChild"]!(child.jsValue()).fromJSValue()!
+        jsObject[Keys.removeChild]!(child.jsValue()).fromJSValue()!
     }
 }

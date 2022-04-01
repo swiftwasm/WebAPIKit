@@ -4,14 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TrackEventInit: BridgedDictionary {
+    private enum Keys {
+        static let track: JSString = "track"
+    }
+
     public convenience init(track: __UNSUPPORTED_UNION__?) {
         let object = JSObject.global.Object.function!.new()
-        object["track"] = track.jsValue()
+        object[Keys.track] = track.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _track = ReadWriteAttribute(jsObject: object, name: "track")
+        _track = ReadWriteAttribute(jsObject: object, name: Keys.track)
         super.init(unsafelyWrapping: object)
     }
 

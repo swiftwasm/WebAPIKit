@@ -6,8 +6,12 @@ import JavaScriptKit
 public class HTMLBRElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLBRElement.function! }
 
+    private enum Keys {
+        static let clear: JSString = "clear"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _clear = ReadWriteAttribute(jsObject: jsObject, name: "clear")
+        _clear = ReadWriteAttribute(jsObject: jsObject, name: Keys.clear)
         super.init(unsafelyWrapping: jsObject)
     }
 

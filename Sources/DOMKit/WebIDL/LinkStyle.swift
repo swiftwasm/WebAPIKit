@@ -3,7 +3,11 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let sheet: JSString = "sheet"
+}
+
 public protocol LinkStyle: JSBridgedClass {}
 public extension LinkStyle {
-    var sheet: CSSStyleSheet? { ReadonlyAttribute["sheet", in: jsObject] }
+    var sheet: CSSStyleSheet? { ReadonlyAttribute[Keys.sheet, in: jsObject] }
 }

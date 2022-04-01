@@ -6,6 +6,8 @@ import JavaScriptKit
 public class HTMLUnknownElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLUnknownElement.function! }
 
+    private enum Keys {}
+
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

@@ -6,10 +6,15 @@ import JavaScriptKit
 public class AbortController: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.AbortController.function! }
 
+    private enum Keys {
+        static let signal: JSString = "signal"
+        static let abort: JSString = "abort"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _signal = ReadonlyAttribute(jsObject: jsObject, name: "signal")
+        _signal = ReadonlyAttribute(jsObject: jsObject, name: Keys.signal)
         self.jsObject = jsObject
     }
 
@@ -21,6 +26,6 @@ public class AbortController: JSBridgedClass {
     public var signal: AbortSignal
 
     public func abort(reason: JSValue? = nil) {
-        _ = jsObject["abort"]!(reason?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.abort]!(reason?.jsValue() ?? .undefined)
     }
 }

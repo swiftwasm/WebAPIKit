@@ -6,8 +6,12 @@ import JavaScriptKit
 public class SharedWorker: EventTarget, AbstractWorker {
     override public class var constructor: JSFunction { JSObject.global.SharedWorker.function! }
 
+    private enum Keys {
+        static let port: JSString = "port"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _port = ReadonlyAttribute(jsObject: jsObject, name: "port")
+        _port = ReadonlyAttribute(jsObject: jsObject, name: Keys.port)
         super.init(unsafelyWrapping: jsObject)
     }
 

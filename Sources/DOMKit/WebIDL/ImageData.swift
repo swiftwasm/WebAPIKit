@@ -6,13 +6,20 @@ import JavaScriptKit
 public class ImageData: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ImageData.function! }
 
+    private enum Keys {
+        static let colorSpace: JSString = "colorSpace"
+        static let height: JSString = "height"
+        static let data: JSString = "data"
+        static let width: JSString = "width"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _width = ReadonlyAttribute(jsObject: jsObject, name: "width")
-        _height = ReadonlyAttribute(jsObject: jsObject, name: "height")
-        _data = ReadonlyAttribute(jsObject: jsObject, name: "data")
-        _colorSpace = ReadonlyAttribute(jsObject: jsObject, name: "colorSpace")
+        _width = ReadonlyAttribute(jsObject: jsObject, name: Keys.width)
+        _height = ReadonlyAttribute(jsObject: jsObject, name: Keys.height)
+        _data = ReadonlyAttribute(jsObject: jsObject, name: Keys.data)
+        _colorSpace = ReadonlyAttribute(jsObject: jsObject, name: Keys.colorSpace)
         self.jsObject = jsObject
     }
 

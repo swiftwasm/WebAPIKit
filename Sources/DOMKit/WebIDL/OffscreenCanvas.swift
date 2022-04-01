@@ -6,11 +6,21 @@ import JavaScriptKit
 public class OffscreenCanvas: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.OffscreenCanvas.function! }
 
+    private enum Keys {
+        static let width: JSString = "width"
+        static let oncontextrestored: JSString = "oncontextrestored"
+        static let getContext: JSString = "getContext"
+        static let transferToImageBitmap: JSString = "transferToImageBitmap"
+        static let convertToBlob: JSString = "convertToBlob"
+        static let height: JSString = "height"
+        static let oncontextlost: JSString = "oncontextlost"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _width = ReadWriteAttribute(jsObject: jsObject, name: "width")
-        _height = ReadWriteAttribute(jsObject: jsObject, name: "height")
-        _oncontextlost = ClosureAttribute.Optional1(jsObject: jsObject, name: "oncontextlost")
-        _oncontextrestored = ClosureAttribute.Optional1(jsObject: jsObject, name: "oncontextrestored")
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
+        _oncontextlost = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.oncontextlost)
+        _oncontextrestored = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.oncontextrestored)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -25,20 +35,20 @@ public class OffscreenCanvas: EventTarget {
     public var height: UInt64
 
     public func getContext(contextId: OffscreenRenderingContextId, options: JSValue? = nil) -> OffscreenRenderingContext? {
-        jsObject["getContext"]!(contextId.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.getContext]!(contextId.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func transferToImageBitmap() -> ImageBitmap {
-        jsObject["transferToImageBitmap"]!().fromJSValue()!
+        jsObject[Keys.transferToImageBitmap]!().fromJSValue()!
     }
 
     public func convertToBlob(options: ImageEncodeOptions? = nil) -> JSPromise {
-        jsObject["convertToBlob"]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.convertToBlob]!(options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func convertToBlob(options: ImageEncodeOptions? = nil) async throws -> Blob {
-        let _promise: JSPromise = jsObject["convertToBlob"]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.convertToBlob]!(options?.jsValue() ?? .undefined).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

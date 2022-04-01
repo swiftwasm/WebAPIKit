@@ -6,12 +6,23 @@ import JavaScriptKit
 public class History: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.History.function! }
 
+    private enum Keys {
+        static let length: JSString = "length"
+        static let replaceState: JSString = "replaceState"
+        static let back: JSString = "back"
+        static let forward: JSString = "forward"
+        static let pushState: JSString = "pushState"
+        static let state: JSString = "state"
+        static let go: JSString = "go"
+        static let scrollRestoration: JSString = "scrollRestoration"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
-        _scrollRestoration = ReadWriteAttribute(jsObject: jsObject, name: "scrollRestoration")
-        _state = ReadonlyAttribute(jsObject: jsObject, name: "state")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _scrollRestoration = ReadWriteAttribute(jsObject: jsObject, name: Keys.scrollRestoration)
+        _state = ReadonlyAttribute(jsObject: jsObject, name: Keys.state)
         self.jsObject = jsObject
     }
 
@@ -25,22 +36,22 @@ public class History: JSBridgedClass {
     public var state: JSValue
 
     public func go(delta: Int32? = nil) {
-        _ = jsObject["go"]!(delta?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.go]!(delta?.jsValue() ?? .undefined)
     }
 
     public func back() {
-        _ = jsObject["back"]!()
+        _ = jsObject[Keys.back]!()
     }
 
     public func forward() {
-        _ = jsObject["forward"]!()
+        _ = jsObject[Keys.forward]!()
     }
 
     public func pushState(data: JSValue, unused: String, url: String? = nil) {
-        _ = jsObject["pushState"]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.pushState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
     }
 
     public func replaceState(data: JSValue, unused: String, url: String? = nil) {
-        _ = jsObject["replaceState"]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.replaceState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
     }
 }

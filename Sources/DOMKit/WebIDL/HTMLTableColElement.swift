@@ -6,13 +6,22 @@ import JavaScriptKit
 public class HTMLTableColElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableColElement.function! }
 
+    private enum Keys {
+        static let ch: JSString = "ch"
+        static let align: JSString = "align"
+        static let span: JSString = "span"
+        static let width: JSString = "width"
+        static let vAlign: JSString = "vAlign"
+        static let chOff: JSString = "chOff"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _span = ReadWriteAttribute(jsObject: jsObject, name: "span")
-        _align = ReadWriteAttribute(jsObject: jsObject, name: "align")
-        _ch = ReadWriteAttribute(jsObject: jsObject, name: "ch")
-        _chOff = ReadWriteAttribute(jsObject: jsObject, name: "chOff")
-        _vAlign = ReadWriteAttribute(jsObject: jsObject, name: "vAlign")
-        _width = ReadWriteAttribute(jsObject: jsObject, name: "width")
+        _span = ReadWriteAttribute(jsObject: jsObject, name: Keys.span)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
+        _ch = ReadWriteAttribute(jsObject: jsObject, name: Keys.ch)
+        _chOff = ReadWriteAttribute(jsObject: jsObject, name: Keys.chOff)
+        _vAlign = ReadWriteAttribute(jsObject: jsObject, name: Keys.vAlign)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
         super.init(unsafelyWrapping: jsObject)
     }
 

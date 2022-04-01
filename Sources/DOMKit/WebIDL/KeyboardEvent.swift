@@ -6,18 +6,38 @@ import JavaScriptKit
 public class KeyboardEvent: UIEvent {
     override public class var constructor: JSFunction { JSObject.global.KeyboardEvent.function! }
 
+    private enum Keys {
+        static let DOM_KEY_LOCATION_STANDARD: JSString = "DOM_KEY_LOCATION_STANDARD"
+        static let getModifierState: JSString = "getModifierState"
+        static let DOM_KEY_LOCATION_RIGHT: JSString = "DOM_KEY_LOCATION_RIGHT"
+        static let initKeyboardEvent: JSString = "initKeyboardEvent"
+        static let keyCode: JSString = "keyCode"
+        static let shiftKey: JSString = "shiftKey"
+        static let location: JSString = "location"
+        static let altKey: JSString = "altKey"
+        static let DOM_KEY_LOCATION_NUMPAD: JSString = "DOM_KEY_LOCATION_NUMPAD"
+        static let ctrlKey: JSString = "ctrlKey"
+        static let metaKey: JSString = "metaKey"
+        static let `repeat`: JSString = "repeat"
+        static let charCode: JSString = "charCode"
+        static let DOM_KEY_LOCATION_LEFT: JSString = "DOM_KEY_LOCATION_LEFT"
+        static let code: JSString = "code"
+        static let key: JSString = "key"
+        static let isComposing: JSString = "isComposing"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _key = ReadonlyAttribute(jsObject: jsObject, name: "key")
-        _code = ReadonlyAttribute(jsObject: jsObject, name: "code")
-        _location = ReadonlyAttribute(jsObject: jsObject, name: "location")
-        _ctrlKey = ReadonlyAttribute(jsObject: jsObject, name: "ctrlKey")
-        _shiftKey = ReadonlyAttribute(jsObject: jsObject, name: "shiftKey")
-        _altKey = ReadonlyAttribute(jsObject: jsObject, name: "altKey")
-        _metaKey = ReadonlyAttribute(jsObject: jsObject, name: "metaKey")
-        _repeat = ReadonlyAttribute(jsObject: jsObject, name: "repeat")
-        _isComposing = ReadonlyAttribute(jsObject: jsObject, name: "isComposing")
-        _charCode = ReadonlyAttribute(jsObject: jsObject, name: "charCode")
-        _keyCode = ReadonlyAttribute(jsObject: jsObject, name: "keyCode")
+        _key = ReadonlyAttribute(jsObject: jsObject, name: Keys.key)
+        _code = ReadonlyAttribute(jsObject: jsObject, name: Keys.code)
+        _location = ReadonlyAttribute(jsObject: jsObject, name: Keys.location)
+        _ctrlKey = ReadonlyAttribute(jsObject: jsObject, name: Keys.ctrlKey)
+        _shiftKey = ReadonlyAttribute(jsObject: jsObject, name: Keys.shiftKey)
+        _altKey = ReadonlyAttribute(jsObject: jsObject, name: Keys.altKey)
+        _metaKey = ReadonlyAttribute(jsObject: jsObject, name: Keys.metaKey)
+        _repeat = ReadonlyAttribute(jsObject: jsObject, name: Keys.repeat)
+        _isComposing = ReadonlyAttribute(jsObject: jsObject, name: Keys.isComposing)
+        _charCode = ReadonlyAttribute(jsObject: jsObject, name: Keys.charCode)
+        _keyCode = ReadonlyAttribute(jsObject: jsObject, name: Keys.keyCode)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -61,7 +81,7 @@ public class KeyboardEvent: UIEvent {
     public var isComposing: Bool
 
     public func getModifierState(keyArg: String) -> Bool {
-        jsObject["getModifierState"]!(keyArg.jsValue()).fromJSValue()!
+        jsObject[Keys.getModifierState]!(keyArg.jsValue()).fromJSValue()!
     }
 
     public func initKeyboardEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, keyArg: String? = nil, locationArg: UInt32? = nil, ctrlKey: Bool? = nil, altKey: Bool? = nil, shiftKey: Bool? = nil, metaKey: Bool? = nil) {
@@ -75,7 +95,7 @@ public class KeyboardEvent: UIEvent {
         let _arg7 = altKey?.jsValue() ?? .undefined
         let _arg8 = shiftKey?.jsValue() ?? .undefined
         let _arg9 = metaKey?.jsValue() ?? .undefined
-        _ = jsObject["initKeyboardEvent"]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9)
+        _ = jsObject[Keys.initKeyboardEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9)
     }
 
     @ReadonlyAttribute

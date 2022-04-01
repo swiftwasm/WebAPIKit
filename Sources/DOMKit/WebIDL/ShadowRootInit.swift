@@ -4,18 +4,24 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ShadowRootInit: BridgedDictionary {
+    private enum Keys {
+        static let slotAssignment: JSString = "slotAssignment"
+        static let delegatesFocus: JSString = "delegatesFocus"
+        static let mode: JSString = "mode"
+    }
+
     public convenience init(mode: ShadowRootMode, delegatesFocus: Bool, slotAssignment: SlotAssignmentMode) {
         let object = JSObject.global.Object.function!.new()
-        object["mode"] = mode.jsValue()
-        object["delegatesFocus"] = delegatesFocus.jsValue()
-        object["slotAssignment"] = slotAssignment.jsValue()
+        object[Keys.mode] = mode.jsValue()
+        object[Keys.delegatesFocus] = delegatesFocus.jsValue()
+        object[Keys.slotAssignment] = slotAssignment.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _mode = ReadWriteAttribute(jsObject: object, name: "mode")
-        _delegatesFocus = ReadWriteAttribute(jsObject: object, name: "delegatesFocus")
-        _slotAssignment = ReadWriteAttribute(jsObject: object, name: "slotAssignment")
+        _mode = ReadWriteAttribute(jsObject: object, name: Keys.mode)
+        _delegatesFocus = ReadWriteAttribute(jsObject: object, name: Keys.delegatesFocus)
+        _slotAssignment = ReadWriteAttribute(jsObject: object, name: Keys.slotAssignment)
         super.init(unsafelyWrapping: object)
     }
 

@@ -3,15 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let globalAlpha: JSString = "globalAlpha"
+    static let globalCompositeOperation: JSString = "globalCompositeOperation"
+}
+
 public protocol CanvasCompositing: JSBridgedClass {}
 public extension CanvasCompositing {
     var globalAlpha: Double {
-        get { ReadWriteAttribute["globalAlpha", in: jsObject] }
-        set { ReadWriteAttribute["globalAlpha", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.globalAlpha, in: jsObject] }
+        set { ReadWriteAttribute[Keys.globalAlpha, in: jsObject] = newValue }
     }
 
     var globalCompositeOperation: String {
-        get { ReadWriteAttribute["globalCompositeOperation", in: jsObject] }
-        set { ReadWriteAttribute["globalCompositeOperation", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.globalCompositeOperation, in: jsObject] }
+        set { ReadWriteAttribute[Keys.globalCompositeOperation, in: jsObject] = newValue }
     }
 }

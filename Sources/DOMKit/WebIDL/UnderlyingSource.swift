@@ -4,22 +4,30 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class UnderlyingSource: BridgedDictionary {
+    private enum Keys {
+        static let cancel: JSString = "cancel"
+        static let autoAllocateChunkSize: JSString = "autoAllocateChunkSize"
+        static let type: JSString = "type"
+        static let pull: JSString = "pull"
+        static let start: JSString = "start"
+    }
+
     public convenience init(start: @escaping UnderlyingSourceStartCallback, pull: @escaping UnderlyingSourcePullCallback, cancel: @escaping UnderlyingSourceCancelCallback, type: ReadableStreamType, autoAllocateChunkSize: UInt64) {
         let object = JSObject.global.Object.function!.new()
-        ClosureAttribute.Required1["start", in: object] = start
-        ClosureAttribute.Required1["pull", in: object] = pull
-        ClosureAttribute.Required1["cancel", in: object] = cancel
-        object["type"] = type.jsValue()
-        object["autoAllocateChunkSize"] = autoAllocateChunkSize.jsValue()
+        ClosureAttribute.Required1[Keys.start, in: object] = start
+        ClosureAttribute.Required1[Keys.pull, in: object] = pull
+        ClosureAttribute.Required1[Keys.cancel, in: object] = cancel
+        object[Keys.type] = type.jsValue()
+        object[Keys.autoAllocateChunkSize] = autoAllocateChunkSize.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _start = ClosureAttribute.Required1(jsObject: object, name: "start")
-        _pull = ClosureAttribute.Required1(jsObject: object, name: "pull")
-        _cancel = ClosureAttribute.Required1(jsObject: object, name: "cancel")
-        _type = ReadWriteAttribute(jsObject: object, name: "type")
-        _autoAllocateChunkSize = ReadWriteAttribute(jsObject: object, name: "autoAllocateChunkSize")
+        _start = ClosureAttribute.Required1(jsObject: object, name: Keys.start)
+        _pull = ClosureAttribute.Required1(jsObject: object, name: Keys.pull)
+        _cancel = ClosureAttribute.Required1(jsObject: object, name: Keys.cancel)
+        _type = ReadWriteAttribute(jsObject: object, name: Keys.type)
+        _autoAllocateChunkSize = ReadWriteAttribute(jsObject: object, name: Keys.autoAllocateChunkSize)
         super.init(unsafelyWrapping: object)
     }
 

@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum RequestRedirect: String, JSValueCompatible {
-    case follow
-    case error
-    case manual
+public enum RequestRedirect: JSString, JSValueCompatible {
+    case follow = "follow"
+    case error = "error"
+    case manual = "manual"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

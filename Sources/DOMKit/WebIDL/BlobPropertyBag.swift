@@ -4,16 +4,21 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BlobPropertyBag: BridgedDictionary {
+    private enum Keys {
+        static let type: JSString = "type"
+        static let endings: JSString = "endings"
+    }
+
     public convenience init(type: String, endings: EndingType) {
         let object = JSObject.global.Object.function!.new()
-        object["type"] = type.jsValue()
-        object["endings"] = endings.jsValue()
+        object[Keys.type] = type.jsValue()
+        object[Keys.endings] = endings.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _type = ReadWriteAttribute(jsObject: object, name: "type")
-        _endings = ReadWriteAttribute(jsObject: object, name: "endings")
+        _type = ReadWriteAttribute(jsObject: object, name: Keys.type)
+        _endings = ReadWriteAttribute(jsObject: object, name: Keys.endings)
         super.init(unsafelyWrapping: object)
     }
 

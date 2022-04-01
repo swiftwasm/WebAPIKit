@@ -6,8 +6,12 @@ import JavaScriptKit
 public class HTMLTitleElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTitleElement.function! }
 
+    private enum Keys {
+        static let text: JSString = "text"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _text = ReadWriteAttribute(jsObject: jsObject, name: "text")
+        _text = ReadWriteAttribute(jsObject: jsObject, name: Keys.text)
         super.init(unsafelyWrapping: jsObject)
     }
 

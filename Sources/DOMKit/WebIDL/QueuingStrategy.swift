@@ -4,16 +4,21 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class QueuingStrategy: BridgedDictionary {
+    private enum Keys {
+        static let highWaterMark: JSString = "highWaterMark"
+        static let size: JSString = "size"
+    }
+
     public convenience init(highWaterMark: Double, size: @escaping QueuingStrategySize) {
         let object = JSObject.global.Object.function!.new()
-        object["highWaterMark"] = highWaterMark.jsValue()
-        ClosureAttribute.Required1["size", in: object] = size
+        object[Keys.highWaterMark] = highWaterMark.jsValue()
+        ClosureAttribute.Required1[Keys.size, in: object] = size
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _highWaterMark = ReadWriteAttribute(jsObject: object, name: "highWaterMark")
-        _size = ClosureAttribute.Required1(jsObject: object, name: "size")
+        _highWaterMark = ReadWriteAttribute(jsObject: object, name: Keys.highWaterMark)
+        _size = ClosureAttribute.Required1(jsObject: object, name: Keys.size)
         super.init(unsafelyWrapping: object)
     }
 

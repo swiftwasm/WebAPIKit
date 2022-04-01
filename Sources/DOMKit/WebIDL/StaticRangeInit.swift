@@ -4,20 +4,27 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StaticRangeInit: BridgedDictionary {
+    private enum Keys {
+        static let endOffset: JSString = "endOffset"
+        static let endContainer: JSString = "endContainer"
+        static let startContainer: JSString = "startContainer"
+        static let startOffset: JSString = "startOffset"
+    }
+
     public convenience init(startContainer: Node, startOffset: UInt32, endContainer: Node, endOffset: UInt32) {
         let object = JSObject.global.Object.function!.new()
-        object["startContainer"] = startContainer.jsValue()
-        object["startOffset"] = startOffset.jsValue()
-        object["endContainer"] = endContainer.jsValue()
-        object["endOffset"] = endOffset.jsValue()
+        object[Keys.startContainer] = startContainer.jsValue()
+        object[Keys.startOffset] = startOffset.jsValue()
+        object[Keys.endContainer] = endContainer.jsValue()
+        object[Keys.endOffset] = endOffset.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _startContainer = ReadWriteAttribute(jsObject: object, name: "startContainer")
-        _startOffset = ReadWriteAttribute(jsObject: object, name: "startOffset")
-        _endContainer = ReadWriteAttribute(jsObject: object, name: "endContainer")
-        _endOffset = ReadWriteAttribute(jsObject: object, name: "endOffset")
+        _startContainer = ReadWriteAttribute(jsObject: object, name: Keys.startContainer)
+        _startOffset = ReadWriteAttribute(jsObject: object, name: Keys.startOffset)
+        _endContainer = ReadWriteAttribute(jsObject: object, name: Keys.endContainer)
+        _endOffset = ReadWriteAttribute(jsObject: object, name: Keys.endOffset)
         super.init(unsafelyWrapping: object)
     }
 

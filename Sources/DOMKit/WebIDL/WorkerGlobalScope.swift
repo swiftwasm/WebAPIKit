@@ -6,16 +6,29 @@ import JavaScriptKit
 public class WorkerGlobalScope: EventTarget, WindowOrWorkerGlobalScope {
     override public class var constructor: JSFunction { JSObject.global.WorkerGlobalScope.function! }
 
+    private enum Keys {
+        static let location: JSString = "location"
+        static let `self`: JSString = "self"
+        static let onunhandledrejection: JSString = "onunhandledrejection"
+        static let onerror: JSString = "onerror"
+        static let ononline: JSString = "ononline"
+        static let navigator: JSString = "navigator"
+        static let importScripts: JSString = "importScripts"
+        static let onlanguagechange: JSString = "onlanguagechange"
+        static let onoffline: JSString = "onoffline"
+        static let onrejectionhandled: JSString = "onrejectionhandled"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _self = ReadonlyAttribute(jsObject: jsObject, name: "self")
-        _location = ReadonlyAttribute(jsObject: jsObject, name: "location")
-        _navigator = ReadonlyAttribute(jsObject: jsObject, name: "navigator")
-        _onerror = ClosureAttribute.Optional5(jsObject: jsObject, name: "onerror")
-        _onlanguagechange = ClosureAttribute.Optional1(jsObject: jsObject, name: "onlanguagechange")
-        _onoffline = ClosureAttribute.Optional1(jsObject: jsObject, name: "onoffline")
-        _ononline = ClosureAttribute.Optional1(jsObject: jsObject, name: "ononline")
-        _onrejectionhandled = ClosureAttribute.Optional1(jsObject: jsObject, name: "onrejectionhandled")
-        _onunhandledrejection = ClosureAttribute.Optional1(jsObject: jsObject, name: "onunhandledrejection")
+        _self = ReadonlyAttribute(jsObject: jsObject, name: Keys.self)
+        _location = ReadonlyAttribute(jsObject: jsObject, name: Keys.location)
+        _navigator = ReadonlyAttribute(jsObject: jsObject, name: Keys.navigator)
+        _onerror = ClosureAttribute.Optional5(jsObject: jsObject, name: Keys.onerror)
+        _onlanguagechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onlanguagechange)
+        _onoffline = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onoffline)
+        _ononline = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.ononline)
+        _onrejectionhandled = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onrejectionhandled)
+        _onunhandledrejection = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onunhandledrejection)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -29,7 +42,7 @@ public class WorkerGlobalScope: EventTarget, WindowOrWorkerGlobalScope {
     public var navigator: WorkerNavigator
 
     public func importScripts(urls: String...) {
-        _ = jsObject["importScripts"]!(urls.jsValue())
+        _ = jsObject[Keys.importScripts]!(urls.jsValue())
     }
 
     @ClosureAttribute.Optional5

@@ -4,18 +4,24 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class InputEventInit: BridgedDictionary {
+    private enum Keys {
+        static let inputType: JSString = "inputType"
+        static let data: JSString = "data"
+        static let isComposing: JSString = "isComposing"
+    }
+
     public convenience init(data: String?, isComposing: Bool, inputType: String) {
         let object = JSObject.global.Object.function!.new()
-        object["data"] = data.jsValue()
-        object["isComposing"] = isComposing.jsValue()
-        object["inputType"] = inputType.jsValue()
+        object[Keys.data] = data.jsValue()
+        object[Keys.isComposing] = isComposing.jsValue()
+        object[Keys.inputType] = inputType.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _data = ReadWriteAttribute(jsObject: object, name: "data")
-        _isComposing = ReadWriteAttribute(jsObject: object, name: "isComposing")
-        _inputType = ReadWriteAttribute(jsObject: object, name: "inputType")
+        _data = ReadWriteAttribute(jsObject: object, name: Keys.data)
+        _isComposing = ReadWriteAttribute(jsObject: object, name: Keys.isComposing)
+        _inputType = ReadWriteAttribute(jsObject: object, name: Keys.inputType)
         super.init(unsafelyWrapping: object)
     }
 

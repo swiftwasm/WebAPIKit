@@ -6,9 +6,17 @@ import JavaScriptKit
 public class HTMLDialogElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLDialogElement.function! }
 
+    private enum Keys {
+        static let show: JSString = "show"
+        static let close: JSString = "close"
+        static let showModal: JSString = "showModal"
+        static let returnValue: JSString = "returnValue"
+        static let open: JSString = "open"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _open = ReadWriteAttribute(jsObject: jsObject, name: "open")
-        _returnValue = ReadWriteAttribute(jsObject: jsObject, name: "returnValue")
+        _open = ReadWriteAttribute(jsObject: jsObject, name: Keys.open)
+        _returnValue = ReadWriteAttribute(jsObject: jsObject, name: Keys.returnValue)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -23,14 +31,14 @@ public class HTMLDialogElement: HTMLElement {
     public var returnValue: String
 
     public func show() {
-        _ = jsObject["show"]!()
+        _ = jsObject[Keys.show]!()
     }
 
     public func showModal() {
-        _ = jsObject["showModal"]!()
+        _ = jsObject[Keys.showModal]!()
     }
 
     public func close(returnValue: String? = nil) {
-        _ = jsObject["close"]!(returnValue?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.close]!(returnValue?.jsValue() ?? .undefined)
     }
 }

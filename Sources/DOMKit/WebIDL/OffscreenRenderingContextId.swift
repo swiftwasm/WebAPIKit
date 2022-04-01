@@ -3,18 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum OffscreenRenderingContextId: String, JSValueCompatible {
+public enum OffscreenRenderingContextId: JSString, JSValueCompatible {
     case _2d = "2d"
-    case bitmaprenderer
-    case webgl
-    case webgl2
-    case webgpu
+    case bitmaprenderer = "bitmaprenderer"
+    case webgl = "webgl"
+    case webgl2 = "webgl2"
+    case webgpu = "webgpu"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

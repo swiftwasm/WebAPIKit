@@ -4,18 +4,24 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EventInit: BridgedDictionary {
+    private enum Keys {
+        static let bubbles: JSString = "bubbles"
+        static let cancelable: JSString = "cancelable"
+        static let composed: JSString = "composed"
+    }
+
     public convenience init(bubbles: Bool, cancelable: Bool, composed: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object["bubbles"] = bubbles.jsValue()
-        object["cancelable"] = cancelable.jsValue()
-        object["composed"] = composed.jsValue()
+        object[Keys.bubbles] = bubbles.jsValue()
+        object[Keys.cancelable] = cancelable.jsValue()
+        object[Keys.composed] = composed.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _bubbles = ReadWriteAttribute(jsObject: object, name: "bubbles")
-        _cancelable = ReadWriteAttribute(jsObject: object, name: "cancelable")
-        _composed = ReadWriteAttribute(jsObject: object, name: "composed")
+        _bubbles = ReadWriteAttribute(jsObject: object, name: Keys.bubbles)
+        _cancelable = ReadWriteAttribute(jsObject: object, name: Keys.cancelable)
+        _composed = ReadWriteAttribute(jsObject: object, name: Keys.composed)
         super.init(unsafelyWrapping: object)
     }
 

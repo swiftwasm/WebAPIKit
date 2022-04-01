@@ -3,15 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let imageSmoothingEnabled: JSString = "imageSmoothingEnabled"
+    static let imageSmoothingQuality: JSString = "imageSmoothingQuality"
+}
+
 public protocol CanvasImageSmoothing: JSBridgedClass {}
 public extension CanvasImageSmoothing {
     var imageSmoothingEnabled: Bool {
-        get { ReadWriteAttribute["imageSmoothingEnabled", in: jsObject] }
-        set { ReadWriteAttribute["imageSmoothingEnabled", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.imageSmoothingEnabled, in: jsObject] }
+        set { ReadWriteAttribute[Keys.imageSmoothingEnabled, in: jsObject] = newValue }
     }
 
     var imageSmoothingQuality: ImageSmoothingQuality {
-        get { ReadWriteAttribute["imageSmoothingQuality", in: jsObject] }
-        set { ReadWriteAttribute["imageSmoothingQuality", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.imageSmoothingQuality, in: jsObject] }
+        set { ReadWriteAttribute[Keys.imageSmoothingQuality, in: jsObject] = newValue }
     }
 }

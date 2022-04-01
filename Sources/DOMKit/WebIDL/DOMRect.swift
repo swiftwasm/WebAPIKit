@@ -6,11 +6,19 @@ import JavaScriptKit
 public class DOMRect: DOMRectReadOnly {
     override public class var constructor: JSFunction { JSObject.global.DOMRect.function! }
 
+    private enum Keys {
+        static let width: JSString = "width"
+        static let x: JSString = "x"
+        static let height: JSString = "height"
+        static let fromRect: JSString = "fromRect"
+        static let y: JSString = "y"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _x = ReadWriteAttribute(jsObject: jsObject, name: "x")
-        _y = ReadWriteAttribute(jsObject: jsObject, name: "y")
-        _width = ReadWriteAttribute(jsObject: jsObject, name: "width")
-        _height = ReadWriteAttribute(jsObject: jsObject, name: "height")
+        _x = ReadWriteAttribute(jsObject: jsObject, name: Keys.x)
+        _y = ReadWriteAttribute(jsObject: jsObject, name: Keys.y)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
         super.init(unsafelyWrapping: jsObject)
     }
 

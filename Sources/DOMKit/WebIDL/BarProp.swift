@@ -6,10 +6,14 @@ import JavaScriptKit
 public class BarProp: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.BarProp.function! }
 
+    private enum Keys {
+        static let visible: JSString = "visible"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _visible = ReadonlyAttribute(jsObject: jsObject, name: "visible")
+        _visible = ReadonlyAttribute(jsObject: jsObject, name: Keys.visible)
         self.jsObject = jsObject
     }
 

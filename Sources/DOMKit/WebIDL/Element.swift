@@ -6,17 +6,55 @@ import JavaScriptKit
 public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin {
     override public class var constructor: JSFunction { JSObject.global.Element.function! }
 
+    private enum Keys {
+        static let getAttribute: JSString = "getAttribute"
+        static let removeAttributeNS: JSString = "removeAttributeNS"
+        static let getAttributeNode: JSString = "getAttributeNode"
+        static let hasAttribute: JSString = "hasAttribute"
+        static let setAttributeNodeNS: JSString = "setAttributeNodeNS"
+        static let removeAttributeNode: JSString = "removeAttributeNode"
+        static let hasAttributes: JSString = "hasAttributes"
+        static let toggleAttribute: JSString = "toggleAttribute"
+        static let webkitMatchesSelector: JSString = "webkitMatchesSelector"
+        static let getElementsByTagName: JSString = "getElementsByTagName"
+        static let tagName: JSString = "tagName"
+        static let classList: JSString = "classList"
+        static let getAttributeNames: JSString = "getAttributeNames"
+        static let hasAttributeNS: JSString = "hasAttributeNS"
+        static let getAttributeNodeNS: JSString = "getAttributeNodeNS"
+        static let insertAdjacentElement: JSString = "insertAdjacentElement"
+        static let namespaceURI: JSString = "namespaceURI"
+        static let setAttributeNode: JSString = "setAttributeNode"
+        static let getElementsByTagNameNS: JSString = "getElementsByTagNameNS"
+        static let getElementsByClassName: JSString = "getElementsByClassName"
+        static let setAttribute: JSString = "setAttribute"
+        static let matches: JSString = "matches"
+        static let insertAdjacentText: JSString = "insertAdjacentText"
+        static let setAttributeNS: JSString = "setAttributeNS"
+        static let removeAttribute: JSString = "removeAttribute"
+        static let closest: JSString = "closest"
+        static let prefix: JSString = "prefix"
+        static let attachShadow: JSString = "attachShadow"
+        static let className: JSString = "className"
+        static let shadowRoot: JSString = "shadowRoot"
+        static let attributes: JSString = "attributes"
+        static let slot: JSString = "slot"
+        static let id: JSString = "id"
+        static let getAttributeNS: JSString = "getAttributeNS"
+        static let localName: JSString = "localName"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: "namespaceURI")
-        _prefix = ReadonlyAttribute(jsObject: jsObject, name: "prefix")
-        _localName = ReadonlyAttribute(jsObject: jsObject, name: "localName")
-        _tagName = ReadonlyAttribute(jsObject: jsObject, name: "tagName")
-        _id = ReadWriteAttribute(jsObject: jsObject, name: "id")
-        _className = ReadWriteAttribute(jsObject: jsObject, name: "className")
-        _classList = ReadonlyAttribute(jsObject: jsObject, name: "classList")
-        _slot = ReadWriteAttribute(jsObject: jsObject, name: "slot")
-        _attributes = ReadonlyAttribute(jsObject: jsObject, name: "attributes")
-        _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: "shadowRoot")
+        _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Keys.namespaceURI)
+        _prefix = ReadonlyAttribute(jsObject: jsObject, name: Keys.prefix)
+        _localName = ReadonlyAttribute(jsObject: jsObject, name: Keys.localName)
+        _tagName = ReadonlyAttribute(jsObject: jsObject, name: Keys.tagName)
+        _id = ReadWriteAttribute(jsObject: jsObject, name: Keys.id)
+        _className = ReadWriteAttribute(jsObject: jsObject, name: Keys.className)
+        _classList = ReadonlyAttribute(jsObject: jsObject, name: Keys.classList)
+        _slot = ReadWriteAttribute(jsObject: jsObject, name: Keys.slot)
+        _attributes = ReadonlyAttribute(jsObject: jsObject, name: Keys.attributes)
+        _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: Keys.shadowRoot)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -45,108 +83,108 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
     public var slot: String
 
     public func hasAttributes() -> Bool {
-        jsObject["hasAttributes"]!().fromJSValue()!
+        jsObject[Keys.hasAttributes]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var attributes: NamedNodeMap
 
     public func getAttributeNames() -> [String] {
-        jsObject["getAttributeNames"]!().fromJSValue()!
+        jsObject[Keys.getAttributeNames]!().fromJSValue()!
     }
 
     public func getAttribute(qualifiedName: String) -> String? {
-        jsObject["getAttribute"]!(qualifiedName.jsValue()).fromJSValue()!
+        jsObject[Keys.getAttribute]!(qualifiedName.jsValue()).fromJSValue()!
     }
 
     public func getAttributeNS(namespace: String?, localName: String) -> String? {
-        jsObject["getAttributeNS"]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        jsObject[Keys.getAttributeNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 
     public func setAttribute(qualifiedName: String, value: String) {
-        _ = jsObject["setAttribute"]!(qualifiedName.jsValue(), value.jsValue())
+        _ = jsObject[Keys.setAttribute]!(qualifiedName.jsValue(), value.jsValue())
     }
 
     public func setAttributeNS(namespace: String?, qualifiedName: String, value: String) {
-        _ = jsObject["setAttributeNS"]!(namespace.jsValue(), qualifiedName.jsValue(), value.jsValue())
+        _ = jsObject[Keys.setAttributeNS]!(namespace.jsValue(), qualifiedName.jsValue(), value.jsValue())
     }
 
     public func removeAttribute(qualifiedName: String) {
-        _ = jsObject["removeAttribute"]!(qualifiedName.jsValue())
+        _ = jsObject[Keys.removeAttribute]!(qualifiedName.jsValue())
     }
 
     public func removeAttributeNS(namespace: String?, localName: String) {
-        _ = jsObject["removeAttributeNS"]!(namespace.jsValue(), localName.jsValue())
+        _ = jsObject[Keys.removeAttributeNS]!(namespace.jsValue(), localName.jsValue())
     }
 
     public func toggleAttribute(qualifiedName: String, force: Bool? = nil) -> Bool {
-        jsObject["toggleAttribute"]!(qualifiedName.jsValue(), force?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.toggleAttribute]!(qualifiedName.jsValue(), force?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func hasAttribute(qualifiedName: String) -> Bool {
-        jsObject["hasAttribute"]!(qualifiedName.jsValue()).fromJSValue()!
+        jsObject[Keys.hasAttribute]!(qualifiedName.jsValue()).fromJSValue()!
     }
 
     public func hasAttributeNS(namespace: String?, localName: String) -> Bool {
-        jsObject["hasAttributeNS"]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        jsObject[Keys.hasAttributeNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 
     public func getAttributeNode(qualifiedName: String) -> Attr? {
-        jsObject["getAttributeNode"]!(qualifiedName.jsValue()).fromJSValue()!
+        jsObject[Keys.getAttributeNode]!(qualifiedName.jsValue()).fromJSValue()!
     }
 
     public func getAttributeNodeNS(namespace: String?, localName: String) -> Attr? {
-        jsObject["getAttributeNodeNS"]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        jsObject[Keys.getAttributeNodeNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 
     public func setAttributeNode(attr: Attr) -> Attr? {
-        jsObject["setAttributeNode"]!(attr.jsValue()).fromJSValue()!
+        jsObject[Keys.setAttributeNode]!(attr.jsValue()).fromJSValue()!
     }
 
     public func setAttributeNodeNS(attr: Attr) -> Attr? {
-        jsObject["setAttributeNodeNS"]!(attr.jsValue()).fromJSValue()!
+        jsObject[Keys.setAttributeNodeNS]!(attr.jsValue()).fromJSValue()!
     }
 
     public func removeAttributeNode(attr: Attr) -> Attr {
-        jsObject["removeAttributeNode"]!(attr.jsValue()).fromJSValue()!
+        jsObject[Keys.removeAttributeNode]!(attr.jsValue()).fromJSValue()!
     }
 
     public func attachShadow(init: ShadowRootInit) -> ShadowRoot {
-        jsObject["attachShadow"]!(`init`.jsValue()).fromJSValue()!
+        jsObject[Keys.attachShadow]!(`init`.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var shadowRoot: ShadowRoot?
 
     public func closest(selectors: String) -> Element? {
-        jsObject["closest"]!(selectors.jsValue()).fromJSValue()!
+        jsObject[Keys.closest]!(selectors.jsValue()).fromJSValue()!
     }
 
     public func matches(selectors: String) -> Bool {
-        jsObject["matches"]!(selectors.jsValue()).fromJSValue()!
+        jsObject[Keys.matches]!(selectors.jsValue()).fromJSValue()!
     }
 
     public func webkitMatchesSelector(selectors: String) -> Bool {
-        jsObject["webkitMatchesSelector"]!(selectors.jsValue()).fromJSValue()!
+        jsObject[Keys.webkitMatchesSelector]!(selectors.jsValue()).fromJSValue()!
     }
 
     public func getElementsByTagName(qualifiedName: String) -> HTMLCollection {
-        jsObject["getElementsByTagName"]!(qualifiedName.jsValue()).fromJSValue()!
+        jsObject[Keys.getElementsByTagName]!(qualifiedName.jsValue()).fromJSValue()!
     }
 
     public func getElementsByTagNameNS(namespace: String?, localName: String) -> HTMLCollection {
-        jsObject["getElementsByTagNameNS"]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        jsObject[Keys.getElementsByTagNameNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 
     public func getElementsByClassName(classNames: String) -> HTMLCollection {
-        jsObject["getElementsByClassName"]!(classNames.jsValue()).fromJSValue()!
+        jsObject[Keys.getElementsByClassName]!(classNames.jsValue()).fromJSValue()!
     }
 
     public func insertAdjacentElement(where: String, element: Element) -> Element? {
-        jsObject["insertAdjacentElement"]!(`where`.jsValue(), element.jsValue()).fromJSValue()!
+        jsObject[Keys.insertAdjacentElement]!(`where`.jsValue(), element.jsValue()).fromJSValue()!
     }
 
     public func insertAdjacentText(where: String, data: String) {
-        _ = jsObject["insertAdjacentText"]!(`where`.jsValue(), data.jsValue())
+        _ = jsObject[Keys.insertAdjacentText]!(`where`.jsValue(), data.jsValue())
     }
 }

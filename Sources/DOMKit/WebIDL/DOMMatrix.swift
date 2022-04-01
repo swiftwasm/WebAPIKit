@@ -6,29 +6,69 @@ import JavaScriptKit
 public class DOMMatrix: DOMMatrixReadOnly {
     override public class var constructor: JSFunction { JSObject.global.DOMMatrix.function! }
 
+    private enum Keys {
+        static let m24: JSString = "m24"
+        static let m22: JSString = "m22"
+        static let fromFloat32Array: JSString = "fromFloat32Array"
+        static let e: JSString = "e"
+        static let fromFloat64Array: JSString = "fromFloat64Array"
+        static let multiplySelf: JSString = "multiplySelf"
+        static let rotateAxisAngleSelf: JSString = "rotateAxisAngleSelf"
+        static let f: JSString = "f"
+        static let invertSelf: JSString = "invertSelf"
+        static let c: JSString = "c"
+        static let m11: JSString = "m11"
+        static let b: JSString = "b"
+        static let m43: JSString = "m43"
+        static let scaleSelf: JSString = "scaleSelf"
+        static let fromMatrix: JSString = "fromMatrix"
+        static let scale3dSelf: JSString = "scale3dSelf"
+        static let m41: JSString = "m41"
+        static let m33: JSString = "m33"
+        static let skewYSelf: JSString = "skewYSelf"
+        static let a: JSString = "a"
+        static let m31: JSString = "m31"
+        static let rotateSelf: JSString = "rotateSelf"
+        static let m13: JSString = "m13"
+        static let m34: JSString = "m34"
+        static let translateSelf: JSString = "translateSelf"
+        static let m21: JSString = "m21"
+        static let d: JSString = "d"
+        static let m42: JSString = "m42"
+        static let m23: JSString = "m23"
+        static let m32: JSString = "m32"
+        static let m12: JSString = "m12"
+        static let rotateFromVectorSelf: JSString = "rotateFromVectorSelf"
+        static let preMultiplySelf: JSString = "preMultiplySelf"
+        static let m14: JSString = "m14"
+        static let skewXSelf: JSString = "skewXSelf"
+        static let setMatrixValue: JSString = "setMatrixValue"
+        static let m44: JSString = "m44"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _a = ReadWriteAttribute(jsObject: jsObject, name: "a")
-        _b = ReadWriteAttribute(jsObject: jsObject, name: "b")
-        _c = ReadWriteAttribute(jsObject: jsObject, name: "c")
-        _d = ReadWriteAttribute(jsObject: jsObject, name: "d")
-        _e = ReadWriteAttribute(jsObject: jsObject, name: "e")
-        _f = ReadWriteAttribute(jsObject: jsObject, name: "f")
-        _m11 = ReadWriteAttribute(jsObject: jsObject, name: "m11")
-        _m12 = ReadWriteAttribute(jsObject: jsObject, name: "m12")
-        _m13 = ReadWriteAttribute(jsObject: jsObject, name: "m13")
-        _m14 = ReadWriteAttribute(jsObject: jsObject, name: "m14")
-        _m21 = ReadWriteAttribute(jsObject: jsObject, name: "m21")
-        _m22 = ReadWriteAttribute(jsObject: jsObject, name: "m22")
-        _m23 = ReadWriteAttribute(jsObject: jsObject, name: "m23")
-        _m24 = ReadWriteAttribute(jsObject: jsObject, name: "m24")
-        _m31 = ReadWriteAttribute(jsObject: jsObject, name: "m31")
-        _m32 = ReadWriteAttribute(jsObject: jsObject, name: "m32")
-        _m33 = ReadWriteAttribute(jsObject: jsObject, name: "m33")
-        _m34 = ReadWriteAttribute(jsObject: jsObject, name: "m34")
-        _m41 = ReadWriteAttribute(jsObject: jsObject, name: "m41")
-        _m42 = ReadWriteAttribute(jsObject: jsObject, name: "m42")
-        _m43 = ReadWriteAttribute(jsObject: jsObject, name: "m43")
-        _m44 = ReadWriteAttribute(jsObject: jsObject, name: "m44")
+        _a = ReadWriteAttribute(jsObject: jsObject, name: Keys.a)
+        _b = ReadWriteAttribute(jsObject: jsObject, name: Keys.b)
+        _c = ReadWriteAttribute(jsObject: jsObject, name: Keys.c)
+        _d = ReadWriteAttribute(jsObject: jsObject, name: Keys.d)
+        _e = ReadWriteAttribute(jsObject: jsObject, name: Keys.e)
+        _f = ReadWriteAttribute(jsObject: jsObject, name: Keys.f)
+        _m11 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m11)
+        _m12 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m12)
+        _m13 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m13)
+        _m14 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m14)
+        _m21 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m21)
+        _m22 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m22)
+        _m23 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m23)
+        _m24 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m24)
+        _m31 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m31)
+        _m32 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m32)
+        _m33 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m33)
+        _m34 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m34)
+        _m41 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m41)
+        _m42 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m42)
+        _m43 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m43)
+        _m44 = ReadWriteAttribute(jsObject: jsObject, name: Keys.m44)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -178,15 +218,15 @@ public class DOMMatrix: DOMMatrixReadOnly {
     }
 
     public func multiplySelf(other: DOMMatrixInit? = nil) -> Self {
-        jsObject["multiplySelf"]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.multiplySelf]!(other?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func preMultiplySelf(other: DOMMatrixInit? = nil) -> Self {
-        jsObject["preMultiplySelf"]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.preMultiplySelf]!(other?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func translateSelf(tx: Double? = nil, ty: Double? = nil, tz: Double? = nil) -> Self {
-        jsObject["translateSelf"]!(tx?.jsValue() ?? .undefined, ty?.jsValue() ?? .undefined, tz?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.translateSelf]!(tx?.jsValue() ?? .undefined, ty?.jsValue() ?? .undefined, tz?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func scaleSelf(scaleX: Double? = nil, scaleY: Double? = nil, scaleZ: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> Self {
@@ -196,38 +236,38 @@ public class DOMMatrix: DOMMatrixReadOnly {
         let _arg3 = originX?.jsValue() ?? .undefined
         let _arg4 = originY?.jsValue() ?? .undefined
         let _arg5 = originZ?.jsValue() ?? .undefined
-        return jsObject["scaleSelf"]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        return jsObject[Keys.scaleSelf]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
     }
 
     public func scale3dSelf(scale: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> Self {
-        jsObject["scale3dSelf"]!(scale?.jsValue() ?? .undefined, originX?.jsValue() ?? .undefined, originY?.jsValue() ?? .undefined, originZ?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.scale3dSelf]!(scale?.jsValue() ?? .undefined, originX?.jsValue() ?? .undefined, originY?.jsValue() ?? .undefined, originZ?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func rotateSelf(rotX: Double? = nil, rotY: Double? = nil, rotZ: Double? = nil) -> Self {
-        jsObject["rotateSelf"]!(rotX?.jsValue() ?? .undefined, rotY?.jsValue() ?? .undefined, rotZ?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.rotateSelf]!(rotX?.jsValue() ?? .undefined, rotY?.jsValue() ?? .undefined, rotZ?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func rotateFromVectorSelf(x: Double? = nil, y: Double? = nil) -> Self {
-        jsObject["rotateFromVectorSelf"]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.rotateFromVectorSelf]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func rotateAxisAngleSelf(x: Double? = nil, y: Double? = nil, z: Double? = nil, angle: Double? = nil) -> Self {
-        jsObject["rotateAxisAngleSelf"]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, angle?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.rotateAxisAngleSelf]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, angle?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func skewXSelf(sx: Double? = nil) -> Self {
-        jsObject["skewXSelf"]!(sx?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.skewXSelf]!(sx?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func skewYSelf(sy: Double? = nil) -> Self {
-        jsObject["skewYSelf"]!(sy?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.skewYSelf]!(sy?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func invertSelf() -> Self {
-        jsObject["invertSelf"]!().fromJSValue()!
+        jsObject[Keys.invertSelf]!().fromJSValue()!
     }
 
     public func setMatrixValue(transformList: String) -> Self {
-        jsObject["setMatrixValue"]!(transformList.jsValue()).fromJSValue()!
+        jsObject[Keys.setMatrixValue]!(transformList.jsValue()).fromJSValue()!
     }
 }

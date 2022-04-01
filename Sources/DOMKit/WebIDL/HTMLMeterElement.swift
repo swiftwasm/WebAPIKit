@@ -6,14 +6,24 @@ import JavaScriptKit
 public class HTMLMeterElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLMeterElement.function! }
 
+    private enum Keys {
+        static let optimum: JSString = "optimum"
+        static let value: JSString = "value"
+        static let min: JSString = "min"
+        static let low: JSString = "low"
+        static let max: JSString = "max"
+        static let high: JSString = "high"
+        static let labels: JSString = "labels"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
-        _min = ReadWriteAttribute(jsObject: jsObject, name: "min")
-        _max = ReadWriteAttribute(jsObject: jsObject, name: "max")
-        _low = ReadWriteAttribute(jsObject: jsObject, name: "low")
-        _high = ReadWriteAttribute(jsObject: jsObject, name: "high")
-        _optimum = ReadWriteAttribute(jsObject: jsObject, name: "optimum")
-        _labels = ReadonlyAttribute(jsObject: jsObject, name: "labels")
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
+        _min = ReadWriteAttribute(jsObject: jsObject, name: Keys.min)
+        _max = ReadWriteAttribute(jsObject: jsObject, name: Keys.max)
+        _low = ReadWriteAttribute(jsObject: jsObject, name: Keys.low)
+        _high = ReadWriteAttribute(jsObject: jsObject, name: Keys.high)
+        _optimum = ReadWriteAttribute(jsObject: jsObject, name: Keys.optimum)
+        _labels = ReadonlyAttribute(jsObject: jsObject, name: Keys.labels)
         super.init(unsafelyWrapping: jsObject)
     }
 

@@ -6,8 +6,12 @@ import JavaScriptKit
 public class DragEvent: MouseEvent {
     override public class var constructor: JSFunction { JSObject.global.DragEvent.function! }
 
+    private enum Keys {
+        static let dataTransfer: JSString = "dataTransfer"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _dataTransfer = ReadonlyAttribute(jsObject: jsObject, name: "dataTransfer")
+        _dataTransfer = ReadonlyAttribute(jsObject: jsObject, name: Keys.dataTransfer)
         super.init(unsafelyWrapping: jsObject)
     }
 

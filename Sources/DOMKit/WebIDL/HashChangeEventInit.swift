@@ -4,16 +4,21 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HashChangeEventInit: BridgedDictionary {
+    private enum Keys {
+        static let oldURL: JSString = "oldURL"
+        static let newURL: JSString = "newURL"
+    }
+
     public convenience init(oldURL: String, newURL: String) {
         let object = JSObject.global.Object.function!.new()
-        object["oldURL"] = oldURL.jsValue()
-        object["newURL"] = newURL.jsValue()
+        object[Keys.oldURL] = oldURL.jsValue()
+        object[Keys.newURL] = newURL.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _oldURL = ReadWriteAttribute(jsObject: object, name: "oldURL")
-        _newURL = ReadWriteAttribute(jsObject: object, name: "newURL")
+        _oldURL = ReadWriteAttribute(jsObject: object, name: Keys.oldURL)
+        _newURL = ReadWriteAttribute(jsObject: object, name: Keys.newURL)
         super.init(unsafelyWrapping: object)
     }
 

@@ -6,6 +6,10 @@ import JavaScriptKit
 public class Path2D: JSBridgedClass, CanvasPath {
     public class var constructor: JSFunction { JSObject.global.Path2D.function! }
 
+    private enum Keys {
+        static let addPath: JSString = "addPath"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -17,6 +21,6 @@ public class Path2D: JSBridgedClass, CanvasPath {
     }
 
     public func addPath(path: Path2D, transform: DOMMatrix2DInit? = nil) {
-        _ = jsObject["addPath"]!(path.jsValue(), transform?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.addPath]!(path.jsValue(), transform?.jsValue() ?? .undefined)
     }
 }

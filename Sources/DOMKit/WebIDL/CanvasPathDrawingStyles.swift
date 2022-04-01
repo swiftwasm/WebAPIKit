@@ -3,38 +3,48 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let lineCap: JSString = "lineCap"
+    static let getLineDash: JSString = "getLineDash"
+    static let lineJoin: JSString = "lineJoin"
+    static let miterLimit: JSString = "miterLimit"
+    static let setLineDash: JSString = "setLineDash"
+    static let lineWidth: JSString = "lineWidth"
+    static let lineDashOffset: JSString = "lineDashOffset"
+}
+
 public protocol CanvasPathDrawingStyles: JSBridgedClass {}
 public extension CanvasPathDrawingStyles {
     var lineWidth: Double {
-        get { ReadWriteAttribute["lineWidth", in: jsObject] }
-        set { ReadWriteAttribute["lineWidth", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.lineWidth, in: jsObject] }
+        set { ReadWriteAttribute[Keys.lineWidth, in: jsObject] = newValue }
     }
 
     var lineCap: CanvasLineCap {
-        get { ReadWriteAttribute["lineCap", in: jsObject] }
-        set { ReadWriteAttribute["lineCap", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.lineCap, in: jsObject] }
+        set { ReadWriteAttribute[Keys.lineCap, in: jsObject] = newValue }
     }
 
     var lineJoin: CanvasLineJoin {
-        get { ReadWriteAttribute["lineJoin", in: jsObject] }
-        set { ReadWriteAttribute["lineJoin", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.lineJoin, in: jsObject] }
+        set { ReadWriteAttribute[Keys.lineJoin, in: jsObject] = newValue }
     }
 
     var miterLimit: Double {
-        get { ReadWriteAttribute["miterLimit", in: jsObject] }
-        set { ReadWriteAttribute["miterLimit", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.miterLimit, in: jsObject] }
+        set { ReadWriteAttribute[Keys.miterLimit, in: jsObject] = newValue }
     }
 
     func setLineDash(segments: [Double]) {
-        _ = jsObject["setLineDash"]!(segments.jsValue())
+        _ = jsObject[Keys.setLineDash]!(segments.jsValue())
     }
 
     func getLineDash() -> [Double] {
-        jsObject["getLineDash"]!().fromJSValue()!
+        jsObject[Keys.getLineDash]!().fromJSValue()!
     }
 
     var lineDashOffset: Double {
-        get { ReadWriteAttribute["lineDashOffset", in: jsObject] }
-        set { ReadWriteAttribute["lineDashOffset", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.lineDashOffset, in: jsObject] }
+        set { ReadWriteAttribute[Keys.lineDashOffset, in: jsObject] = newValue }
     }
 }

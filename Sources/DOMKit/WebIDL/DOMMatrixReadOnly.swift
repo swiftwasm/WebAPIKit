@@ -6,33 +6,80 @@ import JavaScriptKit
 public class DOMMatrixReadOnly: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMMatrixReadOnly.function! }
 
+    private enum Keys {
+        static let a: JSString = "a"
+        static let translate: JSString = "translate"
+        static let skewX: JSString = "skewX"
+        static let m23: JSString = "m23"
+        static let d: JSString = "d"
+        static let m43: JSString = "m43"
+        static let rotate: JSString = "rotate"
+        static let m14: JSString = "m14"
+        static let m24: JSString = "m24"
+        static let isIdentity: JSString = "isIdentity"
+        static let flipX: JSString = "flipX"
+        static let m34: JSString = "m34"
+        static let toFloat32Array: JSString = "toFloat32Array"
+        static let fromFloat32Array: JSString = "fromFloat32Array"
+        static let toJSON: JSString = "toJSON"
+        static let c: JSString = "c"
+        static let m31: JSString = "m31"
+        static let m13: JSString = "m13"
+        static let multiply: JSString = "multiply"
+        static let m32: JSString = "m32"
+        static let rotateFromVector: JSString = "rotateFromVector"
+        static let scale: JSString = "scale"
+        static let flipY: JSString = "flipY"
+        static let m33: JSString = "m33"
+        static let m22: JSString = "m22"
+        static let m12: JSString = "m12"
+        static let m41: JSString = "m41"
+        static let is2D: JSString = "is2D"
+        static let scaleNonUniform: JSString = "scaleNonUniform"
+        static let scale3d: JSString = "scale3d"
+        static let rotateAxisAngle: JSString = "rotateAxisAngle"
+        static let skewY: JSString = "skewY"
+        static let inverse: JSString = "inverse"
+        static let m44: JSString = "m44"
+        static let transformPoint: JSString = "transformPoint"
+        static let e: JSString = "e"
+        static let toFloat64Array: JSString = "toFloat64Array"
+        static let fromFloat64Array: JSString = "fromFloat64Array"
+        static let m21: JSString = "m21"
+        static let fromMatrix: JSString = "fromMatrix"
+        static let b: JSString = "b"
+        static let f: JSString = "f"
+        static let m42: JSString = "m42"
+        static let m11: JSString = "m11"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _a = ReadonlyAttribute(jsObject: jsObject, name: "a")
-        _b = ReadonlyAttribute(jsObject: jsObject, name: "b")
-        _c = ReadonlyAttribute(jsObject: jsObject, name: "c")
-        _d = ReadonlyAttribute(jsObject: jsObject, name: "d")
-        _e = ReadonlyAttribute(jsObject: jsObject, name: "e")
-        _f = ReadonlyAttribute(jsObject: jsObject, name: "f")
-        _m11 = ReadonlyAttribute(jsObject: jsObject, name: "m11")
-        _m12 = ReadonlyAttribute(jsObject: jsObject, name: "m12")
-        _m13 = ReadonlyAttribute(jsObject: jsObject, name: "m13")
-        _m14 = ReadonlyAttribute(jsObject: jsObject, name: "m14")
-        _m21 = ReadonlyAttribute(jsObject: jsObject, name: "m21")
-        _m22 = ReadonlyAttribute(jsObject: jsObject, name: "m22")
-        _m23 = ReadonlyAttribute(jsObject: jsObject, name: "m23")
-        _m24 = ReadonlyAttribute(jsObject: jsObject, name: "m24")
-        _m31 = ReadonlyAttribute(jsObject: jsObject, name: "m31")
-        _m32 = ReadonlyAttribute(jsObject: jsObject, name: "m32")
-        _m33 = ReadonlyAttribute(jsObject: jsObject, name: "m33")
-        _m34 = ReadonlyAttribute(jsObject: jsObject, name: "m34")
-        _m41 = ReadonlyAttribute(jsObject: jsObject, name: "m41")
-        _m42 = ReadonlyAttribute(jsObject: jsObject, name: "m42")
-        _m43 = ReadonlyAttribute(jsObject: jsObject, name: "m43")
-        _m44 = ReadonlyAttribute(jsObject: jsObject, name: "m44")
-        _is2D = ReadonlyAttribute(jsObject: jsObject, name: "is2D")
-        _isIdentity = ReadonlyAttribute(jsObject: jsObject, name: "isIdentity")
+        _a = ReadonlyAttribute(jsObject: jsObject, name: Keys.a)
+        _b = ReadonlyAttribute(jsObject: jsObject, name: Keys.b)
+        _c = ReadonlyAttribute(jsObject: jsObject, name: Keys.c)
+        _d = ReadonlyAttribute(jsObject: jsObject, name: Keys.d)
+        _e = ReadonlyAttribute(jsObject: jsObject, name: Keys.e)
+        _f = ReadonlyAttribute(jsObject: jsObject, name: Keys.f)
+        _m11 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m11)
+        _m12 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m12)
+        _m13 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m13)
+        _m14 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m14)
+        _m21 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m21)
+        _m22 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m22)
+        _m23 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m23)
+        _m24 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m24)
+        _m31 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m31)
+        _m32 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m32)
+        _m33 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m33)
+        _m34 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m34)
+        _m41 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m41)
+        _m42 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m42)
+        _m43 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m43)
+        _m44 = ReadonlyAttribute(jsObject: jsObject, name: Keys.m44)
+        _is2D = ReadonlyAttribute(jsObject: jsObject, name: Keys.is2D)
+        _isIdentity = ReadonlyAttribute(jsObject: jsObject, name: Keys.isIdentity)
         self.jsObject = jsObject
     }
 
@@ -41,15 +88,15 @@ public class DOMMatrixReadOnly: JSBridgedClass {
     }
 
     public static func fromMatrix(other: DOMMatrixInit? = nil) -> Self {
-        constructor["fromMatrix"]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        constructor[Keys.fromMatrix]!(other?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public static func fromFloat32Array(array32: Float32Array) -> Self {
-        constructor["fromFloat32Array"]!(array32.jsValue()).fromJSValue()!
+        constructor[Keys.fromFloat32Array]!(array32.jsValue()).fromJSValue()!
     }
 
     public static func fromFloat64Array(array64: Float64Array) -> Self {
-        constructor["fromFloat64Array"]!(array64.jsValue()).fromJSValue()!
+        constructor[Keys.fromFloat64Array]!(array64.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -125,7 +172,7 @@ public class DOMMatrixReadOnly: JSBridgedClass {
     public var isIdentity: Bool
 
     public func translate(tx: Double? = nil, ty: Double? = nil, tz: Double? = nil) -> DOMMatrix {
-        jsObject["translate"]!(tx?.jsValue() ?? .undefined, ty?.jsValue() ?? .undefined, tz?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.translate]!(tx?.jsValue() ?? .undefined, ty?.jsValue() ?? .undefined, tz?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func scale(scaleX: Double? = nil, scaleY: Double? = nil, scaleZ: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> DOMMatrix {
@@ -135,70 +182,70 @@ public class DOMMatrixReadOnly: JSBridgedClass {
         let _arg3 = originX?.jsValue() ?? .undefined
         let _arg4 = originY?.jsValue() ?? .undefined
         let _arg5 = originZ?.jsValue() ?? .undefined
-        return jsObject["scale"]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        return jsObject[Keys.scale]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
     }
 
     public func scaleNonUniform(scaleX: Double? = nil, scaleY: Double? = nil) -> DOMMatrix {
-        jsObject["scaleNonUniform"]!(scaleX?.jsValue() ?? .undefined, scaleY?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.scaleNonUniform]!(scaleX?.jsValue() ?? .undefined, scaleY?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func scale3d(scale: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> DOMMatrix {
-        jsObject["scale3d"]!(scale?.jsValue() ?? .undefined, originX?.jsValue() ?? .undefined, originY?.jsValue() ?? .undefined, originZ?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.scale3d]!(scale?.jsValue() ?? .undefined, originX?.jsValue() ?? .undefined, originY?.jsValue() ?? .undefined, originZ?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func rotate(rotX: Double? = nil, rotY: Double? = nil, rotZ: Double? = nil) -> DOMMatrix {
-        jsObject["rotate"]!(rotX?.jsValue() ?? .undefined, rotY?.jsValue() ?? .undefined, rotZ?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.rotate]!(rotX?.jsValue() ?? .undefined, rotY?.jsValue() ?? .undefined, rotZ?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func rotateFromVector(x: Double? = nil, y: Double? = nil) -> DOMMatrix {
-        jsObject["rotateFromVector"]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.rotateFromVector]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func rotateAxisAngle(x: Double? = nil, y: Double? = nil, z: Double? = nil, angle: Double? = nil) -> DOMMatrix {
-        jsObject["rotateAxisAngle"]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, angle?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.rotateAxisAngle]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, angle?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func skewX(sx: Double? = nil) -> DOMMatrix {
-        jsObject["skewX"]!(sx?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.skewX]!(sx?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func skewY(sy: Double? = nil) -> DOMMatrix {
-        jsObject["skewY"]!(sy?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.skewY]!(sy?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func multiply(other: DOMMatrixInit? = nil) -> DOMMatrix {
-        jsObject["multiply"]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.multiply]!(other?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func flipX() -> DOMMatrix {
-        jsObject["flipX"]!().fromJSValue()!
+        jsObject[Keys.flipX]!().fromJSValue()!
     }
 
     public func flipY() -> DOMMatrix {
-        jsObject["flipY"]!().fromJSValue()!
+        jsObject[Keys.flipY]!().fromJSValue()!
     }
 
     public func inverse() -> DOMMatrix {
-        jsObject["inverse"]!().fromJSValue()!
+        jsObject[Keys.inverse]!().fromJSValue()!
     }
 
     public func transformPoint(point: DOMPointInit? = nil) -> DOMPoint {
-        jsObject["transformPoint"]!(point?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.transformPoint]!(point?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func toFloat32Array() -> Float32Array {
-        jsObject["toFloat32Array"]!().fromJSValue()!
+        jsObject[Keys.toFloat32Array]!().fromJSValue()!
     }
 
     public func toFloat64Array() -> Float64Array {
-        jsObject["toFloat64Array"]!().fromJSValue()!
+        jsObject[Keys.toFloat64Array]!().fromJSValue()!
     }
 
     public var description: String {
-        jsObject["toString"]!().fromJSValue()!
+        jsObject[Strings.toString]!().fromJSValue()!
     }
 
     public func toJSON() -> JSObject {
-        jsObject["toJSON"]!().fromJSValue()!
+        jsObject[Keys.toJSON]!().fromJSValue()!
     }
 }

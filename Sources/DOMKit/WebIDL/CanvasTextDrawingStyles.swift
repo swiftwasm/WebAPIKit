@@ -3,55 +3,68 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let textBaseline: JSString = "textBaseline"
+    static let font: JSString = "font"
+    static let direction: JSString = "direction"
+    static let letterSpacing: JSString = "letterSpacing"
+    static let textAlign: JSString = "textAlign"
+    static let fontKerning: JSString = "fontKerning"
+    static let fontStretch: JSString = "fontStretch"
+    static let textRendering: JSString = "textRendering"
+    static let wordSpacing: JSString = "wordSpacing"
+    static let fontVariantCaps: JSString = "fontVariantCaps"
+}
+
 public protocol CanvasTextDrawingStyles: JSBridgedClass {}
 public extension CanvasTextDrawingStyles {
     var font: String {
-        get { ReadWriteAttribute["font", in: jsObject] }
-        set { ReadWriteAttribute["font", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.font, in: jsObject] }
+        set { ReadWriteAttribute[Keys.font, in: jsObject] = newValue }
     }
 
     var textAlign: CanvasTextAlign {
-        get { ReadWriteAttribute["textAlign", in: jsObject] }
-        set { ReadWriteAttribute["textAlign", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.textAlign, in: jsObject] }
+        set { ReadWriteAttribute[Keys.textAlign, in: jsObject] = newValue }
     }
 
     var textBaseline: CanvasTextBaseline {
-        get { ReadWriteAttribute["textBaseline", in: jsObject] }
-        set { ReadWriteAttribute["textBaseline", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.textBaseline, in: jsObject] }
+        set { ReadWriteAttribute[Keys.textBaseline, in: jsObject] = newValue }
     }
 
     var direction: CanvasDirection {
-        get { ReadWriteAttribute["direction", in: jsObject] }
-        set { ReadWriteAttribute["direction", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.direction, in: jsObject] }
+        set { ReadWriteAttribute[Keys.direction, in: jsObject] = newValue }
     }
 
     var letterSpacing: String {
-        get { ReadWriteAttribute["letterSpacing", in: jsObject] }
-        set { ReadWriteAttribute["letterSpacing", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.letterSpacing, in: jsObject] }
+        set { ReadWriteAttribute[Keys.letterSpacing, in: jsObject] = newValue }
     }
 
     var fontKerning: CanvasFontKerning {
-        get { ReadWriteAttribute["fontKerning", in: jsObject] }
-        set { ReadWriteAttribute["fontKerning", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.fontKerning, in: jsObject] }
+        set { ReadWriteAttribute[Keys.fontKerning, in: jsObject] = newValue }
     }
 
     var fontStretch: CanvasFontStretch {
-        get { ReadWriteAttribute["fontStretch", in: jsObject] }
-        set { ReadWriteAttribute["fontStretch", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.fontStretch, in: jsObject] }
+        set { ReadWriteAttribute[Keys.fontStretch, in: jsObject] = newValue }
     }
 
     var fontVariantCaps: CanvasFontVariantCaps {
-        get { ReadWriteAttribute["fontVariantCaps", in: jsObject] }
-        set { ReadWriteAttribute["fontVariantCaps", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.fontVariantCaps, in: jsObject] }
+        set { ReadWriteAttribute[Keys.fontVariantCaps, in: jsObject] = newValue }
     }
 
     var textRendering: CanvasTextRendering {
-        get { ReadWriteAttribute["textRendering", in: jsObject] }
-        set { ReadWriteAttribute["textRendering", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.textRendering, in: jsObject] }
+        set { ReadWriteAttribute[Keys.textRendering, in: jsObject] = newValue }
     }
 
     var wordSpacing: String {
-        get { ReadWriteAttribute["wordSpacing", in: jsObject] }
-        set { ReadWriteAttribute["wordSpacing", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.wordSpacing, in: jsObject] }
+        set { ReadWriteAttribute[Keys.wordSpacing, in: jsObject] = newValue }
     }
 }

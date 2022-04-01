@@ -6,17 +6,30 @@ import JavaScriptKit
 public class HTMLFrameElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLFrameElement.function! }
 
+    private enum Keys {
+        static let contentWindow: JSString = "contentWindow"
+        static let src: JSString = "src"
+        static let name: JSString = "name"
+        static let scrolling: JSString = "scrolling"
+        static let frameBorder: JSString = "frameBorder"
+        static let marginHeight: JSString = "marginHeight"
+        static let longDesc: JSString = "longDesc"
+        static let marginWidth: JSString = "marginWidth"
+        static let noResize: JSString = "noResize"
+        static let contentDocument: JSString = "contentDocument"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadWriteAttribute(jsObject: jsObject, name: "name")
-        _scrolling = ReadWriteAttribute(jsObject: jsObject, name: "scrolling")
-        _src = ReadWriteAttribute(jsObject: jsObject, name: "src")
-        _frameBorder = ReadWriteAttribute(jsObject: jsObject, name: "frameBorder")
-        _longDesc = ReadWriteAttribute(jsObject: jsObject, name: "longDesc")
-        _noResize = ReadWriteAttribute(jsObject: jsObject, name: "noResize")
-        _contentDocument = ReadonlyAttribute(jsObject: jsObject, name: "contentDocument")
-        _contentWindow = ReadonlyAttribute(jsObject: jsObject, name: "contentWindow")
-        _marginHeight = ReadWriteAttribute(jsObject: jsObject, name: "marginHeight")
-        _marginWidth = ReadWriteAttribute(jsObject: jsObject, name: "marginWidth")
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
+        _scrolling = ReadWriteAttribute(jsObject: jsObject, name: Keys.scrolling)
+        _src = ReadWriteAttribute(jsObject: jsObject, name: Keys.src)
+        _frameBorder = ReadWriteAttribute(jsObject: jsObject, name: Keys.frameBorder)
+        _longDesc = ReadWriteAttribute(jsObject: jsObject, name: Keys.longDesc)
+        _noResize = ReadWriteAttribute(jsObject: jsObject, name: Keys.noResize)
+        _contentDocument = ReadonlyAttribute(jsObject: jsObject, name: Keys.contentDocument)
+        _contentWindow = ReadonlyAttribute(jsObject: jsObject, name: Keys.contentWindow)
+        _marginHeight = ReadWriteAttribute(jsObject: jsObject, name: Keys.marginHeight)
+        _marginWidth = ReadWriteAttribute(jsObject: jsObject, name: Keys.marginWidth)
         super.init(unsafelyWrapping: jsObject)
     }
 

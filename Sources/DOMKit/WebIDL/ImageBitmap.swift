@@ -6,11 +6,17 @@ import JavaScriptKit
 public class ImageBitmap: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ImageBitmap.function! }
 
+    private enum Keys {
+        static let close: JSString = "close"
+        static let width: JSString = "width"
+        static let height: JSString = "height"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _width = ReadonlyAttribute(jsObject: jsObject, name: "width")
-        _height = ReadonlyAttribute(jsObject: jsObject, name: "height")
+        _width = ReadonlyAttribute(jsObject: jsObject, name: Keys.width)
+        _height = ReadonlyAttribute(jsObject: jsObject, name: Keys.height)
         self.jsObject = jsObject
     }
 
@@ -21,6 +27,6 @@ public class ImageBitmap: JSBridgedClass {
     public var height: UInt32
 
     public func close() {
-        _ = jsObject["close"]!()
+        _ = jsObject[Keys.close]!()
     }
 }

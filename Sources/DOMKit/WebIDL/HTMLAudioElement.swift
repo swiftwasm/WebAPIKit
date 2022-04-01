@@ -6,6 +6,8 @@ import JavaScriptKit
 public class HTMLAudioElement: HTMLMediaElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLAudioElement.function! }
 
+    private enum Keys {}
+
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

@@ -6,8 +6,12 @@ import JavaScriptKit
 public class HTMLDataListElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLDataListElement.function! }
 
+    private enum Keys {
+        static let options: JSString = "options"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _options = ReadonlyAttribute(jsObject: jsObject, name: "options")
+        _options = ReadonlyAttribute(jsObject: jsObject, name: Keys.options)
         super.init(unsafelyWrapping: jsObject)
     }
 

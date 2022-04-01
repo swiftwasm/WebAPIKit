@@ -6,16 +6,38 @@ import JavaScriptKit
 public class XPathResult: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.XPathResult.function! }
 
+    private enum Keys {
+        static let FIRST_ORDERED_NODE_TYPE: JSString = "FIRST_ORDERED_NODE_TYPE"
+        static let snapshotItem: JSString = "snapshotItem"
+        static let UNORDERED_NODE_SNAPSHOT_TYPE: JSString = "UNORDERED_NODE_SNAPSHOT_TYPE"
+        static let STRING_TYPE: JSString = "STRING_TYPE"
+        static let ORDERED_NODE_SNAPSHOT_TYPE: JSString = "ORDERED_NODE_SNAPSHOT_TYPE"
+        static let invalidIteratorState: JSString = "invalidIteratorState"
+        static let snapshotLength: JSString = "snapshotLength"
+        static let iterateNext: JSString = "iterateNext"
+        static let UNORDERED_NODE_ITERATOR_TYPE: JSString = "UNORDERED_NODE_ITERATOR_TYPE"
+        static let stringValue: JSString = "stringValue"
+        static let NUMBER_TYPE: JSString = "NUMBER_TYPE"
+        static let BOOLEAN_TYPE: JSString = "BOOLEAN_TYPE"
+        static let resultType: JSString = "resultType"
+        static let ANY_UNORDERED_NODE_TYPE: JSString = "ANY_UNORDERED_NODE_TYPE"
+        static let booleanValue: JSString = "booleanValue"
+        static let singleNodeValue: JSString = "singleNodeValue"
+        static let numberValue: JSString = "numberValue"
+        static let ANY_TYPE: JSString = "ANY_TYPE"
+        static let ORDERED_NODE_ITERATOR_TYPE: JSString = "ORDERED_NODE_ITERATOR_TYPE"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _resultType = ReadonlyAttribute(jsObject: jsObject, name: "resultType")
-        _numberValue = ReadonlyAttribute(jsObject: jsObject, name: "numberValue")
-        _stringValue = ReadonlyAttribute(jsObject: jsObject, name: "stringValue")
-        _booleanValue = ReadonlyAttribute(jsObject: jsObject, name: "booleanValue")
-        _singleNodeValue = ReadonlyAttribute(jsObject: jsObject, name: "singleNodeValue")
-        _invalidIteratorState = ReadonlyAttribute(jsObject: jsObject, name: "invalidIteratorState")
-        _snapshotLength = ReadonlyAttribute(jsObject: jsObject, name: "snapshotLength")
+        _resultType = ReadonlyAttribute(jsObject: jsObject, name: Keys.resultType)
+        _numberValue = ReadonlyAttribute(jsObject: jsObject, name: Keys.numberValue)
+        _stringValue = ReadonlyAttribute(jsObject: jsObject, name: Keys.stringValue)
+        _booleanValue = ReadonlyAttribute(jsObject: jsObject, name: Keys.booleanValue)
+        _singleNodeValue = ReadonlyAttribute(jsObject: jsObject, name: Keys.singleNodeValue)
+        _invalidIteratorState = ReadonlyAttribute(jsObject: jsObject, name: Keys.invalidIteratorState)
+        _snapshotLength = ReadonlyAttribute(jsObject: jsObject, name: Keys.snapshotLength)
         self.jsObject = jsObject
     }
 
@@ -61,10 +83,10 @@ public class XPathResult: JSBridgedClass {
     public var snapshotLength: UInt32
 
     public func iterateNext() -> Node? {
-        jsObject["iterateNext"]!().fromJSValue()!
+        jsObject[Keys.iterateNext]!().fromJSValue()!
     }
 
     public func snapshotItem(index: UInt32) -> Node? {
-        jsObject["snapshotItem"]!(index.jsValue()).fromJSValue()!
+        jsObject[Keys.snapshotItem]!(index.jsValue()).fromJSValue()!
     }
 }

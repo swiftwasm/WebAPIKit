@@ -3,25 +3,32 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let shadowOffsetY: JSString = "shadowOffsetY"
+    static let shadowBlur: JSString = "shadowBlur"
+    static let shadowOffsetX: JSString = "shadowOffsetX"
+    static let shadowColor: JSString = "shadowColor"
+}
+
 public protocol CanvasShadowStyles: JSBridgedClass {}
 public extension CanvasShadowStyles {
     var shadowOffsetX: Double {
-        get { ReadWriteAttribute["shadowOffsetX", in: jsObject] }
-        set { ReadWriteAttribute["shadowOffsetX", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.shadowOffsetX, in: jsObject] }
+        set { ReadWriteAttribute[Keys.shadowOffsetX, in: jsObject] = newValue }
     }
 
     var shadowOffsetY: Double {
-        get { ReadWriteAttribute["shadowOffsetY", in: jsObject] }
-        set { ReadWriteAttribute["shadowOffsetY", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.shadowOffsetY, in: jsObject] }
+        set { ReadWriteAttribute[Keys.shadowOffsetY, in: jsObject] = newValue }
     }
 
     var shadowBlur: Double {
-        get { ReadWriteAttribute["shadowBlur", in: jsObject] }
-        set { ReadWriteAttribute["shadowBlur", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.shadowBlur, in: jsObject] }
+        set { ReadWriteAttribute[Keys.shadowBlur, in: jsObject] = newValue }
     }
 
     var shadowColor: String {
-        get { ReadWriteAttribute["shadowColor", in: jsObject] }
-        set { ReadWriteAttribute["shadowColor", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.shadowColor, in: jsObject] }
+        set { ReadWriteAttribute[Keys.shadowColor, in: jsObject] = newValue }
     }
 }

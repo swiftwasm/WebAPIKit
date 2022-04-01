@@ -3,17 +3,21 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum RequestMode: String, JSValueCompatible {
-    case navigate
+public enum RequestMode: JSString, JSValueCompatible {
+    case navigate = "navigate"
     case sameOrigin = "same-origin"
     case noCors = "no-cors"
-    case cors
+    case cors = "cors"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

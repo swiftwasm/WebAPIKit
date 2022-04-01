@@ -6,10 +6,16 @@ import JavaScriptKit
 public class HTMLAllCollection: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.HTMLAllCollection.function! }
 
+    private enum Keys {
+        static let namedItem: JSString = "namedItem"
+        static let item: JSString = "item"
+        static let length: JSString = "length"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
         self.jsObject = jsObject
     }
 
@@ -25,6 +31,6 @@ public class HTMLAllCollection: JSBridgedClass {
     }
 
     public func item(nameOrIndex: String? = nil) -> __UNSUPPORTED_UNION__? {
-        jsObject["item"]!(nameOrIndex?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.item]!(nameOrIndex?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

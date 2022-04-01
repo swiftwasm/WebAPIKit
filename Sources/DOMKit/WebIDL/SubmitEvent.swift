@@ -6,8 +6,12 @@ import JavaScriptKit
 public class SubmitEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.SubmitEvent.function! }
 
+    private enum Keys {
+        static let submitter: JSString = "submitter"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _submitter = ReadonlyAttribute(jsObject: jsObject, name: "submitter")
+        _submitter = ReadonlyAttribute(jsObject: jsObject, name: Keys.submitter)
         super.init(unsafelyWrapping: jsObject)
     }
 

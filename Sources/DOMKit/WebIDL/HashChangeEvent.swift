@@ -6,9 +6,14 @@ import JavaScriptKit
 public class HashChangeEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.HashChangeEvent.function! }
 
+    private enum Keys {
+        static let oldURL: JSString = "oldURL"
+        static let newURL: JSString = "newURL"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _oldURL = ReadonlyAttribute(jsObject: jsObject, name: "oldURL")
-        _newURL = ReadonlyAttribute(jsObject: jsObject, name: "newURL")
+        _oldURL = ReadonlyAttribute(jsObject: jsObject, name: Keys.oldURL)
+        _newURL = ReadonlyAttribute(jsObject: jsObject, name: Keys.newURL)
         super.init(unsafelyWrapping: jsObject)
     }
 

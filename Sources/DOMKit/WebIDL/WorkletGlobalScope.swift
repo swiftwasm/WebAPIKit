@@ -6,6 +6,8 @@ import JavaScriptKit
 public class WorkletGlobalScope: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.WorkletGlobalScope.function! }
 
+    private enum Keys {}
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {

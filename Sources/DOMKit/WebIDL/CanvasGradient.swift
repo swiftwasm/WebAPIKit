@@ -6,6 +6,10 @@ import JavaScriptKit
 public class CanvasGradient: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.CanvasGradient.function! }
 
+    private enum Keys {
+        static let addColorStop: JSString = "addColorStop"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -13,6 +17,6 @@ public class CanvasGradient: JSBridgedClass {
     }
 
     public func addColorStop(offset: Double, color: String) {
-        _ = jsObject["addColorStop"]!(offset.jsValue(), color.jsValue())
+        _ = jsObject[Keys.addColorStop]!(offset.jsValue(), color.jsValue())
     }
 }

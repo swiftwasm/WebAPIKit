@@ -6,11 +6,19 @@ import JavaScriptKit
 public class DOMPoint: DOMPointReadOnly {
     override public class var constructor: JSFunction { JSObject.global.DOMPoint.function! }
 
+    private enum Keys {
+        static let z: JSString = "z"
+        static let x: JSString = "x"
+        static let fromPoint: JSString = "fromPoint"
+        static let y: JSString = "y"
+        static let w: JSString = "w"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _x = ReadWriteAttribute(jsObject: jsObject, name: "x")
-        _y = ReadWriteAttribute(jsObject: jsObject, name: "y")
-        _z = ReadWriteAttribute(jsObject: jsObject, name: "z")
-        _w = ReadWriteAttribute(jsObject: jsObject, name: "w")
+        _x = ReadWriteAttribute(jsObject: jsObject, name: Keys.x)
+        _y = ReadWriteAttribute(jsObject: jsObject, name: Keys.y)
+        _z = ReadWriteAttribute(jsObject: jsObject, name: Keys.z)
+        _w = ReadWriteAttribute(jsObject: jsObject, name: Keys.w)
         super.init(unsafelyWrapping: jsObject)
     }
 

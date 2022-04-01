@@ -6,13 +6,22 @@ import JavaScriptKit
 public class HTMLBodyElement: HTMLElement, WindowEventHandlers {
     override public class var constructor: JSFunction { JSObject.global.HTMLBodyElement.function! }
 
+    private enum Keys {
+        static let background: JSString = "background"
+        static let bgColor: JSString = "bgColor"
+        static let link: JSString = "link"
+        static let aLink: JSString = "aLink"
+        static let text: JSString = "text"
+        static let vLink: JSString = "vLink"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _text = ReadWriteAttribute(jsObject: jsObject, name: "text")
-        _link = ReadWriteAttribute(jsObject: jsObject, name: "link")
-        _vLink = ReadWriteAttribute(jsObject: jsObject, name: "vLink")
-        _aLink = ReadWriteAttribute(jsObject: jsObject, name: "aLink")
-        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: "bgColor")
-        _background = ReadWriteAttribute(jsObject: jsObject, name: "background")
+        _text = ReadWriteAttribute(jsObject: jsObject, name: Keys.text)
+        _link = ReadWriteAttribute(jsObject: jsObject, name: Keys.link)
+        _vLink = ReadWriteAttribute(jsObject: jsObject, name: Keys.vLink)
+        _aLink = ReadWriteAttribute(jsObject: jsObject, name: Keys.aLink)
+        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.bgColor)
+        _background = ReadWriteAttribute(jsObject: jsObject, name: Keys.background)
         super.init(unsafelyWrapping: jsObject)
     }
 

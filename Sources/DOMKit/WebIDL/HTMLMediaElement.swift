@@ -6,35 +6,82 @@ import JavaScriptKit
 public class HTMLMediaElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLMediaElement.function! }
 
+    private enum Keys {
+        static let currentTime: JSString = "currentTime"
+        static let NETWORK_NO_SOURCE: JSString = "NETWORK_NO_SOURCE"
+        static let HAVE_NOTHING: JSString = "HAVE_NOTHING"
+        static let buffered: JSString = "buffered"
+        static let NETWORK_IDLE: JSString = "NETWORK_IDLE"
+        static let paused: JSString = "paused"
+        static let play: JSString = "play"
+        static let preload: JSString = "preload"
+        static let seekable: JSString = "seekable"
+        static let currentSrc: JSString = "currentSrc"
+        static let fastSeek: JSString = "fastSeek"
+        static let audioTracks: JSString = "audioTracks"
+        static let volume: JSString = "volume"
+        static let networkState: JSString = "networkState"
+        static let getStartDate: JSString = "getStartDate"
+        static let HAVE_ENOUGH_DATA: JSString = "HAVE_ENOUGH_DATA"
+        static let playbackRate: JSString = "playbackRate"
+        static let addTextTrack: JSString = "addTextTrack"
+        static let seeking: JSString = "seeking"
+        static let canPlayType: JSString = "canPlayType"
+        static let duration: JSString = "duration"
+        static let defaultPlaybackRate: JSString = "defaultPlaybackRate"
+        static let loop: JSString = "loop"
+        static let pause: JSString = "pause"
+        static let HAVE_METADATA: JSString = "HAVE_METADATA"
+        static let textTracks: JSString = "textTracks"
+        static let HAVE_CURRENT_DATA: JSString = "HAVE_CURRENT_DATA"
+        static let NETWORK_EMPTY: JSString = "NETWORK_EMPTY"
+        static let preservesPitch: JSString = "preservesPitch"
+        static let muted: JSString = "muted"
+        static let src: JSString = "src"
+        static let load: JSString = "load"
+        static let HAVE_FUTURE_DATA: JSString = "HAVE_FUTURE_DATA"
+        static let played: JSString = "played"
+        static let error: JSString = "error"
+        static let srcObject: JSString = "srcObject"
+        static let controls: JSString = "controls"
+        static let NETWORK_LOADING: JSString = "NETWORK_LOADING"
+        static let autoplay: JSString = "autoplay"
+        static let readyState: JSString = "readyState"
+        static let ended: JSString = "ended"
+        static let defaultMuted: JSString = "defaultMuted"
+        static let videoTracks: JSString = "videoTracks"
+        static let crossOrigin: JSString = "crossOrigin"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _error = ReadonlyAttribute(jsObject: jsObject, name: "error")
-        _src = ReadWriteAttribute(jsObject: jsObject, name: "src")
-        _srcObject = ReadWriteAttribute(jsObject: jsObject, name: "srcObject")
-        _currentSrc = ReadonlyAttribute(jsObject: jsObject, name: "currentSrc")
-        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: "crossOrigin")
-        _networkState = ReadonlyAttribute(jsObject: jsObject, name: "networkState")
-        _preload = ReadWriteAttribute(jsObject: jsObject, name: "preload")
-        _buffered = ReadonlyAttribute(jsObject: jsObject, name: "buffered")
-        _readyState = ReadonlyAttribute(jsObject: jsObject, name: "readyState")
-        _seeking = ReadonlyAttribute(jsObject: jsObject, name: "seeking")
-        _currentTime = ReadWriteAttribute(jsObject: jsObject, name: "currentTime")
-        _duration = ReadonlyAttribute(jsObject: jsObject, name: "duration")
-        _paused = ReadonlyAttribute(jsObject: jsObject, name: "paused")
-        _defaultPlaybackRate = ReadWriteAttribute(jsObject: jsObject, name: "defaultPlaybackRate")
-        _playbackRate = ReadWriteAttribute(jsObject: jsObject, name: "playbackRate")
-        _preservesPitch = ReadWriteAttribute(jsObject: jsObject, name: "preservesPitch")
-        _played = ReadonlyAttribute(jsObject: jsObject, name: "played")
-        _seekable = ReadonlyAttribute(jsObject: jsObject, name: "seekable")
-        _ended = ReadonlyAttribute(jsObject: jsObject, name: "ended")
-        _autoplay = ReadWriteAttribute(jsObject: jsObject, name: "autoplay")
-        _loop = ReadWriteAttribute(jsObject: jsObject, name: "loop")
-        _controls = ReadWriteAttribute(jsObject: jsObject, name: "controls")
-        _volume = ReadWriteAttribute(jsObject: jsObject, name: "volume")
-        _muted = ReadWriteAttribute(jsObject: jsObject, name: "muted")
-        _defaultMuted = ReadWriteAttribute(jsObject: jsObject, name: "defaultMuted")
-        _audioTracks = ReadonlyAttribute(jsObject: jsObject, name: "audioTracks")
-        _videoTracks = ReadonlyAttribute(jsObject: jsObject, name: "videoTracks")
-        _textTracks = ReadonlyAttribute(jsObject: jsObject, name: "textTracks")
+        _error = ReadonlyAttribute(jsObject: jsObject, name: Keys.error)
+        _src = ReadWriteAttribute(jsObject: jsObject, name: Keys.src)
+        _srcObject = ReadWriteAttribute(jsObject: jsObject, name: Keys.srcObject)
+        _currentSrc = ReadonlyAttribute(jsObject: jsObject, name: Keys.currentSrc)
+        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: Keys.crossOrigin)
+        _networkState = ReadonlyAttribute(jsObject: jsObject, name: Keys.networkState)
+        _preload = ReadWriteAttribute(jsObject: jsObject, name: Keys.preload)
+        _buffered = ReadonlyAttribute(jsObject: jsObject, name: Keys.buffered)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Keys.readyState)
+        _seeking = ReadonlyAttribute(jsObject: jsObject, name: Keys.seeking)
+        _currentTime = ReadWriteAttribute(jsObject: jsObject, name: Keys.currentTime)
+        _duration = ReadonlyAttribute(jsObject: jsObject, name: Keys.duration)
+        _paused = ReadonlyAttribute(jsObject: jsObject, name: Keys.paused)
+        _defaultPlaybackRate = ReadWriteAttribute(jsObject: jsObject, name: Keys.defaultPlaybackRate)
+        _playbackRate = ReadWriteAttribute(jsObject: jsObject, name: Keys.playbackRate)
+        _preservesPitch = ReadWriteAttribute(jsObject: jsObject, name: Keys.preservesPitch)
+        _played = ReadonlyAttribute(jsObject: jsObject, name: Keys.played)
+        _seekable = ReadonlyAttribute(jsObject: jsObject, name: Keys.seekable)
+        _ended = ReadonlyAttribute(jsObject: jsObject, name: Keys.ended)
+        _autoplay = ReadWriteAttribute(jsObject: jsObject, name: Keys.autoplay)
+        _loop = ReadWriteAttribute(jsObject: jsObject, name: Keys.loop)
+        _controls = ReadWriteAttribute(jsObject: jsObject, name: Keys.controls)
+        _volume = ReadWriteAttribute(jsObject: jsObject, name: Keys.volume)
+        _muted = ReadWriteAttribute(jsObject: jsObject, name: Keys.muted)
+        _defaultMuted = ReadWriteAttribute(jsObject: jsObject, name: Keys.defaultMuted)
+        _audioTracks = ReadonlyAttribute(jsObject: jsObject, name: Keys.audioTracks)
+        _videoTracks = ReadonlyAttribute(jsObject: jsObject, name: Keys.videoTracks)
+        _textTracks = ReadonlyAttribute(jsObject: jsObject, name: Keys.textTracks)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -71,11 +118,11 @@ public class HTMLMediaElement: HTMLElement {
     public var buffered: TimeRanges
 
     public func load() {
-        _ = jsObject["load"]!()
+        _ = jsObject[Keys.load]!()
     }
 
     public func canPlayType(type: String) -> CanPlayTypeResult {
-        jsObject["canPlayType"]!(type.jsValue()).fromJSValue()!
+        jsObject[Keys.canPlayType]!(type.jsValue()).fromJSValue()!
     }
 
     public static let HAVE_NOTHING: UInt16 = 0
@@ -98,14 +145,14 @@ public class HTMLMediaElement: HTMLElement {
     public var currentTime: Double
 
     public func fastSeek(time: Double) {
-        _ = jsObject["fastSeek"]!(time.jsValue())
+        _ = jsObject[Keys.fastSeek]!(time.jsValue())
     }
 
     @ReadonlyAttribute
     public var duration: Double
 
     public func getStartDate() -> JSObject {
-        jsObject["getStartDate"]!().fromJSValue()!
+        jsObject[Keys.getStartDate]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -136,17 +183,17 @@ public class HTMLMediaElement: HTMLElement {
     public var loop: Bool
 
     public func play() -> JSPromise {
-        jsObject["play"]!().fromJSValue()!
+        jsObject[Keys.play]!().fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func play() async throws {
-        let _promise: JSPromise = jsObject["play"]!().fromJSValue()!
+        let _promise: JSPromise = jsObject[Keys.play]!().fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func pause() {
-        _ = jsObject["pause"]!()
+        _ = jsObject[Keys.pause]!()
     }
 
     @ReadWriteAttribute
@@ -171,6 +218,6 @@ public class HTMLMediaElement: HTMLElement {
     public var textTracks: TextTrackList
 
     public func addTextTrack(kind: TextTrackKind, label: String? = nil, language: String? = nil) -> TextTrack {
-        jsObject["addTextTrack"]!(kind.jsValue(), label?.jsValue() ?? .undefined, language?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.addTextTrack]!(kind.jsValue(), label?.jsValue() ?? .undefined, language?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

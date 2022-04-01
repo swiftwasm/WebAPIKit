@@ -6,14 +6,24 @@ import JavaScriptKit
 public class TextTrackCue: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.TextTrackCue.function! }
 
+    private enum Keys {
+        static let startTime: JSString = "startTime"
+        static let track: JSString = "track"
+        static let endTime: JSString = "endTime"
+        static let pauseOnExit: JSString = "pauseOnExit"
+        static let onenter: JSString = "onenter"
+        static let id: JSString = "id"
+        static let onexit: JSString = "onexit"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _track = ReadonlyAttribute(jsObject: jsObject, name: "track")
-        _id = ReadWriteAttribute(jsObject: jsObject, name: "id")
-        _startTime = ReadWriteAttribute(jsObject: jsObject, name: "startTime")
-        _endTime = ReadWriteAttribute(jsObject: jsObject, name: "endTime")
-        _pauseOnExit = ReadWriteAttribute(jsObject: jsObject, name: "pauseOnExit")
-        _onenter = ClosureAttribute.Optional1(jsObject: jsObject, name: "onenter")
-        _onexit = ClosureAttribute.Optional1(jsObject: jsObject, name: "onexit")
+        _track = ReadonlyAttribute(jsObject: jsObject, name: Keys.track)
+        _id = ReadWriteAttribute(jsObject: jsObject, name: Keys.id)
+        _startTime = ReadWriteAttribute(jsObject: jsObject, name: Keys.startTime)
+        _endTime = ReadWriteAttribute(jsObject: jsObject, name: Keys.endTime)
+        _pauseOnExit = ReadWriteAttribute(jsObject: jsObject, name: Keys.pauseOnExit)
+        _onenter = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onenter)
+        _onexit = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onexit)
         super.init(unsafelyWrapping: jsObject)
     }
 

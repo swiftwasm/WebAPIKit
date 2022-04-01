@@ -4,26 +4,36 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MutationObserverInit: BridgedDictionary {
+    private enum Keys {
+        static let characterDataOldValue: JSString = "characterDataOldValue"
+        static let childList: JSString = "childList"
+        static let attributes: JSString = "attributes"
+        static let attributeFilter: JSString = "attributeFilter"
+        static let subtree: JSString = "subtree"
+        static let attributeOldValue: JSString = "attributeOldValue"
+        static let characterData: JSString = "characterData"
+    }
+
     public convenience init(childList: Bool, attributes: Bool, characterData: Bool, subtree: Bool, attributeOldValue: Bool, characterDataOldValue: Bool, attributeFilter: [String]) {
         let object = JSObject.global.Object.function!.new()
-        object["childList"] = childList.jsValue()
-        object["attributes"] = attributes.jsValue()
-        object["characterData"] = characterData.jsValue()
-        object["subtree"] = subtree.jsValue()
-        object["attributeOldValue"] = attributeOldValue.jsValue()
-        object["characterDataOldValue"] = characterDataOldValue.jsValue()
-        object["attributeFilter"] = attributeFilter.jsValue()
+        object[Keys.childList] = childList.jsValue()
+        object[Keys.attributes] = attributes.jsValue()
+        object[Keys.characterData] = characterData.jsValue()
+        object[Keys.subtree] = subtree.jsValue()
+        object[Keys.attributeOldValue] = attributeOldValue.jsValue()
+        object[Keys.characterDataOldValue] = characterDataOldValue.jsValue()
+        object[Keys.attributeFilter] = attributeFilter.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _childList = ReadWriteAttribute(jsObject: object, name: "childList")
-        _attributes = ReadWriteAttribute(jsObject: object, name: "attributes")
-        _characterData = ReadWriteAttribute(jsObject: object, name: "characterData")
-        _subtree = ReadWriteAttribute(jsObject: object, name: "subtree")
-        _attributeOldValue = ReadWriteAttribute(jsObject: object, name: "attributeOldValue")
-        _characterDataOldValue = ReadWriteAttribute(jsObject: object, name: "characterDataOldValue")
-        _attributeFilter = ReadWriteAttribute(jsObject: object, name: "attributeFilter")
+        _childList = ReadWriteAttribute(jsObject: object, name: Keys.childList)
+        _attributes = ReadWriteAttribute(jsObject: object, name: Keys.attributes)
+        _characterData = ReadWriteAttribute(jsObject: object, name: Keys.characterData)
+        _subtree = ReadWriteAttribute(jsObject: object, name: Keys.subtree)
+        _attributeOldValue = ReadWriteAttribute(jsObject: object, name: Keys.attributeOldValue)
+        _characterDataOldValue = ReadWriteAttribute(jsObject: object, name: Keys.characterDataOldValue)
+        _attributeFilter = ReadWriteAttribute(jsObject: object, name: Keys.attributeFilter)
         super.init(unsafelyWrapping: object)
     }
 

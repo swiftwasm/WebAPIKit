@@ -6,18 +6,34 @@ import JavaScriptKit
 public class HTMLMarqueeElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLMarqueeElement.function! }
 
+    private enum Keys {
+        static let behavior: JSString = "behavior"
+        static let width: JSString = "width"
+        static let loop: JSString = "loop"
+        static let scrollDelay: JSString = "scrollDelay"
+        static let direction: JSString = "direction"
+        static let bgColor: JSString = "bgColor"
+        static let hspace: JSString = "hspace"
+        static let start: JSString = "start"
+        static let trueSpeed: JSString = "trueSpeed"
+        static let vspace: JSString = "vspace"
+        static let stop: JSString = "stop"
+        static let height: JSString = "height"
+        static let scrollAmount: JSString = "scrollAmount"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _behavior = ReadWriteAttribute(jsObject: jsObject, name: "behavior")
-        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: "bgColor")
-        _direction = ReadWriteAttribute(jsObject: jsObject, name: "direction")
-        _height = ReadWriteAttribute(jsObject: jsObject, name: "height")
-        _hspace = ReadWriteAttribute(jsObject: jsObject, name: "hspace")
-        _loop = ReadWriteAttribute(jsObject: jsObject, name: "loop")
-        _scrollAmount = ReadWriteAttribute(jsObject: jsObject, name: "scrollAmount")
-        _scrollDelay = ReadWriteAttribute(jsObject: jsObject, name: "scrollDelay")
-        _trueSpeed = ReadWriteAttribute(jsObject: jsObject, name: "trueSpeed")
-        _vspace = ReadWriteAttribute(jsObject: jsObject, name: "vspace")
-        _width = ReadWriteAttribute(jsObject: jsObject, name: "width")
+        _behavior = ReadWriteAttribute(jsObject: jsObject, name: Keys.behavior)
+        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.bgColor)
+        _direction = ReadWriteAttribute(jsObject: jsObject, name: Keys.direction)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
+        _hspace = ReadWriteAttribute(jsObject: jsObject, name: Keys.hspace)
+        _loop = ReadWriteAttribute(jsObject: jsObject, name: Keys.loop)
+        _scrollAmount = ReadWriteAttribute(jsObject: jsObject, name: Keys.scrollAmount)
+        _scrollDelay = ReadWriteAttribute(jsObject: jsObject, name: Keys.scrollDelay)
+        _trueSpeed = ReadWriteAttribute(jsObject: jsObject, name: Keys.trueSpeed)
+        _vspace = ReadWriteAttribute(jsObject: jsObject, name: Keys.vspace)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -59,10 +75,10 @@ public class HTMLMarqueeElement: HTMLElement {
     public var width: String
 
     public func start() {
-        _ = jsObject["start"]!()
+        _ = jsObject[Keys.start]!()
     }
 
     public func stop() {
-        _ = jsObject["stop"]!()
+        _ = jsObject[Keys.stop]!()
     }
 }

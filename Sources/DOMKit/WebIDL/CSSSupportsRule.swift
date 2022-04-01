@@ -6,6 +6,8 @@ import JavaScriptKit
 public class CSSSupportsRule: CSSConditionRule {
     override public class var constructor: JSFunction { JSObject.global.CSSSupportsRule.function! }
 
+    private enum Keys {}
+
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

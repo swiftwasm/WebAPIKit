@@ -6,10 +6,17 @@ import JavaScriptKit
 public class UIEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.UIEvent.function! }
 
+    private enum Keys {
+        static let view: JSString = "view"
+        static let detail: JSString = "detail"
+        static let which: JSString = "which"
+        static let initUIEvent: JSString = "initUIEvent"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _view = ReadonlyAttribute(jsObject: jsObject, name: "view")
-        _detail = ReadonlyAttribute(jsObject: jsObject, name: "detail")
-        _which = ReadonlyAttribute(jsObject: jsObject, name: "which")
+        _view = ReadonlyAttribute(jsObject: jsObject, name: Keys.view)
+        _detail = ReadonlyAttribute(jsObject: jsObject, name: Keys.detail)
+        _which = ReadonlyAttribute(jsObject: jsObject, name: Keys.which)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -24,7 +31,7 @@ public class UIEvent: Event {
     public var detail: Int32
 
     public func initUIEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil) {
-        _ = jsObject["initUIEvent"]!(typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, detailArg?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.initUIEvent]!(typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, detailArg?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute

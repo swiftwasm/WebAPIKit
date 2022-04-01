@@ -6,13 +6,23 @@ import JavaScriptKit
 public class HTMLEmbedElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLEmbedElement.function! }
 
+    private enum Keys {
+        static let width: JSString = "width"
+        static let getSVGDocument: JSString = "getSVGDocument"
+        static let align: JSString = "align"
+        static let type: JSString = "type"
+        static let src: JSString = "src"
+        static let name: JSString = "name"
+        static let height: JSString = "height"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _src = ReadWriteAttribute(jsObject: jsObject, name: "src")
-        _type = ReadWriteAttribute(jsObject: jsObject, name: "type")
-        _width = ReadWriteAttribute(jsObject: jsObject, name: "width")
-        _height = ReadWriteAttribute(jsObject: jsObject, name: "height")
-        _align = ReadWriteAttribute(jsObject: jsObject, name: "align")
-        _name = ReadWriteAttribute(jsObject: jsObject, name: "name")
+        _src = ReadWriteAttribute(jsObject: jsObject, name: Keys.src)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -33,7 +43,7 @@ public class HTMLEmbedElement: HTMLElement {
     public var height: String
 
     public func getSVGDocument() -> Document? {
-        jsObject["getSVGDocument"]!().fromJSValue()!
+        jsObject[Keys.getSVGDocument]!().fromJSValue()!
     }
 
     @ReadWriteAttribute

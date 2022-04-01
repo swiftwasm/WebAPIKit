@@ -6,15 +6,26 @@ import JavaScriptKit
 public class HTMLOptionElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLOptionElement.function! }
 
+    private enum Keys {
+        static let selected: JSString = "selected"
+        static let disabled: JSString = "disabled"
+        static let label: JSString = "label"
+        static let value: JSString = "value"
+        static let index: JSString = "index"
+        static let form: JSString = "form"
+        static let text: JSString = "text"
+        static let defaultSelected: JSString = "defaultSelected"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: "disabled")
-        _form = ReadonlyAttribute(jsObject: jsObject, name: "form")
-        _label = ReadWriteAttribute(jsObject: jsObject, name: "label")
-        _defaultSelected = ReadWriteAttribute(jsObject: jsObject, name: "defaultSelected")
-        _selected = ReadWriteAttribute(jsObject: jsObject, name: "selected")
-        _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
-        _text = ReadWriteAttribute(jsObject: jsObject, name: "text")
-        _index = ReadonlyAttribute(jsObject: jsObject, name: "index")
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
+        _label = ReadWriteAttribute(jsObject: jsObject, name: Keys.label)
+        _defaultSelected = ReadWriteAttribute(jsObject: jsObject, name: Keys.defaultSelected)
+        _selected = ReadWriteAttribute(jsObject: jsObject, name: Keys.selected)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
+        _text = ReadWriteAttribute(jsObject: jsObject, name: Keys.text)
+        _index = ReadonlyAttribute(jsObject: jsObject, name: Keys.index)
         super.init(unsafelyWrapping: jsObject)
     }
 

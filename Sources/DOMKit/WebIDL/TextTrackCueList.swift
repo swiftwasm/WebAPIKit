@@ -6,10 +6,15 @@ import JavaScriptKit
 public class TextTrackCueList: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.TextTrackCueList.function! }
 
+    private enum Keys {
+        static let getCueById: JSString = "getCueById"
+        static let length: JSString = "length"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
         self.jsObject = jsObject
     }
 
@@ -21,6 +26,6 @@ public class TextTrackCueList: JSBridgedClass {
     }
 
     public func getCueById(id: String) -> TextTrackCue? {
-        jsObject["getCueById"]!(id.jsValue()).fromJSValue()!
+        jsObject[Keys.getCueById]!(id.jsValue()).fromJSValue()!
     }
 }

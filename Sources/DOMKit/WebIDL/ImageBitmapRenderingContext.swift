@@ -6,10 +6,15 @@ import JavaScriptKit
 public class ImageBitmapRenderingContext: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ImageBitmapRenderingContext.function! }
 
+    private enum Keys {
+        static let transferFromImageBitmap: JSString = "transferFromImageBitmap"
+        static let canvas: JSString = "canvas"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _canvas = ReadonlyAttribute(jsObject: jsObject, name: "canvas")
+        _canvas = ReadonlyAttribute(jsObject: jsObject, name: Keys.canvas)
         self.jsObject = jsObject
     }
 
@@ -17,6 +22,6 @@ public class ImageBitmapRenderingContext: JSBridgedClass {
     public var canvas: __UNSUPPORTED_UNION__
 
     public func transferFromImageBitmap(bitmap: ImageBitmap?) {
-        _ = jsObject["transferFromImageBitmap"]!(bitmap.jsValue())
+        _ = jsObject[Keys.transferFromImageBitmap]!(bitmap.jsValue())
     }
 }

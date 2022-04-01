@@ -6,9 +6,15 @@ import JavaScriptKit
 public class SharedWorkerGlobalScope: WorkerGlobalScope {
     override public class var constructor: JSFunction { JSObject.global.SharedWorkerGlobalScope.function! }
 
+    private enum Keys {
+        static let onconnect: JSString = "onconnect"
+        static let name: JSString = "name"
+        static let close: JSString = "close"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadonlyAttribute(jsObject: jsObject, name: "name")
-        _onconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: "onconnect")
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Keys.name)
+        _onconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onconnect)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -16,7 +22,7 @@ public class SharedWorkerGlobalScope: WorkerGlobalScope {
     public var name: String
 
     public func close() {
-        _ = jsObject["close"]!()
+        _ = jsObject[Keys.close]!()
     }
 
     @ClosureAttribute.Optional1

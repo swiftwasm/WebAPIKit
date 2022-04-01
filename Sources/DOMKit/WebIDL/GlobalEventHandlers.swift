@@ -3,345 +3,416 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let onclick: JSString = "onclick"
+    static let ondblclick: JSString = "ondblclick"
+    static let ondrop: JSString = "ondrop"
+    static let onloadedmetadata: JSString = "onloadedmetadata"
+    static let onchange: JSString = "onchange"
+    static let oninvalid: JSString = "oninvalid"
+    static let onmouseleave: JSString = "onmouseleave"
+    static let onplay: JSString = "onplay"
+    static let onresize: JSString = "onresize"
+    static let onwaiting: JSString = "onwaiting"
+    static let onauxclick: JSString = "onauxclick"
+    static let onmouseup: JSString = "onmouseup"
+    static let onsuspend: JSString = "onsuspend"
+    static let onpause: JSString = "onpause"
+    static let onwebkittransitionend: JSString = "onwebkittransitionend"
+    static let ondragend: JSString = "ondragend"
+    static let onkeypress: JSString = "onkeypress"
+    static let ontoggle: JSString = "ontoggle"
+    static let onstalled: JSString = "onstalled"
+    static let ondurationchange: JSString = "ondurationchange"
+    static let onselect: JSString = "onselect"
+    static let onmousemove: JSString = "onmousemove"
+    static let onratechange: JSString = "onratechange"
+    static let onwebkitanimationstart: JSString = "onwebkitanimationstart"
+    static let ondragleave: JSString = "ondragleave"
+    static let oncontextrestored: JSString = "oncontextrestored"
+    static let ondragstart: JSString = "ondragstart"
+    static let onloadstart: JSString = "onloadstart"
+    static let onmouseover: JSString = "onmouseover"
+    static let onsecuritypolicyviolation: JSString = "onsecuritypolicyviolation"
+    static let onblur: JSString = "onblur"
+    static let onload: JSString = "onload"
+    static let oncontextlost: JSString = "oncontextlost"
+    static let oncuechange: JSString = "oncuechange"
+    static let ondragover: JSString = "ondragover"
+    static let onformdata: JSString = "onformdata"
+    static let onended: JSString = "onended"
+    static let onwebkitanimationiteration: JSString = "onwebkitanimationiteration"
+    static let onabort: JSString = "onabort"
+    static let onseeked: JSString = "onseeked"
+    static let ontimeupdate: JSString = "ontimeupdate"
+    static let oncanplaythrough: JSString = "oncanplaythrough"
+    static let onemptied: JSString = "onemptied"
+    static let onerror: JSString = "onerror"
+    static let onsubmit: JSString = "onsubmit"
+    static let onclose: JSString = "onclose"
+    static let oncanplay: JSString = "oncanplay"
+    static let onscroll: JSString = "onscroll"
+    static let onvolumechange: JSString = "onvolumechange"
+    static let onplaying: JSString = "onplaying"
+    static let onloadeddata: JSString = "onloadeddata"
+    static let oninput: JSString = "oninput"
+    static let onmousedown: JSString = "onmousedown"
+    static let onwheel: JSString = "onwheel"
+    static let onwebkitanimationend: JSString = "onwebkitanimationend"
+    static let oncancel: JSString = "oncancel"
+    static let onprogress: JSString = "onprogress"
+    static let onseeking: JSString = "onseeking"
+    static let onmouseout: JSString = "onmouseout"
+    static let onfocus: JSString = "onfocus"
+    static let onreset: JSString = "onreset"
+    static let onslotchange: JSString = "onslotchange"
+    static let onkeyup: JSString = "onkeyup"
+    static let onkeydown: JSString = "onkeydown"
+    static let onmouseenter: JSString = "onmouseenter"
+    static let oncontextmenu: JSString = "oncontextmenu"
+    static let ondragenter: JSString = "ondragenter"
+    static let ondrag: JSString = "ondrag"
+}
+
 public protocol GlobalEventHandlers: JSBridgedClass {}
 public extension GlobalEventHandlers {
     var onabort: EventHandler {
-        get { ClosureAttribute.Optional1["onabort", in: jsObject] }
-        set { ClosureAttribute.Optional1["onabort", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onabort, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onabort, in: jsObject] = newValue }
     }
 
     var onauxclick: EventHandler {
-        get { ClosureAttribute.Optional1["onauxclick", in: jsObject] }
-        set { ClosureAttribute.Optional1["onauxclick", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onauxclick, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onauxclick, in: jsObject] = newValue }
     }
 
     var onblur: EventHandler {
-        get { ClosureAttribute.Optional1["onblur", in: jsObject] }
-        set { ClosureAttribute.Optional1["onblur", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onblur, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onblur, in: jsObject] = newValue }
     }
 
     var oncancel: EventHandler {
-        get { ClosureAttribute.Optional1["oncancel", in: jsObject] }
-        set { ClosureAttribute.Optional1["oncancel", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oncancel, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oncancel, in: jsObject] = newValue }
     }
 
     var oncanplay: EventHandler {
-        get { ClosureAttribute.Optional1["oncanplay", in: jsObject] }
-        set { ClosureAttribute.Optional1["oncanplay", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oncanplay, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oncanplay, in: jsObject] = newValue }
     }
 
     var oncanplaythrough: EventHandler {
-        get { ClosureAttribute.Optional1["oncanplaythrough", in: jsObject] }
-        set { ClosureAttribute.Optional1["oncanplaythrough", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oncanplaythrough, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oncanplaythrough, in: jsObject] = newValue }
     }
 
     var onchange: EventHandler {
-        get { ClosureAttribute.Optional1["onchange", in: jsObject] }
-        set { ClosureAttribute.Optional1["onchange", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onchange, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onchange, in: jsObject] = newValue }
     }
 
     var onclick: EventHandler {
-        get { ClosureAttribute.Optional1["onclick", in: jsObject] }
-        set { ClosureAttribute.Optional1["onclick", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onclick, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onclick, in: jsObject] = newValue }
     }
 
     var onclose: EventHandler {
-        get { ClosureAttribute.Optional1["onclose", in: jsObject] }
-        set { ClosureAttribute.Optional1["onclose", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onclose, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onclose, in: jsObject] = newValue }
     }
 
     var oncontextlost: EventHandler {
-        get { ClosureAttribute.Optional1["oncontextlost", in: jsObject] }
-        set { ClosureAttribute.Optional1["oncontextlost", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oncontextlost, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oncontextlost, in: jsObject] = newValue }
     }
 
     var oncontextmenu: EventHandler {
-        get { ClosureAttribute.Optional1["oncontextmenu", in: jsObject] }
-        set { ClosureAttribute.Optional1["oncontextmenu", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oncontextmenu, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oncontextmenu, in: jsObject] = newValue }
     }
 
     var oncontextrestored: EventHandler {
-        get { ClosureAttribute.Optional1["oncontextrestored", in: jsObject] }
-        set { ClosureAttribute.Optional1["oncontextrestored", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oncontextrestored, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oncontextrestored, in: jsObject] = newValue }
     }
 
     var oncuechange: EventHandler {
-        get { ClosureAttribute.Optional1["oncuechange", in: jsObject] }
-        set { ClosureAttribute.Optional1["oncuechange", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oncuechange, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oncuechange, in: jsObject] = newValue }
     }
 
     var ondblclick: EventHandler {
-        get { ClosureAttribute.Optional1["ondblclick", in: jsObject] }
-        set { ClosureAttribute.Optional1["ondblclick", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ondblclick, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ondblclick, in: jsObject] = newValue }
     }
 
     var ondrag: EventHandler {
-        get { ClosureAttribute.Optional1["ondrag", in: jsObject] }
-        set { ClosureAttribute.Optional1["ondrag", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ondrag, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ondrag, in: jsObject] = newValue }
     }
 
     var ondragend: EventHandler {
-        get { ClosureAttribute.Optional1["ondragend", in: jsObject] }
-        set { ClosureAttribute.Optional1["ondragend", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ondragend, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ondragend, in: jsObject] = newValue }
     }
 
     var ondragenter: EventHandler {
-        get { ClosureAttribute.Optional1["ondragenter", in: jsObject] }
-        set { ClosureAttribute.Optional1["ondragenter", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ondragenter, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ondragenter, in: jsObject] = newValue }
     }
 
     var ondragleave: EventHandler {
-        get { ClosureAttribute.Optional1["ondragleave", in: jsObject] }
-        set { ClosureAttribute.Optional1["ondragleave", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ondragleave, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ondragleave, in: jsObject] = newValue }
     }
 
     var ondragover: EventHandler {
-        get { ClosureAttribute.Optional1["ondragover", in: jsObject] }
-        set { ClosureAttribute.Optional1["ondragover", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ondragover, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ondragover, in: jsObject] = newValue }
     }
 
     var ondragstart: EventHandler {
-        get { ClosureAttribute.Optional1["ondragstart", in: jsObject] }
-        set { ClosureAttribute.Optional1["ondragstart", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ondragstart, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ondragstart, in: jsObject] = newValue }
     }
 
     var ondrop: EventHandler {
-        get { ClosureAttribute.Optional1["ondrop", in: jsObject] }
-        set { ClosureAttribute.Optional1["ondrop", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ondrop, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ondrop, in: jsObject] = newValue }
     }
 
     var ondurationchange: EventHandler {
-        get { ClosureAttribute.Optional1["ondurationchange", in: jsObject] }
-        set { ClosureAttribute.Optional1["ondurationchange", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ondurationchange, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ondurationchange, in: jsObject] = newValue }
     }
 
     var onemptied: EventHandler {
-        get { ClosureAttribute.Optional1["onemptied", in: jsObject] }
-        set { ClosureAttribute.Optional1["onemptied", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onemptied, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onemptied, in: jsObject] = newValue }
     }
 
     var onended: EventHandler {
-        get { ClosureAttribute.Optional1["onended", in: jsObject] }
-        set { ClosureAttribute.Optional1["onended", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onended, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onended, in: jsObject] = newValue }
     }
 
     var onerror: OnErrorEventHandler {
-        get { ClosureAttribute.Optional5["onerror", in: jsObject] }
-        set { ClosureAttribute.Optional5["onerror", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional5[Keys.onerror, in: jsObject] }
+        set { ClosureAttribute.Optional5[Keys.onerror, in: jsObject] = newValue }
     }
 
     var onfocus: EventHandler {
-        get { ClosureAttribute.Optional1["onfocus", in: jsObject] }
-        set { ClosureAttribute.Optional1["onfocus", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onfocus, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onfocus, in: jsObject] = newValue }
     }
 
     var onformdata: EventHandler {
-        get { ClosureAttribute.Optional1["onformdata", in: jsObject] }
-        set { ClosureAttribute.Optional1["onformdata", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onformdata, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onformdata, in: jsObject] = newValue }
     }
 
     var oninput: EventHandler {
-        get { ClosureAttribute.Optional1["oninput", in: jsObject] }
-        set { ClosureAttribute.Optional1["oninput", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oninput, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oninput, in: jsObject] = newValue }
     }
 
     var oninvalid: EventHandler {
-        get { ClosureAttribute.Optional1["oninvalid", in: jsObject] }
-        set { ClosureAttribute.Optional1["oninvalid", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.oninvalid, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.oninvalid, in: jsObject] = newValue }
     }
 
     var onkeydown: EventHandler {
-        get { ClosureAttribute.Optional1["onkeydown", in: jsObject] }
-        set { ClosureAttribute.Optional1["onkeydown", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onkeydown, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onkeydown, in: jsObject] = newValue }
     }
 
     var onkeypress: EventHandler {
-        get { ClosureAttribute.Optional1["onkeypress", in: jsObject] }
-        set { ClosureAttribute.Optional1["onkeypress", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onkeypress, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onkeypress, in: jsObject] = newValue }
     }
 
     var onkeyup: EventHandler {
-        get { ClosureAttribute.Optional1["onkeyup", in: jsObject] }
-        set { ClosureAttribute.Optional1["onkeyup", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onkeyup, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onkeyup, in: jsObject] = newValue }
     }
 
     var onload: EventHandler {
-        get { ClosureAttribute.Optional1["onload", in: jsObject] }
-        set { ClosureAttribute.Optional1["onload", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onload, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onload, in: jsObject] = newValue }
     }
 
     var onloadeddata: EventHandler {
-        get { ClosureAttribute.Optional1["onloadeddata", in: jsObject] }
-        set { ClosureAttribute.Optional1["onloadeddata", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onloadeddata, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onloadeddata, in: jsObject] = newValue }
     }
 
     var onloadedmetadata: EventHandler {
-        get { ClosureAttribute.Optional1["onloadedmetadata", in: jsObject] }
-        set { ClosureAttribute.Optional1["onloadedmetadata", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onloadedmetadata, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onloadedmetadata, in: jsObject] = newValue }
     }
 
     var onloadstart: EventHandler {
-        get { ClosureAttribute.Optional1["onloadstart", in: jsObject] }
-        set { ClosureAttribute.Optional1["onloadstart", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onloadstart, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onloadstart, in: jsObject] = newValue }
     }
 
     var onmousedown: EventHandler {
-        get { ClosureAttribute.Optional1["onmousedown", in: jsObject] }
-        set { ClosureAttribute.Optional1["onmousedown", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onmousedown, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onmousedown, in: jsObject] = newValue }
     }
 
     var onmouseenter: EventHandler {
-        get { ClosureAttribute.Optional1["onmouseenter", in: jsObject] }
-        set { ClosureAttribute.Optional1["onmouseenter", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onmouseenter, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onmouseenter, in: jsObject] = newValue }
     }
 
     var onmouseleave: EventHandler {
-        get { ClosureAttribute.Optional1["onmouseleave", in: jsObject] }
-        set { ClosureAttribute.Optional1["onmouseleave", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onmouseleave, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onmouseleave, in: jsObject] = newValue }
     }
 
     var onmousemove: EventHandler {
-        get { ClosureAttribute.Optional1["onmousemove", in: jsObject] }
-        set { ClosureAttribute.Optional1["onmousemove", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onmousemove, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onmousemove, in: jsObject] = newValue }
     }
 
     var onmouseout: EventHandler {
-        get { ClosureAttribute.Optional1["onmouseout", in: jsObject] }
-        set { ClosureAttribute.Optional1["onmouseout", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onmouseout, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onmouseout, in: jsObject] = newValue }
     }
 
     var onmouseover: EventHandler {
-        get { ClosureAttribute.Optional1["onmouseover", in: jsObject] }
-        set { ClosureAttribute.Optional1["onmouseover", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onmouseover, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onmouseover, in: jsObject] = newValue }
     }
 
     var onmouseup: EventHandler {
-        get { ClosureAttribute.Optional1["onmouseup", in: jsObject] }
-        set { ClosureAttribute.Optional1["onmouseup", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onmouseup, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onmouseup, in: jsObject] = newValue }
     }
 
     var onpause: EventHandler {
-        get { ClosureAttribute.Optional1["onpause", in: jsObject] }
-        set { ClosureAttribute.Optional1["onpause", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onpause, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onpause, in: jsObject] = newValue }
     }
 
     var onplay: EventHandler {
-        get { ClosureAttribute.Optional1["onplay", in: jsObject] }
-        set { ClosureAttribute.Optional1["onplay", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onplay, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onplay, in: jsObject] = newValue }
     }
 
     var onplaying: EventHandler {
-        get { ClosureAttribute.Optional1["onplaying", in: jsObject] }
-        set { ClosureAttribute.Optional1["onplaying", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onplaying, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onplaying, in: jsObject] = newValue }
     }
 
     var onprogress: EventHandler {
-        get { ClosureAttribute.Optional1["onprogress", in: jsObject] }
-        set { ClosureAttribute.Optional1["onprogress", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onprogress, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onprogress, in: jsObject] = newValue }
     }
 
     var onratechange: EventHandler {
-        get { ClosureAttribute.Optional1["onratechange", in: jsObject] }
-        set { ClosureAttribute.Optional1["onratechange", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onratechange, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onratechange, in: jsObject] = newValue }
     }
 
     var onreset: EventHandler {
-        get { ClosureAttribute.Optional1["onreset", in: jsObject] }
-        set { ClosureAttribute.Optional1["onreset", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onreset, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onreset, in: jsObject] = newValue }
     }
 
     var onresize: EventHandler {
-        get { ClosureAttribute.Optional1["onresize", in: jsObject] }
-        set { ClosureAttribute.Optional1["onresize", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onresize, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onresize, in: jsObject] = newValue }
     }
 
     var onscroll: EventHandler {
-        get { ClosureAttribute.Optional1["onscroll", in: jsObject] }
-        set { ClosureAttribute.Optional1["onscroll", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onscroll, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onscroll, in: jsObject] = newValue }
     }
 
     var onsecuritypolicyviolation: EventHandler {
-        get { ClosureAttribute.Optional1["onsecuritypolicyviolation", in: jsObject] }
-        set { ClosureAttribute.Optional1["onsecuritypolicyviolation", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onsecuritypolicyviolation, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onsecuritypolicyviolation, in: jsObject] = newValue }
     }
 
     var onseeked: EventHandler {
-        get { ClosureAttribute.Optional1["onseeked", in: jsObject] }
-        set { ClosureAttribute.Optional1["onseeked", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onseeked, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onseeked, in: jsObject] = newValue }
     }
 
     var onseeking: EventHandler {
-        get { ClosureAttribute.Optional1["onseeking", in: jsObject] }
-        set { ClosureAttribute.Optional1["onseeking", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onseeking, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onseeking, in: jsObject] = newValue }
     }
 
     var onselect: EventHandler {
-        get { ClosureAttribute.Optional1["onselect", in: jsObject] }
-        set { ClosureAttribute.Optional1["onselect", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onselect, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onselect, in: jsObject] = newValue }
     }
 
     var onslotchange: EventHandler {
-        get { ClosureAttribute.Optional1["onslotchange", in: jsObject] }
-        set { ClosureAttribute.Optional1["onslotchange", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onslotchange, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onslotchange, in: jsObject] = newValue }
     }
 
     var onstalled: EventHandler {
-        get { ClosureAttribute.Optional1["onstalled", in: jsObject] }
-        set { ClosureAttribute.Optional1["onstalled", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onstalled, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onstalled, in: jsObject] = newValue }
     }
 
     var onsubmit: EventHandler {
-        get { ClosureAttribute.Optional1["onsubmit", in: jsObject] }
-        set { ClosureAttribute.Optional1["onsubmit", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onsubmit, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onsubmit, in: jsObject] = newValue }
     }
 
     var onsuspend: EventHandler {
-        get { ClosureAttribute.Optional1["onsuspend", in: jsObject] }
-        set { ClosureAttribute.Optional1["onsuspend", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onsuspend, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onsuspend, in: jsObject] = newValue }
     }
 
     var ontimeupdate: EventHandler {
-        get { ClosureAttribute.Optional1["ontimeupdate", in: jsObject] }
-        set { ClosureAttribute.Optional1["ontimeupdate", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ontimeupdate, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ontimeupdate, in: jsObject] = newValue }
     }
 
     var ontoggle: EventHandler {
-        get { ClosureAttribute.Optional1["ontoggle", in: jsObject] }
-        set { ClosureAttribute.Optional1["ontoggle", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.ontoggle, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.ontoggle, in: jsObject] = newValue }
     }
 
     var onvolumechange: EventHandler {
-        get { ClosureAttribute.Optional1["onvolumechange", in: jsObject] }
-        set { ClosureAttribute.Optional1["onvolumechange", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onvolumechange, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onvolumechange, in: jsObject] = newValue }
     }
 
     var onwaiting: EventHandler {
-        get { ClosureAttribute.Optional1["onwaiting", in: jsObject] }
-        set { ClosureAttribute.Optional1["onwaiting", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onwaiting, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onwaiting, in: jsObject] = newValue }
     }
 
     var onwebkitanimationend: EventHandler {
-        get { ClosureAttribute.Optional1["onwebkitanimationend", in: jsObject] }
-        set { ClosureAttribute.Optional1["onwebkitanimationend", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onwebkitanimationend, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onwebkitanimationend, in: jsObject] = newValue }
     }
 
     var onwebkitanimationiteration: EventHandler {
-        get { ClosureAttribute.Optional1["onwebkitanimationiteration", in: jsObject] }
-        set { ClosureAttribute.Optional1["onwebkitanimationiteration", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onwebkitanimationiteration, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onwebkitanimationiteration, in: jsObject] = newValue }
     }
 
     var onwebkitanimationstart: EventHandler {
-        get { ClosureAttribute.Optional1["onwebkitanimationstart", in: jsObject] }
-        set { ClosureAttribute.Optional1["onwebkitanimationstart", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onwebkitanimationstart, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onwebkitanimationstart, in: jsObject] = newValue }
     }
 
     var onwebkittransitionend: EventHandler {
-        get { ClosureAttribute.Optional1["onwebkittransitionend", in: jsObject] }
-        set { ClosureAttribute.Optional1["onwebkittransitionend", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onwebkittransitionend, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onwebkittransitionend, in: jsObject] = newValue }
     }
 
     var onwheel: EventHandler {
-        get { ClosureAttribute.Optional1["onwheel", in: jsObject] }
-        set { ClosureAttribute.Optional1["onwheel", in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Keys.onwheel, in: jsObject] }
+        set { ClosureAttribute.Optional1[Keys.onwheel, in: jsObject] = newValue }
     }
 }

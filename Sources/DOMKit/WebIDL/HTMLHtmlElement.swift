@@ -6,8 +6,12 @@ import JavaScriptKit
 public class HTMLHtmlElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLHtmlElement.function! }
 
+    private enum Keys {
+        static let version: JSString = "version"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _version = ReadWriteAttribute(jsObject: jsObject, name: "version")
+        _version = ReadWriteAttribute(jsObject: jsObject, name: Keys.version)
         super.init(unsafelyWrapping: jsObject)
     }
 

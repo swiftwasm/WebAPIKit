@@ -6,12 +6,21 @@ import JavaScriptKit
 public class StorageEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.StorageEvent.function! }
 
+    private enum Keys {
+        static let oldValue: JSString = "oldValue"
+        static let key: JSString = "key"
+        static let storageArea: JSString = "storageArea"
+        static let url: JSString = "url"
+        static let newValue: JSString = "newValue"
+        static let initStorageEvent: JSString = "initStorageEvent"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _key = ReadonlyAttribute(jsObject: jsObject, name: "key")
-        _oldValue = ReadonlyAttribute(jsObject: jsObject, name: "oldValue")
-        _newValue = ReadonlyAttribute(jsObject: jsObject, name: "newValue")
-        _url = ReadonlyAttribute(jsObject: jsObject, name: "url")
-        _storageArea = ReadonlyAttribute(jsObject: jsObject, name: "storageArea")
+        _key = ReadonlyAttribute(jsObject: jsObject, name: Keys.key)
+        _oldValue = ReadonlyAttribute(jsObject: jsObject, name: Keys.oldValue)
+        _newValue = ReadonlyAttribute(jsObject: jsObject, name: Keys.newValue)
+        _url = ReadonlyAttribute(jsObject: jsObject, name: Keys.url)
+        _storageArea = ReadonlyAttribute(jsObject: jsObject, name: Keys.storageArea)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -43,6 +52,6 @@ public class StorageEvent: Event {
         let _arg5 = newValue?.jsValue() ?? .undefined
         let _arg6 = url?.jsValue() ?? .undefined
         let _arg7 = storageArea?.jsValue() ?? .undefined
-        _ = jsObject["initStorageEvent"]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        _ = jsObject[Keys.initStorageEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
     }
 }

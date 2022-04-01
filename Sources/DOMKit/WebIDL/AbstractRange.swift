@@ -6,14 +6,22 @@ import JavaScriptKit
 public class AbstractRange: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.AbstractRange.function! }
 
+    private enum Keys {
+        static let startContainer: JSString = "startContainer"
+        static let collapsed: JSString = "collapsed"
+        static let endContainer: JSString = "endContainer"
+        static let endOffset: JSString = "endOffset"
+        static let startOffset: JSString = "startOffset"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _startContainer = ReadonlyAttribute(jsObject: jsObject, name: "startContainer")
-        _startOffset = ReadonlyAttribute(jsObject: jsObject, name: "startOffset")
-        _endContainer = ReadonlyAttribute(jsObject: jsObject, name: "endContainer")
-        _endOffset = ReadonlyAttribute(jsObject: jsObject, name: "endOffset")
-        _collapsed = ReadonlyAttribute(jsObject: jsObject, name: "collapsed")
+        _startContainer = ReadonlyAttribute(jsObject: jsObject, name: Keys.startContainer)
+        _startOffset = ReadonlyAttribute(jsObject: jsObject, name: Keys.startOffset)
+        _endContainer = ReadonlyAttribute(jsObject: jsObject, name: Keys.endContainer)
+        _endOffset = ReadonlyAttribute(jsObject: jsObject, name: Keys.endOffset)
+        _collapsed = ReadonlyAttribute(jsObject: jsObject, name: Keys.collapsed)
         self.jsObject = jsObject
     }
 

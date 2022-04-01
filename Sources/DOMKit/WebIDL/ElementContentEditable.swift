@@ -3,22 +3,29 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let enterKeyHint: JSString = "enterKeyHint"
+    static let isContentEditable: JSString = "isContentEditable"
+    static let contentEditable: JSString = "contentEditable"
+    static let inputMode: JSString = "inputMode"
+}
+
 public protocol ElementContentEditable: JSBridgedClass {}
 public extension ElementContentEditable {
     var contentEditable: String {
-        get { ReadWriteAttribute["contentEditable", in: jsObject] }
-        set { ReadWriteAttribute["contentEditable", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.contentEditable, in: jsObject] }
+        set { ReadWriteAttribute[Keys.contentEditable, in: jsObject] = newValue }
     }
 
     var enterKeyHint: String {
-        get { ReadWriteAttribute["enterKeyHint", in: jsObject] }
-        set { ReadWriteAttribute["enterKeyHint", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.enterKeyHint, in: jsObject] }
+        set { ReadWriteAttribute[Keys.enterKeyHint, in: jsObject] = newValue }
     }
 
-    var isContentEditable: Bool { ReadonlyAttribute["isContentEditable", in: jsObject] }
+    var isContentEditable: Bool { ReadonlyAttribute[Keys.isContentEditable, in: jsObject] }
 
     var inputMode: String {
-        get { ReadWriteAttribute["inputMode", in: jsObject] }
-        set { ReadWriteAttribute["inputMode", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.inputMode, in: jsObject] }
+        set { ReadWriteAttribute[Keys.inputMode, in: jsObject] = newValue }
     }
 }

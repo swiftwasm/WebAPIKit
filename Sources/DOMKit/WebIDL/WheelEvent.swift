@@ -6,11 +6,21 @@ import JavaScriptKit
 public class WheelEvent: MouseEvent {
     override public class var constructor: JSFunction { JSObject.global.WheelEvent.function! }
 
+    private enum Keys {
+        static let DOM_DELTA_PIXEL: JSString = "DOM_DELTA_PIXEL"
+        static let deltaY: JSString = "deltaY"
+        static let DOM_DELTA_PAGE: JSString = "DOM_DELTA_PAGE"
+        static let deltaZ: JSString = "deltaZ"
+        static let DOM_DELTA_LINE: JSString = "DOM_DELTA_LINE"
+        static let deltaMode: JSString = "deltaMode"
+        static let deltaX: JSString = "deltaX"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _deltaX = ReadonlyAttribute(jsObject: jsObject, name: "deltaX")
-        _deltaY = ReadonlyAttribute(jsObject: jsObject, name: "deltaY")
-        _deltaZ = ReadonlyAttribute(jsObject: jsObject, name: "deltaZ")
-        _deltaMode = ReadonlyAttribute(jsObject: jsObject, name: "deltaMode")
+        _deltaX = ReadonlyAttribute(jsObject: jsObject, name: Keys.deltaX)
+        _deltaY = ReadonlyAttribute(jsObject: jsObject, name: Keys.deltaY)
+        _deltaZ = ReadonlyAttribute(jsObject: jsObject, name: Keys.deltaZ)
+        _deltaMode = ReadonlyAttribute(jsObject: jsObject, name: Keys.deltaMode)
         super.init(unsafelyWrapping: jsObject)
     }
 

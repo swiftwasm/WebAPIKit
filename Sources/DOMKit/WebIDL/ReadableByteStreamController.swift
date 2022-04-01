@@ -6,11 +6,19 @@ import JavaScriptKit
 public class ReadableByteStreamController: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ReadableByteStreamController.function! }
 
+    private enum Keys {
+        static let desiredSize: JSString = "desiredSize"
+        static let enqueue: JSString = "enqueue"
+        static let close: JSString = "close"
+        static let error: JSString = "error"
+        static let byobRequest: JSString = "byobRequest"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _byobRequest = ReadonlyAttribute(jsObject: jsObject, name: "byobRequest")
-        _desiredSize = ReadonlyAttribute(jsObject: jsObject, name: "desiredSize")
+        _byobRequest = ReadonlyAttribute(jsObject: jsObject, name: Keys.byobRequest)
+        _desiredSize = ReadonlyAttribute(jsObject: jsObject, name: Keys.desiredSize)
         self.jsObject = jsObject
     }
 
@@ -21,14 +29,14 @@ public class ReadableByteStreamController: JSBridgedClass {
     public var desiredSize: Double?
 
     public func close() {
-        _ = jsObject["close"]!()
+        _ = jsObject[Keys.close]!()
     }
 
     public func enqueue(chunk: ArrayBufferView) {
-        _ = jsObject["enqueue"]!(chunk.jsValue())
+        _ = jsObject[Keys.enqueue]!(chunk.jsValue())
     }
 
     public func error(e: JSValue? = nil) {
-        _ = jsObject["error"]!(e?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.error]!(e?.jsValue() ?? .undefined)
     }
 }

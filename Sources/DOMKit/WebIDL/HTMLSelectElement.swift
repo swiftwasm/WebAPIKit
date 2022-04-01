@@ -6,24 +6,51 @@ import JavaScriptKit
 public class HTMLSelectElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLSelectElement.function! }
 
+    private enum Keys {
+        static let selectedOptions: JSString = "selectedOptions"
+        static let reportValidity: JSString = "reportValidity"
+        static let setCustomValidity: JSString = "setCustomValidity"
+        static let autocomplete: JSString = "autocomplete"
+        static let type: JSString = "type"
+        static let validationMessage: JSString = "validationMessage"
+        static let add: JSString = "add"
+        static let selectedIndex: JSString = "selectedIndex"
+        static let item: JSString = "item"
+        static let value: JSString = "value"
+        static let validity: JSString = "validity"
+        static let remove: JSString = "remove"
+        static let checkValidity: JSString = "checkValidity"
+        static let options: JSString = "options"
+        static let disabled: JSString = "disabled"
+        static let namedItem: JSString = "namedItem"
+        static let multiple: JSString = "multiple"
+        static let labels: JSString = "labels"
+        static let required: JSString = "required"
+        static let form: JSString = "form"
+        static let name: JSString = "name"
+        static let size: JSString = "size"
+        static let length: JSString = "length"
+        static let willValidate: JSString = "willValidate"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: "autocomplete")
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: "disabled")
-        _form = ReadonlyAttribute(jsObject: jsObject, name: "form")
-        _multiple = ReadWriteAttribute(jsObject: jsObject, name: "multiple")
-        _name = ReadWriteAttribute(jsObject: jsObject, name: "name")
-        _required = ReadWriteAttribute(jsObject: jsObject, name: "required")
-        _size = ReadWriteAttribute(jsObject: jsObject, name: "size")
-        _type = ReadonlyAttribute(jsObject: jsObject, name: "type")
-        _options = ReadonlyAttribute(jsObject: jsObject, name: "options")
-        _length = ReadWriteAttribute(jsObject: jsObject, name: "length")
-        _selectedOptions = ReadonlyAttribute(jsObject: jsObject, name: "selectedOptions")
-        _selectedIndex = ReadWriteAttribute(jsObject: jsObject, name: "selectedIndex")
-        _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
-        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: "willValidate")
-        _validity = ReadonlyAttribute(jsObject: jsObject, name: "validity")
-        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: "validationMessage")
-        _labels = ReadonlyAttribute(jsObject: jsObject, name: "labels")
+        _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Keys.autocomplete)
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
+        _multiple = ReadWriteAttribute(jsObject: jsObject, name: Keys.multiple)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
+        _required = ReadWriteAttribute(jsObject: jsObject, name: Keys.required)
+        _size = ReadWriteAttribute(jsObject: jsObject, name: Keys.size)
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
+        _options = ReadonlyAttribute(jsObject: jsObject, name: Keys.options)
+        _length = ReadWriteAttribute(jsObject: jsObject, name: Keys.length)
+        _selectedOptions = ReadonlyAttribute(jsObject: jsObject, name: Keys.selectedOptions)
+        _selectedIndex = ReadWriteAttribute(jsObject: jsObject, name: Keys.selectedIndex)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
+        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Keys.willValidate)
+        _validity = ReadonlyAttribute(jsObject: jsObject, name: Keys.validity)
+        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Keys.validationMessage)
+        _labels = ReadonlyAttribute(jsObject: jsObject, name: Keys.labels)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -66,19 +93,19 @@ public class HTMLSelectElement: HTMLElement {
     }
 
     public func namedItem(name: String) -> HTMLOptionElement? {
-        jsObject["namedItem"]!(name.jsValue()).fromJSValue()!
+        jsObject[Keys.namedItem]!(name.jsValue()).fromJSValue()!
     }
 
     public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject["add"]!(element.jsValue(), before?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.add]!(element.jsValue(), before?.jsValue() ?? .undefined)
     }
 
     public func remove() {
-        _ = jsObject["remove"]!()
+        _ = jsObject[Keys.remove]!()
     }
 
     public func remove(index: Int32) {
-        _ = jsObject["remove"]!(index.jsValue())
+        _ = jsObject[Keys.remove]!(index.jsValue())
     }
 
     // XXX: unsupported setter for keys of type UInt32
@@ -102,15 +129,15 @@ public class HTMLSelectElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject["checkValidity"]!().fromJSValue()!
+        jsObject[Keys.checkValidity]!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject["reportValidity"]!().fromJSValue()!
+        jsObject[Keys.reportValidity]!().fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject["setCustomValidity"]!(error.jsValue())
+        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
     }
 
     @ReadonlyAttribute

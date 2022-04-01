@@ -3,30 +3,39 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let tabIndex: JSString = "tabIndex"
+    static let dataset: JSString = "dataset"
+    static let autofocus: JSString = "autofocus"
+    static let nonce: JSString = "nonce"
+    static let focus: JSString = "focus"
+    static let blur: JSString = "blur"
+}
+
 public protocol HTMLOrSVGElement: JSBridgedClass {}
 public extension HTMLOrSVGElement {
-    var dataset: DOMStringMap { ReadonlyAttribute["dataset", in: jsObject] }
+    var dataset: DOMStringMap { ReadonlyAttribute[Keys.dataset, in: jsObject] }
 
     var nonce: String {
-        get { ReadWriteAttribute["nonce", in: jsObject] }
-        set { ReadWriteAttribute["nonce", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.nonce, in: jsObject] }
+        set { ReadWriteAttribute[Keys.nonce, in: jsObject] = newValue }
     }
 
     var autofocus: Bool {
-        get { ReadWriteAttribute["autofocus", in: jsObject] }
-        set { ReadWriteAttribute["autofocus", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.autofocus, in: jsObject] }
+        set { ReadWriteAttribute[Keys.autofocus, in: jsObject] = newValue }
     }
 
     var tabIndex: Int32 {
-        get { ReadWriteAttribute["tabIndex", in: jsObject] }
-        set { ReadWriteAttribute["tabIndex", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.tabIndex, in: jsObject] }
+        set { ReadWriteAttribute[Keys.tabIndex, in: jsObject] = newValue }
     }
 
     func focus(options: FocusOptions? = nil) {
-        _ = jsObject["focus"]!(options?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.focus]!(options?.jsValue() ?? .undefined)
     }
 
     func blur() {
-        _ = jsObject["blur"]!()
+        _ = jsObject[Keys.blur]!()
     }
 }

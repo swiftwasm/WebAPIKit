@@ -6,12 +6,20 @@ import JavaScriptKit
 public class ErrorEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.ErrorEvent.function! }
 
+    private enum Keys {
+        static let message: JSString = "message"
+        static let error: JSString = "error"
+        static let lineno: JSString = "lineno"
+        static let filename: JSString = "filename"
+        static let colno: JSString = "colno"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _message = ReadonlyAttribute(jsObject: jsObject, name: "message")
-        _filename = ReadonlyAttribute(jsObject: jsObject, name: "filename")
-        _lineno = ReadonlyAttribute(jsObject: jsObject, name: "lineno")
-        _colno = ReadonlyAttribute(jsObject: jsObject, name: "colno")
-        _error = ReadonlyAttribute(jsObject: jsObject, name: "error")
+        _message = ReadonlyAttribute(jsObject: jsObject, name: Keys.message)
+        _filename = ReadonlyAttribute(jsObject: jsObject, name: Keys.filename)
+        _lineno = ReadonlyAttribute(jsObject: jsObject, name: Keys.lineno)
+        _colno = ReadonlyAttribute(jsObject: jsObject, name: Keys.colno)
+        _error = ReadonlyAttribute(jsObject: jsObject, name: Keys.error)
         super.init(unsafelyWrapping: jsObject)
     }
 

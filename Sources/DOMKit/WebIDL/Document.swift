@@ -6,48 +6,125 @@ import JavaScriptKit
 public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentNode, XPathEvaluatorBase, GlobalEventHandlers, DocumentAndElementEventHandlers {
     override public class var constructor: JSFunction { JSObject.global.Document.function! }
 
+    private enum Keys {
+        static let currentScript: JSString = "currentScript"
+        static let getElementsByTagName: JSString = "getElementsByTagName"
+        static let URL: JSString = "URL"
+        static let vlinkColor: JSString = "vlinkColor"
+        static let createAttributeNS: JSString = "createAttributeNS"
+        static let documentElement: JSString = "documentElement"
+        static let head: JSString = "head"
+        static let implementation: JSString = "implementation"
+        static let scripts: JSString = "scripts"
+        static let designMode: JSString = "designMode"
+        static let hidden: JSString = "hidden"
+        static let clear: JSString = "clear"
+        static let lastModified: JSString = "lastModified"
+        static let getElementsByTagNameNS: JSString = "getElementsByTagNameNS"
+        static let doctype: JSString = "doctype"
+        static let images: JSString = "images"
+        static let captureEvents: JSString = "captureEvents"
+        static let all: JSString = "all"
+        static let queryCommandValue: JSString = "queryCommandValue"
+        static let queryCommandEnabled: JSString = "queryCommandEnabled"
+        static let createElement: JSString = "createElement"
+        static let queryCommandIndeterm: JSString = "queryCommandIndeterm"
+        static let queryCommandState: JSString = "queryCommandState"
+        static let createTextNode: JSString = "createTextNode"
+        static let charset: JSString = "charset"
+        static let onreadystatechange: JSString = "onreadystatechange"
+        static let createElementNS: JSString = "createElementNS"
+        static let queryCommandSupported: JSString = "queryCommandSupported"
+        static let visibilityState: JSString = "visibilityState"
+        static let contentType: JSString = "contentType"
+        static let plugins: JSString = "plugins"
+        static let applets: JSString = "applets"
+        static let adoptNode: JSString = "adoptNode"
+        static let compatMode: JSString = "compatMode"
+        static let createComment: JSString = "createComment"
+        static let location: JSString = "location"
+        static let execCommand: JSString = "execCommand"
+        static let referrer: JSString = "referrer"
+        static let documentURI: JSString = "documentURI"
+        static let characterSet: JSString = "characterSet"
+        static let links: JSString = "links"
+        static let open: JSString = "open"
+        static let alinkColor: JSString = "alinkColor"
+        static let createNodeIterator: JSString = "createNodeIterator"
+        static let forms: JSString = "forms"
+        static let cookie: JSString = "cookie"
+        static let domain: JSString = "domain"
+        static let createDocumentFragment: JSString = "createDocumentFragment"
+        static let getElementsByClassName: JSString = "getElementsByClassName"
+        static let title: JSString = "title"
+        static let createProcessingInstruction: JSString = "createProcessingInstruction"
+        static let getElementsByName: JSString = "getElementsByName"
+        static let createRange: JSString = "createRange"
+        static let embeds: JSString = "embeds"
+        static let createAttribute: JSString = "createAttribute"
+        static let linkColor: JSString = "linkColor"
+        static let onvisibilitychange: JSString = "onvisibilitychange"
+        static let inputEncoding: JSString = "inputEncoding"
+        static let createEvent: JSString = "createEvent"
+        static let defaultView: JSString = "defaultView"
+        static let readyState: JSString = "readyState"
+        static let hasFocus: JSString = "hasFocus"
+        static let writeln: JSString = "writeln"
+        static let fgColor: JSString = "fgColor"
+        static let close: JSString = "close"
+        static let write: JSString = "write"
+        static let body: JSString = "body"
+        static let bgColor: JSString = "bgColor"
+        static let releaseEvents: JSString = "releaseEvents"
+        static let dir: JSString = "dir"
+        static let anchors: JSString = "anchors"
+        static let importNode: JSString = "importNode"
+        static let createCDATASection: JSString = "createCDATASection"
+        static let createTreeWalker: JSString = "createTreeWalker"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _implementation = ReadonlyAttribute(jsObject: jsObject, name: "implementation")
-        _URL = ReadonlyAttribute(jsObject: jsObject, name: "URL")
-        _documentURI = ReadonlyAttribute(jsObject: jsObject, name: "documentURI")
-        _compatMode = ReadonlyAttribute(jsObject: jsObject, name: "compatMode")
-        _characterSet = ReadonlyAttribute(jsObject: jsObject, name: "characterSet")
-        _charset = ReadonlyAttribute(jsObject: jsObject, name: "charset")
-        _inputEncoding = ReadonlyAttribute(jsObject: jsObject, name: "inputEncoding")
-        _contentType = ReadonlyAttribute(jsObject: jsObject, name: "contentType")
-        _doctype = ReadonlyAttribute(jsObject: jsObject, name: "doctype")
-        _documentElement = ReadonlyAttribute(jsObject: jsObject, name: "documentElement")
-        _location = ReadonlyAttribute(jsObject: jsObject, name: "location")
-        _domain = ReadWriteAttribute(jsObject: jsObject, name: "domain")
-        _referrer = ReadonlyAttribute(jsObject: jsObject, name: "referrer")
-        _cookie = ReadWriteAttribute(jsObject: jsObject, name: "cookie")
-        _lastModified = ReadonlyAttribute(jsObject: jsObject, name: "lastModified")
-        _readyState = ReadonlyAttribute(jsObject: jsObject, name: "readyState")
-        _title = ReadWriteAttribute(jsObject: jsObject, name: "title")
-        _dir = ReadWriteAttribute(jsObject: jsObject, name: "dir")
-        _body = ReadWriteAttribute(jsObject: jsObject, name: "body")
-        _head = ReadonlyAttribute(jsObject: jsObject, name: "head")
-        _images = ReadonlyAttribute(jsObject: jsObject, name: "images")
-        _embeds = ReadonlyAttribute(jsObject: jsObject, name: "embeds")
-        _plugins = ReadonlyAttribute(jsObject: jsObject, name: "plugins")
-        _links = ReadonlyAttribute(jsObject: jsObject, name: "links")
-        _forms = ReadonlyAttribute(jsObject: jsObject, name: "forms")
-        _scripts = ReadonlyAttribute(jsObject: jsObject, name: "scripts")
-        _currentScript = ReadonlyAttribute(jsObject: jsObject, name: "currentScript")
-        _defaultView = ReadonlyAttribute(jsObject: jsObject, name: "defaultView")
-        _designMode = ReadWriteAttribute(jsObject: jsObject, name: "designMode")
-        _hidden = ReadonlyAttribute(jsObject: jsObject, name: "hidden")
-        _visibilityState = ReadonlyAttribute(jsObject: jsObject, name: "visibilityState")
-        _onreadystatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: "onreadystatechange")
-        _onvisibilitychange = ClosureAttribute.Optional1(jsObject: jsObject, name: "onvisibilitychange")
-        _fgColor = ReadWriteAttribute(jsObject: jsObject, name: "fgColor")
-        _linkColor = ReadWriteAttribute(jsObject: jsObject, name: "linkColor")
-        _vlinkColor = ReadWriteAttribute(jsObject: jsObject, name: "vlinkColor")
-        _alinkColor = ReadWriteAttribute(jsObject: jsObject, name: "alinkColor")
-        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: "bgColor")
-        _anchors = ReadonlyAttribute(jsObject: jsObject, name: "anchors")
-        _applets = ReadonlyAttribute(jsObject: jsObject, name: "applets")
-        _all = ReadonlyAttribute(jsObject: jsObject, name: "all")
+        _implementation = ReadonlyAttribute(jsObject: jsObject, name: Keys.implementation)
+        _URL = ReadonlyAttribute(jsObject: jsObject, name: Keys.URL)
+        _documentURI = ReadonlyAttribute(jsObject: jsObject, name: Keys.documentURI)
+        _compatMode = ReadonlyAttribute(jsObject: jsObject, name: Keys.compatMode)
+        _characterSet = ReadonlyAttribute(jsObject: jsObject, name: Keys.characterSet)
+        _charset = ReadonlyAttribute(jsObject: jsObject, name: Keys.charset)
+        _inputEncoding = ReadonlyAttribute(jsObject: jsObject, name: Keys.inputEncoding)
+        _contentType = ReadonlyAttribute(jsObject: jsObject, name: Keys.contentType)
+        _doctype = ReadonlyAttribute(jsObject: jsObject, name: Keys.doctype)
+        _documentElement = ReadonlyAttribute(jsObject: jsObject, name: Keys.documentElement)
+        _location = ReadonlyAttribute(jsObject: jsObject, name: Keys.location)
+        _domain = ReadWriteAttribute(jsObject: jsObject, name: Keys.domain)
+        _referrer = ReadonlyAttribute(jsObject: jsObject, name: Keys.referrer)
+        _cookie = ReadWriteAttribute(jsObject: jsObject, name: Keys.cookie)
+        _lastModified = ReadonlyAttribute(jsObject: jsObject, name: Keys.lastModified)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Keys.readyState)
+        _title = ReadWriteAttribute(jsObject: jsObject, name: Keys.title)
+        _dir = ReadWriteAttribute(jsObject: jsObject, name: Keys.dir)
+        _body = ReadWriteAttribute(jsObject: jsObject, name: Keys.body)
+        _head = ReadonlyAttribute(jsObject: jsObject, name: Keys.head)
+        _images = ReadonlyAttribute(jsObject: jsObject, name: Keys.images)
+        _embeds = ReadonlyAttribute(jsObject: jsObject, name: Keys.embeds)
+        _plugins = ReadonlyAttribute(jsObject: jsObject, name: Keys.plugins)
+        _links = ReadonlyAttribute(jsObject: jsObject, name: Keys.links)
+        _forms = ReadonlyAttribute(jsObject: jsObject, name: Keys.forms)
+        _scripts = ReadonlyAttribute(jsObject: jsObject, name: Keys.scripts)
+        _currentScript = ReadonlyAttribute(jsObject: jsObject, name: Keys.currentScript)
+        _defaultView = ReadonlyAttribute(jsObject: jsObject, name: Keys.defaultView)
+        _designMode = ReadWriteAttribute(jsObject: jsObject, name: Keys.designMode)
+        _hidden = ReadonlyAttribute(jsObject: jsObject, name: Keys.hidden)
+        _visibilityState = ReadonlyAttribute(jsObject: jsObject, name: Keys.visibilityState)
+        _onreadystatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onreadystatechange)
+        _onvisibilitychange = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onvisibilitychange)
+        _fgColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.fgColor)
+        _linkColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.linkColor)
+        _vlinkColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.vlinkColor)
+        _alinkColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.alinkColor)
+        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.bgColor)
+        _anchors = ReadonlyAttribute(jsObject: jsObject, name: Keys.anchors)
+        _applets = ReadonlyAttribute(jsObject: jsObject, name: Keys.applets)
+        _all = ReadonlyAttribute(jsObject: jsObject, name: Keys.all)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -86,67 +163,67 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     public var documentElement: Element?
 
     public func getElementsByTagName(qualifiedName: String) -> HTMLCollection {
-        jsObject["getElementsByTagName"]!(qualifiedName.jsValue()).fromJSValue()!
+        jsObject[Keys.getElementsByTagName]!(qualifiedName.jsValue()).fromJSValue()!
     }
 
     public func getElementsByTagNameNS(namespace: String?, localName: String) -> HTMLCollection {
-        jsObject["getElementsByTagNameNS"]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        jsObject[Keys.getElementsByTagNameNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 
     public func getElementsByClassName(classNames: String) -> HTMLCollection {
-        jsObject["getElementsByClassName"]!(classNames.jsValue()).fromJSValue()!
+        jsObject[Keys.getElementsByClassName]!(classNames.jsValue()).fromJSValue()!
     }
 
     public func createElement(localName: String, options: __UNSUPPORTED_UNION__? = nil) -> Element {
-        jsObject["createElement"]!(localName.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.createElement]!(localName.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func createElementNS(namespace: String?, qualifiedName: String, options: __UNSUPPORTED_UNION__? = nil) -> Element {
-        jsObject["createElementNS"]!(namespace.jsValue(), qualifiedName.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.createElementNS]!(namespace.jsValue(), qualifiedName.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func createDocumentFragment() -> DocumentFragment {
-        jsObject["createDocumentFragment"]!().fromJSValue()!
+        jsObject[Keys.createDocumentFragment]!().fromJSValue()!
     }
 
     public func createTextNode(data: String) -> Text {
-        jsObject["createTextNode"]!(data.jsValue()).fromJSValue()!
+        jsObject[Keys.createTextNode]!(data.jsValue()).fromJSValue()!
     }
 
     public func createCDATASection(data: String) -> CDATASection {
-        jsObject["createCDATASection"]!(data.jsValue()).fromJSValue()!
+        jsObject[Keys.createCDATASection]!(data.jsValue()).fromJSValue()!
     }
 
     public func createComment(data: String) -> Comment {
-        jsObject["createComment"]!(data.jsValue()).fromJSValue()!
+        jsObject[Keys.createComment]!(data.jsValue()).fromJSValue()!
     }
 
     public func createProcessingInstruction(target: String, data: String) -> ProcessingInstruction {
-        jsObject["createProcessingInstruction"]!(target.jsValue(), data.jsValue()).fromJSValue()!
+        jsObject[Keys.createProcessingInstruction]!(target.jsValue(), data.jsValue()).fromJSValue()!
     }
 
     public func importNode(node: Node, deep: Bool? = nil) -> Node {
-        jsObject["importNode"]!(node.jsValue(), deep?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.importNode]!(node.jsValue(), deep?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func adoptNode(node: Node) -> Node {
-        jsObject["adoptNode"]!(node.jsValue()).fromJSValue()!
+        jsObject[Keys.adoptNode]!(node.jsValue()).fromJSValue()!
     }
 
     public func createAttribute(localName: String) -> Attr {
-        jsObject["createAttribute"]!(localName.jsValue()).fromJSValue()!
+        jsObject[Keys.createAttribute]!(localName.jsValue()).fromJSValue()!
     }
 
     public func createAttributeNS(namespace: String?, qualifiedName: String) -> Attr {
-        jsObject["createAttributeNS"]!(namespace.jsValue(), qualifiedName.jsValue()).fromJSValue()!
+        jsObject[Keys.createAttributeNS]!(namespace.jsValue(), qualifiedName.jsValue()).fromJSValue()!
     }
 
     public func createEvent(interface: String) -> Event {
-        jsObject["createEvent"]!(interface.jsValue()).fromJSValue()!
+        jsObject[Keys.createEvent]!(interface.jsValue()).fromJSValue()!
     }
 
     public func createRange() -> Range {
-        jsObject["createRange"]!().fromJSValue()!
+        jsObject[Keys.createRange]!().fromJSValue()!
     }
 
     // XXX: member 'createNodeIterator' is ignored
@@ -206,64 +283,64 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     public var scripts: HTMLCollection
 
     public func getElementsByName(elementName: String) -> NodeList {
-        jsObject["getElementsByName"]!(elementName.jsValue()).fromJSValue()!
+        jsObject[Keys.getElementsByName]!(elementName.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var currentScript: HTMLOrSVGScriptElement?
 
     public func open(unused1: String? = nil, unused2: String? = nil) -> Self {
-        jsObject["open"]!(unused1?.jsValue() ?? .undefined, unused2?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.open]!(unused1?.jsValue() ?? .undefined, unused2?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func open(url: String, name: String, features: String) -> WindowProxy? {
-        jsObject["open"]!(url.jsValue(), name.jsValue(), features.jsValue()).fromJSValue()!
+        jsObject[Keys.open]!(url.jsValue(), name.jsValue(), features.jsValue()).fromJSValue()!
     }
 
     public func close() {
-        _ = jsObject["close"]!()
+        _ = jsObject[Keys.close]!()
     }
 
     public func write(text: String...) {
-        _ = jsObject["write"]!(text.jsValue())
+        _ = jsObject[Keys.write]!(text.jsValue())
     }
 
     public func writeln(text: String...) {
-        _ = jsObject["writeln"]!(text.jsValue())
+        _ = jsObject[Keys.writeln]!(text.jsValue())
     }
 
     @ReadonlyAttribute
     public var defaultView: WindowProxy?
 
     public func hasFocus() -> Bool {
-        jsObject["hasFocus"]!().fromJSValue()!
+        jsObject[Keys.hasFocus]!().fromJSValue()!
     }
 
     @ReadWriteAttribute
     public var designMode: String
 
     public func execCommand(commandId: String, showUI: Bool? = nil, value: String? = nil) -> Bool {
-        jsObject["execCommand"]!(commandId.jsValue(), showUI?.jsValue() ?? .undefined, value?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.execCommand]!(commandId.jsValue(), showUI?.jsValue() ?? .undefined, value?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func queryCommandEnabled(commandId: String) -> Bool {
-        jsObject["queryCommandEnabled"]!(commandId.jsValue()).fromJSValue()!
+        jsObject[Keys.queryCommandEnabled]!(commandId.jsValue()).fromJSValue()!
     }
 
     public func queryCommandIndeterm(commandId: String) -> Bool {
-        jsObject["queryCommandIndeterm"]!(commandId.jsValue()).fromJSValue()!
+        jsObject[Keys.queryCommandIndeterm]!(commandId.jsValue()).fromJSValue()!
     }
 
     public func queryCommandState(commandId: String) -> Bool {
-        jsObject["queryCommandState"]!(commandId.jsValue()).fromJSValue()!
+        jsObject[Keys.queryCommandState]!(commandId.jsValue()).fromJSValue()!
     }
 
     public func queryCommandSupported(commandId: String) -> Bool {
-        jsObject["queryCommandSupported"]!(commandId.jsValue()).fromJSValue()!
+        jsObject[Keys.queryCommandSupported]!(commandId.jsValue()).fromJSValue()!
     }
 
     public func queryCommandValue(commandId: String) -> String {
-        jsObject["queryCommandValue"]!(commandId.jsValue()).fromJSValue()!
+        jsObject[Keys.queryCommandValue]!(commandId.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -300,15 +377,15 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     public var applets: HTMLCollection
 
     public func clear() {
-        _ = jsObject["clear"]!()
+        _ = jsObject[Keys.clear]!()
     }
 
     public func captureEvents() {
-        _ = jsObject["captureEvents"]!()
+        _ = jsObject[Keys.captureEvents]!()
     }
 
     public func releaseEvents() {
-        _ = jsObject["releaseEvents"]!()
+        _ = jsObject[Keys.releaseEvents]!()
     }
 
     @ReadonlyAttribute

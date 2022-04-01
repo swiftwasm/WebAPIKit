@@ -4,14 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageBitmapRenderingContextSettings: BridgedDictionary {
+    private enum Keys {
+        static let alpha: JSString = "alpha"
+    }
+
     public convenience init(alpha: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object["alpha"] = alpha.jsValue()
+        object[Keys.alpha] = alpha.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _alpha = ReadWriteAttribute(jsObject: object, name: "alpha")
+        _alpha = ReadWriteAttribute(jsObject: object, name: Keys.alpha)
         super.init(unsafelyWrapping: object)
     }
 

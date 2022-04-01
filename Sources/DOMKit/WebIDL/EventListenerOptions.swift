@@ -4,14 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EventListenerOptions: BridgedDictionary {
+    private enum Keys {
+        static let capture: JSString = "capture"
+    }
+
     public convenience init(capture: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object["capture"] = capture.jsValue()
+        object[Keys.capture] = capture.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _capture = ReadWriteAttribute(jsObject: object, name: "capture")
+        _capture = ReadWriteAttribute(jsObject: object, name: Keys.capture)
         super.init(unsafelyWrapping: object)
     }
 

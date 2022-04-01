@@ -6,8 +6,13 @@ import JavaScriptKit
 public class CompositionEvent: UIEvent {
     override public class var constructor: JSFunction { JSObject.global.CompositionEvent.function! }
 
+    private enum Keys {
+        static let data: JSString = "data"
+        static let initCompositionEvent: JSString = "initCompositionEvent"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _data = ReadonlyAttribute(jsObject: jsObject, name: "data")
+        _data = ReadonlyAttribute(jsObject: jsObject, name: Keys.data)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -19,6 +24,6 @@ public class CompositionEvent: UIEvent {
     public var data: String
 
     public func initCompositionEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: WindowProxy? = nil, dataArg: String? = nil) {
-        _ = jsObject["initCompositionEvent"]!(typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, dataArg?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.initCompositionEvent]!(typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, dataArg?.jsValue() ?? .undefined)
     }
 }

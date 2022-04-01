@@ -6,14 +6,24 @@ import JavaScriptKit
 public class Attr: Node {
     override public class var constructor: JSFunction { JSObject.global.Attr.function! }
 
+    private enum Keys {
+        static let specified: JSString = "specified"
+        static let ownerElement: JSString = "ownerElement"
+        static let prefix: JSString = "prefix"
+        static let localName: JSString = "localName"
+        static let namespaceURI: JSString = "namespaceURI"
+        static let value: JSString = "value"
+        static let name: JSString = "name"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: "namespaceURI")
-        _prefix = ReadonlyAttribute(jsObject: jsObject, name: "prefix")
-        _localName = ReadonlyAttribute(jsObject: jsObject, name: "localName")
-        _name = ReadonlyAttribute(jsObject: jsObject, name: "name")
-        _value = ReadWriteAttribute(jsObject: jsObject, name: "value")
-        _ownerElement = ReadonlyAttribute(jsObject: jsObject, name: "ownerElement")
-        _specified = ReadonlyAttribute(jsObject: jsObject, name: "specified")
+        _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Keys.namespaceURI)
+        _prefix = ReadonlyAttribute(jsObject: jsObject, name: Keys.prefix)
+        _localName = ReadonlyAttribute(jsObject: jsObject, name: Keys.localName)
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Keys.name)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
+        _ownerElement = ReadonlyAttribute(jsObject: jsObject, name: Keys.ownerElement)
+        _specified = ReadonlyAttribute(jsObject: jsObject, name: Keys.specified)
         super.init(unsafelyWrapping: jsObject)
     }
 

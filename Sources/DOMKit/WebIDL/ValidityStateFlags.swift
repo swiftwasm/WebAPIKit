@@ -4,32 +4,45 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ValidityStateFlags: BridgedDictionary {
+    private enum Keys {
+        static let badInput: JSString = "badInput"
+        static let patternMismatch: JSString = "patternMismatch"
+        static let tooShort: JSString = "tooShort"
+        static let rangeUnderflow: JSString = "rangeUnderflow"
+        static let stepMismatch: JSString = "stepMismatch"
+        static let customError: JSString = "customError"
+        static let typeMismatch: JSString = "typeMismatch"
+        static let valueMissing: JSString = "valueMissing"
+        static let rangeOverflow: JSString = "rangeOverflow"
+        static let tooLong: JSString = "tooLong"
+    }
+
     public convenience init(valueMissing: Bool, typeMismatch: Bool, patternMismatch: Bool, tooLong: Bool, tooShort: Bool, rangeUnderflow: Bool, rangeOverflow: Bool, stepMismatch: Bool, badInput: Bool, customError: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object["valueMissing"] = valueMissing.jsValue()
-        object["typeMismatch"] = typeMismatch.jsValue()
-        object["patternMismatch"] = patternMismatch.jsValue()
-        object["tooLong"] = tooLong.jsValue()
-        object["tooShort"] = tooShort.jsValue()
-        object["rangeUnderflow"] = rangeUnderflow.jsValue()
-        object["rangeOverflow"] = rangeOverflow.jsValue()
-        object["stepMismatch"] = stepMismatch.jsValue()
-        object["badInput"] = badInput.jsValue()
-        object["customError"] = customError.jsValue()
+        object[Keys.valueMissing] = valueMissing.jsValue()
+        object[Keys.typeMismatch] = typeMismatch.jsValue()
+        object[Keys.patternMismatch] = patternMismatch.jsValue()
+        object[Keys.tooLong] = tooLong.jsValue()
+        object[Keys.tooShort] = tooShort.jsValue()
+        object[Keys.rangeUnderflow] = rangeUnderflow.jsValue()
+        object[Keys.rangeOverflow] = rangeOverflow.jsValue()
+        object[Keys.stepMismatch] = stepMismatch.jsValue()
+        object[Keys.badInput] = badInput.jsValue()
+        object[Keys.customError] = customError.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _valueMissing = ReadWriteAttribute(jsObject: object, name: "valueMissing")
-        _typeMismatch = ReadWriteAttribute(jsObject: object, name: "typeMismatch")
-        _patternMismatch = ReadWriteAttribute(jsObject: object, name: "patternMismatch")
-        _tooLong = ReadWriteAttribute(jsObject: object, name: "tooLong")
-        _tooShort = ReadWriteAttribute(jsObject: object, name: "tooShort")
-        _rangeUnderflow = ReadWriteAttribute(jsObject: object, name: "rangeUnderflow")
-        _rangeOverflow = ReadWriteAttribute(jsObject: object, name: "rangeOverflow")
-        _stepMismatch = ReadWriteAttribute(jsObject: object, name: "stepMismatch")
-        _badInput = ReadWriteAttribute(jsObject: object, name: "badInput")
-        _customError = ReadWriteAttribute(jsObject: object, name: "customError")
+        _valueMissing = ReadWriteAttribute(jsObject: object, name: Keys.valueMissing)
+        _typeMismatch = ReadWriteAttribute(jsObject: object, name: Keys.typeMismatch)
+        _patternMismatch = ReadWriteAttribute(jsObject: object, name: Keys.patternMismatch)
+        _tooLong = ReadWriteAttribute(jsObject: object, name: Keys.tooLong)
+        _tooShort = ReadWriteAttribute(jsObject: object, name: Keys.tooShort)
+        _rangeUnderflow = ReadWriteAttribute(jsObject: object, name: Keys.rangeUnderflow)
+        _rangeOverflow = ReadWriteAttribute(jsObject: object, name: Keys.rangeOverflow)
+        _stepMismatch = ReadWriteAttribute(jsObject: object, name: Keys.stepMismatch)
+        _badInput = ReadWriteAttribute(jsObject: object, name: Keys.badInput)
+        _customError = ReadWriteAttribute(jsObject: object, name: Keys.customError)
         super.init(unsafelyWrapping: object)
     }
 

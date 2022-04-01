@@ -6,14 +6,24 @@ import JavaScriptKit
 public class XMLHttpRequestEventTarget: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.XMLHttpRequestEventTarget.function! }
 
+    private enum Keys {
+        static let onabort: JSString = "onabort"
+        static let onloadend: JSString = "onloadend"
+        static let onload: JSString = "onload"
+        static let onerror: JSString = "onerror"
+        static let onprogress: JSString = "onprogress"
+        static let onloadstart: JSString = "onloadstart"
+        static let ontimeout: JSString = "ontimeout"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onloadstart = ClosureAttribute.Optional1(jsObject: jsObject, name: "onloadstart")
-        _onprogress = ClosureAttribute.Optional1(jsObject: jsObject, name: "onprogress")
-        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: "onabort")
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: "onerror")
-        _onload = ClosureAttribute.Optional1(jsObject: jsObject, name: "onload")
-        _ontimeout = ClosureAttribute.Optional1(jsObject: jsObject, name: "ontimeout")
-        _onloadend = ClosureAttribute.Optional1(jsObject: jsObject, name: "onloadend")
+        _onloadstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onloadstart)
+        _onprogress = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onprogress)
+        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onabort)
+        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onerror)
+        _onload = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onload)
+        _ontimeout = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.ontimeout)
+        _onloadend = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onloadend)
         super.init(unsafelyWrapping: jsObject)
     }
 

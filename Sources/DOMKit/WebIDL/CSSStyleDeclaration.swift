@@ -6,13 +6,25 @@ import JavaScriptKit
 public class CSSStyleDeclaration: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.CSSStyleDeclaration.function! }
 
+    private enum Keys {
+        static let length: JSString = "length"
+        static let getPropertyPriority: JSString = "getPropertyPriority"
+        static let parentRule: JSString = "parentRule"
+        static let item: JSString = "item"
+        static let getPropertyValue: JSString = "getPropertyValue"
+        static let setProperty: JSString = "setProperty"
+        static let removeProperty: JSString = "removeProperty"
+        static let cssFloat: JSString = "cssFloat"
+        static let cssText: JSString = "cssText"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _cssText = ReadWriteAttribute(jsObject: jsObject, name: "cssText")
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
-        _parentRule = ReadonlyAttribute(jsObject: jsObject, name: "parentRule")
-        _cssFloat = ReadWriteAttribute(jsObject: jsObject, name: "cssFloat")
+        _cssText = ReadWriteAttribute(jsObject: jsObject, name: Keys.cssText)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _parentRule = ReadonlyAttribute(jsObject: jsObject, name: Keys.parentRule)
+        _cssFloat = ReadWriteAttribute(jsObject: jsObject, name: Keys.cssFloat)
         self.jsObject = jsObject
     }
 
@@ -27,19 +39,19 @@ public class CSSStyleDeclaration: JSBridgedClass {
     }
 
     public func getPropertyValue(property: String) -> String {
-        jsObject["getPropertyValue"]!(property.jsValue()).fromJSValue()!
+        jsObject[Keys.getPropertyValue]!(property.jsValue()).fromJSValue()!
     }
 
     public func getPropertyPriority(property: String) -> String {
-        jsObject["getPropertyPriority"]!(property.jsValue()).fromJSValue()!
+        jsObject[Keys.getPropertyPriority]!(property.jsValue()).fromJSValue()!
     }
 
     public func setProperty(property: String, value: String, priority: String? = nil) {
-        _ = jsObject["setProperty"]!(property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.setProperty]!(property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined)
     }
 
     public func removeProperty(property: String) -> String {
-        jsObject["removeProperty"]!(property.jsValue()).fromJSValue()!
+        jsObject[Keys.removeProperty]!(property.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute

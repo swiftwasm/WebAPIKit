@@ -6,8 +6,13 @@ import JavaScriptKit
 public class CustomEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.CustomEvent.function! }
 
+    private enum Keys {
+        static let detail: JSString = "detail"
+        static let initCustomEvent: JSString = "initCustomEvent"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _detail = ReadonlyAttribute(jsObject: jsObject, name: "detail")
+        _detail = ReadonlyAttribute(jsObject: jsObject, name: Keys.detail)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -19,6 +24,6 @@ public class CustomEvent: Event {
     public var detail: JSValue
 
     public func initCustomEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, detail: JSValue? = nil) {
-        _ = jsObject["initCustomEvent"]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined, detail?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.initCustomEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined, detail?.jsValue() ?? .undefined)
     }
 }

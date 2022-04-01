@@ -6,6 +6,10 @@ import JavaScriptKit
 public class DOMParser: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMParser.function! }
 
+    private enum Keys {
+        static let parseFromString: JSString = "parseFromString"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -17,6 +21,6 @@ public class DOMParser: JSBridgedClass {
     }
 
     public func parseFromString(string: String, type: DOMParserSupportedType) -> Document {
-        jsObject["parseFromString"]!(string.jsValue(), type.jsValue()).fromJSValue()!
+        jsObject[Keys.parseFromString]!(string.jsValue(), type.jsValue()).fromJSValue()!
     }
 }

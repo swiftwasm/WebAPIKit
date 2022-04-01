@@ -6,6 +6,13 @@ import JavaScriptKit
 public class DOMImplementation: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMImplementation.function! }
 
+    private enum Keys {
+        static let createDocument: JSString = "createDocument"
+        static let hasFeature: JSString = "hasFeature"
+        static let createHTMLDocument: JSString = "createHTMLDocument"
+        static let createDocumentType: JSString = "createDocumentType"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -13,18 +20,18 @@ public class DOMImplementation: JSBridgedClass {
     }
 
     public func createDocumentType(qualifiedName: String, publicId: String, systemId: String) -> DocumentType {
-        jsObject["createDocumentType"]!(qualifiedName.jsValue(), publicId.jsValue(), systemId.jsValue()).fromJSValue()!
+        jsObject[Keys.createDocumentType]!(qualifiedName.jsValue(), publicId.jsValue(), systemId.jsValue()).fromJSValue()!
     }
 
     public func createDocument(namespace: String?, qualifiedName: String, doctype: DocumentType? = nil) -> XMLDocument {
-        jsObject["createDocument"]!(namespace.jsValue(), qualifiedName.jsValue(), doctype?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.createDocument]!(namespace.jsValue(), qualifiedName.jsValue(), doctype?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func createHTMLDocument(title: String? = nil) -> Document {
-        jsObject["createHTMLDocument"]!(title?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.createHTMLDocument]!(title?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func hasFeature() -> Bool {
-        jsObject["hasFeature"]!().fromJSValue()!
+        jsObject[Keys.hasFeature]!().fromJSValue()!
     }
 }

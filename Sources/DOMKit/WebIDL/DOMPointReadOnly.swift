@@ -6,13 +6,23 @@ import JavaScriptKit
 public class DOMPointReadOnly: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMPointReadOnly.function! }
 
+    private enum Keys {
+        static let w: JSString = "w"
+        static let x: JSString = "x"
+        static let y: JSString = "y"
+        static let fromPoint: JSString = "fromPoint"
+        static let z: JSString = "z"
+        static let toJSON: JSString = "toJSON"
+        static let matrixTransform: JSString = "matrixTransform"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _x = ReadonlyAttribute(jsObject: jsObject, name: "x")
-        _y = ReadonlyAttribute(jsObject: jsObject, name: "y")
-        _z = ReadonlyAttribute(jsObject: jsObject, name: "z")
-        _w = ReadonlyAttribute(jsObject: jsObject, name: "w")
+        _x = ReadonlyAttribute(jsObject: jsObject, name: Keys.x)
+        _y = ReadonlyAttribute(jsObject: jsObject, name: Keys.y)
+        _z = ReadonlyAttribute(jsObject: jsObject, name: Keys.z)
+        _w = ReadonlyAttribute(jsObject: jsObject, name: Keys.w)
         self.jsObject = jsObject
     }
 
@@ -21,7 +31,7 @@ public class DOMPointReadOnly: JSBridgedClass {
     }
 
     public static func fromPoint(other: DOMPointInit? = nil) -> Self {
-        constructor["fromPoint"]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        constructor[Keys.fromPoint]!(other?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -37,10 +47,10 @@ public class DOMPointReadOnly: JSBridgedClass {
     public var w: Double
 
     public func matrixTransform(matrix: DOMMatrixInit? = nil) -> DOMPoint {
-        jsObject["matrixTransform"]!(matrix?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.matrixTransform]!(matrix?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func toJSON() -> JSObject {
-        jsObject["toJSON"]!().fromJSValue()!
+        jsObject[Keys.toJSON]!().fromJSValue()!
     }
 }

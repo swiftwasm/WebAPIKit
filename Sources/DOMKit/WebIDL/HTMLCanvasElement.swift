@@ -6,9 +6,18 @@ import JavaScriptKit
 public class HTMLCanvasElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLCanvasElement.function! }
 
+    private enum Keys {
+        static let getContext: JSString = "getContext"
+        static let toBlob: JSString = "toBlob"
+        static let width: JSString = "width"
+        static let height: JSString = "height"
+        static let toDataURL: JSString = "toDataURL"
+        static let transferControlToOffscreen: JSString = "transferControlToOffscreen"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _width = ReadWriteAttribute(jsObject: jsObject, name: "width")
-        _height = ReadWriteAttribute(jsObject: jsObject, name: "height")
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -23,16 +32,16 @@ public class HTMLCanvasElement: HTMLElement {
     public var height: UInt32
 
     public func getContext(contextId: String, options: JSValue? = nil) -> RenderingContext? {
-        jsObject["getContext"]!(contextId.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.getContext]!(contextId.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func toDataURL(type: String? = nil, quality: JSValue? = nil) -> String {
-        jsObject["toDataURL"]!(type?.jsValue() ?? .undefined, quality?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Keys.toDataURL]!(type?.jsValue() ?? .undefined, quality?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     // XXX: member 'toBlob' is ignored
 
     public func transferControlToOffscreen() -> OffscreenCanvas {
-        jsObject["transferControlToOffscreen"]!().fromJSValue()!
+        jsObject[Keys.transferControlToOffscreen]!().fromJSValue()!
     }
 }

@@ -4,20 +4,27 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMRectInit: BridgedDictionary {
+    private enum Keys {
+        static let x: JSString = "x"
+        static let width: JSString = "width"
+        static let height: JSString = "height"
+        static let y: JSString = "y"
+    }
+
     public convenience init(x: Double, y: Double, width: Double, height: Double) {
         let object = JSObject.global.Object.function!.new()
-        object["x"] = x.jsValue()
-        object["y"] = y.jsValue()
-        object["width"] = width.jsValue()
-        object["height"] = height.jsValue()
+        object[Keys.x] = x.jsValue()
+        object[Keys.y] = y.jsValue()
+        object[Keys.width] = width.jsValue()
+        object[Keys.height] = height.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _x = ReadWriteAttribute(jsObject: object, name: "x")
-        _y = ReadWriteAttribute(jsObject: object, name: "y")
-        _width = ReadWriteAttribute(jsObject: object, name: "width")
-        _height = ReadWriteAttribute(jsObject: object, name: "height")
+        _x = ReadWriteAttribute(jsObject: object, name: Keys.x)
+        _y = ReadWriteAttribute(jsObject: object, name: Keys.y)
+        _width = ReadWriteAttribute(jsObject: object, name: Keys.width)
+        _height = ReadWriteAttribute(jsObject: object, name: Keys.height)
         super.init(unsafelyWrapping: object)
     }
 

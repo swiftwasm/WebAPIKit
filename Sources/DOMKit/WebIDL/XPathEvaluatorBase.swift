@@ -3,6 +3,12 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let createExpression: JSString = "createExpression"
+    static let createNSResolver: JSString = "createNSResolver"
+    static let evaluate: JSString = "evaluate"
+}
+
 public protocol XPathEvaluatorBase: JSBridgedClass {}
 public extension XPathEvaluatorBase {
     // XXX: method 'createExpression' is ignored

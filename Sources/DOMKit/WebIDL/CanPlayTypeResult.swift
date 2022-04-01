@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanPlayTypeResult: String, JSValueCompatible {
+public enum CanPlayTypeResult: JSString, JSValueCompatible {
     case _empty = ""
-    case maybe
-    case probably
+    case maybe = "maybe"
+    case probably = "probably"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

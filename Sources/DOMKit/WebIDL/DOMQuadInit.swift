@@ -4,20 +4,27 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMQuadInit: BridgedDictionary {
+    private enum Keys {
+        static let p4: JSString = "p4"
+        static let p2: JSString = "p2"
+        static let p3: JSString = "p3"
+        static let p1: JSString = "p1"
+    }
+
     public convenience init(p1: DOMPointInit, p2: DOMPointInit, p3: DOMPointInit, p4: DOMPointInit) {
         let object = JSObject.global.Object.function!.new()
-        object["p1"] = p1.jsValue()
-        object["p2"] = p2.jsValue()
-        object["p3"] = p3.jsValue()
-        object["p4"] = p4.jsValue()
+        object[Keys.p1] = p1.jsValue()
+        object[Keys.p2] = p2.jsValue()
+        object[Keys.p3] = p3.jsValue()
+        object[Keys.p4] = p4.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _p1 = ReadWriteAttribute(jsObject: object, name: "p1")
-        _p2 = ReadWriteAttribute(jsObject: object, name: "p2")
-        _p3 = ReadWriteAttribute(jsObject: object, name: "p3")
-        _p4 = ReadWriteAttribute(jsObject: object, name: "p4")
+        _p1 = ReadWriteAttribute(jsObject: object, name: Keys.p1)
+        _p2 = ReadWriteAttribute(jsObject: object, name: Keys.p2)
+        _p3 = ReadWriteAttribute(jsObject: object, name: Keys.p3)
+        _p4 = ReadWriteAttribute(jsObject: object, name: Keys.p4)
         super.init(unsafelyWrapping: object)
     }
 

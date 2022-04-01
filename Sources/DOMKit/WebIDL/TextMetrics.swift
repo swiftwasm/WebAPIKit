@@ -6,21 +6,36 @@ import JavaScriptKit
 public class TextMetrics: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.TextMetrics.function! }
 
+    private enum Keys {
+        static let actualBoundingBoxRight: JSString = "actualBoundingBoxRight"
+        static let actualBoundingBoxDescent: JSString = "actualBoundingBoxDescent"
+        static let actualBoundingBoxAscent: JSString = "actualBoundingBoxAscent"
+        static let hangingBaseline: JSString = "hangingBaseline"
+        static let fontBoundingBoxAscent: JSString = "fontBoundingBoxAscent"
+        static let actualBoundingBoxLeft: JSString = "actualBoundingBoxLeft"
+        static let alphabeticBaseline: JSString = "alphabeticBaseline"
+        static let emHeightDescent: JSString = "emHeightDescent"
+        static let width: JSString = "width"
+        static let fontBoundingBoxDescent: JSString = "fontBoundingBoxDescent"
+        static let emHeightAscent: JSString = "emHeightAscent"
+        static let ideographicBaseline: JSString = "ideographicBaseline"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _width = ReadonlyAttribute(jsObject: jsObject, name: "width")
-        _actualBoundingBoxLeft = ReadonlyAttribute(jsObject: jsObject, name: "actualBoundingBoxLeft")
-        _actualBoundingBoxRight = ReadonlyAttribute(jsObject: jsObject, name: "actualBoundingBoxRight")
-        _fontBoundingBoxAscent = ReadonlyAttribute(jsObject: jsObject, name: "fontBoundingBoxAscent")
-        _fontBoundingBoxDescent = ReadonlyAttribute(jsObject: jsObject, name: "fontBoundingBoxDescent")
-        _actualBoundingBoxAscent = ReadonlyAttribute(jsObject: jsObject, name: "actualBoundingBoxAscent")
-        _actualBoundingBoxDescent = ReadonlyAttribute(jsObject: jsObject, name: "actualBoundingBoxDescent")
-        _emHeightAscent = ReadonlyAttribute(jsObject: jsObject, name: "emHeightAscent")
-        _emHeightDescent = ReadonlyAttribute(jsObject: jsObject, name: "emHeightDescent")
-        _hangingBaseline = ReadonlyAttribute(jsObject: jsObject, name: "hangingBaseline")
-        _alphabeticBaseline = ReadonlyAttribute(jsObject: jsObject, name: "alphabeticBaseline")
-        _ideographicBaseline = ReadonlyAttribute(jsObject: jsObject, name: "ideographicBaseline")
+        _width = ReadonlyAttribute(jsObject: jsObject, name: Keys.width)
+        _actualBoundingBoxLeft = ReadonlyAttribute(jsObject: jsObject, name: Keys.actualBoundingBoxLeft)
+        _actualBoundingBoxRight = ReadonlyAttribute(jsObject: jsObject, name: Keys.actualBoundingBoxRight)
+        _fontBoundingBoxAscent = ReadonlyAttribute(jsObject: jsObject, name: Keys.fontBoundingBoxAscent)
+        _fontBoundingBoxDescent = ReadonlyAttribute(jsObject: jsObject, name: Keys.fontBoundingBoxDescent)
+        _actualBoundingBoxAscent = ReadonlyAttribute(jsObject: jsObject, name: Keys.actualBoundingBoxAscent)
+        _actualBoundingBoxDescent = ReadonlyAttribute(jsObject: jsObject, name: Keys.actualBoundingBoxDescent)
+        _emHeightAscent = ReadonlyAttribute(jsObject: jsObject, name: Keys.emHeightAscent)
+        _emHeightDescent = ReadonlyAttribute(jsObject: jsObject, name: Keys.emHeightDescent)
+        _hangingBaseline = ReadonlyAttribute(jsObject: jsObject, name: Keys.hangingBaseline)
+        _alphabeticBaseline = ReadonlyAttribute(jsObject: jsObject, name: Keys.alphabeticBaseline)
+        _ideographicBaseline = ReadonlyAttribute(jsObject: jsObject, name: Keys.ideographicBaseline)
         self.jsObject = jsObject
     }
 

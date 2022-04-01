@@ -6,8 +6,13 @@ import JavaScriptKit
 public class Text: CharacterData, Slottable {
     override public class var constructor: JSFunction { JSObject.global.Text.function! }
 
+    private enum Keys {
+        static let wholeText: JSString = "wholeText"
+        static let splitText: JSString = "splitText"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _wholeText = ReadonlyAttribute(jsObject: jsObject, name: "wholeText")
+        _wholeText = ReadonlyAttribute(jsObject: jsObject, name: Keys.wholeText)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -16,7 +21,7 @@ public class Text: CharacterData, Slottable {
     }
 
     public func splitText(offset: UInt32) -> Self {
-        jsObject["splitText"]!(offset.jsValue()).fromJSValue()!
+        jsObject[Keys.splitText]!(offset.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute

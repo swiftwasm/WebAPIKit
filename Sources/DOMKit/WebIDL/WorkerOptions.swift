@@ -4,18 +4,24 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WorkerOptions: BridgedDictionary {
+    private enum Keys {
+        static let type: JSString = "type"
+        static let credentials: JSString = "credentials"
+        static let name: JSString = "name"
+    }
+
     public convenience init(type: WorkerType, credentials: RequestCredentials, name: String) {
         let object = JSObject.global.Object.function!.new()
-        object["type"] = type.jsValue()
-        object["credentials"] = credentials.jsValue()
-        object["name"] = name.jsValue()
+        object[Keys.type] = type.jsValue()
+        object[Keys.credentials] = credentials.jsValue()
+        object[Keys.name] = name.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _type = ReadWriteAttribute(jsObject: object, name: "type")
-        _credentials = ReadWriteAttribute(jsObject: object, name: "credentials")
-        _name = ReadWriteAttribute(jsObject: object, name: "name")
+        _type = ReadWriteAttribute(jsObject: object, name: Keys.type)
+        _credentials = ReadWriteAttribute(jsObject: object, name: Keys.credentials)
+        _name = ReadWriteAttribute(jsObject: object, name: Keys.name)
         super.init(unsafelyWrapping: object)
     }
 

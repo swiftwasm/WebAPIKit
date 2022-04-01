@@ -3,14 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let activeElement: JSString = "activeElement"
+    static let adoptedStyleSheets: JSString = "adoptedStyleSheets"
+    static let styleSheets: JSString = "styleSheets"
+}
+
 public protocol DocumentOrShadowRoot: JSBridgedClass {}
 public extension DocumentOrShadowRoot {
-    var activeElement: Element? { ReadonlyAttribute["activeElement", in: jsObject] }
+    var activeElement: Element? { ReadonlyAttribute[Keys.activeElement, in: jsObject] }
 
-    var styleSheets: StyleSheetList { ReadonlyAttribute["styleSheets", in: jsObject] }
+    var styleSheets: StyleSheetList { ReadonlyAttribute[Keys.styleSheets, in: jsObject] }
 
     var adoptedStyleSheets: [CSSStyleSheet] {
-        get { ReadWriteAttribute["adoptedStyleSheets", in: jsObject] }
-        set { ReadWriteAttribute["adoptedStyleSheets", in: jsObject] = newValue }
+        get { ReadWriteAttribute[Keys.adoptedStyleSheets, in: jsObject] }
+        set { ReadWriteAttribute[Keys.adoptedStyleSheets, in: jsObject] = newValue }
     }
 }

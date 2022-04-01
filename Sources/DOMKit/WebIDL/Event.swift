@@ -6,22 +6,47 @@ import JavaScriptKit
 public class Event: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.Event.function! }
 
+    private enum Keys {
+        static let type: JSString = "type"
+        static let currentTarget: JSString = "currentTarget"
+        static let composedPath: JSString = "composedPath"
+        static let stopImmediatePropagation: JSString = "stopImmediatePropagation"
+        static let preventDefault: JSString = "preventDefault"
+        static let NONE: JSString = "NONE"
+        static let defaultPrevented: JSString = "defaultPrevented"
+        static let composed: JSString = "composed"
+        static let CAPTURING_PHASE: JSString = "CAPTURING_PHASE"
+        static let timeStamp: JSString = "timeStamp"
+        static let returnValue: JSString = "returnValue"
+        static let eventPhase: JSString = "eventPhase"
+        static let bubbles: JSString = "bubbles"
+        static let AT_TARGET: JSString = "AT_TARGET"
+        static let srcElement: JSString = "srcElement"
+        static let stopPropagation: JSString = "stopPropagation"
+        static let target: JSString = "target"
+        static let BUBBLING_PHASE: JSString = "BUBBLING_PHASE"
+        static let cancelBubble: JSString = "cancelBubble"
+        static let cancelable: JSString = "cancelable"
+        static let initEvent: JSString = "initEvent"
+        static let isTrusted: JSString = "isTrusted"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _type = ReadonlyAttribute(jsObject: jsObject, name: "type")
-        _target = ReadonlyAttribute(jsObject: jsObject, name: "target")
-        _srcElement = ReadonlyAttribute(jsObject: jsObject, name: "srcElement")
-        _currentTarget = ReadonlyAttribute(jsObject: jsObject, name: "currentTarget")
-        _eventPhase = ReadonlyAttribute(jsObject: jsObject, name: "eventPhase")
-        _cancelBubble = ReadWriteAttribute(jsObject: jsObject, name: "cancelBubble")
-        _bubbles = ReadonlyAttribute(jsObject: jsObject, name: "bubbles")
-        _cancelable = ReadonlyAttribute(jsObject: jsObject, name: "cancelable")
-        _returnValue = ReadWriteAttribute(jsObject: jsObject, name: "returnValue")
-        _defaultPrevented = ReadonlyAttribute(jsObject: jsObject, name: "defaultPrevented")
-        _composed = ReadonlyAttribute(jsObject: jsObject, name: "composed")
-        _isTrusted = ReadonlyAttribute(jsObject: jsObject, name: "isTrusted")
-        _timeStamp = ReadonlyAttribute(jsObject: jsObject, name: "timeStamp")
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
+        _target = ReadonlyAttribute(jsObject: jsObject, name: Keys.target)
+        _srcElement = ReadonlyAttribute(jsObject: jsObject, name: Keys.srcElement)
+        _currentTarget = ReadonlyAttribute(jsObject: jsObject, name: Keys.currentTarget)
+        _eventPhase = ReadonlyAttribute(jsObject: jsObject, name: Keys.eventPhase)
+        _cancelBubble = ReadWriteAttribute(jsObject: jsObject, name: Keys.cancelBubble)
+        _bubbles = ReadonlyAttribute(jsObject: jsObject, name: Keys.bubbles)
+        _cancelable = ReadonlyAttribute(jsObject: jsObject, name: Keys.cancelable)
+        _returnValue = ReadWriteAttribute(jsObject: jsObject, name: Keys.returnValue)
+        _defaultPrevented = ReadonlyAttribute(jsObject: jsObject, name: Keys.defaultPrevented)
+        _composed = ReadonlyAttribute(jsObject: jsObject, name: Keys.composed)
+        _isTrusted = ReadonlyAttribute(jsObject: jsObject, name: Keys.isTrusted)
+        _timeStamp = ReadonlyAttribute(jsObject: jsObject, name: Keys.timeStamp)
         self.jsObject = jsObject
     }
 
@@ -42,7 +67,7 @@ public class Event: JSBridgedClass {
     public var currentTarget: EventTarget?
 
     public func composedPath() -> [EventTarget] {
-        jsObject["composedPath"]!().fromJSValue()!
+        jsObject[Keys.composedPath]!().fromJSValue()!
     }
 
     public static let NONE: UInt16 = 0
@@ -57,14 +82,14 @@ public class Event: JSBridgedClass {
     public var eventPhase: UInt16
 
     public func stopPropagation() {
-        _ = jsObject["stopPropagation"]!()
+        _ = jsObject[Keys.stopPropagation]!()
     }
 
     @ReadWriteAttribute
     public var cancelBubble: Bool
 
     public func stopImmediatePropagation() {
-        _ = jsObject["stopImmediatePropagation"]!()
+        _ = jsObject[Keys.stopImmediatePropagation]!()
     }
 
     @ReadonlyAttribute
@@ -77,7 +102,7 @@ public class Event: JSBridgedClass {
     public var returnValue: Bool
 
     public func preventDefault() {
-        _ = jsObject["preventDefault"]!()
+        _ = jsObject[Keys.preventDefault]!()
     }
 
     @ReadonlyAttribute
@@ -93,6 +118,6 @@ public class Event: JSBridgedClass {
     public var timeStamp: DOMHighResTimeStamp
 
     public func initEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil) {
-        _ = jsObject["initEvent"]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined)
+        _ = jsObject[Keys.initEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined)
     }
 }

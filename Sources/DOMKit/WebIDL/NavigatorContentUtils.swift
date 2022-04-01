@@ -3,13 +3,18 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let unregisterProtocolHandler: JSString = "unregisterProtocolHandler"
+    static let registerProtocolHandler: JSString = "registerProtocolHandler"
+}
+
 public protocol NavigatorContentUtils: JSBridgedClass {}
 public extension NavigatorContentUtils {
     func registerProtocolHandler(scheme: String, url: String) {
-        _ = jsObject["registerProtocolHandler"]!(scheme.jsValue(), url.jsValue())
+        _ = jsObject[Keys.registerProtocolHandler]!(scheme.jsValue(), url.jsValue())
     }
 
     func unregisterProtocolHandler(scheme: String, url: String) {
-        _ = jsObject["unregisterProtocolHandler"]!(scheme.jsValue(), url.jsValue())
+        _ = jsObject[Keys.unregisterProtocolHandler]!(scheme.jsValue(), url.jsValue())
     }
 }

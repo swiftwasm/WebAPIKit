@@ -6,6 +6,14 @@ import JavaScriptKit
 public class Headers: JSBridgedClass, Sequence {
     public class var constructor: JSFunction { JSObject.global.Headers.function! }
 
+    private enum Keys {
+        static let get: JSString = "get"
+        static let set: JSString = "set"
+        static let append: JSString = "append"
+        static let delete: JSString = "delete"
+        static let has: JSString = "has"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -17,23 +25,23 @@ public class Headers: JSBridgedClass, Sequence {
     }
 
     public func append(name: String, value: String) {
-        _ = jsObject["append"]!(name.jsValue(), value.jsValue())
+        _ = jsObject[Keys.append]!(name.jsValue(), value.jsValue())
     }
 
     public func delete(name: String) {
-        _ = jsObject["delete"]!(name.jsValue())
+        _ = jsObject[Keys.delete]!(name.jsValue())
     }
 
     public func get(name: String) -> String? {
-        jsObject["get"]!(name.jsValue()).fromJSValue()!
+        jsObject[Keys.get]!(name.jsValue()).fromJSValue()!
     }
 
     public func has(name: String) -> Bool {
-        jsObject["has"]!(name.jsValue()).fromJSValue()!
+        jsObject[Keys.has]!(name.jsValue()).fromJSValue()!
     }
 
     public func set(name: String, value: String) {
-        _ = jsObject["set"]!(name.jsValue(), value.jsValue())
+        _ = jsObject[Keys.set]!(name.jsValue(), value.jsValue())
     }
 
     public typealias Element = String

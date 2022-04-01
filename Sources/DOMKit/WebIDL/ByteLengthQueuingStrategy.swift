@@ -6,11 +6,16 @@ import JavaScriptKit
 public class ByteLengthQueuingStrategy: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ByteLengthQueuingStrategy.function! }
 
+    private enum Keys {
+        static let highWaterMark: JSString = "highWaterMark"
+        static let size: JSString = "size"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _highWaterMark = ReadonlyAttribute(jsObject: jsObject, name: "highWaterMark")
-        _size = ReadonlyAttribute(jsObject: jsObject, name: "size")
+        _highWaterMark = ReadonlyAttribute(jsObject: jsObject, name: Keys.highWaterMark)
+        _size = ReadonlyAttribute(jsObject: jsObject, name: Keys.size)
         self.jsObject = jsObject
     }
 

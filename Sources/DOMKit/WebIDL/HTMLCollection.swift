@@ -6,10 +6,16 @@ import JavaScriptKit
 public class HTMLCollection: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.HTMLCollection.function! }
 
+    private enum Keys {
+        static let length: JSString = "length"
+        static let namedItem: JSString = "namedItem"
+        static let item: JSString = "item"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
         self.jsObject = jsObject
     }
 

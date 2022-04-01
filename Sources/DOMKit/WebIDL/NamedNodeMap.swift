@@ -6,10 +6,21 @@ import JavaScriptKit
 public class NamedNodeMap: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.NamedNodeMap.function! }
 
+    private enum Keys {
+        static let setNamedItemNS: JSString = "setNamedItemNS"
+        static let removeNamedItem: JSString = "removeNamedItem"
+        static let removeNamedItemNS: JSString = "removeNamedItemNS"
+        static let length: JSString = "length"
+        static let getNamedItem: JSString = "getNamedItem"
+        static let getNamedItemNS: JSString = "getNamedItemNS"
+        static let setNamedItem: JSString = "setNamedItem"
+        static let item: JSString = "item"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: "length")
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
         self.jsObject = jsObject
     }
 
@@ -25,22 +36,22 @@ public class NamedNodeMap: JSBridgedClass {
     }
 
     public func getNamedItemNS(namespace: String?, localName: String) -> Attr? {
-        jsObject["getNamedItemNS"]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        jsObject[Keys.getNamedItemNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 
     public func setNamedItem(attr: Attr) -> Attr? {
-        jsObject["setNamedItem"]!(attr.jsValue()).fromJSValue()!
+        jsObject[Keys.setNamedItem]!(attr.jsValue()).fromJSValue()!
     }
 
     public func setNamedItemNS(attr: Attr) -> Attr? {
-        jsObject["setNamedItemNS"]!(attr.jsValue()).fromJSValue()!
+        jsObject[Keys.setNamedItemNS]!(attr.jsValue()).fromJSValue()!
     }
 
     public func removeNamedItem(qualifiedName: String) -> Attr {
-        jsObject["removeNamedItem"]!(qualifiedName.jsValue()).fromJSValue()!
+        jsObject[Keys.removeNamedItem]!(qualifiedName.jsValue()).fromJSValue()!
     }
 
     public func removeNamedItemNS(namespace: String?, localName: String) -> Attr {
-        jsObject["removeNamedItemNS"]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        jsObject[Keys.removeNamedItemNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 }

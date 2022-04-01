@@ -3,18 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasTextAlign: String, JSValueCompatible {
-    case start
-    case end
-    case left
-    case right
-    case center
+public enum CanvasTextAlign: JSString, JSValueCompatible {
+    case start = "start"
+    case end = "end"
+    case left = "left"
+    case right = "right"
+    case center = "center"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

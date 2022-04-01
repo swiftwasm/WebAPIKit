@@ -6,20 +6,37 @@ import JavaScriptKit
 public class HTMLScriptElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLScriptElement.function! }
 
+    private enum Keys {
+        static let supports: JSString = "supports"
+        static let type: JSString = "type"
+        static let noModule: JSString = "noModule"
+        static let crossOrigin: JSString = "crossOrigin"
+        static let blocking: JSString = "blocking"
+        static let event: JSString = "event"
+        static let src: JSString = "src"
+        static let charset: JSString = "charset"
+        static let htmlFor: JSString = "htmlFor"
+        static let async: JSString = "async"
+        static let referrerPolicy: JSString = "referrerPolicy"
+        static let text: JSString = "text"
+        static let integrity: JSString = "integrity"
+        static let `defer`: JSString = "defer"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _src = ReadWriteAttribute(jsObject: jsObject, name: "src")
-        _type = ReadWriteAttribute(jsObject: jsObject, name: "type")
-        _noModule = ReadWriteAttribute(jsObject: jsObject, name: "noModule")
-        _async = ReadWriteAttribute(jsObject: jsObject, name: "async")
-        _defer = ReadWriteAttribute(jsObject: jsObject, name: "defer")
-        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: "crossOrigin")
-        _text = ReadWriteAttribute(jsObject: jsObject, name: "text")
-        _integrity = ReadWriteAttribute(jsObject: jsObject, name: "integrity")
-        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: "referrerPolicy")
-        _blocking = ReadonlyAttribute(jsObject: jsObject, name: "blocking")
-        _charset = ReadWriteAttribute(jsObject: jsObject, name: "charset")
-        _event = ReadWriteAttribute(jsObject: jsObject, name: "event")
-        _htmlFor = ReadWriteAttribute(jsObject: jsObject, name: "htmlFor")
+        _src = ReadWriteAttribute(jsObject: jsObject, name: Keys.src)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
+        _noModule = ReadWriteAttribute(jsObject: jsObject, name: Keys.noModule)
+        _async = ReadWriteAttribute(jsObject: jsObject, name: Keys.async)
+        _defer = ReadWriteAttribute(jsObject: jsObject, name: Keys.defer)
+        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: Keys.crossOrigin)
+        _text = ReadWriteAttribute(jsObject: jsObject, name: Keys.text)
+        _integrity = ReadWriteAttribute(jsObject: jsObject, name: Keys.integrity)
+        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Keys.referrerPolicy)
+        _blocking = ReadonlyAttribute(jsObject: jsObject, name: Keys.blocking)
+        _charset = ReadWriteAttribute(jsObject: jsObject, name: Keys.charset)
+        _event = ReadWriteAttribute(jsObject: jsObject, name: Keys.event)
+        _htmlFor = ReadWriteAttribute(jsObject: jsObject, name: Keys.htmlFor)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -58,7 +75,7 @@ public class HTMLScriptElement: HTMLElement {
     public var blocking: DOMTokenList
 
     public static func supports(type: String) -> Bool {
-        constructor["supports"]!(type.jsValue()).fromJSValue()!
+        constructor[Keys.supports]!(type.jsValue()).fromJSValue()!
     }
 
     @ReadWriteAttribute

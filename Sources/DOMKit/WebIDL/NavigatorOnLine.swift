@@ -3,7 +3,11 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
+private enum Keys {
+    static let onLine: JSString = "onLine"
+}
+
 public protocol NavigatorOnLine: JSBridgedClass {}
 public extension NavigatorOnLine {
-    var onLine: Bool { ReadonlyAttribute["onLine", in: jsObject] }
+    var onLine: Bool { ReadonlyAttribute[Keys.onLine, in: jsObject] }
 }

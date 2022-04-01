@@ -6,6 +6,8 @@ import JavaScriptKit
 public class CanvasFilter: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.CanvasFilter.function! }
 
+    private enum Keys {}
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {

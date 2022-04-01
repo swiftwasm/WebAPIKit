@@ -6,14 +6,22 @@ import JavaScriptKit
 public class AudioTrack: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.AudioTrack.function! }
 
+    private enum Keys {
+        static let enabled: JSString = "enabled"
+        static let kind: JSString = "kind"
+        static let id: JSString = "id"
+        static let language: JSString = "language"
+        static let label: JSString = "label"
+    }
+
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _id = ReadonlyAttribute(jsObject: jsObject, name: "id")
-        _kind = ReadonlyAttribute(jsObject: jsObject, name: "kind")
-        _label = ReadonlyAttribute(jsObject: jsObject, name: "label")
-        _language = ReadonlyAttribute(jsObject: jsObject, name: "language")
-        _enabled = ReadWriteAttribute(jsObject: jsObject, name: "enabled")
+        _id = ReadonlyAttribute(jsObject: jsObject, name: Keys.id)
+        _kind = ReadonlyAttribute(jsObject: jsObject, name: Keys.kind)
+        _label = ReadonlyAttribute(jsObject: jsObject, name: Keys.label)
+        _language = ReadonlyAttribute(jsObject: jsObject, name: Keys.language)
+        _enabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.enabled)
         self.jsObject = jsObject
     }
 

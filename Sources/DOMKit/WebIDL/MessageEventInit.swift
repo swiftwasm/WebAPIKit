@@ -4,22 +4,30 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MessageEventInit: BridgedDictionary {
+    private enum Keys {
+        static let data: JSString = "data"
+        static let lastEventId: JSString = "lastEventId"
+        static let origin: JSString = "origin"
+        static let source: JSString = "source"
+        static let ports: JSString = "ports"
+    }
+
     public convenience init(data: JSValue, origin: String, lastEventId: String, source: MessageEventSource?, ports: [MessagePort]) {
         let object = JSObject.global.Object.function!.new()
-        object["data"] = data.jsValue()
-        object["origin"] = origin.jsValue()
-        object["lastEventId"] = lastEventId.jsValue()
-        object["source"] = source.jsValue()
-        object["ports"] = ports.jsValue()
+        object[Keys.data] = data.jsValue()
+        object[Keys.origin] = origin.jsValue()
+        object[Keys.lastEventId] = lastEventId.jsValue()
+        object[Keys.source] = source.jsValue()
+        object[Keys.ports] = ports.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _data = ReadWriteAttribute(jsObject: object, name: "data")
-        _origin = ReadWriteAttribute(jsObject: object, name: "origin")
-        _lastEventId = ReadWriteAttribute(jsObject: object, name: "lastEventId")
-        _source = ReadWriteAttribute(jsObject: object, name: "source")
-        _ports = ReadWriteAttribute(jsObject: object, name: "ports")
+        _data = ReadWriteAttribute(jsObject: object, name: Keys.data)
+        _origin = ReadWriteAttribute(jsObject: object, name: Keys.origin)
+        _lastEventId = ReadWriteAttribute(jsObject: object, name: Keys.lastEventId)
+        _source = ReadWriteAttribute(jsObject: object, name: Keys.source)
+        _ports = ReadWriteAttribute(jsObject: object, name: Keys.ports)
         super.init(unsafelyWrapping: object)
     }
 

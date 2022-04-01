@@ -3,15 +3,19 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ColorSpaceConversion: String, JSValueCompatible {
-    case none
-    case `default`
+public enum ColorSpaceConversion: JSString, JSValueCompatible {
+    case none = "none"
+    case `default` = "default"
 
     public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.string {
+        if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
+    }
+
+    public init?(rawValue: String) {
+        self.init(rawValue: JSString(rawValue))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

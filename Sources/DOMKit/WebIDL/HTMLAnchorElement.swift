@@ -6,21 +6,38 @@ import JavaScriptKit
 public class HTMLAnchorElement: HTMLElement, HTMLHyperlinkElementUtils {
     override public class var constructor: JSFunction { JSObject.global.HTMLAnchorElement.function! }
 
+    private enum Keys {
+        static let rel: JSString = "rel"
+        static let charset: JSString = "charset"
+        static let target: JSString = "target"
+        static let coords: JSString = "coords"
+        static let name: JSString = "name"
+        static let ping: JSString = "ping"
+        static let download: JSString = "download"
+        static let text: JSString = "text"
+        static let shape: JSString = "shape"
+        static let referrerPolicy: JSString = "referrerPolicy"
+        static let type: JSString = "type"
+        static let rev: JSString = "rev"
+        static let relList: JSString = "relList"
+        static let hreflang: JSString = "hreflang"
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _target = ReadWriteAttribute(jsObject: jsObject, name: "target")
-        _download = ReadWriteAttribute(jsObject: jsObject, name: "download")
-        _ping = ReadWriteAttribute(jsObject: jsObject, name: "ping")
-        _rel = ReadWriteAttribute(jsObject: jsObject, name: "rel")
-        _relList = ReadonlyAttribute(jsObject: jsObject, name: "relList")
-        _hreflang = ReadWriteAttribute(jsObject: jsObject, name: "hreflang")
-        _type = ReadWriteAttribute(jsObject: jsObject, name: "type")
-        _text = ReadWriteAttribute(jsObject: jsObject, name: "text")
-        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: "referrerPolicy")
-        _coords = ReadWriteAttribute(jsObject: jsObject, name: "coords")
-        _charset = ReadWriteAttribute(jsObject: jsObject, name: "charset")
-        _name = ReadWriteAttribute(jsObject: jsObject, name: "name")
-        _rev = ReadWriteAttribute(jsObject: jsObject, name: "rev")
-        _shape = ReadWriteAttribute(jsObject: jsObject, name: "shape")
+        _target = ReadWriteAttribute(jsObject: jsObject, name: Keys.target)
+        _download = ReadWriteAttribute(jsObject: jsObject, name: Keys.download)
+        _ping = ReadWriteAttribute(jsObject: jsObject, name: Keys.ping)
+        _rel = ReadWriteAttribute(jsObject: jsObject, name: Keys.rel)
+        _relList = ReadonlyAttribute(jsObject: jsObject, name: Keys.relList)
+        _hreflang = ReadWriteAttribute(jsObject: jsObject, name: Keys.hreflang)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
+        _text = ReadWriteAttribute(jsObject: jsObject, name: Keys.text)
+        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Keys.referrerPolicy)
+        _coords = ReadWriteAttribute(jsObject: jsObject, name: Keys.coords)
+        _charset = ReadWriteAttribute(jsObject: jsObject, name: Keys.charset)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
+        _rev = ReadWriteAttribute(jsObject: jsObject, name: Keys.rev)
+        _shape = ReadWriteAttribute(jsObject: jsObject, name: Keys.shape)
         super.init(unsafelyWrapping: jsObject)
     }
 
