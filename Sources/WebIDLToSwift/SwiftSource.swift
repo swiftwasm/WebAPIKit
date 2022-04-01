@@ -46,8 +46,11 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation, E
             output += source.source
         }
 
-        @_disfavoredOverload
-        mutating func appendInterpolation<T>(_ value: T) {
+        mutating func appendInterpolation(name: String) {
+            output += "`\(name)`"
+        }
+
+        mutating func appendInterpolation<T>(_ value: T) where T: SwiftRepresentable {
             output += toSwift(value).source
         }
 

@@ -5,12 +5,12 @@ extension IDLArgument: SwiftRepresentable {
         let type: SwiftSource = variadic ? "\(idlType)..." : "\(idlType)"
         if optional {
             if idlType.nullable {
-                return "\(name): \(type) = nil"
+                return "\(name: name): \(type) = nil"
             } else {
-                return "\(name): \(type)? = nil"
+                return "\(name: name): \(type)? = nil"
             }
         } else {
-            return "\(name): \(type)"
+            return "\(name: name): \(type)"
         }
     }
 }
@@ -26,7 +26,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
             // can't do property wrappers on override declarations
             return """
             private var \(wrapperName): \(idlType.propertyWrapper(readonly: readonly))<\(idlType)>
-            override public var \(name): \(idlType) {
+            override public var \(name: name): \(idlType) {
                 get { \(wrapperName).wrappedValue }
                 \(readonly ? "" : "set { \(wrapperName).wrappedValue = newValue }")
             }
@@ -38,7 +38,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
             """
 
             return """
-            public var \(name): \(idlType) {
+            public var \(name: name): \(idlType) {
                 get { \(idlType.propertyWrapper(readonly: readonly))[\(quoted: name), in: jsObject] }
                 \(readonly ? "" : setter)
             }
@@ -46,7 +46,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
         } else {
             return """
             @\(idlType.propertyWrapper(readonly: readonly))
-            public var \(name): \(idlType)
+            public var \(name: name): \(idlType)
             """
         }
     }
@@ -62,7 +62,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
 extension MergedDictionary: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
-        public class \(name): BridgedDictionary {
+        public class \(name: name): BridgedDictionary {
             \(swiftInit)
             \(swiftMembers.joined(separator: "\n\n"))
         }
@@ -77,7 +77,7 @@ extension MergedDictionary: SwiftRepresentable {
 
     private var swiftInit: SwiftSource {
         let params: [SwiftSource] = members.map {
-            "\($0.name): \($0.idlType.isFunction ? "@escaping " : "")\($0.idlType)"
+            "\(name: $0.name): \($0.idlType.isFunction ? "@escaping " : "")\($0.idlType)"
         }
         return """
         public convenience init(\(sequence: params)) {
@@ -85,11 +85,11 @@ extension MergedDictionary: SwiftRepresentable {
             \(lines: membersWithPropertyWrapper.map { member, wrapper in
                 if member.idlType.isFunction {
                     return """
-                    \(wrapper)[\(quoted: member.name), in: object] = \(member.name)
+                    \(wrapper)[\(quoted: member.name), in: object] = \(name: member.name)
                     """
                 } else {
                     return """
-                    object[\(quoted: member.name)] = \(member.name).jsValue()
+                    object[\(quoted: member.name)] = \(name: member.name).jsValue()
                     """
                 }
             })
@@ -109,7 +109,7 @@ extension MergedDictionary: SwiftRepresentable {
         membersWithPropertyWrapper.map { member, wrapper in
             """
             @\(wrapper)
-            public var \(member.name): \(member.idlType)
+            public var \(name: member.name): \(member.idlType)
             """
         }
     }
@@ -118,8 +118,8 @@ extension MergedDictionary: SwiftRepresentable {
 extension IDLEnum: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
-        public enum \(name): String, JSValueCompatible {
-            \(lines: cases.map { "case \($0.camelized) = \(quoted: $0)" })
+        public enum \(name: name): JSString, JSValueCompatible {
+            \(lines: cases.map { "case \(name: $0.camelized) = \(quoted: $0)" })
 
             public static func construct(from jsValue: JSValue) -> Self? {
                 if let string = jsValue.string {
@@ -138,7 +138,7 @@ extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         Context.requiredClosureArgCounts.insert(arguments.count)
         return """
-        public typealias \(name) = (\(sequence: arguments.map {
+        public typealias \(name: name) = (\(sequence: arguments.map {
             "\($0.idlType.swiftRepresentation)\($0.variadic ? "..." : "")"
         })) -> \(idlType)
         """
@@ -147,7 +147,7 @@ extension IDLCallback: SwiftRepresentable {
 
 extension IDLCallbackInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        "// XXX: unsupported callback interface: \(name)"
+        "// XXX: unsupported callback interface: \(raw: name)"
     }
 }
 
@@ -157,13 +157,13 @@ protocol Initializable {
 
 extension MergedInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let constructor: SwiftSource = "JSObject.global.\(name).function!"
-        let body = Context.withState(.instance(constructor: constructor, this: "jsObject", className: "\(name)")) {
+        let constructor: SwiftSource = "JSObject.global.\(name: name).function!"
+        let body = Context.withState(.instance(constructor: constructor, this: "jsObject", className: "\(name: name)")) {
             members.map { member in
                 let isOverride: Bool
                 if let memberName = (member as? IDLNamed)?.name {
                     if Context.ignored[name]?.contains(memberName) ?? false {
-                        return "// XXX: member '\(memberName)' is ignored"
+                        return "// XXX: member '\(raw: memberName)' is ignored"
                     }
                     isOverride = parentClasses.flatMap {
                         Context.interfaces[$0]?.members ?? []
@@ -180,15 +180,18 @@ extension MergedInterface: SwiftRepresentable {
         }
 
         let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
+        let initialize: SwiftSource = parentClasses.isEmpty
+            ? "self.jsObject = jsObject"
+            : "super.init(unsafelyWrapping: jsObject)"
         return """
-        public class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
+        public class \(name: name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
             public\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction { \(constructor) }
 
             \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
 
             public required init(unsafelyWrapping jsObject: JSObject) {
                 \(memberInits.joined(separator: "\n"))
-                \(parentClasses.isEmpty ? "self.jsObject = jsObject" : "super.init(unsafelyWrapping: jsObject)")
+                \(initialize)
             }
 
             \(body)
@@ -217,10 +220,10 @@ extension MergedInterface: SwiftRepresentable {
 
 extension MergedMixin: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        Context.withState(.instance(constructor: nil, this: "jsObject", className: "\(name)")) {
+        Context.withState(.instance(constructor: nil, this: "jsObject", className: "\(name: name)")) {
             """
-            public protocol \(name): JSBridgedClass {}
-            public extension \(name) {
+            public protocol \(name: name): JSBridgedClass {}
+            public extension \(name: name) {
                 \(members.map(toSwift).joined(separator: "\n\n"))
             }
             """
@@ -231,7 +234,7 @@ extension MergedMixin: SwiftRepresentable {
 extension IDLConstant: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         """
-        public static let \(name): \(idlType) = \(value)
+        public static let \(name: name): \(idlType) = \(value)
         """
     }
 
@@ -245,7 +248,7 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
             return "// XXX: constructor is ignored"
         }
         let args: [SwiftSource] = arguments.map {
-            "\($0.name)\($0.optional ? "?" : "").jsValue() \($0.optional ? " ?? .undefined" : "")"
+            "\(name: $0.name)\($0.optional ? "?" : "").jsValue() \($0.optional ? " ?? .undefined" : "")"
         }
         return """
         public convenience init(\(sequence: arguments.map(\.swiftRepresentation))) {
@@ -282,12 +285,12 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
 
 extension MergedNamespace: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let this: SwiftSource = "JSObject.global.\(name).object!"
-        let body = Context.withState(.static(this: this, inClass: false, className: "\(name)")) {
+        let this: SwiftSource = "JSObject.global.\(name: name).object!"
+        let body = Context.withState(.static(this: this, inClass: false, className: "\(name: name)")) {
             members.map(toSwift).joined(separator: "\n\n")
         }
         return """
-        public enum \(name) {
+        public enum \(name: name) {
             public static var jsObject: JSObject {
                 \(this)
             }
@@ -302,7 +305,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         if Context.ignored[Context.className.source]?.contains(name) ?? false {
             return """
-            // XXX: method '\(name)' is ignored
+            // XXX: method '\(raw: name)' is ignored
             """
         }
         if special.isEmpty {
@@ -331,9 +334,9 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                 }
                 """
             case "setter":
-                return "// XXX: unsupported setter for keys of type \(arguments[0].idlType.swiftRepresentation.source)"
+                return "// XXX: unsupported setter for keys of type \(arguments[0].idlType.swiftRepresentation)"
             case "deleter":
-                return "// XXX: unsupported deleter for keys of type \(arguments[0].idlType.swiftRepresentation.source)"
+                return "// XXX: unsupported deleter for keys of type \(arguments[0].idlType.swiftRepresentation)"
             default:
                 fatalError("Unsupported special operation \(special)")
             }
@@ -346,19 +349,19 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         if arguments.count <= 5 {
             args = arguments.map { arg in
                 if arg.optional {
-                    return "\(arg.name)?.jsValue() ?? .undefined"
+                    return "\(name: arg.name)?.jsValue() ?? .undefined"
                 } else {
-                    return "\(arg.name).jsValue()"
+                    return "\(name: arg.name).jsValue()"
                 }
             }
             prep = []
         } else {
-            args = (0 ..< arguments.count).map { "_arg\(String($0))" }
-            prep = arguments.enumerated().map { i, arg in
+            args = (0 ..< arguments.count).map { "_arg\(raw: String($0))" }
+            prep = zip(arguments, args).map { arg, name in
                 if arg.optional {
-                    return "let _arg\(String(i)) = \(arg.name)?.jsValue() ?? .undefined"
+                    return "let \(name) = \(name: arg.name)?.jsValue() ?? .undefined"
                 } else {
-                    return "let _arg\(String(i)) = \(arg.name).jsValue()"
+                    return "let \(name) = \(name: arg.name).jsValue()"
                 }
             }
         }
@@ -373,7 +376,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         let accessModifier: SwiftSource = Context.static ? (Context.inClass ? " class" : " static") : ""
         let overrideModifier: SwiftSource = Context.override ? "override " : ""
         return """
-        \(overrideModifier)public\(accessModifier) func \(name)(\(sequence: arguments.map(\.swiftRepresentation)))
+        \(overrideModifier)public\(accessModifier) func \(name: name)(\(sequence: arguments.map(\.swiftRepresentation)))
         """
     }
 
@@ -490,12 +493,12 @@ extension IDLType: SwiftRepresentable {
             }
         case let .single(name):
             if let typeName = Self.typeNameMap[name] {
-                return "\(typeName)"
+                return "\(name: typeName)"
             } else {
                 if name == name.lowercased() {
                     fatalError("Unsupported type: \(name)")
                 }
-                return "\(name)"
+                return "\(name: name)"
             }
         case let .union(types):
             // print("union", types.count)
@@ -525,14 +528,14 @@ extension IDLType: SwiftRepresentable {
         if case let .single(name) = value {
             let readonlyComment: SwiftSource = readonly ? " /* XXX: should be readonly! */ " : ""
             if let callback = Context.types[name] as? IDLCallback {
-                return "ClosureAttribute.Required\(String(callback.arguments.count))\(readonlyComment)"
+                return "ClosureAttribute.Required\(raw: String(callback.arguments.count))\(readonlyComment)"
             }
             if let ref = Context.types[name] as? IDLTypedef,
                case let .single(name) = ref.idlType.value,
                let callback = Context.types[name] as? IDLCallback
             {
                 assert(ref.idlType.nullable)
-                return "ClosureAttribute.Optional\(String(callback.arguments.count))\(readonlyComment)"
+                return "ClosureAttribute.Optional\(raw: String(callback.arguments.count))\(readonlyComment)"
             }
         }
 
@@ -546,7 +549,7 @@ extension IDLType: SwiftRepresentable {
 
 extension IDLTypedef: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        "public typealias \(name) = \(idlType)"
+        "public typealias \(name: name) = \(idlType)"
     }
 }
 
@@ -558,7 +561,7 @@ extension IDLValue: SwiftRepresentable {
         case let .number(value):
             return .raw(value)
         case let .boolean(value):
-            return "\(value)"
+            return .raw(String(value))
         case .null:
             fatalError("`null` is not supported as a value in Swift")
         case let .infinity(negative):
