@@ -153,7 +153,7 @@ extension IDLCallback: SwiftRepresentable {
         Context.requiredClosureArgCounts.insert(arguments.count)
         return """
         public typealias \(name: name) = (\(sequence: arguments.map {
-            "\($0.idlType.swiftRepresentation)\($0.variadic ? "..." : "")"
+            "\($0.idlType)\($0.variadic ? "..." : "")"
         })) -> \(idlType)
         """
     }
@@ -353,9 +353,9 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                 }
                 """
             case "setter":
-                return "// XXX: unsupported setter for keys of type \(arguments[0].idlType.swiftRepresentation)"
+                return "// XXX: unsupported setter for keys of type \(arguments[0].idlType)"
             case "deleter":
-                return "// XXX: unsupported deleter for keys of type \(arguments[0].idlType.swiftRepresentation)"
+                return "// XXX: unsupported deleter for keys of type \(arguments[0].idlType)"
             default:
                 fatalError("Unsupported special operation \(special)")
             }
