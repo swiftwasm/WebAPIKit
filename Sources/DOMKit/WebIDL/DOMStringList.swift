@@ -7,9 +7,9 @@ public class DOMStringList: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMStringList.function! }
 
     private enum Keys {
-        static let length: JSString = "length"
         static let contains: JSString = "contains"
         static let item: JSString = "item"
+        static let length: JSString = "length"
     }
 
     public let jsObject: JSObject
@@ -22,7 +22,7 @@ public class DOMStringList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> String? {
+    public subscript(key: UInt32) -> String? {
         jsObject[key].fromJSValue()
     }
 

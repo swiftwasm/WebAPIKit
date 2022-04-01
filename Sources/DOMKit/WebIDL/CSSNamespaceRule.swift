@@ -7,8 +7,8 @@ public class CSSNamespaceRule: CSSRule {
     override public class var constructor: JSFunction { JSObject.global.CSSNamespaceRule.function! }
 
     private enum Keys {
-        static let prefix: JSString = "prefix"
         static let namespaceURI: JSString = "namespaceURI"
+        static let prefix: JSString = "prefix"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

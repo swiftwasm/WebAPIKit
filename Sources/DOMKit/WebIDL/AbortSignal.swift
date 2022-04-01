@@ -7,12 +7,12 @@ public class AbortSignal: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.AbortSignal.function! }
 
     private enum Keys {
-        static let throwIfAborted: JSString = "throwIfAborted"
-        static let reason: JSString = "reason"
+        static let abort: JSString = "abort"
         static let aborted: JSString = "aborted"
         static let onabort: JSString = "onabort"
+        static let reason: JSString = "reason"
+        static let throwIfAborted: JSString = "throwIfAborted"
         static let timeout: JSString = "timeout"
-        static let abort: JSString = "abort"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -37,7 +37,7 @@ public class AbortSignal: EventTarget {
     public var reason: JSValue
 
     public func throwIfAborted() {
-        _ = jsObject[Keys.throwIfAborted]!()
+        jsObject[Keys.throwIfAborted]!().fromJSValue()!
     }
 
     @ClosureAttribute.Optional1

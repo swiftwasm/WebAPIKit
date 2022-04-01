@@ -4,21 +4,21 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let onbeforeunload: JSString = "onbeforeunload"
     static let onafterprint: JSString = "onafterprint"
-    static let onstorage: JSString = "onstorage"
+    static let onbeforeprint: JSString = "onbeforeprint"
+    static let onbeforeunload: JSString = "onbeforeunload"
+    static let onhashchange: JSString = "onhashchange"
+    static let onlanguagechange: JSString = "onlanguagechange"
     static let onmessage: JSString = "onmessage"
     static let onmessageerror: JSString = "onmessageerror"
-    static let onunhandledrejection: JSString = "onunhandledrejection"
-    static let onlanguagechange: JSString = "onlanguagechange"
-    static let onhashchange: JSString = "onhashchange"
-    static let onbeforeprint: JSString = "onbeforeprint"
     static let onoffline: JSString = "onoffline"
     static let ononline: JSString = "ononline"
-    static let onpopstate: JSString = "onpopstate"
     static let onpagehide: JSString = "onpagehide"
     static let onpageshow: JSString = "onpageshow"
+    static let onpopstate: JSString = "onpopstate"
     static let onrejectionhandled: JSString = "onrejectionhandled"
+    static let onstorage: JSString = "onstorage"
+    static let onunhandledrejection: JSString = "onunhandledrejection"
     static let onunload: JSString = "onunload"
 }
 

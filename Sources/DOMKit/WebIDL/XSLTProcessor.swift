@@ -7,14 +7,14 @@ public class XSLTProcessor: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.XSLTProcessor.function! }
 
     private enum Keys {
+        static let clearParameters: JSString = "clearParameters"
+        static let getParameter: JSString = "getParameter"
         static let importStylesheet: JSString = "importStylesheet"
-        static let transformToFragment: JSString = "transformToFragment"
+        static let removeParameter: JSString = "removeParameter"
+        static let reset: JSString = "reset"
         static let setParameter: JSString = "setParameter"
         static let transformToDocument: JSString = "transformToDocument"
-        static let getParameter: JSString = "getParameter"
-        static let removeParameter: JSString = "removeParameter"
-        static let clearParameters: JSString = "clearParameters"
-        static let reset: JSString = "reset"
+        static let transformToFragment: JSString = "transformToFragment"
     }
 
     public let jsObject: JSObject
@@ -28,7 +28,7 @@ public class XSLTProcessor: JSBridgedClass {
     }
 
     public func importStylesheet(style: Node) {
-        _ = jsObject[Keys.importStylesheet]!(style.jsValue())
+        jsObject[Keys.importStylesheet]!(style.jsValue()).fromJSValue()!
     }
 
     public func transformToFragment(source: Node, output: Document) -> DocumentFragment {
@@ -40,7 +40,7 @@ public class XSLTProcessor: JSBridgedClass {
     }
 
     public func setParameter(namespaceURI: String, localName: String, value: JSValue) {
-        _ = jsObject[Keys.setParameter]!(namespaceURI.jsValue(), localName.jsValue(), value.jsValue())
+        jsObject[Keys.setParameter]!(namespaceURI.jsValue(), localName.jsValue(), value.jsValue()).fromJSValue()!
     }
 
     public func getParameter(namespaceURI: String, localName: String) -> JSValue {
@@ -48,14 +48,14 @@ public class XSLTProcessor: JSBridgedClass {
     }
 
     public func removeParameter(namespaceURI: String, localName: String) {
-        _ = jsObject[Keys.removeParameter]!(namespaceURI.jsValue(), localName.jsValue())
+        jsObject[Keys.removeParameter]!(namespaceURI.jsValue(), localName.jsValue()).fromJSValue()!
     }
 
     public func clearParameters() {
-        _ = jsObject[Keys.clearParameters]!()
+        jsObject[Keys.clearParameters]!().fromJSValue()!
     }
 
     public func reset() {
-        _ = jsObject[Keys.reset]!()
+        jsObject[Keys.reset]!().fromJSValue()!
     }
 }

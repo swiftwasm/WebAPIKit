@@ -5,8 +5,8 @@ import JavaScriptKit
 
 public class ReadableStreamDefaultReadResult: BridgedDictionary {
     private enum Keys {
-        static let value: JSString = "value"
         static let done: JSString = "done"
+        static let value: JSString = "value"
     }
 
     public convenience init(value: JSValue, done: Bool) {

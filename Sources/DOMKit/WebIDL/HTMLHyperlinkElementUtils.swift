@@ -4,17 +4,17 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let `protocol`: JSString = "protocol"
-    static let pathname: JSString = "pathname"
-    static let password: JSString = "password"
-    static let origin: JSString = "origin"
-    static let username: JSString = "username"
     static let hash: JSString = "hash"
-    static let href: JSString = "href"
     static let host: JSString = "host"
     static let hostname: JSString = "hostname"
+    static let href: JSString = "href"
+    static let origin: JSString = "origin"
+    static let password: JSString = "password"
+    static let pathname: JSString = "pathname"
     static let port: JSString = "port"
+    static let `protocol`: JSString = "protocol"
     static let search: JSString = "search"
+    static let username: JSString = "username"
 }
 
 public protocol HTMLHyperlinkElementUtils: JSBridgedClass {}

@@ -7,29 +7,29 @@ public class HTMLTableElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableElement.function! }
 
     private enum Keys {
-        static let createTFoot: JSString = "createTFoot"
-        static let deleteRow: JSString = "deleteRow"
-        static let createTBody: JSString = "createTBody"
-        static let cellSpacing: JSString = "cellSpacing"
         static let align: JSString = "align"
-        static let tHead: JSString = "tHead"
-        static let tFoot: JSString = "tFoot"
-        static let frame: JSString = "frame"
-        static let createTHead: JSString = "createTHead"
-        static let border: JSString = "border"
-        static let rules: JSString = "rules"
         static let bgColor: JSString = "bgColor"
+        static let border: JSString = "border"
         static let caption: JSString = "caption"
-        static let deleteTFoot: JSString = "deleteTFoot"
-        static let width: JSString = "width"
         static let cellPadding: JSString = "cellPadding"
-        static let deleteTHead: JSString = "deleteTHead"
-        static let deleteCaption: JSString = "deleteCaption"
-        static let tBodies: JSString = "tBodies"
+        static let cellSpacing: JSString = "cellSpacing"
         static let createCaption: JSString = "createCaption"
-        static let rows: JSString = "rows"
+        static let createTBody: JSString = "createTBody"
+        static let createTFoot: JSString = "createTFoot"
+        static let createTHead: JSString = "createTHead"
+        static let deleteCaption: JSString = "deleteCaption"
+        static let deleteRow: JSString = "deleteRow"
+        static let deleteTFoot: JSString = "deleteTFoot"
+        static let deleteTHead: JSString = "deleteTHead"
+        static let frame: JSString = "frame"
         static let insertRow: JSString = "insertRow"
+        static let rows: JSString = "rows"
+        static let rules: JSString = "rules"
         static let summary: JSString = "summary"
+        static let tBodies: JSString = "tBodies"
+        static let tFoot: JSString = "tFoot"
+        static let tHead: JSString = "tHead"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -62,7 +62,7 @@ public class HTMLTableElement: HTMLElement {
     }
 
     public func deleteCaption() {
-        _ = jsObject[Keys.deleteCaption]!()
+        jsObject[Keys.deleteCaption]!().fromJSValue()!
     }
 
     @ReadWriteAttribute
@@ -73,7 +73,7 @@ public class HTMLTableElement: HTMLElement {
     }
 
     public func deleteTHead() {
-        _ = jsObject[Keys.deleteTHead]!()
+        jsObject[Keys.deleteTHead]!().fromJSValue()!
     }
 
     @ReadWriteAttribute
@@ -84,7 +84,7 @@ public class HTMLTableElement: HTMLElement {
     }
 
     public func deleteTFoot() {
-        _ = jsObject[Keys.deleteTFoot]!()
+        jsObject[Keys.deleteTFoot]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -102,7 +102,7 @@ public class HTMLTableElement: HTMLElement {
     }
 
     public func deleteRow(index: Int32) {
-        _ = jsObject[Keys.deleteRow]!(index.jsValue())
+        jsObject[Keys.deleteRow]!(index.jsValue()).fromJSValue()!
     }
 
     @ReadWriteAttribute

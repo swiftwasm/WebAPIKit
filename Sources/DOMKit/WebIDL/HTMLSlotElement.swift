@@ -7,10 +7,10 @@ public class HTMLSlotElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLSlotElement.function! }
 
     private enum Keys {
-        static let assignedNodes: JSString = "assignedNodes"
-        static let name: JSString = "name"
         static let assign: JSString = "assign"
         static let assignedElements: JSString = "assignedElements"
+        static let assignedNodes: JSString = "assignedNodes"
+        static let name: JSString = "name"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -34,6 +34,6 @@ public class HTMLSlotElement: HTMLElement {
     }
 
     public func assign(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.assign]!(nodes.jsValue())
+        jsObject[Keys.assign]!(nodes.jsValue()).fromJSValue()!
     }
 }

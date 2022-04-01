@@ -7,8 +7,8 @@ public class URL: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.URL.function! }
 
     private enum Keys {
-        static let revokeObjectURL: JSString = "revokeObjectURL"
         static let createObjectURL: JSString = "createObjectURL"
+        static let revokeObjectURL: JSString = "revokeObjectURL"
     }
 
     public let jsObject: JSObject
@@ -22,6 +22,6 @@ public class URL: JSBridgedClass {
     }
 
     public static func revokeObjectURL(url: String) {
-        _ = constructor[Keys.revokeObjectURL]!(url.jsValue())
+        constructor[Keys.revokeObjectURL]!(url.jsValue()).fromJSValue()!
     }
 }

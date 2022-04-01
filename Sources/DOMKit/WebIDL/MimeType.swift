@@ -7,10 +7,10 @@ public class MimeType: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MimeType.function! }
 
     private enum Keys {
-        static let enabledPlugin: JSString = "enabledPlugin"
-        static let type: JSString = "type"
         static let description: JSString = "description"
+        static let enabledPlugin: JSString = "enabledPlugin"
         static let suffixes: JSString = "suffixes"
+        static let type: JSString = "type"
     }
 
     public let jsObject: JSObject

@@ -4,17 +4,17 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let unregisterProtocolHandler: JSString = "unregisterProtocolHandler"
     static let registerProtocolHandler: JSString = "registerProtocolHandler"
+    static let unregisterProtocolHandler: JSString = "unregisterProtocolHandler"
 }
 
 public protocol NavigatorContentUtils: JSBridgedClass {}
 public extension NavigatorContentUtils {
     func registerProtocolHandler(scheme: String, url: String) {
-        _ = jsObject[Keys.registerProtocolHandler]!(scheme.jsValue(), url.jsValue())
+        jsObject[Keys.registerProtocolHandler]!(scheme.jsValue(), url.jsValue()).fromJSValue()!
     }
 
     func unregisterProtocolHandler(scheme: String, url: String) {
-        _ = jsObject[Keys.unregisterProtocolHandler]!(scheme.jsValue(), url.jsValue())
+        jsObject[Keys.unregisterProtocolHandler]!(scheme.jsValue(), url.jsValue()).fromJSValue()!
     }
 }

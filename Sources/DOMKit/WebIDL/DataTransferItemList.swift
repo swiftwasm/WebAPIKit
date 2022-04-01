@@ -7,10 +7,10 @@ public class DataTransferItemList: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DataTransferItemList.function! }
 
     private enum Keys {
-        static let remove: JSString = "remove"
-        static let length: JSString = "length"
-        static let clear: JSString = "clear"
         static let add: JSString = "add"
+        static let clear: JSString = "clear"
+        static let length: JSString = "length"
+        static let remove: JSString = "remove"
     }
 
     public let jsObject: JSObject
@@ -23,7 +23,7 @@ public class DataTransferItemList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> DataTransferItem {
+    public subscript(key: UInt32) -> DataTransferItem {
         jsObject[key].fromJSValue()!
     }
 
@@ -36,10 +36,10 @@ public class DataTransferItemList: JSBridgedClass {
     }
 
     public func remove(index: UInt32) {
-        _ = jsObject[Keys.remove]!(index.jsValue())
+        jsObject[Keys.remove]!(index.jsValue()).fromJSValue()!
     }
 
     public func clear() {
-        _ = jsObject[Keys.clear]!()
+        jsObject[Keys.clear]!().fromJSValue()!
     }
 }

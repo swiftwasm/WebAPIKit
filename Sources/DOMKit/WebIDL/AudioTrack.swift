@@ -8,10 +8,10 @@ public class AudioTrack: JSBridgedClass {
 
     private enum Keys {
         static let enabled: JSString = "enabled"
-        static let kind: JSString = "kind"
         static let id: JSString = "id"
-        static let language: JSString = "language"
+        static let kind: JSString = "kind"
         static let label: JSString = "label"
+        static let language: JSString = "language"
     }
 
     public let jsObject: JSObject

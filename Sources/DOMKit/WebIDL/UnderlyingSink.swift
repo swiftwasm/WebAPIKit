@@ -5,11 +5,11 @@ import JavaScriptKit
 
 public class UnderlyingSink: BridgedDictionary {
     private enum Keys {
-        static let type: JSString = "type"
         static let abort: JSString = "abort"
-        static let start: JSString = "start"
-        static let write: JSString = "write"
         static let close: JSString = "close"
+        static let start: JSString = "start"
+        static let type: JSString = "type"
+        static let write: JSString = "write"
     }
 
     public convenience init(start: @escaping UnderlyingSinkStartCallback, write: @escaping UnderlyingSinkWriteCallback, close: @escaping UnderlyingSinkCloseCallback, abort: @escaping UnderlyingSinkAbortCallback, type: JSValue) {

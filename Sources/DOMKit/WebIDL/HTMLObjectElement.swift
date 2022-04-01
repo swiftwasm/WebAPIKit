@@ -7,32 +7,32 @@ public class HTMLObjectElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLObjectElement.function! }
 
     private enum Keys {
-        static let hspace: JSString = "hspace"
-        static let archive: JSString = "archive"
-        static let type: JSString = "type"
-        static let contentWindow: JSString = "contentWindow"
-        static let reportValidity: JSString = "reportValidity"
-        static let getSVGDocument: JSString = "getSVGDocument"
-        static let validity: JSString = "validity"
-        static let height: JSString = "height"
-        static let validationMessage: JSString = "validationMessage"
-        static let standby: JSString = "standby"
-        static let contentDocument: JSString = "contentDocument"
-        static let codeType: JSString = "codeType"
-        static let border: JSString = "border"
-        static let code: JSString = "code"
-        static let declare: JSString = "declare"
-        static let setCustomValidity: JSString = "setCustomValidity"
-        static let checkValidity: JSString = "checkValidity"
-        static let width: JSString = "width"
-        static let form: JSString = "form"
-        static let useMap: JSString = "useMap"
         static let align: JSString = "align"
-        static let vspace: JSString = "vspace"
-        static let willValidate: JSString = "willValidate"
-        static let name: JSString = "name"
+        static let archive: JSString = "archive"
+        static let border: JSString = "border"
+        static let checkValidity: JSString = "checkValidity"
+        static let code: JSString = "code"
         static let codeBase: JSString = "codeBase"
+        static let codeType: JSString = "codeType"
+        static let contentDocument: JSString = "contentDocument"
+        static let contentWindow: JSString = "contentWindow"
         static let data: JSString = "data"
+        static let declare: JSString = "declare"
+        static let form: JSString = "form"
+        static let getSVGDocument: JSString = "getSVGDocument"
+        static let height: JSString = "height"
+        static let hspace: JSString = "hspace"
+        static let name: JSString = "name"
+        static let reportValidity: JSString = "reportValidity"
+        static let setCustomValidity: JSString = "setCustomValidity"
+        static let standby: JSString = "standby"
+        static let type: JSString = "type"
+        static let useMap: JSString = "useMap"
+        static let validationMessage: JSString = "validationMessage"
+        static let validity: JSString = "validity"
+        static let vspace: JSString = "vspace"
+        static let width: JSString = "width"
+        static let willValidate: JSString = "willValidate"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -111,7 +111,7 @@ public class HTMLObjectElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
     }
 
     @ReadWriteAttribute

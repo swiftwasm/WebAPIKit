@@ -9,11 +9,11 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     private enum Keys {
         static let abort: JSString = "abort"
         static let close: JSString = "close"
-        static let ready: JSString = "ready"
-        static let write: JSString = "write"
-        static let releaseLock: JSString = "releaseLock"
         static let closed: JSString = "closed"
         static let desiredSize: JSString = "desiredSize"
+        static let ready: JSString = "ready"
+        static let releaseLock: JSString = "releaseLock"
+        static let write: JSString = "write"
     }
 
     public let jsObject: JSObject
@@ -45,7 +45,7 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func abort(reason: JSValue? = nil) async throws {
         let _promise: JSPromise = jsObject[Keys.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
-        _ = try await _promise.get()
+        return try await _promise.get().fromJSValue()!
     }
 
     public func close() -> JSPromise {
@@ -55,11 +55,11 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func close() async throws {
         let _promise: JSPromise = jsObject[Keys.close]!().fromJSValue()!
-        _ = try await _promise.get()
+        return try await _promise.get().fromJSValue()!
     }
 
     public func releaseLock() {
-        _ = jsObject[Keys.releaseLock]!()
+        jsObject[Keys.releaseLock]!().fromJSValue()!
     }
 
     public func write(chunk: JSValue? = nil) -> JSPromise {
@@ -69,6 +69,6 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func write(chunk: JSValue? = nil) async throws {
         let _promise: JSPromise = jsObject[Keys.write]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
-        _ = try await _promise.get()
+        return try await _promise.get().fromJSValue()!
     }
 }

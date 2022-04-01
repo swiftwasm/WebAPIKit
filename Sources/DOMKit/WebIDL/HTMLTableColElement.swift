@@ -7,12 +7,12 @@ public class HTMLTableColElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableColElement.function! }
 
     private enum Keys {
-        static let ch: JSString = "ch"
         static let align: JSString = "align"
-        static let span: JSString = "span"
-        static let width: JSString = "width"
-        static let vAlign: JSString = "vAlign"
+        static let ch: JSString = "ch"
         static let chOff: JSString = "chOff"
+        static let span: JSString = "span"
+        static let vAlign: JSString = "vAlign"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

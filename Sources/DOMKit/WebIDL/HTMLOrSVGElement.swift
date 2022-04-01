@@ -4,12 +4,12 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let tabIndex: JSString = "tabIndex"
-    static let dataset: JSString = "dataset"
     static let autofocus: JSString = "autofocus"
-    static let nonce: JSString = "nonce"
-    static let focus: JSString = "focus"
     static let blur: JSString = "blur"
+    static let dataset: JSString = "dataset"
+    static let focus: JSString = "focus"
+    static let nonce: JSString = "nonce"
+    static let tabIndex: JSString = "tabIndex"
 }
 
 public protocol HTMLOrSVGElement: JSBridgedClass {}
@@ -32,10 +32,10 @@ public extension HTMLOrSVGElement {
     }
 
     func focus(options: FocusOptions? = nil) {
-        _ = jsObject[Keys.focus]!(options?.jsValue() ?? .undefined)
+        jsObject[Keys.focus]!(options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func blur() {
-        _ = jsObject[Keys.blur]!()
+        jsObject[Keys.blur]!().fromJSValue()!
     }
 }

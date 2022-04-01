@@ -7,10 +7,10 @@ public class CustomElementRegistry: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.CustomElementRegistry.function! }
 
     private enum Keys {
-        static let whenDefined: JSString = "whenDefined"
-        static let upgrade: JSString = "upgrade"
-        static let get: JSString = "get"
         static let define: JSString = "define"
+        static let get: JSString = "get"
+        static let upgrade: JSString = "upgrade"
+        static let whenDefined: JSString = "whenDefined"
     }
 
     public let jsObject: JSObject
@@ -30,6 +30,6 @@ public class CustomElementRegistry: JSBridgedClass {
     // XXX: member 'whenDefined' is ignored
 
     public func upgrade(root: Node) {
-        _ = jsObject[Keys.upgrade]!(root.jsValue())
+        jsObject[Keys.upgrade]!(root.jsValue()).fromJSValue()!
     }
 }

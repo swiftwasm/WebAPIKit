@@ -7,13 +7,13 @@ public class HTMLTableSectionElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableSectionElement.function! }
 
     private enum Keys {
+        static let align: JSString = "align"
+        static let ch: JSString = "ch"
+        static let chOff: JSString = "chOff"
+        static let deleteRow: JSString = "deleteRow"
         static let insertRow: JSString = "insertRow"
         static let rows: JSString = "rows"
         static let vAlign: JSString = "vAlign"
-        static let deleteRow: JSString = "deleteRow"
-        static let align: JSString = "align"
-        static let chOff: JSString = "chOff"
-        static let ch: JSString = "ch"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -37,7 +37,7 @@ public class HTMLTableSectionElement: HTMLElement {
     }
 
     public func deleteRow(index: Int32) {
-        _ = jsObject[Keys.deleteRow]!(index.jsValue())
+        jsObject[Keys.deleteRow]!(index.jsValue()).fromJSValue()!
     }
 
     @ReadWriteAttribute

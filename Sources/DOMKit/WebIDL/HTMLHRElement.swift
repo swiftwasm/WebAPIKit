@@ -7,11 +7,11 @@ public class HTMLHRElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLHRElement.function! }
 
     private enum Keys {
-        static let width: JSString = "width"
-        static let size: JSString = "size"
         static let align: JSString = "align"
-        static let noShade: JSString = "noShade"
         static let color: JSString = "color"
+        static let noShade: JSString = "noShade"
+        static let size: JSString = "size"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

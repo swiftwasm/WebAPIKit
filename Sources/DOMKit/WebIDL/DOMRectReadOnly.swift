@@ -7,16 +7,16 @@ public class DOMRectReadOnly: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMRectReadOnly.function! }
 
     private enum Keys {
-        static let width: JSString = "width"
+        static let bottom: JSString = "bottom"
         static let fromRect: JSString = "fromRect"
+        static let height: JSString = "height"
+        static let left: JSString = "left"
+        static let right: JSString = "right"
+        static let toJSON: JSString = "toJSON"
+        static let top: JSString = "top"
+        static let width: JSString = "width"
         static let x: JSString = "x"
         static let y: JSString = "y"
-        static let left: JSString = "left"
-        static let height: JSString = "height"
-        static let right: JSString = "right"
-        static let bottom: JSString = "bottom"
-        static let top: JSString = "top"
-        static let toJSON: JSString = "toJSON"
     }
 
     public let jsObject: JSObject

@@ -6,15 +6,15 @@ import JavaScriptKit
 public class ValidityStateFlags: BridgedDictionary {
     private enum Keys {
         static let badInput: JSString = "badInput"
+        static let customError: JSString = "customError"
         static let patternMismatch: JSString = "patternMismatch"
-        static let tooShort: JSString = "tooShort"
+        static let rangeOverflow: JSString = "rangeOverflow"
         static let rangeUnderflow: JSString = "rangeUnderflow"
         static let stepMismatch: JSString = "stepMismatch"
-        static let customError: JSString = "customError"
+        static let tooLong: JSString = "tooLong"
+        static let tooShort: JSString = "tooShort"
         static let typeMismatch: JSString = "typeMismatch"
         static let valueMissing: JSString = "valueMissing"
-        static let rangeOverflow: JSString = "rangeOverflow"
-        static let tooLong: JSString = "tooLong"
     }
 
     public convenience init(valueMissing: Bool, typeMismatch: Bool, patternMismatch: Bool, tooLong: Bool, tooShort: Bool, rangeUnderflow: Bool, rangeOverflow: Bool, stepMismatch: Bool, badInput: Bool, customError: Bool) {

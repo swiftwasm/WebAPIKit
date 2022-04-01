@@ -5,12 +5,12 @@ import JavaScriptKit
 
 public class ImageBitmapOptions: BridgedDictionary {
     private enum Keys {
+        static let colorSpaceConversion: JSString = "colorSpaceConversion"
         static let imageOrientation: JSString = "imageOrientation"
-        static let resizeWidth: JSString = "resizeWidth"
         static let premultiplyAlpha: JSString = "premultiplyAlpha"
         static let resizeHeight: JSString = "resizeHeight"
         static let resizeQuality: JSString = "resizeQuality"
-        static let colorSpaceConversion: JSString = "colorSpaceConversion"
+        static let resizeWidth: JSString = "resizeWidth"
     }
 
     public convenience init(imageOrientation: ImageOrientation, premultiplyAlpha: PremultiplyAlpha, colorSpaceConversion: ColorSpaceConversion, resizeWidth: UInt32, resizeHeight: UInt32, resizeQuality: ResizeQuality) {

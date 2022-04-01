@@ -7,21 +7,21 @@ public class HTMLElement: Element, GlobalEventHandlers, DocumentAndElementEventH
     override public class var constructor: JSFunction { JSObject.global.HTMLElement.function! }
 
     private enum Keys {
-        static let attachInternals: JSString = "attachInternals"
-        static let title: JSString = "title"
-        static let spellcheck: JSString = "spellcheck"
-        static let translate: JSString = "translate"
-        static let hidden: JSString = "hidden"
-        static let click: JSString = "click"
-        static let draggable: JSString = "draggable"
-        static let dir: JSString = "dir"
         static let accessKey: JSString = "accessKey"
-        static let innerText: JSString = "innerText"
-        static let autocapitalize: JSString = "autocapitalize"
-        static let outerText: JSString = "outerText"
-        static let inert: JSString = "inert"
-        static let lang: JSString = "lang"
         static let accessKeyLabel: JSString = "accessKeyLabel"
+        static let attachInternals: JSString = "attachInternals"
+        static let autocapitalize: JSString = "autocapitalize"
+        static let click: JSString = "click"
+        static let dir: JSString = "dir"
+        static let draggable: JSString = "draggable"
+        static let hidden: JSString = "hidden"
+        static let inert: JSString = "inert"
+        static let innerText: JSString = "innerText"
+        static let lang: JSString = "lang"
+        static let outerText: JSString = "outerText"
+        static let spellcheck: JSString = "spellcheck"
+        static let title: JSString = "title"
+        static let translate: JSString = "translate"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -64,7 +64,7 @@ public class HTMLElement: Element, GlobalEventHandlers, DocumentAndElementEventH
     public var inert: Bool
 
     public func click() {
-        _ = jsObject[Keys.click]!()
+        jsObject[Keys.click]!().fromJSValue()!
     }
 
     @ReadWriteAttribute

@@ -8,9 +8,9 @@ public class DOMImplementation: JSBridgedClass {
 
     private enum Keys {
         static let createDocument: JSString = "createDocument"
-        static let hasFeature: JSString = "hasFeature"
-        static let createHTMLDocument: JSString = "createHTMLDocument"
         static let createDocumentType: JSString = "createDocumentType"
+        static let createHTMLDocument: JSString = "createHTMLDocument"
+        static let hasFeature: JSString = "hasFeature"
     }
 
     public let jsObject: JSObject

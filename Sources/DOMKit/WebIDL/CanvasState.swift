@@ -5,23 +5,23 @@ import JavaScriptKit
 
 private enum Keys {
     static let isContextLost: JSString = "isContextLost"
-    static let save: JSString = "save"
     static let reset: JSString = "reset"
     static let restore: JSString = "restore"
+    static let save: JSString = "save"
 }
 
 public protocol CanvasState: JSBridgedClass {}
 public extension CanvasState {
     func save() {
-        _ = jsObject[Keys.save]!()
+        jsObject[Keys.save]!().fromJSValue()!
     }
 
     func restore() {
-        _ = jsObject[Keys.restore]!()
+        jsObject[Keys.restore]!().fromJSValue()!
     }
 
     func reset() {
-        _ = jsObject[Keys.reset]!()
+        jsObject[Keys.reset]!().fromJSValue()!
     }
 
     func isContextLost() -> Bool {

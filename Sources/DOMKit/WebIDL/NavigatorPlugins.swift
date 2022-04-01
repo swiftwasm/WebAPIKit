@@ -4,10 +4,10 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
+    static let javaEnabled: JSString = "javaEnabled"
+    static let mimeTypes: JSString = "mimeTypes"
     static let pdfViewerEnabled: JSString = "pdfViewerEnabled"
     static let plugins: JSString = "plugins"
-    static let mimeTypes: JSString = "mimeTypes"
-    static let javaEnabled: JSString = "javaEnabled"
 }
 
 public protocol NavigatorPlugins: JSBridgedClass {}

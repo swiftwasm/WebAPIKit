@@ -4,16 +4,16 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let textBaseline: JSString = "textBaseline"
-    static let font: JSString = "font"
     static let direction: JSString = "direction"
-    static let letterSpacing: JSString = "letterSpacing"
-    static let textAlign: JSString = "textAlign"
+    static let font: JSString = "font"
     static let fontKerning: JSString = "fontKerning"
     static let fontStretch: JSString = "fontStretch"
+    static let fontVariantCaps: JSString = "fontVariantCaps"
+    static let letterSpacing: JSString = "letterSpacing"
+    static let textAlign: JSString = "textAlign"
+    static let textBaseline: JSString = "textBaseline"
     static let textRendering: JSString = "textRendering"
     static let wordSpacing: JSString = "wordSpacing"
-    static let fontVariantCaps: JSString = "fontVariantCaps"
 }
 
 public protocol CanvasTextDrawingStyles: JSBridgedClass {}

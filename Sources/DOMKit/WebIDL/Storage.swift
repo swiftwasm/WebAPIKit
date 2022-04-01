@@ -8,10 +8,10 @@ public class Storage: JSBridgedClass {
 
     private enum Keys {
         static let clear: JSString = "clear"
-        static let key: JSString = "key"
-        static let removeItem: JSString = "removeItem"
         static let getItem: JSString = "getItem"
+        static let key: JSString = "key"
         static let length: JSString = "length"
+        static let removeItem: JSString = "removeItem"
         static let setItem: JSString = "setItem"
     }
 
@@ -33,11 +33,11 @@ public class Storage: JSBridgedClass {
         jsObject[key].fromJSValue()
     }
 
-    // XXX: unsupported setter for keys of type String
+    // XXX: unsupported setter for keys of type `String`
 
-    // XXX: unsupported deleter for keys of type String
+    // XXX: unsupported deleter for keys of type `String`
 
     public func clear() {
-        _ = jsObject[Keys.clear]!()
+        jsObject[Keys.clear]!().fromJSValue()!
     }
 }

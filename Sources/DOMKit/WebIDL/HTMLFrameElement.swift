@@ -7,16 +7,16 @@ public class HTMLFrameElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLFrameElement.function! }
 
     private enum Keys {
-        static let contentWindow: JSString = "contentWindow"
-        static let src: JSString = "src"
-        static let name: JSString = "name"
-        static let scrolling: JSString = "scrolling"
-        static let frameBorder: JSString = "frameBorder"
-        static let marginHeight: JSString = "marginHeight"
-        static let longDesc: JSString = "longDesc"
-        static let marginWidth: JSString = "marginWidth"
-        static let noResize: JSString = "noResize"
         static let contentDocument: JSString = "contentDocument"
+        static let contentWindow: JSString = "contentWindow"
+        static let frameBorder: JSString = "frameBorder"
+        static let longDesc: JSString = "longDesc"
+        static let marginHeight: JSString = "marginHeight"
+        static let marginWidth: JSString = "marginWidth"
+        static let name: JSString = "name"
+        static let noResize: JSString = "noResize"
+        static let scrolling: JSString = "scrolling"
+        static let src: JSString = "src"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

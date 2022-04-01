@@ -7,20 +7,20 @@ public class HTMLAnchorElement: HTMLElement, HTMLHyperlinkElementUtils {
     override public class var constructor: JSFunction { JSObject.global.HTMLAnchorElement.function! }
 
     private enum Keys {
-        static let rel: JSString = "rel"
         static let charset: JSString = "charset"
-        static let target: JSString = "target"
         static let coords: JSString = "coords"
+        static let download: JSString = "download"
+        static let hreflang: JSString = "hreflang"
         static let name: JSString = "name"
         static let ping: JSString = "ping"
-        static let download: JSString = "download"
-        static let text: JSString = "text"
-        static let shape: JSString = "shape"
         static let referrerPolicy: JSString = "referrerPolicy"
-        static let type: JSString = "type"
-        static let rev: JSString = "rev"
+        static let rel: JSString = "rel"
         static let relList: JSString = "relList"
-        static let hreflang: JSString = "hreflang"
+        static let rev: JSString = "rev"
+        static let shape: JSString = "shape"
+        static let target: JSString = "target"
+        static let text: JSString = "text"
+        static let type: JSString = "type"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

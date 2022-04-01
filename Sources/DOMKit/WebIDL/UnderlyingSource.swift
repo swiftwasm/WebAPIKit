@@ -5,11 +5,11 @@ import JavaScriptKit
 
 public class UnderlyingSource: BridgedDictionary {
     private enum Keys {
-        static let cancel: JSString = "cancel"
         static let autoAllocateChunkSize: JSString = "autoAllocateChunkSize"
-        static let type: JSString = "type"
+        static let cancel: JSString = "cancel"
         static let pull: JSString = "pull"
         static let start: JSString = "start"
+        static let type: JSString = "type"
     }
 
     public convenience init(start: @escaping UnderlyingSourceStartCallback, pull: @escaping UnderlyingSourcePullCallback, cancel: @escaping UnderlyingSourceCancelCallback, type: ReadableStreamType, autoAllocateChunkSize: UInt64) {

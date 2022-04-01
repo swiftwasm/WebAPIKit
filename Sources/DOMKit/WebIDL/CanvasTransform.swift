@@ -4,27 +4,27 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let setTransform: JSString = "setTransform"
-    static let translate: JSString = "translate"
     static let getTransform: JSString = "getTransform"
     static let resetTransform: JSString = "resetTransform"
     static let rotate: JSString = "rotate"
-    static let transform: JSString = "transform"
     static let scale: JSString = "scale"
+    static let setTransform: JSString = "setTransform"
+    static let transform: JSString = "transform"
+    static let translate: JSString = "translate"
 }
 
 public protocol CanvasTransform: JSBridgedClass {}
 public extension CanvasTransform {
     func scale(x: Double, y: Double) {
-        _ = jsObject[Keys.scale]!(x.jsValue(), y.jsValue())
+        jsObject[Keys.scale]!(x.jsValue(), y.jsValue()).fromJSValue()!
     }
 
     func rotate(angle: Double) {
-        _ = jsObject[Keys.rotate]!(angle.jsValue())
+        jsObject[Keys.rotate]!(angle.jsValue()).fromJSValue()!
     }
 
     func translate(x: Double, y: Double) {
-        _ = jsObject[Keys.translate]!(x.jsValue(), y.jsValue())
+        jsObject[Keys.translate]!(x.jsValue(), y.jsValue()).fromJSValue()!
     }
 
     func transform(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double) {
@@ -34,7 +34,7 @@ public extension CanvasTransform {
         let _arg3 = d.jsValue()
         let _arg4 = e.jsValue()
         let _arg5 = f.jsValue()
-        _ = jsObject[Keys.transform]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
+        return jsObject[Keys.transform]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
     }
 
     func getTransform() -> DOMMatrix {
@@ -48,14 +48,14 @@ public extension CanvasTransform {
         let _arg3 = d.jsValue()
         let _arg4 = e.jsValue()
         let _arg5 = f.jsValue()
-        _ = jsObject[Keys.setTransform]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
+        return jsObject[Keys.setTransform]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
     }
 
     func setTransform(transform: DOMMatrix2DInit? = nil) {
-        _ = jsObject[Keys.setTransform]!(transform?.jsValue() ?? .undefined)
+        jsObject[Keys.setTransform]!(transform?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func resetTransform() {
-        _ = jsObject[Keys.resetTransform]!()
+        jsObject[Keys.resetTransform]!().fromJSValue()!
     }
 }

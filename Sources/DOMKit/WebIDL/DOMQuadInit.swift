@@ -5,10 +5,10 @@ import JavaScriptKit
 
 public class DOMQuadInit: BridgedDictionary {
     private enum Keys {
-        static let p4: JSString = "p4"
+        static let p1: JSString = "p1"
         static let p2: JSString = "p2"
         static let p3: JSString = "p3"
-        static let p1: JSString = "p1"
+        static let p4: JSString = "p4"
     }
 
     public convenience init(p1: DOMPointInit, p2: DOMPointInit, p3: DOMPointInit, p4: DOMPointInit) {

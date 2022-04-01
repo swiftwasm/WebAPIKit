@@ -7,80 +7,80 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     override public class var constructor: JSFunction { JSObject.global.Document.function! }
 
     private enum Keys {
-        static let currentScript: JSString = "currentScript"
-        static let getElementsByTagName: JSString = "getElementsByTagName"
         static let URL: JSString = "URL"
-        static let vlinkColor: JSString = "vlinkColor"
-        static let createAttributeNS: JSString = "createAttributeNS"
-        static let documentElement: JSString = "documentElement"
-        static let head: JSString = "head"
-        static let implementation: JSString = "implementation"
-        static let scripts: JSString = "scripts"
-        static let designMode: JSString = "designMode"
-        static let hidden: JSString = "hidden"
-        static let clear: JSString = "clear"
-        static let lastModified: JSString = "lastModified"
-        static let getElementsByTagNameNS: JSString = "getElementsByTagNameNS"
-        static let doctype: JSString = "doctype"
-        static let images: JSString = "images"
-        static let captureEvents: JSString = "captureEvents"
+        static let adoptNode: JSString = "adoptNode"
+        static let alinkColor: JSString = "alinkColor"
         static let all: JSString = "all"
-        static let queryCommandValue: JSString = "queryCommandValue"
-        static let queryCommandEnabled: JSString = "queryCommandEnabled"
+        static let anchors: JSString = "anchors"
+        static let applets: JSString = "applets"
+        static let bgColor: JSString = "bgColor"
+        static let body: JSString = "body"
+        static let captureEvents: JSString = "captureEvents"
+        static let characterSet: JSString = "characterSet"
+        static let charset: JSString = "charset"
+        static let clear: JSString = "clear"
+        static let close: JSString = "close"
+        static let compatMode: JSString = "compatMode"
+        static let contentType: JSString = "contentType"
+        static let cookie: JSString = "cookie"
+        static let createAttribute: JSString = "createAttribute"
+        static let createAttributeNS: JSString = "createAttributeNS"
+        static let createCDATASection: JSString = "createCDATASection"
+        static let createComment: JSString = "createComment"
+        static let createDocumentFragment: JSString = "createDocumentFragment"
         static let createElement: JSString = "createElement"
+        static let createElementNS: JSString = "createElementNS"
+        static let createEvent: JSString = "createEvent"
+        static let createNodeIterator: JSString = "createNodeIterator"
+        static let createProcessingInstruction: JSString = "createProcessingInstruction"
+        static let createRange: JSString = "createRange"
+        static let createTextNode: JSString = "createTextNode"
+        static let createTreeWalker: JSString = "createTreeWalker"
+        static let currentScript: JSString = "currentScript"
+        static let defaultView: JSString = "defaultView"
+        static let designMode: JSString = "designMode"
+        static let dir: JSString = "dir"
+        static let doctype: JSString = "doctype"
+        static let documentElement: JSString = "documentElement"
+        static let documentURI: JSString = "documentURI"
+        static let domain: JSString = "domain"
+        static let embeds: JSString = "embeds"
+        static let execCommand: JSString = "execCommand"
+        static let fgColor: JSString = "fgColor"
+        static let forms: JSString = "forms"
+        static let getElementsByClassName: JSString = "getElementsByClassName"
+        static let getElementsByName: JSString = "getElementsByName"
+        static let getElementsByTagName: JSString = "getElementsByTagName"
+        static let getElementsByTagNameNS: JSString = "getElementsByTagNameNS"
+        static let hasFocus: JSString = "hasFocus"
+        static let head: JSString = "head"
+        static let hidden: JSString = "hidden"
+        static let images: JSString = "images"
+        static let implementation: JSString = "implementation"
+        static let importNode: JSString = "importNode"
+        static let inputEncoding: JSString = "inputEncoding"
+        static let lastModified: JSString = "lastModified"
+        static let linkColor: JSString = "linkColor"
+        static let links: JSString = "links"
+        static let location: JSString = "location"
+        static let onreadystatechange: JSString = "onreadystatechange"
+        static let onvisibilitychange: JSString = "onvisibilitychange"
+        static let open: JSString = "open"
+        static let plugins: JSString = "plugins"
+        static let queryCommandEnabled: JSString = "queryCommandEnabled"
         static let queryCommandIndeterm: JSString = "queryCommandIndeterm"
         static let queryCommandState: JSString = "queryCommandState"
-        static let createTextNode: JSString = "createTextNode"
-        static let charset: JSString = "charset"
-        static let onreadystatechange: JSString = "onreadystatechange"
-        static let createElementNS: JSString = "createElementNS"
         static let queryCommandSupported: JSString = "queryCommandSupported"
-        static let visibilityState: JSString = "visibilityState"
-        static let contentType: JSString = "contentType"
-        static let plugins: JSString = "plugins"
-        static let applets: JSString = "applets"
-        static let adoptNode: JSString = "adoptNode"
-        static let compatMode: JSString = "compatMode"
-        static let createComment: JSString = "createComment"
-        static let location: JSString = "location"
-        static let execCommand: JSString = "execCommand"
-        static let referrer: JSString = "referrer"
-        static let documentURI: JSString = "documentURI"
-        static let characterSet: JSString = "characterSet"
-        static let links: JSString = "links"
-        static let open: JSString = "open"
-        static let alinkColor: JSString = "alinkColor"
-        static let createNodeIterator: JSString = "createNodeIterator"
-        static let forms: JSString = "forms"
-        static let cookie: JSString = "cookie"
-        static let domain: JSString = "domain"
-        static let createDocumentFragment: JSString = "createDocumentFragment"
-        static let getElementsByClassName: JSString = "getElementsByClassName"
-        static let title: JSString = "title"
-        static let createProcessingInstruction: JSString = "createProcessingInstruction"
-        static let getElementsByName: JSString = "getElementsByName"
-        static let createRange: JSString = "createRange"
-        static let embeds: JSString = "embeds"
-        static let createAttribute: JSString = "createAttribute"
-        static let linkColor: JSString = "linkColor"
-        static let onvisibilitychange: JSString = "onvisibilitychange"
-        static let inputEncoding: JSString = "inputEncoding"
-        static let createEvent: JSString = "createEvent"
-        static let defaultView: JSString = "defaultView"
+        static let queryCommandValue: JSString = "queryCommandValue"
         static let readyState: JSString = "readyState"
-        static let hasFocus: JSString = "hasFocus"
-        static let writeln: JSString = "writeln"
-        static let fgColor: JSString = "fgColor"
-        static let close: JSString = "close"
-        static let write: JSString = "write"
-        static let body: JSString = "body"
-        static let bgColor: JSString = "bgColor"
+        static let referrer: JSString = "referrer"
         static let releaseEvents: JSString = "releaseEvents"
-        static let dir: JSString = "dir"
-        static let anchors: JSString = "anchors"
-        static let importNode: JSString = "importNode"
-        static let createCDATASection: JSString = "createCDATASection"
-        static let createTreeWalker: JSString = "createTreeWalker"
+        static let scripts: JSString = "scripts"
+        static let title: JSString = "title"
+        static let visibilityState: JSString = "visibilityState"
+        static let vlinkColor: JSString = "vlinkColor"
+        static let write: JSString = "write"
+        static let writeln: JSString = "writeln"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -298,15 +298,15 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     }
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 
     public func write(text: String...) {
-        _ = jsObject[Keys.write]!(text.jsValue())
+        jsObject[Keys.write]!(text.jsValue()).fromJSValue()!
     }
 
     public func writeln(text: String...) {
-        _ = jsObject[Keys.writeln]!(text.jsValue())
+        jsObject[Keys.writeln]!(text.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -377,15 +377,15 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     public var applets: HTMLCollection
 
     public func clear() {
-        _ = jsObject[Keys.clear]!()
+        jsObject[Keys.clear]!().fromJSValue()!
     }
 
     public func captureEvents() {
-        _ = jsObject[Keys.captureEvents]!()
+        jsObject[Keys.captureEvents]!().fromJSValue()!
     }
 
     public func releaseEvents() {
-        _ = jsObject[Keys.releaseEvents]!()
+        jsObject[Keys.releaseEvents]!().fromJSValue()!
     }
 
     @ReadonlyAttribute

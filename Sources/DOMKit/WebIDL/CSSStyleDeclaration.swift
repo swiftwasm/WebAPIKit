@@ -7,15 +7,15 @@ public class CSSStyleDeclaration: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.CSSStyleDeclaration.function! }
 
     private enum Keys {
-        static let length: JSString = "length"
-        static let getPropertyPriority: JSString = "getPropertyPriority"
-        static let parentRule: JSString = "parentRule"
-        static let item: JSString = "item"
-        static let getPropertyValue: JSString = "getPropertyValue"
-        static let setProperty: JSString = "setProperty"
-        static let removeProperty: JSString = "removeProperty"
         static let cssFloat: JSString = "cssFloat"
         static let cssText: JSString = "cssText"
+        static let getPropertyPriority: JSString = "getPropertyPriority"
+        static let getPropertyValue: JSString = "getPropertyValue"
+        static let item: JSString = "item"
+        static let length: JSString = "length"
+        static let parentRule: JSString = "parentRule"
+        static let removeProperty: JSString = "removeProperty"
+        static let setProperty: JSString = "setProperty"
     }
 
     public let jsObject: JSObject
@@ -34,7 +34,7 @@ public class CSSStyleDeclaration: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> String {
+    public subscript(key: UInt32) -> String {
         jsObject[key].fromJSValue()!
     }
 
@@ -47,7 +47,7 @@ public class CSSStyleDeclaration: JSBridgedClass {
     }
 
     public func setProperty(property: String, value: String, priority: String? = nil) {
-        _ = jsObject[Keys.setProperty]!(property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined)
+        jsObject[Keys.setProperty]!(property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func removeProperty(property: String) -> String {

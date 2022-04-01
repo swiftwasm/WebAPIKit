@@ -4,42 +4,42 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let stroke: JSString = "stroke"
-    static let isPointInPath: JSString = "isPointInPath"
-    static let fill: JSString = "fill"
-    static let isPointInStroke: JSString = "isPointInStroke"
     static let beginPath: JSString = "beginPath"
     static let clip: JSString = "clip"
+    static let fill: JSString = "fill"
+    static let isPointInPath: JSString = "isPointInPath"
+    static let isPointInStroke: JSString = "isPointInStroke"
+    static let stroke: JSString = "stroke"
 }
 
 public protocol CanvasDrawPath: JSBridgedClass {}
 public extension CanvasDrawPath {
     func beginPath() {
-        _ = jsObject[Keys.beginPath]!()
+        jsObject[Keys.beginPath]!().fromJSValue()!
     }
 
     func fill(fillRule: CanvasFillRule? = nil) {
-        _ = jsObject[Keys.fill]!(fillRule?.jsValue() ?? .undefined)
+        jsObject[Keys.fill]!(fillRule?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func fill(path: Path2D, fillRule: CanvasFillRule? = nil) {
-        _ = jsObject[Keys.fill]!(path.jsValue(), fillRule?.jsValue() ?? .undefined)
+        jsObject[Keys.fill]!(path.jsValue(), fillRule?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func stroke() {
-        _ = jsObject[Keys.stroke]!()
+        jsObject[Keys.stroke]!().fromJSValue()!
     }
 
     func stroke(path: Path2D) {
-        _ = jsObject[Keys.stroke]!(path.jsValue())
+        jsObject[Keys.stroke]!(path.jsValue()).fromJSValue()!
     }
 
     func clip(fillRule: CanvasFillRule? = nil) {
-        _ = jsObject[Keys.clip]!(fillRule?.jsValue() ?? .undefined)
+        jsObject[Keys.clip]!(fillRule?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func clip(path: Path2D, fillRule: CanvasFillRule? = nil) {
-        _ = jsObject[Keys.clip]!(path.jsValue(), fillRule?.jsValue() ?? .undefined)
+        jsObject[Keys.clip]!(path.jsValue(), fillRule?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func isPointInPath(x: Double, y: Double, fillRule: CanvasFillRule? = nil) -> Bool {

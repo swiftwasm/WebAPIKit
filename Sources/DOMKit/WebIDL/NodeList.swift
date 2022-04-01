@@ -18,7 +18,7 @@ public class NodeList: JSBridgedClass, Sequence {
         self.jsObject = jsObject
     }
 
-    public subscript(key: Int) -> Node? {
+    public subscript(key: UInt32) -> Node? {
         jsObject[key].fromJSValue()
     }
 

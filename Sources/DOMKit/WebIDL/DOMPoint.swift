@@ -7,11 +7,11 @@ public class DOMPoint: DOMPointReadOnly {
     override public class var constructor: JSFunction { JSObject.global.DOMPoint.function! }
 
     private enum Keys {
-        static let z: JSString = "z"
-        static let x: JSString = "x"
         static let fromPoint: JSString = "fromPoint"
-        static let y: JSString = "y"
         static let w: JSString = "w"
+        static let x: JSString = "x"
+        static let y: JSString = "y"
+        static let z: JSString = "z"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -27,7 +27,7 @@ public class DOMPoint: DOMPointReadOnly {
     }
 
     // XXX: illegal static override
-    // override public static func fromPoint(other: DOMPointInit? = nil) -> Self
+    // override public static func `fromPoint`(`other`: `DOMPointInit`? = nil) -> Self
 
     private var _x: ReadWriteAttribute<Double>
     override public var x: Double {

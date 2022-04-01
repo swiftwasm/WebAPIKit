@@ -8,12 +8,12 @@ public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
 
     private enum Keys {
         static let appendData: JSString = "appendData"
-        static let length: JSString = "length"
-        static let deleteData: JSString = "deleteData"
-        static let replaceData: JSString = "replaceData"
-        static let insertData: JSString = "insertData"
-        static let substringData: JSString = "substringData"
         static let data: JSString = "data"
+        static let deleteData: JSString = "deleteData"
+        static let insertData: JSString = "insertData"
+        static let length: JSString = "length"
+        static let replaceData: JSString = "replaceData"
+        static let substringData: JSString = "substringData"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -33,18 +33,18 @@ public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
     }
 
     public func appendData(data: String) {
-        _ = jsObject[Keys.appendData]!(data.jsValue())
+        jsObject[Keys.appendData]!(data.jsValue()).fromJSValue()!
     }
 
     public func insertData(offset: UInt32, data: String) {
-        _ = jsObject[Keys.insertData]!(offset.jsValue(), data.jsValue())
+        jsObject[Keys.insertData]!(offset.jsValue(), data.jsValue()).fromJSValue()!
     }
 
     public func deleteData(offset: UInt32, count: UInt32) {
-        _ = jsObject[Keys.deleteData]!(offset.jsValue(), count.jsValue())
+        jsObject[Keys.deleteData]!(offset.jsValue(), count.jsValue()).fromJSValue()!
     }
 
     public func replaceData(offset: UInt32, count: UInt32, data: String) {
-        _ = jsObject[Keys.replaceData]!(offset.jsValue(), count.jsValue(), data.jsValue())
+        jsObject[Keys.replaceData]!(offset.jsValue(), count.jsValue(), data.jsValue()).fromJSValue()!
     }
 }

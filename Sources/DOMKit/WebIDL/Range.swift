@@ -7,31 +7,31 @@ public class Range: AbstractRange {
     override public class var constructor: JSFunction { JSObject.global.Range.function! }
 
     private enum Keys {
+        static let END_TO_END: JSString = "END_TO_END"
+        static let END_TO_START: JSString = "END_TO_START"
+        static let START_TO_END: JSString = "START_TO_END"
+        static let START_TO_START: JSString = "START_TO_START"
+        static let cloneContents: JSString = "cloneContents"
+        static let cloneRange: JSString = "cloneRange"
+        static let collapse: JSString = "collapse"
+        static let commonAncestorContainer: JSString = "commonAncestorContainer"
+        static let compareBoundaryPoints: JSString = "compareBoundaryPoints"
+        static let comparePoint: JSString = "comparePoint"
         static let deleteContents: JSString = "deleteContents"
         static let detach: JSString = "detach"
-        static let setEnd: JSString = "setEnd"
-        static let setStart: JSString = "setStart"
-        static let setEndAfter: JSString = "setEndAfter"
-        static let collapse: JSString = "collapse"
-        static let selectNode: JSString = "selectNode"
-        static let END_TO_START: JSString = "END_TO_START"
-        static let isPointInRange: JSString = "isPointInRange"
-        static let comparePoint: JSString = "comparePoint"
-        static let insertNode: JSString = "insertNode"
         static let extractContents: JSString = "extractContents"
-        static let setEndBefore: JSString = "setEndBefore"
-        static let cloneContents: JSString = "cloneContents"
-        static let surroundContents: JSString = "surroundContents"
-        static let compareBoundaryPoints: JSString = "compareBoundaryPoints"
-        static let setStartBefore: JSString = "setStartBefore"
-        static let START_TO_START: JSString = "START_TO_START"
-        static let cloneRange: JSString = "cloneRange"
-        static let END_TO_END: JSString = "END_TO_END"
-        static let commonAncestorContainer: JSString = "commonAncestorContainer"
-        static let setStartAfter: JSString = "setStartAfter"
-        static let START_TO_END: JSString = "START_TO_END"
-        static let selectNodeContents: JSString = "selectNodeContents"
+        static let insertNode: JSString = "insertNode"
         static let intersectsNode: JSString = "intersectsNode"
+        static let isPointInRange: JSString = "isPointInRange"
+        static let selectNode: JSString = "selectNode"
+        static let selectNodeContents: JSString = "selectNodeContents"
+        static let setEnd: JSString = "setEnd"
+        static let setEndAfter: JSString = "setEndAfter"
+        static let setEndBefore: JSString = "setEndBefore"
+        static let setStart: JSString = "setStart"
+        static let setStartAfter: JSString = "setStartAfter"
+        static let setStartBefore: JSString = "setStartBefore"
+        static let surroundContents: JSString = "surroundContents"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -47,39 +47,39 @@ public class Range: AbstractRange {
     public var commonAncestorContainer: Node
 
     public func setStart(node: Node, offset: UInt32) {
-        _ = jsObject[Keys.setStart]!(node.jsValue(), offset.jsValue())
+        jsObject[Keys.setStart]!(node.jsValue(), offset.jsValue()).fromJSValue()!
     }
 
     public func setEnd(node: Node, offset: UInt32) {
-        _ = jsObject[Keys.setEnd]!(node.jsValue(), offset.jsValue())
+        jsObject[Keys.setEnd]!(node.jsValue(), offset.jsValue()).fromJSValue()!
     }
 
     public func setStartBefore(node: Node) {
-        _ = jsObject[Keys.setStartBefore]!(node.jsValue())
+        jsObject[Keys.setStartBefore]!(node.jsValue()).fromJSValue()!
     }
 
     public func setStartAfter(node: Node) {
-        _ = jsObject[Keys.setStartAfter]!(node.jsValue())
+        jsObject[Keys.setStartAfter]!(node.jsValue()).fromJSValue()!
     }
 
     public func setEndBefore(node: Node) {
-        _ = jsObject[Keys.setEndBefore]!(node.jsValue())
+        jsObject[Keys.setEndBefore]!(node.jsValue()).fromJSValue()!
     }
 
     public func setEndAfter(node: Node) {
-        _ = jsObject[Keys.setEndAfter]!(node.jsValue())
+        jsObject[Keys.setEndAfter]!(node.jsValue()).fromJSValue()!
     }
 
     public func collapse(toStart: Bool? = nil) {
-        _ = jsObject[Keys.collapse]!(toStart?.jsValue() ?? .undefined)
+        jsObject[Keys.collapse]!(toStart?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func selectNode(node: Node) {
-        _ = jsObject[Keys.selectNode]!(node.jsValue())
+        jsObject[Keys.selectNode]!(node.jsValue()).fromJSValue()!
     }
 
     public func selectNodeContents(node: Node) {
-        _ = jsObject[Keys.selectNodeContents]!(node.jsValue())
+        jsObject[Keys.selectNodeContents]!(node.jsValue()).fromJSValue()!
     }
 
     public static let START_TO_START: UInt16 = 0
@@ -95,7 +95,7 @@ public class Range: AbstractRange {
     }
 
     public func deleteContents() {
-        _ = jsObject[Keys.deleteContents]!()
+        jsObject[Keys.deleteContents]!().fromJSValue()!
     }
 
     public func extractContents() -> DocumentFragment {
@@ -107,11 +107,11 @@ public class Range: AbstractRange {
     }
 
     public func insertNode(node: Node) {
-        _ = jsObject[Keys.insertNode]!(node.jsValue())
+        jsObject[Keys.insertNode]!(node.jsValue()).fromJSValue()!
     }
 
     public func surroundContents(newParent: Node) {
-        _ = jsObject[Keys.surroundContents]!(newParent.jsValue())
+        jsObject[Keys.surroundContents]!(newParent.jsValue()).fromJSValue()!
     }
 
     public func cloneRange() -> Self {
@@ -119,7 +119,7 @@ public class Range: AbstractRange {
     }
 
     public func detach() {
-        _ = jsObject[Keys.detach]!()
+        jsObject[Keys.detach]!().fromJSValue()!
     }
 
     public func isPointInRange(node: Node, offset: UInt32) -> Bool {

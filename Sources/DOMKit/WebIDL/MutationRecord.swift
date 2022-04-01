@@ -7,15 +7,15 @@ public class MutationRecord: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MutationRecord.function! }
 
     private enum Keys {
-        static let type: JSString = "type"
-        static let removedNodes: JSString = "removedNodes"
-        static let previousSibling: JSString = "previousSibling"
+        static let addedNodes: JSString = "addedNodes"
+        static let attributeName: JSString = "attributeName"
         static let attributeNamespace: JSString = "attributeNamespace"
         static let nextSibling: JSString = "nextSibling"
-        static let target: JSString = "target"
-        static let attributeName: JSString = "attributeName"
         static let oldValue: JSString = "oldValue"
-        static let addedNodes: JSString = "addedNodes"
+        static let previousSibling: JSString = "previousSibling"
+        static let removedNodes: JSString = "removedNodes"
+        static let target: JSString = "target"
+        static let type: JSString = "type"
     }
 
     public let jsObject: JSObject

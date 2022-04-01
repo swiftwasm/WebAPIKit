@@ -11,9 +11,15 @@ private enum Keys {
 
 public protocol XPathEvaluatorBase: JSBridgedClass {}
 public extension XPathEvaluatorBase {
-    // XXX: method 'createExpression' is ignored
+    func createExpression(expression: String, resolver: XPathNSResolver? = nil) -> XPathExpression {
+        jsObject[Keys.createExpression]!(expression.jsValue(), resolver?.jsValue() ?? .undefined).fromJSValue()!
+    }
 
-    // XXX: method 'createNSResolver' is ignored
+    func createNSResolver(nodeResolver: Node) -> XPathNSResolver {
+        jsObject[Keys.createNSResolver]!(nodeResolver.jsValue()).fromJSValue()!
+    }
 
-    // XXX: method 'evaluate' is ignored
+    func evaluate(expression: String, contextNode: Node, resolver: XPathNSResolver? = nil, type: UInt16? = nil, result: XPathResult? = nil) -> XPathResult {
+        jsObject[Keys.evaluate]!(expression.jsValue(), contextNode.jsValue(), resolver?.jsValue() ?? .undefined, type?.jsValue() ?? .undefined, result?.jsValue() ?? .undefined).fromJSValue()!
+    }
 }

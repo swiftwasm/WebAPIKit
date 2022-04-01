@@ -8,11 +8,11 @@ public class HTMLCanvasElement: HTMLElement {
 
     private enum Keys {
         static let getContext: JSString = "getContext"
-        static let toBlob: JSString = "toBlob"
-        static let width: JSString = "width"
         static let height: JSString = "height"
+        static let toBlob: JSString = "toBlob"
         static let toDataURL: JSString = "toDataURL"
         static let transferControlToOffscreen: JSString = "transferControlToOffscreen"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

@@ -7,10 +7,10 @@ public class DOMRect: DOMRectReadOnly {
     override public class var constructor: JSFunction { JSObject.global.DOMRect.function! }
 
     private enum Keys {
+        static let fromRect: JSString = "fromRect"
+        static let height: JSString = "height"
         static let width: JSString = "width"
         static let x: JSString = "x"
-        static let height: JSString = "height"
-        static let fromRect: JSString = "fromRect"
         static let y: JSString = "y"
     }
 
@@ -27,7 +27,7 @@ public class DOMRect: DOMRectReadOnly {
     }
 
     // XXX: illegal static override
-    // override public static func fromRect(other: DOMRectInit? = nil) -> Self
+    // override public static func `fromRect`(`other`: `DOMRectInit`? = nil) -> Self
 
     private var _x: ReadWriteAttribute<Double>
     override public var x: Double {

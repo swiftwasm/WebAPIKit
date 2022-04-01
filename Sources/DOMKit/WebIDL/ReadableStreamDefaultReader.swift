@@ -7,8 +7,8 @@ public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericR
     public class var constructor: JSFunction { JSObject.global.ReadableStreamDefaultReader.function! }
 
     private enum Keys {
-        static let releaseLock: JSString = "releaseLock"
         static let read: JSString = "read"
+        static let releaseLock: JSString = "releaseLock"
     }
 
     public let jsObject: JSObject
@@ -32,6 +32,6 @@ public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericR
     }
 
     public func releaseLock() {
-        _ = jsObject[Keys.releaseLock]!()
+        jsObject[Keys.releaseLock]!().fromJSValue()!
     }
 }

@@ -4,10 +4,10 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let enterKeyHint: JSString = "enterKeyHint"
-    static let isContentEditable: JSString = "isContentEditable"
     static let contentEditable: JSString = "contentEditable"
+    static let enterKeyHint: JSString = "enterKeyHint"
     static let inputMode: JSString = "inputMode"
+    static let isContentEditable: JSString = "isContentEditable"
 }
 
 public protocol ElementContentEditable: JSBridgedClass {}

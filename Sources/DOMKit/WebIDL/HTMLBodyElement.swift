@@ -7,10 +7,10 @@ public class HTMLBodyElement: HTMLElement, WindowEventHandlers {
     override public class var constructor: JSFunction { JSObject.global.HTMLBodyElement.function! }
 
     private enum Keys {
+        static let aLink: JSString = "aLink"
         static let background: JSString = "background"
         static let bgColor: JSString = "bgColor"
         static let link: JSString = "link"
-        static let aLink: JSString = "aLink"
         static let text: JSString = "text"
         static let vLink: JSString = "vLink"
     }

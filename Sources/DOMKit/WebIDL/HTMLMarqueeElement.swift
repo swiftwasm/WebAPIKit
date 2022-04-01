@@ -8,18 +8,18 @@ public class HTMLMarqueeElement: HTMLElement {
 
     private enum Keys {
         static let behavior: JSString = "behavior"
-        static let width: JSString = "width"
-        static let loop: JSString = "loop"
-        static let scrollDelay: JSString = "scrollDelay"
-        static let direction: JSString = "direction"
         static let bgColor: JSString = "bgColor"
+        static let direction: JSString = "direction"
+        static let height: JSString = "height"
         static let hspace: JSString = "hspace"
+        static let loop: JSString = "loop"
+        static let scrollAmount: JSString = "scrollAmount"
+        static let scrollDelay: JSString = "scrollDelay"
         static let start: JSString = "start"
+        static let stop: JSString = "stop"
         static let trueSpeed: JSString = "trueSpeed"
         static let vspace: JSString = "vspace"
-        static let stop: JSString = "stop"
-        static let height: JSString = "height"
-        static let scrollAmount: JSString = "scrollAmount"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -75,10 +75,10 @@ public class HTMLMarqueeElement: HTMLElement {
     public var width: String
 
     public func start() {
-        _ = jsObject[Keys.start]!()
+        jsObject[Keys.start]!().fromJSValue()!
     }
 
     public func stop() {
-        _ = jsObject[Keys.stop]!()
+        jsObject[Keys.stop]!().fromJSValue()!
     }
 }

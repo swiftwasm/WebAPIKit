@@ -7,16 +7,16 @@ public class HTMLAreaElement: HTMLElement, HTMLHyperlinkElementUtils {
     override public class var constructor: JSFunction { JSObject.global.HTMLAreaElement.function! }
 
     private enum Keys {
-        static let rel: JSString = "rel"
         static let alt: JSString = "alt"
-        static let ping: JSString = "ping"
-        static let relList: JSString = "relList"
-        static let noHref: JSString = "noHref"
-        static let download: JSString = "download"
-        static let shape: JSString = "shape"
         static let coords: JSString = "coords"
-        static let target: JSString = "target"
+        static let download: JSString = "download"
+        static let noHref: JSString = "noHref"
+        static let ping: JSString = "ping"
         static let referrerPolicy: JSString = "referrerPolicy"
+        static let rel: JSString = "rel"
+        static let relList: JSString = "relList"
+        static let shape: JSString = "shape"
+        static let target: JSString = "target"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

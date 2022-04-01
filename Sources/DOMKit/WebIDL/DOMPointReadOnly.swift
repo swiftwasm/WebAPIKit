@@ -7,13 +7,13 @@ public class DOMPointReadOnly: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMPointReadOnly.function! }
 
     private enum Keys {
+        static let fromPoint: JSString = "fromPoint"
+        static let matrixTransform: JSString = "matrixTransform"
+        static let toJSON: JSString = "toJSON"
         static let w: JSString = "w"
         static let x: JSString = "x"
         static let y: JSString = "y"
-        static let fromPoint: JSString = "fromPoint"
         static let z: JSString = "z"
-        static let toJSON: JSString = "toJSON"
-        static let matrixTransform: JSString = "matrixTransform"
     }
 
     public let jsObject: JSObject

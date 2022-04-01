@@ -7,50 +7,50 @@ public class HTMLMediaElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLMediaElement.function! }
 
     private enum Keys {
-        static let currentTime: JSString = "currentTime"
-        static let NETWORK_NO_SOURCE: JSString = "NETWORK_NO_SOURCE"
+        static let HAVE_CURRENT_DATA: JSString = "HAVE_CURRENT_DATA"
+        static let HAVE_ENOUGH_DATA: JSString = "HAVE_ENOUGH_DATA"
+        static let HAVE_FUTURE_DATA: JSString = "HAVE_FUTURE_DATA"
+        static let HAVE_METADATA: JSString = "HAVE_METADATA"
         static let HAVE_NOTHING: JSString = "HAVE_NOTHING"
-        static let buffered: JSString = "buffered"
+        static let NETWORK_EMPTY: JSString = "NETWORK_EMPTY"
         static let NETWORK_IDLE: JSString = "NETWORK_IDLE"
+        static let NETWORK_LOADING: JSString = "NETWORK_LOADING"
+        static let NETWORK_NO_SOURCE: JSString = "NETWORK_NO_SOURCE"
+        static let addTextTrack: JSString = "addTextTrack"
+        static let audioTracks: JSString = "audioTracks"
+        static let autoplay: JSString = "autoplay"
+        static let buffered: JSString = "buffered"
+        static let canPlayType: JSString = "canPlayType"
+        static let controls: JSString = "controls"
+        static let crossOrigin: JSString = "crossOrigin"
+        static let currentSrc: JSString = "currentSrc"
+        static let currentTime: JSString = "currentTime"
+        static let defaultMuted: JSString = "defaultMuted"
+        static let defaultPlaybackRate: JSString = "defaultPlaybackRate"
+        static let duration: JSString = "duration"
+        static let ended: JSString = "ended"
+        static let error: JSString = "error"
+        static let fastSeek: JSString = "fastSeek"
+        static let getStartDate: JSString = "getStartDate"
+        static let load: JSString = "load"
+        static let loop: JSString = "loop"
+        static let muted: JSString = "muted"
+        static let networkState: JSString = "networkState"
+        static let pause: JSString = "pause"
         static let paused: JSString = "paused"
         static let play: JSString = "play"
-        static let preload: JSString = "preload"
-        static let seekable: JSString = "seekable"
-        static let currentSrc: JSString = "currentSrc"
-        static let fastSeek: JSString = "fastSeek"
-        static let audioTracks: JSString = "audioTracks"
-        static let volume: JSString = "volume"
-        static let networkState: JSString = "networkState"
-        static let getStartDate: JSString = "getStartDate"
-        static let HAVE_ENOUGH_DATA: JSString = "HAVE_ENOUGH_DATA"
         static let playbackRate: JSString = "playbackRate"
-        static let addTextTrack: JSString = "addTextTrack"
-        static let seeking: JSString = "seeking"
-        static let canPlayType: JSString = "canPlayType"
-        static let duration: JSString = "duration"
-        static let defaultPlaybackRate: JSString = "defaultPlaybackRate"
-        static let loop: JSString = "loop"
-        static let pause: JSString = "pause"
-        static let HAVE_METADATA: JSString = "HAVE_METADATA"
-        static let textTracks: JSString = "textTracks"
-        static let HAVE_CURRENT_DATA: JSString = "HAVE_CURRENT_DATA"
-        static let NETWORK_EMPTY: JSString = "NETWORK_EMPTY"
-        static let preservesPitch: JSString = "preservesPitch"
-        static let muted: JSString = "muted"
-        static let src: JSString = "src"
-        static let load: JSString = "load"
-        static let HAVE_FUTURE_DATA: JSString = "HAVE_FUTURE_DATA"
         static let played: JSString = "played"
-        static let error: JSString = "error"
-        static let srcObject: JSString = "srcObject"
-        static let controls: JSString = "controls"
-        static let NETWORK_LOADING: JSString = "NETWORK_LOADING"
-        static let autoplay: JSString = "autoplay"
+        static let preload: JSString = "preload"
+        static let preservesPitch: JSString = "preservesPitch"
         static let readyState: JSString = "readyState"
-        static let ended: JSString = "ended"
-        static let defaultMuted: JSString = "defaultMuted"
+        static let seekable: JSString = "seekable"
+        static let seeking: JSString = "seeking"
+        static let src: JSString = "src"
+        static let srcObject: JSString = "srcObject"
+        static let textTracks: JSString = "textTracks"
         static let videoTracks: JSString = "videoTracks"
-        static let crossOrigin: JSString = "crossOrigin"
+        static let volume: JSString = "volume"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -118,7 +118,7 @@ public class HTMLMediaElement: HTMLElement {
     public var buffered: TimeRanges
 
     public func load() {
-        _ = jsObject[Keys.load]!()
+        jsObject[Keys.load]!().fromJSValue()!
     }
 
     public func canPlayType(type: String) -> CanPlayTypeResult {
@@ -145,7 +145,7 @@ public class HTMLMediaElement: HTMLElement {
     public var currentTime: Double
 
     public func fastSeek(time: Double) {
-        _ = jsObject[Keys.fastSeek]!(time.jsValue())
+        jsObject[Keys.fastSeek]!(time.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -189,11 +189,11 @@ public class HTMLMediaElement: HTMLElement {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func play() async throws {
         let _promise: JSPromise = jsObject[Keys.play]!().fromJSValue()!
-        _ = try await _promise.get()
+        return try await _promise.get().fromJSValue()!
     }
 
     public func pause() {
-        _ = jsObject[Keys.pause]!()
+        jsObject[Keys.pause]!().fromJSValue()!
     }
 
     @ReadWriteAttribute

@@ -7,19 +7,19 @@ public class HTMLOutputElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLOutputElement.function! }
 
     private enum Keys {
-        static let name: JSString = "name"
-        static let validationMessage: JSString = "validationMessage"
         static let checkValidity: JSString = "checkValidity"
-        static let type: JSString = "type"
-        static let willValidate: JSString = "willValidate"
-        static let validity: JSString = "validity"
-        static let form: JSString = "form"
-        static let labels: JSString = "labels"
-        static let htmlFor: JSString = "htmlFor"
-        static let reportValidity: JSString = "reportValidity"
         static let defaultValue: JSString = "defaultValue"
+        static let form: JSString = "form"
+        static let htmlFor: JSString = "htmlFor"
+        static let labels: JSString = "labels"
+        static let name: JSString = "name"
+        static let reportValidity: JSString = "reportValidity"
         static let setCustomValidity: JSString = "setCustomValidity"
+        static let type: JSString = "type"
+        static let validationMessage: JSString = "validationMessage"
+        static let validity: JSString = "validity"
         static let value: JSString = "value"
+        static let willValidate: JSString = "willValidate"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -76,7 +76,7 @@ public class HTMLOutputElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute

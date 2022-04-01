@@ -5,13 +5,13 @@ import JavaScriptKit
 
 public class KeyboardEventInit: BridgedDictionary {
     private enum Keys {
-        static let location: JSString = "location"
-        static let `repeat`: JSString = "repeat"
-        static let keyCode: JSString = "keyCode"
-        static let isComposing: JSString = "isComposing"
         static let charCode: JSString = "charCode"
         static let code: JSString = "code"
+        static let isComposing: JSString = "isComposing"
         static let key: JSString = "key"
+        static let keyCode: JSString = "keyCode"
+        static let location: JSString = "location"
+        static let `repeat`: JSString = "repeat"
     }
 
     public convenience init(key: String, code: String, location: UInt32, repeat: Bool, isComposing: Bool, charCode: UInt32, keyCode: UInt32) {

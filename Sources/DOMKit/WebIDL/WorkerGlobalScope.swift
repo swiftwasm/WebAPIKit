@@ -7,16 +7,16 @@ public class WorkerGlobalScope: EventTarget, WindowOrWorkerGlobalScope {
     override public class var constructor: JSFunction { JSObject.global.WorkerGlobalScope.function! }
 
     private enum Keys {
-        static let location: JSString = "location"
-        static let `self`: JSString = "self"
-        static let onunhandledrejection: JSString = "onunhandledrejection"
-        static let onerror: JSString = "onerror"
-        static let ononline: JSString = "ononline"
-        static let navigator: JSString = "navigator"
         static let importScripts: JSString = "importScripts"
+        static let location: JSString = "location"
+        static let navigator: JSString = "navigator"
+        static let onerror: JSString = "onerror"
         static let onlanguagechange: JSString = "onlanguagechange"
         static let onoffline: JSString = "onoffline"
+        static let ononline: JSString = "ononline"
         static let onrejectionhandled: JSString = "onrejectionhandled"
+        static let onunhandledrejection: JSString = "onunhandledrejection"
+        static let `self`: JSString = "self"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -42,7 +42,7 @@ public class WorkerGlobalScope: EventTarget, WindowOrWorkerGlobalScope {
     public var navigator: WorkerNavigator
 
     public func importScripts(urls: String...) {
-        _ = jsObject[Keys.importScripts]!(urls.jsValue())
+        jsObject[Keys.importScripts]!(urls.jsValue()).fromJSValue()!
     }
 
     @ClosureAttribute.Optional5

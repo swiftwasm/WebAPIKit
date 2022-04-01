@@ -5,10 +5,10 @@ import JavaScriptKit
 
 public class StreamPipeOptions: BridgedDictionary {
     private enum Keys {
-        static let preventClose: JSString = "preventClose"
         static let preventAbort: JSString = "preventAbort"
-        static let signal: JSString = "signal"
         static let preventCancel: JSString = "preventCancel"
+        static let preventClose: JSString = "preventClose"
+        static let signal: JSString = "signal"
     }
 
     public convenience init(preventClose: Bool, preventAbort: Bool, preventCancel: Bool, signal: AbortSignal) {

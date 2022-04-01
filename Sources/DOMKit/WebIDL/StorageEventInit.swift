@@ -6,10 +6,10 @@ import JavaScriptKit
 public class StorageEventInit: BridgedDictionary {
     private enum Keys {
         static let key: JSString = "key"
-        static let url: JSString = "url"
-        static let oldValue: JSString = "oldValue"
         static let newValue: JSString = "newValue"
+        static let oldValue: JSString = "oldValue"
         static let storageArea: JSString = "storageArea"
+        static let url: JSString = "url"
     }
 
     public convenience init(key: String?, oldValue: String?, newValue: String?, url: String, storageArea: Storage?) {

@@ -7,8 +7,8 @@ public class HTMLModElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLModElement.function! }
 
     private enum Keys {
-        static let dateTime: JSString = "dateTime"
         static let cite: JSString = "cite"
+        static let dateTime: JSString = "dateTime"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

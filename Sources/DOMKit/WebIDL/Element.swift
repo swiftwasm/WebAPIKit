@@ -7,41 +7,41 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
     override public class var constructor: JSFunction { JSObject.global.Element.function! }
 
     private enum Keys {
+        static let attachShadow: JSString = "attachShadow"
+        static let attributes: JSString = "attributes"
+        static let classList: JSString = "classList"
+        static let className: JSString = "className"
+        static let closest: JSString = "closest"
         static let getAttribute: JSString = "getAttribute"
-        static let removeAttributeNS: JSString = "removeAttributeNS"
+        static let getAttributeNS: JSString = "getAttributeNS"
+        static let getAttributeNames: JSString = "getAttributeNames"
         static let getAttributeNode: JSString = "getAttributeNode"
+        static let getAttributeNodeNS: JSString = "getAttributeNodeNS"
+        static let getElementsByClassName: JSString = "getElementsByClassName"
+        static let getElementsByTagName: JSString = "getElementsByTagName"
+        static let getElementsByTagNameNS: JSString = "getElementsByTagNameNS"
         static let hasAttribute: JSString = "hasAttribute"
-        static let setAttributeNodeNS: JSString = "setAttributeNodeNS"
-        static let removeAttributeNode: JSString = "removeAttributeNode"
+        static let hasAttributeNS: JSString = "hasAttributeNS"
         static let hasAttributes: JSString = "hasAttributes"
+        static let id: JSString = "id"
+        static let insertAdjacentElement: JSString = "insertAdjacentElement"
+        static let insertAdjacentText: JSString = "insertAdjacentText"
+        static let localName: JSString = "localName"
+        static let matches: JSString = "matches"
+        static let namespaceURI: JSString = "namespaceURI"
+        static let prefix: JSString = "prefix"
+        static let removeAttribute: JSString = "removeAttribute"
+        static let removeAttributeNS: JSString = "removeAttributeNS"
+        static let removeAttributeNode: JSString = "removeAttributeNode"
+        static let setAttribute: JSString = "setAttribute"
+        static let setAttributeNS: JSString = "setAttributeNS"
+        static let setAttributeNode: JSString = "setAttributeNode"
+        static let setAttributeNodeNS: JSString = "setAttributeNodeNS"
+        static let shadowRoot: JSString = "shadowRoot"
+        static let slot: JSString = "slot"
+        static let tagName: JSString = "tagName"
         static let toggleAttribute: JSString = "toggleAttribute"
         static let webkitMatchesSelector: JSString = "webkitMatchesSelector"
-        static let getElementsByTagName: JSString = "getElementsByTagName"
-        static let tagName: JSString = "tagName"
-        static let classList: JSString = "classList"
-        static let getAttributeNames: JSString = "getAttributeNames"
-        static let hasAttributeNS: JSString = "hasAttributeNS"
-        static let getAttributeNodeNS: JSString = "getAttributeNodeNS"
-        static let insertAdjacentElement: JSString = "insertAdjacentElement"
-        static let namespaceURI: JSString = "namespaceURI"
-        static let setAttributeNode: JSString = "setAttributeNode"
-        static let getElementsByTagNameNS: JSString = "getElementsByTagNameNS"
-        static let getElementsByClassName: JSString = "getElementsByClassName"
-        static let setAttribute: JSString = "setAttribute"
-        static let matches: JSString = "matches"
-        static let insertAdjacentText: JSString = "insertAdjacentText"
-        static let setAttributeNS: JSString = "setAttributeNS"
-        static let removeAttribute: JSString = "removeAttribute"
-        static let closest: JSString = "closest"
-        static let prefix: JSString = "prefix"
-        static let attachShadow: JSString = "attachShadow"
-        static let className: JSString = "className"
-        static let shadowRoot: JSString = "shadowRoot"
-        static let attributes: JSString = "attributes"
-        static let slot: JSString = "slot"
-        static let id: JSString = "id"
-        static let getAttributeNS: JSString = "getAttributeNS"
-        static let localName: JSString = "localName"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -102,19 +102,19 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
     }
 
     public func setAttribute(qualifiedName: String, value: String) {
-        _ = jsObject[Keys.setAttribute]!(qualifiedName.jsValue(), value.jsValue())
+        jsObject[Keys.setAttribute]!(qualifiedName.jsValue(), value.jsValue()).fromJSValue()!
     }
 
     public func setAttributeNS(namespace: String?, qualifiedName: String, value: String) {
-        _ = jsObject[Keys.setAttributeNS]!(namespace.jsValue(), qualifiedName.jsValue(), value.jsValue())
+        jsObject[Keys.setAttributeNS]!(namespace.jsValue(), qualifiedName.jsValue(), value.jsValue()).fromJSValue()!
     }
 
     public func removeAttribute(qualifiedName: String) {
-        _ = jsObject[Keys.removeAttribute]!(qualifiedName.jsValue())
+        jsObject[Keys.removeAttribute]!(qualifiedName.jsValue()).fromJSValue()!
     }
 
     public func removeAttributeNS(namespace: String?, localName: String) {
-        _ = jsObject[Keys.removeAttributeNS]!(namespace.jsValue(), localName.jsValue())
+        jsObject[Keys.removeAttributeNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 
     public func toggleAttribute(qualifiedName: String, force: Bool? = nil) -> Bool {
@@ -185,6 +185,6 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
     }
 
     public func insertAdjacentText(where: String, data: String) {
-        _ = jsObject[Keys.insertAdjacentText]!(`where`.jsValue(), data.jsValue())
+        jsObject[Keys.insertAdjacentText]!(`where`.jsValue(), data.jsValue()).fromJSValue()!
     }
 }

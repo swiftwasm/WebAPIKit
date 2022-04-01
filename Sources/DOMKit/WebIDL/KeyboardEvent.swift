@@ -7,23 +7,23 @@ public class KeyboardEvent: UIEvent {
     override public class var constructor: JSFunction { JSObject.global.KeyboardEvent.function! }
 
     private enum Keys {
-        static let DOM_KEY_LOCATION_STANDARD: JSString = "DOM_KEY_LOCATION_STANDARD"
-        static let getModifierState: JSString = "getModifierState"
-        static let DOM_KEY_LOCATION_RIGHT: JSString = "DOM_KEY_LOCATION_RIGHT"
-        static let initKeyboardEvent: JSString = "initKeyboardEvent"
-        static let keyCode: JSString = "keyCode"
-        static let shiftKey: JSString = "shiftKey"
-        static let location: JSString = "location"
-        static let altKey: JSString = "altKey"
+        static let DOM_KEY_LOCATION_LEFT: JSString = "DOM_KEY_LOCATION_LEFT"
         static let DOM_KEY_LOCATION_NUMPAD: JSString = "DOM_KEY_LOCATION_NUMPAD"
+        static let DOM_KEY_LOCATION_RIGHT: JSString = "DOM_KEY_LOCATION_RIGHT"
+        static let DOM_KEY_LOCATION_STANDARD: JSString = "DOM_KEY_LOCATION_STANDARD"
+        static let altKey: JSString = "altKey"
+        static let charCode: JSString = "charCode"
+        static let code: JSString = "code"
         static let ctrlKey: JSString = "ctrlKey"
+        static let getModifierState: JSString = "getModifierState"
+        static let initKeyboardEvent: JSString = "initKeyboardEvent"
+        static let isComposing: JSString = "isComposing"
+        static let key: JSString = "key"
+        static let keyCode: JSString = "keyCode"
+        static let location: JSString = "location"
         static let metaKey: JSString = "metaKey"
         static let `repeat`: JSString = "repeat"
-        static let charCode: JSString = "charCode"
-        static let DOM_KEY_LOCATION_LEFT: JSString = "DOM_KEY_LOCATION_LEFT"
-        static let code: JSString = "code"
-        static let key: JSString = "key"
-        static let isComposing: JSString = "isComposing"
+        static let shiftKey: JSString = "shiftKey"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -95,7 +95,7 @@ public class KeyboardEvent: UIEvent {
         let _arg7 = altKey?.jsValue() ?? .undefined
         let _arg8 = shiftKey?.jsValue() ?? .undefined
         let _arg9 = metaKey?.jsValue() ?? .undefined
-        _ = jsObject[Keys.initKeyboardEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9)
+        return jsObject[Keys.initKeyboardEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9).fromJSValue()!
     }
 
     @ReadonlyAttribute

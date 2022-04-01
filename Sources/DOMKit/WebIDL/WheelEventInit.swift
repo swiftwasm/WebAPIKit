@@ -6,9 +6,9 @@ import JavaScriptKit
 public class WheelEventInit: BridgedDictionary {
     private enum Keys {
         static let deltaMode: JSString = "deltaMode"
+        static let deltaX: JSString = "deltaX"
         static let deltaY: JSString = "deltaY"
         static let deltaZ: JSString = "deltaZ"
-        static let deltaX: JSString = "deltaX"
     }
 
     public convenience init(deltaX: Double, deltaY: Double, deltaZ: Double, deltaMode: UInt32) {

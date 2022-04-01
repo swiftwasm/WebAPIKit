@@ -6,8 +6,8 @@ import JavaScriptKit
 public class CanvasRenderingContext2DSettings: BridgedDictionary {
     private enum Keys {
         static let alpha: JSString = "alpha"
-        static let desynchronized: JSString = "desynchronized"
         static let colorSpace: JSString = "colorSpace"
+        static let desynchronized: JSString = "desynchronized"
         static let willReadFrequently: JSString = "willReadFrequently"
     }
 

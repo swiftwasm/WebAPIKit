@@ -7,16 +7,16 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     public class var constructor: JSFunction { JSObject.global.ElementInternals.function! }
 
     private enum Keys {
-        static let setValidity: JSString = "setValidity"
-        static let setFormValue: JSString = "setFormValue"
+        static let checkValidity: JSString = "checkValidity"
         static let form: JSString = "form"
+        static let labels: JSString = "labels"
+        static let reportValidity: JSString = "reportValidity"
+        static let setFormValue: JSString = "setFormValue"
+        static let setValidity: JSString = "setValidity"
+        static let shadowRoot: JSString = "shadowRoot"
+        static let validationMessage: JSString = "validationMessage"
         static let validity: JSString = "validity"
         static let willValidate: JSString = "willValidate"
-        static let validationMessage: JSString = "validationMessage"
-        static let shadowRoot: JSString = "shadowRoot"
-        static let checkValidity: JSString = "checkValidity"
-        static let reportValidity: JSString = "reportValidity"
-        static let labels: JSString = "labels"
     }
 
     public let jsObject: JSObject
@@ -35,14 +35,14 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     public var shadowRoot: ShadowRoot?
 
     public func setFormValue(value: __UNSUPPORTED_UNION__?, state: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Keys.setFormValue]!(value.jsValue(), state?.jsValue() ?? .undefined)
+        jsObject[Keys.setFormValue]!(value.jsValue(), state?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var form: HTMLFormElement?
 
     public func setValidity(flags: ValidityStateFlags? = nil, message: String? = nil, anchor: HTMLElement? = nil) {
-        _ = jsObject[Keys.setValidity]!(flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined)
+        jsObject[Keys.setValidity]!(flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute

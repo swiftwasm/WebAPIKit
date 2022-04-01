@@ -7,12 +7,12 @@ public class FormData: JSBridgedClass, Sequence {
     public class var constructor: JSFunction { JSObject.global.FormData.function! }
 
     private enum Keys {
-        static let set: JSString = "set"
-        static let get: JSString = "get"
         static let append: JSString = "append"
         static let delete: JSString = "delete"
-        static let has: JSString = "has"
+        static let get: JSString = "get"
         static let getAll: JSString = "getAll"
+        static let has: JSString = "has"
+        static let set: JSString = "set"
     }
 
     public let jsObject: JSObject
@@ -26,15 +26,15 @@ public class FormData: JSBridgedClass, Sequence {
     }
 
     public func append(name: String, value: String) {
-        _ = jsObject[Keys.append]!(name.jsValue(), value.jsValue())
+        jsObject[Keys.append]!(name.jsValue(), value.jsValue()).fromJSValue()!
     }
 
     public func append(name: String, blobValue: Blob, filename: String? = nil) {
-        _ = jsObject[Keys.append]!(name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined)
+        jsObject[Keys.append]!(name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func delete(name: String) {
-        _ = jsObject[Keys.delete]!(name.jsValue())
+        jsObject[Keys.delete]!(name.jsValue()).fromJSValue()!
     }
 
     public func get(name: String) -> FormDataEntryValue? {
@@ -50,11 +50,11 @@ public class FormData: JSBridgedClass, Sequence {
     }
 
     public func set(name: String, value: String) {
-        _ = jsObject[Keys.set]!(name.jsValue(), value.jsValue())
+        jsObject[Keys.set]!(name.jsValue(), value.jsValue()).fromJSValue()!
     }
 
     public func set(name: String, blobValue: Blob, filename: String? = nil) {
-        _ = jsObject[Keys.set]!(name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined)
+        jsObject[Keys.set]!(name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public typealias Element = String

@@ -7,17 +7,17 @@ public class ValidityState: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ValidityState.function! }
 
     private enum Keys {
-        static let stepMismatch: JSString = "stepMismatch"
-        static let typeMismatch: JSString = "typeMismatch"
-        static let valid: JSString = "valid"
+        static let badInput: JSString = "badInput"
         static let customError: JSString = "customError"
         static let patternMismatch: JSString = "patternMismatch"
-        static let valueMissing: JSString = "valueMissing"
-        static let rangeUnderflow: JSString = "rangeUnderflow"
         static let rangeOverflow: JSString = "rangeOverflow"
-        static let badInput: JSString = "badInput"
-        static let tooShort: JSString = "tooShort"
+        static let rangeUnderflow: JSString = "rangeUnderflow"
+        static let stepMismatch: JSString = "stepMismatch"
         static let tooLong: JSString = "tooLong"
+        static let tooShort: JSString = "tooShort"
+        static let typeMismatch: JSString = "typeMismatch"
+        static let valid: JSString = "valid"
+        static let valueMissing: JSString = "valueMissing"
     }
 
     public let jsObject: JSObject

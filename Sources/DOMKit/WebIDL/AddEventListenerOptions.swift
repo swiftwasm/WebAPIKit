@@ -5,9 +5,9 @@ import JavaScriptKit
 
 public class AddEventListenerOptions: BridgedDictionary {
     private enum Keys {
-        static let signal: JSString = "signal"
-        static let passive: JSString = "passive"
         static let once: JSString = "once"
+        static let passive: JSString = "passive"
+        static let signal: JSString = "signal"
     }
 
     public convenience init(passive: Bool, once: Bool, signal: AbortSignal) {

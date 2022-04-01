@@ -7,19 +7,19 @@ public class CSSRule: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.CSSRule.function! }
 
     private enum Keys {
-        static let SUPPORTS_RULE: JSString = "SUPPORTS_RULE"
-        static let NAMESPACE_RULE: JSString = "NAMESPACE_RULE"
-        static let PAGE_RULE: JSString = "PAGE_RULE"
-        static let MEDIA_RULE: JSString = "MEDIA_RULE"
-        static let STYLE_RULE: JSString = "STYLE_RULE"
-        static let FONT_FACE_RULE: JSString = "FONT_FACE_RULE"
-        static let parentRule: JSString = "parentRule"
-        static let parentStyleSheet: JSString = "parentStyleSheet"
         static let CHARSET_RULE: JSString = "CHARSET_RULE"
-        static let cssText: JSString = "cssText"
-        static let type: JSString = "type"
+        static let FONT_FACE_RULE: JSString = "FONT_FACE_RULE"
         static let IMPORT_RULE: JSString = "IMPORT_RULE"
         static let MARGIN_RULE: JSString = "MARGIN_RULE"
+        static let MEDIA_RULE: JSString = "MEDIA_RULE"
+        static let NAMESPACE_RULE: JSString = "NAMESPACE_RULE"
+        static let PAGE_RULE: JSString = "PAGE_RULE"
+        static let STYLE_RULE: JSString = "STYLE_RULE"
+        static let SUPPORTS_RULE: JSString = "SUPPORTS_RULE"
+        static let cssText: JSString = "cssText"
+        static let parentRule: JSString = "parentRule"
+        static let parentStyleSheet: JSString = "parentStyleSheet"
+        static let type: JSString = "type"
     }
 
     public let jsObject: JSObject

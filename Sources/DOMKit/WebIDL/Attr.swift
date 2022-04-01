@@ -7,13 +7,13 @@ public class Attr: Node {
     override public class var constructor: JSFunction { JSObject.global.Attr.function! }
 
     private enum Keys {
-        static let specified: JSString = "specified"
+        static let localName: JSString = "localName"
+        static let name: JSString = "name"
+        static let namespaceURI: JSString = "namespaceURI"
         static let ownerElement: JSString = "ownerElement"
         static let prefix: JSString = "prefix"
-        static let localName: JSString = "localName"
-        static let namespaceURI: JSString = "namespaceURI"
+        static let specified: JSString = "specified"
         static let value: JSString = "value"
-        static let name: JSString = "name"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

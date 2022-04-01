@@ -7,23 +7,23 @@ public class FileReader: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.FileReader.function! }
 
     private enum Keys {
-        static let onerror: JSString = "onerror"
-        static let onloadend: JSString = "onloadend"
         static let DONE: JSString = "DONE"
-        static let onload: JSString = "onload"
         static let EMPTY: JSString = "EMPTY"
-        static let readAsDataURL: JSString = "readAsDataURL"
+        static let LOADING: JSString = "LOADING"
+        static let abort: JSString = "abort"
+        static let error: JSString = "error"
+        static let onabort: JSString = "onabort"
+        static let onerror: JSString = "onerror"
+        static let onload: JSString = "onload"
+        static let onloadend: JSString = "onloadend"
         static let onloadstart: JSString = "onloadstart"
-        static let readyState: JSString = "readyState"
         static let onprogress: JSString = "onprogress"
         static let readAsArrayBuffer: JSString = "readAsArrayBuffer"
-        static let onabort: JSString = "onabort"
-        static let result: JSString = "result"
-        static let error: JSString = "error"
         static let readAsBinaryString: JSString = "readAsBinaryString"
-        static let abort: JSString = "abort"
+        static let readAsDataURL: JSString = "readAsDataURL"
         static let readAsText: JSString = "readAsText"
-        static let LOADING: JSString = "LOADING"
+        static let readyState: JSString = "readyState"
+        static let result: JSString = "result"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -44,23 +44,23 @@ public class FileReader: EventTarget {
     }
 
     public func readAsArrayBuffer(blob: Blob) {
-        _ = jsObject[Keys.readAsArrayBuffer]!(blob.jsValue())
+        jsObject[Keys.readAsArrayBuffer]!(blob.jsValue()).fromJSValue()!
     }
 
     public func readAsBinaryString(blob: Blob) {
-        _ = jsObject[Keys.readAsBinaryString]!(blob.jsValue())
+        jsObject[Keys.readAsBinaryString]!(blob.jsValue()).fromJSValue()!
     }
 
     public func readAsText(blob: Blob, encoding: String? = nil) {
-        _ = jsObject[Keys.readAsText]!(blob.jsValue(), encoding?.jsValue() ?? .undefined)
+        jsObject[Keys.readAsText]!(blob.jsValue(), encoding?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func readAsDataURL(blob: Blob) {
-        _ = jsObject[Keys.readAsDataURL]!(blob.jsValue())
+        jsObject[Keys.readAsDataURL]!(blob.jsValue()).fromJSValue()!
     }
 
     public func abort() {
-        _ = jsObject[Keys.abort]!()
+        jsObject[Keys.abort]!().fromJSValue()!
     }
 
     public static let EMPTY: UInt16 = 0

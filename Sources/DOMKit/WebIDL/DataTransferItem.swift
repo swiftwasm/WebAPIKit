@@ -7,10 +7,10 @@ public class DataTransferItem: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DataTransferItem.function! }
 
     private enum Keys {
-        static let getAsString: JSString = "getAsString"
-        static let type: JSString = "type"
-        static let kind: JSString = "kind"
         static let getAsFile: JSString = "getAsFile"
+        static let getAsString: JSString = "getAsString"
+        static let kind: JSString = "kind"
+        static let type: JSString = "type"
     }
 
     public let jsObject: JSObject

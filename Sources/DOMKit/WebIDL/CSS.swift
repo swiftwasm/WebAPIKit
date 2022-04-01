@@ -5,8 +5,8 @@ import JavaScriptKit
 
 public enum CSS {
     private enum Keys {
-        static let supports: JSString = "supports"
         static let escape: JSString = "escape"
+        static let supports: JSString = "supports"
     }
 
     public static var jsObject: JSObject {

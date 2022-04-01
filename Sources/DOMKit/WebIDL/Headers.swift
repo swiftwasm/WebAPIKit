@@ -7,11 +7,11 @@ public class Headers: JSBridgedClass, Sequence {
     public class var constructor: JSFunction { JSObject.global.Headers.function! }
 
     private enum Keys {
-        static let get: JSString = "get"
-        static let set: JSString = "set"
         static let append: JSString = "append"
         static let delete: JSString = "delete"
+        static let get: JSString = "get"
         static let has: JSString = "has"
+        static let set: JSString = "set"
     }
 
     public let jsObject: JSObject
@@ -25,11 +25,11 @@ public class Headers: JSBridgedClass, Sequence {
     }
 
     public func append(name: String, value: String) {
-        _ = jsObject[Keys.append]!(name.jsValue(), value.jsValue())
+        jsObject[Keys.append]!(name.jsValue(), value.jsValue()).fromJSValue()!
     }
 
     public func delete(name: String) {
-        _ = jsObject[Keys.delete]!(name.jsValue())
+        jsObject[Keys.delete]!(name.jsValue()).fromJSValue()!
     }
 
     public func get(name: String) -> String? {
@@ -41,7 +41,7 @@ public class Headers: JSBridgedClass, Sequence {
     }
 
     public func set(name: String, value: String) {
-        _ = jsObject[Keys.set]!(name.jsValue(), value.jsValue())
+        jsObject[Keys.set]!(name.jsValue(), value.jsValue()).fromJSValue()!
     }
 
     public typealias Element = String

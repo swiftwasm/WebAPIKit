@@ -7,11 +7,11 @@ public class ErrorEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.ErrorEvent.function! }
 
     private enum Keys {
-        static let message: JSString = "message"
-        static let error: JSString = "error"
-        static let lineno: JSString = "lineno"
-        static let filename: JSString = "filename"
         static let colno: JSString = "colno"
+        static let error: JSString = "error"
+        static let filename: JSString = "filename"
+        static let lineno: JSString = "lineno"
+        static let message: JSString = "message"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

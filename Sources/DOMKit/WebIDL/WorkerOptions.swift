@@ -5,9 +5,9 @@ import JavaScriptKit
 
 public class WorkerOptions: BridgedDictionary {
     private enum Keys {
-        static let type: JSString = "type"
         static let credentials: JSString = "credentials"
         static let name: JSString = "name"
+        static let type: JSString = "type"
     }
 
     public convenience init(type: WorkerType, credentials: RequestCredentials, name: String) {

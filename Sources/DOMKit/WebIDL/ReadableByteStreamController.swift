@@ -7,11 +7,11 @@ public class ReadableByteStreamController: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ReadableByteStreamController.function! }
 
     private enum Keys {
+        static let byobRequest: JSString = "byobRequest"
+        static let close: JSString = "close"
         static let desiredSize: JSString = "desiredSize"
         static let enqueue: JSString = "enqueue"
-        static let close: JSString = "close"
         static let error: JSString = "error"
-        static let byobRequest: JSString = "byobRequest"
     }
 
     public let jsObject: JSObject
@@ -29,14 +29,14 @@ public class ReadableByteStreamController: JSBridgedClass {
     public var desiredSize: Double?
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 
     public func enqueue(chunk: ArrayBufferView) {
-        _ = jsObject[Keys.enqueue]!(chunk.jsValue())
+        jsObject[Keys.enqueue]!(chunk.jsValue()).fromJSValue()!
     }
 
     public func error(e: JSValue? = nil) {
-        _ = jsObject[Keys.error]!(e?.jsValue() ?? .undefined)
+        jsObject[Keys.error]!(e?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

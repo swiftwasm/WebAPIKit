@@ -7,17 +7,17 @@ public class TextTrack: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.TextTrack.function! }
 
     private enum Keys {
-        static let removeCue: JSString = "removeCue"
-        static let cues: JSString = "cues"
-        static let addCue: JSString = "addCue"
-        static let label: JSString = "label"
-        static let inBandMetadataTrackDispatchType: JSString = "inBandMetadataTrackDispatchType"
-        static let id: JSString = "id"
-        static let oncuechange: JSString = "oncuechange"
-        static let language: JSString = "language"
-        static let kind: JSString = "kind"
         static let activeCues: JSString = "activeCues"
+        static let addCue: JSString = "addCue"
+        static let cues: JSString = "cues"
+        static let id: JSString = "id"
+        static let inBandMetadataTrackDispatchType: JSString = "inBandMetadataTrackDispatchType"
+        static let kind: JSString = "kind"
+        static let label: JSString = "label"
+        static let language: JSString = "language"
         static let mode: JSString = "mode"
+        static let oncuechange: JSString = "oncuechange"
+        static let removeCue: JSString = "removeCue"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -58,11 +58,11 @@ public class TextTrack: EventTarget {
     public var activeCues: TextTrackCueList?
 
     public func addCue(cue: TextTrackCue) {
-        _ = jsObject[Keys.addCue]!(cue.jsValue())
+        jsObject[Keys.addCue]!(cue.jsValue()).fromJSValue()!
     }
 
     public func removeCue(cue: TextTrackCue) {
-        _ = jsObject[Keys.removeCue]!(cue.jsValue())
+        jsObject[Keys.removeCue]!(cue.jsValue()).fromJSValue()!
     }
 
     @ClosureAttribute.Optional1

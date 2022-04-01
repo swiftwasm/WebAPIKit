@@ -8,11 +8,11 @@ public class XMLHttpRequestEventTarget: EventTarget {
 
     private enum Keys {
         static let onabort: JSString = "onabort"
-        static let onloadend: JSString = "onloadend"
-        static let onload: JSString = "onload"
         static let onerror: JSString = "onerror"
-        static let onprogress: JSString = "onprogress"
+        static let onload: JSString = "onload"
+        static let onloadend: JSString = "onloadend"
         static let onloadstart: JSString = "onloadstart"
+        static let onprogress: JSString = "onprogress"
         static let ontimeout: JSString = "ontimeout"
     }
 

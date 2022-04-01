@@ -7,10 +7,10 @@ public class AbstractRange: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.AbstractRange.function! }
 
     private enum Keys {
-        static let startContainer: JSString = "startContainer"
         static let collapsed: JSString = "collapsed"
         static let endContainer: JSString = "endContainer"
         static let endOffset: JSString = "endOffset"
+        static let startContainer: JSString = "startContainer"
         static let startOffset: JSString = "startOffset"
     }
 

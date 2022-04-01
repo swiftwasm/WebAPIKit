@@ -7,16 +7,16 @@ public class EventSource: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.EventSource.function! }
 
     private enum Keys {
-        static let onerror: JSString = "onerror"
-        static let close: JSString = "close"
-        static let OPEN: JSString = "OPEN"
-        static let readyState: JSString = "readyState"
-        static let withCredentials: JSString = "withCredentials"
         static let CLOSED: JSString = "CLOSED"
-        static let onmessage: JSString = "onmessage"
-        static let url: JSString = "url"
         static let CONNECTING: JSString = "CONNECTING"
+        static let OPEN: JSString = "OPEN"
+        static let close: JSString = "close"
+        static let onerror: JSString = "onerror"
+        static let onmessage: JSString = "onmessage"
         static let onopen: JSString = "onopen"
+        static let readyState: JSString = "readyState"
+        static let url: JSString = "url"
+        static let withCredentials: JSString = "withCredentials"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -58,6 +58,6 @@ public class EventSource: EventTarget {
     public var onerror: EventHandler
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 }

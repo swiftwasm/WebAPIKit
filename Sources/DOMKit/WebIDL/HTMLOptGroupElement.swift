@@ -7,8 +7,8 @@ public class HTMLOptGroupElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLOptGroupElement.function! }
 
     private enum Keys {
-        static let label: JSString = "label"
         static let disabled: JSString = "disabled"
+        static let label: JSString = "label"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

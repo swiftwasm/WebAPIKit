@@ -7,9 +7,9 @@ public class SharedWorkerGlobalScope: WorkerGlobalScope {
     override public class var constructor: JSFunction { JSObject.global.SharedWorkerGlobalScope.function! }
 
     private enum Keys {
-        static let onconnect: JSString = "onconnect"
-        static let name: JSString = "name"
         static let close: JSString = "close"
+        static let name: JSString = "name"
+        static let onconnect: JSString = "onconnect"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -22,7 +22,7 @@ public class SharedWorkerGlobalScope: WorkerGlobalScope {
     public var name: String
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 
     @ClosureAttribute.Optional1

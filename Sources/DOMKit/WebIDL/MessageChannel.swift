@@ -7,8 +7,8 @@ public class MessageChannel: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MessageChannel.function! }
 
     private enum Keys {
-        static let port2: JSString = "port2"
         static let port1: JSString = "port1"
+        static let port2: JSString = "port2"
     }
 
     public let jsObject: JSObject

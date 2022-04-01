@@ -7,17 +7,17 @@ public class TreeWalker: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.TreeWalker.function! }
 
     private enum Keys {
-        static let parentNode: JSString = "parentNode"
-        static let filter: JSString = "filter"
-        static let previousSibling: JSString = "previousSibling"
-        static let nextSibling: JSString = "nextSibling"
-        static let firstChild: JSString = "firstChild"
         static let currentNode: JSString = "currentNode"
-        static let previousNode: JSString = "previousNode"
-        static let root: JSString = "root"
-        static let whatToShow: JSString = "whatToShow"
+        static let filter: JSString = "filter"
+        static let firstChild: JSString = "firstChild"
         static let lastChild: JSString = "lastChild"
         static let nextNode: JSString = "nextNode"
+        static let nextSibling: JSString = "nextSibling"
+        static let parentNode: JSString = "parentNode"
+        static let previousNode: JSString = "previousNode"
+        static let previousSibling: JSString = "previousSibling"
+        static let root: JSString = "root"
+        static let whatToShow: JSString = "whatToShow"
     }
 
     public let jsObject: JSObject

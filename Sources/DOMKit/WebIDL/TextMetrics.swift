@@ -7,18 +7,18 @@ public class TextMetrics: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.TextMetrics.function! }
 
     private enum Keys {
-        static let actualBoundingBoxRight: JSString = "actualBoundingBoxRight"
-        static let actualBoundingBoxDescent: JSString = "actualBoundingBoxDescent"
         static let actualBoundingBoxAscent: JSString = "actualBoundingBoxAscent"
-        static let hangingBaseline: JSString = "hangingBaseline"
-        static let fontBoundingBoxAscent: JSString = "fontBoundingBoxAscent"
+        static let actualBoundingBoxDescent: JSString = "actualBoundingBoxDescent"
         static let actualBoundingBoxLeft: JSString = "actualBoundingBoxLeft"
+        static let actualBoundingBoxRight: JSString = "actualBoundingBoxRight"
         static let alphabeticBaseline: JSString = "alphabeticBaseline"
-        static let emHeightDescent: JSString = "emHeightDescent"
-        static let width: JSString = "width"
-        static let fontBoundingBoxDescent: JSString = "fontBoundingBoxDescent"
         static let emHeightAscent: JSString = "emHeightAscent"
+        static let emHeightDescent: JSString = "emHeightDescent"
+        static let fontBoundingBoxAscent: JSString = "fontBoundingBoxAscent"
+        static let fontBoundingBoxDescent: JSString = "fontBoundingBoxDescent"
+        static let hangingBaseline: JSString = "hangingBaseline"
         static let ideographicBaseline: JSString = "ideographicBaseline"
+        static let width: JSString = "width"
     }
 
     public let jsObject: JSObject

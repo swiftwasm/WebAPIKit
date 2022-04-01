@@ -7,15 +7,15 @@ public class DataTransfer: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DataTransfer.function! }
 
     private enum Keys {
+        static let clearData: JSString = "clearData"
+        static let dropEffect: JSString = "dropEffect"
+        static let effectAllowed: JSString = "effectAllowed"
+        static let files: JSString = "files"
         static let getData: JSString = "getData"
         static let items: JSString = "items"
-        static let dropEffect: JSString = "dropEffect"
-        static let types: JSString = "types"
-        static let effectAllowed: JSString = "effectAllowed"
-        static let clearData: JSString = "clearData"
-        static let files: JSString = "files"
-        static let setDragImage: JSString = "setDragImage"
         static let setData: JSString = "setData"
+        static let setDragImage: JSString = "setDragImage"
+        static let types: JSString = "types"
     }
 
     public let jsObject: JSObject
@@ -43,7 +43,7 @@ public class DataTransfer: JSBridgedClass {
     public var items: DataTransferItemList
 
     public func setDragImage(image: Element, x: Int32, y: Int32) {
-        _ = jsObject[Keys.setDragImage]!(image.jsValue(), x.jsValue(), y.jsValue())
+        jsObject[Keys.setDragImage]!(image.jsValue(), x.jsValue(), y.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -54,11 +54,11 @@ public class DataTransfer: JSBridgedClass {
     }
 
     public func setData(format: String, data: String) {
-        _ = jsObject[Keys.setData]!(format.jsValue(), data.jsValue())
+        jsObject[Keys.setData]!(format.jsValue(), data.jsValue()).fromJSValue()!
     }
 
     public func clearData(format: String? = nil) {
-        _ = jsObject[Keys.clearData]!(format?.jsValue() ?? .undefined)
+        jsObject[Keys.clearData]!(format?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute

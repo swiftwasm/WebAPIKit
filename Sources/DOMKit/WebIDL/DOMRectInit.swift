@@ -5,9 +5,9 @@ import JavaScriptKit
 
 public class DOMRectInit: BridgedDictionary {
     private enum Keys {
-        static let x: JSString = "x"
-        static let width: JSString = "width"
         static let height: JSString = "height"
+        static let width: JSString = "width"
+        static let x: JSString = "x"
         static let y: JSString = "y"
     }
 

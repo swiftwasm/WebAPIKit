@@ -7,14 +7,14 @@ public class NamedNodeMap: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.NamedNodeMap.function! }
 
     private enum Keys {
-        static let setNamedItemNS: JSString = "setNamedItemNS"
-        static let removeNamedItem: JSString = "removeNamedItem"
-        static let removeNamedItemNS: JSString = "removeNamedItemNS"
-        static let length: JSString = "length"
         static let getNamedItem: JSString = "getNamedItem"
         static let getNamedItemNS: JSString = "getNamedItemNS"
-        static let setNamedItem: JSString = "setNamedItem"
         static let item: JSString = "item"
+        static let length: JSString = "length"
+        static let removeNamedItem: JSString = "removeNamedItem"
+        static let removeNamedItemNS: JSString = "removeNamedItemNS"
+        static let setNamedItem: JSString = "setNamedItem"
+        static let setNamedItemNS: JSString = "setNamedItemNS"
     }
 
     public let jsObject: JSObject
@@ -27,7 +27,7 @@ public class NamedNodeMap: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> Attr? {
+    public subscript(key: UInt32) -> Attr? {
         jsObject[key].fromJSValue()
     }
 

@@ -7,8 +7,8 @@ public class HTMLFontElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLFontElement.function! }
 
     private enum Keys {
-        static let face: JSString = "face"
         static let color: JSString = "color"
+        static let face: JSString = "face"
         static let size: JSString = "size"
     }
 

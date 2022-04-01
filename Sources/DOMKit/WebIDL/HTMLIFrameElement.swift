@@ -7,25 +7,25 @@ public class HTMLIFrameElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLIFrameElement.function! }
 
     private enum Keys {
-        static let frameBorder: JSString = "frameBorder"
-        static let sandbox: JSString = "sandbox"
-        static let contentWindow: JSString = "contentWindow"
-        static let referrerPolicy: JSString = "referrerPolicy"
+        static let align: JSString = "align"
+        static let allow: JSString = "allow"
         static let allowFullscreen: JSString = "allowFullscreen"
         static let contentDocument: JSString = "contentDocument"
-        static let marginWidth: JSString = "marginWidth"
+        static let contentWindow: JSString = "contentWindow"
+        static let frameBorder: JSString = "frameBorder"
         static let getSVGDocument: JSString = "getSVGDocument"
         static let height: JSString = "height"
-        static let src: JSString = "src"
         static let loading: JSString = "loading"
-        static let align: JSString = "align"
-        static let scrolling: JSString = "scrolling"
         static let longDesc: JSString = "longDesc"
         static let marginHeight: JSString = "marginHeight"
-        static let width: JSString = "width"
-        static let srcdoc: JSString = "srcdoc"
+        static let marginWidth: JSString = "marginWidth"
         static let name: JSString = "name"
-        static let allow: JSString = "allow"
+        static let referrerPolicy: JSString = "referrerPolicy"
+        static let sandbox: JSString = "sandbox"
+        static let scrolling: JSString = "scrolling"
+        static let src: JSString = "src"
+        static let srcdoc: JSString = "srcdoc"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

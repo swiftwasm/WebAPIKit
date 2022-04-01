@@ -7,8 +7,8 @@ public class AbortController: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.AbortController.function! }
 
     private enum Keys {
-        static let signal: JSString = "signal"
         static let abort: JSString = "abort"
+        static let signal: JSString = "signal"
     }
 
     public let jsObject: JSObject
@@ -26,6 +26,6 @@ public class AbortController: JSBridgedClass {
     public var signal: AbortSignal
 
     public func abort(reason: JSValue? = nil) {
-        _ = jsObject[Keys.abort]!(reason?.jsValue() ?? .undefined)
+        jsObject[Keys.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

@@ -4,12 +4,12 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let body: JSString = "body"
-    static let json: JSString = "json"
     static let arrayBuffer: JSString = "arrayBuffer"
-    static let formData: JSString = "formData"
-    static let bodyUsed: JSString = "bodyUsed"
     static let blob: JSString = "blob"
+    static let body: JSString = "body"
+    static let bodyUsed: JSString = "bodyUsed"
+    static let formData: JSString = "formData"
+    static let json: JSString = "json"
     static let text: JSString = "text"
 }
 

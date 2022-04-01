@@ -6,12 +6,12 @@ import JavaScriptKit
 public class MouseEventInit: BridgedDictionary {
     private enum Keys {
         static let button: JSString = "button"
-        static let relatedTarget: JSString = "relatedTarget"
-        static let clientY: JSString = "clientY"
-        static let clientX: JSString = "clientX"
         static let buttons: JSString = "buttons"
-        static let screenY: JSString = "screenY"
+        static let clientX: JSString = "clientX"
+        static let clientY: JSString = "clientY"
+        static let relatedTarget: JSString = "relatedTarget"
         static let screenX: JSString = "screenX"
+        static let screenY: JSString = "screenY"
     }
 
     public convenience init(screenX: Int32, screenY: Int32, clientX: Int32, clientY: Int32, button: Int16, buttons: UInt16, relatedTarget: EventTarget?) {

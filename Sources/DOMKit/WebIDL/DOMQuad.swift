@@ -7,14 +7,14 @@ public class DOMQuad: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMQuad.function! }
 
     private enum Keys {
+        static let fromQuad: JSString = "fromQuad"
+        static let fromRect: JSString = "fromRect"
+        static let getBounds: JSString = "getBounds"
         static let p1: JSString = "p1"
         static let p2: JSString = "p2"
-        static let getBounds: JSString = "getBounds"
-        static let toJSON: JSString = "toJSON"
         static let p3: JSString = "p3"
-        static let fromRect: JSString = "fromRect"
         static let p4: JSString = "p4"
-        static let fromQuad: JSString = "fromQuad"
+        static let toJSON: JSString = "toJSON"
     }
 
     public let jsObject: JSObject

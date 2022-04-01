@@ -7,9 +7,9 @@ public class HTMLAllCollection: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.HTMLAllCollection.function! }
 
     private enum Keys {
-        static let namedItem: JSString = "namedItem"
         static let item: JSString = "item"
         static let length: JSString = "length"
+        static let namedItem: JSString = "namedItem"
     }
 
     public let jsObject: JSObject
@@ -22,7 +22,7 @@ public class HTMLAllCollection: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> Element {
+    public subscript(key: UInt32) -> Element {
         jsObject[key].fromJSValue()!
     }
 

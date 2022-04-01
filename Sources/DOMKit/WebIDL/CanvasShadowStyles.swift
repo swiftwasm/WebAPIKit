@@ -4,10 +4,10 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let shadowOffsetY: JSString = "shadowOffsetY"
     static let shadowBlur: JSString = "shadowBlur"
-    static let shadowOffsetX: JSString = "shadowOffsetX"
     static let shadowColor: JSString = "shadowColor"
+    static let shadowOffsetX: JSString = "shadowOffsetX"
+    static let shadowOffsetY: JSString = "shadowOffsetY"
 }
 
 public protocol CanvasShadowStyles: JSBridgedClass {}

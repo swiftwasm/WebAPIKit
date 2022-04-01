@@ -22,7 +22,7 @@ public class MimeTypeArray: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> MimeType? {
+    public subscript(key: UInt32) -> MimeType? {
         jsObject[key].fromJSValue()
     }
 

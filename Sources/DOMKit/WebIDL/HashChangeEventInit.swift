@@ -5,8 +5,8 @@ import JavaScriptKit
 
 public class HashChangeEventInit: BridgedDictionary {
     private enum Keys {
-        static let oldURL: JSString = "oldURL"
         static let newURL: JSString = "newURL"
+        static let oldURL: JSString = "oldURL"
     }
 
     public convenience init(oldURL: String, newURL: String) {

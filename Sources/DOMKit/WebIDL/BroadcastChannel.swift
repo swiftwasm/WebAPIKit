@@ -7,11 +7,11 @@ public class BroadcastChannel: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.BroadcastChannel.function! }
 
     private enum Keys {
-        static let postMessage: JSString = "postMessage"
-        static let name: JSString = "name"
         static let close: JSString = "close"
+        static let name: JSString = "name"
         static let onmessage: JSString = "onmessage"
         static let onmessageerror: JSString = "onmessageerror"
+        static let postMessage: JSString = "postMessage"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -29,11 +29,11 @@ public class BroadcastChannel: EventTarget {
     public var name: String
 
     public func postMessage(message: JSValue) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue())
+        jsObject[Keys.postMessage]!(message.jsValue()).fromJSValue()!
     }
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 
     @ClosureAttribute.Optional1

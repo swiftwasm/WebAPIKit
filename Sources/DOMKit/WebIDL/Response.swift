@@ -7,15 +7,15 @@ public class Response: JSBridgedClass, Body {
     public class var constructor: JSFunction { JSObject.global.Response.function! }
 
     private enum Keys {
+        static let clone: JSString = "clone"
+        static let error: JSString = "error"
+        static let headers: JSString = "headers"
+        static let ok: JSString = "ok"
+        static let redirect: JSString = "redirect"
         static let redirected: JSString = "redirected"
-        static let type: JSString = "type"
         static let status: JSString = "status"
         static let statusText: JSString = "statusText"
-        static let headers: JSString = "headers"
-        static let clone: JSString = "clone"
-        static let ok: JSString = "ok"
-        static let error: JSString = "error"
-        static let redirect: JSString = "redirect"
+        static let type: JSString = "type"
         static let url: JSString = "url"
     }
 

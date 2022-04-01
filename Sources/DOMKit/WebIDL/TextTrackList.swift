@@ -7,11 +7,11 @@ public class TextTrackList: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.TextTrackList.function! }
 
     private enum Keys {
-        static let onremovetrack: JSString = "onremovetrack"
+        static let getTrackById: JSString = "getTrackById"
+        static let length: JSString = "length"
         static let onaddtrack: JSString = "onaddtrack"
         static let onchange: JSString = "onchange"
-        static let length: JSString = "length"
-        static let getTrackById: JSString = "getTrackById"
+        static let onremovetrack: JSString = "onremovetrack"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -25,7 +25,7 @@ public class TextTrackList: EventTarget {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> TextTrack {
+    public subscript(key: UInt32) -> TextTrack {
         jsObject[key].fromJSValue()!
     }
 

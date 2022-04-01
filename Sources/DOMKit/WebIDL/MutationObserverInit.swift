@@ -5,13 +5,13 @@ import JavaScriptKit
 
 public class MutationObserverInit: BridgedDictionary {
     private enum Keys {
+        static let attributeFilter: JSString = "attributeFilter"
+        static let attributeOldValue: JSString = "attributeOldValue"
+        static let attributes: JSString = "attributes"
+        static let characterData: JSString = "characterData"
         static let characterDataOldValue: JSString = "characterDataOldValue"
         static let childList: JSString = "childList"
-        static let attributes: JSString = "attributes"
-        static let attributeFilter: JSString = "attributeFilter"
         static let subtree: JSString = "subtree"
-        static let attributeOldValue: JSString = "attributeOldValue"
-        static let characterData: JSString = "characterData"
     }
 
     public convenience init(childList: Bool, attributes: Bool, characterData: Bool, subtree: Bool, attributeOldValue: Bool, characterDataOldValue: Bool, attributeFilter: [String]) {

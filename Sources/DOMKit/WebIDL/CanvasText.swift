@@ -5,18 +5,18 @@ import JavaScriptKit
 
 private enum Keys {
     static let fillText: JSString = "fillText"
-    static let strokeText: JSString = "strokeText"
     static let measureText: JSString = "measureText"
+    static let strokeText: JSString = "strokeText"
 }
 
 public protocol CanvasText: JSBridgedClass {}
 public extension CanvasText {
     func fillText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
-        _ = jsObject[Keys.fillText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
+        jsObject[Keys.fillText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func strokeText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
-        _ = jsObject[Keys.strokeText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
+        jsObject[Keys.strokeText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func measureText(text: String) -> TextMetrics {

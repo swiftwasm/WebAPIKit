@@ -8,8 +8,8 @@ public class MessageEventInit: BridgedDictionary {
         static let data: JSString = "data"
         static let lastEventId: JSString = "lastEventId"
         static let origin: JSString = "origin"
-        static let source: JSString = "source"
         static let ports: JSString = "ports"
+        static let source: JSString = "source"
     }
 
     public convenience init(data: JSValue, origin: String, lastEventId: String, source: MessageEventSource?, ports: [MessagePort]) {

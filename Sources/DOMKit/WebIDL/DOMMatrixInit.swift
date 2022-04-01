@@ -5,17 +5,17 @@ import JavaScriptKit
 
 public class DOMMatrixInit: BridgedDictionary {
     private enum Keys {
-        static let m14: JSString = "m14"
-        static let m24: JSString = "m24"
-        static let m23: JSString = "m23"
-        static let m32: JSString = "m32"
-        static let m34: JSString = "m34"
-        static let m44: JSString = "m44"
-        static let m33: JSString = "m33"
         static let is2D: JSString = "is2D"
-        static let m31: JSString = "m31"
-        static let m43: JSString = "m43"
         static let m13: JSString = "m13"
+        static let m14: JSString = "m14"
+        static let m23: JSString = "m23"
+        static let m24: JSString = "m24"
+        static let m31: JSString = "m31"
+        static let m32: JSString = "m32"
+        static let m33: JSString = "m33"
+        static let m34: JSString = "m34"
+        static let m43: JSString = "m43"
+        static let m44: JSString = "m44"
     }
 
     public convenience init(m13: Double, m14: Double, m23: Double, m24: Double, m31: Double, m32: Double, m33: Double, m34: Double, m43: Double, m44: Double, is2D: Bool) {

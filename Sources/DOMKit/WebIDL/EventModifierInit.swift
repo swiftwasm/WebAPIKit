@@ -5,20 +5,20 @@ import JavaScriptKit
 
 public class EventModifierInit: BridgedDictionary {
     private enum Keys {
-        static let modifierFnLock: JSString = "modifierFnLock"
-        static let modifierNumLock: JSString = "modifierNumLock"
-        static let shiftKey: JSString = "shiftKey"
-        static let metaKey: JSString = "metaKey"
-        static let modifierFn: JSString = "modifierFn"
-        static let modifierSymbol: JSString = "modifierSymbol"
-        static let ctrlKey: JSString = "ctrlKey"
         static let altKey: JSString = "altKey"
+        static let ctrlKey: JSString = "ctrlKey"
+        static let metaKey: JSString = "metaKey"
         static let modifierAltGraph: JSString = "modifierAltGraph"
-        static let modifierHyper: JSString = "modifierHyper"
         static let modifierCapsLock: JSString = "modifierCapsLock"
-        static let modifierSymbolLock: JSString = "modifierSymbolLock"
+        static let modifierFn: JSString = "modifierFn"
+        static let modifierFnLock: JSString = "modifierFnLock"
+        static let modifierHyper: JSString = "modifierHyper"
+        static let modifierNumLock: JSString = "modifierNumLock"
         static let modifierScrollLock: JSString = "modifierScrollLock"
         static let modifierSuper: JSString = "modifierSuper"
+        static let modifierSymbol: JSString = "modifierSymbol"
+        static let modifierSymbolLock: JSString = "modifierSymbolLock"
+        static let shiftKey: JSString = "shiftKey"
     }
 
     public convenience init(ctrlKey: Bool, shiftKey: Bool, altKey: Bool, metaKey: Bool, modifierAltGraph: Bool, modifierCapsLock: Bool, modifierFn: Bool, modifierFnLock: Bool, modifierHyper: Bool, modifierNumLock: Bool, modifierScrollLock: Bool, modifierSuper: Bool, modifierSymbol: Bool, modifierSymbolLock: Bool) {

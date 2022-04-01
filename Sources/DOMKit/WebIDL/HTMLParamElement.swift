@@ -7,10 +7,10 @@ public class HTMLParamElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLParamElement.function! }
 
     private enum Keys {
-        static let type: JSString = "type"
-        static let valueType: JSString = "valueType"
         static let name: JSString = "name"
+        static let type: JSString = "type"
         static let value: JSString = "value"
+        static let valueType: JSString = "valueType"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

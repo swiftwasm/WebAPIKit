@@ -7,20 +7,20 @@ public class HTMLScriptElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLScriptElement.function! }
 
     private enum Keys {
-        static let supports: JSString = "supports"
-        static let type: JSString = "type"
-        static let noModule: JSString = "noModule"
-        static let crossOrigin: JSString = "crossOrigin"
-        static let blocking: JSString = "blocking"
-        static let event: JSString = "event"
-        static let src: JSString = "src"
-        static let charset: JSString = "charset"
-        static let htmlFor: JSString = "htmlFor"
         static let async: JSString = "async"
-        static let referrerPolicy: JSString = "referrerPolicy"
-        static let text: JSString = "text"
-        static let integrity: JSString = "integrity"
+        static let blocking: JSString = "blocking"
+        static let charset: JSString = "charset"
+        static let crossOrigin: JSString = "crossOrigin"
         static let `defer`: JSString = "defer"
+        static let event: JSString = "event"
+        static let htmlFor: JSString = "htmlFor"
+        static let integrity: JSString = "integrity"
+        static let noModule: JSString = "noModule"
+        static let referrerPolicy: JSString = "referrerPolicy"
+        static let src: JSString = "src"
+        static let supports: JSString = "supports"
+        static let text: JSString = "text"
+        static let type: JSString = "type"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

@@ -7,10 +7,10 @@ public class HTMLOListElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLOListElement.function! }
 
     private enum Keys {
-        static let type: JSString = "type"
         static let compact: JSString = "compact"
-        static let start: JSString = "start"
         static let reversed: JSString = "reversed"
+        static let start: JSString = "start"
+        static let type: JSString = "type"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

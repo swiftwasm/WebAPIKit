@@ -7,30 +7,30 @@ public class HTMLImageElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLImageElement.function! }
 
     private enum Keys {
-        static let useMap: JSString = "useMap"
-        static let decoding: JSString = "decoding"
-        static let naturalHeight: JSString = "naturalHeight"
-        static let sizes: JSString = "sizes"
-        static let alt: JSString = "alt"
-        static let lowsrc: JSString = "lowsrc"
-        static let vspace: JSString = "vspace"
-        static let currentSrc: JSString = "currentSrc"
-        static let longDesc: JSString = "longDesc"
-        static let referrerPolicy: JSString = "referrerPolicy"
-        static let src: JSString = "src"
-        static let hspace: JSString = "hspace"
-        static let border: JSString = "border"
-        static let decode: JSString = "decode"
-        static let srcset: JSString = "srcset"
-        static let width: JSString = "width"
-        static let name: JSString = "name"
-        static let complete: JSString = "complete"
-        static let loading: JSString = "loading"
-        static let height: JSString = "height"
-        static let naturalWidth: JSString = "naturalWidth"
-        static let crossOrigin: JSString = "crossOrigin"
         static let align: JSString = "align"
+        static let alt: JSString = "alt"
+        static let border: JSString = "border"
+        static let complete: JSString = "complete"
+        static let crossOrigin: JSString = "crossOrigin"
+        static let currentSrc: JSString = "currentSrc"
+        static let decode: JSString = "decode"
+        static let decoding: JSString = "decoding"
+        static let height: JSString = "height"
+        static let hspace: JSString = "hspace"
         static let isMap: JSString = "isMap"
+        static let loading: JSString = "loading"
+        static let longDesc: JSString = "longDesc"
+        static let lowsrc: JSString = "lowsrc"
+        static let name: JSString = "name"
+        static let naturalHeight: JSString = "naturalHeight"
+        static let naturalWidth: JSString = "naturalWidth"
+        static let referrerPolicy: JSString = "referrerPolicy"
+        static let sizes: JSString = "sizes"
+        static let src: JSString = "src"
+        static let srcset: JSString = "srcset"
+        static let useMap: JSString = "useMap"
+        static let vspace: JSString = "vspace"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -119,7 +119,7 @@ public class HTMLImageElement: HTMLElement {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func decode() async throws {
         let _promise: JSPromise = jsObject[Keys.decode]!().fromJSValue()!
-        _ = try await _promise.get()
+        return try await _promise.get().fromJSValue()!
     }
 
     @ReadWriteAttribute

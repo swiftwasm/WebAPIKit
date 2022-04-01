@@ -8,8 +8,8 @@ public class ImageBitmap: JSBridgedClass {
 
     private enum Keys {
         static let close: JSString = "close"
-        static let width: JSString = "width"
         static let height: JSString = "height"
+        static let width: JSString = "width"
     }
 
     public let jsObject: JSObject
@@ -27,6 +27,6 @@ public class ImageBitmap: JSBridgedClass {
     public var height: UInt32
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 }

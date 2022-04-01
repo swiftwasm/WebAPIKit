@@ -21,6 +21,6 @@ public class Path2D: JSBridgedClass, CanvasPath {
     }
 
     public func addPath(path: Path2D, transform: DOMMatrix2DInit? = nil) {
-        _ = jsObject[Keys.addPath]!(path.jsValue(), transform?.jsValue() ?? .undefined)
+        jsObject[Keys.addPath]!(path.jsValue(), transform?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

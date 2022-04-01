@@ -5,9 +5,9 @@ import JavaScriptKit
 
 public class ProgressEventInit: BridgedDictionary {
     private enum Keys {
-        static let total: JSString = "total"
         static let lengthComputable: JSString = "lengthComputable"
         static let loaded: JSString = "loaded"
+        static let total: JSString = "total"
     }
 
     public convenience init(lengthComputable: Bool, loaded: UInt64, total: UInt64) {

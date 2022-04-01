@@ -7,12 +7,12 @@ public class HTMLVideoElement: HTMLMediaElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLVideoElement.function! }
 
     private enum Keys {
-        static let videoHeight: JSString = "videoHeight"
-        static let playsInline: JSString = "playsInline"
-        static let width: JSString = "width"
-        static let poster: JSString = "poster"
         static let height: JSString = "height"
+        static let playsInline: JSString = "playsInline"
+        static let poster: JSString = "poster"
+        static let videoHeight: JSString = "videoHeight"
         static let videoWidth: JSString = "videoWidth"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

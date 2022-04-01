@@ -7,13 +7,13 @@ public class HTMLEmbedElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLEmbedElement.function! }
 
     private enum Keys {
-        static let width: JSString = "width"
-        static let getSVGDocument: JSString = "getSVGDocument"
         static let align: JSString = "align"
-        static let type: JSString = "type"
-        static let src: JSString = "src"
-        static let name: JSString = "name"
+        static let getSVGDocument: JSString = "getSVGDocument"
         static let height: JSString = "height"
+        static let name: JSString = "name"
+        static let src: JSString = "src"
+        static let type: JSString = "type"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

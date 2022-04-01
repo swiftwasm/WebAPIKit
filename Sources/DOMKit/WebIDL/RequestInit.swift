@@ -5,19 +5,19 @@ import JavaScriptKit
 
 public class RequestInit: BridgedDictionary {
     private enum Keys {
-        static let credentials: JSString = "credentials"
-        static let integrity: JSString = "integrity"
-        static let mode: JSString = "mode"
-        static let referrerPolicy: JSString = "referrerPolicy"
-        static let redirect: JSString = "redirect"
         static let body: JSString = "body"
-        static let keepalive: JSString = "keepalive"
-        static let headers: JSString = "headers"
         static let cache: JSString = "cache"
+        static let credentials: JSString = "credentials"
+        static let headers: JSString = "headers"
+        static let integrity: JSString = "integrity"
+        static let keepalive: JSString = "keepalive"
         static let method: JSString = "method"
+        static let mode: JSString = "mode"
+        static let redirect: JSString = "redirect"
+        static let referrer: JSString = "referrer"
+        static let referrerPolicy: JSString = "referrerPolicy"
         static let signal: JSString = "signal"
         static let window: JSString = "window"
-        static let referrer: JSString = "referrer"
     }
 
     public convenience init(method: String, headers: HeadersInit, body: BodyInit?, referrer: String, referrerPolicy: ReferrerPolicy, mode: RequestMode, credentials: RequestCredentials, cache: RequestCache, redirect: RequestRedirect, integrity: String, keepalive: Bool, signal: AbortSignal?, window: JSValue) {

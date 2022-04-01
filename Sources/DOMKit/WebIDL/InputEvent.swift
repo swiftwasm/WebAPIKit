@@ -8,8 +8,8 @@ public class InputEvent: UIEvent {
 
     private enum Keys {
         static let data: JSString = "data"
-        static let isComposing: JSString = "isComposing"
         static let inputType: JSString = "inputType"
+        static let isComposing: JSString = "isComposing"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

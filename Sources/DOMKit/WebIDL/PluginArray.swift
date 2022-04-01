@@ -7,10 +7,10 @@ public class PluginArray: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.PluginArray.function! }
 
     private enum Keys {
-        static let length: JSString = "length"
-        static let refresh: JSString = "refresh"
         static let item: JSString = "item"
+        static let length: JSString = "length"
         static let namedItem: JSString = "namedItem"
+        static let refresh: JSString = "refresh"
     }
 
     public let jsObject: JSObject
@@ -21,13 +21,13 @@ public class PluginArray: JSBridgedClass {
     }
 
     public func refresh() {
-        _ = jsObject[Keys.refresh]!()
+        jsObject[Keys.refresh]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> Plugin? {
+    public subscript(key: UInt32) -> Plugin? {
         jsObject[key].fromJSValue()
     }
 

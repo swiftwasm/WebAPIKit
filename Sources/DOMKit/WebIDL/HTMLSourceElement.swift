@@ -7,13 +7,13 @@ public class HTMLSourceElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLSourceElement.function! }
 
     private enum Keys {
-        static let type: JSString = "type"
+        static let height: JSString = "height"
         static let media: JSString = "media"
-        static let width: JSString = "width"
         static let sizes: JSString = "sizes"
         static let src: JSString = "src"
         static let srcset: JSString = "srcset"
-        static let height: JSString = "height"
+        static let type: JSString = "type"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

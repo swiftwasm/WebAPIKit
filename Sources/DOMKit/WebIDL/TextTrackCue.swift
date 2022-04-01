@@ -7,13 +7,13 @@ public class TextTrackCue: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.TextTrackCue.function! }
 
     private enum Keys {
+        static let endTime: JSString = "endTime"
+        static let id: JSString = "id"
+        static let onenter: JSString = "onenter"
+        static let onexit: JSString = "onexit"
+        static let pauseOnExit: JSString = "pauseOnExit"
         static let startTime: JSString = "startTime"
         static let track: JSString = "track"
-        static let endTime: JSString = "endTime"
-        static let pauseOnExit: JSString = "pauseOnExit"
-        static let onenter: JSString = "onenter"
-        static let id: JSString = "id"
-        static let onexit: JSString = "onexit"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

@@ -7,11 +7,11 @@ public class VideoTrack: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.VideoTrack.function! }
 
     private enum Keys {
-        static let selected: JSString = "selected"
-        static let language: JSString = "language"
-        static let kind: JSString = "kind"
         static let id: JSString = "id"
+        static let kind: JSString = "kind"
         static let label: JSString = "label"
+        static let language: JSString = "language"
+        static let selected: JSString = "selected"
     }
 
     public let jsObject: JSObject

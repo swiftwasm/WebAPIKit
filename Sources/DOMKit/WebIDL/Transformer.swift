@@ -5,11 +5,11 @@ import JavaScriptKit
 
 public class Transformer: BridgedDictionary {
     private enum Keys {
-        static let writableType: JSString = "writableType"
-        static let start: JSString = "start"
         static let flush: JSString = "flush"
-        static let transform: JSString = "transform"
         static let readableType: JSString = "readableType"
+        static let start: JSString = "start"
+        static let transform: JSString = "transform"
+        static let writableType: JSString = "writableType"
     }
 
     public convenience init(start: @escaping TransformerStartCallback, transform: @escaping TransformerTransformCallback, flush: @escaping TransformerFlushCallback, readableType: JSValue, writableType: JSValue) {

@@ -7,10 +7,10 @@ public class HTMLOptionsCollection: HTMLCollection {
     override public class var constructor: JSFunction { JSObject.global.HTMLOptionsCollection.function! }
 
     private enum Keys {
-        static let length: JSString = "length"
-        static let selectedIndex: JSString = "selectedIndex"
         static let add: JSString = "add"
+        static let length: JSString = "length"
         static let remove: JSString = "remove"
+        static let selectedIndex: JSString = "selectedIndex"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -25,14 +25,14 @@ public class HTMLOptionsCollection: HTMLCollection {
         set { _length.wrappedValue = newValue }
     }
 
-    // XXX: unsupported setter for keys of type UInt32
+    // XXX: unsupported setter for keys of type `UInt32`
 
     public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Keys.add]!(element.jsValue(), before?.jsValue() ?? .undefined)
+        jsObject[Keys.add]!(element.jsValue(), before?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func remove(index: Int32) {
-        _ = jsObject[Keys.remove]!(index.jsValue())
+        jsObject[Keys.remove]!(index.jsValue()).fromJSValue()!
     }
 
     @ReadWriteAttribute

@@ -7,11 +7,11 @@ public class HTMLMetaElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLMetaElement.function! }
 
     private enum Keys {
-        static let name: JSString = "name"
-        static let scheme: JSString = "scheme"
         static let content: JSString = "content"
         static let httpEquiv: JSString = "httpEquiv"
         static let media: JSString = "media"
+        static let name: JSString = "name"
+        static let scheme: JSString = "scheme"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

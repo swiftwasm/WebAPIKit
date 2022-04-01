@@ -8,8 +8,8 @@ public class ImageData: JSBridgedClass {
 
     private enum Keys {
         static let colorSpace: JSString = "colorSpace"
-        static let height: JSString = "height"
         static let data: JSString = "data"
+        static let height: JSString = "height"
         static let width: JSString = "width"
     }
 

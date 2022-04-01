@@ -7,9 +7,9 @@ public class Performance: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.Performance.function! }
 
     private enum Keys {
+        static let now: JSString = "now"
         static let timeOrigin: JSString = "timeOrigin"
         static let toJSON: JSString = "toJSON"
-        static let now: JSString = "now"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

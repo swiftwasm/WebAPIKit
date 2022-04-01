@@ -11,18 +11,18 @@ private enum Keys {
 public protocol CanvasUserInterface: JSBridgedClass {}
 public extension CanvasUserInterface {
     func drawFocusIfNeeded(element: Element) {
-        _ = jsObject[Keys.drawFocusIfNeeded]!(element.jsValue())
+        jsObject[Keys.drawFocusIfNeeded]!(element.jsValue()).fromJSValue()!
     }
 
     func drawFocusIfNeeded(path: Path2D, element: Element) {
-        _ = jsObject[Keys.drawFocusIfNeeded]!(path.jsValue(), element.jsValue())
+        jsObject[Keys.drawFocusIfNeeded]!(path.jsValue(), element.jsValue()).fromJSValue()!
     }
 
     func scrollPathIntoView() {
-        _ = jsObject[Keys.scrollPathIntoView]!()
+        jsObject[Keys.scrollPathIntoView]!().fromJSValue()!
     }
 
     func scrollPathIntoView(path: Path2D) {
-        _ = jsObject[Keys.scrollPathIntoView]!(path.jsValue())
+        jsObject[Keys.scrollPathIntoView]!(path.jsValue()).fromJSValue()!
     }
 }

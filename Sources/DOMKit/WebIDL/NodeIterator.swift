@@ -7,14 +7,14 @@ public class NodeIterator: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.NodeIterator.function! }
 
     private enum Keys {
-        static let filter: JSString = "filter"
-        static let whatToShow: JSString = "whatToShow"
-        static let previousNode: JSString = "previousNode"
-        static let root: JSString = "root"
-        static let pointerBeforeReferenceNode: JSString = "pointerBeforeReferenceNode"
-        static let nextNode: JSString = "nextNode"
         static let detach: JSString = "detach"
+        static let filter: JSString = "filter"
+        static let nextNode: JSString = "nextNode"
+        static let pointerBeforeReferenceNode: JSString = "pointerBeforeReferenceNode"
+        static let previousNode: JSString = "previousNode"
         static let referenceNode: JSString = "referenceNode"
+        static let root: JSString = "root"
+        static let whatToShow: JSString = "whatToShow"
     }
 
     public let jsObject: JSObject
@@ -50,6 +50,6 @@ public class NodeIterator: JSBridgedClass {
     }
 
     public func detach() {
-        _ = jsObject[Keys.detach]!()
+        jsObject[Keys.detach]!().fromJSValue()!
     }
 }

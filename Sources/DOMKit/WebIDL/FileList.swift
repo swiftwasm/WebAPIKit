@@ -18,7 +18,7 @@ public class FileList: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public subscript(key: Int) -> File? {
+    public subscript(key: UInt32) -> File? {
         jsObject[key].fromJSValue()
     }
 

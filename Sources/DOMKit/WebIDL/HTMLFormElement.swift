@@ -7,24 +7,24 @@ public class HTMLFormElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLFormElement.function! }
 
     private enum Keys {
-        static let reportValidity: JSString = "reportValidity"
-        static let rel: JSString = "rel"
-        static let autocomplete: JSString = "autocomplete"
-        static let name: JSString = "name"
-        static let method: JSString = "method"
         static let acceptCharset: JSString = "acceptCharset"
-        static let noValidate: JSString = "noValidate"
-        static let target: JSString = "target"
-        static let encoding: JSString = "encoding"
-        static let checkValidity: JSString = "checkValidity"
         static let action: JSString = "action"
-        static let length: JSString = "length"
-        static let submit: JSString = "submit"
-        static let requestSubmit: JSString = "requestSubmit"
-        static let enctype: JSString = "enctype"
-        static let relList: JSString = "relList"
-        static let reset: JSString = "reset"
+        static let autocomplete: JSString = "autocomplete"
+        static let checkValidity: JSString = "checkValidity"
         static let elements: JSString = "elements"
+        static let encoding: JSString = "encoding"
+        static let enctype: JSString = "enctype"
+        static let length: JSString = "length"
+        static let method: JSString = "method"
+        static let name: JSString = "name"
+        static let noValidate: JSString = "noValidate"
+        static let rel: JSString = "rel"
+        static let relList: JSString = "relList"
+        static let reportValidity: JSString = "reportValidity"
+        static let requestSubmit: JSString = "requestSubmit"
+        static let reset: JSString = "reset"
+        static let submit: JSString = "submit"
+        static let target: JSString = "target"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -87,7 +87,7 @@ public class HTMLFormElement: HTMLElement {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> Element {
+    public subscript(key: UInt32) -> Element {
         jsObject[key].fromJSValue()!
     }
 
@@ -96,15 +96,15 @@ public class HTMLFormElement: HTMLElement {
     }
 
     public func submit() {
-        _ = jsObject[Keys.submit]!()
+        jsObject[Keys.submit]!().fromJSValue()!
     }
 
     public func requestSubmit(submitter: HTMLElement? = nil) {
-        _ = jsObject[Keys.requestSubmit]!(submitter?.jsValue() ?? .undefined)
+        jsObject[Keys.requestSubmit]!(submitter?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func reset() {
-        _ = jsObject[Keys.reset]!()
+        jsObject[Keys.reset]!().fromJSValue()!
     }
 
     public func checkValidity() -> Bool {

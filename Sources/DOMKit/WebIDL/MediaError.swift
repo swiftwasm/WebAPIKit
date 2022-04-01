@@ -7,12 +7,12 @@ public class MediaError: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MediaError.function! }
 
     private enum Keys {
+        static let MEDIA_ERR_ABORTED: JSString = "MEDIA_ERR_ABORTED"
+        static let MEDIA_ERR_DECODE: JSString = "MEDIA_ERR_DECODE"
         static let MEDIA_ERR_NETWORK: JSString = "MEDIA_ERR_NETWORK"
         static let MEDIA_ERR_SRC_NOT_SUPPORTED: JSString = "MEDIA_ERR_SRC_NOT_SUPPORTED"
-        static let message: JSString = "message"
-        static let MEDIA_ERR_ABORTED: JSString = "MEDIA_ERR_ABORTED"
         static let code: JSString = "code"
-        static let MEDIA_ERR_DECODE: JSString = "MEDIA_ERR_DECODE"
+        static let message: JSString = "message"
     }
 
     public let jsObject: JSObject

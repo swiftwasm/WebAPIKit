@@ -7,9 +7,9 @@ public class HTMLLabelElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLLabelElement.function! }
 
     private enum Keys {
-        static let htmlFor: JSString = "htmlFor"
         static let control: JSString = "control"
         static let form: JSString = "form"
+        static let htmlFor: JSString = "htmlFor"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

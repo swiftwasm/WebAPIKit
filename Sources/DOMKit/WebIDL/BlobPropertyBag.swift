@@ -5,8 +5,8 @@ import JavaScriptKit
 
 public class BlobPropertyBag: BridgedDictionary {
     private enum Keys {
-        static let type: JSString = "type"
         static let endings: JSString = "endings"
+        static let type: JSString = "type"
     }
 
     public convenience init(type: String, endings: EndingType) {

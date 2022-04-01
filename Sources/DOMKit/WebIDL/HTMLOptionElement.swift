@@ -7,14 +7,14 @@ public class HTMLOptionElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLOptionElement.function! }
 
     private enum Keys {
-        static let selected: JSString = "selected"
-        static let disabled: JSString = "disabled"
-        static let label: JSString = "label"
-        static let value: JSString = "value"
-        static let index: JSString = "index"
-        static let form: JSString = "form"
-        static let text: JSString = "text"
         static let defaultSelected: JSString = "defaultSelected"
+        static let disabled: JSString = "disabled"
+        static let form: JSString = "form"
+        static let index: JSString = "index"
+        static let label: JSString = "label"
+        static let selected: JSString = "selected"
+        static let text: JSString = "text"
+        static let value: JSString = "value"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

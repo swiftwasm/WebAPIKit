@@ -7,8 +7,8 @@ public class HashChangeEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.HashChangeEvent.function! }
 
     private enum Keys {
-        static let oldURL: JSString = "oldURL"
         static let newURL: JSString = "newURL"
+        static let oldURL: JSString = "oldURL"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

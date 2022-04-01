@@ -7,11 +7,11 @@ public class DedicatedWorkerGlobalScope: WorkerGlobalScope, AnimationFrameProvid
     override public class var constructor: JSFunction { JSObject.global.DedicatedWorkerGlobalScope.function! }
 
     private enum Keys {
-        static let onmessage: JSString = "onmessage"
-        static let postMessage: JSString = "postMessage"
         static let close: JSString = "close"
-        static let onmessageerror: JSString = "onmessageerror"
         static let name: JSString = "name"
+        static let onmessage: JSString = "onmessage"
+        static let onmessageerror: JSString = "onmessageerror"
+        static let postMessage: JSString = "postMessage"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -25,15 +25,15 @@ public class DedicatedWorkerGlobalScope: WorkerGlobalScope, AnimationFrameProvid
     public var name: String
 
     public func postMessage(message: JSValue, transfer: [JSObject]) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue())
+        jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue()).fromJSValue()!
     }
 
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 
     @ClosureAttribute.Optional1

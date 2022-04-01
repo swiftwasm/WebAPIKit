@@ -4,17 +4,17 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
+    static let appCodeName: JSString = "appCodeName"
+    static let appName: JSString = "appName"
     static let appVersion: JSString = "appVersion"
-    static let product: JSString = "product"
-    static let userAgent: JSString = "userAgent"
-    static let productSub: JSString = "productSub"
-    static let vendor: JSString = "vendor"
     static let oscpu: JSString = "oscpu"
     static let platform: JSString = "platform"
-    static let appName: JSString = "appName"
-    static let appCodeName: JSString = "appCodeName"
-    static let vendorSub: JSString = "vendorSub"
+    static let product: JSString = "product"
+    static let productSub: JSString = "productSub"
     static let taintEnabled: JSString = "taintEnabled"
+    static let userAgent: JSString = "userAgent"
+    static let vendor: JSString = "vendor"
+    static let vendorSub: JSString = "vendorSub"
 }
 
 public protocol NavigatorID: JSBridgedClass {}

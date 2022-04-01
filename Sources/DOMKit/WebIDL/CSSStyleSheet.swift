@@ -7,15 +7,15 @@ public class CSSStyleSheet: StyleSheet {
     override public class var constructor: JSFunction { JSObject.global.CSSStyleSheet.function! }
 
     private enum Keys {
-        static let removeRule: JSString = "removeRule"
-        static let insertRule: JSString = "insertRule"
-        static let rules: JSString = "rules"
-        static let cssRules: JSString = "cssRules"
         static let addRule: JSString = "addRule"
-        static let replaceSync: JSString = "replaceSync"
-        static let ownerRule: JSString = "ownerRule"
-        static let replace: JSString = "replace"
+        static let cssRules: JSString = "cssRules"
         static let deleteRule: JSString = "deleteRule"
+        static let insertRule: JSString = "insertRule"
+        static let ownerRule: JSString = "ownerRule"
+        static let removeRule: JSString = "removeRule"
+        static let replace: JSString = "replace"
+        static let replaceSync: JSString = "replaceSync"
+        static let rules: JSString = "rules"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -40,7 +40,7 @@ public class CSSStyleSheet: StyleSheet {
     }
 
     public func deleteRule(index: UInt32) {
-        _ = jsObject[Keys.deleteRule]!(index.jsValue())
+        jsObject[Keys.deleteRule]!(index.jsValue()).fromJSValue()!
     }
 
     public func replace(text: String) -> JSPromise {
@@ -54,7 +54,7 @@ public class CSSStyleSheet: StyleSheet {
     }
 
     public func replaceSync(text: String) {
-        _ = jsObject[Keys.replaceSync]!(text.jsValue())
+        jsObject[Keys.replaceSync]!(text.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -65,6 +65,6 @@ public class CSSStyleSheet: StyleSheet {
     }
 
     public func removeRule(index: UInt32? = nil) {
-        _ = jsObject[Keys.removeRule]!(index?.jsValue() ?? .undefined)
+        jsObject[Keys.removeRule]!(index?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

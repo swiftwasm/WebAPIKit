@@ -9,8 +9,8 @@ public class MediaList: JSBridgedClass {
     private enum Keys {
         static let appendMedium: JSString = "appendMedium"
         static let deleteMedium: JSString = "deleteMedium"
-        static let length: JSString = "length"
         static let item: JSString = "item"
+        static let length: JSString = "length"
         static let mediaText: JSString = "mediaText"
     }
 
@@ -28,15 +28,15 @@ public class MediaList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> String? {
+    public subscript(key: UInt32) -> String? {
         jsObject[key].fromJSValue()
     }
 
     public func appendMedium(medium: String) {
-        _ = jsObject[Keys.appendMedium]!(medium.jsValue())
+        jsObject[Keys.appendMedium]!(medium.jsValue()).fromJSValue()!
     }
 
     public func deleteMedium(medium: String) {
-        _ = jsObject[Keys.deleteMedium]!(medium.jsValue())
+        jsObject[Keys.deleteMedium]!(medium.jsValue()).fromJSValue()!
     }
 }

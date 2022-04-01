@@ -7,19 +7,19 @@ public class Location: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.Location.function! }
 
     private enum Keys {
-        static let replace: JSString = "replace"
-        static let assign: JSString = "assign"
-        static let host: JSString = "host"
-        static let pathname: JSString = "pathname"
         static let ancestorOrigins: JSString = "ancestorOrigins"
-        static let href: JSString = "href"
-        static let hostname: JSString = "hostname"
-        static let reload: JSString = "reload"
-        static let port: JSString = "port"
-        static let search: JSString = "search"
-        static let `protocol`: JSString = "protocol"
-        static let origin: JSString = "origin"
+        static let assign: JSString = "assign"
         static let hash: JSString = "hash"
+        static let host: JSString = "host"
+        static let hostname: JSString = "hostname"
+        static let href: JSString = "href"
+        static let origin: JSString = "origin"
+        static let pathname: JSString = "pathname"
+        static let port: JSString = "port"
+        static let `protocol`: JSString = "protocol"
+        static let reload: JSString = "reload"
+        static let replace: JSString = "replace"
+        static let search: JSString = "search"
     }
 
     public let jsObject: JSObject
@@ -66,15 +66,15 @@ public class Location: JSBridgedClass {
     public var hash: String
 
     public func assign(url: String) {
-        _ = jsObject[Keys.assign]!(url.jsValue())
+        jsObject[Keys.assign]!(url.jsValue()).fromJSValue()!
     }
 
     public func replace(url: String) {
-        _ = jsObject[Keys.replace]!(url.jsValue())
+        jsObject[Keys.replace]!(url.jsValue()).fromJSValue()!
     }
 
     public func reload() {
-        _ = jsObject[Keys.reload]!()
+        jsObject[Keys.reload]!().fromJSValue()!
     }
 
     @ReadonlyAttribute

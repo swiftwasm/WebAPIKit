@@ -8,8 +8,8 @@ public class EventTarget: JSBridgedClass {
 
     private enum Keys {
         static let addEventListener: JSString = "addEventListener"
-        static let removeEventListener: JSString = "removeEventListener"
         static let dispatchEvent: JSString = "dispatchEvent"
+        static let removeEventListener: JSString = "removeEventListener"
     }
 
     public let jsObject: JSObject

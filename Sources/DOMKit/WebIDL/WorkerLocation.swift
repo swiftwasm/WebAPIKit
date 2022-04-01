@@ -7,15 +7,15 @@ public class WorkerLocation: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.WorkerLocation.function! }
 
     private enum Keys {
-        static let href: JSString = "href"
-        static let host: JSString = "host"
-        static let search: JSString = "search"
-        static let origin: JSString = "origin"
         static let hash: JSString = "hash"
-        static let `protocol`: JSString = "protocol"
+        static let host: JSString = "host"
+        static let hostname: JSString = "hostname"
+        static let href: JSString = "href"
+        static let origin: JSString = "origin"
         static let pathname: JSString = "pathname"
         static let port: JSString = "port"
-        static let hostname: JSString = "hostname"
+        static let `protocol`: JSString = "protocol"
+        static let search: JSString = "search"
     }
 
     public let jsObject: JSObject

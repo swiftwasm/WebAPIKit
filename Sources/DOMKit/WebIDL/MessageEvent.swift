@@ -7,12 +7,12 @@ public class MessageEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.MessageEvent.function! }
 
     private enum Keys {
-        static let initMessageEvent: JSString = "initMessageEvent"
-        static let origin: JSString = "origin"
-        static let source: JSString = "source"
         static let data: JSString = "data"
-        static let ports: JSString = "ports"
+        static let initMessageEvent: JSString = "initMessageEvent"
         static let lastEventId: JSString = "lastEventId"
+        static let origin: JSString = "origin"
+        static let ports: JSString = "ports"
+        static let source: JSString = "source"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -52,6 +52,6 @@ public class MessageEvent: Event {
         let _arg5 = lastEventId?.jsValue() ?? .undefined
         let _arg6 = source?.jsValue() ?? .undefined
         let _arg7 = ports?.jsValue() ?? .undefined
-        _ = jsObject[Keys.initMessageEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        return jsObject[Keys.initMessageEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7).fromJSValue()!
     }
 }

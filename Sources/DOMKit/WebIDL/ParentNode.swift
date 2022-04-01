@@ -4,15 +4,15 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let querySelector: JSString = "querySelector"
-    static let querySelectorAll: JSString = "querySelectorAll"
-    static let childElementCount: JSString = "childElementCount"
-    static let prepend: JSString = "prepend"
     static let append: JSString = "append"
-    static let replaceChildren: JSString = "replaceChildren"
-    static let lastElementChild: JSString = "lastElementChild"
+    static let childElementCount: JSString = "childElementCount"
     static let children: JSString = "children"
     static let firstElementChild: JSString = "firstElementChild"
+    static let lastElementChild: JSString = "lastElementChild"
+    static let prepend: JSString = "prepend"
+    static let querySelector: JSString = "querySelector"
+    static let querySelectorAll: JSString = "querySelectorAll"
+    static let replaceChildren: JSString = "replaceChildren"
 }
 
 public protocol ParentNode: JSBridgedClass {}
@@ -26,15 +26,15 @@ public extension ParentNode {
     var childElementCount: UInt32 { ReadonlyAttribute[Keys.childElementCount, in: jsObject] }
 
     func prepend(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.prepend]!(nodes.jsValue())
+        jsObject[Keys.prepend]!(nodes.jsValue()).fromJSValue()!
     }
 
     func append(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.append]!(nodes.jsValue())
+        jsObject[Keys.append]!(nodes.jsValue()).fromJSValue()!
     }
 
     func replaceChildren(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.replaceChildren]!(nodes.jsValue())
+        jsObject[Keys.replaceChildren]!(nodes.jsValue()).fromJSValue()!
     }
 
     func querySelector(selectors: String) -> Element? {

@@ -7,15 +7,15 @@ public class DOMTokenList: JSBridgedClass, Sequence {
     public class var constructor: JSFunction { JSObject.global.DOMTokenList.function! }
 
     private enum Keys {
-        static let toggle: JSString = "toggle"
-        static let supports: JSString = "supports"
         static let add: JSString = "add"
-        static let value: JSString = "value"
-        static let remove: JSString = "remove"
-        static let replace: JSString = "replace"
+        static let contains: JSString = "contains"
         static let item: JSString = "item"
         static let length: JSString = "length"
-        static let contains: JSString = "contains"
+        static let remove: JSString = "remove"
+        static let replace: JSString = "replace"
+        static let supports: JSString = "supports"
+        static let toggle: JSString = "toggle"
+        static let value: JSString = "value"
     }
 
     public let jsObject: JSObject
@@ -29,7 +29,7 @@ public class DOMTokenList: JSBridgedClass, Sequence {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> String? {
+    public subscript(key: UInt32) -> String? {
         jsObject[key].fromJSValue()
     }
 
@@ -38,11 +38,11 @@ public class DOMTokenList: JSBridgedClass, Sequence {
     }
 
     public func add(tokens: String...) {
-        _ = jsObject[Keys.add]!(tokens.jsValue())
+        jsObject[Keys.add]!(tokens.jsValue()).fromJSValue()!
     }
 
     public func remove(tokens: String...) {
-        _ = jsObject[Keys.remove]!(tokens.jsValue())
+        jsObject[Keys.remove]!(tokens.jsValue()).fromJSValue()!
     }
 
     public func toggle(token: String, force: Bool? = nil) -> Bool {

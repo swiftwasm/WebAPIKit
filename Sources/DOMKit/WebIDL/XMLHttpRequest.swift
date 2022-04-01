@@ -7,30 +7,30 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     override public class var constructor: JSFunction { JSObject.global.XMLHttpRequest.function! }
 
     private enum Keys {
-        static let LOADING: JSString = "LOADING"
-        static let readyState: JSString = "readyState"
-        static let responseXML: JSString = "responseXML"
-        static let UNSENT: JSString = "UNSENT"
-        static let open: JSString = "open"
-        static let abort: JSString = "abort"
-        static let getResponseHeader: JSString = "getResponseHeader"
-        static let statusText: JSString = "statusText"
-        static let getAllResponseHeaders: JSString = "getAllResponseHeaders"
-        static let withCredentials: JSString = "withCredentials"
-        static let responseText: JSString = "responseText"
-        static let setRequestHeader: JSString = "setRequestHeader"
-        static let upload: JSString = "upload"
-        static let HEADERS_RECEIVED: JSString = "HEADERS_RECEIVED"
-        static let responseURL: JSString = "responseURL"
-        static let overrideMimeType: JSString = "overrideMimeType"
-        static let status: JSString = "status"
-        static let OPENED: JSString = "OPENED"
-        static let send: JSString = "send"
-        static let onreadystatechange: JSString = "onreadystatechange"
-        static let response: JSString = "response"
-        static let timeout: JSString = "timeout"
         static let DONE: JSString = "DONE"
+        static let HEADERS_RECEIVED: JSString = "HEADERS_RECEIVED"
+        static let LOADING: JSString = "LOADING"
+        static let OPENED: JSString = "OPENED"
+        static let UNSENT: JSString = "UNSENT"
+        static let abort: JSString = "abort"
+        static let getAllResponseHeaders: JSString = "getAllResponseHeaders"
+        static let getResponseHeader: JSString = "getResponseHeader"
+        static let onreadystatechange: JSString = "onreadystatechange"
+        static let open: JSString = "open"
+        static let overrideMimeType: JSString = "overrideMimeType"
+        static let readyState: JSString = "readyState"
+        static let response: JSString = "response"
+        static let responseText: JSString = "responseText"
         static let responseType: JSString = "responseType"
+        static let responseURL: JSString = "responseURL"
+        static let responseXML: JSString = "responseXML"
+        static let send: JSString = "send"
+        static let setRequestHeader: JSString = "setRequestHeader"
+        static let status: JSString = "status"
+        static let statusText: JSString = "statusText"
+        static let timeout: JSString = "timeout"
+        static let upload: JSString = "upload"
+        static let withCredentials: JSString = "withCredentials"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -70,15 +70,15 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var readyState: UInt16
 
     public func open(method: String, url: String) {
-        _ = jsObject[Keys.open]!(method.jsValue(), url.jsValue())
+        jsObject[Keys.open]!(method.jsValue(), url.jsValue()).fromJSValue()!
     }
 
     public func open(method: String, url: String, async: Bool, username: String? = nil, password: String? = nil) {
-        _ = jsObject[Keys.open]!(method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined)
+        jsObject[Keys.open]!(method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func setRequestHeader(name: String, value: String) {
-        _ = jsObject[Keys.setRequestHeader]!(name.jsValue(), value.jsValue())
+        jsObject[Keys.setRequestHeader]!(name.jsValue(), value.jsValue()).fromJSValue()!
     }
 
     @ReadWriteAttribute
@@ -91,11 +91,11 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var upload: XMLHttpRequestUpload
 
     public func send(body: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Keys.send]!(body?.jsValue() ?? .undefined)
+        jsObject[Keys.send]!(body?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func abort() {
-        _ = jsObject[Keys.abort]!()
+        jsObject[Keys.abort]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -116,7 +116,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     }
 
     public func overrideMimeType(mime: String) {
-        _ = jsObject[Keys.overrideMimeType]!(mime.jsValue())
+        jsObject[Keys.overrideMimeType]!(mime.jsValue()).fromJSValue()!
     }
 
     @ReadWriteAttribute

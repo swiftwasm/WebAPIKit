@@ -7,8 +7,8 @@ public class MutationObserver: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MutationObserver.function! }
 
     private enum Keys {
-        static let observe: JSString = "observe"
         static let disconnect: JSString = "disconnect"
+        static let observe: JSString = "observe"
         static let takeRecords: JSString = "takeRecords"
     }
 
@@ -18,14 +18,16 @@ public class MutationObserver: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    // XXX: constructor is ignored
+    public convenience init(callback: MutationCallback) {
+        self.init(unsafelyWrapping: Self.constructor.new(callback.jsValue()))
+    }
 
     public func observe(target: Node, options: MutationObserverInit? = nil) {
-        _ = jsObject[Keys.observe]!(target.jsValue(), options?.jsValue() ?? .undefined)
+        jsObject[Keys.observe]!(target.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func disconnect() {
-        _ = jsObject[Keys.disconnect]!()
+        jsObject[Keys.disconnect]!().fromJSValue()!
     }
 
     public func takeRecords() -> [MutationRecord] {

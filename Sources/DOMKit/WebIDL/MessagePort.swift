@@ -7,11 +7,11 @@ public class MessagePort: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.MessagePort.function! }
 
     private enum Keys {
-        static let onmessageerror: JSString = "onmessageerror"
-        static let start: JSString = "start"
         static let close: JSString = "close"
         static let onmessage: JSString = "onmessage"
+        static let onmessageerror: JSString = "onmessageerror"
         static let postMessage: JSString = "postMessage"
+        static let start: JSString = "start"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -21,19 +21,19 @@ public class MessagePort: EventTarget {
     }
 
     public func postMessage(message: JSValue, transfer: [JSObject]) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue())
+        jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue()).fromJSValue()!
     }
 
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func start() {
-        _ = jsObject[Keys.start]!()
+        jsObject[Keys.start]!().fromJSValue()!
     }
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 
     @ClosureAttribute.Optional1

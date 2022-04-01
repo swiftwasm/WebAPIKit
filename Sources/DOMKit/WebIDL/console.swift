@@ -5,25 +5,25 @@ import JavaScriptKit
 
 public enum console {
     private enum Keys {
-        static let trace: JSString = "trace"
-        static let clear: JSString = "clear"
-        static let dir: JSString = "dir"
-        static let timeEnd: JSString = "timeEnd"
-        static let debug: JSString = "debug"
-        static let info: JSString = "info"
-        static let count: JSString = "count"
-        static let group: JSString = "group"
-        static let groupEnd: JSString = "groupEnd"
-        static let time: JSString = "time"
-        static let log: JSString = "log"
         static let assert: JSString = "assert"
-        static let warn: JSString = "warn"
-        static let error: JSString = "error"
-        static let table: JSString = "table"
-        static let dirxml: JSString = "dirxml"
-        static let groupCollapsed: JSString = "groupCollapsed"
-        static let timeLog: JSString = "timeLog"
+        static let clear: JSString = "clear"
+        static let count: JSString = "count"
         static let countReset: JSString = "countReset"
+        static let debug: JSString = "debug"
+        static let dir: JSString = "dir"
+        static let dirxml: JSString = "dirxml"
+        static let error: JSString = "error"
+        static let group: JSString = "group"
+        static let groupCollapsed: JSString = "groupCollapsed"
+        static let groupEnd: JSString = "groupEnd"
+        static let info: JSString = "info"
+        static let log: JSString = "log"
+        static let table: JSString = "table"
+        static let time: JSString = "time"
+        static let timeEnd: JSString = "timeEnd"
+        static let timeLog: JSString = "timeLog"
+        static let trace: JSString = "trace"
+        static let warn: JSString = "warn"
     }
 
     public static var jsObject: JSObject {
@@ -31,78 +31,78 @@ public enum console {
     }
 
     public static func assert(condition: Bool? = nil, data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.assert]!(condition?.jsValue() ?? .undefined, data.jsValue())
+        JSObject.global.console.object![Keys.assert]!(condition?.jsValue() ?? .undefined, data.jsValue()).fromJSValue()!
     }
 
     public static func clear() {
-        _ = JSObject.global.console.object![Keys.clear]!()
+        JSObject.global.console.object![Keys.clear]!().fromJSValue()!
     }
 
     public static func debug(data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.debug]!(data.jsValue())
+        JSObject.global.console.object![Keys.debug]!(data.jsValue()).fromJSValue()!
     }
 
     public static func error(data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.error]!(data.jsValue())
+        JSObject.global.console.object![Keys.error]!(data.jsValue()).fromJSValue()!
     }
 
     public static func info(data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.info]!(data.jsValue())
+        JSObject.global.console.object![Keys.info]!(data.jsValue()).fromJSValue()!
     }
 
     public static func log(data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.log]!(data.jsValue())
+        JSObject.global.console.object![Keys.log]!(data.jsValue()).fromJSValue()!
     }
 
     public static func table(tabularData: JSValue? = nil, properties: [String]? = nil) {
-        _ = JSObject.global.console.object![Keys.table]!(tabularData?.jsValue() ?? .undefined, properties?.jsValue() ?? .undefined)
+        JSObject.global.console.object![Keys.table]!(tabularData?.jsValue() ?? .undefined, properties?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public static func trace(data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.trace]!(data.jsValue())
+        JSObject.global.console.object![Keys.trace]!(data.jsValue()).fromJSValue()!
     }
 
     public static func warn(data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.warn]!(data.jsValue())
+        JSObject.global.console.object![Keys.warn]!(data.jsValue()).fromJSValue()!
     }
 
     public static func dir(item: JSValue? = nil, options: JSObject? = nil) {
-        _ = JSObject.global.console.object![Keys.dir]!(item?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined)
+        JSObject.global.console.object![Keys.dir]!(item?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public static func dirxml(data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.dirxml]!(data.jsValue())
+        JSObject.global.console.object![Keys.dirxml]!(data.jsValue()).fromJSValue()!
     }
 
     public static func count(label: String? = nil) {
-        _ = JSObject.global.console.object![Keys.count]!(label?.jsValue() ?? .undefined)
+        JSObject.global.console.object![Keys.count]!(label?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public static func countReset(label: String? = nil) {
-        _ = JSObject.global.console.object![Keys.countReset]!(label?.jsValue() ?? .undefined)
+        JSObject.global.console.object![Keys.countReset]!(label?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public static func group(data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.group]!(data.jsValue())
+        JSObject.global.console.object![Keys.group]!(data.jsValue()).fromJSValue()!
     }
 
     public static func groupCollapsed(data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.groupCollapsed]!(data.jsValue())
+        JSObject.global.console.object![Keys.groupCollapsed]!(data.jsValue()).fromJSValue()!
     }
 
     public static func groupEnd() {
-        _ = JSObject.global.console.object![Keys.groupEnd]!()
+        JSObject.global.console.object![Keys.groupEnd]!().fromJSValue()!
     }
 
     public static func time(label: String? = nil) {
-        _ = JSObject.global.console.object![Keys.time]!(label?.jsValue() ?? .undefined)
+        JSObject.global.console.object![Keys.time]!(label?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public static func timeLog(label: String? = nil, data: JSValue...) {
-        _ = JSObject.global.console.object![Keys.timeLog]!(label?.jsValue() ?? .undefined, data.jsValue())
+        JSObject.global.console.object![Keys.timeLog]!(label?.jsValue() ?? .undefined, data.jsValue()).fromJSValue()!
     }
 
     public static func timeEnd(label: String? = nil) {
-        _ = JSObject.global.console.object![Keys.timeEnd]!(label?.jsValue() ?? .undefined)
+        JSObject.global.console.object![Keys.timeEnd]!(label?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

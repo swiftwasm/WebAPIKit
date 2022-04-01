@@ -5,9 +5,9 @@ import JavaScriptKit
 
 public class UIEventInit: BridgedDictionary {
     private enum Keys {
-        static let which: JSString = "which"
-        static let view: JSString = "view"
         static let detail: JSString = "detail"
+        static let view: JSString = "view"
+        static let which: JSString = "which"
     }
 
     public convenience init(view: Window?, detail: Int32, which: UInt32) {

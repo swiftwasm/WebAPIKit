@@ -8,9 +8,9 @@ public class HTMLProgressElement: HTMLElement {
 
     private enum Keys {
         static let labels: JSString = "labels"
-        static let value: JSString = "value"
-        static let position: JSString = "position"
         static let max: JSString = "max"
+        static let position: JSString = "position"
+        static let value: JSString = "value"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

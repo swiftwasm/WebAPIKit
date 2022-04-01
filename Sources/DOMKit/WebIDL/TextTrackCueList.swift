@@ -21,7 +21,7 @@ public class TextTrackCueList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> TextTrackCue {
+    public subscript(key: UInt32) -> TextTrackCue {
         jsObject[key].fromJSValue()!
     }
 

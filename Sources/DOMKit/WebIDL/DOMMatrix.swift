@@ -7,43 +7,43 @@ public class DOMMatrix: DOMMatrixReadOnly {
     override public class var constructor: JSFunction { JSObject.global.DOMMatrix.function! }
 
     private enum Keys {
-        static let m24: JSString = "m24"
-        static let m22: JSString = "m22"
-        static let fromFloat32Array: JSString = "fromFloat32Array"
-        static let e: JSString = "e"
-        static let fromFloat64Array: JSString = "fromFloat64Array"
-        static let multiplySelf: JSString = "multiplySelf"
-        static let rotateAxisAngleSelf: JSString = "rotateAxisAngleSelf"
-        static let f: JSString = "f"
-        static let invertSelf: JSString = "invertSelf"
-        static let c: JSString = "c"
-        static let m11: JSString = "m11"
-        static let b: JSString = "b"
-        static let m43: JSString = "m43"
-        static let scaleSelf: JSString = "scaleSelf"
-        static let fromMatrix: JSString = "fromMatrix"
-        static let scale3dSelf: JSString = "scale3dSelf"
-        static let m41: JSString = "m41"
-        static let m33: JSString = "m33"
-        static let skewYSelf: JSString = "skewYSelf"
         static let a: JSString = "a"
-        static let m31: JSString = "m31"
-        static let rotateSelf: JSString = "rotateSelf"
-        static let m13: JSString = "m13"
-        static let m34: JSString = "m34"
-        static let translateSelf: JSString = "translateSelf"
-        static let m21: JSString = "m21"
+        static let b: JSString = "b"
+        static let c: JSString = "c"
         static let d: JSString = "d"
-        static let m42: JSString = "m42"
-        static let m23: JSString = "m23"
-        static let m32: JSString = "m32"
+        static let e: JSString = "e"
+        static let f: JSString = "f"
+        static let fromFloat32Array: JSString = "fromFloat32Array"
+        static let fromFloat64Array: JSString = "fromFloat64Array"
+        static let fromMatrix: JSString = "fromMatrix"
+        static let invertSelf: JSString = "invertSelf"
+        static let m11: JSString = "m11"
         static let m12: JSString = "m12"
-        static let rotateFromVectorSelf: JSString = "rotateFromVectorSelf"
-        static let preMultiplySelf: JSString = "preMultiplySelf"
+        static let m13: JSString = "m13"
         static let m14: JSString = "m14"
-        static let skewXSelf: JSString = "skewXSelf"
-        static let setMatrixValue: JSString = "setMatrixValue"
+        static let m21: JSString = "m21"
+        static let m22: JSString = "m22"
+        static let m23: JSString = "m23"
+        static let m24: JSString = "m24"
+        static let m31: JSString = "m31"
+        static let m32: JSString = "m32"
+        static let m33: JSString = "m33"
+        static let m34: JSString = "m34"
+        static let m41: JSString = "m41"
+        static let m42: JSString = "m42"
+        static let m43: JSString = "m43"
         static let m44: JSString = "m44"
+        static let multiplySelf: JSString = "multiplySelf"
+        static let preMultiplySelf: JSString = "preMultiplySelf"
+        static let rotateAxisAngleSelf: JSString = "rotateAxisAngleSelf"
+        static let rotateFromVectorSelf: JSString = "rotateFromVectorSelf"
+        static let rotateSelf: JSString = "rotateSelf"
+        static let scale3dSelf: JSString = "scale3dSelf"
+        static let scaleSelf: JSString = "scaleSelf"
+        static let setMatrixValue: JSString = "setMatrixValue"
+        static let skewXSelf: JSString = "skewXSelf"
+        static let skewYSelf: JSString = "skewYSelf"
+        static let translateSelf: JSString = "translateSelf"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -77,13 +77,13 @@ public class DOMMatrix: DOMMatrixReadOnly {
     }
 
     // XXX: illegal static override
-    // override public static func fromMatrix(other: DOMMatrixInit? = nil) -> Self
+    // override public static func `fromMatrix`(`other`: `DOMMatrixInit`? = nil) -> Self
 
     // XXX: illegal static override
-    // override public static func fromFloat32Array(array32: Float32Array) -> Self
+    // override public static func `fromFloat32Array`(`array32`: `Float32Array`) -> Self
 
     // XXX: illegal static override
-    // override public static func fromFloat64Array(array64: Float64Array) -> Self
+    // override public static func `fromFloat64Array`(`array64`: `Float64Array`) -> Self
 
     private var _a: ReadWriteAttribute<Double>
     override public var a: Double {

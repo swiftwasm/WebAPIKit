@@ -7,9 +7,9 @@ public class TimeRanges: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.TimeRanges.function! }
 
     private enum Keys {
-        static let start: JSString = "start"
-        static let length: JSString = "length"
         static let end: JSString = "end"
+        static let length: JSString = "length"
+        static let start: JSString = "start"
     }
 
     public let jsObject: JSObject

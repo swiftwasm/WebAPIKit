@@ -7,29 +7,29 @@ public class HTMLSelectElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLSelectElement.function! }
 
     private enum Keys {
-        static let selectedOptions: JSString = "selectedOptions"
-        static let reportValidity: JSString = "reportValidity"
-        static let setCustomValidity: JSString = "setCustomValidity"
+        static let add: JSString = "add"
         static let autocomplete: JSString = "autocomplete"
+        static let checkValidity: JSString = "checkValidity"
+        static let disabled: JSString = "disabled"
+        static let form: JSString = "form"
+        static let item: JSString = "item"
+        static let labels: JSString = "labels"
+        static let length: JSString = "length"
+        static let multiple: JSString = "multiple"
+        static let name: JSString = "name"
+        static let namedItem: JSString = "namedItem"
+        static let options: JSString = "options"
+        static let remove: JSString = "remove"
+        static let reportValidity: JSString = "reportValidity"
+        static let required: JSString = "required"
+        static let selectedIndex: JSString = "selectedIndex"
+        static let selectedOptions: JSString = "selectedOptions"
+        static let setCustomValidity: JSString = "setCustomValidity"
+        static let size: JSString = "size"
         static let type: JSString = "type"
         static let validationMessage: JSString = "validationMessage"
-        static let add: JSString = "add"
-        static let selectedIndex: JSString = "selectedIndex"
-        static let item: JSString = "item"
-        static let value: JSString = "value"
         static let validity: JSString = "validity"
-        static let remove: JSString = "remove"
-        static let checkValidity: JSString = "checkValidity"
-        static let options: JSString = "options"
-        static let disabled: JSString = "disabled"
-        static let namedItem: JSString = "namedItem"
-        static let multiple: JSString = "multiple"
-        static let labels: JSString = "labels"
-        static let required: JSString = "required"
-        static let form: JSString = "form"
-        static let name: JSString = "name"
-        static let size: JSString = "size"
-        static let length: JSString = "length"
+        static let value: JSString = "value"
         static let willValidate: JSString = "willValidate"
     }
 
@@ -88,7 +88,7 @@ public class HTMLSelectElement: HTMLElement {
     @ReadWriteAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> HTMLOptionElement? {
+    public subscript(key: UInt32) -> HTMLOptionElement? {
         jsObject[key].fromJSValue()
     }
 
@@ -97,18 +97,18 @@ public class HTMLSelectElement: HTMLElement {
     }
 
     public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Keys.add]!(element.jsValue(), before?.jsValue() ?? .undefined)
+        jsObject[Keys.add]!(element.jsValue(), before?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func remove() {
-        _ = jsObject[Keys.remove]!()
+        jsObject[Keys.remove]!().fromJSValue()!
     }
 
     public func remove(index: Int32) {
-        _ = jsObject[Keys.remove]!(index.jsValue())
+        jsObject[Keys.remove]!(index.jsValue()).fromJSValue()!
     }
 
-    // XXX: unsupported setter for keys of type UInt32
+    // XXX: unsupported setter for keys of type `UInt32`
 
     @ReadonlyAttribute
     public var selectedOptions: HTMLCollection
@@ -137,7 +137,7 @@ public class HTMLSelectElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute

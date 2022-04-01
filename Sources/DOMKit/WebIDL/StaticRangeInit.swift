@@ -5,8 +5,8 @@ import JavaScriptKit
 
 public class StaticRangeInit: BridgedDictionary {
     private enum Keys {
-        static let endOffset: JSString = "endOffset"
         static let endContainer: JSString = "endContainer"
+        static let endOffset: JSString = "endOffset"
         static let startContainer: JSString = "startContainer"
         static let startOffset: JSString = "startOffset"
     }

@@ -7,8 +7,8 @@ public class ProgressEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.ProgressEvent.function! }
 
     private enum Keys {
-        static let loaded: JSString = "loaded"
         static let lengthComputable: JSString = "lengthComputable"
+        static let loaded: JSString = "loaded"
         static let total: JSString = "total"
     }
 

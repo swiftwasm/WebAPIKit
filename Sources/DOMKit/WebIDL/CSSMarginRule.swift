@@ -7,8 +7,8 @@ public class CSSMarginRule: CSSRule {
     override public class var constructor: JSFunction { JSObject.global.CSSMarginRule.function! }
 
     private enum Keys {
-        static let style: JSString = "style"
         static let name: JSString = "name"
+        static let style: JSString = "style"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

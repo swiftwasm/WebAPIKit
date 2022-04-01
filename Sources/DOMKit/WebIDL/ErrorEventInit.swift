@@ -5,11 +5,11 @@ import JavaScriptKit
 
 public class ErrorEventInit: BridgedDictionary {
     private enum Keys {
-        static let message: JSString = "message"
-        static let lineno: JSString = "lineno"
         static let colno: JSString = "colno"
-        static let filename: JSString = "filename"
         static let error: JSString = "error"
+        static let filename: JSString = "filename"
+        static let lineno: JSString = "lineno"
+        static let message: JSString = "message"
     }
 
     public convenience init(message: String, filename: String, lineno: UInt32, colno: UInt32, error: JSValue) {

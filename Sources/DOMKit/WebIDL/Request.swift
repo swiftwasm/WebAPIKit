@@ -7,22 +7,22 @@ public class Request: JSBridgedClass, Body {
     public class var constructor: JSFunction { JSObject.global.Request.function! }
 
     private enum Keys {
-        static let clone: JSString = "clone"
-        static let referrer: JSString = "referrer"
-        static let redirect: JSString = "redirect"
-        static let signal: JSString = "signal"
-        static let mode: JSString = "mode"
-        static let isHistoryNavigation: JSString = "isHistoryNavigation"
-        static let keepalive: JSString = "keepalive"
         static let cache: JSString = "cache"
+        static let clone: JSString = "clone"
         static let credentials: JSString = "credentials"
-        static let headers: JSString = "headers"
-        static let url: JSString = "url"
-        static let integrity: JSString = "integrity"
         static let destination: JSString = "destination"
-        static let method: JSString = "method"
-        static let referrerPolicy: JSString = "referrerPolicy"
+        static let headers: JSString = "headers"
+        static let integrity: JSString = "integrity"
+        static let isHistoryNavigation: JSString = "isHistoryNavigation"
         static let isReloadNavigation: JSString = "isReloadNavigation"
+        static let keepalive: JSString = "keepalive"
+        static let method: JSString = "method"
+        static let mode: JSString = "mode"
+        static let redirect: JSString = "redirect"
+        static let referrer: JSString = "referrer"
+        static let referrerPolicy: JSString = "referrerPolicy"
+        static let signal: JSString = "signal"
+        static let url: JSString = "url"
     }
 
     public let jsObject: JSObject

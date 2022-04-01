@@ -7,8 +7,8 @@ public class CSSImportRule: CSSRule {
     override public class var constructor: JSFunction { JSObject.global.CSSImportRule.function! }
 
     private enum Keys {
-        static let media: JSString = "media"
         static let href: JSString = "href"
+        static let media: JSString = "media"
         static let styleSheet: JSString = "styleSheet"
     }
 

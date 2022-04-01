@@ -7,13 +7,13 @@ public class OffscreenCanvas: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.OffscreenCanvas.function! }
 
     private enum Keys {
-        static let width: JSString = "width"
-        static let oncontextrestored: JSString = "oncontextrestored"
-        static let getContext: JSString = "getContext"
-        static let transferToImageBitmap: JSString = "transferToImageBitmap"
         static let convertToBlob: JSString = "convertToBlob"
+        static let getContext: JSString = "getContext"
         static let height: JSString = "height"
         static let oncontextlost: JSString = "oncontextlost"
+        static let oncontextrestored: JSString = "oncontextrestored"
+        static let transferToImageBitmap: JSString = "transferToImageBitmap"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

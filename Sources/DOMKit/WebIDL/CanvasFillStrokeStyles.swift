@@ -4,12 +4,12 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let strokeStyle: JSString = "strokeStyle"
     static let createConicGradient: JSString = "createConicGradient"
-    static let fillStyle: JSString = "fillStyle"
+    static let createLinearGradient: JSString = "createLinearGradient"
     static let createPattern: JSString = "createPattern"
     static let createRadialGradient: JSString = "createRadialGradient"
-    static let createLinearGradient: JSString = "createLinearGradient"
+    static let fillStyle: JSString = "fillStyle"
+    static let strokeStyle: JSString = "strokeStyle"
 }
 
 public protocol CanvasFillStrokeStyles: JSBridgedClass {}

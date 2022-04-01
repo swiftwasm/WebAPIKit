@@ -4,13 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let lineCap: JSString = "lineCap"
     static let getLineDash: JSString = "getLineDash"
+    static let lineCap: JSString = "lineCap"
+    static let lineDashOffset: JSString = "lineDashOffset"
     static let lineJoin: JSString = "lineJoin"
+    static let lineWidth: JSString = "lineWidth"
     static let miterLimit: JSString = "miterLimit"
     static let setLineDash: JSString = "setLineDash"
-    static let lineWidth: JSString = "lineWidth"
-    static let lineDashOffset: JSString = "lineDashOffset"
 }
 
 public protocol CanvasPathDrawingStyles: JSBridgedClass {}
@@ -36,7 +36,7 @@ public extension CanvasPathDrawingStyles {
     }
 
     func setLineDash(segments: [Double]) {
-        _ = jsObject[Keys.setLineDash]!(segments.jsValue())
+        jsObject[Keys.setLineDash]!(segments.jsValue()).fromJSValue()!
     }
 
     func getLineDash() -> [Double] {

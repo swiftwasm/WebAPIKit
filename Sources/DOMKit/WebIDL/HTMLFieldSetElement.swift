@@ -8,15 +8,15 @@ public class HTMLFieldSetElement: HTMLElement {
 
     private enum Keys {
         static let checkValidity: JSString = "checkValidity"
-        static let type: JSString = "type"
-        static let name: JSString = "name"
-        static let validity: JSString = "validity"
-        static let validationMessage: JSString = "validationMessage"
-        static let setCustomValidity: JSString = "setCustomValidity"
-        static let form: JSString = "form"
         static let disabled: JSString = "disabled"
         static let elements: JSString = "elements"
+        static let form: JSString = "form"
+        static let name: JSString = "name"
         static let reportValidity: JSString = "reportValidity"
+        static let setCustomValidity: JSString = "setCustomValidity"
+        static let type: JSString = "type"
+        static let validationMessage: JSString = "validationMessage"
+        static let validity: JSString = "validity"
         static let willValidate: JSString = "willValidate"
     }
 
@@ -69,6 +69,6 @@ public class HTMLFieldSetElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
     }
 }

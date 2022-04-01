@@ -7,21 +7,21 @@ public class HTMLTableCellElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableCellElement.function! }
 
     private enum Keys {
-        static let chOff: JSString = "chOff"
-        static let scope: JSString = "scope"
-        static let cellIndex: JSString = "cellIndex"
-        static let height: JSString = "height"
-        static let width: JSString = "width"
-        static let ch: JSString = "ch"
-        static let vAlign: JSString = "vAlign"
-        static let noWrap: JSString = "noWrap"
-        static let colSpan: JSString = "colSpan"
-        static let align: JSString = "align"
-        static let headers: JSString = "headers"
-        static let bgColor: JSString = "bgColor"
-        static let rowSpan: JSString = "rowSpan"
         static let abbr: JSString = "abbr"
+        static let align: JSString = "align"
         static let axis: JSString = "axis"
+        static let bgColor: JSString = "bgColor"
+        static let cellIndex: JSString = "cellIndex"
+        static let ch: JSString = "ch"
+        static let chOff: JSString = "chOff"
+        static let colSpan: JSString = "colSpan"
+        static let headers: JSString = "headers"
+        static let height: JSString = "height"
+        static let noWrap: JSString = "noWrap"
+        static let rowSpan: JSString = "rowSpan"
+        static let scope: JSString = "scope"
+        static let vAlign: JSString = "vAlign"
+        static let width: JSString = "width"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

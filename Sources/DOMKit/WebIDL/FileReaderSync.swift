@@ -7,10 +7,10 @@ public class FileReaderSync: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.FileReaderSync.function! }
 
     private enum Keys {
-        static let readAsText: JSString = "readAsText"
-        static let readAsBinaryString: JSString = "readAsBinaryString"
         static let readAsArrayBuffer: JSString = "readAsArrayBuffer"
+        static let readAsBinaryString: JSString = "readAsBinaryString"
         static let readAsDataURL: JSString = "readAsDataURL"
+        static let readAsText: JSString = "readAsText"
     }
 
     public let jsObject: JSObject

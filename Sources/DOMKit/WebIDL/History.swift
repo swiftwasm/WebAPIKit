@@ -7,14 +7,14 @@ public class History: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.History.function! }
 
     private enum Keys {
-        static let length: JSString = "length"
-        static let replaceState: JSString = "replaceState"
         static let back: JSString = "back"
         static let forward: JSString = "forward"
-        static let pushState: JSString = "pushState"
-        static let state: JSString = "state"
         static let go: JSString = "go"
+        static let length: JSString = "length"
+        static let pushState: JSString = "pushState"
+        static let replaceState: JSString = "replaceState"
         static let scrollRestoration: JSString = "scrollRestoration"
+        static let state: JSString = "state"
     }
 
     public let jsObject: JSObject
@@ -36,22 +36,22 @@ public class History: JSBridgedClass {
     public var state: JSValue
 
     public func go(delta: Int32? = nil) {
-        _ = jsObject[Keys.go]!(delta?.jsValue() ?? .undefined)
+        jsObject[Keys.go]!(delta?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func back() {
-        _ = jsObject[Keys.back]!()
+        jsObject[Keys.back]!().fromJSValue()!
     }
 
     public func forward() {
-        _ = jsObject[Keys.forward]!()
+        jsObject[Keys.forward]!().fromJSValue()!
     }
 
     public func pushState(data: JSValue, unused: String, url: String? = nil) {
-        _ = jsObject[Keys.pushState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
+        jsObject[Keys.pushState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func replaceState(data: JSValue, unused: String, url: String? = nil) {
-        _ = jsObject[Keys.replaceState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
+        jsObject[Keys.replaceState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

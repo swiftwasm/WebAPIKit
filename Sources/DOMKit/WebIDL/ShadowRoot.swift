@@ -7,11 +7,11 @@ public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot {
     override public class var constructor: JSFunction { JSObject.global.ShadowRoot.function! }
 
     private enum Keys {
-        static let onslotchange: JSString = "onslotchange"
         static let delegatesFocus: JSString = "delegatesFocus"
-        static let mode: JSString = "mode"
-        static let slotAssignment: JSString = "slotAssignment"
         static let host: JSString = "host"
+        static let mode: JSString = "mode"
+        static let onslotchange: JSString = "onslotchange"
+        static let slotAssignment: JSString = "slotAssignment"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

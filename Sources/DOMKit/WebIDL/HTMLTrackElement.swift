@@ -7,16 +7,16 @@ public class HTMLTrackElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTrackElement.function! }
 
     private enum Keys {
-        static let label: JSString = "label"
+        static let ERROR: JSString = "ERROR"
+        static let LOADED: JSString = "LOADED"
         static let LOADING: JSString = "LOADING"
         static let NONE: JSString = "NONE"
-        static let srclang: JSString = "srclang"
-        static let src: JSString = "src"
-        static let LOADED: JSString = "LOADED"
-        static let readyState: JSString = "readyState"
         static let `default`: JSString = "default"
-        static let ERROR: JSString = "ERROR"
         static let kind: JSString = "kind"
+        static let label: JSString = "label"
+        static let readyState: JSString = "readyState"
+        static let src: JSString = "src"
+        static let srclang: JSString = "srclang"
         static let track: JSString = "track"
     }
 

@@ -7,8 +7,8 @@ public class ImageBitmapRenderingContext: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ImageBitmapRenderingContext.function! }
 
     private enum Keys {
-        static let transferFromImageBitmap: JSString = "transferFromImageBitmap"
         static let canvas: JSString = "canvas"
+        static let transferFromImageBitmap: JSString = "transferFromImageBitmap"
     }
 
     public let jsObject: JSObject
@@ -22,6 +22,6 @@ public class ImageBitmapRenderingContext: JSBridgedClass {
     public var canvas: __UNSUPPORTED_UNION__
 
     public func transferFromImageBitmap(bitmap: ImageBitmap?) {
-        _ = jsObject[Keys.transferFromImageBitmap]!(bitmap.jsValue())
+        jsObject[Keys.transferFromImageBitmap]!(bitmap.jsValue()).fromJSValue()!
     }
 }

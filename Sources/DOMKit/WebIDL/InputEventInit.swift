@@ -5,8 +5,8 @@ import JavaScriptKit
 
 public class InputEventInit: BridgedDictionary {
     private enum Keys {
-        static let inputType: JSString = "inputType"
         static let data: JSString = "data"
+        static let inputType: JSString = "inputType"
         static let isComposing: JSString = "isComposing"
     }
 

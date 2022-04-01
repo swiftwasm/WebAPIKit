@@ -9,8 +9,8 @@ public class ReadableStreamDefaultController: JSBridgedClass {
     private enum Keys {
         static let close: JSString = "close"
         static let desiredSize: JSString = "desiredSize"
-        static let error: JSString = "error"
         static let enqueue: JSString = "enqueue"
+        static let error: JSString = "error"
     }
 
     public let jsObject: JSObject
@@ -24,14 +24,14 @@ public class ReadableStreamDefaultController: JSBridgedClass {
     public var desiredSize: Double?
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 
     public func enqueue(chunk: JSValue? = nil) {
-        _ = jsObject[Keys.enqueue]!(chunk?.jsValue() ?? .undefined)
+        jsObject[Keys.enqueue]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func error(e: JSValue? = nil) {
-        _ = jsObject[Keys.error]!(e?.jsValue() ?? .undefined)
+        jsObject[Keys.error]!(e?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

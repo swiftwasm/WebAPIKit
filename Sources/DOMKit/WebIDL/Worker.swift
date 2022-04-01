@@ -7,10 +7,10 @@ public class Worker: EventTarget, AbstractWorker {
     override public class var constructor: JSFunction { JSObject.global.Worker.function! }
 
     private enum Keys {
-        static let postMessage: JSString = "postMessage"
         static let onmessage: JSString = "onmessage"
-        static let terminate: JSString = "terminate"
         static let onmessageerror: JSString = "onmessageerror"
+        static let postMessage: JSString = "postMessage"
+        static let terminate: JSString = "terminate"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -24,15 +24,15 @@ public class Worker: EventTarget, AbstractWorker {
     }
 
     public func terminate() {
-        _ = jsObject[Keys.terminate]!()
+        jsObject[Keys.terminate]!().fromJSValue()!
     }
 
     public func postMessage(message: JSValue, transfer: [JSObject]) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue())
+        jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue()).fromJSValue()!
     }
 
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ClosureAttribute.Optional1

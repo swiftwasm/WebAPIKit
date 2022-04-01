@@ -4,21 +4,21 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let crossOriginIsolated: JSString = "crossOriginIsolated"
-    static let queueMicrotask: JSString = "queueMicrotask"
-    static let structuredClone: JSString = "structuredClone"
-    static let origin: JSString = "origin"
-    static let setTimeout: JSString = "setTimeout"
-    static let performance: JSString = "performance"
-    static let setInterval: JSString = "setInterval"
-    static let btoa: JSString = "btoa"
-    static let createImageBitmap: JSString = "createImageBitmap"
-    static let reportError: JSString = "reportError"
-    static let clearTimeout: JSString = "clearTimeout"
     static let atob: JSString = "atob"
+    static let btoa: JSString = "btoa"
     static let clearInterval: JSString = "clearInterval"
+    static let clearTimeout: JSString = "clearTimeout"
+    static let createImageBitmap: JSString = "createImageBitmap"
+    static let crossOriginIsolated: JSString = "crossOriginIsolated"
     static let fetch: JSString = "fetch"
     static let isSecureContext: JSString = "isSecureContext"
+    static let origin: JSString = "origin"
+    static let performance: JSString = "performance"
+    static let queueMicrotask: JSString = "queueMicrotask"
+    static let reportError: JSString = "reportError"
+    static let setInterval: JSString = "setInterval"
+    static let setTimeout: JSString = "setTimeout"
+    static let structuredClone: JSString = "structuredClone"
 }
 
 public protocol WindowOrWorkerGlobalScope: JSBridgedClass {}
@@ -32,7 +32,7 @@ public extension WindowOrWorkerGlobalScope {
     var crossOriginIsolated: Bool { ReadonlyAttribute[Keys.crossOriginIsolated, in: jsObject] }
 
     func reportError(e: JSValue) {
-        _ = jsObject[Keys.reportError]!(e.jsValue())
+        jsObject[Keys.reportError]!(e.jsValue()).fromJSValue()!
     }
 
     func btoa(data: String) -> String {
@@ -48,7 +48,7 @@ public extension WindowOrWorkerGlobalScope {
     }
 
     func clearTimeout(id: Int32? = nil) {
-        _ = jsObject[Keys.clearTimeout]!(id?.jsValue() ?? .undefined)
+        jsObject[Keys.clearTimeout]!(id?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func setInterval(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
@@ -56,10 +56,12 @@ public extension WindowOrWorkerGlobalScope {
     }
 
     func clearInterval(id: Int32? = nil) {
-        _ = jsObject[Keys.clearInterval]!(id?.jsValue() ?? .undefined)
+        jsObject[Keys.clearInterval]!(id?.jsValue() ?? .undefined).fromJSValue()!
     }
 
-    // XXX: method 'queueMicrotask' is ignored
+    func queueMicrotask(callback: VoidFunction) {
+        jsObject[Keys.queueMicrotask]!(callback.jsValue()).fromJSValue()!
+    }
 
     func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) -> JSPromise {
         jsObject[Keys.createImageBitmap]!(image.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!

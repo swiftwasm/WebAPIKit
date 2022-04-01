@@ -4,9 +4,9 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 private enum Keys {
-    static let onpaste: JSString = "onpaste"
     static let oncopy: JSString = "oncopy"
     static let oncut: JSString = "oncut"
+    static let onpaste: JSString = "onpaste"
 }
 
 public protocol DocumentAndElementEventHandlers: JSBridgedClass {}

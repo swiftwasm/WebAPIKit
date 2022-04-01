@@ -7,13 +7,13 @@ public class HTMLMeterElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLMeterElement.function! }
 
     private enum Keys {
-        static let optimum: JSString = "optimum"
-        static let value: JSString = "value"
-        static let min: JSString = "min"
-        static let low: JSString = "low"
-        static let max: JSString = "max"
         static let high: JSString = "high"
         static let labels: JSString = "labels"
+        static let low: JSString = "low"
+        static let max: JSString = "max"
+        static let min: JSString = "min"
+        static let optimum: JSString = "optimum"
+        static let value: JSString = "value"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

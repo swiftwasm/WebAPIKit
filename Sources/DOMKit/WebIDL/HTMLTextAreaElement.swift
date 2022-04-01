@@ -7,36 +7,36 @@ public class HTMLTextAreaElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTextAreaElement.function! }
 
     private enum Keys {
+        static let autocomplete: JSString = "autocomplete"
+        static let checkValidity: JSString = "checkValidity"
+        static let cols: JSString = "cols"
+        static let defaultValue: JSString = "defaultValue"
+        static let dirName: JSString = "dirName"
+        static let disabled: JSString = "disabled"
+        static let form: JSString = "form"
+        static let labels: JSString = "labels"
         static let maxLength: JSString = "maxLength"
         static let minLength: JSString = "minLength"
-        static let checkValidity: JSString = "checkValidity"
-        static let setRangeText: JSString = "setRangeText"
-        static let type: JSString = "type"
-        static let selectionDirection: JSString = "selectionDirection"
-        static let select: JSString = "select"
-        static let selectionStart: JSString = "selectionStart"
-        static let validationMessage: JSString = "validationMessage"
-        static let rows: JSString = "rows"
-        static let cols: JSString = "cols"
-        static let reportValidity: JSString = "reportValidity"
-        static let labels: JSString = "labels"
         static let name: JSString = "name"
-        static let form: JSString = "form"
-        static let setSelectionRange: JSString = "setSelectionRange"
         static let placeholder: JSString = "placeholder"
-        static let selectionEnd: JSString = "selectionEnd"
-        static let disabled: JSString = "disabled"
-        static let dirName: JSString = "dirName"
-        static let defaultValue: JSString = "defaultValue"
         static let readOnly: JSString = "readOnly"
-        static let wrap: JSString = "wrap"
-        static let validity: JSString = "validity"
-        static let willValidate: JSString = "willValidate"
-        static let value: JSString = "value"
-        static let setCustomValidity: JSString = "setCustomValidity"
+        static let reportValidity: JSString = "reportValidity"
         static let required: JSString = "required"
-        static let autocomplete: JSString = "autocomplete"
+        static let rows: JSString = "rows"
+        static let select: JSString = "select"
+        static let selectionDirection: JSString = "selectionDirection"
+        static let selectionEnd: JSString = "selectionEnd"
+        static let selectionStart: JSString = "selectionStart"
+        static let setCustomValidity: JSString = "setCustomValidity"
+        static let setRangeText: JSString = "setRangeText"
+        static let setSelectionRange: JSString = "setSelectionRange"
         static let textLength: JSString = "textLength"
+        static let type: JSString = "type"
+        static let validationMessage: JSString = "validationMessage"
+        static let validity: JSString = "validity"
+        static let value: JSString = "value"
+        static let willValidate: JSString = "willValidate"
+        static let wrap: JSString = "wrap"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -140,14 +140,14 @@ public class HTMLTextAreaElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var labels: NodeList
 
     public func select() {
-        _ = jsObject[Keys.select]!()
+        jsObject[Keys.select]!().fromJSValue()!
     }
 
     @ReadWriteAttribute
@@ -160,14 +160,14 @@ public class HTMLTextAreaElement: HTMLElement {
     public var selectionDirection: String
 
     public func setRangeText(replacement: String) {
-        _ = jsObject[Keys.setRangeText]!(replacement.jsValue())
+        jsObject[Keys.setRangeText]!(replacement.jsValue()).fromJSValue()!
     }
 
     public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
-        _ = jsObject[Keys.setRangeText]!(replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined)
+        jsObject[Keys.setRangeText]!(replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
-        _ = jsObject[Keys.setSelectionRange]!(start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined)
+        jsObject[Keys.setSelectionRange]!(start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

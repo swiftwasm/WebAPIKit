@@ -7,10 +7,10 @@ public class TransformStreamDefaultController: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.TransformStreamDefaultController.function! }
 
     private enum Keys {
-        static let terminate: JSString = "terminate"
         static let desiredSize: JSString = "desiredSize"
         static let enqueue: JSString = "enqueue"
         static let error: JSString = "error"
+        static let terminate: JSString = "terminate"
     }
 
     public let jsObject: JSObject
@@ -24,14 +24,14 @@ public class TransformStreamDefaultController: JSBridgedClass {
     public var desiredSize: Double?
 
     public func enqueue(chunk: JSValue? = nil) {
-        _ = jsObject[Keys.enqueue]!(chunk?.jsValue() ?? .undefined)
+        jsObject[Keys.enqueue]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func error(reason: JSValue? = nil) {
-        _ = jsObject[Keys.error]!(reason?.jsValue() ?? .undefined)
+        jsObject[Keys.error]!(reason?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func terminate() {
-        _ = jsObject[Keys.terminate]!()
+        jsObject[Keys.terminate]!().fromJSValue()!
     }
 }

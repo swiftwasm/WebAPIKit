@@ -9,10 +9,10 @@ public class Plugin: JSBridgedClass {
     private enum Keys {
         static let description: JSString = "description"
         static let filename: JSString = "filename"
-        static let length: JSString = "length"
         static let item: JSString = "item"
-        static let namedItem: JSString = "namedItem"
+        static let length: JSString = "length"
         static let name: JSString = "name"
+        static let namedItem: JSString = "namedItem"
     }
 
     public let jsObject: JSObject
@@ -37,7 +37,7 @@ public class Plugin: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> MimeType? {
+    public subscript(key: UInt32) -> MimeType? {
         jsObject[key].fromJSValue()
     }
 

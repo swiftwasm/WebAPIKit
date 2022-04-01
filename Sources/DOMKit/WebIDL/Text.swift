@@ -7,8 +7,8 @@ public class Text: CharacterData, Slottable {
     override public class var constructor: JSFunction { JSObject.global.Text.function! }
 
     private enum Keys {
-        static let wholeText: JSString = "wholeText"
         static let splitText: JSString = "splitText"
+        static let wholeText: JSString = "wholeText"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

@@ -7,23 +7,23 @@ public class HTMLButtonElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLButtonElement.function! }
 
     private enum Keys {
-        static let formMethod: JSString = "formMethod"
-        static let setCustomValidity: JSString = "setCustomValidity"
-        static let name: JSString = "name"
-        static let reportValidity: JSString = "reportValidity"
-        static let labels: JSString = "labels"
-        static let willValidate: JSString = "willValidate"
-        static let formNoValidate: JSString = "formNoValidate"
-        static let formTarget: JSString = "formTarget"
-        static let value: JSString = "value"
         static let checkValidity: JSString = "checkValidity"
-        static let type: JSString = "type"
         static let disabled: JSString = "disabled"
-        static let validity: JSString = "validity"
-        static let formEnctype: JSString = "formEnctype"
         static let form: JSString = "form"
         static let formAction: JSString = "formAction"
+        static let formEnctype: JSString = "formEnctype"
+        static let formMethod: JSString = "formMethod"
+        static let formNoValidate: JSString = "formNoValidate"
+        static let formTarget: JSString = "formTarget"
+        static let labels: JSString = "labels"
+        static let name: JSString = "name"
+        static let reportValidity: JSString = "reportValidity"
+        static let setCustomValidity: JSString = "setCustomValidity"
+        static let type: JSString = "type"
         static let validationMessage: JSString = "validationMessage"
+        static let validity: JSString = "validity"
+        static let value: JSString = "value"
+        static let willValidate: JSString = "willValidate"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -96,7 +96,7 @@ public class HTMLButtonElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute

@@ -7,10 +7,10 @@ public class Blob: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.Blob.function! }
 
     private enum Keys {
-        static let slice: JSString = "slice"
-        static let size: JSString = "size"
-        static let stream: JSString = "stream"
         static let arrayBuffer: JSString = "arrayBuffer"
+        static let size: JSString = "size"
+        static let slice: JSString = "slice"
+        static let stream: JSString = "stream"
         static let text: JSString = "text"
         static let type: JSString = "type"
     }

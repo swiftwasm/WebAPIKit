@@ -7,13 +7,13 @@ public class WheelEvent: MouseEvent {
     override public class var constructor: JSFunction { JSObject.global.WheelEvent.function! }
 
     private enum Keys {
-        static let DOM_DELTA_PIXEL: JSString = "DOM_DELTA_PIXEL"
-        static let deltaY: JSString = "deltaY"
-        static let DOM_DELTA_PAGE: JSString = "DOM_DELTA_PAGE"
-        static let deltaZ: JSString = "deltaZ"
         static let DOM_DELTA_LINE: JSString = "DOM_DELTA_LINE"
+        static let DOM_DELTA_PAGE: JSString = "DOM_DELTA_PAGE"
+        static let DOM_DELTA_PIXEL: JSString = "DOM_DELTA_PIXEL"
         static let deltaMode: JSString = "deltaMode"
         static let deltaX: JSString = "deltaX"
+        static let deltaY: JSString = "deltaY"
+        static let deltaZ: JSString = "deltaZ"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

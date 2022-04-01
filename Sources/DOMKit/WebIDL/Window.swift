@@ -7,45 +7,45 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     override public class var constructor: JSFunction { JSObject.global.Window.function! }
 
     private enum Keys {
-        static let print: JSString = "print"
-        static let name: JSString = "name"
-        static let `self`: JSString = "self"
-        static let document: JSString = "document"
-        static let status: JSString = "status"
-        static let close: JSString = "close"
-        static let opener: JSString = "opener"
-        static let menubar: JSString = "menubar"
-        static let personalbar: JSString = "personalbar"
-        static let clientInformation: JSString = "clientInformation"
-        static let focus: JSString = "focus"
-        static let parent: JSString = "parent"
-        static let top: JSString = "top"
-        static let location: JSString = "location"
         static let alert: JSString = "alert"
-        static let window: JSString = "window"
-        static let locationbar: JSString = "locationbar"
+        static let blur: JSString = "blur"
+        static let captureEvents: JSString = "captureEvents"
+        static let clientInformation: JSString = "clientInformation"
+        static let close: JSString = "close"
         static let closed: JSString = "closed"
+        static let confirm: JSString = "confirm"
         static let customElements: JSString = "customElements"
+        static let document: JSString = "document"
+        static let event: JSString = "event"
+        static let external: JSString = "external"
+        static let focus: JSString = "focus"
         static let frameElement: JSString = "frameElement"
-        static let statusbar: JSString = "statusbar"
-        static let open: JSString = "open"
-        static let navigator: JSString = "navigator"
+        static let frames: JSString = "frames"
+        static let getComputedStyle: JSString = "getComputedStyle"
         static let history: JSString = "history"
         static let length: JSString = "length"
-        static let releaseEvents: JSString = "releaseEvents"
-        static let postMessage: JSString = "postMessage"
-        static let external: JSString = "external"
-        static let getComputedStyle: JSString = "getComputedStyle"
-        static let blur: JSString = "blur"
-        static let stop: JSString = "stop"
+        static let location: JSString = "location"
+        static let locationbar: JSString = "locationbar"
+        static let menubar: JSString = "menubar"
+        static let name: JSString = "name"
+        static let navigator: JSString = "navigator"
+        static let open: JSString = "open"
+        static let opener: JSString = "opener"
         static let originAgentCluster: JSString = "originAgentCluster"
-        static let confirm: JSString = "confirm"
-        static let frames: JSString = "frames"
-        static let captureEvents: JSString = "captureEvents"
-        static let event: JSString = "event"
+        static let parent: JSString = "parent"
+        static let personalbar: JSString = "personalbar"
+        static let postMessage: JSString = "postMessage"
+        static let print: JSString = "print"
         static let prompt: JSString = "prompt"
-        static let toolbar: JSString = "toolbar"
+        static let releaseEvents: JSString = "releaseEvents"
         static let scrollbars: JSString = "scrollbars"
+        static let `self`: JSString = "self"
+        static let status: JSString = "status"
+        static let statusbar: JSString = "statusbar"
+        static let stop: JSString = "stop"
+        static let toolbar: JSString = "toolbar"
+        static let top: JSString = "top"
+        static let window: JSString = "window"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -124,22 +124,22 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var status: String
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        jsObject[Keys.close]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var closed: Bool
 
     public func stop() {
-        _ = jsObject[Keys.stop]!()
+        jsObject[Keys.stop]!().fromJSValue()!
     }
 
     public func focus() {
-        _ = jsObject[Keys.focus]!()
+        jsObject[Keys.focus]!().fromJSValue()!
     }
 
     public func blur() {
-        _ = jsObject[Keys.blur]!()
+        jsObject[Keys.blur]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -178,11 +178,11 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var originAgentCluster: Bool
 
     public func alert() {
-        _ = jsObject[Keys.alert]!()
+        jsObject[Keys.alert]!().fromJSValue()!
     }
 
     public func alert(message: String) {
-        _ = jsObject[Keys.alert]!(message.jsValue())
+        jsObject[Keys.alert]!(message.jsValue()).fromJSValue()!
     }
 
     public func confirm(message: String? = nil) -> Bool {
@@ -194,23 +194,23 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     }
 
     public func print() {
-        _ = jsObject[Keys.print]!()
+        jsObject[Keys.print]!().fromJSValue()!
     }
 
     public func postMessage(message: JSValue, targetOrigin: String, transfer: [JSObject]? = nil) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), targetOrigin.jsValue(), transfer?.jsValue() ?? .undefined)
+        jsObject[Keys.postMessage]!(message.jsValue(), targetOrigin.jsValue(), transfer?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func postMessage(message: JSValue, options: WindowPostMessageOptions? = nil) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func captureEvents() {
-        _ = jsObject[Keys.captureEvents]!()
+        jsObject[Keys.captureEvents]!().fromJSValue()!
     }
 
     public func releaseEvents() {
-        _ = jsObject[Keys.releaseEvents]!()
+        jsObject[Keys.releaseEvents]!().fromJSValue()!
     }
 
     @ReadonlyAttribute

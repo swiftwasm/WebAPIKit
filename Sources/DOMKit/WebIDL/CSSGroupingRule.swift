@@ -25,6 +25,6 @@ public class CSSGroupingRule: CSSRule {
     }
 
     public func deleteRule(index: UInt32) {
-        _ = jsObject[Keys.deleteRule]!(index.jsValue())
+        jsObject[Keys.deleteRule]!(index.jsValue()).fromJSValue()!
     }
 }

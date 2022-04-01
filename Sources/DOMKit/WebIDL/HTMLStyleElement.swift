@@ -7,8 +7,8 @@ public class HTMLStyleElement: HTMLElement, LinkStyle {
     override public class var constructor: JSFunction { JSObject.global.HTMLStyleElement.function! }
 
     private enum Keys {
-        static let media: JSString = "media"
         static let blocking: JSString = "blocking"
+        static let media: JSString = "media"
         static let type: JSString = "type"
     }
 

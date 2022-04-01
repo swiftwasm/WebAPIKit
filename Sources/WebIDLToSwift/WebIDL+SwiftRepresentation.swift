@@ -63,7 +63,7 @@ private func printKeys(_ keys: [IDLNamed]) -> SwiftSource {
     let validKeys = Set(keys.map(\.name).filter { !$0.isEmpty })
     return """
     private enum Keys {
-        \(lines: validKeys.map { "static let \(name: $0): JSString = \(quoted: $0)" })
+        \(lines: validKeys.sorted().map { "static let \(name: $0): JSString = \(quoted: $0)" })
     }
     """
 }

@@ -5,9 +5,9 @@ import JavaScriptKit
 
 public class ShadowRootInit: BridgedDictionary {
     private enum Keys {
-        static let slotAssignment: JSString = "slotAssignment"
         static let delegatesFocus: JSString = "delegatesFocus"
         static let mode: JSString = "mode"
+        static let slotAssignment: JSString = "slotAssignment"
     }
 
     public convenience init(mode: ShadowRootMode, delegatesFocus: Bool, slotAssignment: SlotAssignmentMode) {

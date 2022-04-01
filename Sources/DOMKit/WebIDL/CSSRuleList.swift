@@ -18,7 +18,7 @@ public class CSSRuleList: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public subscript(key: Int) -> CSSRule? {
+    public subscript(key: UInt32) -> CSSRule? {
         jsObject[key].fromJSValue()
     }
 

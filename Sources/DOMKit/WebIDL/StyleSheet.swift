@@ -7,13 +7,13 @@ public class StyleSheet: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.StyleSheet.function! }
 
     private enum Keys {
-        static let title: JSString = "title"
         static let disabled: JSString = "disabled"
-        static let type: JSString = "type"
-        static let ownerNode: JSString = "ownerNode"
         static let href: JSString = "href"
         static let media: JSString = "media"
+        static let ownerNode: JSString = "ownerNode"
         static let parentStyleSheet: JSString = "parentStyleSheet"
+        static let title: JSString = "title"
+        static let type: JSString = "type"
     }
 
     public let jsObject: JSObject

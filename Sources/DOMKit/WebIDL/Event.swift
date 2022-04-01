@@ -7,28 +7,28 @@ public class Event: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.Event.function! }
 
     private enum Keys {
-        static let type: JSString = "type"
-        static let currentTarget: JSString = "currentTarget"
-        static let composedPath: JSString = "composedPath"
-        static let stopImmediatePropagation: JSString = "stopImmediatePropagation"
-        static let preventDefault: JSString = "preventDefault"
-        static let NONE: JSString = "NONE"
-        static let defaultPrevented: JSString = "defaultPrevented"
-        static let composed: JSString = "composed"
-        static let CAPTURING_PHASE: JSString = "CAPTURING_PHASE"
-        static let timeStamp: JSString = "timeStamp"
-        static let returnValue: JSString = "returnValue"
-        static let eventPhase: JSString = "eventPhase"
-        static let bubbles: JSString = "bubbles"
         static let AT_TARGET: JSString = "AT_TARGET"
-        static let srcElement: JSString = "srcElement"
-        static let stopPropagation: JSString = "stopPropagation"
-        static let target: JSString = "target"
         static let BUBBLING_PHASE: JSString = "BUBBLING_PHASE"
+        static let CAPTURING_PHASE: JSString = "CAPTURING_PHASE"
+        static let NONE: JSString = "NONE"
+        static let bubbles: JSString = "bubbles"
         static let cancelBubble: JSString = "cancelBubble"
         static let cancelable: JSString = "cancelable"
+        static let composed: JSString = "composed"
+        static let composedPath: JSString = "composedPath"
+        static let currentTarget: JSString = "currentTarget"
+        static let defaultPrevented: JSString = "defaultPrevented"
+        static let eventPhase: JSString = "eventPhase"
         static let initEvent: JSString = "initEvent"
         static let isTrusted: JSString = "isTrusted"
+        static let preventDefault: JSString = "preventDefault"
+        static let returnValue: JSString = "returnValue"
+        static let srcElement: JSString = "srcElement"
+        static let stopImmediatePropagation: JSString = "stopImmediatePropagation"
+        static let stopPropagation: JSString = "stopPropagation"
+        static let target: JSString = "target"
+        static let timeStamp: JSString = "timeStamp"
+        static let type: JSString = "type"
     }
 
     public let jsObject: JSObject
@@ -82,14 +82,14 @@ public class Event: JSBridgedClass {
     public var eventPhase: UInt16
 
     public func stopPropagation() {
-        _ = jsObject[Keys.stopPropagation]!()
+        jsObject[Keys.stopPropagation]!().fromJSValue()!
     }
 
     @ReadWriteAttribute
     public var cancelBubble: Bool
 
     public func stopImmediatePropagation() {
-        _ = jsObject[Keys.stopImmediatePropagation]!()
+        jsObject[Keys.stopImmediatePropagation]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -102,7 +102,7 @@ public class Event: JSBridgedClass {
     public var returnValue: Bool
 
     public func preventDefault() {
-        _ = jsObject[Keys.preventDefault]!()
+        jsObject[Keys.preventDefault]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -118,6 +118,6 @@ public class Event: JSBridgedClass {
     public var timeStamp: DOMHighResTimeStamp
 
     public func initEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil) {
-        _ = jsObject[Keys.initEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined)
+        jsObject[Keys.initEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

@@ -7,12 +7,12 @@ public class VideoTrackList: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.VideoTrackList.function! }
 
     private enum Keys {
-        static let length: JSString = "length"
         static let getTrackById: JSString = "getTrackById"
-        static let onchange: JSString = "onchange"
-        static let selectedIndex: JSString = "selectedIndex"
+        static let length: JSString = "length"
         static let onaddtrack: JSString = "onaddtrack"
+        static let onchange: JSString = "onchange"
         static let onremovetrack: JSString = "onremovetrack"
+        static let selectedIndex: JSString = "selectedIndex"
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -27,7 +27,7 @@ public class VideoTrackList: EventTarget {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> VideoTrack {
+    public subscript(key: UInt32) -> VideoTrack {
         jsObject[key].fromJSValue()!
     }
 

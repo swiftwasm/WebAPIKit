@@ -7,14 +7,14 @@ public class MutationEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.MutationEvent.function! }
 
     private enum Keys {
-        static let attrName: JSString = "attrName"
-        static let attrChange: JSString = "attrChange"
-        static let newValue: JSString = "newValue"
         static let ADDITION: JSString = "ADDITION"
-        static let initMutationEvent: JSString = "initMutationEvent"
-        static let prevValue: JSString = "prevValue"
         static let MODIFICATION: JSString = "MODIFICATION"
         static let REMOVAL: JSString = "REMOVAL"
+        static let attrChange: JSString = "attrChange"
+        static let attrName: JSString = "attrName"
+        static let initMutationEvent: JSString = "initMutationEvent"
+        static let newValue: JSString = "newValue"
+        static let prevValue: JSString = "prevValue"
         static let relatedNode: JSString = "relatedNode"
     }
 
@@ -57,6 +57,6 @@ public class MutationEvent: Event {
         let _arg5 = newValueArg?.jsValue() ?? .undefined
         let _arg6 = attrNameArg?.jsValue() ?? .undefined
         let _arg7 = attrChangeArg?.jsValue() ?? .undefined
-        _ = jsObject[Keys.initMutationEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        return jsObject[Keys.initMutationEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7).fromJSValue()!
     }
 }

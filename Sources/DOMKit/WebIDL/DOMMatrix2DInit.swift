@@ -6,17 +6,17 @@ import JavaScriptKit
 public class DOMMatrix2DInit: BridgedDictionary {
     private enum Keys {
         static let a: JSString = "a"
-        static let f: JSString = "f"
-        static let m41: JSString = "m41"
-        static let m22: JSString = "m22"
-        static let m42: JSString = "m42"
-        static let m21: JSString = "m21"
         static let b: JSString = "b"
+        static let c: JSString = "c"
         static let d: JSString = "d"
         static let e: JSString = "e"
-        static let c: JSString = "c"
-        static let m12: JSString = "m12"
+        static let f: JSString = "f"
         static let m11: JSString = "m11"
+        static let m12: JSString = "m12"
+        static let m21: JSString = "m21"
+        static let m22: JSString = "m22"
+        static let m41: JSString = "m41"
+        static let m42: JSString = "m42"
     }
 
     public convenience init(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double, m11: Double, m12: Double, m21: Double, m22: Double, m41: Double, m42: Double) {
