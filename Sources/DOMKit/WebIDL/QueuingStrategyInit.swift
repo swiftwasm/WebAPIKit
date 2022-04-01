@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class QueuingStrategyInit: JSObject {
-    public init(highWaterMark: Double) {
+public class QueuingStrategyInit: BridgedDictionary {
+    public convenience init(highWaterMark: Double) {
         let object = JSObject.global.Object.function!.new()
         object["highWaterMark"] = highWaterMark.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _highWaterMark = ReadWriteAttribute(jsObject: object, name: "highWaterMark")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

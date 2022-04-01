@@ -3,14 +3,18 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class HashChangeEventInit: JSObject {
-    public init(oldURL: String, newURL: String) {
+public class HashChangeEventInit: BridgedDictionary {
+    public convenience init(oldURL: String, newURL: String) {
         let object = JSObject.global.Object.function!.new()
         object["oldURL"] = oldURL.jsValue()
         object["newURL"] = newURL.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _oldURL = ReadWriteAttribute(jsObject: object, name: "oldURL")
         _newURL = ReadWriteAttribute(jsObject: object, name: "newURL")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

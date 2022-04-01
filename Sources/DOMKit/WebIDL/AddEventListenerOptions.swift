@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class AddEventListenerOptions: JSObject {
-    public init(passive: Bool, once: Bool, signal: AbortSignal) {
+public class AddEventListenerOptions: BridgedDictionary {
+    public convenience init(passive: Bool, once: Bool, signal: AbortSignal) {
         let object = JSObject.global.Object.function!.new()
         object["passive"] = passive.jsValue()
         object["once"] = once.jsValue()
         object["signal"] = signal.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _passive = ReadWriteAttribute(jsObject: object, name: "passive")
         _once = ReadWriteAttribute(jsObject: object, name: "once")
         _signal = ReadWriteAttribute(jsObject: object, name: "signal")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

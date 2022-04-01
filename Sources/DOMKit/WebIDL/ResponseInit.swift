@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ResponseInit: JSObject {
-    public init(status: UInt16, statusText: String, headers: HeadersInit) {
+public class ResponseInit: BridgedDictionary {
+    public convenience init(status: UInt16, statusText: String, headers: HeadersInit) {
         let object = JSObject.global.Object.function!.new()
         object["status"] = status.jsValue()
         object["statusText"] = statusText.jsValue()
         object["headers"] = headers.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _status = ReadWriteAttribute(jsObject: object, name: "status")
         _statusText = ReadWriteAttribute(jsObject: object, name: "statusText")
         _headers = ReadWriteAttribute(jsObject: object, name: "headers")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class FilePropertyBag: JSObject {
-    public init(lastModified: Int64) {
+public class FilePropertyBag: BridgedDictionary {
+    public convenience init(lastModified: Int64) {
         let object = JSObject.global.Object.function!.new()
         object["lastModified"] = lastModified.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _lastModified = ReadWriteAttribute(jsObject: object, name: "lastModified")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

@@ -3,18 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class StreamPipeOptions: JSObject {
-    public init(preventClose: Bool, preventAbort: Bool, preventCancel: Bool, signal: AbortSignal) {
+public class StreamPipeOptions: BridgedDictionary {
+    public convenience init(preventClose: Bool, preventAbort: Bool, preventCancel: Bool, signal: AbortSignal) {
         let object = JSObject.global.Object.function!.new()
         object["preventClose"] = preventClose.jsValue()
         object["preventAbort"] = preventAbort.jsValue()
         object["preventCancel"] = preventCancel.jsValue()
         object["signal"] = signal.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _preventClose = ReadWriteAttribute(jsObject: object, name: "preventClose")
         _preventAbort = ReadWriteAttribute(jsObject: object, name: "preventAbort")
         _preventCancel = ReadWriteAttribute(jsObject: object, name: "preventCancel")
         _signal = ReadWriteAttribute(jsObject: object, name: "signal")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

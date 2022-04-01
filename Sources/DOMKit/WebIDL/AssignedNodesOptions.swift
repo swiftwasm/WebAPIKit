@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class AssignedNodesOptions: JSObject {
-    public init(flatten: Bool) {
+public class AssignedNodesOptions: BridgedDictionary {
+    public convenience init(flatten: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["flatten"] = flatten.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _flatten = ReadWriteAttribute(jsObject: object, name: "flatten")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

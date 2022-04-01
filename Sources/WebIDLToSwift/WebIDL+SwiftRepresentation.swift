@@ -62,43 +62,54 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
 extension MergedDictionary: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
-        public class \(name): JSObject {
+        public class \(name): BridgedDictionary {
             \(swiftInit)
             \(swiftMembers.joined(separator: "\n\n"))
         }
         """
     }
 
+    private var membersWithPropertyWrapper: [(IDLDictionary.Member, SwiftSource)] {
+        members.map {
+            ($0, $0.idlType.propertyWrapper(readonly: false))
+        }
+    }
+
     private var swiftInit: SwiftSource {
-        """
-        public init(\(sequence: members.map { "\($0.name): \($0.idlType.isFunction ? "@escaping " : "")\($0.idlType)" })) {
+        let params: [SwiftSource] = members.map {
+            "\($0.name): \($0.idlType.isFunction ? "@escaping " : "")\($0.idlType)"
+        }
+        return """
+        public convenience init(\(sequence: params)) {
             let object = JSObject.global.Object.function!.new()
-            \(lines: members.map {
-                if $0.idlType.isFunction {
+            \(lines: membersWithPropertyWrapper.map { member, wrapper in
+                if member.idlType.isFunction {
                     return """
-                    \($0.idlType.propertyWrapper(readonly: false))[\(quoted: $0.name), in: object] = \($0.name)
+                    \(wrapper)[\(quoted: member.name), in: object] = \(member.name)
                     """
                 } else {
                     return """
-                    object[\(quoted: $0.name)] = \($0.name).jsValue()
+                    object[\(quoted: member.name)] = \(member.name).jsValue()
                     """
                 }
             })
-            \(lines: members.map {
-                """
-                _\(raw: $0.name) = \($0.idlType.propertyWrapper(readonly: false))(jsObject: object, name: \(quoted: $0.name))
-                """
+            self.init(unsafelyWrapping: object)
+        }
+
+        public required init(unsafelyWrapping object: JSObject) {
+            \(lines: membersWithPropertyWrapper.map { member, wrapper in
+                "_\(raw: member.name) = \(wrapper)(jsObject: object, name: \(quoted: member.name))"
             })
-            super.init(cloning: object)
+            super.init(unsafelyWrapping: object)
         }
         """
     }
 
     private var swiftMembers: [SwiftSource] {
-        members.map {
+        membersWithPropertyWrapper.map { member, wrapper in
             """
-            @\($0.idlType.propertyWrapper(readonly: false))
-            public var \($0.name): \($0.idlType)
+            @\(wrapper)
+            public var \(member.name): \(member.idlType)
             """
         }
     }

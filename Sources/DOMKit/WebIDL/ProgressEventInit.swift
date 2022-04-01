@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ProgressEventInit: JSObject {
-    public init(lengthComputable: Bool, loaded: UInt64, total: UInt64) {
+public class ProgressEventInit: BridgedDictionary {
+    public convenience init(lengthComputable: Bool, loaded: UInt64, total: UInt64) {
         let object = JSObject.global.Object.function!.new()
         object["lengthComputable"] = lengthComputable.jsValue()
         object["loaded"] = loaded.jsValue()
         object["total"] = total.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _lengthComputable = ReadWriteAttribute(jsObject: object, name: "lengthComputable")
         _loaded = ReadWriteAttribute(jsObject: object, name: "loaded")
         _total = ReadWriteAttribute(jsObject: object, name: "total")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

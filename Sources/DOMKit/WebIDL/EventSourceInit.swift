@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class EventSourceInit: JSObject {
-    public init(withCredentials: Bool) {
+public class EventSourceInit: BridgedDictionary {
+    public convenience init(withCredentials: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["withCredentials"] = withCredentials.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _withCredentials = ReadWriteAttribute(jsObject: object, name: "withCredentials")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

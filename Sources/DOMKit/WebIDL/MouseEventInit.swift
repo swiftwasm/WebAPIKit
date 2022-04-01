@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class MouseEventInit: JSObject {
-    public init(screenX: Int32, screenY: Int32, clientX: Int32, clientY: Int32, button: Int16, buttons: UInt16, relatedTarget: EventTarget?) {
+public class MouseEventInit: BridgedDictionary {
+    public convenience init(screenX: Int32, screenY: Int32, clientX: Int32, clientY: Int32, button: Int16, buttons: UInt16, relatedTarget: EventTarget?) {
         let object = JSObject.global.Object.function!.new()
         object["screenX"] = screenX.jsValue()
         object["screenY"] = screenY.jsValue()
@@ -13,6 +13,10 @@ public class MouseEventInit: JSObject {
         object["button"] = button.jsValue()
         object["buttons"] = buttons.jsValue()
         object["relatedTarget"] = relatedTarget.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _screenX = ReadWriteAttribute(jsObject: object, name: "screenX")
         _screenY = ReadWriteAttribute(jsObject: object, name: "screenY")
         _clientX = ReadWriteAttribute(jsObject: object, name: "clientX")
@@ -20,7 +24,7 @@ public class MouseEventInit: JSObject {
         _button = ReadWriteAttribute(jsObject: object, name: "button")
         _buttons = ReadWriteAttribute(jsObject: object, name: "buttons")
         _relatedTarget = ReadWriteAttribute(jsObject: object, name: "relatedTarget")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

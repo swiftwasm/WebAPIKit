@@ -3,20 +3,24 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class MessageEventInit: JSObject {
-    public init(data: JSValue, origin: String, lastEventId: String, source: MessageEventSource?, ports: [MessagePort]) {
+public class MessageEventInit: BridgedDictionary {
+    public convenience init(data: JSValue, origin: String, lastEventId: String, source: MessageEventSource?, ports: [MessagePort]) {
         let object = JSObject.global.Object.function!.new()
         object["data"] = data.jsValue()
         object["origin"] = origin.jsValue()
         object["lastEventId"] = lastEventId.jsValue()
         object["source"] = source.jsValue()
         object["ports"] = ports.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _data = ReadWriteAttribute(jsObject: object, name: "data")
         _origin = ReadWriteAttribute(jsObject: object, name: "origin")
         _lastEventId = ReadWriteAttribute(jsObject: object, name: "lastEventId")
         _source = ReadWriteAttribute(jsObject: object, name: "source")
         _ports = ReadWriteAttribute(jsObject: object, name: "ports")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ShadowRootInit: JSObject {
-    public init(mode: ShadowRootMode, delegatesFocus: Bool, slotAssignment: SlotAssignmentMode) {
+public class ShadowRootInit: BridgedDictionary {
+    public convenience init(mode: ShadowRootMode, delegatesFocus: Bool, slotAssignment: SlotAssignmentMode) {
         let object = JSObject.global.Object.function!.new()
         object["mode"] = mode.jsValue()
         object["delegatesFocus"] = delegatesFocus.jsValue()
         object["slotAssignment"] = slotAssignment.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _mode = ReadWriteAttribute(jsObject: object, name: "mode")
         _delegatesFocus = ReadWriteAttribute(jsObject: object, name: "delegatesFocus")
         _slotAssignment = ReadWriteAttribute(jsObject: object, name: "slotAssignment")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

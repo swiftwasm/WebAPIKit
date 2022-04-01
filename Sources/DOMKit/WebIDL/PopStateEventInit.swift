@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class PopStateEventInit: JSObject {
-    public init(state: JSValue) {
+public class PopStateEventInit: BridgedDictionary {
+    public convenience init(state: JSValue) {
         let object = JSObject.global.Object.function!.new()
         object["state"] = state.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _state = ReadWriteAttribute(jsObject: object, name: "state")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

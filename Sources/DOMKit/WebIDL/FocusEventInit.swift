@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class FocusEventInit: JSObject {
-    public init(relatedTarget: EventTarget?) {
+public class FocusEventInit: BridgedDictionary {
+    public convenience init(relatedTarget: EventTarget?) {
         let object = JSObject.global.Object.function!.new()
         object["relatedTarget"] = relatedTarget.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _relatedTarget = ReadWriteAttribute(jsObject: object, name: "relatedTarget")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

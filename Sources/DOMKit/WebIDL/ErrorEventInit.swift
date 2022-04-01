@@ -3,20 +3,24 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ErrorEventInit: JSObject {
-    public init(message: String, filename: String, lineno: UInt32, colno: UInt32, error: JSValue) {
+public class ErrorEventInit: BridgedDictionary {
+    public convenience init(message: String, filename: String, lineno: UInt32, colno: UInt32, error: JSValue) {
         let object = JSObject.global.Object.function!.new()
         object["message"] = message.jsValue()
         object["filename"] = filename.jsValue()
         object["lineno"] = lineno.jsValue()
         object["colno"] = colno.jsValue()
         object["error"] = error.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _message = ReadWriteAttribute(jsObject: object, name: "message")
         _filename = ReadWriteAttribute(jsObject: object, name: "filename")
         _lineno = ReadWriteAttribute(jsObject: object, name: "lineno")
         _colno = ReadWriteAttribute(jsObject: object, name: "colno")
         _error = ReadWriteAttribute(jsObject: object, name: "error")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

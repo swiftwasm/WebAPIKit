@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class PageTransitionEventInit: JSObject {
-    public init(persisted: Bool) {
+public class PageTransitionEventInit: BridgedDictionary {
+    public convenience init(persisted: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["persisted"] = persisted.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _persisted = ReadWriteAttribute(jsObject: object, name: "persisted")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ValidityStateFlags: JSObject {
-    public init(valueMissing: Bool, typeMismatch: Bool, patternMismatch: Bool, tooLong: Bool, tooShort: Bool, rangeUnderflow: Bool, rangeOverflow: Bool, stepMismatch: Bool, badInput: Bool, customError: Bool) {
+public class ValidityStateFlags: BridgedDictionary {
+    public convenience init(valueMissing: Bool, typeMismatch: Bool, patternMismatch: Bool, tooLong: Bool, tooShort: Bool, rangeUnderflow: Bool, rangeOverflow: Bool, stepMismatch: Bool, badInput: Bool, customError: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["valueMissing"] = valueMissing.jsValue()
         object["typeMismatch"] = typeMismatch.jsValue()
@@ -16,6 +16,10 @@ public class ValidityStateFlags: JSObject {
         object["stepMismatch"] = stepMismatch.jsValue()
         object["badInput"] = badInput.jsValue()
         object["customError"] = customError.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _valueMissing = ReadWriteAttribute(jsObject: object, name: "valueMissing")
         _typeMismatch = ReadWriteAttribute(jsObject: object, name: "typeMismatch")
         _patternMismatch = ReadWriteAttribute(jsObject: object, name: "patternMismatch")
@@ -26,7 +30,7 @@ public class ValidityStateFlags: JSObject {
         _stepMismatch = ReadWriteAttribute(jsObject: object, name: "stepMismatch")
         _badInput = ReadWriteAttribute(jsObject: object, name: "badInput")
         _customError = ReadWriteAttribute(jsObject: object, name: "customError")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

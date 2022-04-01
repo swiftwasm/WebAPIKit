@@ -3,18 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class DOMRectInit: JSObject {
-    public init(x: Double, y: Double, width: Double, height: Double) {
+public class DOMRectInit: BridgedDictionary {
+    public convenience init(x: Double, y: Double, width: Double, height: Double) {
         let object = JSObject.global.Object.function!.new()
         object["x"] = x.jsValue()
         object["y"] = y.jsValue()
         object["width"] = width.jsValue()
         object["height"] = height.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _x = ReadWriteAttribute(jsObject: object, name: "x")
         _y = ReadWriteAttribute(jsObject: object, name: "y")
         _width = ReadWriteAttribute(jsObject: object, name: "width")
         _height = ReadWriteAttribute(jsObject: object, name: "height")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

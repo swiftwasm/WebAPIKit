@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class KeyboardEventInit: JSObject {
-    public init(key: String, code: String, location: UInt32, repeat: Bool, isComposing: Bool, charCode: UInt32, keyCode: UInt32) {
+public class KeyboardEventInit: BridgedDictionary {
+    public convenience init(key: String, code: String, location: UInt32, repeat: Bool, isComposing: Bool, charCode: UInt32, keyCode: UInt32) {
         let object = JSObject.global.Object.function!.new()
         object["key"] = key.jsValue()
         object["code"] = code.jsValue()
@@ -13,6 +13,10 @@ public class KeyboardEventInit: JSObject {
         object["isComposing"] = isComposing.jsValue()
         object["charCode"] = charCode.jsValue()
         object["keyCode"] = keyCode.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _key = ReadWriteAttribute(jsObject: object, name: "key")
         _code = ReadWriteAttribute(jsObject: object, name: "code")
         _location = ReadWriteAttribute(jsObject: object, name: "location")
@@ -20,7 +24,7 @@ public class KeyboardEventInit: JSObject {
         _isComposing = ReadWriteAttribute(jsObject: object, name: "isComposing")
         _charCode = ReadWriteAttribute(jsObject: object, name: "charCode")
         _keyCode = ReadWriteAttribute(jsObject: object, name: "keyCode")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class FormDataEventInit: JSObject {
-    public init(formData: FormData) {
+public class FormDataEventInit: BridgedDictionary {
+    public convenience init(formData: FormData) {
         let object = JSObject.global.Object.function!.new()
         object["formData"] = formData.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _formData = ReadWriteAttribute(jsObject: object, name: "formData")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

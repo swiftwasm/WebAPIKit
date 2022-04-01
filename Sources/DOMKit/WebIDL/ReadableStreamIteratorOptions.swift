@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ReadableStreamIteratorOptions: JSObject {
-    public init(preventCancel: Bool) {
+public class ReadableStreamIteratorOptions: BridgedDictionary {
+    public convenience init(preventCancel: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["preventCancel"] = preventCancel.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _preventCancel = ReadWriteAttribute(jsObject: object, name: "preventCancel")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

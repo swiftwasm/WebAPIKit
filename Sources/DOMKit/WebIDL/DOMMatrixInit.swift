@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class DOMMatrixInit: JSObject {
-    public init(m13: Double, m14: Double, m23: Double, m24: Double, m31: Double, m32: Double, m33: Double, m34: Double, m43: Double, m44: Double, is2D: Bool) {
+public class DOMMatrixInit: BridgedDictionary {
+    public convenience init(m13: Double, m14: Double, m23: Double, m24: Double, m31: Double, m32: Double, m33: Double, m34: Double, m43: Double, m44: Double, is2D: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["m13"] = m13.jsValue()
         object["m14"] = m14.jsValue()
@@ -17,6 +17,10 @@ public class DOMMatrixInit: JSObject {
         object["m43"] = m43.jsValue()
         object["m44"] = m44.jsValue()
         object["is2D"] = is2D.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _m13 = ReadWriteAttribute(jsObject: object, name: "m13")
         _m14 = ReadWriteAttribute(jsObject: object, name: "m14")
         _m23 = ReadWriteAttribute(jsObject: object, name: "m23")
@@ -28,7 +32,7 @@ public class DOMMatrixInit: JSObject {
         _m43 = ReadWriteAttribute(jsObject: object, name: "m43")
         _m44 = ReadWriteAttribute(jsObject: object, name: "m44")
         _is2D = ReadWriteAttribute(jsObject: object, name: "is2D")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

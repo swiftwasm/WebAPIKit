@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class SubmitEventInit: JSObject {
-    public init(submitter: HTMLElement?) {
+public class SubmitEventInit: BridgedDictionary {
+    public convenience init(submitter: HTMLElement?) {
         let object = JSObject.global.Object.function!.new()
         object["submitter"] = submitter.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _submitter = ReadWriteAttribute(jsObject: object, name: "submitter")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

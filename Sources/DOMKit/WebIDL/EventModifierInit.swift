@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class EventModifierInit: JSObject {
-    public init(ctrlKey: Bool, shiftKey: Bool, altKey: Bool, metaKey: Bool, modifierAltGraph: Bool, modifierCapsLock: Bool, modifierFn: Bool, modifierFnLock: Bool, modifierHyper: Bool, modifierNumLock: Bool, modifierScrollLock: Bool, modifierSuper: Bool, modifierSymbol: Bool, modifierSymbolLock: Bool) {
+public class EventModifierInit: BridgedDictionary {
+    public convenience init(ctrlKey: Bool, shiftKey: Bool, altKey: Bool, metaKey: Bool, modifierAltGraph: Bool, modifierCapsLock: Bool, modifierFn: Bool, modifierFnLock: Bool, modifierHyper: Bool, modifierNumLock: Bool, modifierScrollLock: Bool, modifierSuper: Bool, modifierSymbol: Bool, modifierSymbolLock: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["ctrlKey"] = ctrlKey.jsValue()
         object["shiftKey"] = shiftKey.jsValue()
@@ -20,6 +20,10 @@ public class EventModifierInit: JSObject {
         object["modifierSuper"] = modifierSuper.jsValue()
         object["modifierSymbol"] = modifierSymbol.jsValue()
         object["modifierSymbolLock"] = modifierSymbolLock.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _ctrlKey = ReadWriteAttribute(jsObject: object, name: "ctrlKey")
         _shiftKey = ReadWriteAttribute(jsObject: object, name: "shiftKey")
         _altKey = ReadWriteAttribute(jsObject: object, name: "altKey")
@@ -34,7 +38,7 @@ public class EventModifierInit: JSObject {
         _modifierSuper = ReadWriteAttribute(jsObject: object, name: "modifierSuper")
         _modifierSymbol = ReadWriteAttribute(jsObject: object, name: "modifierSymbol")
         _modifierSymbolLock = ReadWriteAttribute(jsObject: object, name: "modifierSymbolLock")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

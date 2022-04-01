@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class EventInit: JSObject {
-    public init(bubbles: Bool, cancelable: Bool, composed: Bool) {
+public class EventInit: BridgedDictionary {
+    public convenience init(bubbles: Bool, cancelable: Bool, composed: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["bubbles"] = bubbles.jsValue()
         object["cancelable"] = cancelable.jsValue()
         object["composed"] = composed.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _bubbles = ReadWriteAttribute(jsObject: object, name: "bubbles")
         _cancelable = ReadWriteAttribute(jsObject: object, name: "cancelable")
         _composed = ReadWriteAttribute(jsObject: object, name: "composed")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ImageBitmapOptions: JSObject {
-    public init(imageOrientation: ImageOrientation, premultiplyAlpha: PremultiplyAlpha, colorSpaceConversion: ColorSpaceConversion, resizeWidth: UInt32, resizeHeight: UInt32, resizeQuality: ResizeQuality) {
+public class ImageBitmapOptions: BridgedDictionary {
+    public convenience init(imageOrientation: ImageOrientation, premultiplyAlpha: PremultiplyAlpha, colorSpaceConversion: ColorSpaceConversion, resizeWidth: UInt32, resizeHeight: UInt32, resizeQuality: ResizeQuality) {
         let object = JSObject.global.Object.function!.new()
         object["imageOrientation"] = imageOrientation.jsValue()
         object["premultiplyAlpha"] = premultiplyAlpha.jsValue()
@@ -12,13 +12,17 @@ public class ImageBitmapOptions: JSObject {
         object["resizeWidth"] = resizeWidth.jsValue()
         object["resizeHeight"] = resizeHeight.jsValue()
         object["resizeQuality"] = resizeQuality.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _imageOrientation = ReadWriteAttribute(jsObject: object, name: "imageOrientation")
         _premultiplyAlpha = ReadWriteAttribute(jsObject: object, name: "premultiplyAlpha")
         _colorSpaceConversion = ReadWriteAttribute(jsObject: object, name: "colorSpaceConversion")
         _resizeWidth = ReadWriteAttribute(jsObject: object, name: "resizeWidth")
         _resizeHeight = ReadWriteAttribute(jsObject: object, name: "resizeHeight")
         _resizeQuality = ReadWriteAttribute(jsObject: object, name: "resizeQuality")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class UIEventInit: JSObject {
-    public init(view: Window?, detail: Int32, which: UInt32) {
+public class UIEventInit: BridgedDictionary {
+    public convenience init(view: Window?, detail: Int32, which: UInt32) {
         let object = JSObject.global.Object.function!.new()
         object["view"] = view.jsValue()
         object["detail"] = detail.jsValue()
         object["which"] = which.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _view = ReadWriteAttribute(jsObject: object, name: "view")
         _detail = ReadWriteAttribute(jsObject: object, name: "detail")
         _which = ReadWriteAttribute(jsObject: object, name: "which")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

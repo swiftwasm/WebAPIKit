@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class EventListenerOptions: JSObject {
-    public init(capture: Bool) {
+public class EventListenerOptions: BridgedDictionary {
+    public convenience init(capture: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["capture"] = capture.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _capture = ReadWriteAttribute(jsObject: object, name: "capture")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

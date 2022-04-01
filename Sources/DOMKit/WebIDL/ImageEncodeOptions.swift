@@ -3,14 +3,18 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ImageEncodeOptions: JSObject {
-    public init(type: String, quality: Double) {
+public class ImageEncodeOptions: BridgedDictionary {
+    public convenience init(type: String, quality: Double) {
         let object = JSObject.global.Object.function!.new()
         object["type"] = type.jsValue()
         object["quality"] = quality.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _type = ReadWriteAttribute(jsObject: object, name: "type")
         _quality = ReadWriteAttribute(jsObject: object, name: "quality")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

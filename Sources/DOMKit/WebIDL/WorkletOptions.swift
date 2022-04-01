@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class WorkletOptions: JSObject {
-    public init(credentials: RequestCredentials) {
+public class WorkletOptions: BridgedDictionary {
+    public convenience init(credentials: RequestCredentials) {
         let object = JSObject.global.Object.function!.new()
         object["credentials"] = credentials.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _credentials = ReadWriteAttribute(jsObject: object, name: "credentials")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

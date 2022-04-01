@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class StructuredSerializeOptions: JSObject {
-    public init(transfer: [JSObject]) {
+public class StructuredSerializeOptions: BridgedDictionary {
+    public convenience init(transfer: [JSObject]) {
         let object = JSObject.global.Object.function!.new()
         object["transfer"] = transfer.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _transfer = ReadWriteAttribute(jsObject: object, name: "transfer")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

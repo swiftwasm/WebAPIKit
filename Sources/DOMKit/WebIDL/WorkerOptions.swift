@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class WorkerOptions: JSObject {
-    public init(type: WorkerType, credentials: RequestCredentials, name: String) {
+public class WorkerOptions: BridgedDictionary {
+    public convenience init(type: WorkerType, credentials: RequestCredentials, name: String) {
         let object = JSObject.global.Object.function!.new()
         object["type"] = type.jsValue()
         object["credentials"] = credentials.jsValue()
         object["name"] = name.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _type = ReadWriteAttribute(jsObject: object, name: "type")
         _credentials = ReadWriteAttribute(jsObject: object, name: "credentials")
         _name = ReadWriteAttribute(jsObject: object, name: "name")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

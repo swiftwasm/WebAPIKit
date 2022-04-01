@@ -3,14 +3,18 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ReadableWritablePair: JSObject {
-    public init(readable: ReadableStream, writable: WritableStream) {
+public class ReadableWritablePair: BridgedDictionary {
+    public convenience init(readable: ReadableStream, writable: WritableStream) {
         let object = JSObject.global.Object.function!.new()
         object["readable"] = readable.jsValue()
         object["writable"] = writable.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _readable = ReadWriteAttribute(jsObject: object, name: "readable")
         _writable = ReadWriteAttribute(jsObject: object, name: "writable")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

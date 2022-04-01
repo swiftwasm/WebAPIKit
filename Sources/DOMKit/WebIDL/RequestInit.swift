@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class RequestInit: JSObject {
-    public init(method: String, headers: HeadersInit, body: BodyInit?, referrer: String, referrerPolicy: ReferrerPolicy, mode: RequestMode, credentials: RequestCredentials, cache: RequestCache, redirect: RequestRedirect, integrity: String, keepalive: Bool, signal: AbortSignal?, window: JSValue) {
+public class RequestInit: BridgedDictionary {
+    public convenience init(method: String, headers: HeadersInit, body: BodyInit?, referrer: String, referrerPolicy: ReferrerPolicy, mode: RequestMode, credentials: RequestCredentials, cache: RequestCache, redirect: RequestRedirect, integrity: String, keepalive: Bool, signal: AbortSignal?, window: JSValue) {
         let object = JSObject.global.Object.function!.new()
         object["method"] = method.jsValue()
         object["headers"] = headers.jsValue()
@@ -19,6 +19,10 @@ public class RequestInit: JSObject {
         object["keepalive"] = keepalive.jsValue()
         object["signal"] = signal.jsValue()
         object["window"] = window.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _method = ReadWriteAttribute(jsObject: object, name: "method")
         _headers = ReadWriteAttribute(jsObject: object, name: "headers")
         _body = ReadWriteAttribute(jsObject: object, name: "body")
@@ -32,7 +36,7 @@ public class RequestInit: JSObject {
         _keepalive = ReadWriteAttribute(jsObject: object, name: "keepalive")
         _signal = ReadWriteAttribute(jsObject: object, name: "signal")
         _window = ReadWriteAttribute(jsObject: object, name: "window")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

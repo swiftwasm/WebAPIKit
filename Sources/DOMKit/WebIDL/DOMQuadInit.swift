@@ -3,18 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class DOMQuadInit: JSObject {
-    public init(p1: DOMPointInit, p2: DOMPointInit, p3: DOMPointInit, p4: DOMPointInit) {
+public class DOMQuadInit: BridgedDictionary {
+    public convenience init(p1: DOMPointInit, p2: DOMPointInit, p3: DOMPointInit, p4: DOMPointInit) {
         let object = JSObject.global.Object.function!.new()
         object["p1"] = p1.jsValue()
         object["p2"] = p2.jsValue()
         object["p3"] = p3.jsValue()
         object["p4"] = p4.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _p1 = ReadWriteAttribute(jsObject: object, name: "p1")
         _p2 = ReadWriteAttribute(jsObject: object, name: "p2")
         _p3 = ReadWriteAttribute(jsObject: object, name: "p3")
         _p4 = ReadWriteAttribute(jsObject: object, name: "p4")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

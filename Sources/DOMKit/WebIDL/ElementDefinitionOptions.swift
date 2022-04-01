@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ElementDefinitionOptions: JSObject {
-    public init(extends: String) {
+public class ElementDefinitionOptions: BridgedDictionary {
+    public convenience init(extends: String) {
         let object = JSObject.global.Object.function!.new()
         object["extends"] = extends.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _extends = ReadWriteAttribute(jsObject: object, name: "extends")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

@@ -3,14 +3,18 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class BlobPropertyBag: JSObject {
-    public init(type: String, endings: EndingType) {
+public class BlobPropertyBag: BridgedDictionary {
+    public convenience init(type: String, endings: EndingType) {
         let object = JSObject.global.Object.function!.new()
         object["type"] = type.jsValue()
         object["endings"] = endings.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _type = ReadWriteAttribute(jsObject: object, name: "type")
         _endings = ReadWriteAttribute(jsObject: object, name: "endings")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

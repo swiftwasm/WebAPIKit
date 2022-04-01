@@ -3,16 +3,20 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class CSSStyleSheetInit: JSObject {
-    public init(baseURL: String, media: __UNSUPPORTED_UNION__, disabled: Bool) {
+public class CSSStyleSheetInit: BridgedDictionary {
+    public convenience init(baseURL: String, media: __UNSUPPORTED_UNION__, disabled: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["baseURL"] = baseURL.jsValue()
         object["media"] = media.jsValue()
         object["disabled"] = disabled.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _baseURL = ReadWriteAttribute(jsObject: object, name: "baseURL")
         _media = ReadWriteAttribute(jsObject: object, name: "media")
         _disabled = ReadWriteAttribute(jsObject: object, name: "disabled")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

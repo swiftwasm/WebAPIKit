@@ -3,14 +3,18 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ReadableStreamDefaultReadResult: JSObject {
-    public init(value: JSValue, done: Bool) {
+public class ReadableStreamDefaultReadResult: BridgedDictionary {
+    public convenience init(value: JSValue, done: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["value"] = value.jsValue()
         object["done"] = done.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _value = ReadWriteAttribute(jsObject: object, name: "value")
         _done = ReadWriteAttribute(jsObject: object, name: "done")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

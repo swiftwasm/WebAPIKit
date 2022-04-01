@@ -3,18 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class CanvasRenderingContext2DSettings: JSObject {
-    public init(alpha: Bool, desynchronized: Bool, colorSpace: PredefinedColorSpace, willReadFrequently: Bool) {
+public class CanvasRenderingContext2DSettings: BridgedDictionary {
+    public convenience init(alpha: Bool, desynchronized: Bool, colorSpace: PredefinedColorSpace, willReadFrequently: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["alpha"] = alpha.jsValue()
         object["desynchronized"] = desynchronized.jsValue()
         object["colorSpace"] = colorSpace.jsValue()
         object["willReadFrequently"] = willReadFrequently.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _alpha = ReadWriteAttribute(jsObject: object, name: "alpha")
         _desynchronized = ReadWriteAttribute(jsObject: object, name: "desynchronized")
         _colorSpace = ReadWriteAttribute(jsObject: object, name: "colorSpace")
         _willReadFrequently = ReadWriteAttribute(jsObject: object, name: "willReadFrequently")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class GetRootNodeOptions: JSObject {
-    public init(composed: Bool) {
+public class GetRootNodeOptions: BridgedDictionary {
+    public convenience init(composed: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["composed"] = composed.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _composed = ReadWriteAttribute(jsObject: object, name: "composed")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

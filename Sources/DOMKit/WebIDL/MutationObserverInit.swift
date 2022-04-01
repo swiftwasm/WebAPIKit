@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class MutationObserverInit: JSObject {
-    public init(childList: Bool, attributes: Bool, characterData: Bool, subtree: Bool, attributeOldValue: Bool, characterDataOldValue: Bool, attributeFilter: [String]) {
+public class MutationObserverInit: BridgedDictionary {
+    public convenience init(childList: Bool, attributes: Bool, characterData: Bool, subtree: Bool, attributeOldValue: Bool, characterDataOldValue: Bool, attributeFilter: [String]) {
         let object = JSObject.global.Object.function!.new()
         object["childList"] = childList.jsValue()
         object["attributes"] = attributes.jsValue()
@@ -13,6 +13,10 @@ public class MutationObserverInit: JSObject {
         object["attributeOldValue"] = attributeOldValue.jsValue()
         object["characterDataOldValue"] = characterDataOldValue.jsValue()
         object["attributeFilter"] = attributeFilter.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _childList = ReadWriteAttribute(jsObject: object, name: "childList")
         _attributes = ReadWriteAttribute(jsObject: object, name: "attributes")
         _characterData = ReadWriteAttribute(jsObject: object, name: "characterData")
@@ -20,7 +24,7 @@ public class MutationObserverInit: JSObject {
         _attributeOldValue = ReadWriteAttribute(jsObject: object, name: "attributeOldValue")
         _characterDataOldValue = ReadWriteAttribute(jsObject: object, name: "characterDataOldValue")
         _attributeFilter = ReadWriteAttribute(jsObject: object, name: "attributeFilter")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

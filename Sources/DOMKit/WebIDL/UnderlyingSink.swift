@@ -3,20 +3,24 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class UnderlyingSink: JSObject {
-    public init(start: @escaping UnderlyingSinkStartCallback, write: @escaping UnderlyingSinkWriteCallback, close: @escaping UnderlyingSinkCloseCallback, abort: @escaping UnderlyingSinkAbortCallback, type: JSValue) {
+public class UnderlyingSink: BridgedDictionary {
+    public convenience init(start: @escaping UnderlyingSinkStartCallback, write: @escaping UnderlyingSinkWriteCallback, close: @escaping UnderlyingSinkCloseCallback, abort: @escaping UnderlyingSinkAbortCallback, type: JSValue) {
         let object = JSObject.global.Object.function!.new()
         ClosureAttribute.Required1["start", in: object] = start
         ClosureAttribute.Required2["write", in: object] = write
         ClosureAttribute.Required0["close", in: object] = close
         ClosureAttribute.Required1["abort", in: object] = abort
         object["type"] = type.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _start = ClosureAttribute.Required1(jsObject: object, name: "start")
         _write = ClosureAttribute.Required2(jsObject: object, name: "write")
         _close = ClosureAttribute.Required0(jsObject: object, name: "close")
         _abort = ClosureAttribute.Required1(jsObject: object, name: "abort")
         _type = ReadWriteAttribute(jsObject: object, name: "type")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ClosureAttribute.Required1

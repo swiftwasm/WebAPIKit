@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ReadableStreamGetReaderOptions: JSObject {
-    public init(mode: ReadableStreamReaderMode) {
+public class ReadableStreamGetReaderOptions: BridgedDictionary {
+    public convenience init(mode: ReadableStreamReaderMode) {
         let object = JSObject.global.Object.function!.new()
         object["mode"] = mode.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _mode = ReadWriteAttribute(jsObject: object, name: "mode")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

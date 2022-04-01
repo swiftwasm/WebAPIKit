@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class DragEventInit: JSObject {
-    public init(dataTransfer: DataTransfer?) {
+public class DragEventInit: BridgedDictionary {
+    public convenience init(dataTransfer: DataTransfer?) {
         let object = JSObject.global.Object.function!.new()
         object["dataTransfer"] = dataTransfer.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _dataTransfer = ReadWriteAttribute(jsObject: object, name: "dataTransfer")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

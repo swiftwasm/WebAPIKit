@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class CompositionEventInit: JSObject {
-    public init(data: String) {
+public class CompositionEventInit: BridgedDictionary {
+    public convenience init(data: String) {
         let object = JSObject.global.Object.function!.new()
         object["data"] = data.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _data = ReadWriteAttribute(jsObject: object, name: "data")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

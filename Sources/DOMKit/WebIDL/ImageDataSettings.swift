@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ImageDataSettings: JSObject {
-    public init(colorSpace: PredefinedColorSpace) {
+public class ImageDataSettings: BridgedDictionary {
+    public convenience init(colorSpace: PredefinedColorSpace) {
         let object = JSObject.global.Object.function!.new()
         object["colorSpace"] = colorSpace.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _colorSpace = ReadWriteAttribute(jsObject: object, name: "colorSpace")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

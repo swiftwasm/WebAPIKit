@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ImageBitmapRenderingContextSettings: JSObject {
-    public init(alpha: Bool) {
+public class ImageBitmapRenderingContextSettings: BridgedDictionary {
+    public convenience init(alpha: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["alpha"] = alpha.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _alpha = ReadWriteAttribute(jsObject: object, name: "alpha")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

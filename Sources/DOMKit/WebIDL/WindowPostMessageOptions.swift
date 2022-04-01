@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class WindowPostMessageOptions: JSObject {
-    public init(targetOrigin: String) {
+public class WindowPostMessageOptions: BridgedDictionary {
+    public convenience init(targetOrigin: String) {
         let object = JSObject.global.Object.function!.new()
         object["targetOrigin"] = targetOrigin.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _targetOrigin = ReadWriteAttribute(jsObject: object, name: "targetOrigin")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

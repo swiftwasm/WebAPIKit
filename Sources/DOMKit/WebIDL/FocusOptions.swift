@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class FocusOptions: JSObject {
-    public init(preventScroll: Bool) {
+public class FocusOptions: BridgedDictionary {
+    public convenience init(preventScroll: Bool) {
         let object = JSObject.global.Object.function!.new()
         object["preventScroll"] = preventScroll.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _preventScroll = ReadWriteAttribute(jsObject: object, name: "preventScroll")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

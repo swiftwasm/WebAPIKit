@@ -3,18 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class StaticRangeInit: JSObject {
-    public init(startContainer: Node, startOffset: UInt32, endContainer: Node, endOffset: UInt32) {
+public class StaticRangeInit: BridgedDictionary {
+    public convenience init(startContainer: Node, startOffset: UInt32, endContainer: Node, endOffset: UInt32) {
         let object = JSObject.global.Object.function!.new()
         object["startContainer"] = startContainer.jsValue()
         object["startOffset"] = startOffset.jsValue()
         object["endContainer"] = endContainer.jsValue()
         object["endOffset"] = endOffset.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _startContainer = ReadWriteAttribute(jsObject: object, name: "startContainer")
         _startOffset = ReadWriteAttribute(jsObject: object, name: "startOffset")
         _endContainer = ReadWriteAttribute(jsObject: object, name: "endContainer")
         _endOffset = ReadWriteAttribute(jsObject: object, name: "endOffset")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute

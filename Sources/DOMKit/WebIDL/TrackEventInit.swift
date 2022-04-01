@@ -3,12 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class TrackEventInit: JSObject {
-    public init(track: __UNSUPPORTED_UNION__?) {
+public class TrackEventInit: BridgedDictionary {
+    public convenience init(track: __UNSUPPORTED_UNION__?) {
         let object = JSObject.global.Object.function!.new()
         object["track"] = track.jsValue()
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
         _track = ReadWriteAttribute(jsObject: object, name: "track")
-        super.init(cloning: object)
+        super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute
