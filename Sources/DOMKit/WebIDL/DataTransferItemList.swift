@@ -6,17 +6,10 @@ import JavaScriptKit
 public class DataTransferItemList: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DataTransferItemList.function! }
 
-    private enum Keys {
-        static let add: JSString = "add"
-        static let clear: JSString = "clear"
-        static let length: JSString = "length"
-        static let remove: JSString = "remove"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
         self.jsObject = jsObject
     }
 
@@ -28,18 +21,18 @@ public class DataTransferItemList: JSBridgedClass {
     }
 
     public func add(data: String, type: String) -> DataTransferItem? {
-        jsObject[Keys.add]!(data.jsValue(), type.jsValue()).fromJSValue()!
+        jsObject[Strings.add]!(data.jsValue(), type.jsValue()).fromJSValue()!
     }
 
     public func add(data: File) -> DataTransferItem? {
-        jsObject[Keys.add]!(data.jsValue()).fromJSValue()!
+        jsObject[Strings.add]!(data.jsValue()).fromJSValue()!
     }
 
     public func remove(index: UInt32) {
-        _ = jsObject[Keys.remove]!(index.jsValue())
+        _ = jsObject[Strings.remove]!(index.jsValue())
     }
 
     public func clear() {
-        _ = jsObject[Keys.clear]!()
+        _ = jsObject[Strings.clear]!()
     }
 }

@@ -6,12 +6,8 @@ import JavaScriptKit
 public class HTMLTableCaptionElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableCaptionElement.function! }
 
-    private enum Keys {
-        static let align: JSString = "align"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
         super.init(unsafelyWrapping: jsObject)
     }
 

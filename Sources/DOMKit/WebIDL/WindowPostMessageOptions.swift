@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WindowPostMessageOptions: BridgedDictionary {
-    private enum Keys {
-        static let targetOrigin: JSString = "targetOrigin"
-    }
-
     public convenience init(targetOrigin: String) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.targetOrigin] = targetOrigin.jsValue()
+        object[Strings.targetOrigin] = targetOrigin.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _targetOrigin = ReadWriteAttribute(jsObject: object, name: Keys.targetOrigin)
+        _targetOrigin = ReadWriteAttribute(jsObject: object, name: Strings.targetOrigin)
         super.init(unsafelyWrapping: object)
     }
 

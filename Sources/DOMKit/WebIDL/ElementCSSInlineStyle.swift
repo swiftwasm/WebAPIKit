@@ -3,11 +3,7 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let style: JSString = "style"
-}
-
 public protocol ElementCSSInlineStyle: JSBridgedClass {}
 public extension ElementCSSInlineStyle {
-    var style: CSSStyleDeclaration { ReadonlyAttribute[Keys.style, in: jsObject] }
+    var style: CSSStyleDeclaration { ReadonlyAttribute[Strings.style, in: jsObject] }
 }

@@ -6,17 +6,10 @@ import JavaScriptKit
 public class WritableStream: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.WritableStream.function! }
 
-    private enum Keys {
-        static let abort: JSString = "abort"
-        static let close: JSString = "close"
-        static let getWriter: JSString = "getWriter"
-        static let locked: JSString = "locked"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _locked = ReadonlyAttribute(jsObject: jsObject, name: Keys.locked)
+        _locked = ReadonlyAttribute(jsObject: jsObject, name: Strings.locked)
         self.jsObject = jsObject
     }
 
@@ -28,26 +21,26 @@ public class WritableStream: JSBridgedClass {
     public var locked: Bool
 
     public func abort(reason: JSValue? = nil) -> JSPromise {
-        jsObject[Keys.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func abort(reason: JSValue? = nil) async throws {
-        let _promise: JSPromise = jsObject[Keys.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        let _promise: JSPromise = jsObject[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func close() -> JSPromise {
-        jsObject[Keys.close]!().fromJSValue()!
+        jsObject[Strings.close]!().fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func close() async throws {
-        let _promise: JSPromise = jsObject[Keys.close]!().fromJSValue()!
+        let _promise: JSPromise = jsObject[Strings.close]!().fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getWriter() -> WritableStreamDefaultWriter {
-        jsObject[Keys.getWriter]!().fromJSValue()!
+        jsObject[Strings.getWriter]!().fromJSValue()!
     }
 }

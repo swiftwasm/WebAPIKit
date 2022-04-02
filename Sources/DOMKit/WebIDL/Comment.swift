@@ -6,8 +6,6 @@ import JavaScriptKit
 public class Comment: CharacterData {
     override public class var constructor: JSFunction { JSObject.global.Comment.function! }
 
-    private enum Keys {}
-
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

@@ -3,28 +3,21 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let after: JSString = "after"
-    static let before: JSString = "before"
-    static let remove: JSString = "remove"
-    static let replaceWith: JSString = "replaceWith"
-}
-
 public protocol ChildNode: JSBridgedClass {}
 public extension ChildNode {
     func before(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.before]!(nodes.jsValue())
+        _ = jsObject[Strings.before]!(nodes.jsValue())
     }
 
     func after(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.after]!(nodes.jsValue())
+        _ = jsObject[Strings.after]!(nodes.jsValue())
     }
 
     func replaceWith(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.replaceWith]!(nodes.jsValue())
+        _ = jsObject[Strings.replaceWith]!(nodes.jsValue())
     }
 
     func remove() {
-        _ = jsObject[Keys.remove]!()
+        _ = jsObject[Strings.remove]!()
     }
 }

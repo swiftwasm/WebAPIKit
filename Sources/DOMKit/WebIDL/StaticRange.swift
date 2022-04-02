@@ -6,8 +6,6 @@ import JavaScriptKit
 public class StaticRange: AbstractRange {
     override public class var constructor: JSFunction { JSObject.global.StaticRange.function! }
 
-    private enum Keys {}
-
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

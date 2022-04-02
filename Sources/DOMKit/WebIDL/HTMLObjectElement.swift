@@ -6,58 +6,29 @@ import JavaScriptKit
 public class HTMLObjectElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLObjectElement.function! }
 
-    private enum Keys {
-        static let align: JSString = "align"
-        static let archive: JSString = "archive"
-        static let border: JSString = "border"
-        static let checkValidity: JSString = "checkValidity"
-        static let code: JSString = "code"
-        static let codeBase: JSString = "codeBase"
-        static let codeType: JSString = "codeType"
-        static let contentDocument: JSString = "contentDocument"
-        static let contentWindow: JSString = "contentWindow"
-        static let data: JSString = "data"
-        static let declare: JSString = "declare"
-        static let form: JSString = "form"
-        static let getSVGDocument: JSString = "getSVGDocument"
-        static let height: JSString = "height"
-        static let hspace: JSString = "hspace"
-        static let name: JSString = "name"
-        static let reportValidity: JSString = "reportValidity"
-        static let setCustomValidity: JSString = "setCustomValidity"
-        static let standby: JSString = "standby"
-        static let type: JSString = "type"
-        static let useMap: JSString = "useMap"
-        static let validationMessage: JSString = "validationMessage"
-        static let validity: JSString = "validity"
-        static let vspace: JSString = "vspace"
-        static let width: JSString = "width"
-        static let willValidate: JSString = "willValidate"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _data = ReadWriteAttribute(jsObject: jsObject, name: Keys.data)
-        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
-        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
-        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
-        _contentDocument = ReadonlyAttribute(jsObject: jsObject, name: Keys.contentDocument)
-        _contentWindow = ReadonlyAttribute(jsObject: jsObject, name: Keys.contentWindow)
-        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Keys.willValidate)
-        _validity = ReadonlyAttribute(jsObject: jsObject, name: Keys.validity)
-        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Keys.validationMessage)
-        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
-        _archive = ReadWriteAttribute(jsObject: jsObject, name: Keys.archive)
-        _code = ReadWriteAttribute(jsObject: jsObject, name: Keys.code)
-        _declare = ReadWriteAttribute(jsObject: jsObject, name: Keys.declare)
-        _hspace = ReadWriteAttribute(jsObject: jsObject, name: Keys.hspace)
-        _standby = ReadWriteAttribute(jsObject: jsObject, name: Keys.standby)
-        _vspace = ReadWriteAttribute(jsObject: jsObject, name: Keys.vspace)
-        _codeBase = ReadWriteAttribute(jsObject: jsObject, name: Keys.codeBase)
-        _codeType = ReadWriteAttribute(jsObject: jsObject, name: Keys.codeType)
-        _useMap = ReadWriteAttribute(jsObject: jsObject, name: Keys.useMap)
-        _border = ReadWriteAttribute(jsObject: jsObject, name: Keys.border)
+        _data = ReadWriteAttribute(jsObject: jsObject, name: Strings.data)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
+        _contentDocument = ReadonlyAttribute(jsObject: jsObject, name: Strings.contentDocument)
+        _contentWindow = ReadonlyAttribute(jsObject: jsObject, name: Strings.contentWindow)
+        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Strings.willValidate)
+        _validity = ReadonlyAttribute(jsObject: jsObject, name: Strings.validity)
+        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Strings.validationMessage)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
+        _archive = ReadWriteAttribute(jsObject: jsObject, name: Strings.archive)
+        _code = ReadWriteAttribute(jsObject: jsObject, name: Strings.code)
+        _declare = ReadWriteAttribute(jsObject: jsObject, name: Strings.declare)
+        _hspace = ReadWriteAttribute(jsObject: jsObject, name: Strings.hspace)
+        _standby = ReadWriteAttribute(jsObject: jsObject, name: Strings.standby)
+        _vspace = ReadWriteAttribute(jsObject: jsObject, name: Strings.vspace)
+        _codeBase = ReadWriteAttribute(jsObject: jsObject, name: Strings.codeBase)
+        _codeType = ReadWriteAttribute(jsObject: jsObject, name: Strings.codeType)
+        _useMap = ReadWriteAttribute(jsObject: jsObject, name: Strings.useMap)
+        _border = ReadWriteAttribute(jsObject: jsObject, name: Strings.border)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -90,7 +61,7 @@ public class HTMLObjectElement: HTMLElement {
     public var contentWindow: WindowProxy?
 
     public func getSVGDocument() -> Document? {
-        jsObject[Keys.getSVGDocument]!().fromJSValue()!
+        jsObject[Strings.getSVGDocument]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -103,15 +74,15 @@ public class HTMLObjectElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Keys.checkValidity]!().fromJSValue()!
+        jsObject[Strings.checkValidity]!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Keys.reportValidity]!().fromJSValue()!
+        jsObject[Strings.reportValidity]!().fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        _ = jsObject[Strings.setCustomValidity]!(error.jsValue())
     }
 
     @ReadWriteAttribute

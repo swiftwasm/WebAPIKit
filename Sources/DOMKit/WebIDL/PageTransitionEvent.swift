@@ -6,12 +6,8 @@ import JavaScriptKit
 public class PageTransitionEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.PageTransitionEvent.function! }
 
-    private enum Keys {
-        static let persisted: JSString = "persisted"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _persisted = ReadonlyAttribute(jsObject: jsObject, name: Keys.persisted)
+        _persisted = ReadonlyAttribute(jsObject: jsObject, name: Strings.persisted)
         super.init(unsafelyWrapping: jsObject)
     }
 

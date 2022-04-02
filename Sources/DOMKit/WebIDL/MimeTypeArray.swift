@@ -6,16 +6,10 @@ import JavaScriptKit
 public class MimeTypeArray: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MimeTypeArray.function! }
 
-    private enum Keys {
-        static let item: JSString = "item"
-        static let length: JSString = "length"
-        static let namedItem: JSString = "namedItem"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
         self.jsObject = jsObject
     }
 

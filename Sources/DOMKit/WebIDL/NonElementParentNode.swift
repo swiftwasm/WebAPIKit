@@ -3,13 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let getElementById: JSString = "getElementById"
-}
-
 public protocol NonElementParentNode: JSBridgedClass {}
 public extension NonElementParentNode {
     func getElementById(elementId: String) -> Element? {
-        jsObject[Keys.getElementById]!(elementId.jsValue()).fromJSValue()!
+        jsObject[Strings.getElementById]!(elementId.jsValue()).fromJSValue()!
     }
 }

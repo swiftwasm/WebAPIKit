@@ -6,24 +6,14 @@ import JavaScriptKit
 public class HTMLSourceElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLSourceElement.function! }
 
-    private enum Keys {
-        static let height: JSString = "height"
-        static let media: JSString = "media"
-        static let sizes: JSString = "sizes"
-        static let src: JSString = "src"
-        static let srcset: JSString = "srcset"
-        static let type: JSString = "type"
-        static let width: JSString = "width"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _src = ReadWriteAttribute(jsObject: jsObject, name: Keys.src)
-        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
-        _srcset = ReadWriteAttribute(jsObject: jsObject, name: Keys.srcset)
-        _sizes = ReadWriteAttribute(jsObject: jsObject, name: Keys.sizes)
-        _media = ReadWriteAttribute(jsObject: jsObject, name: Keys.media)
-        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
-        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
+        _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _srcset = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcset)
+        _sizes = ReadWriteAttribute(jsObject: jsObject, name: Strings.sizes)
+        _media = ReadWriteAttribute(jsObject: jsObject, name: Strings.media)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
         super.init(unsafelyWrapping: jsObject)
     }
 

@@ -6,34 +6,20 @@ import JavaScriptKit
 public class ValidityState: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ValidityState.function! }
 
-    private enum Keys {
-        static let badInput: JSString = "badInput"
-        static let customError: JSString = "customError"
-        static let patternMismatch: JSString = "patternMismatch"
-        static let rangeOverflow: JSString = "rangeOverflow"
-        static let rangeUnderflow: JSString = "rangeUnderflow"
-        static let stepMismatch: JSString = "stepMismatch"
-        static let tooLong: JSString = "tooLong"
-        static let tooShort: JSString = "tooShort"
-        static let typeMismatch: JSString = "typeMismatch"
-        static let valid: JSString = "valid"
-        static let valueMissing: JSString = "valueMissing"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _valueMissing = ReadonlyAttribute(jsObject: jsObject, name: Keys.valueMissing)
-        _typeMismatch = ReadonlyAttribute(jsObject: jsObject, name: Keys.typeMismatch)
-        _patternMismatch = ReadonlyAttribute(jsObject: jsObject, name: Keys.patternMismatch)
-        _tooLong = ReadonlyAttribute(jsObject: jsObject, name: Keys.tooLong)
-        _tooShort = ReadonlyAttribute(jsObject: jsObject, name: Keys.tooShort)
-        _rangeUnderflow = ReadonlyAttribute(jsObject: jsObject, name: Keys.rangeUnderflow)
-        _rangeOverflow = ReadonlyAttribute(jsObject: jsObject, name: Keys.rangeOverflow)
-        _stepMismatch = ReadonlyAttribute(jsObject: jsObject, name: Keys.stepMismatch)
-        _badInput = ReadonlyAttribute(jsObject: jsObject, name: Keys.badInput)
-        _customError = ReadonlyAttribute(jsObject: jsObject, name: Keys.customError)
-        _valid = ReadonlyAttribute(jsObject: jsObject, name: Keys.valid)
+        _valueMissing = ReadonlyAttribute(jsObject: jsObject, name: Strings.valueMissing)
+        _typeMismatch = ReadonlyAttribute(jsObject: jsObject, name: Strings.typeMismatch)
+        _patternMismatch = ReadonlyAttribute(jsObject: jsObject, name: Strings.patternMismatch)
+        _tooLong = ReadonlyAttribute(jsObject: jsObject, name: Strings.tooLong)
+        _tooShort = ReadonlyAttribute(jsObject: jsObject, name: Strings.tooShort)
+        _rangeUnderflow = ReadonlyAttribute(jsObject: jsObject, name: Strings.rangeUnderflow)
+        _rangeOverflow = ReadonlyAttribute(jsObject: jsObject, name: Strings.rangeOverflow)
+        _stepMismatch = ReadonlyAttribute(jsObject: jsObject, name: Strings.stepMismatch)
+        _badInput = ReadonlyAttribute(jsObject: jsObject, name: Strings.badInput)
+        _customError = ReadonlyAttribute(jsObject: jsObject, name: Strings.customError)
+        _valid = ReadonlyAttribute(jsObject: jsObject, name: Strings.valid)
         self.jsObject = jsObject
     }
 

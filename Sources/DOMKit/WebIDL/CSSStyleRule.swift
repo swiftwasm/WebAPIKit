@@ -6,14 +6,9 @@ import JavaScriptKit
 public class CSSStyleRule: CSSRule {
     override public class var constructor: JSFunction { JSObject.global.CSSStyleRule.function! }
 
-    private enum Keys {
-        static let selectorText: JSString = "selectorText"
-        static let style: JSString = "style"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _selectorText = ReadWriteAttribute(jsObject: jsObject, name: Keys.selectorText)
-        _style = ReadonlyAttribute(jsObject: jsObject, name: Keys.style)
+        _selectorText = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectorText)
+        _style = ReadonlyAttribute(jsObject: jsObject, name: Strings.style)
         super.init(unsafelyWrapping: jsObject)
     }
 

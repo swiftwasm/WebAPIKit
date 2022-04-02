@@ -4,21 +4,16 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableWritablePair: BridgedDictionary {
-    private enum Keys {
-        static let readable: JSString = "readable"
-        static let writable: JSString = "writable"
-    }
-
     public convenience init(readable: ReadableStream, writable: WritableStream) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.readable] = readable.jsValue()
-        object[Keys.writable] = writable.jsValue()
+        object[Strings.readable] = readable.jsValue()
+        object[Strings.writable] = writable.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _readable = ReadWriteAttribute(jsObject: object, name: Keys.readable)
-        _writable = ReadWriteAttribute(jsObject: object, name: Keys.writable)
+        _readable = ReadWriteAttribute(jsObject: object, name: Strings.readable)
+        _writable = ReadWriteAttribute(jsObject: object, name: Strings.writable)
         super.init(unsafelyWrapping: object)
     }
 

@@ -4,30 +4,22 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class UnderlyingSink: BridgedDictionary {
-    private enum Keys {
-        static let abort: JSString = "abort"
-        static let close: JSString = "close"
-        static let start: JSString = "start"
-        static let type: JSString = "type"
-        static let write: JSString = "write"
-    }
-
     public convenience init(start: @escaping UnderlyingSinkStartCallback, write: @escaping UnderlyingSinkWriteCallback, close: @escaping UnderlyingSinkCloseCallback, abort: @escaping UnderlyingSinkAbortCallback, type: JSValue) {
         let object = JSObject.global.Object.function!.new()
-        ClosureAttribute.Required1[Keys.start, in: object] = start
-        ClosureAttribute.Required2[Keys.write, in: object] = write
-        ClosureAttribute.Required0[Keys.close, in: object] = close
-        ClosureAttribute.Required1[Keys.abort, in: object] = abort
-        object[Keys.type] = type.jsValue()
+        ClosureAttribute.Required1[Strings.start, in: object] = start
+        ClosureAttribute.Required2[Strings.write, in: object] = write
+        ClosureAttribute.Required0[Strings.close, in: object] = close
+        ClosureAttribute.Required1[Strings.abort, in: object] = abort
+        object[Strings.type] = type.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _start = ClosureAttribute.Required1(jsObject: object, name: Keys.start)
-        _write = ClosureAttribute.Required2(jsObject: object, name: Keys.write)
-        _close = ClosureAttribute.Required0(jsObject: object, name: Keys.close)
-        _abort = ClosureAttribute.Required1(jsObject: object, name: Keys.abort)
-        _type = ReadWriteAttribute(jsObject: object, name: Keys.type)
+        _start = ClosureAttribute.Required1(jsObject: object, name: Strings.start)
+        _write = ClosureAttribute.Required2(jsObject: object, name: Strings.write)
+        _close = ClosureAttribute.Required0(jsObject: object, name: Strings.close)
+        _abort = ClosureAttribute.Required1(jsObject: object, name: Strings.abort)
+        _type = ReadWriteAttribute(jsObject: object, name: Strings.type)
         super.init(unsafelyWrapping: object)
     }
 

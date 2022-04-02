@@ -6,43 +6,12 @@ import JavaScriptKit
 public class DOMException: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMException.function! }
 
-    private enum Keys {
-        static let ABORT_ERR: JSString = "ABORT_ERR"
-        static let DATA_CLONE_ERR: JSString = "DATA_CLONE_ERR"
-        static let DOMSTRING_SIZE_ERR: JSString = "DOMSTRING_SIZE_ERR"
-        static let HIERARCHY_REQUEST_ERR: JSString = "HIERARCHY_REQUEST_ERR"
-        static let INDEX_SIZE_ERR: JSString = "INDEX_SIZE_ERR"
-        static let INUSE_ATTRIBUTE_ERR: JSString = "INUSE_ATTRIBUTE_ERR"
-        static let INVALID_ACCESS_ERR: JSString = "INVALID_ACCESS_ERR"
-        static let INVALID_CHARACTER_ERR: JSString = "INVALID_CHARACTER_ERR"
-        static let INVALID_MODIFICATION_ERR: JSString = "INVALID_MODIFICATION_ERR"
-        static let INVALID_NODE_TYPE_ERR: JSString = "INVALID_NODE_TYPE_ERR"
-        static let INVALID_STATE_ERR: JSString = "INVALID_STATE_ERR"
-        static let NAMESPACE_ERR: JSString = "NAMESPACE_ERR"
-        static let NETWORK_ERR: JSString = "NETWORK_ERR"
-        static let NOT_FOUND_ERR: JSString = "NOT_FOUND_ERR"
-        static let NOT_SUPPORTED_ERR: JSString = "NOT_SUPPORTED_ERR"
-        static let NO_DATA_ALLOWED_ERR: JSString = "NO_DATA_ALLOWED_ERR"
-        static let NO_MODIFICATION_ALLOWED_ERR: JSString = "NO_MODIFICATION_ALLOWED_ERR"
-        static let QUOTA_EXCEEDED_ERR: JSString = "QUOTA_EXCEEDED_ERR"
-        static let SECURITY_ERR: JSString = "SECURITY_ERR"
-        static let SYNTAX_ERR: JSString = "SYNTAX_ERR"
-        static let TIMEOUT_ERR: JSString = "TIMEOUT_ERR"
-        static let TYPE_MISMATCH_ERR: JSString = "TYPE_MISMATCH_ERR"
-        static let URL_MISMATCH_ERR: JSString = "URL_MISMATCH_ERR"
-        static let VALIDATION_ERR: JSString = "VALIDATION_ERR"
-        static let WRONG_DOCUMENT_ERR: JSString = "WRONG_DOCUMENT_ERR"
-        static let code: JSString = "code"
-        static let message: JSString = "message"
-        static let name: JSString = "name"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadonlyAttribute(jsObject: jsObject, name: Keys.name)
-        _message = ReadonlyAttribute(jsObject: jsObject, name: Keys.message)
-        _code = ReadonlyAttribute(jsObject: jsObject, name: Keys.code)
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
+        _message = ReadonlyAttribute(jsObject: jsObject, name: Strings.message)
+        _code = ReadonlyAttribute(jsObject: jsObject, name: Strings.code)
         self.jsObject = jsObject
     }
 

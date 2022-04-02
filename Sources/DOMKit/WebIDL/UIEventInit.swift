@@ -4,24 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class UIEventInit: BridgedDictionary {
-    private enum Keys {
-        static let detail: JSString = "detail"
-        static let view: JSString = "view"
-        static let which: JSString = "which"
-    }
-
     public convenience init(view: Window?, detail: Int32, which: UInt32) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.view] = view.jsValue()
-        object[Keys.detail] = detail.jsValue()
-        object[Keys.which] = which.jsValue()
+        object[Strings.view] = view.jsValue()
+        object[Strings.detail] = detail.jsValue()
+        object[Strings.which] = which.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _view = ReadWriteAttribute(jsObject: object, name: Keys.view)
-        _detail = ReadWriteAttribute(jsObject: object, name: Keys.detail)
-        _which = ReadWriteAttribute(jsObject: object, name: Keys.which)
+        _view = ReadWriteAttribute(jsObject: object, name: Strings.view)
+        _detail = ReadWriteAttribute(jsObject: object, name: Strings.detail)
+        _which = ReadWriteAttribute(jsObject: object, name: Strings.which)
         super.init(unsafelyWrapping: object)
     }
 

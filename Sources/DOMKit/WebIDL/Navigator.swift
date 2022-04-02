@@ -6,8 +6,6 @@ import JavaScriptKit
 public class Navigator: JSBridgedClass, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware {
     public class var constructor: JSFunction { JSObject.global.Navigator.function! }
 
-    private enum Keys {}
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {

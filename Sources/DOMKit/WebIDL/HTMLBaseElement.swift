@@ -6,14 +6,9 @@ import JavaScriptKit
 public class HTMLBaseElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLBaseElement.function! }
 
-    private enum Keys {
-        static let href: JSString = "href"
-        static let target: JSString = "target"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _href = ReadWriteAttribute(jsObject: jsObject, name: Keys.href)
-        _target = ReadWriteAttribute(jsObject: jsObject, name: Keys.target)
+        _href = ReadWriteAttribute(jsObject: jsObject, name: Strings.href)
+        _target = ReadWriteAttribute(jsObject: jsObject, name: Strings.target)
         super.init(unsafelyWrapping: jsObject)
     }
 

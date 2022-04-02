@@ -6,8 +6,6 @@ import JavaScriptKit
 public class XPathEvaluator: JSBridgedClass, XPathEvaluatorBase {
     public class var constructor: JSFunction { JSObject.global.XPathEvaluator.function! }
 
-    private enum Keys {}
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {

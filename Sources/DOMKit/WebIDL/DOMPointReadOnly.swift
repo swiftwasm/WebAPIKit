@@ -6,23 +6,13 @@ import JavaScriptKit
 public class DOMPointReadOnly: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMPointReadOnly.function! }
 
-    private enum Keys {
-        static let fromPoint: JSString = "fromPoint"
-        static let matrixTransform: JSString = "matrixTransform"
-        static let toJSON: JSString = "toJSON"
-        static let w: JSString = "w"
-        static let x: JSString = "x"
-        static let y: JSString = "y"
-        static let z: JSString = "z"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _x = ReadonlyAttribute(jsObject: jsObject, name: Keys.x)
-        _y = ReadonlyAttribute(jsObject: jsObject, name: Keys.y)
-        _z = ReadonlyAttribute(jsObject: jsObject, name: Keys.z)
-        _w = ReadonlyAttribute(jsObject: jsObject, name: Keys.w)
+        _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
+        _y = ReadonlyAttribute(jsObject: jsObject, name: Strings.y)
+        _z = ReadonlyAttribute(jsObject: jsObject, name: Strings.z)
+        _w = ReadonlyAttribute(jsObject: jsObject, name: Strings.w)
         self.jsObject = jsObject
     }
 
@@ -31,7 +21,7 @@ public class DOMPointReadOnly: JSBridgedClass {
     }
 
     public static func fromPoint(other: DOMPointInit? = nil) -> Self {
-        constructor[Keys.fromPoint]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        constructor[Strings.fromPoint]!(other?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -47,10 +37,10 @@ public class DOMPointReadOnly: JSBridgedClass {
     public var w: Double
 
     public func matrixTransform(matrix: DOMMatrixInit? = nil) -> DOMPoint {
-        jsObject[Keys.matrixTransform]!(matrix?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.matrixTransform]!(matrix?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func toJSON() -> JSObject {
-        jsObject[Keys.toJSON]!().fromJSValue()!
+        jsObject[Strings.toJSON]!().fromJSValue()!
     }
 }

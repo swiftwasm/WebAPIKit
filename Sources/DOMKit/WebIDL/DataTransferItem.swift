@@ -6,18 +6,11 @@ import JavaScriptKit
 public class DataTransferItem: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DataTransferItem.function! }
 
-    private enum Keys {
-        static let getAsFile: JSString = "getAsFile"
-        static let getAsString: JSString = "getAsString"
-        static let kind: JSString = "kind"
-        static let type: JSString = "type"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _kind = ReadonlyAttribute(jsObject: jsObject, name: Keys.kind)
-        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
+        _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
         self.jsObject = jsObject
     }
 
@@ -30,6 +23,6 @@ public class DataTransferItem: JSBridgedClass {
     // XXX: member 'getAsString' is ignored
 
     public func getAsFile() -> File? {
-        jsObject[Keys.getAsFile]!().fromJSValue()!
+        jsObject[Strings.getAsFile]!().fromJSValue()!
     }
 }

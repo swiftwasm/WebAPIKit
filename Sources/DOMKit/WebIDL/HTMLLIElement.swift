@@ -6,14 +6,9 @@ import JavaScriptKit
 public class HTMLLIElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLLIElement.function! }
 
-    private enum Keys {
-        static let type: JSString = "type"
-        static let value: JSString = "value"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
-        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
         super.init(unsafelyWrapping: jsObject)
     }
 

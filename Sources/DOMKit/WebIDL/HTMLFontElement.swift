@@ -6,16 +6,10 @@ import JavaScriptKit
 public class HTMLFontElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLFontElement.function! }
 
-    private enum Keys {
-        static let color: JSString = "color"
-        static let face: JSString = "face"
-        static let size: JSString = "size"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _color = ReadWriteAttribute(jsObject: jsObject, name: Keys.color)
-        _face = ReadWriteAttribute(jsObject: jsObject, name: Keys.face)
-        _size = ReadWriteAttribute(jsObject: jsObject, name: Keys.size)
+        _color = ReadWriteAttribute(jsObject: jsObject, name: Strings.color)
+        _face = ReadWriteAttribute(jsObject: jsObject, name: Strings.face)
+        _size = ReadWriteAttribute(jsObject: jsObject, name: Strings.size)
         super.init(unsafelyWrapping: jsObject)
     }
 

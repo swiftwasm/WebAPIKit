@@ -6,12 +6,8 @@ import JavaScriptKit
 public class CSSMediaRule: CSSConditionRule {
     override public class var constructor: JSFunction { JSObject.global.CSSMediaRule.function! }
 
-    private enum Keys {
-        static let media: JSString = "media"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _media = ReadonlyAttribute(jsObject: jsObject, name: Keys.media)
+        _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
         super.init(unsafelyWrapping: jsObject)
     }
 

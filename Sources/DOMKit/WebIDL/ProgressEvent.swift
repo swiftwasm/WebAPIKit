@@ -6,16 +6,10 @@ import JavaScriptKit
 public class ProgressEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.ProgressEvent.function! }
 
-    private enum Keys {
-        static let lengthComputable: JSString = "lengthComputable"
-        static let loaded: JSString = "loaded"
-        static let total: JSString = "total"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _lengthComputable = ReadonlyAttribute(jsObject: jsObject, name: Keys.lengthComputable)
-        _loaded = ReadonlyAttribute(jsObject: jsObject, name: Keys.loaded)
-        _total = ReadonlyAttribute(jsObject: jsObject, name: Keys.total)
+        _lengthComputable = ReadonlyAttribute(jsObject: jsObject, name: Strings.lengthComputable)
+        _loaded = ReadonlyAttribute(jsObject: jsObject, name: Strings.loaded)
+        _total = ReadonlyAttribute(jsObject: jsObject, name: Strings.total)
         super.init(unsafelyWrapping: jsObject)
     }
 

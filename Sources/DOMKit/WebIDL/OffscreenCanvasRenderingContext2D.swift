@@ -6,20 +6,15 @@ import JavaScriptKit
 public class OffscreenCanvasRenderingContext2D: JSBridgedClass, CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasText, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasTextDrawingStyles, CanvasPath {
     public class var constructor: JSFunction { JSObject.global.OffscreenCanvasRenderingContext2D.function! }
 
-    private enum Keys {
-        static let canvas: JSString = "canvas"
-        static let commit: JSString = "commit"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _canvas = ReadonlyAttribute(jsObject: jsObject, name: Keys.canvas)
+        _canvas = ReadonlyAttribute(jsObject: jsObject, name: Strings.canvas)
         self.jsObject = jsObject
     }
 
     public func commit() {
-        _ = jsObject[Keys.commit]!()
+        _ = jsObject[Strings.commit]!()
     }
 
     @ReadonlyAttribute

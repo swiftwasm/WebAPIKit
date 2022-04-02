@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamGetReaderOptions: BridgedDictionary {
-    private enum Keys {
-        static let mode: JSString = "mode"
-    }
-
     public convenience init(mode: ReadableStreamReaderMode) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.mode] = mode.jsValue()
+        object[Strings.mode] = mode.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _mode = ReadWriteAttribute(jsObject: object, name: Keys.mode)
+        _mode = ReadWriteAttribute(jsObject: object, name: Strings.mode)
         super.init(unsafelyWrapping: object)
     }
 

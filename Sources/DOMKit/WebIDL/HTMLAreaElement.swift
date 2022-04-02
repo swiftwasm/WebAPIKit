@@ -6,30 +6,17 @@ import JavaScriptKit
 public class HTMLAreaElement: HTMLElement, HTMLHyperlinkElementUtils {
     override public class var constructor: JSFunction { JSObject.global.HTMLAreaElement.function! }
 
-    private enum Keys {
-        static let alt: JSString = "alt"
-        static let coords: JSString = "coords"
-        static let download: JSString = "download"
-        static let noHref: JSString = "noHref"
-        static let ping: JSString = "ping"
-        static let referrerPolicy: JSString = "referrerPolicy"
-        static let rel: JSString = "rel"
-        static let relList: JSString = "relList"
-        static let shape: JSString = "shape"
-        static let target: JSString = "target"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _alt = ReadWriteAttribute(jsObject: jsObject, name: Keys.alt)
-        _coords = ReadWriteAttribute(jsObject: jsObject, name: Keys.coords)
-        _shape = ReadWriteAttribute(jsObject: jsObject, name: Keys.shape)
-        _target = ReadWriteAttribute(jsObject: jsObject, name: Keys.target)
-        _download = ReadWriteAttribute(jsObject: jsObject, name: Keys.download)
-        _ping = ReadWriteAttribute(jsObject: jsObject, name: Keys.ping)
-        _rel = ReadWriteAttribute(jsObject: jsObject, name: Keys.rel)
-        _relList = ReadonlyAttribute(jsObject: jsObject, name: Keys.relList)
-        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Keys.referrerPolicy)
-        _noHref = ReadWriteAttribute(jsObject: jsObject, name: Keys.noHref)
+        _alt = ReadWriteAttribute(jsObject: jsObject, name: Strings.alt)
+        _coords = ReadWriteAttribute(jsObject: jsObject, name: Strings.coords)
+        _shape = ReadWriteAttribute(jsObject: jsObject, name: Strings.shape)
+        _target = ReadWriteAttribute(jsObject: jsObject, name: Strings.target)
+        _download = ReadWriteAttribute(jsObject: jsObject, name: Strings.download)
+        _ping = ReadWriteAttribute(jsObject: jsObject, name: Strings.ping)
+        _rel = ReadWriteAttribute(jsObject: jsObject, name: Strings.rel)
+        _relList = ReadonlyAttribute(jsObject: jsObject, name: Strings.relList)
+        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Strings.referrerPolicy)
+        _noHref = ReadWriteAttribute(jsObject: jsObject, name: Strings.noHref)
         super.init(unsafelyWrapping: jsObject)
     }
 

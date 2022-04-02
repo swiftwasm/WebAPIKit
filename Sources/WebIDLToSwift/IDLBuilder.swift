@@ -82,4 +82,16 @@ enum IDLBuilder {
 
         try writeFile(named: "ClosureAttribute", content: closureTypesContent.source)
     }
+
+    static func generateStrings() throws {
+        let strings = Context.strings.sorted()
+        let stringsContent: SwiftSource = """
+            enum Strings {
+                static let _self: JSString = "self"
+                \(lines: strings.map { "static let \($0): JSString = \(quoted: $0)" })
+            }
+        """
+
+        try writeFile(named: "Strings", content: stringsContent.source)
+    }
 }

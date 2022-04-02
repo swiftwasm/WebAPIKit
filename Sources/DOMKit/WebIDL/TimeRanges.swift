@@ -6,16 +6,10 @@ import JavaScriptKit
 public class TimeRanges: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.TimeRanges.function! }
 
-    private enum Keys {
-        static let end: JSString = "end"
-        static let length: JSString = "length"
-        static let start: JSString = "start"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
         self.jsObject = jsObject
     }
 
@@ -23,10 +17,10 @@ public class TimeRanges: JSBridgedClass {
     public var length: UInt32
 
     public func start(index: UInt32) -> Double {
-        jsObject[Keys.start]!(index.jsValue()).fromJSValue()!
+        jsObject[Strings.start]!(index.jsValue()).fromJSValue()!
     }
 
     public func end(index: UInt32) -> Double {
-        jsObject[Keys.end]!(index.jsValue()).fromJSValue()!
+        jsObject[Strings.end]!(index.jsValue()).fromJSValue()!
     }
 }

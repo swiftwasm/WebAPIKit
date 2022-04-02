@@ -6,21 +6,10 @@ import JavaScriptKit
 public class NamedNodeMap: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.NamedNodeMap.function! }
 
-    private enum Keys {
-        static let getNamedItem: JSString = "getNamedItem"
-        static let getNamedItemNS: JSString = "getNamedItemNS"
-        static let item: JSString = "item"
-        static let length: JSString = "length"
-        static let removeNamedItem: JSString = "removeNamedItem"
-        static let removeNamedItemNS: JSString = "removeNamedItemNS"
-        static let setNamedItem: JSString = "setNamedItem"
-        static let setNamedItemNS: JSString = "setNamedItemNS"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
         self.jsObject = jsObject
     }
 
@@ -36,22 +25,22 @@ public class NamedNodeMap: JSBridgedClass {
     }
 
     public func getNamedItemNS(namespace: String?, localName: String) -> Attr? {
-        jsObject[Keys.getNamedItemNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        jsObject[Strings.getNamedItemNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 
     public func setNamedItem(attr: Attr) -> Attr? {
-        jsObject[Keys.setNamedItem]!(attr.jsValue()).fromJSValue()!
+        jsObject[Strings.setNamedItem]!(attr.jsValue()).fromJSValue()!
     }
 
     public func setNamedItemNS(attr: Attr) -> Attr? {
-        jsObject[Keys.setNamedItemNS]!(attr.jsValue()).fromJSValue()!
+        jsObject[Strings.setNamedItemNS]!(attr.jsValue()).fromJSValue()!
     }
 
     public func removeNamedItem(qualifiedName: String) -> Attr {
-        jsObject[Keys.removeNamedItem]!(qualifiedName.jsValue()).fromJSValue()!
+        jsObject[Strings.removeNamedItem]!(qualifiedName.jsValue()).fromJSValue()!
     }
 
     public func removeNamedItemNS(namespace: String?, localName: String) -> Attr {
-        jsObject[Keys.removeNamedItemNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        jsObject[Strings.removeNamedItemNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
     }
 }

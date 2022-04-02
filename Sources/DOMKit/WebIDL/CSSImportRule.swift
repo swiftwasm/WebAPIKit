@@ -6,16 +6,10 @@ import JavaScriptKit
 public class CSSImportRule: CSSRule {
     override public class var constructor: JSFunction { JSObject.global.CSSImportRule.function! }
 
-    private enum Keys {
-        static let href: JSString = "href"
-        static let media: JSString = "media"
-        static let styleSheet: JSString = "styleSheet"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _href = ReadonlyAttribute(jsObject: jsObject, name: Keys.href)
-        _media = ReadonlyAttribute(jsObject: jsObject, name: Keys.media)
-        _styleSheet = ReadonlyAttribute(jsObject: jsObject, name: Keys.styleSheet)
+        _href = ReadonlyAttribute(jsObject: jsObject, name: Strings.href)
+        _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
+        _styleSheet = ReadonlyAttribute(jsObject: jsObject, name: Strings.styleSheet)
         super.init(unsafelyWrapping: jsObject)
     }
 

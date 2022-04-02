@@ -4,24 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AddEventListenerOptions: BridgedDictionary {
-    private enum Keys {
-        static let once: JSString = "once"
-        static let passive: JSString = "passive"
-        static let signal: JSString = "signal"
-    }
-
     public convenience init(passive: Bool, once: Bool, signal: AbortSignal) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.passive] = passive.jsValue()
-        object[Keys.once] = once.jsValue()
-        object[Keys.signal] = signal.jsValue()
+        object[Strings.passive] = passive.jsValue()
+        object[Strings.once] = once.jsValue()
+        object[Strings.signal] = signal.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _passive = ReadWriteAttribute(jsObject: object, name: Keys.passive)
-        _once = ReadWriteAttribute(jsObject: object, name: Keys.once)
-        _signal = ReadWriteAttribute(jsObject: object, name: Keys.signal)
+        _passive = ReadWriteAttribute(jsObject: object, name: Strings.passive)
+        _once = ReadWriteAttribute(jsObject: object, name: Strings.once)
+        _signal = ReadWriteAttribute(jsObject: object, name: Strings.signal)
         super.init(unsafelyWrapping: object)
     }
 

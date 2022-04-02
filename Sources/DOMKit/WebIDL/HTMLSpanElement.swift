@@ -6,8 +6,6 @@ import JavaScriptKit
 public class HTMLSpanElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLSpanElement.function! }
 
-    private enum Keys {}
-
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

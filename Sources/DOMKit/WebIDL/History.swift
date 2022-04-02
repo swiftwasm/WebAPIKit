@@ -6,23 +6,12 @@ import JavaScriptKit
 public class History: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.History.function! }
 
-    private enum Keys {
-        static let back: JSString = "back"
-        static let forward: JSString = "forward"
-        static let go: JSString = "go"
-        static let length: JSString = "length"
-        static let pushState: JSString = "pushState"
-        static let replaceState: JSString = "replaceState"
-        static let scrollRestoration: JSString = "scrollRestoration"
-        static let state: JSString = "state"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
-        _scrollRestoration = ReadWriteAttribute(jsObject: jsObject, name: Keys.scrollRestoration)
-        _state = ReadonlyAttribute(jsObject: jsObject, name: Keys.state)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
+        _scrollRestoration = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollRestoration)
+        _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
         self.jsObject = jsObject
     }
 
@@ -36,22 +25,22 @@ public class History: JSBridgedClass {
     public var state: JSValue
 
     public func go(delta: Int32? = nil) {
-        _ = jsObject[Keys.go]!(delta?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.go]!(delta?.jsValue() ?? .undefined)
     }
 
     public func back() {
-        _ = jsObject[Keys.back]!()
+        _ = jsObject[Strings.back]!()
     }
 
     public func forward() {
-        _ = jsObject[Keys.forward]!()
+        _ = jsObject[Strings.forward]!()
     }
 
     public func pushState(data: JSValue, unused: String, url: String? = nil) {
-        _ = jsObject[Keys.pushState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.pushState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
     }
 
     public func replaceState(data: JSValue, unused: String, url: String? = nil) {
-        _ = jsObject[Keys.replaceState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.replaceState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
     }
 }

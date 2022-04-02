@@ -3,23 +3,17 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let fillText: JSString = "fillText"
-    static let measureText: JSString = "measureText"
-    static let strokeText: JSString = "strokeText"
-}
-
 public protocol CanvasText: JSBridgedClass {}
 public extension CanvasText {
     func fillText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
-        _ = jsObject[Keys.fillText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.fillText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
     }
 
     func strokeText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
-        _ = jsObject[Keys.strokeText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.strokeText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
     }
 
     func measureText(text: String) -> TextMetrics {
-        jsObject[Keys.measureText]!(text.jsValue()).fromJSValue()!
+        jsObject[Strings.measureText]!(text.jsValue()).fromJSValue()!
     }
 }

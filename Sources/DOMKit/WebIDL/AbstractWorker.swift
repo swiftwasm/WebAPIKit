@@ -3,14 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let onerror: JSString = "onerror"
-}
-
 public protocol AbstractWorker: JSBridgedClass {}
 public extension AbstractWorker {
     var onerror: EventHandler {
-        get { ClosureAttribute.Optional1[Keys.onerror, in: jsObject] }
-        set { ClosureAttribute.Optional1[Keys.onerror, in: jsObject] = newValue }
+        get { ClosureAttribute.Optional1[Strings.onerror, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.onerror, in: jsObject] = newValue }
     }
 }

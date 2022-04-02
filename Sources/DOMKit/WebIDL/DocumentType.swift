@@ -6,16 +6,10 @@ import JavaScriptKit
 public class DocumentType: Node, ChildNode {
     override public class var constructor: JSFunction { JSObject.global.DocumentType.function! }
 
-    private enum Keys {
-        static let name: JSString = "name"
-        static let publicId: JSString = "publicId"
-        static let systemId: JSString = "systemId"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadonlyAttribute(jsObject: jsObject, name: Keys.name)
-        _publicId = ReadonlyAttribute(jsObject: jsObject, name: Keys.publicId)
-        _systemId = ReadonlyAttribute(jsObject: jsObject, name: Keys.systemId)
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
+        _publicId = ReadonlyAttribute(jsObject: jsObject, name: Strings.publicId)
+        _systemId = ReadonlyAttribute(jsObject: jsObject, name: Strings.systemId)
         super.init(unsafelyWrapping: jsObject)
     }
 

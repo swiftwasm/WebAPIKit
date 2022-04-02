@@ -4,27 +4,20 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StreamPipeOptions: BridgedDictionary {
-    private enum Keys {
-        static let preventAbort: JSString = "preventAbort"
-        static let preventCancel: JSString = "preventCancel"
-        static let preventClose: JSString = "preventClose"
-        static let signal: JSString = "signal"
-    }
-
     public convenience init(preventClose: Bool, preventAbort: Bool, preventCancel: Bool, signal: AbortSignal) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.preventClose] = preventClose.jsValue()
-        object[Keys.preventAbort] = preventAbort.jsValue()
-        object[Keys.preventCancel] = preventCancel.jsValue()
-        object[Keys.signal] = signal.jsValue()
+        object[Strings.preventClose] = preventClose.jsValue()
+        object[Strings.preventAbort] = preventAbort.jsValue()
+        object[Strings.preventCancel] = preventCancel.jsValue()
+        object[Strings.signal] = signal.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _preventClose = ReadWriteAttribute(jsObject: object, name: Keys.preventClose)
-        _preventAbort = ReadWriteAttribute(jsObject: object, name: Keys.preventAbort)
-        _preventCancel = ReadWriteAttribute(jsObject: object, name: Keys.preventCancel)
-        _signal = ReadWriteAttribute(jsObject: object, name: Keys.signal)
+        _preventClose = ReadWriteAttribute(jsObject: object, name: Strings.preventClose)
+        _preventAbort = ReadWriteAttribute(jsObject: object, name: Strings.preventAbort)
+        _preventCancel = ReadWriteAttribute(jsObject: object, name: Strings.preventCancel)
+        _signal = ReadWriteAttribute(jsObject: object, name: Strings.signal)
         super.init(unsafelyWrapping: object)
     }
 

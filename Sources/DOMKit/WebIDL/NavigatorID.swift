@@ -3,43 +3,29 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let appCodeName: JSString = "appCodeName"
-    static let appName: JSString = "appName"
-    static let appVersion: JSString = "appVersion"
-    static let oscpu: JSString = "oscpu"
-    static let platform: JSString = "platform"
-    static let product: JSString = "product"
-    static let productSub: JSString = "productSub"
-    static let taintEnabled: JSString = "taintEnabled"
-    static let userAgent: JSString = "userAgent"
-    static let vendor: JSString = "vendor"
-    static let vendorSub: JSString = "vendorSub"
-}
-
 public protocol NavigatorID: JSBridgedClass {}
 public extension NavigatorID {
-    var appCodeName: String { ReadonlyAttribute[Keys.appCodeName, in: jsObject] }
+    var appCodeName: String { ReadonlyAttribute[Strings.appCodeName, in: jsObject] }
 
-    var appName: String { ReadonlyAttribute[Keys.appName, in: jsObject] }
+    var appName: String { ReadonlyAttribute[Strings.appName, in: jsObject] }
 
-    var appVersion: String { ReadonlyAttribute[Keys.appVersion, in: jsObject] }
+    var appVersion: String { ReadonlyAttribute[Strings.appVersion, in: jsObject] }
 
-    var platform: String { ReadonlyAttribute[Keys.platform, in: jsObject] }
+    var platform: String { ReadonlyAttribute[Strings.platform, in: jsObject] }
 
-    var product: String { ReadonlyAttribute[Keys.product, in: jsObject] }
+    var product: String { ReadonlyAttribute[Strings.product, in: jsObject] }
 
-    var productSub: String { ReadonlyAttribute[Keys.productSub, in: jsObject] }
+    var productSub: String { ReadonlyAttribute[Strings.productSub, in: jsObject] }
 
-    var userAgent: String { ReadonlyAttribute[Keys.userAgent, in: jsObject] }
+    var userAgent: String { ReadonlyAttribute[Strings.userAgent, in: jsObject] }
 
-    var vendor: String { ReadonlyAttribute[Keys.vendor, in: jsObject] }
+    var vendor: String { ReadonlyAttribute[Strings.vendor, in: jsObject] }
 
-    var vendorSub: String { ReadonlyAttribute[Keys.vendorSub, in: jsObject] }
+    var vendorSub: String { ReadonlyAttribute[Strings.vendorSub, in: jsObject] }
 
     func taintEnabled() -> Bool {
-        jsObject[Keys.taintEnabled]!().fromJSValue()!
+        jsObject[Strings.taintEnabled]!().fromJSValue()!
     }
 
-    var oscpu: String { ReadonlyAttribute[Keys.oscpu, in: jsObject] }
+    var oscpu: String { ReadonlyAttribute[Strings.oscpu, in: jsObject] }
 }

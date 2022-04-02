@@ -6,18 +6,11 @@ import JavaScriptKit
 public class HTMLOListElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLOListElement.function! }
 
-    private enum Keys {
-        static let compact: JSString = "compact"
-        static let reversed: JSString = "reversed"
-        static let start: JSString = "start"
-        static let type: JSString = "type"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _reversed = ReadWriteAttribute(jsObject: jsObject, name: Keys.reversed)
-        _start = ReadWriteAttribute(jsObject: jsObject, name: Keys.start)
-        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
-        _compact = ReadWriteAttribute(jsObject: jsObject, name: Keys.compact)
+        _reversed = ReadWriteAttribute(jsObject: jsObject, name: Strings.reversed)
+        _start = ReadWriteAttribute(jsObject: jsObject, name: Strings.start)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _compact = ReadWriteAttribute(jsObject: jsObject, name: Strings.compact)
         super.init(unsafelyWrapping: jsObject)
     }
 

@@ -6,26 +6,14 @@ import JavaScriptKit
 public class DataTransfer: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DataTransfer.function! }
 
-    private enum Keys {
-        static let clearData: JSString = "clearData"
-        static let dropEffect: JSString = "dropEffect"
-        static let effectAllowed: JSString = "effectAllowed"
-        static let files: JSString = "files"
-        static let getData: JSString = "getData"
-        static let items: JSString = "items"
-        static let setData: JSString = "setData"
-        static let setDragImage: JSString = "setDragImage"
-        static let types: JSString = "types"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _dropEffect = ReadWriteAttribute(jsObject: jsObject, name: Keys.dropEffect)
-        _effectAllowed = ReadWriteAttribute(jsObject: jsObject, name: Keys.effectAllowed)
-        _items = ReadonlyAttribute(jsObject: jsObject, name: Keys.items)
-        _types = ReadonlyAttribute(jsObject: jsObject, name: Keys.types)
-        _files = ReadonlyAttribute(jsObject: jsObject, name: Keys.files)
+        _dropEffect = ReadWriteAttribute(jsObject: jsObject, name: Strings.dropEffect)
+        _effectAllowed = ReadWriteAttribute(jsObject: jsObject, name: Strings.effectAllowed)
+        _items = ReadonlyAttribute(jsObject: jsObject, name: Strings.items)
+        _types = ReadonlyAttribute(jsObject: jsObject, name: Strings.types)
+        _files = ReadonlyAttribute(jsObject: jsObject, name: Strings.files)
         self.jsObject = jsObject
     }
 
@@ -43,22 +31,22 @@ public class DataTransfer: JSBridgedClass {
     public var items: DataTransferItemList
 
     public func setDragImage(image: Element, x: Int32, y: Int32) {
-        _ = jsObject[Keys.setDragImage]!(image.jsValue(), x.jsValue(), y.jsValue())
+        _ = jsObject[Strings.setDragImage]!(image.jsValue(), x.jsValue(), y.jsValue())
     }
 
     @ReadonlyAttribute
     public var types: [String]
 
     public func getData(format: String) -> String {
-        jsObject[Keys.getData]!(format.jsValue()).fromJSValue()!
+        jsObject[Strings.getData]!(format.jsValue()).fromJSValue()!
     }
 
     public func setData(format: String, data: String) {
-        _ = jsObject[Keys.setData]!(format.jsValue(), data.jsValue())
+        _ = jsObject[Strings.setData]!(format.jsValue(), data.jsValue())
     }
 
     public func clearData(format: String? = nil) {
-        _ = jsObject[Keys.clearData]!(format?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.clearData]!(format?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute

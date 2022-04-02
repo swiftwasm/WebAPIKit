@@ -4,24 +4,19 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public enum CSS {
-    private enum Keys {
-        static let escape: JSString = "escape"
-        static let supports: JSString = "supports"
-    }
-
     public static var jsObject: JSObject {
         JSObject.global.CSS.object!
     }
 
     public static func escape(ident: String) -> String {
-        JSObject.global.CSS.object![Keys.escape]!(ident.jsValue()).fromJSValue()!
+        JSObject.global.CSS.object![Strings.escape]!(ident.jsValue()).fromJSValue()!
     }
 
     public static func supports(property: String, value: String) -> Bool {
-        JSObject.global.CSS.object![Keys.supports]!(property.jsValue(), value.jsValue()).fromJSValue()!
+        JSObject.global.CSS.object![Strings.supports]!(property.jsValue(), value.jsValue()).fromJSValue()!
     }
 
     public static func supports(conditionText: String) -> Bool {
-        JSObject.global.CSS.object![Keys.supports]!(conditionText.jsValue()).fromJSValue()!
+        JSObject.global.CSS.object![Strings.supports]!(conditionText.jsValue()).fromJSValue()!
     }
 }

@@ -6,11 +6,6 @@ import JavaScriptKit
 public class ReadableStreamBYOBReader: JSBridgedClass, ReadableStreamGenericReader {
     public class var constructor: JSFunction { JSObject.global.ReadableStreamBYOBReader.function! }
 
-    private enum Keys {
-        static let read: JSString = "read"
-        static let releaseLock: JSString = "releaseLock"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -22,16 +17,16 @@ public class ReadableStreamBYOBReader: JSBridgedClass, ReadableStreamGenericRead
     }
 
     public func read(view: ArrayBufferView) -> JSPromise {
-        jsObject[Keys.read]!(view.jsValue()).fromJSValue()!
+        jsObject[Strings.read]!(view.jsValue()).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func read(view: ArrayBufferView) async throws -> ReadableStreamBYOBReadResult {
-        let _promise: JSPromise = jsObject[Keys.read]!(view.jsValue()).fromJSValue()!
+        let _promise: JSPromise = jsObject[Strings.read]!(view.jsValue()).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func releaseLock() {
-        _ = jsObject[Keys.releaseLock]!()
+        _ = jsObject[Strings.releaseLock]!()
     }
 }

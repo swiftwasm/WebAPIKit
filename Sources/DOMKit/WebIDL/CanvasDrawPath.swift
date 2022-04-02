@@ -3,58 +3,49 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let beginPath: JSString = "beginPath"
-    static let clip: JSString = "clip"
-    static let fill: JSString = "fill"
-    static let isPointInPath: JSString = "isPointInPath"
-    static let isPointInStroke: JSString = "isPointInStroke"
-    static let stroke: JSString = "stroke"
-}
-
 public protocol CanvasDrawPath: JSBridgedClass {}
 public extension CanvasDrawPath {
     func beginPath() {
-        _ = jsObject[Keys.beginPath]!()
+        _ = jsObject[Strings.beginPath]!()
     }
 
     func fill(fillRule: CanvasFillRule? = nil) {
-        _ = jsObject[Keys.fill]!(fillRule?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.fill]!(fillRule?.jsValue() ?? .undefined)
     }
 
     func fill(path: Path2D, fillRule: CanvasFillRule? = nil) {
-        _ = jsObject[Keys.fill]!(path.jsValue(), fillRule?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.fill]!(path.jsValue(), fillRule?.jsValue() ?? .undefined)
     }
 
     func stroke() {
-        _ = jsObject[Keys.stroke]!()
+        _ = jsObject[Strings.stroke]!()
     }
 
     func stroke(path: Path2D) {
-        _ = jsObject[Keys.stroke]!(path.jsValue())
+        _ = jsObject[Strings.stroke]!(path.jsValue())
     }
 
     func clip(fillRule: CanvasFillRule? = nil) {
-        _ = jsObject[Keys.clip]!(fillRule?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.clip]!(fillRule?.jsValue() ?? .undefined)
     }
 
     func clip(path: Path2D, fillRule: CanvasFillRule? = nil) {
-        _ = jsObject[Keys.clip]!(path.jsValue(), fillRule?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.clip]!(path.jsValue(), fillRule?.jsValue() ?? .undefined)
     }
 
     func isPointInPath(x: Double, y: Double, fillRule: CanvasFillRule? = nil) -> Bool {
-        jsObject[Keys.isPointInPath]!(x.jsValue(), y.jsValue(), fillRule?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.isPointInPath]!(x.jsValue(), y.jsValue(), fillRule?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func isPointInPath(path: Path2D, x: Double, y: Double, fillRule: CanvasFillRule? = nil) -> Bool {
-        jsObject[Keys.isPointInPath]!(path.jsValue(), x.jsValue(), y.jsValue(), fillRule?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.isPointInPath]!(path.jsValue(), x.jsValue(), y.jsValue(), fillRule?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func isPointInStroke(x: Double, y: Double) -> Bool {
-        jsObject[Keys.isPointInStroke]!(x.jsValue(), y.jsValue()).fromJSValue()!
+        jsObject[Strings.isPointInStroke]!(x.jsValue(), y.jsValue()).fromJSValue()!
     }
 
     func isPointInStroke(path: Path2D, x: Double, y: Double) -> Bool {
-        jsObject[Keys.isPointInStroke]!(path.jsValue(), x.jsValue(), y.jsValue()).fromJSValue()!
+        jsObject[Strings.isPointInStroke]!(path.jsValue(), x.jsValue(), y.jsValue()).fromJSValue()!
     }
 }

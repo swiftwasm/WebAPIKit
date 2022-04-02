@@ -4,27 +4,20 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMPointInit: BridgedDictionary {
-    private enum Keys {
-        static let w: JSString = "w"
-        static let x: JSString = "x"
-        static let y: JSString = "y"
-        static let z: JSString = "z"
-    }
-
     public convenience init(x: Double, y: Double, z: Double, w: Double) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.x] = x.jsValue()
-        object[Keys.y] = y.jsValue()
-        object[Keys.z] = z.jsValue()
-        object[Keys.w] = w.jsValue()
+        object[Strings.x] = x.jsValue()
+        object[Strings.y] = y.jsValue()
+        object[Strings.z] = z.jsValue()
+        object[Strings.w] = w.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _x = ReadWriteAttribute(jsObject: object, name: Keys.x)
-        _y = ReadWriteAttribute(jsObject: object, name: Keys.y)
-        _z = ReadWriteAttribute(jsObject: object, name: Keys.z)
-        _w = ReadWriteAttribute(jsObject: object, name: Keys.w)
+        _x = ReadWriteAttribute(jsObject: object, name: Strings.x)
+        _y = ReadWriteAttribute(jsObject: object, name: Strings.y)
+        _z = ReadWriteAttribute(jsObject: object, name: Strings.z)
+        _w = ReadWriteAttribute(jsObject: object, name: Strings.w)
         super.init(unsafelyWrapping: object)
     }
 

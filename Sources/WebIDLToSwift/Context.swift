@@ -3,6 +3,16 @@ enum Context {
     private(set) static var current = State()
 
     static var requiredClosureArgCounts: Set<Int> = []
+    private(set) static var strings: Set<String> = ["toString"]
+
+    static func source(for name: String) -> SwiftSource {
+        assert(!name.isEmpty)
+        if name == "self" {
+            return "Strings._self"
+        }
+        strings.insert(name)
+        return "Strings.\(name)"
+    }
 
     private static var stack: [State] = []
     static func withState<T>(_ new: State, body: () throws -> T) rethrows -> T {

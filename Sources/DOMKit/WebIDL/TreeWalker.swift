@@ -6,26 +6,12 @@ import JavaScriptKit
 public class TreeWalker: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.TreeWalker.function! }
 
-    private enum Keys {
-        static let currentNode: JSString = "currentNode"
-        static let filter: JSString = "filter"
-        static let firstChild: JSString = "firstChild"
-        static let lastChild: JSString = "lastChild"
-        static let nextNode: JSString = "nextNode"
-        static let nextSibling: JSString = "nextSibling"
-        static let parentNode: JSString = "parentNode"
-        static let previousNode: JSString = "previousNode"
-        static let previousSibling: JSString = "previousSibling"
-        static let root: JSString = "root"
-        static let whatToShow: JSString = "whatToShow"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _root = ReadonlyAttribute(jsObject: jsObject, name: Keys.root)
-        _whatToShow = ReadonlyAttribute(jsObject: jsObject, name: Keys.whatToShow)
-        _currentNode = ReadWriteAttribute(jsObject: jsObject, name: Keys.currentNode)
+        _root = ReadonlyAttribute(jsObject: jsObject, name: Strings.root)
+        _whatToShow = ReadonlyAttribute(jsObject: jsObject, name: Strings.whatToShow)
+        _currentNode = ReadWriteAttribute(jsObject: jsObject, name: Strings.currentNode)
         self.jsObject = jsObject
     }
 
@@ -41,30 +27,30 @@ public class TreeWalker: JSBridgedClass {
     public var currentNode: Node
 
     public func parentNode() -> Node? {
-        jsObject[Keys.parentNode]!().fromJSValue()!
+        jsObject[Strings.parentNode]!().fromJSValue()!
     }
 
     public func firstChild() -> Node? {
-        jsObject[Keys.firstChild]!().fromJSValue()!
+        jsObject[Strings.firstChild]!().fromJSValue()!
     }
 
     public func lastChild() -> Node? {
-        jsObject[Keys.lastChild]!().fromJSValue()!
+        jsObject[Strings.lastChild]!().fromJSValue()!
     }
 
     public func previousSibling() -> Node? {
-        jsObject[Keys.previousSibling]!().fromJSValue()!
+        jsObject[Strings.previousSibling]!().fromJSValue()!
     }
 
     public func nextSibling() -> Node? {
-        jsObject[Keys.nextSibling]!().fromJSValue()!
+        jsObject[Strings.nextSibling]!().fromJSValue()!
     }
 
     public func previousNode() -> Node? {
-        jsObject[Keys.previousNode]!().fromJSValue()!
+        jsObject[Strings.previousNode]!().fromJSValue()!
     }
 
     public func nextNode() -> Node? {
-        jsObject[Keys.nextNode]!().fromJSValue()!
+        jsObject[Strings.nextNode]!().fromJSValue()!
     }
 }

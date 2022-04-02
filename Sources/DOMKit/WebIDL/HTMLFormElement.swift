@@ -6,41 +6,20 @@ import JavaScriptKit
 public class HTMLFormElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLFormElement.function! }
 
-    private enum Keys {
-        static let acceptCharset: JSString = "acceptCharset"
-        static let action: JSString = "action"
-        static let autocomplete: JSString = "autocomplete"
-        static let checkValidity: JSString = "checkValidity"
-        static let elements: JSString = "elements"
-        static let encoding: JSString = "encoding"
-        static let enctype: JSString = "enctype"
-        static let length: JSString = "length"
-        static let method: JSString = "method"
-        static let name: JSString = "name"
-        static let noValidate: JSString = "noValidate"
-        static let rel: JSString = "rel"
-        static let relList: JSString = "relList"
-        static let reportValidity: JSString = "reportValidity"
-        static let requestSubmit: JSString = "requestSubmit"
-        static let reset: JSString = "reset"
-        static let submit: JSString = "submit"
-        static let target: JSString = "target"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _acceptCharset = ReadWriteAttribute(jsObject: jsObject, name: Keys.acceptCharset)
-        _action = ReadWriteAttribute(jsObject: jsObject, name: Keys.action)
-        _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Keys.autocomplete)
-        _enctype = ReadWriteAttribute(jsObject: jsObject, name: Keys.enctype)
-        _encoding = ReadWriteAttribute(jsObject: jsObject, name: Keys.encoding)
-        _method = ReadWriteAttribute(jsObject: jsObject, name: Keys.method)
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _noValidate = ReadWriteAttribute(jsObject: jsObject, name: Keys.noValidate)
-        _target = ReadWriteAttribute(jsObject: jsObject, name: Keys.target)
-        _rel = ReadWriteAttribute(jsObject: jsObject, name: Keys.rel)
-        _relList = ReadonlyAttribute(jsObject: jsObject, name: Keys.relList)
-        _elements = ReadonlyAttribute(jsObject: jsObject, name: Keys.elements)
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _acceptCharset = ReadWriteAttribute(jsObject: jsObject, name: Strings.acceptCharset)
+        _action = ReadWriteAttribute(jsObject: jsObject, name: Strings.action)
+        _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocomplete)
+        _enctype = ReadWriteAttribute(jsObject: jsObject, name: Strings.enctype)
+        _encoding = ReadWriteAttribute(jsObject: jsObject, name: Strings.encoding)
+        _method = ReadWriteAttribute(jsObject: jsObject, name: Strings.method)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _noValidate = ReadWriteAttribute(jsObject: jsObject, name: Strings.noValidate)
+        _target = ReadWriteAttribute(jsObject: jsObject, name: Strings.target)
+        _rel = ReadWriteAttribute(jsObject: jsObject, name: Strings.rel)
+        _relList = ReadonlyAttribute(jsObject: jsObject, name: Strings.relList)
+        _elements = ReadonlyAttribute(jsObject: jsObject, name: Strings.elements)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -96,22 +75,22 @@ public class HTMLFormElement: HTMLElement {
     }
 
     public func submit() {
-        _ = jsObject[Keys.submit]!()
+        _ = jsObject[Strings.submit]!()
     }
 
     public func requestSubmit(submitter: HTMLElement? = nil) {
-        _ = jsObject[Keys.requestSubmit]!(submitter?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.requestSubmit]!(submitter?.jsValue() ?? .undefined)
     }
 
     public func reset() {
-        _ = jsObject[Keys.reset]!()
+        _ = jsObject[Strings.reset]!()
     }
 
     public func checkValidity() -> Bool {
-        jsObject[Keys.checkValidity]!().fromJSValue()!
+        jsObject[Strings.checkValidity]!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Keys.reportValidity]!().fromJSValue()!
+        jsObject[Strings.reportValidity]!().fromJSValue()!
     }
 }

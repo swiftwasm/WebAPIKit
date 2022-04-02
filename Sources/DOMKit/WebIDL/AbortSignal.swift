@@ -6,28 +6,19 @@ import JavaScriptKit
 public class AbortSignal: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.AbortSignal.function! }
 
-    private enum Keys {
-        static let abort: JSString = "abort"
-        static let aborted: JSString = "aborted"
-        static let onabort: JSString = "onabort"
-        static let reason: JSString = "reason"
-        static let throwIfAborted: JSString = "throwIfAborted"
-        static let timeout: JSString = "timeout"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _aborted = ReadonlyAttribute(jsObject: jsObject, name: Keys.aborted)
-        _reason = ReadonlyAttribute(jsObject: jsObject, name: Keys.reason)
-        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onabort)
+        _aborted = ReadonlyAttribute(jsObject: jsObject, name: Strings.aborted)
+        _reason = ReadonlyAttribute(jsObject: jsObject, name: Strings.reason)
+        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onabort)
         super.init(unsafelyWrapping: jsObject)
     }
 
     public static func abort(reason: JSValue? = nil) -> Self {
-        constructor[Keys.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        constructor[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public static func timeout(milliseconds: UInt64) -> Self {
-        constructor[Keys.timeout]!(milliseconds.jsValue()).fromJSValue()!
+        constructor[Strings.timeout]!(milliseconds.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -37,7 +28,7 @@ public class AbortSignal: EventTarget {
     public var reason: JSValue
 
     public func throwIfAborted() {
-        _ = jsObject[Keys.throwIfAborted]!()
+        _ = jsObject[Strings.throwIfAborted]!()
     }
 
     @ClosureAttribute.Optional1

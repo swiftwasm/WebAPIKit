@@ -6,26 +6,16 @@ import JavaScriptKit
 public class StyleSheet: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.StyleSheet.function! }
 
-    private enum Keys {
-        static let disabled: JSString = "disabled"
-        static let href: JSString = "href"
-        static let media: JSString = "media"
-        static let ownerNode: JSString = "ownerNode"
-        static let parentStyleSheet: JSString = "parentStyleSheet"
-        static let title: JSString = "title"
-        static let type: JSString = "type"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
-        _href = ReadonlyAttribute(jsObject: jsObject, name: Keys.href)
-        _ownerNode = ReadonlyAttribute(jsObject: jsObject, name: Keys.ownerNode)
-        _parentStyleSheet = ReadonlyAttribute(jsObject: jsObject, name: Keys.parentStyleSheet)
-        _title = ReadonlyAttribute(jsObject: jsObject, name: Keys.title)
-        _media = ReadonlyAttribute(jsObject: jsObject, name: Keys.media)
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
+        _href = ReadonlyAttribute(jsObject: jsObject, name: Strings.href)
+        _ownerNode = ReadonlyAttribute(jsObject: jsObject, name: Strings.ownerNode)
+        _parentStyleSheet = ReadonlyAttribute(jsObject: jsObject, name: Strings.parentStyleSheet)
+        _title = ReadonlyAttribute(jsObject: jsObject, name: Strings.title)
+        _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)
         self.jsObject = jsObject
     }
 

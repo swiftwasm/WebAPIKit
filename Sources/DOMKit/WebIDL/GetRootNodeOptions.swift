@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GetRootNodeOptions: BridgedDictionary {
-    private enum Keys {
-        static let composed: JSString = "composed"
-    }
-
     public convenience init(composed: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.composed] = composed.jsValue()
+        object[Strings.composed] = composed.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _composed = ReadWriteAttribute(jsObject: object, name: Keys.composed)
+        _composed = ReadWriteAttribute(jsObject: object, name: Strings.composed)
         super.init(unsafelyWrapping: object)
     }
 

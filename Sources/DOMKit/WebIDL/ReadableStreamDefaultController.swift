@@ -6,17 +6,10 @@ import JavaScriptKit
 public class ReadableStreamDefaultController: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.ReadableStreamDefaultController.function! }
 
-    private enum Keys {
-        static let close: JSString = "close"
-        static let desiredSize: JSString = "desiredSize"
-        static let enqueue: JSString = "enqueue"
-        static let error: JSString = "error"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _desiredSize = ReadonlyAttribute(jsObject: jsObject, name: Keys.desiredSize)
+        _desiredSize = ReadonlyAttribute(jsObject: jsObject, name: Strings.desiredSize)
         self.jsObject = jsObject
     }
 
@@ -24,14 +17,14 @@ public class ReadableStreamDefaultController: JSBridgedClass {
     public var desiredSize: Double?
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        _ = jsObject[Strings.close]!()
     }
 
     public func enqueue(chunk: JSValue? = nil) {
-        _ = jsObject[Keys.enqueue]!(chunk?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.enqueue]!(chunk?.jsValue() ?? .undefined)
     }
 
     public func error(e: JSValue? = nil) {
-        _ = jsObject[Keys.error]!(e?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.error]!(e?.jsValue() ?? .undefined)
     }
 }

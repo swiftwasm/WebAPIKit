@@ -6,14 +6,9 @@ import JavaScriptKit
 public class CSSMarginRule: CSSRule {
     override public class var constructor: JSFunction { JSObject.global.CSSMarginRule.function! }
 
-    private enum Keys {
-        static let name: JSString = "name"
-        static let style: JSString = "style"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadonlyAttribute(jsObject: jsObject, name: Keys.name)
-        _style = ReadonlyAttribute(jsObject: jsObject, name: Keys.style)
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
+        _style = ReadonlyAttribute(jsObject: jsObject, name: Strings.style)
         super.init(unsafelyWrapping: jsObject)
     }
 

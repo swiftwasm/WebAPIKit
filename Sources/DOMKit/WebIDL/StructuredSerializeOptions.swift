@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StructuredSerializeOptions: BridgedDictionary {
-    private enum Keys {
-        static let transfer: JSString = "transfer"
-    }
-
     public convenience init(transfer: [JSObject]) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.transfer] = transfer.jsValue()
+        object[Strings.transfer] = transfer.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _transfer = ReadWriteAttribute(jsObject: object, name: Keys.transfer)
+        _transfer = ReadWriteAttribute(jsObject: object, name: Strings.transfer)
         super.init(unsafelyWrapping: object)
     }
 

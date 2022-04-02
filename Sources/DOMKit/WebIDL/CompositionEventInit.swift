@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CompositionEventInit: BridgedDictionary {
-    private enum Keys {
-        static let data: JSString = "data"
-    }
-
     public convenience init(data: String) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.data] = data.jsValue()
+        object[Strings.data] = data.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _data = ReadWriteAttribute(jsObject: object, name: Keys.data)
+        _data = ReadWriteAttribute(jsObject: object, name: Strings.data)
         super.init(unsafelyWrapping: object)
     }
 

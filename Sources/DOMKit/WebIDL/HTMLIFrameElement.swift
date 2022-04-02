@@ -6,47 +6,25 @@ import JavaScriptKit
 public class HTMLIFrameElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLIFrameElement.function! }
 
-    private enum Keys {
-        static let align: JSString = "align"
-        static let allow: JSString = "allow"
-        static let allowFullscreen: JSString = "allowFullscreen"
-        static let contentDocument: JSString = "contentDocument"
-        static let contentWindow: JSString = "contentWindow"
-        static let frameBorder: JSString = "frameBorder"
-        static let getSVGDocument: JSString = "getSVGDocument"
-        static let height: JSString = "height"
-        static let loading: JSString = "loading"
-        static let longDesc: JSString = "longDesc"
-        static let marginHeight: JSString = "marginHeight"
-        static let marginWidth: JSString = "marginWidth"
-        static let name: JSString = "name"
-        static let referrerPolicy: JSString = "referrerPolicy"
-        static let sandbox: JSString = "sandbox"
-        static let scrolling: JSString = "scrolling"
-        static let src: JSString = "src"
-        static let srcdoc: JSString = "srcdoc"
-        static let width: JSString = "width"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _src = ReadWriteAttribute(jsObject: jsObject, name: Keys.src)
-        _srcdoc = ReadWriteAttribute(jsObject: jsObject, name: Keys.srcdoc)
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _sandbox = ReadonlyAttribute(jsObject: jsObject, name: Keys.sandbox)
-        _allow = ReadWriteAttribute(jsObject: jsObject, name: Keys.allow)
-        _allowFullscreen = ReadWriteAttribute(jsObject: jsObject, name: Keys.allowFullscreen)
-        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
-        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
-        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Keys.referrerPolicy)
-        _loading = ReadWriteAttribute(jsObject: jsObject, name: Keys.loading)
-        _contentDocument = ReadonlyAttribute(jsObject: jsObject, name: Keys.contentDocument)
-        _contentWindow = ReadonlyAttribute(jsObject: jsObject, name: Keys.contentWindow)
-        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
-        _scrolling = ReadWriteAttribute(jsObject: jsObject, name: Keys.scrolling)
-        _frameBorder = ReadWriteAttribute(jsObject: jsObject, name: Keys.frameBorder)
-        _longDesc = ReadWriteAttribute(jsObject: jsObject, name: Keys.longDesc)
-        _marginHeight = ReadWriteAttribute(jsObject: jsObject, name: Keys.marginHeight)
-        _marginWidth = ReadWriteAttribute(jsObject: jsObject, name: Keys.marginWidth)
+        _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
+        _srcdoc = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcdoc)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _sandbox = ReadonlyAttribute(jsObject: jsObject, name: Strings.sandbox)
+        _allow = ReadWriteAttribute(jsObject: jsObject, name: Strings.allow)
+        _allowFullscreen = ReadWriteAttribute(jsObject: jsObject, name: Strings.allowFullscreen)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
+        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Strings.referrerPolicy)
+        _loading = ReadWriteAttribute(jsObject: jsObject, name: Strings.loading)
+        _contentDocument = ReadonlyAttribute(jsObject: jsObject, name: Strings.contentDocument)
+        _contentWindow = ReadonlyAttribute(jsObject: jsObject, name: Strings.contentWindow)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
+        _scrolling = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrolling)
+        _frameBorder = ReadWriteAttribute(jsObject: jsObject, name: Strings.frameBorder)
+        _longDesc = ReadWriteAttribute(jsObject: jsObject, name: Strings.longDesc)
+        _marginHeight = ReadWriteAttribute(jsObject: jsObject, name: Strings.marginHeight)
+        _marginWidth = ReadWriteAttribute(jsObject: jsObject, name: Strings.marginWidth)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -91,7 +69,7 @@ public class HTMLIFrameElement: HTMLElement {
     public var contentWindow: WindowProxy?
 
     public func getSVGDocument() -> Document? {
-        jsObject[Keys.getSVGDocument]!().fromJSValue()!
+        jsObject[Strings.getSVGDocument]!().fromJSValue()!
     }
 
     @ReadWriteAttribute

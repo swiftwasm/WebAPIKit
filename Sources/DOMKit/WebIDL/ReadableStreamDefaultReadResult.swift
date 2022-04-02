@@ -4,21 +4,16 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamDefaultReadResult: BridgedDictionary {
-    private enum Keys {
-        static let done: JSString = "done"
-        static let value: JSString = "value"
-    }
-
     public convenience init(value: JSValue, done: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.value] = value.jsValue()
-        object[Keys.done] = done.jsValue()
+        object[Strings.value] = value.jsValue()
+        object[Strings.done] = done.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _value = ReadWriteAttribute(jsObject: object, name: Keys.value)
-        _done = ReadWriteAttribute(jsObject: object, name: Keys.done)
+        _value = ReadWriteAttribute(jsObject: object, name: Strings.value)
+        _done = ReadWriteAttribute(jsObject: object, name: Strings.done)
         super.init(unsafelyWrapping: object)
     }
 

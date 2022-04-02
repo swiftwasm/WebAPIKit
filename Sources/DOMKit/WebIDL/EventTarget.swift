@@ -6,12 +6,6 @@ import JavaScriptKit
 public class EventTarget: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.EventTarget.function! }
 
-    private enum Keys {
-        static let addEventListener: JSString = "addEventListener"
-        static let dispatchEvent: JSString = "dispatchEvent"
-        static let removeEventListener: JSString = "removeEventListener"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -27,6 +21,6 @@ public class EventTarget: JSBridgedClass {
     // XXX: member 'removeEventListener' is ignored
 
     public func dispatchEvent(event: Event) -> Bool {
-        jsObject[Keys.dispatchEvent]!(event.jsValue()).fromJSValue()!
+        jsObject[Strings.dispatchEvent]!(event.jsValue()).fromJSValue()!
     }
 }

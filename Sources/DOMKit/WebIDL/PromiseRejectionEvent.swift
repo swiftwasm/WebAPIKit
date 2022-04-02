@@ -6,14 +6,9 @@ import JavaScriptKit
 public class PromiseRejectionEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.PromiseRejectionEvent.function! }
 
-    private enum Keys {
-        static let promise: JSString = "promise"
-        static let reason: JSString = "reason"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _promise = ReadonlyAttribute(jsObject: jsObject, name: Keys.promise)
-        _reason = ReadonlyAttribute(jsObject: jsObject, name: Keys.reason)
+        _promise = ReadonlyAttribute(jsObject: jsObject, name: Strings.promise)
+        _reason = ReadonlyAttribute(jsObject: jsObject, name: Strings.reason)
         super.init(unsafelyWrapping: jsObject)
     }
 

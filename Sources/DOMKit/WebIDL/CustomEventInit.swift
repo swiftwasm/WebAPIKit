@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CustomEventInit: BridgedDictionary {
-    private enum Keys {
-        static let detail: JSString = "detail"
-    }
-
     public convenience init(detail: JSValue) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.detail] = detail.jsValue()
+        object[Strings.detail] = detail.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _detail = ReadWriteAttribute(jsObject: object, name: Keys.detail)
+        _detail = ReadWriteAttribute(jsObject: object, name: Strings.detail)
         super.init(unsafelyWrapping: object)
     }
 

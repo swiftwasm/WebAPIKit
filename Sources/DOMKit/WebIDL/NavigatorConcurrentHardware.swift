@@ -3,11 +3,7 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let hardwareConcurrency: JSString = "hardwareConcurrency"
-}
-
 public protocol NavigatorConcurrentHardware: JSBridgedClass {}
 public extension NavigatorConcurrentHardware {
-    var hardwareConcurrency: UInt64 { ReadonlyAttribute[Keys.hardwareConcurrency, in: jsObject] }
+    var hardwareConcurrency: UInt64 { ReadonlyAttribute[Strings.hardwareConcurrency, in: jsObject] }
 }

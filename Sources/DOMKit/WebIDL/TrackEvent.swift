@@ -6,12 +6,8 @@ import JavaScriptKit
 public class TrackEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.TrackEvent.function! }
 
-    private enum Keys {
-        static let track: JSString = "track"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _track = ReadonlyAttribute(jsObject: jsObject, name: Keys.track)
+        _track = ReadonlyAttribute(jsObject: jsObject, name: Strings.track)
         super.init(unsafelyWrapping: jsObject)
     }
 

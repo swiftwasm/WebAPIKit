@@ -3,45 +3,33 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let append: JSString = "append"
-    static let childElementCount: JSString = "childElementCount"
-    static let children: JSString = "children"
-    static let firstElementChild: JSString = "firstElementChild"
-    static let lastElementChild: JSString = "lastElementChild"
-    static let prepend: JSString = "prepend"
-    static let querySelector: JSString = "querySelector"
-    static let querySelectorAll: JSString = "querySelectorAll"
-    static let replaceChildren: JSString = "replaceChildren"
-}
-
 public protocol ParentNode: JSBridgedClass {}
 public extension ParentNode {
-    var children: HTMLCollection { ReadonlyAttribute[Keys.children, in: jsObject] }
+    var children: HTMLCollection { ReadonlyAttribute[Strings.children, in: jsObject] }
 
-    var firstElementChild: Element? { ReadonlyAttribute[Keys.firstElementChild, in: jsObject] }
+    var firstElementChild: Element? { ReadonlyAttribute[Strings.firstElementChild, in: jsObject] }
 
-    var lastElementChild: Element? { ReadonlyAttribute[Keys.lastElementChild, in: jsObject] }
+    var lastElementChild: Element? { ReadonlyAttribute[Strings.lastElementChild, in: jsObject] }
 
-    var childElementCount: UInt32 { ReadonlyAttribute[Keys.childElementCount, in: jsObject] }
+    var childElementCount: UInt32 { ReadonlyAttribute[Strings.childElementCount, in: jsObject] }
 
     func prepend(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.prepend]!(nodes.jsValue())
+        _ = jsObject[Strings.prepend]!(nodes.jsValue())
     }
 
     func append(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.append]!(nodes.jsValue())
+        _ = jsObject[Strings.append]!(nodes.jsValue())
     }
 
     func replaceChildren(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Keys.replaceChildren]!(nodes.jsValue())
+        _ = jsObject[Strings.replaceChildren]!(nodes.jsValue())
     }
 
     func querySelector(selectors: String) -> Element? {
-        jsObject[Keys.querySelector]!(selectors.jsValue()).fromJSValue()!
+        jsObject[Strings.querySelector]!(selectors.jsValue()).fromJSValue()!
     }
 
     func querySelectorAll(selectors: String) -> NodeList {
-        jsObject[Keys.querySelectorAll]!(selectors.jsValue()).fromJSValue()!
+        jsObject[Strings.querySelectorAll]!(selectors.jsValue()).fromJSValue()!
     }
 }

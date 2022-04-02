@@ -6,16 +6,11 @@ import JavaScriptKit
 public class TransformStream: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.TransformStream.function! }
 
-    private enum Keys {
-        static let readable: JSString = "readable"
-        static let writable: JSString = "writable"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _readable = ReadonlyAttribute(jsObject: jsObject, name: Keys.readable)
-        _writable = ReadonlyAttribute(jsObject: jsObject, name: Keys.writable)
+        _readable = ReadonlyAttribute(jsObject: jsObject, name: Strings.readable)
+        _writable = ReadonlyAttribute(jsObject: jsObject, name: Strings.writable)
         self.jsObject = jsObject
     }
 

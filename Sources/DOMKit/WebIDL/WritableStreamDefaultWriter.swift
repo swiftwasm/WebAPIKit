@@ -6,22 +6,12 @@ import JavaScriptKit
 public class WritableStreamDefaultWriter: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.WritableStreamDefaultWriter.function! }
 
-    private enum Keys {
-        static let abort: JSString = "abort"
-        static let close: JSString = "close"
-        static let closed: JSString = "closed"
-        static let desiredSize: JSString = "desiredSize"
-        static let ready: JSString = "ready"
-        static let releaseLock: JSString = "releaseLock"
-        static let write: JSString = "write"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _closed = ReadonlyAttribute(jsObject: jsObject, name: Keys.closed)
-        _desiredSize = ReadonlyAttribute(jsObject: jsObject, name: Keys.desiredSize)
-        _ready = ReadonlyAttribute(jsObject: jsObject, name: Keys.ready)
+        _closed = ReadonlyAttribute(jsObject: jsObject, name: Strings.closed)
+        _desiredSize = ReadonlyAttribute(jsObject: jsObject, name: Strings.desiredSize)
+        _ready = ReadonlyAttribute(jsObject: jsObject, name: Strings.ready)
         self.jsObject = jsObject
     }
 
@@ -39,36 +29,36 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     public var ready: JSPromise
 
     public func abort(reason: JSValue? = nil) -> JSPromise {
-        jsObject[Keys.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func abort(reason: JSValue? = nil) async throws {
-        let _promise: JSPromise = jsObject[Keys.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        let _promise: JSPromise = jsObject[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func close() -> JSPromise {
-        jsObject[Keys.close]!().fromJSValue()!
+        jsObject[Strings.close]!().fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func close() async throws {
-        let _promise: JSPromise = jsObject[Keys.close]!().fromJSValue()!
+        let _promise: JSPromise = jsObject[Strings.close]!().fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func releaseLock() {
-        _ = jsObject[Keys.releaseLock]!()
+        _ = jsObject[Strings.releaseLock]!()
     }
 
     public func write(chunk: JSValue? = nil) -> JSPromise {
-        jsObject[Keys.write]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.write]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func write(chunk: JSValue? = nil) async throws {
-        let _promise: JSPromise = jsObject[Keys.write]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
+        let _promise: JSPromise = jsObject[Strings.write]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
         _ = try await _promise.get()
     }
 }

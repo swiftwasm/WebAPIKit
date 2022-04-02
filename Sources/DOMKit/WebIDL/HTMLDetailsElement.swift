@@ -6,12 +6,8 @@ import JavaScriptKit
 public class HTMLDetailsElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLDetailsElement.function! }
 
-    private enum Keys {
-        static let open: JSString = "open"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _open = ReadWriteAttribute(jsObject: jsObject, name: Keys.open)
+        _open = ReadWriteAttribute(jsObject: jsObject, name: Strings.open)
         super.init(unsafelyWrapping: jsObject)
     }
 

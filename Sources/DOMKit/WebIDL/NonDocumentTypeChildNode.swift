@@ -3,14 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let nextElementSibling: JSString = "nextElementSibling"
-    static let previousElementSibling: JSString = "previousElementSibling"
-}
-
 public protocol NonDocumentTypeChildNode: JSBridgedClass {}
 public extension NonDocumentTypeChildNode {
-    var previousElementSibling: Element? { ReadonlyAttribute[Keys.previousElementSibling, in: jsObject] }
+    var previousElementSibling: Element? { ReadonlyAttribute[Strings.previousElementSibling, in: jsObject] }
 
-    var nextElementSibling: Element? { ReadonlyAttribute[Keys.nextElementSibling, in: jsObject] }
+    var nextElementSibling: Element? { ReadonlyAttribute[Strings.nextElementSibling, in: jsObject] }
 }

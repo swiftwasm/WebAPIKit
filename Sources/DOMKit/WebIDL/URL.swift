@@ -6,11 +6,6 @@ import JavaScriptKit
 public class URL: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.URL.function! }
 
-    private enum Keys {
-        static let createObjectURL: JSString = "createObjectURL"
-        static let revokeObjectURL: JSString = "revokeObjectURL"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -18,10 +13,10 @@ public class URL: JSBridgedClass {
     }
 
     public static func createObjectURL(obj: __UNSUPPORTED_UNION__) -> String {
-        constructor[Keys.createObjectURL]!(obj.jsValue()).fromJSValue()!
+        constructor[Strings.createObjectURL]!(obj.jsValue()).fromJSValue()!
     }
 
     public static func revokeObjectURL(url: String) {
-        _ = constructor[Keys.revokeObjectURL]!(url.jsValue())
+        _ = constructor[Strings.revokeObjectURL]!(url.jsValue())
     }
 }

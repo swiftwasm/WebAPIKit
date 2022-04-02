@@ -6,16 +6,10 @@ import JavaScriptKit
 public class HTMLStyleElement: HTMLElement, LinkStyle {
     override public class var constructor: JSFunction { JSObject.global.HTMLStyleElement.function! }
 
-    private enum Keys {
-        static let blocking: JSString = "blocking"
-        static let media: JSString = "media"
-        static let type: JSString = "type"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _media = ReadWriteAttribute(jsObject: jsObject, name: Keys.media)
-        _blocking = ReadonlyAttribute(jsObject: jsObject, name: Keys.blocking)
-        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
+        _media = ReadWriteAttribute(jsObject: jsObject, name: Strings.media)
+        _blocking = ReadonlyAttribute(jsObject: jsObject, name: Strings.blocking)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
         super.init(unsafelyWrapping: jsObject)
     }
 

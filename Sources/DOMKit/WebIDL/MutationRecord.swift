@@ -6,30 +6,18 @@ import JavaScriptKit
 public class MutationRecord: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MutationRecord.function! }
 
-    private enum Keys {
-        static let addedNodes: JSString = "addedNodes"
-        static let attributeName: JSString = "attributeName"
-        static let attributeNamespace: JSString = "attributeNamespace"
-        static let nextSibling: JSString = "nextSibling"
-        static let oldValue: JSString = "oldValue"
-        static let previousSibling: JSString = "previousSibling"
-        static let removedNodes: JSString = "removedNodes"
-        static let target: JSString = "target"
-        static let type: JSString = "type"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
-        _target = ReadonlyAttribute(jsObject: jsObject, name: Keys.target)
-        _addedNodes = ReadonlyAttribute(jsObject: jsObject, name: Keys.addedNodes)
-        _removedNodes = ReadonlyAttribute(jsObject: jsObject, name: Keys.removedNodes)
-        _previousSibling = ReadonlyAttribute(jsObject: jsObject, name: Keys.previousSibling)
-        _nextSibling = ReadonlyAttribute(jsObject: jsObject, name: Keys.nextSibling)
-        _attributeName = ReadonlyAttribute(jsObject: jsObject, name: Keys.attributeName)
-        _attributeNamespace = ReadonlyAttribute(jsObject: jsObject, name: Keys.attributeNamespace)
-        _oldValue = ReadonlyAttribute(jsObject: jsObject, name: Keys.oldValue)
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
+        _target = ReadonlyAttribute(jsObject: jsObject, name: Strings.target)
+        _addedNodes = ReadonlyAttribute(jsObject: jsObject, name: Strings.addedNodes)
+        _removedNodes = ReadonlyAttribute(jsObject: jsObject, name: Strings.removedNodes)
+        _previousSibling = ReadonlyAttribute(jsObject: jsObject, name: Strings.previousSibling)
+        _nextSibling = ReadonlyAttribute(jsObject: jsObject, name: Strings.nextSibling)
+        _attributeName = ReadonlyAttribute(jsObject: jsObject, name: Strings.attributeName)
+        _attributeNamespace = ReadonlyAttribute(jsObject: jsObject, name: Strings.attributeNamespace)
+        _oldValue = ReadonlyAttribute(jsObject: jsObject, name: Strings.oldValue)
         self.jsObject = jsObject
     }
 

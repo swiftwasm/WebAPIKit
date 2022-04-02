@@ -6,36 +6,16 @@ import JavaScriptKit
 public class FileReader: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.FileReader.function! }
 
-    private enum Keys {
-        static let DONE: JSString = "DONE"
-        static let EMPTY: JSString = "EMPTY"
-        static let LOADING: JSString = "LOADING"
-        static let abort: JSString = "abort"
-        static let error: JSString = "error"
-        static let onabort: JSString = "onabort"
-        static let onerror: JSString = "onerror"
-        static let onload: JSString = "onload"
-        static let onloadend: JSString = "onloadend"
-        static let onloadstart: JSString = "onloadstart"
-        static let onprogress: JSString = "onprogress"
-        static let readAsArrayBuffer: JSString = "readAsArrayBuffer"
-        static let readAsBinaryString: JSString = "readAsBinaryString"
-        static let readAsDataURL: JSString = "readAsDataURL"
-        static let readAsText: JSString = "readAsText"
-        static let readyState: JSString = "readyState"
-        static let result: JSString = "result"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Keys.readyState)
-        _result = ReadonlyAttribute(jsObject: jsObject, name: Keys.result)
-        _error = ReadonlyAttribute(jsObject: jsObject, name: Keys.error)
-        _onloadstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onloadstart)
-        _onprogress = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onprogress)
-        _onload = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onload)
-        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onabort)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onerror)
-        _onloadend = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onloadend)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
+        _result = ReadonlyAttribute(jsObject: jsObject, name: Strings.result)
+        _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
+        _onloadstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onloadstart)
+        _onprogress = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onprogress)
+        _onload = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onload)
+        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onabort)
+        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
+        _onloadend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onloadend)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -44,23 +24,23 @@ public class FileReader: EventTarget {
     }
 
     public func readAsArrayBuffer(blob: Blob) {
-        _ = jsObject[Keys.readAsArrayBuffer]!(blob.jsValue())
+        _ = jsObject[Strings.readAsArrayBuffer]!(blob.jsValue())
     }
 
     public func readAsBinaryString(blob: Blob) {
-        _ = jsObject[Keys.readAsBinaryString]!(blob.jsValue())
+        _ = jsObject[Strings.readAsBinaryString]!(blob.jsValue())
     }
 
     public func readAsText(blob: Blob, encoding: String? = nil) {
-        _ = jsObject[Keys.readAsText]!(blob.jsValue(), encoding?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.readAsText]!(blob.jsValue(), encoding?.jsValue() ?? .undefined)
     }
 
     public func readAsDataURL(blob: Blob) {
-        _ = jsObject[Keys.readAsDataURL]!(blob.jsValue())
+        _ = jsObject[Strings.readAsDataURL]!(blob.jsValue())
     }
 
     public func abort() {
-        _ = jsObject[Keys.abort]!()
+        _ = jsObject[Strings.abort]!()
     }
 
     public static let EMPTY: UInt16 = 0

@@ -6,14 +6,9 @@ import JavaScriptKit
 public class HTMLLegendElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLLegendElement.function! }
 
-    private enum Keys {
-        static let align: JSString = "align"
-        static let form: JSString = "form"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
-        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
         super.init(unsafelyWrapping: jsObject)
     }
 

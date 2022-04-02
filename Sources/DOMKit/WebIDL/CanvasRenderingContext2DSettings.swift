@@ -4,27 +4,20 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CanvasRenderingContext2DSettings: BridgedDictionary {
-    private enum Keys {
-        static let alpha: JSString = "alpha"
-        static let colorSpace: JSString = "colorSpace"
-        static let desynchronized: JSString = "desynchronized"
-        static let willReadFrequently: JSString = "willReadFrequently"
-    }
-
     public convenience init(alpha: Bool, desynchronized: Bool, colorSpace: PredefinedColorSpace, willReadFrequently: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.alpha] = alpha.jsValue()
-        object[Keys.desynchronized] = desynchronized.jsValue()
-        object[Keys.colorSpace] = colorSpace.jsValue()
-        object[Keys.willReadFrequently] = willReadFrequently.jsValue()
+        object[Strings.alpha] = alpha.jsValue()
+        object[Strings.desynchronized] = desynchronized.jsValue()
+        object[Strings.colorSpace] = colorSpace.jsValue()
+        object[Strings.willReadFrequently] = willReadFrequently.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _alpha = ReadWriteAttribute(jsObject: object, name: Keys.alpha)
-        _desynchronized = ReadWriteAttribute(jsObject: object, name: Keys.desynchronized)
-        _colorSpace = ReadWriteAttribute(jsObject: object, name: Keys.colorSpace)
-        _willReadFrequently = ReadWriteAttribute(jsObject: object, name: Keys.willReadFrequently)
+        _alpha = ReadWriteAttribute(jsObject: object, name: Strings.alpha)
+        _desynchronized = ReadWriteAttribute(jsObject: object, name: Strings.desynchronized)
+        _colorSpace = ReadWriteAttribute(jsObject: object, name: Strings.colorSpace)
+        _willReadFrequently = ReadWriteAttribute(jsObject: object, name: Strings.willReadFrequently)
         super.init(unsafelyWrapping: object)
     }
 

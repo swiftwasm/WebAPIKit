@@ -6,46 +6,25 @@ import JavaScriptKit
 public class HTMLLinkElement: HTMLElement, LinkStyle {
     override public class var constructor: JSFunction { JSObject.global.HTMLLinkElement.function! }
 
-    private enum Keys {
-        static let `as`: JSString = "as"
-        static let blocking: JSString = "blocking"
-        static let charset: JSString = "charset"
-        static let crossOrigin: JSString = "crossOrigin"
-        static let disabled: JSString = "disabled"
-        static let href: JSString = "href"
-        static let hreflang: JSString = "hreflang"
-        static let imageSizes: JSString = "imageSizes"
-        static let imageSrcset: JSString = "imageSrcset"
-        static let integrity: JSString = "integrity"
-        static let media: JSString = "media"
-        static let referrerPolicy: JSString = "referrerPolicy"
-        static let rel: JSString = "rel"
-        static let relList: JSString = "relList"
-        static let rev: JSString = "rev"
-        static let sizes: JSString = "sizes"
-        static let target: JSString = "target"
-        static let type: JSString = "type"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _href = ReadWriteAttribute(jsObject: jsObject, name: Keys.href)
-        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: Keys.crossOrigin)
-        _rel = ReadWriteAttribute(jsObject: jsObject, name: Keys.rel)
-        _as = ReadWriteAttribute(jsObject: jsObject, name: Keys.as)
-        _relList = ReadonlyAttribute(jsObject: jsObject, name: Keys.relList)
-        _media = ReadWriteAttribute(jsObject: jsObject, name: Keys.media)
-        _integrity = ReadWriteAttribute(jsObject: jsObject, name: Keys.integrity)
-        _hreflang = ReadWriteAttribute(jsObject: jsObject, name: Keys.hreflang)
-        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
-        _sizes = ReadonlyAttribute(jsObject: jsObject, name: Keys.sizes)
-        _imageSrcset = ReadWriteAttribute(jsObject: jsObject, name: Keys.imageSrcset)
-        _imageSizes = ReadWriteAttribute(jsObject: jsObject, name: Keys.imageSizes)
-        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Keys.referrerPolicy)
-        _blocking = ReadonlyAttribute(jsObject: jsObject, name: Keys.blocking)
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
-        _charset = ReadWriteAttribute(jsObject: jsObject, name: Keys.charset)
-        _rev = ReadWriteAttribute(jsObject: jsObject, name: Keys.rev)
-        _target = ReadWriteAttribute(jsObject: jsObject, name: Keys.target)
+        _href = ReadWriteAttribute(jsObject: jsObject, name: Strings.href)
+        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: Strings.crossOrigin)
+        _rel = ReadWriteAttribute(jsObject: jsObject, name: Strings.rel)
+        _as = ReadWriteAttribute(jsObject: jsObject, name: Strings.as)
+        _relList = ReadonlyAttribute(jsObject: jsObject, name: Strings.relList)
+        _media = ReadWriteAttribute(jsObject: jsObject, name: Strings.media)
+        _integrity = ReadWriteAttribute(jsObject: jsObject, name: Strings.integrity)
+        _hreflang = ReadWriteAttribute(jsObject: jsObject, name: Strings.hreflang)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _sizes = ReadonlyAttribute(jsObject: jsObject, name: Strings.sizes)
+        _imageSrcset = ReadWriteAttribute(jsObject: jsObject, name: Strings.imageSrcset)
+        _imageSizes = ReadWriteAttribute(jsObject: jsObject, name: Strings.imageSizes)
+        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Strings.referrerPolicy)
+        _blocking = ReadonlyAttribute(jsObject: jsObject, name: Strings.blocking)
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)
+        _charset = ReadWriteAttribute(jsObject: jsObject, name: Strings.charset)
+        _rev = ReadWriteAttribute(jsObject: jsObject, name: Strings.rev)
+        _target = ReadWriteAttribute(jsObject: jsObject, name: Strings.target)
         super.init(unsafelyWrapping: jsObject)
     }
 

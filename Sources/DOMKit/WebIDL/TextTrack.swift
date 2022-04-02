@@ -6,30 +6,16 @@ import JavaScriptKit
 public class TextTrack: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.TextTrack.function! }
 
-    private enum Keys {
-        static let activeCues: JSString = "activeCues"
-        static let addCue: JSString = "addCue"
-        static let cues: JSString = "cues"
-        static let id: JSString = "id"
-        static let inBandMetadataTrackDispatchType: JSString = "inBandMetadataTrackDispatchType"
-        static let kind: JSString = "kind"
-        static let label: JSString = "label"
-        static let language: JSString = "language"
-        static let mode: JSString = "mode"
-        static let oncuechange: JSString = "oncuechange"
-        static let removeCue: JSString = "removeCue"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _kind = ReadonlyAttribute(jsObject: jsObject, name: Keys.kind)
-        _label = ReadonlyAttribute(jsObject: jsObject, name: Keys.label)
-        _language = ReadonlyAttribute(jsObject: jsObject, name: Keys.language)
-        _id = ReadonlyAttribute(jsObject: jsObject, name: Keys.id)
-        _inBandMetadataTrackDispatchType = ReadonlyAttribute(jsObject: jsObject, name: Keys.inBandMetadataTrackDispatchType)
-        _mode = ReadWriteAttribute(jsObject: jsObject, name: Keys.mode)
-        _cues = ReadonlyAttribute(jsObject: jsObject, name: Keys.cues)
-        _activeCues = ReadonlyAttribute(jsObject: jsObject, name: Keys.activeCues)
-        _oncuechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.oncuechange)
+        _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
+        _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
+        _language = ReadonlyAttribute(jsObject: jsObject, name: Strings.language)
+        _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
+        _inBandMetadataTrackDispatchType = ReadonlyAttribute(jsObject: jsObject, name: Strings.inBandMetadataTrackDispatchType)
+        _mode = ReadWriteAttribute(jsObject: jsObject, name: Strings.mode)
+        _cues = ReadonlyAttribute(jsObject: jsObject, name: Strings.cues)
+        _activeCues = ReadonlyAttribute(jsObject: jsObject, name: Strings.activeCues)
+        _oncuechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncuechange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -58,11 +44,11 @@ public class TextTrack: EventTarget {
     public var activeCues: TextTrackCueList?
 
     public func addCue(cue: TextTrackCue) {
-        _ = jsObject[Keys.addCue]!(cue.jsValue())
+        _ = jsObject[Strings.addCue]!(cue.jsValue())
     }
 
     public func removeCue(cue: TextTrackCue) {
-        _ = jsObject[Keys.removeCue]!(cue.jsValue())
+        _ = jsObject[Strings.removeCue]!(cue.jsValue())
     }
 
     @ClosureAttribute.Optional1

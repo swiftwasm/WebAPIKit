@@ -6,12 +6,8 @@ import JavaScriptKit
 public class HTMLTemplateElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTemplateElement.function! }
 
-    private enum Keys {
-        static let content: JSString = "content"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _content = ReadonlyAttribute(jsObject: jsObject, name: Keys.content)
+        _content = ReadonlyAttribute(jsObject: jsObject, name: Strings.content)
         super.init(unsafelyWrapping: jsObject)
     }
 

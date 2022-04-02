@@ -6,8 +6,6 @@ import JavaScriptKit
 public class DocumentFragment: Node, NonElementParentNode, ParentNode {
     override public class var constructor: JSFunction { JSObject.global.DocumentFragment.function! }
 
-    private enum Keys {}
-
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

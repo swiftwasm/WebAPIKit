@@ -6,16 +6,11 @@ import JavaScriptKit
 public class MessageChannel: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MessageChannel.function! }
 
-    private enum Keys {
-        static let port1: JSString = "port1"
-        static let port2: JSString = "port2"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _port1 = ReadonlyAttribute(jsObject: jsObject, name: Keys.port1)
-        _port2 = ReadonlyAttribute(jsObject: jsObject, name: Keys.port2)
+        _port1 = ReadonlyAttribute(jsObject: jsObject, name: Strings.port1)
+        _port2 = ReadonlyAttribute(jsObject: jsObject, name: Strings.port2)
         self.jsObject = jsObject
     }
 

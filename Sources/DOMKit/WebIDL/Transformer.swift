@@ -4,30 +4,22 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Transformer: BridgedDictionary {
-    private enum Keys {
-        static let flush: JSString = "flush"
-        static let readableType: JSString = "readableType"
-        static let start: JSString = "start"
-        static let transform: JSString = "transform"
-        static let writableType: JSString = "writableType"
-    }
-
     public convenience init(start: @escaping TransformerStartCallback, transform: @escaping TransformerTransformCallback, flush: @escaping TransformerFlushCallback, readableType: JSValue, writableType: JSValue) {
         let object = JSObject.global.Object.function!.new()
-        ClosureAttribute.Required1[Keys.start, in: object] = start
-        ClosureAttribute.Required2[Keys.transform, in: object] = transform
-        ClosureAttribute.Required1[Keys.flush, in: object] = flush
-        object[Keys.readableType] = readableType.jsValue()
-        object[Keys.writableType] = writableType.jsValue()
+        ClosureAttribute.Required1[Strings.start, in: object] = start
+        ClosureAttribute.Required2[Strings.transform, in: object] = transform
+        ClosureAttribute.Required1[Strings.flush, in: object] = flush
+        object[Strings.readableType] = readableType.jsValue()
+        object[Strings.writableType] = writableType.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _start = ClosureAttribute.Required1(jsObject: object, name: Keys.start)
-        _transform = ClosureAttribute.Required2(jsObject: object, name: Keys.transform)
-        _flush = ClosureAttribute.Required1(jsObject: object, name: Keys.flush)
-        _readableType = ReadWriteAttribute(jsObject: object, name: Keys.readableType)
-        _writableType = ReadWriteAttribute(jsObject: object, name: Keys.writableType)
+        _start = ClosureAttribute.Required1(jsObject: object, name: Strings.start)
+        _transform = ClosureAttribute.Required2(jsObject: object, name: Strings.transform)
+        _flush = ClosureAttribute.Required1(jsObject: object, name: Strings.flush)
+        _readableType = ReadWriteAttribute(jsObject: object, name: Strings.readableType)
+        _writableType = ReadWriteAttribute(jsObject: object, name: Strings.writableType)
         super.init(unsafelyWrapping: object)
     }
 

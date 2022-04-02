@@ -6,18 +6,10 @@ import JavaScriptKit
 public class DedicatedWorkerGlobalScope: WorkerGlobalScope, AnimationFrameProvider {
     override public class var constructor: JSFunction { JSObject.global.DedicatedWorkerGlobalScope.function! }
 
-    private enum Keys {
-        static let close: JSString = "close"
-        static let name: JSString = "name"
-        static let onmessage: JSString = "onmessage"
-        static let onmessageerror: JSString = "onmessageerror"
-        static let postMessage: JSString = "postMessage"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadonlyAttribute(jsObject: jsObject, name: Keys.name)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onmessage)
-        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onmessageerror)
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
+        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
+        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessageerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -25,15 +17,15 @@ public class DedicatedWorkerGlobalScope: WorkerGlobalScope, AnimationFrameProvid
     public var name: String
 
     public func postMessage(message: JSValue, transfer: [JSObject]) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue())
+        _ = jsObject[Strings.postMessage]!(message.jsValue(), transfer.jsValue())
     }
 
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
     }
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        _ = jsObject[Strings.close]!()
     }
 
     @ClosureAttribute.Optional1

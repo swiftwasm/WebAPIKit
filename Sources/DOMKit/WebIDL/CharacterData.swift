@@ -6,19 +6,9 @@ import JavaScriptKit
 public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
     override public class var constructor: JSFunction { JSObject.global.CharacterData.function! }
 
-    private enum Keys {
-        static let appendData: JSString = "appendData"
-        static let data: JSString = "data"
-        static let deleteData: JSString = "deleteData"
-        static let insertData: JSString = "insertData"
-        static let length: JSString = "length"
-        static let replaceData: JSString = "replaceData"
-        static let substringData: JSString = "substringData"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _data = ReadWriteAttribute(jsObject: jsObject, name: Keys.data)
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _data = ReadWriteAttribute(jsObject: jsObject, name: Strings.data)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -29,22 +19,22 @@ public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
     public var length: UInt32
 
     public func substringData(offset: UInt32, count: UInt32) -> String {
-        jsObject[Keys.substringData]!(offset.jsValue(), count.jsValue()).fromJSValue()!
+        jsObject[Strings.substringData]!(offset.jsValue(), count.jsValue()).fromJSValue()!
     }
 
     public func appendData(data: String) {
-        _ = jsObject[Keys.appendData]!(data.jsValue())
+        _ = jsObject[Strings.appendData]!(data.jsValue())
     }
 
     public func insertData(offset: UInt32, data: String) {
-        _ = jsObject[Keys.insertData]!(offset.jsValue(), data.jsValue())
+        _ = jsObject[Strings.insertData]!(offset.jsValue(), data.jsValue())
     }
 
     public func deleteData(offset: UInt32, count: UInt32) {
-        _ = jsObject[Keys.deleteData]!(offset.jsValue(), count.jsValue())
+        _ = jsObject[Strings.deleteData]!(offset.jsValue(), count.jsValue())
     }
 
     public func replaceData(offset: UInt32, count: UInt32, data: String) {
-        _ = jsObject[Keys.replaceData]!(offset.jsValue(), count.jsValue(), data.jsValue())
+        _ = jsObject[Strings.replaceData]!(offset.jsValue(), count.jsValue(), data.jsValue())
     }
 }

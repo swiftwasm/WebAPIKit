@@ -6,35 +6,19 @@ import JavaScriptKit
 public class Location: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.Location.function! }
 
-    private enum Keys {
-        static let ancestorOrigins: JSString = "ancestorOrigins"
-        static let assign: JSString = "assign"
-        static let hash: JSString = "hash"
-        static let host: JSString = "host"
-        static let hostname: JSString = "hostname"
-        static let href: JSString = "href"
-        static let origin: JSString = "origin"
-        static let pathname: JSString = "pathname"
-        static let port: JSString = "port"
-        static let `protocol`: JSString = "protocol"
-        static let reload: JSString = "reload"
-        static let replace: JSString = "replace"
-        static let search: JSString = "search"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _href = ReadWriteAttribute(jsObject: jsObject, name: Keys.href)
-        _origin = ReadonlyAttribute(jsObject: jsObject, name: Keys.origin)
-        _protocol = ReadWriteAttribute(jsObject: jsObject, name: Keys.protocol)
-        _host = ReadWriteAttribute(jsObject: jsObject, name: Keys.host)
-        _hostname = ReadWriteAttribute(jsObject: jsObject, name: Keys.hostname)
-        _port = ReadWriteAttribute(jsObject: jsObject, name: Keys.port)
-        _pathname = ReadWriteAttribute(jsObject: jsObject, name: Keys.pathname)
-        _search = ReadWriteAttribute(jsObject: jsObject, name: Keys.search)
-        _hash = ReadWriteAttribute(jsObject: jsObject, name: Keys.hash)
-        _ancestorOrigins = ReadonlyAttribute(jsObject: jsObject, name: Keys.ancestorOrigins)
+        _href = ReadWriteAttribute(jsObject: jsObject, name: Strings.href)
+        _origin = ReadonlyAttribute(jsObject: jsObject, name: Strings.origin)
+        _protocol = ReadWriteAttribute(jsObject: jsObject, name: Strings.protocol)
+        _host = ReadWriteAttribute(jsObject: jsObject, name: Strings.host)
+        _hostname = ReadWriteAttribute(jsObject: jsObject, name: Strings.hostname)
+        _port = ReadWriteAttribute(jsObject: jsObject, name: Strings.port)
+        _pathname = ReadWriteAttribute(jsObject: jsObject, name: Strings.pathname)
+        _search = ReadWriteAttribute(jsObject: jsObject, name: Strings.search)
+        _hash = ReadWriteAttribute(jsObject: jsObject, name: Strings.hash)
+        _ancestorOrigins = ReadonlyAttribute(jsObject: jsObject, name: Strings.ancestorOrigins)
         self.jsObject = jsObject
     }
 
@@ -66,15 +50,15 @@ public class Location: JSBridgedClass {
     public var hash: String
 
     public func assign(url: String) {
-        _ = jsObject[Keys.assign]!(url.jsValue())
+        _ = jsObject[Strings.assign]!(url.jsValue())
     }
 
     public func replace(url: String) {
-        _ = jsObject[Keys.replace]!(url.jsValue())
+        _ = jsObject[Strings.replace]!(url.jsValue())
     }
 
     public func reload() {
-        _ = jsObject[Keys.reload]!()
+        _ = jsObject[Strings.reload]!()
     }
 
     @ReadonlyAttribute

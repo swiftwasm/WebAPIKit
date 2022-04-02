@@ -6,29 +6,16 @@ import JavaScriptKit
 public class Response: JSBridgedClass, Body {
     public class var constructor: JSFunction { JSObject.global.Response.function! }
 
-    private enum Keys {
-        static let clone: JSString = "clone"
-        static let error: JSString = "error"
-        static let headers: JSString = "headers"
-        static let ok: JSString = "ok"
-        static let redirect: JSString = "redirect"
-        static let redirected: JSString = "redirected"
-        static let status: JSString = "status"
-        static let statusText: JSString = "statusText"
-        static let type: JSString = "type"
-        static let url: JSString = "url"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
-        _url = ReadonlyAttribute(jsObject: jsObject, name: Keys.url)
-        _redirected = ReadonlyAttribute(jsObject: jsObject, name: Keys.redirected)
-        _status = ReadonlyAttribute(jsObject: jsObject, name: Keys.status)
-        _ok = ReadonlyAttribute(jsObject: jsObject, name: Keys.ok)
-        _statusText = ReadonlyAttribute(jsObject: jsObject, name: Keys.statusText)
-        _headers = ReadonlyAttribute(jsObject: jsObject, name: Keys.headers)
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
+        _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
+        _redirected = ReadonlyAttribute(jsObject: jsObject, name: Strings.redirected)
+        _status = ReadonlyAttribute(jsObject: jsObject, name: Strings.status)
+        _ok = ReadonlyAttribute(jsObject: jsObject, name: Strings.ok)
+        _statusText = ReadonlyAttribute(jsObject: jsObject, name: Strings.statusText)
+        _headers = ReadonlyAttribute(jsObject: jsObject, name: Strings.headers)
         self.jsObject = jsObject
     }
 
@@ -37,11 +24,11 @@ public class Response: JSBridgedClass, Body {
     }
 
     public static func error() -> Self {
-        constructor[Keys.error]!().fromJSValue()!
+        constructor[Strings.error]!().fromJSValue()!
     }
 
     public static func redirect(url: String, status: UInt16? = nil) -> Self {
-        constructor[Keys.redirect]!(url.jsValue(), status?.jsValue() ?? .undefined).fromJSValue()!
+        constructor[Strings.redirect]!(url.jsValue(), status?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -66,6 +53,6 @@ public class Response: JSBridgedClass, Body {
     public var headers: Headers
 
     public func clone() -> Self {
-        jsObject[Keys.clone]!().fromJSValue()!
+        jsObject[Strings.clone]!().fromJSValue()!
     }
 }

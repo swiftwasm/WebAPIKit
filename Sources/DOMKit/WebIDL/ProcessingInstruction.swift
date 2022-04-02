@@ -6,12 +6,8 @@ import JavaScriptKit
 public class ProcessingInstruction: CharacterData, LinkStyle {
     override public class var constructor: JSFunction { JSObject.global.ProcessingInstruction.function! }
 
-    private enum Keys {
-        static let target: JSString = "target"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _target = ReadonlyAttribute(jsObject: jsObject, name: Keys.target)
+        _target = ReadonlyAttribute(jsObject: jsObject, name: Strings.target)
         super.init(unsafelyWrapping: jsObject)
     }
 

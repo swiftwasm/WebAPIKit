@@ -6,36 +6,8 @@ import JavaScriptKit
 public class Range: AbstractRange {
     override public class var constructor: JSFunction { JSObject.global.Range.function! }
 
-    private enum Keys {
-        static let END_TO_END: JSString = "END_TO_END"
-        static let END_TO_START: JSString = "END_TO_START"
-        static let START_TO_END: JSString = "START_TO_END"
-        static let START_TO_START: JSString = "START_TO_START"
-        static let cloneContents: JSString = "cloneContents"
-        static let cloneRange: JSString = "cloneRange"
-        static let collapse: JSString = "collapse"
-        static let commonAncestorContainer: JSString = "commonAncestorContainer"
-        static let compareBoundaryPoints: JSString = "compareBoundaryPoints"
-        static let comparePoint: JSString = "comparePoint"
-        static let deleteContents: JSString = "deleteContents"
-        static let detach: JSString = "detach"
-        static let extractContents: JSString = "extractContents"
-        static let insertNode: JSString = "insertNode"
-        static let intersectsNode: JSString = "intersectsNode"
-        static let isPointInRange: JSString = "isPointInRange"
-        static let selectNode: JSString = "selectNode"
-        static let selectNodeContents: JSString = "selectNodeContents"
-        static let setEnd: JSString = "setEnd"
-        static let setEndAfter: JSString = "setEndAfter"
-        static let setEndBefore: JSString = "setEndBefore"
-        static let setStart: JSString = "setStart"
-        static let setStartAfter: JSString = "setStartAfter"
-        static let setStartBefore: JSString = "setStartBefore"
-        static let surroundContents: JSString = "surroundContents"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _commonAncestorContainer = ReadonlyAttribute(jsObject: jsObject, name: Keys.commonAncestorContainer)
+        _commonAncestorContainer = ReadonlyAttribute(jsObject: jsObject, name: Strings.commonAncestorContainer)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -47,39 +19,39 @@ public class Range: AbstractRange {
     public var commonAncestorContainer: Node
 
     public func setStart(node: Node, offset: UInt32) {
-        _ = jsObject[Keys.setStart]!(node.jsValue(), offset.jsValue())
+        _ = jsObject[Strings.setStart]!(node.jsValue(), offset.jsValue())
     }
 
     public func setEnd(node: Node, offset: UInt32) {
-        _ = jsObject[Keys.setEnd]!(node.jsValue(), offset.jsValue())
+        _ = jsObject[Strings.setEnd]!(node.jsValue(), offset.jsValue())
     }
 
     public func setStartBefore(node: Node) {
-        _ = jsObject[Keys.setStartBefore]!(node.jsValue())
+        _ = jsObject[Strings.setStartBefore]!(node.jsValue())
     }
 
     public func setStartAfter(node: Node) {
-        _ = jsObject[Keys.setStartAfter]!(node.jsValue())
+        _ = jsObject[Strings.setStartAfter]!(node.jsValue())
     }
 
     public func setEndBefore(node: Node) {
-        _ = jsObject[Keys.setEndBefore]!(node.jsValue())
+        _ = jsObject[Strings.setEndBefore]!(node.jsValue())
     }
 
     public func setEndAfter(node: Node) {
-        _ = jsObject[Keys.setEndAfter]!(node.jsValue())
+        _ = jsObject[Strings.setEndAfter]!(node.jsValue())
     }
 
     public func collapse(toStart: Bool? = nil) {
-        _ = jsObject[Keys.collapse]!(toStart?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.collapse]!(toStart?.jsValue() ?? .undefined)
     }
 
     public func selectNode(node: Node) {
-        _ = jsObject[Keys.selectNode]!(node.jsValue())
+        _ = jsObject[Strings.selectNode]!(node.jsValue())
     }
 
     public func selectNodeContents(node: Node) {
-        _ = jsObject[Keys.selectNodeContents]!(node.jsValue())
+        _ = jsObject[Strings.selectNodeContents]!(node.jsValue())
     }
 
     public static let START_TO_START: UInt16 = 0
@@ -91,47 +63,47 @@ public class Range: AbstractRange {
     public static let END_TO_START: UInt16 = 3
 
     public func compareBoundaryPoints(how: UInt16, sourceRange: Range) -> Int16 {
-        jsObject[Keys.compareBoundaryPoints]!(how.jsValue(), sourceRange.jsValue()).fromJSValue()!
+        jsObject[Strings.compareBoundaryPoints]!(how.jsValue(), sourceRange.jsValue()).fromJSValue()!
     }
 
     public func deleteContents() {
-        _ = jsObject[Keys.deleteContents]!()
+        _ = jsObject[Strings.deleteContents]!()
     }
 
     public func extractContents() -> DocumentFragment {
-        jsObject[Keys.extractContents]!().fromJSValue()!
+        jsObject[Strings.extractContents]!().fromJSValue()!
     }
 
     public func cloneContents() -> DocumentFragment {
-        jsObject[Keys.cloneContents]!().fromJSValue()!
+        jsObject[Strings.cloneContents]!().fromJSValue()!
     }
 
     public func insertNode(node: Node) {
-        _ = jsObject[Keys.insertNode]!(node.jsValue())
+        _ = jsObject[Strings.insertNode]!(node.jsValue())
     }
 
     public func surroundContents(newParent: Node) {
-        _ = jsObject[Keys.surroundContents]!(newParent.jsValue())
+        _ = jsObject[Strings.surroundContents]!(newParent.jsValue())
     }
 
     public func cloneRange() -> Self {
-        jsObject[Keys.cloneRange]!().fromJSValue()!
+        jsObject[Strings.cloneRange]!().fromJSValue()!
     }
 
     public func detach() {
-        _ = jsObject[Keys.detach]!()
+        _ = jsObject[Strings.detach]!()
     }
 
     public func isPointInRange(node: Node, offset: UInt32) -> Bool {
-        jsObject[Keys.isPointInRange]!(node.jsValue(), offset.jsValue()).fromJSValue()!
+        jsObject[Strings.isPointInRange]!(node.jsValue(), offset.jsValue()).fromJSValue()!
     }
 
     public func comparePoint(node: Node, offset: UInt32) -> Int16 {
-        jsObject[Keys.comparePoint]!(node.jsValue(), offset.jsValue()).fromJSValue()!
+        jsObject[Strings.comparePoint]!(node.jsValue(), offset.jsValue()).fromJSValue()!
     }
 
     public func intersectsNode(node: Node) -> Bool {
-        jsObject[Keys.intersectsNode]!(node.jsValue()).fromJSValue()!
+        jsObject[Strings.intersectsNode]!(node.jsValue()).fromJSValue()!
     }
 
     public var description: String {

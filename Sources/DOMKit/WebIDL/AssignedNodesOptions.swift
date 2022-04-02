@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AssignedNodesOptions: BridgedDictionary {
-    private enum Keys {
-        static let flatten: JSString = "flatten"
-    }
-
     public convenience init(flatten: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.flatten] = flatten.jsValue()
+        object[Strings.flatten] = flatten.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _flatten = ReadWriteAttribute(jsObject: object, name: Keys.flatten)
+        _flatten = ReadWriteAttribute(jsObject: object, name: Strings.flatten)
         super.init(unsafelyWrapping: object)
     }
 

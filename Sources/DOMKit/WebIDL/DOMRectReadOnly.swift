@@ -6,30 +6,17 @@ import JavaScriptKit
 public class DOMRectReadOnly: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.DOMRectReadOnly.function! }
 
-    private enum Keys {
-        static let bottom: JSString = "bottom"
-        static let fromRect: JSString = "fromRect"
-        static let height: JSString = "height"
-        static let left: JSString = "left"
-        static let right: JSString = "right"
-        static let toJSON: JSString = "toJSON"
-        static let top: JSString = "top"
-        static let width: JSString = "width"
-        static let x: JSString = "x"
-        static let y: JSString = "y"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _x = ReadonlyAttribute(jsObject: jsObject, name: Keys.x)
-        _y = ReadonlyAttribute(jsObject: jsObject, name: Keys.y)
-        _width = ReadonlyAttribute(jsObject: jsObject, name: Keys.width)
-        _height = ReadonlyAttribute(jsObject: jsObject, name: Keys.height)
-        _top = ReadonlyAttribute(jsObject: jsObject, name: Keys.top)
-        _right = ReadonlyAttribute(jsObject: jsObject, name: Keys.right)
-        _bottom = ReadonlyAttribute(jsObject: jsObject, name: Keys.bottom)
-        _left = ReadonlyAttribute(jsObject: jsObject, name: Keys.left)
+        _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
+        _y = ReadonlyAttribute(jsObject: jsObject, name: Strings.y)
+        _width = ReadonlyAttribute(jsObject: jsObject, name: Strings.width)
+        _height = ReadonlyAttribute(jsObject: jsObject, name: Strings.height)
+        _top = ReadonlyAttribute(jsObject: jsObject, name: Strings.top)
+        _right = ReadonlyAttribute(jsObject: jsObject, name: Strings.right)
+        _bottom = ReadonlyAttribute(jsObject: jsObject, name: Strings.bottom)
+        _left = ReadonlyAttribute(jsObject: jsObject, name: Strings.left)
         self.jsObject = jsObject
     }
 
@@ -38,7 +25,7 @@ public class DOMRectReadOnly: JSBridgedClass {
     }
 
     public static func fromRect(other: DOMRectInit? = nil) -> Self {
-        constructor[Keys.fromRect]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        constructor[Strings.fromRect]!(other?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -66,6 +53,6 @@ public class DOMRectReadOnly: JSBridgedClass {
     public var left: Double
 
     public func toJSON() -> JSObject {
-        jsObject[Keys.toJSON]!().fromJSValue()!
+        jsObject[Strings.toJSON]!().fromJSValue()!
     }
 }

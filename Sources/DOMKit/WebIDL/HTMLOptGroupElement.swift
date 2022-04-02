@@ -6,14 +6,9 @@ import JavaScriptKit
 public class HTMLOptGroupElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLOptGroupElement.function! }
 
-    private enum Keys {
-        static let disabled: JSString = "disabled"
-        static let label: JSString = "label"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
-        _label = ReadWriteAttribute(jsObject: jsObject, name: Keys.label)
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)
+        _label = ReadWriteAttribute(jsObject: jsObject, name: Strings.label)
         super.init(unsafelyWrapping: jsObject)
     }
 

@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SubmitEventInit: BridgedDictionary {
-    private enum Keys {
-        static let submitter: JSString = "submitter"
-    }
-
     public convenience init(submitter: HTMLElement?) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.submitter] = submitter.jsValue()
+        object[Strings.submitter] = submitter.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _submitter = ReadWriteAttribute(jsObject: object, name: Keys.submitter)
+        _submitter = ReadWriteAttribute(jsObject: object, name: Strings.submitter)
         super.init(unsafelyWrapping: object)
     }
 

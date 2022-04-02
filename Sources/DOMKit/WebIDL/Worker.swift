@@ -6,16 +6,9 @@ import JavaScriptKit
 public class Worker: EventTarget, AbstractWorker {
     override public class var constructor: JSFunction { JSObject.global.Worker.function! }
 
-    private enum Keys {
-        static let onmessage: JSString = "onmessage"
-        static let onmessageerror: JSString = "onmessageerror"
-        static let postMessage: JSString = "postMessage"
-        static let terminate: JSString = "terminate"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onmessage)
-        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onmessageerror)
+        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
+        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessageerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -24,15 +17,15 @@ public class Worker: EventTarget, AbstractWorker {
     }
 
     public func terminate() {
-        _ = jsObject[Keys.terminate]!()
+        _ = jsObject[Strings.terminate]!()
     }
 
     public func postMessage(message: JSValue, transfer: [JSObject]) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue())
+        _ = jsObject[Strings.postMessage]!(message.jsValue(), transfer.jsValue())
     }
 
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
     }
 
     @ClosureAttribute.Optional1

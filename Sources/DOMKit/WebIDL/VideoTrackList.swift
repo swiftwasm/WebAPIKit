@@ -6,21 +6,12 @@ import JavaScriptKit
 public class VideoTrackList: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.VideoTrackList.function! }
 
-    private enum Keys {
-        static let getTrackById: JSString = "getTrackById"
-        static let length: JSString = "length"
-        static let onaddtrack: JSString = "onaddtrack"
-        static let onchange: JSString = "onchange"
-        static let onremovetrack: JSString = "onremovetrack"
-        static let selectedIndex: JSString = "selectedIndex"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
-        _selectedIndex = ReadonlyAttribute(jsObject: jsObject, name: Keys.selectedIndex)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onchange)
-        _onaddtrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onaddtrack)
-        _onremovetrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onremovetrack)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
+        _selectedIndex = ReadonlyAttribute(jsObject: jsObject, name: Strings.selectedIndex)
+        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onaddtrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onaddtrack)
+        _onremovetrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onremovetrack)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -32,7 +23,7 @@ public class VideoTrackList: EventTarget {
     }
 
     public func getTrackById(id: String) -> VideoTrack? {
-        jsObject[Keys.getTrackById]!(id.jsValue()).fromJSValue()!
+        jsObject[Strings.getTrackById]!(id.jsValue()).fromJSValue()!
     }
 
     @ReadonlyAttribute

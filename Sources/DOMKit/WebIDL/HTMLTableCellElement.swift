@@ -6,40 +6,22 @@ import JavaScriptKit
 public class HTMLTableCellElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableCellElement.function! }
 
-    private enum Keys {
-        static let abbr: JSString = "abbr"
-        static let align: JSString = "align"
-        static let axis: JSString = "axis"
-        static let bgColor: JSString = "bgColor"
-        static let cellIndex: JSString = "cellIndex"
-        static let ch: JSString = "ch"
-        static let chOff: JSString = "chOff"
-        static let colSpan: JSString = "colSpan"
-        static let headers: JSString = "headers"
-        static let height: JSString = "height"
-        static let noWrap: JSString = "noWrap"
-        static let rowSpan: JSString = "rowSpan"
-        static let scope: JSString = "scope"
-        static let vAlign: JSString = "vAlign"
-        static let width: JSString = "width"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _colSpan = ReadWriteAttribute(jsObject: jsObject, name: Keys.colSpan)
-        _rowSpan = ReadWriteAttribute(jsObject: jsObject, name: Keys.rowSpan)
-        _headers = ReadWriteAttribute(jsObject: jsObject, name: Keys.headers)
-        _cellIndex = ReadonlyAttribute(jsObject: jsObject, name: Keys.cellIndex)
-        _scope = ReadWriteAttribute(jsObject: jsObject, name: Keys.scope)
-        _abbr = ReadWriteAttribute(jsObject: jsObject, name: Keys.abbr)
-        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
-        _axis = ReadWriteAttribute(jsObject: jsObject, name: Keys.axis)
-        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
-        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
-        _ch = ReadWriteAttribute(jsObject: jsObject, name: Keys.ch)
-        _chOff = ReadWriteAttribute(jsObject: jsObject, name: Keys.chOff)
-        _noWrap = ReadWriteAttribute(jsObject: jsObject, name: Keys.noWrap)
-        _vAlign = ReadWriteAttribute(jsObject: jsObject, name: Keys.vAlign)
-        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: Keys.bgColor)
+        _colSpan = ReadWriteAttribute(jsObject: jsObject, name: Strings.colSpan)
+        _rowSpan = ReadWriteAttribute(jsObject: jsObject, name: Strings.rowSpan)
+        _headers = ReadWriteAttribute(jsObject: jsObject, name: Strings.headers)
+        _cellIndex = ReadonlyAttribute(jsObject: jsObject, name: Strings.cellIndex)
+        _scope = ReadWriteAttribute(jsObject: jsObject, name: Strings.scope)
+        _abbr = ReadWriteAttribute(jsObject: jsObject, name: Strings.abbr)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
+        _axis = ReadWriteAttribute(jsObject: jsObject, name: Strings.axis)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
+        _ch = ReadWriteAttribute(jsObject: jsObject, name: Strings.ch)
+        _chOff = ReadWriteAttribute(jsObject: jsObject, name: Strings.chOff)
+        _noWrap = ReadWriteAttribute(jsObject: jsObject, name: Strings.noWrap)
+        _vAlign = ReadWriteAttribute(jsObject: jsObject, name: Strings.vAlign)
+        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: Strings.bgColor)
         super.init(unsafelyWrapping: jsObject)
     }
 

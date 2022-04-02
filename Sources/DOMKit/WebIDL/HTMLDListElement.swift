@@ -6,12 +6,8 @@ import JavaScriptKit
 public class HTMLDListElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLDListElement.function! }
 
-    private enum Keys {
-        static let compact: JSString = "compact"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _compact = ReadWriteAttribute(jsObject: jsObject, name: Keys.compact)
+        _compact = ReadWriteAttribute(jsObject: jsObject, name: Strings.compact)
         super.init(unsafelyWrapping: jsObject)
     }
 

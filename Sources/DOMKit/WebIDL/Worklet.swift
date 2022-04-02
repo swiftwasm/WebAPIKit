@@ -6,10 +6,6 @@ import JavaScriptKit
 public class Worklet: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.Worklet.function! }
 
-    private enum Keys {
-        static let addModule: JSString = "addModule"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -17,12 +13,12 @@ public class Worklet: JSBridgedClass {
     }
 
     public func addModule(moduleURL: String, options: WorkletOptions? = nil) -> JSPromise {
-        jsObject[Keys.addModule]!(moduleURL.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.addModule]!(moduleURL.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func addModule(moduleURL: String, options: WorkletOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Keys.addModule]!(moduleURL.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let _promise: JSPromise = jsObject[Strings.addModule]!(moduleURL.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
         _ = try await _promise.get()
     }
 }

@@ -3,254 +3,210 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let ariaAtomic: JSString = "ariaAtomic"
-    static let ariaAutoComplete: JSString = "ariaAutoComplete"
-    static let ariaBusy: JSString = "ariaBusy"
-    static let ariaChecked: JSString = "ariaChecked"
-    static let ariaColCount: JSString = "ariaColCount"
-    static let ariaColIndex: JSString = "ariaColIndex"
-    static let ariaColIndexText: JSString = "ariaColIndexText"
-    static let ariaColSpan: JSString = "ariaColSpan"
-    static let ariaCurrent: JSString = "ariaCurrent"
-    static let ariaDescription: JSString = "ariaDescription"
-    static let ariaDisabled: JSString = "ariaDisabled"
-    static let ariaExpanded: JSString = "ariaExpanded"
-    static let ariaHasPopup: JSString = "ariaHasPopup"
-    static let ariaHidden: JSString = "ariaHidden"
-    static let ariaInvalid: JSString = "ariaInvalid"
-    static let ariaKeyShortcuts: JSString = "ariaKeyShortcuts"
-    static let ariaLabel: JSString = "ariaLabel"
-    static let ariaLevel: JSString = "ariaLevel"
-    static let ariaLive: JSString = "ariaLive"
-    static let ariaModal: JSString = "ariaModal"
-    static let ariaMultiLine: JSString = "ariaMultiLine"
-    static let ariaMultiSelectable: JSString = "ariaMultiSelectable"
-    static let ariaOrientation: JSString = "ariaOrientation"
-    static let ariaPlaceholder: JSString = "ariaPlaceholder"
-    static let ariaPosInSet: JSString = "ariaPosInSet"
-    static let ariaPressed: JSString = "ariaPressed"
-    static let ariaReadOnly: JSString = "ariaReadOnly"
-    static let ariaRequired: JSString = "ariaRequired"
-    static let ariaRoleDescription: JSString = "ariaRoleDescription"
-    static let ariaRowCount: JSString = "ariaRowCount"
-    static let ariaRowIndex: JSString = "ariaRowIndex"
-    static let ariaRowIndexText: JSString = "ariaRowIndexText"
-    static let ariaRowSpan: JSString = "ariaRowSpan"
-    static let ariaSelected: JSString = "ariaSelected"
-    static let ariaSetSize: JSString = "ariaSetSize"
-    static let ariaSort: JSString = "ariaSort"
-    static let ariaValueMax: JSString = "ariaValueMax"
-    static let ariaValueMin: JSString = "ariaValueMin"
-    static let ariaValueNow: JSString = "ariaValueNow"
-    static let ariaValueText: JSString = "ariaValueText"
-    static let role: JSString = "role"
-}
-
 public protocol ARIAMixin: JSBridgedClass {}
 public extension ARIAMixin {
     var role: String? {
-        get { ReadWriteAttribute[Keys.role, in: jsObject] }
-        set { ReadWriteAttribute[Keys.role, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.role, in: jsObject] }
+        set { ReadWriteAttribute[Strings.role, in: jsObject] = newValue }
     }
 
     var ariaAtomic: String? {
-        get { ReadWriteAttribute[Keys.ariaAtomic, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaAtomic, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaAtomic, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaAtomic, in: jsObject] = newValue }
     }
 
     var ariaAutoComplete: String? {
-        get { ReadWriteAttribute[Keys.ariaAutoComplete, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaAutoComplete, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaAutoComplete, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaAutoComplete, in: jsObject] = newValue }
     }
 
     var ariaBusy: String? {
-        get { ReadWriteAttribute[Keys.ariaBusy, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaBusy, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaBusy, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaBusy, in: jsObject] = newValue }
     }
 
     var ariaChecked: String? {
-        get { ReadWriteAttribute[Keys.ariaChecked, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaChecked, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaChecked, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaChecked, in: jsObject] = newValue }
     }
 
     var ariaColCount: String? {
-        get { ReadWriteAttribute[Keys.ariaColCount, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaColCount, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaColCount, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaColCount, in: jsObject] = newValue }
     }
 
     var ariaColIndex: String? {
-        get { ReadWriteAttribute[Keys.ariaColIndex, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaColIndex, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaColIndex, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaColIndex, in: jsObject] = newValue }
     }
 
     var ariaColIndexText: String? {
-        get { ReadWriteAttribute[Keys.ariaColIndexText, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaColIndexText, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaColIndexText, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaColIndexText, in: jsObject] = newValue }
     }
 
     var ariaColSpan: String? {
-        get { ReadWriteAttribute[Keys.ariaColSpan, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaColSpan, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaColSpan, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaColSpan, in: jsObject] = newValue }
     }
 
     var ariaCurrent: String? {
-        get { ReadWriteAttribute[Keys.ariaCurrent, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaCurrent, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaCurrent, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaCurrent, in: jsObject] = newValue }
     }
 
     var ariaDescription: String? {
-        get { ReadWriteAttribute[Keys.ariaDescription, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaDescription, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaDescription, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaDescription, in: jsObject] = newValue }
     }
 
     var ariaDisabled: String? {
-        get { ReadWriteAttribute[Keys.ariaDisabled, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaDisabled, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaDisabled, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaDisabled, in: jsObject] = newValue }
     }
 
     var ariaExpanded: String? {
-        get { ReadWriteAttribute[Keys.ariaExpanded, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaExpanded, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaExpanded, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaExpanded, in: jsObject] = newValue }
     }
 
     var ariaHasPopup: String? {
-        get { ReadWriteAttribute[Keys.ariaHasPopup, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaHasPopup, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaHasPopup, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaHasPopup, in: jsObject] = newValue }
     }
 
     var ariaHidden: String? {
-        get { ReadWriteAttribute[Keys.ariaHidden, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaHidden, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaHidden, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaHidden, in: jsObject] = newValue }
     }
 
     var ariaInvalid: String? {
-        get { ReadWriteAttribute[Keys.ariaInvalid, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaInvalid, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaInvalid, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaInvalid, in: jsObject] = newValue }
     }
 
     var ariaKeyShortcuts: String? {
-        get { ReadWriteAttribute[Keys.ariaKeyShortcuts, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaKeyShortcuts, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaKeyShortcuts, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaKeyShortcuts, in: jsObject] = newValue }
     }
 
     var ariaLabel: String? {
-        get { ReadWriteAttribute[Keys.ariaLabel, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaLabel, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaLabel, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaLabel, in: jsObject] = newValue }
     }
 
     var ariaLevel: String? {
-        get { ReadWriteAttribute[Keys.ariaLevel, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaLevel, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaLevel, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaLevel, in: jsObject] = newValue }
     }
 
     var ariaLive: String? {
-        get { ReadWriteAttribute[Keys.ariaLive, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaLive, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaLive, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaLive, in: jsObject] = newValue }
     }
 
     var ariaModal: String? {
-        get { ReadWriteAttribute[Keys.ariaModal, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaModal, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaModal, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaModal, in: jsObject] = newValue }
     }
 
     var ariaMultiLine: String? {
-        get { ReadWriteAttribute[Keys.ariaMultiLine, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaMultiLine, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaMultiLine, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaMultiLine, in: jsObject] = newValue }
     }
 
     var ariaMultiSelectable: String? {
-        get { ReadWriteAttribute[Keys.ariaMultiSelectable, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaMultiSelectable, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaMultiSelectable, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaMultiSelectable, in: jsObject] = newValue }
     }
 
     var ariaOrientation: String? {
-        get { ReadWriteAttribute[Keys.ariaOrientation, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaOrientation, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaOrientation, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaOrientation, in: jsObject] = newValue }
     }
 
     var ariaPlaceholder: String? {
-        get { ReadWriteAttribute[Keys.ariaPlaceholder, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaPlaceholder, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaPlaceholder, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaPlaceholder, in: jsObject] = newValue }
     }
 
     var ariaPosInSet: String? {
-        get { ReadWriteAttribute[Keys.ariaPosInSet, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaPosInSet, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaPosInSet, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaPosInSet, in: jsObject] = newValue }
     }
 
     var ariaPressed: String? {
-        get { ReadWriteAttribute[Keys.ariaPressed, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaPressed, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaPressed, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaPressed, in: jsObject] = newValue }
     }
 
     var ariaReadOnly: String? {
-        get { ReadWriteAttribute[Keys.ariaReadOnly, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaReadOnly, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaReadOnly, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaReadOnly, in: jsObject] = newValue }
     }
 
     var ariaRequired: String? {
-        get { ReadWriteAttribute[Keys.ariaRequired, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaRequired, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaRequired, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaRequired, in: jsObject] = newValue }
     }
 
     var ariaRoleDescription: String? {
-        get { ReadWriteAttribute[Keys.ariaRoleDescription, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaRoleDescription, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaRoleDescription, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaRoleDescription, in: jsObject] = newValue }
     }
 
     var ariaRowCount: String? {
-        get { ReadWriteAttribute[Keys.ariaRowCount, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaRowCount, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaRowCount, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaRowCount, in: jsObject] = newValue }
     }
 
     var ariaRowIndex: String? {
-        get { ReadWriteAttribute[Keys.ariaRowIndex, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaRowIndex, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaRowIndex, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaRowIndex, in: jsObject] = newValue }
     }
 
     var ariaRowIndexText: String? {
-        get { ReadWriteAttribute[Keys.ariaRowIndexText, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaRowIndexText, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaRowIndexText, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaRowIndexText, in: jsObject] = newValue }
     }
 
     var ariaRowSpan: String? {
-        get { ReadWriteAttribute[Keys.ariaRowSpan, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaRowSpan, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaRowSpan, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaRowSpan, in: jsObject] = newValue }
     }
 
     var ariaSelected: String? {
-        get { ReadWriteAttribute[Keys.ariaSelected, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaSelected, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaSelected, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaSelected, in: jsObject] = newValue }
     }
 
     var ariaSetSize: String? {
-        get { ReadWriteAttribute[Keys.ariaSetSize, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaSetSize, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaSetSize, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaSetSize, in: jsObject] = newValue }
     }
 
     var ariaSort: String? {
-        get { ReadWriteAttribute[Keys.ariaSort, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaSort, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaSort, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaSort, in: jsObject] = newValue }
     }
 
     var ariaValueMax: String? {
-        get { ReadWriteAttribute[Keys.ariaValueMax, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaValueMax, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaValueMax, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaValueMax, in: jsObject] = newValue }
     }
 
     var ariaValueMin: String? {
-        get { ReadWriteAttribute[Keys.ariaValueMin, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaValueMin, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaValueMin, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaValueMin, in: jsObject] = newValue }
     }
 
     var ariaValueNow: String? {
-        get { ReadWriteAttribute[Keys.ariaValueNow, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaValueNow, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaValueNow, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaValueNow, in: jsObject] = newValue }
     }
 
     var ariaValueText: String? {
-        get { ReadWriteAttribute[Keys.ariaValueText, in: jsObject] }
-        set { ReadWriteAttribute[Keys.ariaValueText, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.ariaValueText, in: jsObject] }
+        set { ReadWriteAttribute[Strings.ariaValueText, in: jsObject] = newValue }
     }
 }

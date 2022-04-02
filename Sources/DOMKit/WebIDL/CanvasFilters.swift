@@ -3,14 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let filter: JSString = "filter"
-}
-
 public protocol CanvasFilters: JSBridgedClass {}
 public extension CanvasFilters {
     var filter: __UNSUPPORTED_UNION__ {
-        get { ReadWriteAttribute[Keys.filter, in: jsObject] }
-        set { ReadWriteAttribute[Keys.filter, in: jsObject] = newValue }
+        get { ReadWriteAttribute[Strings.filter, in: jsObject] }
+        set { ReadWriteAttribute[Strings.filter, in: jsObject] = newValue }
     }
 }

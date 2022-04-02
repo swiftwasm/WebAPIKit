@@ -6,16 +6,10 @@ import JavaScriptKit
 public class HTMLLabelElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLLabelElement.function! }
 
-    private enum Keys {
-        static let control: JSString = "control"
-        static let form: JSString = "form"
-        static let htmlFor: JSString = "htmlFor"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
-        _htmlFor = ReadWriteAttribute(jsObject: jsObject, name: Keys.htmlFor)
-        _control = ReadonlyAttribute(jsObject: jsObject, name: Keys.control)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
+        _htmlFor = ReadWriteAttribute(jsObject: jsObject, name: Strings.htmlFor)
+        _control = ReadonlyAttribute(jsObject: jsObject, name: Strings.control)
         super.init(unsafelyWrapping: jsObject)
     }
 

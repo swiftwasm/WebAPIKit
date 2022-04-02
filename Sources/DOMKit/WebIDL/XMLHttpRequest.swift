@@ -6,46 +6,19 @@ import JavaScriptKit
 public class XMLHttpRequest: XMLHttpRequestEventTarget {
     override public class var constructor: JSFunction { JSObject.global.XMLHttpRequest.function! }
 
-    private enum Keys {
-        static let DONE: JSString = "DONE"
-        static let HEADERS_RECEIVED: JSString = "HEADERS_RECEIVED"
-        static let LOADING: JSString = "LOADING"
-        static let OPENED: JSString = "OPENED"
-        static let UNSENT: JSString = "UNSENT"
-        static let abort: JSString = "abort"
-        static let getAllResponseHeaders: JSString = "getAllResponseHeaders"
-        static let getResponseHeader: JSString = "getResponseHeader"
-        static let onreadystatechange: JSString = "onreadystatechange"
-        static let open: JSString = "open"
-        static let overrideMimeType: JSString = "overrideMimeType"
-        static let readyState: JSString = "readyState"
-        static let response: JSString = "response"
-        static let responseText: JSString = "responseText"
-        static let responseType: JSString = "responseType"
-        static let responseURL: JSString = "responseURL"
-        static let responseXML: JSString = "responseXML"
-        static let send: JSString = "send"
-        static let setRequestHeader: JSString = "setRequestHeader"
-        static let status: JSString = "status"
-        static let statusText: JSString = "statusText"
-        static let timeout: JSString = "timeout"
-        static let upload: JSString = "upload"
-        static let withCredentials: JSString = "withCredentials"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onreadystatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onreadystatechange)
-        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Keys.readyState)
-        _timeout = ReadWriteAttribute(jsObject: jsObject, name: Keys.timeout)
-        _withCredentials = ReadWriteAttribute(jsObject: jsObject, name: Keys.withCredentials)
-        _upload = ReadonlyAttribute(jsObject: jsObject, name: Keys.upload)
-        _responseURL = ReadonlyAttribute(jsObject: jsObject, name: Keys.responseURL)
-        _status = ReadonlyAttribute(jsObject: jsObject, name: Keys.status)
-        _statusText = ReadonlyAttribute(jsObject: jsObject, name: Keys.statusText)
-        _responseType = ReadWriteAttribute(jsObject: jsObject, name: Keys.responseType)
-        _response = ReadonlyAttribute(jsObject: jsObject, name: Keys.response)
-        _responseText = ReadonlyAttribute(jsObject: jsObject, name: Keys.responseText)
-        _responseXML = ReadonlyAttribute(jsObject: jsObject, name: Keys.responseXML)
+        _onreadystatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onreadystatechange)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
+        _timeout = ReadWriteAttribute(jsObject: jsObject, name: Strings.timeout)
+        _withCredentials = ReadWriteAttribute(jsObject: jsObject, name: Strings.withCredentials)
+        _upload = ReadonlyAttribute(jsObject: jsObject, name: Strings.upload)
+        _responseURL = ReadonlyAttribute(jsObject: jsObject, name: Strings.responseURL)
+        _status = ReadonlyAttribute(jsObject: jsObject, name: Strings.status)
+        _statusText = ReadonlyAttribute(jsObject: jsObject, name: Strings.statusText)
+        _responseType = ReadWriteAttribute(jsObject: jsObject, name: Strings.responseType)
+        _response = ReadonlyAttribute(jsObject: jsObject, name: Strings.response)
+        _responseText = ReadonlyAttribute(jsObject: jsObject, name: Strings.responseText)
+        _responseXML = ReadonlyAttribute(jsObject: jsObject, name: Strings.responseXML)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -70,15 +43,15 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var readyState: UInt16
 
     public func open(method: String, url: String) {
-        _ = jsObject[Keys.open]!(method.jsValue(), url.jsValue())
+        _ = jsObject[Strings.open]!(method.jsValue(), url.jsValue())
     }
 
     public func open(method: String, url: String, async: Bool, username: String? = nil, password: String? = nil) {
-        _ = jsObject[Keys.open]!(method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.open]!(method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined)
     }
 
     public func setRequestHeader(name: String, value: String) {
-        _ = jsObject[Keys.setRequestHeader]!(name.jsValue(), value.jsValue())
+        _ = jsObject[Strings.setRequestHeader]!(name.jsValue(), value.jsValue())
     }
 
     @ReadWriteAttribute
@@ -91,11 +64,11 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var upload: XMLHttpRequestUpload
 
     public func send(body: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Keys.send]!(body?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.send]!(body?.jsValue() ?? .undefined)
     }
 
     public func abort() {
-        _ = jsObject[Keys.abort]!()
+        _ = jsObject[Strings.abort]!()
     }
 
     @ReadonlyAttribute
@@ -108,15 +81,15 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var statusText: String
 
     public func getResponseHeader(name: String) -> String? {
-        jsObject[Keys.getResponseHeader]!(name.jsValue()).fromJSValue()!
+        jsObject[Strings.getResponseHeader]!(name.jsValue()).fromJSValue()!
     }
 
     public func getAllResponseHeaders() -> String {
-        jsObject[Keys.getAllResponseHeaders]!().fromJSValue()!
+        jsObject[Strings.getAllResponseHeaders]!().fromJSValue()!
     }
 
     public func overrideMimeType(mime: String) {
-        _ = jsObject[Keys.overrideMimeType]!(mime.jsValue())
+        _ = jsObject[Strings.overrideMimeType]!(mime.jsValue())
     }
 
     @ReadWriteAttribute

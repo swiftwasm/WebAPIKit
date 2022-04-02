@@ -6,8 +6,6 @@ import JavaScriptKit
 public class CDATASection: Text {
     override public class var constructor: JSFunction { JSObject.global.CDATASection.function! }
 
-    private enum Keys {}
-
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

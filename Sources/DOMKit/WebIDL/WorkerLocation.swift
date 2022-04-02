@@ -6,30 +6,18 @@ import JavaScriptKit
 public class WorkerLocation: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.WorkerLocation.function! }
 
-    private enum Keys {
-        static let hash: JSString = "hash"
-        static let host: JSString = "host"
-        static let hostname: JSString = "hostname"
-        static let href: JSString = "href"
-        static let origin: JSString = "origin"
-        static let pathname: JSString = "pathname"
-        static let port: JSString = "port"
-        static let `protocol`: JSString = "protocol"
-        static let search: JSString = "search"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _href = ReadonlyAttribute(jsObject: jsObject, name: Keys.href)
-        _origin = ReadonlyAttribute(jsObject: jsObject, name: Keys.origin)
-        _protocol = ReadonlyAttribute(jsObject: jsObject, name: Keys.protocol)
-        _host = ReadonlyAttribute(jsObject: jsObject, name: Keys.host)
-        _hostname = ReadonlyAttribute(jsObject: jsObject, name: Keys.hostname)
-        _port = ReadonlyAttribute(jsObject: jsObject, name: Keys.port)
-        _pathname = ReadonlyAttribute(jsObject: jsObject, name: Keys.pathname)
-        _search = ReadonlyAttribute(jsObject: jsObject, name: Keys.search)
-        _hash = ReadonlyAttribute(jsObject: jsObject, name: Keys.hash)
+        _href = ReadonlyAttribute(jsObject: jsObject, name: Strings.href)
+        _origin = ReadonlyAttribute(jsObject: jsObject, name: Strings.origin)
+        _protocol = ReadonlyAttribute(jsObject: jsObject, name: Strings.protocol)
+        _host = ReadonlyAttribute(jsObject: jsObject, name: Strings.host)
+        _hostname = ReadonlyAttribute(jsObject: jsObject, name: Strings.hostname)
+        _port = ReadonlyAttribute(jsObject: jsObject, name: Strings.port)
+        _pathname = ReadonlyAttribute(jsObject: jsObject, name: Strings.pathname)
+        _search = ReadonlyAttribute(jsObject: jsObject, name: Strings.search)
+        _hash = ReadonlyAttribute(jsObject: jsObject, name: Strings.hash)
         self.jsObject = jsObject
     }
 

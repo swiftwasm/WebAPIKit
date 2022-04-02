@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ElementDefinitionOptions: BridgedDictionary {
-    private enum Keys {
-        static let extends: JSString = "extends"
-    }
-
     public convenience init(extends: String) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.extends] = extends.jsValue()
+        object[Strings.extends] = extends.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _extends = ReadWriteAttribute(jsObject: object, name: Keys.extends)
+        _extends = ReadWriteAttribute(jsObject: object, name: Strings.extends)
         super.init(unsafelyWrapping: object)
     }
 

@@ -6,20 +6,11 @@ import JavaScriptKit
 public class MediaError: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MediaError.function! }
 
-    private enum Keys {
-        static let MEDIA_ERR_ABORTED: JSString = "MEDIA_ERR_ABORTED"
-        static let MEDIA_ERR_DECODE: JSString = "MEDIA_ERR_DECODE"
-        static let MEDIA_ERR_NETWORK: JSString = "MEDIA_ERR_NETWORK"
-        static let MEDIA_ERR_SRC_NOT_SUPPORTED: JSString = "MEDIA_ERR_SRC_NOT_SUPPORTED"
-        static let code: JSString = "code"
-        static let message: JSString = "message"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _code = ReadonlyAttribute(jsObject: jsObject, name: Keys.code)
-        _message = ReadonlyAttribute(jsObject: jsObject, name: Keys.message)
+        _code = ReadonlyAttribute(jsObject: jsObject, name: Strings.code)
+        _message = ReadonlyAttribute(jsObject: jsObject, name: Strings.message)
         self.jsObject = jsObject
     }
 

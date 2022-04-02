@@ -6,16 +6,10 @@ import JavaScriptKit
 public class InputEvent: UIEvent {
     override public class var constructor: JSFunction { JSObject.global.InputEvent.function! }
 
-    private enum Keys {
-        static let data: JSString = "data"
-        static let inputType: JSString = "inputType"
-        static let isComposing: JSString = "isComposing"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _data = ReadonlyAttribute(jsObject: jsObject, name: Keys.data)
-        _isComposing = ReadonlyAttribute(jsObject: jsObject, name: Keys.isComposing)
-        _inputType = ReadonlyAttribute(jsObject: jsObject, name: Keys.inputType)
+        _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
+        _isComposing = ReadonlyAttribute(jsObject: jsObject, name: Strings.isComposing)
+        _inputType = ReadonlyAttribute(jsObject: jsObject, name: Strings.inputType)
         super.init(unsafelyWrapping: jsObject)
     }
 

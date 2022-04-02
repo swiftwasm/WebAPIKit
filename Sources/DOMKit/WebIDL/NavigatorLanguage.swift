@@ -3,14 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let language: JSString = "language"
-    static let languages: JSString = "languages"
-}
-
 public protocol NavigatorLanguage: JSBridgedClass {}
 public extension NavigatorLanguage {
-    var language: String { ReadonlyAttribute[Keys.language, in: jsObject] }
+    var language: String { ReadonlyAttribute[Strings.language, in: jsObject] }
 
-    var languages: [String] { ReadonlyAttribute[Keys.languages, in: jsObject] }
+    var languages: [String] { ReadonlyAttribute[Strings.languages, in: jsObject] }
 }

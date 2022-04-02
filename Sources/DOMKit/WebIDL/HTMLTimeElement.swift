@@ -6,12 +6,8 @@ import JavaScriptKit
 public class HTMLTimeElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTimeElement.function! }
 
-    private enum Keys {
-        static let dateTime: JSString = "dateTime"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _dateTime = ReadWriteAttribute(jsObject: jsObject, name: Keys.dateTime)
+        _dateTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.dateTime)
         super.init(unsafelyWrapping: jsObject)
     }
 

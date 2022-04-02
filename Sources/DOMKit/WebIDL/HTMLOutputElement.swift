@@ -6,33 +6,17 @@ import JavaScriptKit
 public class HTMLOutputElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLOutputElement.function! }
 
-    private enum Keys {
-        static let checkValidity: JSString = "checkValidity"
-        static let defaultValue: JSString = "defaultValue"
-        static let form: JSString = "form"
-        static let htmlFor: JSString = "htmlFor"
-        static let labels: JSString = "labels"
-        static let name: JSString = "name"
-        static let reportValidity: JSString = "reportValidity"
-        static let setCustomValidity: JSString = "setCustomValidity"
-        static let type: JSString = "type"
-        static let validationMessage: JSString = "validationMessage"
-        static let validity: JSString = "validity"
-        static let value: JSString = "value"
-        static let willValidate: JSString = "willValidate"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _htmlFor = ReadonlyAttribute(jsObject: jsObject, name: Keys.htmlFor)
-        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
-        _defaultValue = ReadWriteAttribute(jsObject: jsObject, name: Keys.defaultValue)
-        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
-        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Keys.willValidate)
-        _validity = ReadonlyAttribute(jsObject: jsObject, name: Keys.validity)
-        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Keys.validationMessage)
-        _labels = ReadonlyAttribute(jsObject: jsObject, name: Keys.labels)
+        _htmlFor = ReadonlyAttribute(jsObject: jsObject, name: Strings.htmlFor)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
+        _defaultValue = ReadWriteAttribute(jsObject: jsObject, name: Strings.defaultValue)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
+        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Strings.willValidate)
+        _validity = ReadonlyAttribute(jsObject: jsObject, name: Strings.validity)
+        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Strings.validationMessage)
+        _labels = ReadonlyAttribute(jsObject: jsObject, name: Strings.labels)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -68,15 +52,15 @@ public class HTMLOutputElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Keys.checkValidity]!().fromJSValue()!
+        jsObject[Strings.checkValidity]!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Keys.reportValidity]!().fromJSValue()!
+        jsObject[Strings.reportValidity]!().fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        _ = jsObject[Strings.setCustomValidity]!(error.jsValue())
     }
 
     @ReadonlyAttribute

@@ -6,14 +6,9 @@ import JavaScriptKit
 public class HTMLFrameSetElement: HTMLElement, WindowEventHandlers {
     override public class var constructor: JSFunction { JSObject.global.HTMLFrameSetElement.function! }
 
-    private enum Keys {
-        static let cols: JSString = "cols"
-        static let rows: JSString = "rows"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _cols = ReadWriteAttribute(jsObject: jsObject, name: Keys.cols)
-        _rows = ReadWriteAttribute(jsObject: jsObject, name: Keys.rows)
+        _cols = ReadWriteAttribute(jsObject: jsObject, name: Strings.cols)
+        _rows = ReadWriteAttribute(jsObject: jsObject, name: Strings.rows)
         super.init(unsafelyWrapping: jsObject)
     }
 

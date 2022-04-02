@@ -6,12 +6,8 @@ import JavaScriptKit
 public class CSSConditionRule: CSSGroupingRule {
     override public class var constructor: JSFunction { JSObject.global.CSSConditionRule.function! }
 
-    private enum Keys {
-        static let conditionText: JSString = "conditionText"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _conditionText = ReadWriteAttribute(jsObject: jsObject, name: Keys.conditionText)
+        _conditionText = ReadWriteAttribute(jsObject: jsObject, name: Strings.conditionText)
         super.init(unsafelyWrapping: jsObject)
     }
 

@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PageTransitionEventInit: BridgedDictionary {
-    private enum Keys {
-        static let persisted: JSString = "persisted"
-    }
-
     public convenience init(persisted: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.persisted] = persisted.jsValue()
+        object[Strings.persisted] = persisted.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _persisted = ReadWriteAttribute(jsObject: object, name: Keys.persisted)
+        _persisted = ReadWriteAttribute(jsObject: object, name: Strings.persisted)
         super.init(unsafelyWrapping: object)
     }
 

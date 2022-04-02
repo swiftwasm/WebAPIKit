@@ -6,20 +6,12 @@ import JavaScriptKit
 public class HTMLMetaElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLMetaElement.function! }
 
-    private enum Keys {
-        static let content: JSString = "content"
-        static let httpEquiv: JSString = "httpEquiv"
-        static let media: JSString = "media"
-        static let name: JSString = "name"
-        static let scheme: JSString = "scheme"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _httpEquiv = ReadWriteAttribute(jsObject: jsObject, name: Keys.httpEquiv)
-        _content = ReadWriteAttribute(jsObject: jsObject, name: Keys.content)
-        _media = ReadWriteAttribute(jsObject: jsObject, name: Keys.media)
-        _scheme = ReadWriteAttribute(jsObject: jsObject, name: Keys.scheme)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _httpEquiv = ReadWriteAttribute(jsObject: jsObject, name: Strings.httpEquiv)
+        _content = ReadWriteAttribute(jsObject: jsObject, name: Strings.content)
+        _media = ReadWriteAttribute(jsObject: jsObject, name: Strings.media)
+        _scheme = ReadWriteAttribute(jsObject: jsObject, name: Strings.scheme)
         super.init(unsafelyWrapping: jsObject)
     }
 

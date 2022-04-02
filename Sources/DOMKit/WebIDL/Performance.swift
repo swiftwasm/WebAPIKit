@@ -6,25 +6,19 @@ import JavaScriptKit
 public class Performance: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.Performance.function! }
 
-    private enum Keys {
-        static let now: JSString = "now"
-        static let timeOrigin: JSString = "timeOrigin"
-        static let toJSON: JSString = "toJSON"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _timeOrigin = ReadonlyAttribute(jsObject: jsObject, name: Keys.timeOrigin)
+        _timeOrigin = ReadonlyAttribute(jsObject: jsObject, name: Strings.timeOrigin)
         super.init(unsafelyWrapping: jsObject)
     }
 
     public func now() -> DOMHighResTimeStamp {
-        jsObject[Keys.now]!().fromJSValue()!
+        jsObject[Strings.now]!().fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var timeOrigin: DOMHighResTimeStamp
 
     public func toJSON() -> JSObject {
-        jsObject[Keys.toJSON]!().fromJSValue()!
+        jsObject[Strings.toJSON]!().fromJSValue()!
     }
 }

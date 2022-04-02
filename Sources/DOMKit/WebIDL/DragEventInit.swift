@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DragEventInit: BridgedDictionary {
-    private enum Keys {
-        static let dataTransfer: JSString = "dataTransfer"
-    }
-
     public convenience init(dataTransfer: DataTransfer?) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.dataTransfer] = dataTransfer.jsValue()
+        object[Strings.dataTransfer] = dataTransfer.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _dataTransfer = ReadWriteAttribute(jsObject: object, name: Keys.dataTransfer)
+        _dataTransfer = ReadWriteAttribute(jsObject: object, name: Strings.dataTransfer)
         super.init(unsafelyWrapping: object)
     }
 

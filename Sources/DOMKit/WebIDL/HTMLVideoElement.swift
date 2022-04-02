@@ -6,22 +6,13 @@ import JavaScriptKit
 public class HTMLVideoElement: HTMLMediaElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLVideoElement.function! }
 
-    private enum Keys {
-        static let height: JSString = "height"
-        static let playsInline: JSString = "playsInline"
-        static let poster: JSString = "poster"
-        static let videoHeight: JSString = "videoHeight"
-        static let videoWidth: JSString = "videoWidth"
-        static let width: JSString = "width"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
-        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
-        _videoWidth = ReadonlyAttribute(jsObject: jsObject, name: Keys.videoWidth)
-        _videoHeight = ReadonlyAttribute(jsObject: jsObject, name: Keys.videoHeight)
-        _poster = ReadWriteAttribute(jsObject: jsObject, name: Keys.poster)
-        _playsInline = ReadWriteAttribute(jsObject: jsObject, name: Keys.playsInline)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
+        _videoWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoWidth)
+        _videoHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoHeight)
+        _poster = ReadWriteAttribute(jsObject: jsObject, name: Strings.poster)
+        _playsInline = ReadWriteAttribute(jsObject: jsObject, name: Strings.playsInline)
         super.init(unsafelyWrapping: jsObject)
     }
 

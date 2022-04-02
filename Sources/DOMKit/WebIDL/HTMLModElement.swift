@@ -6,14 +6,9 @@ import JavaScriptKit
 public class HTMLModElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLModElement.function! }
 
-    private enum Keys {
-        static let cite: JSString = "cite"
-        static let dateTime: JSString = "dateTime"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _cite = ReadWriteAttribute(jsObject: jsObject, name: Keys.cite)
-        _dateTime = ReadWriteAttribute(jsObject: jsObject, name: Keys.dateTime)
+        _cite = ReadWriteAttribute(jsObject: jsObject, name: Strings.cite)
+        _dateTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.dateTime)
         super.init(unsafelyWrapping: jsObject)
     }
 

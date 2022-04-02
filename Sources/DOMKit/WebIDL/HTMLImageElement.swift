@@ -6,57 +6,30 @@ import JavaScriptKit
 public class HTMLImageElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLImageElement.function! }
 
-    private enum Keys {
-        static let align: JSString = "align"
-        static let alt: JSString = "alt"
-        static let border: JSString = "border"
-        static let complete: JSString = "complete"
-        static let crossOrigin: JSString = "crossOrigin"
-        static let currentSrc: JSString = "currentSrc"
-        static let decode: JSString = "decode"
-        static let decoding: JSString = "decoding"
-        static let height: JSString = "height"
-        static let hspace: JSString = "hspace"
-        static let isMap: JSString = "isMap"
-        static let loading: JSString = "loading"
-        static let longDesc: JSString = "longDesc"
-        static let lowsrc: JSString = "lowsrc"
-        static let name: JSString = "name"
-        static let naturalHeight: JSString = "naturalHeight"
-        static let naturalWidth: JSString = "naturalWidth"
-        static let referrerPolicy: JSString = "referrerPolicy"
-        static let sizes: JSString = "sizes"
-        static let src: JSString = "src"
-        static let srcset: JSString = "srcset"
-        static let useMap: JSString = "useMap"
-        static let vspace: JSString = "vspace"
-        static let width: JSString = "width"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _alt = ReadWriteAttribute(jsObject: jsObject, name: Keys.alt)
-        _src = ReadWriteAttribute(jsObject: jsObject, name: Keys.src)
-        _srcset = ReadWriteAttribute(jsObject: jsObject, name: Keys.srcset)
-        _sizes = ReadWriteAttribute(jsObject: jsObject, name: Keys.sizes)
-        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: Keys.crossOrigin)
-        _useMap = ReadWriteAttribute(jsObject: jsObject, name: Keys.useMap)
-        _isMap = ReadWriteAttribute(jsObject: jsObject, name: Keys.isMap)
-        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
-        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
-        _naturalWidth = ReadonlyAttribute(jsObject: jsObject, name: Keys.naturalWidth)
-        _naturalHeight = ReadonlyAttribute(jsObject: jsObject, name: Keys.naturalHeight)
-        _complete = ReadonlyAttribute(jsObject: jsObject, name: Keys.complete)
-        _currentSrc = ReadonlyAttribute(jsObject: jsObject, name: Keys.currentSrc)
-        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Keys.referrerPolicy)
-        _decoding = ReadWriteAttribute(jsObject: jsObject, name: Keys.decoding)
-        _loading = ReadWriteAttribute(jsObject: jsObject, name: Keys.loading)
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _lowsrc = ReadWriteAttribute(jsObject: jsObject, name: Keys.lowsrc)
-        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
-        _hspace = ReadWriteAttribute(jsObject: jsObject, name: Keys.hspace)
-        _vspace = ReadWriteAttribute(jsObject: jsObject, name: Keys.vspace)
-        _longDesc = ReadWriteAttribute(jsObject: jsObject, name: Keys.longDesc)
-        _border = ReadWriteAttribute(jsObject: jsObject, name: Keys.border)
+        _alt = ReadWriteAttribute(jsObject: jsObject, name: Strings.alt)
+        _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
+        _srcset = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcset)
+        _sizes = ReadWriteAttribute(jsObject: jsObject, name: Strings.sizes)
+        _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: Strings.crossOrigin)
+        _useMap = ReadWriteAttribute(jsObject: jsObject, name: Strings.useMap)
+        _isMap = ReadWriteAttribute(jsObject: jsObject, name: Strings.isMap)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
+        _naturalWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.naturalWidth)
+        _naturalHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.naturalHeight)
+        _complete = ReadonlyAttribute(jsObject: jsObject, name: Strings.complete)
+        _currentSrc = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentSrc)
+        _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Strings.referrerPolicy)
+        _decoding = ReadWriteAttribute(jsObject: jsObject, name: Strings.decoding)
+        _loading = ReadWriteAttribute(jsObject: jsObject, name: Strings.loading)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _lowsrc = ReadWriteAttribute(jsObject: jsObject, name: Strings.lowsrc)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
+        _hspace = ReadWriteAttribute(jsObject: jsObject, name: Strings.hspace)
+        _vspace = ReadWriteAttribute(jsObject: jsObject, name: Strings.vspace)
+        _longDesc = ReadWriteAttribute(jsObject: jsObject, name: Strings.longDesc)
+        _border = ReadWriteAttribute(jsObject: jsObject, name: Strings.border)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -113,12 +86,12 @@ public class HTMLImageElement: HTMLElement {
     public var loading: String
 
     public func decode() -> JSPromise {
-        jsObject[Keys.decode]!().fromJSValue()!
+        jsObject[Strings.decode]!().fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func decode() async throws {
-        let _promise: JSPromise = jsObject[Keys.decode]!().fromJSValue()!
+        let _promise: JSPromise = jsObject[Strings.decode]!().fromJSValue()!
         _ = try await _promise.get()
     }
 

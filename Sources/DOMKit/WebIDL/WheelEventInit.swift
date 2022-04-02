@@ -4,27 +4,20 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WheelEventInit: BridgedDictionary {
-    private enum Keys {
-        static let deltaMode: JSString = "deltaMode"
-        static let deltaX: JSString = "deltaX"
-        static let deltaY: JSString = "deltaY"
-        static let deltaZ: JSString = "deltaZ"
-    }
-
     public convenience init(deltaX: Double, deltaY: Double, deltaZ: Double, deltaMode: UInt32) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.deltaX] = deltaX.jsValue()
-        object[Keys.deltaY] = deltaY.jsValue()
-        object[Keys.deltaZ] = deltaZ.jsValue()
-        object[Keys.deltaMode] = deltaMode.jsValue()
+        object[Strings.deltaX] = deltaX.jsValue()
+        object[Strings.deltaY] = deltaY.jsValue()
+        object[Strings.deltaZ] = deltaZ.jsValue()
+        object[Strings.deltaMode] = deltaMode.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _deltaX = ReadWriteAttribute(jsObject: object, name: Keys.deltaX)
-        _deltaY = ReadWriteAttribute(jsObject: object, name: Keys.deltaY)
-        _deltaZ = ReadWriteAttribute(jsObject: object, name: Keys.deltaZ)
-        _deltaMode = ReadWriteAttribute(jsObject: object, name: Keys.deltaMode)
+        _deltaX = ReadWriteAttribute(jsObject: object, name: Strings.deltaX)
+        _deltaY = ReadWriteAttribute(jsObject: object, name: Strings.deltaY)
+        _deltaZ = ReadWriteAttribute(jsObject: object, name: Strings.deltaZ)
+        _deltaMode = ReadWriteAttribute(jsObject: object, name: Strings.deltaMode)
         super.init(unsafelyWrapping: object)
     }
 

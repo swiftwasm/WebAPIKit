@@ -6,20 +6,12 @@ import JavaScriptKit
 public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot {
     override public class var constructor: JSFunction { JSObject.global.ShadowRoot.function! }
 
-    private enum Keys {
-        static let delegatesFocus: JSString = "delegatesFocus"
-        static let host: JSString = "host"
-        static let mode: JSString = "mode"
-        static let onslotchange: JSString = "onslotchange"
-        static let slotAssignment: JSString = "slotAssignment"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _mode = ReadonlyAttribute(jsObject: jsObject, name: Keys.mode)
-        _delegatesFocus = ReadonlyAttribute(jsObject: jsObject, name: Keys.delegatesFocus)
-        _slotAssignment = ReadonlyAttribute(jsObject: jsObject, name: Keys.slotAssignment)
-        _host = ReadonlyAttribute(jsObject: jsObject, name: Keys.host)
-        _onslotchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onslotchange)
+        _mode = ReadonlyAttribute(jsObject: jsObject, name: Strings.mode)
+        _delegatesFocus = ReadonlyAttribute(jsObject: jsObject, name: Strings.delegatesFocus)
+        _slotAssignment = ReadonlyAttribute(jsObject: jsObject, name: Strings.slotAssignment)
+        _host = ReadonlyAttribute(jsObject: jsObject, name: Strings.host)
+        _onslotchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onslotchange)
         super.init(unsafelyWrapping: jsObject)
     }
 

@@ -4,30 +4,22 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ErrorEventInit: BridgedDictionary {
-    private enum Keys {
-        static let colno: JSString = "colno"
-        static let error: JSString = "error"
-        static let filename: JSString = "filename"
-        static let lineno: JSString = "lineno"
-        static let message: JSString = "message"
-    }
-
     public convenience init(message: String, filename: String, lineno: UInt32, colno: UInt32, error: JSValue) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.message] = message.jsValue()
-        object[Keys.filename] = filename.jsValue()
-        object[Keys.lineno] = lineno.jsValue()
-        object[Keys.colno] = colno.jsValue()
-        object[Keys.error] = error.jsValue()
+        object[Strings.message] = message.jsValue()
+        object[Strings.filename] = filename.jsValue()
+        object[Strings.lineno] = lineno.jsValue()
+        object[Strings.colno] = colno.jsValue()
+        object[Strings.error] = error.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _message = ReadWriteAttribute(jsObject: object, name: Keys.message)
-        _filename = ReadWriteAttribute(jsObject: object, name: Keys.filename)
-        _lineno = ReadWriteAttribute(jsObject: object, name: Keys.lineno)
-        _colno = ReadWriteAttribute(jsObject: object, name: Keys.colno)
-        _error = ReadWriteAttribute(jsObject: object, name: Keys.error)
+        _message = ReadWriteAttribute(jsObject: object, name: Strings.message)
+        _filename = ReadWriteAttribute(jsObject: object, name: Strings.filename)
+        _lineno = ReadWriteAttribute(jsObject: object, name: Strings.lineno)
+        _colno = ReadWriteAttribute(jsObject: object, name: Strings.colno)
+        _error = ReadWriteAttribute(jsObject: object, name: Strings.error)
         super.init(unsafelyWrapping: object)
     }
 

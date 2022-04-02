@@ -6,12 +6,6 @@ import JavaScriptKit
 public class MutationObserver: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.MutationObserver.function! }
 
-    private enum Keys {
-        static let disconnect: JSString = "disconnect"
-        static let observe: JSString = "observe"
-        static let takeRecords: JSString = "takeRecords"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -21,14 +15,14 @@ public class MutationObserver: JSBridgedClass {
     // XXX: constructor is ignored
 
     public func observe(target: Node, options: MutationObserverInit? = nil) {
-        _ = jsObject[Keys.observe]!(target.jsValue(), options?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.observe]!(target.jsValue(), options?.jsValue() ?? .undefined)
     }
 
     public func disconnect() {
-        _ = jsObject[Keys.disconnect]!()
+        _ = jsObject[Strings.disconnect]!()
     }
 
     public func takeRecords() -> [MutationRecord] {
-        jsObject[Keys.takeRecords]!().fromJSValue()!
+        jsObject[Strings.takeRecords]!().fromJSValue()!
     }
 }

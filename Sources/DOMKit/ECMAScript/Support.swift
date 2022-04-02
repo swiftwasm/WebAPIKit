@@ -9,10 +9,6 @@ public typealias __UNSUPPORTED_UNION__ = JSValue
 
 public typealias WindowProxy = Window
 
-internal enum Strings {
-    static let toString: JSString = "toString"
-}
-
 public extension HTMLElement {
     convenience init?(from element: Element) {
         self.init(from: .object(element.jsObject))

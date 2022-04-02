@@ -4,36 +4,26 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class KeyboardEventInit: BridgedDictionary {
-    private enum Keys {
-        static let charCode: JSString = "charCode"
-        static let code: JSString = "code"
-        static let isComposing: JSString = "isComposing"
-        static let key: JSString = "key"
-        static let keyCode: JSString = "keyCode"
-        static let location: JSString = "location"
-        static let `repeat`: JSString = "repeat"
-    }
-
     public convenience init(key: String, code: String, location: UInt32, repeat: Bool, isComposing: Bool, charCode: UInt32, keyCode: UInt32) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.key] = key.jsValue()
-        object[Keys.code] = code.jsValue()
-        object[Keys.location] = location.jsValue()
-        object[Keys.repeat] = `repeat`.jsValue()
-        object[Keys.isComposing] = isComposing.jsValue()
-        object[Keys.charCode] = charCode.jsValue()
-        object[Keys.keyCode] = keyCode.jsValue()
+        object[Strings.key] = key.jsValue()
+        object[Strings.code] = code.jsValue()
+        object[Strings.location] = location.jsValue()
+        object[Strings.repeat] = `repeat`.jsValue()
+        object[Strings.isComposing] = isComposing.jsValue()
+        object[Strings.charCode] = charCode.jsValue()
+        object[Strings.keyCode] = keyCode.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _key = ReadWriteAttribute(jsObject: object, name: Keys.key)
-        _code = ReadWriteAttribute(jsObject: object, name: Keys.code)
-        _location = ReadWriteAttribute(jsObject: object, name: Keys.location)
-        _repeat = ReadWriteAttribute(jsObject: object, name: Keys.repeat)
-        _isComposing = ReadWriteAttribute(jsObject: object, name: Keys.isComposing)
-        _charCode = ReadWriteAttribute(jsObject: object, name: Keys.charCode)
-        _keyCode = ReadWriteAttribute(jsObject: object, name: Keys.keyCode)
+        _key = ReadWriteAttribute(jsObject: object, name: Strings.key)
+        _code = ReadWriteAttribute(jsObject: object, name: Strings.code)
+        _location = ReadWriteAttribute(jsObject: object, name: Strings.location)
+        _repeat = ReadWriteAttribute(jsObject: object, name: Strings.repeat)
+        _isComposing = ReadWriteAttribute(jsObject: object, name: Strings.isComposing)
+        _charCode = ReadWriteAttribute(jsObject: object, name: Strings.charCode)
+        _keyCode = ReadWriteAttribute(jsObject: object, name: Strings.keyCode)
         super.init(unsafelyWrapping: object)
     }
 

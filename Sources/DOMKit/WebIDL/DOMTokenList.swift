@@ -6,23 +6,11 @@ import JavaScriptKit
 public class DOMTokenList: JSBridgedClass, Sequence {
     public class var constructor: JSFunction { JSObject.global.DOMTokenList.function! }
 
-    private enum Keys {
-        static let add: JSString = "add"
-        static let contains: JSString = "contains"
-        static let item: JSString = "item"
-        static let length: JSString = "length"
-        static let remove: JSString = "remove"
-        static let replace: JSString = "replace"
-        static let supports: JSString = "supports"
-        static let toggle: JSString = "toggle"
-        static let value: JSString = "value"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
-        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
         self.jsObject = jsObject
     }
 
@@ -34,27 +22,27 @@ public class DOMTokenList: JSBridgedClass, Sequence {
     }
 
     public func contains(token: String) -> Bool {
-        jsObject[Keys.contains]!(token.jsValue()).fromJSValue()!
+        jsObject[Strings.contains]!(token.jsValue()).fromJSValue()!
     }
 
     public func add(tokens: String...) {
-        _ = jsObject[Keys.add]!(tokens.jsValue())
+        _ = jsObject[Strings.add]!(tokens.jsValue())
     }
 
     public func remove(tokens: String...) {
-        _ = jsObject[Keys.remove]!(tokens.jsValue())
+        _ = jsObject[Strings.remove]!(tokens.jsValue())
     }
 
     public func toggle(token: String, force: Bool? = nil) -> Bool {
-        jsObject[Keys.toggle]!(token.jsValue(), force?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.toggle]!(token.jsValue(), force?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func replace(token: String, newToken: String) -> Bool {
-        jsObject[Keys.replace]!(token.jsValue(), newToken.jsValue()).fromJSValue()!
+        jsObject[Strings.replace]!(token.jsValue(), newToken.jsValue()).fromJSValue()!
     }
 
     public func supports(token: String) -> Bool {
-        jsObject[Keys.supports]!(token.jsValue()).fromJSValue()!
+        jsObject[Strings.supports]!(token.jsValue()).fromJSValue()!
     }
 
     @ReadWriteAttribute

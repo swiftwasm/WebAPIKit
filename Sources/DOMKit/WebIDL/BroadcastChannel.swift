@@ -6,18 +6,10 @@ import JavaScriptKit
 public class BroadcastChannel: EventTarget {
     override public class var constructor: JSFunction { JSObject.global.BroadcastChannel.function! }
 
-    private enum Keys {
-        static let close: JSString = "close"
-        static let name: JSString = "name"
-        static let onmessage: JSString = "onmessage"
-        static let onmessageerror: JSString = "onmessageerror"
-        static let postMessage: JSString = "postMessage"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadonlyAttribute(jsObject: jsObject, name: Keys.name)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onmessage)
-        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Keys.onmessageerror)
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
+        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
+        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessageerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -29,11 +21,11 @@ public class BroadcastChannel: EventTarget {
     public var name: String
 
     public func postMessage(message: JSValue) {
-        _ = jsObject[Keys.postMessage]!(message.jsValue())
+        _ = jsObject[Strings.postMessage]!(message.jsValue())
     }
 
     public func close() {
-        _ = jsObject[Keys.close]!()
+        _ = jsObject[Strings.close]!()
     }
 
     @ClosureAttribute.Optional1

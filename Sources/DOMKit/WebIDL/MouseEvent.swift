@@ -6,34 +6,18 @@ import JavaScriptKit
 public class MouseEvent: UIEvent {
     override public class var constructor: JSFunction { JSObject.global.MouseEvent.function! }
 
-    private enum Keys {
-        static let altKey: JSString = "altKey"
-        static let button: JSString = "button"
-        static let buttons: JSString = "buttons"
-        static let clientX: JSString = "clientX"
-        static let clientY: JSString = "clientY"
-        static let ctrlKey: JSString = "ctrlKey"
-        static let getModifierState: JSString = "getModifierState"
-        static let initMouseEvent: JSString = "initMouseEvent"
-        static let metaKey: JSString = "metaKey"
-        static let relatedTarget: JSString = "relatedTarget"
-        static let screenX: JSString = "screenX"
-        static let screenY: JSString = "screenY"
-        static let shiftKey: JSString = "shiftKey"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _screenX = ReadonlyAttribute(jsObject: jsObject, name: Keys.screenX)
-        _screenY = ReadonlyAttribute(jsObject: jsObject, name: Keys.screenY)
-        _clientX = ReadonlyAttribute(jsObject: jsObject, name: Keys.clientX)
-        _clientY = ReadonlyAttribute(jsObject: jsObject, name: Keys.clientY)
-        _ctrlKey = ReadonlyAttribute(jsObject: jsObject, name: Keys.ctrlKey)
-        _shiftKey = ReadonlyAttribute(jsObject: jsObject, name: Keys.shiftKey)
-        _altKey = ReadonlyAttribute(jsObject: jsObject, name: Keys.altKey)
-        _metaKey = ReadonlyAttribute(jsObject: jsObject, name: Keys.metaKey)
-        _button = ReadonlyAttribute(jsObject: jsObject, name: Keys.button)
-        _buttons = ReadonlyAttribute(jsObject: jsObject, name: Keys.buttons)
-        _relatedTarget = ReadonlyAttribute(jsObject: jsObject, name: Keys.relatedTarget)
+        _screenX = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenX)
+        _screenY = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenY)
+        _clientX = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientX)
+        _clientY = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientY)
+        _ctrlKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.ctrlKey)
+        _shiftKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.shiftKey)
+        _altKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.altKey)
+        _metaKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.metaKey)
+        _button = ReadonlyAttribute(jsObject: jsObject, name: Strings.button)
+        _buttons = ReadonlyAttribute(jsObject: jsObject, name: Strings.buttons)
+        _relatedTarget = ReadonlyAttribute(jsObject: jsObject, name: Strings.relatedTarget)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -75,7 +59,7 @@ public class MouseEvent: UIEvent {
     public var relatedTarget: EventTarget?
 
     public func getModifierState(keyArg: String) -> Bool {
-        jsObject[Keys.getModifierState]!(keyArg.jsValue()).fromJSValue()!
+        jsObject[Strings.getModifierState]!(keyArg.jsValue()).fromJSValue()!
     }
 
     public func initMouseEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil, screenXArg: Int32? = nil, screenYArg: Int32? = nil, clientXArg: Int32? = nil, clientYArg: Int32? = nil, ctrlKeyArg: Bool? = nil, altKeyArg: Bool? = nil, shiftKeyArg: Bool? = nil, metaKeyArg: Bool? = nil, buttonArg: Int16? = nil, relatedTargetArg: EventTarget? = nil) {
@@ -94,6 +78,6 @@ public class MouseEvent: UIEvent {
         let _arg12 = metaKeyArg?.jsValue() ?? .undefined
         let _arg13 = buttonArg?.jsValue() ?? .undefined
         let _arg14 = relatedTargetArg?.jsValue() ?? .undefined
-        _ = jsObject[Keys.initMouseEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14)
+        _ = jsObject[Strings.initMouseEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14)
     }
 }

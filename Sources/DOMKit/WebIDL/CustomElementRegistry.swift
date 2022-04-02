@@ -6,13 +6,6 @@ import JavaScriptKit
 public class CustomElementRegistry: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.CustomElementRegistry.function! }
 
-    private enum Keys {
-        static let define: JSString = "define"
-        static let get: JSString = "get"
-        static let upgrade: JSString = "upgrade"
-        static let whenDefined: JSString = "whenDefined"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -22,7 +15,7 @@ public class CustomElementRegistry: JSBridgedClass {
     // XXX: member 'define' is ignored
 
     public func get(name: String) -> __UNSUPPORTED_UNION__ {
-        jsObject[Keys.get]!(name.jsValue()).fromJSValue()!
+        jsObject[Strings.get]!(name.jsValue()).fromJSValue()!
     }
 
     // XXX: member 'whenDefined' is ignored
@@ -30,6 +23,6 @@ public class CustomElementRegistry: JSBridgedClass {
     // XXX: member 'whenDefined' is ignored
 
     public func upgrade(root: Node) {
-        _ = jsObject[Keys.upgrade]!(root.jsValue())
+        _ = jsObject[Strings.upgrade]!(root.jsValue())
     }
 }

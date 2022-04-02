@@ -6,10 +6,6 @@ import JavaScriptKit
 public class BeforeUnloadEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.BeforeUnloadEvent.function! }
 
-    private enum Keys {
-        static let returnValue: JSString = "returnValue"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

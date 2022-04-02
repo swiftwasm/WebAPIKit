@@ -4,57 +4,40 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EventModifierInit: BridgedDictionary {
-    private enum Keys {
-        static let altKey: JSString = "altKey"
-        static let ctrlKey: JSString = "ctrlKey"
-        static let metaKey: JSString = "metaKey"
-        static let modifierAltGraph: JSString = "modifierAltGraph"
-        static let modifierCapsLock: JSString = "modifierCapsLock"
-        static let modifierFn: JSString = "modifierFn"
-        static let modifierFnLock: JSString = "modifierFnLock"
-        static let modifierHyper: JSString = "modifierHyper"
-        static let modifierNumLock: JSString = "modifierNumLock"
-        static let modifierScrollLock: JSString = "modifierScrollLock"
-        static let modifierSuper: JSString = "modifierSuper"
-        static let modifierSymbol: JSString = "modifierSymbol"
-        static let modifierSymbolLock: JSString = "modifierSymbolLock"
-        static let shiftKey: JSString = "shiftKey"
-    }
-
     public convenience init(ctrlKey: Bool, shiftKey: Bool, altKey: Bool, metaKey: Bool, modifierAltGraph: Bool, modifierCapsLock: Bool, modifierFn: Bool, modifierFnLock: Bool, modifierHyper: Bool, modifierNumLock: Bool, modifierScrollLock: Bool, modifierSuper: Bool, modifierSymbol: Bool, modifierSymbolLock: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.ctrlKey] = ctrlKey.jsValue()
-        object[Keys.shiftKey] = shiftKey.jsValue()
-        object[Keys.altKey] = altKey.jsValue()
-        object[Keys.metaKey] = metaKey.jsValue()
-        object[Keys.modifierAltGraph] = modifierAltGraph.jsValue()
-        object[Keys.modifierCapsLock] = modifierCapsLock.jsValue()
-        object[Keys.modifierFn] = modifierFn.jsValue()
-        object[Keys.modifierFnLock] = modifierFnLock.jsValue()
-        object[Keys.modifierHyper] = modifierHyper.jsValue()
-        object[Keys.modifierNumLock] = modifierNumLock.jsValue()
-        object[Keys.modifierScrollLock] = modifierScrollLock.jsValue()
-        object[Keys.modifierSuper] = modifierSuper.jsValue()
-        object[Keys.modifierSymbol] = modifierSymbol.jsValue()
-        object[Keys.modifierSymbolLock] = modifierSymbolLock.jsValue()
+        object[Strings.ctrlKey] = ctrlKey.jsValue()
+        object[Strings.shiftKey] = shiftKey.jsValue()
+        object[Strings.altKey] = altKey.jsValue()
+        object[Strings.metaKey] = metaKey.jsValue()
+        object[Strings.modifierAltGraph] = modifierAltGraph.jsValue()
+        object[Strings.modifierCapsLock] = modifierCapsLock.jsValue()
+        object[Strings.modifierFn] = modifierFn.jsValue()
+        object[Strings.modifierFnLock] = modifierFnLock.jsValue()
+        object[Strings.modifierHyper] = modifierHyper.jsValue()
+        object[Strings.modifierNumLock] = modifierNumLock.jsValue()
+        object[Strings.modifierScrollLock] = modifierScrollLock.jsValue()
+        object[Strings.modifierSuper] = modifierSuper.jsValue()
+        object[Strings.modifierSymbol] = modifierSymbol.jsValue()
+        object[Strings.modifierSymbolLock] = modifierSymbolLock.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _ctrlKey = ReadWriteAttribute(jsObject: object, name: Keys.ctrlKey)
-        _shiftKey = ReadWriteAttribute(jsObject: object, name: Keys.shiftKey)
-        _altKey = ReadWriteAttribute(jsObject: object, name: Keys.altKey)
-        _metaKey = ReadWriteAttribute(jsObject: object, name: Keys.metaKey)
-        _modifierAltGraph = ReadWriteAttribute(jsObject: object, name: Keys.modifierAltGraph)
-        _modifierCapsLock = ReadWriteAttribute(jsObject: object, name: Keys.modifierCapsLock)
-        _modifierFn = ReadWriteAttribute(jsObject: object, name: Keys.modifierFn)
-        _modifierFnLock = ReadWriteAttribute(jsObject: object, name: Keys.modifierFnLock)
-        _modifierHyper = ReadWriteAttribute(jsObject: object, name: Keys.modifierHyper)
-        _modifierNumLock = ReadWriteAttribute(jsObject: object, name: Keys.modifierNumLock)
-        _modifierScrollLock = ReadWriteAttribute(jsObject: object, name: Keys.modifierScrollLock)
-        _modifierSuper = ReadWriteAttribute(jsObject: object, name: Keys.modifierSuper)
-        _modifierSymbol = ReadWriteAttribute(jsObject: object, name: Keys.modifierSymbol)
-        _modifierSymbolLock = ReadWriteAttribute(jsObject: object, name: Keys.modifierSymbolLock)
+        _ctrlKey = ReadWriteAttribute(jsObject: object, name: Strings.ctrlKey)
+        _shiftKey = ReadWriteAttribute(jsObject: object, name: Strings.shiftKey)
+        _altKey = ReadWriteAttribute(jsObject: object, name: Strings.altKey)
+        _metaKey = ReadWriteAttribute(jsObject: object, name: Strings.metaKey)
+        _modifierAltGraph = ReadWriteAttribute(jsObject: object, name: Strings.modifierAltGraph)
+        _modifierCapsLock = ReadWriteAttribute(jsObject: object, name: Strings.modifierCapsLock)
+        _modifierFn = ReadWriteAttribute(jsObject: object, name: Strings.modifierFn)
+        _modifierFnLock = ReadWriteAttribute(jsObject: object, name: Strings.modifierFnLock)
+        _modifierHyper = ReadWriteAttribute(jsObject: object, name: Strings.modifierHyper)
+        _modifierNumLock = ReadWriteAttribute(jsObject: object, name: Strings.modifierNumLock)
+        _modifierScrollLock = ReadWriteAttribute(jsObject: object, name: Strings.modifierScrollLock)
+        _modifierSuper = ReadWriteAttribute(jsObject: object, name: Strings.modifierSuper)
+        _modifierSymbol = ReadWriteAttribute(jsObject: object, name: Strings.modifierSymbol)
+        _modifierSymbolLock = ReadWriteAttribute(jsObject: object, name: Strings.modifierSymbolLock)
         super.init(unsafelyWrapping: object)
     }
 

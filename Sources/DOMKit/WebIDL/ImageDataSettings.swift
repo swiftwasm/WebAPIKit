@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageDataSettings: BridgedDictionary {
-    private enum Keys {
-        static let colorSpace: JSString = "colorSpace"
-    }
-
     public convenience init(colorSpace: PredefinedColorSpace) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.colorSpace] = colorSpace.jsValue()
+        object[Strings.colorSpace] = colorSpace.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _colorSpace = ReadWriteAttribute(jsObject: object, name: Keys.colorSpace)
+        _colorSpace = ReadWriteAttribute(jsObject: object, name: Strings.colorSpace)
         super.init(unsafelyWrapping: object)
     }
 

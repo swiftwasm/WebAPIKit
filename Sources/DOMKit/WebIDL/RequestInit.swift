@@ -4,54 +4,38 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RequestInit: BridgedDictionary {
-    private enum Keys {
-        static let body: JSString = "body"
-        static let cache: JSString = "cache"
-        static let credentials: JSString = "credentials"
-        static let headers: JSString = "headers"
-        static let integrity: JSString = "integrity"
-        static let keepalive: JSString = "keepalive"
-        static let method: JSString = "method"
-        static let mode: JSString = "mode"
-        static let redirect: JSString = "redirect"
-        static let referrer: JSString = "referrer"
-        static let referrerPolicy: JSString = "referrerPolicy"
-        static let signal: JSString = "signal"
-        static let window: JSString = "window"
-    }
-
     public convenience init(method: String, headers: HeadersInit, body: BodyInit?, referrer: String, referrerPolicy: ReferrerPolicy, mode: RequestMode, credentials: RequestCredentials, cache: RequestCache, redirect: RequestRedirect, integrity: String, keepalive: Bool, signal: AbortSignal?, window: JSValue) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.method] = method.jsValue()
-        object[Keys.headers] = headers.jsValue()
-        object[Keys.body] = body.jsValue()
-        object[Keys.referrer] = referrer.jsValue()
-        object[Keys.referrerPolicy] = referrerPolicy.jsValue()
-        object[Keys.mode] = mode.jsValue()
-        object[Keys.credentials] = credentials.jsValue()
-        object[Keys.cache] = cache.jsValue()
-        object[Keys.redirect] = redirect.jsValue()
-        object[Keys.integrity] = integrity.jsValue()
-        object[Keys.keepalive] = keepalive.jsValue()
-        object[Keys.signal] = signal.jsValue()
-        object[Keys.window] = window.jsValue()
+        object[Strings.method] = method.jsValue()
+        object[Strings.headers] = headers.jsValue()
+        object[Strings.body] = body.jsValue()
+        object[Strings.referrer] = referrer.jsValue()
+        object[Strings.referrerPolicy] = referrerPolicy.jsValue()
+        object[Strings.mode] = mode.jsValue()
+        object[Strings.credentials] = credentials.jsValue()
+        object[Strings.cache] = cache.jsValue()
+        object[Strings.redirect] = redirect.jsValue()
+        object[Strings.integrity] = integrity.jsValue()
+        object[Strings.keepalive] = keepalive.jsValue()
+        object[Strings.signal] = signal.jsValue()
+        object[Strings.window] = window.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _method = ReadWriteAttribute(jsObject: object, name: Keys.method)
-        _headers = ReadWriteAttribute(jsObject: object, name: Keys.headers)
-        _body = ReadWriteAttribute(jsObject: object, name: Keys.body)
-        _referrer = ReadWriteAttribute(jsObject: object, name: Keys.referrer)
-        _referrerPolicy = ReadWriteAttribute(jsObject: object, name: Keys.referrerPolicy)
-        _mode = ReadWriteAttribute(jsObject: object, name: Keys.mode)
-        _credentials = ReadWriteAttribute(jsObject: object, name: Keys.credentials)
-        _cache = ReadWriteAttribute(jsObject: object, name: Keys.cache)
-        _redirect = ReadWriteAttribute(jsObject: object, name: Keys.redirect)
-        _integrity = ReadWriteAttribute(jsObject: object, name: Keys.integrity)
-        _keepalive = ReadWriteAttribute(jsObject: object, name: Keys.keepalive)
-        _signal = ReadWriteAttribute(jsObject: object, name: Keys.signal)
-        _window = ReadWriteAttribute(jsObject: object, name: Keys.window)
+        _method = ReadWriteAttribute(jsObject: object, name: Strings.method)
+        _headers = ReadWriteAttribute(jsObject: object, name: Strings.headers)
+        _body = ReadWriteAttribute(jsObject: object, name: Strings.body)
+        _referrer = ReadWriteAttribute(jsObject: object, name: Strings.referrer)
+        _referrerPolicy = ReadWriteAttribute(jsObject: object, name: Strings.referrerPolicy)
+        _mode = ReadWriteAttribute(jsObject: object, name: Strings.mode)
+        _credentials = ReadWriteAttribute(jsObject: object, name: Strings.credentials)
+        _cache = ReadWriteAttribute(jsObject: object, name: Strings.cache)
+        _redirect = ReadWriteAttribute(jsObject: object, name: Strings.redirect)
+        _integrity = ReadWriteAttribute(jsObject: object, name: Strings.integrity)
+        _keepalive = ReadWriteAttribute(jsObject: object, name: Strings.keepalive)
+        _signal = ReadWriteAttribute(jsObject: object, name: Strings.signal)
+        _window = ReadWriteAttribute(jsObject: object, name: Strings.window)
         super.init(unsafelyWrapping: object)
     }
 

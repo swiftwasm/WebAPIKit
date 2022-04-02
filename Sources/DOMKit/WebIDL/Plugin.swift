@@ -6,22 +6,13 @@ import JavaScriptKit
 public class Plugin: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.Plugin.function! }
 
-    private enum Keys {
-        static let description: JSString = "description"
-        static let filename: JSString = "filename"
-        static let item: JSString = "item"
-        static let length: JSString = "length"
-        static let name: JSString = "name"
-        static let namedItem: JSString = "namedItem"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadonlyAttribute(jsObject: jsObject, name: Keys.name)
-        _description = ReadonlyAttribute(jsObject: jsObject, name: Keys.description)
-        _filename = ReadonlyAttribute(jsObject: jsObject, name: Keys.filename)
-        _length = ReadonlyAttribute(jsObject: jsObject, name: Keys.length)
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
+        _description = ReadonlyAttribute(jsObject: jsObject, name: Strings.description)
+        _filename = ReadonlyAttribute(jsObject: jsObject, name: Strings.filename)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
         self.jsObject = jsObject
     }
 

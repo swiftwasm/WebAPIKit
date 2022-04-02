@@ -6,64 +6,31 @@ import JavaScriptKit
 public class HTMLTextAreaElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTextAreaElement.function! }
 
-    private enum Keys {
-        static let autocomplete: JSString = "autocomplete"
-        static let checkValidity: JSString = "checkValidity"
-        static let cols: JSString = "cols"
-        static let defaultValue: JSString = "defaultValue"
-        static let dirName: JSString = "dirName"
-        static let disabled: JSString = "disabled"
-        static let form: JSString = "form"
-        static let labels: JSString = "labels"
-        static let maxLength: JSString = "maxLength"
-        static let minLength: JSString = "minLength"
-        static let name: JSString = "name"
-        static let placeholder: JSString = "placeholder"
-        static let readOnly: JSString = "readOnly"
-        static let reportValidity: JSString = "reportValidity"
-        static let required: JSString = "required"
-        static let rows: JSString = "rows"
-        static let select: JSString = "select"
-        static let selectionDirection: JSString = "selectionDirection"
-        static let selectionEnd: JSString = "selectionEnd"
-        static let selectionStart: JSString = "selectionStart"
-        static let setCustomValidity: JSString = "setCustomValidity"
-        static let setRangeText: JSString = "setRangeText"
-        static let setSelectionRange: JSString = "setSelectionRange"
-        static let textLength: JSString = "textLength"
-        static let type: JSString = "type"
-        static let validationMessage: JSString = "validationMessage"
-        static let validity: JSString = "validity"
-        static let value: JSString = "value"
-        static let willValidate: JSString = "willValidate"
-        static let wrap: JSString = "wrap"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Keys.autocomplete)
-        _cols = ReadWriteAttribute(jsObject: jsObject, name: Keys.cols)
-        _dirName = ReadWriteAttribute(jsObject: jsObject, name: Keys.dirName)
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
-        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
-        _maxLength = ReadWriteAttribute(jsObject: jsObject, name: Keys.maxLength)
-        _minLength = ReadWriteAttribute(jsObject: jsObject, name: Keys.minLength)
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _placeholder = ReadWriteAttribute(jsObject: jsObject, name: Keys.placeholder)
-        _readOnly = ReadWriteAttribute(jsObject: jsObject, name: Keys.readOnly)
-        _required = ReadWriteAttribute(jsObject: jsObject, name: Keys.required)
-        _rows = ReadWriteAttribute(jsObject: jsObject, name: Keys.rows)
-        _wrap = ReadWriteAttribute(jsObject: jsObject, name: Keys.wrap)
-        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
-        _defaultValue = ReadWriteAttribute(jsObject: jsObject, name: Keys.defaultValue)
-        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
-        _textLength = ReadonlyAttribute(jsObject: jsObject, name: Keys.textLength)
-        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Keys.willValidate)
-        _validity = ReadonlyAttribute(jsObject: jsObject, name: Keys.validity)
-        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Keys.validationMessage)
-        _labels = ReadonlyAttribute(jsObject: jsObject, name: Keys.labels)
-        _selectionStart = ReadWriteAttribute(jsObject: jsObject, name: Keys.selectionStart)
-        _selectionEnd = ReadWriteAttribute(jsObject: jsObject, name: Keys.selectionEnd)
-        _selectionDirection = ReadWriteAttribute(jsObject: jsObject, name: Keys.selectionDirection)
+        _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocomplete)
+        _cols = ReadWriteAttribute(jsObject: jsObject, name: Strings.cols)
+        _dirName = ReadWriteAttribute(jsObject: jsObject, name: Strings.dirName)
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
+        _maxLength = ReadWriteAttribute(jsObject: jsObject, name: Strings.maxLength)
+        _minLength = ReadWriteAttribute(jsObject: jsObject, name: Strings.minLength)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _placeholder = ReadWriteAttribute(jsObject: jsObject, name: Strings.placeholder)
+        _readOnly = ReadWriteAttribute(jsObject: jsObject, name: Strings.readOnly)
+        _required = ReadWriteAttribute(jsObject: jsObject, name: Strings.required)
+        _rows = ReadWriteAttribute(jsObject: jsObject, name: Strings.rows)
+        _wrap = ReadWriteAttribute(jsObject: jsObject, name: Strings.wrap)
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
+        _defaultValue = ReadWriteAttribute(jsObject: jsObject, name: Strings.defaultValue)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
+        _textLength = ReadonlyAttribute(jsObject: jsObject, name: Strings.textLength)
+        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Strings.willValidate)
+        _validity = ReadonlyAttribute(jsObject: jsObject, name: Strings.validity)
+        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Strings.validationMessage)
+        _labels = ReadonlyAttribute(jsObject: jsObject, name: Strings.labels)
+        _selectionStart = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectionStart)
+        _selectionEnd = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectionEnd)
+        _selectionDirection = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectionDirection)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -132,22 +99,22 @@ public class HTMLTextAreaElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Keys.checkValidity]!().fromJSValue()!
+        jsObject[Strings.checkValidity]!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Keys.reportValidity]!().fromJSValue()!
+        jsObject[Strings.reportValidity]!().fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        _ = jsObject[Strings.setCustomValidity]!(error.jsValue())
     }
 
     @ReadonlyAttribute
     public var labels: NodeList
 
     public func select() {
-        _ = jsObject[Keys.select]!()
+        _ = jsObject[Strings.select]!()
     }
 
     @ReadWriteAttribute
@@ -160,14 +127,14 @@ public class HTMLTextAreaElement: HTMLElement {
     public var selectionDirection: String
 
     public func setRangeText(replacement: String) {
-        _ = jsObject[Keys.setRangeText]!(replacement.jsValue())
+        _ = jsObject[Strings.setRangeText]!(replacement.jsValue())
     }
 
     public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
-        _ = jsObject[Keys.setRangeText]!(replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.setRangeText]!(replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined)
     }
 
     public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
-        _ = jsObject[Keys.setSelectionRange]!(start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.setSelectionRange]!(start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined)
     }
 }

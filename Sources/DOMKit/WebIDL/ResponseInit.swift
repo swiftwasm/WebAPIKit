@@ -4,24 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ResponseInit: BridgedDictionary {
-    private enum Keys {
-        static let headers: JSString = "headers"
-        static let status: JSString = "status"
-        static let statusText: JSString = "statusText"
-    }
-
     public convenience init(status: UInt16, statusText: String, headers: HeadersInit) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.status] = status.jsValue()
-        object[Keys.statusText] = statusText.jsValue()
-        object[Keys.headers] = headers.jsValue()
+        object[Strings.status] = status.jsValue()
+        object[Strings.statusText] = statusText.jsValue()
+        object[Strings.headers] = headers.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _status = ReadWriteAttribute(jsObject: object, name: Keys.status)
-        _statusText = ReadWriteAttribute(jsObject: object, name: Keys.statusText)
-        _headers = ReadWriteAttribute(jsObject: object, name: Keys.headers)
+        _status = ReadWriteAttribute(jsObject: object, name: Strings.status)
+        _statusText = ReadWriteAttribute(jsObject: object, name: Strings.statusText)
+        _headers = ReadWriteAttribute(jsObject: object, name: Strings.headers)
         super.init(unsafelyWrapping: object)
     }
 

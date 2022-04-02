@@ -3,28 +3,22 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-private enum Keys {
-    static let createImageData: JSString = "createImageData"
-    static let getImageData: JSString = "getImageData"
-    static let putImageData: JSString = "putImageData"
-}
-
 public protocol CanvasImageData: JSBridgedClass {}
 public extension CanvasImageData {
     func createImageData(sw: Int32, sh: Int32, settings: ImageDataSettings? = nil) -> ImageData {
-        jsObject[Keys.createImageData]!(sw.jsValue(), sh.jsValue(), settings?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.createImageData]!(sw.jsValue(), sh.jsValue(), settings?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func createImageData(imagedata: ImageData) -> ImageData {
-        jsObject[Keys.createImageData]!(imagedata.jsValue()).fromJSValue()!
+        jsObject[Strings.createImageData]!(imagedata.jsValue()).fromJSValue()!
     }
 
     func getImageData(sx: Int32, sy: Int32, sw: Int32, sh: Int32, settings: ImageDataSettings? = nil) -> ImageData {
-        jsObject[Keys.getImageData]!(sx.jsValue(), sy.jsValue(), sw.jsValue(), sh.jsValue(), settings?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.getImageData]!(sx.jsValue(), sy.jsValue(), sw.jsValue(), sh.jsValue(), settings?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     func putImageData(imagedata: ImageData, dx: Int32, dy: Int32) {
-        _ = jsObject[Keys.putImageData]!(imagedata.jsValue(), dx.jsValue(), dy.jsValue())
+        _ = jsObject[Strings.putImageData]!(imagedata.jsValue(), dx.jsValue(), dy.jsValue())
     }
 
     func putImageData(imagedata: ImageData, dx: Int32, dy: Int32, dirtyX: Int32, dirtyY: Int32, dirtyWidth: Int32, dirtyHeight: Int32) {
@@ -35,6 +29,6 @@ public extension CanvasImageData {
         let _arg4 = dirtyY.jsValue()
         let _arg5 = dirtyWidth.jsValue()
         let _arg6 = dirtyHeight.jsValue()
-        _ = jsObject[Keys.putImageData]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6)
+        _ = jsObject[Strings.putImageData]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6)
     }
 }

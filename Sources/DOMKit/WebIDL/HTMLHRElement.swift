@@ -6,20 +6,12 @@ import JavaScriptKit
 public class HTMLHRElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLHRElement.function! }
 
-    private enum Keys {
-        static let align: JSString = "align"
-        static let color: JSString = "color"
-        static let noShade: JSString = "noShade"
-        static let size: JSString = "size"
-        static let width: JSString = "width"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
-        _color = ReadWriteAttribute(jsObject: jsObject, name: Keys.color)
-        _noShade = ReadWriteAttribute(jsObject: jsObject, name: Keys.noShade)
-        _size = ReadWriteAttribute(jsObject: jsObject, name: Keys.size)
-        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
+        _color = ReadWriteAttribute(jsObject: jsObject, name: Strings.color)
+        _noShade = ReadWriteAttribute(jsObject: jsObject, name: Strings.noShade)
+        _size = ReadWriteAttribute(jsObject: jsObject, name: Strings.size)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
         super.init(unsafelyWrapping: jsObject)
     }
 

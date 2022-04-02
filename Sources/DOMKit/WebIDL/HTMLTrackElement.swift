@@ -6,28 +6,14 @@ import JavaScriptKit
 public class HTMLTrackElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTrackElement.function! }
 
-    private enum Keys {
-        static let ERROR: JSString = "ERROR"
-        static let LOADED: JSString = "LOADED"
-        static let LOADING: JSString = "LOADING"
-        static let NONE: JSString = "NONE"
-        static let `default`: JSString = "default"
-        static let kind: JSString = "kind"
-        static let label: JSString = "label"
-        static let readyState: JSString = "readyState"
-        static let src: JSString = "src"
-        static let srclang: JSString = "srclang"
-        static let track: JSString = "track"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _kind = ReadWriteAttribute(jsObject: jsObject, name: Keys.kind)
-        _src = ReadWriteAttribute(jsObject: jsObject, name: Keys.src)
-        _srclang = ReadWriteAttribute(jsObject: jsObject, name: Keys.srclang)
-        _label = ReadWriteAttribute(jsObject: jsObject, name: Keys.label)
-        _default = ReadWriteAttribute(jsObject: jsObject, name: Keys.default)
-        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Keys.readyState)
-        _track = ReadonlyAttribute(jsObject: jsObject, name: Keys.track)
+        _kind = ReadWriteAttribute(jsObject: jsObject, name: Strings.kind)
+        _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
+        _srclang = ReadWriteAttribute(jsObject: jsObject, name: Strings.srclang)
+        _label = ReadWriteAttribute(jsObject: jsObject, name: Strings.label)
+        _default = ReadWriteAttribute(jsObject: jsObject, name: Strings.default)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
+        _track = ReadonlyAttribute(jsObject: jsObject, name: Strings.track)
         super.init(unsafelyWrapping: jsObject)
     }
 

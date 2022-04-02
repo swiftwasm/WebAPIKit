@@ -4,24 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ProgressEventInit: BridgedDictionary {
-    private enum Keys {
-        static let lengthComputable: JSString = "lengthComputable"
-        static let loaded: JSString = "loaded"
-        static let total: JSString = "total"
-    }
-
     public convenience init(lengthComputable: Bool, loaded: UInt64, total: UInt64) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.lengthComputable] = lengthComputable.jsValue()
-        object[Keys.loaded] = loaded.jsValue()
-        object[Keys.total] = total.jsValue()
+        object[Strings.lengthComputable] = lengthComputable.jsValue()
+        object[Strings.loaded] = loaded.jsValue()
+        object[Strings.total] = total.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _lengthComputable = ReadWriteAttribute(jsObject: object, name: Keys.lengthComputable)
-        _loaded = ReadWriteAttribute(jsObject: object, name: Keys.loaded)
-        _total = ReadWriteAttribute(jsObject: object, name: Keys.total)
+        _lengthComputable = ReadWriteAttribute(jsObject: object, name: Strings.lengthComputable)
+        _loaded = ReadWriteAttribute(jsObject: object, name: Strings.loaded)
+        _total = ReadWriteAttribute(jsObject: object, name: Strings.total)
         super.init(unsafelyWrapping: object)
     }
 

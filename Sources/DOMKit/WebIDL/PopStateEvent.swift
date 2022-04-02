@@ -6,12 +6,8 @@ import JavaScriptKit
 public class PopStateEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.PopStateEvent.function! }
 
-    private enum Keys {
-        static let state: JSString = "state"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _state = ReadonlyAttribute(jsObject: jsObject, name: Keys.state)
+        _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
         super.init(unsafelyWrapping: jsObject)
     }
 

@@ -6,18 +6,11 @@ import JavaScriptKit
 public class HTMLParamElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLParamElement.function! }
 
-    private enum Keys {
-        static let name: JSString = "name"
-        static let type: JSString = "type"
-        static let value: JSString = "value"
-        static let valueType: JSString = "valueType"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
-        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
-        _valueType = ReadWriteAttribute(jsObject: jsObject, name: Keys.valueType)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _valueType = ReadWriteAttribute(jsObject: jsObject, name: Strings.valueType)
         super.init(unsafelyWrapping: jsObject)
     }
 

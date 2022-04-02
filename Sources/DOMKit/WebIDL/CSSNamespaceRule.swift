@@ -6,14 +6,9 @@ import JavaScriptKit
 public class CSSNamespaceRule: CSSRule {
     override public class var constructor: JSFunction { JSObject.global.CSSNamespaceRule.function! }
 
-    private enum Keys {
-        static let namespaceURI: JSString = "namespaceURI"
-        static let prefix: JSString = "prefix"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Keys.namespaceURI)
-        _prefix = ReadonlyAttribute(jsObject: jsObject, name: Keys.prefix)
+        _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.namespaceURI)
+        _prefix = ReadonlyAttribute(jsObject: jsObject, name: Strings.prefix)
         super.init(unsafelyWrapping: jsObject)
     }
 

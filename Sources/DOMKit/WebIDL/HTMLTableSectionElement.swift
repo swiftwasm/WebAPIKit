@@ -6,22 +6,12 @@ import JavaScriptKit
 public class HTMLTableSectionElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLTableSectionElement.function! }
 
-    private enum Keys {
-        static let align: JSString = "align"
-        static let ch: JSString = "ch"
-        static let chOff: JSString = "chOff"
-        static let deleteRow: JSString = "deleteRow"
-        static let insertRow: JSString = "insertRow"
-        static let rows: JSString = "rows"
-        static let vAlign: JSString = "vAlign"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _rows = ReadonlyAttribute(jsObject: jsObject, name: Keys.rows)
-        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
-        _ch = ReadWriteAttribute(jsObject: jsObject, name: Keys.ch)
-        _chOff = ReadWriteAttribute(jsObject: jsObject, name: Keys.chOff)
-        _vAlign = ReadWriteAttribute(jsObject: jsObject, name: Keys.vAlign)
+        _rows = ReadonlyAttribute(jsObject: jsObject, name: Strings.rows)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
+        _ch = ReadWriteAttribute(jsObject: jsObject, name: Strings.ch)
+        _chOff = ReadWriteAttribute(jsObject: jsObject, name: Strings.chOff)
+        _vAlign = ReadWriteAttribute(jsObject: jsObject, name: Strings.vAlign)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -33,11 +23,11 @@ public class HTMLTableSectionElement: HTMLElement {
     public var rows: HTMLCollection
 
     public func insertRow(index: Int32? = nil) -> HTMLTableRowElement {
-        jsObject[Keys.insertRow]!(index?.jsValue() ?? .undefined).fromJSValue()!
+        jsObject[Strings.insertRow]!(index?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public func deleteRow(index: Int32) {
-        _ = jsObject[Keys.deleteRow]!(index.jsValue())
+        _ = jsObject[Strings.deleteRow]!(index.jsValue())
     }
 
     @ReadWriteAttribute

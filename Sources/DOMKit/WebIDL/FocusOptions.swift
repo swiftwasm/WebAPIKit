@@ -4,18 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FocusOptions: BridgedDictionary {
-    private enum Keys {
-        static let preventScroll: JSString = "preventScroll"
-    }
-
     public convenience init(preventScroll: Bool) {
         let object = JSObject.global.Object.function!.new()
-        object[Keys.preventScroll] = preventScroll.jsValue()
+        object[Strings.preventScroll] = preventScroll.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _preventScroll = ReadWriteAttribute(jsObject: object, name: Keys.preventScroll)
+        _preventScroll = ReadWriteAttribute(jsObject: object, name: Strings.preventScroll)
         super.init(unsafelyWrapping: object)
     }
 

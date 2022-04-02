@@ -6,29 +6,15 @@ import JavaScriptKit
 public class HTMLFieldSetElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLFieldSetElement.function! }
 
-    private enum Keys {
-        static let checkValidity: JSString = "checkValidity"
-        static let disabled: JSString = "disabled"
-        static let elements: JSString = "elements"
-        static let form: JSString = "form"
-        static let name: JSString = "name"
-        static let reportValidity: JSString = "reportValidity"
-        static let setCustomValidity: JSString = "setCustomValidity"
-        static let type: JSString = "type"
-        static let validationMessage: JSString = "validationMessage"
-        static let validity: JSString = "validity"
-        static let willValidate: JSString = "willValidate"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
-        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _type = ReadonlyAttribute(jsObject: jsObject, name: Keys.type)
-        _elements = ReadonlyAttribute(jsObject: jsObject, name: Keys.elements)
-        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Keys.willValidate)
-        _validity = ReadonlyAttribute(jsObject: jsObject, name: Keys.validity)
-        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Keys.validationMessage)
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
+        _elements = ReadonlyAttribute(jsObject: jsObject, name: Strings.elements)
+        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Strings.willValidate)
+        _validity = ReadonlyAttribute(jsObject: jsObject, name: Strings.validity)
+        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Strings.validationMessage)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -61,14 +47,14 @@ public class HTMLFieldSetElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Keys.checkValidity]!().fromJSValue()!
+        jsObject[Strings.checkValidity]!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Keys.reportValidity]!().fromJSValue()!
+        jsObject[Strings.reportValidity]!().fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        _ = jsObject[Strings.setCustomValidity]!(error.jsValue())
     }
 }

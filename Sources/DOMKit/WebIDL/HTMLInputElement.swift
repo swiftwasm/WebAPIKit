@@ -6,109 +6,52 @@ import JavaScriptKit
 public class HTMLInputElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLInputElement.function! }
 
-    private enum Keys {
-        static let accept: JSString = "accept"
-        static let align: JSString = "align"
-        static let alt: JSString = "alt"
-        static let autocomplete: JSString = "autocomplete"
-        static let checkValidity: JSString = "checkValidity"
-        static let checked: JSString = "checked"
-        static let defaultChecked: JSString = "defaultChecked"
-        static let defaultValue: JSString = "defaultValue"
-        static let dirName: JSString = "dirName"
-        static let disabled: JSString = "disabled"
-        static let files: JSString = "files"
-        static let form: JSString = "form"
-        static let formAction: JSString = "formAction"
-        static let formEnctype: JSString = "formEnctype"
-        static let formMethod: JSString = "formMethod"
-        static let formNoValidate: JSString = "formNoValidate"
-        static let formTarget: JSString = "formTarget"
-        static let height: JSString = "height"
-        static let indeterminate: JSString = "indeterminate"
-        static let labels: JSString = "labels"
-        static let list: JSString = "list"
-        static let max: JSString = "max"
-        static let maxLength: JSString = "maxLength"
-        static let min: JSString = "min"
-        static let minLength: JSString = "minLength"
-        static let multiple: JSString = "multiple"
-        static let name: JSString = "name"
-        static let pattern: JSString = "pattern"
-        static let placeholder: JSString = "placeholder"
-        static let readOnly: JSString = "readOnly"
-        static let reportValidity: JSString = "reportValidity"
-        static let required: JSString = "required"
-        static let select: JSString = "select"
-        static let selectionDirection: JSString = "selectionDirection"
-        static let selectionEnd: JSString = "selectionEnd"
-        static let selectionStart: JSString = "selectionStart"
-        static let setCustomValidity: JSString = "setCustomValidity"
-        static let setRangeText: JSString = "setRangeText"
-        static let setSelectionRange: JSString = "setSelectionRange"
-        static let showPicker: JSString = "showPicker"
-        static let size: JSString = "size"
-        static let src: JSString = "src"
-        static let step: JSString = "step"
-        static let stepDown: JSString = "stepDown"
-        static let stepUp: JSString = "stepUp"
-        static let type: JSString = "type"
-        static let useMap: JSString = "useMap"
-        static let validationMessage: JSString = "validationMessage"
-        static let validity: JSString = "validity"
-        static let value: JSString = "value"
-        static let valueAsDate: JSString = "valueAsDate"
-        static let valueAsNumber: JSString = "valueAsNumber"
-        static let width: JSString = "width"
-        static let willValidate: JSString = "willValidate"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _accept = ReadWriteAttribute(jsObject: jsObject, name: Keys.accept)
-        _alt = ReadWriteAttribute(jsObject: jsObject, name: Keys.alt)
-        _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Keys.autocomplete)
-        _defaultChecked = ReadWriteAttribute(jsObject: jsObject, name: Keys.defaultChecked)
-        _checked = ReadWriteAttribute(jsObject: jsObject, name: Keys.checked)
-        _dirName = ReadWriteAttribute(jsObject: jsObject, name: Keys.dirName)
-        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Keys.disabled)
-        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
-        _files = ReadWriteAttribute(jsObject: jsObject, name: Keys.files)
-        _formAction = ReadWriteAttribute(jsObject: jsObject, name: Keys.formAction)
-        _formEnctype = ReadWriteAttribute(jsObject: jsObject, name: Keys.formEnctype)
-        _formMethod = ReadWriteAttribute(jsObject: jsObject, name: Keys.formMethod)
-        _formNoValidate = ReadWriteAttribute(jsObject: jsObject, name: Keys.formNoValidate)
-        _formTarget = ReadWriteAttribute(jsObject: jsObject, name: Keys.formTarget)
-        _height = ReadWriteAttribute(jsObject: jsObject, name: Keys.height)
-        _indeterminate = ReadWriteAttribute(jsObject: jsObject, name: Keys.indeterminate)
-        _list = ReadonlyAttribute(jsObject: jsObject, name: Keys.list)
-        _max = ReadWriteAttribute(jsObject: jsObject, name: Keys.max)
-        _maxLength = ReadWriteAttribute(jsObject: jsObject, name: Keys.maxLength)
-        _min = ReadWriteAttribute(jsObject: jsObject, name: Keys.min)
-        _minLength = ReadWriteAttribute(jsObject: jsObject, name: Keys.minLength)
-        _multiple = ReadWriteAttribute(jsObject: jsObject, name: Keys.multiple)
-        _name = ReadWriteAttribute(jsObject: jsObject, name: Keys.name)
-        _pattern = ReadWriteAttribute(jsObject: jsObject, name: Keys.pattern)
-        _placeholder = ReadWriteAttribute(jsObject: jsObject, name: Keys.placeholder)
-        _readOnly = ReadWriteAttribute(jsObject: jsObject, name: Keys.readOnly)
-        _required = ReadWriteAttribute(jsObject: jsObject, name: Keys.required)
-        _size = ReadWriteAttribute(jsObject: jsObject, name: Keys.size)
-        _src = ReadWriteAttribute(jsObject: jsObject, name: Keys.src)
-        _step = ReadWriteAttribute(jsObject: jsObject, name: Keys.step)
-        _type = ReadWriteAttribute(jsObject: jsObject, name: Keys.type)
-        _defaultValue = ReadWriteAttribute(jsObject: jsObject, name: Keys.defaultValue)
-        _value = ReadWriteAttribute(jsObject: jsObject, name: Keys.value)
-        _valueAsDate = ReadWriteAttribute(jsObject: jsObject, name: Keys.valueAsDate)
-        _valueAsNumber = ReadWriteAttribute(jsObject: jsObject, name: Keys.valueAsNumber)
-        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
-        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Keys.willValidate)
-        _validity = ReadonlyAttribute(jsObject: jsObject, name: Keys.validity)
-        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Keys.validationMessage)
-        _labels = ReadonlyAttribute(jsObject: jsObject, name: Keys.labels)
-        _selectionStart = ReadWriteAttribute(jsObject: jsObject, name: Keys.selectionStart)
-        _selectionEnd = ReadWriteAttribute(jsObject: jsObject, name: Keys.selectionEnd)
-        _selectionDirection = ReadWriteAttribute(jsObject: jsObject, name: Keys.selectionDirection)
-        _align = ReadWriteAttribute(jsObject: jsObject, name: Keys.align)
-        _useMap = ReadWriteAttribute(jsObject: jsObject, name: Keys.useMap)
+        _accept = ReadWriteAttribute(jsObject: jsObject, name: Strings.accept)
+        _alt = ReadWriteAttribute(jsObject: jsObject, name: Strings.alt)
+        _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocomplete)
+        _defaultChecked = ReadWriteAttribute(jsObject: jsObject, name: Strings.defaultChecked)
+        _checked = ReadWriteAttribute(jsObject: jsObject, name: Strings.checked)
+        _dirName = ReadWriteAttribute(jsObject: jsObject, name: Strings.dirName)
+        _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
+        _files = ReadWriteAttribute(jsObject: jsObject, name: Strings.files)
+        _formAction = ReadWriteAttribute(jsObject: jsObject, name: Strings.formAction)
+        _formEnctype = ReadWriteAttribute(jsObject: jsObject, name: Strings.formEnctype)
+        _formMethod = ReadWriteAttribute(jsObject: jsObject, name: Strings.formMethod)
+        _formNoValidate = ReadWriteAttribute(jsObject: jsObject, name: Strings.formNoValidate)
+        _formTarget = ReadWriteAttribute(jsObject: jsObject, name: Strings.formTarget)
+        _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
+        _indeterminate = ReadWriteAttribute(jsObject: jsObject, name: Strings.indeterminate)
+        _list = ReadonlyAttribute(jsObject: jsObject, name: Strings.list)
+        _max = ReadWriteAttribute(jsObject: jsObject, name: Strings.max)
+        _maxLength = ReadWriteAttribute(jsObject: jsObject, name: Strings.maxLength)
+        _min = ReadWriteAttribute(jsObject: jsObject, name: Strings.min)
+        _minLength = ReadWriteAttribute(jsObject: jsObject, name: Strings.minLength)
+        _multiple = ReadWriteAttribute(jsObject: jsObject, name: Strings.multiple)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _pattern = ReadWriteAttribute(jsObject: jsObject, name: Strings.pattern)
+        _placeholder = ReadWriteAttribute(jsObject: jsObject, name: Strings.placeholder)
+        _readOnly = ReadWriteAttribute(jsObject: jsObject, name: Strings.readOnly)
+        _required = ReadWriteAttribute(jsObject: jsObject, name: Strings.required)
+        _size = ReadWriteAttribute(jsObject: jsObject, name: Strings.size)
+        _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
+        _step = ReadWriteAttribute(jsObject: jsObject, name: Strings.step)
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _defaultValue = ReadWriteAttribute(jsObject: jsObject, name: Strings.defaultValue)
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
+        _valueAsDate = ReadWriteAttribute(jsObject: jsObject, name: Strings.valueAsDate)
+        _valueAsNumber = ReadWriteAttribute(jsObject: jsObject, name: Strings.valueAsNumber)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
+        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Strings.willValidate)
+        _validity = ReadonlyAttribute(jsObject: jsObject, name: Strings.validity)
+        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Strings.validationMessage)
+        _labels = ReadonlyAttribute(jsObject: jsObject, name: Strings.labels)
+        _selectionStart = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectionStart)
+        _selectionEnd = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectionEnd)
+        _selectionDirection = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectionDirection)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
+        _useMap = ReadWriteAttribute(jsObject: jsObject, name: Strings.useMap)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -225,11 +168,11 @@ public class HTMLInputElement: HTMLElement {
     public var width: UInt32
 
     public func stepUp(n: Int32? = nil) {
-        _ = jsObject[Keys.stepUp]!(n?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.stepUp]!(n?.jsValue() ?? .undefined)
     }
 
     public func stepDown(n: Int32? = nil) {
-        _ = jsObject[Keys.stepDown]!(n?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.stepDown]!(n?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute
@@ -242,22 +185,22 @@ public class HTMLInputElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Keys.checkValidity]!().fromJSValue()!
+        jsObject[Strings.checkValidity]!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Keys.reportValidity]!().fromJSValue()!
+        jsObject[Strings.reportValidity]!().fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
+        _ = jsObject[Strings.setCustomValidity]!(error.jsValue())
     }
 
     @ReadonlyAttribute
     public var labels: NodeList?
 
     public func select() {
-        _ = jsObject[Keys.select]!()
+        _ = jsObject[Strings.select]!()
     }
 
     @ReadWriteAttribute
@@ -270,19 +213,19 @@ public class HTMLInputElement: HTMLElement {
     public var selectionDirection: String?
 
     public func setRangeText(replacement: String) {
-        _ = jsObject[Keys.setRangeText]!(replacement.jsValue())
+        _ = jsObject[Strings.setRangeText]!(replacement.jsValue())
     }
 
     public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
-        _ = jsObject[Keys.setRangeText]!(replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.setRangeText]!(replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined)
     }
 
     public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
-        _ = jsObject[Keys.setSelectionRange]!(start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.setSelectionRange]!(start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined)
     }
 
     public func showPicker() {
-        _ = jsObject[Keys.showPicker]!()
+        _ = jsObject[Strings.showPicker]!()
     }
 
     @ReadWriteAttribute

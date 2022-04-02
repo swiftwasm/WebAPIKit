@@ -6,12 +6,8 @@ import JavaScriptKit
 public class FormDataEvent: Event {
     override public class var constructor: JSFunction { JSObject.global.FormDataEvent.function! }
 
-    private enum Keys {
-        static let formData: JSString = "formData"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _formData = ReadonlyAttribute(jsObject: jsObject, name: Keys.formData)
+        _formData = ReadonlyAttribute(jsObject: jsObject, name: Strings.formData)
         super.init(unsafelyWrapping: jsObject)
     }
 

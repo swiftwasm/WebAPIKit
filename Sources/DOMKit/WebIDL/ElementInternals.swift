@@ -6,28 +6,15 @@ import JavaScriptKit
 public class ElementInternals: JSBridgedClass, ARIAMixin {
     public class var constructor: JSFunction { JSObject.global.ElementInternals.function! }
 
-    private enum Keys {
-        static let checkValidity: JSString = "checkValidity"
-        static let form: JSString = "form"
-        static let labels: JSString = "labels"
-        static let reportValidity: JSString = "reportValidity"
-        static let setFormValue: JSString = "setFormValue"
-        static let setValidity: JSString = "setValidity"
-        static let shadowRoot: JSString = "shadowRoot"
-        static let validationMessage: JSString = "validationMessage"
-        static let validity: JSString = "validity"
-        static let willValidate: JSString = "willValidate"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: Keys.shadowRoot)
-        _form = ReadonlyAttribute(jsObject: jsObject, name: Keys.form)
-        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Keys.willValidate)
-        _validity = ReadonlyAttribute(jsObject: jsObject, name: Keys.validity)
-        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Keys.validationMessage)
-        _labels = ReadonlyAttribute(jsObject: jsObject, name: Keys.labels)
+        _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: Strings.shadowRoot)
+        _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
+        _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Strings.willValidate)
+        _validity = ReadonlyAttribute(jsObject: jsObject, name: Strings.validity)
+        _validationMessage = ReadonlyAttribute(jsObject: jsObject, name: Strings.validationMessage)
+        _labels = ReadonlyAttribute(jsObject: jsObject, name: Strings.labels)
         self.jsObject = jsObject
     }
 
@@ -35,14 +22,14 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     public var shadowRoot: ShadowRoot?
 
     public func setFormValue(value: __UNSUPPORTED_UNION__?, state: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Keys.setFormValue]!(value.jsValue(), state?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.setFormValue]!(value.jsValue(), state?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute
     public var form: HTMLFormElement?
 
     public func setValidity(flags: ValidityStateFlags? = nil, message: String? = nil, anchor: HTMLElement? = nil) {
-        _ = jsObject[Keys.setValidity]!(flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined)
+        _ = jsObject[Strings.setValidity]!(flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute
@@ -55,11 +42,11 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Keys.checkValidity]!().fromJSValue()!
+        jsObject[Strings.checkValidity]!().fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Keys.reportValidity]!().fromJSValue()!
+        jsObject[Strings.reportValidity]!().fromJSValue()!
     }
 
     @ReadonlyAttribute

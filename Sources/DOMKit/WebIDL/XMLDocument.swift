@@ -6,8 +6,6 @@ import JavaScriptKit
 public class XMLDocument: Document {
     override public class var constructor: JSFunction { JSObject.global.XMLDocument.function! }
 
-    private enum Keys {}
-
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }

@@ -6,24 +6,13 @@ import JavaScriptKit
 public class NodeIterator: JSBridgedClass {
     public class var constructor: JSFunction { JSObject.global.NodeIterator.function! }
 
-    private enum Keys {
-        static let detach: JSString = "detach"
-        static let filter: JSString = "filter"
-        static let nextNode: JSString = "nextNode"
-        static let pointerBeforeReferenceNode: JSString = "pointerBeforeReferenceNode"
-        static let previousNode: JSString = "previousNode"
-        static let referenceNode: JSString = "referenceNode"
-        static let root: JSString = "root"
-        static let whatToShow: JSString = "whatToShow"
-    }
-
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _root = ReadonlyAttribute(jsObject: jsObject, name: Keys.root)
-        _referenceNode = ReadonlyAttribute(jsObject: jsObject, name: Keys.referenceNode)
-        _pointerBeforeReferenceNode = ReadonlyAttribute(jsObject: jsObject, name: Keys.pointerBeforeReferenceNode)
-        _whatToShow = ReadonlyAttribute(jsObject: jsObject, name: Keys.whatToShow)
+        _root = ReadonlyAttribute(jsObject: jsObject, name: Strings.root)
+        _referenceNode = ReadonlyAttribute(jsObject: jsObject, name: Strings.referenceNode)
+        _pointerBeforeReferenceNode = ReadonlyAttribute(jsObject: jsObject, name: Strings.pointerBeforeReferenceNode)
+        _whatToShow = ReadonlyAttribute(jsObject: jsObject, name: Strings.whatToShow)
         self.jsObject = jsObject
     }
 
@@ -42,14 +31,14 @@ public class NodeIterator: JSBridgedClass {
     // XXX: member 'filter' is ignored
 
     public func nextNode() -> Node? {
-        jsObject[Keys.nextNode]!().fromJSValue()!
+        jsObject[Strings.nextNode]!().fromJSValue()!
     }
 
     public func previousNode() -> Node? {
-        jsObject[Keys.previousNode]!().fromJSValue()!
+        jsObject[Strings.previousNode]!().fromJSValue()!
     }
 
     public func detach() {
-        _ = jsObject[Keys.detach]!()
+        _ = jsObject[Strings.detach]!()
     }
 }

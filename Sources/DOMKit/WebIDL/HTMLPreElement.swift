@@ -6,12 +6,8 @@ import JavaScriptKit
 public class HTMLPreElement: HTMLElement {
     override public class var constructor: JSFunction { JSObject.global.HTMLPreElement.function! }
 
-    private enum Keys {
-        static let width: JSString = "width"
-    }
-
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _width = ReadWriteAttribute(jsObject: jsObject, name: Keys.width)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
         super.init(unsafelyWrapping: jsObject)
     }
 
