@@ -7,7 +7,7 @@ public class CookieStore: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.CookieStore].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -91,6 +91,6 @@ public class CookieStore: EventTarget {
         _ = try await _promise.get()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 }

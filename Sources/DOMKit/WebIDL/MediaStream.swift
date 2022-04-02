@@ -9,8 +9,8 @@ public class MediaStream: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
         _active = ReadonlyAttribute(jsObject: jsObject, name: Strings.active)
-        _onaddtrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onaddtrack)
-        _onremovetrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onremovetrack)
+        _onaddtrack = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaddtrack)
+        _onremovetrack = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onremovetrack)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -60,9 +60,9 @@ public class MediaStream: EventTarget {
     @ReadonlyAttribute
     public var active: Bool
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onaddtrack: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onremovetrack: EventHandler
 }

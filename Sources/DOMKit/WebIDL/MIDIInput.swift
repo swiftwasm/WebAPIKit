@@ -7,10 +7,10 @@ public class MIDIInput: MIDIPort {
     override public class var constructor: JSFunction { JSObject.global[Strings.MIDIInput].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onmidimessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmidimessage)
+        _onmidimessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmidimessage)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmidimessage: EventHandler
 }

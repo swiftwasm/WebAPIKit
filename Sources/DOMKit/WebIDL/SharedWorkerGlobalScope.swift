@@ -8,7 +8,7 @@ public class SharedWorkerGlobalScope: WorkerGlobalScope {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
-        _onconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onconnect)
+        _onconnect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnect)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -19,6 +19,6 @@ public class SharedWorkerGlobalScope: WorkerGlobalScope {
         _ = jsObject[Strings.close]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onconnect: EventHandler
 }

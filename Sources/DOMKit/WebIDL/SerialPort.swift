@@ -7,17 +7,17 @@ public class SerialPort: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.SerialPort].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onconnect)
-        _ondisconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondisconnect)
+        _onconnect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnect)
+        _ondisconnect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondisconnect)
         _readable = ReadonlyAttribute(jsObject: jsObject, name: Strings.readable)
         _writable = ReadonlyAttribute(jsObject: jsObject, name: Strings.writable)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onconnect: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondisconnect: EventHandler
 
     @ReadonlyAttribute

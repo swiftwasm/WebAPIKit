@@ -6,17 +6,17 @@ import JavaScriptKit
 public protocol DocumentAndElementEventHandlers: JSBridgedClass {}
 public extension DocumentAndElementEventHandlers {
     var oncopy: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.oncopy, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.oncopy, in: jsObject] = newValue }
+        get { ClosureAttribute1Optional[Strings.oncopy, in: jsObject] }
+        set { ClosureAttribute1Optional[Strings.oncopy, in: jsObject] = newValue }
     }
 
     var oncut: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.oncut, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.oncut, in: jsObject] = newValue }
+        get { ClosureAttribute1Optional[Strings.oncut, in: jsObject] }
+        set { ClosureAttribute1Optional[Strings.oncut, in: jsObject] = newValue }
     }
 
     var onpaste: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onpaste, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onpaste, in: jsObject] = newValue }
+        get { ClosureAttribute1Optional[Strings.onpaste, in: jsObject] }
+        set { ClosureAttribute1Optional[Strings.onpaste, in: jsObject] = newValue }
     }
 }

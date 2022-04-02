@@ -7,8 +7,8 @@ public class MessagePort: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.MessagePort].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
-        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessageerror)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
+        _onmessageerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessageerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -28,9 +28,9 @@ public class MessagePort: EventTarget {
         _ = jsObject[Strings.close]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessageerror: EventHandler
 }

@@ -11,8 +11,8 @@ public class MediaKeySession: EventTarget {
         _expiration = ReadonlyAttribute(jsObject: jsObject, name: Strings.expiration)
         _closed = ReadonlyAttribute(jsObject: jsObject, name: Strings.closed)
         _keyStatuses = ReadonlyAttribute(jsObject: jsObject, name: Strings.keyStatuses)
-        _onkeystatuseschange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onkeystatuseschange)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
+        _onkeystatuseschange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onkeystatuseschange)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -28,10 +28,10 @@ public class MediaKeySession: EventTarget {
     @ReadonlyAttribute
     public var keyStatuses: MediaKeyStatusMap
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onkeystatuseschange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
     public func generateRequest(initDataType: String, initData: BufferSource) -> JSPromise {

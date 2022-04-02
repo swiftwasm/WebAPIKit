@@ -18,12 +18,12 @@ public class RTCDataChannel: EventTarget {
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
         _bufferedAmount = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferedAmount)
         _bufferedAmountLowThreshold = ReadWriteAttribute(jsObject: jsObject, name: Strings.bufferedAmountLowThreshold)
-        _onopen = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onopen)
-        _onbufferedamountlow = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onbufferedamountlow)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onclosing = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onclosing)
-        _onclose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onclose)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
+        _onopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onopen)
+        _onbufferedamountlow = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onbufferedamountlow)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onclosing = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclosing)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
         _binaryType = ReadWriteAttribute(jsObject: jsObject, name: Strings.binaryType)
         super.init(unsafelyWrapping: jsObject)
     }
@@ -61,26 +61,26 @@ public class RTCDataChannel: EventTarget {
     @ReadWriteAttribute
     public var bufferedAmountLowThreshold: UInt32
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onopen: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onbufferedamountlow: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onclosing: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onclose: EventHandler
 
     public func close() {
         _ = jsObject[Strings.close]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
     @ReadWriteAttribute

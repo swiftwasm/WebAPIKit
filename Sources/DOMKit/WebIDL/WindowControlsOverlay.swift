@@ -8,7 +8,7 @@ public class WindowControlsOverlay: EventTarget {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _visible = ReadonlyAttribute(jsObject: jsObject, name: Strings.visible)
-        _ongeometrychange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ongeometrychange)
+        _ongeometrychange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ongeometrychange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -19,6 +19,6 @@ public class WindowControlsOverlay: EventTarget {
         jsObject[Strings.getTitlebarAreaRect]!().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ongeometrychange: EventHandler
 }

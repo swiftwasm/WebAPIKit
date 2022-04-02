@@ -11,7 +11,7 @@ public class XRQuadLayer: XRCompositionLayer {
         _transform = ReadWriteAttribute(jsObject: jsObject, name: Strings.transform)
         _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
         _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
-        _onredraw = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onredraw)
+        _onredraw = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onredraw)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -27,6 +27,6 @@ public class XRQuadLayer: XRCompositionLayer {
     @ReadWriteAttribute
     public var height: Float
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onredraw: EventHandler
 }

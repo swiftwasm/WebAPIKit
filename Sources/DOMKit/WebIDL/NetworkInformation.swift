@@ -12,7 +12,7 @@ public class NetworkInformation: EventTarget, NetworkInformationSaveData {
         _downlinkMax = ReadonlyAttribute(jsObject: jsObject, name: Strings.downlinkMax)
         _downlink = ReadonlyAttribute(jsObject: jsObject, name: Strings.downlink)
         _rtt = ReadonlyAttribute(jsObject: jsObject, name: Strings.rtt)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -31,6 +31,6 @@ public class NetworkInformation: EventTarget, NetworkInformationSaveData {
     @ReadonlyAttribute
     public var rtt: Millisecond
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 }

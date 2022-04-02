@@ -12,8 +12,8 @@ public class IDBRequest: EventTarget {
         _source = ReadonlyAttribute(jsObject: jsObject, name: Strings.source)
         _transaction = ReadonlyAttribute(jsObject: jsObject, name: Strings.transaction)
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
-        _onsuccess = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsuccess)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
+        _onsuccess = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsuccess)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -32,9 +32,9 @@ public class IDBRequest: EventTarget {
     @ReadonlyAttribute
     public var readyState: IDBRequestReadyState
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsuccess: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 }

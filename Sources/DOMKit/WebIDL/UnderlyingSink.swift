@@ -6,33 +6,33 @@ import JavaScriptKit
 public class UnderlyingSink: BridgedDictionary {
     public convenience init(start: @escaping UnderlyingSinkStartCallback, write: @escaping UnderlyingSinkWriteCallback, close: @escaping UnderlyingSinkCloseCallback, abort: @escaping UnderlyingSinkAbortCallback, type: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        ClosureAttribute.Required1[Strings.start, in: object] = start
-        ClosureAttribute.Required2[Strings.write, in: object] = write
-        ClosureAttribute.Required0[Strings.close, in: object] = close
-        ClosureAttribute.Required1[Strings.abort, in: object] = abort
+        ClosureAttribute1[Strings.start, in: object] = start
+        ClosureAttribute2[Strings.write, in: object] = write
+        ClosureAttribute0[Strings.close, in: object] = close
+        ClosureAttribute1[Strings.abort, in: object] = abort
         object[Strings.type] = type.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _start = ClosureAttribute.Required1(jsObject: object, name: Strings.start)
-        _write = ClosureAttribute.Required2(jsObject: object, name: Strings.write)
-        _close = ClosureAttribute.Required0(jsObject: object, name: Strings.close)
-        _abort = ClosureAttribute.Required1(jsObject: object, name: Strings.abort)
+        _start = ClosureAttribute1(jsObject: object, name: Strings.start)
+        _write = ClosureAttribute2(jsObject: object, name: Strings.write)
+        _close = ClosureAttribute0(jsObject: object, name: Strings.close)
+        _abort = ClosureAttribute1(jsObject: object, name: Strings.abort)
         _type = ReadWriteAttribute(jsObject: object, name: Strings.type)
         super.init(unsafelyWrapping: object)
     }
 
-    @ClosureAttribute.Required1
+    @ClosureAttribute1
     public var start: UnderlyingSinkStartCallback
 
-    @ClosureAttribute.Required2
+    @ClosureAttribute2
     public var write: UnderlyingSinkWriteCallback
 
-    @ClosureAttribute.Required0
+    @ClosureAttribute0
     public var close: UnderlyingSinkCloseCallback
 
-    @ClosureAttribute.Required1
+    @ClosureAttribute1
     public var abort: UnderlyingSinkAbortCallback
 
     @ReadWriteAttribute

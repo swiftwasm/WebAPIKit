@@ -9,7 +9,7 @@ public class PermissionStatus: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -19,6 +19,6 @@ public class PermissionStatus: EventTarget {
     @ReadonlyAttribute
     public var name: String
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 }

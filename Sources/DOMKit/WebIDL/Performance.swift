@@ -12,7 +12,7 @@ public class Performance: EventTarget {
         _timeOrigin = ReadonlyAttribute(jsObject: jsObject, name: Strings.timeOrigin)
         _timing = ReadonlyAttribute(jsObject: jsObject, name: Strings.timing)
         _navigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigation)
-        _onresourcetimingbufferfull = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresourcetimingbufferfull)
+        _onresourcetimingbufferfull = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onresourcetimingbufferfull)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -69,7 +69,7 @@ public class Performance: EventTarget {
         _ = jsObject[Strings.setResourceTimingBufferSize]!(maxSize.jsValue())
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onresourcetimingbufferfull: EventHandler
 
     public func mark(markName: String, markOptions: PerformanceMarkOptions? = nil) -> PerformanceMark {

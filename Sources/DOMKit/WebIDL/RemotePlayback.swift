@@ -8,9 +8,9 @@ public class RemotePlayback: EventTarget {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
-        _onconnecting = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onconnecting)
-        _onconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onconnect)
-        _ondisconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondisconnect)
+        _onconnecting = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnecting)
+        _onconnect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnect)
+        _ondisconnect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondisconnect)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -31,13 +31,13 @@ public class RemotePlayback: EventTarget {
     @ReadonlyAttribute
     public var state: RemotePlaybackState
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onconnecting: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onconnect: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondisconnect: EventHandler
 
     public func prompt() -> JSPromise {

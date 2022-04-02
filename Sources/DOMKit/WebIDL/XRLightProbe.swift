@@ -8,13 +8,13 @@ public class XRLightProbe: EventTarget {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _probeSpace = ReadonlyAttribute(jsObject: jsObject, name: Strings.probeSpace)
-        _onreflectionchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onreflectionchange)
+        _onreflectionchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onreflectionchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute
     public var probeSpace: XRSpace
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onreflectionchange: EventHandler
 }

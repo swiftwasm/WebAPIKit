@@ -10,9 +10,9 @@ public class Sensor: EventTarget {
         _activated = ReadonlyAttribute(jsObject: jsObject, name: Strings.activated)
         _hasReading = ReadonlyAttribute(jsObject: jsObject, name: Strings.hasReading)
         _timestamp = ReadonlyAttribute(jsObject: jsObject, name: Strings.timestamp)
-        _onreading = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onreading)
-        _onactivate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onactivate)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
+        _onreading = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onreading)
+        _onactivate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onactivate)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -33,12 +33,12 @@ public class Sensor: EventTarget {
         _ = jsObject[Strings.stop]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onreading: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onactivate: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 }

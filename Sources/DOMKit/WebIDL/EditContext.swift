@@ -16,11 +16,11 @@ public class EditContext: EventTarget {
         _controlBound = ReadonlyAttribute(jsObject: jsObject, name: Strings.controlBound)
         _selectionBound = ReadonlyAttribute(jsObject: jsObject, name: Strings.selectionBound)
         _characterBoundsRangeStart = ReadonlyAttribute(jsObject: jsObject, name: Strings.characterBoundsRangeStart)
-        _ontextupdate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ontextupdate)
-        _ontextformatupdate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ontextformatupdate)
-        _oncharacterboundsupdate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncharacterboundsupdate)
-        _oncompositionstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncompositionstart)
-        _oncompositionend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncompositionend)
+        _ontextupdate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ontextupdate)
+        _ontextformatupdate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ontextformatupdate)
+        _oncharacterboundsupdate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncharacterboundsupdate)
+        _oncompositionstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncompositionstart)
+        _oncompositionend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncompositionend)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -83,18 +83,18 @@ public class EditContext: EventTarget {
         jsObject[Strings.characterBounds]!().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ontextupdate: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ontextformatupdate: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncharacterboundsupdate: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncompositionstart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncompositionend: EventHandler
 }

@@ -7,7 +7,7 @@ public class Keyboard: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.Keyboard].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onlayoutchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onlayoutchange)
+        _onlayoutchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onlayoutchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -35,6 +35,6 @@ public class Keyboard: EventTarget {
         return try await _promise.get().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onlayoutchange: EventHandler
 }

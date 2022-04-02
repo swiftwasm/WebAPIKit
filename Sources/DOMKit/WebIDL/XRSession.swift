@@ -18,16 +18,16 @@ public class XRSession: EventTarget {
         _supportedFrameRates = ReadonlyAttribute(jsObject: jsObject, name: Strings.supportedFrameRates)
         _renderState = ReadonlyAttribute(jsObject: jsObject, name: Strings.renderState)
         _inputSources = ReadonlyAttribute(jsObject: jsObject, name: Strings.inputSources)
-        _onend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onend)
-        _oninputsourceschange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oninputsourceschange)
-        _onselect = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onselect)
-        _onselectstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onselectstart)
-        _onselectend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onselectend)
-        _onsqueeze = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsqueeze)
-        _onsqueezestart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsqueezestart)
-        _onsqueezeend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsqueezeend)
-        _onvisibilitychange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onvisibilitychange)
-        _onframeratechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onframeratechange)
+        _onend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onend)
+        _oninputsourceschange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oninputsourceschange)
+        _onselect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onselect)
+        _onselectstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onselectstart)
+        _onselectend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onselectend)
+        _onsqueeze = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsqueeze)
+        _onsqueezestart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsqueezestart)
+        _onsqueezeend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsqueezeend)
+        _onvisibilitychange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onvisibilitychange)
+        _onframeratechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onframeratechange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -134,33 +134,33 @@ public class XRSession: EventTarget {
         _ = try await _promise.get()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onend: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oninputsourceschange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onselect: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onselectstart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onselectend: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsqueeze: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsqueezestart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsqueezeend: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onvisibilitychange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onframeratechange: EventHandler
 }

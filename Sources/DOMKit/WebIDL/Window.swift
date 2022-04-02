@@ -8,7 +8,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _orientation = ReadonlyAttribute(jsObject: jsObject, name: Strings.orientation)
-        _onorientationchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onorientationchange)
+        _onorientationchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onorientationchange)
         _attributionReporting = ReadonlyAttribute(jsObject: jsObject, name: Strings.attributionReporting)
         _cookieStore = ReadonlyAttribute(jsObject: jsObject, name: Strings.cookieStore)
         _screen = ReadonlyAttribute(jsObject: jsObject, name: Strings.screen)
@@ -51,13 +51,13 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
         _clientInformation = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientInformation)
         _originAgentCluster = ReadonlyAttribute(jsObject: jsObject, name: Strings.originAgentCluster)
         _external = ReadonlyAttribute(jsObject: jsObject, name: Strings.external)
-        _onappinstalled = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onappinstalled)
-        _onbeforeinstallprompt = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onbeforeinstallprompt)
+        _onappinstalled = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onappinstalled)
+        _onbeforeinstallprompt = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onbeforeinstallprompt)
         _navigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigation)
-        _ondeviceorientation = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondeviceorientation)
-        _ondeviceorientationabsolute = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondeviceorientationabsolute)
-        _oncompassneedscalibration = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncompassneedscalibration)
-        _ondevicemotion = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondevicemotion)
+        _ondeviceorientation = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondeviceorientation)
+        _ondeviceorientationabsolute = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondeviceorientationabsolute)
+        _oncompassneedscalibration = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncompassneedscalibration)
+        _ondevicemotion = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondevicemotion)
         _portalHost = ReadonlyAttribute(jsObject: jsObject, name: Strings.portalHost)
         _speechSynthesis = ReadonlyAttribute(jsObject: jsObject, name: Strings.speechSynthesis)
         _visualViewport = ReadonlyAttribute(jsObject: jsObject, name: Strings.visualViewport)
@@ -67,7 +67,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     @ReadonlyAttribute
     public var orientation: Int16
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onorientationchange: EventHandler
 
     @ReadonlyAttribute
@@ -348,25 +348,25 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     @ReadonlyAttribute
     public var external: External
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onappinstalled: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onbeforeinstallprompt: EventHandler
 
     @ReadonlyAttribute
     public var navigation: Navigation
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondeviceorientation: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondeviceorientationabsolute: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncompassneedscalibration: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondevicemotion: EventHandler
 
     @ReadonlyAttribute

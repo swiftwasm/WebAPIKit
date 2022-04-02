@@ -2,7 +2,7 @@
 enum Context {
     private(set) static var current = State()
 
-    static var requiredClosureArgCounts: Set<Int> = []
+    static var closurePatterns: Set<ClosurePattern> = []
     private(set) static var strings: Set<String> = ["toString"]
 
     static func source(for name: String) -> SwiftSource {

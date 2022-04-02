@@ -16,11 +16,11 @@ public class SourceBuffer: EventTarget {
         _textTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.textTracks)
         _appendWindowStart = ReadWriteAttribute(jsObject: jsObject, name: Strings.appendWindowStart)
         _appendWindowEnd = ReadWriteAttribute(jsObject: jsObject, name: Strings.appendWindowEnd)
-        _onupdatestart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onupdatestart)
-        _onupdate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onupdate)
-        _onupdateend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onupdateend)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onabort)
+        _onupdatestart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onupdatestart)
+        _onupdate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onupdate)
+        _onupdateend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onupdateend)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onabort = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onabort)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -51,19 +51,19 @@ public class SourceBuffer: EventTarget {
     @ReadWriteAttribute
     public var appendWindowEnd: Double
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onupdatestart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onupdate: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onupdateend: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onabort: EventHandler
 
     public func appendBuffer(data: BufferSource) {

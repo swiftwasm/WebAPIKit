@@ -13,7 +13,7 @@ public class BaseAudioContext: EventTarget {
         _listener = ReadonlyAttribute(jsObject: jsObject, name: Strings.listener)
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
         _audioWorklet = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioWorklet)
-        _onstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstatechange)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -35,7 +35,7 @@ public class BaseAudioContext: EventTarget {
     @ReadonlyAttribute
     public var audioWorklet: AudioWorklet
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstatechange: EventHandler
 
     public func createAnalyser() -> AnalyserNode {

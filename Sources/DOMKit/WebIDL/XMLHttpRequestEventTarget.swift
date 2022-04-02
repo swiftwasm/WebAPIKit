@@ -7,34 +7,34 @@ public class XMLHttpRequestEventTarget: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.XMLHttpRequestEventTarget].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onloadstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onloadstart)
-        _onprogress = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onprogress)
-        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onabort)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onload = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onload)
-        _ontimeout = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ontimeout)
-        _onloadend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onloadend)
+        _onloadstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onloadstart)
+        _onprogress = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onprogress)
+        _onabort = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onabort)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onload = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onload)
+        _ontimeout = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ontimeout)
+        _onloadend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onloadend)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onloadstart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onprogress: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onabort: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onload: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ontimeout: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onloadend: EventHandler
 }

@@ -9,7 +9,7 @@ public class VirtualKeyboard: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _boundingRect = ReadonlyAttribute(jsObject: jsObject, name: Strings.boundingRect)
         _overlaysContent = ReadWriteAttribute(jsObject: jsObject, name: Strings.overlaysContent)
-        _ongeometrychange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ongeometrychange)
+        _ongeometrychange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ongeometrychange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -27,6 +27,6 @@ public class VirtualKeyboard: EventTarget {
     @ReadWriteAttribute
     public var overlaysContent: Bool
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ongeometrychange: EventHandler
 }

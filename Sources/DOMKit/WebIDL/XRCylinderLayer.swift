@@ -12,7 +12,7 @@ public class XRCylinderLayer: XRCompositionLayer {
         _radius = ReadWriteAttribute(jsObject: jsObject, name: Strings.radius)
         _centralAngle = ReadWriteAttribute(jsObject: jsObject, name: Strings.centralAngle)
         _aspectRatio = ReadWriteAttribute(jsObject: jsObject, name: Strings.aspectRatio)
-        _onredraw = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onredraw)
+        _onredraw = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onredraw)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -31,6 +31,6 @@ public class XRCylinderLayer: XRCompositionLayer {
     @ReadWriteAttribute
     public var aspectRatio: Float
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onredraw: EventHandler
 }

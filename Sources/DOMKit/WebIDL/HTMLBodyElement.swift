@@ -7,7 +7,7 @@ public class HTMLBodyElement: HTMLElement, WindowEventHandlers {
     override public class var constructor: JSFunction { JSObject.global[Strings.HTMLBodyElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onorientationchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onorientationchange)
+        _onorientationchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onorientationchange)
         _text = ReadWriteAttribute(jsObject: jsObject, name: Strings.text)
         _link = ReadWriteAttribute(jsObject: jsObject, name: Strings.link)
         _vLink = ReadWriteAttribute(jsObject: jsObject, name: Strings.vLink)
@@ -17,7 +17,7 @@ public class HTMLBodyElement: HTMLElement, WindowEventHandlers {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onorientationchange: EventHandler
 
     public convenience init() {

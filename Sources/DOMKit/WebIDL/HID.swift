@@ -7,15 +7,15 @@ public class HID: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.HID].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onconnect)
-        _ondisconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondisconnect)
+        _onconnect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnect)
+        _ondisconnect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondisconnect)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onconnect: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondisconnect: EventHandler
 
     public func getDevices() -> JSPromise {

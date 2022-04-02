@@ -7,19 +7,19 @@ public class QueuingStrategy: BridgedDictionary {
     public convenience init(highWaterMark: Double, size: @escaping QueuingStrategySize) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.highWaterMark] = highWaterMark.jsValue()
-        ClosureAttribute.Required1[Strings.size, in: object] = size
+        ClosureAttribute1[Strings.size, in: object] = size
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
         _highWaterMark = ReadWriteAttribute(jsObject: object, name: Strings.highWaterMark)
-        _size = ClosureAttribute.Required1(jsObject: object, name: Strings.size)
+        _size = ClosureAttribute1(jsObject: object, name: Strings.size)
         super.init(unsafelyWrapping: object)
     }
 
     @ReadWriteAttribute
     public var highWaterMark: Double
 
-    @ClosureAttribute.Required1
+    @ClosureAttribute1
     public var size: QueuingStrategySize
 }

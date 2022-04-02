@@ -9,8 +9,8 @@ public class RTCDtlsTransport: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _iceTransport = ReadonlyAttribute(jsObject: jsObject, name: Strings.iceTransport)
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
-        _onstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstatechange)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -24,9 +24,9 @@ public class RTCDtlsTransport: EventTarget {
         jsObject[Strings.getRemoteCertificates]!().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstatechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 }

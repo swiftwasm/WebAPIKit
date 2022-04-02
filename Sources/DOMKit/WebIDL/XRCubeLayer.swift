@@ -9,7 +9,7 @@ public class XRCubeLayer: XRCompositionLayer {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _space = ReadWriteAttribute(jsObject: jsObject, name: Strings.space)
         _orientation = ReadWriteAttribute(jsObject: jsObject, name: Strings.orientation)
-        _onredraw = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onredraw)
+        _onredraw = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onredraw)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -19,6 +19,6 @@ public class XRCubeLayer: XRCompositionLayer {
     @ReadWriteAttribute
     public var orientation: DOMPointReadOnly
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onredraw: EventHandler
 }

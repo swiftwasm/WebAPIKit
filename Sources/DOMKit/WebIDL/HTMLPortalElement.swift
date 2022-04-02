@@ -9,8 +9,8 @@ public class HTMLPortalElement: HTMLElement {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
         _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Strings.referrerPolicy)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
-        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessageerror)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
+        _onmessageerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessageerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -38,9 +38,9 @@ public class HTMLPortalElement: HTMLElement {
         _ = jsObject[Strings.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessageerror: EventHandler
 }

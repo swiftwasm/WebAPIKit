@@ -6,7 +6,7 @@ import JavaScriptKit
 public protocol CharacteristicEventHandlers: JSBridgedClass {}
 public extension CharacteristicEventHandlers {
     var oncharacteristicvaluechanged: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.oncharacteristicvaluechanged, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.oncharacteristicvaluechanged, in: jsObject] = newValue }
+        get { ClosureAttribute1Optional[Strings.oncharacteristicvaluechanged, in: jsObject] }
+        set { ClosureAttribute1Optional[Strings.oncharacteristicvaluechanged, in: jsObject] = newValue }
     }
 }

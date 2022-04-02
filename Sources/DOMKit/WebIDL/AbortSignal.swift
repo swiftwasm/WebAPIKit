@@ -9,7 +9,7 @@ public class AbortSignal: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _aborted = ReadonlyAttribute(jsObject: jsObject, name: Strings.aborted)
         _reason = ReadonlyAttribute(jsObject: jsObject, name: Strings.reason)
-        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onabort)
+        _onabort = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onabort)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -31,6 +31,6 @@ public class AbortSignal: EventTarget {
         _ = jsObject[Strings.throwIfAborted]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onabort: EventHandler
 }

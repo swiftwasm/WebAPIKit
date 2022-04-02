@@ -11,10 +11,10 @@ public class BatteryManager: EventTarget {
         _chargingTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.chargingTime)
         _dischargingTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.dischargingTime)
         _level = ReadonlyAttribute(jsObject: jsObject, name: Strings.level)
-        _onchargingchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchargingchange)
-        _onchargingtimechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchargingtimechange)
-        _ondischargingtimechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondischargingtimechange)
-        _onlevelchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onlevelchange)
+        _onchargingchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchargingchange)
+        _onchargingtimechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchargingtimechange)
+        _ondischargingtimechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondischargingtimechange)
+        _onlevelchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onlevelchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -30,15 +30,15 @@ public class BatteryManager: EventTarget {
     @ReadonlyAttribute
     public var level: Double
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchargingchange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchargingtimechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondischargingtimechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onlevelchange: EventHandler
 }

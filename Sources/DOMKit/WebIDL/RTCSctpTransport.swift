@@ -11,7 +11,7 @@ public class RTCSctpTransport: EventTarget {
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
         _maxMessageSize = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxMessageSize)
         _maxChannels = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxChannels)
-        _onstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstatechange)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -27,6 +27,6 @@ public class RTCSctpTransport: EventTarget {
     @ReadonlyAttribute
     public var maxChannels: UInt16?
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstatechange: EventHandler
 }

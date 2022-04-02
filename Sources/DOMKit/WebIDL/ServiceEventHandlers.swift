@@ -6,17 +6,17 @@ import JavaScriptKit
 public protocol ServiceEventHandlers: JSBridgedClass {}
 public extension ServiceEventHandlers {
     var onserviceadded: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onserviceadded, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onserviceadded, in: jsObject] = newValue }
+        get { ClosureAttribute1Optional[Strings.onserviceadded, in: jsObject] }
+        set { ClosureAttribute1Optional[Strings.onserviceadded, in: jsObject] = newValue }
     }
 
     var onservicechanged: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onservicechanged, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onservicechanged, in: jsObject] = newValue }
+        get { ClosureAttribute1Optional[Strings.onservicechanged, in: jsObject] }
+        set { ClosureAttribute1Optional[Strings.onservicechanged, in: jsObject] = newValue }
     }
 
     var onserviceremoved: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onserviceremoved, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onserviceremoved, in: jsObject] = newValue }
+        get { ClosureAttribute1Optional[Strings.onserviceremoved, in: jsObject] }
+        set { ClosureAttribute1Optional[Strings.onserviceremoved, in: jsObject] = newValue }
     }
 }

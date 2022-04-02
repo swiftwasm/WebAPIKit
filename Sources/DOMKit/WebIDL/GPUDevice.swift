@@ -11,7 +11,7 @@ public class GPUDevice: EventTarget, GPUObjectBase {
         _limits = ReadonlyAttribute(jsObject: jsObject, name: Strings.limits)
         _queue = ReadonlyAttribute(jsObject: jsObject, name: Strings.queue)
         _lost = ReadonlyAttribute(jsObject: jsObject, name: Strings.lost)
-        _onuncapturederror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onuncapturederror)
+        _onuncapturederror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onuncapturederror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -117,6 +117,6 @@ public class GPUDevice: EventTarget, GPUObjectBase {
         return try await _promise.get().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onuncapturederror: EventHandler
 }

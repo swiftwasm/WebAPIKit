@@ -9,7 +9,7 @@ public class AudioWorkletNode: AudioNode {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _parameters = ReadonlyAttribute(jsObject: jsObject, name: Strings.parameters)
         _port = ReadonlyAttribute(jsObject: jsObject, name: Strings.port)
-        _onprocessorerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onprocessorerror)
+        _onprocessorerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onprocessorerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -23,6 +23,6 @@ public class AudioWorkletNode: AudioNode {
     @ReadonlyAttribute
     public var port: MessagePort
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onprocessorerror: EventHandler
 }

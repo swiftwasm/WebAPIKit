@@ -7,7 +7,7 @@ public class RTCDTMFSender: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.RTCDTMFSender].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _ontonechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ontonechange)
+        _ontonechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ontonechange)
         _canInsertDTMF = ReadonlyAttribute(jsObject: jsObject, name: Strings.canInsertDTMF)
         _toneBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.toneBuffer)
         super.init(unsafelyWrapping: jsObject)
@@ -17,7 +17,7 @@ public class RTCDTMFSender: EventTarget {
         _ = jsObject[Strings.insertDTMF]!(tones.jsValue(), duration?.jsValue() ?? .undefined, interToneGap?.jsValue() ?? .undefined)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ontonechange: EventHandler
 
     @ReadonlyAttribute

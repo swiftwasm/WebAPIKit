@@ -7,7 +7,7 @@ public class XRSystem: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.XRSystem].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _ondevicechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondevicechange)
+        _ondevicechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondevicechange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -31,6 +31,6 @@ public class XRSystem: EventTarget {
         return try await _promise.get().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondevicechange: EventHandler
 }

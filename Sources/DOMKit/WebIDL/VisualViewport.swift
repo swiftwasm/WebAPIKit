@@ -15,8 +15,8 @@ public class VisualViewport: EventTarget {
         _height = ReadonlyAttribute(jsObject: jsObject, name: Strings.height)
         _scale = ReadonlyAttribute(jsObject: jsObject, name: Strings.scale)
         _segments = ReadonlyAttribute(jsObject: jsObject, name: Strings.segments)
-        _onresize = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresize)
-        _onscroll = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onscroll)
+        _onresize = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onresize)
+        _onscroll = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onscroll)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -44,9 +44,9 @@ public class VisualViewport: EventTarget {
     @ReadonlyAttribute
     public var segments: [DOMRect]?
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onresize: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onscroll: EventHandler
 }

@@ -8,9 +8,9 @@ public class AudioTrackList: EventTarget {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
-        _onaddtrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onaddtrack)
-        _onremovetrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onremovetrack)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
+        _onaddtrack = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaddtrack)
+        _onremovetrack = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onremovetrack)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -25,12 +25,12 @@ public class AudioTrackList: EventTarget {
         jsObject[Strings.getTrackById]!(id.jsValue()).fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onaddtrack: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onremovetrack: EventHandler
 }

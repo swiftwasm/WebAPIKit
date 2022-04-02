@@ -10,7 +10,7 @@ public class SpeechSynthesis: EventTarget {
         _pending = ReadonlyAttribute(jsObject: jsObject, name: Strings.pending)
         _speaking = ReadonlyAttribute(jsObject: jsObject, name: Strings.speaking)
         _paused = ReadonlyAttribute(jsObject: jsObject, name: Strings.paused)
-        _onvoiceschanged = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onvoiceschanged)
+        _onvoiceschanged = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onvoiceschanged)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -23,7 +23,7 @@ public class SpeechSynthesis: EventTarget {
     @ReadonlyAttribute
     public var paused: Bool
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onvoiceschanged: EventHandler
 
     public func speak(utterance: SpeechSynthesisUtterance) {

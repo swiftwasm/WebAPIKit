@@ -6,30 +6,30 @@ import JavaScriptKit
 public class UnderlyingSource: BridgedDictionary {
     public convenience init(start: @escaping UnderlyingSourceStartCallback, pull: @escaping UnderlyingSourcePullCallback, cancel: @escaping UnderlyingSourceCancelCallback, type: ReadableStreamType, autoAllocateChunkSize: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        ClosureAttribute.Required1[Strings.start, in: object] = start
-        ClosureAttribute.Required1[Strings.pull, in: object] = pull
-        ClosureAttribute.Required1[Strings.cancel, in: object] = cancel
+        ClosureAttribute1[Strings.start, in: object] = start
+        ClosureAttribute1[Strings.pull, in: object] = pull
+        ClosureAttribute1[Strings.cancel, in: object] = cancel
         object[Strings.type] = type.jsValue()
         object[Strings.autoAllocateChunkSize] = autoAllocateChunkSize.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _start = ClosureAttribute.Required1(jsObject: object, name: Strings.start)
-        _pull = ClosureAttribute.Required1(jsObject: object, name: Strings.pull)
-        _cancel = ClosureAttribute.Required1(jsObject: object, name: Strings.cancel)
+        _start = ClosureAttribute1(jsObject: object, name: Strings.start)
+        _pull = ClosureAttribute1(jsObject: object, name: Strings.pull)
+        _cancel = ClosureAttribute1(jsObject: object, name: Strings.cancel)
         _type = ReadWriteAttribute(jsObject: object, name: Strings.type)
         _autoAllocateChunkSize = ReadWriteAttribute(jsObject: object, name: Strings.autoAllocateChunkSize)
         super.init(unsafelyWrapping: object)
     }
 
-    @ClosureAttribute.Required1
+    @ClosureAttribute1
     public var start: UnderlyingSourceStartCallback
 
-    @ClosureAttribute.Required1
+    @ClosureAttribute1
     public var pull: UnderlyingSourcePullCallback
 
-    @ClosureAttribute.Required1
+    @ClosureAttribute1
     public var cancel: UnderlyingSourceCancelCallback
 
     @ReadWriteAttribute

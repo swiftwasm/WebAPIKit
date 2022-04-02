@@ -8,13 +8,13 @@ public class PresentationConnectionList: EventTarget {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _connections = ReadonlyAttribute(jsObject: jsObject, name: Strings.connections)
-        _onconnectionavailable = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onconnectionavailable)
+        _onconnectionavailable = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnectionavailable)
         super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute
     public var connections: [PresentationConnection]
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onconnectionavailable: EventHandler
 }

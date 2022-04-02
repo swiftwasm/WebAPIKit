@@ -22,8 +22,8 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
         _documentElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.documentElement)
         _fullscreenEnabled = ReadonlyAttribute(jsObject: jsObject, name: Strings.fullscreenEnabled)
         _fullscreen = ReadonlyAttribute(jsObject: jsObject, name: Strings.fullscreen)
-        _onfullscreenchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenchange)
-        _onfullscreenerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenerror)
+        _onfullscreenchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onfullscreenchange)
+        _onfullscreenerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onfullscreenerror)
         _location = ReadonlyAttribute(jsObject: jsObject, name: Strings.location)
         _domain = ReadWriteAttribute(jsObject: jsObject, name: Strings.domain)
         _referrer = ReadonlyAttribute(jsObject: jsObject, name: Strings.referrer)
@@ -45,8 +45,8 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
         _designMode = ReadWriteAttribute(jsObject: jsObject, name: Strings.designMode)
         _hidden = ReadonlyAttribute(jsObject: jsObject, name: Strings.hidden)
         _visibilityState = ReadonlyAttribute(jsObject: jsObject, name: Strings.visibilityState)
-        _onreadystatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onreadystatechange)
-        _onvisibilitychange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onvisibilitychange)
+        _onreadystatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onreadystatechange)
+        _onvisibilitychange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onvisibilitychange)
         _fgColor = ReadWriteAttribute(jsObject: jsObject, name: Strings.fgColor)
         _linkColor = ReadWriteAttribute(jsObject: jsObject, name: Strings.linkColor)
         _vlinkColor = ReadWriteAttribute(jsObject: jsObject, name: Strings.vlinkColor)
@@ -55,13 +55,13 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
         _anchors = ReadonlyAttribute(jsObject: jsObject, name: Strings.anchors)
         _applets = ReadonlyAttribute(jsObject: jsObject, name: Strings.applets)
         _all = ReadonlyAttribute(jsObject: jsObject, name: Strings.all)
-        _onfreeze = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfreeze)
-        _onresume = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresume)
+        _onfreeze = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onfreeze)
+        _onresume = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onresume)
         _wasDiscarded = ReadonlyAttribute(jsObject: jsObject, name: Strings.wasDiscarded)
         _permissionsPolicy = ReadonlyAttribute(jsObject: jsObject, name: Strings.permissionsPolicy)
         _pictureInPictureEnabled = ReadonlyAttribute(jsObject: jsObject, name: Strings.pictureInPictureEnabled)
-        _onpointerlockchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpointerlockchange)
-        _onpointerlockerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpointerlockerror)
+        _onpointerlockchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onpointerlockchange)
+        _onpointerlockerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onpointerlockerror)
         _fragmentDirective = ReadonlyAttribute(jsObject: jsObject, name: Strings.fragmentDirective)
         _timeline = ReadonlyAttribute(jsObject: jsObject, name: Strings.timeline)
         super.init(unsafelyWrapping: jsObject)
@@ -214,10 +214,10 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
         _ = try await _promise.get()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onfullscreenchange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onfullscreenerror: EventHandler
 
     @ReadonlyAttribute
@@ -339,10 +339,10 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     @ReadonlyAttribute
     public var visibilityState: DocumentVisibilityState
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onreadystatechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onvisibilitychange: EventHandler
 
     @ReadWriteAttribute
@@ -381,10 +381,10 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     @ReadonlyAttribute
     public var all: HTMLAllCollection
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onfreeze: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onresume: EventHandler
 
     @ReadonlyAttribute
@@ -406,10 +406,10 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
         _ = try await _promise.get()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onpointerlockchange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onpointerlockerror: EventHandler
 
     public func exitPointerLock() {

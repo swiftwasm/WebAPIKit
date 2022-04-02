@@ -7,14 +7,14 @@ public class IDBOpenDBRequest: IDBRequest {
     override public class var constructor: JSFunction { JSObject.global[Strings.IDBOpenDBRequest].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onblocked = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onblocked)
-        _onupgradeneeded = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onupgradeneeded)
+        _onblocked = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onblocked)
+        _onupgradeneeded = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onupgradeneeded)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onblocked: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onupgradeneeded: EventHandler
 }

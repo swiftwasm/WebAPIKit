@@ -10,12 +10,12 @@ public class MediaRecorder: EventTarget {
         _stream = ReadonlyAttribute(jsObject: jsObject, name: Strings.stream)
         _mimeType = ReadonlyAttribute(jsObject: jsObject, name: Strings.mimeType)
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
-        _onstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstart)
-        _onstop = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstop)
-        _ondataavailable = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondataavailable)
-        _onpause = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpause)
-        _onresume = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresume)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
+        _onstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstart)
+        _onstop = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstop)
+        _ondataavailable = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondataavailable)
+        _onpause = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onpause)
+        _onresume = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onresume)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
         _videoBitsPerSecond = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoBitsPerSecond)
         _audioBitsPerSecond = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioBitsPerSecond)
         _audioBitrateMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioBitrateMode)
@@ -35,22 +35,22 @@ public class MediaRecorder: EventTarget {
     @ReadonlyAttribute
     public var state: RecordingState
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstop: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondataavailable: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onpause: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onresume: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
     @ReadonlyAttribute

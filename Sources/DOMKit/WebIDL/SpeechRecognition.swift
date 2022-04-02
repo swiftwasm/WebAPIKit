@@ -12,17 +12,17 @@ public class SpeechRecognition: EventTarget {
         _continuous = ReadWriteAttribute(jsObject: jsObject, name: Strings.continuous)
         _interimResults = ReadWriteAttribute(jsObject: jsObject, name: Strings.interimResults)
         _maxAlternatives = ReadWriteAttribute(jsObject: jsObject, name: Strings.maxAlternatives)
-        _onaudiostart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onaudiostart)
-        _onsoundstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsoundstart)
-        _onspeechstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onspeechstart)
-        _onspeechend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onspeechend)
-        _onsoundend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsoundend)
-        _onaudioend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onaudioend)
-        _onresult = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresult)
-        _onnomatch = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onnomatch)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstart)
-        _onend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onend)
+        _onaudiostart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaudiostart)
+        _onsoundstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsoundstart)
+        _onspeechstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onspeechstart)
+        _onspeechend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onspeechend)
+        _onsoundend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsoundend)
+        _onaudioend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaudioend)
+        _onresult = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onresult)
+        _onnomatch = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onnomatch)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstart)
+        _onend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onend)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -57,36 +57,36 @@ public class SpeechRecognition: EventTarget {
         _ = jsObject[Strings.abort]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onaudiostart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsoundstart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onspeechstart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onspeechend: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsoundend: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onaudioend: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onresult: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onnomatch: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onend: EventHandler
 }

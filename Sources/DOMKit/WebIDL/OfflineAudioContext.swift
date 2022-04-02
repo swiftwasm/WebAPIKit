@@ -8,7 +8,7 @@ public class OfflineAudioContext: BaseAudioContext {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
-        _oncomplete = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncomplete)
+        _oncomplete = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncomplete)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -53,6 +53,6 @@ public class OfflineAudioContext: BaseAudioContext {
     @ReadonlyAttribute
     public var length: UInt32
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncomplete: EventHandler
 }

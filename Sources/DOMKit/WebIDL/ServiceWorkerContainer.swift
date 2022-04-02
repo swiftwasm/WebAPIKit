@@ -9,9 +9,9 @@ public class ServiceWorkerContainer: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _controller = ReadonlyAttribute(jsObject: jsObject, name: Strings.controller)
         _ready = ReadonlyAttribute(jsObject: jsObject, name: Strings.ready)
-        _oncontrollerchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncontrollerchange)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
-        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessageerror)
+        _oncontrollerchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncontrollerchange)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
+        _onmessageerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessageerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -55,12 +55,12 @@ public class ServiceWorkerContainer: EventTarget {
         _ = jsObject[Strings.startMessages]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncontrollerchange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessageerror: EventHandler
 }

@@ -7,8 +7,8 @@ public class CloseWatcher: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.CloseWatcher].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _oncancel = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncancel)
-        _onclose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onclose)
+        _oncancel = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncancel)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -24,9 +24,9 @@ public class CloseWatcher: EventTarget {
         _ = jsObject[Strings.close]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncancel: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onclose: EventHandler
 }

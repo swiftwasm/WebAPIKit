@@ -11,10 +11,10 @@ public class Navigation: EventTarget {
         _transition = ReadonlyAttribute(jsObject: jsObject, name: Strings.transition)
         _canGoBack = ReadonlyAttribute(jsObject: jsObject, name: Strings.canGoBack)
         _canGoForward = ReadonlyAttribute(jsObject: jsObject, name: Strings.canGoForward)
-        _onnavigate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onnavigate)
-        _onnavigatesuccess = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onnavigatesuccess)
-        _onnavigateerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onnavigateerror)
-        _oncurrententrychange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncurrententrychange)
+        _onnavigate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onnavigate)
+        _onnavigatesuccess = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onnavigatesuccess)
+        _onnavigateerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onnavigateerror)
+        _oncurrententrychange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncurrententrychange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -58,15 +58,15 @@ public class Navigation: EventTarget {
         jsObject[Strings.forward]!(options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onnavigate: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onnavigatesuccess: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onnavigateerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncurrententrychange: EventHandler
 }

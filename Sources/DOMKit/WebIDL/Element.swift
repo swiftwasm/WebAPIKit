@@ -29,8 +29,8 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
         _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: Strings.shadowRoot)
         _editContext = ReadWriteAttribute(jsObject: jsObject, name: Strings.editContext)
         _elementTiming = ReadWriteAttribute(jsObject: jsObject, name: Strings.elementTiming)
-        _onfullscreenchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenchange)
-        _onfullscreenerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenerror)
+        _onfullscreenchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onfullscreenchange)
+        _onfullscreenerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onfullscreenerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -274,10 +274,10 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
         _ = try await _promise.get()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onfullscreenchange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onfullscreenerror: EventHandler
 
     public func setPointerCapture(pointerId: Int32) {

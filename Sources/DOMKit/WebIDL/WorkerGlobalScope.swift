@@ -10,12 +10,12 @@ public class WorkerGlobalScope: EventTarget, FontFaceSource, WindowOrWorkerGloba
         _self = ReadonlyAttribute(jsObject: jsObject, name: Strings._self)
         _location = ReadonlyAttribute(jsObject: jsObject, name: Strings.location)
         _navigator = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigator)
-        _onerror = ClosureAttribute.Optional5(jsObject: jsObject, name: Strings.onerror)
-        _onlanguagechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onlanguagechange)
-        _onoffline = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onoffline)
-        _ononline = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ononline)
-        _onrejectionhandled = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onrejectionhandled)
-        _onunhandledrejection = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onunhandledrejection)
+        _onerror = ClosureAttribute5Optional(jsObject: jsObject, name: Strings.onerror)
+        _onlanguagechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onlanguagechange)
+        _onoffline = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onoffline)
+        _ononline = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ononline)
+        _onrejectionhandled = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onrejectionhandled)
+        _onunhandledrejection = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onunhandledrejection)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -32,21 +32,21 @@ public class WorkerGlobalScope: EventTarget, FontFaceSource, WindowOrWorkerGloba
         _ = jsObject[Strings.importScripts]!(urls.jsValue())
     }
 
-    @ClosureAttribute.Optional5
+    @ClosureAttribute5Optional
     public var onerror: OnErrorEventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onlanguagechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onoffline: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ononline: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onrejectionhandled: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onunhandledrejection: EventHandler
 }

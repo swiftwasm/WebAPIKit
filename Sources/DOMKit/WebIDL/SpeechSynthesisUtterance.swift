@@ -13,13 +13,13 @@ public class SpeechSynthesisUtterance: EventTarget {
         _volume = ReadWriteAttribute(jsObject: jsObject, name: Strings.volume)
         _rate = ReadWriteAttribute(jsObject: jsObject, name: Strings.rate)
         _pitch = ReadWriteAttribute(jsObject: jsObject, name: Strings.pitch)
-        _onstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstart)
-        _onend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onend)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onpause = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpause)
-        _onresume = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresume)
-        _onmark = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmark)
-        _onboundary = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onboundary)
+        _onstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstart)
+        _onend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onend)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onpause = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onpause)
+        _onresume = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onresume)
+        _onmark = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmark)
+        _onboundary = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onboundary)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -45,24 +45,24 @@ public class SpeechSynthesisUtterance: EventTarget {
     @ReadWriteAttribute
     public var pitch: Float
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onend: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onpause: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onresume: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmark: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onboundary: EventHandler
 }

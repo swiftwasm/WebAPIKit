@@ -7,7 +7,7 @@ public class HIDDevice: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.HIDDevice].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _oninputreport = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oninputreport)
+        _oninputreport = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oninputreport)
         _opened = ReadonlyAttribute(jsObject: jsObject, name: Strings.opened)
         _vendorId = ReadonlyAttribute(jsObject: jsObject, name: Strings.vendorId)
         _productId = ReadonlyAttribute(jsObject: jsObject, name: Strings.productId)
@@ -16,7 +16,7 @@ public class HIDDevice: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oninputreport: EventHandler
 
     @ReadonlyAttribute

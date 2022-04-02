@@ -7,11 +7,11 @@ public class AudioScheduledSourceNode: AudioNode {
     override public class var constructor: JSFunction { JSObject.global[Strings.AudioScheduledSourceNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onended = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onended)
+        _onended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onended)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onended: EventHandler
 
     public func start(when: Double? = nil) {

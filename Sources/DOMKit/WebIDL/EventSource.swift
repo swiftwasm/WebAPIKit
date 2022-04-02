@@ -10,9 +10,9 @@ public class EventSource: EventTarget {
         _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
         _withCredentials = ReadonlyAttribute(jsObject: jsObject, name: Strings.withCredentials)
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
-        _onopen = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onopen)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
+        _onopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onopen)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -35,13 +35,13 @@ public class EventSource: EventTarget {
     @ReadonlyAttribute
     public var readyState: UInt16
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onopen: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
     public func close() {

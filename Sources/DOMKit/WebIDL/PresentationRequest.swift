@@ -7,7 +7,7 @@ public class PresentationRequest: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.PresentationRequest].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onconnectionavailable = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onconnectionavailable)
+        _onconnectionavailable = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnectionavailable)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -49,6 +49,6 @@ public class PresentationRequest: EventTarget {
         return try await _promise.get().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onconnectionavailable: EventHandler
 }

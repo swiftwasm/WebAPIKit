@@ -8,13 +8,13 @@ public class DevicePosture: EventTarget {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute
     public var type: DevicePostureType
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 }

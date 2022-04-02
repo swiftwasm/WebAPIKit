@@ -9,7 +9,7 @@ public class ScreenOrientation: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
         _angle = ReadonlyAttribute(jsObject: jsObject, name: Strings.angle)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -33,6 +33,6 @@ public class ScreenOrientation: EventTarget {
     @ReadonlyAttribute
     public var angle: UInt16
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 }

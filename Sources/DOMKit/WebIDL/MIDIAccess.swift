@@ -9,7 +9,7 @@ public class MIDIAccess: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _inputs = ReadonlyAttribute(jsObject: jsObject, name: Strings.inputs)
         _outputs = ReadonlyAttribute(jsObject: jsObject, name: Strings.outputs)
-        _onstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstatechange)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
         _sysexEnabled = ReadonlyAttribute(jsObject: jsObject, name: Strings.sysexEnabled)
         super.init(unsafelyWrapping: jsObject)
     }
@@ -20,7 +20,7 @@ public class MIDIAccess: EventTarget {
     @ReadonlyAttribute
     public var outputs: MIDIOutputMap
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstatechange: EventHandler
 
     @ReadonlyAttribute

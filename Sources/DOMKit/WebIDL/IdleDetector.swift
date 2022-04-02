@@ -9,7 +9,7 @@ public class IdleDetector: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _userState = ReadonlyAttribute(jsObject: jsObject, name: Strings.userState)
         _screenState = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenState)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -23,7 +23,7 @@ public class IdleDetector: EventTarget {
     @ReadonlyAttribute
     public var screenState: ScreenIdleState?
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 
     public static func requestPermission() -> JSPromise {

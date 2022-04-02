@@ -6,25 +6,25 @@ import JavaScriptKit
 public class TrustedTypePolicyOptions: BridgedDictionary {
     public convenience init(createHTML: @escaping CreateHTMLCallback?, createScript: @escaping CreateScriptCallback?, createScriptURL: @escaping CreateScriptURLCallback?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        ClosureAttribute.Required2[Strings.createHTML, in: object] = createHTML
-        ClosureAttribute.Required2[Strings.createScript, in: object] = createScript
-        ClosureAttribute.Required2[Strings.createScriptURL, in: object] = createScriptURL
+        ClosureAttribute2[Strings.createHTML, in: object] = createHTML
+        ClosureAttribute2[Strings.createScript, in: object] = createScript
+        ClosureAttribute2[Strings.createScriptURL, in: object] = createScriptURL
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _createHTML = ClosureAttribute.Required2(jsObject: object, name: Strings.createHTML)
-        _createScript = ClosureAttribute.Required2(jsObject: object, name: Strings.createScript)
-        _createScriptURL = ClosureAttribute.Required2(jsObject: object, name: Strings.createScriptURL)
+        _createHTML = ClosureAttribute2(jsObject: object, name: Strings.createHTML)
+        _createScript = ClosureAttribute2(jsObject: object, name: Strings.createScript)
+        _createScriptURL = ClosureAttribute2(jsObject: object, name: Strings.createScriptURL)
         super.init(unsafelyWrapping: object)
     }
 
-    @ClosureAttribute.Required2
+    @ClosureAttribute2
     public var createHTML: CreateHTMLCallback?
 
-    @ClosureAttribute.Required2
+    @ClosureAttribute2
     public var createScript: CreateScriptCallback?
 
-    @ClosureAttribute.Required2
+    @ClosureAttribute2
     public var createScriptURL: CreateScriptURLCallback?
 }

@@ -9,7 +9,7 @@ public class MediaQueryList: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
         _matches = ReadonlyAttribute(jsObject: jsObject, name: Strings.matches)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -23,6 +23,6 @@ public class MediaQueryList: EventTarget {
 
     // XXX: member 'removeListener' is ignored
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 }

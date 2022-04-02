@@ -9,8 +9,8 @@ public class HTMLMediaElement: HTMLElement {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _sinkId = ReadonlyAttribute(jsObject: jsObject, name: Strings.sinkId)
         _mediaKeys = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaKeys)
-        _onencrypted = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onencrypted)
-        _onwaitingforkey = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onwaitingforkey)
+        _onencrypted = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onencrypted)
+        _onwaitingforkey = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onwaitingforkey)
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
         _srcObject = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcObject)
@@ -60,10 +60,10 @@ public class HTMLMediaElement: HTMLElement {
     @ReadonlyAttribute
     public var mediaKeys: MediaKeys?
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onencrypted: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onwaitingforkey: EventHandler
 
     public func setMediaKeys(mediaKeys: MediaKeys?) -> JSPromise {

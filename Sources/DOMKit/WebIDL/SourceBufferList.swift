@@ -8,18 +8,18 @@ public class SourceBufferList: EventTarget {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
-        _onaddsourcebuffer = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onaddsourcebuffer)
-        _onremovesourcebuffer = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onremovesourcebuffer)
+        _onaddsourcebuffer = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaddsourcebuffer)
+        _onremovesourcebuffer = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onremovesourcebuffer)
         super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute
     public var length: UInt32
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onaddsourcebuffer: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onremovesourcebuffer: EventHandler
 
     public subscript(key: Int) -> SourceBuffer {

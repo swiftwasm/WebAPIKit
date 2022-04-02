@@ -11,7 +11,7 @@ public class ShadowRoot: DocumentFragment, InnerHTML, DocumentOrShadowRoot {
         _delegatesFocus = ReadonlyAttribute(jsObject: jsObject, name: Strings.delegatesFocus)
         _slotAssignment = ReadonlyAttribute(jsObject: jsObject, name: Strings.slotAssignment)
         _host = ReadonlyAttribute(jsObject: jsObject, name: Strings.host)
-        _onslotchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onslotchange)
+        _onslotchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onslotchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -27,6 +27,6 @@ public class ShadowRoot: DocumentFragment, InnerHTML, DocumentOrShadowRoot {
     @ReadonlyAttribute
     public var host: Element
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onslotchange: EventHandler
 }

@@ -140,7 +140,8 @@ extension IDLEnum: SwiftRepresentable {
 
 extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        Context.requiredClosureArgCounts.insert(arguments.count)
+        Context.closurePatterns.insert(ClosurePattern(nullable: false, argCount: arguments.count))
+        Context.closurePatterns.insert(ClosurePattern(nullable: true, argCount: arguments.count))
         return """
         public typealias \(name) = (\(sequence: arguments.map {
             "\($0.idlType)\($0.variadic ? "..." : "")"
@@ -560,14 +561,14 @@ extension IDLType: SwiftRepresentable {
         if case let .single(name) = value {
             let readonlyComment: SwiftSource = readonly ? " /* XXX: should be readonly! */ " : ""
             if let callback = Context.types[name] as? IDLCallback {
-                return "ClosureAttribute.Required\(String(callback.arguments.count))\(readonlyComment)"
+                return "ClosureAttribute\(String(callback.arguments.count))\(readonlyComment)"
             }
             if let ref = Context.types[name] as? IDLTypedef,
                case let .single(name) = ref.idlType.value,
                let callback = Context.types[name] as? IDLCallback
             {
                 assert(ref.idlType.nullable)
-                return "ClosureAttribute.Optional\(String(callback.arguments.count))\(readonlyComment)"
+                return "ClosureAttribute\(String(callback.arguments.count))Optional\(readonlyComment)"
             }
         }
 

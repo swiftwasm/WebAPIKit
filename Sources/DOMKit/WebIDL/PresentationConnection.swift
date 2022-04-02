@@ -10,11 +10,11 @@ public class PresentationConnection: EventTarget {
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
         _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
-        _onconnect = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onconnect)
-        _onclose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onclose)
-        _onterminate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onterminate)
+        _onconnect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnect)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
+        _onterminate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onterminate)
         _binaryType = ReadWriteAttribute(jsObject: jsObject, name: Strings.binaryType)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -35,19 +35,19 @@ public class PresentationConnection: EventTarget {
         _ = jsObject[Strings.terminate]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onconnect: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onclose: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onterminate: EventHandler
 
     @ReadWriteAttribute
     public var binaryType: BinaryType
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
     public func send(message: String) {

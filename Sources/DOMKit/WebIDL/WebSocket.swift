@@ -10,12 +10,12 @@ public class WebSocket: EventTarget {
         _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
         _bufferedAmount = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferedAmount)
-        _onopen = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onopen)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onclose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onclose)
+        _onopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onopen)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
         _extensions = ReadonlyAttribute(jsObject: jsObject, name: Strings.extensions)
         _protocol = ReadonlyAttribute(jsObject: jsObject, name: Strings.protocol)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
         _binaryType = ReadWriteAttribute(jsObject: jsObject, name: Strings.binaryType)
         super.init(unsafelyWrapping: jsObject)
     }
@@ -41,13 +41,13 @@ public class WebSocket: EventTarget {
     @ReadonlyAttribute
     public var bufferedAmount: UInt64
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onopen: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onclose: EventHandler
 
     @ReadonlyAttribute
@@ -60,7 +60,7 @@ public class WebSocket: EventTarget {
         _ = jsObject[Strings.close]!(code?.jsValue() ?? .undefined, reason?.jsValue() ?? .undefined)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
     @ReadWriteAttribute

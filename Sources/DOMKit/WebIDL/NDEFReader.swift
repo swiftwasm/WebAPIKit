@@ -7,8 +7,8 @@ public class NDEFReader: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.NDEFReader].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onreading = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onreading)
-        _onreadingerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onreadingerror)
+        _onreading = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onreading)
+        _onreadingerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onreadingerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -16,10 +16,10 @@ public class NDEFReader: EventTarget {
         self.init(unsafelyWrapping: Self.constructor.new())
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onreading: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onreadingerror: EventHandler
 
     public func scan(options: NDEFScanOptions? = nil) -> JSPromise {

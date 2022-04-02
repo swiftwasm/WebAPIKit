@@ -1,13 +1,13 @@
-struct ClosureWrapper: SwiftRepresentable, Equatable {
+struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
+    static func < (lhs: ClosurePattern, rhs: ClosurePattern) -> Bool {
+        lhs.name.source < rhs.name.source
+    }
+
     let nullable: Bool
     let argCount: Int
 
     var name: SwiftSource {
-        if nullable {
-            return "Optional\(String(argCount))"
-        } else {
-            return "Required\(String(argCount))"
-        }
+        "ClosureAttribute\(String(argCount))\(nullable ? "Optional" : "")"
     }
 
     var indexes: [String] { (0 ..< argCount).map(String.init) }

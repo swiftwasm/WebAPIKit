@@ -7,9 +7,9 @@ public class FontFaceSet: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.FontFaceSet].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onloading = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onloading)
-        _onloadingdone = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onloadingdone)
-        _onloadingerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onloadingerror)
+        _onloading = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onloading)
+        _onloadingdone = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onloadingdone)
+        _onloadingerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onloadingerror)
         _ready = ReadonlyAttribute(jsObject: jsObject, name: Strings.ready)
         _status = ReadonlyAttribute(jsObject: jsObject, name: Strings.status)
         super.init(unsafelyWrapping: jsObject)
@@ -33,13 +33,13 @@ public class FontFaceSet: EventTarget {
         _ = jsObject[Strings.clear]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onloading: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onloadingdone: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onloadingerror: EventHandler
 
     public func load(font: String, text: String? = nil) -> JSPromise {

@@ -12,13 +12,13 @@ public class MediaStreamTrack: EventTarget {
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
         _enabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.enabled)
         _muted = ReadonlyAttribute(jsObject: jsObject, name: Strings.muted)
-        _onmute = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmute)
-        _onunmute = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onunmute)
+        _onmute = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmute)
+        _onunmute = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onunmute)
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
-        _onended = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onended)
+        _onended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onended)
         _contentHint = ReadWriteAttribute(jsObject: jsObject, name: Strings.contentHint)
         _isolated = ReadonlyAttribute(jsObject: jsObject, name: Strings.isolated)
-        _onisolationchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onisolationchange)
+        _onisolationchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onisolationchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -37,16 +37,16 @@ public class MediaStreamTrack: EventTarget {
     @ReadonlyAttribute
     public var muted: Bool
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmute: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onunmute: EventHandler
 
     @ReadonlyAttribute
     public var readyState: MediaStreamTrackState
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onended: EventHandler
 
     public func clone() -> Self {
@@ -85,6 +85,6 @@ public class MediaStreamTrack: EventTarget {
     @ReadonlyAttribute
     public var isolated: Bool
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onisolationchange: EventHandler
 }

@@ -7,7 +7,7 @@ public class XRReferenceSpace: XRSpace {
     override public class var constructor: JSFunction { JSObject.global[Strings.XRReferenceSpace].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onreset = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onreset)
+        _onreset = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onreset)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -15,6 +15,6 @@ public class XRReferenceSpace: XRSpace {
         jsObject[Strings.getOffsetReferenceSpace]!(originOffset.jsValue()).fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onreset: EventHandler
 }

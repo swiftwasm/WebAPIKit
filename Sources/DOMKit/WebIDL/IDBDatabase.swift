@@ -10,10 +10,10 @@ public class IDBDatabase: EventTarget {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
         _version = ReadonlyAttribute(jsObject: jsObject, name: Strings.version)
         _objectStoreNames = ReadonlyAttribute(jsObject: jsObject, name: Strings.objectStoreNames)
-        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onabort)
-        _onclose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onclose)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onversionchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onversionchange)
+        _onabort = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onabort)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onversionchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onversionchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -42,15 +42,15 @@ public class IDBDatabase: EventTarget {
         _ = jsObject[Strings.deleteObjectStore]!(name.jsValue())
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onabort: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onclose: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onversionchange: EventHandler
 }

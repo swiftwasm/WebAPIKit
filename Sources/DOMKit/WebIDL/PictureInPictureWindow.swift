@@ -9,7 +9,7 @@ public class PictureInPictureWindow: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _width = ReadonlyAttribute(jsObject: jsObject, name: Strings.width)
         _height = ReadonlyAttribute(jsObject: jsObject, name: Strings.height)
-        _onresize = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresize)
+        _onresize = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onresize)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -19,6 +19,6 @@ public class PictureInPictureWindow: EventTarget {
     @ReadonlyAttribute
     public var height: Int32
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onresize: EventHandler
 }

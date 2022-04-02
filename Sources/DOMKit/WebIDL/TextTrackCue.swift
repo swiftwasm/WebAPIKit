@@ -12,8 +12,8 @@ public class TextTrackCue: EventTarget {
         _startTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.startTime)
         _endTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.endTime)
         _pauseOnExit = ReadWriteAttribute(jsObject: jsObject, name: Strings.pauseOnExit)
-        _onenter = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onenter)
-        _onexit = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onexit)
+        _onenter = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onenter)
+        _onexit = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onexit)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -32,9 +32,9 @@ public class TextTrackCue: EventTarget {
     @ReadWriteAttribute
     public var pauseOnExit: Bool
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onenter: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onexit: EventHandler
 }

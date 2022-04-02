@@ -11,9 +11,9 @@ public class MediaSource: EventTarget {
         _activeSourceBuffers = ReadonlyAttribute(jsObject: jsObject, name: Strings.activeSourceBuffers)
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
         _duration = ReadWriteAttribute(jsObject: jsObject, name: Strings.duration)
-        _onsourceopen = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsourceopen)
-        _onsourceended = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsourceended)
-        _onsourceclose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsourceclose)
+        _onsourceopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsourceopen)
+        _onsourceended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsourceended)
+        _onsourceclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsourceclose)
         _canConstructInDedicatedWorker = ReadonlyAttribute(jsObject: jsObject, name: Strings.canConstructInDedicatedWorker)
         super.init(unsafelyWrapping: jsObject)
     }
@@ -34,13 +34,13 @@ public class MediaSource: EventTarget {
     @ReadWriteAttribute
     public var duration: Double
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsourceopen: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsourceended: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsourceclose: EventHandler
 
     @ReadonlyAttribute

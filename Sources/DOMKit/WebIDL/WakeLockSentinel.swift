@@ -9,7 +9,7 @@ public class WakeLockSentinel: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _released = ReadonlyAttribute(jsObject: jsObject, name: Strings.released)
         _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
-        _onrelease = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onrelease)
+        _onrelease = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onrelease)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -29,6 +29,6 @@ public class WakeLockSentinel: EventTarget {
         _ = try await _promise.get()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onrelease: EventHandler
 }

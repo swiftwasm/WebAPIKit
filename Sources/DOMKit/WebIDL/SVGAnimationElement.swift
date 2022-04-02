@@ -8,22 +8,22 @@ public class SVGAnimationElement: SVGElement, SVGTests {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _targetElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.targetElement)
-        _onbegin = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onbegin)
-        _onend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onend)
-        _onrepeat = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onrepeat)
+        _onbegin = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onbegin)
+        _onend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onend)
+        _onrepeat = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onrepeat)
         super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute
     public var targetElement: SVGElement?
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onbegin: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onend: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onrepeat: EventHandler
 
     public func getStartTime() -> Float {

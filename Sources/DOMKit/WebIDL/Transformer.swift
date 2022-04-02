@@ -6,30 +6,30 @@ import JavaScriptKit
 public class Transformer: BridgedDictionary {
     public convenience init(start: @escaping TransformerStartCallback, transform: @escaping TransformerTransformCallback, flush: @escaping TransformerFlushCallback, readableType: JSValue, writableType: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        ClosureAttribute.Required1[Strings.start, in: object] = start
-        ClosureAttribute.Required2[Strings.transform, in: object] = transform
-        ClosureAttribute.Required1[Strings.flush, in: object] = flush
+        ClosureAttribute1[Strings.start, in: object] = start
+        ClosureAttribute2[Strings.transform, in: object] = transform
+        ClosureAttribute1[Strings.flush, in: object] = flush
         object[Strings.readableType] = readableType.jsValue()
         object[Strings.writableType] = writableType.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _start = ClosureAttribute.Required1(jsObject: object, name: Strings.start)
-        _transform = ClosureAttribute.Required2(jsObject: object, name: Strings.transform)
-        _flush = ClosureAttribute.Required1(jsObject: object, name: Strings.flush)
+        _start = ClosureAttribute1(jsObject: object, name: Strings.start)
+        _transform = ClosureAttribute2(jsObject: object, name: Strings.transform)
+        _flush = ClosureAttribute1(jsObject: object, name: Strings.flush)
         _readableType = ReadWriteAttribute(jsObject: object, name: Strings.readableType)
         _writableType = ReadWriteAttribute(jsObject: object, name: Strings.writableType)
         super.init(unsafelyWrapping: object)
     }
 
-    @ClosureAttribute.Required1
+    @ClosureAttribute1
     public var start: TransformerStartCallback
 
-    @ClosureAttribute.Required2
+    @ClosureAttribute2
     public var transform: TransformerTransformCallback
 
-    @ClosureAttribute.Required1
+    @ClosureAttribute1
     public var flush: TransformerFlushCallback
 
     @ReadWriteAttribute

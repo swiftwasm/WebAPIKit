@@ -7,7 +7,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.XMLHttpRequest].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onreadystatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onreadystatechange)
+        _onreadystatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onreadystatechange)
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
         _timeout = ReadWriteAttribute(jsObject: jsObject, name: Strings.timeout)
         _withCredentials = ReadWriteAttribute(jsObject: jsObject, name: Strings.withCredentials)
@@ -26,7 +26,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
         self.init(unsafelyWrapping: Self.constructor.new())
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onreadystatechange: EventHandler
 
     public static let UNSENT: UInt16 = 0

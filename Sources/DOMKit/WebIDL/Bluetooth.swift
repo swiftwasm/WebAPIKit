@@ -7,7 +7,7 @@ public class Bluetooth: EventTarget, BluetoothDeviceEventHandlers, Characteristi
     override public class var constructor: JSFunction { JSObject.global[Strings.Bluetooth].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onavailabilitychanged = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onavailabilitychanged)
+        _onavailabilitychanged = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onavailabilitychanged)
         _referringDevice = ReadonlyAttribute(jsObject: jsObject, name: Strings.referringDevice)
         super.init(unsafelyWrapping: jsObject)
     }
@@ -22,7 +22,7 @@ public class Bluetooth: EventTarget, BluetoothDeviceEventHandlers, Characteristi
         return try await _promise.get().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onavailabilitychanged: EventHandler
 
     @ReadonlyAttribute

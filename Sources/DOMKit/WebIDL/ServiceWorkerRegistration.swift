@@ -20,7 +20,7 @@ public class ServiceWorkerRegistration: EventTarget {
         _navigationPreload = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigationPreload)
         _scope = ReadonlyAttribute(jsObject: jsObject, name: Strings.scope)
         _updateViaCache = ReadonlyAttribute(jsObject: jsObject, name: Strings.updateViaCache)
-        _onupdatefound = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onupdatefound)
+        _onupdatefound = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onupdatefound)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -103,6 +103,6 @@ public class ServiceWorkerRegistration: EventTarget {
         return try await _promise.get().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onupdatefound: EventHandler
 }

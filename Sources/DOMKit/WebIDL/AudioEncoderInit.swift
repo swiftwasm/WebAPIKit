@@ -6,20 +6,20 @@ import JavaScriptKit
 public class AudioEncoderInit: BridgedDictionary {
     public convenience init(output: @escaping EncodedAudioChunkOutputCallback, error: @escaping WebCodecsErrorCallback) {
         let object = JSObject.global[Strings.Object].function!.new()
-        ClosureAttribute.Required2[Strings.output, in: object] = output
-        ClosureAttribute.Required1[Strings.error, in: object] = error
+        ClosureAttribute2[Strings.output, in: object] = output
+        ClosureAttribute1[Strings.error, in: object] = error
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _output = ClosureAttribute.Required2(jsObject: object, name: Strings.output)
-        _error = ClosureAttribute.Required1(jsObject: object, name: Strings.error)
+        _output = ClosureAttribute2(jsObject: object, name: Strings.output)
+        _error = ClosureAttribute1(jsObject: object, name: Strings.error)
         super.init(unsafelyWrapping: object)
     }
 
-    @ClosureAttribute.Required2
+    @ClosureAttribute2
     public var output: EncodedAudioChunkOutputCallback
 
-    @ClosureAttribute.Required1
+    @ClosureAttribute1
     public var error: WebCodecsErrorCallback
 }

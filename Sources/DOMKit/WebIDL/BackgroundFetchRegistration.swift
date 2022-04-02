@@ -15,7 +15,7 @@ public class BackgroundFetchRegistration: EventTarget {
         _result = ReadonlyAttribute(jsObject: jsObject, name: Strings.result)
         _failureReason = ReadonlyAttribute(jsObject: jsObject, name: Strings.failureReason)
         _recordsAvailable = ReadonlyAttribute(jsObject: jsObject, name: Strings.recordsAvailable)
-        _onprogress = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onprogress)
+        _onprogress = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onprogress)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -43,7 +43,7 @@ public class BackgroundFetchRegistration: EventTarget {
     @ReadonlyAttribute
     public var recordsAvailable: Bool
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onprogress: EventHandler
 
     public func abort() -> JSPromise {

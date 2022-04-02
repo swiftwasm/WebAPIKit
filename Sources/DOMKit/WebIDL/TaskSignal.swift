@@ -8,13 +8,13 @@ public class TaskSignal: AbortSignal {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _priority = ReadonlyAttribute(jsObject: jsObject, name: Strings.priority)
-        _onprioritychange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onprioritychange)
+        _onprioritychange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onprioritychange)
         super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute
     public var priority: TaskPriority
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onprioritychange: EventHandler
 }

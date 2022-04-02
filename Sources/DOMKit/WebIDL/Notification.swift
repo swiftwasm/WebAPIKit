@@ -9,10 +9,10 @@ public class Notification: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _permission = ReadonlyAttribute(jsObject: jsObject, name: Strings.permission)
         _maxActions = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxActions)
-        _onclick = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onclick)
-        _onshow = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onshow)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onclose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onclose)
+        _onclick = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclick)
+        _onshow = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onshow)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
         _title = ReadonlyAttribute(jsObject: jsObject, name: Strings.title)
         _dir = ReadonlyAttribute(jsObject: jsObject, name: Strings.dir)
         _lang = ReadonlyAttribute(jsObject: jsObject, name: Strings.lang)
@@ -45,16 +45,16 @@ public class Notification: EventTarget {
     @ReadonlyAttribute
     public var maxActions: UInt32
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onclick: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onshow: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onclose: EventHandler
 
     @ReadonlyAttribute

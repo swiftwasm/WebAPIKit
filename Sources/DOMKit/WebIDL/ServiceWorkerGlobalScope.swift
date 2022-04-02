@@ -7,75 +7,75 @@ public class ServiceWorkerGlobalScope: WorkerGlobalScope {
     override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorkerGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onbackgroundfetchsuccess = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onbackgroundfetchsuccess)
-        _onbackgroundfetchfail = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onbackgroundfetchfail)
-        _onbackgroundfetchabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onbackgroundfetchabort)
-        _onbackgroundfetchclick = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onbackgroundfetchclick)
-        _onsync = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsync)
-        _oncontentdelete = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncontentdelete)
+        _onbackgroundfetchsuccess = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onbackgroundfetchsuccess)
+        _onbackgroundfetchfail = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onbackgroundfetchfail)
+        _onbackgroundfetchabort = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onbackgroundfetchabort)
+        _onbackgroundfetchclick = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onbackgroundfetchclick)
+        _onsync = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsync)
+        _oncontentdelete = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncontentdelete)
         _cookieStore = ReadonlyAttribute(jsObject: jsObject, name: Strings.cookieStore)
-        _oncookiechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncookiechange)
-        _onnotificationclick = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onnotificationclick)
-        _onnotificationclose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onnotificationclose)
-        _oncanmakepayment = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncanmakepayment)
-        _onpaymentrequest = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpaymentrequest)
-        _onperiodicsync = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onperiodicsync)
-        _onpush = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpush)
-        _onpushsubscriptionchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpushsubscriptionchange)
+        _oncookiechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncookiechange)
+        _onnotificationclick = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onnotificationclick)
+        _onnotificationclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onnotificationclose)
+        _oncanmakepayment = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncanmakepayment)
+        _onpaymentrequest = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onpaymentrequest)
+        _onperiodicsync = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onperiodicsync)
+        _onpush = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onpush)
+        _onpushsubscriptionchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onpushsubscriptionchange)
         _clients = ReadonlyAttribute(jsObject: jsObject, name: Strings.clients)
         _registration = ReadonlyAttribute(jsObject: jsObject, name: Strings.registration)
         _serviceWorker = ReadonlyAttribute(jsObject: jsObject, name: Strings.serviceWorker)
-        _oninstall = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oninstall)
-        _onactivate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onactivate)
-        _onfetch = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfetch)
-        _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
-        _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessageerror)
+        _oninstall = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oninstall)
+        _onactivate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onactivate)
+        _onfetch = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onfetch)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
+        _onmessageerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessageerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onbackgroundfetchsuccess: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onbackgroundfetchfail: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onbackgroundfetchabort: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onbackgroundfetchclick: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsync: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncontentdelete: EventHandler
 
     @ReadonlyAttribute
     public var cookieStore: CookieStore
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncookiechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onnotificationclick: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onnotificationclose: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncanmakepayment: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onpaymentrequest: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onperiodicsync: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onpush: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onpushsubscriptionchange: EventHandler
 
     @ReadonlyAttribute
@@ -97,18 +97,18 @@ public class ServiceWorkerGlobalScope: WorkerGlobalScope {
         _ = try await _promise.get()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oninstall: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onactivate: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onfetch: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onmessageerror: EventHandler
 }

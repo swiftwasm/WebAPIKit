@@ -9,7 +9,7 @@ public class SFrameTransform: JSBridgedClass, GenericTransformStream {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
         self.jsObject = jsObject
     }
 
@@ -27,6 +27,6 @@ public class SFrameTransform: JSBridgedClass, GenericTransformStream {
         _ = try await _promise.get()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 }

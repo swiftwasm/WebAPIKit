@@ -9,7 +9,7 @@ public class ServiceWorker: EventTarget, AbstractWorker {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _scriptURL = ReadonlyAttribute(jsObject: jsObject, name: Strings.scriptURL)
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
-        _onstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstatechange)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -27,6 +27,6 @@ public class ServiceWorker: EventTarget, AbstractWorker {
         _ = jsObject[Strings.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstatechange: EventHandler
 }

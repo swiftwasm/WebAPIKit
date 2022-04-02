@@ -8,7 +8,7 @@ public class PaymentRequest: EventTarget {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
-        _onpaymentmethodchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpaymentmethodchange)
+        _onpaymentmethodchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onpaymentmethodchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -49,6 +49,6 @@ public class PaymentRequest: EventTarget {
     @ReadonlyAttribute
     public var id: String
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onpaymentmethodchange: EventHandler
 }

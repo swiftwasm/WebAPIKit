@@ -10,7 +10,7 @@ public class ImageTrack: EventTarget {
         _animated = ReadonlyAttribute(jsObject: jsObject, name: Strings.animated)
         _frameCount = ReadonlyAttribute(jsObject: jsObject, name: Strings.frameCount)
         _repetitionCount = ReadonlyAttribute(jsObject: jsObject, name: Strings.repetitionCount)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
         _selected = ReadWriteAttribute(jsObject: jsObject, name: Strings.selected)
         super.init(unsafelyWrapping: jsObject)
     }
@@ -24,7 +24,7 @@ public class ImageTrack: EventTarget {
     @ReadonlyAttribute
     public var repetitionCount: Float
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 
     @ReadWriteAttribute

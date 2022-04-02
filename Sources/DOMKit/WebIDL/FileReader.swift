@@ -10,12 +10,12 @@ public class FileReader: EventTarget {
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
         _result = ReadonlyAttribute(jsObject: jsObject, name: Strings.result)
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
-        _onloadstart = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onloadstart)
-        _onprogress = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onprogress)
-        _onload = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onload)
-        _onabort = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onabort)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onloadend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onloadend)
+        _onloadstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onloadstart)
+        _onprogress = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onprogress)
+        _onload = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onload)
+        _onabort = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onabort)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onloadend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onloadend)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -58,21 +58,21 @@ public class FileReader: EventTarget {
     @ReadonlyAttribute
     public var error: DOMException?
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onloadstart: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onprogress: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onload: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onabort: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onloadend: EventHandler
 }

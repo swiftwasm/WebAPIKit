@@ -21,16 +21,16 @@ public class RTCPeerConnection: EventTarget {
         _iceConnectionState = ReadonlyAttribute(jsObject: jsObject, name: Strings.iceConnectionState)
         _connectionState = ReadonlyAttribute(jsObject: jsObject, name: Strings.connectionState)
         _canTrickleIceCandidates = ReadonlyAttribute(jsObject: jsObject, name: Strings.canTrickleIceCandidates)
-        _onnegotiationneeded = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onnegotiationneeded)
-        _onicecandidate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onicecandidate)
-        _onicecandidateerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onicecandidateerror)
-        _onsignalingstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsignalingstatechange)
-        _oniceconnectionstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oniceconnectionstatechange)
-        _onicegatheringstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onicegatheringstatechange)
-        _onconnectionstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onconnectionstatechange)
-        _ontrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ontrack)
+        _onnegotiationneeded = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onnegotiationneeded)
+        _onicecandidate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onicecandidate)
+        _onicecandidateerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onicecandidateerror)
+        _onsignalingstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsignalingstatechange)
+        _oniceconnectionstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oniceconnectionstatechange)
+        _onicegatheringstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onicegatheringstatechange)
+        _onconnectionstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnectionstatechange)
+        _ontrack = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ontrack)
         _sctp = ReadonlyAttribute(jsObject: jsObject, name: Strings.sctp)
-        _ondatachannel = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondatachannel)
+        _ondatachannel = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondatachannel)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -130,25 +130,25 @@ public class RTCPeerConnection: EventTarget {
         _ = jsObject[Strings.close]!()
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onnegotiationneeded: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onicecandidate: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onicecandidateerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onsignalingstatechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oniceconnectionstatechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onicegatheringstatechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onconnectionstatechange: EventHandler
 
     // XXX: member 'createOffer' is ignored
@@ -205,7 +205,7 @@ public class RTCPeerConnection: EventTarget {
         jsObject[Strings.addTransceiver]!(trackOrKind.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ontrack: EventHandler
 
     @ReadonlyAttribute
@@ -215,7 +215,7 @@ public class RTCPeerConnection: EventTarget {
         jsObject[Strings.createDataChannel]!(label.jsValue(), dataChannelDict?.jsValue() ?? .undefined).fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondatachannel: EventHandler
 
     public func getStats(selector: MediaStreamTrack? = nil) -> JSPromise {

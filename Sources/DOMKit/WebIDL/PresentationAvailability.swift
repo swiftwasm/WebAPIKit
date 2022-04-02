@@ -8,13 +8,13 @@ public class PresentationAvailability: EventTarget {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadonlyAttribute(jsObject: jsObject, name: Strings.value)
-        _onchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onchange)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute
     public var value: Bool
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onchange: EventHandler
 }

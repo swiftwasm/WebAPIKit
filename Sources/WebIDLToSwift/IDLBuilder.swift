@@ -101,16 +101,9 @@ enum IDLBuilder {
     }
 
     static func generateClosureTypes() throws {
-        let argCounts = Context.requiredClosureArgCounts.sorted()
         let closureTypesContent: SwiftSource = """
         /* variadic generics please */
-        public enum ClosureAttribute {
-            // MARK: Required closures
-            \(lines: argCounts.map { ClosureWrapper(nullable: false, argCount: $0).swiftRepresentation })
-
-            // MARK: - Optional closures
-            \(lines: argCounts.map { ClosureWrapper(nullable: true, argCount: $0).swiftRepresentation })
-        }
+        \(lines: Context.closurePatterns.sorted().map(\.swiftRepresentation))
         """
 
         try writeFile(named: "ClosureAttribute", content: closureTypesContent.source)

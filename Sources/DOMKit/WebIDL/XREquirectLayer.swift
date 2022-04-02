@@ -13,7 +13,7 @@ public class XREquirectLayer: XRCompositionLayer {
         _centralHorizontalAngle = ReadWriteAttribute(jsObject: jsObject, name: Strings.centralHorizontalAngle)
         _upperVerticalAngle = ReadWriteAttribute(jsObject: jsObject, name: Strings.upperVerticalAngle)
         _lowerVerticalAngle = ReadWriteAttribute(jsObject: jsObject, name: Strings.lowerVerticalAngle)
-        _onredraw = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onredraw)
+        _onredraw = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onredraw)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -35,6 +35,6 @@ public class XREquirectLayer: XRCompositionLayer {
     @ReadWriteAttribute
     public var lowerVerticalAngle: Float
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onredraw: EventHandler
 }

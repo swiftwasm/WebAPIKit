@@ -13,8 +13,8 @@ public class HTMLVideoElement: HTMLMediaElement {
         _videoHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoHeight)
         _poster = ReadWriteAttribute(jsObject: jsObject, name: Strings.poster)
         _playsInline = ReadWriteAttribute(jsObject: jsObject, name: Strings.playsInline)
-        _onenterpictureinpicture = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onenterpictureinpicture)
-        _onleavepictureinpicture = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onleavepictureinpicture)
+        _onenterpictureinpicture = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onenterpictureinpicture)
+        _onleavepictureinpicture = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onleavepictureinpicture)
         _autoPictureInPicture = ReadWriteAttribute(jsObject: jsObject, name: Strings.autoPictureInPicture)
         _disablePictureInPicture = ReadWriteAttribute(jsObject: jsObject, name: Strings.disablePictureInPicture)
         super.init(unsafelyWrapping: jsObject)
@@ -56,10 +56,10 @@ public class HTMLVideoElement: HTMLMediaElement {
         return try await _promise.get().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onenterpictureinpicture: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onleavepictureinpicture: EventHandler
 
     @ReadWriteAttribute

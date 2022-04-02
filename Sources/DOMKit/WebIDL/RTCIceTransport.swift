@@ -7,15 +7,15 @@ public class RTCIceTransport: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.RTCIceTransport].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onicecandidate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onicecandidate)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onicecandidate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onicecandidate)
         _role = ReadonlyAttribute(jsObject: jsObject, name: Strings.role)
         _component = ReadonlyAttribute(jsObject: jsObject, name: Strings.component)
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
         _gatheringState = ReadonlyAttribute(jsObject: jsObject, name: Strings.gatheringState)
-        _onstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstatechange)
-        _ongatheringstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ongatheringstatechange)
-        _onselectedcandidatepairchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onselectedcandidatepairchange)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
+        _ongatheringstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ongatheringstatechange)
+        _onselectedcandidatepairchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onselectedcandidatepairchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -39,10 +39,10 @@ public class RTCIceTransport: EventTarget {
         _ = jsObject[Strings.addRemoteCandidate]!(remoteCandidate?.jsValue() ?? .undefined)
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onicecandidate: EventHandler
 
     @ReadonlyAttribute
@@ -77,12 +77,12 @@ public class RTCIceTransport: EventTarget {
         jsObject[Strings.getRemoteParameters]!().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstatechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ongatheringstatechange: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onselectedcandidatepairchange: EventHandler
 }

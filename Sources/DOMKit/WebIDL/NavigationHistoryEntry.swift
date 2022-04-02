@@ -12,10 +12,10 @@ public class NavigationHistoryEntry: EventTarget {
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
         _index = ReadonlyAttribute(jsObject: jsObject, name: Strings.index)
         _sameDocument = ReadonlyAttribute(jsObject: jsObject, name: Strings.sameDocument)
-        _onnavigateto = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onnavigateto)
-        _onnavigatefrom = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onnavigatefrom)
-        _onfinish = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfinish)
-        _ondispose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondispose)
+        _onnavigateto = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onnavigateto)
+        _onnavigatefrom = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onnavigatefrom)
+        _onfinish = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onfinish)
+        _ondispose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondispose)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -38,15 +38,15 @@ public class NavigationHistoryEntry: EventTarget {
         jsObject[Strings.getState]!().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onnavigateto: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onnavigatefrom: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onfinish: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var ondispose: EventHandler
 }

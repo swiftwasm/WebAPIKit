@@ -14,7 +14,7 @@ public class MIDIPort: EventTarget {
         _version = ReadonlyAttribute(jsObject: jsObject, name: Strings.version)
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
         _connection = ReadonlyAttribute(jsObject: jsObject, name: Strings.connection)
-        _onstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstatechange)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -39,7 +39,7 @@ public class MIDIPort: EventTarget {
     @ReadonlyAttribute
     public var connection: MIDIPortConnectionState
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var onstatechange: EventHandler
 
     public func open() -> JSPromise {

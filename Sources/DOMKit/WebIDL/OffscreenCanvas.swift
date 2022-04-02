@@ -9,8 +9,8 @@ public class OffscreenCanvas: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
         _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
-        _oncontextlost = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncontextlost)
-        _oncontextrestored = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncontextrestored)
+        _oncontextlost = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncontextlost)
+        _oncontextrestored = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncontextrestored)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -42,9 +42,9 @@ public class OffscreenCanvas: EventTarget {
         return try await _promise.get().fromJSValue()!
     }
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncontextlost: EventHandler
 
-    @ClosureAttribute.Optional1
+    @ClosureAttribute1Optional
     public var oncontextrestored: EventHandler
 }
