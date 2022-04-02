@@ -26,7 +26,7 @@ public class StyleSheet: JSBridgedClass {
     public var href: String?
 
     @ReadonlyAttribute
-    public var ownerNode: __UNSUPPORTED_UNION__?
+    public var ownerNode: Element_or_ProcessingInstruction?
 
     @ReadonlyAttribute
     public var parentStyleSheet: CSSStyleSheet?

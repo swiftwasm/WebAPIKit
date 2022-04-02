@@ -24,7 +24,7 @@ public class IDBRequest: EventTarget {
     public var error: DOMException?
 
     @ReadonlyAttribute
-    public var source: __UNSUPPORTED_UNION__?
+    public var source: IDBCursor_or_IDBIndex_or_IDBObjectStore?
 
     @ReadonlyAttribute
     public var transaction: IDBTransaction?

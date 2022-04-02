@@ -18,7 +18,7 @@ public class IntersectionObserver: JSBridgedClass {
     // XXX: constructor is ignored
 
     @ReadonlyAttribute
-    public var root: __UNSUPPORTED_UNION__?
+    public var root: Document_or_Element?
 
     @ReadonlyAttribute
     public var rootMargin: String

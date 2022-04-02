@@ -1,4 +1,4 @@
-public struct IDLType: Decodable {
+public struct IDLType: Decodable, Hashable {
     public let type: String?
     public let value: TypeValue
     public let nullable: Bool
@@ -21,7 +21,7 @@ public struct IDLType: Decodable {
         value = try TypeValue(from: decoder)
     }
 
-    public enum TypeValue: Decodable {
+    public enum TypeValue: Decodable, Hashable {
         case generic(String, args: [IDLType])
         case single(String)
         case union([IDLType])

@@ -92,7 +92,7 @@ public class IDBObjectStore: JSBridgedClass {
         return this[Strings.index].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    @inlinable public func createIndex(name: String, keyPath: __UNSUPPORTED_UNION__, options: IDBIndexParameters? = nil) -> IDBIndex {
+    @inlinable public func createIndex(name: String, keyPath: String_or_seq_of_String, options: IDBIndexParameters? = nil) -> IDBIndex {
         let this = jsObject
         return this[Strings.createIndex].function!(this: this, arguments: [name.jsValue(), keyPath.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }

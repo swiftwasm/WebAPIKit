@@ -58,7 +58,7 @@ public class FileReader: EventTarget {
     public var readyState: UInt16
 
     @ReadonlyAttribute
-    public var result: __UNSUPPORTED_UNION__?
+    public var result: ArrayBuffer_or_String?
 
     @ReadonlyAttribute
     public var error: DOMException?

@@ -1,9 +1,12 @@
+import WebIDL
+
 @dynamicMemberLookup
 enum Context {
     private(set) static var current = State()
 
     static var closurePatterns: Set<ClosurePattern> = []
     private(set) static var strings: Set<String> = ["toString"]
+    static var unions: Set<Set<SlimIDLType>> = []
 
     static func source(for name: String) -> SwiftSource {
         assert(!name.isEmpty)

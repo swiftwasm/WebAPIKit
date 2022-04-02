@@ -91,7 +91,7 @@ public class Performance: EventTarget {
         _ = this[Strings.clearMarks].function!(this: this, arguments: [markName?.jsValue() ?? .undefined])
     }
 
-    @inlinable public func measure(measureName: String, startOrMeasureOptions: __UNSUPPORTED_UNION__? = nil, endMark: String? = nil) -> PerformanceMeasure {
+    @inlinable public func measure(measureName: String, startOrMeasureOptions: PerformanceMeasureOptions_or_String? = nil, endMark: String? = nil) -> PerformanceMeasure {
         let this = jsObject
         return this[Strings.measure].function!(this: this, arguments: [measureName.jsValue(), startOrMeasureOptions?.jsValue() ?? .undefined, endMark?.jsValue() ?? .undefined]).fromJSValue()!
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceMeasureOptions: BridgedDictionary {
-    public convenience init(detail: JSValue, start: __UNSUPPORTED_UNION__, duration: DOMHighResTimeStamp, end: __UNSUPPORTED_UNION__) {
+    public convenience init(detail: JSValue, start: DOMHighResTimeStamp_or_String, duration: DOMHighResTimeStamp, end: DOMHighResTimeStamp_or_String) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.detail] = detail.jsValue()
         object[Strings.start] = start.jsValue()
@@ -25,11 +25,11 @@ public class PerformanceMeasureOptions: BridgedDictionary {
     public var detail: JSValue
 
     @ReadWriteAttribute
-    public var start: __UNSUPPORTED_UNION__
+    public var start: DOMHighResTimeStamp_or_String
 
     @ReadWriteAttribute
     public var duration: DOMHighResTimeStamp
 
     @ReadWriteAttribute
-    public var end: __UNSUPPORTED_UNION__
+    public var end: DOMHighResTimeStamp_or_String
 }

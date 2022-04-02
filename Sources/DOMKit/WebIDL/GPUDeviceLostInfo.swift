@@ -15,7 +15,7 @@ public class GPUDeviceLostInfo: JSBridgedClass {
     }
 
     @ReadonlyAttribute
-    public var reason: __UNSUPPORTED_UNION__
+    public var reason: GPUDeviceLostReason_or_Void
 
     @ReadonlyAttribute
     public var message: String

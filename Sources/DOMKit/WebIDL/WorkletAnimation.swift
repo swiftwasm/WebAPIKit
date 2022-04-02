@@ -11,7 +11,7 @@ public class WorkletAnimation: Animation {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(animatorName: String, effects: __UNSUPPORTED_UNION__? = nil, timeline: AnimationTimeline? = nil, options: JSValue? = nil) {
+    @inlinable public convenience init(animatorName: String, effects: AnimationEffect_or_seq_of_AnimationEffect? = nil, timeline: AnimationTimeline? = nil, options: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [animatorName.jsValue(), effects?.jsValue() ?? .undefined, timeline?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
     }
 

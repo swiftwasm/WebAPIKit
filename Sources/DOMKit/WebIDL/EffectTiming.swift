@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EffectTiming: BridgedDictionary {
-    public convenience init(playbackRate: Double, duration: __UNSUPPORTED_UNION__, delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, direction: PlaybackDirection, easing: String) {
+    public convenience init(playbackRate: Double, duration: CSSNumericValue_or_Double_or_String, delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, direction: PlaybackDirection, easing: String) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.playbackRate] = playbackRate.jsValue()
         object[Strings.duration] = duration.jsValue()
@@ -35,7 +35,7 @@ public class EffectTiming: BridgedDictionary {
     public var playbackRate: Double
 
     @ReadWriteAttribute
-    public var duration: __UNSUPPORTED_UNION__
+    public var duration: CSSNumericValue_or_Double_or_String
 
     @ReadWriteAttribute
     public var delay: Double

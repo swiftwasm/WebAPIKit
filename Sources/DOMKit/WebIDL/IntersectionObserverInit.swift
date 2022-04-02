@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IntersectionObserverInit: BridgedDictionary {
-    public convenience init(root: __UNSUPPORTED_UNION__?, rootMargin: String, threshold: __UNSUPPORTED_UNION__) {
+    public convenience init(root: Document_or_Element?, rootMargin: String, threshold: Double_or_seq_of_Double) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.root] = root.jsValue()
         object[Strings.rootMargin] = rootMargin.jsValue()
@@ -20,11 +20,11 @@ public class IntersectionObserverInit: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var root: __UNSUPPORTED_UNION__?
+    public var root: Document_or_Element?
 
     @ReadWriteAttribute
     public var rootMargin: String
 
     @ReadWriteAttribute
-    public var threshold: __UNSUPPORTED_UNION__
+    public var threshold: Double_or_seq_of_Double
 }

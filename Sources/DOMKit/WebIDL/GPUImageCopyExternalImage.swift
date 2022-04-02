@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUImageCopyExternalImage: BridgedDictionary {
-    public convenience init(source: __UNSUPPORTED_UNION__, origin: GPUOrigin2D, flipY: Bool) {
+    public convenience init(source: HTMLCanvasElement_or_ImageBitmap_or_OffscreenCanvas, origin: GPUOrigin2D, flipY: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.source] = source.jsValue()
         object[Strings.origin] = origin.jsValue()
@@ -20,7 +20,7 @@ public class GPUImageCopyExternalImage: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var source: __UNSUPPORTED_UNION__
+    public var source: HTMLCanvasElement_or_ImageBitmap_or_OffscreenCanvas
 
     @ReadWriteAttribute
     public var origin: GPUOrigin2D

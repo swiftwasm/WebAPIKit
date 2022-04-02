@@ -11,7 +11,7 @@ public class ShadowAnimation: Animation {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(source: Animation, newTarget: __UNSUPPORTED_UNION__) {
+    @inlinable public convenience init(source: Animation, newTarget: CSSPseudoElement_or_Element) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [source.jsValue(), newTarget.jsValue()]))
     }
 

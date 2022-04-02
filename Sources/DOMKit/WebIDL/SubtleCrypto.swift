@@ -108,13 +108,13 @@ public class SubtleCrypto: JSBridgedClass {
         return try await _promise.get().fromJSValue()!
     }
 
-    @inlinable public func importKey(format: KeyFormat, keyData: __UNSUPPORTED_UNION__, algorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> JSPromise {
+    @inlinable public func importKey(format: KeyFormat, keyData: BufferSource_or_JsonWebKey, algorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> JSPromise {
         let this = jsObject
         return this[Strings.importKey].function!(this: this, arguments: [format.jsValue(), keyData.jsValue(), algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func importKey(format: KeyFormat, keyData: __UNSUPPORTED_UNION__, algorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) async throws -> CryptoKey {
+    @inlinable public func importKey(format: KeyFormat, keyData: BufferSource_or_JsonWebKey, algorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) async throws -> CryptoKey {
         let this = jsObject
         let _promise: JSPromise = this[Strings.importKey].function!(this: this, arguments: [format.jsValue(), keyData.jsValue(), algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

@@ -46,7 +46,7 @@ public extension CanvasPath {
         _ = this[Strings.rect].function!(this: this, arguments: [x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue()])
     }
 
-    @inlinable func roundRect(x: Double, y: Double, w: Double, h: Double, radii: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable func roundRect(x: Double, y: Double, w: Double, h: Double, radii: DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double? = nil) {
         let this = jsObject
         _ = this[Strings.roundRect].function!(this: this, arguments: [x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue(), radii?.jsValue() ?? .undefined])
     }

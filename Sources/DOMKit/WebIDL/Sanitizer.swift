@@ -16,7 +16,7 @@ public class Sanitizer: JSBridgedClass {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [config?.jsValue() ?? .undefined]))
     }
 
-    @inlinable public func sanitize(input: __UNSUPPORTED_UNION__) -> DocumentFragment {
+    @inlinable public func sanitize(input: Document_or_DocumentFragment) -> DocumentFragment {
         let this = jsObject
         return this[Strings.sanitize].function!(this: this, arguments: [input.jsValue()]).fromJSValue()!
     }

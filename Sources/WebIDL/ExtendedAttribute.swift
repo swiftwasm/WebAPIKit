@@ -1,10 +1,10 @@
 /// https://github.com/w3c/webidl2.js/#extended-attributes
-public struct IDLExtendedAttribute: Decodable, IDLNamed {
+public struct IDLExtendedAttribute: Hashable, Decodable, IDLNamed {
     public let name: String
     public let arguments: [IDLArgument]
     public let rhs: RHS?
 
-    public enum RHS: Decodable, Equatable {
+    public enum RHS: Decodable, Equatable, Hashable {
         case identifier(String)
         case identifierList([String])
         case string(String)

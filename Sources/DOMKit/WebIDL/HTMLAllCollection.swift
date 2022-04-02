@@ -20,11 +20,11 @@ public class HTMLAllCollection: JSBridgedClass {
         jsObject[key].fromJSValue()!
     }
 
-    @inlinable public subscript(key: String) -> __UNSUPPORTED_UNION__? {
+    @inlinable public subscript(key: String) -> Element_or_HTMLCollection? {
         jsObject[key].fromJSValue()
     }
 
-    @inlinable public func item(nameOrIndex: String? = nil) -> __UNSUPPORTED_UNION__? {
+    @inlinable public func item(nameOrIndex: String? = nil) -> Element_or_HTMLCollection? {
         let this = jsObject
         return this[Strings.item].function!(this: this, arguments: [nameOrIndex?.jsValue() ?? .undefined]).fromJSValue()!
     }

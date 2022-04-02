@@ -28,7 +28,7 @@ public class HTMLSlotElement: HTMLElement {
         return this[Strings.assignedElements].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    @inlinable public func assign(nodes: __UNSUPPORTED_UNION__...) {
+    @inlinable public func assign(nodes: Element_or_Text...) {
         let this = jsObject
         _ = this[Strings.assign].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }

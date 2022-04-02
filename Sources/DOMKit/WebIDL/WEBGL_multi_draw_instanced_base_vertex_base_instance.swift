@@ -12,7 +12,7 @@ public class WEBGL_multi_draw_instanced_base_vertex_base_instance: JSBridgedClas
         self.jsObject = jsObject
     }
 
-    @inlinable public func multiDrawArraysInstancedBaseInstanceWEBGL(mode: GLenum, firstsList: __UNSUPPORTED_UNION__, firstsOffset: GLuint, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, instanceCountsList: __UNSUPPORTED_UNION__, instanceCountsOffset: GLuint, baseInstancesList: __UNSUPPORTED_UNION__, baseInstancesOffset: GLuint, drawCount: GLsizei) {
+    @inlinable public func multiDrawArraysInstancedBaseInstanceWEBGL(mode: GLenum, firstsList: Int32Array_or_seq_of_GLint, firstsOffset: GLuint, countsList: Int32Array_or_seq_of_GLsizei, countsOffset: GLuint, instanceCountsList: Int32Array_or_seq_of_GLsizei, instanceCountsOffset: GLuint, baseInstancesList: Uint32Array_or_seq_of_GLuint, baseInstancesOffset: GLuint, drawCount: GLsizei) {
         let _arg0 = mode.jsValue()
         let _arg1 = firstsList.jsValue()
         let _arg2 = firstsOffset.jsValue()
@@ -27,7 +27,7 @@ public class WEBGL_multi_draw_instanced_base_vertex_base_instance: JSBridgedClas
         _ = this[Strings.multiDrawArraysInstancedBaseInstanceWEBGL].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
     }
 
-    @inlinable public func multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL(mode: GLenum, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, type: GLenum, offsetsList: __UNSUPPORTED_UNION__, offsetsOffset: GLuint, instanceCountsList: __UNSUPPORTED_UNION__, instanceCountsOffset: GLuint, baseVerticesList: __UNSUPPORTED_UNION__, baseVerticesOffset: GLuint, baseInstancesList: __UNSUPPORTED_UNION__, baseInstancesOffset: GLuint, drawCount: GLsizei) {
+    @inlinable public func multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL(mode: GLenum, countsList: Int32Array_or_seq_of_GLsizei, countsOffset: GLuint, type: GLenum, offsetsList: Int32Array_or_seq_of_GLsizei, offsetsOffset: GLuint, instanceCountsList: Int32Array_or_seq_of_GLsizei, instanceCountsOffset: GLuint, baseVerticesList: Int32Array_or_seq_of_GLint, baseVerticesOffset: GLuint, baseInstancesList: Uint32Array_or_seq_of_GLuint, baseInstancesOffset: GLuint, drawCount: GLsizei) {
         let _arg0 = mode.jsValue()
         let _arg1 = countsList.jsValue()
         let _arg2 = countsOffset.jsValue()

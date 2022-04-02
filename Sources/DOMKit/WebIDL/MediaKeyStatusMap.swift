@@ -26,7 +26,7 @@ public class MediaKeyStatusMap: JSBridgedClass, Sequence {
         return this[Strings.has].function!(this: this, arguments: [keyId.jsValue()]).fromJSValue()!
     }
 
-    @inlinable public func get(keyId: BufferSource) -> __UNSUPPORTED_UNION__ {
+    @inlinable public func get(keyId: BufferSource) -> MediaKeyStatus_or_Void {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [keyId.jsValue()]).fromJSValue()!
     }

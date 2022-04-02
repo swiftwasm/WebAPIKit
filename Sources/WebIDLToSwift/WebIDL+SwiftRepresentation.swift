@@ -516,7 +516,7 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
 }
 
 extension IDLType: SwiftRepresentable {
-    private static let typeNameMap = [
+    static let typeNameMap = [
         "boolean": "Bool",
         "any": "JSValue",
         "DOMString": "String",
@@ -538,6 +538,7 @@ extension IDLType: SwiftRepresentable {
         "long": "Int32",
         "long long": "Int64",
         "Function": "JSFunction",
+        "bigint": "__UNSUPPORTED_BIGINT__",
     ]
 
     var swiftRepresentation: SwiftSource {
@@ -573,8 +574,9 @@ extension IDLType: SwiftRepresentable {
                 return "\(name)"
             }
         case let .union(types):
-            // print("union", types.count)
-            return "__UNSUPPORTED_UNION__"
+            let union = Set(types.map(SlimIDLType.init))
+            Context.unions.insert(union)
+            return "\(raw: union.inlineTypeName)"
         }
     }
 

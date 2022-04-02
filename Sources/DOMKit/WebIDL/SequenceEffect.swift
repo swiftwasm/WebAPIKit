@@ -10,7 +10,7 @@ public class SequenceEffect: GroupEffect {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(children: [AnimationEffect]?, timing: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(children: [AnimationEffect]?, timing: Double_or_EffectTiming? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [children.jsValue(), timing?.jsValue() ?? .undefined]))
     }
 

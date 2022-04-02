@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AllowedBluetoothDevice: BridgedDictionary {
-    public convenience init(deviceId: String, mayUseGATT: Bool, allowedServices: __UNSUPPORTED_UNION__, allowedManufacturerData: [UInt16]) {
+    public convenience init(deviceId: String, mayUseGATT: Bool, allowedServices: String_or_seq_of_UUID, allowedManufacturerData: [UInt16]) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.deviceId] = deviceId.jsValue()
         object[Strings.mayUseGATT] = mayUseGATT.jsValue()
@@ -28,7 +28,7 @@ public class AllowedBluetoothDevice: BridgedDictionary {
     public var mayUseGATT: Bool
 
     @ReadWriteAttribute
-    public var allowedServices: __UNSUPPORTED_UNION__
+    public var allowedServices: String_or_seq_of_UUID
 
     @ReadWriteAttribute
     public var allowedManufacturerData: [UInt16]

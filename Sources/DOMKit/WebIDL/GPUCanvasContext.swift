@@ -14,7 +14,7 @@ public class GPUCanvasContext: JSBridgedClass {
     }
 
     @ReadonlyAttribute
-    public var canvas: __UNSUPPORTED_UNION__
+    public var canvas: HTMLCanvasElement_or_OffscreenCanvas
 
     @inlinable public func configure(configuration: GPUCanvasConfiguration) {
         let this = jsObject

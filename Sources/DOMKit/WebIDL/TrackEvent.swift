@@ -16,5 +16,5 @@ public class TrackEvent: Event {
     }
 
     @ReadonlyAttribute
-    public var track: __UNSUPPORTED_UNION__?
+    public var track: AudioTrack_or_TextTrack_or_VideoTrack?
 }

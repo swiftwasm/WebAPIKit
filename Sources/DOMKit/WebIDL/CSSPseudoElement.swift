@@ -20,7 +20,7 @@ public class CSSPseudoElement: EventTarget, GeometryUtils {
     public var element: Element
 
     @ReadonlyAttribute
-    public var parent: __UNSUPPORTED_UNION__
+    public var parent: CSSPseudoElement_or_Element
 
     @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
         let this = jsObject

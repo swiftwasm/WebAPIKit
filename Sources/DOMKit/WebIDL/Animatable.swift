@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol Animatable: JSBridgedClass {}
 public extension Animatable {
-    @inlinable func animate(keyframes: JSObject?, options: __UNSUPPORTED_UNION__? = nil) -> Animation {
+    @inlinable func animate(keyframes: JSObject?, options: Double_or_KeyframeAnimationOptions? = nil) -> Animation {
         let this = jsObject
         return this[Strings.animate].function!(this: this, arguments: [keyframes.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }

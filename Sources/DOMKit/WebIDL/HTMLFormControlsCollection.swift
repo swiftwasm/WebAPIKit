@@ -10,7 +10,7 @@ public class HTMLFormControlsCollection: HTMLCollection {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public subscript(key: String) -> __UNSUPPORTED_UNION__? {
+    @inlinable public subscript(key: String) -> Element_or_RadioNodeList? {
         jsObject[key].fromJSValue()
     }
 }

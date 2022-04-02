@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamBYOBReadResult: BridgedDictionary {
-    public convenience init(value: __UNSUPPORTED_UNION__, done: Bool) {
+    public convenience init(value: ArrayBufferView_or_Void, done: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.value] = value.jsValue()
         object[Strings.done] = done.jsValue()
@@ -18,7 +18,7 @@ public class ReadableStreamBYOBReadResult: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var value: __UNSUPPORTED_UNION__
+    public var value: ArrayBufferView_or_Void
 
     @ReadWriteAttribute
     public var done: Bool

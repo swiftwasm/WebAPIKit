@@ -12,7 +12,7 @@ public class Path2D: JSBridgedClass, CanvasPath {
         self.jsObject = jsObject
     }
 
-    @inlinable public convenience init(path: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(path: Path2D_or_String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [path?.jsValue() ?? .undefined]))
     }
 

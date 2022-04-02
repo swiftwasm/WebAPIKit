@@ -66,7 +66,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     @ReadonlyAttribute
     public var upload: XMLHttpRequestUpload
 
-    @inlinable public func send(body: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public func send(body: Document_or_XMLHttpRequestBodyInit? = nil) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [body?.jsValue() ?? .undefined])
     }

@@ -10,12 +10,12 @@ public class StylePropertyMap: StylePropertyMapReadOnly {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public func set(property: String, values: __UNSUPPORTED_UNION__...) {
+    @inlinable public func set(property: String, values: CSSStyleValue_or_String...) {
         let this = jsObject
         _ = this[Strings.set].function!(this: this, arguments: [property.jsValue()] + values.map { $0.jsValue() })
     }
 
-    @inlinable public func append(property: String, values: __UNSUPPORTED_UNION__...) {
+    @inlinable public func append(property: String, values: CSSStyleValue_or_String...) {
         let this = jsObject
         _ = this[Strings.append].function!(this: this, arguments: [property.jsValue()] + values.map { $0.jsValue() })
     }

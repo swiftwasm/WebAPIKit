@@ -85,7 +85,7 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
         return this[Strings.isVisible].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    @inlinable public func scrollIntoView(arg: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public func scrollIntoView(arg: Bool_or_ScrollIntoViewOptions? = nil) {
         let this = jsObject
         _ = this[Strings.scrollIntoView].function!(this: this, arguments: [arg?.jsValue() ?? .undefined])
     }

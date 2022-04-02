@@ -597,7 +597,7 @@ public extension WebGLRenderingContextBase {
 
     @inlinable static var BROWSER_DEFAULT_WEBGL: GLenum { 0x9244 }
 
-    @inlinable var canvas: __UNSUPPORTED_UNION__ { ReadonlyAttribute[Strings.canvas, in: jsObject] }
+    @inlinable var canvas: HTMLCanvasElement_or_OffscreenCanvas { ReadonlyAttribute[Strings.canvas, in: jsObject] }
 
     @inlinable var drawingBufferWidth: GLsizei { ReadonlyAttribute[Strings.drawingBufferWidth, in: jsObject] }
 

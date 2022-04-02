@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PushSubscriptionOptionsInit: BridgedDictionary {
-    public convenience init(userVisibleOnly: Bool, applicationServerKey: __UNSUPPORTED_UNION__?) {
+    public convenience init(userVisibleOnly: Bool, applicationServerKey: BufferSource_or_String?) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.userVisibleOnly] = userVisibleOnly.jsValue()
         object[Strings.applicationServerKey] = applicationServerKey.jsValue()
@@ -21,5 +21,5 @@ public class PushSubscriptionOptionsInit: BridgedDictionary {
     public var userVisibleOnly: Bool
 
     @ReadWriteAttribute
-    public var applicationServerKey: __UNSUPPORTED_UNION__?
+    public var applicationServerKey: BufferSource_or_String?
 }

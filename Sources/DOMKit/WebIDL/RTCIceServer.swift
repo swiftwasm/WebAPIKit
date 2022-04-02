@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCIceServer: BridgedDictionary {
-    public convenience init(urls: __UNSUPPORTED_UNION__, username: String, credential: String, credentialType: RTCIceCredentialType) {
+    public convenience init(urls: String_or_seq_of_String, username: String, credential: String, credentialType: RTCIceCredentialType) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.urls] = urls.jsValue()
         object[Strings.username] = username.jsValue()
@@ -22,7 +22,7 @@ public class RTCIceServer: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var urls: __UNSUPPORTED_UNION__
+    public var urls: String_or_seq_of_String
 
     @ReadWriteAttribute
     public var username: String

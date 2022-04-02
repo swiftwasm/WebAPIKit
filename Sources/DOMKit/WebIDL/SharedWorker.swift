@@ -11,7 +11,7 @@ public class SharedWorker: EventTarget, AbstractWorker {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(scriptURL: String, options: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(scriptURL: String, options: String_or_WorkerOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

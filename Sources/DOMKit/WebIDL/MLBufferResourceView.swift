@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MLBufferResourceView: BridgedDictionary {
-    public convenience init(resource: __UNSUPPORTED_UNION__, offset: UInt64, size: UInt64) {
+    public convenience init(resource: GPUBuffer_or_WebGLBuffer, offset: UInt64, size: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.resource] = resource.jsValue()
         object[Strings.offset] = offset.jsValue()
@@ -20,7 +20,7 @@ public class MLBufferResourceView: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var resource: __UNSUPPORTED_UNION__
+    public var resource: GPUBuffer_or_WebGLBuffer
 
     @ReadWriteAttribute
     public var offset: UInt64

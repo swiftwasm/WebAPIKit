@@ -29,7 +29,7 @@ public class FontFace: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public convenience init(family: String, source: __UNSUPPORTED_UNION__, descriptors: FontFaceDescriptors? = nil) {
+    @inlinable public convenience init(family: String, source: BinaryData_or_String, descriptors: FontFaceDescriptors? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [family.jsValue(), source.jsValue(), descriptors?.jsValue() ?? .undefined]))
     }
 

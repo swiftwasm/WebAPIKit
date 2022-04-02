@@ -18,7 +18,7 @@ public class IDBCursor: JSBridgedClass {
     }
 
     @ReadonlyAttribute
-    public var source: __UNSUPPORTED_UNION__
+    public var source: IDBIndex_or_IDBObjectStore
 
     @ReadonlyAttribute
     public var direction: IDBCursorDirection

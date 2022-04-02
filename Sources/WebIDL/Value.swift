@@ -1,5 +1,5 @@
 /// Default and Const Values
-public enum IDLValue: Decodable {
+public enum IDLValue: Hashable, Decodable {
     case string(String)
     case number(String)
     case boolean(Bool)

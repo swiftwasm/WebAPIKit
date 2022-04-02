@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioContextOptions: BridgedDictionary {
-    public convenience init(latencyHint: __UNSUPPORTED_UNION__, sampleRate: Float) {
+    public convenience init(latencyHint: AudioContextLatencyCategory_or_Double, sampleRate: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.latencyHint] = latencyHint.jsValue()
         object[Strings.sampleRate] = sampleRate.jsValue()
@@ -18,7 +18,7 @@ public class AudioContextOptions: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var latencyHint: __UNSUPPORTED_UNION__
+    public var latencyHint: AudioContextLatencyCategory_or_Double
 
     @ReadWriteAttribute
     public var sampleRate: Float

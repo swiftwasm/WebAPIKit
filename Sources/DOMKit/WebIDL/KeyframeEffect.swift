@@ -17,7 +17,7 @@ public class KeyframeEffect: AnimationEffect {
     @ReadWriteAttribute
     public var iterationComposite: IterationCompositeOperation
 
-    @inlinable public convenience init(target: Element?, keyframes: JSObject?, options: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(target: Element?, keyframes: JSObject?, options: Double_or_KeyframeEffectOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [target.jsValue(), keyframes.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

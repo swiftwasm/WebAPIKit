@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol CanvasFilters: JSBridgedClass {}
 public extension CanvasFilters {
-    @inlinable var filter: __UNSUPPORTED_UNION__ {
+    @inlinable var filter: CanvasFilter_or_String {
         get { ReadWriteAttribute[Strings.filter, in: jsObject] }
         nonmutating set { ReadWriteAttribute[Strings.filter, in: jsObject] = newValue }
     }

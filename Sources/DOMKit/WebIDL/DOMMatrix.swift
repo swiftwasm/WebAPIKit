@@ -32,7 +32,7 @@ public class DOMMatrix: DOMMatrixReadOnly {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(init: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(init: String_or_seq_of_Double? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 

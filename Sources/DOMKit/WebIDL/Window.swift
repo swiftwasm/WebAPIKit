@@ -196,7 +196,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     }
 
     @ReadonlyAttribute
-    public var event: __UNSUPPORTED_UNION__
+    public var event: Event_or_Void
 
     @inlinable public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) -> JSPromise {
         let this = jsObject

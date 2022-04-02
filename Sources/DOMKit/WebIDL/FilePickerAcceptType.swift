@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FilePickerAcceptType: BridgedDictionary {
-    public convenience init(description: String, accept: [String: __UNSUPPORTED_UNION__]) {
+    public convenience init(description: String, accept: [String: String_or_seq_of_String]) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.description] = description.jsValue()
         object[Strings.accept] = accept.jsValue()
@@ -21,5 +21,5 @@ public class FilePickerAcceptType: BridgedDictionary {
     public var description: String
 
     @ReadWriteAttribute
-    public var accept: [String: __UNSUPPORTED_UNION__]
+    public var accept: [String: String_or_seq_of_String]
 }

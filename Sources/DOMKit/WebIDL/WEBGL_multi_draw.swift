@@ -12,7 +12,7 @@ public class WEBGL_multi_draw: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public func multiDrawArraysWEBGL(mode: GLenum, firstsList: __UNSUPPORTED_UNION__, firstsOffset: GLuint, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, drawcount: GLsizei) {
+    @inlinable public func multiDrawArraysWEBGL(mode: GLenum, firstsList: Int32Array_or_seq_of_GLint, firstsOffset: GLuint, countsList: Int32Array_or_seq_of_GLsizei, countsOffset: GLuint, drawcount: GLsizei) {
         let _arg0 = mode.jsValue()
         let _arg1 = firstsList.jsValue()
         let _arg2 = firstsOffset.jsValue()
@@ -23,7 +23,7 @@ public class WEBGL_multi_draw: JSBridgedClass {
         _ = this[Strings.multiDrawArraysWEBGL].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 
-    @inlinable public func multiDrawElementsWEBGL(mode: GLenum, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, type: GLenum, offsetsList: __UNSUPPORTED_UNION__, offsetsOffset: GLuint, drawcount: GLsizei) {
+    @inlinable public func multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array_or_seq_of_GLint, countsOffset: GLuint, type: GLenum, offsetsList: Int32Array_or_seq_of_GLsizei, offsetsOffset: GLuint, drawcount: GLsizei) {
         let _arg0 = mode.jsValue()
         let _arg1 = countsList.jsValue()
         let _arg2 = countsOffset.jsValue()
@@ -35,7 +35,7 @@ public class WEBGL_multi_draw: JSBridgedClass {
         _ = this[Strings.multiDrawElementsWEBGL].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6])
     }
 
-    @inlinable public func multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: __UNSUPPORTED_UNION__, firstsOffset: GLuint, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, instanceCountsList: __UNSUPPORTED_UNION__, instanceCountsOffset: GLuint, drawcount: GLsizei) {
+    @inlinable public func multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array_or_seq_of_GLint, firstsOffset: GLuint, countsList: Int32Array_or_seq_of_GLsizei, countsOffset: GLuint, instanceCountsList: Int32Array_or_seq_of_GLsizei, instanceCountsOffset: GLuint, drawcount: GLsizei) {
         let _arg0 = mode.jsValue()
         let _arg1 = firstsList.jsValue()
         let _arg2 = firstsOffset.jsValue()
@@ -48,7 +48,7 @@ public class WEBGL_multi_draw: JSBridgedClass {
         _ = this[Strings.multiDrawArraysInstancedWEBGL].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
     }
 
-    @inlinable public func multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, type: GLenum, offsetsList: __UNSUPPORTED_UNION__, offsetsOffset: GLuint, instanceCountsList: __UNSUPPORTED_UNION__, instanceCountsOffset: GLuint, drawcount: GLsizei) {
+    @inlinable public func multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array_or_seq_of_GLint, countsOffset: GLuint, type: GLenum, offsetsList: Int32Array_or_seq_of_GLsizei, offsetsOffset: GLuint, instanceCountsList: Int32Array_or_seq_of_GLsizei, instanceCountsOffset: GLuint, drawcount: GLsizei) {
         let _arg0 = mode.jsValue()
         let _arg1 = countsList.jsValue()
         let _arg2 = countsOffset.jsValue()

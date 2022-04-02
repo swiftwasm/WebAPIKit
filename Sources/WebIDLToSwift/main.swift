@@ -15,6 +15,8 @@ func main() {
         try IDLBuilder.generateClosureTypes()
         print("Generating JSString constants...")
         try IDLBuilder.generateStrings()
+        print("Generating union protocols...")
+        try IDLBuilder.generateUnions()
         SwiftFormatter.run()
         print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
     } catch {

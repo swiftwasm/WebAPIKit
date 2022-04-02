@@ -12,13 +12,13 @@ public class BackgroundFetchManager: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public func fetch(id: String, requests: __UNSUPPORTED_UNION__, options: BackgroundFetchOptions? = nil) -> JSPromise {
+    @inlinable public func fetch(id: String, requests: RequestInfo_or_seq_of_RequestInfo, options: BackgroundFetchOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.fetch].function!(this: this, arguments: [id.jsValue(), requests.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func fetch(id: String, requests: __UNSUPPORTED_UNION__, options: BackgroundFetchOptions? = nil) async throws -> BackgroundFetchRegistration {
+    @inlinable public func fetch(id: String, requests: RequestInfo_or_seq_of_RequestInfo, options: BackgroundFetchOptions? = nil) async throws -> BackgroundFetchRegistration {
         let this = jsObject
         let _promise: JSPromise = this[Strings.fetch].function!(this: this, arguments: [id.jsValue(), requests.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

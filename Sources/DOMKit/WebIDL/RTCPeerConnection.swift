@@ -215,7 +215,7 @@ public class RTCPeerConnection: EventTarget {
         _ = this[Strings.removeTrack].function!(this: this, arguments: [sender.jsValue()])
     }
 
-    @inlinable public func addTransceiver(trackOrKind: __UNSUPPORTED_UNION__, init: RTCRtpTransceiverInit? = nil) -> RTCRtpTransceiver {
+    @inlinable public func addTransceiver(trackOrKind: MediaStreamTrack_or_String, init: RTCRtpTransceiverInit? = nil) -> RTCRtpTransceiver {
         let this = jsObject
         return this[Strings.addTransceiver].function!(this: this, arguments: [trackOrKind.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
     }

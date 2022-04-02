@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ConstrainDOMStringParameters: BridgedDictionary {
-    public convenience init(exact: __UNSUPPORTED_UNION__, ideal: __UNSUPPORTED_UNION__) {
+    public convenience init(exact: String_or_seq_of_String, ideal: String_or_seq_of_String) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.exact] = exact.jsValue()
         object[Strings.ideal] = ideal.jsValue()
@@ -18,8 +18,8 @@ public class ConstrainDOMStringParameters: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var exact: __UNSUPPORTED_UNION__
+    public var exact: String_or_seq_of_String
 
     @ReadWriteAttribute
-    public var ideal: __UNSUPPORTED_UNION__
+    public var ideal: String_or_seq_of_String
 }

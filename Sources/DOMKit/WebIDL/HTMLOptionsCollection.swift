@@ -20,7 +20,7 @@ public class HTMLOptionsCollection: HTMLCollection {
 
     // XXX: unsupported setter for keys of type UInt32
 
-    @inlinable public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public func add(element: HTMLOptGroupElement_or_HTMLOptionElement, before: HTMLElement_or_Int32? = nil) {
         let this = jsObject
         _ = this[Strings.add].function!(this: this, arguments: [element.jsValue(), before?.jsValue() ?? .undefined])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TrackEventInit: BridgedDictionary {
-    public convenience init(track: __UNSUPPORTED_UNION__?) {
+    public convenience init(track: AudioTrack_or_TextTrack_or_VideoTrack?) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.track] = track.jsValue()
         self.init(unsafelyWrapping: object)
@@ -16,5 +16,5 @@ public class TrackEventInit: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var track: __UNSUPPORTED_UNION__?
+    public var track: AudioTrack_or_TextTrack_or_VideoTrack?
 }

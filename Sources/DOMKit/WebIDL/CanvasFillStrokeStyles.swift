@@ -5,12 +5,12 @@ import JavaScriptKit
 
 public protocol CanvasFillStrokeStyles: JSBridgedClass {}
 public extension CanvasFillStrokeStyles {
-    @inlinable var strokeStyle: __UNSUPPORTED_UNION__ {
+    @inlinable var strokeStyle: CanvasGradient_or_CanvasPattern_or_String {
         get { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] }
         nonmutating set { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] = newValue }
     }
 
-    @inlinable var fillStyle: __UNSUPPORTED_UNION__ {
+    @inlinable var fillStyle: CanvasGradient_or_CanvasPattern_or_String {
         get { ReadWriteAttribute[Strings.fillStyle, in: jsObject] }
         nonmutating set { ReadWriteAttribute[Strings.fillStyle, in: jsObject] = newValue }
     }

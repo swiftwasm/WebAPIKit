@@ -20,7 +20,7 @@ public class WebSocket: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(url: String, protocols: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(url: String, protocols: String_or_seq_of_String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), protocols?.jsValue() ?? .undefined]))
     }
 
@@ -67,7 +67,7 @@ public class WebSocket: EventTarget {
     @ReadWriteAttribute
     public var binaryType: BinaryType
 
-    @inlinable public func send(data: __UNSUPPORTED_UNION__) {
+    @inlinable public func send(data: Blob_or_BufferSource_or_String) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }

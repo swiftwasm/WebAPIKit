@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSStyleSheetInit: BridgedDictionary {
-    public convenience init(baseURL: String, media: __UNSUPPORTED_UNION__, disabled: Bool) {
+    public convenience init(baseURL: String, media: MediaList_or_String, disabled: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.baseURL] = baseURL.jsValue()
         object[Strings.media] = media.jsValue()
@@ -23,7 +23,7 @@ public class CSSStyleSheetInit: BridgedDictionary {
     public var baseURL: String
 
     @ReadWriteAttribute
-    public var media: __UNSUPPORTED_UNION__
+    public var media: MediaList_or_String
 
     @ReadWriteAttribute
     public var disabled: Bool

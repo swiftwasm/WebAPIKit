@@ -26,7 +26,7 @@ public class IDBDatabase: EventTarget {
     @ReadonlyAttribute
     public var objectStoreNames: DOMStringList
 
-    @inlinable public func transaction(storeNames: __UNSUPPORTED_UNION__, mode: IDBTransactionMode? = nil, options: IDBTransactionOptions? = nil) -> IDBTransaction {
+    @inlinable public func transaction(storeNames: String_or_seq_of_String, mode: IDBTransactionMode? = nil, options: IDBTransactionOptions? = nil) -> IDBTransaction {
         let this = jsObject
         return this[Strings.transaction].function!(this: this, arguments: [storeNames.jsValue(), mode?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
     }

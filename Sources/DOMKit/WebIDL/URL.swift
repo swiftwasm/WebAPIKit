@@ -24,7 +24,7 @@ public class URL: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public static func createObjectURL(obj: __UNSUPPORTED_UNION__) -> String {
+    @inlinable public static func createObjectURL(obj: Blob_or_MediaSource) -> String {
         let this = constructor
         return this[Strings.createObjectURL].function!(this: this, arguments: [obj.jsValue()]).fromJSValue()!
     }

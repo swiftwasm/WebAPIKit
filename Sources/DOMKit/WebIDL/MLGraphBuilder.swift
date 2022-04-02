@@ -363,7 +363,7 @@ public class MLGraphBuilder: JSBridgedClass {
         return this[Strings.softsign].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    @inlinable public func split(input: MLOperand, splits: __UNSUPPORTED_UNION__, options: MLSplitOptions? = nil) -> [MLOperand] {
+    @inlinable public func split(input: MLOperand, splits: UInt32_or_seq_of_UInt32, options: MLSplitOptions? = nil) -> [MLOperand] {
         let this = jsObject
         return this[Strings.split].function!(this: this, arguments: [input.jsValue(), splits.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }

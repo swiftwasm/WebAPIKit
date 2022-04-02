@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaStreamConstraints: BridgedDictionary {
-    public convenience init(video: __UNSUPPORTED_UNION__, audio: __UNSUPPORTED_UNION__, preferCurrentTab: Bool, peerIdentity: String) {
+    public convenience init(video: Bool_or_MediaTrackConstraints, audio: Bool_or_MediaTrackConstraints, preferCurrentTab: Bool, peerIdentity: String) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.video] = video.jsValue()
         object[Strings.audio] = audio.jsValue()
@@ -22,10 +22,10 @@ public class MediaStreamConstraints: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var video: __UNSUPPORTED_UNION__
+    public var video: Bool_or_MediaTrackConstraints
 
     @ReadWriteAttribute
-    public var audio: __UNSUPPORTED_UNION__
+    public var audio: Bool_or_MediaTrackConstraints
 
     @ReadWriteAttribute
     public var preferCurrentTab: Bool

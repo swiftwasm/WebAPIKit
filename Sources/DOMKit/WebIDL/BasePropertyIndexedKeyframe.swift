@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BasePropertyIndexedKeyframe: BridgedDictionary {
-    public convenience init(offset: __UNSUPPORTED_UNION__, easing: __UNSUPPORTED_UNION__, composite: __UNSUPPORTED_UNION__) {
+    public convenience init(offset: nullable_Double_or_seq_of_nullable_Double, easing: String_or_seq_of_String, composite: CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.offset] = offset.jsValue()
         object[Strings.easing] = easing.jsValue()
@@ -20,11 +20,11 @@ public class BasePropertyIndexedKeyframe: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var offset: __UNSUPPORTED_UNION__
+    public var offset: nullable_Double_or_seq_of_nullable_Double
 
     @ReadWriteAttribute
-    public var easing: __UNSUPPORTED_UNION__
+    public var easing: String_or_seq_of_String
 
     @ReadWriteAttribute
-    public var composite: __UNSUPPORTED_UNION__
+    public var composite: CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto
 }

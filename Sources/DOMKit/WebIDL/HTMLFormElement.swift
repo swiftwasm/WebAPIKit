@@ -70,7 +70,7 @@ public class HTMLFormElement: HTMLElement {
         jsObject[key].fromJSValue()!
     }
 
-    @inlinable public subscript(key: String) -> __UNSUPPORTED_UNION__ {
+    @inlinable public subscript(key: String) -> Element_or_RadioNodeList {
         jsObject[key].fromJSValue()!
     }
 

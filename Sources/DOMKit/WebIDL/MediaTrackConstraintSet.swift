@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaTrackConstraintSet: BridgedDictionary {
-    public convenience init(whiteBalanceMode: ConstrainDOMString, exposureMode: ConstrainDOMString, focusMode: ConstrainDOMString, pointsOfInterest: ConstrainPoint2D, exposureCompensation: ConstrainDouble, exposureTime: ConstrainDouble, colorTemperature: ConstrainDouble, iso: ConstrainDouble, brightness: ConstrainDouble, contrast: ConstrainDouble, saturation: ConstrainDouble, sharpness: ConstrainDouble, focusDistance: ConstrainDouble, pan: __UNSUPPORTED_UNION__, tilt: __UNSUPPORTED_UNION__, zoom: __UNSUPPORTED_UNION__, torch: ConstrainBoolean, width: ConstrainULong, height: ConstrainULong, aspectRatio: ConstrainDouble, frameRate: ConstrainDouble, facingMode: ConstrainDOMString, resizeMode: ConstrainDOMString, sampleRate: ConstrainULong, sampleSize: ConstrainULong, echoCancellation: ConstrainBoolean, autoGainControl: ConstrainBoolean, noiseSuppression: ConstrainBoolean, latency: ConstrainDouble, channelCount: ConstrainULong, deviceId: ConstrainDOMString, groupId: ConstrainDOMString, displaySurface: ConstrainDOMString, logicalSurface: ConstrainBoolean, cursor: ConstrainDOMString, restrictOwnAudio: ConstrainBoolean, suppressLocalAudioPlayback: ConstrainBoolean) {
+    public convenience init(whiteBalanceMode: ConstrainDOMString, exposureMode: ConstrainDOMString, focusMode: ConstrainDOMString, pointsOfInterest: ConstrainPoint2D, exposureCompensation: ConstrainDouble, exposureTime: ConstrainDouble, colorTemperature: ConstrainDouble, iso: ConstrainDouble, brightness: ConstrainDouble, contrast: ConstrainDouble, saturation: ConstrainDouble, sharpness: ConstrainDouble, focusDistance: ConstrainDouble, pan: Bool_or_ConstrainDouble, tilt: Bool_or_ConstrainDouble, zoom: Bool_or_ConstrainDouble, torch: ConstrainBoolean, width: ConstrainULong, height: ConstrainULong, aspectRatio: ConstrainDouble, frameRate: ConstrainDouble, facingMode: ConstrainDOMString, resizeMode: ConstrainDOMString, sampleRate: ConstrainULong, sampleSize: ConstrainULong, echoCancellation: ConstrainBoolean, autoGainControl: ConstrainBoolean, noiseSuppression: ConstrainBoolean, latency: ConstrainDouble, channelCount: ConstrainULong, deviceId: ConstrainDOMString, groupId: ConstrainDOMString, displaySurface: ConstrainDOMString, logicalSurface: ConstrainBoolean, cursor: ConstrainDOMString, restrictOwnAudio: ConstrainBoolean, suppressLocalAudioPlayback: ConstrainBoolean) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.whiteBalanceMode] = whiteBalanceMode.jsValue()
         object[Strings.exposureMode] = exposureMode.jsValue()
@@ -127,13 +127,13 @@ public class MediaTrackConstraintSet: BridgedDictionary {
     public var focusDistance: ConstrainDouble
 
     @ReadWriteAttribute
-    public var pan: __UNSUPPORTED_UNION__
+    public var pan: Bool_or_ConstrainDouble
 
     @ReadWriteAttribute
-    public var tilt: __UNSUPPORTED_UNION__
+    public var tilt: Bool_or_ConstrainDouble
 
     @ReadWriteAttribute
-    public var zoom: __UNSUPPORTED_UNION__
+    public var zoom: Bool_or_ConstrainDouble
 
     @ReadWriteAttribute
     public var torch: ConstrainBoolean

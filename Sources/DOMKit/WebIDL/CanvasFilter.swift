@@ -12,7 +12,7 @@ public class CanvasFilter: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public convenience init(filters: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(filters: CanvasFilterInput_or_seq_of_CanvasFilterInput? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [filters?.jsValue() ?? .undefined]))
     }
 }

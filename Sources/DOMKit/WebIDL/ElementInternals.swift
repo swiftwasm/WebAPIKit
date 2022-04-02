@@ -25,7 +25,7 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     @ReadonlyAttribute
     public var shadowRoot: ShadowRoot?
 
-    @inlinable public func setFormValue(value: __UNSUPPORTED_UNION__?, state: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public func setFormValue(value: File_or_FormData_or_String?, state: File_or_FormData_or_String? = nil) {
         let this = jsObject
         _ = this[Strings.setFormValue].function!(this: this, arguments: [value.jsValue(), state?.jsValue() ?? .undefined])
     }

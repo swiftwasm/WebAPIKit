@@ -20,5 +20,5 @@ public class CSSColorValue: CSSStyleValue {
     }
 
     // XXX: illegal static override
-    // override public static func parse(cssText: String) -> __UNSUPPORTED_UNION__
+    // override public static func parse(cssText: String) -> CSSColorValue_or_CSSStyleValue
 }

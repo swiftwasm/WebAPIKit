@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BluetoothAdvertisingEventInit: BridgedDictionary {
-    public convenience init(device: BluetoothDevice, uuids: [__UNSUPPORTED_UNION__], name: String, appearance: UInt16, txPower: Int8, rssi: Int8, manufacturerData: BluetoothManufacturerDataMap, serviceData: BluetoothServiceDataMap) {
+    public convenience init(device: BluetoothDevice, uuids: [String_or_UInt32], name: String, appearance: UInt16, txPower: Int8, rssi: Int8, manufacturerData: BluetoothManufacturerDataMap, serviceData: BluetoothServiceDataMap) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.device] = device.jsValue()
         object[Strings.uuids] = uuids.jsValue()
@@ -33,7 +33,7 @@ public class BluetoothAdvertisingEventInit: BridgedDictionary {
     public var device: BluetoothDevice
 
     @ReadWriteAttribute
-    public var uuids: [__UNSUPPORTED_UNION__]
+    public var uuids: [String_or_UInt32]
 
     @ReadWriteAttribute
     public var name: String

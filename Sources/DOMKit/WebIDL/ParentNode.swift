@@ -13,17 +13,17 @@ public extension ParentNode {
 
     @inlinable var childElementCount: UInt32 { ReadonlyAttribute[Strings.childElementCount, in: jsObject] }
 
-    @inlinable func prepend(nodes: __UNSUPPORTED_UNION__...) {
+    @inlinable func prepend(nodes: Node_or_String...) {
         let this = jsObject
         _ = this[Strings.prepend].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
-    @inlinable func append(nodes: __UNSUPPORTED_UNION__...) {
+    @inlinable func append(nodes: Node_or_String...) {
         let this = jsObject
         _ = this[Strings.append].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
-    @inlinable func replaceChildren(nodes: __UNSUPPORTED_UNION__...) {
+    @inlinable func replaceChildren(nodes: Node_or_String...) {
         let this = jsObject
         _ = this[Strings.replaceChildren].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }

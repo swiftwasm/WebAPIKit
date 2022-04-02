@@ -12,7 +12,7 @@ public class URLSearchParams: JSBridgedClass, Sequence {
         self.jsObject = jsObject
     }
 
-    @inlinable public convenience init(init: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(init: String_or_record_String_to_String_or_seq_of_seq_of_String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 

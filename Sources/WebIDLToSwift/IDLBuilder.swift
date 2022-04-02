@@ -10,6 +10,12 @@ enum IDLBuilder {
     \n
     """
 
+    // dictionaries that depend on types not exposed to Window environments
+    static let ignoredNames: Set = [
+        "BreakTokenOptions", "TrustedTypePolicyOptions", "FragmentResultOptions",
+        "Client_or_MessagePort_or_ServiceWorker", "ExtendableMessageEventInit",
+    ]
+
     static let outDir = "Sources/DOMKit/WebIDL/"
     static func writeFile(named name: String, content: String) throws {
         let path = outDir + name + ".swift"
@@ -35,7 +41,7 @@ enum IDLBuilder {
             else {
                 fatalError("Cannot find name for \(node)")
             }
-            if name == "TrustedTypePolicyOptions" {
+            if ignoredNames.contains(name) {
                 continue
             }
             let content = Context.withState(.root(
@@ -118,5 +124,13 @@ enum IDLBuilder {
         """
 
         try writeFile(named: "Strings", content: stringsContent.source)
+    }
+
+    static func generateUnions() throws {
+        for union in Context.unions {
+            let file = UnionProtocol(types: union)
+            guard !ignoredNames.contains(file.types.inlineTypeName) else { continue }
+            try writeFile(named: file.types.inlineTypeName, content: file.swiftRepresentation.source)
+        }
     }
 }

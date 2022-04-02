@@ -140,12 +140,12 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
         return this[Strings.getElementsByClassName].function!(this: this, arguments: [classNames.jsValue()]).fromJSValue()!
     }
 
-    @inlinable public func createElement(localName: String, options: __UNSUPPORTED_UNION__? = nil) -> Element {
+    @inlinable public func createElement(localName: String, options: ElementCreationOptions_or_String? = nil) -> Element {
         let this = jsObject
         return this[Strings.createElement].function!(this: this, arguments: [localName.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    @inlinable public func createElementNS(namespace: String?, qualifiedName: String, options: __UNSUPPORTED_UNION__? = nil) -> Element {
+    @inlinable public func createElementNS(namespace: String?, qualifiedName: String, options: ElementCreationOptions_or_String? = nil) -> Element {
         let this = jsObject
         return this[Strings.createElementNS].function!(this: this, arguments: [namespace.jsValue(), qualifiedName.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
