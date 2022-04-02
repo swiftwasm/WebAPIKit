@@ -69,8 +69,6 @@ enum IDLBuilder {
                     "Window": ["requestIdleCallback"],
                     "WindowOrWorkerGlobalScope": ["queueMicrotask"],
                     "XRSession": ["requestAnimationFrame"],
-                    // variadic functions are unsupported
-                    "TrustedTypePolicyOptions": ["<constructor>", "createHTML", "createScript", "createScriptURL"],
                     // functions as return types are unsupported
                     "CustomElementRegistry": ["define", "whenDefined"],
                     // NodeFilter

@@ -40,6 +40,7 @@ enum Context {
         private(set) var ignored: [String: Set<String>]!
         private(set) var types: [String: IDLTypealias]!
         private(set) var override = false
+        private(set) var inProtocol = false
 
         static func `static`(this: SwiftSource, inClass: Bool = Context.inClass, className: SwiftSource) -> Self {
             var newState = Context.current
@@ -50,11 +51,17 @@ enum Context {
             return newState
         }
 
-        static func instance(constructor: SwiftSource?, this: SwiftSource, className: SwiftSource) -> Self {
+        static func instance(
+            constructor: SwiftSource?,
+            this: SwiftSource,
+            className: SwiftSource,
+            inProtocol: Bool = Context.inProtocol
+        ) -> Self {
             var newState = Context.current
             newState.static = false
             newState.constructor = constructor
             newState.this = this
+            newState.inProtocol = inProtocol
             newState.className = className
             return newState
         }

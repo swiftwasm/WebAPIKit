@@ -5,531 +5,531 @@ import JavaScriptKit
 
 public protocol WebGL2RenderingContextBase: JSBridgedClass {}
 public extension WebGL2RenderingContextBase {
-    static let READ_BUFFER: GLenum = 0x0C02
+    static var READ_BUFFER: GLenum { 0x0C02 }
 
-    static let UNPACK_ROW_LENGTH: GLenum = 0x0CF2
+    static var UNPACK_ROW_LENGTH: GLenum { 0x0CF2 }
 
-    static let UNPACK_SKIP_ROWS: GLenum = 0x0CF3
+    static var UNPACK_SKIP_ROWS: GLenum { 0x0CF3 }
 
-    static let UNPACK_SKIP_PIXELS: GLenum = 0x0CF4
+    static var UNPACK_SKIP_PIXELS: GLenum { 0x0CF4 }
 
-    static let PACK_ROW_LENGTH: GLenum = 0x0D02
+    static var PACK_ROW_LENGTH: GLenum { 0x0D02 }
 
-    static let PACK_SKIP_ROWS: GLenum = 0x0D03
+    static var PACK_SKIP_ROWS: GLenum { 0x0D03 }
 
-    static let PACK_SKIP_PIXELS: GLenum = 0x0D04
+    static var PACK_SKIP_PIXELS: GLenum { 0x0D04 }
 
-    static let COLOR: GLenum = 0x1800
+    static var COLOR: GLenum { 0x1800 }
 
-    static let DEPTH: GLenum = 0x1801
+    static var DEPTH: GLenum { 0x1801 }
 
-    static let STENCIL: GLenum = 0x1802
+    static var STENCIL: GLenum { 0x1802 }
 
-    static let RED: GLenum = 0x1903
+    static var RED: GLenum { 0x1903 }
 
-    static let RGB8: GLenum = 0x8051
+    static var RGB8: GLenum { 0x8051 }
 
-    static let RGBA8: GLenum = 0x8058
+    static var RGBA8: GLenum { 0x8058 }
 
-    static let RGB10_A2: GLenum = 0x8059
+    static var RGB10_A2: GLenum { 0x8059 }
 
-    static let TEXTURE_BINDING_3D: GLenum = 0x806A
+    static var TEXTURE_BINDING_3D: GLenum { 0x806A }
 
-    static let UNPACK_SKIP_IMAGES: GLenum = 0x806D
+    static var UNPACK_SKIP_IMAGES: GLenum { 0x806D }
 
-    static let UNPACK_IMAGE_HEIGHT: GLenum = 0x806E
+    static var UNPACK_IMAGE_HEIGHT: GLenum { 0x806E }
 
-    static let TEXTURE_3D: GLenum = 0x806F
+    static var TEXTURE_3D: GLenum { 0x806F }
 
-    static let TEXTURE_WRAP_R: GLenum = 0x8072
+    static var TEXTURE_WRAP_R: GLenum { 0x8072 }
 
-    static let MAX_3D_TEXTURE_SIZE: GLenum = 0x8073
+    static var MAX_3D_TEXTURE_SIZE: GLenum { 0x8073 }
 
-    static let UNSIGNED_INT_2_10_10_10_REV: GLenum = 0x8368
+    static var UNSIGNED_INT_2_10_10_10_REV: GLenum { 0x8368 }
 
-    static let MAX_ELEMENTS_VERTICES: GLenum = 0x80E8
+    static var MAX_ELEMENTS_VERTICES: GLenum { 0x80E8 }
 
-    static let MAX_ELEMENTS_INDICES: GLenum = 0x80E9
+    static var MAX_ELEMENTS_INDICES: GLenum { 0x80E9 }
 
-    static let TEXTURE_MIN_LOD: GLenum = 0x813A
+    static var TEXTURE_MIN_LOD: GLenum { 0x813A }
 
-    static let TEXTURE_MAX_LOD: GLenum = 0x813B
+    static var TEXTURE_MAX_LOD: GLenum { 0x813B }
 
-    static let TEXTURE_BASE_LEVEL: GLenum = 0x813C
+    static var TEXTURE_BASE_LEVEL: GLenum { 0x813C }
 
-    static let TEXTURE_MAX_LEVEL: GLenum = 0x813D
+    static var TEXTURE_MAX_LEVEL: GLenum { 0x813D }
 
-    static let MIN: GLenum = 0x8007
+    static var MIN: GLenum { 0x8007 }
 
-    static let MAX: GLenum = 0x8008
+    static var MAX: GLenum { 0x8008 }
 
-    static let DEPTH_COMPONENT24: GLenum = 0x81A6
+    static var DEPTH_COMPONENT24: GLenum { 0x81A6 }
 
-    static let MAX_TEXTURE_LOD_BIAS: GLenum = 0x84FD
+    static var MAX_TEXTURE_LOD_BIAS: GLenum { 0x84FD }
 
-    static let TEXTURE_COMPARE_MODE: GLenum = 0x884C
+    static var TEXTURE_COMPARE_MODE: GLenum { 0x884C }
 
-    static let TEXTURE_COMPARE_FUNC: GLenum = 0x884D
+    static var TEXTURE_COMPARE_FUNC: GLenum { 0x884D }
 
-    static let CURRENT_QUERY: GLenum = 0x8865
+    static var CURRENT_QUERY: GLenum { 0x8865 }
 
-    static let QUERY_RESULT: GLenum = 0x8866
+    static var QUERY_RESULT: GLenum { 0x8866 }
 
-    static let QUERY_RESULT_AVAILABLE: GLenum = 0x8867
+    static var QUERY_RESULT_AVAILABLE: GLenum { 0x8867 }
 
-    static let STREAM_READ: GLenum = 0x88E1
+    static var STREAM_READ: GLenum { 0x88E1 }
 
-    static let STREAM_COPY: GLenum = 0x88E2
+    static var STREAM_COPY: GLenum { 0x88E2 }
 
-    static let STATIC_READ: GLenum = 0x88E5
+    static var STATIC_READ: GLenum { 0x88E5 }
 
-    static let STATIC_COPY: GLenum = 0x88E6
+    static var STATIC_COPY: GLenum { 0x88E6 }
 
-    static let DYNAMIC_READ: GLenum = 0x88E9
+    static var DYNAMIC_READ: GLenum { 0x88E9 }
 
-    static let DYNAMIC_COPY: GLenum = 0x88EA
+    static var DYNAMIC_COPY: GLenum { 0x88EA }
 
-    static let MAX_DRAW_BUFFERS: GLenum = 0x8824
+    static var MAX_DRAW_BUFFERS: GLenum { 0x8824 }
 
-    static let DRAW_BUFFER0: GLenum = 0x8825
+    static var DRAW_BUFFER0: GLenum { 0x8825 }
 
-    static let DRAW_BUFFER1: GLenum = 0x8826
+    static var DRAW_BUFFER1: GLenum { 0x8826 }
 
-    static let DRAW_BUFFER2: GLenum = 0x8827
+    static var DRAW_BUFFER2: GLenum { 0x8827 }
 
-    static let DRAW_BUFFER3: GLenum = 0x8828
+    static var DRAW_BUFFER3: GLenum { 0x8828 }
 
-    static let DRAW_BUFFER4: GLenum = 0x8829
+    static var DRAW_BUFFER4: GLenum { 0x8829 }
 
-    static let DRAW_BUFFER5: GLenum = 0x882A
+    static var DRAW_BUFFER5: GLenum { 0x882A }
 
-    static let DRAW_BUFFER6: GLenum = 0x882B
+    static var DRAW_BUFFER6: GLenum { 0x882B }
 
-    static let DRAW_BUFFER7: GLenum = 0x882C
+    static var DRAW_BUFFER7: GLenum { 0x882C }
 
-    static let DRAW_BUFFER8: GLenum = 0x882D
+    static var DRAW_BUFFER8: GLenum { 0x882D }
 
-    static let DRAW_BUFFER9: GLenum = 0x882E
+    static var DRAW_BUFFER9: GLenum { 0x882E }
 
-    static let DRAW_BUFFER10: GLenum = 0x882F
+    static var DRAW_BUFFER10: GLenum { 0x882F }
 
-    static let DRAW_BUFFER11: GLenum = 0x8830
+    static var DRAW_BUFFER11: GLenum { 0x8830 }
 
-    static let DRAW_BUFFER12: GLenum = 0x8831
+    static var DRAW_BUFFER12: GLenum { 0x8831 }
 
-    static let DRAW_BUFFER13: GLenum = 0x8832
+    static var DRAW_BUFFER13: GLenum { 0x8832 }
 
-    static let DRAW_BUFFER14: GLenum = 0x8833
+    static var DRAW_BUFFER14: GLenum { 0x8833 }
 
-    static let DRAW_BUFFER15: GLenum = 0x8834
+    static var DRAW_BUFFER15: GLenum { 0x8834 }
 
-    static let MAX_FRAGMENT_UNIFORM_COMPONENTS: GLenum = 0x8B49
+    static var MAX_FRAGMENT_UNIFORM_COMPONENTS: GLenum { 0x8B49 }
 
-    static let MAX_VERTEX_UNIFORM_COMPONENTS: GLenum = 0x8B4A
+    static var MAX_VERTEX_UNIFORM_COMPONENTS: GLenum { 0x8B4A }
 
-    static let SAMPLER_3D: GLenum = 0x8B5F
+    static var SAMPLER_3D: GLenum { 0x8B5F }
 
-    static let SAMPLER_2D_SHADOW: GLenum = 0x8B62
+    static var SAMPLER_2D_SHADOW: GLenum { 0x8B62 }
 
-    static let FRAGMENT_SHADER_DERIVATIVE_HINT: GLenum = 0x8B8B
+    static var FRAGMENT_SHADER_DERIVATIVE_HINT: GLenum { 0x8B8B }
 
-    static let PIXEL_PACK_BUFFER: GLenum = 0x88EB
+    static var PIXEL_PACK_BUFFER: GLenum { 0x88EB }
 
-    static let PIXEL_UNPACK_BUFFER: GLenum = 0x88EC
+    static var PIXEL_UNPACK_BUFFER: GLenum { 0x88EC }
 
-    static let PIXEL_PACK_BUFFER_BINDING: GLenum = 0x88ED
+    static var PIXEL_PACK_BUFFER_BINDING: GLenum { 0x88ED }
 
-    static let PIXEL_UNPACK_BUFFER_BINDING: GLenum = 0x88EF
+    static var PIXEL_UNPACK_BUFFER_BINDING: GLenum { 0x88EF }
 
-    static let FLOAT_MAT2x3: GLenum = 0x8B65
+    static var FLOAT_MAT2x3: GLenum { 0x8B65 }
 
-    static let FLOAT_MAT2x4: GLenum = 0x8B66
+    static var FLOAT_MAT2x4: GLenum { 0x8B66 }
 
-    static let FLOAT_MAT3x2: GLenum = 0x8B67
+    static var FLOAT_MAT3x2: GLenum { 0x8B67 }
 
-    static let FLOAT_MAT3x4: GLenum = 0x8B68
+    static var FLOAT_MAT3x4: GLenum { 0x8B68 }
 
-    static let FLOAT_MAT4x2: GLenum = 0x8B69
+    static var FLOAT_MAT4x2: GLenum { 0x8B69 }
 
-    static let FLOAT_MAT4x3: GLenum = 0x8B6A
+    static var FLOAT_MAT4x3: GLenum { 0x8B6A }
 
-    static let SRGB: GLenum = 0x8C40
+    static var SRGB: GLenum { 0x8C40 }
 
-    static let SRGB8: GLenum = 0x8C41
+    static var SRGB8: GLenum { 0x8C41 }
 
-    static let SRGB8_ALPHA8: GLenum = 0x8C43
+    static var SRGB8_ALPHA8: GLenum { 0x8C43 }
 
-    static let COMPARE_REF_TO_TEXTURE: GLenum = 0x884E
+    static var COMPARE_REF_TO_TEXTURE: GLenum { 0x884E }
 
-    static let RGBA32F: GLenum = 0x8814
+    static var RGBA32F: GLenum { 0x8814 }
 
-    static let RGB32F: GLenum = 0x8815
+    static var RGB32F: GLenum { 0x8815 }
 
-    static let RGBA16F: GLenum = 0x881A
+    static var RGBA16F: GLenum { 0x881A }
 
-    static let RGB16F: GLenum = 0x881B
+    static var RGB16F: GLenum { 0x881B }
 
-    static let VERTEX_ATTRIB_ARRAY_INTEGER: GLenum = 0x88FD
+    static var VERTEX_ATTRIB_ARRAY_INTEGER: GLenum { 0x88FD }
 
-    static let MAX_ARRAY_TEXTURE_LAYERS: GLenum = 0x88FF
+    static var MAX_ARRAY_TEXTURE_LAYERS: GLenum { 0x88FF }
 
-    static let MIN_PROGRAM_TEXEL_OFFSET: GLenum = 0x8904
+    static var MIN_PROGRAM_TEXEL_OFFSET: GLenum { 0x8904 }
 
-    static let MAX_PROGRAM_TEXEL_OFFSET: GLenum = 0x8905
+    static var MAX_PROGRAM_TEXEL_OFFSET: GLenum { 0x8905 }
 
-    static let MAX_VARYING_COMPONENTS: GLenum = 0x8B4B
+    static var MAX_VARYING_COMPONENTS: GLenum { 0x8B4B }
 
-    static let TEXTURE_2D_ARRAY: GLenum = 0x8C1A
+    static var TEXTURE_2D_ARRAY: GLenum { 0x8C1A }
 
-    static let TEXTURE_BINDING_2D_ARRAY: GLenum = 0x8C1D
+    static var TEXTURE_BINDING_2D_ARRAY: GLenum { 0x8C1D }
 
-    static let R11F_G11F_B10F: GLenum = 0x8C3A
+    static var R11F_G11F_B10F: GLenum { 0x8C3A }
 
-    static let UNSIGNED_INT_10F_11F_11F_REV: GLenum = 0x8C3B
+    static var UNSIGNED_INT_10F_11F_11F_REV: GLenum { 0x8C3B }
 
-    static let RGB9_E5: GLenum = 0x8C3D
+    static var RGB9_E5: GLenum { 0x8C3D }
 
-    static let UNSIGNED_INT_5_9_9_9_REV: GLenum = 0x8C3E
+    static var UNSIGNED_INT_5_9_9_9_REV: GLenum { 0x8C3E }
 
-    static let TRANSFORM_FEEDBACK_BUFFER_MODE: GLenum = 0x8C7F
+    static var TRANSFORM_FEEDBACK_BUFFER_MODE: GLenum { 0x8C7F }
 
-    static let MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS: GLenum = 0x8C80
+    static var MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS: GLenum { 0x8C80 }
 
-    static let TRANSFORM_FEEDBACK_VARYINGS: GLenum = 0x8C83
+    static var TRANSFORM_FEEDBACK_VARYINGS: GLenum { 0x8C83 }
 
-    static let TRANSFORM_FEEDBACK_BUFFER_START: GLenum = 0x8C84
+    static var TRANSFORM_FEEDBACK_BUFFER_START: GLenum { 0x8C84 }
 
-    static let TRANSFORM_FEEDBACK_BUFFER_SIZE: GLenum = 0x8C85
+    static var TRANSFORM_FEEDBACK_BUFFER_SIZE: GLenum { 0x8C85 }
 
-    static let TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN: GLenum = 0x8C88
+    static var TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN: GLenum { 0x8C88 }
 
-    static let RASTERIZER_DISCARD: GLenum = 0x8C89
+    static var RASTERIZER_DISCARD: GLenum { 0x8C89 }
 
-    static let MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS: GLenum = 0x8C8A
+    static var MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS: GLenum { 0x8C8A }
 
-    static let MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS: GLenum = 0x8C8B
+    static var MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS: GLenum { 0x8C8B }
 
-    static let INTERLEAVED_ATTRIBS: GLenum = 0x8C8C
+    static var INTERLEAVED_ATTRIBS: GLenum { 0x8C8C }
 
-    static let SEPARATE_ATTRIBS: GLenum = 0x8C8D
+    static var SEPARATE_ATTRIBS: GLenum { 0x8C8D }
 
-    static let TRANSFORM_FEEDBACK_BUFFER: GLenum = 0x8C8E
+    static var TRANSFORM_FEEDBACK_BUFFER: GLenum { 0x8C8E }
 
-    static let TRANSFORM_FEEDBACK_BUFFER_BINDING: GLenum = 0x8C8F
+    static var TRANSFORM_FEEDBACK_BUFFER_BINDING: GLenum { 0x8C8F }
 
-    static let RGBA32UI: GLenum = 0x8D70
+    static var RGBA32UI: GLenum { 0x8D70 }
 
-    static let RGB32UI: GLenum = 0x8D71
+    static var RGB32UI: GLenum { 0x8D71 }
 
-    static let RGBA16UI: GLenum = 0x8D76
+    static var RGBA16UI: GLenum { 0x8D76 }
 
-    static let RGB16UI: GLenum = 0x8D77
+    static var RGB16UI: GLenum { 0x8D77 }
 
-    static let RGBA8UI: GLenum = 0x8D7C
+    static var RGBA8UI: GLenum { 0x8D7C }
 
-    static let RGB8UI: GLenum = 0x8D7D
+    static var RGB8UI: GLenum { 0x8D7D }
 
-    static let RGBA32I: GLenum = 0x8D82
+    static var RGBA32I: GLenum { 0x8D82 }
 
-    static let RGB32I: GLenum = 0x8D83
+    static var RGB32I: GLenum { 0x8D83 }
 
-    static let RGBA16I: GLenum = 0x8D88
+    static var RGBA16I: GLenum { 0x8D88 }
 
-    static let RGB16I: GLenum = 0x8D89
+    static var RGB16I: GLenum { 0x8D89 }
 
-    static let RGBA8I: GLenum = 0x8D8E
+    static var RGBA8I: GLenum { 0x8D8E }
 
-    static let RGB8I: GLenum = 0x8D8F
+    static var RGB8I: GLenum { 0x8D8F }
 
-    static let RED_INTEGER: GLenum = 0x8D94
+    static var RED_INTEGER: GLenum { 0x8D94 }
 
-    static let RGB_INTEGER: GLenum = 0x8D98
+    static var RGB_INTEGER: GLenum { 0x8D98 }
 
-    static let RGBA_INTEGER: GLenum = 0x8D99
+    static var RGBA_INTEGER: GLenum { 0x8D99 }
 
-    static let SAMPLER_2D_ARRAY: GLenum = 0x8DC1
+    static var SAMPLER_2D_ARRAY: GLenum { 0x8DC1 }
 
-    static let SAMPLER_2D_ARRAY_SHADOW: GLenum = 0x8DC4
+    static var SAMPLER_2D_ARRAY_SHADOW: GLenum { 0x8DC4 }
 
-    static let SAMPLER_CUBE_SHADOW: GLenum = 0x8DC5
+    static var SAMPLER_CUBE_SHADOW: GLenum { 0x8DC5 }
 
-    static let UNSIGNED_INT_VEC2: GLenum = 0x8DC6
+    static var UNSIGNED_INT_VEC2: GLenum { 0x8DC6 }
 
-    static let UNSIGNED_INT_VEC3: GLenum = 0x8DC7
+    static var UNSIGNED_INT_VEC3: GLenum { 0x8DC7 }
 
-    static let UNSIGNED_INT_VEC4: GLenum = 0x8DC8
+    static var UNSIGNED_INT_VEC4: GLenum { 0x8DC8 }
 
-    static let INT_SAMPLER_2D: GLenum = 0x8DCA
+    static var INT_SAMPLER_2D: GLenum { 0x8DCA }
 
-    static let INT_SAMPLER_3D: GLenum = 0x8DCB
+    static var INT_SAMPLER_3D: GLenum { 0x8DCB }
 
-    static let INT_SAMPLER_CUBE: GLenum = 0x8DCC
+    static var INT_SAMPLER_CUBE: GLenum { 0x8DCC }
 
-    static let INT_SAMPLER_2D_ARRAY: GLenum = 0x8DCF
+    static var INT_SAMPLER_2D_ARRAY: GLenum { 0x8DCF }
 
-    static let UNSIGNED_INT_SAMPLER_2D: GLenum = 0x8DD2
+    static var UNSIGNED_INT_SAMPLER_2D: GLenum { 0x8DD2 }
 
-    static let UNSIGNED_INT_SAMPLER_3D: GLenum = 0x8DD3
+    static var UNSIGNED_INT_SAMPLER_3D: GLenum { 0x8DD3 }
 
-    static let UNSIGNED_INT_SAMPLER_CUBE: GLenum = 0x8DD4
+    static var UNSIGNED_INT_SAMPLER_CUBE: GLenum { 0x8DD4 }
 
-    static let UNSIGNED_INT_SAMPLER_2D_ARRAY: GLenum = 0x8DD7
+    static var UNSIGNED_INT_SAMPLER_2D_ARRAY: GLenum { 0x8DD7 }
 
-    static let DEPTH_COMPONENT32F: GLenum = 0x8CAC
+    static var DEPTH_COMPONENT32F: GLenum { 0x8CAC }
 
-    static let DEPTH32F_STENCIL8: GLenum = 0x8CAD
+    static var DEPTH32F_STENCIL8: GLenum { 0x8CAD }
 
-    static let FLOAT_32_UNSIGNED_INT_24_8_REV: GLenum = 0x8DAD
+    static var FLOAT_32_UNSIGNED_INT_24_8_REV: GLenum { 0x8DAD }
 
-    static let FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING: GLenum = 0x8210
+    static var FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING: GLenum { 0x8210 }
 
-    static let FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE: GLenum = 0x8211
+    static var FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE: GLenum { 0x8211 }
 
-    static let FRAMEBUFFER_ATTACHMENT_RED_SIZE: GLenum = 0x8212
+    static var FRAMEBUFFER_ATTACHMENT_RED_SIZE: GLenum { 0x8212 }
 
-    static let FRAMEBUFFER_ATTACHMENT_GREEN_SIZE: GLenum = 0x8213
+    static var FRAMEBUFFER_ATTACHMENT_GREEN_SIZE: GLenum { 0x8213 }
 
-    static let FRAMEBUFFER_ATTACHMENT_BLUE_SIZE: GLenum = 0x8214
+    static var FRAMEBUFFER_ATTACHMENT_BLUE_SIZE: GLenum { 0x8214 }
 
-    static let FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE: GLenum = 0x8215
+    static var FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE: GLenum { 0x8215 }
 
-    static let FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE: GLenum = 0x8216
+    static var FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE: GLenum { 0x8216 }
 
-    static let FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE: GLenum = 0x8217
+    static var FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE: GLenum { 0x8217 }
 
-    static let FRAMEBUFFER_DEFAULT: GLenum = 0x8218
+    static var FRAMEBUFFER_DEFAULT: GLenum { 0x8218 }
 
-    static let UNSIGNED_INT_24_8: GLenum = 0x84FA
+    static var UNSIGNED_INT_24_8: GLenum { 0x84FA }
 
-    static let DEPTH24_STENCIL8: GLenum = 0x88F0
+    static var DEPTH24_STENCIL8: GLenum { 0x88F0 }
 
-    static let UNSIGNED_NORMALIZED: GLenum = 0x8C17
+    static var UNSIGNED_NORMALIZED: GLenum { 0x8C17 }
 
-    static let DRAW_FRAMEBUFFER_BINDING: GLenum = 0x8CA6
+    static var DRAW_FRAMEBUFFER_BINDING: GLenum { 0x8CA6 }
 
-    static let READ_FRAMEBUFFER: GLenum = 0x8CA8
+    static var READ_FRAMEBUFFER: GLenum { 0x8CA8 }
 
-    static let DRAW_FRAMEBUFFER: GLenum = 0x8CA9
+    static var DRAW_FRAMEBUFFER: GLenum { 0x8CA9 }
 
-    static let READ_FRAMEBUFFER_BINDING: GLenum = 0x8CAA
+    static var READ_FRAMEBUFFER_BINDING: GLenum { 0x8CAA }
 
-    static let RENDERBUFFER_SAMPLES: GLenum = 0x8CAB
+    static var RENDERBUFFER_SAMPLES: GLenum { 0x8CAB }
 
-    static let FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER: GLenum = 0x8CD4
+    static var FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER: GLenum { 0x8CD4 }
 
-    static let MAX_COLOR_ATTACHMENTS: GLenum = 0x8CDF
+    static var MAX_COLOR_ATTACHMENTS: GLenum { 0x8CDF }
 
-    static let COLOR_ATTACHMENT1: GLenum = 0x8CE1
+    static var COLOR_ATTACHMENT1: GLenum { 0x8CE1 }
 
-    static let COLOR_ATTACHMENT2: GLenum = 0x8CE2
+    static var COLOR_ATTACHMENT2: GLenum { 0x8CE2 }
 
-    static let COLOR_ATTACHMENT3: GLenum = 0x8CE3
+    static var COLOR_ATTACHMENT3: GLenum { 0x8CE3 }
 
-    static let COLOR_ATTACHMENT4: GLenum = 0x8CE4
+    static var COLOR_ATTACHMENT4: GLenum { 0x8CE4 }
 
-    static let COLOR_ATTACHMENT5: GLenum = 0x8CE5
+    static var COLOR_ATTACHMENT5: GLenum { 0x8CE5 }
 
-    static let COLOR_ATTACHMENT6: GLenum = 0x8CE6
+    static var COLOR_ATTACHMENT6: GLenum { 0x8CE6 }
 
-    static let COLOR_ATTACHMENT7: GLenum = 0x8CE7
+    static var COLOR_ATTACHMENT7: GLenum { 0x8CE7 }
 
-    static let COLOR_ATTACHMENT8: GLenum = 0x8CE8
+    static var COLOR_ATTACHMENT8: GLenum { 0x8CE8 }
 
-    static let COLOR_ATTACHMENT9: GLenum = 0x8CE9
+    static var COLOR_ATTACHMENT9: GLenum { 0x8CE9 }
 
-    static let COLOR_ATTACHMENT10: GLenum = 0x8CEA
+    static var COLOR_ATTACHMENT10: GLenum { 0x8CEA }
 
-    static let COLOR_ATTACHMENT11: GLenum = 0x8CEB
+    static var COLOR_ATTACHMENT11: GLenum { 0x8CEB }
 
-    static let COLOR_ATTACHMENT12: GLenum = 0x8CEC
+    static var COLOR_ATTACHMENT12: GLenum { 0x8CEC }
 
-    static let COLOR_ATTACHMENT13: GLenum = 0x8CED
+    static var COLOR_ATTACHMENT13: GLenum { 0x8CED }
 
-    static let COLOR_ATTACHMENT14: GLenum = 0x8CEE
+    static var COLOR_ATTACHMENT14: GLenum { 0x8CEE }
 
-    static let COLOR_ATTACHMENT15: GLenum = 0x8CEF
+    static var COLOR_ATTACHMENT15: GLenum { 0x8CEF }
 
-    static let FRAMEBUFFER_INCOMPLETE_MULTISAMPLE: GLenum = 0x8D56
+    static var FRAMEBUFFER_INCOMPLETE_MULTISAMPLE: GLenum { 0x8D56 }
 
-    static let MAX_SAMPLES: GLenum = 0x8D57
+    static var MAX_SAMPLES: GLenum { 0x8D57 }
 
-    static let HALF_FLOAT: GLenum = 0x140B
+    static var HALF_FLOAT: GLenum { 0x140B }
 
-    static let RG: GLenum = 0x8227
+    static var RG: GLenum { 0x8227 }
 
-    static let RG_INTEGER: GLenum = 0x8228
+    static var RG_INTEGER: GLenum { 0x8228 }
 
-    static let R8: GLenum = 0x8229
+    static var R8: GLenum { 0x8229 }
 
-    static let RG8: GLenum = 0x822B
+    static var RG8: GLenum { 0x822B }
 
-    static let R16F: GLenum = 0x822D
+    static var R16F: GLenum { 0x822D }
 
-    static let R32F: GLenum = 0x822E
+    static var R32F: GLenum { 0x822E }
 
-    static let RG16F: GLenum = 0x822F
+    static var RG16F: GLenum { 0x822F }
 
-    static let RG32F: GLenum = 0x8230
+    static var RG32F: GLenum { 0x8230 }
 
-    static let R8I: GLenum = 0x8231
+    static var R8I: GLenum { 0x8231 }
 
-    static let R8UI: GLenum = 0x8232
+    static var R8UI: GLenum { 0x8232 }
 
-    static let R16I: GLenum = 0x8233
+    static var R16I: GLenum { 0x8233 }
 
-    static let R16UI: GLenum = 0x8234
+    static var R16UI: GLenum { 0x8234 }
 
-    static let R32I: GLenum = 0x8235
+    static var R32I: GLenum { 0x8235 }
 
-    static let R32UI: GLenum = 0x8236
+    static var R32UI: GLenum { 0x8236 }
 
-    static let RG8I: GLenum = 0x8237
+    static var RG8I: GLenum { 0x8237 }
 
-    static let RG8UI: GLenum = 0x8238
+    static var RG8UI: GLenum { 0x8238 }
 
-    static let RG16I: GLenum = 0x8239
+    static var RG16I: GLenum { 0x8239 }
 
-    static let RG16UI: GLenum = 0x823A
+    static var RG16UI: GLenum { 0x823A }
 
-    static let RG32I: GLenum = 0x823B
+    static var RG32I: GLenum { 0x823B }
 
-    static let RG32UI: GLenum = 0x823C
+    static var RG32UI: GLenum { 0x823C }
 
-    static let VERTEX_ARRAY_BINDING: GLenum = 0x85B5
+    static var VERTEX_ARRAY_BINDING: GLenum { 0x85B5 }
 
-    static let R8_SNORM: GLenum = 0x8F94
+    static var R8_SNORM: GLenum { 0x8F94 }
 
-    static let RG8_SNORM: GLenum = 0x8F95
+    static var RG8_SNORM: GLenum { 0x8F95 }
 
-    static let RGB8_SNORM: GLenum = 0x8F96
+    static var RGB8_SNORM: GLenum { 0x8F96 }
 
-    static let RGBA8_SNORM: GLenum = 0x8F97
+    static var RGBA8_SNORM: GLenum { 0x8F97 }
 
-    static let SIGNED_NORMALIZED: GLenum = 0x8F9C
+    static var SIGNED_NORMALIZED: GLenum { 0x8F9C }
 
-    static let COPY_READ_BUFFER: GLenum = 0x8F36
+    static var COPY_READ_BUFFER: GLenum { 0x8F36 }
 
-    static let COPY_WRITE_BUFFER: GLenum = 0x8F37
+    static var COPY_WRITE_BUFFER: GLenum { 0x8F37 }
 
-    static let COPY_READ_BUFFER_BINDING: GLenum = 0x8F36
+    static var COPY_READ_BUFFER_BINDING: GLenum { 0x8F36 }
 
-    static let COPY_WRITE_BUFFER_BINDING: GLenum = 0x8F37
+    static var COPY_WRITE_BUFFER_BINDING: GLenum { 0x8F37 }
 
-    static let UNIFORM_BUFFER: GLenum = 0x8A11
+    static var UNIFORM_BUFFER: GLenum { 0x8A11 }
 
-    static let UNIFORM_BUFFER_BINDING: GLenum = 0x8A28
+    static var UNIFORM_BUFFER_BINDING: GLenum { 0x8A28 }
 
-    static let UNIFORM_BUFFER_START: GLenum = 0x8A29
+    static var UNIFORM_BUFFER_START: GLenum { 0x8A29 }
 
-    static let UNIFORM_BUFFER_SIZE: GLenum = 0x8A2A
+    static var UNIFORM_BUFFER_SIZE: GLenum { 0x8A2A }
 
-    static let MAX_VERTEX_UNIFORM_BLOCKS: GLenum = 0x8A2B
+    static var MAX_VERTEX_UNIFORM_BLOCKS: GLenum { 0x8A2B }
 
-    static let MAX_FRAGMENT_UNIFORM_BLOCKS: GLenum = 0x8A2D
+    static var MAX_FRAGMENT_UNIFORM_BLOCKS: GLenum { 0x8A2D }
 
-    static let MAX_COMBINED_UNIFORM_BLOCKS: GLenum = 0x8A2E
+    static var MAX_COMBINED_UNIFORM_BLOCKS: GLenum { 0x8A2E }
 
-    static let MAX_UNIFORM_BUFFER_BINDINGS: GLenum = 0x8A2F
+    static var MAX_UNIFORM_BUFFER_BINDINGS: GLenum { 0x8A2F }
 
-    static let MAX_UNIFORM_BLOCK_SIZE: GLenum = 0x8A30
+    static var MAX_UNIFORM_BLOCK_SIZE: GLenum { 0x8A30 }
 
-    static let MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS: GLenum = 0x8A31
+    static var MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS: GLenum { 0x8A31 }
 
-    static let MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS: GLenum = 0x8A33
+    static var MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS: GLenum { 0x8A33 }
 
-    static let UNIFORM_BUFFER_OFFSET_ALIGNMENT: GLenum = 0x8A34
+    static var UNIFORM_BUFFER_OFFSET_ALIGNMENT: GLenum { 0x8A34 }
 
-    static let ACTIVE_UNIFORM_BLOCKS: GLenum = 0x8A36
+    static var ACTIVE_UNIFORM_BLOCKS: GLenum { 0x8A36 }
 
-    static let UNIFORM_TYPE: GLenum = 0x8A37
+    static var UNIFORM_TYPE: GLenum { 0x8A37 }
 
-    static let UNIFORM_SIZE: GLenum = 0x8A38
+    static var UNIFORM_SIZE: GLenum { 0x8A38 }
 
-    static let UNIFORM_BLOCK_INDEX: GLenum = 0x8A3A
+    static var UNIFORM_BLOCK_INDEX: GLenum { 0x8A3A }
 
-    static let UNIFORM_OFFSET: GLenum = 0x8A3B
+    static var UNIFORM_OFFSET: GLenum { 0x8A3B }
 
-    static let UNIFORM_ARRAY_STRIDE: GLenum = 0x8A3C
+    static var UNIFORM_ARRAY_STRIDE: GLenum { 0x8A3C }
 
-    static let UNIFORM_MATRIX_STRIDE: GLenum = 0x8A3D
+    static var UNIFORM_MATRIX_STRIDE: GLenum { 0x8A3D }
 
-    static let UNIFORM_IS_ROW_MAJOR: GLenum = 0x8A3E
+    static var UNIFORM_IS_ROW_MAJOR: GLenum { 0x8A3E }
 
-    static let UNIFORM_BLOCK_BINDING: GLenum = 0x8A3F
+    static var UNIFORM_BLOCK_BINDING: GLenum { 0x8A3F }
 
-    static let UNIFORM_BLOCK_DATA_SIZE: GLenum = 0x8A40
+    static var UNIFORM_BLOCK_DATA_SIZE: GLenum { 0x8A40 }
 
-    static let UNIFORM_BLOCK_ACTIVE_UNIFORMS: GLenum = 0x8A42
+    static var UNIFORM_BLOCK_ACTIVE_UNIFORMS: GLenum { 0x8A42 }
 
-    static let UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES: GLenum = 0x8A43
+    static var UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES: GLenum { 0x8A43 }
 
-    static let UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER: GLenum = 0x8A44
+    static var UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER: GLenum { 0x8A44 }
 
-    static let UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER: GLenum = 0x8A46
+    static var UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER: GLenum { 0x8A46 }
 
-    static let INVALID_INDEX: GLenum = 0xFFFF_FFFF
+    static var INVALID_INDEX: GLenum { 0xFFFF_FFFF }
 
-    static let MAX_VERTEX_OUTPUT_COMPONENTS: GLenum = 0x9122
+    static var MAX_VERTEX_OUTPUT_COMPONENTS: GLenum { 0x9122 }
 
-    static let MAX_FRAGMENT_INPUT_COMPONENTS: GLenum = 0x9125
+    static var MAX_FRAGMENT_INPUT_COMPONENTS: GLenum { 0x9125 }
 
-    static let MAX_SERVER_WAIT_TIMEOUT: GLenum = 0x9111
+    static var MAX_SERVER_WAIT_TIMEOUT: GLenum { 0x9111 }
 
-    static let OBJECT_TYPE: GLenum = 0x9112
+    static var OBJECT_TYPE: GLenum { 0x9112 }
 
-    static let SYNC_CONDITION: GLenum = 0x9113
+    static var SYNC_CONDITION: GLenum { 0x9113 }
 
-    static let SYNC_STATUS: GLenum = 0x9114
+    static var SYNC_STATUS: GLenum { 0x9114 }
 
-    static let SYNC_FLAGS: GLenum = 0x9115
+    static var SYNC_FLAGS: GLenum { 0x9115 }
 
-    static let SYNC_FENCE: GLenum = 0x9116
+    static var SYNC_FENCE: GLenum { 0x9116 }
 
-    static let SYNC_GPU_COMMANDS_COMPLETE: GLenum = 0x9117
+    static var SYNC_GPU_COMMANDS_COMPLETE: GLenum { 0x9117 }
 
-    static let UNSIGNALED: GLenum = 0x9118
+    static var UNSIGNALED: GLenum { 0x9118 }
 
-    static let SIGNALED: GLenum = 0x9119
+    static var SIGNALED: GLenum { 0x9119 }
 
-    static let ALREADY_SIGNALED: GLenum = 0x911A
+    static var ALREADY_SIGNALED: GLenum { 0x911A }
 
-    static let TIMEOUT_EXPIRED: GLenum = 0x911B
+    static var TIMEOUT_EXPIRED: GLenum { 0x911B }
 
-    static let CONDITION_SATISFIED: GLenum = 0x911C
+    static var CONDITION_SATISFIED: GLenum { 0x911C }
 
-    static let WAIT_FAILED: GLenum = 0x911D
+    static var WAIT_FAILED: GLenum { 0x911D }
 
-    static let SYNC_FLUSH_COMMANDS_BIT: GLenum = 0x0000_0001
+    static var SYNC_FLUSH_COMMANDS_BIT: GLenum { 0x0000_0001 }
 
-    static let VERTEX_ATTRIB_ARRAY_DIVISOR: GLenum = 0x88FE
+    static var VERTEX_ATTRIB_ARRAY_DIVISOR: GLenum { 0x88FE }
 
-    static let ANY_SAMPLES_PASSED: GLenum = 0x8C2F
+    static var ANY_SAMPLES_PASSED: GLenum { 0x8C2F }
 
-    static let ANY_SAMPLES_PASSED_CONSERVATIVE: GLenum = 0x8D6A
+    static var ANY_SAMPLES_PASSED_CONSERVATIVE: GLenum { 0x8D6A }
 
-    static let SAMPLER_BINDING: GLenum = 0x8919
+    static var SAMPLER_BINDING: GLenum { 0x8919 }
 
-    static let RGB10_A2UI: GLenum = 0x906F
+    static var RGB10_A2UI: GLenum { 0x906F }
 
-    static let INT_2_10_10_10_REV: GLenum = 0x8D9F
+    static var INT_2_10_10_10_REV: GLenum { 0x8D9F }
 
-    static let TRANSFORM_FEEDBACK: GLenum = 0x8E22
+    static var TRANSFORM_FEEDBACK: GLenum { 0x8E22 }
 
-    static let TRANSFORM_FEEDBACK_PAUSED: GLenum = 0x8E23
+    static var TRANSFORM_FEEDBACK_PAUSED: GLenum { 0x8E23 }
 
-    static let TRANSFORM_FEEDBACK_ACTIVE: GLenum = 0x8E24
+    static var TRANSFORM_FEEDBACK_ACTIVE: GLenum { 0x8E24 }
 
-    static let TRANSFORM_FEEDBACK_BINDING: GLenum = 0x8E25
+    static var TRANSFORM_FEEDBACK_BINDING: GLenum { 0x8E25 }
 
-    static let TEXTURE_IMMUTABLE_FORMAT: GLenum = 0x912F
+    static var TEXTURE_IMMUTABLE_FORMAT: GLenum { 0x912F }
 
-    static let MAX_ELEMENT_INDEX: GLenum = 0x8D6B
+    static var MAX_ELEMENT_INDEX: GLenum { 0x8D6B }
 
-    static let TEXTURE_IMMUTABLE_LEVELS: GLenum = 0x82DF
+    static var TEXTURE_IMMUTABLE_LEVELS: GLenum { 0x82DF }
 
-    static let TIMEOUT_IGNORED: GLint64 = -1
+    static var TIMEOUT_IGNORED: GLint64 { -1 }
 
-    static let MAX_CLIENT_WAIT_TIMEOUT_WEBGL: GLenum = 0x9247
+    static var MAX_CLIENT_WAIT_TIMEOUT_WEBGL: GLenum { 0x9247 }
 
     func copyBufferSubData(readTarget: GLenum, writeTarget: GLenum, readOffset: GLintptr, writeOffset: GLintptr, size: GLsizeiptr) {
         let this = jsObject

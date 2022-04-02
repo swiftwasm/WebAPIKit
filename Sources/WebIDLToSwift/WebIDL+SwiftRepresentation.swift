@@ -239,7 +239,7 @@ extension IDLSetLikeDeclaration: SwiftRepresentable, Initializable {
 
 extension MergedMixin: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        Context.withState(.instance(constructor: nil, this: "jsObject", className: "\(name)")) {
+        Context.withState(.instance(constructor: nil, this: "jsObject", className: "\(name)", inProtocol: true)) {
             """
             public protocol \(name): JSBridgedClass {}
             public extension \(name) {
@@ -252,9 +252,16 @@ extension MergedMixin: SwiftRepresentable {
 
 extension IDLConstant: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
-        """
-        public static let \(name): \(idlType) = \(value)
-        """
+        if Context.inProtocol {
+            // Static stored properties not supported in protocol extensions
+            return """
+            public static var \(name): \(idlType) { \(value) }
+            """
+        } else {
+            return """
+            public static let \(name): \(idlType) = \(value)
+            """
+        }
     }
 
     var initializer: SwiftSource? { nil }
