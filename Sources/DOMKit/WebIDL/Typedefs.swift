@@ -122,7 +122,6 @@ public typealias GPUColor = GPUColorDict_or_seq_of_Double
 public typealias GPUOrigin2D = GPUOrigin2DDict_or_seq_of_GPUIntegerCoordinate
 public typealias GPUOrigin3D = GPUOrigin3DDict_or_seq_of_GPUIntegerCoordinate
 public typealias GPUExtent3D = GPUExtent3DDict_or_seq_of_GPUIntegerCoordinate
-public typealias ArrayBufferView = BigInt64Array_or_BigUint64Array_or_DataView_or_Float32Array_or_Float64Array_or_Int16Array_or_Int32Array_or_Int8Array_or_Uint16Array_or_Uint32Array_or_Uint8Array_or_Uint8ClampedArray
 public typealias BufferSource = ArrayBuffer_or_ArrayBufferView
 public typealias DOMTimeStamp = UInt64
 public typealias MLNamedOperands = [String: MLOperand]

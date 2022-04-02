@@ -5,6 +5,7 @@ enum DeclarationMerger {
         "Function",
         "AudioWorkletProcessorConstructor",
         "CustomElementConstructor",
+        "ArrayBufferView"
     ]
     static let validExposures: Set<String> = ["Window"]
 
