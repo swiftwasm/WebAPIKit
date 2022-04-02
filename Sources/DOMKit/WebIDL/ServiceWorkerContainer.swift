@@ -39,7 +39,7 @@ public class ServiceWorkerContainer: EventTarget {
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func getRegistration(clientURL: String? = nil) async throws -> ServiceWorkerRegistration_or_Void {
+    @inlinable public func getRegistration(clientURL: String? = nil) async throws -> ServiceWorkerRegistration? {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

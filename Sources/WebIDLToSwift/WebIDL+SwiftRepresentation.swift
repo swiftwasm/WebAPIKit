@@ -574,6 +574,11 @@ extension IDLType: SwiftRepresentable {
                 return "\(name)"
             }
         case let .union(types):
+            if types.count == 2,
+               case .single("undefined") = types[1].value
+            {
+                return "\(types[0])?"
+            }
             let union = Set(types.map(SlimIDLType.init))
             Context.unions.insert(union)
             return "\(raw: union.inlineTypeName)"

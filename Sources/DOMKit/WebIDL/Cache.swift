@@ -18,7 +18,7 @@ public class Cache: JSBridgedClass {
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func match(request: RequestInfo, options: CacheQueryOptions? = nil) async throws -> Response_or_Void {
+    @inlinable public func match(request: RequestInfo, options: CacheQueryOptions? = nil) async throws -> Response? {
         let this = jsObject
         let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class URLPatternComponentResult: BridgedDictionary {
-    public convenience init(input: String, groups: [String: String_or_Void]) {
+    public convenience init(input: String, groups: [String: String?]) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.input] = input.jsValue()
         object[Strings.groups] = groups.jsValue()
@@ -21,5 +21,5 @@ public class URLPatternComponentResult: BridgedDictionary {
     public var input: String
 
     @ReadWriteAttribute
-    public var groups: [String: String_or_Void]
+    public var groups: [String: String?]
 }

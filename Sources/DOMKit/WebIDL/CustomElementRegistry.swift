@@ -14,7 +14,7 @@ public class CustomElementRegistry: JSBridgedClass {
 
     // XXX: member 'define' is ignored
 
-    @inlinable public func get(name: String) -> CustomElementConstructor_or_Void {
+    @inlinable public func get(name: String) -> CustomElementConstructor? {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }

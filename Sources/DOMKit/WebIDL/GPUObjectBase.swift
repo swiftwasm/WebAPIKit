@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol GPUObjectBase: JSBridgedClass {}
 public extension GPUObjectBase {
-    @inlinable var label: String_or_Void {
+    @inlinable var label: String? {
         get { ReadWriteAttribute[Strings.label, in: jsObject] }
         nonmutating set { ReadWriteAttribute[Strings.label, in: jsObject] = newValue }
     }
