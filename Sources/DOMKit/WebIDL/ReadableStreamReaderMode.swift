@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ReadableStreamReaderMode: String, JSValueCompatible {
-    case byob
+public enum ReadableStreamReaderMode: JSString, JSValueCompatible {
+    case byob = "byob"
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
@@ -13,8 +13,8 @@ public enum ReadableStreamReaderMode: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

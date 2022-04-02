@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasLineCap: String, JSValueCompatible {
-    case butt
-    case round
-    case square
+public enum CanvasLineCap: JSString, JSValueCompatible {
+    case butt = "butt"
+    case round = "round"
+    case square = "square"
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
@@ -15,8 +15,8 @@ public enum CanvasLineCap: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

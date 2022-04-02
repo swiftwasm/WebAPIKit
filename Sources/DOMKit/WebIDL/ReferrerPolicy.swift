@@ -3,12 +3,12 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ReferrerPolicy: String, JSValueCompatible {
+public enum ReferrerPolicy: JSString, JSValueCompatible {
     case _empty = ""
     case noReferrer = "no-referrer"
     case noReferrerWhenDowngrade = "no-referrer-when-downgrade"
     case sameOrigin = "same-origin"
-    case origin
+    case origin = "origin"
     case strictOrigin = "strict-origin"
     case originWhenCrossOrigin = "origin-when-cross-origin"
     case strictOriginWhenCrossOrigin = "strict-origin-when-cross-origin"
@@ -21,8 +21,8 @@ public enum ReferrerPolicy: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

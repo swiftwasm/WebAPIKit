@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum PredefinedColorSpace: String, JSValueCompatible {
-    case srgb
+public enum PredefinedColorSpace: JSString, JSValueCompatible {
+    case srgb = "srgb"
     case displayP3 = "display-p3"
 
     public static func construct(from jsValue: JSValue) -> Self? {
@@ -14,8 +14,8 @@ public enum PredefinedColorSpace: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

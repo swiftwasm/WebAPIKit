@@ -3,14 +3,14 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasFontStretch: String, JSValueCompatible {
+public enum CanvasFontStretch: JSString, JSValueCompatible {
     case ultraCondensed = "ultra-condensed"
     case extraCondensed = "extra-condensed"
-    case condensed
+    case condensed = "condensed"
     case semiCondensed = "semi-condensed"
-    case normal
+    case normal = "normal"
     case semiExpanded = "semi-expanded"
-    case expanded
+    case expanded = "expanded"
     case extraExpanded = "extra-expanded"
     case ultraExpanded = "ultra-expanded"
 
@@ -21,8 +21,8 @@ public enum CanvasFontStretch: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

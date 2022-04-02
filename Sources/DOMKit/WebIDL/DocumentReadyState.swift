@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum DocumentReadyState: String, JSValueCompatible {
-    case loading
-    case interactive
-    case complete
+public enum DocumentReadyState: JSString, JSValueCompatible {
+    case loading = "loading"
+    case interactive = "interactive"
+    case complete = "complete"
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
@@ -15,8 +15,8 @@ public enum DocumentReadyState: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

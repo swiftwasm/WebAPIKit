@@ -128,7 +128,7 @@ extension MergedDictionary: SwiftRepresentable {
 extension IDLEnum: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
-        public enum \(name): String, JSValueCompatible {
+        public enum \(name): JSString, JSValueCompatible {
             \(lines: cases.map { "case \($0.camelized) = \(quoted: $0)" })
 
             public static func construct(from jsValue: JSValue) -> Self? {
@@ -138,8 +138,8 @@ extension IDLEnum: SwiftRepresentable {
                 return nil
             }
 
-            public init?(rawValue: String) {
-                self.init(rawValue: JSString(rawValue))
+            public init?(string: String) {
+                self.init(rawValue: JSString(string))
             }
 
             public func jsValue() -> JSValue { rawValue.jsValue() }

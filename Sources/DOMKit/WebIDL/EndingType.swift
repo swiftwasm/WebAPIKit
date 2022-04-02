@@ -3,9 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum EndingType: String, JSValueCompatible {
-    case transparent
-    case native
+public enum EndingType: JSString, JSValueCompatible {
+    case transparent = "transparent"
+    case native = "native"
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
@@ -14,8 +14,8 @@ public enum EndingType: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

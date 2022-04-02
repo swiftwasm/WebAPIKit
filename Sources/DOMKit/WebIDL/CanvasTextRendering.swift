@@ -3,11 +3,11 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasTextRendering: String, JSValueCompatible {
-    case auto
-    case optimizeSpeed
-    case optimizeLegibility
-    case geometricPrecision
+public enum CanvasTextRendering: JSString, JSValueCompatible {
+    case auto = "auto"
+    case optimizeSpeed = "optimizeSpeed"
+    case optimizeLegibility = "optimizeLegibility"
+    case geometricPrecision = "geometricPrecision"
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
@@ -16,8 +16,8 @@ public enum CanvasTextRendering: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

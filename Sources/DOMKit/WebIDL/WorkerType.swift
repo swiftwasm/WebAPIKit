@@ -3,9 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum WorkerType: String, JSValueCompatible {
-    case classic
-    case module
+public enum WorkerType: JSString, JSValueCompatible {
+    case classic = "classic"
+    case module = "module"
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
@@ -14,8 +14,8 @@ public enum WorkerType: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

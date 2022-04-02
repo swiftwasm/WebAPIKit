@@ -3,13 +3,13 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ResponseType: String, JSValueCompatible {
-    case basic
-    case cors
-    case `default`
-    case error
-    case opaque
-    case opaqueredirect
+public enum ResponseType: JSString, JSValueCompatible {
+    case basic = "basic"
+    case cors = "cors"
+    case `default` = "default"
+    case error = "error"
+    case opaque = "opaque"
+    case opaqueredirect = "opaqueredirect"
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
@@ -18,8 +18,8 @@ public enum ResponseType: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

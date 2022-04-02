@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum RequestCache: String, JSValueCompatible {
-    case `default`
+public enum RequestCache: JSString, JSValueCompatible {
+    case `default` = "default"
     case noStore = "no-store"
-    case reload
+    case reload = "reload"
     case noCache = "no-cache"
     case forceCache = "force-cache"
     case onlyIfCached = "only-if-cached"
@@ -18,8 +18,8 @@ public enum RequestCache: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }

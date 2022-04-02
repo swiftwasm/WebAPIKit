@@ -3,13 +3,13 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum XMLHttpRequestResponseType: String, JSValueCompatible {
+public enum XMLHttpRequestResponseType: JSString, JSValueCompatible {
     case _empty = ""
-    case arraybuffer
-    case blob
-    case document
-    case json
-    case text
+    case arraybuffer = "arraybuffer"
+    case blob = "blob"
+    case document = "document"
+    case json = "json"
+    case text = "text"
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
@@ -18,8 +18,8 @@ public enum XMLHttpRequestResponseType: String, JSValueCompatible {
         return nil
     }
 
-    public init?(rawValue: String) {
-        self.init(rawValue: JSString(rawValue))
+    public init?(string: String) {
+        self.init(rawValue: JSString(string))
     }
 
     public func jsValue() -> JSValue { rawValue.jsValue() }
