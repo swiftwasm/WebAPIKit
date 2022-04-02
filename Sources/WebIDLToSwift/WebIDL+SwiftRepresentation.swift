@@ -302,7 +302,7 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
 
 extension MergedNamespace: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let this: SwiftSource = "JSObject.global.[\(Context.source(for: name))].object!"
+        let this: SwiftSource = "JSObject.global[\(Context.source(for: name))].object!"
         let body = Context.withState(.static(this: this, inClass: false, className: "\(name)")) {
             members.map(toSwift).joined(separator: "\n\n")
         }

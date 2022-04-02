@@ -27,7 +27,7 @@ enum IDLBuilder {
     }
 
     static func generateIDLBindings(idl: [String: GenericCollection<IDLNode>]) throws {
-        let declarations = idl.values.flatMap { $0.array }
+        let declarations = idl.values.flatMap(\.array)
         let merged = DeclarationMerger.merge(declarations: declarations)
         for (i, node) in merged.declarations.enumerated() {
             guard let nameNode = Mirror(reflecting: node).children.first(where: { $0.label == "name" }),
@@ -39,20 +39,56 @@ enum IDLBuilder {
                 interfaces: merged.interfaces,
                 ignored: [
                     // functions as parameters are unsupported
-                    "EventTarget": ["addEventListener", "removeEventListener"],
-                    "HTMLCanvasElement": ["toBlob"],
                     "AnimationFrameProvider": ["requestAnimationFrame"],
+                    "AnimationWorkletGlobalScope": ["registerAnimator"],
+                    "AudioWorkletGlobalScope": ["registerProcessor"],
+                    "BaseAudioContext": ["decodeAudioData"],
+                    "ComputePressureObserver": ["<constructor>"],
                     "DataTransferItem": ["getAsString"],
-                    "WindowOrWorkerGlobalScope": ["queueMicrotask"],
+                    "FileSystemDirectoryEntry": ["getFile", "getDirectory"],
+                    "FileSystemDirectoryReader": ["readEntries"],
+                    "FileSystemEntry": ["getParent"],
+                    "FileSystemFileEntry": ["file"],
+                    "Geolocation": ["getCurrentPosition", "watchPosition"],
+                    "HTMLCanvasElement": ["toBlob"],
+                    "HTMLVideoElement": ["requestVideoFrameCallback"],
+                    "IntersectionObserver": ["<constructor>"],
+                    "LayoutWorkletGlobalScope": ["registerLayout"],
+                    "LockManager": ["request"],
+                    "MediaSession": ["setActionHandler"],
                     "MutationObserver": ["<constructor>"],
+                    "Navigator": ["getUserMedia"],
+                    "Notification": ["requestPermission"],
+                    "PaintWorkletGlobalScope": ["registerPaint"],
+                    "PerformanceObserver": ["<constructor>"],
+                    "RemotePlayback": ["watchAvailability"],
+                    "ReportingObserver": ["<constructor>"],
+                    "ResizeObserver": ["<constructor>"],
+                    "RTCPeerConnection": ["createOffer", "setLocalDescription", "createAnswer", "setRemoteDescription", "addIceCandidate"],
+                    "Scheduler": ["postTask"],
+                    "Window": ["requestIdleCallback"],
+                    "WindowOrWorkerGlobalScope": ["queueMicrotask"],
+                    "XRSession": ["requestAnimationFrame"],
+                    // Void-returning functions are unsupported
+                    "AudioDecoderInit": ["<constructor>", "output", "error"],
+                    "AudioEncoderInit": ["<constructor>", "output", "error"],
+                    "VideoDecoderInit": ["<constructor > ", "output", "error"],
+                    "VideoEncoderInit": ["<constructor>", "output", "error"],
+                    // variadic functions are unsupported
+                    "TrustedTypePolicyOptions": ["<constructor>", "createHTML", "createScript", "createScriptURL"],
                     // functions as return types are unsupported
                     "CustomElementRegistry": ["define", "whenDefined"],
                     // NodeFilter
                     "Document": ["createNodeIterator", "createTreeWalker"],
-                    "TreeWalker": ["filter"],
                     "NodeIterator": ["filter"],
-                    // invalid overload in Swift
+                    "TreeWalker": ["filter"],
+                    // EventListener
+                    "EventTarget": ["addEventListener", "removeEventListener"],
+                    "MediaQueryList": ["addListener", "removeListener"],
+                    // invalid override in Swift
                     "BeforeUnloadEvent": ["returnValue"],
+                    "CSSColor": ["colorSpace"],
+                    "SVGElement": ["className"],
                     // XPathNSResolver
                     "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
                 ],
@@ -85,7 +121,7 @@ enum IDLBuilder {
         let stringsContent: SwiftSource = """
             enum Strings {
                 static let _self: JSString = "self"
-                \(lines: strings.map { "static let \($0): JSString = \(quoted: $0)" })
+                \(lines: strings.map { "static let `\(raw: $0)`: JSString = \(quoted: $0)" })
             }
         """
 
