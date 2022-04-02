@@ -10,10 +10,11 @@ enum IDLBuilder {
     \n
     """
 
-    // dictionaries that depend on types not exposed to Window environments
     static let ignoredNames: Set = [
+        // dictionaries that depend on types not exposed to Window environments
         "BreakTokenOptions", "TrustedTypePolicyOptions", "FragmentResultOptions",
         "Client_or_MessagePort_or_ServiceWorker", "ExtendableMessageEventInit",
+        // redundant unions
         "CSSColorValue_or_CSSStyleValue",
     ]
 
@@ -81,8 +82,6 @@ enum IDLBuilder {
                     "XRSession": ["requestAnimationFrame"],
                     // variadic callbacks are unsupported
                     "TrustedTypePolicyFactory": ["createPolicy"],
-                    // functions as return types are unsupported
-                    "CustomElementRegistry": ["define", "whenDefined"],
                     // NodeFilter
                     "Document": ["createNodeIterator", "createTreeWalker"],
                     "NodeIterator": ["filter"],

@@ -1,7 +1,11 @@
 import WebIDL
 
 enum DeclarationMerger {
-    static let ignoredTypedefs: Set<String> = ["Function", "AudioWorkletProcessorConstructor"]
+    static let ignoredTypedefs: Set<String> = [
+        "Function",
+        "AudioWorkletProcessorConstructor",
+        "CustomElementConstructor",
+    ]
     static let validExposures: Set<String> = ["Window"]
 
     private static func addAsync(_ members: [IDLNode]) -> [IDLNode] {

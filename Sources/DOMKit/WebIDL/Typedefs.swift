@@ -146,7 +146,6 @@ public typealias FileCallback = (File) -> Void
 public typealias PositionCallback = (GeolocationPosition) -> Void
 public typealias PositionErrorCallback = (GeolocationPositionError) -> Void
 public typealias BlobCallback = (Blob?) -> Void
-public typealias CustomElementConstructor = () -> HTMLElement
 public typealias FunctionStringCallback = (String) -> Void
 public typealias EventHandlerNonNull = (Event) -> JSValue
 public typealias OnErrorEventHandlerNonNull = (Event_or_String, String, UInt32, UInt32, JSValue) -> JSValue

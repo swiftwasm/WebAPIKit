@@ -12,16 +12,27 @@ public class CustomElementRegistry: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    // XXX: member 'define' is ignored
+    @inlinable public func define(name: String, constructor: CustomElementConstructor, options: ElementDefinitionOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.define].function!(this: this, arguments: [name.jsValue(), constructor.jsValue(), options?.jsValue() ?? .undefined])
+    }
 
     @inlinable public func get(name: String) -> CustomElementConstructor? {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    // XXX: member 'whenDefined' is ignored
+    @inlinable public func whenDefined(name: String) -> JSPromise {
+        let this = jsObject
+        return this[Strings.whenDefined].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+    }
 
-    // XXX: member 'whenDefined' is ignored
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func whenDefined(name: String) async throws -> CustomElementConstructor {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.whenDefined].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
 
     @inlinable public func upgrade(root: Node) {
         let this = jsObject
