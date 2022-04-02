@@ -15,6 +15,7 @@ public class CanvasCaptureMediaStreamTrack: MediaStreamTrack {
     public var canvas: HTMLCanvasElement
 
     public func requestFrame() {
-        _ = jsObject[Strings.requestFrame]!()
+        let this = jsObject
+        _ = this[Strings.requestFrame].function!(this: this, arguments: [])
     }
 }

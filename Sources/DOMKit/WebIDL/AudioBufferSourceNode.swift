@@ -39,6 +39,7 @@ public class AudioBufferSourceNode: AudioScheduledSourceNode {
     public var loopEnd: Double
 
     override public func start(when: Double? = nil, offset: Double? = nil, duration: Double? = nil) {
-        _ = jsObject[Strings.start]!(when?.jsValue() ?? .undefined, offset?.jsValue() ?? .undefined, duration?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue() ?? .undefined, offset?.jsValue() ?? .undefined, duration?.jsValue() ?? .undefined])
     }
 }

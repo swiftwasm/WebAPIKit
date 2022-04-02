@@ -12,15 +12,18 @@ public class Range: AbstractRange {
     }
 
     public func createContextualFragment(fragment: String) -> DocumentFragment {
-        jsObject[Strings.createContextualFragment]!(fragment.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createContextualFragment].function!(this: this, arguments: [fragment.jsValue()]).fromJSValue()!
     }
 
     public func getClientRects() -> DOMRectList {
-        jsObject[Strings.getClientRects]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getClientRects].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getBoundingClientRect() -> DOMRect {
-        jsObject[Strings.getBoundingClientRect]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getBoundingClientRect].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public convenience init() {
@@ -31,39 +34,48 @@ public class Range: AbstractRange {
     public var commonAncestorContainer: Node
 
     public func setStart(node: Node, offset: UInt32) {
-        _ = jsObject[Strings.setStart]!(node.jsValue(), offset.jsValue())
+        let this = jsObject
+        _ = this[Strings.setStart].function!(this: this, arguments: [node.jsValue(), offset.jsValue()])
     }
 
     public func setEnd(node: Node, offset: UInt32) {
-        _ = jsObject[Strings.setEnd]!(node.jsValue(), offset.jsValue())
+        let this = jsObject
+        _ = this[Strings.setEnd].function!(this: this, arguments: [node.jsValue(), offset.jsValue()])
     }
 
     public func setStartBefore(node: Node) {
-        _ = jsObject[Strings.setStartBefore]!(node.jsValue())
+        let this = jsObject
+        _ = this[Strings.setStartBefore].function!(this: this, arguments: [node.jsValue()])
     }
 
     public func setStartAfter(node: Node) {
-        _ = jsObject[Strings.setStartAfter]!(node.jsValue())
+        let this = jsObject
+        _ = this[Strings.setStartAfter].function!(this: this, arguments: [node.jsValue()])
     }
 
     public func setEndBefore(node: Node) {
-        _ = jsObject[Strings.setEndBefore]!(node.jsValue())
+        let this = jsObject
+        _ = this[Strings.setEndBefore].function!(this: this, arguments: [node.jsValue()])
     }
 
     public func setEndAfter(node: Node) {
-        _ = jsObject[Strings.setEndAfter]!(node.jsValue())
+        let this = jsObject
+        _ = this[Strings.setEndAfter].function!(this: this, arguments: [node.jsValue()])
     }
 
     public func collapse(toStart: Bool? = nil) {
-        _ = jsObject[Strings.collapse]!(toStart?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.collapse].function!(this: this, arguments: [toStart?.jsValue() ?? .undefined])
     }
 
     public func selectNode(node: Node) {
-        _ = jsObject[Strings.selectNode]!(node.jsValue())
+        let this = jsObject
+        _ = this[Strings.selectNode].function!(this: this, arguments: [node.jsValue()])
     }
 
     public func selectNodeContents(node: Node) {
-        _ = jsObject[Strings.selectNodeContents]!(node.jsValue())
+        let this = jsObject
+        _ = this[Strings.selectNodeContents].function!(this: this, arguments: [node.jsValue()])
     }
 
     public static let START_TO_START: UInt16 = 0
@@ -75,47 +87,58 @@ public class Range: AbstractRange {
     public static let END_TO_START: UInt16 = 3
 
     public func compareBoundaryPoints(how: UInt16, sourceRange: Range) -> Int16 {
-        jsObject[Strings.compareBoundaryPoints]!(how.jsValue(), sourceRange.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.compareBoundaryPoints].function!(this: this, arguments: [how.jsValue(), sourceRange.jsValue()]).fromJSValue()!
     }
 
     public func deleteContents() {
-        _ = jsObject[Strings.deleteContents]!()
+        let this = jsObject
+        _ = this[Strings.deleteContents].function!(this: this, arguments: [])
     }
 
     public func extractContents() -> DocumentFragment {
-        jsObject[Strings.extractContents]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.extractContents].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func cloneContents() -> DocumentFragment {
-        jsObject[Strings.cloneContents]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.cloneContents].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func insertNode(node: Node) {
-        _ = jsObject[Strings.insertNode]!(node.jsValue())
+        let this = jsObject
+        _ = this[Strings.insertNode].function!(this: this, arguments: [node.jsValue()])
     }
 
     public func surroundContents(newParent: Node) {
-        _ = jsObject[Strings.surroundContents]!(newParent.jsValue())
+        let this = jsObject
+        _ = this[Strings.surroundContents].function!(this: this, arguments: [newParent.jsValue()])
     }
 
     public func cloneRange() -> Self {
-        jsObject[Strings.cloneRange]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.cloneRange].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func detach() {
-        _ = jsObject[Strings.detach]!()
+        let this = jsObject
+        _ = this[Strings.detach].function!(this: this, arguments: [])
     }
 
     public func isPointInRange(node: Node, offset: UInt32) -> Bool {
-        jsObject[Strings.isPointInRange]!(node.jsValue(), offset.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isPointInRange].function!(this: this, arguments: [node.jsValue(), offset.jsValue()]).fromJSValue()!
     }
 
     public func comparePoint(node: Node, offset: UInt32) -> Int16 {
-        jsObject[Strings.comparePoint]!(node.jsValue(), offset.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.comparePoint].function!(this: this, arguments: [node.jsValue(), offset.jsValue()]).fromJSValue()!
     }
 
     public func intersectsNode(node: Node) -> Bool {
-        jsObject[Strings.intersectsNode]!(node.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.intersectsNode].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
     }
 
     public var description: String {

@@ -17,18 +17,22 @@ public class Sanitizer: JSBridgedClass {
     }
 
     public func sanitize(input: __UNSUPPORTED_UNION__) -> DocumentFragment {
-        jsObject[Strings.sanitize]!(input.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.sanitize].function!(this: this, arguments: [input.jsValue()]).fromJSValue()!
     }
 
     public func sanitizeFor(element: String, input: String) -> Element? {
-        jsObject[Strings.sanitizeFor]!(element.jsValue(), input.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.sanitizeFor].function!(this: this, arguments: [element.jsValue(), input.jsValue()]).fromJSValue()!
     }
 
     public func getConfiguration() -> SanitizerConfig {
-        jsObject[Strings.getConfiguration]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getConfiguration].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public static func getDefaultConfiguration() -> SanitizerConfig {
-        constructor[Strings.getDefaultConfiguration]!().fromJSValue()!
+        let this = constructor
+        return this[Strings.getDefaultConfiguration].function!(this: this, arguments: []).fromJSValue()!
     }
 }

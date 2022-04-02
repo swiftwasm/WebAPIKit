@@ -14,7 +14,8 @@ public class IdleDeadline: JSBridgedClass {
     }
 
     public func timeRemaining() -> DOMHighResTimeStamp {
-        jsObject[Strings.timeRemaining]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.timeRemaining].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute

@@ -13,6 +13,7 @@ public class MLGraph: JSBridgedClass {
     }
 
     public func compute(inputs: MLNamedInputs, outputs: MLNamedOutputs) {
-        _ = jsObject[Strings.compute]!(inputs.jsValue(), outputs.jsValue())
+        let this = jsObject
+        _ = this[Strings.compute].function!(this: this, arguments: [inputs.jsValue(), outputs.jsValue()])
     }
 }

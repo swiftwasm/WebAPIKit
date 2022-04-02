@@ -23,14 +23,17 @@ public class MediaSession: JSBridgedClass {
     // XXX: member 'setActionHandler' is ignored
 
     public func setPositionState(state: MediaPositionState? = nil) {
-        _ = jsObject[Strings.setPositionState]!(state?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setPositionState].function!(this: this, arguments: [state?.jsValue() ?? .undefined])
     }
 
     public func setMicrophoneActive(active: Bool) {
-        _ = jsObject[Strings.setMicrophoneActive]!(active.jsValue())
+        let this = jsObject
+        _ = this[Strings.setMicrophoneActive].function!(this: this, arguments: [active.jsValue()])
     }
 
     public func setCameraActive(active: Bool) {
-        _ = jsObject[Strings.setCameraActive]!(active.jsValue())
+        let this = jsObject
+        _ = this[Strings.setCameraActive].function!(this: this, arguments: [active.jsValue()])
     }
 }

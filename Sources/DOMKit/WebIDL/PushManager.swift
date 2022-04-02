@@ -17,32 +17,38 @@ public class PushManager: JSBridgedClass {
     public var supportedContentEncodings: [String]
 
     public func subscribe(options: PushSubscriptionOptionsInit? = nil) -> JSPromise {
-        jsObject[Strings.subscribe]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.subscribe].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func subscribe(options: PushSubscriptionOptionsInit? = nil) async throws -> PushSubscription {
-        let _promise: JSPromise = jsObject[Strings.subscribe]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.subscribe].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getSubscription() -> JSPromise {
-        jsObject[Strings.getSubscription]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSubscription].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getSubscription() async throws -> PushSubscription? {
-        let _promise: JSPromise = jsObject[Strings.getSubscription]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getSubscription].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func permissionState(options: PushSubscriptionOptionsInit? = nil) -> JSPromise {
-        jsObject[Strings.permissionState]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.permissionState].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func permissionState(options: PushSubscriptionOptionsInit? = nil) async throws -> PermissionState {
-        let _promise: JSPromise = jsObject[Strings.permissionState]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.permissionState].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

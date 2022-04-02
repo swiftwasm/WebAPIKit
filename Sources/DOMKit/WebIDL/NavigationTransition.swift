@@ -25,6 +25,7 @@ public class NavigationTransition: JSBridgedClass {
     public var finished: JSPromise
 
     public func rollback(options: NavigationOptions? = nil) -> NavigationResult {
-        jsObject[Strings.rollback]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.rollback].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 }

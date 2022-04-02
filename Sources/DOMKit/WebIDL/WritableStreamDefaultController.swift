@@ -17,6 +17,7 @@ public class WritableStreamDefaultController: JSBridgedClass {
     public var signal: AbortSignal
 
     public func error(e: JSValue? = nil) {
-        _ = jsObject[Strings.error]!(e?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue() ?? .undefined])
     }
 }

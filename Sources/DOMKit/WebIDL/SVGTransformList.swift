@@ -21,11 +21,13 @@ public class SVGTransformList: JSBridgedClass {
     public var numberOfItems: UInt32
 
     public func clear() {
-        _ = jsObject[Strings.clear]!()
+        let this = jsObject
+        _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 
     public func initialize(newItem: SVGTransform) -> SVGTransform {
-        jsObject[Strings.initialize]!(newItem.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.initialize].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }
 
     public subscript(key: Int) -> SVGTransform {
@@ -33,28 +35,34 @@ public class SVGTransformList: JSBridgedClass {
     }
 
     public func insertItemBefore(newItem: SVGTransform, index: UInt32) -> SVGTransform {
-        jsObject[Strings.insertItemBefore]!(newItem.jsValue(), index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.insertItemBefore].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
     public func replaceItem(newItem: SVGTransform, index: UInt32) -> SVGTransform {
-        jsObject[Strings.replaceItem]!(newItem.jsValue(), index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.replaceItem].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
     public func removeItem(index: UInt32) -> SVGTransform {
-        jsObject[Strings.removeItem]!(index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.removeItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
     public func appendItem(newItem: SVGTransform) -> SVGTransform {
-        jsObject[Strings.appendItem]!(newItem.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.appendItem].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }
 
     // XXX: unsupported setter for keys of type UInt32
 
     public func createSVGTransformFromMatrix(matrix: DOMMatrix2DInit? = nil) -> SVGTransform {
-        jsObject[Strings.createSVGTransformFromMatrix]!(matrix?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSVGTransformFromMatrix].function!(this: this, arguments: [matrix?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func consolidate() -> SVGTransform? {
-        jsObject[Strings.consolidate]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.consolidate].function!(this: this, arguments: []).fromJSValue()!
     }
 }

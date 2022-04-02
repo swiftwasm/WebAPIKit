@@ -17,10 +17,12 @@ public class TimeRanges: JSBridgedClass {
     public var length: UInt32
 
     public func start(index: UInt32) -> Double {
-        jsObject[Strings.start]!(index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.start].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
     public func end(index: UInt32) -> Double {
-        jsObject[Strings.end]!(index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.end].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 }

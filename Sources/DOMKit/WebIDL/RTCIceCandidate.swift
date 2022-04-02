@@ -73,6 +73,7 @@ public class RTCIceCandidate: JSBridgedClass {
     public var usernameFragment: String?
 
     public func toJSON() -> RTCIceCandidateInit {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

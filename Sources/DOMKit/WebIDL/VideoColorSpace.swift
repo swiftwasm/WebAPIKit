@@ -33,6 +33,7 @@ public class VideoColorSpace: JSBridgedClass {
     public var fullRange: Bool?
 
     public func toJSON() -> VideoColorSpaceInit {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

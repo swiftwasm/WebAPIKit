@@ -14,7 +14,8 @@ public class RTCDTMFSender: EventTarget {
     }
 
     public func insertDTMF(tones: String, duration: UInt32? = nil, interToneGap: UInt32? = nil) {
-        _ = jsObject[Strings.insertDTMF]!(tones.jsValue(), duration?.jsValue() ?? .undefined, interToneGap?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.insertDTMF].function!(this: this, arguments: [tones.jsValue(), duration?.jsValue() ?? .undefined, interToneGap?.jsValue() ?? .undefined])
     }
 
     @ClosureAttribute1Optional

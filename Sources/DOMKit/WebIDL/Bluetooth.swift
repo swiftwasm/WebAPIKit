@@ -13,12 +13,14 @@ public class Bluetooth: EventTarget, BluetoothDeviceEventHandlers, Characteristi
     }
 
     public func getAvailability() -> JSPromise {
-        jsObject[Strings.getAvailability]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAvailability].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getAvailability() async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.getAvailability]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getAvailability].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -29,22 +31,26 @@ public class Bluetooth: EventTarget, BluetoothDeviceEventHandlers, Characteristi
     public var referringDevice: BluetoothDevice?
 
     public func getDevices() -> JSPromise {
-        jsObject[Strings.getDevices]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDevices].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getDevices() async throws -> [BluetoothDevice] {
-        let _promise: JSPromise = jsObject[Strings.getDevices]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getDevices].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func requestDevice(options: RequestDeviceOptions? = nil) -> JSPromise {
-        jsObject[Strings.requestDevice]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestDevice].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestDevice(options: RequestDeviceOptions? = nil) async throws -> BluetoothDevice {
-        let _promise: JSPromise = jsObject[Strings.requestDevice]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestDevice].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

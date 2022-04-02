@@ -13,6 +13,7 @@ public class WorkletGroupEffect: JSBridgedClass {
     }
 
     public func getChildren() -> [WorkletAnimationEffect] {
-        jsObject[Strings.getChildren]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getChildren].function!(this: this, arguments: []).fromJSValue()!
     }
 }

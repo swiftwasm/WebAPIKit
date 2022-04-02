@@ -25,6 +25,7 @@ public class RTCSessionDescription: JSBridgedClass {
     public var sdp: String
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

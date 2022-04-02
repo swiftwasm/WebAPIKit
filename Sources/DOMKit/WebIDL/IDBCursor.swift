@@ -33,22 +33,27 @@ public class IDBCursor: JSBridgedClass {
     public var request: IDBRequest
 
     public func advance(count: UInt32) {
-        _ = jsObject[Strings.advance]!(count.jsValue())
+        let this = jsObject
+        _ = this[Strings.advance].function!(this: this, arguments: [count.jsValue()])
     }
 
     public func `continue`(key: JSValue? = nil) {
-        _ = jsObject[Strings.continue]!(key?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.continue].function!(this: this, arguments: [key?.jsValue() ?? .undefined])
     }
 
     public func continuePrimaryKey(key: JSValue, primaryKey: JSValue) {
-        _ = jsObject[Strings.continuePrimaryKey]!(key.jsValue(), primaryKey.jsValue())
+        let this = jsObject
+        _ = this[Strings.continuePrimaryKey].function!(this: this, arguments: [key.jsValue(), primaryKey.jsValue()])
     }
 
     public func update(value: JSValue) -> IDBRequest {
-        jsObject[Strings.update]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.update].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public func delete() -> IDBRequest {
-        jsObject[Strings.delete]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.delete].function!(this: this, arguments: []).fromJSValue()!
     }
 }

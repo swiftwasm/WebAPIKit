@@ -14,11 +14,13 @@ public class VirtualKeyboard: EventTarget {
     }
 
     public func show() {
-        _ = jsObject[Strings.show]!()
+        let this = jsObject
+        _ = this[Strings.show].function!(this: this, arguments: [])
     }
 
     public func hide() {
-        _ = jsObject[Strings.hide]!()
+        let this = jsObject
+        _ = this[Strings.hide].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute

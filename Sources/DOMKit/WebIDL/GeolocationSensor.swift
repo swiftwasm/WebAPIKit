@@ -22,12 +22,14 @@ public class GeolocationSensor: Sensor {
     }
 
     public static func read(readOptions: ReadOptions? = nil) -> JSPromise {
-        constructor[Strings.read]!(readOptions?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.read].function!(this: this, arguments: [readOptions?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func read(readOptions: ReadOptions? = nil) async throws -> GeolocationSensorReading {
-        let _promise: JSPromise = constructor[Strings.read]!(readOptions?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: [readOptions?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

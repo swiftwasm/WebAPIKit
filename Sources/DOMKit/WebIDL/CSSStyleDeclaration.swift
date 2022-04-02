@@ -27,19 +27,23 @@ public class CSSStyleDeclaration: JSBridgedClass {
     }
 
     public func getPropertyValue(property: String) -> String {
-        jsObject[Strings.getPropertyValue]!(property.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPropertyValue].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
     public func getPropertyPriority(property: String) -> String {
-        jsObject[Strings.getPropertyPriority]!(property.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPropertyPriority].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
     public func setProperty(property: String, value: String, priority: String? = nil) {
-        _ = jsObject[Strings.setProperty]!(property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setProperty].function!(this: this, arguments: [property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined])
     }
 
     public func removeProperty(property: String) -> String {
-        jsObject[Strings.removeProperty]!(property.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.removeProperty].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute

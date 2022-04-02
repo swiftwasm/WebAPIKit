@@ -15,6 +15,7 @@ public class ExtendableEvent: Event {
     }
 
     public func waitUntil(f: JSPromise) {
-        _ = jsObject[Strings.waitUntil]!(f.jsValue())
+        let this = jsObject
+        _ = this[Strings.waitUntil].function!(this: this, arguments: [f.jsValue()])
     }
 }

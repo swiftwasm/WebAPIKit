@@ -13,6 +13,7 @@ public class CanvasGradient: JSBridgedClass {
     }
 
     public func addColorStop(offset: Double, color: String) {
-        _ = jsObject[Strings.addColorStop]!(offset.jsValue(), color.jsValue())
+        let this = jsObject
+        _ = this[Strings.addColorStop].function!(this: this, arguments: [offset.jsValue(), color.jsValue()])
     }
 }

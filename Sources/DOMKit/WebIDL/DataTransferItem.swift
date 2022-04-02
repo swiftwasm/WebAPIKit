@@ -15,16 +15,19 @@ public class DataTransferItem: JSBridgedClass {
     }
 
     public func webkitGetAsEntry() -> FileSystemEntry? {
-        jsObject[Strings.webkitGetAsEntry]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.webkitGetAsEntry].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getAsFileSystemHandle() -> JSPromise {
-        jsObject[Strings.getAsFileSystemHandle]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAsFileSystemHandle].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getAsFileSystemHandle() async throws -> FileSystemHandle? {
-        let _promise: JSPromise = jsObject[Strings.getAsFileSystemHandle]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getAsFileSystemHandle].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -37,6 +40,7 @@ public class DataTransferItem: JSBridgedClass {
     // XXX: member 'getAsString' is ignored
 
     public func getAsFile() -> File? {
-        jsObject[Strings.getAsFile]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAsFile].function!(this: this, arguments: []).fromJSValue()!
     }
 }

@@ -25,28 +25,34 @@ public class RTCRtpReceiver: JSBridgedClass {
     public var transport: RTCDtlsTransport?
 
     public static func getCapabilities(kind: String) -> RTCRtpCapabilities? {
-        constructor[Strings.getCapabilities]!(kind.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.getCapabilities].function!(this: this, arguments: [kind.jsValue()]).fromJSValue()!
     }
 
     public func getParameters() -> RTCRtpReceiveParameters {
-        jsObject[Strings.getParameters]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getParameters].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getContributingSources() -> [RTCRtpContributingSource] {
-        jsObject[Strings.getContributingSources]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getContributingSources].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getSynchronizationSources() -> [RTCRtpSynchronizationSource] {
-        jsObject[Strings.getSynchronizationSources]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSynchronizationSources].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getStats() -> JSPromise {
-        jsObject[Strings.getStats]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getStats() async throws -> RTCStatsReport {
-        let _promise: JSPromise = jsObject[Strings.getStats]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

@@ -24,11 +24,13 @@ public class Response: JSBridgedClass, Body {
     }
 
     public static func error() -> Self {
-        constructor[Strings.error]!().fromJSValue()!
+        let this = constructor
+        return this[Strings.error].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public static func redirect(url: String, status: UInt16? = nil) -> Self {
-        constructor[Strings.redirect]!(url.jsValue(), status?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.redirect].function!(this: this, arguments: [url.jsValue(), status?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -53,6 +55,7 @@ public class Response: JSBridgedClass, Body {
     public var headers: Headers
 
     public func clone() -> Self {
-        jsObject[Strings.clone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 }

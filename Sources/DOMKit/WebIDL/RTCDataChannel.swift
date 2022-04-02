@@ -77,7 +77,8 @@ public class RTCDataChannel: EventTarget {
     public var onclose: EventHandler
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional
@@ -87,18 +88,22 @@ public class RTCDataChannel: EventTarget {
     public var binaryType: BinaryType
 
     public func send(data: String) {
-        _ = jsObject[Strings.send]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
     public func send(data: Blob) {
-        _ = jsObject[Strings.send]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
     public func send(data: ArrayBuffer) {
-        _ = jsObject[Strings.send]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
     public func send(data: ArrayBufferView) {
-        _ = jsObject[Strings.send]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 }

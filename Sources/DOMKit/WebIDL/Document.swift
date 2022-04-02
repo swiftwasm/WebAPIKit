@@ -74,15 +74,18 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     public var namedFlows: NamedFlowMap
 
     public func elementFromPoint(x: Double, y: Double) -> Element? {
-        jsObject[Strings.elementFromPoint]!(x.jsValue(), y.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.elementFromPoint].function!(this: this, arguments: [x.jsValue(), y.jsValue()]).fromJSValue()!
     }
 
     public func elementsFromPoint(x: Double, y: Double) -> [Element] {
-        jsObject[Strings.elementsFromPoint]!(x.jsValue(), y.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.elementsFromPoint].function!(this: this, arguments: [x.jsValue(), y.jsValue()]).fromJSValue()!
     }
 
     public func caretPositionFromPoint(x: Double, y: Double) -> CaretPosition? {
-        jsObject[Strings.caretPositionFromPoint]!(x.jsValue(), y.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.caretPositionFromPoint].function!(this: this, arguments: [x.jsValue(), y.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -123,67 +126,83 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     public var documentElement: Element?
 
     public func getElementsByTagName(qualifiedName: String) -> HTMLCollection {
-        jsObject[Strings.getElementsByTagName]!(qualifiedName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getElementsByTagName].function!(this: this, arguments: [qualifiedName.jsValue()]).fromJSValue()!
     }
 
     public func getElementsByTagNameNS(namespace: String?, localName: String) -> HTMLCollection {
-        jsObject[Strings.getElementsByTagNameNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getElementsByTagNameNS].function!(this: this, arguments: [namespace.jsValue(), localName.jsValue()]).fromJSValue()!
     }
 
     public func getElementsByClassName(classNames: String) -> HTMLCollection {
-        jsObject[Strings.getElementsByClassName]!(classNames.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getElementsByClassName].function!(this: this, arguments: [classNames.jsValue()]).fromJSValue()!
     }
 
     public func createElement(localName: String, options: __UNSUPPORTED_UNION__? = nil) -> Element {
-        jsObject[Strings.createElement]!(localName.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createElement].function!(this: this, arguments: [localName.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createElementNS(namespace: String?, qualifiedName: String, options: __UNSUPPORTED_UNION__? = nil) -> Element {
-        jsObject[Strings.createElementNS]!(namespace.jsValue(), qualifiedName.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createElementNS].function!(this: this, arguments: [namespace.jsValue(), qualifiedName.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createDocumentFragment() -> DocumentFragment {
-        jsObject[Strings.createDocumentFragment]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createDocumentFragment].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createTextNode(data: String) -> Text {
-        jsObject[Strings.createTextNode]!(data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createTextNode].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
     public func createCDATASection(data: String) -> CDATASection {
-        jsObject[Strings.createCDATASection]!(data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createCDATASection].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
     public func createComment(data: String) -> Comment {
-        jsObject[Strings.createComment]!(data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createComment].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
     public func createProcessingInstruction(target: String, data: String) -> ProcessingInstruction {
-        jsObject[Strings.createProcessingInstruction]!(target.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createProcessingInstruction].function!(this: this, arguments: [target.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     public func importNode(node: Node, deep: Bool? = nil) -> Node {
-        jsObject[Strings.importNode]!(node.jsValue(), deep?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.importNode].function!(this: this, arguments: [node.jsValue(), deep?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func adoptNode(node: Node) -> Node {
-        jsObject[Strings.adoptNode]!(node.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.adoptNode].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
     }
 
     public func createAttribute(localName: String) -> Attr {
-        jsObject[Strings.createAttribute]!(localName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createAttribute].function!(this: this, arguments: [localName.jsValue()]).fromJSValue()!
     }
 
     public func createAttributeNS(namespace: String?, qualifiedName: String) -> Attr {
-        jsObject[Strings.createAttributeNS]!(namespace.jsValue(), qualifiedName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createAttributeNS].function!(this: this, arguments: [namespace.jsValue(), qualifiedName.jsValue()]).fromJSValue()!
     }
 
     public func createEvent(interface: String) -> Event {
-        jsObject[Strings.createEvent]!(interface.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createEvent].function!(this: this, arguments: [interface.jsValue()]).fromJSValue()!
     }
 
     public func createRange() -> Range {
-        jsObject[Strings.createRange]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createRange].function!(this: this, arguments: []).fromJSValue()!
     }
 
     // XXX: member 'createNodeIterator' is ignored
@@ -191,11 +210,13 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     // XXX: member 'createTreeWalker' is ignored
 
     public func measureElement(element: Element) -> FontMetrics {
-        jsObject[Strings.measureElement]!(element.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.measureElement].function!(this: this, arguments: [element.jsValue()]).fromJSValue()!
     }
 
     public func measureText(text: String, styleMap: StylePropertyMapReadOnly) -> FontMetrics {
-        jsObject[Strings.measureText]!(text.jsValue(), styleMap.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.measureText].function!(this: this, arguments: [text.jsValue(), styleMap.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -205,12 +226,14 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     public var fullscreen: Bool
 
     public func exitFullscreen() -> JSPromise {
-        jsObject[Strings.exitFullscreen]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.exitFullscreen].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func exitFullscreen() async throws {
-        let _promise: JSPromise = jsObject[Strings.exitFullscreen]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.exitFullscreen].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
@@ -273,64 +296,77 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     public var scripts: HTMLCollection
 
     public func getElementsByName(elementName: String) -> NodeList {
-        jsObject[Strings.getElementsByName]!(elementName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getElementsByName].function!(this: this, arguments: [elementName.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var currentScript: HTMLOrSVGScriptElement?
 
     public func open(unused1: String? = nil, unused2: String? = nil) -> Self {
-        jsObject[Strings.open]!(unused1?.jsValue() ?? .undefined, unused2?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.open].function!(this: this, arguments: [unused1?.jsValue() ?? .undefined, unused2?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func open(url: String, name: String, features: String) -> WindowProxy? {
-        jsObject[Strings.open]!(url.jsValue(), name.jsValue(), features.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.open].function!(this: this, arguments: [url.jsValue(), name.jsValue(), features.jsValue()]).fromJSValue()!
     }
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     public func write(text: String...) {
-        _ = jsObject[Strings.write]!(text.jsValue())
+        let this = jsObject
+        _ = this[Strings.write].function!(this: this, arguments: text.map { $0.jsValue() })
     }
 
     public func writeln(text: String...) {
-        _ = jsObject[Strings.writeln]!(text.jsValue())
+        let this = jsObject
+        _ = this[Strings.writeln].function!(this: this, arguments: text.map { $0.jsValue() })
     }
 
     @ReadonlyAttribute
     public var defaultView: WindowProxy?
 
     public func hasFocus() -> Bool {
-        jsObject[Strings.hasFocus]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.hasFocus].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadWriteAttribute
     public var designMode: String
 
     public func execCommand(commandId: String, showUI: Bool? = nil, value: String? = nil) -> Bool {
-        jsObject[Strings.execCommand]!(commandId.jsValue(), showUI?.jsValue() ?? .undefined, value?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.execCommand].function!(this: this, arguments: [commandId.jsValue(), showUI?.jsValue() ?? .undefined, value?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func queryCommandEnabled(commandId: String) -> Bool {
-        jsObject[Strings.queryCommandEnabled]!(commandId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.queryCommandEnabled].function!(this: this, arguments: [commandId.jsValue()]).fromJSValue()!
     }
 
     public func queryCommandIndeterm(commandId: String) -> Bool {
-        jsObject[Strings.queryCommandIndeterm]!(commandId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.queryCommandIndeterm].function!(this: this, arguments: [commandId.jsValue()]).fromJSValue()!
     }
 
     public func queryCommandState(commandId: String) -> Bool {
-        jsObject[Strings.queryCommandState]!(commandId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.queryCommandState].function!(this: this, arguments: [commandId.jsValue()]).fromJSValue()!
     }
 
     public func queryCommandSupported(commandId: String) -> Bool {
-        jsObject[Strings.queryCommandSupported]!(commandId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.queryCommandSupported].function!(this: this, arguments: [commandId.jsValue()]).fromJSValue()!
     }
 
     public func queryCommandValue(commandId: String) -> String {
-        jsObject[Strings.queryCommandValue]!(commandId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.queryCommandValue].function!(this: this, arguments: [commandId.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -367,15 +403,18 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     public var applets: HTMLCollection
 
     public func clear() {
-        _ = jsObject[Strings.clear]!()
+        let this = jsObject
+        _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 
     public func captureEvents() {
-        _ = jsObject[Strings.captureEvents]!()
+        let this = jsObject
+        _ = this[Strings.captureEvents].function!(this: this, arguments: [])
     }
 
     public func releaseEvents() {
-        _ = jsObject[Strings.releaseEvents]!()
+        let this = jsObject
+        _ = this[Strings.releaseEvents].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute
@@ -397,12 +436,14 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     public var pictureInPictureEnabled: Bool
 
     public func exitPictureInPicture() -> JSPromise {
-        jsObject[Strings.exitPictureInPicture]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.exitPictureInPicture].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func exitPictureInPicture() async throws {
-        let _promise: JSPromise = jsObject[Strings.exitPictureInPicture]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.exitPictureInPicture].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
@@ -413,33 +454,39 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     public var onpointerlockerror: EventHandler
 
     public func exitPointerLock() {
-        _ = jsObject[Strings.exitPointerLock]!()
+        let this = jsObject
+        _ = this[Strings.exitPointerLock].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute
     public var fragmentDirective: FragmentDirective
 
     public func getSelection() -> Selection? {
-        jsObject[Strings.getSelection]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSelection].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func hasStorageAccess() -> JSPromise {
-        jsObject[Strings.hasStorageAccess]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.hasStorageAccess].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func hasStorageAccess() async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.hasStorageAccess]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.hasStorageAccess].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func requestStorageAccess() -> JSPromise {
-        jsObject[Strings.requestStorageAccess]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestStorageAccess].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestStorageAccess() async throws {
-        let _promise: JSPromise = jsObject[Strings.requestStorageAccess]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestStorageAccess].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 

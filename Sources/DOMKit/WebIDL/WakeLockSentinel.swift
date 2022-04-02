@@ -20,12 +20,14 @@ public class WakeLockSentinel: EventTarget {
     public var type: WakeLockType
 
     public func release() -> JSPromise {
-        jsObject[Strings.release]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.release].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func release() async throws {
-        let _promise: JSPromise = jsObject[Strings.release]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.release].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 

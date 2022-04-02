@@ -34,15 +34,18 @@ public class IDBTransaction: EventTarget {
     public var error: DOMException?
 
     public func objectStore(name: String) -> IDBObjectStore {
-        jsObject[Strings.objectStore]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.objectStore].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public func commit() {
-        _ = jsObject[Strings.commit]!()
+        let this = jsObject
+        _ = this[Strings.commit].function!(this: this, arguments: [])
     }
 
     public func abort() {
-        _ = jsObject[Strings.abort]!()
+        let this = jsObject
+        _ = this[Strings.abort].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional

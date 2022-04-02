@@ -35,6 +35,7 @@ public class SVGFEGaussianBlurElement: SVGElement, SVGFilterPrimitiveStandardAtt
     public var edgeMode: SVGAnimatedEnumeration
 
     public func setStdDeviation(stdDeviationX: Float, stdDeviationY: Float) {
-        _ = jsObject[Strings.setStdDeviation]!(stdDeviationX.jsValue(), stdDeviationY.jsValue())
+        let this = jsObject
+        _ = this[Strings.setStdDeviation].function!(this: this, arguments: [stdDeviationX.jsValue(), stdDeviationY.jsValue()])
     }
 }

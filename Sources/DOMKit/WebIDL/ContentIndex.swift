@@ -13,32 +13,38 @@ public class ContentIndex: JSBridgedClass {
     }
 
     public func add(description: ContentDescription) -> JSPromise {
-        jsObject[Strings.add]!(description.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.add].function!(this: this, arguments: [description.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func add(description: ContentDescription) async throws {
-        let _promise: JSPromise = jsObject[Strings.add]!(description.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.add].function!(this: this, arguments: [description.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func delete(id: String) -> JSPromise {
-        jsObject[Strings.delete]!(id.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.delete].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func delete(id: String) async throws {
-        let _promise: JSPromise = jsObject[Strings.delete]!(id.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getAll() -> JSPromise {
-        jsObject[Strings.getAll]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAll].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getAll() async throws -> [ContentDescription] {
-        let _promise: JSPromise = jsObject[Strings.getAll]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getAll].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

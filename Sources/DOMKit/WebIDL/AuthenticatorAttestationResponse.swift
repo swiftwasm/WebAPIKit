@@ -15,18 +15,22 @@ public class AuthenticatorAttestationResponse: AuthenticatorResponse {
     public var attestationObject: ArrayBuffer
 
     public func getTransports() -> [String] {
-        jsObject[Strings.getTransports]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTransports].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getAuthenticatorData() -> ArrayBuffer {
-        jsObject[Strings.getAuthenticatorData]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAuthenticatorData].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getPublicKey() -> ArrayBuffer? {
-        jsObject[Strings.getPublicKey]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPublicKey].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getPublicKeyAlgorithm() -> COSEAlgorithmIdentifier {
-        jsObject[Strings.getPublicKeyAlgorithm]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPublicKeyAlgorithm].function!(this: this, arguments: []).fromJSValue()!
     }
 }

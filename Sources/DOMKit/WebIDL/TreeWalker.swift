@@ -27,30 +27,37 @@ public class TreeWalker: JSBridgedClass {
     public var currentNode: Node
 
     public func parentNode() -> Node? {
-        jsObject[Strings.parentNode]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.parentNode].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func firstChild() -> Node? {
-        jsObject[Strings.firstChild]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.firstChild].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func lastChild() -> Node? {
-        jsObject[Strings.lastChild]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.lastChild].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func previousSibling() -> Node? {
-        jsObject[Strings.previousSibling]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.previousSibling].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func nextSibling() -> Node? {
-        jsObject[Strings.nextSibling]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.nextSibling].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func previousNode() -> Node? {
-        jsObject[Strings.previousNode]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.previousNode].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func nextNode() -> Node? {
-        jsObject[Strings.nextNode]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.nextNode].function!(this: this, arguments: []).fromJSValue()!
     }
 }

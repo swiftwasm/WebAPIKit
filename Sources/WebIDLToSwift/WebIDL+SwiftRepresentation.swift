@@ -365,6 +365,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
     fileprivate var defaultBody: (prep: SwiftSource, call: SwiftSource) {
         let args: [SwiftSource]
         let prep: [SwiftSource]
+        assert(arguments.dropLast().allSatisfy { !$0.variadic })
         if arguments.count <= 5 {
             args = arguments.map { arg in
                 if arg.optional {
@@ -385,9 +386,26 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             }
         }
 
+        let argsArray: SwiftSource
+        if let last = arguments.last, last.variadic {
+            // TODO: handle optional variadics (if necessary?)
+            let variadic: SwiftSource = "\(last.name).map { $0.jsValue() }"
+            if args.count > 1 {
+                argsArray = "[\(sequence: args.dropLast())] + \(variadic)"
+            } else {
+                argsArray = variadic
+            }
+        } else {
+            argsArray = "[\(sequence: args)]"
+        }
+
+        let function: SwiftSource = "this[\(Context.source(for: name))].function!"
         return (
-            prep: "\(lines: prep)",
-            call: "\(Context.this)[\(Context.source(for: name))]!(\(sequence: args))"
+            prep: """
+            \(lines: prep)
+            let this = \(Context.this)
+            """,
+            call: "\(function)(this: this, arguments: \(argsArray))"
         )
     }
 

@@ -63,26 +63,32 @@ public class MediaRecorder: EventTarget {
     public var audioBitrateMode: BitrateMode
 
     public func start(timeslice: UInt32? = nil) {
-        _ = jsObject[Strings.start]!(timeslice?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [timeslice?.jsValue() ?? .undefined])
     }
 
     public func stop() {
-        _ = jsObject[Strings.stop]!()
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
     public func pause() {
-        _ = jsObject[Strings.pause]!()
+        let this = jsObject
+        _ = this[Strings.pause].function!(this: this, arguments: [])
     }
 
     public func resume() {
-        _ = jsObject[Strings.resume]!()
+        let this = jsObject
+        _ = this[Strings.resume].function!(this: this, arguments: [])
     }
 
     public func requestData() {
-        _ = jsObject[Strings.requestData]!()
+        let this = jsObject
+        _ = this[Strings.requestData].function!(this: this, arguments: [])
     }
 
     public static func isTypeSupported(type: String) -> Bool {
-        constructor[Strings.isTypeSupported]!(type.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 }

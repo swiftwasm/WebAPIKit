@@ -47,6 +47,7 @@ public class NavigateEvent: Event {
     public var info: JSValue
 
     public func transitionWhile(newNavigationAction: JSPromise) {
-        _ = jsObject[Strings.transitionWhile]!(newNavigationAction.jsValue())
+        let this = jsObject
+        _ = this[Strings.transitionWhile].function!(this: this, arguments: [newNavigationAction.jsValue()])
     }
 }

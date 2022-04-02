@@ -25,22 +25,27 @@ public class NamedNodeMap: JSBridgedClass {
     }
 
     public func getNamedItemNS(namespace: String?, localName: String) -> Attr? {
-        jsObject[Strings.getNamedItemNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getNamedItemNS].function!(this: this, arguments: [namespace.jsValue(), localName.jsValue()]).fromJSValue()!
     }
 
     public func setNamedItem(attr: Attr) -> Attr? {
-        jsObject[Strings.setNamedItem]!(attr.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setNamedItem].function!(this: this, arguments: [attr.jsValue()]).fromJSValue()!
     }
 
     public func setNamedItemNS(attr: Attr) -> Attr? {
-        jsObject[Strings.setNamedItemNS]!(attr.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setNamedItemNS].function!(this: this, arguments: [attr.jsValue()]).fromJSValue()!
     }
 
     public func removeNamedItem(qualifiedName: String) -> Attr {
-        jsObject[Strings.removeNamedItem]!(qualifiedName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.removeNamedItem].function!(this: this, arguments: [qualifiedName.jsValue()]).fromJSValue()!
     }
 
     public func removeNamedItemNS(namespace: String?, localName: String) -> Attr {
-        jsObject[Strings.removeNamedItemNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.removeNamedItemNS].function!(this: this, arguments: [namespace.jsValue(), localName.jsValue()]).fromJSValue()!
     }
 }

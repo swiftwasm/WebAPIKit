@@ -29,12 +29,14 @@ public class GPUAdapter: JSBridgedClass {
     public var isFallbackAdapter: Bool
 
     public func requestDevice(descriptor: GPUDeviceDescriptor? = nil) -> JSPromise {
-        jsObject[Strings.requestDevice]!(descriptor?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestDevice].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestDevice(descriptor: GPUDeviceDescriptor? = nil) async throws -> GPUDevice {
-        let _promise: JSPromise = jsObject[Strings.requestDevice]!(descriptor?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestDevice].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

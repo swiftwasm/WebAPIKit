@@ -13,42 +13,50 @@ public class NavigationPreloadManager: JSBridgedClass {
     }
 
     public func enable() -> JSPromise {
-        jsObject[Strings.enable]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.enable].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func enable() async throws {
-        let _promise: JSPromise = jsObject[Strings.enable]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.enable].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func disable() -> JSPromise {
-        jsObject[Strings.disable]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.disable].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func disable() async throws {
-        let _promise: JSPromise = jsObject[Strings.disable]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.disable].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func setHeaderValue(value: String) -> JSPromise {
-        jsObject[Strings.setHeaderValue]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setHeaderValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func setHeaderValue(value: String) async throws {
-        let _promise: JSPromise = jsObject[Strings.setHeaderValue]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.setHeaderValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getState() -> JSPromise {
-        jsObject[Strings.getState]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getState].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getState() async throws -> NavigationPreloadState {
-        let _promise: JSPromise = jsObject[Strings.getState]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getState].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

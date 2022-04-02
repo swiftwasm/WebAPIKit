@@ -39,26 +39,31 @@ public class PaymentRequestEvent: ExtendableEvent {
     public var modifiers: [PaymentDetailsModifier]
 
     public func openWindow(url: String) -> JSPromise {
-        jsObject[Strings.openWindow]!(url.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.openWindow].function!(this: this, arguments: [url.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func openWindow(url: String) async throws -> WindowClient? {
-        let _promise: JSPromise = jsObject[Strings.openWindow]!(url.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.openWindow].function!(this: this, arguments: [url.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func changePaymentMethod(methodName: String, methodDetails: JSObject? = nil) -> JSPromise {
-        jsObject[Strings.changePaymentMethod]!(methodName.jsValue(), methodDetails?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.changePaymentMethod].function!(this: this, arguments: [methodName.jsValue(), methodDetails?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func changePaymentMethod(methodName: String, methodDetails: JSObject? = nil) async throws -> PaymentRequestDetailsUpdate? {
-        let _promise: JSPromise = jsObject[Strings.changePaymentMethod]!(methodName.jsValue(), methodDetails?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.changePaymentMethod].function!(this: this, arguments: [methodName.jsValue(), methodDetails?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func respondWith(handlerResponsePromise: JSPromise) {
-        _ = jsObject[Strings.respondWith]!(handlerResponsePromise.jsValue())
+        let this = jsObject
+        _ = this[Strings.respondWith].function!(this: this, arguments: [handlerResponsePromise.jsValue()])
     }
 }

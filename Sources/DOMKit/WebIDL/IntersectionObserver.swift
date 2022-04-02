@@ -27,18 +27,22 @@ public class IntersectionObserver: JSBridgedClass {
     public var thresholds: [Double]
 
     public func observe(target: Element) {
-        _ = jsObject[Strings.observe]!(target.jsValue())
+        let this = jsObject
+        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue()])
     }
 
     public func unobserve(target: Element) {
-        _ = jsObject[Strings.unobserve]!(target.jsValue())
+        let this = jsObject
+        _ = this[Strings.unobserve].function!(this: this, arguments: [target.jsValue()])
     }
 
     public func disconnect() {
-        _ = jsObject[Strings.disconnect]!()
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
     public func takeRecords() -> [IntersectionObserverEntry] {
-        jsObject[Strings.takeRecords]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.takeRecords].function!(this: this, arguments: []).fromJSValue()!
     }
 }

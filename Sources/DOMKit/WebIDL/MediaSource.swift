@@ -47,26 +47,32 @@ public class MediaSource: EventTarget {
     public var canConstructInDedicatedWorker: Bool
 
     public func addSourceBuffer(type: String) -> SourceBuffer {
-        jsObject[Strings.addSourceBuffer]!(type.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.addSourceBuffer].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     public func removeSourceBuffer(sourceBuffer: SourceBuffer) {
-        _ = jsObject[Strings.removeSourceBuffer]!(sourceBuffer.jsValue())
+        let this = jsObject
+        _ = this[Strings.removeSourceBuffer].function!(this: this, arguments: [sourceBuffer.jsValue()])
     }
 
     public func endOfStream(error: EndOfStreamError? = nil) {
-        _ = jsObject[Strings.endOfStream]!(error?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.endOfStream].function!(this: this, arguments: [error?.jsValue() ?? .undefined])
     }
 
     public func setLiveSeekableRange(start: Double, end: Double) {
-        _ = jsObject[Strings.setLiveSeekableRange]!(start.jsValue(), end.jsValue())
+        let this = jsObject
+        _ = this[Strings.setLiveSeekableRange].function!(this: this, arguments: [start.jsValue(), end.jsValue()])
     }
 
     public func clearLiveSeekableRange() {
-        _ = jsObject[Strings.clearLiveSeekableRange]!()
+        let this = jsObject
+        _ = this[Strings.clearLiveSeekableRange].function!(this: this, arguments: [])
     }
 
     public static func isTypeSupported(type: String) -> Bool {
-        constructor[Strings.isTypeSupported]!(type.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 }

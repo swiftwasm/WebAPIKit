@@ -6,18 +6,22 @@ import JavaScriptKit
 public protocol ChildNode: JSBridgedClass {}
 public extension ChildNode {
     func before(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Strings.before]!(nodes.jsValue())
+        let this = jsObject
+        _ = this[Strings.before].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
     func after(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Strings.after]!(nodes.jsValue())
+        let this = jsObject
+        _ = this[Strings.after].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
     func replaceWith(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Strings.replaceWith]!(nodes.jsValue())
+        let this = jsObject
+        _ = this[Strings.replaceWith].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
     func remove() {
-        _ = jsObject[Strings.remove]!()
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: [])
     }
 }

@@ -17,6 +17,7 @@ public class DOMParser: JSBridgedClass {
     }
 
     public func parseFromString(string: String, type: DOMParserSupportedType) -> Document {
-        jsObject[Strings.parseFromString]!(string.jsValue(), type.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.parseFromString].function!(this: this, arguments: [string.jsValue(), type.jsValue()]).fromJSValue()!
     }
 }

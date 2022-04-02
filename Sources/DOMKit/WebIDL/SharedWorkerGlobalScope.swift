@@ -16,7 +16,8 @@ public class SharedWorkerGlobalScope: WorkerGlobalScope {
     public var name: String
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional

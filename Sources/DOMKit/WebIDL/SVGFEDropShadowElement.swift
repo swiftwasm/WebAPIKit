@@ -31,6 +31,7 @@ public class SVGFEDropShadowElement: SVGElement, SVGFilterPrimitiveStandardAttri
     public var stdDeviationY: SVGAnimatedNumber
 
     public func setStdDeviation(stdDeviationX: Float, stdDeviationY: Float) {
-        _ = jsObject[Strings.setStdDeviation]!(stdDeviationX.jsValue(), stdDeviationY.jsValue())
+        let this = jsObject
+        _ = this[Strings.setStdDeviation].function!(this: this, arguments: [stdDeviationX.jsValue(), stdDeviationY.jsValue()])
     }
 }

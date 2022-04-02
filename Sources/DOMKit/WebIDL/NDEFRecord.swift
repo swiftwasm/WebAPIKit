@@ -41,6 +41,7 @@ public class NDEFRecord: JSBridgedClass {
     public var lang: String?
 
     public func toRecords() -> [NDEFRecord]? {
-        jsObject[Strings.toRecords]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toRecords].function!(this: this, arguments: []).fromJSValue()!
     }
 }

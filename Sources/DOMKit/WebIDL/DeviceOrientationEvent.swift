@@ -31,12 +31,14 @@ public class DeviceOrientationEvent: Event {
     public var absolute: Bool
 
     public static func requestPermission() -> JSPromise {
-        constructor[Strings.requestPermission]!().fromJSValue()!
+        let this = constructor
+        return this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func requestPermission() async throws -> PermissionState {
-        let _promise: JSPromise = constructor[Strings.requestPermission]!().fromJSValue()!
+        let this = constructor
+        let _promise: JSPromise = this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

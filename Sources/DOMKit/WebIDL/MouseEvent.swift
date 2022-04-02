@@ -91,7 +91,8 @@ public class MouseEvent: UIEvent {
     public var relatedTarget: EventTarget?
 
     public func getModifierState(keyArg: String) -> Bool {
-        jsObject[Strings.getModifierState]!(keyArg.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue()]).fromJSValue()!
     }
 
     public func initMouseEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil, screenXArg: Int32? = nil, screenYArg: Int32? = nil, clientXArg: Int32? = nil, clientYArg: Int32? = nil, ctrlKeyArg: Bool? = nil, altKeyArg: Bool? = nil, shiftKeyArg: Bool? = nil, metaKeyArg: Bool? = nil, buttonArg: Int16? = nil, relatedTargetArg: EventTarget? = nil) {
@@ -110,6 +111,7 @@ public class MouseEvent: UIEvent {
         let _arg12 = metaKeyArg?.jsValue() ?? .undefined
         let _arg13 = buttonArg?.jsValue() ?? .undefined
         let _arg14 = relatedTargetArg?.jsValue() ?? .undefined
-        _ = jsObject[Strings.initMouseEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14)
+        let this = jsObject
+        _ = this[Strings.initMouseEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14])
     }
 }

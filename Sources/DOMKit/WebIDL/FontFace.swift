@@ -73,12 +73,14 @@ public class FontFace: JSBridgedClass {
     public var status: FontFaceLoadStatus
 
     public func load() -> JSPromise {
-        jsObject[Strings.load]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.load].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func load() async throws -> FontFace {
-        let _promise: JSPromise = jsObject[Strings.load]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.load].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

@@ -23,14 +23,17 @@ public class HTMLDialogElement: HTMLElement {
     public var returnValue: String
 
     public func show() {
-        _ = jsObject[Strings.show]!()
+        let this = jsObject
+        _ = this[Strings.show].function!(this: this, arguments: [])
     }
 
     public func showModal() {
-        _ = jsObject[Strings.showModal]!()
+        let this = jsObject
+        _ = this[Strings.showModal].function!(this: this, arguments: [])
     }
 
     public func close(returnValue: String? = nil) {
-        _ = jsObject[Strings.close]!(returnValue?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [returnValue?.jsValue() ?? .undefined])
     }
 }

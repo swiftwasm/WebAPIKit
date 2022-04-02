@@ -17,11 +17,13 @@ public class CloseWatcher: EventTarget {
     }
 
     public func destroy() {
-        _ = jsObject[Strings.destroy]!()
+        let this = jsObject
+        _ = this[Strings.destroy].function!(this: this, arguments: [])
     }
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional

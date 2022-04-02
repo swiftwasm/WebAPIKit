@@ -17,6 +17,7 @@ public class XRAnchor: JSBridgedClass {
     public var anchorSpace: XRSpace
 
     public func delete() {
-        _ = jsObject[Strings.delete]!()
+        let this = jsObject
+        _ = this[Strings.delete].function!(this: this, arguments: [])
     }
 }

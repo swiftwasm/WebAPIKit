@@ -14,11 +14,13 @@ public class AbortSignal: EventTarget {
     }
 
     public static func abort(reason: JSValue? = nil) -> Self {
-        constructor[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public static func timeout(milliseconds: UInt64) -> Self {
-        constructor[Strings.timeout]!(milliseconds.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.timeout].function!(this: this, arguments: [milliseconds.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -28,7 +30,8 @@ public class AbortSignal: EventTarget {
     public var reason: JSValue
 
     public func throwIfAborted() {
-        _ = jsObject[Strings.throwIfAborted]!()
+        let this = jsObject
+        _ = this[Strings.throwIfAborted].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional

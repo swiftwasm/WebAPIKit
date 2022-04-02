@@ -13,18 +13,22 @@ public class PermissionsPolicy: JSBridgedClass {
     }
 
     public func allowsFeature(feature: String, origin: String? = nil) -> Bool {
-        jsObject[Strings.allowsFeature]!(feature.jsValue(), origin?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.allowsFeature].function!(this: this, arguments: [feature.jsValue(), origin?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func features() -> [String] {
-        jsObject[Strings.features]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.features].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func allowedFeatures() -> [String] {
-        jsObject[Strings.allowedFeatures]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.allowedFeatures].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getAllowlistForFeature(feature: String) -> [String] {
-        jsObject[Strings.getAllowlistForFeature]!(feature.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAllowlistForFeature].function!(this: this, arguments: [feature.jsValue()]).fromJSValue()!
     }
 }

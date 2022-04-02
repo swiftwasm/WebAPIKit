@@ -41,18 +41,22 @@ public class AudioData: JSBridgedClass {
     public var timestamp: Int64
 
     public func allocationSize(options: AudioDataCopyToOptions) -> UInt32 {
-        jsObject[Strings.allocationSize]!(options.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.allocationSize].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
     }
 
     public func copyTo(destination: BufferSource, options: AudioDataCopyToOptions) {
-        _ = jsObject[Strings.copyTo]!(destination.jsValue(), options.jsValue())
+        let this = jsObject
+        _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue(), options.jsValue()])
     }
 
     public func clone() -> Self {
-        jsObject[Strings.clone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 }

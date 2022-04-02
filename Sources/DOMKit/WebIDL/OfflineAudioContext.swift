@@ -21,32 +21,38 @@ public class OfflineAudioContext: BaseAudioContext {
     }
 
     public func startRendering() -> JSPromise {
-        jsObject[Strings.startRendering]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.startRendering].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func startRendering() async throws -> AudioBuffer {
-        let _promise: JSPromise = jsObject[Strings.startRendering]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.startRendering].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func resume() -> JSPromise {
-        jsObject[Strings.resume]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func resume() async throws {
-        let _promise: JSPromise = jsObject[Strings.resume]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func suspend(suspendTime: Double) -> JSPromise {
-        jsObject[Strings.suspend]!(suspendTime.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func suspend(suspendTime: Double) async throws {
-        let _promise: JSPromise = jsObject[Strings.suspend]!(suspendTime.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 

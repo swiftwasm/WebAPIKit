@@ -31,14 +31,17 @@ public class NodeIterator: JSBridgedClass {
     // XXX: member 'filter' is ignored
 
     public func nextNode() -> Node? {
-        jsObject[Strings.nextNode]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.nextNode].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func previousNode() -> Node? {
-        jsObject[Strings.previousNode]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.previousNode].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func detach() {
-        _ = jsObject[Strings.detach]!()
+        let this = jsObject
+        _ = this[Strings.detach].function!(this: this, arguments: [])
     }
 }

@@ -35,6 +35,7 @@ public class BiquadFilterNode: AudioNode {
     public var gain: AudioParam
 
     public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
-        _ = jsObject[Strings.getFrequencyResponse]!(frequencyHz.jsValue(), magResponse.jsValue(), phaseResponse.jsValue())
+        let this = jsObject
+        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue(), magResponse.jsValue(), phaseResponse.jsValue()])
     }
 }

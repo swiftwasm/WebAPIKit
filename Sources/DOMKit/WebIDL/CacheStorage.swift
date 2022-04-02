@@ -13,52 +13,62 @@ public class CacheStorage: JSBridgedClass {
     }
 
     public func match(request: RequestInfo, options: MultiCacheQueryOptions? = nil) -> JSPromise {
-        jsObject[Strings.match]!(request.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func match(request: RequestInfo, options: MultiCacheQueryOptions? = nil) async throws -> __UNSUPPORTED_UNION__ {
-        let _promise: JSPromise = jsObject[Strings.match]!(request.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func has(cacheName: String) -> JSPromise {
-        jsObject[Strings.has]!(cacheName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.has].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func has(cacheName: String) async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.has]!(cacheName.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.has].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func open(cacheName: String) -> JSPromise {
-        jsObject[Strings.open]!(cacheName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.open].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func open(cacheName: String) async throws -> Cache {
-        let _promise: JSPromise = jsObject[Strings.open]!(cacheName.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func delete(cacheName: String) -> JSPromise {
-        jsObject[Strings.delete]!(cacheName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.delete].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func delete(cacheName: String) async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.delete]!(cacheName.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func keys() -> JSPromise {
-        jsObject[Strings.keys]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.keys].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func keys() async throws -> [String] {
-        let _promise: JSPromise = jsObject[Strings.keys]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.keys].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

@@ -29,7 +29,8 @@ public class WorkerGlobalScope: EventTarget, FontFaceSource, WindowOrWorkerGloba
     public var navigator: WorkerNavigator
 
     public func importScripts(urls: String...) {
-        _ = jsObject[Strings.importScripts]!(urls.jsValue())
+        let this = jsObject
+        _ = this[Strings.importScripts].function!(this: this, arguments: urls.map { $0.jsValue() })
     }
 
     @ClosureAttribute5Optional

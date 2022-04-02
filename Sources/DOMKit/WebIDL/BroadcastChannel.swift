@@ -21,11 +21,13 @@ public class BroadcastChannel: EventTarget {
     public var name: String
 
     public func postMessage(message: JSValue) {
-        _ = jsObject[Strings.postMessage]!(message.jsValue())
+        let this = jsObject
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue()])
     }
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional

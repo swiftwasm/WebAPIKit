@@ -50,32 +50,39 @@ public class MediaStreamTrack: EventTarget {
     public var onended: EventHandler
 
     public func clone() -> Self {
-        jsObject[Strings.clone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func stop() {
-        _ = jsObject[Strings.stop]!()
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
     public func getCapabilities() -> MediaTrackCapabilities {
-        jsObject[Strings.getCapabilities]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCapabilities].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getConstraints() -> MediaTrackConstraints {
-        jsObject[Strings.getConstraints]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getConstraints].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getSettings() -> MediaTrackSettings {
-        jsObject[Strings.getSettings]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSettings].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func applyConstraints(constraints: MediaTrackConstraints? = nil) -> JSPromise {
-        jsObject[Strings.applyConstraints]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func applyConstraints(constraints: MediaTrackConstraints? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.applyConstraints]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 

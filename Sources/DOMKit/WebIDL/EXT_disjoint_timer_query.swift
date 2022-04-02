@@ -27,34 +27,42 @@ public class EXT_disjoint_timer_query: JSBridgedClass {
     public static let GPU_DISJOINT_EXT: GLenum = 0x8FBB
 
     public func createQueryEXT() -> WebGLTimerQueryEXT? {
-        jsObject[Strings.createQueryEXT]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createQueryEXT].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func deleteQueryEXT(query: WebGLTimerQueryEXT?) {
-        _ = jsObject[Strings.deleteQueryEXT]!(query.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteQueryEXT].function!(this: this, arguments: [query.jsValue()])
     }
 
     public func isQueryEXT(query: WebGLTimerQueryEXT?) -> Bool {
-        jsObject[Strings.isQueryEXT]!(query.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isQueryEXT].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
     }
 
     public func beginQueryEXT(target: GLenum, query: WebGLTimerQueryEXT) {
-        _ = jsObject[Strings.beginQueryEXT]!(target.jsValue(), query.jsValue())
+        let this = jsObject
+        _ = this[Strings.beginQueryEXT].function!(this: this, arguments: [target.jsValue(), query.jsValue()])
     }
 
     public func endQueryEXT(target: GLenum) {
-        _ = jsObject[Strings.endQueryEXT]!(target.jsValue())
+        let this = jsObject
+        _ = this[Strings.endQueryEXT].function!(this: this, arguments: [target.jsValue()])
     }
 
     public func queryCounterEXT(query: WebGLTimerQueryEXT, target: GLenum) {
-        _ = jsObject[Strings.queryCounterEXT]!(query.jsValue(), target.jsValue())
+        let this = jsObject
+        _ = this[Strings.queryCounterEXT].function!(this: this, arguments: [query.jsValue(), target.jsValue()])
     }
 
     public func getQueryEXT(target: GLenum, pname: GLenum) -> JSValue {
-        jsObject[Strings.getQueryEXT]!(target.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getQueryEXT].function!(this: this, arguments: [target.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
     public func getQueryObjectEXT(query: WebGLTimerQueryEXT, pname: GLenum) -> JSValue {
-        jsObject[Strings.getQueryObjectEXT]!(query.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getQueryObjectEXT].function!(this: this, arguments: [query.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 }

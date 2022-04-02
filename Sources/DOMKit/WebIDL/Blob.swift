@@ -25,30 +25,36 @@ public class Blob: JSBridgedClass {
     public var type: String
 
     public func slice(start: Int64? = nil, end: Int64? = nil, contentType: String? = nil) -> Self {
-        jsObject[Strings.slice]!(start?.jsValue() ?? .undefined, end?.jsValue() ?? .undefined, contentType?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.slice].function!(this: this, arguments: [start?.jsValue() ?? .undefined, end?.jsValue() ?? .undefined, contentType?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func stream() -> ReadableStream {
-        jsObject[Strings.stream]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.stream].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func text() -> JSPromise {
-        jsObject[Strings.text]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.text].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func text() async throws -> String {
-        let _promise: JSPromise = jsObject[Strings.text]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.text].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func arrayBuffer() -> JSPromise {
-        jsObject[Strings.arrayBuffer]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func arrayBuffer() async throws -> ArrayBuffer {
-        let _promise: JSPromise = jsObject[Strings.arrayBuffer]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

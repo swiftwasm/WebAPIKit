@@ -17,10 +17,12 @@ public class Crypto: JSBridgedClass {
     public var subtle: SubtleCrypto
 
     public func getRandomValues(array: ArrayBufferView) -> ArrayBufferView {
-        jsObject[Strings.getRandomValues]!(array.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRandomValues].function!(this: this, arguments: [array.jsValue()]).fromJSValue()!
     }
 
     public func randomUUID() -> String {
-        jsObject[Strings.randomUUID]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.randomUUID].function!(this: this, arguments: []).fromJSValue()!
     }
 }

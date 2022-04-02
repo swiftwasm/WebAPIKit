@@ -29,36 +29,43 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     public var ready: JSPromise
 
     public func abort(reason: JSValue? = nil) -> JSPromise {
-        jsObject[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func abort(reason: JSValue? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func close() -> JSPromise {
-        jsObject[Strings.close]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func close() async throws {
-        let _promise: JSPromise = jsObject[Strings.close]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func releaseLock() {
-        _ = jsObject[Strings.releaseLock]!()
+        let this = jsObject
+        _ = this[Strings.releaseLock].function!(this: this, arguments: [])
     }
 
     public func write(chunk: JSValue? = nil) -> JSPromise {
-        jsObject[Strings.write]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.write].function!(this: this, arguments: [chunk?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func write(chunk: JSValue? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.write]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [chunk?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

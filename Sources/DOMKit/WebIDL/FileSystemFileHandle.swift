@@ -11,22 +11,26 @@ public class FileSystemFileHandle: FileSystemHandle {
     }
 
     public func getFile() -> JSPromise {
-        jsObject[Strings.getFile]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getFile].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getFile() async throws -> File {
-        let _promise: JSPromise = jsObject[Strings.getFile]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getFile].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func createWritable(options: FileSystemCreateWritableOptions? = nil) -> JSPromise {
-        jsObject[Strings.createWritable]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createWritable].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func createWritable(options: FileSystemCreateWritableOptions? = nil) async throws -> FileSystemWritableFileStream {
-        let _promise: JSPromise = jsObject[Strings.createWritable]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.createWritable].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

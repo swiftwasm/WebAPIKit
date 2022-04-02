@@ -25,20 +25,24 @@ public class OffscreenCanvas: EventTarget {
     public var height: UInt64
 
     public func getContext(contextId: OffscreenRenderingContextId, options: JSValue? = nil) -> OffscreenRenderingContext? {
-        jsObject[Strings.getContext]!(contextId.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getContext].function!(this: this, arguments: [contextId.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func transferToImageBitmap() -> ImageBitmap {
-        jsObject[Strings.transferToImageBitmap]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.transferToImageBitmap].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func convertToBlob(options: ImageEncodeOptions? = nil) -> JSPromise {
-        jsObject[Strings.convertToBlob]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func convertToBlob(options: ImageEncodeOptions? = nil) async throws -> Blob {
-        let _promise: JSPromise = jsObject[Strings.convertToBlob]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

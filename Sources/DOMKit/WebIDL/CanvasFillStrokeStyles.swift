@@ -16,7 +16,8 @@ public extension CanvasFillStrokeStyles {
     }
 
     func createLinearGradient(x0: Double, y0: Double, x1: Double, y1: Double) -> CanvasGradient {
-        jsObject[Strings.createLinearGradient]!(x0.jsValue(), y0.jsValue(), x1.jsValue(), y1.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createLinearGradient].function!(this: this, arguments: [x0.jsValue(), y0.jsValue(), x1.jsValue(), y1.jsValue()]).fromJSValue()!
     }
 
     func createRadialGradient(x0: Double, y0: Double, r0: Double, x1: Double, y1: Double, r1: Double) -> CanvasGradient {
@@ -26,14 +27,17 @@ public extension CanvasFillStrokeStyles {
         let _arg3 = x1.jsValue()
         let _arg4 = y1.jsValue()
         let _arg5 = r1.jsValue()
-        return jsObject[Strings.createRadialGradient]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createRadialGradient].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
     }
 
     func createConicGradient(startAngle: Double, x: Double, y: Double) -> CanvasGradient {
-        jsObject[Strings.createConicGradient]!(startAngle.jsValue(), x.jsValue(), y.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createConicGradient].function!(this: this, arguments: [startAngle.jsValue(), x.jsValue(), y.jsValue()]).fromJSValue()!
     }
 
     func createPattern(image: CanvasImageSource, repetition: String) -> CanvasPattern? {
-        jsObject[Strings.createPattern]!(image.jsValue(), repetition.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createPattern].function!(this: this, arguments: [image.jsValue(), repetition.jsValue()]).fromJSValue()!
     }
 }

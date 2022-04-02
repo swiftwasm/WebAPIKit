@@ -43,16 +43,19 @@ public class HTMLVideoElement: HTMLMediaElement {
     public var playsInline: Bool
 
     public func getVideoPlaybackQuality() -> VideoPlaybackQuality {
-        jsObject[Strings.getVideoPlaybackQuality]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getVideoPlaybackQuality].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func requestPictureInPicture() -> JSPromise {
-        jsObject[Strings.requestPictureInPicture]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestPictureInPicture].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestPictureInPicture() async throws -> PictureInPictureWindow {
-        let _promise: JSPromise = jsObject[Strings.requestPictureInPicture]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestPictureInPicture].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -71,6 +74,7 @@ public class HTMLVideoElement: HTMLMediaElement {
     // XXX: member 'requestVideoFrameCallback' is ignored
 
     public func cancelVideoFrameCallback(handle: UInt32) {
-        _ = jsObject[Strings.cancelVideoFrameCallback]!(handle.jsValue())
+        let this = jsObject
+        _ = this[Strings.cancelVideoFrameCallback].function!(this: this, arguments: [handle.jsValue()])
     }
 }

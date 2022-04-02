@@ -61,10 +61,12 @@ public class XPathResult: JSBridgedClass {
     public var snapshotLength: UInt32
 
     public func iterateNext() -> Node? {
-        jsObject[Strings.iterateNext]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.iterateNext].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func snapshotItem(index: UInt32) -> Node? {
-        jsObject[Strings.snapshotItem]!(index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.snapshotItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 }

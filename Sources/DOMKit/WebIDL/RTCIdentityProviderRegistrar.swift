@@ -13,6 +13,7 @@ public class RTCIdentityProviderRegistrar: JSBridgedClass {
     }
 
     public func register(idp: RTCIdentityProvider) {
-        _ = jsObject[Strings.register]!(idp.jsValue())
+        let this = jsObject
+        _ = this[Strings.register].function!(this: this, arguments: [idp.jsValue()])
     }
 }

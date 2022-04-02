@@ -17,18 +17,22 @@ public class FileReaderSync: JSBridgedClass {
     }
 
     public func readAsArrayBuffer(blob: Blob) -> ArrayBuffer {
-        jsObject[Strings.readAsArrayBuffer]!(blob.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.readAsArrayBuffer].function!(this: this, arguments: [blob.jsValue()]).fromJSValue()!
     }
 
     public func readAsBinaryString(blob: Blob) -> String {
-        jsObject[Strings.readAsBinaryString]!(blob.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.readAsBinaryString].function!(this: this, arguments: [blob.jsValue()]).fromJSValue()!
     }
 
     public func readAsText(blob: Blob, encoding: String? = nil) -> String {
-        jsObject[Strings.readAsText]!(blob.jsValue(), encoding?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.readAsText].function!(this: this, arguments: [blob.jsValue(), encoding?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func readAsDataURL(blob: Blob) -> String {
-        jsObject[Strings.readAsDataURL]!(blob.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.readAsDataURL].function!(this: this, arguments: [blob.jsValue()]).fromJSValue()!
     }
 }

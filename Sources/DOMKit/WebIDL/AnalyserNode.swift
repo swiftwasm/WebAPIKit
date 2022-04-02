@@ -20,19 +20,23 @@ public class AnalyserNode: AudioNode {
     }
 
     public func getFloatFrequencyData(array: Float32Array) {
-        _ = jsObject[Strings.getFloatFrequencyData]!(array.jsValue())
+        let this = jsObject
+        _ = this[Strings.getFloatFrequencyData].function!(this: this, arguments: [array.jsValue()])
     }
 
     public func getByteFrequencyData(array: Uint8Array) {
-        _ = jsObject[Strings.getByteFrequencyData]!(array.jsValue())
+        let this = jsObject
+        _ = this[Strings.getByteFrequencyData].function!(this: this, arguments: [array.jsValue()])
     }
 
     public func getFloatTimeDomainData(array: Float32Array) {
-        _ = jsObject[Strings.getFloatTimeDomainData]!(array.jsValue())
+        let this = jsObject
+        _ = this[Strings.getFloatTimeDomainData].function!(this: this, arguments: [array.jsValue()])
     }
 
     public func getByteTimeDomainData(array: Uint8Array) {
-        _ = jsObject[Strings.getByteTimeDomainData]!(array.jsValue())
+        let this = jsObject
+        _ = this[Strings.getByteTimeDomainData].function!(this: this, arguments: [array.jsValue()])
     }
 
     @ReadWriteAttribute

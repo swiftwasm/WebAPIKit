@@ -17,6 +17,7 @@ public class TextDecoder: JSBridgedClass, TextDecoderCommon {
     }
 
     public func decode(input: BufferSource? = nil, options: TextDecodeOptions? = nil) -> String {
-        jsObject[Strings.decode]!(input?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.decode].function!(this: this, arguments: [input?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 }

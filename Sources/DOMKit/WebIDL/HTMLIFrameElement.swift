@@ -75,7 +75,8 @@ public class HTMLIFrameElement: HTMLElement {
     public var contentWindow: WindowProxy?
 
     public func getSVGDocument() -> Document? {
-        jsObject[Strings.getSVGDocument]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadWriteAttribute

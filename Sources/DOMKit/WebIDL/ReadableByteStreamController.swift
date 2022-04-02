@@ -21,14 +21,17 @@ public class ReadableByteStreamController: JSBridgedClass {
     public var desiredSize: Double?
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     public func enqueue(chunk: ArrayBufferView) {
-        _ = jsObject[Strings.enqueue]!(chunk.jsValue())
+        let this = jsObject
+        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk.jsValue()])
     }
 
     public func error(e: JSValue? = nil) {
-        _ = jsObject[Strings.error]!(e?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue() ?? .undefined])
     }
 }

@@ -17,10 +17,12 @@ public class TextEncoder: JSBridgedClass, TextEncoderCommon {
     }
 
     public func encode(input: String? = nil) -> Uint8Array {
-        jsObject[Strings.encode]!(input?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.encode].function!(this: this, arguments: [input?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func encodeInto(source: String, destination: Uint8Array) -> TextEncoderEncodeIntoResult {
-        jsObject[Strings.encodeInto]!(source.jsValue(), destination.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.encodeInto].function!(this: this, arguments: [source.jsValue(), destination.jsValue()]).fromJSValue()!
     }
 }

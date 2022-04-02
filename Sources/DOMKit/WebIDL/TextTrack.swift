@@ -45,11 +45,13 @@ public class TextTrack: EventTarget {
     public var activeCues: TextTrackCueList?
 
     public func addCue(cue: TextTrackCue) {
-        _ = jsObject[Strings.addCue]!(cue.jsValue())
+        let this = jsObject
+        _ = this[Strings.addCue].function!(this: this, arguments: [cue.jsValue()])
     }
 
     public func removeCue(cue: TextTrackCue) {
-        _ = jsObject[Strings.removeCue]!(cue.jsValue())
+        let this = jsObject
+        _ = this[Strings.removeCue].function!(this: this, arguments: [cue.jsValue()])
     }
 
     @ClosureAttribute1Optional

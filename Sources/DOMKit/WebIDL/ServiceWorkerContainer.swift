@@ -22,37 +22,44 @@ public class ServiceWorkerContainer: EventTarget {
     public var ready: JSPromise
 
     public func register(scriptURL: String, options: RegistrationOptions? = nil) -> JSPromise {
-        jsObject[Strings.register]!(scriptURL.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func register(scriptURL: String, options: RegistrationOptions? = nil) async throws -> ServiceWorkerRegistration {
-        let _promise: JSPromise = jsObject[Strings.register]!(scriptURL.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getRegistration(clientURL: String? = nil) -> JSPromise {
-        jsObject[Strings.getRegistration]!(clientURL?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getRegistration(clientURL: String? = nil) async throws -> __UNSUPPORTED_UNION__ {
-        let _promise: JSPromise = jsObject[Strings.getRegistration]!(clientURL?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getRegistrations() -> JSPromise {
-        jsObject[Strings.getRegistrations]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRegistrations].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getRegistrations() async throws -> [ServiceWorkerRegistration] {
-        let _promise: JSPromise = jsObject[Strings.getRegistrations]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getRegistrations].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func startMessages() {
-        _ = jsObject[Strings.startMessages]!()
+        let this = jsObject
+        _ = this[Strings.startMessages].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional

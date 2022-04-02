@@ -25,6 +25,7 @@ public class RTCEncodedVideoFrame: JSBridgedClass {
     public var data: ArrayBuffer
 
     public func getMetadata() -> RTCEncodedVideoFrameMetadata {
-        jsObject[Strings.getMetadata]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getMetadata].function!(this: this, arguments: []).fromJSValue()!
     }
 }

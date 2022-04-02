@@ -51,10 +51,12 @@ public class SVGLength: JSBridgedClass {
     public var valueAsString: String
 
     public func newValueSpecifiedUnits(unitType: UInt16, valueInSpecifiedUnits: Float) {
-        _ = jsObject[Strings.newValueSpecifiedUnits]!(unitType.jsValue(), valueInSpecifiedUnits.jsValue())
+        let this = jsObject
+        _ = this[Strings.newValueSpecifiedUnits].function!(this: this, arguments: [unitType.jsValue(), valueInSpecifiedUnits.jsValue()])
     }
 
     public func convertToSpecifiedUnits(unitType: UInt16) {
-        _ = jsObject[Strings.convertToSpecifiedUnits]!(unitType.jsValue())
+        let this = jsObject
+        _ = this[Strings.convertToSpecifiedUnits].function!(this: this, arguments: [unitType.jsValue()])
     }
 }

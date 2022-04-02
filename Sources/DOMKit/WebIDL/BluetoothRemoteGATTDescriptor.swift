@@ -25,22 +25,26 @@ public class BluetoothRemoteGATTDescriptor: JSBridgedClass {
     public var value: DataView?
 
     public func readValue() -> JSPromise {
-        jsObject[Strings.readValue]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.readValue].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func readValue() async throws -> DataView {
-        let _promise: JSPromise = jsObject[Strings.readValue]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.readValue].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func writeValue(value: BufferSource) -> JSPromise {
-        jsObject[Strings.writeValue]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func writeValue(value: BufferSource) async throws {
-        let _promise: JSPromise = jsObject[Strings.writeValue]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

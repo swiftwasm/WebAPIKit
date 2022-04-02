@@ -78,7 +78,8 @@ public class Request: JSBridgedClass, Body {
     public var signal: AbortSignal
 
     public func clone() -> Self {
-        jsObject[Strings.clone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute

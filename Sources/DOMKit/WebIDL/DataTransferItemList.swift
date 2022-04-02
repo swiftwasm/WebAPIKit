@@ -21,18 +21,22 @@ public class DataTransferItemList: JSBridgedClass {
     }
 
     public func add(data: String, type: String) -> DataTransferItem? {
-        jsObject[Strings.add]!(data.jsValue(), type.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.add].function!(this: this, arguments: [data.jsValue(), type.jsValue()]).fromJSValue()!
     }
 
     public func add(data: File) -> DataTransferItem? {
-        jsObject[Strings.add]!(data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.add].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
     public func remove(index: UInt32) {
-        _ = jsObject[Strings.remove]!(index.jsValue())
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue()])
     }
 
     public func clear() {
-        _ = jsObject[Strings.clear]!()
+        let this = jsObject
+        _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 }

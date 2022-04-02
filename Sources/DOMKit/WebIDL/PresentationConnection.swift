@@ -28,11 +28,13 @@ public class PresentationConnection: EventTarget {
     public var state: PresentationConnectionState
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     public func terminate() {
-        _ = jsObject[Strings.terminate]!()
+        let this = jsObject
+        _ = this[Strings.terminate].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional
@@ -51,18 +53,22 @@ public class PresentationConnection: EventTarget {
     public var onmessage: EventHandler
 
     public func send(message: String) {
-        _ = jsObject[Strings.send]!(message.jsValue())
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [message.jsValue()])
     }
 
     public func send(data: Blob) {
-        _ = jsObject[Strings.send]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
     public func send(data: ArrayBuffer) {
-        _ = jsObject[Strings.send]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
     public func send(data: ArrayBufferView) {
-        _ = jsObject[Strings.send]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 }

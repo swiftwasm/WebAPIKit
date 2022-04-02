@@ -16,7 +16,8 @@ public class WindowControlsOverlay: EventTarget {
     public var visible: Bool
 
     public func getTitlebarAreaRect() -> DOMRect {
-        jsObject[Strings.getTitlebarAreaRect]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTitlebarAreaRect].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ClosureAttribute1Optional

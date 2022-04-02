@@ -15,6 +15,7 @@ public class TaskController: AbortController {
     }
 
     public func setPriority(priority: TaskPriority) {
-        _ = jsObject[Strings.setPriority]!(priority.jsValue())
+        let this = jsObject
+        _ = this[Strings.setPriority].function!(this: this, arguments: [priority.jsValue()])
     }
 }

@@ -42,7 +42,8 @@ public class Event: JSBridgedClass {
     public var currentTarget: EventTarget?
 
     public func composedPath() -> [EventTarget] {
-        jsObject[Strings.composedPath]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.composedPath].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public static let NONE: UInt16 = 0
@@ -57,14 +58,16 @@ public class Event: JSBridgedClass {
     public var eventPhase: UInt16
 
     public func stopPropagation() {
-        _ = jsObject[Strings.stopPropagation]!()
+        let this = jsObject
+        _ = this[Strings.stopPropagation].function!(this: this, arguments: [])
     }
 
     @ReadWriteAttribute
     public var cancelBubble: Bool
 
     public func stopImmediatePropagation() {
-        _ = jsObject[Strings.stopImmediatePropagation]!()
+        let this = jsObject
+        _ = this[Strings.stopImmediatePropagation].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute
@@ -77,7 +80,8 @@ public class Event: JSBridgedClass {
     public var returnValue: Bool
 
     public func preventDefault() {
-        _ = jsObject[Strings.preventDefault]!()
+        let this = jsObject
+        _ = this[Strings.preventDefault].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute
@@ -93,6 +97,7 @@ public class Event: JSBridgedClass {
     public var timeStamp: DOMHighResTimeStamp
 
     public func initEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil) {
-        _ = jsObject[Strings.initEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.initEvent].function!(this: this, arguments: [type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined])
     }
 }

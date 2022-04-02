@@ -15,12 +15,14 @@ public class BeforeInstallPromptEvent: Event {
     }
 
     public func prompt() -> JSPromise {
-        jsObject[Strings.prompt]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func prompt() async throws -> PromptResponseObject {
-        let _promise: JSPromise = jsObject[Strings.prompt]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

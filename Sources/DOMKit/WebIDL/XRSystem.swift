@@ -12,22 +12,26 @@ public class XRSystem: EventTarget {
     }
 
     public func isSessionSupported(mode: XRSessionMode) -> JSPromise {
-        jsObject[Strings.isSessionSupported]!(mode.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isSessionSupported].function!(this: this, arguments: [mode.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func isSessionSupported(mode: XRSessionMode) async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.isSessionSupported]!(mode.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.isSessionSupported].function!(this: this, arguments: [mode.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func requestSession(mode: XRSessionMode, options: XRSessionInit? = nil) -> JSPromise {
-        jsObject[Strings.requestSession]!(mode.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestSession].function!(this: this, arguments: [mode.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestSession(mode: XRSessionMode, options: XRSessionInit? = nil) async throws -> XRSession {
-        let _promise: JSPromise = jsObject[Strings.requestSession]!(mode.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestSession].function!(this: this, arguments: [mode.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

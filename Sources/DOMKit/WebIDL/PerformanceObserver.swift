@@ -16,15 +16,18 @@ public class PerformanceObserver: JSBridgedClass {
     // XXX: constructor is ignored
 
     public func observe(options: PerformanceObserverInit? = nil) {
-        _ = jsObject[Strings.observe]!(options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.observe].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
     public func disconnect() {
-        _ = jsObject[Strings.disconnect]!()
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
     public func takeRecords() -> PerformanceEntryList {
-        jsObject[Strings.takeRecords]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.takeRecords].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute

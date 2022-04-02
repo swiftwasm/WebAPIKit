@@ -21,6 +21,7 @@ public class InkPresenter: JSBridgedClass {
     public var expectedImprovement: UInt32
 
     public func updateInkTrailStartPoint(event: PointerEvent, style: InkTrailStyle) {
-        _ = jsObject[Strings.updateInkTrailStartPoint]!(event.jsValue(), style.jsValue())
+        let this = jsObject
+        _ = this[Strings.updateInkTrailStartPoint].function!(this: this, arguments: [event.jsValue(), style.jsValue()])
     }
 }

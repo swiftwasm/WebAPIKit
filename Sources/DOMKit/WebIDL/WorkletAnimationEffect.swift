@@ -14,11 +14,13 @@ public class WorkletAnimationEffect: JSBridgedClass {
     }
 
     public func getTiming() -> EffectTiming {
-        jsObject[Strings.getTiming]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTiming].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getComputedTiming() -> ComputedEffectTiming {
-        jsObject[Strings.getComputedTiming]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getComputedTiming].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadWriteAttribute

@@ -6,22 +6,26 @@ import JavaScriptKit
 public protocol NavigatorBadge: JSBridgedClass {}
 public extension NavigatorBadge {
     func setAppBadge(contents: UInt64? = nil) -> JSPromise {
-        jsObject[Strings.setAppBadge]!(contents?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setAppBadge].function!(this: this, arguments: [contents?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func setAppBadge(contents: UInt64? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.setAppBadge]!(contents?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.setAppBadge].function!(this: this, arguments: [contents?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     func clearAppBadge() -> JSPromise {
-        jsObject[Strings.clearAppBadge]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clearAppBadge].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func clearAppBadge() async throws {
-        let _promise: JSPromise = jsObject[Strings.clearAppBadge]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.clearAppBadge].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 }

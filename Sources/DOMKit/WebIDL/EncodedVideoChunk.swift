@@ -33,6 +33,7 @@ public class EncodedVideoChunk: JSBridgedClass {
     public var byteLength: UInt32
 
     public func copyTo(destination: BufferSource) {
-        _ = jsObject[Strings.copyTo]!(destination.jsValue())
+        let this = jsObject
+        _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue()])
     }
 }

@@ -24,19 +24,23 @@ public class RTCIceTransport: EventTarget {
     }
 
     public func gather(options: RTCIceGatherOptions? = nil) {
-        _ = jsObject[Strings.gather]!(options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.gather].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
     public func start(remoteParameters: RTCIceParameters? = nil, role: RTCIceRole? = nil) {
-        _ = jsObject[Strings.start]!(remoteParameters?.jsValue() ?? .undefined, role?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [remoteParameters?.jsValue() ?? .undefined, role?.jsValue() ?? .undefined])
     }
 
     public func stop() {
-        _ = jsObject[Strings.stop]!()
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
     public func addRemoteCandidate(remoteCandidate: RTCIceCandidateInit? = nil) {
-        _ = jsObject[Strings.addRemoteCandidate]!(remoteCandidate?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.addRemoteCandidate].function!(this: this, arguments: [remoteCandidate?.jsValue() ?? .undefined])
     }
 
     @ClosureAttribute1Optional
@@ -58,23 +62,28 @@ public class RTCIceTransport: EventTarget {
     public var gatheringState: RTCIceGathererState
 
     public func getLocalCandidates() -> [RTCIceCandidate] {
-        jsObject[Strings.getLocalCandidates]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getLocalCandidates].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getRemoteCandidates() -> [RTCIceCandidate] {
-        jsObject[Strings.getRemoteCandidates]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRemoteCandidates].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getSelectedCandidatePair() -> RTCIceCandidatePair? {
-        jsObject[Strings.getSelectedCandidatePair]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSelectedCandidatePair].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getLocalParameters() -> RTCIceParameters? {
-        jsObject[Strings.getLocalParameters]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getLocalParameters].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getRemoteParameters() -> RTCIceParameters? {
-        jsObject[Strings.getRemoteParameters]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRemoteParameters].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ClosureAttribute1Optional

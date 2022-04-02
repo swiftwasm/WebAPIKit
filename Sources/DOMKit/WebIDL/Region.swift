@@ -8,6 +8,7 @@ public extension Region {
     var regionOverset: String { ReadonlyAttribute[Strings.regionOverset, in: jsObject] }
 
     func getRegionFlowRanges() -> [Range]? {
-        jsObject[Strings.getRegionFlowRanges]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRegionFlowRanges].function!(this: this, arguments: []).fromJSValue()!
     }
 }

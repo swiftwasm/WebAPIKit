@@ -61,24 +61,29 @@ public class VideoFrame: JSBridgedClass {
     public var colorSpace: VideoColorSpace
 
     public func allocationSize(options: VideoFrameCopyToOptions? = nil) -> UInt32 {
-        jsObject[Strings.allocationSize]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.allocationSize].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func copyTo(destination: BufferSource, options: VideoFrameCopyToOptions? = nil) -> JSPromise {
-        jsObject[Strings.copyTo]!(destination.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func copyTo(destination: BufferSource, options: VideoFrameCopyToOptions? = nil) async throws -> [PlaneLayout] {
-        let _promise: JSPromise = jsObject[Strings.copyTo]!(destination.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func clone() -> Self {
-        jsObject[Strings.clone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 }

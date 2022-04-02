@@ -34,6 +34,7 @@ public class CSSTransformValue: CSSStyleValue, Sequence {
     public var is2D: Bool
 
     public func toMatrix() -> DOMMatrix {
-        jsObject[Strings.toMatrix]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toMatrix].function!(this: this, arguments: []).fromJSValue()!
     }
 }

@@ -27,6 +27,7 @@ public class OVR_multiview2: JSBridgedClass {
         let _arg3 = level.jsValue()
         let _arg4 = baseViewIndex.jsValue()
         let _arg5 = numViews.jsValue()
-        _ = jsObject[Strings.framebufferTextureMultiviewOVR]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
+        let this = jsObject
+        _ = this[Strings.framebufferTextureMultiviewOVR].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 }

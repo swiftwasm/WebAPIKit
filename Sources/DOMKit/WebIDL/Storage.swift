@@ -17,7 +17,8 @@ public class Storage: JSBridgedClass {
     public var length: UInt32
 
     public func key(index: UInt32) -> String? {
-        jsObject[Strings.key]!(index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.key].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
     public subscript(key: String) -> String? {
@@ -29,6 +30,7 @@ public class Storage: JSBridgedClass {
     // XXX: unsupported deleter for keys of type String
 
     public func clear() {
-        _ = jsObject[Strings.clear]!()
+        let this = jsObject
+        _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 }

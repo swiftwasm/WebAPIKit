@@ -13,10 +13,12 @@ public class External: JSBridgedClass {
     }
 
     public func AddSearchProvider() {
-        _ = jsObject[Strings.AddSearchProvider]!()
+        let this = jsObject
+        _ = this[Strings.AddSearchProvider].function!(this: this, arguments: [])
     }
 
     public func IsSearchProviderInstalled() {
-        _ = jsObject[Strings.IsSearchProviderInstalled]!()
+        let this = jsObject
+        _ = this[Strings.IsSearchProviderInstalled].function!(this: this, arguments: [])
     }
 }

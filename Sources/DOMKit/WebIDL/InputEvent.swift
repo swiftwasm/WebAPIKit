@@ -18,7 +18,8 @@ public class InputEvent: UIEvent {
     public var dataTransfer: DataTransfer?
 
     public func getTargetRanges() -> [StaticRange] {
-        jsObject[Strings.getTargetRanges]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTargetRanges].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public convenience init(type: String, eventInitDict: InputEventInit? = nil) {

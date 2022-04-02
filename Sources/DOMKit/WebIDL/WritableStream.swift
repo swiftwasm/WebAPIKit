@@ -21,26 +21,31 @@ public class WritableStream: JSBridgedClass {
     public var locked: Bool
 
     public func abort(reason: JSValue? = nil) -> JSPromise {
-        jsObject[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func abort(reason: JSValue? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func close() -> JSPromise {
-        jsObject[Strings.close]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func close() async throws {
-        let _promise: JSPromise = jsObject[Strings.close]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getWriter() -> WritableStreamDefaultWriter {
-        jsObject[Strings.getWriter]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getWriter].function!(this: this, arguments: []).fromJSValue()!
     }
 }

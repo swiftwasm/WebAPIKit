@@ -13,6 +13,7 @@ public class XRTransientInputHitTestSource: JSBridgedClass {
     }
 
     public func cancel() {
-        _ = jsObject[Strings.cancel]!()
+        let this = jsObject
+        _ = this[Strings.cancel].function!(this: this, arguments: [])
     }
 }

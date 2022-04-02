@@ -13,6 +13,7 @@ public class GPUQuerySet: JSBridgedClass, GPUObjectBase {
     }
 
     public func destroy() {
-        _ = jsObject[Strings.destroy]!()
+        let this = jsObject
+        _ = this[Strings.destroy].function!(this: this, arguments: [])
     }
 }

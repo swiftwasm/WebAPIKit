@@ -15,18 +15,22 @@ public class OES_vertex_array_object: JSBridgedClass {
     public static let VERTEX_ARRAY_BINDING_OES: GLenum = 0x85B5
 
     public func createVertexArrayOES() -> WebGLVertexArrayObjectOES? {
-        jsObject[Strings.createVertexArrayOES]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createVertexArrayOES].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES?) {
-        _ = jsObject[Strings.deleteVertexArrayOES]!(arrayObject.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteVertexArrayOES].function!(this: this, arguments: [arrayObject.jsValue()])
     }
 
     public func isVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES?) -> GLboolean {
-        jsObject[Strings.isVertexArrayOES]!(arrayObject.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isVertexArrayOES].function!(this: this, arguments: [arrayObject.jsValue()]).fromJSValue()!
     }
 
     public func bindVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES?) {
-        _ = jsObject[Strings.bindVertexArrayOES]!(arrayObject.jsValue())
+        let this = jsObject
+        _ = this[Strings.bindVertexArrayOES].function!(this: this, arguments: [arrayObject.jsValue()])
     }
 }

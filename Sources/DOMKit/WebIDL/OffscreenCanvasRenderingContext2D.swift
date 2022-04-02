@@ -14,7 +14,8 @@ public class OffscreenCanvasRenderingContext2D: JSBridgedClass, CanvasState, Can
     }
 
     public func commit() {
-        _ = jsObject[Strings.commit]!()
+        let this = jsObject
+        _ = this[Strings.commit].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute

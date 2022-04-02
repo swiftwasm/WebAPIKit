@@ -22,10 +22,12 @@ public class MediaKeyStatusMap: JSBridgedClass, Sequence {
     public var size: UInt32
 
     public func has(keyId: BufferSource) -> Bool {
-        jsObject[Strings.has]!(keyId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.has].function!(this: this, arguments: [keyId.jsValue()]).fromJSValue()!
     }
 
     public func get(keyId: BufferSource) -> __UNSUPPORTED_UNION__ {
-        jsObject[Strings.get]!(keyId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [keyId.jsValue()]).fromJSValue()!
     }
 }

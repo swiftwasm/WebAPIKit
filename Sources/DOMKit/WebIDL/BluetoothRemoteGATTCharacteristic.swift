@@ -27,82 +27,98 @@ public class BluetoothRemoteGATTCharacteristic: EventTarget, CharacteristicEvent
     public var value: DataView?
 
     public func getDescriptor(descriptor: BluetoothDescriptorUUID) -> JSPromise {
-        jsObject[Strings.getDescriptor]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDescriptor].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getDescriptor(descriptor: BluetoothDescriptorUUID) async throws -> BluetoothRemoteGATTDescriptor {
-        let _promise: JSPromise = jsObject[Strings.getDescriptor]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getDescriptor].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getDescriptors(descriptor: BluetoothDescriptorUUID? = nil) -> JSPromise {
-        jsObject[Strings.getDescriptors]!(descriptor?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDescriptors].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getDescriptors(descriptor: BluetoothDescriptorUUID? = nil) async throws -> [BluetoothRemoteGATTDescriptor] {
-        let _promise: JSPromise = jsObject[Strings.getDescriptors]!(descriptor?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getDescriptors].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func readValue() -> JSPromise {
-        jsObject[Strings.readValue]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.readValue].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func readValue() async throws -> DataView {
-        let _promise: JSPromise = jsObject[Strings.readValue]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.readValue].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func writeValue(value: BufferSource) -> JSPromise {
-        jsObject[Strings.writeValue]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func writeValue(value: BufferSource) async throws {
-        let _promise: JSPromise = jsObject[Strings.writeValue]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func writeValueWithResponse(value: BufferSource) -> JSPromise {
-        jsObject[Strings.writeValueWithResponse]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.writeValueWithResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func writeValueWithResponse(value: BufferSource) async throws {
-        let _promise: JSPromise = jsObject[Strings.writeValueWithResponse]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.writeValueWithResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func writeValueWithoutResponse(value: BufferSource) -> JSPromise {
-        jsObject[Strings.writeValueWithoutResponse]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.writeValueWithoutResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func writeValueWithoutResponse(value: BufferSource) async throws {
-        let _promise: JSPromise = jsObject[Strings.writeValueWithoutResponse]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.writeValueWithoutResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func startNotifications() -> JSPromise {
-        jsObject[Strings.startNotifications]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.startNotifications].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func startNotifications() async throws -> BluetoothRemoteGATTCharacteristic {
-        let _promise: JSPromise = jsObject[Strings.startNotifications]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.startNotifications].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func stopNotifications() -> JSPromise {
-        jsObject[Strings.stopNotifications]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.stopNotifications].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func stopNotifications() async throws -> BluetoothRemoteGATTCharacteristic {
-        let _promise: JSPromise = jsObject[Strings.stopNotifications]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.stopNotifications].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

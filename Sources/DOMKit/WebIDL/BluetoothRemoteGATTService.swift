@@ -23,42 +23,50 @@ public class BluetoothRemoteGATTService: EventTarget, CharacteristicEventHandler
     public var isPrimary: Bool
 
     public func getCharacteristic(characteristic: BluetoothCharacteristicUUID) -> JSPromise {
-        jsObject[Strings.getCharacteristic]!(characteristic.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCharacteristic].function!(this: this, arguments: [characteristic.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getCharacteristic(characteristic: BluetoothCharacteristicUUID) async throws -> BluetoothRemoteGATTCharacteristic {
-        let _promise: JSPromise = jsObject[Strings.getCharacteristic]!(characteristic.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getCharacteristic].function!(this: this, arguments: [characteristic.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getCharacteristics(characteristic: BluetoothCharacteristicUUID? = nil) -> JSPromise {
-        jsObject[Strings.getCharacteristics]!(characteristic?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCharacteristics].function!(this: this, arguments: [characteristic?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getCharacteristics(characteristic: BluetoothCharacteristicUUID? = nil) async throws -> [BluetoothRemoteGATTCharacteristic] {
-        let _promise: JSPromise = jsObject[Strings.getCharacteristics]!(characteristic?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getCharacteristics].function!(this: this, arguments: [characteristic?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getIncludedService(service: BluetoothServiceUUID) -> JSPromise {
-        jsObject[Strings.getIncludedService]!(service.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getIncludedService].function!(this: this, arguments: [service.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getIncludedService(service: BluetoothServiceUUID) async throws -> BluetoothRemoteGATTService {
-        let _promise: JSPromise = jsObject[Strings.getIncludedService]!(service.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getIncludedService].function!(this: this, arguments: [service.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getIncludedServices(service: BluetoothServiceUUID? = nil) -> JSPromise {
-        jsObject[Strings.getIncludedServices]!(service?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getIncludedServices].function!(this: this, arguments: [service?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getIncludedServices(service: BluetoothServiceUUID? = nil) async throws -> [BluetoothRemoteGATTService] {
-        let _promise: JSPromise = jsObject[Strings.getIncludedServices]!(service?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getIncludedServices].function!(this: this, arguments: [service?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

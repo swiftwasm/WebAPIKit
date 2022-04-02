@@ -25,22 +25,27 @@ public class History: JSBridgedClass {
     public var state: JSValue
 
     public func go(delta: Int32? = nil) {
-        _ = jsObject[Strings.go]!(delta?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.go].function!(this: this, arguments: [delta?.jsValue() ?? .undefined])
     }
 
     public func back() {
-        _ = jsObject[Strings.back]!()
+        let this = jsObject
+        _ = this[Strings.back].function!(this: this, arguments: [])
     }
 
     public func forward() {
-        _ = jsObject[Strings.forward]!()
+        let this = jsObject
+        _ = this[Strings.forward].function!(this: this, arguments: [])
     }
 
     public func pushState(data: JSValue, unused: String, url: String? = nil) {
-        _ = jsObject[Strings.pushState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.pushState].function!(this: this, arguments: [data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined])
     }
 
     public func replaceState(data: JSValue, unused: String, url: String? = nil) {
-        _ = jsObject[Strings.replaceState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.replaceState].function!(this: this, arguments: [data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined])
     }
 }

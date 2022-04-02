@@ -103,6 +103,7 @@ public class Notification: EventTarget {
     public var actions: [NotificationAction]
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 }

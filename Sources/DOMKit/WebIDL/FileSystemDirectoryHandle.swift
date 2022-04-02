@@ -17,42 +17,50 @@ public class FileSystemDirectoryHandle: FileSystemHandle, AsyncSequence {
     }
 
     public func getFileHandle(name: String, options: FileSystemGetFileOptions? = nil) -> JSPromise {
-        jsObject[Strings.getFileHandle]!(name.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getFileHandle].function!(this: this, arguments: [name.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getFileHandle(name: String, options: FileSystemGetFileOptions? = nil) async throws -> FileSystemFileHandle {
-        let _promise: JSPromise = jsObject[Strings.getFileHandle]!(name.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getFileHandle].function!(this: this, arguments: [name.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getDirectoryHandle(name: String, options: FileSystemGetDirectoryOptions? = nil) -> JSPromise {
-        jsObject[Strings.getDirectoryHandle]!(name.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDirectoryHandle].function!(this: this, arguments: [name.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getDirectoryHandle(name: String, options: FileSystemGetDirectoryOptions? = nil) async throws -> FileSystemDirectoryHandle {
-        let _promise: JSPromise = jsObject[Strings.getDirectoryHandle]!(name.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getDirectoryHandle].function!(this: this, arguments: [name.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func removeEntry(name: String, options: FileSystemRemoveOptions? = nil) -> JSPromise {
-        jsObject[Strings.removeEntry]!(name.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.removeEntry].function!(this: this, arguments: [name.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func removeEntry(name: String, options: FileSystemRemoveOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.removeEntry]!(name.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.removeEntry].function!(this: this, arguments: [name.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func resolve(possibleDescendant: FileSystemHandle) -> JSPromise {
-        jsObject[Strings.resolve]!(possibleDescendant.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.resolve].function!(this: this, arguments: [possibleDescendant.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func resolve(possibleDescendant: FileSystemHandle) async throws -> [String]? {
-        let _promise: JSPromise = jsObject[Strings.resolve]!(possibleDescendant.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.resolve].function!(this: this, arguments: [possibleDescendant.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

@@ -14,22 +14,27 @@ public extension ParentNode {
     var childElementCount: UInt32 { ReadonlyAttribute[Strings.childElementCount, in: jsObject] }
 
     func prepend(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Strings.prepend]!(nodes.jsValue())
+        let this = jsObject
+        _ = this[Strings.prepend].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
     func append(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Strings.append]!(nodes.jsValue())
+        let this = jsObject
+        _ = this[Strings.append].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
     func replaceChildren(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Strings.replaceChildren]!(nodes.jsValue())
+        let this = jsObject
+        _ = this[Strings.replaceChildren].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
     func querySelector(selectors: String) -> Element? {
-        jsObject[Strings.querySelector]!(selectors.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.querySelector].function!(this: this, arguments: [selectors.jsValue()]).fromJSValue()!
     }
 
     func querySelectorAll(selectors: String) -> NodeList {
-        jsObject[Strings.querySelectorAll]!(selectors.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.querySelectorAll].function!(this: this, arguments: [selectors.jsValue()]).fromJSValue()!
     }
 }

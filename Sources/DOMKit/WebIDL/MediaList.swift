@@ -25,10 +25,12 @@ public class MediaList: JSBridgedClass {
     }
 
     public func appendMedium(medium: String) {
-        _ = jsObject[Strings.appendMedium]!(medium.jsValue())
+        let this = jsObject
+        _ = this[Strings.appendMedium].function!(this: this, arguments: [medium.jsValue()])
     }
 
     public func deleteMedium(medium: String) {
-        _ = jsObject[Strings.deleteMedium]!(medium.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteMedium].function!(this: this, arguments: [medium.jsValue()])
     }
 }

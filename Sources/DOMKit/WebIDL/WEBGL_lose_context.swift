@@ -13,10 +13,12 @@ public class WEBGL_lose_context: JSBridgedClass {
     }
 
     public func loseContext() {
-        _ = jsObject[Strings.loseContext]!()
+        let this = jsObject
+        _ = this[Strings.loseContext].function!(this: this, arguments: [])
     }
 
     public func restoreContext() {
-        _ = jsObject[Strings.restoreContext]!()
+        let this = jsObject
+        _ = this[Strings.restoreContext].function!(this: this, arguments: [])
     }
 }

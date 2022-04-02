@@ -15,6 +15,7 @@ public class OrientationSensor: Sensor {
     public var quaternion: [Double]?
 
     public func populateMatrix(targetMatrix: RotationMatrixType) {
-        _ = jsObject[Strings.populateMatrix]!(targetMatrix.jsValue())
+        let this = jsObject
+        _ = this[Strings.populateMatrix].function!(this: this, arguments: [targetMatrix.jsValue()])
     }
 }

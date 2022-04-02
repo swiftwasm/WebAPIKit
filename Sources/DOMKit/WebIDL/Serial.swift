@@ -19,22 +19,26 @@ public class Serial: EventTarget {
     public var ondisconnect: EventHandler
 
     public func getPorts() -> JSPromise {
-        jsObject[Strings.getPorts]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPorts].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getPorts() async throws -> [SerialPort] {
-        let _promise: JSPromise = jsObject[Strings.getPorts]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getPorts].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func requestPort(options: SerialPortRequestOptions? = nil) -> JSPromise {
-        jsObject[Strings.requestPort]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestPort].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestPort(options: SerialPortRequestOptions? = nil) async throws -> SerialPort {
-        let _promise: JSPromise = jsObject[Strings.requestPort]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestPort].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

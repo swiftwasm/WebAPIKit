@@ -23,10 +23,12 @@ public extension HTMLOrSVGElement {
     }
 
     func focus(options: FocusOptions? = nil) {
-        _ = jsObject[Strings.focus]!(options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.focus].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
     func blur() {
-        _ = jsObject[Strings.blur]!()
+        let this = jsObject
+        _ = this[Strings.blur].function!(this: this, arguments: [])
     }
 }

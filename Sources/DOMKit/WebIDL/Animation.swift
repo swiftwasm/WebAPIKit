@@ -71,34 +71,42 @@ public class Animation: EventTarget {
     public var onremove: EventHandler
 
     public func cancel() {
-        _ = jsObject[Strings.cancel]!()
+        let this = jsObject
+        _ = this[Strings.cancel].function!(this: this, arguments: [])
     }
 
     public func finish() {
-        _ = jsObject[Strings.finish]!()
+        let this = jsObject
+        _ = this[Strings.finish].function!(this: this, arguments: [])
     }
 
     public func play() {
-        _ = jsObject[Strings.play]!()
+        let this = jsObject
+        _ = this[Strings.play].function!(this: this, arguments: [])
     }
 
     public func pause() {
-        _ = jsObject[Strings.pause]!()
+        let this = jsObject
+        _ = this[Strings.pause].function!(this: this, arguments: [])
     }
 
     public func updatePlaybackRate(playbackRate: Double) {
-        _ = jsObject[Strings.updatePlaybackRate]!(playbackRate.jsValue())
+        let this = jsObject
+        _ = this[Strings.updatePlaybackRate].function!(this: this, arguments: [playbackRate.jsValue()])
     }
 
     public func reverse() {
-        _ = jsObject[Strings.reverse]!()
+        let this = jsObject
+        _ = this[Strings.reverse].function!(this: this, arguments: [])
     }
 
     public func persist() {
-        _ = jsObject[Strings.persist]!()
+        let this = jsObject
+        _ = this[Strings.persist].function!(this: this, arguments: [])
     }
 
     public func commitStyles() {
-        _ = jsObject[Strings.commitStyles]!()
+        let this = jsObject
+        _ = this[Strings.commitStyles].function!(this: this, arguments: [])
     }
 }

@@ -13,14 +13,17 @@ public class PerformanceObserverEntryList: JSBridgedClass {
     }
 
     public func getEntries() -> PerformanceEntryList {
-        jsObject[Strings.getEntries]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getEntries].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getEntriesByType(type: String) -> PerformanceEntryList {
-        jsObject[Strings.getEntriesByType]!(type.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getEntriesByType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     public func getEntriesByName(name: String, type: String? = nil) -> PerformanceEntryList {
-        jsObject[Strings.getEntriesByName]!(name.jsValue(), type?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getEntriesByName].function!(this: this, arguments: [name.jsValue(), type?.jsValue() ?? .undefined]).fromJSValue()!
     }
 }

@@ -27,6 +27,7 @@ public class OscillatorNode: AudioScheduledSourceNode {
     public var detune: AudioParam
 
     public func setPeriodicWave(periodicWave: PeriodicWave) {
-        _ = jsObject[Strings.setPeriodicWave]!(periodicWave.jsValue())
+        let this = jsObject
+        _ = this[Strings.setPeriodicWave].function!(this: this, arguments: [periodicWave.jsValue()])
     }
 }

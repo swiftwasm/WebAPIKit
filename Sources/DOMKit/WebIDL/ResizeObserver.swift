@@ -15,14 +15,17 @@ public class ResizeObserver: JSBridgedClass {
     // XXX: constructor is ignored
 
     public func observe(target: Element, options: ResizeObserverOptions? = nil) {
-        _ = jsObject[Strings.observe]!(target.jsValue(), options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue(), options?.jsValue() ?? .undefined])
     }
 
     public func unobserve(target: Element) {
-        _ = jsObject[Strings.unobserve]!(target.jsValue())
+        let this = jsObject
+        _ = this[Strings.unobserve].function!(this: this, arguments: [target.jsValue()])
     }
 
     public func disconnect() {
-        _ = jsObject[Strings.disconnect]!()
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 }

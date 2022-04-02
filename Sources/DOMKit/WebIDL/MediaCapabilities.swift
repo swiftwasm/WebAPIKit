@@ -13,22 +13,26 @@ public class MediaCapabilities: JSBridgedClass {
     }
 
     public func decodingInfo(configuration: MediaDecodingConfiguration) -> JSPromise {
-        jsObject[Strings.decodingInfo]!(configuration.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.decodingInfo].function!(this: this, arguments: [configuration.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func decodingInfo(configuration: MediaDecodingConfiguration) async throws -> MediaCapabilitiesDecodingInfo {
-        let _promise: JSPromise = jsObject[Strings.decodingInfo]!(configuration.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.decodingInfo].function!(this: this, arguments: [configuration.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func encodingInfo(configuration: MediaEncodingConfiguration) -> JSPromise {
-        jsObject[Strings.encodingInfo]!(configuration.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.encodingInfo].function!(this: this, arguments: [configuration.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func encodingInfo(configuration: MediaEncodingConfiguration) async throws -> MediaCapabilitiesEncodingInfo {
-        let _promise: JSPromise = jsObject[Strings.encodingInfo]!(configuration.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.encodingInfo].function!(this: this, arguments: [configuration.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

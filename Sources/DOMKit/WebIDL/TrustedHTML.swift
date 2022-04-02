@@ -17,10 +17,12 @@ public class TrustedHTML: JSBridgedClass {
     }
 
     public func toJSON() -> String {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public static func fromLiteral(templateStringsArray: JSObject) -> Self {
-        constructor[Strings.fromLiteral]!(templateStringsArray.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.fromLiteral].function!(this: this, arguments: [templateStringsArray.jsValue()]).fromJSValue()!
     }
 }

@@ -59,10 +59,12 @@ public class HTMLMarqueeElement: HTMLElement {
     public var width: String
 
     public func start() {
-        _ = jsObject[Strings.start]!()
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [])
     }
 
     public func stop() {
-        _ = jsObject[Strings.stop]!()
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 }

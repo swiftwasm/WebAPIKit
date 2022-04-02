@@ -19,15 +19,18 @@ public class StylePropertyMapReadOnly: JSBridgedClass, Sequence {
     }
 
     public func get(property: String) -> JSValue {
-        jsObject[Strings.get]!(property.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
     public func getAll(property: String) -> [CSSStyleValue] {
-        jsObject[Strings.getAll]!(property.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAll].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
     public func has(property: String) -> Bool {
-        jsObject[Strings.has]!(property.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.has].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute

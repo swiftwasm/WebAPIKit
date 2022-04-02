@@ -21,11 +21,13 @@ public class HTMLOptionsCollection: HTMLCollection {
     // XXX: unsupported setter for keys of type UInt32
 
     public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Strings.add]!(element.jsValue(), before?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.add].function!(this: this, arguments: [element.jsValue(), before?.jsValue() ?? .undefined])
     }
 
     public func remove(index: Int32) {
-        _ = jsObject[Strings.remove]!(index.jsValue())
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue()])
     }
 
     @ReadWriteAttribute

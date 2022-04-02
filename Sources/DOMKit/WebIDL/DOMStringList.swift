@@ -21,6 +21,7 @@ public class DOMStringList: JSBridgedClass {
     }
 
     public func contains(string: String) -> Bool {
-        jsObject[Strings.contains]!(string.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.contains].function!(this: this, arguments: [string.jsValue()]).fromJSValue()!
     }
 }

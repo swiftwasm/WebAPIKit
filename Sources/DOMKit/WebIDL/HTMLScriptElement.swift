@@ -59,7 +59,8 @@ public class HTMLScriptElement: HTMLElement {
     public var blocking: DOMTokenList
 
     public static func supports(type: String) -> Bool {
-        constructor[Strings.supports]!(type.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.supports].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     @ReadWriteAttribute

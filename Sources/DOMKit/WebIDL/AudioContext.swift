@@ -23,52 +23,63 @@ public class AudioContext: BaseAudioContext {
     public var outputLatency: Double
 
     public func getOutputTimestamp() -> AudioTimestamp {
-        jsObject[Strings.getOutputTimestamp]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getOutputTimestamp].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func resume() -> JSPromise {
-        jsObject[Strings.resume]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func resume() async throws {
-        let _promise: JSPromise = jsObject[Strings.resume]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func suspend() -> JSPromise {
-        jsObject[Strings.suspend]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.suspend].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func suspend() async throws {
-        let _promise: JSPromise = jsObject[Strings.suspend]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func close() -> JSPromise {
-        jsObject[Strings.close]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func close() async throws {
-        let _promise: JSPromise = jsObject[Strings.close]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func createMediaElementSource(mediaElement: HTMLMediaElement) -> MediaElementAudioSourceNode {
-        jsObject[Strings.createMediaElementSource]!(mediaElement.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createMediaElementSource].function!(this: this, arguments: [mediaElement.jsValue()]).fromJSValue()!
     }
 
     public func createMediaStreamSource(mediaStream: MediaStream) -> MediaStreamAudioSourceNode {
-        jsObject[Strings.createMediaStreamSource]!(mediaStream.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createMediaStreamSource].function!(this: this, arguments: [mediaStream.jsValue()]).fromJSValue()!
     }
 
     public func createMediaStreamTrackSource(mediaStreamTrack: MediaStreamTrack) -> MediaStreamTrackAudioSourceNode {
-        jsObject[Strings.createMediaStreamTrackSource]!(mediaStreamTrack.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createMediaStreamTrackSource].function!(this: this, arguments: [mediaStreamTrack.jsValue()]).fromJSValue()!
     }
 
     public func createMediaStreamDestination() -> MediaStreamAudioDestinationNode {
-        jsObject[Strings.createMediaStreamDestination]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createMediaStreamDestination].function!(this: this, arguments: []).fromJSValue()!
     }
 }

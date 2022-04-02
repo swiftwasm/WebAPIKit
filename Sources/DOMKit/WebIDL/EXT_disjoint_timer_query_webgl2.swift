@@ -21,6 +21,7 @@ public class EXT_disjoint_timer_query_webgl2: JSBridgedClass {
     public static let GPU_DISJOINT_EXT: GLenum = 0x8FBB
 
     public func queryCounterEXT(query: WebGLQuery, target: GLenum) {
-        _ = jsObject[Strings.queryCounterEXT]!(query.jsValue(), target.jsValue())
+        let this = jsObject
+        _ = this[Strings.queryCounterEXT].function!(this: this, arguments: [query.jsValue(), target.jsValue()])
     }
 }

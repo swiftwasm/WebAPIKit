@@ -57,7 +57,8 @@ public class WebSocket: EventTarget {
     public var `protocol`: String
 
     public func close(code: UInt16? = nil, reason: String? = nil) {
-        _ = jsObject[Strings.close]!(code?.jsValue() ?? .undefined, reason?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [code?.jsValue() ?? .undefined, reason?.jsValue() ?? .undefined])
     }
 
     @ClosureAttribute1Optional
@@ -67,6 +68,7 @@ public class WebSocket: EventTarget {
     public var binaryType: BinaryType
 
     public func send(data: __UNSUPPORTED_UNION__) {
-        _ = jsObject[Strings.send]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 }

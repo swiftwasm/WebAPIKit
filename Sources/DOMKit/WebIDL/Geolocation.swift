@@ -17,6 +17,7 @@ public class Geolocation: JSBridgedClass {
     // XXX: member 'watchPosition' is ignored
 
     public func clearWatch(watchId: Int32) {
-        _ = jsObject[Strings.clearWatch]!(watchId.jsValue())
+        let this = jsObject
+        _ = this[Strings.clearWatch].function!(this: this, arguments: [watchId.jsValue()])
     }
 }

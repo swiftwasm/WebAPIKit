@@ -24,7 +24,8 @@ public extension NavigatorID {
     var vendorSub: String { ReadonlyAttribute[Strings.vendorSub, in: jsObject] }
 
     func taintEnabled() -> Bool {
-        jsObject[Strings.taintEnabled]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.taintEnabled].function!(this: this, arguments: []).fromJSValue()!
     }
 
     var oscpu: String { ReadonlyAttribute[Strings.oscpu, in: jsObject] }

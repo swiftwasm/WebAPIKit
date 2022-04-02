@@ -13,12 +13,14 @@ public class GPU: JSBridgedClass {
     }
 
     public func requestAdapter(options: GPURequestAdapterOptions? = nil) -> JSPromise {
-        jsObject[Strings.requestAdapter]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestAdapter].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestAdapter(options: GPURequestAdapterOptions? = nil) async throws -> GPUAdapter? {
-        let _promise: JSPromise = jsObject[Strings.requestAdapter]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestAdapter].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

@@ -77,30 +77,36 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var cookieStore: CookieStore
 
     public func navigate(dir: SpatialNavigationDirection) {
-        _ = jsObject[Strings.navigate]!(dir.jsValue())
+        let this = jsObject
+        _ = this[Strings.navigate].function!(this: this, arguments: [dir.jsValue()])
     }
 
     public func matchMedia(query: String) -> MediaQueryList {
-        jsObject[Strings.matchMedia]!(query.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.matchMedia].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var screen: Screen
 
     public func moveTo(x: Int32, y: Int32) {
-        _ = jsObject[Strings.moveTo]!(x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.moveTo].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
     }
 
     public func moveBy(x: Int32, y: Int32) {
-        _ = jsObject[Strings.moveBy]!(x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.moveBy].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
     }
 
     public func resizeTo(width: Int32, height: Int32) {
-        _ = jsObject[Strings.resizeTo]!(width.jsValue(), height.jsValue())
+        let this = jsObject
+        _ = this[Strings.resizeTo].function!(this: this, arguments: [width.jsValue(), height.jsValue()])
     }
 
     public func resizeBy(x: Int32, y: Int32) {
-        _ = jsObject[Strings.resizeBy]!(x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.resizeBy].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
     }
 
     @ReadonlyAttribute
@@ -122,27 +128,33 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var pageYOffset: Double
 
     public func scroll(options: ScrollToOptions? = nil) {
-        _ = jsObject[Strings.scroll]!(options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
     public func scroll(x: Double, y: Double) {
-        _ = jsObject[Strings.scroll]!(x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
     }
 
     public func scrollTo(options: ScrollToOptions? = nil) {
-        _ = jsObject[Strings.scrollTo]!(options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
     public func scrollTo(x: Double, y: Double) {
-        _ = jsObject[Strings.scrollTo]!(x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
     }
 
     public func scrollBy(options: ScrollToOptions? = nil) {
-        _ = jsObject[Strings.scrollBy]!(options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
     public func scrollBy(x: Double, y: Double) {
-        _ = jsObject[Strings.scrollBy]!(x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
     }
 
     @ReadonlyAttribute
@@ -167,16 +179,19 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var devicePixelRatio: Double
 
     public func getComputedStyle(elt: Element, pseudoElt: String? = nil) -> CSSStyleDeclaration {
-        jsObject[Strings.getComputedStyle]!(elt.jsValue(), pseudoElt?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getComputedStyle].function!(this: this, arguments: [elt.jsValue(), pseudoElt?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func getDigitalGoodsService(serviceProvider: String) -> JSPromise {
-        jsObject[Strings.getDigitalGoodsService]!(serviceProvider.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDigitalGoodsService].function!(this: this, arguments: [serviceProvider.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getDigitalGoodsService(serviceProvider: String) async throws -> DigitalGoodsService {
-        let _promise: JSPromise = jsObject[Strings.getDigitalGoodsService]!(serviceProvider.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getDigitalGoodsService].function!(this: this, arguments: [serviceProvider.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -184,32 +199,38 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var event: __UNSUPPORTED_UNION__
 
     public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) -> JSPromise {
-        jsObject[Strings.showOpenFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.showOpenFilePicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) async throws -> [FileSystemFileHandle] {
-        let _promise: JSPromise = jsObject[Strings.showOpenFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.showOpenFilePicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) -> JSPromise {
-        jsObject[Strings.showSaveFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.showSaveFilePicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) async throws -> FileSystemFileHandle {
-        let _promise: JSPromise = jsObject[Strings.showSaveFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.showSaveFilePicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) -> JSPromise {
-        jsObject[Strings.showDirectoryPicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.showDirectoryPicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) async throws -> FileSystemDirectoryHandle {
-        let _promise: JSPromise = jsObject[Strings.showDirectoryPicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.showDirectoryPicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -256,22 +277,26 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var status: String
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute
     public var closed: Bool
 
     public func stop() {
-        _ = jsObject[Strings.stop]!()
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
     public func focus() {
-        _ = jsObject[Strings.focus]!()
+        let this = jsObject
+        _ = this[Strings.focus].function!(this: this, arguments: [])
     }
 
     public func blur() {
-        _ = jsObject[Strings.blur]!()
+        let this = jsObject
+        _ = this[Strings.blur].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute
@@ -293,7 +318,8 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var frameElement: Element?
 
     public func open(url: String? = nil, target: String? = nil, features: String? = nil) -> WindowProxy? {
-        jsObject[Strings.open]!(url?.jsValue() ?? .undefined, target?.jsValue() ?? .undefined, features?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.open].function!(this: this, arguments: [url?.jsValue() ?? .undefined, target?.jsValue() ?? .undefined, features?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public subscript(key: String) -> JSObject {
@@ -310,39 +336,48 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var originAgentCluster: Bool
 
     public func alert() {
-        _ = jsObject[Strings.alert]!()
+        let this = jsObject
+        _ = this[Strings.alert].function!(this: this, arguments: [])
     }
 
     public func alert(message: String) {
-        _ = jsObject[Strings.alert]!(message.jsValue())
+        let this = jsObject
+        _ = this[Strings.alert].function!(this: this, arguments: [message.jsValue()])
     }
 
     public func confirm(message: String? = nil) -> Bool {
-        jsObject[Strings.confirm]!(message?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.confirm].function!(this: this, arguments: [message?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func prompt(message: String? = nil, default: String? = nil) -> String? {
-        jsObject[Strings.prompt]!(message?.jsValue() ?? .undefined, `default`?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.prompt].function!(this: this, arguments: [message?.jsValue() ?? .undefined, `default`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func print() {
-        _ = jsObject[Strings.print]!()
+        let this = jsObject
+        _ = this[Strings.print].function!(this: this, arguments: [])
     }
 
     public func postMessage(message: JSValue, targetOrigin: String, transfer: [JSObject]? = nil) {
-        _ = jsObject[Strings.postMessage]!(message.jsValue(), targetOrigin.jsValue(), transfer?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), targetOrigin.jsValue(), transfer?.jsValue() ?? .undefined])
     }
 
     public func postMessage(message: JSValue, options: WindowPostMessageOptions? = nil) {
-        _ = jsObject[Strings.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
     }
 
     public func captureEvents() {
-        _ = jsObject[Strings.captureEvents]!()
+        let this = jsObject
+        _ = this[Strings.captureEvents].function!(this: this, arguments: [])
     }
 
     public func releaseEvents() {
-        _ = jsObject[Strings.releaseEvents]!()
+        let this = jsObject
+        _ = this[Strings.releaseEvents].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute
@@ -375,11 +410,13 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     // XXX: member 'requestIdleCallback' is ignored
 
     public func cancelIdleCallback(handle: UInt32) {
-        _ = jsObject[Strings.cancelIdleCallback]!(handle.jsValue())
+        let this = jsObject
+        _ = this[Strings.cancelIdleCallback].function!(this: this, arguments: [handle.jsValue()])
     }
 
     public func getSelection() -> Selection? {
-        jsObject[Strings.getSelection]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSelection].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute

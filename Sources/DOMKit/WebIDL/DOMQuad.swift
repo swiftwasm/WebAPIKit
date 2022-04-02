@@ -21,11 +21,13 @@ public class DOMQuad: JSBridgedClass {
     }
 
     public static func fromRect(other: DOMRectInit? = nil) -> Self {
-        constructor[Strings.fromRect]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public static func fromQuad(other: DOMQuadInit? = nil) -> Self {
-        constructor[Strings.fromQuad]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.fromQuad].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -41,10 +43,12 @@ public class DOMQuad: JSBridgedClass {
     public var p4: DOMPoint
 
     public func getBounds() -> DOMRect {
-        jsObject[Strings.getBounds]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getBounds].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

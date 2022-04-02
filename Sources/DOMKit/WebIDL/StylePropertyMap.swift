@@ -11,18 +11,22 @@ public class StylePropertyMap: StylePropertyMapReadOnly {
     }
 
     public func set(property: String, values: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Strings.set]!(property.jsValue(), values.jsValue())
+        let this = jsObject
+        _ = this[Strings.set].function!(this: this, arguments: [property.jsValue()] + values.map { $0.jsValue() })
     }
 
     public func append(property: String, values: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Strings.append]!(property.jsValue(), values.jsValue())
+        let this = jsObject
+        _ = this[Strings.append].function!(this: this, arguments: [property.jsValue()] + values.map { $0.jsValue() })
     }
 
     public func delete(property: String) {
-        _ = jsObject[Strings.delete]!(property.jsValue())
+        let this = jsObject
+        _ = this[Strings.delete].function!(this: this, arguments: [property.jsValue()])
     }
 
     public func clear() {
-        _ = jsObject[Strings.clear]!()
+        let this = jsObject
+        _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 }

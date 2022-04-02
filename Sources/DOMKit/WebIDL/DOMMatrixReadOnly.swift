@@ -41,15 +41,18 @@ public class DOMMatrixReadOnly: JSBridgedClass {
     }
 
     public static func fromMatrix(other: DOMMatrixInit? = nil) -> Self {
-        constructor[Strings.fromMatrix]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.fromMatrix].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public static func fromFloat32Array(array32: Float32Array) -> Self {
-        constructor[Strings.fromFloat32Array]!(array32.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.fromFloat32Array].function!(this: this, arguments: [array32.jsValue()]).fromJSValue()!
     }
 
     public static func fromFloat64Array(array64: Float64Array) -> Self {
-        constructor[Strings.fromFloat64Array]!(array64.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.fromFloat64Array].function!(this: this, arguments: [array64.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -125,7 +128,8 @@ public class DOMMatrixReadOnly: JSBridgedClass {
     public var isIdentity: Bool
 
     public func translate(tx: Double? = nil, ty: Double? = nil, tz: Double? = nil) -> DOMMatrix {
-        jsObject[Strings.translate]!(tx?.jsValue() ?? .undefined, ty?.jsValue() ?? .undefined, tz?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.translate].function!(this: this, arguments: [tx?.jsValue() ?? .undefined, ty?.jsValue() ?? .undefined, tz?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func scale(scaleX: Double? = nil, scaleY: Double? = nil, scaleZ: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> DOMMatrix {
@@ -135,63 +139,78 @@ public class DOMMatrixReadOnly: JSBridgedClass {
         let _arg3 = originX?.jsValue() ?? .undefined
         let _arg4 = originY?.jsValue() ?? .undefined
         let _arg5 = originZ?.jsValue() ?? .undefined
-        return jsObject[Strings.scale]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        let this = jsObject
+        return this[Strings.scale].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
     }
 
     public func scaleNonUniform(scaleX: Double? = nil, scaleY: Double? = nil) -> DOMMatrix {
-        jsObject[Strings.scaleNonUniform]!(scaleX?.jsValue() ?? .undefined, scaleY?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.scaleNonUniform].function!(this: this, arguments: [scaleX?.jsValue() ?? .undefined, scaleY?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func scale3d(scale: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> DOMMatrix {
-        jsObject[Strings.scale3d]!(scale?.jsValue() ?? .undefined, originX?.jsValue() ?? .undefined, originY?.jsValue() ?? .undefined, originZ?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.scale3d].function!(this: this, arguments: [scale?.jsValue() ?? .undefined, originX?.jsValue() ?? .undefined, originY?.jsValue() ?? .undefined, originZ?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func rotate(rotX: Double? = nil, rotY: Double? = nil, rotZ: Double? = nil) -> DOMMatrix {
-        jsObject[Strings.rotate]!(rotX?.jsValue() ?? .undefined, rotY?.jsValue() ?? .undefined, rotZ?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.rotate].function!(this: this, arguments: [rotX?.jsValue() ?? .undefined, rotY?.jsValue() ?? .undefined, rotZ?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func rotateFromVector(x: Double? = nil, y: Double? = nil) -> DOMMatrix {
-        jsObject[Strings.rotateFromVector]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.rotateFromVector].function!(this: this, arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func rotateAxisAngle(x: Double? = nil, y: Double? = nil, z: Double? = nil, angle: Double? = nil) -> DOMMatrix {
-        jsObject[Strings.rotateAxisAngle]!(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, angle?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.rotateAxisAngle].function!(this: this, arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, angle?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func skewX(sx: Double? = nil) -> DOMMatrix {
-        jsObject[Strings.skewX]!(sx?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.skewX].function!(this: this, arguments: [sx?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func skewY(sy: Double? = nil) -> DOMMatrix {
-        jsObject[Strings.skewY]!(sy?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.skewY].function!(this: this, arguments: [sy?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func multiply(other: DOMMatrixInit? = nil) -> DOMMatrix {
-        jsObject[Strings.multiply]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.multiply].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func flipX() -> DOMMatrix {
-        jsObject[Strings.flipX]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.flipX].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func flipY() -> DOMMatrix {
-        jsObject[Strings.flipY]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.flipY].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func inverse() -> DOMMatrix {
-        jsObject[Strings.inverse]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.inverse].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func transformPoint(point: DOMPointInit? = nil) -> DOMPoint {
-        jsObject[Strings.transformPoint]!(point?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.transformPoint].function!(this: this, arguments: [point?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func toFloat32Array() -> Float32Array {
-        jsObject[Strings.toFloat32Array]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toFloat32Array].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func toFloat64Array() -> Float64Array {
-        jsObject[Strings.toFloat64Array]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toFloat64Array].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public var description: String {
@@ -199,6 +218,7 @@ public class DOMMatrixReadOnly: JSBridgedClass {
     }
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

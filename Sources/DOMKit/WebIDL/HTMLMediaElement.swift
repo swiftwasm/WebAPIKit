@@ -48,12 +48,14 @@ public class HTMLMediaElement: HTMLElement {
     public var sinkId: String
 
     public func setSinkId(sinkId: String) -> JSPromise {
-        jsObject[Strings.setSinkId]!(sinkId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setSinkId].function!(this: this, arguments: [sinkId.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func setSinkId(sinkId: String) async throws {
-        let _promise: JSPromise = jsObject[Strings.setSinkId]!(sinkId.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.setSinkId].function!(this: this, arguments: [sinkId.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
@@ -67,12 +69,14 @@ public class HTMLMediaElement: HTMLElement {
     public var onwaitingforkey: EventHandler
 
     public func setMediaKeys(mediaKeys: MediaKeys?) -> JSPromise {
-        jsObject[Strings.setMediaKeys]!(mediaKeys.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setMediaKeys].function!(this: this, arguments: [mediaKeys.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func setMediaKeys(mediaKeys: MediaKeys?) async throws {
-        let _promise: JSPromise = jsObject[Strings.setMediaKeys]!(mediaKeys.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.setMediaKeys].function!(this: this, arguments: [mediaKeys.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
@@ -109,11 +113,13 @@ public class HTMLMediaElement: HTMLElement {
     public var buffered: TimeRanges
 
     public func load() {
-        _ = jsObject[Strings.load]!()
+        let this = jsObject
+        _ = this[Strings.load].function!(this: this, arguments: [])
     }
 
     public func canPlayType(type: String) -> CanPlayTypeResult {
-        jsObject[Strings.canPlayType]!(type.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.canPlayType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     public static let HAVE_NOTHING: UInt16 = 0
@@ -136,14 +142,16 @@ public class HTMLMediaElement: HTMLElement {
     public var currentTime: Double
 
     public func fastSeek(time: Double) {
-        _ = jsObject[Strings.fastSeek]!(time.jsValue())
+        let this = jsObject
+        _ = this[Strings.fastSeek].function!(this: this, arguments: [time.jsValue()])
     }
 
     @ReadonlyAttribute
     public var duration: Double
 
     public func getStartDate() -> JSObject {
-        jsObject[Strings.getStartDate]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getStartDate].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -174,17 +182,20 @@ public class HTMLMediaElement: HTMLElement {
     public var loop: Bool
 
     public func play() -> JSPromise {
-        jsObject[Strings.play]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.play].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func play() async throws {
-        let _promise: JSPromise = jsObject[Strings.play]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.play].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func pause() {
-        _ = jsObject[Strings.pause]!()
+        let this = jsObject
+        _ = this[Strings.pause].function!(this: this, arguments: [])
     }
 
     @ReadWriteAttribute
@@ -209,11 +220,13 @@ public class HTMLMediaElement: HTMLElement {
     public var textTracks: TextTrackList
 
     public func addTextTrack(kind: TextTrackKind, label: String? = nil, language: String? = nil) -> TextTrack {
-        jsObject[Strings.addTextTrack]!(kind.jsValue(), label?.jsValue() ?? .undefined, language?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.addTextTrack].function!(this: this, arguments: [kind.jsValue(), label?.jsValue() ?? .undefined, language?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func captureStream() -> MediaStream {
-        jsObject[Strings.captureStream]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.captureStream].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute

@@ -15,6 +15,7 @@ public class CustomStateSet: JSBridgedClass {
     // XXX: make me Set-like!
 
     public func add(value: String) {
-        _ = jsObject[Strings.add]!(value.jsValue())
+        let this = jsObject
+        _ = this[Strings.add].function!(this: this, arguments: [value.jsValue()])
     }
 }

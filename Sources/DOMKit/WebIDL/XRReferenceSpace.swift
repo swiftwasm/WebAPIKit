@@ -12,7 +12,8 @@ public class XRReferenceSpace: XRSpace {
     }
 
     public func getOffsetReferenceSpace(originOffset: XRRigidTransform) -> Self {
-        jsObject[Strings.getOffsetReferenceSpace]!(originOffset.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getOffsetReferenceSpace].function!(this: this, arguments: [originOffset.jsValue()]).fromJSValue()!
     }
 
     @ClosureAttribute1Optional

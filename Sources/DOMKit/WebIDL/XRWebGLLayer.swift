@@ -39,10 +39,12 @@ public class XRWebGLLayer: XRLayer {
     public var framebufferHeight: UInt32
 
     public func getViewport(view: XRView) -> XRViewport? {
-        jsObject[Strings.getViewport]!(view.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getViewport].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
     }
 
     public static func getNativeFramebufferScaleFactor(session: XRSession) -> Double {
-        constructor[Strings.getNativeFramebufferScaleFactor]!(session.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.getNativeFramebufferScaleFactor].function!(this: this, arguments: [session.jsValue()]).fromJSValue()!
     }
 }

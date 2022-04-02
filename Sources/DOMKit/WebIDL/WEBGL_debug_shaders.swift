@@ -13,6 +13,7 @@ public class WEBGL_debug_shaders: JSBridgedClass {
     }
 
     public func getTranslatedShaderSource(shader: WebGLShader) -> String {
-        jsObject[Strings.getTranslatedShaderSource]!(shader.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTranslatedShaderSource].function!(this: this, arguments: [shader.jsValue()]).fromJSValue()!
     }
 }

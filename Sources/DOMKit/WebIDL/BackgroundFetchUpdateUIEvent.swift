@@ -15,12 +15,14 @@ public class BackgroundFetchUpdateUIEvent: BackgroundFetchEvent {
     }
 
     public func updateUI(options: BackgroundFetchUIOptions? = nil) -> JSPromise {
-        jsObject[Strings.updateUI]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.updateUI].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func updateUI(options: BackgroundFetchUIOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.updateUI]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.updateUI].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

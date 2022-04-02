@@ -9,12 +9,14 @@ public enum TestUtils {
     }
 
     public static func gc() -> JSPromise {
-        JSObject.global[Strings.TestUtils].object![Strings.gc]!().fromJSValue()!
+        let this = JSObject.global[Strings.TestUtils].object!
+        return this[Strings.gc].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func gc() async throws {
-        let _promise: JSPromise = JSObject.global[Strings.TestUtils].object![Strings.gc]!().fromJSValue()!
+        let this = JSObject.global[Strings.TestUtils].object!
+        let _promise: JSPromise = this[Strings.gc].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 }

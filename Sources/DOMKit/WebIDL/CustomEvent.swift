@@ -19,6 +19,7 @@ public class CustomEvent: Event {
     public var detail: JSValue
 
     public func initCustomEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, detail: JSValue? = nil) {
-        _ = jsObject[Strings.initCustomEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined, detail?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.initCustomEvent].function!(this: this, arguments: [type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined, detail?.jsValue() ?? .undefined])
     }
 }

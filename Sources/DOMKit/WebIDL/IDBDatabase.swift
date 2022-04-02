@@ -27,19 +27,23 @@ public class IDBDatabase: EventTarget {
     public var objectStoreNames: DOMStringList
 
     public func transaction(storeNames: __UNSUPPORTED_UNION__, mode: IDBTransactionMode? = nil, options: IDBTransactionOptions? = nil) -> IDBTransaction {
-        jsObject[Strings.transaction]!(storeNames.jsValue(), mode?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.transaction].function!(this: this, arguments: [storeNames.jsValue(), mode?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     public func createObjectStore(name: String, options: IDBObjectStoreParameters? = nil) -> IDBObjectStore {
-        jsObject[Strings.createObjectStore]!(name.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createObjectStore].function!(this: this, arguments: [name.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func deleteObjectStore(name: String) {
-        _ = jsObject[Strings.deleteObjectStore]!(name.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteObjectStore].function!(this: this, arguments: [name.jsValue()])
     }
 
     @ClosureAttribute1Optional

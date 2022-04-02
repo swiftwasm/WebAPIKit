@@ -33,14 +33,17 @@ public class AudioBuffer: JSBridgedClass {
     public var numberOfChannels: UInt32
 
     public func getChannelData(channel: UInt32) -> Float32Array {
-        jsObject[Strings.getChannelData]!(channel.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getChannelData].function!(this: this, arguments: [channel.jsValue()]).fromJSValue()!
     }
 
     public func copyFromChannel(destination: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
-        _ = jsObject[Strings.copyFromChannel]!(destination.jsValue(), channelNumber.jsValue(), bufferOffset?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.copyFromChannel].function!(this: this, arguments: [destination.jsValue(), channelNumber.jsValue(), bufferOffset?.jsValue() ?? .undefined])
     }
 
     public func copyToChannel(source: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
-        _ = jsObject[Strings.copyToChannel]!(source.jsValue(), channelNumber.jsValue(), bufferOffset?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.copyToChannel].function!(this: this, arguments: [source.jsValue(), channelNumber.jsValue(), bufferOffset?.jsValue() ?? .undefined])
     }
 }

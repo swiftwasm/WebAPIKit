@@ -23,12 +23,14 @@ public class Profiler: EventTarget {
     }
 
     public func stop() -> JSPromise {
-        jsObject[Strings.stop]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.stop].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func stop() async throws -> ProfilerTrace {
-        let _promise: JSPromise = jsObject[Strings.stop]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.stop].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

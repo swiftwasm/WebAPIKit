@@ -25,38 +25,46 @@ public class VideoDecoder: JSBridgedClass {
     public var decodeQueueSize: UInt32
 
     public func configure(config: VideoDecoderConfig) {
-        _ = jsObject[Strings.configure]!(config.jsValue())
+        let this = jsObject
+        _ = this[Strings.configure].function!(this: this, arguments: [config.jsValue()])
     }
 
     public func decode(chunk: EncodedVideoChunk) {
-        _ = jsObject[Strings.decode]!(chunk.jsValue())
+        let this = jsObject
+        _ = this[Strings.decode].function!(this: this, arguments: [chunk.jsValue()])
     }
 
     public func flush() -> JSPromise {
-        jsObject[Strings.flush]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.flush].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func flush() async throws {
-        let _promise: JSPromise = jsObject[Strings.flush]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.flush].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func reset() {
-        _ = jsObject[Strings.reset]!()
+        let this = jsObject
+        _ = this[Strings.reset].function!(this: this, arguments: [])
     }
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     public static func isConfigSupported(config: VideoDecoderConfig) -> JSPromise {
-        constructor[Strings.isConfigSupported]!(config.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func isConfigSupported(config: VideoDecoderConfig) async throws -> VideoDecoderSupport {
-        let _promise: JSPromise = constructor[Strings.isConfigSupported]!(config.jsValue()).fromJSValue()!
+        let this = constructor
+        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

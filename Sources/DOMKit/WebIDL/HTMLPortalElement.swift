@@ -25,17 +25,20 @@ public class HTMLPortalElement: HTMLElement {
     public var referrerPolicy: String
 
     public func activate(options: PortalActivateOptions? = nil) -> JSPromise {
-        jsObject[Strings.activate]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.activate].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func activate(options: PortalActivateOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.activate]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.activate].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
-        _ = jsObject[Strings.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
     }
 
     @ClosureAttribute1Optional

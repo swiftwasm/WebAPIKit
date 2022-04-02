@@ -27,22 +27,27 @@ public class SpeechSynthesis: EventTarget {
     public var onvoiceschanged: EventHandler
 
     public func speak(utterance: SpeechSynthesisUtterance) {
-        _ = jsObject[Strings.speak]!(utterance.jsValue())
+        let this = jsObject
+        _ = this[Strings.speak].function!(this: this, arguments: [utterance.jsValue()])
     }
 
     public func cancel() {
-        _ = jsObject[Strings.cancel]!()
+        let this = jsObject
+        _ = this[Strings.cancel].function!(this: this, arguments: [])
     }
 
     public func pause() {
-        _ = jsObject[Strings.pause]!()
+        let this = jsObject
+        _ = this[Strings.pause].function!(this: this, arguments: [])
     }
 
     public func resume() {
-        _ = jsObject[Strings.resume]!()
+        let this = jsObject
+        _ = this[Strings.resume].function!(this: this, arguments: [])
     }
 
     public func getVoices() -> [SpeechSynthesisVoice] {
-        jsObject[Strings.getVoices]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getVoices].function!(this: this, arguments: []).fromJSValue()!
     }
 }

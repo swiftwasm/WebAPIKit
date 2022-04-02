@@ -66,7 +66,8 @@ public class HTMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, D
     public var inert: Bool
 
     public func click() {
-        _ = jsObject[Strings.click]!()
+        let this = jsObject
+        _ = this[Strings.click].function!(this: this, arguments: [])
     }
 
     @ReadWriteAttribute
@@ -91,6 +92,7 @@ public class HTMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, D
     public var outerText: String
 
     public func attachInternals() -> ElementInternals {
-        jsObject[Strings.attachInternals]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.attachInternals].function!(this: this, arguments: []).fromJSValue()!
     }
 }

@@ -23,11 +23,13 @@ public class HTMLTableSectionElement: HTMLElement {
     public var rows: HTMLCollection
 
     public func insertRow(index: Int32? = nil) -> HTMLTableRowElement {
-        jsObject[Strings.insertRow]!(index?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.insertRow].function!(this: this, arguments: [index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func deleteRow(index: Int32) {
-        _ = jsObject[Strings.deleteRow]!(index.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteRow].function!(this: this, arguments: [index.jsValue()])
     }
 
     @ReadWriteAttribute

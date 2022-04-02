@@ -13,18 +13,22 @@ public class PushMessageData: JSBridgedClass {
     }
 
     public func arrayBuffer() -> ArrayBuffer {
-        jsObject[Strings.arrayBuffer]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func blob() -> Blob {
-        jsObject[Strings.blob]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.blob].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func json() -> JSValue {
-        jsObject[Strings.json]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.json].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func text() -> String {
-        jsObject[Strings.text]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.text].function!(this: this, arguments: []).fromJSValue()!
     }
 }

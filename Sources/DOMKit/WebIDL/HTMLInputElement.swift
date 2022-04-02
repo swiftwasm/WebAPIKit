@@ -180,11 +180,13 @@ public class HTMLInputElement: HTMLElement {
     public var width: UInt32
 
     public func stepUp(n: Int32? = nil) {
-        _ = jsObject[Strings.stepUp]!(n?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.stepUp].function!(this: this, arguments: [n?.jsValue() ?? .undefined])
     }
 
     public func stepDown(n: Int32? = nil) {
-        _ = jsObject[Strings.stepDown]!(n?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.stepDown].function!(this: this, arguments: [n?.jsValue() ?? .undefined])
     }
 
     @ReadonlyAttribute
@@ -197,22 +199,26 @@ public class HTMLInputElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Strings.checkValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Strings.reportValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Strings.setCustomValidity]!(error.jsValue())
+        let this = jsObject
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
     }
 
     @ReadonlyAttribute
     public var labels: NodeList?
 
     public func select() {
-        _ = jsObject[Strings.select]!()
+        let this = jsObject
+        _ = this[Strings.select].function!(this: this, arguments: [])
     }
 
     @ReadWriteAttribute
@@ -225,19 +231,23 @@ public class HTMLInputElement: HTMLElement {
     public var selectionDirection: String?
 
     public func setRangeText(replacement: String) {
-        _ = jsObject[Strings.setRangeText]!(replacement.jsValue())
+        let this = jsObject
+        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue()])
     }
 
     public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
-        _ = jsObject[Strings.setRangeText]!(replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined])
     }
 
     public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
-        _ = jsObject[Strings.setSelectionRange]!(start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setSelectionRange].function!(this: this, arguments: [start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined])
     }
 
     public func showPicker() {
-        _ = jsObject[Strings.showPicker]!()
+        let this = jsObject
+        _ = this[Strings.showPicker].function!(this: this, arguments: [])
     }
 
     @ReadWriteAttribute

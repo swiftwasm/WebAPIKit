@@ -18,11 +18,13 @@ public class CSSStyleRule: CSSRule {
     public var cssRules: CSSRuleList
 
     public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
-        jsObject[Strings.insertRule]!(rule.jsValue(), index?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.insertRule].function!(this: this, arguments: [rule.jsValue(), index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func deleteRule(index: UInt32) {
-        _ = jsObject[Strings.deleteRule]!(index.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteRule].function!(this: this, arguments: [index.jsValue()])
     }
 
     @ReadonlyAttribute

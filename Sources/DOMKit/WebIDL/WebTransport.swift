@@ -22,12 +22,14 @@ public class WebTransport: JSBridgedClass {
     }
 
     public func getStats() -> JSPromise {
-        jsObject[Strings.getStats]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getStats() async throws -> WebTransportStats {
-        let _promise: JSPromise = jsObject[Strings.getStats]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -38,19 +40,22 @@ public class WebTransport: JSBridgedClass {
     public var closed: JSPromise
 
     public func close(closeInfo: WebTransportCloseInfo? = nil) {
-        _ = jsObject[Strings.close]!(closeInfo?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [closeInfo?.jsValue() ?? .undefined])
     }
 
     @ReadonlyAttribute
     public var datagrams: WebTransportDatagramDuplexStream
 
     public func createBidirectionalStream() -> JSPromise {
-        jsObject[Strings.createBidirectionalStream]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createBidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func createBidirectionalStream() async throws -> WebTransportBidirectionalStream {
-        let _promise: JSPromise = jsObject[Strings.createBidirectionalStream]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.createBidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -58,12 +63,14 @@ public class WebTransport: JSBridgedClass {
     public var incomingBidirectionalStreams: ReadableStream
 
     public func createUnidirectionalStream() -> JSPromise {
-        jsObject[Strings.createUnidirectionalStream]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createUnidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func createUnidirectionalStream() async throws -> WritableStream {
-        let _promise: JSPromise = jsObject[Strings.createUnidirectionalStream]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.createUnidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

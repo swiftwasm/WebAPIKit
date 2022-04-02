@@ -29,22 +29,27 @@ public class IDBKeyRange: JSBridgedClass {
     public var upperOpen: Bool
 
     public static func only(value: JSValue) -> Self {
-        constructor[Strings.only]!(value.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.only].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func lowerBound(lower: JSValue, open: Bool? = nil) -> Self {
-        constructor[Strings.lowerBound]!(lower.jsValue(), open?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.lowerBound].function!(this: this, arguments: [lower.jsValue(), open?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public static func upperBound(upper: JSValue, open: Bool? = nil) -> Self {
-        constructor[Strings.upperBound]!(upper.jsValue(), open?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.upperBound].function!(this: this, arguments: [upper.jsValue(), open?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public static func bound(lower: JSValue, upper: JSValue, lowerOpen: Bool? = nil, upperOpen: Bool? = nil) -> Self {
-        constructor[Strings.bound]!(lower.jsValue(), upper.jsValue(), lowerOpen?.jsValue() ?? .undefined, upperOpen?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.bound].function!(this: this, arguments: [lower.jsValue(), upper.jsValue(), lowerOpen?.jsValue() ?? .undefined, upperOpen?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func includes(key: JSValue) -> Bool {
-        jsObject[Strings.includes]!(key.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.includes].function!(this: this, arguments: [key.jsValue()]).fromJSValue()!
     }
 }

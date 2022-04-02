@@ -13,18 +13,22 @@ public class DOMImplementation: JSBridgedClass {
     }
 
     public func createDocumentType(qualifiedName: String, publicId: String, systemId: String) -> DocumentType {
-        jsObject[Strings.createDocumentType]!(qualifiedName.jsValue(), publicId.jsValue(), systemId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createDocumentType].function!(this: this, arguments: [qualifiedName.jsValue(), publicId.jsValue(), systemId.jsValue()]).fromJSValue()!
     }
 
     public func createDocument(namespace: String?, qualifiedName: String, doctype: DocumentType? = nil) -> XMLDocument {
-        jsObject[Strings.createDocument]!(namespace.jsValue(), qualifiedName.jsValue(), doctype?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createDocument].function!(this: this, arguments: [namespace.jsValue(), qualifiedName.jsValue(), doctype?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createHTMLDocument(title: String? = nil) -> Document {
-        jsObject[Strings.createHTMLDocument]!(title?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createHTMLDocument].function!(this: this, arguments: [title?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func hasFeature() -> Bool {
-        jsObject[Strings.hasFeature]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.hasFeature].function!(this: this, arguments: []).fromJSValue()!
     }
 }

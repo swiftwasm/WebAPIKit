@@ -15,14 +15,17 @@ public class SVGGraphicsElement: SVGElement, SVGTests {
     public var transform: SVGAnimatedTransformList
 
     public func getBBox(options: SVGBoundingBoxOptions? = nil) -> DOMRect {
-        jsObject[Strings.getBBox]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getBBox].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func getCTM() -> DOMMatrix? {
-        jsObject[Strings.getCTM]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCTM].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getScreenCTM() -> DOMMatrix? {
-        jsObject[Strings.getScreenCTM]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getScreenCTM].function!(this: this, arguments: []).fromJSValue()!
     }
 }

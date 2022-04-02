@@ -35,94 +35,117 @@ public class SVGSVGElement: SVGGraphicsElement, SVGFitToViewBox, WindowEventHand
     public var currentTranslate: DOMPointReadOnly
 
     public func getIntersectionList(rect: DOMRectReadOnly, referenceElement: SVGElement?) -> NodeList {
-        jsObject[Strings.getIntersectionList]!(rect.jsValue(), referenceElement.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getIntersectionList].function!(this: this, arguments: [rect.jsValue(), referenceElement.jsValue()]).fromJSValue()!
     }
 
     public func getEnclosureList(rect: DOMRectReadOnly, referenceElement: SVGElement?) -> NodeList {
-        jsObject[Strings.getEnclosureList]!(rect.jsValue(), referenceElement.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getEnclosureList].function!(this: this, arguments: [rect.jsValue(), referenceElement.jsValue()]).fromJSValue()!
     }
 
     public func checkIntersection(element: SVGElement, rect: DOMRectReadOnly) -> Bool {
-        jsObject[Strings.checkIntersection]!(element.jsValue(), rect.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.checkIntersection].function!(this: this, arguments: [element.jsValue(), rect.jsValue()]).fromJSValue()!
     }
 
     public func checkEnclosure(element: SVGElement, rect: DOMRectReadOnly) -> Bool {
-        jsObject[Strings.checkEnclosure]!(element.jsValue(), rect.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.checkEnclosure].function!(this: this, arguments: [element.jsValue(), rect.jsValue()]).fromJSValue()!
     }
 
     public func deselectAll() {
-        _ = jsObject[Strings.deselectAll]!()
+        let this = jsObject
+        _ = this[Strings.deselectAll].function!(this: this, arguments: [])
     }
 
     public func createSVGNumber() -> SVGNumber {
-        jsObject[Strings.createSVGNumber]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSVGNumber].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createSVGLength() -> SVGLength {
-        jsObject[Strings.createSVGLength]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSVGLength].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createSVGAngle() -> SVGAngle {
-        jsObject[Strings.createSVGAngle]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSVGAngle].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createSVGPoint() -> DOMPoint {
-        jsObject[Strings.createSVGPoint]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSVGPoint].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createSVGMatrix() -> DOMMatrix {
-        jsObject[Strings.createSVGMatrix]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSVGMatrix].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createSVGRect() -> DOMRect {
-        jsObject[Strings.createSVGRect]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSVGRect].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createSVGTransform() -> SVGTransform {
-        jsObject[Strings.createSVGTransform]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSVGTransform].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createSVGTransformFromMatrix(matrix: DOMMatrix2DInit? = nil) -> SVGTransform {
-        jsObject[Strings.createSVGTransformFromMatrix]!(matrix?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSVGTransformFromMatrix].function!(this: this, arguments: [matrix?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func getElementById(elementId: String) -> Element {
-        jsObject[Strings.getElementById]!(elementId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getElementById].function!(this: this, arguments: [elementId.jsValue()]).fromJSValue()!
     }
 
     public func suspendRedraw(maxWaitMilliseconds: UInt32) -> UInt32 {
-        jsObject[Strings.suspendRedraw]!(maxWaitMilliseconds.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.suspendRedraw].function!(this: this, arguments: [maxWaitMilliseconds.jsValue()]).fromJSValue()!
     }
 
     public func unsuspendRedraw(suspendHandleID: UInt32) {
-        _ = jsObject[Strings.unsuspendRedraw]!(suspendHandleID.jsValue())
+        let this = jsObject
+        _ = this[Strings.unsuspendRedraw].function!(this: this, arguments: [suspendHandleID.jsValue()])
     }
 
     public func unsuspendRedrawAll() {
-        _ = jsObject[Strings.unsuspendRedrawAll]!()
+        let this = jsObject
+        _ = this[Strings.unsuspendRedrawAll].function!(this: this, arguments: [])
     }
 
     public func forceRedraw() {
-        _ = jsObject[Strings.forceRedraw]!()
+        let this = jsObject
+        _ = this[Strings.forceRedraw].function!(this: this, arguments: [])
     }
 
     public func pauseAnimations() {
-        _ = jsObject[Strings.pauseAnimations]!()
+        let this = jsObject
+        _ = this[Strings.pauseAnimations].function!(this: this, arguments: [])
     }
 
     public func unpauseAnimations() {
-        _ = jsObject[Strings.unpauseAnimations]!()
+        let this = jsObject
+        _ = this[Strings.unpauseAnimations].function!(this: this, arguments: [])
     }
 
     public func animationsPaused() -> Bool {
-        jsObject[Strings.animationsPaused]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.animationsPaused].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getCurrentTime() -> Float {
-        jsObject[Strings.getCurrentTime]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCurrentTime].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func setCurrentTime(seconds: Float) {
-        _ = jsObject[Strings.setCurrentTime]!(seconds.jsValue())
+        let this = jsObject
+        _ = this[Strings.setCurrentTime].function!(this: this, arguments: [seconds.jsValue()])
     }
 }

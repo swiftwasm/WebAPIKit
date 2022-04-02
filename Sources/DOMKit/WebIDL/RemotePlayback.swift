@@ -19,12 +19,14 @@ public class RemotePlayback: EventTarget {
     // XXX: member 'watchAvailability' is ignored
 
     public func cancelWatchAvailability(id: Int32? = nil) -> JSPromise {
-        jsObject[Strings.cancelWatchAvailability]!(id?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.cancelWatchAvailability].function!(this: this, arguments: [id?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func cancelWatchAvailability(id: Int32? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.cancelWatchAvailability]!(id?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.cancelWatchAvailability].function!(this: this, arguments: [id?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
@@ -41,12 +43,14 @@ public class RemotePlayback: EventTarget {
     public var ondisconnect: EventHandler
 
     public func prompt() -> JSPromise {
-        jsObject[Strings.prompt]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func prompt() async throws {
-        let _promise: JSPromise = jsObject[Strings.prompt]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 }

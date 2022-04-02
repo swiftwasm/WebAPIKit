@@ -6,10 +6,12 @@ import JavaScriptKit
 public protocol Animatable: JSBridgedClass {}
 public extension Animatable {
     func animate(keyframes: JSObject?, options: __UNSUPPORTED_UNION__? = nil) -> Animation {
-        jsObject[Strings.animate]!(keyframes.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.animate].function!(this: this, arguments: [keyframes.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     func getAnimations(options: GetAnimationsOptions? = nil) -> [Animation] {
-        jsObject[Strings.getAnimations]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAnimations].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 }

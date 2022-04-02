@@ -13,62 +13,74 @@ public class PaymentInstruments: JSBridgedClass {
     }
 
     public func delete(instrumentKey: String) -> JSPromise {
-        jsObject[Strings.delete]!(instrumentKey.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.delete].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func delete(instrumentKey: String) async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.delete]!(instrumentKey.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func get(instrumentKey: String) -> JSPromise {
-        jsObject[Strings.get]!(instrumentKey.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func get(instrumentKey: String) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.get]!(instrumentKey.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func keys() -> JSPromise {
-        jsObject[Strings.keys]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.keys].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func keys() async throws -> [String] {
-        let _promise: JSPromise = jsObject[Strings.keys]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.keys].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func has(instrumentKey: String) -> JSPromise {
-        jsObject[Strings.has]!(instrumentKey.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.has].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func has(instrumentKey: String) async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.has]!(instrumentKey.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.has].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func set(instrumentKey: String, details: PaymentInstrument) -> JSPromise {
-        jsObject[Strings.set]!(instrumentKey.jsValue(), details.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.set].function!(this: this, arguments: [instrumentKey.jsValue(), details.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func set(instrumentKey: String, details: PaymentInstrument) async throws {
-        let _promise: JSPromise = jsObject[Strings.set]!(instrumentKey.jsValue(), details.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.set].function!(this: this, arguments: [instrumentKey.jsValue(), details.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func clear() -> JSPromise {
-        jsObject[Strings.clear]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clear].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func clear() async throws {
-        let _promise: JSPromise = jsObject[Strings.clear]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.clear].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 }

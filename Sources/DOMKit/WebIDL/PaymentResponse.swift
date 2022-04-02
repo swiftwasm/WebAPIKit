@@ -14,7 +14,8 @@ public class PaymentResponse: EventTarget {
     }
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -27,22 +28,26 @@ public class PaymentResponse: EventTarget {
     public var details: JSObject
 
     public func complete(result: PaymentComplete? = nil) -> JSPromise {
-        jsObject[Strings.complete]!(result?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.complete].function!(this: this, arguments: [result?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func complete(result: PaymentComplete? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.complete]!(result?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.complete].function!(this: this, arguments: [result?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func retry(errorFields: PaymentValidationErrors? = nil) -> JSPromise {
-        jsObject[Strings.retry]!(errorFields?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.retry].function!(this: this, arguments: [errorFields?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func retry(errorFields: PaymentValidationErrors? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.retry]!(errorFields?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.retry].function!(this: this, arguments: [errorFields?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

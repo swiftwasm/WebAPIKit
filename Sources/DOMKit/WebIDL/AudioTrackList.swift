@@ -22,7 +22,8 @@ public class AudioTrackList: EventTarget {
     }
 
     public func getTrackById(id: String) -> AudioTrack? {
-        jsObject[Strings.getTrackById]!(id.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTrackById].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
     }
 
     @ClosureAttribute1Optional

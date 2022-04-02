@@ -15,7 +15,8 @@ public class CustomElementRegistry: JSBridgedClass {
     // XXX: member 'define' is ignored
 
     public func get(name: String) -> __UNSUPPORTED_UNION__ {
-        jsObject[Strings.get]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     // XXX: member 'whenDefined' is ignored
@@ -23,6 +24,7 @@ public class CustomElementRegistry: JSBridgedClass {
     // XXX: member 'whenDefined' is ignored
 
     public func upgrade(root: Node) {
-        _ = jsObject[Strings.upgrade]!(root.jsValue())
+        let this = jsObject
+        _ = this[Strings.upgrade].function!(this: this, arguments: [root.jsValue()])
     }
 }

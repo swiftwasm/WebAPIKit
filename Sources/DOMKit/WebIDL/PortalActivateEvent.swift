@@ -19,6 +19,7 @@ public class PortalActivateEvent: Event {
     public var data: JSValue
 
     public func adoptPredecessor() -> HTMLPortalElement {
-        jsObject[Strings.adoptPredecessor]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.adoptPredecessor].function!(this: this, arguments: []).fromJSValue()!
     }
 }

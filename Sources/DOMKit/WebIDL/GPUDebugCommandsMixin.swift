@@ -6,14 +6,17 @@ import JavaScriptKit
 public protocol GPUDebugCommandsMixin: JSBridgedClass {}
 public extension GPUDebugCommandsMixin {
     func pushDebugGroup(groupLabel: String) {
-        _ = jsObject[Strings.pushDebugGroup]!(groupLabel.jsValue())
+        let this = jsObject
+        _ = this[Strings.pushDebugGroup].function!(this: this, arguments: [groupLabel.jsValue()])
     }
 
     func popDebugGroup() {
-        _ = jsObject[Strings.popDebugGroup]!()
+        let this = jsObject
+        _ = this[Strings.popDebugGroup].function!(this: this, arguments: [])
     }
 
     func insertDebugMarker(markerLabel: String) {
-        _ = jsObject[Strings.insertDebugMarker]!(markerLabel.jsValue())
+        let this = jsObject
+        _ = this[Strings.insertDebugMarker].function!(this: this, arguments: [markerLabel.jsValue()])
     }
 }

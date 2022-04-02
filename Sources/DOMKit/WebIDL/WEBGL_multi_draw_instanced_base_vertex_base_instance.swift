@@ -23,7 +23,8 @@ public class WEBGL_multi_draw_instanced_base_vertex_base_instance: JSBridgedClas
         let _arg7 = baseInstancesList.jsValue()
         let _arg8 = baseInstancesOffset.jsValue()
         let _arg9 = drawCount.jsValue()
-        _ = jsObject[Strings.multiDrawArraysInstancedBaseInstanceWEBGL]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9)
+        let this = jsObject
+        _ = this[Strings.multiDrawArraysInstancedBaseInstanceWEBGL].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
     }
 
     public func multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL(mode: GLenum, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, type: GLenum, offsetsList: __UNSUPPORTED_UNION__, offsetsOffset: GLuint, instanceCountsList: __UNSUPPORTED_UNION__, instanceCountsOffset: GLuint, baseVerticesList: __UNSUPPORTED_UNION__, baseVerticesOffset: GLuint, baseInstancesList: __UNSUPPORTED_UNION__, baseInstancesOffset: GLuint, drawCount: GLsizei) {
@@ -40,6 +41,7 @@ public class WEBGL_multi_draw_instanced_base_vertex_base_instance: JSBridgedClas
         let _arg10 = baseInstancesList.jsValue()
         let _arg11 = baseInstancesOffset.jsValue()
         let _arg12 = drawCount.jsValue()
-        _ = jsObject[Strings.multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12)
+        let this = jsObject
+        _ = this[Strings.multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12])
     }
 }

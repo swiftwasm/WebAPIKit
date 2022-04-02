@@ -13,6 +13,7 @@ public class CanvasPattern: JSBridgedClass {
     }
 
     public func setTransform(transform: DOMMatrix2DInit? = nil) {
-        _ = jsObject[Strings.setTransform]!(transform?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setTransform].function!(this: this, arguments: [transform?.jsValue() ?? .undefined])
     }
 }

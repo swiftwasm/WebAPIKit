@@ -13,42 +13,50 @@ public class CredentialsContainer: JSBridgedClass {
     }
 
     public func get(options: CredentialRequestOptions? = nil) -> JSPromise {
-        jsObject[Strings.get]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func get(options: CredentialRequestOptions? = nil) async throws -> Credential? {
-        let _promise: JSPromise = jsObject[Strings.get]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func store(credential: Credential) -> JSPromise {
-        jsObject[Strings.store]!(credential.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.store].function!(this: this, arguments: [credential.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func store(credential: Credential) async throws -> Credential {
-        let _promise: JSPromise = jsObject[Strings.store]!(credential.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.store].function!(this: this, arguments: [credential.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func create(options: CredentialCreationOptions? = nil) -> JSPromise {
-        jsObject[Strings.create]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.create].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func create(options: CredentialCreationOptions? = nil) async throws -> Credential? {
-        let _promise: JSPromise = jsObject[Strings.create]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.create].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func preventSilentAccess() -> JSPromise {
-        jsObject[Strings.preventSilentAccess]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.preventSilentAccess].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func preventSilentAccess() async throws {
-        let _promise: JSPromise = jsObject[Strings.preventSilentAccess]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.preventSilentAccess].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 }

@@ -13,42 +13,50 @@ public class Clients: JSBridgedClass {
     }
 
     public func get(id: String) -> JSPromise {
-        jsObject[Strings.get]!(id.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func get(id: String) async throws -> __UNSUPPORTED_UNION__ {
-        let _promise: JSPromise = jsObject[Strings.get]!(id.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func matchAll(options: ClientQueryOptions? = nil) -> JSPromise {
-        jsObject[Strings.matchAll]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.matchAll].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func matchAll(options: ClientQueryOptions? = nil) async throws -> [Client] {
-        let _promise: JSPromise = jsObject[Strings.matchAll]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.matchAll].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func openWindow(url: String) -> JSPromise {
-        jsObject[Strings.openWindow]!(url.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.openWindow].function!(this: this, arguments: [url.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func openWindow(url: String) async throws -> WindowClient? {
-        let _promise: JSPromise = jsObject[Strings.openWindow]!(url.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.openWindow].function!(this: this, arguments: [url.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func claim() -> JSPromise {
-        jsObject[Strings.claim]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.claim].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func claim() async throws {
-        let _promise: JSPromise = jsObject[Strings.claim]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.claim].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 }

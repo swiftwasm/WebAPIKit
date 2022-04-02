@@ -13,18 +13,22 @@ public class BluetoothUUID: JSBridgedClass {
     }
 
     public static func getService(name: __UNSUPPORTED_UNION__) -> UUID {
-        constructor[Strings.getService]!(name.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.getService].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public static func getCharacteristic(name: __UNSUPPORTED_UNION__) -> UUID {
-        constructor[Strings.getCharacteristic]!(name.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.getCharacteristic].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public static func getDescriptor(name: __UNSUPPORTED_UNION__) -> UUID {
-        constructor[Strings.getDescriptor]!(name.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.getDescriptor].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public static func canonicalUUID(alias: UInt32) -> UUID {
-        constructor[Strings.canonicalUUID]!(alias.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.canonicalUUID].function!(this: this, arguments: [alias.jsValue()]).fromJSValue()!
     }
 }

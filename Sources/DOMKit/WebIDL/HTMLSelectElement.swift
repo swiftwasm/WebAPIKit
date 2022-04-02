@@ -66,19 +66,23 @@ public class HTMLSelectElement: HTMLElement {
     }
 
     public func namedItem(name: String) -> HTMLOptionElement? {
-        jsObject[Strings.namedItem]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.namedItem].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Strings.add]!(element.jsValue(), before?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.add].function!(this: this, arguments: [element.jsValue(), before?.jsValue() ?? .undefined])
     }
 
     public func remove() {
-        _ = jsObject[Strings.remove]!()
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: [])
     }
 
     public func remove(index: Int32) {
-        _ = jsObject[Strings.remove]!(index.jsValue())
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue()])
     }
 
     // XXX: unsupported setter for keys of type UInt32
@@ -102,15 +106,18 @@ public class HTMLSelectElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Strings.checkValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Strings.reportValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Strings.setCustomValidity]!(error.jsValue())
+        let this = jsObject
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
     }
 
     @ReadonlyAttribute

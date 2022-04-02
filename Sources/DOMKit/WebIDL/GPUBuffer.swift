@@ -13,24 +13,29 @@ public class GPUBuffer: JSBridgedClass, GPUObjectBase {
     }
 
     public func mapAsync(mode: GPUMapModeFlags, offset: GPUSize64? = nil, size: GPUSize64? = nil) -> JSPromise {
-        jsObject[Strings.mapAsync]!(mode.jsValue(), offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.mapAsync].function!(this: this, arguments: [mode.jsValue(), offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func mapAsync(mode: GPUMapModeFlags, offset: GPUSize64? = nil, size: GPUSize64? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.mapAsync]!(mode.jsValue(), offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.mapAsync].function!(this: this, arguments: [mode.jsValue(), offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getMappedRange(offset: GPUSize64? = nil, size: GPUSize64? = nil) -> ArrayBuffer {
-        jsObject[Strings.getMappedRange]!(offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getMappedRange].function!(this: this, arguments: [offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func unmap() {
-        _ = jsObject[Strings.unmap]!()
+        let this = jsObject
+        _ = this[Strings.unmap].function!(this: this, arguments: [])
     }
 
     public func destroy() {
-        _ = jsObject[Strings.destroy]!()
+        let this = jsObject
+        _ = this[Strings.destroy].function!(this: this, arguments: [])
     }
 }

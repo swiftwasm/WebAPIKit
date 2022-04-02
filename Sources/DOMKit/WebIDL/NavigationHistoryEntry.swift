@@ -35,7 +35,8 @@ public class NavigationHistoryEntry: EventTarget {
     public var sameDocument: Bool
 
     public func getState() -> JSValue {
-        jsObject[Strings.getState]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getState].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ClosureAttribute1Optional

@@ -17,16 +17,19 @@ public class MediaKeySystemAccess: JSBridgedClass {
     public var keySystem: String
 
     public func getConfiguration() -> MediaKeySystemConfiguration {
-        jsObject[Strings.getConfiguration]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getConfiguration].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createMediaKeys() -> JSPromise {
-        jsObject[Strings.createMediaKeys]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createMediaKeys].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func createMediaKeys() async throws -> MediaKeys {
-        let _promise: JSPromise = jsObject[Strings.createMediaKeys]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.createMediaKeys].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

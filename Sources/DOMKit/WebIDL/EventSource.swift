@@ -45,6 +45,7 @@ public class EventSource: EventTarget {
     public var onerror: EventHandler
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 }

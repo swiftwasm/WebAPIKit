@@ -25,6 +25,7 @@ public class HTMLAllCollection: JSBridgedClass {
     }
 
     public func item(nameOrIndex: String? = nil) -> __UNSUPPORTED_UNION__? {
-        jsObject[Strings.item]!(nameOrIndex?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [nameOrIndex?.jsValue() ?? .undefined]).fromJSValue()!
     }
 }

@@ -17,18 +17,22 @@ public class GPUCanvasContext: JSBridgedClass {
     public var canvas: __UNSUPPORTED_UNION__
 
     public func configure(configuration: GPUCanvasConfiguration) {
-        _ = jsObject[Strings.configure]!(configuration.jsValue())
+        let this = jsObject
+        _ = this[Strings.configure].function!(this: this, arguments: [configuration.jsValue()])
     }
 
     public func unconfigure() {
-        _ = jsObject[Strings.unconfigure]!()
+        let this = jsObject
+        _ = this[Strings.unconfigure].function!(this: this, arguments: [])
     }
 
     public func getPreferredFormat(adapter: GPUAdapter) -> GPUTextureFormat {
-        jsObject[Strings.getPreferredFormat]!(adapter.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPreferredFormat].function!(this: this, arguments: [adapter.jsValue()]).fromJSValue()!
     }
 
     public func getCurrentTexture() -> GPUTexture {
-        jsObject[Strings.getCurrentTexture]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCurrentTexture].function!(this: this, arguments: []).fromJSValue()!
     }
 }

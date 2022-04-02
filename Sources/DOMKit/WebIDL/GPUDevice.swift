@@ -25,95 +25,116 @@ public class GPUDevice: EventTarget, GPUObjectBase {
     public var queue: GPUQueue
 
     public func destroy() {
-        _ = jsObject[Strings.destroy]!()
+        let this = jsObject
+        _ = this[Strings.destroy].function!(this: this, arguments: [])
     }
 
     public func createBuffer(descriptor: GPUBufferDescriptor) -> GPUBuffer {
-        jsObject[Strings.createBuffer]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createBuffer].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createTexture(descriptor: GPUTextureDescriptor) -> GPUTexture {
-        jsObject[Strings.createTexture]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createTexture].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createSampler(descriptor: GPUSamplerDescriptor? = nil) -> GPUSampler {
-        jsObject[Strings.createSampler]!(descriptor?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createSampler].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func importExternalTexture(descriptor: GPUExternalTextureDescriptor) -> GPUExternalTexture {
-        jsObject[Strings.importExternalTexture]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.importExternalTexture].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createBindGroupLayout(descriptor: GPUBindGroupLayoutDescriptor) -> GPUBindGroupLayout {
-        jsObject[Strings.createBindGroupLayout]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createBindGroupLayout].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createPipelineLayout(descriptor: GPUPipelineLayoutDescriptor) -> GPUPipelineLayout {
-        jsObject[Strings.createPipelineLayout]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createPipelineLayout].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createBindGroup(descriptor: GPUBindGroupDescriptor) -> GPUBindGroup {
-        jsObject[Strings.createBindGroup]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createBindGroup].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createShaderModule(descriptor: GPUShaderModuleDescriptor) -> GPUShaderModule {
-        jsObject[Strings.createShaderModule]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createShaderModule].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createComputePipeline(descriptor: GPUComputePipelineDescriptor) -> GPUComputePipeline {
-        jsObject[Strings.createComputePipeline]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createComputePipeline].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createRenderPipeline(descriptor: GPURenderPipelineDescriptor) -> GPURenderPipeline {
-        jsObject[Strings.createRenderPipeline]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createRenderPipeline].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createComputePipelineAsync(descriptor: GPUComputePipelineDescriptor) -> JSPromise {
-        jsObject[Strings.createComputePipelineAsync]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createComputePipelineAsync].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func createComputePipelineAsync(descriptor: GPUComputePipelineDescriptor) async throws -> GPUComputePipeline {
-        let _promise: JSPromise = jsObject[Strings.createComputePipelineAsync]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.createComputePipelineAsync].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func createRenderPipelineAsync(descriptor: GPURenderPipelineDescriptor) -> JSPromise {
-        jsObject[Strings.createRenderPipelineAsync]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createRenderPipelineAsync].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func createRenderPipelineAsync(descriptor: GPURenderPipelineDescriptor) async throws -> GPURenderPipeline {
-        let _promise: JSPromise = jsObject[Strings.createRenderPipelineAsync]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.createRenderPipelineAsync].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func createCommandEncoder(descriptor: GPUCommandEncoderDescriptor? = nil) -> GPUCommandEncoder {
-        jsObject[Strings.createCommandEncoder]!(descriptor?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createCommandEncoder].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createRenderBundleEncoder(descriptor: GPURenderBundleEncoderDescriptor) -> GPURenderBundleEncoder {
-        jsObject[Strings.createRenderBundleEncoder]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createRenderBundleEncoder].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     public func createQuerySet(descriptor: GPUQuerySetDescriptor) -> GPUQuerySet {
-        jsObject[Strings.createQuerySet]!(descriptor.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createQuerySet].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var lost: JSPromise
 
     public func pushErrorScope(filter: GPUErrorFilter) {
-        _ = jsObject[Strings.pushErrorScope]!(filter.jsValue())
+        let this = jsObject
+        _ = this[Strings.pushErrorScope].function!(this: this, arguments: [filter.jsValue()])
     }
 
     public func popErrorScope() -> JSPromise {
-        jsObject[Strings.popErrorScope]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.popErrorScope].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func popErrorScope() async throws -> GPUError? {
-        let _promise: JSPromise = jsObject[Strings.popErrorScope]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.popErrorScope].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

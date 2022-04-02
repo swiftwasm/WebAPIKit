@@ -18,42 +18,50 @@ public class ImageCapture: JSBridgedClass {
     }
 
     public func takePhoto(photoSettings: PhotoSettings? = nil) -> JSPromise {
-        jsObject[Strings.takePhoto]!(photoSettings?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.takePhoto].function!(this: this, arguments: [photoSettings?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func takePhoto(photoSettings: PhotoSettings? = nil) async throws -> Blob {
-        let _promise: JSPromise = jsObject[Strings.takePhoto]!(photoSettings?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.takePhoto].function!(this: this, arguments: [photoSettings?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getPhotoCapabilities() -> JSPromise {
-        jsObject[Strings.getPhotoCapabilities]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPhotoCapabilities].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getPhotoCapabilities() async throws -> PhotoCapabilities {
-        let _promise: JSPromise = jsObject[Strings.getPhotoCapabilities]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getPhotoCapabilities].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getPhotoSettings() -> JSPromise {
-        jsObject[Strings.getPhotoSettings]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPhotoSettings].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getPhotoSettings() async throws -> PhotoSettings {
-        let _promise: JSPromise = jsObject[Strings.getPhotoSettings]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getPhotoSettings].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func grabFrame() -> JSPromise {
-        jsObject[Strings.grabFrame]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.grabFrame].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func grabFrame() async throws -> ImageBitmap {
-        let _promise: JSPromise = jsObject[Strings.grabFrame]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.grabFrame].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

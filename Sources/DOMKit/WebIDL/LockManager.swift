@@ -21,12 +21,14 @@ public class LockManager: JSBridgedClass {
     // XXX: member 'request' is ignored
 
     public func query() -> JSPromise {
-        jsObject[Strings.query]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.query].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func query() async throws -> LockManagerSnapshot {
-        let _promise: JSPromise = jsObject[Strings.query]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.query].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

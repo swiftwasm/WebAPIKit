@@ -11,16 +11,19 @@ public class BrowserCaptureMediaStreamTrack: MediaStreamTrack {
     }
 
     public func cropTo(cropTarget: CropTarget?) -> JSPromise {
-        jsObject[Strings.cropTo]!(cropTarget.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.cropTo].function!(this: this, arguments: [cropTarget.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func cropTo(cropTarget: CropTarget?) async throws {
-        let _promise: JSPromise = jsObject[Strings.cropTo]!(cropTarget.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.cropTo].function!(this: this, arguments: [cropTarget.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     override public func clone() -> Self {
-        jsObject[Strings.clone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 }

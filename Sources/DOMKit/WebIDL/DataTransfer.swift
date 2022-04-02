@@ -31,22 +31,26 @@ public class DataTransfer: JSBridgedClass {
     public var items: DataTransferItemList
 
     public func setDragImage(image: Element, x: Int32, y: Int32) {
-        _ = jsObject[Strings.setDragImage]!(image.jsValue(), x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.setDragImage].function!(this: this, arguments: [image.jsValue(), x.jsValue(), y.jsValue()])
     }
 
     @ReadonlyAttribute
     public var types: [String]
 
     public func getData(format: String) -> String {
-        jsObject[Strings.getData]!(format.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getData].function!(this: this, arguments: [format.jsValue()]).fromJSValue()!
     }
 
     public func setData(format: String, data: String) {
-        _ = jsObject[Strings.setData]!(format.jsValue(), data.jsValue())
+        let this = jsObject
+        _ = this[Strings.setData].function!(this: this, arguments: [format.jsValue(), data.jsValue()])
     }
 
     public func clearData(format: String? = nil) {
-        _ = jsObject[Strings.clearData]!(format?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.clearData].function!(this: this, arguments: [format?.jsValue() ?? .undefined])
     }
 
     @ReadonlyAttribute

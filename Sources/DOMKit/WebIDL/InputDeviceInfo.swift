@@ -11,6 +11,7 @@ public class InputDeviceInfo: MediaDeviceInfo {
     }
 
     public func getCapabilities() -> MediaTrackCapabilities {
-        jsObject[Strings.getCapabilities]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCapabilities].function!(this: this, arguments: []).fromJSValue()!
     }
 }

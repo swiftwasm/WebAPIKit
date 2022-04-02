@@ -15,18 +15,22 @@ public class SVGGeometryElement: SVGGraphicsElement {
     public var pathLength: SVGAnimatedNumber
 
     public func isPointInFill(point: DOMPointInit? = nil) -> Bool {
-        jsObject[Strings.isPointInFill]!(point?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isPointInFill].function!(this: this, arguments: [point?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func isPointInStroke(point: DOMPointInit? = nil) -> Bool {
-        jsObject[Strings.isPointInStroke]!(point?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isPointInStroke].function!(this: this, arguments: [point?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func getTotalLength() -> Float {
-        jsObject[Strings.getTotalLength]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTotalLength].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getPointAtLength(distance: Float) -> DOMPoint {
-        jsObject[Strings.getPointAtLength]!(distance.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPointAtLength].function!(this: this, arguments: [distance.jsValue()]).fromJSValue()!
     }
 }

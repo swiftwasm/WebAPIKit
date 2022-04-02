@@ -19,14 +19,17 @@ public class HTMLSlotElement: HTMLElement {
     public var name: String
 
     public func assignedNodes(options: AssignedNodesOptions? = nil) -> [Node] {
-        jsObject[Strings.assignedNodes]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.assignedNodes].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func assignedElements(options: AssignedNodesOptions? = nil) -> [Element] {
-        jsObject[Strings.assignedElements]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.assignedElements].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func assign(nodes: __UNSUPPORTED_UNION__...) {
-        _ = jsObject[Strings.assign]!(nodes.jsValue())
+        let this = jsObject
+        _ = this[Strings.assign].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 }

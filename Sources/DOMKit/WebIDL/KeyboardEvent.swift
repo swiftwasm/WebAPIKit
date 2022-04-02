@@ -61,7 +61,8 @@ public class KeyboardEvent: UIEvent {
     public var isComposing: Bool
 
     public func getModifierState(keyArg: String) -> Bool {
-        jsObject[Strings.getModifierState]!(keyArg.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue()]).fromJSValue()!
     }
 
     public func initKeyboardEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, keyArg: String? = nil, locationArg: UInt32? = nil, ctrlKey: Bool? = nil, altKey: Bool? = nil, shiftKey: Bool? = nil, metaKey: Bool? = nil) {
@@ -75,7 +76,8 @@ public class KeyboardEvent: UIEvent {
         let _arg7 = altKey?.jsValue() ?? .undefined
         let _arg8 = shiftKey?.jsValue() ?? .undefined
         let _arg9 = metaKey?.jsValue() ?? .undefined
-        _ = jsObject[Strings.initKeyboardEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9)
+        let this = jsObject
+        _ = this[Strings.initKeyboardEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
     }
 
     @ReadonlyAttribute

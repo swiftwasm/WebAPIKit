@@ -24,23 +24,28 @@ public class FileReader: EventTarget {
     }
 
     public func readAsArrayBuffer(blob: Blob) {
-        _ = jsObject[Strings.readAsArrayBuffer]!(blob.jsValue())
+        let this = jsObject
+        _ = this[Strings.readAsArrayBuffer].function!(this: this, arguments: [blob.jsValue()])
     }
 
     public func readAsBinaryString(blob: Blob) {
-        _ = jsObject[Strings.readAsBinaryString]!(blob.jsValue())
+        let this = jsObject
+        _ = this[Strings.readAsBinaryString].function!(this: this, arguments: [blob.jsValue()])
     }
 
     public func readAsText(blob: Blob, encoding: String? = nil) {
-        _ = jsObject[Strings.readAsText]!(blob.jsValue(), encoding?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.readAsText].function!(this: this, arguments: [blob.jsValue(), encoding?.jsValue() ?? .undefined])
     }
 
     public func readAsDataURL(blob: Blob) {
-        _ = jsObject[Strings.readAsDataURL]!(blob.jsValue())
+        let this = jsObject
+        _ = this[Strings.readAsDataURL].function!(this: this, arguments: [blob.jsValue()])
     }
 
     public func abort() {
-        _ = jsObject[Strings.abort]!()
+        let this = jsObject
+        _ = this[Strings.abort].function!(this: this, arguments: [])
     }
 
     public static let EMPTY: UInt16 = 0

@@ -13,112 +13,134 @@ public class SubtleCrypto: JSBridgedClass {
     }
 
     public func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: BufferSource) -> JSPromise {
-        jsObject[Strings.encrypt]!(algorithm.jsValue(), key.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.encrypt].function!(this: this, arguments: [algorithm.jsValue(), key.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: BufferSource) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.encrypt]!(algorithm.jsValue(), key.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.encrypt].function!(this: this, arguments: [algorithm.jsValue(), key.jsValue(), data.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func decrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: BufferSource) -> JSPromise {
-        jsObject[Strings.decrypt]!(algorithm.jsValue(), key.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.decrypt].function!(this: this, arguments: [algorithm.jsValue(), key.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func decrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: BufferSource) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.decrypt]!(algorithm.jsValue(), key.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.decrypt].function!(this: this, arguments: [algorithm.jsValue(), key.jsValue(), data.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func sign(algorithm: AlgorithmIdentifier, key: CryptoKey, data: BufferSource) -> JSPromise {
-        jsObject[Strings.sign]!(algorithm.jsValue(), key.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.sign].function!(this: this, arguments: [algorithm.jsValue(), key.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func sign(algorithm: AlgorithmIdentifier, key: CryptoKey, data: BufferSource) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.sign]!(algorithm.jsValue(), key.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.sign].function!(this: this, arguments: [algorithm.jsValue(), key.jsValue(), data.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func verify(algorithm: AlgorithmIdentifier, key: CryptoKey, signature: BufferSource, data: BufferSource) -> JSPromise {
-        jsObject[Strings.verify]!(algorithm.jsValue(), key.jsValue(), signature.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.verify].function!(this: this, arguments: [algorithm.jsValue(), key.jsValue(), signature.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func verify(algorithm: AlgorithmIdentifier, key: CryptoKey, signature: BufferSource, data: BufferSource) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.verify]!(algorithm.jsValue(), key.jsValue(), signature.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.verify].function!(this: this, arguments: [algorithm.jsValue(), key.jsValue(), signature.jsValue(), data.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func digest(algorithm: AlgorithmIdentifier, data: BufferSource) -> JSPromise {
-        jsObject[Strings.digest]!(algorithm.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.digest].function!(this: this, arguments: [algorithm.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func digest(algorithm: AlgorithmIdentifier, data: BufferSource) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.digest]!(algorithm.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.digest].function!(this: this, arguments: [algorithm.jsValue(), data.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func generateKey(algorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> JSPromise {
-        jsObject[Strings.generateKey]!(algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.generateKey].function!(this: this, arguments: [algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func generateKey(algorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.generateKey]!(algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.generateKey].function!(this: this, arguments: [algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func deriveKey(algorithm: AlgorithmIdentifier, baseKey: CryptoKey, derivedKeyType: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> JSPromise {
-        jsObject[Strings.deriveKey]!(algorithm.jsValue(), baseKey.jsValue(), derivedKeyType.jsValue(), extractable.jsValue(), keyUsages.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.deriveKey].function!(this: this, arguments: [algorithm.jsValue(), baseKey.jsValue(), derivedKeyType.jsValue(), extractable.jsValue(), keyUsages.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func deriveKey(algorithm: AlgorithmIdentifier, baseKey: CryptoKey, derivedKeyType: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.deriveKey]!(algorithm.jsValue(), baseKey.jsValue(), derivedKeyType.jsValue(), extractable.jsValue(), keyUsages.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.deriveKey].function!(this: this, arguments: [algorithm.jsValue(), baseKey.jsValue(), derivedKeyType.jsValue(), extractable.jsValue(), keyUsages.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func deriveBits(algorithm: AlgorithmIdentifier, baseKey: CryptoKey, length: UInt32) -> JSPromise {
-        jsObject[Strings.deriveBits]!(algorithm.jsValue(), baseKey.jsValue(), length.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.deriveBits].function!(this: this, arguments: [algorithm.jsValue(), baseKey.jsValue(), length.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func deriveBits(algorithm: AlgorithmIdentifier, baseKey: CryptoKey, length: UInt32) async throws -> ArrayBuffer {
-        let _promise: JSPromise = jsObject[Strings.deriveBits]!(algorithm.jsValue(), baseKey.jsValue(), length.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.deriveBits].function!(this: this, arguments: [algorithm.jsValue(), baseKey.jsValue(), length.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func importKey(format: KeyFormat, keyData: __UNSUPPORTED_UNION__, algorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> JSPromise {
-        jsObject[Strings.importKey]!(format.jsValue(), keyData.jsValue(), algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.importKey].function!(this: this, arguments: [format.jsValue(), keyData.jsValue(), algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func importKey(format: KeyFormat, keyData: __UNSUPPORTED_UNION__, algorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) async throws -> CryptoKey {
-        let _promise: JSPromise = jsObject[Strings.importKey]!(format.jsValue(), keyData.jsValue(), algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.importKey].function!(this: this, arguments: [format.jsValue(), keyData.jsValue(), algorithm.jsValue(), extractable.jsValue(), keyUsages.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func exportKey(format: KeyFormat, key: CryptoKey) -> JSPromise {
-        jsObject[Strings.exportKey]!(format.jsValue(), key.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.exportKey].function!(this: this, arguments: [format.jsValue(), key.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func exportKey(format: KeyFormat, key: CryptoKey) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.exportKey]!(format.jsValue(), key.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.exportKey].function!(this: this, arguments: [format.jsValue(), key.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func wrapKey(format: KeyFormat, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier) -> JSPromise {
-        jsObject[Strings.wrapKey]!(format.jsValue(), key.jsValue(), wrappingKey.jsValue(), wrapAlgorithm.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.wrapKey].function!(this: this, arguments: [format.jsValue(), key.jsValue(), wrappingKey.jsValue(), wrapAlgorithm.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func wrapKey(format: KeyFormat, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.wrapKey]!(format.jsValue(), key.jsValue(), wrappingKey.jsValue(), wrapAlgorithm.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.wrapKey].function!(this: this, arguments: [format.jsValue(), key.jsValue(), wrappingKey.jsValue(), wrapAlgorithm.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -130,7 +152,8 @@ public class SubtleCrypto: JSBridgedClass {
         let _arg4 = unwrappedKeyAlgorithm.jsValue()
         let _arg5 = extractable.jsValue()
         let _arg6 = keyUsages.jsValue()
-        return jsObject[Strings.unwrapKey]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6).fromJSValue()!
+        let this = jsObject
+        return this[Strings.unwrapKey].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
@@ -142,7 +165,8 @@ public class SubtleCrypto: JSBridgedClass {
         let _arg4 = unwrappedKeyAlgorithm.jsValue()
         let _arg5 = extractable.jsValue()
         let _arg6 = keyUsages.jsValue()
-        let _promise: JSPromise = jsObject[Strings.unwrapKey]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.unwrapKey].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

@@ -29,6 +29,7 @@ public class MediaDeviceInfo: JSBridgedClass {
     public var groupId: String
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

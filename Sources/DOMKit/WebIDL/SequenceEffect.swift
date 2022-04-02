@@ -15,6 +15,7 @@ public class SequenceEffect: GroupEffect {
     }
 
     override public func clone() -> Self {
-        jsObject[Strings.clone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 }

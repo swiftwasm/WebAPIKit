@@ -17,32 +17,38 @@ public class PaymentRequest: EventTarget {
     }
 
     public func show(detailsPromise: JSPromise? = nil) -> JSPromise {
-        jsObject[Strings.show]!(detailsPromise?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.show].function!(this: this, arguments: [detailsPromise?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func show(detailsPromise: JSPromise? = nil) async throws -> PaymentResponse {
-        let _promise: JSPromise = jsObject[Strings.show]!(detailsPromise?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.show].function!(this: this, arguments: [detailsPromise?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func abort() -> JSPromise {
-        jsObject[Strings.abort]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.abort].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func abort() async throws {
-        let _promise: JSPromise = jsObject[Strings.abort]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func canMakePayment() -> JSPromise {
-        jsObject[Strings.canMakePayment]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.canMakePayment].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func canMakePayment() async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.canMakePayment]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.canMakePayment].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

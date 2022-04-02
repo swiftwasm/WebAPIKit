@@ -17,14 +17,17 @@ public class TrustedTypePolicy: JSBridgedClass {
     public var name: String
 
     public func createHTML(input: String, arguments: JSValue...) -> TrustedHTML {
-        jsObject[Strings.createHTML]!(input.jsValue(), arguments.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createHTML].function!(this: this, arguments: [input.jsValue()] + arguments.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func createScript(input: String, arguments: JSValue...) -> TrustedScript {
-        jsObject[Strings.createScript]!(input.jsValue(), arguments.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createScript].function!(this: this, arguments: [input.jsValue()] + arguments.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func createScriptURL(input: String, arguments: JSValue...) -> TrustedScriptURL {
-        jsObject[Strings.createScriptURL]!(input.jsValue(), arguments.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createScriptURL].function!(this: this, arguments: [input.jsValue()] + arguments.map { $0.jsValue() }).fromJSValue()!
     }
 }

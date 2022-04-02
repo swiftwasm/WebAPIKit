@@ -29,6 +29,7 @@ public class PerformanceNavigation: JSBridgedClass {
     public var redirectCount: UInt16
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

@@ -27,22 +27,26 @@ public class IdleDetector: EventTarget {
     public var onchange: EventHandler
 
     public static func requestPermission() -> JSPromise {
-        constructor[Strings.requestPermission]!().fromJSValue()!
+        let this = constructor
+        return this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func requestPermission() async throws -> PermissionState {
-        let _promise: JSPromise = constructor[Strings.requestPermission]!().fromJSValue()!
+        let this = constructor
+        let _promise: JSPromise = this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func start(options: IdleOptions? = nil) -> JSPromise {
-        jsObject[Strings.start]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.start].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func start(options: IdleOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.start]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.start].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

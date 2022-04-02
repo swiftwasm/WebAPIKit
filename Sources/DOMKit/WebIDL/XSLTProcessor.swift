@@ -17,34 +17,42 @@ public class XSLTProcessor: JSBridgedClass {
     }
 
     public func importStylesheet(style: Node) {
-        _ = jsObject[Strings.importStylesheet]!(style.jsValue())
+        let this = jsObject
+        _ = this[Strings.importStylesheet].function!(this: this, arguments: [style.jsValue()])
     }
 
     public func transformToFragment(source: Node, output: Document) -> DocumentFragment {
-        jsObject[Strings.transformToFragment]!(source.jsValue(), output.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.transformToFragment].function!(this: this, arguments: [source.jsValue(), output.jsValue()]).fromJSValue()!
     }
 
     public func transformToDocument(source: Node) -> Document {
-        jsObject[Strings.transformToDocument]!(source.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.transformToDocument].function!(this: this, arguments: [source.jsValue()]).fromJSValue()!
     }
 
     public func setParameter(namespaceURI: String, localName: String, value: JSValue) {
-        _ = jsObject[Strings.setParameter]!(namespaceURI.jsValue(), localName.jsValue(), value.jsValue())
+        let this = jsObject
+        _ = this[Strings.setParameter].function!(this: this, arguments: [namespaceURI.jsValue(), localName.jsValue(), value.jsValue()])
     }
 
     public func getParameter(namespaceURI: String, localName: String) -> JSValue {
-        jsObject[Strings.getParameter]!(namespaceURI.jsValue(), localName.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getParameter].function!(this: this, arguments: [namespaceURI.jsValue(), localName.jsValue()]).fromJSValue()!
     }
 
     public func removeParameter(namespaceURI: String, localName: String) {
-        _ = jsObject[Strings.removeParameter]!(namespaceURI.jsValue(), localName.jsValue())
+        let this = jsObject
+        _ = this[Strings.removeParameter].function!(this: this, arguments: [namespaceURI.jsValue(), localName.jsValue()])
     }
 
     public func clearParameters() {
-        _ = jsObject[Strings.clearParameters]!()
+        let this = jsObject
+        _ = this[Strings.clearParameters].function!(this: this, arguments: [])
     }
 
     public func reset() {
-        _ = jsObject[Strings.reset]!()
+        let this = jsObject
+        _ = this[Strings.reset].function!(this: this, arguments: [])
     }
 }

@@ -43,15 +43,18 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var readyState: UInt16
 
     public func open(method: String, url: String) {
-        _ = jsObject[Strings.open]!(method.jsValue(), url.jsValue())
+        let this = jsObject
+        _ = this[Strings.open].function!(this: this, arguments: [method.jsValue(), url.jsValue()])
     }
 
     public func open(method: String, url: String, async: Bool, username: String? = nil, password: String? = nil) {
-        _ = jsObject[Strings.open]!(method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.open].function!(this: this, arguments: [method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined])
     }
 
     public func setRequestHeader(name: String, value: String) {
-        _ = jsObject[Strings.setRequestHeader]!(name.jsValue(), value.jsValue())
+        let this = jsObject
+        _ = this[Strings.setRequestHeader].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }
 
     @ReadWriteAttribute
@@ -64,11 +67,13 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var upload: XMLHttpRequestUpload
 
     public func send(body: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Strings.send]!(body?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [body?.jsValue() ?? .undefined])
     }
 
     public func abort() {
-        _ = jsObject[Strings.abort]!()
+        let this = jsObject
+        _ = this[Strings.abort].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute
@@ -81,15 +86,18 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var statusText: String
 
     public func getResponseHeader(name: String) -> String? {
-        jsObject[Strings.getResponseHeader]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getResponseHeader].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public func getAllResponseHeaders() -> String {
-        jsObject[Strings.getAllResponseHeaders]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAllResponseHeaders].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func overrideMimeType(mime: String) {
-        _ = jsObject[Strings.overrideMimeType]!(mime.jsValue())
+        let this = jsObject
+        _ = this[Strings.overrideMimeType].function!(this: this, arguments: [mime.jsValue()])
     }
 
     @ReadWriteAttribute

@@ -21,6 +21,7 @@ public class EventTarget: JSBridgedClass {
     // XXX: member 'removeEventListener' is ignored
 
     public func dispatchEvent(event: Event) -> Bool {
-        jsObject[Strings.dispatchEvent]!(event.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.dispatchEvent].function!(this: this, arguments: [event.jsValue()]).fromJSValue()!
     }
 }

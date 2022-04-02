@@ -14,17 +14,20 @@ public class ScreenOrientation: EventTarget {
     }
 
     public func lock(orientation: OrientationLockType) -> JSPromise {
-        jsObject[Strings.lock]!(orientation.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.lock].function!(this: this, arguments: [orientation.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func lock(orientation: OrientationLockType) async throws {
-        let _promise: JSPromise = jsObject[Strings.lock]!(orientation.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.lock].function!(this: this, arguments: [orientation.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func unlock() {
-        _ = jsObject[Strings.unlock]!()
+        let this = jsObject
+        _ = this[Strings.unlock].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute

@@ -21,11 +21,13 @@ public class SVGLengthList: JSBridgedClass {
     public var numberOfItems: UInt32
 
     public func clear() {
-        _ = jsObject[Strings.clear]!()
+        let this = jsObject
+        _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 
     public func initialize(newItem: SVGLength) -> SVGLength {
-        jsObject[Strings.initialize]!(newItem.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.initialize].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }
 
     public subscript(key: Int) -> SVGLength {
@@ -33,19 +35,23 @@ public class SVGLengthList: JSBridgedClass {
     }
 
     public func insertItemBefore(newItem: SVGLength, index: UInt32) -> SVGLength {
-        jsObject[Strings.insertItemBefore]!(newItem.jsValue(), index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.insertItemBefore].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
     public func replaceItem(newItem: SVGLength, index: UInt32) -> SVGLength {
-        jsObject[Strings.replaceItem]!(newItem.jsValue(), index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.replaceItem].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
     public func removeItem(index: UInt32) -> SVGLength {
-        jsObject[Strings.removeItem]!(index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.removeItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
     public func appendItem(newItem: SVGLength) -> SVGLength {
-        jsObject[Strings.appendItem]!(newItem.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.appendItem].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }
 
     // XXX: unsupported setter for keys of type UInt32

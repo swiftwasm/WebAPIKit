@@ -6,6 +6,7 @@ import JavaScriptKit
 public protocol NonElementParentNode: JSBridgedClass {}
 public extension NonElementParentNode {
     func getElementById(elementId: String) -> Element? {
-        jsObject[Strings.getElementById]!(elementId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getElementById].function!(this: this, arguments: [elementId.jsValue()]).fromJSValue()!
     }
 }

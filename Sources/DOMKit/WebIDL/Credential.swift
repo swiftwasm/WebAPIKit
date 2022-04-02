@@ -21,6 +21,7 @@ public class Credential: JSBridgedClass {
     public var type: String
 
     public static func isConditionalMediationAvailable() -> Bool {
-        constructor[Strings.isConditionalMediationAvailable]!().fromJSValue()!
+        let this = constructor
+        return this[Strings.isConditionalMediationAvailable].function!(this: this, arguments: []).fromJSValue()!
     }
 }

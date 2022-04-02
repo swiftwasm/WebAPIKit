@@ -13,32 +13,38 @@ public class CookieStoreManager: JSBridgedClass {
     }
 
     public func subscribe(subscriptions: [CookieStoreGetOptions]) -> JSPromise {
-        jsObject[Strings.subscribe]!(subscriptions.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.subscribe].function!(this: this, arguments: [subscriptions.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func subscribe(subscriptions: [CookieStoreGetOptions]) async throws {
-        let _promise: JSPromise = jsObject[Strings.subscribe]!(subscriptions.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.subscribe].function!(this: this, arguments: [subscriptions.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getSubscriptions() -> JSPromise {
-        jsObject[Strings.getSubscriptions]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSubscriptions].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getSubscriptions() async throws -> [CookieStoreGetOptions] {
-        let _promise: JSPromise = jsObject[Strings.getSubscriptions]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getSubscriptions].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func unsubscribe(subscriptions: [CookieStoreGetOptions]) -> JSPromise {
-        jsObject[Strings.unsubscribe]!(subscriptions.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.unsubscribe].function!(this: this, arguments: [subscriptions.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func unsubscribe(subscriptions: [CookieStoreGetOptions]) async throws {
-        let _promise: JSPromise = jsObject[Strings.unsubscribe]!(subscriptions.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.unsubscribe].function!(this: this, arguments: [subscriptions.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

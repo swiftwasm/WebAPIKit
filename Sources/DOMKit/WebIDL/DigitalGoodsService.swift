@@ -13,42 +13,50 @@ public class DigitalGoodsService: JSBridgedClass {
     }
 
     public func getDetails(itemIds: [String]) -> JSPromise {
-        jsObject[Strings.getDetails]!(itemIds.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDetails].function!(this: this, arguments: [itemIds.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getDetails(itemIds: [String]) async throws -> [ItemDetails] {
-        let _promise: JSPromise = jsObject[Strings.getDetails]!(itemIds.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getDetails].function!(this: this, arguments: [itemIds.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func listPurchases() -> JSPromise {
-        jsObject[Strings.listPurchases]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.listPurchases].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func listPurchases() async throws -> [PurchaseDetails] {
-        let _promise: JSPromise = jsObject[Strings.listPurchases]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.listPurchases].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func listPurchaseHistory() -> JSPromise {
-        jsObject[Strings.listPurchaseHistory]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.listPurchaseHistory].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func listPurchaseHistory() async throws -> [PurchaseDetails] {
-        let _promise: JSPromise = jsObject[Strings.listPurchaseHistory]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.listPurchaseHistory].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func consume(purchaseToken: String) -> JSPromise {
-        jsObject[Strings.consume]!(purchaseToken.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.consume].function!(this: this, arguments: [purchaseToken.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func consume(purchaseToken: String) async throws {
-        let _promise: JSPromise = jsObject[Strings.consume]!(purchaseToken.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.consume].function!(this: this, arguments: [purchaseToken.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

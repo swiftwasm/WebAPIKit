@@ -23,20 +23,24 @@ public class HTMLCanvasElement: HTMLElement {
     public var height: UInt32
 
     public func getContext(contextId: String, options: JSValue? = nil) -> RenderingContext? {
-        jsObject[Strings.getContext]!(contextId.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getContext].function!(this: this, arguments: [contextId.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func toDataURL(type: String? = nil, quality: JSValue? = nil) -> String {
-        jsObject[Strings.toDataURL]!(type?.jsValue() ?? .undefined, quality?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.toDataURL].function!(this: this, arguments: [type?.jsValue() ?? .undefined, quality?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     // XXX: member 'toBlob' is ignored
 
     public func transferControlToOffscreen() -> OffscreenCanvas {
-        jsObject[Strings.transferControlToOffscreen]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.transferControlToOffscreen].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func captureStream(frameRequestRate: Double? = nil) -> MediaStream {
-        jsObject[Strings.captureStream]!(frameRequestRate?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.captureStream].function!(this: this, arguments: [frameRequestRate?.jsValue() ?? .undefined]).fromJSValue()!
     }
 }

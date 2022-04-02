@@ -16,12 +16,14 @@ public class XRFrame: JSBridgedClass {
     }
 
     public func createAnchor(pose: XRRigidTransform, space: XRSpace) -> JSPromise {
-        jsObject[Strings.createAnchor]!(pose.jsValue(), space.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createAnchor].function!(this: this, arguments: [pose.jsValue(), space.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func createAnchor(pose: XRRigidTransform, space: XRSpace) async throws -> XRAnchor {
-        let _promise: JSPromise = jsObject[Strings.createAnchor]!(pose.jsValue(), space.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.createAnchor].function!(this: this, arguments: [pose.jsValue(), space.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -29,31 +31,38 @@ public class XRFrame: JSBridgedClass {
     public var trackedAnchors: XRAnchorSet
 
     public func getDepthInformation(view: XRView) -> XRCPUDepthInformation? {
-        jsObject[Strings.getDepthInformation]!(view.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDepthInformation].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
     }
 
     public func getJointPose(joint: XRJointSpace, baseSpace: XRSpace) -> XRJointPose? {
-        jsObject[Strings.getJointPose]!(joint.jsValue(), baseSpace.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getJointPose].function!(this: this, arguments: [joint.jsValue(), baseSpace.jsValue()]).fromJSValue()!
     }
 
     public func fillJointRadii(jointSpaces: [XRJointSpace], radii: Float32Array) -> Bool {
-        jsObject[Strings.fillJointRadii]!(jointSpaces.jsValue(), radii.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.fillJointRadii].function!(this: this, arguments: [jointSpaces.jsValue(), radii.jsValue()]).fromJSValue()!
     }
 
     public func fillPoses(spaces: [XRSpace], baseSpace: XRSpace, transforms: Float32Array) -> Bool {
-        jsObject[Strings.fillPoses]!(spaces.jsValue(), baseSpace.jsValue(), transforms.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.fillPoses].function!(this: this, arguments: [spaces.jsValue(), baseSpace.jsValue(), transforms.jsValue()]).fromJSValue()!
     }
 
     public func getHitTestResults(hitTestSource: XRHitTestSource) -> [XRHitTestResult] {
-        jsObject[Strings.getHitTestResults]!(hitTestSource.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getHitTestResults].function!(this: this, arguments: [hitTestSource.jsValue()]).fromJSValue()!
     }
 
     public func getHitTestResultsForTransientInput(hitTestSource: XRTransientInputHitTestSource) -> [XRTransientInputHitTestResult] {
-        jsObject[Strings.getHitTestResultsForTransientInput]!(hitTestSource.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getHitTestResultsForTransientInput].function!(this: this, arguments: [hitTestSource.jsValue()]).fromJSValue()!
     }
 
     public func getLightEstimate(lightProbe: XRLightProbe) -> XRLightEstimate? {
-        jsObject[Strings.getLightEstimate]!(lightProbe.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getLightEstimate].function!(this: this, arguments: [lightProbe.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -63,10 +72,12 @@ public class XRFrame: JSBridgedClass {
     public var predictedDisplayTime: DOMHighResTimeStamp
 
     public func getViewerPose(referenceSpace: XRReferenceSpace) -> XRViewerPose? {
-        jsObject[Strings.getViewerPose]!(referenceSpace.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getViewerPose].function!(this: this, arguments: [referenceSpace.jsValue()]).fromJSValue()!
     }
 
     public func getPose(space: XRSpace, baseSpace: XRSpace) -> XRPose? {
-        jsObject[Strings.getPose]!(space.jsValue(), baseSpace.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPose].function!(this: this, arguments: [space.jsValue(), baseSpace.jsValue()]).fromJSValue()!
     }
 }

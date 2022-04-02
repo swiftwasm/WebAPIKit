@@ -17,31 +17,38 @@ public class URLSearchParams: JSBridgedClass, Sequence {
     }
 
     public func append(name: String, value: String) {
-        _ = jsObject[Strings.append]!(name.jsValue(), value.jsValue())
+        let this = jsObject
+        _ = this[Strings.append].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }
 
     public func delete(name: String) {
-        _ = jsObject[Strings.delete]!(name.jsValue())
+        let this = jsObject
+        _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue()])
     }
 
     public func get(name: String) -> String? {
-        jsObject[Strings.get]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public func getAll(name: String) -> [String] {
-        jsObject[Strings.getAll]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAll].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public func has(name: String) -> Bool {
-        jsObject[Strings.has]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.has].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public func set(name: String, value: String) {
-        _ = jsObject[Strings.set]!(name.jsValue(), value.jsValue())
+        let this = jsObject
+        _ = this[Strings.set].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }
 
     public func sort() {
-        _ = jsObject[Strings.sort]!()
+        let this = jsObject
+        _ = this[Strings.sort].function!(this: this, arguments: [])
     }
 
     public typealias Element = String

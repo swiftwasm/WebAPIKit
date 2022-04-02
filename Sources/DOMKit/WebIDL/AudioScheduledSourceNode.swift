@@ -15,10 +15,12 @@ public class AudioScheduledSourceNode: AudioNode {
     public var onended: EventHandler
 
     public func start(when: Double? = nil) {
-        _ = jsObject[Strings.start]!(when?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue() ?? .undefined])
     }
 
     public func stop(when: Double? = nil) {
-        _ = jsObject[Strings.stop]!(when?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [when?.jsValue() ?? .undefined])
     }
 }

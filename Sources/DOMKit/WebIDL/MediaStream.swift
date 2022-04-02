@@ -30,31 +30,38 @@ public class MediaStream: EventTarget {
     public var id: String
 
     public func getAudioTracks() -> [MediaStreamTrack] {
-        jsObject[Strings.getAudioTracks]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAudioTracks].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getVideoTracks() -> [MediaStreamTrack] {
-        jsObject[Strings.getVideoTracks]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getVideoTracks].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getTracks() -> [MediaStreamTrack] {
-        jsObject[Strings.getTracks]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTracks].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getTrackById(trackId: String) -> MediaStreamTrack? {
-        jsObject[Strings.getTrackById]!(trackId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTrackById].function!(this: this, arguments: [trackId.jsValue()]).fromJSValue()!
     }
 
     public func addTrack(track: MediaStreamTrack) {
-        _ = jsObject[Strings.addTrack]!(track.jsValue())
+        let this = jsObject
+        _ = this[Strings.addTrack].function!(this: this, arguments: [track.jsValue()])
     }
 
     public func removeTrack(track: MediaStreamTrack) {
-        _ = jsObject[Strings.removeTrack]!(track.jsValue())
+        let this = jsObject
+        _ = this[Strings.removeTrack].function!(this: this, arguments: [track.jsValue()])
     }
 
     public func clone() -> Self {
-        jsObject[Strings.clone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute

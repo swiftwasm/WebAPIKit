@@ -25,11 +25,13 @@ public class URL: JSBridgedClass {
     }
 
     public static func createObjectURL(obj: __UNSUPPORTED_UNION__) -> String {
-        constructor[Strings.createObjectURL]!(obj.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.createObjectURL].function!(this: this, arguments: [obj.jsValue()]).fromJSValue()!
     }
 
     public static func revokeObjectURL(url: String) {
-        _ = constructor[Strings.revokeObjectURL]!(url.jsValue())
+        let this = constructor
+        _ = this[Strings.revokeObjectURL].function!(this: this, arguments: [url.jsValue()])
     }
 
     public convenience init(url: String, base: String? = nil) {
@@ -73,6 +75,7 @@ public class URL: JSBridgedClass {
     public var hash: String
 
     public func toJSON() -> String {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

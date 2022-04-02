@@ -10,12 +10,14 @@ public extension WindowOrWorkerGlobalScope {
     var crypto: Crypto { ReadonlyAttribute[Strings.crypto, in: jsObject] }
 
     func fetch(input: RequestInfo, init: RequestInit? = nil) -> JSPromise {
-        jsObject[Strings.fetch]!(input.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.fetch].function!(this: this, arguments: [input.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func fetch(input: RequestInfo, init: RequestInit? = nil) async throws -> Response {
-        let _promise: JSPromise = jsObject[Strings.fetch]!(input.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.fetch].function!(this: this, arguments: [input.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -28,42 +30,51 @@ public extension WindowOrWorkerGlobalScope {
     var crossOriginIsolated: Bool { ReadonlyAttribute[Strings.crossOriginIsolated, in: jsObject] }
 
     func reportError(e: JSValue) {
-        _ = jsObject[Strings.reportError]!(e.jsValue())
+        let this = jsObject
+        _ = this[Strings.reportError].function!(this: this, arguments: [e.jsValue()])
     }
 
     func btoa(data: String) -> String {
-        jsObject[Strings.btoa]!(data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.btoa].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
     func atob(data: String) -> String {
-        jsObject[Strings.atob]!(data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.atob].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
     func setTimeout(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
-        jsObject[Strings.setTimeout]!(handler.jsValue(), timeout?.jsValue() ?? .undefined, arguments.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setTimeout].function!(this: this, arguments: [handler.jsValue(), timeout?.jsValue() ?? .undefined] + arguments.map { $0.jsValue() }).fromJSValue()!
     }
 
     func clearTimeout(id: Int32? = nil) {
-        _ = jsObject[Strings.clearTimeout]!(id?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.clearTimeout].function!(this: this, arguments: [id?.jsValue() ?? .undefined])
     }
 
     func setInterval(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
-        jsObject[Strings.setInterval]!(handler.jsValue(), timeout?.jsValue() ?? .undefined, arguments.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setInterval].function!(this: this, arguments: [handler.jsValue(), timeout?.jsValue() ?? .undefined] + arguments.map { $0.jsValue() }).fromJSValue()!
     }
 
     func clearInterval(id: Int32? = nil) {
-        _ = jsObject[Strings.clearInterval]!(id?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.clearInterval].function!(this: this, arguments: [id?.jsValue() ?? .undefined])
     }
 
     // XXX: method 'queueMicrotask' is ignored
 
     func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) -> JSPromise {
-        jsObject[Strings.createImageBitmap]!(image.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createImageBitmap].function!(this: this, arguments: [image.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) async throws -> ImageBitmap {
-        let _promise: JSPromise = jsObject[Strings.createImageBitmap]!(image.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.createImageBitmap].function!(this: this, arguments: [image.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -74,7 +85,8 @@ public extension WindowOrWorkerGlobalScope {
         let _arg3 = sw.jsValue()
         let _arg4 = sh.jsValue()
         let _arg5 = options?.jsValue() ?? .undefined
-        return jsObject[Strings.createImageBitmap]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createImageBitmap].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
@@ -85,12 +97,14 @@ public extension WindowOrWorkerGlobalScope {
         let _arg3 = sw.jsValue()
         let _arg4 = sh.jsValue()
         let _arg5 = options?.jsValue() ?? .undefined
-        let _promise: JSPromise = jsObject[Strings.createImageBitmap]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.createImageBitmap].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     func structuredClone(value: JSValue, options: StructuredSerializeOptions? = nil) -> JSValue {
-        jsObject[Strings.structuredClone]!(value.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.structuredClone].function!(this: this, arguments: [value.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     var originPolicyIds: [String] { ReadonlyAttribute[Strings.originPolicyIds, in: jsObject] }

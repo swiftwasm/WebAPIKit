@@ -21,6 +21,7 @@ public extension DocumentOrShadowRoot {
     var pointerLockElement: Element? { ReadonlyAttribute[Strings.pointerLockElement, in: jsObject] }
 
     func getAnimations() -> [Animation] {
-        jsObject[Strings.getAnimations]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAnimations].function!(this: this, arguments: []).fromJSValue()!
     }
 }

@@ -26,14 +26,16 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     public var shadowRoot: ShadowRoot?
 
     public func setFormValue(value: __UNSUPPORTED_UNION__?, state: __UNSUPPORTED_UNION__? = nil) {
-        _ = jsObject[Strings.setFormValue]!(value.jsValue(), state?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setFormValue].function!(this: this, arguments: [value.jsValue(), state?.jsValue() ?? .undefined])
     }
 
     @ReadonlyAttribute
     public var form: HTMLFormElement?
 
     public func setValidity(flags: ValidityStateFlags? = nil, message: String? = nil, anchor: HTMLElement? = nil) {
-        _ = jsObject[Strings.setValidity]!(flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setValidity].function!(this: this, arguments: [flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined])
     }
 
     @ReadonlyAttribute
@@ -46,11 +48,13 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Strings.checkValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Strings.reportValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute

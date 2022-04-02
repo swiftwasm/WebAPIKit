@@ -20,17 +20,20 @@ public class NamedFlow: EventTarget {
     public var overset: Bool
 
     public func getRegions() -> [Element] {
-        jsObject[Strings.getRegions]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRegions].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var firstEmptyRegionIndex: Int16
 
     public func getContent() -> [Node] {
-        jsObject[Strings.getContent]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getContent].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getRegionsByContent(node: Node) -> [Element] {
-        jsObject[Strings.getRegionsByContent]!(node.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRegionsByContent].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
     }
 }

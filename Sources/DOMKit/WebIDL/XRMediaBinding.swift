@@ -17,14 +17,17 @@ public class XRMediaBinding: JSBridgedClass {
     }
 
     public func createQuadLayer(video: HTMLVideoElement, init: XRMediaQuadLayerInit? = nil) -> XRQuadLayer {
-        jsObject[Strings.createQuadLayer]!(video.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createQuadLayer].function!(this: this, arguments: [video.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createCylinderLayer(video: HTMLVideoElement, init: XRMediaCylinderLayerInit? = nil) -> XRCylinderLayer {
-        jsObject[Strings.createCylinderLayer]!(video.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createCylinderLayer].function!(this: this, arguments: [video.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createEquirectLayer(video: HTMLVideoElement, init: XRMediaEquirectLayerInit? = nil) -> XREquirectLayer {
-        jsObject[Strings.createEquirectLayer]!(video.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createEquirectLayer].function!(this: this, arguments: [video.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 }

@@ -47,14 +47,17 @@ public class HTMLFieldSetElement: HTMLElement {
     public var validationMessage: String
 
     public func checkValidity() -> Bool {
-        jsObject[Strings.checkValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Strings.reportValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func setCustomValidity(error: String) {
-        _ = jsObject[Strings.setCustomValidity]!(error.jsValue())
+        let this = jsObject
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
     }
 }

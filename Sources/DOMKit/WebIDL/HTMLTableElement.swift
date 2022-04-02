@@ -32,51 +32,60 @@ public class HTMLTableElement: HTMLElement {
     public var caption: HTMLTableCaptionElement?
 
     public func createCaption() -> HTMLTableCaptionElement {
-        jsObject[Strings.createCaption]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createCaption].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func deleteCaption() {
-        _ = jsObject[Strings.deleteCaption]!()
+        let this = jsObject
+        _ = this[Strings.deleteCaption].function!(this: this, arguments: [])
     }
 
     @ReadWriteAttribute
     public var tHead: HTMLTableSectionElement?
 
     public func createTHead() -> HTMLTableSectionElement {
-        jsObject[Strings.createTHead]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createTHead].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func deleteTHead() {
-        _ = jsObject[Strings.deleteTHead]!()
+        let this = jsObject
+        _ = this[Strings.deleteTHead].function!(this: this, arguments: [])
     }
 
     @ReadWriteAttribute
     public var tFoot: HTMLTableSectionElement?
 
     public func createTFoot() -> HTMLTableSectionElement {
-        jsObject[Strings.createTFoot]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createTFoot].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func deleteTFoot() {
-        _ = jsObject[Strings.deleteTFoot]!()
+        let this = jsObject
+        _ = this[Strings.deleteTFoot].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute
     public var tBodies: HTMLCollection
 
     public func createTBody() -> HTMLTableSectionElement {
-        jsObject[Strings.createTBody]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createTBody].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var rows: HTMLCollection
 
     public func insertRow(index: Int32? = nil) -> HTMLTableRowElement {
-        jsObject[Strings.insertRow]!(index?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.insertRow].function!(this: this, arguments: [index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func deleteRow(index: Int32) {
-        _ = jsObject[Strings.deleteRow]!(index.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteRow].function!(this: this, arguments: [index.jsValue()])
     }
 
     @ReadWriteAttribute

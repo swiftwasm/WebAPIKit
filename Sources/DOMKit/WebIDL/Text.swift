@@ -16,7 +16,8 @@ public class Text: CharacterData, GeometryUtils, Slottable {
     }
 
     public func splitText(offset: UInt32) -> Self {
-        jsObject[Strings.splitText]!(offset.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.splitText].function!(this: this, arguments: [offset.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute

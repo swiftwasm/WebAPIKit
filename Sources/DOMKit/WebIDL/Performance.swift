@@ -23,14 +23,16 @@ public class Performance: EventTarget {
     public var interactionCounts: InteractionCounts
 
     public func now() -> DOMHighResTimeStamp {
-        jsObject[Strings.now]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.now].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute
     public var timeOrigin: DOMHighResTimeStamp
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -40,51 +42,62 @@ public class Performance: EventTarget {
     public var navigation: PerformanceNavigation
 
     public func measureUserAgentSpecificMemory() -> JSPromise {
-        jsObject[Strings.measureUserAgentSpecificMemory]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.measureUserAgentSpecificMemory].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func measureUserAgentSpecificMemory() async throws -> MemoryMeasurement {
-        let _promise: JSPromise = jsObject[Strings.measureUserAgentSpecificMemory]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.measureUserAgentSpecificMemory].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getEntries() -> PerformanceEntryList {
-        jsObject[Strings.getEntries]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getEntries].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getEntriesByType(type: String) -> PerformanceEntryList {
-        jsObject[Strings.getEntriesByType]!(type.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getEntriesByType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     public func getEntriesByName(name: String, type: String? = nil) -> PerformanceEntryList {
-        jsObject[Strings.getEntriesByName]!(name.jsValue(), type?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getEntriesByName].function!(this: this, arguments: [name.jsValue(), type?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func clearResourceTimings() {
-        _ = jsObject[Strings.clearResourceTimings]!()
+        let this = jsObject
+        _ = this[Strings.clearResourceTimings].function!(this: this, arguments: [])
     }
 
     public func setResourceTimingBufferSize(maxSize: UInt32) {
-        _ = jsObject[Strings.setResourceTimingBufferSize]!(maxSize.jsValue())
+        let this = jsObject
+        _ = this[Strings.setResourceTimingBufferSize].function!(this: this, arguments: [maxSize.jsValue()])
     }
 
     @ClosureAttribute1Optional
     public var onresourcetimingbufferfull: EventHandler
 
     public func mark(markName: String, markOptions: PerformanceMarkOptions? = nil) -> PerformanceMark {
-        jsObject[Strings.mark]!(markName.jsValue(), markOptions?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.mark].function!(this: this, arguments: [markName.jsValue(), markOptions?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func clearMarks(markName: String? = nil) {
-        _ = jsObject[Strings.clearMarks]!(markName?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.clearMarks].function!(this: this, arguments: [markName?.jsValue() ?? .undefined])
     }
 
     public func measure(measureName: String, startOrMeasureOptions: __UNSUPPORTED_UNION__? = nil, endMark: String? = nil) -> PerformanceMeasure {
-        jsObject[Strings.measure]!(measureName.jsValue(), startOrMeasureOptions?.jsValue() ?? .undefined, endMark?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.measure].function!(this: this, arguments: [measureName.jsValue(), startOrMeasureOptions?.jsValue() ?? .undefined, endMark?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func clearMeasures(measureName: String? = nil) {
-        _ = jsObject[Strings.clearMeasures]!(measureName?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.clearMeasures].function!(this: this, arguments: [measureName?.jsValue() ?? .undefined])
     }
 }

@@ -18,12 +18,14 @@ public class SFrameTransform: JSBridgedClass, GenericTransformStream {
     }
 
     public func setEncryptionKey(key: CryptoKey, keyID: CryptoKeyID? = nil) -> JSPromise {
-        jsObject[Strings.setEncryptionKey]!(key.jsValue(), keyID?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setEncryptionKey].function!(this: this, arguments: [key.jsValue(), keyID?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func setEncryptionKey(key: CryptoKey, keyID: CryptoKeyID? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.setEncryptionKey]!(key.jsValue(), keyID?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.setEncryptionKey].function!(this: this, arguments: [key.jsValue(), keyID?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 

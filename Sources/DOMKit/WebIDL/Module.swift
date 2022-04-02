@@ -17,14 +17,17 @@ public class Module: JSBridgedClass {
     }
 
     public static func exports(moduleObject: Module) -> [ModuleExportDescriptor] {
-        constructor[Strings.exports]!(moduleObject.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.exports].function!(this: this, arguments: [moduleObject.jsValue()]).fromJSValue()!
     }
 
     public static func imports(moduleObject: Module) -> [ModuleImportDescriptor] {
-        constructor[Strings.imports]!(moduleObject.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.imports].function!(this: this, arguments: [moduleObject.jsValue()]).fromJSValue()!
     }
 
     public static func customSections(moduleObject: Module, sectionName: String) -> [ArrayBuffer] {
-        constructor[Strings.customSections]!(moduleObject.jsValue(), sectionName.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.customSections].function!(this: this, arguments: [moduleObject.jsValue(), sectionName.jsValue()]).fromJSValue()!
     }
 }

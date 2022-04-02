@@ -13,12 +13,14 @@ public class FontManager: JSBridgedClass {
     }
 
     public func query(options: QueryOptions? = nil) -> JSPromise {
-        jsObject[Strings.query]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.query].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func query(options: QueryOptions? = nil) async throws -> [FontMetadata] {
-        let _promise: JSPromise = jsObject[Strings.query]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.query].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

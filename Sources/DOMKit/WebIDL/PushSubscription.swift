@@ -25,20 +25,24 @@ public class PushSubscription: JSBridgedClass {
     public var options: PushSubscriptionOptions
 
     public func getKey(name: PushEncryptionKeyName) -> ArrayBuffer? {
-        jsObject[Strings.getKey]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getKey].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public func unsubscribe() -> JSPromise {
-        jsObject[Strings.unsubscribe]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.unsubscribe].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func unsubscribe() async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.unsubscribe]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.unsubscribe].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func toJSON() -> PushSubscriptionJSON {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

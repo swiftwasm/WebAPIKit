@@ -13,14 +13,17 @@ public class ML: JSBridgedClass {
     }
 
     public func createContext(options: MLContextOptions? = nil) -> MLContext {
-        jsObject[Strings.createContext]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createContext].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createContext(glContext: WebGLRenderingContext) -> MLContext {
-        jsObject[Strings.createContext]!(glContext.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createContext].function!(this: this, arguments: [glContext.jsValue()]).fromJSValue()!
     }
 
     public func createContext(gpuDevice: GPUDevice) -> MLContext {
-        jsObject[Strings.createContext]!(gpuDevice.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createContext].function!(this: this, arguments: [gpuDevice.jsValue()]).fromJSValue()!
     }
 }

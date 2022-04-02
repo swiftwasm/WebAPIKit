@@ -6,18 +6,22 @@ import JavaScriptKit
 public protocol GeometryUtils: JSBridgedClass {}
 public extension GeometryUtils {
     func getBoxQuads(options: BoxQuadOptions? = nil) -> [DOMQuad] {
-        jsObject[Strings.getBoxQuads]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getBoxQuads].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     func convertQuadFromNode(quad: DOMQuadInit, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMQuad {
-        jsObject[Strings.convertQuadFromNode]!(quad.jsValue(), from.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.convertQuadFromNode].function!(this: this, arguments: [quad.jsValue(), from.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     func convertRectFromNode(rect: DOMRectReadOnly, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMQuad {
-        jsObject[Strings.convertRectFromNode]!(rect.jsValue(), from.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.convertRectFromNode].function!(this: this, arguments: [rect.jsValue(), from.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     func convertPointFromNode(point: DOMPointInit, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMPoint {
-        jsObject[Strings.convertPointFromNode]!(point.jsValue(), from.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.convertPointFromNode].function!(this: this, arguments: [point.jsValue(), from.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 }

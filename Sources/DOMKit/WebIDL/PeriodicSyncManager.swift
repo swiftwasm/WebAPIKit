@@ -13,32 +13,38 @@ public class PeriodicSyncManager: JSBridgedClass {
     }
 
     public func register(tag: String, options: BackgroundSyncOptions? = nil) -> JSPromise {
-        jsObject[Strings.register]!(tag.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.register].function!(this: this, arguments: [tag.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func register(tag: String, options: BackgroundSyncOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.register]!(tag.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.register].function!(this: this, arguments: [tag.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getTags() -> JSPromise {
-        jsObject[Strings.getTags]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTags].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getTags() async throws -> [String] {
-        let _promise: JSPromise = jsObject[Strings.getTags]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getTags].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func unregister(tag: String) -> JSPromise {
-        jsObject[Strings.unregister]!(tag.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.unregister].function!(this: this, arguments: [tag.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func unregister(tag: String) async throws {
-        let _promise: JSPromise = jsObject[Strings.unregister]!(tag.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.unregister].function!(this: this, arguments: [tag.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

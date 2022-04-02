@@ -75,22 +75,27 @@ public class HTMLFormElement: HTMLElement {
     }
 
     public func submit() {
-        _ = jsObject[Strings.submit]!()
+        let this = jsObject
+        _ = this[Strings.submit].function!(this: this, arguments: [])
     }
 
     public func requestSubmit(submitter: HTMLElement? = nil) {
-        _ = jsObject[Strings.requestSubmit]!(submitter?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.requestSubmit].function!(this: this, arguments: [submitter?.jsValue() ?? .undefined])
     }
 
     public func reset() {
-        _ = jsObject[Strings.reset]!()
+        let this = jsObject
+        _ = this[Strings.reset].function!(this: this, arguments: [])
     }
 
     public func checkValidity() -> Bool {
-        jsObject[Strings.checkValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func reportValidity() -> Bool {
-        jsObject[Strings.reportValidity]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 }

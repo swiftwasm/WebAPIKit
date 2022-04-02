@@ -51,6 +51,7 @@ public class PerformanceNavigationTiming: PerformanceResourceTiming {
     public var redirectCount: UInt16
 
     override public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

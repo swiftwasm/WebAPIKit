@@ -13,12 +13,14 @@ public class WakeLock: JSBridgedClass {
     }
 
     public func request(type: WakeLockType? = nil) -> JSPromise {
-        jsObject[Strings.request]!(type?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.request].function!(this: this, arguments: [type?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func request(type: WakeLockType? = nil) async throws -> WakeLockSentinel {
-        let _promise: JSPromise = jsObject[Strings.request]!(type?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.request].function!(this: this, arguments: [type?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

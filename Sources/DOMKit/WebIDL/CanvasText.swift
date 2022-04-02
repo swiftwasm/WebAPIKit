@@ -6,14 +6,17 @@ import JavaScriptKit
 public protocol CanvasText: JSBridgedClass {}
 public extension CanvasText {
     func fillText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
-        _ = jsObject[Strings.fillText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.fillText].function!(this: this, arguments: [text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined])
     }
 
     func strokeText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
-        _ = jsObject[Strings.strokeText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.strokeText].function!(this: this, arguments: [text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined])
     }
 
     func measureText(text: String) -> TextMetrics {
-        jsObject[Strings.measureText]!(text.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.measureText].function!(this: this, arguments: [text.jsValue()]).fromJSValue()!
     }
 }

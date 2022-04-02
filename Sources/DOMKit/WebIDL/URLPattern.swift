@@ -25,11 +25,13 @@ public class URLPattern: JSBridgedClass {
     }
 
     public func test(input: URLPatternInput? = nil, baseURL: String? = nil) -> Bool {
-        jsObject[Strings.test]!(input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.test].function!(this: this, arguments: [input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func exec(input: URLPatternInput? = nil, baseURL: String? = nil) -> URLPatternResult? {
-        jsObject[Strings.exec]!(input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.exec].function!(this: this, arguments: [input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

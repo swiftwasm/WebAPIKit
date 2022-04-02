@@ -67,18 +67,22 @@ public class SourceBuffer: EventTarget {
     public var onabort: EventHandler
 
     public func appendBuffer(data: BufferSource) {
-        _ = jsObject[Strings.appendBuffer]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.appendBuffer].function!(this: this, arguments: [data.jsValue()])
     }
 
     public func abort() {
-        _ = jsObject[Strings.abort]!()
+        let this = jsObject
+        _ = this[Strings.abort].function!(this: this, arguments: [])
     }
 
     public func changeType(type: String) {
-        _ = jsObject[Strings.changeType]!(type.jsValue())
+        let this = jsObject
+        _ = this[Strings.changeType].function!(this: this, arguments: [type.jsValue()])
     }
 
     public func remove(start: Double, end: Double) {
-        _ = jsObject[Strings.remove]!(start.jsValue(), end.jsValue())
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: [start.jsValue(), end.jsValue()])
     }
 }

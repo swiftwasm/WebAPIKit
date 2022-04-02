@@ -47,32 +47,38 @@ public class XRSession: EventTarget {
     public var domOverlayState: XRDOMOverlayState?
 
     public func requestHitTestSource(options: XRHitTestOptionsInit) -> JSPromise {
-        jsObject[Strings.requestHitTestSource]!(options.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestHitTestSource].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestHitTestSource(options: XRHitTestOptionsInit) async throws -> XRHitTestSource {
-        let _promise: JSPromise = jsObject[Strings.requestHitTestSource]!(options.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestHitTestSource].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) -> JSPromise {
-        jsObject[Strings.requestHitTestSourceForTransientInput]!(options.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestHitTestSourceForTransientInput].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) async throws -> XRTransientInputHitTestSource {
-        let _promise: JSPromise = jsObject[Strings.requestHitTestSourceForTransientInput]!(options.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestHitTestSourceForTransientInput].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func requestLightProbe(options: XRLightProbeInit? = nil) -> JSPromise {
-        jsObject[Strings.requestLightProbe]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestLightProbe].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestLightProbe(options: XRLightProbeInit? = nil) async throws -> XRLightProbe {
-        let _promise: JSPromise = jsObject[Strings.requestLightProbe]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestLightProbe].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -95,42 +101,50 @@ public class XRSession: EventTarget {
     public var inputSources: XRInputSourceArray
 
     public func updateRenderState(state: XRRenderStateInit? = nil) {
-        _ = jsObject[Strings.updateRenderState]!(state?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.updateRenderState].function!(this: this, arguments: [state?.jsValue() ?? .undefined])
     }
 
     public func updateTargetFrameRate(rate: Float) -> JSPromise {
-        jsObject[Strings.updateTargetFrameRate]!(rate.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.updateTargetFrameRate].function!(this: this, arguments: [rate.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func updateTargetFrameRate(rate: Float) async throws {
-        let _promise: JSPromise = jsObject[Strings.updateTargetFrameRate]!(rate.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.updateTargetFrameRate].function!(this: this, arguments: [rate.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func requestReferenceSpace(type: XRReferenceSpaceType) -> JSPromise {
-        jsObject[Strings.requestReferenceSpace]!(type.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.requestReferenceSpace].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func requestReferenceSpace(type: XRReferenceSpaceType) async throws -> XRReferenceSpace {
-        let _promise: JSPromise = jsObject[Strings.requestReferenceSpace]!(type.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.requestReferenceSpace].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     // XXX: member 'requestAnimationFrame' is ignored
 
     public func cancelAnimationFrame(handle: UInt32) {
-        _ = jsObject[Strings.cancelAnimationFrame]!(handle.jsValue())
+        let this = jsObject
+        _ = this[Strings.cancelAnimationFrame].function!(this: this, arguments: [handle.jsValue()])
     }
 
     public func end() -> JSPromise {
-        jsObject[Strings.end]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.end].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func end() async throws {
-        let _promise: JSPromise = jsObject[Strings.end]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.end].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 

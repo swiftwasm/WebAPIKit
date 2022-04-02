@@ -6,23 +6,28 @@ import JavaScriptKit
 public protocol WebGL2RenderingContextOverloads: JSBridgedClass {}
 public extension WebGL2RenderingContextOverloads {
     func bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum) {
-        _ = jsObject[Strings.bufferData]!(target.jsValue(), size.jsValue(), usage.jsValue())
+        let this = jsObject
+        _ = this[Strings.bufferData].function!(this: this, arguments: [target.jsValue(), size.jsValue(), usage.jsValue()])
     }
 
     func bufferData(target: GLenum, srcData: BufferSource?, usage: GLenum) {
-        _ = jsObject[Strings.bufferData]!(target.jsValue(), srcData.jsValue(), usage.jsValue())
+        let this = jsObject
+        _ = this[Strings.bufferData].function!(this: this, arguments: [target.jsValue(), srcData.jsValue(), usage.jsValue()])
     }
 
     func bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: BufferSource) {
-        _ = jsObject[Strings.bufferSubData]!(target.jsValue(), dstByteOffset.jsValue(), srcData.jsValue())
+        let this = jsObject
+        _ = this[Strings.bufferSubData].function!(this: this, arguments: [target.jsValue(), dstByteOffset.jsValue(), srcData.jsValue()])
     }
 
     func bufferData(target: GLenum, srcData: ArrayBufferView, usage: GLenum, srcOffset: GLuint, length: GLuint? = nil) {
-        _ = jsObject[Strings.bufferData]!(target.jsValue(), srcData.jsValue(), usage.jsValue(), srcOffset.jsValue(), length?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.bufferData].function!(this: this, arguments: [target.jsValue(), srcData.jsValue(), usage.jsValue(), srcOffset.jsValue(), length?.jsValue() ?? .undefined])
     }
 
     func bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: ArrayBufferView, srcOffset: GLuint, length: GLuint? = nil) {
-        _ = jsObject[Strings.bufferSubData]!(target.jsValue(), dstByteOffset.jsValue(), srcData.jsValue(), srcOffset.jsValue(), length?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.bufferSubData].function!(this: this, arguments: [target.jsValue(), dstByteOffset.jsValue(), srcData.jsValue(), srcOffset.jsValue(), length?.jsValue() ?? .undefined])
     }
 
     func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, pixels: ArrayBufferView?) {
@@ -35,7 +40,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg6 = format.jsValue()
         let _arg7 = type.jsValue()
         let _arg8 = pixels.jsValue()
-        _ = jsObject[Strings.texImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        let this = jsObject
+        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
     }
 
     func texImage2D(target: GLenum, level: GLint, internalformat: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
@@ -45,7 +51,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg3 = format.jsValue()
         let _arg4 = type.jsValue()
         let _arg5 = source.jsValue()
-        _ = jsObject[Strings.texImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
+        let this = jsObject
+        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 
     func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pixels: ArrayBufferView?) {
@@ -58,7 +65,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg6 = format.jsValue()
         let _arg7 = type.jsValue()
         let _arg8 = pixels.jsValue()
-        _ = jsObject[Strings.texSubImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        let this = jsObject
+        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
     }
 
     func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
@@ -69,7 +77,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg4 = format.jsValue()
         let _arg5 = type.jsValue()
         let _arg6 = source.jsValue()
-        _ = jsObject[Strings.texSubImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6)
+        let this = jsObject
+        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6])
     }
 
     func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, pboOffset: GLintptr) {
@@ -82,7 +91,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg6 = format.jsValue()
         let _arg7 = type.jsValue()
         let _arg8 = pboOffset.jsValue()
-        _ = jsObject[Strings.texImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        let this = jsObject
+        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
     }
 
     func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
@@ -95,7 +105,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg6 = format.jsValue()
         let _arg7 = type.jsValue()
         let _arg8 = source.jsValue()
-        _ = jsObject[Strings.texImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        let this = jsObject
+        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
     }
 
     func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, srcData: ArrayBufferView, srcOffset: GLuint) {
@@ -109,7 +120,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg7 = type.jsValue()
         let _arg8 = srcData.jsValue()
         let _arg9 = srcOffset.jsValue()
-        _ = jsObject[Strings.texImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9)
+        let this = jsObject
+        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
     }
 
     func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pboOffset: GLintptr) {
@@ -122,7 +134,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg6 = format.jsValue()
         let _arg7 = type.jsValue()
         let _arg8 = pboOffset.jsValue()
-        _ = jsObject[Strings.texSubImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        let this = jsObject
+        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
     }
 
     func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, source: TexImageSource) {
@@ -135,7 +148,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg6 = format.jsValue()
         let _arg7 = type.jsValue()
         let _arg8 = source.jsValue()
-        _ = jsObject[Strings.texSubImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        let this = jsObject
+        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
     }
 
     func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, srcData: ArrayBufferView, srcOffset: GLuint) {
@@ -149,7 +163,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg7 = type.jsValue()
         let _arg8 = srcData.jsValue()
         let _arg9 = srcOffset.jsValue()
-        _ = jsObject[Strings.texSubImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9)
+        let this = jsObject
+        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
     }
 
     func compressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, border: GLint, imageSize: GLsizei, offset: GLintptr) {
@@ -161,7 +176,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg5 = border.jsValue()
         let _arg6 = imageSize.jsValue()
         let _arg7 = offset.jsValue()
-        _ = jsObject[Strings.compressedTexImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        let this = jsObject
+        _ = this[Strings.compressedTexImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
     }
 
     func compressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, border: GLint, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
@@ -174,7 +190,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg6 = srcData.jsValue()
         let _arg7 = srcOffset?.jsValue() ?? .undefined
         let _arg8 = srcLengthOverride?.jsValue() ?? .undefined
-        _ = jsObject[Strings.compressedTexImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        let this = jsObject
+        _ = this[Strings.compressedTexImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
     }
 
     func compressedTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, imageSize: GLsizei, offset: GLintptr) {
@@ -187,7 +204,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg6 = format.jsValue()
         let _arg7 = imageSize.jsValue()
         let _arg8 = offset.jsValue()
-        _ = jsObject[Strings.compressedTexSubImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        let this = jsObject
+        _ = this[Strings.compressedTexSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
     }
 
     func compressedTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
@@ -201,51 +219,63 @@ public extension WebGL2RenderingContextOverloads {
         let _arg7 = srcData.jsValue()
         let _arg8 = srcOffset?.jsValue() ?? .undefined
         let _arg9 = srcLengthOverride?.jsValue() ?? .undefined
-        _ = jsObject[Strings.compressedTexSubImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9)
+        let this = jsObject
+        _ = this[Strings.compressedTexSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
     }
 
     func uniform1fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniform1fv]!(location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniform1fv].function!(this: this, arguments: [location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniform2fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniform2fv]!(location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniform2fv].function!(this: this, arguments: [location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniform3fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniform3fv]!(location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniform3fv].function!(this: this, arguments: [location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniform4fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniform4fv]!(location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniform4fv].function!(this: this, arguments: [location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniform1iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniform1iv]!(location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniform1iv].function!(this: this, arguments: [location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniform2iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniform2iv]!(location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniform2iv].function!(this: this, arguments: [location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniform3iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniform3iv]!(location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniform3iv].function!(this: this, arguments: [location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniform4iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniform4iv]!(location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniform4iv].function!(this: this, arguments: [location.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniformMatrix2fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniformMatrix2fv]!(location.jsValue(), transpose.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniformMatrix2fv].function!(this: this, arguments: [location.jsValue(), transpose.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniformMatrix3fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniformMatrix3fv]!(location.jsValue(), transpose.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniformMatrix3fv].function!(this: this, arguments: [location.jsValue(), transpose.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func uniformMatrix4fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        _ = jsObject[Strings.uniformMatrix4fv]!(location.jsValue(), transpose.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.uniformMatrix4fv].function!(this: this, arguments: [location.jsValue(), transpose.jsValue(), data.jsValue(), srcOffset?.jsValue() ?? .undefined, srcLength?.jsValue() ?? .undefined])
     }
 
     func readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, dstData: ArrayBufferView?) {
@@ -256,7 +286,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg4 = format.jsValue()
         let _arg5 = type.jsValue()
         let _arg6 = dstData.jsValue()
-        _ = jsObject[Strings.readPixels]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6)
+        let this = jsObject
+        _ = this[Strings.readPixels].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6])
     }
 
     func readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, offset: GLintptr) {
@@ -267,7 +298,8 @@ public extension WebGL2RenderingContextOverloads {
         let _arg4 = format.jsValue()
         let _arg5 = type.jsValue()
         let _arg6 = offset.jsValue()
-        _ = jsObject[Strings.readPixels]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6)
+        let this = jsObject
+        _ = this[Strings.readPixels].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6])
     }
 
     func readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, dstData: ArrayBufferView, dstOffset: GLuint) {
@@ -279,6 +311,7 @@ public extension WebGL2RenderingContextOverloads {
         let _arg5 = type.jsValue()
         let _arg6 = dstData.jsValue()
         let _arg7 = dstOffset.jsValue()
-        _ = jsObject[Strings.readPixels]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        let this = jsObject
+        _ = this[Strings.readPixels].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
     }
 }

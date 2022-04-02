@@ -33,10 +33,12 @@ public class RTCRtpTransceiver: JSBridgedClass {
     public var currentDirection: RTCRtpTransceiverDirection?
 
     public func stop() {
-        _ = jsObject[Strings.stop]!()
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
     public func setCodecPreferences(codecs: [RTCRtpCodecCapability]) {
-        _ = jsObject[Strings.setCodecPreferences]!(codecs.jsValue())
+        let this = jsObject
+        _ = this[Strings.setCodecPreferences].function!(this: this, arguments: [codecs.jsValue()])
     }
 }

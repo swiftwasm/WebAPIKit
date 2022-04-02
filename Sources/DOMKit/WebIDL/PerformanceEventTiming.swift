@@ -31,6 +31,7 @@ public class PerformanceEventTiming: PerformanceEntry {
     public var interactionId: UInt64
 
     override public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

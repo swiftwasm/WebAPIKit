@@ -22,27 +22,33 @@ public class DOMTokenList: JSBridgedClass, Sequence {
     }
 
     public func contains(token: String) -> Bool {
-        jsObject[Strings.contains]!(token.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.contains].function!(this: this, arguments: [token.jsValue()]).fromJSValue()!
     }
 
     public func add(tokens: String...) {
-        _ = jsObject[Strings.add]!(tokens.jsValue())
+        let this = jsObject
+        _ = this[Strings.add].function!(this: this, arguments: tokens.map { $0.jsValue() })
     }
 
     public func remove(tokens: String...) {
-        _ = jsObject[Strings.remove]!(tokens.jsValue())
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: tokens.map { $0.jsValue() })
     }
 
     public func toggle(token: String, force: Bool? = nil) -> Bool {
-        jsObject[Strings.toggle]!(token.jsValue(), force?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.toggle].function!(this: this, arguments: [token.jsValue(), force?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func replace(token: String, newToken: String) -> Bool {
-        jsObject[Strings.replace]!(token.jsValue(), newToken.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.replace].function!(this: this, arguments: [token.jsValue(), newToken.jsValue()]).fromJSValue()!
     }
 
     public func supports(token: String) -> Bool {
-        jsObject[Strings.supports]!(token.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.supports].function!(this: this, arguments: [token.jsValue()]).fromJSValue()!
     }
 
     @ReadWriteAttribute

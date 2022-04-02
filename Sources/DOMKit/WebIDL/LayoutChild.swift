@@ -17,22 +17,26 @@ public class LayoutChild: JSBridgedClass {
     public var styleMap: StylePropertyMapReadOnly
 
     public func intrinsicSizes() -> JSPromise {
-        jsObject[Strings.intrinsicSizes]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.intrinsicSizes].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func intrinsicSizes() async throws -> IntrinsicSizes {
-        let _promise: JSPromise = jsObject[Strings.intrinsicSizes]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.intrinsicSizes].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func layoutNextFragment(constraints: LayoutConstraintsOptions, breakToken: ChildBreakToken) -> JSPromise {
-        jsObject[Strings.layoutNextFragment]!(constraints.jsValue(), breakToken.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.layoutNextFragment].function!(this: this, arguments: [constraints.jsValue(), breakToken.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func layoutNextFragment(constraints: LayoutConstraintsOptions, breakToken: ChildBreakToken) async throws -> LayoutFragment {
-        let _promise: JSPromise = jsObject[Strings.layoutNextFragment]!(constraints.jsValue(), breakToken.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.layoutNextFragment].function!(this: this, arguments: [constraints.jsValue(), breakToken.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

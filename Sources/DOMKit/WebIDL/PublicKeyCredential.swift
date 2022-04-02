@@ -23,16 +23,19 @@ public class PublicKeyCredential: Credential {
     public var authenticatorAttachment: String?
 
     public func getClientExtensionResults() -> AuthenticationExtensionsClientOutputs {
-        jsObject[Strings.getClientExtensionResults]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getClientExtensionResults].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public static func isUserVerifyingPlatformAuthenticatorAvailable() -> JSPromise {
-        constructor[Strings.isUserVerifyingPlatformAuthenticatorAvailable]!().fromJSValue()!
+        let this = constructor
+        return this[Strings.isUserVerifyingPlatformAuthenticatorAvailable].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func isUserVerifyingPlatformAuthenticatorAvailable() async throws -> Bool {
-        let _promise: JSPromise = constructor[Strings.isUserVerifyingPlatformAuthenticatorAvailable]!().fromJSValue()!
+        let this = constructor
+        let _promise: JSPromise = this[Strings.isUserVerifyingPlatformAuthenticatorAvailable].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

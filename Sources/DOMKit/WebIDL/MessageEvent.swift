@@ -43,6 +43,7 @@ public class MessageEvent: Event {
         let _arg5 = lastEventId?.jsValue() ?? .undefined
         let _arg6 = source?.jsValue() ?? .undefined
         let _arg7 = ports?.jsValue() ?? .undefined
-        _ = jsObject[Strings.initMessageEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        let this = jsObject
+        _ = this[Strings.initMessageEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
     }
 }

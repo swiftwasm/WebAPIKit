@@ -18,7 +18,8 @@ public class Memory: JSBridgedClass {
     }
 
     public func grow(delta: UInt32) -> UInt32 {
-        jsObject[Strings.grow]!(delta.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.grow].function!(this: this, arguments: [delta.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute

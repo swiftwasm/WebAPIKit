@@ -18,7 +18,8 @@ public class Global: JSBridgedClass {
     }
 
     public func valueOf() -> JSValue {
-        jsObject[Strings.valueOf]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.valueOf].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadWriteAttribute

@@ -18,15 +18,18 @@ public class Table: JSBridgedClass {
     }
 
     public func grow(delta: UInt32, value: JSValue? = nil) -> UInt32 {
-        jsObject[Strings.grow]!(delta.jsValue(), value?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.grow].function!(this: this, arguments: [delta.jsValue(), value?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func get(index: UInt32) -> JSValue {
-        jsObject[Strings.get]!(index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
     public func set(index: UInt32, value: JSValue? = nil) {
-        _ = jsObject[Strings.set]!(index.jsValue(), value?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.set].function!(this: this, arguments: [index.jsValue(), value?.jsValue() ?? .undefined])
     }
 
     @ReadonlyAttribute

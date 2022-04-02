@@ -39,6 +39,7 @@ public class FetchEvent: ExtendableEvent {
     public var handled: JSPromise
 
     public func respondWith(r: JSPromise) {
-        _ = jsObject[Strings.respondWith]!(r.jsValue())
+        let this = jsObject
+        _ = this[Strings.respondWith].function!(this: this, arguments: [r.jsValue()])
     }
 }

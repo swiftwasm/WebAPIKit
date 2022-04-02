@@ -39,75 +39,93 @@ public class BaseAudioContext: EventTarget {
     public var onstatechange: EventHandler
 
     public func createAnalyser() -> AnalyserNode {
-        jsObject[Strings.createAnalyser]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createAnalyser].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createBiquadFilter() -> BiquadFilterNode {
-        jsObject[Strings.createBiquadFilter]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createBiquadFilter].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createBuffer(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) -> AudioBuffer {
-        jsObject[Strings.createBuffer]!(numberOfChannels.jsValue(), length.jsValue(), sampleRate.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createBuffer].function!(this: this, arguments: [numberOfChannels.jsValue(), length.jsValue(), sampleRate.jsValue()]).fromJSValue()!
     }
 
     public func createBufferSource() -> AudioBufferSourceNode {
-        jsObject[Strings.createBufferSource]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createBufferSource].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createChannelMerger(numberOfInputs: UInt32? = nil) -> ChannelMergerNode {
-        jsObject[Strings.createChannelMerger]!(numberOfInputs?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createChannelMerger].function!(this: this, arguments: [numberOfInputs?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createChannelSplitter(numberOfOutputs: UInt32? = nil) -> ChannelSplitterNode {
-        jsObject[Strings.createChannelSplitter]!(numberOfOutputs?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createChannelSplitter].function!(this: this, arguments: [numberOfOutputs?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createConstantSource() -> ConstantSourceNode {
-        jsObject[Strings.createConstantSource]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createConstantSource].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createConvolver() -> ConvolverNode {
-        jsObject[Strings.createConvolver]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createConvolver].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createDelay(maxDelayTime: Double? = nil) -> DelayNode {
-        jsObject[Strings.createDelay]!(maxDelayTime?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createDelay].function!(this: this, arguments: [maxDelayTime?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createDynamicsCompressor() -> DynamicsCompressorNode {
-        jsObject[Strings.createDynamicsCompressor]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createDynamicsCompressor].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createGain() -> GainNode {
-        jsObject[Strings.createGain]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createGain].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createIIRFilter(feedforward: [Double], feedback: [Double]) -> IIRFilterNode {
-        jsObject[Strings.createIIRFilter]!(feedforward.jsValue(), feedback.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createIIRFilter].function!(this: this, arguments: [feedforward.jsValue(), feedback.jsValue()]).fromJSValue()!
     }
 
     public func createOscillator() -> OscillatorNode {
-        jsObject[Strings.createOscillator]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createOscillator].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createPanner() -> PannerNode {
-        jsObject[Strings.createPanner]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createPanner].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createPeriodicWave(real: [Float], imag: [Float], constraints: PeriodicWaveConstraints? = nil) -> PeriodicWave {
-        jsObject[Strings.createPeriodicWave]!(real.jsValue(), imag.jsValue(), constraints?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createPeriodicWave].function!(this: this, arguments: [real.jsValue(), imag.jsValue(), constraints?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createScriptProcessor(bufferSize: UInt32? = nil, numberOfInputChannels: UInt32? = nil, numberOfOutputChannels: UInt32? = nil) -> ScriptProcessorNode {
-        jsObject[Strings.createScriptProcessor]!(bufferSize?.jsValue() ?? .undefined, numberOfInputChannels?.jsValue() ?? .undefined, numberOfOutputChannels?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createScriptProcessor].function!(this: this, arguments: [bufferSize?.jsValue() ?? .undefined, numberOfInputChannels?.jsValue() ?? .undefined, numberOfOutputChannels?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func createStereoPanner() -> StereoPannerNode {
-        jsObject[Strings.createStereoPanner]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createStereoPanner].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func createWaveShaper() -> WaveShaperNode {
-        jsObject[Strings.createWaveShaper]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createWaveShaper].function!(this: this, arguments: []).fromJSValue()!
     }
 
     // XXX: member 'decodeAudioData' is ignored

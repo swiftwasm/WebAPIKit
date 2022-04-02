@@ -23,6 +23,7 @@ public class CSSPseudoElement: EventTarget, GeometryUtils {
     public var parent: __UNSUPPORTED_UNION__
 
     public func pseudo(type: String) -> CSSPseudoElement? {
-        jsObject[Strings.pseudo]!(type.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 }

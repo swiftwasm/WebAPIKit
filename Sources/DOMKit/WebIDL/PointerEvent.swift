@@ -63,10 +63,12 @@ public class PointerEvent: MouseEvent {
     public var isPrimary: Bool
 
     public func getCoalescedEvents() -> [PointerEvent] {
-        jsObject[Strings.getCoalescedEvents]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCoalescedEvents].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getPredictedEvents() -> [PointerEvent] {
-        jsObject[Strings.getPredictedEvents]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPredictedEvents].function!(this: this, arguments: []).fromJSValue()!
     }
 }

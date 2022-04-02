@@ -27,6 +27,7 @@ public class TaskAttributionTiming: PerformanceEntry {
     public var containerName: String
 
     override public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

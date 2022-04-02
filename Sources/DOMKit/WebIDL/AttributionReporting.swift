@@ -13,12 +13,14 @@ public class AttributionReporting: JSBridgedClass {
     }
 
     public func registerAttributionSource(params: AttributionSourceParams) -> JSPromise {
-        jsObject[Strings.registerAttributionSource]!(params.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.registerAttributionSource].function!(this: this, arguments: [params.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func registerAttributionSource(params: AttributionSourceParams) async throws {
-        let _promise: JSPromise = jsObject[Strings.registerAttributionSource]!(params.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.registerAttributionSource].function!(this: this, arguments: [params.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

@@ -35,62 +35,74 @@ public class HIDDevice: EventTarget {
     public var collections: [HIDCollectionInfo]
 
     public func open() -> JSPromise {
-        jsObject[Strings.open]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.open].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func open() async throws {
-        let _promise: JSPromise = jsObject[Strings.open]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func close() -> JSPromise {
-        jsObject[Strings.close]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func close() async throws {
-        let _promise: JSPromise = jsObject[Strings.close]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func forget() -> JSPromise {
-        jsObject[Strings.forget]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.forget].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func forget() async throws {
-        let _promise: JSPromise = jsObject[Strings.forget]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.forget].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func sendReport(reportId: UInt8, data: BufferSource) -> JSPromise {
-        jsObject[Strings.sendReport]!(reportId.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.sendReport].function!(this: this, arguments: [reportId.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func sendReport(reportId: UInt8, data: BufferSource) async throws {
-        let _promise: JSPromise = jsObject[Strings.sendReport]!(reportId.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.sendReport].function!(this: this, arguments: [reportId.jsValue(), data.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func sendFeatureReport(reportId: UInt8, data: BufferSource) -> JSPromise {
-        jsObject[Strings.sendFeatureReport]!(reportId.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.sendFeatureReport].function!(this: this, arguments: [reportId.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func sendFeatureReport(reportId: UInt8, data: BufferSource) async throws {
-        let _promise: JSPromise = jsObject[Strings.sendFeatureReport]!(reportId.jsValue(), data.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.sendFeatureReport].function!(this: this, arguments: [reportId.jsValue(), data.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func receiveFeatureReport(reportId: UInt8) -> JSPromise {
-        jsObject[Strings.receiveFeatureReport]!(reportId.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.receiveFeatureReport].function!(this: this, arguments: [reportId.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func receiveFeatureReport(reportId: UInt8) async throws -> DataView {
-        let _promise: JSPromise = jsObject[Strings.receiveFeatureReport]!(reportId.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.receiveFeatureReport].function!(this: this, arguments: [reportId.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

@@ -29,14 +29,17 @@ public class GroupEffect: JSBridgedClass {
     public var lastChild: AnimationEffect?
 
     public func clone() -> Self {
-        jsObject[Strings.clone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func prepend(effects: AnimationEffect...) {
-        _ = jsObject[Strings.prepend]!(effects.jsValue())
+        let this = jsObject
+        _ = this[Strings.prepend].function!(this: this, arguments: effects.map { $0.jsValue() })
     }
 
     public func append(effects: AnimationEffect...) {
-        _ = jsObject[Strings.append]!(effects.jsValue())
+        let this = jsObject
+        _ = this[Strings.append].function!(this: this, arguments: effects.map { $0.jsValue() })
     }
 }

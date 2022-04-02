@@ -21,6 +21,7 @@ public class AbortController: JSBridgedClass {
     public var signal: AbortSignal
 
     public func abort(reason: JSValue? = nil) {
-        _ = jsObject[Strings.abort]!(reason?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined])
     }
 }

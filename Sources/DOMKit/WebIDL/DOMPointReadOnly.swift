@@ -21,7 +21,8 @@ public class DOMPointReadOnly: JSBridgedClass {
     }
 
     public static func fromPoint(other: DOMPointInit? = nil) -> Self {
-        constructor[Strings.fromPoint]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.fromPoint].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -37,10 +38,12 @@ public class DOMPointReadOnly: JSBridgedClass {
     public var w: Double
 
     public func matrixTransform(matrix: DOMMatrixInit? = nil) -> DOMPoint {
-        jsObject[Strings.matrixTransform]!(matrix?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.matrixTransform].function!(this: this, arguments: [matrix?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

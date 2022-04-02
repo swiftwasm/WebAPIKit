@@ -28,7 +28,8 @@ public class UIEvent: Event {
     public var detail: Int32
 
     public func initUIEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil) {
-        _ = jsObject[Strings.initUIEvent]!(typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, detailArg?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.initUIEvent].function!(this: this, arguments: [typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, detailArg?.jsValue() ?? .undefined])
     }
 
     @ReadonlyAttribute

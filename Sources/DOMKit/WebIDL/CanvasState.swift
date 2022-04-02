@@ -6,18 +6,22 @@ import JavaScriptKit
 public protocol CanvasState: JSBridgedClass {}
 public extension CanvasState {
     func save() {
-        _ = jsObject[Strings.save]!()
+        let this = jsObject
+        _ = this[Strings.save].function!(this: this, arguments: [])
     }
 
     func restore() {
-        _ = jsObject[Strings.restore]!()
+        let this = jsObject
+        _ = this[Strings.restore].function!(this: this, arguments: [])
     }
 
     func reset() {
-        _ = jsObject[Strings.reset]!()
+        let this = jsObject
+        _ = this[Strings.reset].function!(this: this, arguments: [])
     }
 
     func isContextLost() -> Bool {
-        jsObject[Strings.isContextLost]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.isContextLost].function!(this: this, arguments: []).fromJSValue()!
     }
 }

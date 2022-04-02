@@ -21,7 +21,8 @@ public class RTCDtlsTransport: EventTarget {
     public var state: RTCDtlsTransportState
 
     public func getRemoteCertificates() -> [ArrayBuffer] {
-        jsObject[Strings.getRemoteCertificates]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRemoteCertificates].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ClosureAttribute1Optional

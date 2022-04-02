@@ -13,72 +13,86 @@ public class Cache: JSBridgedClass {
     }
 
     public func match(request: RequestInfo, options: CacheQueryOptions? = nil) -> JSPromise {
-        jsObject[Strings.match]!(request.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func match(request: RequestInfo, options: CacheQueryOptions? = nil) async throws -> __UNSUPPORTED_UNION__ {
-        let _promise: JSPromise = jsObject[Strings.match]!(request.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) -> JSPromise {
-        jsObject[Strings.matchAll]!(request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) async throws -> [Response] {
-        let _promise: JSPromise = jsObject[Strings.matchAll]!(request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func add(request: RequestInfo) -> JSPromise {
-        jsObject[Strings.add]!(request.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.add].function!(this: this, arguments: [request.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func add(request: RequestInfo) async throws {
-        let _promise: JSPromise = jsObject[Strings.add]!(request.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.add].function!(this: this, arguments: [request.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func addAll(requests: [RequestInfo]) -> JSPromise {
-        jsObject[Strings.addAll]!(requests.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.addAll].function!(this: this, arguments: [requests.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func addAll(requests: [RequestInfo]) async throws {
-        let _promise: JSPromise = jsObject[Strings.addAll]!(requests.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.addAll].function!(this: this, arguments: [requests.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func put(request: RequestInfo, response: Response) -> JSPromise {
-        jsObject[Strings.put]!(request.jsValue(), response.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.put].function!(this: this, arguments: [request.jsValue(), response.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func put(request: RequestInfo, response: Response) async throws {
-        let _promise: JSPromise = jsObject[Strings.put]!(request.jsValue(), response.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.put].function!(this: this, arguments: [request.jsValue(), response.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func delete(request: RequestInfo, options: CacheQueryOptions? = nil) -> JSPromise {
-        jsObject[Strings.delete]!(request.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.delete].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func delete(request: RequestInfo, options: CacheQueryOptions? = nil) async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.delete]!(request.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func keys(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) -> JSPromise {
-        jsObject[Strings.keys]!(request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.keys].function!(this: this, arguments: [request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func keys(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) async throws -> [Request] {
-        let _promise: JSPromise = jsObject[Strings.keys]!(request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.keys].function!(this: this, arguments: [request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

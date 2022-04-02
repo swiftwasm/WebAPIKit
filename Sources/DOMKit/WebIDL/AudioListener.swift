@@ -49,7 +49,8 @@ public class AudioListener: JSBridgedClass {
     public var upZ: AudioParam
 
     public func setPosition(x: Float, y: Float, z: Float) {
-        _ = jsObject[Strings.setPosition]!(x.jsValue(), y.jsValue(), z.jsValue())
+        let this = jsObject
+        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
     public func setOrientation(x: Float, y: Float, z: Float, xUp: Float, yUp: Float, zUp: Float) {
@@ -59,6 +60,7 @@ public class AudioListener: JSBridgedClass {
         let _arg3 = xUp.jsValue()
         let _arg4 = yUp.jsValue()
         let _arg5 = zUp.jsValue()
-        _ = jsObject[Strings.setOrientation]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
+        let this = jsObject
+        _ = this[Strings.setOrientation].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 }

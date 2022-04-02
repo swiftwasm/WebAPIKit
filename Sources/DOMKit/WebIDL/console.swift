@@ -9,78 +9,97 @@ public enum console {
     }
 
     public static func assert(condition: Bool? = nil, data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.assert]!(condition?.jsValue() ?? .undefined, data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.assert].function!(this: this, arguments: [condition?.jsValue() ?? .undefined] + data.map { $0.jsValue() })
     }
 
     public static func clear() {
-        _ = JSObject.global[Strings.console].object![Strings.clear]!()
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 
     public static func debug(data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.debug]!(data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.debug].function!(this: this, arguments: data.map { $0.jsValue() })
     }
 
     public static func error(data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.error]!(data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.error].function!(this: this, arguments: data.map { $0.jsValue() })
     }
 
     public static func info(data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.info]!(data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.info].function!(this: this, arguments: data.map { $0.jsValue() })
     }
 
     public static func log(data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.log]!(data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.log].function!(this: this, arguments: data.map { $0.jsValue() })
     }
 
     public static func table(tabularData: JSValue? = nil, properties: [String]? = nil) {
-        _ = JSObject.global[Strings.console].object![Strings.table]!(tabularData?.jsValue() ?? .undefined, properties?.jsValue() ?? .undefined)
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.table].function!(this: this, arguments: [tabularData?.jsValue() ?? .undefined, properties?.jsValue() ?? .undefined])
     }
 
     public static func trace(data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.trace]!(data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.trace].function!(this: this, arguments: data.map { $0.jsValue() })
     }
 
     public static func warn(data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.warn]!(data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.warn].function!(this: this, arguments: data.map { $0.jsValue() })
     }
 
     public static func dir(item: JSValue? = nil, options: JSObject? = nil) {
-        _ = JSObject.global[Strings.console].object![Strings.dir]!(item?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined)
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.dir].function!(this: this, arguments: [item?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined])
     }
 
     public static func dirxml(data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.dirxml]!(data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.dirxml].function!(this: this, arguments: data.map { $0.jsValue() })
     }
 
     public static func count(label: String? = nil) {
-        _ = JSObject.global[Strings.console].object![Strings.count]!(label?.jsValue() ?? .undefined)
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.count].function!(this: this, arguments: [label?.jsValue() ?? .undefined])
     }
 
     public static func countReset(label: String? = nil) {
-        _ = JSObject.global[Strings.console].object![Strings.countReset]!(label?.jsValue() ?? .undefined)
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.countReset].function!(this: this, arguments: [label?.jsValue() ?? .undefined])
     }
 
     public static func group(data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.group]!(data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.group].function!(this: this, arguments: data.map { $0.jsValue() })
     }
 
     public static func groupCollapsed(data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.groupCollapsed]!(data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.groupCollapsed].function!(this: this, arguments: data.map { $0.jsValue() })
     }
 
     public static func groupEnd() {
-        _ = JSObject.global[Strings.console].object![Strings.groupEnd]!()
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.groupEnd].function!(this: this, arguments: [])
     }
 
     public static func time(label: String? = nil) {
-        _ = JSObject.global[Strings.console].object![Strings.time]!(label?.jsValue() ?? .undefined)
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.time].function!(this: this, arguments: [label?.jsValue() ?? .undefined])
     }
 
     public static func timeLog(label: String? = nil, data: JSValue...) {
-        _ = JSObject.global[Strings.console].object![Strings.timeLog]!(label?.jsValue() ?? .undefined, data.jsValue())
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.timeLog].function!(this: this, arguments: [label?.jsValue() ?? .undefined] + data.map { $0.jsValue() })
     }
 
     public static func timeEnd(label: String? = nil) {
-        _ = JSObject.global[Strings.console].object![Strings.timeEnd]!(label?.jsValue() ?? .undefined)
+        let this = JSObject.global[Strings.console].object!
+        _ = this[Strings.timeEnd].function!(this: this, arguments: [label?.jsValue() ?? .undefined])
     }
 }

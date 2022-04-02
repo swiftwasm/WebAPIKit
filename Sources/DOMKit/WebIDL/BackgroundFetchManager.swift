@@ -13,32 +13,38 @@ public class BackgroundFetchManager: JSBridgedClass {
     }
 
     public func fetch(id: String, requests: __UNSUPPORTED_UNION__, options: BackgroundFetchOptions? = nil) -> JSPromise {
-        jsObject[Strings.fetch]!(id.jsValue(), requests.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.fetch].function!(this: this, arguments: [id.jsValue(), requests.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func fetch(id: String, requests: __UNSUPPORTED_UNION__, options: BackgroundFetchOptions? = nil) async throws -> BackgroundFetchRegistration {
-        let _promise: JSPromise = jsObject[Strings.fetch]!(id.jsValue(), requests.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.fetch].function!(this: this, arguments: [id.jsValue(), requests.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func get(id: String) -> JSPromise {
-        jsObject[Strings.get]!(id.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func get(id: String) async throws -> BackgroundFetchRegistration? {
-        let _promise: JSPromise = jsObject[Strings.get]!(id.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getIds() -> JSPromise {
-        jsObject[Strings.getIds]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getIds].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getIds() async throws -> [String] {
-        let _promise: JSPromise = jsObject[Strings.getIds]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getIds].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

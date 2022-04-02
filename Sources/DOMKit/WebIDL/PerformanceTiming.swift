@@ -97,6 +97,7 @@ public class PerformanceTiming: JSBridgedClass {
     public var loadEventEnd: UInt64
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

@@ -45,6 +45,7 @@ public class MutationEvent: Event {
         let _arg5 = newValueArg?.jsValue() ?? .undefined
         let _arg6 = attrNameArg?.jsValue() ?? .undefined
         let _arg7 = attrChangeArg?.jsValue() ?? .undefined
-        _ = jsObject[Strings.initMutationEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        let this = jsObject
+        _ = this[Strings.initMutationEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
     }
 }

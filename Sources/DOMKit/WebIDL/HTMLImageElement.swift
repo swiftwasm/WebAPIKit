@@ -95,12 +95,14 @@ public class HTMLImageElement: HTMLElement {
     public var loading: String
 
     public func decode() -> JSPromise {
-        jsObject[Strings.decode]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.decode].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func decode() async throws {
-        let _promise: JSPromise = jsObject[Strings.decode]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.decode].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 

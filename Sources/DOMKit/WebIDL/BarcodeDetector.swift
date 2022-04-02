@@ -17,22 +17,26 @@ public class BarcodeDetector: JSBridgedClass {
     }
 
     public static func getSupportedFormats() -> JSPromise {
-        constructor[Strings.getSupportedFormats]!().fromJSValue()!
+        let this = constructor
+        return this[Strings.getSupportedFormats].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func getSupportedFormats() async throws -> [BarcodeFormat] {
-        let _promise: JSPromise = constructor[Strings.getSupportedFormats]!().fromJSValue()!
+        let this = constructor
+        let _promise: JSPromise = this[Strings.getSupportedFormats].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func detect(image: ImageBitmapSource) -> JSPromise {
-        jsObject[Strings.detect]!(image.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.detect].function!(this: this, arguments: [image.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func detect(image: ImageBitmapSource) async throws -> [DetectedBarcode] {
-        let _promise: JSPromise = jsObject[Strings.detect]!(image.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.detect].function!(this: this, arguments: [image.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

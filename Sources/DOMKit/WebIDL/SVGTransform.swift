@@ -39,26 +39,32 @@ public class SVGTransform: JSBridgedClass {
     public var angle: Float
 
     public func setMatrix(matrix: DOMMatrix2DInit? = nil) {
-        _ = jsObject[Strings.setMatrix]!(matrix?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setMatrix].function!(this: this, arguments: [matrix?.jsValue() ?? .undefined])
     }
 
     public func setTranslate(tx: Float, ty: Float) {
-        _ = jsObject[Strings.setTranslate]!(tx.jsValue(), ty.jsValue())
+        let this = jsObject
+        _ = this[Strings.setTranslate].function!(this: this, arguments: [tx.jsValue(), ty.jsValue()])
     }
 
     public func setScale(sx: Float, sy: Float) {
-        _ = jsObject[Strings.setScale]!(sx.jsValue(), sy.jsValue())
+        let this = jsObject
+        _ = this[Strings.setScale].function!(this: this, arguments: [sx.jsValue(), sy.jsValue()])
     }
 
     public func setRotate(angle: Float, cx: Float, cy: Float) {
-        _ = jsObject[Strings.setRotate]!(angle.jsValue(), cx.jsValue(), cy.jsValue())
+        let this = jsObject
+        _ = this[Strings.setRotate].function!(this: this, arguments: [angle.jsValue(), cx.jsValue(), cy.jsValue()])
     }
 
     public func setSkewX(angle: Float) {
-        _ = jsObject[Strings.setSkewX]!(angle.jsValue())
+        let this = jsObject
+        _ = this[Strings.setSkewX].function!(this: this, arguments: [angle.jsValue()])
     }
 
     public func setSkewY(angle: Float) {
-        _ = jsObject[Strings.setSkewY]!(angle.jsValue())
+        let this = jsObject
+        _ = this[Strings.setSkewY].function!(this: this, arguments: [angle.jsValue()])
     }
 }

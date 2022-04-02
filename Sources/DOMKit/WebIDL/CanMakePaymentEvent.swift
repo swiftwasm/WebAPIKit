@@ -27,6 +27,7 @@ public class CanMakePaymentEvent: ExtendableEvent {
     public var methodData: [PaymentMethodData]
 
     public func respondWith(canMakePaymentResponse: JSPromise) {
-        _ = jsObject[Strings.respondWith]!(canMakePaymentResponse.jsValue())
+        let this = jsObject
+        _ = this[Strings.respondWith].function!(this: this, arguments: [canMakePaymentResponse.jsValue()])
     }
 }

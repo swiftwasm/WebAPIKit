@@ -71,10 +71,12 @@ public class PannerNode: AudioNode {
     public var coneOuterGain: Double
 
     public func setPosition(x: Float, y: Float, z: Float) {
-        _ = jsObject[Strings.setPosition]!(x.jsValue(), y.jsValue(), z.jsValue())
+        let this = jsObject
+        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
     public func setOrientation(x: Float, y: Float, z: Float) {
-        _ = jsObject[Strings.setOrientation]!(x.jsValue(), y.jsValue(), z.jsValue())
+        let this = jsObject
+        _ = this[Strings.setOrientation].function!(this: this, arguments: [x.jsValue(), y.jsValue(), z.jsValue()])
     }
 }

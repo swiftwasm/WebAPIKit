@@ -37,22 +37,26 @@ public class ServiceWorkerRegistration: EventTarget {
     public var cookies: CookieStoreManager
 
     public func showNotification(title: String, options: NotificationOptions? = nil) -> JSPromise {
-        jsObject[Strings.showNotification]!(title.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.showNotification].function!(this: this, arguments: [title.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func showNotification(title: String, options: NotificationOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.showNotification]!(title.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.showNotification].function!(this: this, arguments: [title.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getNotifications(filter: GetNotificationOptions? = nil) -> JSPromise {
-        jsObject[Strings.getNotifications]!(filter?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getNotifications].function!(this: this, arguments: [filter?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getNotifications(filter: GetNotificationOptions? = nil) async throws -> [Notification] {
-        let _promise: JSPromise = jsObject[Strings.getNotifications]!(filter?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getNotifications].function!(this: this, arguments: [filter?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -84,22 +88,26 @@ public class ServiceWorkerRegistration: EventTarget {
     public var updateViaCache: ServiceWorkerUpdateViaCache
 
     public func update() -> JSPromise {
-        jsObject[Strings.update]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.update].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func update() async throws {
-        let _promise: JSPromise = jsObject[Strings.update]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.update].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func unregister() -> JSPromise {
-        jsObject[Strings.unregister]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.unregister].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func unregister() async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.unregister]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.unregister].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

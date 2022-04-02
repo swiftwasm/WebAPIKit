@@ -35,10 +35,12 @@ public class KeyframeEffect: AnimationEffect {
     public var composite: CompositeOperation
 
     public func getKeyframes() -> [JSObject] {
-        jsObject[Strings.getKeyframes]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getKeyframes].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func setKeyframes(keyframes: JSObject?) {
-        _ = jsObject[Strings.setKeyframes]!(keyframes.jsValue())
+        let this = jsObject
+        _ = this[Strings.setKeyframes].function!(this: this, arguments: [keyframes.jsValue()])
     }
 }

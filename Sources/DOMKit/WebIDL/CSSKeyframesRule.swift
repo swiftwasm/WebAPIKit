@@ -19,14 +19,17 @@ public class CSSKeyframesRule: CSSRule {
     public var cssRules: CSSRuleList
 
     public func appendRule(rule: String) {
-        _ = jsObject[Strings.appendRule]!(rule.jsValue())
+        let this = jsObject
+        _ = this[Strings.appendRule].function!(this: this, arguments: [rule.jsValue()])
     }
 
     public func deleteRule(select: String) {
-        _ = jsObject[Strings.deleteRule]!(select.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteRule].function!(this: this, arguments: [select.jsValue()])
     }
 
     public func findRule(select: String) -> CSSKeyframeRule? {
-        jsObject[Strings.findRule]!(select.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.findRule].function!(this: this, arguments: [select.jsValue()]).fromJSValue()!
     }
 }

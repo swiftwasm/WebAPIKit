@@ -55,6 +55,7 @@ public class VTTCue: TextTrackCue {
     public var text: String
 
     public func getCueAsHTML() -> DocumentFragment {
-        jsObject[Strings.getCueAsHTML]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCueAsHTML].function!(this: this, arguments: []).fromJSValue()!
     }
 }

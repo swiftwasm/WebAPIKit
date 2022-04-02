@@ -33,30 +33,37 @@ public class AudioParam: JSBridgedClass {
     public var maxValue: Float
 
     public func setValueAtTime(value: Float, startTime: Double) -> Self {
-        jsObject[Strings.setValueAtTime]!(value.jsValue(), startTime.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setValueAtTime].function!(this: this, arguments: [value.jsValue(), startTime.jsValue()]).fromJSValue()!
     }
 
     public func linearRampToValueAtTime(value: Float, endTime: Double) -> Self {
-        jsObject[Strings.linearRampToValueAtTime]!(value.jsValue(), endTime.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.linearRampToValueAtTime].function!(this: this, arguments: [value.jsValue(), endTime.jsValue()]).fromJSValue()!
     }
 
     public func exponentialRampToValueAtTime(value: Float, endTime: Double) -> Self {
-        jsObject[Strings.exponentialRampToValueAtTime]!(value.jsValue(), endTime.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.exponentialRampToValueAtTime].function!(this: this, arguments: [value.jsValue(), endTime.jsValue()]).fromJSValue()!
     }
 
     public func setTargetAtTime(target: Float, startTime: Double, timeConstant: Float) -> Self {
-        jsObject[Strings.setTargetAtTime]!(target.jsValue(), startTime.jsValue(), timeConstant.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setTargetAtTime].function!(this: this, arguments: [target.jsValue(), startTime.jsValue(), timeConstant.jsValue()]).fromJSValue()!
     }
 
     public func setValueCurveAtTime(values: [Float], startTime: Double, duration: Double) -> Self {
-        jsObject[Strings.setValueCurveAtTime]!(values.jsValue(), startTime.jsValue(), duration.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setValueCurveAtTime].function!(this: this, arguments: [values.jsValue(), startTime.jsValue(), duration.jsValue()]).fromJSValue()!
     }
 
     public func cancelScheduledValues(cancelTime: Double) -> Self {
-        jsObject[Strings.cancelScheduledValues]!(cancelTime.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.cancelScheduledValues].function!(this: this, arguments: [cancelTime.jsValue()]).fromJSValue()!
     }
 
     public func cancelAndHoldAtTime(cancelTime: Double) -> Self {
-        jsObject[Strings.cancelAndHoldAtTime]!(cancelTime.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.cancelAndHoldAtTime].function!(this: this, arguments: [cancelTime.jsValue()]).fromJSValue()!
     }
 }

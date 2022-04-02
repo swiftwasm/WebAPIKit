@@ -6,6 +6,7 @@ import JavaScriptKit
 public protocol GPUPipelineBase: JSBridgedClass {}
 public extension GPUPipelineBase {
     func getBindGroupLayout(index: UInt32) -> GPUBindGroupLayout {
-        jsObject[Strings.getBindGroupLayout]!(index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getBindGroupLayout].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 }

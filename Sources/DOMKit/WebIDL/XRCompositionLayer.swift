@@ -31,6 +31,7 @@ public class XRCompositionLayer: XRLayer {
     public var needsRedraw: Bool
 
     public func destroy() {
-        _ = jsObject[Strings.destroy]!()
+        let this = jsObject
+        _ = this[Strings.destroy].function!(this: this, arguments: [])
     }
 }

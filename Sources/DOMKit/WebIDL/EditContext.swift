@@ -29,27 +29,33 @@ public class EditContext: EventTarget {
     }
 
     public func updateText(rangeStart: UInt32, rangeEnd: UInt32, text: String) {
-        _ = jsObject[Strings.updateText]!(rangeStart.jsValue(), rangeEnd.jsValue(), text.jsValue())
+        let this = jsObject
+        _ = this[Strings.updateText].function!(this: this, arguments: [rangeStart.jsValue(), rangeEnd.jsValue(), text.jsValue()])
     }
 
     public func updateSelection(start: UInt32, end: UInt32) {
-        _ = jsObject[Strings.updateSelection]!(start.jsValue(), end.jsValue())
+        let this = jsObject
+        _ = this[Strings.updateSelection].function!(this: this, arguments: [start.jsValue(), end.jsValue()])
     }
 
     public func updateControlBound(controlBound: DOMRect) {
-        _ = jsObject[Strings.updateControlBound]!(controlBound.jsValue())
+        let this = jsObject
+        _ = this[Strings.updateControlBound].function!(this: this, arguments: [controlBound.jsValue()])
     }
 
     public func updateSelectionBound(selectionBound: DOMRect) {
-        _ = jsObject[Strings.updateSelectionBound]!(selectionBound.jsValue())
+        let this = jsObject
+        _ = this[Strings.updateSelectionBound].function!(this: this, arguments: [selectionBound.jsValue()])
     }
 
     public func updateCharacterBounds(rangeStart: UInt32, characterBounds: [DOMRect]) {
-        _ = jsObject[Strings.updateCharacterBounds]!(rangeStart.jsValue(), characterBounds.jsValue())
+        let this = jsObject
+        _ = this[Strings.updateCharacterBounds].function!(this: this, arguments: [rangeStart.jsValue(), characterBounds.jsValue()])
     }
 
     public func attachedElements() -> [Element] {
-        jsObject[Strings.attachedElements]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.attachedElements].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -80,7 +86,8 @@ public class EditContext: EventTarget {
     public var characterBoundsRangeStart: UInt32
 
     public func characterBounds() -> [DOMRect] {
-        jsObject[Strings.characterBounds]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.characterBounds].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ClosureAttribute1Optional

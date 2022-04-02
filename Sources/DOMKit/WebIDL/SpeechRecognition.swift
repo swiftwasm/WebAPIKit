@@ -46,15 +46,18 @@ public class SpeechRecognition: EventTarget {
     public var maxAlternatives: UInt32
 
     public func start() {
-        _ = jsObject[Strings.start]!()
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [])
     }
 
     public func stop() {
-        _ = jsObject[Strings.stop]!()
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
     public func abort() {
-        _ = jsObject[Strings.abort]!()
+        let this = jsObject
+        _ = this[Strings.abort].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional

@@ -88,12 +88,14 @@ public class ServiceWorkerGlobalScope: WorkerGlobalScope {
     public var serviceWorker: ServiceWorker
 
     public func skipWaiting() -> JSPromise {
-        jsObject[Strings.skipWaiting]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.skipWaiting].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func skipWaiting() async throws {
-        let _promise: JSPromise = jsObject[Strings.skipWaiting]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.skipWaiting].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 

@@ -17,6 +17,7 @@ public class CanvasRenderingContext2D: JSBridgedClass, CanvasState, CanvasTransf
     public var canvas: HTMLCanvasElement
 
     public func getContextAttributes() -> CanvasRenderingContext2DSettings {
-        jsObject[Strings.getContextAttributes]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getContextAttributes].function!(this: this, arguments: []).fromJSValue()!
     }
 }

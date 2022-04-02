@@ -81,6 +81,7 @@ public class WEBGL_draw_buffers: JSBridgedClass {
     public static let MAX_DRAW_BUFFERS_WEBGL: GLenum = 0x8824
 
     public func drawBuffersWEBGL(buffers: [GLenum]) {
-        _ = jsObject[Strings.drawBuffersWEBGL]!(buffers.jsValue())
+        let this = jsObject
+        _ = this[Strings.drawBuffersWEBGL].function!(this: this, arguments: [buffers.jsValue()])
     }
 }

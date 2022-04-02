@@ -20,12 +20,14 @@ public class RTCRtpSender: JSBridgedClass {
     public var transform: RTCRtpTransform?
 
     public func generateKeyFrame(rids: [String]? = nil) -> JSPromise {
-        jsObject[Strings.generateKeyFrame]!(rids?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.generateKeyFrame].function!(this: this, arguments: [rids?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func generateKeyFrame(rids: [String]? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.generateKeyFrame]!(rids?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.generateKeyFrame].function!(this: this, arguments: [rids?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
@@ -36,44 +38,53 @@ public class RTCRtpSender: JSBridgedClass {
     public var transport: RTCDtlsTransport?
 
     public static func getCapabilities(kind: String) -> RTCRtpCapabilities? {
-        constructor[Strings.getCapabilities]!(kind.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.getCapabilities].function!(this: this, arguments: [kind.jsValue()]).fromJSValue()!
     }
 
     public func setParameters(parameters: RTCRtpSendParameters) -> JSPromise {
-        jsObject[Strings.setParameters]!(parameters.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.setParameters].function!(this: this, arguments: [parameters.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func setParameters(parameters: RTCRtpSendParameters) async throws {
-        let _promise: JSPromise = jsObject[Strings.setParameters]!(parameters.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.setParameters].function!(this: this, arguments: [parameters.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func getParameters() -> RTCRtpSendParameters {
-        jsObject[Strings.getParameters]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getParameters].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func replaceTrack(withTrack: MediaStreamTrack?) -> JSPromise {
-        jsObject[Strings.replaceTrack]!(withTrack.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.replaceTrack].function!(this: this, arguments: [withTrack.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func replaceTrack(withTrack: MediaStreamTrack?) async throws {
-        let _promise: JSPromise = jsObject[Strings.replaceTrack]!(withTrack.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.replaceTrack].function!(this: this, arguments: [withTrack.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func setStreams(streams: MediaStream...) {
-        _ = jsObject[Strings.setStreams]!(streams.jsValue())
+        let this = jsObject
+        _ = this[Strings.setStreams].function!(this: this, arguments: streams.map { $0.jsValue() })
     }
 
     public func getStats() -> JSPromise {
-        jsObject[Strings.getStats]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getStats() async throws -> RTCStatsReport {
-        let _promise: JSPromise = jsObject[Strings.getStats]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

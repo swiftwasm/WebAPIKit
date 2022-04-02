@@ -26,11 +26,13 @@ public extension CanvasPathDrawingStyles {
     }
 
     func setLineDash(segments: [Double]) {
-        _ = jsObject[Strings.setLineDash]!(segments.jsValue())
+        let this = jsObject
+        _ = this[Strings.setLineDash].function!(this: this, arguments: [segments.jsValue()])
     }
 
     func getLineDash() -> [Double] {
-        jsObject[Strings.getLineDash]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getLineDash].function!(this: this, arguments: []).fromJSValue()!
     }
 
     var lineDashOffset: Double {

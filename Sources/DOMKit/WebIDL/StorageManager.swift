@@ -13,42 +13,50 @@ public class StorageManager: JSBridgedClass {
     }
 
     public func getDirectory() -> JSPromise {
-        jsObject[Strings.getDirectory]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDirectory].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getDirectory() async throws -> FileSystemDirectoryHandle {
-        let _promise: JSPromise = jsObject[Strings.getDirectory]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getDirectory].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func persisted() -> JSPromise {
-        jsObject[Strings.persisted]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.persisted].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func persisted() async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.persisted]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.persisted].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func persist() -> JSPromise {
-        jsObject[Strings.persist]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.persist].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func persist() async throws -> Bool {
-        let _promise: JSPromise = jsObject[Strings.persist]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.persist].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func estimate() -> JSPromise {
-        jsObject[Strings.estimate]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.estimate].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func estimate() async throws -> StorageEstimate {
-        let _promise: JSPromise = jsObject[Strings.estimate]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.estimate].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

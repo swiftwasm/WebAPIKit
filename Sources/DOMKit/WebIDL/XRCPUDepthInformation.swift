@@ -15,6 +15,7 @@ public class XRCPUDepthInformation: XRDepthInformation {
     public var data: ArrayBuffer
 
     public func getDepthInMeters(x: Float, y: Float) -> Float {
-        jsObject[Strings.getDepthInMeters]!(x.jsValue(), y.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDepthInMeters].function!(this: this, arguments: [x.jsValue(), y.jsValue()]).fromJSValue()!
     }
 }

@@ -33,58 +33,72 @@ public class IDBObjectStore: JSBridgedClass {
     public var autoIncrement: Bool
 
     public func put(value: JSValue, key: JSValue? = nil) -> IDBRequest {
-        jsObject[Strings.put]!(value.jsValue(), key?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.put].function!(this: this, arguments: [value.jsValue(), key?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func add(value: JSValue, key: JSValue? = nil) -> IDBRequest {
-        jsObject[Strings.add]!(value.jsValue(), key?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.add].function!(this: this, arguments: [value.jsValue(), key?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func delete(query: JSValue) -> IDBRequest {
-        jsObject[Strings.delete]!(query.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.delete].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
     }
 
     public func clear() -> IDBRequest {
-        jsObject[Strings.clear]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.clear].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func get(query: JSValue) -> IDBRequest {
-        jsObject[Strings.get]!(query.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.get].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
     }
 
     public func getKey(query: JSValue) -> IDBRequest {
-        jsObject[Strings.getKey]!(query.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getKey].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
     }
 
     public func getAll(query: JSValue? = nil, count: UInt32? = nil) -> IDBRequest {
-        jsObject[Strings.getAll]!(query?.jsValue() ?? .undefined, count?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAll].function!(this: this, arguments: [query?.jsValue() ?? .undefined, count?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func getAllKeys(query: JSValue? = nil, count: UInt32? = nil) -> IDBRequest {
-        jsObject[Strings.getAllKeys]!(query?.jsValue() ?? .undefined, count?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAllKeys].function!(this: this, arguments: [query?.jsValue() ?? .undefined, count?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func count(query: JSValue? = nil) -> IDBRequest {
-        jsObject[Strings.count]!(query?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.count].function!(this: this, arguments: [query?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func openCursor(query: JSValue? = nil, direction: IDBCursorDirection? = nil) -> IDBRequest {
-        jsObject[Strings.openCursor]!(query?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.openCursor].function!(this: this, arguments: [query?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func openKeyCursor(query: JSValue? = nil, direction: IDBCursorDirection? = nil) -> IDBRequest {
-        jsObject[Strings.openKeyCursor]!(query?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.openKeyCursor].function!(this: this, arguments: [query?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func index(name: String) -> IDBIndex {
-        jsObject[Strings.index]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.index].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     public func createIndex(name: String, keyPath: __UNSUPPORTED_UNION__, options: IDBIndexParameters? = nil) -> IDBIndex {
-        jsObject[Strings.createIndex]!(name.jsValue(), keyPath.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createIndex].function!(this: this, arguments: [name.jsValue(), keyPath.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func deleteIndex(name: String) {
-        _ = jsObject[Strings.deleteIndex]!(name.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteIndex].function!(this: this, arguments: [name.jsValue()])
     }
 }

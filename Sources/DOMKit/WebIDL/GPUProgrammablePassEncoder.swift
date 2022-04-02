@@ -6,10 +6,12 @@ import JavaScriptKit
 public protocol GPUProgrammablePassEncoder: JSBridgedClass {}
 public extension GPUProgrammablePassEncoder {
     func setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup, dynamicOffsets: [GPUBufferDynamicOffset]? = nil) {
-        _ = jsObject[Strings.setBindGroup]!(index.jsValue(), bindGroup.jsValue(), dynamicOffsets?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setBindGroup].function!(this: this, arguments: [index.jsValue(), bindGroup.jsValue(), dynamicOffsets?.jsValue() ?? .undefined])
     }
 
     func setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup, dynamicOffsetsData: Uint32Array, dynamicOffsetsDataStart: GPUSize64, dynamicOffsetsDataLength: GPUSize32) {
-        _ = jsObject[Strings.setBindGroup]!(index.jsValue(), bindGroup.jsValue(), dynamicOffsetsData.jsValue(), dynamicOffsetsDataStart.jsValue(), dynamicOffsetsDataLength.jsValue())
+        let this = jsObject
+        _ = this[Strings.setBindGroup].function!(this: this, arguments: [index.jsValue(), bindGroup.jsValue(), dynamicOffsetsData.jsValue(), dynamicOffsetsDataStart.jsValue(), dynamicOffsetsDataLength.jsValue()])
     }
 }

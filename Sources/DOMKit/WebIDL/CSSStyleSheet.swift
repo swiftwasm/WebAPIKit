@@ -24,35 +24,42 @@ public class CSSStyleSheet: StyleSheet {
     public var cssRules: CSSRuleList
 
     public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
-        jsObject[Strings.insertRule]!(rule.jsValue(), index?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.insertRule].function!(this: this, arguments: [rule.jsValue(), index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func deleteRule(index: UInt32) {
-        _ = jsObject[Strings.deleteRule]!(index.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteRule].function!(this: this, arguments: [index.jsValue()])
     }
 
     public func replace(text: String) -> JSPromise {
-        jsObject[Strings.replace]!(text.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.replace].function!(this: this, arguments: [text.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func replace(text: String) async throws -> CSSStyleSheet {
-        let _promise: JSPromise = jsObject[Strings.replace]!(text.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.replace].function!(this: this, arguments: [text.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func replaceSync(text: String) {
-        _ = jsObject[Strings.replaceSync]!(text.jsValue())
+        let this = jsObject
+        _ = this[Strings.replaceSync].function!(this: this, arguments: [text.jsValue()])
     }
 
     @ReadonlyAttribute
     public var rules: CSSRuleList
 
     public func addRule(selector: String? = nil, style: String? = nil, index: UInt32? = nil) -> Int32 {
-        jsObject[Strings.addRule]!(selector?.jsValue() ?? .undefined, style?.jsValue() ?? .undefined, index?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.addRule].function!(this: this, arguments: [selector?.jsValue() ?? .undefined, style?.jsValue() ?? .undefined, index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func removeRule(index: UInt32? = nil) {
-        _ = jsObject[Strings.removeRule]!(index?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.removeRule].function!(this: this, arguments: [index?.jsValue() ?? .undefined])
     }
 }

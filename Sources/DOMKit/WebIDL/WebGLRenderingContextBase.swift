@@ -604,95 +604,118 @@ public extension WebGLRenderingContextBase {
     var drawingBufferHeight: GLsizei { ReadonlyAttribute[Strings.drawingBufferHeight, in: jsObject] }
 
     func getContextAttributes() -> WebGLContextAttributes? {
-        jsObject[Strings.getContextAttributes]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getContextAttributes].function!(this: this, arguments: []).fromJSValue()!
     }
 
     func isContextLost() -> Bool {
-        jsObject[Strings.isContextLost]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.isContextLost].function!(this: this, arguments: []).fromJSValue()!
     }
 
     func getSupportedExtensions() -> [String]? {
-        jsObject[Strings.getSupportedExtensions]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSupportedExtensions].function!(this: this, arguments: []).fromJSValue()!
     }
 
     func getExtension(name: String) -> JSObject? {
-        jsObject[Strings.getExtension]!(name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getExtension].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
     func activeTexture(texture: GLenum) {
-        _ = jsObject[Strings.activeTexture]!(texture.jsValue())
+        let this = jsObject
+        _ = this[Strings.activeTexture].function!(this: this, arguments: [texture.jsValue()])
     }
 
     func attachShader(program: WebGLProgram, shader: WebGLShader) {
-        _ = jsObject[Strings.attachShader]!(program.jsValue(), shader.jsValue())
+        let this = jsObject
+        _ = this[Strings.attachShader].function!(this: this, arguments: [program.jsValue(), shader.jsValue()])
     }
 
     func bindAttribLocation(program: WebGLProgram, index: GLuint, name: String) {
-        _ = jsObject[Strings.bindAttribLocation]!(program.jsValue(), index.jsValue(), name.jsValue())
+        let this = jsObject
+        _ = this[Strings.bindAttribLocation].function!(this: this, arguments: [program.jsValue(), index.jsValue(), name.jsValue()])
     }
 
     func bindBuffer(target: GLenum, buffer: WebGLBuffer?) {
-        _ = jsObject[Strings.bindBuffer]!(target.jsValue(), buffer.jsValue())
+        let this = jsObject
+        _ = this[Strings.bindBuffer].function!(this: this, arguments: [target.jsValue(), buffer.jsValue()])
     }
 
     func bindFramebuffer(target: GLenum, framebuffer: WebGLFramebuffer?) {
-        _ = jsObject[Strings.bindFramebuffer]!(target.jsValue(), framebuffer.jsValue())
+        let this = jsObject
+        _ = this[Strings.bindFramebuffer].function!(this: this, arguments: [target.jsValue(), framebuffer.jsValue()])
     }
 
     func bindRenderbuffer(target: GLenum, renderbuffer: WebGLRenderbuffer?) {
-        _ = jsObject[Strings.bindRenderbuffer]!(target.jsValue(), renderbuffer.jsValue())
+        let this = jsObject
+        _ = this[Strings.bindRenderbuffer].function!(this: this, arguments: [target.jsValue(), renderbuffer.jsValue()])
     }
 
     func bindTexture(target: GLenum, texture: WebGLTexture?) {
-        _ = jsObject[Strings.bindTexture]!(target.jsValue(), texture.jsValue())
+        let this = jsObject
+        _ = this[Strings.bindTexture].function!(this: this, arguments: [target.jsValue(), texture.jsValue()])
     }
 
     func blendColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf) {
-        _ = jsObject[Strings.blendColor]!(red.jsValue(), green.jsValue(), blue.jsValue(), alpha.jsValue())
+        let this = jsObject
+        _ = this[Strings.blendColor].function!(this: this, arguments: [red.jsValue(), green.jsValue(), blue.jsValue(), alpha.jsValue()])
     }
 
     func blendEquation(mode: GLenum) {
-        _ = jsObject[Strings.blendEquation]!(mode.jsValue())
+        let this = jsObject
+        _ = this[Strings.blendEquation].function!(this: this, arguments: [mode.jsValue()])
     }
 
     func blendEquationSeparate(modeRGB: GLenum, modeAlpha: GLenum) {
-        _ = jsObject[Strings.blendEquationSeparate]!(modeRGB.jsValue(), modeAlpha.jsValue())
+        let this = jsObject
+        _ = this[Strings.blendEquationSeparate].function!(this: this, arguments: [modeRGB.jsValue(), modeAlpha.jsValue()])
     }
 
     func blendFunc(sfactor: GLenum, dfactor: GLenum) {
-        _ = jsObject[Strings.blendFunc]!(sfactor.jsValue(), dfactor.jsValue())
+        let this = jsObject
+        _ = this[Strings.blendFunc].function!(this: this, arguments: [sfactor.jsValue(), dfactor.jsValue()])
     }
 
     func blendFuncSeparate(srcRGB: GLenum, dstRGB: GLenum, srcAlpha: GLenum, dstAlpha: GLenum) {
-        _ = jsObject[Strings.blendFuncSeparate]!(srcRGB.jsValue(), dstRGB.jsValue(), srcAlpha.jsValue(), dstAlpha.jsValue())
+        let this = jsObject
+        _ = this[Strings.blendFuncSeparate].function!(this: this, arguments: [srcRGB.jsValue(), dstRGB.jsValue(), srcAlpha.jsValue(), dstAlpha.jsValue()])
     }
 
     func checkFramebufferStatus(target: GLenum) -> GLenum {
-        jsObject[Strings.checkFramebufferStatus]!(target.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.checkFramebufferStatus].function!(this: this, arguments: [target.jsValue()]).fromJSValue()!
     }
 
     func clear(mask: GLbitfield) {
-        _ = jsObject[Strings.clear]!(mask.jsValue())
+        let this = jsObject
+        _ = this[Strings.clear].function!(this: this, arguments: [mask.jsValue()])
     }
 
     func clearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf) {
-        _ = jsObject[Strings.clearColor]!(red.jsValue(), green.jsValue(), blue.jsValue(), alpha.jsValue())
+        let this = jsObject
+        _ = this[Strings.clearColor].function!(this: this, arguments: [red.jsValue(), green.jsValue(), blue.jsValue(), alpha.jsValue()])
     }
 
     func clearDepth(depth: GLclampf) {
-        _ = jsObject[Strings.clearDepth]!(depth.jsValue())
+        let this = jsObject
+        _ = this[Strings.clearDepth].function!(this: this, arguments: [depth.jsValue()])
     }
 
     func clearStencil(s: GLint) {
-        _ = jsObject[Strings.clearStencil]!(s.jsValue())
+        let this = jsObject
+        _ = this[Strings.clearStencil].function!(this: this, arguments: [s.jsValue()])
     }
 
     func colorMask(red: GLboolean, green: GLboolean, blue: GLboolean, alpha: GLboolean) {
-        _ = jsObject[Strings.colorMask]!(red.jsValue(), green.jsValue(), blue.jsValue(), alpha.jsValue())
+        let this = jsObject
+        _ = this[Strings.colorMask].function!(this: this, arguments: [red.jsValue(), green.jsValue(), blue.jsValue(), alpha.jsValue()])
     }
 
     func compileShader(shader: WebGLShader) {
-        _ = jsObject[Strings.compileShader]!(shader.jsValue())
+        let this = jsObject
+        _ = this[Strings.compileShader].function!(this: this, arguments: [shader.jsValue()])
     }
 
     func copyTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, x: GLint, y: GLint, width: GLsizei, height: GLsizei, border: GLint) {
@@ -704,7 +727,8 @@ public extension WebGLRenderingContextBase {
         let _arg5 = width.jsValue()
         let _arg6 = height.jsValue()
         let _arg7 = border.jsValue()
-        _ = jsObject[Strings.copyTexImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        let this = jsObject
+        _ = this[Strings.copyTexImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
     }
 
     func copyTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
@@ -716,371 +740,463 @@ public extension WebGLRenderingContextBase {
         let _arg5 = y.jsValue()
         let _arg6 = width.jsValue()
         let _arg7 = height.jsValue()
-        _ = jsObject[Strings.copyTexSubImage2D]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
+        let this = jsObject
+        _ = this[Strings.copyTexSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
     }
 
     func createBuffer() -> WebGLBuffer? {
-        jsObject[Strings.createBuffer]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createBuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
     func createFramebuffer() -> WebGLFramebuffer? {
-        jsObject[Strings.createFramebuffer]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createFramebuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
     func createProgram() -> WebGLProgram? {
-        jsObject[Strings.createProgram]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createProgram].function!(this: this, arguments: []).fromJSValue()!
     }
 
     func createRenderbuffer() -> WebGLRenderbuffer? {
-        jsObject[Strings.createRenderbuffer]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createRenderbuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
     func createShader(type: GLenum) -> WebGLShader? {
-        jsObject[Strings.createShader]!(type.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createShader].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     func createTexture() -> WebGLTexture? {
-        jsObject[Strings.createTexture]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createTexture].function!(this: this, arguments: []).fromJSValue()!
     }
 
     func cullFace(mode: GLenum) {
-        _ = jsObject[Strings.cullFace]!(mode.jsValue())
+        let this = jsObject
+        _ = this[Strings.cullFace].function!(this: this, arguments: [mode.jsValue()])
     }
 
     func deleteBuffer(buffer: WebGLBuffer?) {
-        _ = jsObject[Strings.deleteBuffer]!(buffer.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteBuffer].function!(this: this, arguments: [buffer.jsValue()])
     }
 
     func deleteFramebuffer(framebuffer: WebGLFramebuffer?) {
-        _ = jsObject[Strings.deleteFramebuffer]!(framebuffer.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteFramebuffer].function!(this: this, arguments: [framebuffer.jsValue()])
     }
 
     func deleteProgram(program: WebGLProgram?) {
-        _ = jsObject[Strings.deleteProgram]!(program.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteProgram].function!(this: this, arguments: [program.jsValue()])
     }
 
     func deleteRenderbuffer(renderbuffer: WebGLRenderbuffer?) {
-        _ = jsObject[Strings.deleteRenderbuffer]!(renderbuffer.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteRenderbuffer].function!(this: this, arguments: [renderbuffer.jsValue()])
     }
 
     func deleteShader(shader: WebGLShader?) {
-        _ = jsObject[Strings.deleteShader]!(shader.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteShader].function!(this: this, arguments: [shader.jsValue()])
     }
 
     func deleteTexture(texture: WebGLTexture?) {
-        _ = jsObject[Strings.deleteTexture]!(texture.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteTexture].function!(this: this, arguments: [texture.jsValue()])
     }
 
     func depthFunc(func: GLenum) {
-        _ = jsObject[Strings.depthFunc]!(`func`.jsValue())
+        let this = jsObject
+        _ = this[Strings.depthFunc].function!(this: this, arguments: [`func`.jsValue()])
     }
 
     func depthMask(flag: GLboolean) {
-        _ = jsObject[Strings.depthMask]!(flag.jsValue())
+        let this = jsObject
+        _ = this[Strings.depthMask].function!(this: this, arguments: [flag.jsValue()])
     }
 
     func depthRange(zNear: GLclampf, zFar: GLclampf) {
-        _ = jsObject[Strings.depthRange]!(zNear.jsValue(), zFar.jsValue())
+        let this = jsObject
+        _ = this[Strings.depthRange].function!(this: this, arguments: [zNear.jsValue(), zFar.jsValue()])
     }
 
     func detachShader(program: WebGLProgram, shader: WebGLShader) {
-        _ = jsObject[Strings.detachShader]!(program.jsValue(), shader.jsValue())
+        let this = jsObject
+        _ = this[Strings.detachShader].function!(this: this, arguments: [program.jsValue(), shader.jsValue()])
     }
 
     func disable(cap: GLenum) {
-        _ = jsObject[Strings.disable]!(cap.jsValue())
+        let this = jsObject
+        _ = this[Strings.disable].function!(this: this, arguments: [cap.jsValue()])
     }
 
     func disableVertexAttribArray(index: GLuint) {
-        _ = jsObject[Strings.disableVertexAttribArray]!(index.jsValue())
+        let this = jsObject
+        _ = this[Strings.disableVertexAttribArray].function!(this: this, arguments: [index.jsValue()])
     }
 
     func drawArrays(mode: GLenum, first: GLint, count: GLsizei) {
-        _ = jsObject[Strings.drawArrays]!(mode.jsValue(), first.jsValue(), count.jsValue())
+        let this = jsObject
+        _ = this[Strings.drawArrays].function!(this: this, arguments: [mode.jsValue(), first.jsValue(), count.jsValue()])
     }
 
     func drawElements(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr) {
-        _ = jsObject[Strings.drawElements]!(mode.jsValue(), count.jsValue(), type.jsValue(), offset.jsValue())
+        let this = jsObject
+        _ = this[Strings.drawElements].function!(this: this, arguments: [mode.jsValue(), count.jsValue(), type.jsValue(), offset.jsValue()])
     }
 
     func enable(cap: GLenum) {
-        _ = jsObject[Strings.enable]!(cap.jsValue())
+        let this = jsObject
+        _ = this[Strings.enable].function!(this: this, arguments: [cap.jsValue()])
     }
 
     func enableVertexAttribArray(index: GLuint) {
-        _ = jsObject[Strings.enableVertexAttribArray]!(index.jsValue())
+        let this = jsObject
+        _ = this[Strings.enableVertexAttribArray].function!(this: this, arguments: [index.jsValue()])
     }
 
     func finish() {
-        _ = jsObject[Strings.finish]!()
+        let this = jsObject
+        _ = this[Strings.finish].function!(this: this, arguments: [])
     }
 
     func flush() {
-        _ = jsObject[Strings.flush]!()
+        let this = jsObject
+        _ = this[Strings.flush].function!(this: this, arguments: [])
     }
 
     func framebufferRenderbuffer(target: GLenum, attachment: GLenum, renderbuffertarget: GLenum, renderbuffer: WebGLRenderbuffer?) {
-        _ = jsObject[Strings.framebufferRenderbuffer]!(target.jsValue(), attachment.jsValue(), renderbuffertarget.jsValue(), renderbuffer.jsValue())
+        let this = jsObject
+        _ = this[Strings.framebufferRenderbuffer].function!(this: this, arguments: [target.jsValue(), attachment.jsValue(), renderbuffertarget.jsValue(), renderbuffer.jsValue()])
     }
 
     func framebufferTexture2D(target: GLenum, attachment: GLenum, textarget: GLenum, texture: WebGLTexture?, level: GLint) {
-        _ = jsObject[Strings.framebufferTexture2D]!(target.jsValue(), attachment.jsValue(), textarget.jsValue(), texture.jsValue(), level.jsValue())
+        let this = jsObject
+        _ = this[Strings.framebufferTexture2D].function!(this: this, arguments: [target.jsValue(), attachment.jsValue(), textarget.jsValue(), texture.jsValue(), level.jsValue()])
     }
 
     func frontFace(mode: GLenum) {
-        _ = jsObject[Strings.frontFace]!(mode.jsValue())
+        let this = jsObject
+        _ = this[Strings.frontFace].function!(this: this, arguments: [mode.jsValue()])
     }
 
     func generateMipmap(target: GLenum) {
-        _ = jsObject[Strings.generateMipmap]!(target.jsValue())
+        let this = jsObject
+        _ = this[Strings.generateMipmap].function!(this: this, arguments: [target.jsValue()])
     }
 
     func getActiveAttrib(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
-        jsObject[Strings.getActiveAttrib]!(program.jsValue(), index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getActiveAttrib].function!(this: this, arguments: [program.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
     func getActiveUniform(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
-        jsObject[Strings.getActiveUniform]!(program.jsValue(), index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getActiveUniform].function!(this: this, arguments: [program.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
     func getAttachedShaders(program: WebGLProgram) -> [WebGLShader]? {
-        jsObject[Strings.getAttachedShaders]!(program.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAttachedShaders].function!(this: this, arguments: [program.jsValue()]).fromJSValue()!
     }
 
     func getAttribLocation(program: WebGLProgram, name: String) -> GLint {
-        jsObject[Strings.getAttribLocation]!(program.jsValue(), name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAttribLocation].function!(this: this, arguments: [program.jsValue(), name.jsValue()]).fromJSValue()!
     }
 
     func getBufferParameter(target: GLenum, pname: GLenum) -> JSValue {
-        jsObject[Strings.getBufferParameter]!(target.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getBufferParameter].function!(this: this, arguments: [target.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
     func getParameter(pname: GLenum) -> JSValue {
-        jsObject[Strings.getParameter]!(pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getParameter].function!(this: this, arguments: [pname.jsValue()]).fromJSValue()!
     }
 
     func getError() -> GLenum {
-        jsObject[Strings.getError]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getError].function!(this: this, arguments: []).fromJSValue()!
     }
 
     func getFramebufferAttachmentParameter(target: GLenum, attachment: GLenum, pname: GLenum) -> JSValue {
-        jsObject[Strings.getFramebufferAttachmentParameter]!(target.jsValue(), attachment.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getFramebufferAttachmentParameter].function!(this: this, arguments: [target.jsValue(), attachment.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
     func getProgramParameter(program: WebGLProgram, pname: GLenum) -> JSValue {
-        jsObject[Strings.getProgramParameter]!(program.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getProgramParameter].function!(this: this, arguments: [program.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
     func getProgramInfoLog(program: WebGLProgram) -> String? {
-        jsObject[Strings.getProgramInfoLog]!(program.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getProgramInfoLog].function!(this: this, arguments: [program.jsValue()]).fromJSValue()!
     }
 
     func getRenderbufferParameter(target: GLenum, pname: GLenum) -> JSValue {
-        jsObject[Strings.getRenderbufferParameter]!(target.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRenderbufferParameter].function!(this: this, arguments: [target.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
     func getShaderParameter(shader: WebGLShader, pname: GLenum) -> JSValue {
-        jsObject[Strings.getShaderParameter]!(shader.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getShaderParameter].function!(this: this, arguments: [shader.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
     func getShaderPrecisionFormat(shadertype: GLenum, precisiontype: GLenum) -> WebGLShaderPrecisionFormat? {
-        jsObject[Strings.getShaderPrecisionFormat]!(shadertype.jsValue(), precisiontype.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getShaderPrecisionFormat].function!(this: this, arguments: [shadertype.jsValue(), precisiontype.jsValue()]).fromJSValue()!
     }
 
     func getShaderInfoLog(shader: WebGLShader) -> String? {
-        jsObject[Strings.getShaderInfoLog]!(shader.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getShaderInfoLog].function!(this: this, arguments: [shader.jsValue()]).fromJSValue()!
     }
 
     func getShaderSource(shader: WebGLShader) -> String? {
-        jsObject[Strings.getShaderSource]!(shader.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getShaderSource].function!(this: this, arguments: [shader.jsValue()]).fromJSValue()!
     }
 
     func getTexParameter(target: GLenum, pname: GLenum) -> JSValue {
-        jsObject[Strings.getTexParameter]!(target.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTexParameter].function!(this: this, arguments: [target.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
     func getUniform(program: WebGLProgram, location: WebGLUniformLocation) -> JSValue {
-        jsObject[Strings.getUniform]!(program.jsValue(), location.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getUniform].function!(this: this, arguments: [program.jsValue(), location.jsValue()]).fromJSValue()!
     }
 
     func getUniformLocation(program: WebGLProgram, name: String) -> WebGLUniformLocation? {
-        jsObject[Strings.getUniformLocation]!(program.jsValue(), name.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getUniformLocation].function!(this: this, arguments: [program.jsValue(), name.jsValue()]).fromJSValue()!
     }
 
     func getVertexAttrib(index: GLuint, pname: GLenum) -> JSValue {
-        jsObject[Strings.getVertexAttrib]!(index.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getVertexAttrib].function!(this: this, arguments: [index.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
     func getVertexAttribOffset(index: GLuint, pname: GLenum) -> GLintptr {
-        jsObject[Strings.getVertexAttribOffset]!(index.jsValue(), pname.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getVertexAttribOffset].function!(this: this, arguments: [index.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
     func hint(target: GLenum, mode: GLenum) {
-        _ = jsObject[Strings.hint]!(target.jsValue(), mode.jsValue())
+        let this = jsObject
+        _ = this[Strings.hint].function!(this: this, arguments: [target.jsValue(), mode.jsValue()])
     }
 
     func isBuffer(buffer: WebGLBuffer?) -> GLboolean {
-        jsObject[Strings.isBuffer]!(buffer.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isBuffer].function!(this: this, arguments: [buffer.jsValue()]).fromJSValue()!
     }
 
     func isEnabled(cap: GLenum) -> GLboolean {
-        jsObject[Strings.isEnabled]!(cap.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isEnabled].function!(this: this, arguments: [cap.jsValue()]).fromJSValue()!
     }
 
     func isFramebuffer(framebuffer: WebGLFramebuffer?) -> GLboolean {
-        jsObject[Strings.isFramebuffer]!(framebuffer.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isFramebuffer].function!(this: this, arguments: [framebuffer.jsValue()]).fromJSValue()!
     }
 
     func isProgram(program: WebGLProgram?) -> GLboolean {
-        jsObject[Strings.isProgram]!(program.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isProgram].function!(this: this, arguments: [program.jsValue()]).fromJSValue()!
     }
 
     func isRenderbuffer(renderbuffer: WebGLRenderbuffer?) -> GLboolean {
-        jsObject[Strings.isRenderbuffer]!(renderbuffer.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isRenderbuffer].function!(this: this, arguments: [renderbuffer.jsValue()]).fromJSValue()!
     }
 
     func isShader(shader: WebGLShader?) -> GLboolean {
-        jsObject[Strings.isShader]!(shader.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isShader].function!(this: this, arguments: [shader.jsValue()]).fromJSValue()!
     }
 
     func isTexture(texture: WebGLTexture?) -> GLboolean {
-        jsObject[Strings.isTexture]!(texture.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isTexture].function!(this: this, arguments: [texture.jsValue()]).fromJSValue()!
     }
 
     func lineWidth(width: GLfloat) {
-        _ = jsObject[Strings.lineWidth]!(width.jsValue())
+        let this = jsObject
+        _ = this[Strings.lineWidth].function!(this: this, arguments: [width.jsValue()])
     }
 
     func linkProgram(program: WebGLProgram) {
-        _ = jsObject[Strings.linkProgram]!(program.jsValue())
+        let this = jsObject
+        _ = this[Strings.linkProgram].function!(this: this, arguments: [program.jsValue()])
     }
 
     func pixelStorei(pname: GLenum, param: GLint) {
-        _ = jsObject[Strings.pixelStorei]!(pname.jsValue(), param.jsValue())
+        let this = jsObject
+        _ = this[Strings.pixelStorei].function!(this: this, arguments: [pname.jsValue(), param.jsValue()])
     }
 
     func polygonOffset(factor: GLfloat, units: GLfloat) {
-        _ = jsObject[Strings.polygonOffset]!(factor.jsValue(), units.jsValue())
+        let this = jsObject
+        _ = this[Strings.polygonOffset].function!(this: this, arguments: [factor.jsValue(), units.jsValue()])
     }
 
     func renderbufferStorage(target: GLenum, internalformat: GLenum, width: GLsizei, height: GLsizei) {
-        _ = jsObject[Strings.renderbufferStorage]!(target.jsValue(), internalformat.jsValue(), width.jsValue(), height.jsValue())
+        let this = jsObject
+        _ = this[Strings.renderbufferStorage].function!(this: this, arguments: [target.jsValue(), internalformat.jsValue(), width.jsValue(), height.jsValue()])
     }
 
     func sampleCoverage(value: GLclampf, invert: GLboolean) {
-        _ = jsObject[Strings.sampleCoverage]!(value.jsValue(), invert.jsValue())
+        let this = jsObject
+        _ = this[Strings.sampleCoverage].function!(this: this, arguments: [value.jsValue(), invert.jsValue()])
     }
 
     func scissor(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
-        _ = jsObject[Strings.scissor]!(x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue())
+        let this = jsObject
+        _ = this[Strings.scissor].function!(this: this, arguments: [x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue()])
     }
 
     func shaderSource(shader: WebGLShader, source: String) {
-        _ = jsObject[Strings.shaderSource]!(shader.jsValue(), source.jsValue())
+        let this = jsObject
+        _ = this[Strings.shaderSource].function!(this: this, arguments: [shader.jsValue(), source.jsValue()])
     }
 
     func stencilFunc(func: GLenum, ref: GLint, mask: GLuint) {
-        _ = jsObject[Strings.stencilFunc]!(`func`.jsValue(), ref.jsValue(), mask.jsValue())
+        let this = jsObject
+        _ = this[Strings.stencilFunc].function!(this: this, arguments: [`func`.jsValue(), ref.jsValue(), mask.jsValue()])
     }
 
     func stencilFuncSeparate(face: GLenum, func: GLenum, ref: GLint, mask: GLuint) {
-        _ = jsObject[Strings.stencilFuncSeparate]!(face.jsValue(), `func`.jsValue(), ref.jsValue(), mask.jsValue())
+        let this = jsObject
+        _ = this[Strings.stencilFuncSeparate].function!(this: this, arguments: [face.jsValue(), `func`.jsValue(), ref.jsValue(), mask.jsValue()])
     }
 
     func stencilMask(mask: GLuint) {
-        _ = jsObject[Strings.stencilMask]!(mask.jsValue())
+        let this = jsObject
+        _ = this[Strings.stencilMask].function!(this: this, arguments: [mask.jsValue()])
     }
 
     func stencilMaskSeparate(face: GLenum, mask: GLuint) {
-        _ = jsObject[Strings.stencilMaskSeparate]!(face.jsValue(), mask.jsValue())
+        let this = jsObject
+        _ = this[Strings.stencilMaskSeparate].function!(this: this, arguments: [face.jsValue(), mask.jsValue()])
     }
 
     func stencilOp(fail: GLenum, zfail: GLenum, zpass: GLenum) {
-        _ = jsObject[Strings.stencilOp]!(fail.jsValue(), zfail.jsValue(), zpass.jsValue())
+        let this = jsObject
+        _ = this[Strings.stencilOp].function!(this: this, arguments: [fail.jsValue(), zfail.jsValue(), zpass.jsValue()])
     }
 
     func stencilOpSeparate(face: GLenum, fail: GLenum, zfail: GLenum, zpass: GLenum) {
-        _ = jsObject[Strings.stencilOpSeparate]!(face.jsValue(), fail.jsValue(), zfail.jsValue(), zpass.jsValue())
+        let this = jsObject
+        _ = this[Strings.stencilOpSeparate].function!(this: this, arguments: [face.jsValue(), fail.jsValue(), zfail.jsValue(), zpass.jsValue()])
     }
 
     func texParameterf(target: GLenum, pname: GLenum, param: GLfloat) {
-        _ = jsObject[Strings.texParameterf]!(target.jsValue(), pname.jsValue(), param.jsValue())
+        let this = jsObject
+        _ = this[Strings.texParameterf].function!(this: this, arguments: [target.jsValue(), pname.jsValue(), param.jsValue()])
     }
 
     func texParameteri(target: GLenum, pname: GLenum, param: GLint) {
-        _ = jsObject[Strings.texParameteri]!(target.jsValue(), pname.jsValue(), param.jsValue())
+        let this = jsObject
+        _ = this[Strings.texParameteri].function!(this: this, arguments: [target.jsValue(), pname.jsValue(), param.jsValue()])
     }
 
     func uniform1f(location: WebGLUniformLocation?, x: GLfloat) {
-        _ = jsObject[Strings.uniform1f]!(location.jsValue(), x.jsValue())
+        let this = jsObject
+        _ = this[Strings.uniform1f].function!(this: this, arguments: [location.jsValue(), x.jsValue()])
     }
 
     func uniform2f(location: WebGLUniformLocation?, x: GLfloat, y: GLfloat) {
-        _ = jsObject[Strings.uniform2f]!(location.jsValue(), x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.uniform2f].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue()])
     }
 
     func uniform3f(location: WebGLUniformLocation?, x: GLfloat, y: GLfloat, z: GLfloat) {
-        _ = jsObject[Strings.uniform3f]!(location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue())
+        let this = jsObject
+        _ = this[Strings.uniform3f].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
     func uniform4f(location: WebGLUniformLocation?, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat) {
-        _ = jsObject[Strings.uniform4f]!(location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue(), w.jsValue())
+        let this = jsObject
+        _ = this[Strings.uniform4f].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue(), w.jsValue()])
     }
 
     func uniform1i(location: WebGLUniformLocation?, x: GLint) {
-        _ = jsObject[Strings.uniform1i]!(location.jsValue(), x.jsValue())
+        let this = jsObject
+        _ = this[Strings.uniform1i].function!(this: this, arguments: [location.jsValue(), x.jsValue()])
     }
 
     func uniform2i(location: WebGLUniformLocation?, x: GLint, y: GLint) {
-        _ = jsObject[Strings.uniform2i]!(location.jsValue(), x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.uniform2i].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue()])
     }
 
     func uniform3i(location: WebGLUniformLocation?, x: GLint, y: GLint, z: GLint) {
-        _ = jsObject[Strings.uniform3i]!(location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue())
+        let this = jsObject
+        _ = this[Strings.uniform3i].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
     func uniform4i(location: WebGLUniformLocation?, x: GLint, y: GLint, z: GLint, w: GLint) {
-        _ = jsObject[Strings.uniform4i]!(location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue(), w.jsValue())
+        let this = jsObject
+        _ = this[Strings.uniform4i].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue(), w.jsValue()])
     }
 
     func useProgram(program: WebGLProgram?) {
-        _ = jsObject[Strings.useProgram]!(program.jsValue())
+        let this = jsObject
+        _ = this[Strings.useProgram].function!(this: this, arguments: [program.jsValue()])
     }
 
     func validateProgram(program: WebGLProgram) {
-        _ = jsObject[Strings.validateProgram]!(program.jsValue())
+        let this = jsObject
+        _ = this[Strings.validateProgram].function!(this: this, arguments: [program.jsValue()])
     }
 
     func vertexAttrib1f(index: GLuint, x: GLfloat) {
-        _ = jsObject[Strings.vertexAttrib1f]!(index.jsValue(), x.jsValue())
+        let this = jsObject
+        _ = this[Strings.vertexAttrib1f].function!(this: this, arguments: [index.jsValue(), x.jsValue()])
     }
 
     func vertexAttrib2f(index: GLuint, x: GLfloat, y: GLfloat) {
-        _ = jsObject[Strings.vertexAttrib2f]!(index.jsValue(), x.jsValue(), y.jsValue())
+        let this = jsObject
+        _ = this[Strings.vertexAttrib2f].function!(this: this, arguments: [index.jsValue(), x.jsValue(), y.jsValue()])
     }
 
     func vertexAttrib3f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat) {
-        _ = jsObject[Strings.vertexAttrib3f]!(index.jsValue(), x.jsValue(), y.jsValue(), z.jsValue())
+        let this = jsObject
+        _ = this[Strings.vertexAttrib3f].function!(this: this, arguments: [index.jsValue(), x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
     func vertexAttrib4f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat) {
-        _ = jsObject[Strings.vertexAttrib4f]!(index.jsValue(), x.jsValue(), y.jsValue(), z.jsValue(), w.jsValue())
+        let this = jsObject
+        _ = this[Strings.vertexAttrib4f].function!(this: this, arguments: [index.jsValue(), x.jsValue(), y.jsValue(), z.jsValue(), w.jsValue()])
     }
 
     func vertexAttrib1fv(index: GLuint, values: Float32List) {
-        _ = jsObject[Strings.vertexAttrib1fv]!(index.jsValue(), values.jsValue())
+        let this = jsObject
+        _ = this[Strings.vertexAttrib1fv].function!(this: this, arguments: [index.jsValue(), values.jsValue()])
     }
 
     func vertexAttrib2fv(index: GLuint, values: Float32List) {
-        _ = jsObject[Strings.vertexAttrib2fv]!(index.jsValue(), values.jsValue())
+        let this = jsObject
+        _ = this[Strings.vertexAttrib2fv].function!(this: this, arguments: [index.jsValue(), values.jsValue()])
     }
 
     func vertexAttrib3fv(index: GLuint, values: Float32List) {
-        _ = jsObject[Strings.vertexAttrib3fv]!(index.jsValue(), values.jsValue())
+        let this = jsObject
+        _ = this[Strings.vertexAttrib3fv].function!(this: this, arguments: [index.jsValue(), values.jsValue()])
     }
 
     func vertexAttrib4fv(index: GLuint, values: Float32List) {
-        _ = jsObject[Strings.vertexAttrib4fv]!(index.jsValue(), values.jsValue())
+        let this = jsObject
+        _ = this[Strings.vertexAttrib4fv].function!(this: this, arguments: [index.jsValue(), values.jsValue()])
     }
 
     func vertexAttribPointer(index: GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: GLintptr) {
@@ -1090,20 +1206,24 @@ public extension WebGLRenderingContextBase {
         let _arg3 = normalized.jsValue()
         let _arg4 = stride.jsValue()
         let _arg5 = offset.jsValue()
-        _ = jsObject[Strings.vertexAttribPointer]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
+        let this = jsObject
+        _ = this[Strings.vertexAttribPointer].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 
     func viewport(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
-        _ = jsObject[Strings.viewport]!(x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue())
+        let this = jsObject
+        _ = this[Strings.viewport].function!(this: this, arguments: [x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue()])
     }
 
     func makeXRCompatible() -> JSPromise {
-        jsObject[Strings.makeXRCompatible]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.makeXRCompatible].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func makeXRCompatible() async throws {
-        let _promise: JSPromise = jsObject[Strings.makeXRCompatible]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.makeXRCompatible].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 }

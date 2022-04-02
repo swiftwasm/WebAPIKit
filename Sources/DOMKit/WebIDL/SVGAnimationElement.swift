@@ -27,30 +27,37 @@ public class SVGAnimationElement: SVGElement, SVGTests {
     public var onrepeat: EventHandler
 
     public func getStartTime() -> Float {
-        jsObject[Strings.getStartTime]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getStartTime].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getCurrentTime() -> Float {
-        jsObject[Strings.getCurrentTime]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getCurrentTime].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getSimpleDuration() -> Float {
-        jsObject[Strings.getSimpleDuration]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSimpleDuration].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func beginElement() {
-        _ = jsObject[Strings.beginElement]!()
+        let this = jsObject
+        _ = this[Strings.beginElement].function!(this: this, arguments: [])
     }
 
     public func beginElementAt(offset: Float) {
-        _ = jsObject[Strings.beginElementAt]!(offset.jsValue())
+        let this = jsObject
+        _ = this[Strings.beginElementAt].function!(this: this, arguments: [offset.jsValue()])
     }
 
     public func endElement() {
-        _ = jsObject[Strings.endElement]!()
+        let this = jsObject
+        _ = this[Strings.endElement].function!(this: this, arguments: [])
     }
 
     public func endElementAt(offset: Float) {
-        _ = jsObject[Strings.endElementAt]!(offset.jsValue())
+        let this = jsObject
+        _ = this[Strings.endElementAt].function!(this: this, arguments: [offset.jsValue()])
     }
 }

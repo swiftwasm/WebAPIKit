@@ -11,43 +11,53 @@ public class CSSNumericValue: CSSStyleValue {
     }
 
     public func add(values: CSSNumberish...) -> Self {
-        jsObject[Strings.add]!(values.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.add].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func sub(values: CSSNumberish...) -> Self {
-        jsObject[Strings.sub]!(values.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.sub].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func mul(values: CSSNumberish...) -> Self {
-        jsObject[Strings.mul]!(values.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.mul].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func div(values: CSSNumberish...) -> Self {
-        jsObject[Strings.div]!(values.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.div].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func min(values: CSSNumberish...) -> Self {
-        jsObject[Strings.min]!(values.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.min].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func max(values: CSSNumberish...) -> Self {
-        jsObject[Strings.max]!(values.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.max].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func equals(value: CSSNumberish...) -> Bool {
-        jsObject[Strings.equals]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.equals].function!(this: this, arguments: value.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func to(unit: String) -> CSSUnitValue {
-        jsObject[Strings.to]!(unit.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.to].function!(this: this, arguments: [unit.jsValue()]).fromJSValue()!
     }
 
     public func toSum(units: String...) -> CSSMathSum {
-        jsObject[Strings.toSum]!(units.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.toSum].function!(this: this, arguments: units.map { $0.jsValue() }).fromJSValue()!
     }
 
     public func type() -> CSSNumericType {
-        jsObject[Strings.type]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.type].function!(this: this, arguments: []).fromJSValue()!
     }
 
     // XXX: illegal static override

@@ -47,6 +47,7 @@ public class PerformanceElementTiming: PerformanceEntry {
     public var url: String
 
     override public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

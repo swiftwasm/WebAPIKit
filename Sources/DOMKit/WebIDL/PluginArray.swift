@@ -14,7 +14,8 @@ public class PluginArray: JSBridgedClass {
     }
 
     public func refresh() {
-        _ = jsObject[Strings.refresh]!()
+        let this = jsObject
+        _ = this[Strings.refresh].function!(this: this, arguments: [])
     }
 
     @ReadonlyAttribute

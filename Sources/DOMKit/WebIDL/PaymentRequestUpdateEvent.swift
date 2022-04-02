@@ -15,6 +15,7 @@ public class PaymentRequestUpdateEvent: Event {
     }
 
     public func updateWith(detailsPromise: JSPromise) {
-        _ = jsObject[Strings.updateWith]!(detailsPromise.jsValue())
+        let this = jsObject
+        _ = this[Strings.updateWith].function!(this: this, arguments: [detailsPromise.jsValue()])
     }
 }

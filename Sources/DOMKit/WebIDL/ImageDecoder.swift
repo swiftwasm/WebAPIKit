@@ -33,30 +33,36 @@ public class ImageDecoder: JSBridgedClass {
     public var tracks: ImageTrackList
 
     public func decode(options: ImageDecodeOptions? = nil) -> JSPromise {
-        jsObject[Strings.decode]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.decode].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func decode(options: ImageDecodeOptions? = nil) async throws -> ImageDecodeResult {
-        let _promise: JSPromise = jsObject[Strings.decode]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.decode].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func reset() {
-        _ = jsObject[Strings.reset]!()
+        let this = jsObject
+        _ = this[Strings.reset].function!(this: this, arguments: [])
     }
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     public static func isTypeSupported(type: String) -> JSPromise {
-        constructor[Strings.isTypeSupported]!(type.jsValue()).fromJSValue()!
+        let this = constructor
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func isTypeSupported(type: String) async throws -> Bool {
-        let _promise: JSPromise = constructor[Strings.isTypeSupported]!(type.jsValue()).fromJSValue()!
+        let this = constructor
+        let _promise: JSPromise = this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

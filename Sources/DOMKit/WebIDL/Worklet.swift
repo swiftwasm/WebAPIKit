@@ -13,12 +13,14 @@ public class Worklet: JSBridgedClass {
     }
 
     public func addModule(moduleURL: String, options: WorkletOptions? = nil) -> JSPromise {
-        jsObject[Strings.addModule]!(moduleURL.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.addModule].function!(this: this, arguments: [moduleURL.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func addModule(moduleURL: String, options: WorkletOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.addModule]!(moduleURL.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.addModule].function!(this: this, arguments: [moduleURL.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 }

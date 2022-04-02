@@ -17,6 +17,7 @@ public class RTCCertificate: JSBridgedClass {
     public var expires: EpochTimeStamp
 
     public func getFingerprints() -> [RTCDtlsFingerprint] {
-        jsObject[Strings.getFingerprints]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getFingerprints].function!(this: this, arguments: []).fromJSValue()!
     }
 }

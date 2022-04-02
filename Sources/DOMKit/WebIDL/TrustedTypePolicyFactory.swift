@@ -16,19 +16,23 @@ public class TrustedTypePolicyFactory: JSBridgedClass {
     }
 
     public func createPolicy(policyName: String, policyOptions: TrustedTypePolicyOptions? = nil) -> TrustedTypePolicy {
-        jsObject[Strings.createPolicy]!(policyName.jsValue(), policyOptions?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.createPolicy].function!(this: this, arguments: [policyName.jsValue(), policyOptions?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func isHTML(value: JSValue) -> Bool {
-        jsObject[Strings.isHTML]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isHTML].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public func isScript(value: JSValue) -> Bool {
-        jsObject[Strings.isScript]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isScript].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public func isScriptURL(value: JSValue) -> Bool {
-        jsObject[Strings.isScriptURL]!(value.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isScriptURL].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -38,11 +42,13 @@ public class TrustedTypePolicyFactory: JSBridgedClass {
     public var emptyScript: TrustedScript
 
     public func getAttributeType(tagName: String, attribute: String, elementNs: String? = nil, attrNs: String? = nil) -> String? {
-        jsObject[Strings.getAttributeType]!(tagName.jsValue(), attribute.jsValue(), elementNs?.jsValue() ?? .undefined, attrNs?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getAttributeType].function!(this: this, arguments: [tagName.jsValue(), attribute.jsValue(), elementNs?.jsValue() ?? .undefined, attrNs?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func getPropertyType(tagName: String, property: String, elementNs: String? = nil) -> String? {
-        jsObject[Strings.getPropertyType]!(tagName.jsValue(), property.jsValue(), elementNs?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getPropertyType].function!(this: this, arguments: [tagName.jsValue(), property.jsValue(), elementNs?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

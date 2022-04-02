@@ -6,11 +6,13 @@ import JavaScriptKit
 public protocol CanvasDrawImage: JSBridgedClass {}
 public extension CanvasDrawImage {
     func drawImage(image: CanvasImageSource, dx: Double, dy: Double) {
-        _ = jsObject[Strings.drawImage]!(image.jsValue(), dx.jsValue(), dy.jsValue())
+        let this = jsObject
+        _ = this[Strings.drawImage].function!(this: this, arguments: [image.jsValue(), dx.jsValue(), dy.jsValue()])
     }
 
     func drawImage(image: CanvasImageSource, dx: Double, dy: Double, dw: Double, dh: Double) {
-        _ = jsObject[Strings.drawImage]!(image.jsValue(), dx.jsValue(), dy.jsValue(), dw.jsValue(), dh.jsValue())
+        let this = jsObject
+        _ = this[Strings.drawImage].function!(this: this, arguments: [image.jsValue(), dx.jsValue(), dy.jsValue(), dw.jsValue(), dh.jsValue()])
     }
 
     func drawImage(image: CanvasImageSource, sx: Double, sy: Double, sw: Double, sh: Double, dx: Double, dy: Double, dw: Double, dh: Double) {
@@ -23,6 +25,7 @@ public extension CanvasDrawImage {
         let _arg6 = dy.jsValue()
         let _arg7 = dw.jsValue()
         let _arg8 = dh.jsValue()
-        _ = jsObject[Strings.drawImage]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
+        let this = jsObject
+        _ = this[Strings.drawImage].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
     }
 }

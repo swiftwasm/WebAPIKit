@@ -11,7 +11,8 @@ public class FileSystemDirectoryEntry: FileSystemEntry {
     }
 
     public func createReader() -> FileSystemDirectoryReader {
-        jsObject[Strings.createReader]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.createReader].function!(this: this, arguments: []).fromJSValue()!
     }
 
     // XXX: member 'getFile' is ignored

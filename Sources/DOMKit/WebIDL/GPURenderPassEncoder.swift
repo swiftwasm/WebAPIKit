@@ -19,34 +19,42 @@ public class GPURenderPassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMix
         let _arg3 = height.jsValue()
         let _arg4 = minDepth.jsValue()
         let _arg5 = maxDepth.jsValue()
-        _ = jsObject[Strings.setViewport]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
+        let this = jsObject
+        _ = this[Strings.setViewport].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 
     public func setScissorRect(x: GPUIntegerCoordinate, y: GPUIntegerCoordinate, width: GPUIntegerCoordinate, height: GPUIntegerCoordinate) {
-        _ = jsObject[Strings.setScissorRect]!(x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue())
+        let this = jsObject
+        _ = this[Strings.setScissorRect].function!(this: this, arguments: [x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue()])
     }
 
     public func setBlendConstant(color: GPUColor) {
-        _ = jsObject[Strings.setBlendConstant]!(color.jsValue())
+        let this = jsObject
+        _ = this[Strings.setBlendConstant].function!(this: this, arguments: [color.jsValue()])
     }
 
     public func setStencilReference(reference: GPUStencilValue) {
-        _ = jsObject[Strings.setStencilReference]!(reference.jsValue())
+        let this = jsObject
+        _ = this[Strings.setStencilReference].function!(this: this, arguments: [reference.jsValue()])
     }
 
     public func beginOcclusionQuery(queryIndex: GPUSize32) {
-        _ = jsObject[Strings.beginOcclusionQuery]!(queryIndex.jsValue())
+        let this = jsObject
+        _ = this[Strings.beginOcclusionQuery].function!(this: this, arguments: [queryIndex.jsValue()])
     }
 
     public func endOcclusionQuery() {
-        _ = jsObject[Strings.endOcclusionQuery]!()
+        let this = jsObject
+        _ = this[Strings.endOcclusionQuery].function!(this: this, arguments: [])
     }
 
     public func executeBundles(bundles: [GPURenderBundle]) {
-        _ = jsObject[Strings.executeBundles]!(bundles.jsValue())
+        let this = jsObject
+        _ = this[Strings.executeBundles].function!(this: this, arguments: [bundles.jsValue()])
     }
 
     public func end() {
-        _ = jsObject[Strings.end]!()
+        let this = jsObject
+        _ = this[Strings.end].function!(this: this, arguments: [])
     }
 }

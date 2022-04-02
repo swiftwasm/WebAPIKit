@@ -19,6 +19,7 @@ public class TimeEvent: Event {
     public var detail: Int32
 
     public func initTimeEvent(typeArg: String, viewArg: Window?, detailArg: Int32) {
-        _ = jsObject[Strings.initTimeEvent]!(typeArg.jsValue(), viewArg.jsValue(), detailArg.jsValue())
+        let this = jsObject
+        _ = this[Strings.initTimeEvent].function!(this: this, arguments: [typeArg.jsValue(), viewArg.jsValue(), detailArg.jsValue()])
     }
 }

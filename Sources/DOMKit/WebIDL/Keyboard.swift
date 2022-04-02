@@ -12,26 +12,31 @@ public class Keyboard: EventTarget {
     }
 
     public func lock(keyCodes: [String]? = nil) -> JSPromise {
-        jsObject[Strings.lock]!(keyCodes?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.lock].function!(this: this, arguments: [keyCodes?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func lock(keyCodes: [String]? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.lock]!(keyCodes?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.lock].function!(this: this, arguments: [keyCodes?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func unlock() {
-        _ = jsObject[Strings.unlock]!()
+        let this = jsObject
+        _ = this[Strings.unlock].function!(this: this, arguments: [])
     }
 
     public func getLayoutMap() -> JSPromise {
-        jsObject[Strings.getLayoutMap]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getLayoutMap].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getLayoutMap() async throws -> KeyboardLayoutMap {
-        let _promise: JSPromise = jsObject[Strings.getLayoutMap]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getLayoutMap].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

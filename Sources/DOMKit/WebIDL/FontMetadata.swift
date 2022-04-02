@@ -17,12 +17,14 @@ public class FontMetadata: JSBridgedClass {
     }
 
     public func blob() -> JSPromise {
-        jsObject[Strings.blob]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.blob].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func blob() async throws -> Blob {
-        let _promise: JSPromise = jsObject[Strings.blob]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.blob].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 

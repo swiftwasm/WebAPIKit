@@ -15,6 +15,7 @@ public class TextFormatUpdateEvent: Event {
     }
 
     public func getTextFormats() -> [TextFormat] {
-        jsObject[Strings.getTextFormats]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTextFormats].function!(this: this, arguments: []).fromJSValue()!
     }
 }

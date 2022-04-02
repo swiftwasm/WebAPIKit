@@ -19,22 +19,27 @@ public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
     public var length: UInt32
 
     public func substringData(offset: UInt32, count: UInt32) -> String {
-        jsObject[Strings.substringData]!(offset.jsValue(), count.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.substringData].function!(this: this, arguments: [offset.jsValue(), count.jsValue()]).fromJSValue()!
     }
 
     public func appendData(data: String) {
-        _ = jsObject[Strings.appendData]!(data.jsValue())
+        let this = jsObject
+        _ = this[Strings.appendData].function!(this: this, arguments: [data.jsValue()])
     }
 
     public func insertData(offset: UInt32, data: String) {
-        _ = jsObject[Strings.insertData]!(offset.jsValue(), data.jsValue())
+        let this = jsObject
+        _ = this[Strings.insertData].function!(this: this, arguments: [offset.jsValue(), data.jsValue()])
     }
 
     public func deleteData(offset: UInt32, count: UInt32) {
-        _ = jsObject[Strings.deleteData]!(offset.jsValue(), count.jsValue())
+        let this = jsObject
+        _ = this[Strings.deleteData].function!(this: this, arguments: [offset.jsValue(), count.jsValue()])
     }
 
     public func replaceData(offset: UInt32, count: UInt32, data: String) {
-        _ = jsObject[Strings.replaceData]!(offset.jsValue(), count.jsValue(), data.jsValue())
+        let this = jsObject
+        _ = this[Strings.replaceData].function!(this: this, arguments: [offset.jsValue(), count.jsValue(), data.jsValue()])
     }
 }

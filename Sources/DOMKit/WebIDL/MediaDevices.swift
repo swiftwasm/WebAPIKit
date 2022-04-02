@@ -12,22 +12,26 @@ public class MediaDevices: EventTarget {
     }
 
     public func selectAudioOutput(options: AudioOutputOptions? = nil) -> JSPromise {
-        jsObject[Strings.selectAudioOutput]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.selectAudioOutput].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func selectAudioOutput(options: AudioOutputOptions? = nil) async throws -> MediaDeviceInfo {
-        let _promise: JSPromise = jsObject[Strings.selectAudioOutput]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.selectAudioOutput].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func produceCropTarget(element: HTMLElement) -> JSPromise {
-        jsObject[Strings.produceCropTarget]!(element.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.produceCropTarget].function!(this: this, arguments: [element.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func produceCropTarget(element: HTMLElement) async throws -> CropTarget {
-        let _promise: JSPromise = jsObject[Strings.produceCropTarget]!(element.jsValue()).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.produceCropTarget].function!(this: this, arguments: [element.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
@@ -35,36 +39,43 @@ public class MediaDevices: EventTarget {
     public var ondevicechange: EventHandler
 
     public func enumerateDevices() -> JSPromise {
-        jsObject[Strings.enumerateDevices]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.enumerateDevices].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func enumerateDevices() async throws -> [MediaDeviceInfo] {
-        let _promise: JSPromise = jsObject[Strings.enumerateDevices]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.enumerateDevices].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getSupportedConstraints() -> MediaTrackSupportedConstraints {
-        jsObject[Strings.getSupportedConstraints]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getSupportedConstraints].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getUserMedia(constraints: MediaStreamConstraints? = nil) -> JSPromise {
-        jsObject[Strings.getUserMedia]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getUserMedia].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getUserMedia(constraints: MediaStreamConstraints? = nil) async throws -> MediaStream {
-        let _promise: JSPromise = jsObject[Strings.getUserMedia]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getUserMedia].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func getDisplayMedia(constraints: DisplayMediaStreamConstraints? = nil) -> JSPromise {
-        jsObject[Strings.getDisplayMedia]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getDisplayMedia].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getDisplayMedia(constraints: DisplayMediaStreamConstraints? = nil) async throws -> MediaStream {
-        let _promise: JSPromise = jsObject[Strings.getDisplayMedia]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getDisplayMedia].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

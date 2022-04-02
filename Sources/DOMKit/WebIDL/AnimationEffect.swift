@@ -25,30 +25,37 @@ public class AnimationEffect: JSBridgedClass {
     public var nextSibling: AnimationEffect?
 
     public func before(effects: AnimationEffect...) {
-        _ = jsObject[Strings.before]!(effects.jsValue())
+        let this = jsObject
+        _ = this[Strings.before].function!(this: this, arguments: effects.map { $0.jsValue() })
     }
 
     public func after(effects: AnimationEffect...) {
-        _ = jsObject[Strings.after]!(effects.jsValue())
+        let this = jsObject
+        _ = this[Strings.after].function!(this: this, arguments: effects.map { $0.jsValue() })
     }
 
     public func replace(effects: AnimationEffect...) {
-        _ = jsObject[Strings.replace]!(effects.jsValue())
+        let this = jsObject
+        _ = this[Strings.replace].function!(this: this, arguments: effects.map { $0.jsValue() })
     }
 
     public func remove() {
-        _ = jsObject[Strings.remove]!()
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: [])
     }
 
     public func getTiming() -> EffectTiming {
-        jsObject[Strings.getTiming]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getTiming].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func getComputedTiming() -> ComputedEffectTiming {
-        jsObject[Strings.getComputedTiming]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getComputedTiming].function!(this: this, arguments: []).fromJSValue()!
     }
 
     public func updateTiming(timing: OptionalEffectTiming? = nil) {
-        _ = jsObject[Strings.updateTiming]!(timing?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.updateTiming].function!(this: this, arguments: [timing?.jsValue() ?? .undefined])
     }
 }

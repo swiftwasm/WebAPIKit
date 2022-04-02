@@ -22,15 +22,18 @@ public class FontFaceSet: EventTarget {
     // XXX: make me Set-like!
 
     public func add(font: FontFace) -> Self {
-        jsObject[Strings.add]!(font.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.add].function!(this: this, arguments: [font.jsValue()]).fromJSValue()!
     }
 
     public func delete(font: FontFace) -> Bool {
-        jsObject[Strings.delete]!(font.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.delete].function!(this: this, arguments: [font.jsValue()]).fromJSValue()!
     }
 
     public func clear() {
-        _ = jsObject[Strings.clear]!()
+        let this = jsObject
+        _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional
@@ -43,17 +46,20 @@ public class FontFaceSet: EventTarget {
     public var onloadingerror: EventHandler
 
     public func load(font: String, text: String? = nil) -> JSPromise {
-        jsObject[Strings.load]!(font.jsValue(), text?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.load].function!(this: this, arguments: [font.jsValue(), text?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func load(font: String, text: String? = nil) async throws -> [FontFace] {
-        let _promise: JSPromise = jsObject[Strings.load]!(font.jsValue(), text?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.load].function!(this: this, arguments: [font.jsValue(), text?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func check(font: String, text: String? = nil) -> Bool {
-        jsObject[Strings.check]!(font.jsValue(), text?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.check].function!(this: this, arguments: [font.jsValue(), text?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

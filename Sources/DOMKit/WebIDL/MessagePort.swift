@@ -13,19 +13,23 @@ public class MessagePort: EventTarget {
     }
 
     public func postMessage(message: JSValue, transfer: [JSObject]) {
-        _ = jsObject[Strings.postMessage]!(message.jsValue(), transfer.jsValue())
+        let this = jsObject
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), transfer.jsValue()])
     }
 
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
-        _ = jsObject[Strings.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
     }
 
     public func start() {
-        _ = jsObject[Strings.start]!()
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [])
     }
 
     public func close() {
-        _ = jsObject[Strings.close]!()
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
     @ClosureAttribute1Optional

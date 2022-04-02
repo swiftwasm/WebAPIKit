@@ -15,14 +15,17 @@ public class ReportingObserver: JSBridgedClass {
     // XXX: constructor is ignored
 
     public func observe() {
-        _ = jsObject[Strings.observe]!()
+        let this = jsObject
+        _ = this[Strings.observe].function!(this: this, arguments: [])
     }
 
     public func disconnect() {
-        _ = jsObject[Strings.disconnect]!()
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
     public func takeRecords() -> ReportList {
-        jsObject[Strings.takeRecords]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.takeRecords].function!(this: this, arguments: []).fromJSValue()!
     }
 }

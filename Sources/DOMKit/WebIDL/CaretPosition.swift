@@ -21,6 +21,7 @@ public class CaretPosition: JSBridgedClass {
     public var offset: UInt32
 
     public func getClientRect() -> DOMRect? {
-        jsObject[Strings.getClientRect]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.getClientRect].function!(this: this, arguments: []).fromJSValue()!
     }
 }

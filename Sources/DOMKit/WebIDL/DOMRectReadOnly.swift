@@ -25,7 +25,8 @@ public class DOMRectReadOnly: JSBridgedClass {
     }
 
     public static func fromRect(other: DOMRectInit? = nil) -> Self {
-        constructor[Strings.fromRect]!(other?.jsValue() ?? .undefined).fromJSValue()!
+        let this = constructor
+        return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -53,6 +54,7 @@ public class DOMRectReadOnly: JSBridgedClass {
     public var left: Double
 
     public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 }

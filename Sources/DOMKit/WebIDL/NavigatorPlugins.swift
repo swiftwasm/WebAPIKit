@@ -10,7 +10,8 @@ public extension NavigatorPlugins {
     var mimeTypes: MimeTypeArray { ReadonlyAttribute[Strings.mimeTypes, in: jsObject] }
 
     func javaEnabled() -> Bool {
-        jsObject[Strings.javaEnabled]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.javaEnabled].function!(this: this, arguments: []).fromJSValue()!
     }
 
     var pdfViewerEnabled: Bool { ReadonlyAttribute[Strings.pdfViewerEnabled, in: jsObject] }

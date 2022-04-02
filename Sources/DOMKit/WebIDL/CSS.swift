@@ -11,11 +11,13 @@ public enum CSS {
     public static var animationWorklet: Worklet { ReadonlyAttribute[Strings.animationWorklet, in: jsObject] }
 
     public static func supports(property: String, value: String) -> Bool {
-        JSObject.global[Strings.CSS].object![Strings.supports]!(property.jsValue(), value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.supports].function!(this: this, arguments: [property.jsValue(), value.jsValue()]).fromJSValue()!
     }
 
     public static func supports(conditionText: String) -> Bool {
-        JSObject.global[Strings.CSS].object![Strings.supports]!(conditionText.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.supports].function!(this: this, arguments: [conditionText.jsValue()]).fromJSValue()!
     }
 
     public static var highlights: HighlightRegistry { ReadonlyAttribute[Strings.highlights, in: jsObject] }
@@ -27,298 +29,370 @@ public enum CSS {
     public static var paintWorklet: Worklet { ReadonlyAttribute[Strings.paintWorklet, in: jsObject] }
 
     public static func parseStylesheet(css: CSSStringSource, options: CSSParserOptions? = nil) -> JSPromise {
-        JSObject.global[Strings.CSS].object![Strings.parseStylesheet]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.parseStylesheet].function!(this: this, arguments: [css.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func parseStylesheet(css: CSSStringSource, options: CSSParserOptions? = nil) async throws -> [CSSParserRule] {
-        let _promise: JSPromise = JSObject.global[Strings.CSS].object![Strings.parseStylesheet]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        let _promise: JSPromise = this[Strings.parseStylesheet].function!(this: this, arguments: [css.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public static func parseRuleList(css: CSSStringSource, options: CSSParserOptions? = nil) -> JSPromise {
-        JSObject.global[Strings.CSS].object![Strings.parseRuleList]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.parseRuleList].function!(this: this, arguments: [css.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func parseRuleList(css: CSSStringSource, options: CSSParserOptions? = nil) async throws -> [CSSParserRule] {
-        let _promise: JSPromise = JSObject.global[Strings.CSS].object![Strings.parseRuleList]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        let _promise: JSPromise = this[Strings.parseRuleList].function!(this: this, arguments: [css.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public static func parseRule(css: CSSStringSource, options: CSSParserOptions? = nil) -> JSPromise {
-        JSObject.global[Strings.CSS].object![Strings.parseRule]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.parseRule].function!(this: this, arguments: [css.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func parseRule(css: CSSStringSource, options: CSSParserOptions? = nil) async throws -> CSSParserRule {
-        let _promise: JSPromise = JSObject.global[Strings.CSS].object![Strings.parseRule]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        let _promise: JSPromise = this[Strings.parseRule].function!(this: this, arguments: [css.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public static func parseDeclarationList(css: CSSStringSource, options: CSSParserOptions? = nil) -> JSPromise {
-        JSObject.global[Strings.CSS].object![Strings.parseDeclarationList]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.parseDeclarationList].function!(this: this, arguments: [css.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func parseDeclarationList(css: CSSStringSource, options: CSSParserOptions? = nil) async throws -> [CSSParserRule] {
-        let _promise: JSPromise = JSObject.global[Strings.CSS].object![Strings.parseDeclarationList]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        let _promise: JSPromise = this[Strings.parseDeclarationList].function!(this: this, arguments: [css.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public static func parseDeclaration(css: String, options: CSSParserOptions? = nil) -> CSSParserDeclaration {
-        JSObject.global[Strings.CSS].object![Strings.parseDeclaration]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.parseDeclaration].function!(this: this, arguments: [css.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public static func parseValue(css: String) -> CSSToken {
-        JSObject.global[Strings.CSS].object![Strings.parseValue]!(css.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.parseValue].function!(this: this, arguments: [css.jsValue()]).fromJSValue()!
     }
 
     public static func parseValueList(css: String) -> [CSSToken] {
-        JSObject.global[Strings.CSS].object![Strings.parseValueList]!(css.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.parseValueList].function!(this: this, arguments: [css.jsValue()]).fromJSValue()!
     }
 
     public static func parseCommaValueList(css: String) -> [[CSSToken]] {
-        JSObject.global[Strings.CSS].object![Strings.parseCommaValueList]!(css.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.parseCommaValueList].function!(this: this, arguments: [css.jsValue()]).fromJSValue()!
     }
 
     public static func registerProperty(definition: PropertyDefinition) {
-        _ = JSObject.global[Strings.CSS].object![Strings.registerProperty]!(definition.jsValue())
+        let this = JSObject.global[Strings.CSS].object!
+        _ = this[Strings.registerProperty].function!(this: this, arguments: [definition.jsValue()])
     }
 
     public static func number(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.number]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.number].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func percent(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.percent]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.percent].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func em(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.em]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.em].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func ex(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.ex]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.ex].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func ch(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.ch]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.ch].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func ic(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.ic]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.ic].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func rem(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.rem]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.rem].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func lh(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.lh]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.lh].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func rlh(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.rlh]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.rlh].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func vw(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.vw]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.vw].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func vh(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.vh]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.vh].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func vi(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.vi]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.vi].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func vb(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.vb]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.vb].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func vmin(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.vmin]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.vmin].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func vmax(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.vmax]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.vmax].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func svw(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.svw]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.svw].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func svh(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.svh]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.svh].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func svi(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.svi]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.svi].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func svb(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.svb]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.svb].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func svmin(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.svmin]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.svmin].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func svmax(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.svmax]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.svmax].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func lvw(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.lvw]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.lvw].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func lvh(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.lvh]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.lvh].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func lvi(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.lvi]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.lvi].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func lvb(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.lvb]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.lvb].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func lvmin(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.lvmin]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.lvmin].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func lvmax(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.lvmax]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.lvmax].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func dvw(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.dvw]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.dvw].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func dvh(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.dvh]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.dvh].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func dvi(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.dvi]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.dvi].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func dvb(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.dvb]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.dvb].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func dvmin(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.dvmin]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.dvmin].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func dvmax(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.dvmax]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.dvmax].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func cqw(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.cqw]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.cqw].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func cqh(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.cqh]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.cqh].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func cqi(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.cqi]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.cqi].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func cqb(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.cqb]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.cqb].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func cqmin(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.cqmin]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.cqmin].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func cqmax(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.cqmax]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.cqmax].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func cm(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.cm]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.cm].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func mm(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.mm]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.mm].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func Q(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.Q]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.Q].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func `in`(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.in]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.in].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func pt(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.pt]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.pt].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func pc(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.pc]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.pc].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func px(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.px]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.px].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func deg(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.deg]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.deg].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func grad(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.grad]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.grad].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func rad(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.rad]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.rad].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func turn(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.turn]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.turn].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func s(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.s]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.s].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func ms(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.ms]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.ms].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func Hz(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.Hz]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.Hz].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func kHz(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.kHz]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.kHz].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func dpi(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.dpi]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.dpi].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func dpcm(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.dpcm]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.dpcm].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func dppx(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.dppx]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.dppx].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func fr(value: Double) -> CSSUnitValue {
-        JSObject.global[Strings.CSS].object![Strings.fr]!(value.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.fr].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     public static func escape(ident: String) -> String {
-        JSObject.global[Strings.CSS].object![Strings.escape]!(ident.jsValue()).fromJSValue()!
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.escape].function!(this: this, arguments: [ident.jsValue()]).fromJSValue()!
     }
 }

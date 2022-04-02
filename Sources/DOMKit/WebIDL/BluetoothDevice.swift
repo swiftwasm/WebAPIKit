@@ -24,12 +24,14 @@ public class BluetoothDevice: EventTarget, BluetoothDeviceEventHandlers, Charact
     public var gatt: BluetoothRemoteGATTServer?
 
     public func watchAdvertisements(options: WatchAdvertisementsOptions? = nil) -> JSPromise {
-        jsObject[Strings.watchAdvertisements]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.watchAdvertisements].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func watchAdvertisements(options: WatchAdvertisementsOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.watchAdvertisements]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.watchAdvertisements].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 

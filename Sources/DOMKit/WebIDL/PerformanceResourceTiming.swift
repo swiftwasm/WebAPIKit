@@ -80,7 +80,8 @@ public class PerformanceResourceTiming: PerformanceEntry {
     public var decodedBodySize: UInt64
 
     override public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute

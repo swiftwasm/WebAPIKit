@@ -13,28 +13,34 @@ public class GPUQueue: JSBridgedClass, GPUObjectBase {
     }
 
     public func submit(commandBuffers: [GPUCommandBuffer]) {
-        _ = jsObject[Strings.submit]!(commandBuffers.jsValue())
+        let this = jsObject
+        _ = this[Strings.submit].function!(this: this, arguments: [commandBuffers.jsValue()])
     }
 
     public func onSubmittedWorkDone() -> JSPromise {
-        jsObject[Strings.onSubmittedWorkDone]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.onSubmittedWorkDone].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func onSubmittedWorkDone() async throws {
-        let _promise: JSPromise = jsObject[Strings.onSubmittedWorkDone]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.onSubmittedWorkDone].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
     public func writeBuffer(buffer: GPUBuffer, bufferOffset: GPUSize64, data: BufferSource, dataOffset: GPUSize64? = nil, size: GPUSize64? = nil) {
-        _ = jsObject[Strings.writeBuffer]!(buffer.jsValue(), bufferOffset.jsValue(), data.jsValue(), dataOffset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.writeBuffer].function!(this: this, arguments: [buffer.jsValue(), bufferOffset.jsValue(), data.jsValue(), dataOffset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined])
     }
 
     public func writeTexture(destination: GPUImageCopyTexture, data: BufferSource, dataLayout: GPUImageDataLayout, size: GPUExtent3D) {
-        _ = jsObject[Strings.writeTexture]!(destination.jsValue(), data.jsValue(), dataLayout.jsValue(), size.jsValue())
+        let this = jsObject
+        _ = this[Strings.writeTexture].function!(this: this, arguments: [destination.jsValue(), data.jsValue(), dataLayout.jsValue(), size.jsValue()])
     }
 
     public func copyExternalImageToTexture(source: GPUImageCopyExternalImage, destination: GPUImageCopyTextureTagged, copySize: GPUExtent3D) {
-        _ = jsObject[Strings.copyExternalImageToTexture]!(source.jsValue(), destination.jsValue(), copySize.jsValue())
+        let this = jsObject
+        _ = this[Strings.copyExternalImageToTexture].function!(this: this, arguments: [source.jsValue(), destination.jsValue(), copySize.jsValue()])
     }
 }

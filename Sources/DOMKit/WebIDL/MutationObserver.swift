@@ -15,14 +15,17 @@ public class MutationObserver: JSBridgedClass {
     // XXX: constructor is ignored
 
     public func observe(target: Node, options: MutationObserverInit? = nil) {
-        _ = jsObject[Strings.observe]!(target.jsValue(), options?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue(), options?.jsValue() ?? .undefined])
     }
 
     public func disconnect() {
-        _ = jsObject[Strings.disconnect]!()
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
     public func takeRecords() -> [MutationRecord] {
-        jsObject[Strings.takeRecords]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.takeRecords].function!(this: this, arguments: []).fromJSValue()!
     }
 }

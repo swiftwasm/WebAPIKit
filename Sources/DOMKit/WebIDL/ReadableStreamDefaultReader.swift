@@ -17,16 +17,19 @@ public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericR
     }
 
     public func read() -> JSPromise {
-        jsObject[Strings.read]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.read].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func read() async throws -> ReadableStreamDefaultReadResult {
-        let _promise: JSPromise = jsObject[Strings.read]!().fromJSValue()!
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
     public func releaseLock() {
-        _ = jsObject[Strings.releaseLock]!()
+        let this = jsObject
+        _ = this[Strings.releaseLock].function!(this: this, arguments: [])
     }
 }

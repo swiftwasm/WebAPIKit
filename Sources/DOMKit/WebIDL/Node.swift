@@ -64,7 +64,8 @@ public class Node: EventTarget {
     public var ownerDocument: Document?
 
     public func getRootNode(options: GetRootNodeOptions? = nil) -> Self {
-        jsObject[Strings.getRootNode]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRootNode].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -74,7 +75,8 @@ public class Node: EventTarget {
     public var parentElement: Element?
 
     public func hasChildNodes() -> Bool {
-        jsObject[Strings.hasChildNodes]!().fromJSValue()!
+        let this = jsObject
+        return this[Strings.hasChildNodes].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -99,19 +101,23 @@ public class Node: EventTarget {
     public var textContent: String?
 
     public func normalize() {
-        _ = jsObject[Strings.normalize]!()
+        let this = jsObject
+        _ = this[Strings.normalize].function!(this: this, arguments: [])
     }
 
     public func cloneNode(deep: Bool? = nil) -> Self {
-        jsObject[Strings.cloneNode]!(deep?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.cloneNode].function!(this: this, arguments: [deep?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public func isEqualNode(otherNode: Node?) -> Bool {
-        jsObject[Strings.isEqualNode]!(otherNode.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isEqualNode].function!(this: this, arguments: [otherNode.jsValue()]).fromJSValue()!
     }
 
     public func isSameNode(otherNode: Node?) -> Bool {
-        jsObject[Strings.isSameNode]!(otherNode.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isSameNode].function!(this: this, arguments: [otherNode.jsValue()]).fromJSValue()!
     }
 
     public static let DOCUMENT_POSITION_DISCONNECTED: UInt16 = 0x01
@@ -127,38 +133,47 @@ public class Node: EventTarget {
     public static let DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: UInt16 = 0x20
 
     public func compareDocumentPosition(other: Node) -> UInt16 {
-        jsObject[Strings.compareDocumentPosition]!(other.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.compareDocumentPosition].function!(this: this, arguments: [other.jsValue()]).fromJSValue()!
     }
 
     public func contains(other: Node?) -> Bool {
-        jsObject[Strings.contains]!(other.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.contains].function!(this: this, arguments: [other.jsValue()]).fromJSValue()!
     }
 
     public func lookupPrefix(namespace: String?) -> String? {
-        jsObject[Strings.lookupPrefix]!(namespace.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.lookupPrefix].function!(this: this, arguments: [namespace.jsValue()]).fromJSValue()!
     }
 
     public func lookupNamespaceURI(prefix: String?) -> String? {
-        jsObject[Strings.lookupNamespaceURI]!(prefix.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.lookupNamespaceURI].function!(this: this, arguments: [prefix.jsValue()]).fromJSValue()!
     }
 
     public func isDefaultNamespace(namespace: String?) -> Bool {
-        jsObject[Strings.isDefaultNamespace]!(namespace.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.isDefaultNamespace].function!(this: this, arguments: [namespace.jsValue()]).fromJSValue()!
     }
 
     public func insertBefore(node: Node, child: Node?) -> Self {
-        jsObject[Strings.insertBefore]!(node.jsValue(), child.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.insertBefore].function!(this: this, arguments: [node.jsValue(), child.jsValue()]).fromJSValue()!
     }
 
     public func appendChild(node: Node) -> Self {
-        jsObject[Strings.appendChild]!(node.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.appendChild].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
     }
 
     public func replaceChild(node: Node, child: Node) -> Self {
-        jsObject[Strings.replaceChild]!(node.jsValue(), child.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.replaceChild].function!(this: this, arguments: [node.jsValue(), child.jsValue()]).fromJSValue()!
     }
 
     public func removeChild(child: Node) -> Self {
-        jsObject[Strings.removeChild]!(child.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.removeChild].function!(this: this, arguments: [child.jsValue()]).fromJSValue()!
     }
 }

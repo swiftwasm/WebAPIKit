@@ -41,59 +41,73 @@ public class Selection: JSBridgedClass {
     public var type: String
 
     public func getRangeAt(index: UInt32) -> Range {
-        jsObject[Strings.getRangeAt]!(index.jsValue()).fromJSValue()!
+        let this = jsObject
+        return this[Strings.getRangeAt].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
     public func addRange(range: Range) {
-        _ = jsObject[Strings.addRange]!(range.jsValue())
+        let this = jsObject
+        _ = this[Strings.addRange].function!(this: this, arguments: [range.jsValue()])
     }
 
     public func removeRange(range: Range) {
-        _ = jsObject[Strings.removeRange]!(range.jsValue())
+        let this = jsObject
+        _ = this[Strings.removeRange].function!(this: this, arguments: [range.jsValue()])
     }
 
     public func removeAllRanges() {
-        _ = jsObject[Strings.removeAllRanges]!()
+        let this = jsObject
+        _ = this[Strings.removeAllRanges].function!(this: this, arguments: [])
     }
 
     public func empty() {
-        _ = jsObject[Strings.empty]!()
+        let this = jsObject
+        _ = this[Strings.empty].function!(this: this, arguments: [])
     }
 
     public func collapse(node: Node?, offset: UInt32? = nil) {
-        _ = jsObject[Strings.collapse]!(node.jsValue(), offset?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.collapse].function!(this: this, arguments: [node.jsValue(), offset?.jsValue() ?? .undefined])
     }
 
     public func setPosition(node: Node?, offset: UInt32? = nil) {
-        _ = jsObject[Strings.setPosition]!(node.jsValue(), offset?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.setPosition].function!(this: this, arguments: [node.jsValue(), offset?.jsValue() ?? .undefined])
     }
 
     public func collapseToStart() {
-        _ = jsObject[Strings.collapseToStart]!()
+        let this = jsObject
+        _ = this[Strings.collapseToStart].function!(this: this, arguments: [])
     }
 
     public func collapseToEnd() {
-        _ = jsObject[Strings.collapseToEnd]!()
+        let this = jsObject
+        _ = this[Strings.collapseToEnd].function!(this: this, arguments: [])
     }
 
     public func extend(node: Node, offset: UInt32? = nil) {
-        _ = jsObject[Strings.extend]!(node.jsValue(), offset?.jsValue() ?? .undefined)
+        let this = jsObject
+        _ = this[Strings.extend].function!(this: this, arguments: [node.jsValue(), offset?.jsValue() ?? .undefined])
     }
 
     public func setBaseAndExtent(anchorNode: Node, anchorOffset: UInt32, focusNode: Node, focusOffset: UInt32) {
-        _ = jsObject[Strings.setBaseAndExtent]!(anchorNode.jsValue(), anchorOffset.jsValue(), focusNode.jsValue(), focusOffset.jsValue())
+        let this = jsObject
+        _ = this[Strings.setBaseAndExtent].function!(this: this, arguments: [anchorNode.jsValue(), anchorOffset.jsValue(), focusNode.jsValue(), focusOffset.jsValue()])
     }
 
     public func selectAllChildren(node: Node) {
-        _ = jsObject[Strings.selectAllChildren]!(node.jsValue())
+        let this = jsObject
+        _ = this[Strings.selectAllChildren].function!(this: this, arguments: [node.jsValue()])
     }
 
     public func deleteFromDocument() {
-        _ = jsObject[Strings.deleteFromDocument]!()
+        let this = jsObject
+        _ = this[Strings.deleteFromDocument].function!(this: this, arguments: [])
     }
 
     public func containsNode(node: Node, allowPartialContainment: Bool? = nil) -> Bool {
-        jsObject[Strings.containsNode]!(node.jsValue(), allowPartialContainment?.jsValue() ?? .undefined).fromJSValue()!
+        let this = jsObject
+        return this[Strings.containsNode].function!(this: this, arguments: [node.jsValue(), allowPartialContainment?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     public var description: String {
