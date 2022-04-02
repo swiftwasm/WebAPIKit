@@ -2,6 +2,7 @@ import WebIDL
 
 enum DeclarationMerger {
     static let ignoredTypedefs: Set<String> = ["Function"]
+    static let validExposures: Set<String> = ["Window"]
 
     private static func addAsync(_ members: [IDLNode]) -> [IDLNode] {
         members.flatMap { member -> [IDLNode] in
@@ -65,7 +66,13 @@ enum DeclarationMerger {
                 MergedInterface(
                     name: $0.name,
                     parentClasses: [$0.inheritance].compactMap { $0 },
-                    members: addAsync($0.members.array) as! [IDLInterfaceMember]
+                    members: addAsync($0.members.array) as! [IDLInterfaceMember],
+                    exposed: Set(
+                        $0.extAttrs
+                            .filter { $0.name == "Exposed" }
+                            .flatMap { $0.rhs?.identifiers ?? [] }
+                    ),
+                    exposedToAll: $0.extAttrs.contains { $0.name == "Exposed" && $0.rhs == .wildcard }
                 )
             },
             by: \.name
@@ -73,13 +80,15 @@ enum DeclarationMerger {
             var interface = toMerge.dropFirst().reduce(into: toMerge.first!) { partialResult, interface in
                 partialResult.parentClasses += interface.parentClasses
                 partialResult.members += interface.members
+                partialResult.exposed.formUnion(interface.exposed)
+                partialResult.exposedToAll = partialResult.exposedToAll || interface.exposedToAll
             }
             interface.mixins = includes[interface.name, default: []]
             if let decl = interface.members.first(where: { $0 is IDLIterableDeclaration }) as? IDLIterableDeclaration {
                 interface.mixins.append(decl.async ? "AsyncSequence" : "Sequence")
             }
             return interface
-        }
+        }.filter { $0.value.exposedToAll || $0.value.exposed.contains(where: validExposures.contains) }
 
         let mergedDictionaries = Dictionary(
             grouping: all(IDLDictionary.self).map {
@@ -179,6 +188,8 @@ struct MergedInterface: DeclarationFile {
     var parentClasses: [String]
     var mixins: [String] = []
     var members: [IDLInterfaceMember]
+    var exposed: Set<String>
+    var exposedToAll: Bool
 }
 
 struct Typedefs: DeclarationFile, SwiftRepresentable {

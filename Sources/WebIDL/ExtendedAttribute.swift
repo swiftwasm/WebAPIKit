@@ -4,7 +4,7 @@ public struct IDLExtendedAttribute: Decodable, IDLNamed {
     public let arguments: [IDLArgument]
     public let rhs: RHS?
 
-    public enum RHS: Decodable {
+    public enum RHS: Decodable, Equatable {
         case identifier(String)
         case identifierList([String])
         case string(String)
@@ -22,6 +22,17 @@ public struct IDLExtendedAttribute: Decodable, IDLNamed {
 
         private struct ValueContainer: Decodable {
             let value: String
+        }
+
+        public var identifiers: [String]? {
+            switch self {
+            case let .identifier(identifier):
+                return [identifier]
+            case let .identifierList(identifiers):
+                return identifiers
+            default:
+                return nil
+            }
         }
 
         public init(from decoder: Decoder) throws {
