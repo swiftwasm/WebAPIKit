@@ -7,11 +7,11 @@ public protocol CanvasCompositing: JSBridgedClass {}
 public extension CanvasCompositing {
     @inlinable var globalAlpha: Double {
         get { ReadWriteAttribute[Strings.globalAlpha, in: jsObject] }
-        set { ReadWriteAttribute[Strings.globalAlpha, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.globalAlpha, in: jsObject] = newValue }
     }
 
     @inlinable var globalCompositeOperation: String {
         get { ReadWriteAttribute[Strings.globalCompositeOperation, in: jsObject] }
-        set { ReadWriteAttribute[Strings.globalCompositeOperation, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.globalCompositeOperation, in: jsObject] = newValue }
     }
 }

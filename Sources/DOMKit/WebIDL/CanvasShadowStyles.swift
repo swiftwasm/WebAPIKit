@@ -7,21 +7,21 @@ public protocol CanvasShadowStyles: JSBridgedClass {}
 public extension CanvasShadowStyles {
     @inlinable var shadowOffsetX: Double {
         get { ReadWriteAttribute[Strings.shadowOffsetX, in: jsObject] }
-        set { ReadWriteAttribute[Strings.shadowOffsetX, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.shadowOffsetX, in: jsObject] = newValue }
     }
 
     @inlinable var shadowOffsetY: Double {
         get { ReadWriteAttribute[Strings.shadowOffsetY, in: jsObject] }
-        set { ReadWriteAttribute[Strings.shadowOffsetY, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.shadowOffsetY, in: jsObject] = newValue }
     }
 
     @inlinable var shadowBlur: Double {
         get { ReadWriteAttribute[Strings.shadowBlur, in: jsObject] }
-        set { ReadWriteAttribute[Strings.shadowBlur, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.shadowBlur, in: jsObject] = newValue }
     }
 
     @inlinable var shadowColor: String {
         get { ReadWriteAttribute[Strings.shadowColor, in: jsObject] }
-        set { ReadWriteAttribute[Strings.shadowColor, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.shadowColor, in: jsObject] = newValue }
     }
 }

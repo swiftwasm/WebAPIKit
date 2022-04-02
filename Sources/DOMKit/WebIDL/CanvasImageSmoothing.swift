@@ -7,11 +7,11 @@ public protocol CanvasImageSmoothing: JSBridgedClass {}
 public extension CanvasImageSmoothing {
     @inlinable var imageSmoothingEnabled: Bool {
         get { ReadWriteAttribute[Strings.imageSmoothingEnabled, in: jsObject] }
-        set { ReadWriteAttribute[Strings.imageSmoothingEnabled, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.imageSmoothingEnabled, in: jsObject] = newValue }
     }
 
     @inlinable var imageSmoothingQuality: ImageSmoothingQuality {
         get { ReadWriteAttribute[Strings.imageSmoothingQuality, in: jsObject] }
-        set { ReadWriteAttribute[Strings.imageSmoothingQuality, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.imageSmoothingQuality, in: jsObject] = newValue }
     }
 }

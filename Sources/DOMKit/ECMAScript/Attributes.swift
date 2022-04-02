@@ -11,7 +11,7 @@ import JavaScriptKit
 
     @inlinable public var wrappedValue: Wrapped {
         get { ReadWriteAttribute[name, in: jsObject] }
-        set { ReadWriteAttribute[name, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[name, in: jsObject] = newValue }
     }
 
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> Wrapped {

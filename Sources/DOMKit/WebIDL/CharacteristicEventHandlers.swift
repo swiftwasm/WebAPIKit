@@ -7,6 +7,6 @@ public protocol CharacteristicEventHandlers: JSBridgedClass {}
 public extension CharacteristicEventHandlers {
     @inlinable var oncharacteristicvaluechanged: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncharacteristicvaluechanged, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oncharacteristicvaluechanged, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oncharacteristicvaluechanged, in: jsObject] = newValue }
     }
 }

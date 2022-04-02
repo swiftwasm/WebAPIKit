@@ -34,7 +34,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
         } else if Context.constructor == nil || Context.static {
             // can't do property wrappers on extensions
             let setter: SwiftSource = """
-            set { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] = newValue }
+            nonmutating set { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] = newValue }
             """
 
             return """

@@ -7,471 +7,471 @@ public protocol GlobalEventHandlers: JSBridgedClass {}
 public extension GlobalEventHandlers {
     @inlinable var onanimationstart: EventHandler {
         get { ClosureAttribute1Optional[Strings.onanimationstart, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onanimationstart, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onanimationstart, in: jsObject] = newValue }
     }
 
     @inlinable var onanimationiteration: EventHandler {
         get { ClosureAttribute1Optional[Strings.onanimationiteration, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onanimationiteration, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onanimationiteration, in: jsObject] = newValue }
     }
 
     @inlinable var onanimationend: EventHandler {
         get { ClosureAttribute1Optional[Strings.onanimationend, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onanimationend, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onanimationend, in: jsObject] = newValue }
     }
 
     @inlinable var onanimationcancel: EventHandler {
         get { ClosureAttribute1Optional[Strings.onanimationcancel, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onanimationcancel, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onanimationcancel, in: jsObject] = newValue }
     }
 
     @inlinable var ontransitionrun: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontransitionrun, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontransitionrun, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontransitionrun, in: jsObject] = newValue }
     }
 
     @inlinable var ontransitionstart: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontransitionstart, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontransitionstart, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontransitionstart, in: jsObject] = newValue }
     }
 
     @inlinable var ontransitionend: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontransitionend, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontransitionend, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontransitionend, in: jsObject] = newValue }
     }
 
     @inlinable var ontransitioncancel: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontransitioncancel, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontransitioncancel, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontransitioncancel, in: jsObject] = newValue }
     }
 
     @inlinable var onabort: EventHandler {
         get { ClosureAttribute1Optional[Strings.onabort, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onabort, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onabort, in: jsObject] = newValue }
     }
 
     @inlinable var onauxclick: EventHandler {
         get { ClosureAttribute1Optional[Strings.onauxclick, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onauxclick, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onauxclick, in: jsObject] = newValue }
     }
 
     @inlinable var onblur: EventHandler {
         get { ClosureAttribute1Optional[Strings.onblur, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onblur, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onblur, in: jsObject] = newValue }
     }
 
     @inlinable var oncancel: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncancel, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oncancel, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oncancel, in: jsObject] = newValue }
     }
 
     @inlinable var oncanplay: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncanplay, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oncanplay, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oncanplay, in: jsObject] = newValue }
     }
 
     @inlinable var oncanplaythrough: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncanplaythrough, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oncanplaythrough, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oncanplaythrough, in: jsObject] = newValue }
     }
 
     @inlinable var onchange: EventHandler {
         get { ClosureAttribute1Optional[Strings.onchange, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onchange, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onchange, in: jsObject] = newValue }
     }
 
     @inlinable var onclick: EventHandler {
         get { ClosureAttribute1Optional[Strings.onclick, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onclick, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onclick, in: jsObject] = newValue }
     }
 
     @inlinable var onclose: EventHandler {
         get { ClosureAttribute1Optional[Strings.onclose, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onclose, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onclose, in: jsObject] = newValue }
     }
 
     @inlinable var oncontextlost: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncontextlost, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oncontextlost, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oncontextlost, in: jsObject] = newValue }
     }
 
     @inlinable var oncontextmenu: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncontextmenu, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oncontextmenu, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oncontextmenu, in: jsObject] = newValue }
     }
 
     @inlinable var oncontextrestored: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncontextrestored, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oncontextrestored, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oncontextrestored, in: jsObject] = newValue }
     }
 
     @inlinable var oncuechange: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncuechange, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oncuechange, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oncuechange, in: jsObject] = newValue }
     }
 
     @inlinable var ondblclick: EventHandler {
         get { ClosureAttribute1Optional[Strings.ondblclick, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ondblclick, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ondblclick, in: jsObject] = newValue }
     }
 
     @inlinable var ondrag: EventHandler {
         get { ClosureAttribute1Optional[Strings.ondrag, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ondrag, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ondrag, in: jsObject] = newValue }
     }
 
     @inlinable var ondragend: EventHandler {
         get { ClosureAttribute1Optional[Strings.ondragend, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ondragend, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ondragend, in: jsObject] = newValue }
     }
 
     @inlinable var ondragenter: EventHandler {
         get { ClosureAttribute1Optional[Strings.ondragenter, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ondragenter, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ondragenter, in: jsObject] = newValue }
     }
 
     @inlinable var ondragleave: EventHandler {
         get { ClosureAttribute1Optional[Strings.ondragleave, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ondragleave, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ondragleave, in: jsObject] = newValue }
     }
 
     @inlinable var ondragover: EventHandler {
         get { ClosureAttribute1Optional[Strings.ondragover, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ondragover, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ondragover, in: jsObject] = newValue }
     }
 
     @inlinable var ondragstart: EventHandler {
         get { ClosureAttribute1Optional[Strings.ondragstart, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ondragstart, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ondragstart, in: jsObject] = newValue }
     }
 
     @inlinable var ondrop: EventHandler {
         get { ClosureAttribute1Optional[Strings.ondrop, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ondrop, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ondrop, in: jsObject] = newValue }
     }
 
     @inlinable var ondurationchange: EventHandler {
         get { ClosureAttribute1Optional[Strings.ondurationchange, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ondurationchange, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ondurationchange, in: jsObject] = newValue }
     }
 
     @inlinable var onemptied: EventHandler {
         get { ClosureAttribute1Optional[Strings.onemptied, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onemptied, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onemptied, in: jsObject] = newValue }
     }
 
     @inlinable var onended: EventHandler {
         get { ClosureAttribute1Optional[Strings.onended, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onended, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onended, in: jsObject] = newValue }
     }
 
     @inlinable var onerror: OnErrorEventHandler {
         get { ClosureAttribute5Optional[Strings.onerror, in: jsObject] }
-        set { ClosureAttribute5Optional[Strings.onerror, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute5Optional[Strings.onerror, in: jsObject] = newValue }
     }
 
     @inlinable var onfocus: EventHandler {
         get { ClosureAttribute1Optional[Strings.onfocus, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onfocus, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onfocus, in: jsObject] = newValue }
     }
 
     @inlinable var onformdata: EventHandler {
         get { ClosureAttribute1Optional[Strings.onformdata, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onformdata, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onformdata, in: jsObject] = newValue }
     }
 
     @inlinable var oninput: EventHandler {
         get { ClosureAttribute1Optional[Strings.oninput, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oninput, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oninput, in: jsObject] = newValue }
     }
 
     @inlinable var oninvalid: EventHandler {
         get { ClosureAttribute1Optional[Strings.oninvalid, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.oninvalid, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.oninvalid, in: jsObject] = newValue }
     }
 
     @inlinable var onkeydown: EventHandler {
         get { ClosureAttribute1Optional[Strings.onkeydown, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onkeydown, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onkeydown, in: jsObject] = newValue }
     }
 
     @inlinable var onkeypress: EventHandler {
         get { ClosureAttribute1Optional[Strings.onkeypress, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onkeypress, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onkeypress, in: jsObject] = newValue }
     }
 
     @inlinable var onkeyup: EventHandler {
         get { ClosureAttribute1Optional[Strings.onkeyup, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onkeyup, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onkeyup, in: jsObject] = newValue }
     }
 
     @inlinable var onload: EventHandler {
         get { ClosureAttribute1Optional[Strings.onload, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onload, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onload, in: jsObject] = newValue }
     }
 
     @inlinable var onloadeddata: EventHandler {
         get { ClosureAttribute1Optional[Strings.onloadeddata, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onloadeddata, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onloadeddata, in: jsObject] = newValue }
     }
 
     @inlinable var onloadedmetadata: EventHandler {
         get { ClosureAttribute1Optional[Strings.onloadedmetadata, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onloadedmetadata, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onloadedmetadata, in: jsObject] = newValue }
     }
 
     @inlinable var onloadstart: EventHandler {
         get { ClosureAttribute1Optional[Strings.onloadstart, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onloadstart, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onloadstart, in: jsObject] = newValue }
     }
 
     @inlinable var onmousedown: EventHandler {
         get { ClosureAttribute1Optional[Strings.onmousedown, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onmousedown, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onmousedown, in: jsObject] = newValue }
     }
 
     @inlinable var onmouseenter: EventHandler {
         get { ClosureAttribute1Optional[Strings.onmouseenter, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onmouseenter, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onmouseenter, in: jsObject] = newValue }
     }
 
     @inlinable var onmouseleave: EventHandler {
         get { ClosureAttribute1Optional[Strings.onmouseleave, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onmouseleave, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onmouseleave, in: jsObject] = newValue }
     }
 
     @inlinable var onmousemove: EventHandler {
         get { ClosureAttribute1Optional[Strings.onmousemove, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onmousemove, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onmousemove, in: jsObject] = newValue }
     }
 
     @inlinable var onmouseout: EventHandler {
         get { ClosureAttribute1Optional[Strings.onmouseout, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onmouseout, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onmouseout, in: jsObject] = newValue }
     }
 
     @inlinable var onmouseover: EventHandler {
         get { ClosureAttribute1Optional[Strings.onmouseover, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onmouseover, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onmouseover, in: jsObject] = newValue }
     }
 
     @inlinable var onmouseup: EventHandler {
         get { ClosureAttribute1Optional[Strings.onmouseup, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onmouseup, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onmouseup, in: jsObject] = newValue }
     }
 
     @inlinable var onpause: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpause, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpause, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpause, in: jsObject] = newValue }
     }
 
     @inlinable var onplay: EventHandler {
         get { ClosureAttribute1Optional[Strings.onplay, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onplay, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onplay, in: jsObject] = newValue }
     }
 
     @inlinable var onplaying: EventHandler {
         get { ClosureAttribute1Optional[Strings.onplaying, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onplaying, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onplaying, in: jsObject] = newValue }
     }
 
     @inlinable var onprogress: EventHandler {
         get { ClosureAttribute1Optional[Strings.onprogress, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onprogress, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onprogress, in: jsObject] = newValue }
     }
 
     @inlinable var onratechange: EventHandler {
         get { ClosureAttribute1Optional[Strings.onratechange, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onratechange, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onratechange, in: jsObject] = newValue }
     }
 
     @inlinable var onreset: EventHandler {
         get { ClosureAttribute1Optional[Strings.onreset, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onreset, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onreset, in: jsObject] = newValue }
     }
 
     @inlinable var onresize: EventHandler {
         get { ClosureAttribute1Optional[Strings.onresize, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onresize, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onresize, in: jsObject] = newValue }
     }
 
     @inlinable var onscroll: EventHandler {
         get { ClosureAttribute1Optional[Strings.onscroll, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onscroll, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onscroll, in: jsObject] = newValue }
     }
 
     @inlinable var onsecuritypolicyviolation: EventHandler {
         get { ClosureAttribute1Optional[Strings.onsecuritypolicyviolation, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onsecuritypolicyviolation, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onsecuritypolicyviolation, in: jsObject] = newValue }
     }
 
     @inlinable var onseeked: EventHandler {
         get { ClosureAttribute1Optional[Strings.onseeked, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onseeked, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onseeked, in: jsObject] = newValue }
     }
 
     @inlinable var onseeking: EventHandler {
         get { ClosureAttribute1Optional[Strings.onseeking, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onseeking, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onseeking, in: jsObject] = newValue }
     }
 
     @inlinable var onselect: EventHandler {
         get { ClosureAttribute1Optional[Strings.onselect, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onselect, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onselect, in: jsObject] = newValue }
     }
 
     @inlinable var onslotchange: EventHandler {
         get { ClosureAttribute1Optional[Strings.onslotchange, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onslotchange, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onslotchange, in: jsObject] = newValue }
     }
 
     @inlinable var onstalled: EventHandler {
         get { ClosureAttribute1Optional[Strings.onstalled, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onstalled, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onstalled, in: jsObject] = newValue }
     }
 
     @inlinable var onsubmit: EventHandler {
         get { ClosureAttribute1Optional[Strings.onsubmit, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onsubmit, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onsubmit, in: jsObject] = newValue }
     }
 
     @inlinable var onsuspend: EventHandler {
         get { ClosureAttribute1Optional[Strings.onsuspend, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onsuspend, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onsuspend, in: jsObject] = newValue }
     }
 
     @inlinable var ontimeupdate: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontimeupdate, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontimeupdate, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontimeupdate, in: jsObject] = newValue }
     }
 
     @inlinable var ontoggle: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontoggle, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontoggle, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontoggle, in: jsObject] = newValue }
     }
 
     @inlinable var onvolumechange: EventHandler {
         get { ClosureAttribute1Optional[Strings.onvolumechange, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onvolumechange, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onvolumechange, in: jsObject] = newValue }
     }
 
     @inlinable var onwaiting: EventHandler {
         get { ClosureAttribute1Optional[Strings.onwaiting, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onwaiting, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onwaiting, in: jsObject] = newValue }
     }
 
     @inlinable var onwebkitanimationend: EventHandler {
         get { ClosureAttribute1Optional[Strings.onwebkitanimationend, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onwebkitanimationend, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onwebkitanimationend, in: jsObject] = newValue }
     }
 
     @inlinable var onwebkitanimationiteration: EventHandler {
         get { ClosureAttribute1Optional[Strings.onwebkitanimationiteration, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onwebkitanimationiteration, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onwebkitanimationiteration, in: jsObject] = newValue }
     }
 
     @inlinable var onwebkitanimationstart: EventHandler {
         get { ClosureAttribute1Optional[Strings.onwebkitanimationstart, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onwebkitanimationstart, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onwebkitanimationstart, in: jsObject] = newValue }
     }
 
     @inlinable var onwebkittransitionend: EventHandler {
         get { ClosureAttribute1Optional[Strings.onwebkittransitionend, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onwebkittransitionend, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onwebkittransitionend, in: jsObject] = newValue }
     }
 
     @inlinable var onwheel: EventHandler {
         get { ClosureAttribute1Optional[Strings.onwheel, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onwheel, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onwheel, in: jsObject] = newValue }
     }
 
     @inlinable var ongotpointercapture: EventHandler {
         get { ClosureAttribute1Optional[Strings.ongotpointercapture, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ongotpointercapture, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ongotpointercapture, in: jsObject] = newValue }
     }
 
     @inlinable var onlostpointercapture: EventHandler {
         get { ClosureAttribute1Optional[Strings.onlostpointercapture, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onlostpointercapture, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onlostpointercapture, in: jsObject] = newValue }
     }
 
     @inlinable var onpointerdown: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpointerdown, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpointerdown, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpointerdown, in: jsObject] = newValue }
     }
 
     @inlinable var onpointermove: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpointermove, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpointermove, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpointermove, in: jsObject] = newValue }
     }
 
     @inlinable var onpointerrawupdate: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpointerrawupdate, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpointerrawupdate, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpointerrawupdate, in: jsObject] = newValue }
     }
 
     @inlinable var onpointerup: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpointerup, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpointerup, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpointerup, in: jsObject] = newValue }
     }
 
     @inlinable var onpointercancel: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpointercancel, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpointercancel, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpointercancel, in: jsObject] = newValue }
     }
 
     @inlinable var onpointerover: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpointerover, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpointerover, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpointerover, in: jsObject] = newValue }
     }
 
     @inlinable var onpointerout: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpointerout, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpointerout, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpointerout, in: jsObject] = newValue }
     }
 
     @inlinable var onpointerenter: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpointerenter, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpointerenter, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpointerenter, in: jsObject] = newValue }
     }
 
     @inlinable var onpointerleave: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpointerleave, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onpointerleave, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onpointerleave, in: jsObject] = newValue }
     }
 
     @inlinable var onselectstart: EventHandler {
         get { ClosureAttribute1Optional[Strings.onselectstart, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onselectstart, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onselectstart, in: jsObject] = newValue }
     }
 
     @inlinable var onselectionchange: EventHandler {
         get { ClosureAttribute1Optional[Strings.onselectionchange, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onselectionchange, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onselectionchange, in: jsObject] = newValue }
     }
 
     @inlinable var ontouchstart: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontouchstart, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontouchstart, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontouchstart, in: jsObject] = newValue }
     }
 
     @inlinable var ontouchend: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontouchend, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontouchend, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontouchend, in: jsObject] = newValue }
     }
 
     @inlinable var ontouchmove: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontouchmove, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontouchmove, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontouchmove, in: jsObject] = newValue }
     }
 
     @inlinable var ontouchcancel: EventHandler {
         get { ClosureAttribute1Optional[Strings.ontouchcancel, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ontouchcancel, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontouchcancel, in: jsObject] = newValue }
     }
 
     @inlinable var onbeforexrselect: EventHandler {
         get { ClosureAttribute1Optional[Strings.onbeforexrselect, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onbeforexrselect, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onbeforexrselect, in: jsObject] = newValue }
     }
 }

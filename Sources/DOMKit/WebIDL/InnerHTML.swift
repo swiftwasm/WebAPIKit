@@ -7,6 +7,6 @@ public protocol InnerHTML: JSBridgedClass {}
 public extension InnerHTML {
     @inlinable var innerHTML: String {
         get { ReadWriteAttribute[Strings.innerHTML, in: jsObject] }
-        set { ReadWriteAttribute[Strings.innerHTML, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.innerHTML, in: jsObject] = newValue }
     }
 }

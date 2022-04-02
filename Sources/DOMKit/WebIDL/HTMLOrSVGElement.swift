@@ -9,17 +9,17 @@ public extension HTMLOrSVGElement {
 
     @inlinable var nonce: String {
         get { ReadWriteAttribute[Strings.nonce, in: jsObject] }
-        set { ReadWriteAttribute[Strings.nonce, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.nonce, in: jsObject] = newValue }
     }
 
     @inlinable var autofocus: Bool {
         get { ReadWriteAttribute[Strings.autofocus, in: jsObject] }
-        set { ReadWriteAttribute[Strings.autofocus, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.autofocus, in: jsObject] = newValue }
     }
 
     @inlinable var tabIndex: Int32 {
         get { ReadWriteAttribute[Strings.tabIndex, in: jsObject] }
-        set { ReadWriteAttribute[Strings.tabIndex, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.tabIndex, in: jsObject] = newValue }
     }
 
     @inlinable func focus(options: FocusOptions? = nil) {

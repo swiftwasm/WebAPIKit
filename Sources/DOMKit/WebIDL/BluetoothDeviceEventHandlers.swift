@@ -7,11 +7,11 @@ public protocol BluetoothDeviceEventHandlers: JSBridgedClass {}
 public extension BluetoothDeviceEventHandlers {
     @inlinable var onadvertisementreceived: EventHandler {
         get { ClosureAttribute1Optional[Strings.onadvertisementreceived, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onadvertisementreceived, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onadvertisementreceived, in: jsObject] = newValue }
     }
 
     @inlinable var ongattserverdisconnected: EventHandler {
         get { ClosureAttribute1Optional[Strings.ongattserverdisconnected, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.ongattserverdisconnected, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.ongattserverdisconnected, in: jsObject] = newValue }
     }
 }

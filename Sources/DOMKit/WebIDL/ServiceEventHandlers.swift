@@ -7,16 +7,16 @@ public protocol ServiceEventHandlers: JSBridgedClass {}
 public extension ServiceEventHandlers {
     @inlinable var onserviceadded: EventHandler {
         get { ClosureAttribute1Optional[Strings.onserviceadded, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onserviceadded, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onserviceadded, in: jsObject] = newValue }
     }
 
     @inlinable var onservicechanged: EventHandler {
         get { ClosureAttribute1Optional[Strings.onservicechanged, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onservicechanged, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onservicechanged, in: jsObject] = newValue }
     }
 
     @inlinable var onserviceremoved: EventHandler {
         get { ClosureAttribute1Optional[Strings.onserviceremoved, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onserviceremoved, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onserviceremoved, in: jsObject] = newValue }
     }
 }

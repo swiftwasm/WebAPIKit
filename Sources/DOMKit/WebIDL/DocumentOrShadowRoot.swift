@@ -9,7 +9,7 @@ public extension DocumentOrShadowRoot {
 
     @inlinable var adoptedStyleSheets: [CSSStyleSheet] {
         get { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] }
-        set { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] = newValue }
     }
 
     @inlinable var fullscreenElement: Element? { ReadonlyAttribute[Strings.fullscreenElement, in: jsObject] }

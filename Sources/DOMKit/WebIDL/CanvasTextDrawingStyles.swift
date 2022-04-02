@@ -7,51 +7,51 @@ public protocol CanvasTextDrawingStyles: JSBridgedClass {}
 public extension CanvasTextDrawingStyles {
     @inlinable var font: String {
         get { ReadWriteAttribute[Strings.font, in: jsObject] }
-        set { ReadWriteAttribute[Strings.font, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.font, in: jsObject] = newValue }
     }
 
     @inlinable var textAlign: CanvasTextAlign {
         get { ReadWriteAttribute[Strings.textAlign, in: jsObject] }
-        set { ReadWriteAttribute[Strings.textAlign, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.textAlign, in: jsObject] = newValue }
     }
 
     @inlinable var textBaseline: CanvasTextBaseline {
         get { ReadWriteAttribute[Strings.textBaseline, in: jsObject] }
-        set { ReadWriteAttribute[Strings.textBaseline, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.textBaseline, in: jsObject] = newValue }
     }
 
     @inlinable var direction: CanvasDirection {
         get { ReadWriteAttribute[Strings.direction, in: jsObject] }
-        set { ReadWriteAttribute[Strings.direction, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.direction, in: jsObject] = newValue }
     }
 
     @inlinable var letterSpacing: String {
         get { ReadWriteAttribute[Strings.letterSpacing, in: jsObject] }
-        set { ReadWriteAttribute[Strings.letterSpacing, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.letterSpacing, in: jsObject] = newValue }
     }
 
     @inlinable var fontKerning: CanvasFontKerning {
         get { ReadWriteAttribute[Strings.fontKerning, in: jsObject] }
-        set { ReadWriteAttribute[Strings.fontKerning, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.fontKerning, in: jsObject] = newValue }
     }
 
     @inlinable var fontStretch: CanvasFontStretch {
         get { ReadWriteAttribute[Strings.fontStretch, in: jsObject] }
-        set { ReadWriteAttribute[Strings.fontStretch, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.fontStretch, in: jsObject] = newValue }
     }
 
     @inlinable var fontVariantCaps: CanvasFontVariantCaps {
         get { ReadWriteAttribute[Strings.fontVariantCaps, in: jsObject] }
-        set { ReadWriteAttribute[Strings.fontVariantCaps, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.fontVariantCaps, in: jsObject] = newValue }
     }
 
     @inlinable var textRendering: CanvasTextRendering {
         get { ReadWriteAttribute[Strings.textRendering, in: jsObject] }
-        set { ReadWriteAttribute[Strings.textRendering, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.textRendering, in: jsObject] = newValue }
     }
 
     @inlinable var wordSpacing: String {
         get { ReadWriteAttribute[Strings.wordSpacing, in: jsObject] }
-        set { ReadWriteAttribute[Strings.wordSpacing, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.wordSpacing, in: jsObject] = newValue }
     }
 }

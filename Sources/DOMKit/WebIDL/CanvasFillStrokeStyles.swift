@@ -7,12 +7,12 @@ public protocol CanvasFillStrokeStyles: JSBridgedClass {}
 public extension CanvasFillStrokeStyles {
     @inlinable var strokeStyle: __UNSUPPORTED_UNION__ {
         get { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] }
-        set { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] = newValue }
     }
 
     @inlinable var fillStyle: __UNSUPPORTED_UNION__ {
         get { ReadWriteAttribute[Strings.fillStyle, in: jsObject] }
-        set { ReadWriteAttribute[Strings.fillStyle, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.fillStyle, in: jsObject] = newValue }
     }
 
     @inlinable func createLinearGradient(x0: Double, y0: Double, x1: Double, y1: Double) -> CanvasGradient {

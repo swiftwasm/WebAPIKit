@@ -7,6 +7,6 @@ public protocol GPUObjectBase: JSBridgedClass {}
 public extension GPUObjectBase {
     @inlinable var label: __UNSUPPORTED_UNION__ {
         get { ReadWriteAttribute[Strings.label, in: jsObject] }
-        set { ReadWriteAttribute[Strings.label, in: jsObject] = newValue }
+        nonmutating set { ReadWriteAttribute[Strings.label, in: jsObject] = newValue }
     }
 }

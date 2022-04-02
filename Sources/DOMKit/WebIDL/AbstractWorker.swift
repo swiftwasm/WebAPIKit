@@ -7,6 +7,6 @@ public protocol AbstractWorker: JSBridgedClass {}
 public extension AbstractWorker {
     @inlinable var onerror: EventHandler {
         get { ClosureAttribute1Optional[Strings.onerror, in: jsObject] }
-        set { ClosureAttribute1Optional[Strings.onerror, in: jsObject] = newValue }
+        nonmutating set { ClosureAttribute1Optional[Strings.onerror, in: jsObject] = newValue }
     }
 }
