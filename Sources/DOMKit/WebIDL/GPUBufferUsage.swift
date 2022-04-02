@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public enum GPUBufferUsage {
     public static var jsObject: JSObject {
-        JSObject.global.[Strings.GPUBufferUsage].object!
+        JSObject.global[Strings.GPUBufferUsage].object!
     }
 
     public static let MAP_READ: GPUFlagsConstant = 0x0001

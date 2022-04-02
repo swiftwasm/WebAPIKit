@@ -11,9 +11,7 @@ public class PaintWorkletGlobalScope: WorkletGlobalScope {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func registerPaint(name: String, paintCtor: VoidFunction) {
-        _ = jsObject[Strings.registerPaint]!(name.jsValue(), paintCtor.jsValue())
-    }
+    // XXX: member 'registerPaint' is ignored
 
     @ReadonlyAttribute
     public var devicePixelRatio: Double

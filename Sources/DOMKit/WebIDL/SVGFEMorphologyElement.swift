@@ -24,7 +24,7 @@ public class SVGFEMorphologyElement: SVGElement, SVGFilterPrimitiveStandardAttri
     public var in1: SVGAnimatedString
 
     @ReadonlyAttribute
-    public var operator: SVGAnimatedEnumeration
+    public var `operator`: SVGAnimatedEnumeration
 
     @ReadonlyAttribute
     public var radiusX: SVGAnimatedNumber

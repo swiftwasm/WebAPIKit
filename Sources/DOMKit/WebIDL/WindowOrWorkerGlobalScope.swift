@@ -15,17 +15,15 @@ public extension WindowOrWorkerGlobalScope {
         return try await _promise.get().fromJSValue()!
     }
 
-    var trustedTypes: TrustedTypePolicyFactory { ReadonlyAttribute[Strings.trustedTypes, in: jsObject] }
+    var indexedDB: IDBFactory { ReadonlyAttribute[Strings.indexedDB, in: jsObject] }
 
-    var originPolicyIds: [String] { ReadonlyAttribute[Strings.originPolicyIds, in: jsObject] }
+    var trustedTypes: TrustedTypePolicyFactory { ReadonlyAttribute[Strings.trustedTypes, in: jsObject] }
 
     var performance: Performance { ReadonlyAttribute[Strings.performance, in: jsObject] }
 
     var crypto: Crypto { ReadonlyAttribute[Strings.crypto, in: jsObject] }
 
-    var caches: CacheStorage { ReadonlyAttribute[Strings.caches, in: jsObject] }
-
-    var indexedDB: IDBFactory { ReadonlyAttribute[Strings.indexedDB, in: jsObject] }
+    var scheduler: Scheduler { ReadonlyAttribute[Strings.scheduler, in: jsObject] }
 
     var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
 
@@ -99,5 +97,7 @@ public extension WindowOrWorkerGlobalScope {
         jsObject[Strings.structuredClone]!(value.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
-    var scheduler: Scheduler { ReadonlyAttribute[Strings.scheduler, in: jsObject] }
+    var originPolicyIds: [String] { ReadonlyAttribute[Strings.originPolicyIds, in: jsObject] }
+
+    var caches: CacheStorage { ReadonlyAttribute[Strings.caches, in: jsObject] }
 }

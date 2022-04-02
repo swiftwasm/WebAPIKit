@@ -7,15 +7,12 @@ public class KeyframeEffect: AnimationEffect {
     override public class var constructor: JSFunction { JSObject.global[Strings.KeyframeEffect].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _iterationComposite = ReadWriteAttribute(jsObject: jsObject, name: Strings.iterationComposite)
         _target = ReadWriteAttribute(jsObject: jsObject, name: Strings.target)
         _pseudoElement = ReadWriteAttribute(jsObject: jsObject, name: Strings.pseudoElement)
         _composite = ReadWriteAttribute(jsObject: jsObject, name: Strings.composite)
+        _iterationComposite = ReadWriteAttribute(jsObject: jsObject, name: Strings.iterationComposite)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadWriteAttribute
-    public var iterationComposite: IterationCompositeOperation
 
     public convenience init(target: Element?, keyframes: JSObject?, options: __UNSUPPORTED_UNION__? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(target.jsValue(), keyframes.jsValue(), options?.jsValue() ?? .undefined))
@@ -41,4 +38,7 @@ public class KeyframeEffect: AnimationEffect {
     public func setKeyframes(keyframes: JSObject?) {
         _ = jsObject[Strings.setKeyframes]!(keyframes.jsValue())
     }
+
+    @ReadWriteAttribute
+    public var iterationComposite: IterationCompositeOperation
 }

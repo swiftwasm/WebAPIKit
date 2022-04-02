@@ -12,25 +12,13 @@ public class LockManager: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func request(name: String, callback: LockGrantedCallback) -> JSPromise {
-        jsObject[Strings.request]!(name.jsValue(), callback.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'request' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func request(name: String, callback: LockGrantedCallback) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.request]!(name.jsValue(), callback.jsValue()).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
+    // XXX: member 'request' is ignored
 
-    public func request(name: String, options: LockOptions, callback: LockGrantedCallback) -> JSPromise {
-        jsObject[Strings.request]!(name.jsValue(), options.jsValue(), callback.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'request' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func request(name: String, options: LockOptions, callback: LockGrantedCallback) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.request]!(name.jsValue(), options.jsValue(), callback.jsValue()).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
+    // XXX: member 'request' is ignored
 
     public func query() -> JSPromise {
         jsObject[Strings.query]!().fromJSValue()!

@@ -7,12 +7,15 @@ public class CSSImportRule: CSSRule {
     override public class var constructor: JSFunction { JSObject.global[Strings.CSSImportRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _layerName = ReadonlyAttribute(jsObject: jsObject, name: Strings.layerName)
         _href = ReadonlyAttribute(jsObject: jsObject, name: Strings.href)
         _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
         _styleSheet = ReadonlyAttribute(jsObject: jsObject, name: Strings.styleSheet)
-        _layerName = ReadonlyAttribute(jsObject: jsObject, name: Strings.layerName)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    @ReadonlyAttribute
+    public var layerName: String?
 
     @ReadonlyAttribute
     public var href: String
@@ -22,7 +25,4 @@ public class CSSImportRule: CSSRule {
 
     @ReadonlyAttribute
     public var styleSheet: CSSStyleSheet
-
-    @ReadonlyAttribute
-    public var layerName: String?
 }

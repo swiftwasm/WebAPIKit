@@ -38,7 +38,7 @@ public class SVGFECompositeElement: SVGElement, SVGFilterPrimitiveStandardAttrib
     public var in2: SVGAnimatedString
 
     @ReadonlyAttribute
-    public var operator: SVGAnimatedEnumeration
+    public var `operator`: SVGAnimatedEnumeration
 
     @ReadonlyAttribute
     public var k1: SVGAnimatedNumber

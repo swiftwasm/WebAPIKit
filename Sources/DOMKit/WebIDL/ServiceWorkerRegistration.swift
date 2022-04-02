@@ -7,11 +7,13 @@ public class ServiceWorkerRegistration: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorkerRegistration].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _cookies = ReadonlyAttribute(jsObject: jsObject, name: Strings.cookies)
         _periodicSync = ReadonlyAttribute(jsObject: jsObject, name: Strings.periodicSync)
+        _paymentManager = ReadonlyAttribute(jsObject: jsObject, name: Strings.paymentManager)
+        _index = ReadonlyAttribute(jsObject: jsObject, name: Strings.index)
+        _pushManager = ReadonlyAttribute(jsObject: jsObject, name: Strings.pushManager)
+        _cookies = ReadonlyAttribute(jsObject: jsObject, name: Strings.cookies)
         _sync = ReadonlyAttribute(jsObject: jsObject, name: Strings.sync)
         _backgroundFetch = ReadonlyAttribute(jsObject: jsObject, name: Strings.backgroundFetch)
-        _paymentManager = ReadonlyAttribute(jsObject: jsObject, name: Strings.paymentManager)
         _installing = ReadonlyAttribute(jsObject: jsObject, name: Strings.installing)
         _waiting = ReadonlyAttribute(jsObject: jsObject, name: Strings.waiting)
         _active = ReadonlyAttribute(jsObject: jsObject, name: Strings.active)
@@ -19,16 +21,8 @@ public class ServiceWorkerRegistration: EventTarget {
         _scope = ReadonlyAttribute(jsObject: jsObject, name: Strings.scope)
         _updateViaCache = ReadonlyAttribute(jsObject: jsObject, name: Strings.updateViaCache)
         _onupdatefound = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onupdatefound)
-        _pushManager = ReadonlyAttribute(jsObject: jsObject, name: Strings.pushManager)
-        _index = ReadonlyAttribute(jsObject: jsObject, name: Strings.index)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadonlyAttribute
-    public var cookies: CookieStoreManager
-
-    @ReadonlyAttribute
-    public var periodicSync: PeriodicSyncManager
 
     public func showNotification(title: String, options: NotificationOptions? = nil) -> JSPromise {
         jsObject[Strings.showNotification]!(title.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
@@ -51,13 +45,25 @@ public class ServiceWorkerRegistration: EventTarget {
     }
 
     @ReadonlyAttribute
+    public var periodicSync: PeriodicSyncManager
+
+    @ReadonlyAttribute
+    public var paymentManager: PaymentManager
+
+    @ReadonlyAttribute
+    public var index: ContentIndex
+
+    @ReadonlyAttribute
+    public var pushManager: PushManager
+
+    @ReadonlyAttribute
+    public var cookies: CookieStoreManager
+
+    @ReadonlyAttribute
     public var sync: SyncManager
 
     @ReadonlyAttribute
     public var backgroundFetch: BackgroundFetchManager
-
-    @ReadonlyAttribute
-    public var paymentManager: PaymentManager
 
     @ReadonlyAttribute
     public var installing: ServiceWorker?
@@ -99,10 +105,4 @@ public class ServiceWorkerRegistration: EventTarget {
 
     @ClosureAttribute.Optional1
     public var onupdatefound: EventHandler
-
-    @ReadonlyAttribute
-    public var pushManager: PushManager
-
-    @ReadonlyAttribute
-    public var index: ContentIndex
 }

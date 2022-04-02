@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public enum GPUMapMode {
     public static var jsObject: JSObject {
-        JSObject.global.[Strings.GPUMapMode].object!
+        JSObject.global[Strings.GPUMapMode].object!
     }
 
     public static let READ: GPUFlagsConstant = 0x0001

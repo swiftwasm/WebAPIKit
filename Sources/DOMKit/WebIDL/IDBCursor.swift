@@ -36,7 +36,7 @@ public class IDBCursor: JSBridgedClass {
         _ = jsObject[Strings.advance]!(count.jsValue())
     }
 
-    public func continue (key: JSValue? = nil) -> Void {
+    public func `continue`(key: JSValue? = nil) {
         _ = jsObject[Strings.continue]!(key?.jsValue() ?? .undefined)
     }
 

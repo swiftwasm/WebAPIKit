@@ -14,8 +14,8 @@ public class XRInputSource: JSBridgedClass {
         _targetRaySpace = ReadonlyAttribute(jsObject: jsObject, name: Strings.targetRaySpace)
         _gripSpace = ReadonlyAttribute(jsObject: jsObject, name: Strings.gripSpace)
         _profiles = ReadonlyAttribute(jsObject: jsObject, name: Strings.profiles)
-        _hand = ReadonlyAttribute(jsObject: jsObject, name: Strings.hand)
         _gamepad = ReadonlyAttribute(jsObject: jsObject, name: Strings.gamepad)
+        _hand = ReadonlyAttribute(jsObject: jsObject, name: Strings.hand)
         self.jsObject = jsObject
     }
 
@@ -35,8 +35,8 @@ public class XRInputSource: JSBridgedClass {
     public var profiles: [String]
 
     @ReadonlyAttribute
-    public var hand: XRHand?
+    public var gamepad: Gamepad?
 
     @ReadonlyAttribute
-    public var gamepad: Gamepad?
+    public var hand: XRHand?
 }

@@ -4,11 +4,11 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SerialOutputSignals: BridgedDictionary {
-    public convenience init(dataTerminalReady: Bool, requestToSend: Bool, break _: Bool) {
+    public convenience init(dataTerminalReady: Bool, requestToSend: Bool, break: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.dataTerminalReady] = dataTerminalReady.jsValue()
         object[Strings.requestToSend] = requestToSend.jsValue()
-        object[Strings.break] = break .jsValue()
+        object[Strings.break] = `break`.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
@@ -26,5 +26,5 @@ public class SerialOutputSignals: BridgedDictionary {
     public var requestToSend: Bool
 
     @ReadWriteAttribute
-    public var break: Bool
+    public var `break`: Bool
 }

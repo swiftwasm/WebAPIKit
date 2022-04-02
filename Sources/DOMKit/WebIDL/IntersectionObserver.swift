@@ -15,9 +15,7 @@ public class IntersectionObserver: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(callback: IntersectionObserverCallback, options: IntersectionObserverInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(callback.jsValue(), options?.jsValue() ?? .undefined))
-    }
+    // XXX: constructor is ignored
 
     @ReadonlyAttribute
     public var root: __UNSUPPORTED_UNION__?

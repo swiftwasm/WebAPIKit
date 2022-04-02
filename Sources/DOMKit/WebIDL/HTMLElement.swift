@@ -3,7 +3,7 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class HTMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, DocumentAndElementEventHandlers, ElementContentEditable, HTMLOrSVGElement {
+public class HTMLElement: Element, GlobalEventHandlers, DocumentAndElementEventHandlers, ElementContentEditable, HTMLOrSVGElement, ElementCSSInlineStyle {
     override public class var constructor: JSFunction { JSObject.global[Strings.HTMLElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

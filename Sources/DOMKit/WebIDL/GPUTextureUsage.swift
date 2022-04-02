@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public enum GPUTextureUsage {
     public static var jsObject: JSObject {
-        JSObject.global.[Strings.GPUTextureUsage].object!
+        JSObject.global[Strings.GPUTextureUsage].object!
     }
 
     public static let COPY_SRC: GPUFlagsConstant = 0x01

@@ -9,11 +9,24 @@ public class RTCRtpSender: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _transform = ReadWriteAttribute(jsObject: jsObject, name: Strings.transform)
         _track = ReadonlyAttribute(jsObject: jsObject, name: Strings.track)
         _transport = ReadonlyAttribute(jsObject: jsObject, name: Strings.transport)
         _dtmf = ReadonlyAttribute(jsObject: jsObject, name: Strings.dtmf)
-        _transform = ReadWriteAttribute(jsObject: jsObject, name: Strings.transform)
         self.jsObject = jsObject
+    }
+
+    @ReadWriteAttribute
+    public var transform: RTCRtpTransform?
+
+    public func generateKeyFrame(rids: [String]? = nil) -> JSPromise {
+        jsObject[Strings.generateKeyFrame]!(rids?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func generateKeyFrame(rids: [String]? = nil) async throws {
+        let _promise: JSPromise = jsObject[Strings.generateKeyFrame]!(rids?.jsValue() ?? .undefined).fromJSValue()!
+        _ = try await _promise.get()
     }
 
     @ReadonlyAttribute
@@ -66,17 +79,4 @@ public class RTCRtpSender: JSBridgedClass {
 
     @ReadonlyAttribute
     public var dtmf: RTCDTMFSender?
-
-    @ReadWriteAttribute
-    public var transform: RTCRtpTransform?
-
-    public func generateKeyFrame(rids: [String]? = nil) -> JSPromise {
-        jsObject[Strings.generateKeyFrame]!(rids?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func generateKeyFrame(rids: [String]? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.generateKeyFrame]!(rids?.jsValue() ?? .undefined).fromJSValue()!
-        _ = try await _promise.get()
-    }
 }

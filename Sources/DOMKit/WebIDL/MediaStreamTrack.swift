@@ -7,9 +7,6 @@ public class MediaStreamTrack: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrack].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _contentHint = ReadWriteAttribute(jsObject: jsObject, name: Strings.contentHint)
-        _isolated = ReadonlyAttribute(jsObject: jsObject, name: Strings.isolated)
-        _onisolationchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onisolationchange)
         _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
@@ -19,17 +16,11 @@ public class MediaStreamTrack: EventTarget {
         _onunmute = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onunmute)
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
         _onended = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onended)
+        _contentHint = ReadWriteAttribute(jsObject: jsObject, name: Strings.contentHint)
+        _isolated = ReadonlyAttribute(jsObject: jsObject, name: Strings.isolated)
+        _onisolationchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onisolationchange)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadWriteAttribute
-    public var contentHint: String
-
-    @ReadonlyAttribute
-    public var isolated: Bool
-
-    @ClosureAttribute.Optional1
-    public var onisolationchange: EventHandler
 
     @ReadonlyAttribute
     public var kind: String
@@ -87,4 +78,13 @@ public class MediaStreamTrack: EventTarget {
         let _promise: JSPromise = jsObject[Strings.applyConstraints]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
         _ = try await _promise.get()
     }
+
+    @ReadWriteAttribute
+    public var contentHint: String
+
+    @ReadonlyAttribute
+    public var isolated: Bool
+
+    @ClosureAttribute.Optional1
+    public var onisolationchange: EventHandler
 }

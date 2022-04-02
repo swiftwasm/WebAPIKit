@@ -12,6 +12,10 @@ public class XRHitTestResult: JSBridgedClass {
         self.jsObject = jsObject
     }
 
+    public func getPose(baseSpace: XRSpace) -> XRPose? {
+        jsObject[Strings.getPose]!(baseSpace.jsValue()).fromJSValue()!
+    }
+
     public func createAnchor() -> JSPromise {
         jsObject[Strings.createAnchor]!().fromJSValue()!
     }
@@ -20,9 +24,5 @@ public class XRHitTestResult: JSBridgedClass {
     public func createAnchor() async throws -> XRAnchor {
         let _promise: JSPromise = jsObject[Strings.createAnchor]!().fromJSValue()!
         return try await _promise.get().fromJSValue()!
-    }
-
-    public func getPose(baseSpace: XRSpace) -> XRPose? {
-        jsObject[Strings.getPose]!(baseSpace.jsValue()).fromJSValue()!
     }
 }

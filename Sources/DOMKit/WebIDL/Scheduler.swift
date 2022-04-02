@@ -12,13 +12,7 @@ public class Scheduler: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func postTask(callback: SchedulerPostTaskCallback, options: SchedulerPostTaskOptions? = nil) -> JSPromise {
-        jsObject[Strings.postTask]!(callback.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    // XXX: member 'postTask' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func postTask(callback: SchedulerPostTaskCallback, options: SchedulerPostTaskOptions? = nil) async throws -> JSValue {
-        let _promise: JSPromise = jsObject[Strings.postTask]!(callback.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
+    // XXX: member 'postTask' is ignored
 }

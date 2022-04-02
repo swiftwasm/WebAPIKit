@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public enum USBDirection: JSString, JSValueCompatible {
-    case in = "in"
+    case `in` = "in"
     case out = "out"
 
     public static func construct(from jsValue: JSValue) -> Self? {

@@ -5,7 +5,17 @@ import JavaScriptKit
 
 public protocol DocumentOrShadowRoot: JSBridgedClass {}
 public extension DocumentOrShadowRoot {
+    var fullscreenElement: Element? { ReadonlyAttribute[Strings.fullscreenElement, in: jsObject] }
+
     var pointerLockElement: Element? { ReadonlyAttribute[Strings.pointerLockElement, in: jsObject] }
+
+    func getAnimations() -> [Animation] {
+        jsObject[Strings.getAnimations]!().fromJSValue()!
+    }
+
+    var activeElement: Element? { ReadonlyAttribute[Strings.activeElement, in: jsObject] }
+
+    var pictureInPictureElement: Element? { ReadonlyAttribute[Strings.pictureInPictureElement, in: jsObject] }
 
     var styleSheets: StyleSheetList { ReadonlyAttribute[Strings.styleSheets, in: jsObject] }
 
@@ -13,14 +23,4 @@ public extension DocumentOrShadowRoot {
         get { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] }
         set { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] = newValue }
     }
-
-    var activeElement: Element? { ReadonlyAttribute[Strings.activeElement, in: jsObject] }
-
-    func getAnimations() -> [Animation] {
-        jsObject[Strings.getAnimations]!().fromJSValue()!
-    }
-
-    var pictureInPictureElement: Element? { ReadonlyAttribute[Strings.pictureInPictureElement, in: jsObject] }
-
-    var fullscreenElement: Element? { ReadonlyAttribute[Strings.fullscreenElement, in: jsObject] }
 }

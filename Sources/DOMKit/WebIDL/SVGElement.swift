@@ -3,18 +3,16 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class SVGElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, DocumentAndElementEventHandlers, SVGElementInstance, HTMLOrSVGElement {
+public class SVGElement: Element, GlobalEventHandlers, DocumentAndElementEventHandlers, SVGElementInstance, HTMLOrSVGElement, ElementCSSInlineStyle {
     override public class var constructor: JSFunction { JSObject.global[Strings.SVGElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _className = ReadonlyAttribute(jsObject: jsObject, name: Strings.className)
         _ownerSVGElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.ownerSVGElement)
         _viewportElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.viewportElement)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    private var _className: ReadonlyAttribute<SVGAnimatedString>
-    override public var className: SVGAnimatedString { _className.wrappedValue }
+    // XXX: member 'className' is ignored
 
     @ReadonlyAttribute
     public var ownerSVGElement: SVGSVGElement?

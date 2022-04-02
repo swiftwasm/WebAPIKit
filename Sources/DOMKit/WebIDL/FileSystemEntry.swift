@@ -32,7 +32,5 @@ public class FileSystemEntry: JSBridgedClass {
     @ReadonlyAttribute
     public var filesystem: FileSystem
 
-    public func getParent(successCallback: FileSystemEntryCallback? = nil, errorCallback: ErrorCallback? = nil) {
-        _ = jsObject[Strings.getParent]!(successCallback?.jsValue() ?? .undefined, errorCallback?.jsValue() ?? .undefined)
-    }
+    // XXX: member 'getParent' is ignored
 }

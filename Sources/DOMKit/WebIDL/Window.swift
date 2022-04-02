@@ -7,14 +7,13 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     override public class var constructor: JSFunction { JSObject.global[Strings.Window].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _ondeviceorientation = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondeviceorientation)
+        _ondeviceorientationabsolute = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondeviceorientationabsolute)
+        _oncompassneedscalibration = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncompassneedscalibration)
+        _ondevicemotion = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondevicemotion)
         _orientation = ReadonlyAttribute(jsObject: jsObject, name: Strings.orientation)
         _onorientationchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onorientationchange)
-        _speechSynthesis = ReadonlyAttribute(jsObject: jsObject, name: Strings.speechSynthesis)
-        _cookieStore = ReadonlyAttribute(jsObject: jsObject, name: Strings.cookieStore)
         _event = ReadonlyAttribute(jsObject: jsObject, name: Strings.event)
-        _navigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigation)
-        _onappinstalled = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onappinstalled)
-        _onbeforeinstallprompt = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onbeforeinstallprompt)
         _screen = ReadonlyAttribute(jsObject: jsObject, name: Strings.screen)
         _innerWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.innerWidth)
         _innerHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.innerHeight)
@@ -30,7 +29,10 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
         _outerHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.outerHeight)
         _devicePixelRatio = ReadonlyAttribute(jsObject: jsObject, name: Strings.devicePixelRatio)
         _attributionReporting = ReadonlyAttribute(jsObject: jsObject, name: Strings.attributionReporting)
-        _visualViewport = ReadonlyAttribute(jsObject: jsObject, name: Strings.visualViewport)
+        _speechSynthesis = ReadonlyAttribute(jsObject: jsObject, name: Strings.speechSynthesis)
+        _cookieStore = ReadonlyAttribute(jsObject: jsObject, name: Strings.cookieStore)
+        _onappinstalled = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onappinstalled)
+        _onbeforeinstallprompt = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onbeforeinstallprompt)
         _window = ReadonlyAttribute(jsObject: jsObject, name: Strings.window)
         _self = ReadonlyAttribute(jsObject: jsObject, name: Strings._self)
         _document = ReadonlyAttribute(jsObject: jsObject, name: Strings.document)
@@ -57,20 +59,22 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
         _originAgentCluster = ReadonlyAttribute(jsObject: jsObject, name: Strings.originAgentCluster)
         _external = ReadonlyAttribute(jsObject: jsObject, name: Strings.external)
         _portalHost = ReadonlyAttribute(jsObject: jsObject, name: Strings.portalHost)
-        _ondeviceorientation = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondeviceorientation)
-        _ondeviceorientationabsolute = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondeviceorientationabsolute)
-        _oncompassneedscalibration = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncompassneedscalibration)
-        _ondevicemotion = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondevicemotion)
+        _navigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigation)
+        _visualViewport = ReadonlyAttribute(jsObject: jsObject, name: Strings.visualViewport)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func requestIdleCallback(callback: IdleRequestCallback, options: IdleRequestOptions? = nil) -> UInt32 {
-        jsObject[Strings.requestIdleCallback]!(callback.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    @ClosureAttribute.Optional1
+    public var ondeviceorientation: EventHandler
 
-    public func cancelIdleCallback(handle: UInt32) {
-        _ = jsObject[Strings.cancelIdleCallback]!(handle.jsValue())
-    }
+    @ClosureAttribute.Optional1
+    public var ondeviceorientationabsolute: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var oncompassneedscalibration: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var ondevicemotion: EventHandler
 
     @ReadonlyAttribute
     public var orientation: Int16
@@ -78,53 +82,12 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     @ClosureAttribute.Optional1
     public var onorientationchange: EventHandler
 
-    @ReadonlyAttribute
-    public var speechSynthesis: SpeechSynthesis
-
-    @ReadonlyAttribute
-    public var cookieStore: CookieStore
+    public func getSelection() -> Selection? {
+        jsObject[Strings.getSelection]!().fromJSValue()!
+    }
 
     @ReadonlyAttribute
     public var event: __UNSUPPORTED_UNION__
-
-    @ReadonlyAttribute
-    public var navigation: Navigation
-
-    @ClosureAttribute.Optional1
-    public var onappinstalled: EventHandler
-
-    @ClosureAttribute.Optional1
-    public var onbeforeinstallprompt: EventHandler
-
-    public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) -> JSPromise {
-        jsObject[Strings.showOpenFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) async throws -> [FileSystemFileHandle] {
-        let _promise: JSPromise = jsObject[Strings.showOpenFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
-    public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) -> JSPromise {
-        jsObject[Strings.showSaveFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) async throws -> FileSystemFileHandle {
-        let _promise: JSPromise = jsObject[Strings.showSaveFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
-    public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) -> JSPromise {
-        jsObject[Strings.showDirectoryPicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) async throws -> FileSystemDirectoryHandle {
-        let _promise: JSPromise = jsObject[Strings.showDirectoryPicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
 
     public func matchMedia(query: String) -> MediaQueryList {
         jsObject[Strings.matchMedia]!(query.jsValue()).fromJSValue()!
@@ -212,16 +175,6 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     @ReadonlyAttribute
     public var devicePixelRatio: Double
 
-    @ReadonlyAttribute
-    public var attributionReporting: AttributionReporting
-
-    public func getComputedStyle(elt: Element, pseudoElt: String? = nil) -> CSSStyleDeclaration {
-        jsObject[Strings.getComputedStyle]!(elt.jsValue(), pseudoElt?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @ReadonlyAttribute
-    public var visualViewport: VisualViewport
-
     public func getDigitalGoodsService(serviceProvider: String) -> JSPromise {
         jsObject[Strings.getDigitalGoodsService]!(serviceProvider.jsValue()).fromJSValue()!
     }
@@ -231,6 +184,21 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
         let _promise: JSPromise = jsObject[Strings.getDigitalGoodsService]!(serviceProvider.jsValue()).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
+
+    @ReadonlyAttribute
+    public var attributionReporting: AttributionReporting
+
+    @ReadonlyAttribute
+    public var speechSynthesis: SpeechSynthesis
+
+    @ReadonlyAttribute
+    public var cookieStore: CookieStore
+
+    @ClosureAttribute.Optional1
+    public var onappinstalled: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var onbeforeinstallprompt: EventHandler
 
     @ReadonlyAttribute
     public var window: WindowProxy
@@ -370,23 +338,55 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     @ReadonlyAttribute
     public var portalHost: PortalHost?
 
-    @ClosureAttribute.Optional1
-    public var ondeviceorientation: EventHandler
+    public func getComputedStyle(elt: Element, pseudoElt: String? = nil) -> CSSStyleDeclaration {
+        jsObject[Strings.getComputedStyle]!(elt.jsValue(), pseudoElt?.jsValue() ?? .undefined).fromJSValue()!
+    }
 
-    @ClosureAttribute.Optional1
-    public var ondeviceorientationabsolute: EventHandler
+    public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) -> JSPromise {
+        jsObject[Strings.showOpenFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+    }
 
-    @ClosureAttribute.Optional1
-    public var oncompassneedscalibration: EventHandler
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) async throws -> [FileSystemFileHandle] {
+        let _promise: JSPromise = jsObject[Strings.showOpenFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
 
-    @ClosureAttribute.Optional1
-    public var ondevicemotion: EventHandler
+    public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) -> JSPromise {
+        jsObject[Strings.showSaveFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+    }
 
-    public func getSelection() -> Selection? {
-        jsObject[Strings.getSelection]!().fromJSValue()!
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) async throws -> FileSystemFileHandle {
+        let _promise: JSPromise = jsObject[Strings.showSaveFilePicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) -> JSPromise {
+        jsObject[Strings.showDirectoryPicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) async throws -> FileSystemDirectoryHandle {
+        let _promise: JSPromise = jsObject[Strings.showDirectoryPicker]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
     }
 
     public func navigate(dir: SpatialNavigationDirection) {
         _ = jsObject[Strings.navigate]!(dir.jsValue())
+    }
+
+    @ReadonlyAttribute
+    public var navigation: Navigation
+
+    @ReadonlyAttribute
+    public var visualViewport: VisualViewport
+
+    public func requestIdleCallback(callback: IdleRequestCallback, options: IdleRequestOptions? = nil) -> UInt32 {
+        jsObject[Strings.requestIdleCallback]!(callback.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    public func cancelIdleCallback(handle: UInt32) {
+        _ = jsObject[Strings.cancelIdleCallback]!(handle.jsValue())
     }
 }

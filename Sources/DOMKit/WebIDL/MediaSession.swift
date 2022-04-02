@@ -20,9 +20,7 @@ public class MediaSession: JSBridgedClass {
     @ReadWriteAttribute
     public var playbackState: MediaSessionPlaybackState
 
-    public func setActionHandler(action: MediaSessionAction, handler: MediaSessionActionHandler?) {
-        _ = jsObject[Strings.setActionHandler]!(action.jsValue(), handler.jsValue())
-    }
+    // XXX: member 'setActionHandler' is ignored
 
     public func setPositionState(state: MediaPositionState? = nil) {
         _ = jsObject[Strings.setPositionState]!(state?.jsValue() ?? .undefined)

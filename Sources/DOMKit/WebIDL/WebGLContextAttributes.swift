@@ -4,9 +4,8 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLContextAttributes: BridgedDictionary {
-    public convenience init(xrCompatible: Bool, alpha: Bool, depth: Bool, stencil: Bool, antialias: Bool, premultipliedAlpha: Bool, preserveDrawingBuffer: Bool, powerPreference: WebGLPowerPreference, failIfMajorPerformanceCaveat: Bool, desynchronized: Bool) {
+    public convenience init(alpha: Bool, depth: Bool, stencil: Bool, antialias: Bool, premultipliedAlpha: Bool, preserveDrawingBuffer: Bool, powerPreference: WebGLPowerPreference, failIfMajorPerformanceCaveat: Bool, desynchronized: Bool, xrCompatible: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.xrCompatible] = xrCompatible.jsValue()
         object[Strings.alpha] = alpha.jsValue()
         object[Strings.depth] = depth.jsValue()
         object[Strings.stencil] = stencil.jsValue()
@@ -16,11 +15,11 @@ public class WebGLContextAttributes: BridgedDictionary {
         object[Strings.powerPreference] = powerPreference.jsValue()
         object[Strings.failIfMajorPerformanceCaveat] = failIfMajorPerformanceCaveat.jsValue()
         object[Strings.desynchronized] = desynchronized.jsValue()
+        object[Strings.xrCompatible] = xrCompatible.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _xrCompatible = ReadWriteAttribute(jsObject: object, name: Strings.xrCompatible)
         _alpha = ReadWriteAttribute(jsObject: object, name: Strings.alpha)
         _depth = ReadWriteAttribute(jsObject: object, name: Strings.depth)
         _stencil = ReadWriteAttribute(jsObject: object, name: Strings.stencil)
@@ -30,11 +29,9 @@ public class WebGLContextAttributes: BridgedDictionary {
         _powerPreference = ReadWriteAttribute(jsObject: object, name: Strings.powerPreference)
         _failIfMajorPerformanceCaveat = ReadWriteAttribute(jsObject: object, name: Strings.failIfMajorPerformanceCaveat)
         _desynchronized = ReadWriteAttribute(jsObject: object, name: Strings.desynchronized)
+        _xrCompatible = ReadWriteAttribute(jsObject: object, name: Strings.xrCompatible)
         super.init(unsafelyWrapping: object)
     }
-
-    @ReadWriteAttribute
-    public var xrCompatible: Bool
 
     @ReadWriteAttribute
     public var alpha: Bool
@@ -62,4 +59,7 @@ public class WebGLContextAttributes: BridgedDictionary {
 
     @ReadWriteAttribute
     public var desynchronized: Bool
+
+    @ReadWriteAttribute
+    public var xrCompatible: Bool
 }

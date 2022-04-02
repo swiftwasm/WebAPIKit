@@ -10,7 +10,5 @@ public class AnimationWorkletGlobalScope: WorkletGlobalScope {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func registerAnimator(name: String, animatorCtor: AnimatorInstanceConstructor) {
-        _ = jsObject[Strings.registerAnimator]!(name.jsValue(), animatorCtor.jsValue())
-    }
+    // XXX: member 'registerAnimator' is ignored
 }

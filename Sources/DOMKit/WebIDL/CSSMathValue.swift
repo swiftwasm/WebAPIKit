@@ -12,5 +12,5 @@ public class CSSMathValue: CSSNumericValue {
     }
 
     @ReadonlyAttribute
-    public var operator: CSSMathOperator
+    public var `operator`: CSSMathOperator
 }

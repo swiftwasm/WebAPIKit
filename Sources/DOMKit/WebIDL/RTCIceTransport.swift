@@ -7,6 +7,8 @@ public class RTCIceTransport: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.RTCIceTransport].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
+        _onicecandidate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onicecandidate)
         _role = ReadonlyAttribute(jsObject: jsObject, name: Strings.role)
         _component = ReadonlyAttribute(jsObject: jsObject, name: Strings.component)
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
@@ -14,10 +16,34 @@ public class RTCIceTransport: EventTarget {
         _onstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onstatechange)
         _ongatheringstatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ongatheringstatechange)
         _onselectedcandidatepairchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onselectedcandidatepairchange)
-        _onerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onerror)
-        _onicecandidate = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onicecandidate)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    public convenience init() {
+        self.init(unsafelyWrapping: Self.constructor.new())
+    }
+
+    public func gather(options: RTCIceGatherOptions? = nil) {
+        _ = jsObject[Strings.gather]!(options?.jsValue() ?? .undefined)
+    }
+
+    public func start(remoteParameters: RTCIceParameters? = nil, role: RTCIceRole? = nil) {
+        _ = jsObject[Strings.start]!(remoteParameters?.jsValue() ?? .undefined, role?.jsValue() ?? .undefined)
+    }
+
+    public func stop() {
+        _ = jsObject[Strings.stop]!()
+    }
+
+    public func addRemoteCandidate(remoteCandidate: RTCIceCandidateInit? = nil) {
+        _ = jsObject[Strings.addRemoteCandidate]!(remoteCandidate?.jsValue() ?? .undefined)
+    }
+
+    @ClosureAttribute.Optional1
+    public var onerror: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var onicecandidate: EventHandler
 
     @ReadonlyAttribute
     public var role: RTCIceRole
@@ -59,30 +85,4 @@ public class RTCIceTransport: EventTarget {
 
     @ClosureAttribute.Optional1
     public var onselectedcandidatepairchange: EventHandler
-
-    public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
-    }
-
-    public func gather(options: RTCIceGatherOptions? = nil) {
-        _ = jsObject[Strings.gather]!(options?.jsValue() ?? .undefined)
-    }
-
-    public func start(remoteParameters: RTCIceParameters? = nil, role: RTCIceRole? = nil) {
-        _ = jsObject[Strings.start]!(remoteParameters?.jsValue() ?? .undefined, role?.jsValue() ?? .undefined)
-    }
-
-    public func stop() {
-        _ = jsObject[Strings.stop]!()
-    }
-
-    public func addRemoteCandidate(remoteCandidate: RTCIceCandidateInit? = nil) {
-        _ = jsObject[Strings.addRemoteCandidate]!(remoteCandidate?.jsValue() ?? .undefined)
-    }
-
-    @ClosureAttribute.Optional1
-    public var onerror: EventHandler
-
-    @ClosureAttribute.Optional1
-    public var onicecandidate: EventHandler
 }

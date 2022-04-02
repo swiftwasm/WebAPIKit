@@ -5,16 +5,6 @@ import JavaScriptKit
 
 public protocol WebGLRenderingContextBase: JSBridgedClass {}
 public extension WebGLRenderingContextBase {
-    func makeXRCompatible() -> JSPromise {
-        jsObject[Strings.makeXRCompatible]!().fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func makeXRCompatible() async throws {
-        let _promise: JSPromise = jsObject[Strings.makeXRCompatible]!().fromJSValue()!
-        _ = try await _promise.get()
-    }
-
     static let DEPTH_BUFFER_BIT: GLenum = 0x0000_0100
 
     static let STENCIL_BUFFER_BIT: GLenum = 0x0000_0400
@@ -1105,5 +1095,15 @@ public extension WebGLRenderingContextBase {
 
     func viewport(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
         _ = jsObject[Strings.viewport]!(x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue())
+    }
+
+    func makeXRCompatible() -> JSPromise {
+        jsObject[Strings.makeXRCompatible]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    func makeXRCompatible() async throws {
+        let _promise: JSPromise = jsObject[Strings.makeXRCompatible]!().fromJSValue()!
+        _ = try await _promise.get()
     }
 }

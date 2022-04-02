@@ -10,7 +10,5 @@ public class FileSystemFileEntry: FileSystemEntry {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func file(successCallback: FileCallback, errorCallback: ErrorCallback? = nil) {
-        _ = jsObject[Strings.file]!(successCallback.jsValue(), errorCallback?.jsValue() ?? .undefined)
-    }
+    // XXX: member 'file' is ignored
 }

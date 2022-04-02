@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public enum GPUShaderStage {
     public static var jsObject: JSObject {
-        JSObject.global.[Strings.GPUShaderStage].object!
+        JSObject.global[Strings.GPUShaderStage].object!
     }
 
     public static let VERTEX: GPUFlagsConstant = 0x1

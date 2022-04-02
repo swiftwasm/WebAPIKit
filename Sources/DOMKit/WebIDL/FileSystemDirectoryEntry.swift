@@ -14,11 +14,7 @@ public class FileSystemDirectoryEntry: FileSystemEntry {
         jsObject[Strings.createReader]!().fromJSValue()!
     }
 
-    public func getFile(path: String? = nil, options: FileSystemFlags? = nil, successCallback: FileSystemEntryCallback? = nil, errorCallback: ErrorCallback? = nil) {
-        _ = jsObject[Strings.getFile]!(path?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined, successCallback?.jsValue() ?? .undefined, errorCallback?.jsValue() ?? .undefined)
-    }
+    // XXX: member 'getFile' is ignored
 
-    public func getDirectory(path: String? = nil, options: FileSystemFlags? = nil, successCallback: FileSystemEntryCallback? = nil, errorCallback: ErrorCallback? = nil) {
-        _ = jsObject[Strings.getDirectory]!(path?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined, successCallback?.jsValue() ?? .undefined, errorCallback?.jsValue() ?? .undefined)
-    }
+    // XXX: member 'getDirectory' is ignored
 }

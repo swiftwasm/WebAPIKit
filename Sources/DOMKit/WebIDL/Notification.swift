@@ -38,15 +38,9 @@ public class Notification: EventTarget {
     @ReadonlyAttribute
     public var permission: NotificationPermission
 
-    public static func requestPermission(deprecatedCallback: NotificationPermissionCallback? = nil) -> JSPromise {
-        constructor[Strings.requestPermission]!(deprecatedCallback?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    // XXX: member 'requestPermission' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func requestPermission(deprecatedCallback: NotificationPermissionCallback? = nil) async throws -> NotificationPermission {
-        let _promise: JSPromise = constructor[Strings.requestPermission]!(deprecatedCallback?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
+    // XXX: member 'requestPermission' is ignored
 
     @ReadonlyAttribute
     public var maxActions: UInt32

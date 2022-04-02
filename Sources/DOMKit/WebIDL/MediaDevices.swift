@@ -11,16 +11,6 @@ public class MediaDevices: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func getDisplayMedia(constraints: DisplayMediaStreamConstraints? = nil) -> JSPromise {
-        jsObject[Strings.getDisplayMedia]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getDisplayMedia(constraints: DisplayMediaStreamConstraints? = nil) async throws -> MediaStream {
-        let _promise: JSPromise = jsObject[Strings.getDisplayMedia]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
     public func selectAudioOutput(options: AudioOutputOptions? = nil) -> JSPromise {
         jsObject[Strings.selectAudioOutput]!(options?.jsValue() ?? .undefined).fromJSValue()!
     }
@@ -65,6 +55,16 @@ public class MediaDevices: EventTarget {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func getUserMedia(constraints: MediaStreamConstraints? = nil) async throws -> MediaStream {
         let _promise: JSPromise = jsObject[Strings.getUserMedia]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    public func getDisplayMedia(constraints: DisplayMediaStreamConstraints? = nil) -> JSPromise {
+        jsObject[Strings.getDisplayMedia]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func getDisplayMedia(constraints: DisplayMediaStreamConstraints? = nil) async throws -> MediaStream {
+        let _promise: JSPromise = jsObject[Strings.getDisplayMedia]!(constraints?.jsValue() ?? .undefined).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

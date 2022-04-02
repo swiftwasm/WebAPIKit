@@ -9,13 +9,16 @@ public class Client: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _lifecycleState = ReadonlyAttribute(jsObject: jsObject, name: Strings.lifecycleState)
         _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
         _frameType = ReadonlyAttribute(jsObject: jsObject, name: Strings.frameType)
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
         _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
-        _lifecycleState = ReadonlyAttribute(jsObject: jsObject, name: Strings.lifecycleState)
         self.jsObject = jsObject
     }
+
+    @ReadonlyAttribute
+    public var lifecycleState: ClientLifecycleState
 
     @ReadonlyAttribute
     public var url: String
@@ -36,7 +39,4 @@ public class Client: JSBridgedClass {
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         _ = jsObject[Strings.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
     }
-
-    @ReadonlyAttribute
-    public var lifecycleState: ClientLifecycleState
 }

@@ -38,35 +38,17 @@ public class RTCPeerConnection: EventTarget {
         self.init(unsafelyWrapping: Self.constructor.new(configuration?.jsValue() ?? .undefined))
     }
 
-    public func createOffer(options: RTCOfferOptions? = nil) -> JSPromise {
-        jsObject[Strings.createOffer]!(options?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    // XXX: member 'createOffer' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func createOffer(options: RTCOfferOptions? = nil) async throws -> RTCSessionDescriptionInit {
-        let _promise: JSPromise = jsObject[Strings.createOffer]!(options?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
+    // XXX: member 'createOffer' is ignored
 
-    public func createAnswer(options: RTCAnswerOptions? = nil) -> JSPromise {
-        jsObject[Strings.createAnswer]!(options?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    // XXX: member 'createAnswer' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func createAnswer(options: RTCAnswerOptions? = nil) async throws -> RTCSessionDescriptionInit {
-        let _promise: JSPromise = jsObject[Strings.createAnswer]!(options?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
+    // XXX: member 'createAnswer' is ignored
 
-    public func setLocalDescription(description: RTCLocalSessionDescriptionInit? = nil) -> JSPromise {
-        jsObject[Strings.setLocalDescription]!(description?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    // XXX: member 'setLocalDescription' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func setLocalDescription(description: RTCLocalSessionDescriptionInit? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.setLocalDescription]!(description?.jsValue() ?? .undefined).fromJSValue()!
-        _ = try await _promise.get()
-    }
+    // XXX: member 'setLocalDescription' is ignored
 
     @ReadonlyAttribute
     public var localDescription: RTCSessionDescription?
@@ -77,15 +59,9 @@ public class RTCPeerConnection: EventTarget {
     @ReadonlyAttribute
     public var pendingLocalDescription: RTCSessionDescription?
 
-    public func setRemoteDescription(description: RTCSessionDescriptionInit) -> JSPromise {
-        jsObject[Strings.setRemoteDescription]!(description.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'setRemoteDescription' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func setRemoteDescription(description: RTCSessionDescriptionInit) async throws {
-        let _promise: JSPromise = jsObject[Strings.setRemoteDescription]!(description.jsValue()).fromJSValue()!
-        _ = try await _promise.get()
-    }
+    // XXX: member 'setRemoteDescription' is ignored
 
     @ReadonlyAttribute
     public var remoteDescription: RTCSessionDescription?
@@ -96,15 +72,9 @@ public class RTCPeerConnection: EventTarget {
     @ReadonlyAttribute
     public var pendingRemoteDescription: RTCSessionDescription?
 
-    public func addIceCandidate(candidate: RTCIceCandidateInit? = nil) -> JSPromise {
-        jsObject[Strings.addIceCandidate]!(candidate?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    // XXX: member 'addIceCandidate' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func addIceCandidate(candidate: RTCIceCandidateInit? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.addIceCandidate]!(candidate?.jsValue() ?? .undefined).fromJSValue()!
-        _ = try await _promise.get()
-    }
+    // XXX: member 'addIceCandidate' is ignored
 
     @ReadonlyAttribute
     public var signalingState: RTCSignalingState
@@ -158,55 +128,25 @@ public class RTCPeerConnection: EventTarget {
     @ClosureAttribute.Optional1
     public var onconnectionstatechange: EventHandler
 
-    public func createOffer(successCallback: RTCSessionDescriptionCallback, failureCallback: RTCPeerConnectionErrorCallback, options: RTCOfferOptions? = nil) -> JSPromise {
-        jsObject[Strings.createOffer]!(successCallback.jsValue(), failureCallback.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    // XXX: member 'createOffer' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func createOffer(successCallback: RTCSessionDescriptionCallback, failureCallback: RTCPeerConnectionErrorCallback, options: RTCOfferOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.createOffer]!(successCallback.jsValue(), failureCallback.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
-        _ = try await _promise.get()
-    }
+    // XXX: member 'createOffer' is ignored
 
-    public func setLocalDescription(description: RTCLocalSessionDescriptionInit, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback) -> JSPromise {
-        jsObject[Strings.setLocalDescription]!(description.jsValue(), successCallback.jsValue(), failureCallback.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'setLocalDescription' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func setLocalDescription(description: RTCLocalSessionDescriptionInit, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback) async throws {
-        let _promise: JSPromise = jsObject[Strings.setLocalDescription]!(description.jsValue(), successCallback.jsValue(), failureCallback.jsValue()).fromJSValue()!
-        _ = try await _promise.get()
-    }
+    // XXX: member 'setLocalDescription' is ignored
 
-    public func createAnswer(successCallback: RTCSessionDescriptionCallback, failureCallback: RTCPeerConnectionErrorCallback) -> JSPromise {
-        jsObject[Strings.createAnswer]!(successCallback.jsValue(), failureCallback.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'createAnswer' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func createAnswer(successCallback: RTCSessionDescriptionCallback, failureCallback: RTCPeerConnectionErrorCallback) async throws {
-        let _promise: JSPromise = jsObject[Strings.createAnswer]!(successCallback.jsValue(), failureCallback.jsValue()).fromJSValue()!
-        _ = try await _promise.get()
-    }
+    // XXX: member 'createAnswer' is ignored
 
-    public func setRemoteDescription(description: RTCSessionDescriptionInit, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback) -> JSPromise {
-        jsObject[Strings.setRemoteDescription]!(description.jsValue(), successCallback.jsValue(), failureCallback.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'setRemoteDescription' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func setRemoteDescription(description: RTCSessionDescriptionInit, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback) async throws {
-        let _promise: JSPromise = jsObject[Strings.setRemoteDescription]!(description.jsValue(), successCallback.jsValue(), failureCallback.jsValue()).fromJSValue()!
-        _ = try await _promise.get()
-    }
+    // XXX: member 'setRemoteDescription' is ignored
 
-    public func addIceCandidate(candidate: RTCIceCandidateInit, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback) -> JSPromise {
-        jsObject[Strings.addIceCandidate]!(candidate.jsValue(), successCallback.jsValue(), failureCallback.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'addIceCandidate' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func addIceCandidate(candidate: RTCIceCandidateInit, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback) async throws {
-        let _promise: JSPromise = jsObject[Strings.addIceCandidate]!(candidate.jsValue(), successCallback.jsValue(), failureCallback.jsValue()).fromJSValue()!
-        _ = try await _promise.get()
-    }
+    // XXX: member 'addIceCandidate' is ignored
 
     public static func generateCertificate(keygenAlgorithm: AlgorithmIdentifier) -> JSPromise {
         constructor[Strings.generateCertificate]!(keygenAlgorithm.jsValue()).fromJSValue()!

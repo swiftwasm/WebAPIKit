@@ -4,8 +4,23 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaTrackConstraintSet: BridgedDictionary {
-    public convenience init(whiteBalanceMode: ConstrainDOMString, exposureMode: ConstrainDOMString, focusMode: ConstrainDOMString, pointsOfInterest: ConstrainPoint2D, exposureCompensation: ConstrainDouble, exposureTime: ConstrainDouble, colorTemperature: ConstrainDouble, iso: ConstrainDouble, brightness: ConstrainDouble, contrast: ConstrainDouble, saturation: ConstrainDouble, sharpness: ConstrainDouble, focusDistance: ConstrainDouble, pan: __UNSUPPORTED_UNION__, tilt: __UNSUPPORTED_UNION__, zoom: __UNSUPPORTED_UNION__, torch: ConstrainBoolean, displaySurface: ConstrainDOMString, logicalSurface: ConstrainBoolean, cursor: ConstrainDOMString, restrictOwnAudio: ConstrainBoolean, suppressLocalAudioPlayback: ConstrainBoolean, width: ConstrainULong, height: ConstrainULong, aspectRatio: ConstrainDouble, frameRate: ConstrainDouble, facingMode: ConstrainDOMString, resizeMode: ConstrainDOMString, sampleRate: ConstrainULong, sampleSize: ConstrainULong, echoCancellation: ConstrainBoolean, autoGainControl: ConstrainBoolean, noiseSuppression: ConstrainBoolean, latency: ConstrainDouble, channelCount: ConstrainULong, deviceId: ConstrainDOMString, groupId: ConstrainDOMString) {
+    public convenience init(width: ConstrainULong, height: ConstrainULong, aspectRatio: ConstrainDouble, frameRate: ConstrainDouble, facingMode: ConstrainDOMString, resizeMode: ConstrainDOMString, sampleRate: ConstrainULong, sampleSize: ConstrainULong, echoCancellation: ConstrainBoolean, autoGainControl: ConstrainBoolean, noiseSuppression: ConstrainBoolean, latency: ConstrainDouble, channelCount: ConstrainULong, deviceId: ConstrainDOMString, groupId: ConstrainDOMString, whiteBalanceMode: ConstrainDOMString, exposureMode: ConstrainDOMString, focusMode: ConstrainDOMString, pointsOfInterest: ConstrainPoint2D, exposureCompensation: ConstrainDouble, exposureTime: ConstrainDouble, colorTemperature: ConstrainDouble, iso: ConstrainDouble, brightness: ConstrainDouble, contrast: ConstrainDouble, saturation: ConstrainDouble, sharpness: ConstrainDouble, focusDistance: ConstrainDouble, pan: __UNSUPPORTED_UNION__, tilt: __UNSUPPORTED_UNION__, zoom: __UNSUPPORTED_UNION__, torch: ConstrainBoolean, displaySurface: ConstrainDOMString, logicalSurface: ConstrainBoolean, cursor: ConstrainDOMString, restrictOwnAudio: ConstrainBoolean, suppressLocalAudioPlayback: ConstrainBoolean) {
         let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.width] = width.jsValue()
+        object[Strings.height] = height.jsValue()
+        object[Strings.aspectRatio] = aspectRatio.jsValue()
+        object[Strings.frameRate] = frameRate.jsValue()
+        object[Strings.facingMode] = facingMode.jsValue()
+        object[Strings.resizeMode] = resizeMode.jsValue()
+        object[Strings.sampleRate] = sampleRate.jsValue()
+        object[Strings.sampleSize] = sampleSize.jsValue()
+        object[Strings.echoCancellation] = echoCancellation.jsValue()
+        object[Strings.autoGainControl] = autoGainControl.jsValue()
+        object[Strings.noiseSuppression] = noiseSuppression.jsValue()
+        object[Strings.latency] = latency.jsValue()
+        object[Strings.channelCount] = channelCount.jsValue()
+        object[Strings.deviceId] = deviceId.jsValue()
+        object[Strings.groupId] = groupId.jsValue()
         object[Strings.whiteBalanceMode] = whiteBalanceMode.jsValue()
         object[Strings.exposureMode] = exposureMode.jsValue()
         object[Strings.focusMode] = focusMode.jsValue()
@@ -28,25 +43,25 @@ public class MediaTrackConstraintSet: BridgedDictionary {
         object[Strings.cursor] = cursor.jsValue()
         object[Strings.restrictOwnAudio] = restrictOwnAudio.jsValue()
         object[Strings.suppressLocalAudioPlayback] = suppressLocalAudioPlayback.jsValue()
-        object[Strings.width] = width.jsValue()
-        object[Strings.height] = height.jsValue()
-        object[Strings.aspectRatio] = aspectRatio.jsValue()
-        object[Strings.frameRate] = frameRate.jsValue()
-        object[Strings.facingMode] = facingMode.jsValue()
-        object[Strings.resizeMode] = resizeMode.jsValue()
-        object[Strings.sampleRate] = sampleRate.jsValue()
-        object[Strings.sampleSize] = sampleSize.jsValue()
-        object[Strings.echoCancellation] = echoCancellation.jsValue()
-        object[Strings.autoGainControl] = autoGainControl.jsValue()
-        object[Strings.noiseSuppression] = noiseSuppression.jsValue()
-        object[Strings.latency] = latency.jsValue()
-        object[Strings.channelCount] = channelCount.jsValue()
-        object[Strings.deviceId] = deviceId.jsValue()
-        object[Strings.groupId] = groupId.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
+        _width = ReadWriteAttribute(jsObject: object, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: object, name: Strings.height)
+        _aspectRatio = ReadWriteAttribute(jsObject: object, name: Strings.aspectRatio)
+        _frameRate = ReadWriteAttribute(jsObject: object, name: Strings.frameRate)
+        _facingMode = ReadWriteAttribute(jsObject: object, name: Strings.facingMode)
+        _resizeMode = ReadWriteAttribute(jsObject: object, name: Strings.resizeMode)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        _sampleSize = ReadWriteAttribute(jsObject: object, name: Strings.sampleSize)
+        _echoCancellation = ReadWriteAttribute(jsObject: object, name: Strings.echoCancellation)
+        _autoGainControl = ReadWriteAttribute(jsObject: object, name: Strings.autoGainControl)
+        _noiseSuppression = ReadWriteAttribute(jsObject: object, name: Strings.noiseSuppression)
+        _latency = ReadWriteAttribute(jsObject: object, name: Strings.latency)
+        _channelCount = ReadWriteAttribute(jsObject: object, name: Strings.channelCount)
+        _deviceId = ReadWriteAttribute(jsObject: object, name: Strings.deviceId)
+        _groupId = ReadWriteAttribute(jsObject: object, name: Strings.groupId)
         _whiteBalanceMode = ReadWriteAttribute(jsObject: object, name: Strings.whiteBalanceMode)
         _exposureMode = ReadWriteAttribute(jsObject: object, name: Strings.exposureMode)
         _focusMode = ReadWriteAttribute(jsObject: object, name: Strings.focusMode)
@@ -69,23 +84,53 @@ public class MediaTrackConstraintSet: BridgedDictionary {
         _cursor = ReadWriteAttribute(jsObject: object, name: Strings.cursor)
         _restrictOwnAudio = ReadWriteAttribute(jsObject: object, name: Strings.restrictOwnAudio)
         _suppressLocalAudioPlayback = ReadWriteAttribute(jsObject: object, name: Strings.suppressLocalAudioPlayback)
-        _width = ReadWriteAttribute(jsObject: object, name: Strings.width)
-        _height = ReadWriteAttribute(jsObject: object, name: Strings.height)
-        _aspectRatio = ReadWriteAttribute(jsObject: object, name: Strings.aspectRatio)
-        _frameRate = ReadWriteAttribute(jsObject: object, name: Strings.frameRate)
-        _facingMode = ReadWriteAttribute(jsObject: object, name: Strings.facingMode)
-        _resizeMode = ReadWriteAttribute(jsObject: object, name: Strings.resizeMode)
-        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
-        _sampleSize = ReadWriteAttribute(jsObject: object, name: Strings.sampleSize)
-        _echoCancellation = ReadWriteAttribute(jsObject: object, name: Strings.echoCancellation)
-        _autoGainControl = ReadWriteAttribute(jsObject: object, name: Strings.autoGainControl)
-        _noiseSuppression = ReadWriteAttribute(jsObject: object, name: Strings.noiseSuppression)
-        _latency = ReadWriteAttribute(jsObject: object, name: Strings.latency)
-        _channelCount = ReadWriteAttribute(jsObject: object, name: Strings.channelCount)
-        _deviceId = ReadWriteAttribute(jsObject: object, name: Strings.deviceId)
-        _groupId = ReadWriteAttribute(jsObject: object, name: Strings.groupId)
         super.init(unsafelyWrapping: object)
     }
+
+    @ReadWriteAttribute
+    public var width: ConstrainULong
+
+    @ReadWriteAttribute
+    public var height: ConstrainULong
+
+    @ReadWriteAttribute
+    public var aspectRatio: ConstrainDouble
+
+    @ReadWriteAttribute
+    public var frameRate: ConstrainDouble
+
+    @ReadWriteAttribute
+    public var facingMode: ConstrainDOMString
+
+    @ReadWriteAttribute
+    public var resizeMode: ConstrainDOMString
+
+    @ReadWriteAttribute
+    public var sampleRate: ConstrainULong
+
+    @ReadWriteAttribute
+    public var sampleSize: ConstrainULong
+
+    @ReadWriteAttribute
+    public var echoCancellation: ConstrainBoolean
+
+    @ReadWriteAttribute
+    public var autoGainControl: ConstrainBoolean
+
+    @ReadWriteAttribute
+    public var noiseSuppression: ConstrainBoolean
+
+    @ReadWriteAttribute
+    public var latency: ConstrainDouble
+
+    @ReadWriteAttribute
+    public var channelCount: ConstrainULong
+
+    @ReadWriteAttribute
+    public var deviceId: ConstrainDOMString
+
+    @ReadWriteAttribute
+    public var groupId: ConstrainDOMString
 
     @ReadWriteAttribute
     public var whiteBalanceMode: ConstrainDOMString
@@ -152,49 +197,4 @@ public class MediaTrackConstraintSet: BridgedDictionary {
 
     @ReadWriteAttribute
     public var suppressLocalAudioPlayback: ConstrainBoolean
-
-    @ReadWriteAttribute
-    public var width: ConstrainULong
-
-    @ReadWriteAttribute
-    public var height: ConstrainULong
-
-    @ReadWriteAttribute
-    public var aspectRatio: ConstrainDouble
-
-    @ReadWriteAttribute
-    public var frameRate: ConstrainDouble
-
-    @ReadWriteAttribute
-    public var facingMode: ConstrainDOMString
-
-    @ReadWriteAttribute
-    public var resizeMode: ConstrainDOMString
-
-    @ReadWriteAttribute
-    public var sampleRate: ConstrainULong
-
-    @ReadWriteAttribute
-    public var sampleSize: ConstrainULong
-
-    @ReadWriteAttribute
-    public var echoCancellation: ConstrainBoolean
-
-    @ReadWriteAttribute
-    public var autoGainControl: ConstrainBoolean
-
-    @ReadWriteAttribute
-    public var noiseSuppression: ConstrainBoolean
-
-    @ReadWriteAttribute
-    public var latency: ConstrainDouble
-
-    @ReadWriteAttribute
-    public var channelCount: ConstrainULong
-
-    @ReadWriteAttribute
-    public var deviceId: ConstrainDOMString
-
-    @ReadWriteAttribute
-    public var groupId: ConstrainDOMString
 }

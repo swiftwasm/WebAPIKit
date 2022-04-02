@@ -7,8 +7,6 @@ public class Animation: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.Animation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _startTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.startTime)
-        _currentTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.currentTime)
         _id = ReadWriteAttribute(jsObject: jsObject, name: Strings.id)
         _effect = ReadWriteAttribute(jsObject: jsObject, name: Strings.effect)
         _timeline = ReadWriteAttribute(jsObject: jsObject, name: Strings.timeline)
@@ -21,14 +19,10 @@ public class Animation: EventTarget {
         _onfinish = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfinish)
         _oncancel = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncancel)
         _onremove = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onremove)
+        _startTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.startTime)
+        _currentTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.currentTime)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadWriteAttribute
-    public var startTime: CSSNumberish?
-
-    @ReadWriteAttribute
-    public var currentTime: CSSNumberish?
 
     public convenience init(effect: AnimationEffect? = nil, timeline: AnimationTimeline? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(effect?.jsValue() ?? .undefined, timeline?.jsValue() ?? .undefined))
@@ -101,4 +95,10 @@ public class Animation: EventTarget {
     public func commitStyles() {
         _ = jsObject[Strings.commitStyles]!()
     }
+
+    @ReadWriteAttribute
+    public var startTime: CSSNumberish?
+
+    @ReadWriteAttribute
+    public var currentTime: CSSNumberish?
 }

@@ -9,17 +9,10 @@ public class AnimationTimeline: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _duration = ReadonlyAttribute(jsObject: jsObject, name: Strings.duration)
         _currentTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentTime)
         _phase = ReadonlyAttribute(jsObject: jsObject, name: Strings.phase)
+        _duration = ReadonlyAttribute(jsObject: jsObject, name: Strings.duration)
         self.jsObject = jsObject
-    }
-
-    @ReadonlyAttribute
-    public var duration: CSSNumberish?
-
-    public func play(effect: AnimationEffect? = nil) -> Animation {
-        jsObject[Strings.play]!(effect?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -27,4 +20,11 @@ public class AnimationTimeline: JSBridgedClass {
 
     @ReadonlyAttribute
     public var phase: TimelinePhase
+
+    @ReadonlyAttribute
+    public var duration: CSSNumberish?
+
+    public func play(effect: AnimationEffect? = nil) -> Animation {
+        jsObject[Strings.play]!(effect?.jsValue() ?? .undefined).fromJSValue()!
+    }
 }

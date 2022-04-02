@@ -110,13 +110,7 @@ public class BaseAudioContext: EventTarget {
         jsObject[Strings.createWaveShaper]!().fromJSValue()!
     }
 
-    public func decodeAudioData(audioData: ArrayBuffer, successCallback: DecodeSuccessCallback? = nil, errorCallback: DecodeErrorCallback? = nil) -> JSPromise {
-        jsObject[Strings.decodeAudioData]!(audioData.jsValue(), successCallback?.jsValue() ?? .undefined, errorCallback?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    // XXX: member 'decodeAudioData' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func decodeAudioData(audioData: ArrayBuffer, successCallback: DecodeSuccessCallback? = nil, errorCallback: DecodeErrorCallback? = nil) async throws -> AudioBuffer {
-        let _promise: JSPromise = jsObject[Strings.decodeAudioData]!(audioData.jsValue(), successCallback?.jsValue() ?? .undefined, errorCallback?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
+    // XXX: member 'decodeAudioData' is ignored
 }

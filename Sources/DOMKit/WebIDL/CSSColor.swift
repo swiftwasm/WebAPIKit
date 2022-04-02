@@ -7,7 +7,6 @@ public class CSSColor: CSSColorValue {
     override public class var constructor: JSFunction { JSObject.global[Strings.CSSColor].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _colorSpace = ReadWriteAttribute(jsObject: jsObject, name: Strings.colorSpace)
         _channels = ReadWriteAttribute(jsObject: jsObject, name: Strings.channels)
         _alpha = ReadWriteAttribute(jsObject: jsObject, name: Strings.alpha)
         super.init(unsafelyWrapping: jsObject)
@@ -17,11 +16,7 @@ public class CSSColor: CSSColorValue {
         self.init(unsafelyWrapping: Self.constructor.new(colorSpace.jsValue(), channels.jsValue(), alpha?.jsValue() ?? .undefined))
     }
 
-    private var _colorSpace: ReadWriteAttribute<CSSKeywordish>
-    override public var colorSpace: CSSKeywordish {
-        get { _colorSpace.wrappedValue }
-        set { _colorSpace.wrappedValue = newValue }
-    }
+    // XXX: member 'colorSpace' is ignored
 
     @ReadWriteAttribute
     public var channels: [CSSColorPercent]

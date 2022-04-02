@@ -13,9 +13,7 @@ public class PerformanceObserver: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(callback: PerformanceObserverCallback) {
-        self.init(unsafelyWrapping: Self.constructor.new(callback.jsValue()))
-    }
+    // XXX: constructor is ignored
 
     public func observe(options: PerformanceObserverInit? = nil) {
         _ = jsObject[Strings.observe]!(options?.jsValue() ?? .undefined)

@@ -13,9 +13,7 @@ public class AudioWorkletGlobalScope: WorkletGlobalScope {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func registerProcessor(name: String, processorCtor: AudioWorkletProcessorConstructor) {
-        _ = jsObject[Strings.registerProcessor]!(name.jsValue(), processorCtor.jsValue())
-    }
+    // XXX: member 'registerProcessor' is ignored
 
     @ReadonlyAttribute
     public var currentFrame: UInt64

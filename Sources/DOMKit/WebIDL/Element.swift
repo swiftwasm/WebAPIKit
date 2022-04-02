@@ -3,10 +3,14 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin, GeometryUtils, Animatable, Region, InnerHTML {
+public class Element: Node, Region, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, GeometryUtils, ARIAMixin, Animatable, InnerHTML {
     override public class var constructor: JSFunction { JSObject.global[Strings.Element].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _elementTiming = ReadWriteAttribute(jsObject: jsObject, name: Strings.elementTiming)
+        _onfullscreenchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenchange)
+        _onfullscreenerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenerror)
+        _part = ReadonlyAttribute(jsObject: jsObject, name: Strings.part)
         _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.namespaceURI)
         _prefix = ReadonlyAttribute(jsObject: jsObject, name: Strings.prefix)
         _localName = ReadonlyAttribute(jsObject: jsObject, name: Strings.localName)
@@ -17,7 +21,6 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
         _slot = ReadWriteAttribute(jsObject: jsObject, name: Strings.slot)
         _attributes = ReadonlyAttribute(jsObject: jsObject, name: Strings.attributes)
         _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: Strings.shadowRoot)
-        _editContext = ReadWriteAttribute(jsObject: jsObject, name: Strings.editContext)
         _scrollTop = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollTop)
         _scrollLeft = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollLeft)
         _scrollWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollWidth)
@@ -26,13 +29,40 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
         _clientLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientLeft)
         _clientWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientWidth)
         _clientHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientHeight)
-        _part = ReadonlyAttribute(jsObject: jsObject, name: Strings.part)
-        _elementTiming = ReadWriteAttribute(jsObject: jsObject, name: Strings.elementTiming)
         _outerHTML = ReadWriteAttribute(jsObject: jsObject, name: Strings.outerHTML)
-        _onfullscreenchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenchange)
-        _onfullscreenerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenerror)
+        _editContext = ReadWriteAttribute(jsObject: jsObject, name: Strings.editContext)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    public func pseudo(type: String) -> CSSPseudoElement? {
+        jsObject[Strings.pseudo]!(type.jsValue()).fromJSValue()!
+    }
+
+    public func computedStyleMap() -> StylePropertyMapReadOnly {
+        jsObject[Strings.computedStyleMap]!().fromJSValue()!
+    }
+
+    @ReadWriteAttribute
+    public var elementTiming: String
+
+    public func requestFullscreen(options: FullscreenOptions? = nil) -> JSPromise {
+        jsObject[Strings.requestFullscreen]!(options?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func requestFullscreen(options: FullscreenOptions? = nil) async throws {
+        let _promise: JSPromise = jsObject[Strings.requestFullscreen]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        _ = try await _promise.get()
+    }
+
+    @ClosureAttribute.Optional1
+    public var onfullscreenchange: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var onfullscreenerror: EventHandler
+
+    @ReadonlyAttribute
+    public var part: DOMTokenList
 
     @ReadonlyAttribute
     public var namespaceURI: String?
@@ -164,12 +194,13 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
         _ = jsObject[Strings.insertAdjacentText]!(`where`.jsValue(), data.jsValue())
     }
 
+    public func setHTML(input: String, options: SetHTMLOptions? = nil) {
+        _ = jsObject[Strings.setHTML]!(input.jsValue(), options?.jsValue() ?? .undefined)
+    }
+
     public func requestPointerLock() {
         _ = jsObject[Strings.requestPointerLock]!()
     }
-
-    @ReadWriteAttribute
-    public var editContext: EditContext?
 
     public func getClientRects() -> DOMRectList {
         jsObject[Strings.getClientRects]!().fromJSValue()!
@@ -235,12 +266,15 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
     @ReadonlyAttribute
     public var clientHeight: Int32
 
-    @ReadonlyAttribute
-    public var part: DOMTokenList
+    @ReadWriteAttribute
+    public var outerHTML: String
 
-    public func computedStyleMap() -> StylePropertyMapReadOnly {
-        jsObject[Strings.computedStyleMap]!().fromJSValue()!
+    public func insertAdjacentHTML(position: String, text: String) {
+        _ = jsObject[Strings.insertAdjacentHTML]!(position.jsValue(), text.jsValue())
     }
+
+    @ReadWriteAttribute
+    public var editContext: EditContext?
 
     public func setPointerCapture(pointerId: Int32) {
         _ = jsObject[Strings.setPointerCapture]!(pointerId.jsValue())
@@ -253,40 +287,6 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
     public func hasPointerCapture(pointerId: Int32) -> Bool {
         jsObject[Strings.hasPointerCapture]!(pointerId.jsValue()).fromJSValue()!
     }
-
-    public func setHTML(input: String, options: SetHTMLOptions? = nil) {
-        _ = jsObject[Strings.setHTML]!(input.jsValue(), options?.jsValue() ?? .undefined)
-    }
-
-    public func pseudo(type: String) -> CSSPseudoElement? {
-        jsObject[Strings.pseudo]!(type.jsValue()).fromJSValue()!
-    }
-
-    @ReadWriteAttribute
-    public var elementTiming: String
-
-    @ReadWriteAttribute
-    public var outerHTML: String
-
-    public func insertAdjacentHTML(position: String, text: String) {
-        _ = jsObject[Strings.insertAdjacentHTML]!(position.jsValue(), text.jsValue())
-    }
-
-    public func requestFullscreen(options: FullscreenOptions? = nil) -> JSPromise {
-        jsObject[Strings.requestFullscreen]!(options?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestFullscreen(options: FullscreenOptions? = nil) async throws {
-        let _promise: JSPromise = jsObject[Strings.requestFullscreen]!(options?.jsValue() ?? .undefined).fromJSValue()!
-        _ = try await _promise.get()
-    }
-
-    @ClosureAttribute.Optional1
-    public var onfullscreenchange: EventHandler
-
-    @ClosureAttribute.Optional1
-    public var onfullscreenerror: EventHandler
 
     public func getSpatialNavigationContainer() -> Node {
         jsObject[Strings.getSpatialNavigationContainer]!().fromJSValue()!

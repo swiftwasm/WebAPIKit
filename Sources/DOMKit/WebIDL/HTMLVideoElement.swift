@@ -20,16 +20,10 @@ public class HTMLVideoElement: HTMLMediaElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func requestVideoFrameCallback(callback: VideoFrameRequestCallback) -> UInt32 {
-        jsObject[Strings.requestVideoFrameCallback]!(callback.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'requestVideoFrameCallback' is ignored
 
     public func cancelVideoFrameCallback(handle: UInt32) {
         _ = jsObject[Strings.cancelVideoFrameCallback]!(handle.jsValue())
-    }
-
-    public func getVideoPlaybackQuality() -> VideoPlaybackQuality {
-        jsObject[Strings.getVideoPlaybackQuality]!().fromJSValue()!
     }
 
     public convenience init() {
@@ -53,6 +47,10 @@ public class HTMLVideoElement: HTMLMediaElement {
 
     @ReadWriteAttribute
     public var playsInline: Bool
+
+    public func getVideoPlaybackQuality() -> VideoPlaybackQuality {
+        jsObject[Strings.getVideoPlaybackQuality]!().fromJSValue()!
+    }
 
     public func requestPictureInPicture() -> JSPromise {
         jsObject[Strings.requestPictureInPicture]!().fromJSValue()!

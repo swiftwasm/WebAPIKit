@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCRtpEncodingParameters: BridgedDictionary {
-    public convenience init(active: Bool, maxBitrate: UInt32, scaleResolutionDownBy: Double, priority: RTCPriorityType, networkPriority: RTCPriorityType, scalabilityMode: String) {
+    public convenience init(active: Bool, maxBitrate: UInt32, scaleResolutionDownBy: Double, scalabilityMode: String, priority: RTCPriorityType, networkPriority: RTCPriorityType) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.active] = active.jsValue()
         object[Strings.maxBitrate] = maxBitrate.jsValue()
         object[Strings.scaleResolutionDownBy] = scaleResolutionDownBy.jsValue()
+        object[Strings.scalabilityMode] = scalabilityMode.jsValue()
         object[Strings.priority] = priority.jsValue()
         object[Strings.networkPriority] = networkPriority.jsValue()
-        object[Strings.scalabilityMode] = scalabilityMode.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
@@ -19,9 +19,9 @@ public class RTCRtpEncodingParameters: BridgedDictionary {
         _active = ReadWriteAttribute(jsObject: object, name: Strings.active)
         _maxBitrate = ReadWriteAttribute(jsObject: object, name: Strings.maxBitrate)
         _scaleResolutionDownBy = ReadWriteAttribute(jsObject: object, name: Strings.scaleResolutionDownBy)
+        _scalabilityMode = ReadWriteAttribute(jsObject: object, name: Strings.scalabilityMode)
         _priority = ReadWriteAttribute(jsObject: object, name: Strings.priority)
         _networkPriority = ReadWriteAttribute(jsObject: object, name: Strings.networkPriority)
-        _scalabilityMode = ReadWriteAttribute(jsObject: object, name: Strings.scalabilityMode)
         super.init(unsafelyWrapping: object)
     }
 
@@ -35,11 +35,11 @@ public class RTCRtpEncodingParameters: BridgedDictionary {
     public var scaleResolutionDownBy: Double
 
     @ReadWriteAttribute
+    public var scalabilityMode: String
+
+    @ReadWriteAttribute
     public var priority: RTCPriorityType
 
     @ReadWriteAttribute
     public var networkPriority: RTCPriorityType
-
-    @ReadWriteAttribute
-    public var scalabilityMode: String
 }

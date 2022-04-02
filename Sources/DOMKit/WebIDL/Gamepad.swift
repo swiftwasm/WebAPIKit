@@ -9,10 +9,6 @@ public class Gamepad: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _hand = ReadonlyAttribute(jsObject: jsObject, name: Strings.hand)
-        _hapticActuators = ReadonlyAttribute(jsObject: jsObject, name: Strings.hapticActuators)
-        _pose = ReadonlyAttribute(jsObject: jsObject, name: Strings.pose)
-        _touchEvents = ReadonlyAttribute(jsObject: jsObject, name: Strings.touchEvents)
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
         _index = ReadonlyAttribute(jsObject: jsObject, name: Strings.index)
         _connected = ReadonlyAttribute(jsObject: jsObject, name: Strings.connected)
@@ -20,20 +16,12 @@ public class Gamepad: JSBridgedClass {
         _mapping = ReadonlyAttribute(jsObject: jsObject, name: Strings.mapping)
         _axes = ReadonlyAttribute(jsObject: jsObject, name: Strings.axes)
         _buttons = ReadonlyAttribute(jsObject: jsObject, name: Strings.buttons)
+        _hand = ReadonlyAttribute(jsObject: jsObject, name: Strings.hand)
+        _hapticActuators = ReadonlyAttribute(jsObject: jsObject, name: Strings.hapticActuators)
+        _pose = ReadonlyAttribute(jsObject: jsObject, name: Strings.pose)
+        _touchEvents = ReadonlyAttribute(jsObject: jsObject, name: Strings.touchEvents)
         self.jsObject = jsObject
     }
-
-    @ReadonlyAttribute
-    public var hand: GamepadHand
-
-    @ReadonlyAttribute
-    public var hapticActuators: [GamepadHapticActuator]
-
-    @ReadonlyAttribute
-    public var pose: GamepadPose?
-
-    @ReadonlyAttribute
-    public var touchEvents: [GamepadTouch]?
 
     @ReadonlyAttribute
     public var id: String
@@ -55,4 +43,16 @@ public class Gamepad: JSBridgedClass {
 
     @ReadonlyAttribute
     public var buttons: [GamepadButton]
+
+    @ReadonlyAttribute
+    public var hand: GamepadHand
+
+    @ReadonlyAttribute
+    public var hapticActuators: [GamepadHapticActuator]
+
+    @ReadonlyAttribute
+    public var pose: GamepadPose?
+
+    @ReadonlyAttribute
+    public var touchEvents: [GamepadTouch]?
 }

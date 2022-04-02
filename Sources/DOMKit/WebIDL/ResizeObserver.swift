@@ -12,9 +12,7 @@ public class ResizeObserver: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(callback: ResizeObserverCallback) {
-        self.init(unsafelyWrapping: Self.constructor.new(callback.jsValue()))
-    }
+    // XXX: constructor is ignored
 
     public func observe(target: Element, options: ResizeObserverOptions? = nil) {
         _ = jsObject[Strings.observe]!(target.jsValue(), options?.jsValue() ?? .undefined)

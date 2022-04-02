@@ -9,11 +9,14 @@ public class RTCRtpReceiver: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _transform = ReadWriteAttribute(jsObject: jsObject, name: Strings.transform)
         _track = ReadonlyAttribute(jsObject: jsObject, name: Strings.track)
         _transport = ReadonlyAttribute(jsObject: jsObject, name: Strings.transport)
-        _transform = ReadWriteAttribute(jsObject: jsObject, name: Strings.transform)
         self.jsObject = jsObject
     }
+
+    @ReadWriteAttribute
+    public var transform: RTCRtpTransform?
 
     @ReadonlyAttribute
     public var track: MediaStreamTrack
@@ -46,7 +49,4 @@ public class RTCRtpReceiver: JSBridgedClass {
         let _promise: JSPromise = jsObject[Strings.getStats]!().fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
-
-    @ReadWriteAttribute
-    public var transform: RTCRtpTransform?
 }

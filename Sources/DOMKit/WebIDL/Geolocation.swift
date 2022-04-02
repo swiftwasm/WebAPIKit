@@ -12,13 +12,9 @@ public class Geolocation: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func getCurrentPosition(successCallback: PositionCallback, errorCallback: PositionErrorCallback? = nil, options: PositionOptions? = nil) {
-        _ = jsObject[Strings.getCurrentPosition]!(successCallback.jsValue(), errorCallback?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined)
-    }
+    // XXX: member 'getCurrentPosition' is ignored
 
-    public func watchPosition(successCallback: PositionCallback, errorCallback: PositionErrorCallback? = nil, options: PositionOptions? = nil) -> Int32 {
-        jsObject[Strings.watchPosition]!(successCallback.jsValue(), errorCallback?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined).fromJSValue()!
-    }
+    // XXX: member 'watchPosition' is ignored
 
     public func clearWatch(watchId: Int32) {
         _ = jsObject[Strings.clearWatch]!(watchId.jsValue())

@@ -19,13 +19,9 @@ public class MediaQueryList: EventTarget {
     @ReadonlyAttribute
     public var matches: Bool
 
-    public func addListener(callback: EventListener?) {
-        _ = jsObject[Strings.addListener]!(callback.jsValue())
-    }
+    // XXX: member 'addListener' is ignored
 
-    public func removeListener(callback: EventListener?) {
-        _ = jsObject[Strings.removeListener]!(callback.jsValue())
-    }
+    // XXX: member 'removeListener' is ignored
 
     @ClosureAttribute.Optional1
     public var onchange: EventHandler

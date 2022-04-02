@@ -3,17 +3,17 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class WorkerNavigator: JSBridgedClass, NavigatorStorage, NavigatorDeviceMemory, NavigatorNetworkInformation, NavigatorML, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorConcurrentHardware, NavigatorUA, NavigatorGPU, NavigatorBadge, NavigatorLocks {
+public class WorkerNavigator: JSBridgedClass, NavigatorLocks, NavigatorML, NavigatorDeviceMemory, NavigatorStorage, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorConcurrentHardware, NavigatorBadge, NavigatorNetworkInformation, NavigatorUA {
     public class var constructor: JSFunction { JSObject.global[Strings.WorkerNavigator].function! }
 
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _permissions = ReadonlyAttribute(jsObject: jsObject, name: Strings.permissions)
-        _serviceWorker = ReadonlyAttribute(jsObject: jsObject, name: Strings.serviceWorker)
-        _usb = ReadonlyAttribute(jsObject: jsObject, name: Strings.usb)
         _serial = ReadonlyAttribute(jsObject: jsObject, name: Strings.serial)
         _mediaCapabilities = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaCapabilities)
+        _serviceWorker = ReadonlyAttribute(jsObject: jsObject, name: Strings.serviceWorker)
+        _usb = ReadonlyAttribute(jsObject: jsObject, name: Strings.usb)
         self.jsObject = jsObject
     }
 
@@ -21,14 +21,14 @@ public class WorkerNavigator: JSBridgedClass, NavigatorStorage, NavigatorDeviceM
     public var permissions: Permissions
 
     @ReadonlyAttribute
-    public var serviceWorker: ServiceWorkerContainer
-
-    @ReadonlyAttribute
-    public var usb: USB
-
-    @ReadonlyAttribute
     public var serial: Serial
 
     @ReadonlyAttribute
     public var mediaCapabilities: MediaCapabilities
+
+    @ReadonlyAttribute
+    public var serviceWorker: ServiceWorkerContainer
+
+    @ReadonlyAttribute
+    public var usb: USB
 }

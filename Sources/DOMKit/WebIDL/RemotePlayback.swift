@@ -14,15 +14,9 @@ public class RemotePlayback: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func watchAvailability(callback: RemotePlaybackAvailabilityCallback) -> JSPromise {
-        jsObject[Strings.watchAvailability]!(callback.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'watchAvailability' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func watchAvailability(callback: RemotePlaybackAvailabilityCallback) async throws -> Int32 {
-        let _promise: JSPromise = jsObject[Strings.watchAvailability]!(callback.jsValue()).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
+    // XXX: member 'watchAvailability' is ignored
 
     public func cancelWatchAvailability(id: Int32? = nil) -> JSPromise {
         jsObject[Strings.cancelWatchAvailability]!(id?.jsValue() ?? .undefined).fromJSValue()!

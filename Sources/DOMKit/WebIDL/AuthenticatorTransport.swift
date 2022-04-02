@@ -7,7 +7,7 @@ public enum AuthenticatorTransport: JSString, JSValueCompatible {
     case usb = "usb"
     case nfc = "nfc"
     case ble = "ble"
-    case internal = "internal"
+    case `internal` = "internal"
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

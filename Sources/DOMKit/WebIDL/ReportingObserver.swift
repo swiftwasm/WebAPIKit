@@ -12,9 +12,7 @@ public class ReportingObserver: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(callback: ReportingObserverCallback, options: ReportingObserverOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(callback.jsValue(), options?.jsValue() ?? .undefined))
-    }
+    // XXX: constructor is ignored
 
     public func observe() {
         _ = jsObject[Strings.observe]!()

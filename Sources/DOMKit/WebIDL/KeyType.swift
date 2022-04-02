@@ -4,8 +4,8 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public enum KeyType: JSString, JSValueCompatible {
-    case public = "public"
-    case private = "private"
+    case `public` = "public"
+    case `private` = "private"
     case secret = "secret"
 
     public static func construct(from jsValue: JSValue) -> Self? {

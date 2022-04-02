@@ -13,9 +13,7 @@ public class ComputePressureObserver: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(callback: ComputePressureUpdateCallback, options: ComputePressureObserverOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(callback.jsValue(), options?.jsValue() ?? .undefined))
-    }
+    // XXX: constructor is ignored
 
     public func observe(source: ComputePressureSource) {
         _ = jsObject[Strings.observe]!(source.jsValue())

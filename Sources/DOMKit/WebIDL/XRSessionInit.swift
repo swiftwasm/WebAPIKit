@@ -4,20 +4,20 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRSessionInit: BridgedDictionary {
-    public convenience init(requiredFeatures: [JSValue], optionalFeatures: [JSValue], domOverlay: XRDOMOverlayInit?, depthSensing: XRDepthStateInit) {
+    public convenience init(requiredFeatures: [JSValue], optionalFeatures: [JSValue], depthSensing: XRDepthStateInit, domOverlay: XRDOMOverlayInit?) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.requiredFeatures] = requiredFeatures.jsValue()
         object[Strings.optionalFeatures] = optionalFeatures.jsValue()
-        object[Strings.domOverlay] = domOverlay.jsValue()
         object[Strings.depthSensing] = depthSensing.jsValue()
+        object[Strings.domOverlay] = domOverlay.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
         _requiredFeatures = ReadWriteAttribute(jsObject: object, name: Strings.requiredFeatures)
         _optionalFeatures = ReadWriteAttribute(jsObject: object, name: Strings.optionalFeatures)
-        _domOverlay = ReadWriteAttribute(jsObject: object, name: Strings.domOverlay)
         _depthSensing = ReadWriteAttribute(jsObject: object, name: Strings.depthSensing)
+        _domOverlay = ReadWriteAttribute(jsObject: object, name: Strings.domOverlay)
         super.init(unsafelyWrapping: object)
     }
 
@@ -28,8 +28,8 @@ public class XRSessionInit: BridgedDictionary {
     public var optionalFeatures: [JSValue]
 
     @ReadWriteAttribute
-    public var domOverlay: XRDOMOverlayInit?
+    public var depthSensing: XRDepthStateInit
 
     @ReadWriteAttribute
-    public var depthSensing: XRDepthStateInit
+    public var domOverlay: XRDOMOverlayInit?
 }

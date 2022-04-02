@@ -12,7 +12,5 @@ public class FileSystemDirectoryReader: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func readEntries(successCallback: FileSystemEntriesCallback, errorCallback: ErrorCallback? = nil) {
-        _ = jsObject[Strings.readEntries]!(successCallback.jsValue(), errorCallback?.jsValue() ?? .undefined)
-    }
+    // XXX: member 'readEntries' is ignored
 }

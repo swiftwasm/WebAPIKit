@@ -22,13 +22,33 @@ public class XRSession: EventTarget {
         _onsqueezeend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsqueezeend)
         _onvisibilitychange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onvisibilitychange)
         _onframeratechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onframeratechange)
-        _domOverlayState = ReadonlyAttribute(jsObject: jsObject, name: Strings.domOverlayState)
         _depthUsage = ReadonlyAttribute(jsObject: jsObject, name: Strings.depthUsage)
         _depthDataFormat = ReadonlyAttribute(jsObject: jsObject, name: Strings.depthDataFormat)
+        _domOverlayState = ReadonlyAttribute(jsObject: jsObject, name: Strings.domOverlayState)
         _environmentBlendMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.environmentBlendMode)
         _interactionMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.interactionMode)
         _preferredReflectionFormat = ReadonlyAttribute(jsObject: jsObject, name: Strings.preferredReflectionFormat)
         super.init(unsafelyWrapping: jsObject)
+    }
+
+    public func requestHitTestSource(options: XRHitTestOptionsInit) -> JSPromise {
+        jsObject[Strings.requestHitTestSource]!(options.jsValue()).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func requestHitTestSource(options: XRHitTestOptionsInit) async throws -> XRHitTestSource {
+        let _promise: JSPromise = jsObject[Strings.requestHitTestSource]!(options.jsValue()).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) -> JSPromise {
+        jsObject[Strings.requestHitTestSourceForTransientInput]!(options.jsValue()).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) async throws -> XRTransientInputHitTestSource {
+        let _promise: JSPromise = jsObject[Strings.requestHitTestSourceForTransientInput]!(options.jsValue()).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -70,9 +90,7 @@ public class XRSession: EventTarget {
         return try await _promise.get().fromJSValue()!
     }
 
-    public func requestAnimationFrame(callback: XRFrameRequestCallback) -> UInt32 {
-        jsObject[Strings.requestAnimationFrame]!(callback.jsValue()).fromJSValue()!
-    }
+    // XXX: member 'requestAnimationFrame' is ignored
 
     public func cancelAnimationFrame(handle: UInt32) {
         _ = jsObject[Strings.cancelAnimationFrame]!(handle.jsValue())
@@ -119,13 +137,13 @@ public class XRSession: EventTarget {
     public var onframeratechange: EventHandler
 
     @ReadonlyAttribute
-    public var domOverlayState: XRDOMOverlayState?
-
-    @ReadonlyAttribute
     public var depthUsage: XRDepthUsage
 
     @ReadonlyAttribute
     public var depthDataFormat: XRDepthDataFormat
+
+    @ReadonlyAttribute
+    public var domOverlayState: XRDOMOverlayState?
 
     @ReadonlyAttribute
     public var environmentBlendMode: XREnvironmentBlendMode
@@ -145,24 +163,4 @@ public class XRSession: EventTarget {
 
     @ReadonlyAttribute
     public var preferredReflectionFormat: XRReflectionFormat
-
-    public func requestHitTestSource(options: XRHitTestOptionsInit) -> JSPromise {
-        jsObject[Strings.requestHitTestSource]!(options.jsValue()).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestHitTestSource(options: XRHitTestOptionsInit) async throws -> XRHitTestSource {
-        let _promise: JSPromise = jsObject[Strings.requestHitTestSource]!(options.jsValue()).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
-    public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) -> JSPromise {
-        jsObject[Strings.requestHitTestSourceForTransientInput]!(options.jsValue()).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) async throws -> XRTransientInputHitTestSource {
-        let _promise: JSPromise = jsObject[Strings.requestHitTestSourceForTransientInput]!(options.jsValue()).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
 }

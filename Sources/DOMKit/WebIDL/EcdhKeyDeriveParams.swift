@@ -4,9 +4,9 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EcdhKeyDeriveParams: BridgedDictionary {
-    public convenience init(public _: CryptoKey) {
+    public convenience init(public: CryptoKey) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.public] = public .jsValue()
+        object[Strings.public] = `public`.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
@@ -16,5 +16,5 @@ public class EcdhKeyDeriveParams: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var public: CryptoKey
+    public var `public`: CryptoKey
 }

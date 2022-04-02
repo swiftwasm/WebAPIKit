@@ -10,7 +10,5 @@ public class LayoutWorkletGlobalScope: WorkletGlobalScope {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func registerLayout(name: String, layoutCtor: VoidFunction) {
-        _ = jsObject[Strings.registerLayout]!(name.jsValue(), layoutCtor.jsValue())
-    }
+    // XXX: member 'registerLayout' is ignored
 }

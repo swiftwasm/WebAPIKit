@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public enum GPUColorWrite {
     public static var jsObject: JSObject {
-        JSObject.global.[Strings.GPUColorWrite].object!
+        JSObject.global[Strings.GPUColorWrite].object!
     }
 
     public static let RED: GPUFlagsConstant = 0x1
