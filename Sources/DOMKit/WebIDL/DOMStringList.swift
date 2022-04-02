@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMStringList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DOMStringList.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DOMStringList].function! }
 
     public let jsObject: JSObject
 

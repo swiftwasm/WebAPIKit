@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLQuoteElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLQuoteElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLQuoteElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _cite = ReadWriteAttribute(jsObject: jsObject, name: Strings.cite)

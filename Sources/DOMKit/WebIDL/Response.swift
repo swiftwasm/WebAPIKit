@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Response: JSBridgedClass, Body {
-    public class var constructor: JSFunction { JSObject.global.Response.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.Response].function! }
 
     public let jsObject: JSObject
 

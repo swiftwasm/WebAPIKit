@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CanvasPattern: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.CanvasPattern.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.CanvasPattern].function! }
 
     public let jsObject: JSObject
 

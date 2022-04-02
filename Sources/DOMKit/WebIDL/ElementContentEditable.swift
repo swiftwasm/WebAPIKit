@@ -21,4 +21,9 @@ public extension ElementContentEditable {
         get { ReadWriteAttribute[Strings.inputMode, in: jsObject] }
         set { ReadWriteAttribute[Strings.inputMode, in: jsObject] = newValue }
     }
+
+    var virtualKeyboardPolicy: String {
+        get { ReadWriteAttribute[Strings.virtualKeyboardPolicy, in: jsObject] }
+        set { ReadWriteAttribute[Strings.virtualKeyboardPolicy, in: jsObject] = newValue }
+    }
 }

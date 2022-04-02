@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLOptionsCollection: HTMLCollection {
-    override public class var constructor: JSFunction { JSObject.global.HTMLOptionsCollection.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOptionsCollection].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadWriteAttribute(jsObject: jsObject, name: Strings.length)

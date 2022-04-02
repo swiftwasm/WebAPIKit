@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.MediaList.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.MediaList].function! }
 
     public let jsObject: JSObject
 

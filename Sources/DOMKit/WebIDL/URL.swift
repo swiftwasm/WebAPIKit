@@ -4,11 +4,23 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class URL: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.URL.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.URL].function! }
 
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _href = ReadWriteAttribute(jsObject: jsObject, name: Strings.href)
+        _origin = ReadonlyAttribute(jsObject: jsObject, name: Strings.origin)
+        _protocol = ReadWriteAttribute(jsObject: jsObject, name: Strings.protocol)
+        _username = ReadWriteAttribute(jsObject: jsObject, name: Strings.username)
+        _password = ReadWriteAttribute(jsObject: jsObject, name: Strings.password)
+        _host = ReadWriteAttribute(jsObject: jsObject, name: Strings.host)
+        _hostname = ReadWriteAttribute(jsObject: jsObject, name: Strings.hostname)
+        _port = ReadWriteAttribute(jsObject: jsObject, name: Strings.port)
+        _pathname = ReadWriteAttribute(jsObject: jsObject, name: Strings.pathname)
+        _search = ReadWriteAttribute(jsObject: jsObject, name: Strings.search)
+        _searchParams = ReadonlyAttribute(jsObject: jsObject, name: Strings.searchParams)
+        _hash = ReadWriteAttribute(jsObject: jsObject, name: Strings.hash)
         self.jsObject = jsObject
     }
 
@@ -18,5 +30,49 @@ public class URL: JSBridgedClass {
 
     public static func revokeObjectURL(url: String) {
         _ = constructor[Strings.revokeObjectURL]!(url.jsValue())
+    }
+
+    public convenience init(url: String, base: String? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(url.jsValue(), base?.jsValue() ?? .undefined))
+    }
+
+    @ReadWriteAttribute
+    public var href: String
+
+    @ReadonlyAttribute
+    public var origin: String
+
+    @ReadWriteAttribute
+    public var `protocol`: String
+
+    @ReadWriteAttribute
+    public var username: String
+
+    @ReadWriteAttribute
+    public var password: String
+
+    @ReadWriteAttribute
+    public var host: String
+
+    @ReadWriteAttribute
+    public var hostname: String
+
+    @ReadWriteAttribute
+    public var port: String
+
+    @ReadWriteAttribute
+    public var pathname: String
+
+    @ReadWriteAttribute
+    public var search: String
+
+    @ReadonlyAttribute
+    public var searchParams: URLSearchParams
+
+    @ReadWriteAttribute
+    public var hash: String
+
+    public func toJSON() -> String {
+        jsObject[Strings.toJSON]!().fromJSValue()!
     }
 }

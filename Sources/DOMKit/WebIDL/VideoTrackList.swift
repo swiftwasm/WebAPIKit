@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VideoTrackList: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.VideoTrackList.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.VideoTrackList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)

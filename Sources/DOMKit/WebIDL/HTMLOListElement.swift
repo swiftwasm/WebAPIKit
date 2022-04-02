@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLOListElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLOListElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOListElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _reversed = ReadWriteAttribute(jsObject: jsObject, name: Strings.reversed)

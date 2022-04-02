@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class UnderlyingSource: BridgedDictionary {
     public convenience init(start: @escaping UnderlyingSourceStartCallback, pull: @escaping UnderlyingSourcePullCallback, cancel: @escaping UnderlyingSourceCancelCallback, type: ReadableStreamType, autoAllocateChunkSize: UInt64) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         ClosureAttribute.Required1[Strings.start, in: object] = start
         ClosureAttribute.Required1[Strings.pull, in: object] = pull
         ClosureAttribute.Required1[Strings.cancel, in: object] = cancel

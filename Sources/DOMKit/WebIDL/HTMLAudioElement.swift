@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLAudioElement: HTMLMediaElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLAudioElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLAudioElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

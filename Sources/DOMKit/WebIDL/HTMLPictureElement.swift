@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLPictureElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLPictureElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLPictureElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

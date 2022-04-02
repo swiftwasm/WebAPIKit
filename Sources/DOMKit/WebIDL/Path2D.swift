@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Path2D: JSBridgedClass, CanvasPath {
-    public class var constructor: JSFunction { JSObject.global.Path2D.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.Path2D].function! }
 
     public let jsObject: JSObject
 

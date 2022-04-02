@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class StaticRangeInit: BridgedDictionary {
     public convenience init(startContainer: Node, startOffset: UInt32, endContainer: Node, endOffset: UInt32) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.startContainer] = startContainer.jsValue()
         object[Strings.startOffset] = startOffset.jsValue()
         object[Strings.endContainer] = endContainer.jsValue()

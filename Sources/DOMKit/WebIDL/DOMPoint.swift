@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMPoint: DOMPointReadOnly {
-    override public class var constructor: JSFunction { JSObject.global.DOMPoint.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.DOMPoint].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadWriteAttribute(jsObject: jsObject, name: Strings.x)

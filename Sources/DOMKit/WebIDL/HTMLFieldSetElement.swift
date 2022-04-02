@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLFieldSetElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLFieldSetElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFieldSetElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)

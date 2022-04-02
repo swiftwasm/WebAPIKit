@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HashChangeEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.HashChangeEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HashChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _oldURL = ReadonlyAttribute(jsObject: jsObject, name: Strings.oldURL)

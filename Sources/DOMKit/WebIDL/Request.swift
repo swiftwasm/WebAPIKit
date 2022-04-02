@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Request: JSBridgedClass, Body {
-    public class var constructor: JSFunction { JSObject.global.Request.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.Request].function! }
 
     public let jsObject: JSObject
 
@@ -24,6 +24,7 @@ public class Request: JSBridgedClass, Body {
         _isReloadNavigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.isReloadNavigation)
         _isHistoryNavigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.isHistoryNavigation)
         _signal = ReadonlyAttribute(jsObject: jsObject, name: Strings.signal)
+        _priority = ReadonlyAttribute(jsObject: jsObject, name: Strings.priority)
         self.jsObject = jsObject
     }
 
@@ -79,4 +80,7 @@ public class Request: JSBridgedClass, Body {
     public func clone() -> Self {
         jsObject[Strings.clone]!().fromJSValue()!
     }
+
+    @ReadonlyAttribute
+    public var priority: FetchPriority
 }

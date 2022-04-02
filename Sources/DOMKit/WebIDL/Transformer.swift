@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class Transformer: BridgedDictionary {
     public convenience init(start: @escaping TransformerStartCallback, transform: @escaping TransformerTransformCallback, flush: @escaping TransformerFlushCallback, readableType: JSValue, writableType: JSValue) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         ClosureAttribute.Required1[Strings.start, in: object] = start
         ClosureAttribute.Required2[Strings.transform, in: object] = transform
         ClosureAttribute.Required1[Strings.flush, in: object] = flush

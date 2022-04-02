@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PromiseRejectionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.PromiseRejectionEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.PromiseRejectionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _promise = ReadonlyAttribute(jsObject: jsObject, name: Strings.promise)

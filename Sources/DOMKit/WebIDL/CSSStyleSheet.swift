@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSStyleSheet: StyleSheet {
-    override public class var constructor: JSFunction { JSObject.global.CSSStyleSheet.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleSheet].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _ownerRule = ReadonlyAttribute(jsObject: jsObject, name: Strings.ownerRule)

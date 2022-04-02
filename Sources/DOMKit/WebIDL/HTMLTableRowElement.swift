@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTableRowElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLTableRowElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTableRowElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _rowIndex = ReadonlyAttribute(jsObject: jsObject, name: Strings.rowIndex)

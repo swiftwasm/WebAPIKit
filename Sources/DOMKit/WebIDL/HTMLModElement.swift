@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLModElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLModElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLModElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _cite = ReadWriteAttribute(jsObject: jsObject, name: Strings.cite)

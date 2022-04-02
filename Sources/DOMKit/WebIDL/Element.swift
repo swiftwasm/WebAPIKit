@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin {
-    override public class var constructor: JSFunction { JSObject.global.Element.function! }
+public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin, GeometryUtils, Animatable, Region, InnerHTML {
+    override public class var constructor: JSFunction { JSObject.global[Strings.Element].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.namespaceURI)
@@ -17,6 +17,20 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
         _slot = ReadWriteAttribute(jsObject: jsObject, name: Strings.slot)
         _attributes = ReadonlyAttribute(jsObject: jsObject, name: Strings.attributes)
         _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: Strings.shadowRoot)
+        _editContext = ReadWriteAttribute(jsObject: jsObject, name: Strings.editContext)
+        _scrollTop = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollTop)
+        _scrollLeft = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollLeft)
+        _scrollWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollWidth)
+        _scrollHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollHeight)
+        _clientTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientTop)
+        _clientLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientLeft)
+        _clientWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientWidth)
+        _clientHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientHeight)
+        _part = ReadonlyAttribute(jsObject: jsObject, name: Strings.part)
+        _elementTiming = ReadWriteAttribute(jsObject: jsObject, name: Strings.elementTiming)
+        _outerHTML = ReadWriteAttribute(jsObject: jsObject, name: Strings.outerHTML)
+        _onfullscreenchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenchange)
+        _onfullscreenerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -148,5 +162,141 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
 
     public func insertAdjacentText(where: String, data: String) {
         _ = jsObject[Strings.insertAdjacentText]!(`where`.jsValue(), data.jsValue())
+    }
+
+    public func requestPointerLock() {
+        _ = jsObject[Strings.requestPointerLock]!()
+    }
+
+    @ReadWriteAttribute
+    public var editContext: EditContext?
+
+    public func getClientRects() -> DOMRectList {
+        jsObject[Strings.getClientRects]!().fromJSValue()!
+    }
+
+    public func getBoundingClientRect() -> DOMRect {
+        jsObject[Strings.getBoundingClientRect]!().fromJSValue()!
+    }
+
+    public func isVisible(options: IsVisibleOptions? = nil) -> Bool {
+        jsObject[Strings.isVisible]!(options?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    public func scrollIntoView(arg: __UNSUPPORTED_UNION__? = nil) {
+        _ = jsObject[Strings.scrollIntoView]!(arg?.jsValue() ?? .undefined)
+    }
+
+    public func scroll(options: ScrollToOptions? = nil) {
+        _ = jsObject[Strings.scroll]!(options?.jsValue() ?? .undefined)
+    }
+
+    public func scroll(x: Double, y: Double) {
+        _ = jsObject[Strings.scroll]!(x.jsValue(), y.jsValue())
+    }
+
+    public func scrollTo(options: ScrollToOptions? = nil) {
+        _ = jsObject[Strings.scrollTo]!(options?.jsValue() ?? .undefined)
+    }
+
+    public func scrollTo(x: Double, y: Double) {
+        _ = jsObject[Strings.scrollTo]!(x.jsValue(), y.jsValue())
+    }
+
+    public func scrollBy(options: ScrollToOptions? = nil) {
+        _ = jsObject[Strings.scrollBy]!(options?.jsValue() ?? .undefined)
+    }
+
+    public func scrollBy(x: Double, y: Double) {
+        _ = jsObject[Strings.scrollBy]!(x.jsValue(), y.jsValue())
+    }
+
+    @ReadWriteAttribute
+    public var scrollTop: Double
+
+    @ReadWriteAttribute
+    public var scrollLeft: Double
+
+    @ReadonlyAttribute
+    public var scrollWidth: Int32
+
+    @ReadonlyAttribute
+    public var scrollHeight: Int32
+
+    @ReadonlyAttribute
+    public var clientTop: Int32
+
+    @ReadonlyAttribute
+    public var clientLeft: Int32
+
+    @ReadonlyAttribute
+    public var clientWidth: Int32
+
+    @ReadonlyAttribute
+    public var clientHeight: Int32
+
+    @ReadonlyAttribute
+    public var part: DOMTokenList
+
+    public func computedStyleMap() -> StylePropertyMapReadOnly {
+        jsObject[Strings.computedStyleMap]!().fromJSValue()!
+    }
+
+    public func setPointerCapture(pointerId: Int32) {
+        _ = jsObject[Strings.setPointerCapture]!(pointerId.jsValue())
+    }
+
+    public func releasePointerCapture(pointerId: Int32) {
+        _ = jsObject[Strings.releasePointerCapture]!(pointerId.jsValue())
+    }
+
+    public func hasPointerCapture(pointerId: Int32) -> Bool {
+        jsObject[Strings.hasPointerCapture]!(pointerId.jsValue()).fromJSValue()!
+    }
+
+    public func setHTML(input: String, options: SetHTMLOptions? = nil) {
+        _ = jsObject[Strings.setHTML]!(input.jsValue(), options?.jsValue() ?? .undefined)
+    }
+
+    public func pseudo(type: String) -> CSSPseudoElement? {
+        jsObject[Strings.pseudo]!(type.jsValue()).fromJSValue()!
+    }
+
+    @ReadWriteAttribute
+    public var elementTiming: String
+
+    @ReadWriteAttribute
+    public var outerHTML: String
+
+    public func insertAdjacentHTML(position: String, text: String) {
+        _ = jsObject[Strings.insertAdjacentHTML]!(position.jsValue(), text.jsValue())
+    }
+
+    public func requestFullscreen(options: FullscreenOptions? = nil) -> JSPromise {
+        jsObject[Strings.requestFullscreen]!(options?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func requestFullscreen(options: FullscreenOptions? = nil) async throws {
+        let _promise: JSPromise = jsObject[Strings.requestFullscreen]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        _ = try await _promise.get()
+    }
+
+    @ClosureAttribute.Optional1
+    public var onfullscreenchange: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var onfullscreenerror: EventHandler
+
+    public func getSpatialNavigationContainer() -> Node {
+        jsObject[Strings.getSpatialNavigationContainer]!().fromJSValue()!
+    }
+
+    public func focusableAreas(option: FocusableAreasOption? = nil) -> [Node] {
+        jsObject[Strings.focusableAreas]!(option?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    public func spatialNavigationSearch(dir: SpatialNavigationDirection, options: SpatialNavigationSearchOptions? = nil) -> Node? {
+        jsObject[Strings.spatialNavigationSearch]!(dir.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

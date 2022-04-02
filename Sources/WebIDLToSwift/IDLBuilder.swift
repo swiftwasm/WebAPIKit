@@ -27,10 +27,7 @@ enum IDLBuilder {
     }
 
     static func generateIDLBindings(idl: [String: GenericCollection<IDLNode>]) throws {
-        let declarations = [
-            "dom", "hr-time", "html", "console", "FileAPI", "geometry", "webidl", "fetch", "xhr",
-            "referrer-policy", "uievents", "wai-aria", "cssom", "css-conditional", "streams",
-        ].flatMap { idl[$0]!.array }
+        let declarations = idl.values.flatMap { $0.array }
         let merged = DeclarationMerger.merge(declarations: declarations)
         for (i, node) in merged.declarations.enumerated() {
             guard let nameNode = Mirror(reflecting: node).children.first(where: { $0.label == "name" }),

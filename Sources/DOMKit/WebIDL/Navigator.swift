@@ -3,12 +3,206 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class Navigator: JSBridgedClass, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware {
-    public class var constructor: JSFunction { JSObject.global.Navigator.function! }
+public class Navigator: JSBridgedClass, NavigatorStorage, NavigatorDeviceMemory, NavigatorNetworkInformation, NavigatorML, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware, NavigatorFonts, NavigatorUA, NavigatorGPU, NavigatorBadge, NavigatorLocks, NavigatorAutomationInformation {
+    public class var constructor: JSFunction { JSObject.global[Strings.Navigator].function! }
 
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _contacts = ReadonlyAttribute(jsObject: jsObject, name: Strings.contacts)
+        _scheduling = ReadonlyAttribute(jsObject: jsObject, name: Strings.scheduling)
+        _mediaSession = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaSession)
+        _xr = ReadonlyAttribute(jsObject: jsObject, name: Strings.xr)
+        _bluetooth = ReadonlyAttribute(jsObject: jsObject, name: Strings.bluetooth)
+        _windowControlsOverlay = ReadonlyAttribute(jsObject: jsObject, name: Strings.windowControlsOverlay)
+        _permissions = ReadonlyAttribute(jsObject: jsObject, name: Strings.permissions)
+        _ink = ReadonlyAttribute(jsObject: jsObject, name: Strings.ink)
+        _credentials = ReadonlyAttribute(jsObject: jsObject, name: Strings.credentials)
+        _hid = ReadonlyAttribute(jsObject: jsObject, name: Strings.hid)
+        _devicePosture = ReadonlyAttribute(jsObject: jsObject, name: Strings.devicePosture)
+        _geolocation = ReadonlyAttribute(jsObject: jsObject, name: Strings.geolocation)
+        _serviceWorker = ReadonlyAttribute(jsObject: jsObject, name: Strings.serviceWorker)
+        _maxTouchPoints = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxTouchPoints)
+        _wakeLock = ReadonlyAttribute(jsObject: jsObject, name: Strings.wakeLock)
+        _presentation = ReadonlyAttribute(jsObject: jsObject, name: Strings.presentation)
+        _keyboard = ReadonlyAttribute(jsObject: jsObject, name: Strings.keyboard)
+        _clipboard = ReadonlyAttribute(jsObject: jsObject, name: Strings.clipboard)
+        _usb = ReadonlyAttribute(jsObject: jsObject, name: Strings.usb)
+        _serial = ReadonlyAttribute(jsObject: jsObject, name: Strings.serial)
+        _mediaDevices = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaDevices)
+        _mediaCapabilities = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaCapabilities)
+        _virtualKeyboard = ReadonlyAttribute(jsObject: jsObject, name: Strings.virtualKeyboard)
         self.jsObject = jsObject
+    }
+
+    @ReadonlyAttribute
+    public var contacts: ContactsManager
+
+    @ReadonlyAttribute
+    public var scheduling: Scheduling
+
+    @ReadonlyAttribute
+    public var mediaSession: MediaSession
+
+    public func getBattery() -> JSPromise {
+        jsObject[Strings.getBattery]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func getBattery() async throws -> BatteryManager {
+        let _promise: JSPromise = jsObject[Strings.getBattery]!().fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var xr: XRSystem
+
+    public func sendBeacon(url: String, data: BodyInit? = nil) -> Bool {
+        jsObject[Strings.sendBeacon]!(url.jsValue(), data?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var bluetooth: Bluetooth
+
+    @ReadonlyAttribute
+    public var windowControlsOverlay: WindowControlsOverlay
+
+    @ReadonlyAttribute
+    public var permissions: Permissions
+
+    @ReadonlyAttribute
+    public var ink: Ink
+
+    @ReadonlyAttribute
+    public var credentials: CredentialsContainer
+
+    @ReadonlyAttribute
+    public var hid: HID
+
+    @ReadonlyAttribute
+    public var devicePosture: DevicePosture
+
+    public func requestMediaKeySystemAccess(keySystem: String, supportedConfigurations: [MediaKeySystemConfiguration]) -> JSPromise {
+        jsObject[Strings.requestMediaKeySystemAccess]!(keySystem.jsValue(), supportedConfigurations.jsValue()).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func requestMediaKeySystemAccess(keySystem: String, supportedConfigurations: [MediaKeySystemConfiguration]) async throws -> MediaKeySystemAccess {
+        let _promise: JSPromise = jsObject[Strings.requestMediaKeySystemAccess]!(keySystem.jsValue(), supportedConfigurations.jsValue()).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var geolocation: Geolocation
+
+    @ReadonlyAttribute
+    public var serviceWorker: ServiceWorkerContainer
+
+    public func requestMIDIAccess(options: MIDIOptions? = nil) -> JSPromise {
+        jsObject[Strings.requestMIDIAccess]!(options?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func requestMIDIAccess(options: MIDIOptions? = nil) async throws -> MIDIAccess {
+        let _promise: JSPromise = jsObject[Strings.requestMIDIAccess]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    public func getInstalledRelatedApps() -> JSPromise {
+        jsObject[Strings.getInstalledRelatedApps]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func getInstalledRelatedApps() async throws -> [RelatedApplication] {
+        let _promise: JSPromise = jsObject[Strings.getInstalledRelatedApps]!().fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var maxTouchPoints: Int32
+
+    @ReadonlyAttribute
+    public var wakeLock: WakeLock
+
+    @ReadonlyAttribute
+    public var presentation: Presentation
+
+    @ReadonlyAttribute
+    public var keyboard: Keyboard
+
+    @ReadonlyAttribute
+    public var clipboard: Clipboard
+
+    @ReadonlyAttribute
+    public var usb: USB
+
+    public func setClientBadge(contents: UInt64? = nil) -> JSPromise {
+        jsObject[Strings.setClientBadge]!(contents?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func setClientBadge(contents: UInt64? = nil) async throws {
+        let _promise: JSPromise = jsObject[Strings.setClientBadge]!(contents?.jsValue() ?? .undefined).fromJSValue()!
+        _ = try await _promise.get()
+    }
+
+    public func clearClientBadge() -> JSPromise {
+        jsObject[Strings.clearClientBadge]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func clearClientBadge() async throws {
+        let _promise: JSPromise = jsObject[Strings.clearClientBadge]!().fromJSValue()!
+        _ = try await _promise.get()
+    }
+
+    public func getGamepads() -> [Gamepad?] {
+        jsObject[Strings.getGamepads]!().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var serial: Serial
+
+    @ReadonlyAttribute
+    public var mediaDevices: MediaDevices
+
+    public func getUserMedia(constraints: MediaStreamConstraints, successCallback: NavigatorUserMediaSuccessCallback, errorCallback: NavigatorUserMediaErrorCallback) {
+        _ = jsObject[Strings.getUserMedia]!(constraints.jsValue(), successCallback.jsValue(), errorCallback.jsValue())
+    }
+
+    @ReadonlyAttribute
+    public var mediaCapabilities: MediaCapabilities
+
+    public func getAutoplayPolicy(type: AutoplayPolicyMediaType) -> AutoplayPolicy {
+        jsObject[Strings.getAutoplayPolicy]!(type.jsValue()).fromJSValue()!
+    }
+
+    public func getAutoplayPolicy(element: HTMLMediaElement) -> AutoplayPolicy {
+        jsObject[Strings.getAutoplayPolicy]!(element.jsValue()).fromJSValue()!
+    }
+
+    public func getAutoplayPolicy(context: AudioContext) -> AutoplayPolicy {
+        jsObject[Strings.getAutoplayPolicy]!(context.jsValue()).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var virtualKeyboard: VirtualKeyboard
+
+    public func share(data: ShareData? = nil) -> JSPromise {
+        jsObject[Strings.share]!(data?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func share(data: ShareData? = nil) async throws {
+        let _promise: JSPromise = jsObject[Strings.share]!(data?.jsValue() ?? .undefined).fromJSValue()!
+        _ = try await _promise.get()
+    }
+
+    public func canShare(data: ShareData? = nil) -> Bool {
+        jsObject[Strings.canShare]!(data?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    public func vibrate(pattern: VibratePattern) -> Bool {
+        jsObject[Strings.vibrate]!(pattern.jsValue()).fromJSValue()!
     }
 }

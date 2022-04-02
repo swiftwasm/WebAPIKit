@@ -21,8 +21,8 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
     }
 
     var swiftRepresentation: SwiftSource {
-        assert(!Context.static)
         if Context.override {
+            assert(!Context.static)
             // can't do property wrappers on override declarations
             return """
             private var \(wrapperName): \(idlType.propertyWrapper(readonly: readonly))<\(idlType)>
@@ -31,14 +31,14 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
                 \(readonly ? "" : "set { \(wrapperName).wrappedValue = newValue }")
             }
             """
-        } else if Context.constructor == nil {
+        } else if Context.constructor == nil || Context.static {
             // can't do property wrappers on extensions
             let setter: SwiftSource = """
             set { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] = newValue }
             """
 
             return """
-            public var \(name): \(idlType) {
+            public\(raw: Context.static ? " static" : "") var \(name): \(idlType) {
                 get { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] }
                 \(readonly ? "" : setter)
             }
@@ -217,6 +217,22 @@ extension MergedInterface: SwiftRepresentable {
             }
         }
     }
+}
+
+extension IDLMapLikeDeclaration: SwiftRepresentable, Initializable {
+    var swiftRepresentation: SwiftSource {
+        "// XXX: make me Map-like!"
+    }
+
+    var initializer: SwiftSource? { nil }
+}
+
+extension IDLSetLikeDeclaration: SwiftRepresentable, Initializable {
+    var swiftRepresentation: SwiftSource {
+        "// XXX: make me Set-like!"
+    }
+
+    var initializer: SwiftSource? { nil }
 }
 
 extension MergedMixin: SwiftRepresentable {
@@ -419,8 +435,20 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
             // covered by non-async operation
             return ""
         }
-        assert(operation.special.isEmpty)
-        if Context.override, Context.static {
+        switch operation.special {
+        case "static":
+            return Context.withState(.static(this: "constructor", className: Context.className)) {
+                defaultRepresentation
+            }
+        case "":
+            return defaultRepresentation
+        default:
+            fatalError("Unexpected special async operation of type \(operation.special)")
+        }
+    }
+
+    var defaultRepresentation: SwiftSource {
+        if Context.override, Context.static || operation.special == "static" {
             return """
             // XXX: illegal static override
             // \(operation.nameAndParams) async -> \(returnType)
@@ -457,12 +485,15 @@ extension IDLType: SwiftRepresentable {
         "ByteString": "String",
         "object": "JSObject",
         "undefined": "Void",
-        "float": "Float",
-        "double": "Double",
+        "float": "Float", // must not be +/-.infinity or .nan
+        "unrestricted float": "Float",
+        "double": "Double", // must not be +/-.infinity or .nan
         "unrestricted double": "Double",
+        "octet": "UInt8",
         "unsigned short": "UInt16",
         "unsigned long": "UInt32",
         "unsigned long long": "UInt64",
+        "byte": "Int8",
         "short": "Int16",
         "long": "Int32",
         "long long": "Int64",

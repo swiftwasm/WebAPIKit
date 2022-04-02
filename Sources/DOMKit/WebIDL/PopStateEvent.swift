@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PopStateEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.PopStateEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.PopStateEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)

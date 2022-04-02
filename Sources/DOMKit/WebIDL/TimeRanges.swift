@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TimeRanges: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.TimeRanges.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.TimeRanges].function! }
 
     public let jsObject: JSObject
 

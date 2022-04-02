@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTableCellElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLTableCellElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTableCellElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _colSpan = ReadWriteAttribute(jsObject: jsObject, name: Strings.colSpan)

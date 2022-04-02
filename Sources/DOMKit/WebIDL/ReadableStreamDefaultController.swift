@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamDefaultController: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.ReadableStreamDefaultController.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamDefaultController].function! }
 
     public let jsObject: JSObject
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NodeIterator: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.NodeIterator.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.NodeIterator].function! }
 
     public let jsObject: JSObject
 

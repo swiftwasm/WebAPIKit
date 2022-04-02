@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLBaseElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLBaseElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLBaseElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _href = ReadWriteAttribute(jsObject: jsObject, name: Strings.href)

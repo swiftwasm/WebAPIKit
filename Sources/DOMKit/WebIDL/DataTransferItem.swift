@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DataTransferItem: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DataTransferItem.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DataTransferItem].function! }
 
     public let jsObject: JSObject
 
@@ -12,6 +12,20 @@ public class DataTransferItem: JSBridgedClass {
         _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
         _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
         self.jsObject = jsObject
+    }
+
+    public func webkitGetAsEntry() -> FileSystemEntry? {
+        jsObject[Strings.webkitGetAsEntry]!().fromJSValue()!
+    }
+
+    public func getAsFileSystemHandle() -> JSPromise {
+        jsObject[Strings.getAsFileSystemHandle]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func getAsFileSystemHandle() async throws -> FileSystemHandle? {
+        let _promise: JSPromise = jsObject[Strings.getAsFileSystemHandle]!().fromJSValue()!
+        return try await _promise.get().fromJSValue()!
     }
 
     @ReadonlyAttribute

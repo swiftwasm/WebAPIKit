@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextTrackCue: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.TextTrackCue.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.TextTrackCue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _track = ReadonlyAttribute(jsObject: jsObject, name: Strings.track)

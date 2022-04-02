@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSRuleList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.CSSRuleList.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.CSSRuleList].function! }
 
     public let jsObject: JSObject
 

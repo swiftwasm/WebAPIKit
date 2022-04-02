@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextTrackList: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.TextTrackList.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.TextTrackList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)

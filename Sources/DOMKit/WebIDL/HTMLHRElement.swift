@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLHRElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLHRElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLHRElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)

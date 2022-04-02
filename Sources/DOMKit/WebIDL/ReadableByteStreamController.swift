@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableByteStreamController: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.ReadableByteStreamController.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ReadableByteStreamController].function! }
 
     public let jsObject: JSObject
 

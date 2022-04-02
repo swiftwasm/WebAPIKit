@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XPathResult: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.XPathResult.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.XPathResult].function! }
 
     public let jsObject: JSObject
 

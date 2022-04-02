@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class SubmitEventInit: BridgedDictionary {
     public convenience init(submitter: HTMLElement?) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.submitter] = submitter.jsValue()
         self.init(unsafelyWrapping: object)
     }

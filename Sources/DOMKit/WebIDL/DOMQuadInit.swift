@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class DOMQuadInit: BridgedDictionary {
     public convenience init(p1: DOMPointInit, p2: DOMPointInit, p3: DOMPointInit, p4: DOMPointInit) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.p1] = p1.jsValue()
         object[Strings.p2] = p2.jsValue()
         object[Strings.p3] = p3.jsValue()

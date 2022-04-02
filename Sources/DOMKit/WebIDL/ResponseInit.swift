@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class ResponseInit: BridgedDictionary {
     public convenience init(status: UInt16, statusText: String, headers: HeadersInit) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.status] = status.jsValue()
         object[Strings.statusText] = statusText.jsValue()
         object[Strings.headers] = headers.jsValue()

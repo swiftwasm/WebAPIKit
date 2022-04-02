@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageBitmapRenderingContext: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.ImageBitmapRenderingContext.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ImageBitmapRenderingContext].function! }
 
     public let jsObject: JSObject
 

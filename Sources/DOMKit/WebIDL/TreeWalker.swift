@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TreeWalker: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.TreeWalker.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.TreeWalker].function! }
 
     public let jsObject: JSObject
 

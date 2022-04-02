@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLHeadingElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLHeadingElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLHeadingElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)

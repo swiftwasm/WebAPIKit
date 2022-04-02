@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class ValidityStateFlags: BridgedDictionary {
     public convenience init(valueMissing: Bool, typeMismatch: Bool, patternMismatch: Bool, tooLong: Bool, tooShort: Bool, rangeUnderflow: Bool, rangeOverflow: Bool, stepMismatch: Bool, badInput: Bool, customError: Bool) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.valueMissing] = valueMissing.jsValue()
         object[Strings.typeMismatch] = typeMismatch.jsValue()
         object[Strings.patternMismatch] = patternMismatch.jsValue()

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MimeTypeArray: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.MimeTypeArray.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.MimeTypeArray].function! }
 
     public let jsObject: JSObject
 

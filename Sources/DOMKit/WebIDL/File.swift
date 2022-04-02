@@ -4,11 +4,12 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class File: Blob {
-    override public class var constructor: JSFunction { JSObject.global.File.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.File].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
         _lastModified = ReadonlyAttribute(jsObject: jsObject, name: Strings.lastModified)
+        _webkitRelativePath = ReadonlyAttribute(jsObject: jsObject, name: Strings.webkitRelativePath)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -21,4 +22,7 @@ public class File: Blob {
 
     @ReadonlyAttribute
     public var lastModified: Int64
+
+    @ReadonlyAttribute
+    public var webkitRelativePath: String
 }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ErrorEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.ErrorEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.ErrorEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _message = ReadonlyAttribute(jsObject: jsObject, name: Strings.message)

@@ -4,9 +4,16 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLAnchorElement: HTMLElement, HTMLHyperlinkElementUtils {
-    override public class var constructor: JSFunction { JSObject.global.HTMLAnchorElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLAnchorElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _attributionSourceId = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionSourceId)
+        _attributionDestination = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionDestination)
+        _attributionSourceEventId = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionSourceEventId)
+        _attributionReportTo = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionReportTo)
+        _attributionExpiry = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionExpiry)
+        _attributionSourcePriority = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionSourcePriority)
+        _registerAttributionSource = ReadWriteAttribute(jsObject: jsObject, name: Strings.registerAttributionSource)
         _target = ReadWriteAttribute(jsObject: jsObject, name: Strings.target)
         _download = ReadWriteAttribute(jsObject: jsObject, name: Strings.download)
         _ping = ReadWriteAttribute(jsObject: jsObject, name: Strings.ping)
@@ -23,6 +30,27 @@ public class HTMLAnchorElement: HTMLElement, HTMLHyperlinkElementUtils {
         _shape = ReadWriteAttribute(jsObject: jsObject, name: Strings.shape)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    @ReadWriteAttribute
+    public var attributionSourceId: UInt32
+
+    @ReadWriteAttribute
+    public var attributionDestination: String
+
+    @ReadWriteAttribute
+    public var attributionSourceEventId: String
+
+    @ReadWriteAttribute
+    public var attributionReportTo: String
+
+    @ReadWriteAttribute
+    public var attributionExpiry: Int64
+
+    @ReadWriteAttribute
+    public var attributionSourcePriority: Int64
+
+    @ReadWriteAttribute
+    public var registerAttributionSource: Bool
 
     public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new())

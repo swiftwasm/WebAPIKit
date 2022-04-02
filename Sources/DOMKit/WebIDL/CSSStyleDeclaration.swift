@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSStyleDeclaration: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.CSSStyleDeclaration.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleDeclaration].function! }
 
     public let jsObject: JSObject
 

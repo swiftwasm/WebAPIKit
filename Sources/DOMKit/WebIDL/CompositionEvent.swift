@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CompositionEvent: UIEvent {
-    override public class var constructor: JSFunction { JSObject.global.CompositionEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.CompositionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)

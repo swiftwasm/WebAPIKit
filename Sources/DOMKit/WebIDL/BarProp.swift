@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BarProp: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.BarProp.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.BarProp].function! }
 
     public let jsObject: JSObject
 

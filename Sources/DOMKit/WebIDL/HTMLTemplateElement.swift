@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTemplateElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLTemplateElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTemplateElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _content = ReadonlyAttribute(jsObject: jsObject, name: Strings.content)

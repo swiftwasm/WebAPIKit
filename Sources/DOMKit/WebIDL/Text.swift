@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class Text: CharacterData, Slottable {
-    override public class var constructor: JSFunction { JSObject.global.Text.function! }
+public class Text: CharacterData, Slottable, GeometryUtils {
+    override public class var constructor: JSFunction { JSObject.global[Strings.Text].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _wholeText = ReadonlyAttribute(jsObject: jsObject, name: Strings.wholeText)

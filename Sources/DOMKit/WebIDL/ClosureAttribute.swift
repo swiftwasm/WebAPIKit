@@ -94,6 +94,35 @@ public enum ClosureAttribute {
         }
     }
 
+    @propertyWrapper public final class Required3<A0, A1, A2, ReturnType>
+        where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
+    {
+        @usableFromInline let jsObject: JSObject
+        @usableFromInline let name: JSString
+
+        public init(jsObject: JSObject, name: JSString) {
+            self.jsObject = jsObject
+            self.name = name
+        }
+
+        @inlinable public var wrappedValue: (A0, A1, A2) -> ReturnType {
+            get { Required3[name, in: jsObject] }
+            set { Required3[name, in: jsObject] = newValue }
+        }
+
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2) -> ReturnType {
+            get {
+                let function = jsObject[name].function!
+                return { function($0.jsValue(), $1.jsValue(), $2.jsValue()).fromJSValue()! }
+            }
+            set {
+                jsObject[name] = JSClosure {
+                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue()
+                }.jsValue()
+            }
+        }
+    }
+
     @propertyWrapper public final class Required5<A0, A1, A2, A3, A4, ReturnType>
         where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
     {
@@ -222,6 +251,41 @@ public enum ClosureAttribute {
                 if let newValue = newValue {
                     jsObject[name] = JSClosure {
                         newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!).jsValue()
+                    }.jsValue()
+                } else {
+                    jsObject[name] = .null
+                }
+            }
+        }
+    }
+
+    @propertyWrapper public final class Optional3<A0, A1, A2, ReturnType>
+        where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
+    {
+        @usableFromInline let jsObject: JSObject
+        @usableFromInline let name: JSString
+
+        public init(jsObject: JSObject, name: JSString) {
+            self.jsObject = jsObject
+            self.name = name
+        }
+
+        @inlinable public var wrappedValue: ((A0, A1, A2) -> ReturnType)? {
+            get { Optional3[name, in: jsObject] }
+            set { Optional3[name, in: jsObject] = newValue }
+        }
+
+        @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1, A2) -> ReturnType)? {
+            get {
+                guard let function = jsObject[name].function else {
+                    return nil
+                }
+                return { function($0.jsValue(), $1.jsValue(), $2.jsValue()).fromJSValue()! }
+            }
+            set {
+                if let newValue = newValue {
+                    jsObject[name] = JSClosure {
+                        newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue()
                     }.jsValue()
                 } else {
                     jsObject[name] = .null

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FormDataEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.FormDataEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.FormDataEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _formData = ReadonlyAttribute(jsObject: jsObject, name: Strings.formData)

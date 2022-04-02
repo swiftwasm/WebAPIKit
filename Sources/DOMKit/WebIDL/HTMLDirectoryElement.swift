@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLDirectoryElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLDirectoryElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLDirectoryElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _compact = ReadWriteAttribute(jsObject: jsObject, name: Strings.compact)

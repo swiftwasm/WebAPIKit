@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Comment: CharacterData {
-    override public class var constructor: JSFunction { JSObject.global.Comment.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.Comment].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

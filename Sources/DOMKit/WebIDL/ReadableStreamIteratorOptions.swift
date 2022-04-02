@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class ReadableStreamIteratorOptions: BridgedDictionary {
     public convenience init(preventCancel: Bool) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.preventCancel] = preventCancel.jsValue()
         self.init(unsafelyWrapping: object)
     }

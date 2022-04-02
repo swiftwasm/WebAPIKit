@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class ErrorEventInit: BridgedDictionary {
     public convenience init(message: String, filename: String, lineno: UInt32, colno: UInt32, error: JSValue) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.message] = message.jsValue()
         object[Strings.filename] = filename.jsValue()
         object[Strings.lineno] = lineno.jsValue()

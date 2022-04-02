@@ -4,9 +4,12 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLInputElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLInputElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLInputElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _webkitdirectory = ReadWriteAttribute(jsObject: jsObject, name: Strings.webkitdirectory)
+        _webkitEntries = ReadonlyAttribute(jsObject: jsObject, name: Strings.webkitEntries)
+        _capture = ReadWriteAttribute(jsObject: jsObject, name: Strings.capture)
         _accept = ReadWriteAttribute(jsObject: jsObject, name: Strings.accept)
         _alt = ReadWriteAttribute(jsObject: jsObject, name: Strings.alt)
         _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocomplete)
@@ -54,6 +57,15 @@ public class HTMLInputElement: HTMLElement {
         _useMap = ReadWriteAttribute(jsObject: jsObject, name: Strings.useMap)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    @ReadWriteAttribute
+    public var webkitdirectory: Bool
+
+    @ReadonlyAttribute
+    public var webkitEntries: [FileSystemEntry]
+
+    @ReadWriteAttribute
+    public var capture: String
 
     public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new())

@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class FocusEventInit: BridgedDictionary {
     public convenience init(relatedTarget: EventTarget?) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.relatedTarget] = relatedTarget.jsValue()
         self.init(unsafelyWrapping: object)
     }

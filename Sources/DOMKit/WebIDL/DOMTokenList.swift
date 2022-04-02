@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMTokenList: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global.DOMTokenList.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DOMTokenList].function! }
 
     public let jsObject: JSObject
 

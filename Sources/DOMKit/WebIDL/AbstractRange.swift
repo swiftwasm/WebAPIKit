@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AbstractRange: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.AbstractRange.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.AbstractRange].function! }
 
     public let jsObject: JSObject
 

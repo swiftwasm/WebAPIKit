@@ -4,12 +4,16 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLCanvasElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLCanvasElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLCanvasElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
         _height = ReadWriteAttribute(jsObject: jsObject, name: Strings.height)
         super.init(unsafelyWrapping: jsObject)
+    }
+
+    public func captureStream(frameRequestRate: Double? = nil) -> MediaStream {
+        jsObject[Strings.captureStream]!(frameRequestRate?.jsValue() ?? .undefined).fromJSValue()!
     }
 
     public convenience init() {

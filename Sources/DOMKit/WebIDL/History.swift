@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class History: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.History.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.History].function! }
 
     public let jsObject: JSObject
 

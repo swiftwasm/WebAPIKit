@@ -4,11 +4,12 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ElementInternals: JSBridgedClass, ARIAMixin {
-    public class var constructor: JSFunction { JSObject.global.ElementInternals.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ElementInternals].function! }
 
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _states = ReadonlyAttribute(jsObject: jsObject, name: Strings.states)
         _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: Strings.shadowRoot)
         _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
         _willValidate = ReadonlyAttribute(jsObject: jsObject, name: Strings.willValidate)
@@ -17,6 +18,9 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
         _labels = ReadonlyAttribute(jsObject: jsObject, name: Strings.labels)
         self.jsObject = jsObject
     }
+
+    @ReadonlyAttribute
+    public var states: CustomStateSet
 
     @ReadonlyAttribute
     public var shadowRoot: ShadowRoot?

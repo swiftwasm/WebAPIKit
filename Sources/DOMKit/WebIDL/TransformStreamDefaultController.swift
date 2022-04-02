@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TransformStreamDefaultController: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.TransformStreamDefaultController.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.TransformStreamDefaultController].function! }
 
     public let jsObject: JSObject
 

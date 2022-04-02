@@ -4,12 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DedicatedWorkerGlobalScope: WorkerGlobalScope, AnimationFrameProvider {
-    override public class var constructor: JSFunction { JSObject.global.DedicatedWorkerGlobalScope.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.DedicatedWorkerGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
         _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
         _onmessageerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessageerror)
+        _onrtctransform = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onrtctransform)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -33,4 +34,7 @@ public class DedicatedWorkerGlobalScope: WorkerGlobalScope, AnimationFrameProvid
 
     @ClosureAttribute.Optional1
     public var onmessageerror: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var onrtctransform: EventHandler
 }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextTrackCueList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.TextTrackCueList.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.TextTrackCueList].function! }
 
     public let jsObject: JSObject
 

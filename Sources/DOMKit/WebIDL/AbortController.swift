@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AbortController: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.AbortController.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.AbortController].function! }
 
     public let jsObject: JSObject
 

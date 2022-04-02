@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Range: AbstractRange {
-    override public class var constructor: JSFunction { JSObject.global.Range.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.Range].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _commonAncestorContainer = ReadonlyAttribute(jsObject: jsObject, name: Strings.commonAncestorContainer)
@@ -108,5 +108,17 @@ public class Range: AbstractRange {
 
     public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
+    }
+
+    public func getClientRects() -> DOMRectList {
+        jsObject[Strings.getClientRects]!().fromJSValue()!
+    }
+
+    public func getBoundingClientRect() -> DOMRect {
+        jsObject[Strings.getBoundingClientRect]!().fromJSValue()!
+    }
+
+    public func createContextualFragment(fragment: String) -> DocumentFragment {
+        jsObject[Strings.createContextualFragment]!(fragment.jsValue()).fromJSValue()!
     }
 }

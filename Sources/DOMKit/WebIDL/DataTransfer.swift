@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DataTransfer: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DataTransfer.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DataTransfer].function! }
 
     public let jsObject: JSObject
 

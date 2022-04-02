@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TransformStream: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.TransformStream.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.TransformStream].function! }
 
     public let jsObject: JSObject
 

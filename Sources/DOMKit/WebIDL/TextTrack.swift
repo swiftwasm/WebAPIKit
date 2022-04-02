@@ -4,9 +4,10 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextTrack: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.TextTrack.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.TextTrack].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
         _language = ReadonlyAttribute(jsObject: jsObject, name: Strings.language)
@@ -18,6 +19,9 @@ public class TextTrack: EventTarget {
         _oncuechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncuechange)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    @ReadonlyAttribute
+    public var sourceBuffer: SourceBuffer?
 
     @ReadonlyAttribute
     public var kind: TextTrackKind

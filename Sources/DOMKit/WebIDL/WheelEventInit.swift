@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class WheelEventInit: BridgedDictionary {
     public convenience init(deltaX: Double, deltaY: Double, deltaZ: Double, deltaMode: UInt32) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.deltaX] = deltaX.jsValue()
         object[Strings.deltaY] = deltaY.jsValue()
         object[Strings.deltaZ] = deltaZ.jsValue()

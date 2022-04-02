@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTableColElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLTableColElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTableColElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _span = ReadWriteAttribute(jsObject: jsObject, name: Strings.span)

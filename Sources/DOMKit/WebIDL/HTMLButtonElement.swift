@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLButtonElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLButtonElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLButtonElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLDataListElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLDataListElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLDataListElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _options = ReadonlyAttribute(jsObject: jsObject, name: Strings.options)

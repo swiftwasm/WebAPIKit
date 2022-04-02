@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamBYOBReader: JSBridgedClass, ReadableStreamGenericReader {
-    public class var constructor: JSFunction { JSObject.global.ReadableStreamBYOBReader.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamBYOBReader].function! }
 
     public let jsObject: JSObject
 

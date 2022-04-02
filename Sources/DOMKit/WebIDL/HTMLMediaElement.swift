@@ -4,9 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLMediaElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLMediaElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMediaElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _sinkId = ReadonlyAttribute(jsObject: jsObject, name: Strings.sinkId)
+        _mediaKeys = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaKeys)
+        _onencrypted = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onencrypted)
+        _onwaitingforkey = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onwaitingforkey)
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
         _srcObject = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcObject)
@@ -35,7 +39,45 @@ public class HTMLMediaElement: HTMLElement {
         _audioTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioTracks)
         _videoTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoTracks)
         _textTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.textTracks)
+        _remote = ReadonlyAttribute(jsObject: jsObject, name: Strings.remote)
+        _disableRemotePlayback = ReadWriteAttribute(jsObject: jsObject, name: Strings.disableRemotePlayback)
         super.init(unsafelyWrapping: jsObject)
+    }
+
+    public func captureStream() -> MediaStream {
+        jsObject[Strings.captureStream]!().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var sinkId: String
+
+    public func setSinkId(sinkId: String) -> JSPromise {
+        jsObject[Strings.setSinkId]!(sinkId.jsValue()).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func setSinkId(sinkId: String) async throws {
+        let _promise: JSPromise = jsObject[Strings.setSinkId]!(sinkId.jsValue()).fromJSValue()!
+        _ = try await _promise.get()
+    }
+
+    @ReadonlyAttribute
+    public var mediaKeys: MediaKeys?
+
+    @ClosureAttribute.Optional1
+    public var onencrypted: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var onwaitingforkey: EventHandler
+
+    public func setMediaKeys(mediaKeys: MediaKeys?) -> JSPromise {
+        jsObject[Strings.setMediaKeys]!(mediaKeys.jsValue()).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func setMediaKeys(mediaKeys: MediaKeys?) async throws {
+        let _promise: JSPromise = jsObject[Strings.setMediaKeys]!(mediaKeys.jsValue()).fromJSValue()!
+        _ = try await _promise.get()
     }
 
     @ReadonlyAttribute
@@ -173,4 +215,10 @@ public class HTMLMediaElement: HTMLElement {
     public func addTextTrack(kind: TextTrackKind, label: String? = nil, language: String? = nil) -> TextTrack {
         jsObject[Strings.addTextTrack]!(kind.jsValue(), label?.jsValue() ?? .undefined, language?.jsValue() ?? .undefined).fromJSValue()!
     }
+
+    @ReadonlyAttribute
+    public var remote: RemotePlayback
+
+    @ReadWriteAttribute
+    public var disableRemotePlayback: Bool
 }

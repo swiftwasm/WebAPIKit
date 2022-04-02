@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XPathEvaluator: JSBridgedClass, XPathEvaluatorBase {
-    public class var constructor: JSFunction { JSObject.global.XPathEvaluator.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.XPathEvaluator].function! }
 
     public let jsObject: JSObject
 

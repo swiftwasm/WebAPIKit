@@ -6,4 +6,6 @@ import JavaScriptKit
 public protocol ElementCSSInlineStyle: JSBridgedClass {}
 public extension ElementCSSInlineStyle {
     var style: CSSStyleDeclaration { ReadonlyAttribute[Strings.style, in: jsObject] }
+
+    var attributeStyleMap: StylePropertyMap { ReadonlyAttribute[Strings.attributeStyleMap, in: jsObject] }
 }

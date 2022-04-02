@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MessageEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.MessageEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.MessageEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)

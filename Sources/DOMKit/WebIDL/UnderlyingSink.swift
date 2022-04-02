@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class UnderlyingSink: BridgedDictionary {
     public convenience init(start: @escaping UnderlyingSinkStartCallback, write: @escaping UnderlyingSinkWriteCallback, close: @escaping UnderlyingSinkCloseCallback, abort: @escaping UnderlyingSinkAbortCallback, type: JSValue) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         ClosureAttribute.Required1[Strings.start, in: object] = start
         ClosureAttribute.Required2[Strings.write, in: object] = write
         ClosureAttribute.Required0[Strings.close, in: object] = close

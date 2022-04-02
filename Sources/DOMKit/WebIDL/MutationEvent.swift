@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MutationEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.MutationEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.MutationEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _relatedNode = ReadonlyAttribute(jsObject: jsObject, name: Strings.relatedNode)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLUnknownElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLUnknownElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLUnknownElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

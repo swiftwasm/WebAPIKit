@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSGroupingRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global.CSSGroupingRule.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.CSSGroupingRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _cssRules = ReadonlyAttribute(jsObject: jsObject, name: Strings.cssRules)

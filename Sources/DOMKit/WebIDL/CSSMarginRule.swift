@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSMarginRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global.CSSMarginRule.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.CSSMarginRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)

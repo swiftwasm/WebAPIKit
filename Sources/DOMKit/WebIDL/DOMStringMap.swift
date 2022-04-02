@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMStringMap: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DOMStringMap.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DOMStringMap].function! }
 
     public let jsObject: JSObject
 

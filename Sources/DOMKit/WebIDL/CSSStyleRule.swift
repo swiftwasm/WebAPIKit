@@ -4,12 +4,25 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSStyleRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global.CSSStyleRule.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _cssRules = ReadonlyAttribute(jsObject: jsObject, name: Strings.cssRules)
         _selectorText = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectorText)
         _style = ReadonlyAttribute(jsObject: jsObject, name: Strings.style)
+        _styleMap = ReadonlyAttribute(jsObject: jsObject, name: Strings.styleMap)
         super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var cssRules: CSSRuleList
+
+    public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
+        jsObject[Strings.insertRule]!(rule.jsValue(), index?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    public func deleteRule(index: UInt32) {
+        _ = jsObject[Strings.deleteRule]!(index.jsValue())
     }
 
     @ReadWriteAttribute
@@ -17,4 +30,7 @@ public class CSSStyleRule: CSSRule {
 
     @ReadonlyAttribute
     public var style: CSSStyleDeclaration
+
+    @ReadonlyAttribute
+    public var styleMap: StylePropertyMap
 }

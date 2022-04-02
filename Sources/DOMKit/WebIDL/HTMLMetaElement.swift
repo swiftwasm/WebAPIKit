@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLMetaElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLMetaElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMetaElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)

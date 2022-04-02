@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class KeyboardEvent: UIEvent {
-    override public class var constructor: JSFunction { JSObject.global.KeyboardEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.KeyboardEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _key = ReadonlyAttribute(jsObject: jsObject, name: Strings.key)

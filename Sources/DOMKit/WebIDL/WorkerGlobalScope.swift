@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class WorkerGlobalScope: EventTarget, WindowOrWorkerGlobalScope {
-    override public class var constructor: JSFunction { JSObject.global.WorkerGlobalScope.function! }
+public class WorkerGlobalScope: EventTarget, FontFaceSource, WindowOrWorkerGlobalScope {
+    override public class var constructor: JSFunction { JSObject.global[Strings.WorkerGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _self = ReadonlyAttribute(jsObject: jsObject, name: Strings._self)

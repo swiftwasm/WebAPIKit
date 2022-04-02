@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLSelectElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLSelectElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLSelectElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocomplete)

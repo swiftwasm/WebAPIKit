@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLBRElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLBRElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLBRElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _clear = ReadWriteAttribute(jsObject: jsObject, name: Strings.clear)

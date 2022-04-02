@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AbortSignal: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.AbortSignal.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.AbortSignal].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _aborted = ReadonlyAttribute(jsObject: jsObject, name: Strings.aborted)

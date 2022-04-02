@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CanvasFilter: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.CanvasFilter.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.CanvasFilter].function! }
 
     public let jsObject: JSObject
 

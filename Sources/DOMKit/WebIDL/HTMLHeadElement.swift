@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLHeadElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLHeadElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLHeadElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

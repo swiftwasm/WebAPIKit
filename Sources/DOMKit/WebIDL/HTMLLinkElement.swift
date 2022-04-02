@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLLinkElement: HTMLElement, LinkStyle {
-    override public class var constructor: JSFunction { JSObject.global.HTMLLinkElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLLinkElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _href = ReadWriteAttribute(jsObject: jsObject, name: Strings.href)
@@ -25,6 +25,7 @@ public class HTMLLinkElement: HTMLElement, LinkStyle {
         _charset = ReadWriteAttribute(jsObject: jsObject, name: Strings.charset)
         _rev = ReadWriteAttribute(jsObject: jsObject, name: Strings.rev)
         _target = ReadWriteAttribute(jsObject: jsObject, name: Strings.target)
+        _fetchpriority = ReadWriteAttribute(jsObject: jsObject, name: Strings.fetchpriority)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -85,4 +86,7 @@ public class HTMLLinkElement: HTMLElement, LinkStyle {
 
     @ReadWriteAttribute
     public var target: String
+
+    @ReadWriteAttribute
+    public var fetchpriority: String
 }

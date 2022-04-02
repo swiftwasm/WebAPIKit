@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BroadcastChannel: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.BroadcastChannel.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.BroadcastChannel].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)

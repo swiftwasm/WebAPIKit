@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FileReader: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.FileReader.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.FileReader].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)

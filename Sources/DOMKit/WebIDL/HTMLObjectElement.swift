@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLObjectElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLObjectElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLObjectElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadWriteAttribute(jsObject: jsObject, name: Strings.data)

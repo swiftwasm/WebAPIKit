@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTableElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLTableElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTableElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _caption = ReadWriteAttribute(jsObject: jsObject, name: Strings.caption)

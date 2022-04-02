@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class AddEventListenerOptions: BridgedDictionary {
     public convenience init(passive: Bool, once: Bool, signal: AbortSignal) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.passive] = passive.jsValue()
         object[Strings.once] = once.jsValue()
         object[Strings.signal] = signal.jsValue()

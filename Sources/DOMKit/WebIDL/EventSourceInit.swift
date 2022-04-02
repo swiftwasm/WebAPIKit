@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class EventSourceInit: BridgedDictionary {
     public convenience init(withCredentials: Bool) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.withCredentials] = withCredentials.jsValue()
         self.init(unsafelyWrapping: object)
     }

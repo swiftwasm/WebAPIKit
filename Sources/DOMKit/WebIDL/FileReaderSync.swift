@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FileReaderSync: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.FileReaderSync.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.FileReaderSync].function! }
 
     public let jsObject: JSObject
 

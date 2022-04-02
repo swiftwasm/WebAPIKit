@@ -84,4 +84,19 @@ public extension WindowEventHandlers {
         get { ClosureAttribute.Optional1[Strings.onunload, in: jsObject] }
         set { ClosureAttribute.Optional1[Strings.onunload, in: jsObject] = newValue }
     }
+
+    var onportalactivate: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.onportalactivate, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.onportalactivate, in: jsObject] = newValue }
+    }
+
+    var ongamepadconnected: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.ongamepadconnected, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.ongamepadconnected, in: jsObject] = newValue }
+    }
+
+    var ongamepaddisconnected: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.ongamepaddisconnected, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.ongamepaddisconnected, in: jsObject] = newValue }
+    }
 }

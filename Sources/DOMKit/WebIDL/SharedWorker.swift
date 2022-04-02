@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SharedWorker: EventTarget, AbstractWorker {
-    override public class var constructor: JSFunction { JSObject.global.SharedWorker.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.SharedWorker].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _port = ReadonlyAttribute(jsObject: jsObject, name: Strings.port)

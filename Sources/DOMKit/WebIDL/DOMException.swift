@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMException: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DOMException.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DOMException].function! }
 
     public let jsObject: JSObject
 

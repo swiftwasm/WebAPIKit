@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ValidityState: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.ValidityState.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ValidityState].function! }
 
     public let jsObject: JSObject
 

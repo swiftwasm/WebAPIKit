@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class EventModifierInit: BridgedDictionary {
     public convenience init(ctrlKey: Bool, shiftKey: Bool, altKey: Bool, metaKey: Bool, modifierAltGraph: Bool, modifierCapsLock: Bool, modifierFn: Bool, modifierFnLock: Bool, modifierHyper: Bool, modifierNumLock: Bool, modifierScrollLock: Bool, modifierSuper: Bool, modifierSymbol: Bool, modifierSymbolLock: Bool) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.ctrlKey] = ctrlKey.jsValue()
         object[Strings.shiftKey] = shiftKey.jsValue()
         object[Strings.altKey] = altKey.jsValue()

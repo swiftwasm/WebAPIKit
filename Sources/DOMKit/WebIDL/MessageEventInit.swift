@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class MessageEventInit: BridgedDictionary {
     public convenience init(data: JSValue, origin: String, lastEventId: String, source: MessageEventSource?, ports: [MessagePort]) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.data] = data.jsValue()
         object[Strings.origin] = origin.jsValue()
         object[Strings.lastEventId] = lastEventId.jsValue()

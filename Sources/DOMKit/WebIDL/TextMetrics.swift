@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextMetrics: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.TextMetrics.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.TextMetrics].function! }
 
     public let jsObject: JSObject
 

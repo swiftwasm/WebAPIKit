@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class ImageBitmapOptions: BridgedDictionary {
     public convenience init(imageOrientation: ImageOrientation, premultiplyAlpha: PremultiplyAlpha, colorSpaceConversion: ColorSpaceConversion, resizeWidth: UInt32, resizeHeight: UInt32, resizeQuality: ResizeQuality) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.imageOrientation] = imageOrientation.jsValue()
         object[Strings.premultiplyAlpha] = premultiplyAlpha.jsValue()
         object[Strings.colorSpaceConversion] = colorSpaceConversion.jsValue()

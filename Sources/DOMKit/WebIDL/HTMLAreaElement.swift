@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLAreaElement: HTMLElement, HTMLHyperlinkElementUtils {
-    override public class var constructor: JSFunction { JSObject.global.HTMLAreaElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLAreaElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _alt = ReadWriteAttribute(jsObject: jsObject, name: Strings.alt)

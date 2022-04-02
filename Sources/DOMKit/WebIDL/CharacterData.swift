@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
-    override public class var constructor: JSFunction { JSObject.global.CharacterData.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.CharacterData].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadWriteAttribute(jsObject: jsObject, name: Strings.data)

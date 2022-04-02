@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EventSource: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.EventSource.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.EventSource].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)

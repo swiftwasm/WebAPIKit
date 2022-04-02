@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CanvasGradient: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.CanvasGradient.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.CanvasGradient].function! }
 
     public let jsObject: JSObject
 

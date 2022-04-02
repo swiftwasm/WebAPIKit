@@ -5,7 +5,27 @@ import JavaScriptKit
 
 public protocol WindowOrWorkerGlobalScope: JSBridgedClass {}
 public extension WindowOrWorkerGlobalScope {
+    func fetch(input: RequestInfo, init: RequestInit? = nil) -> JSPromise {
+        jsObject[Strings.fetch]!(input.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    func fetch(input: RequestInfo, init: RequestInit? = nil) async throws -> Response {
+        let _promise: JSPromise = jsObject[Strings.fetch]!(input.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    var trustedTypes: TrustedTypePolicyFactory { ReadonlyAttribute[Strings.trustedTypes, in: jsObject] }
+
+    var originPolicyIds: [String] { ReadonlyAttribute[Strings.originPolicyIds, in: jsObject] }
+
     var performance: Performance { ReadonlyAttribute[Strings.performance, in: jsObject] }
+
+    var crypto: Crypto { ReadonlyAttribute[Strings.crypto, in: jsObject] }
+
+    var caches: CacheStorage { ReadonlyAttribute[Strings.caches, in: jsObject] }
+
+    var indexedDB: IDBFactory { ReadonlyAttribute[Strings.indexedDB, in: jsObject] }
 
     var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
 
@@ -79,13 +99,5 @@ public extension WindowOrWorkerGlobalScope {
         jsObject[Strings.structuredClone]!(value.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
     }
 
-    func fetch(input: RequestInfo, init: RequestInit? = nil) -> JSPromise {
-        jsObject[Strings.fetch]!(input.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func fetch(input: RequestInfo, init: RequestInit? = nil) async throws -> Response {
-        let _promise: JSPromise = jsObject[Strings.fetch]!(input.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
+    var scheduler: Scheduler { ReadonlyAttribute[Strings.scheduler, in: jsObject] }
 }

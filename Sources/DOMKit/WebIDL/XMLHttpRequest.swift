@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XMLHttpRequest: XMLHttpRequestEventTarget {
-    override public class var constructor: JSFunction { JSObject.global.XMLHttpRequest.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.XMLHttpRequest].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onreadystatechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onreadystatechange)

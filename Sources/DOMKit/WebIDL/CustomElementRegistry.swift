@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CustomElementRegistry: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.CustomElementRegistry.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.CustomElementRegistry].function! }
 
     public let jsObject: JSObject
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class External: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.External.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.External].function! }
 
     public let jsObject: JSObject
 

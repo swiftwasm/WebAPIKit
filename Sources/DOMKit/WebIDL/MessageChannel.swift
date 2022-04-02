@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MessageChannel: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.MessageChannel.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.MessageChannel].function! }
 
     public let jsObject: JSObject
 

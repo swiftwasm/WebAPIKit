@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BeforeUnloadEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.BeforeUnloadEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.BeforeUnloadEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

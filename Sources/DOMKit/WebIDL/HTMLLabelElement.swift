@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLLabelElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLLabelElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLLabelElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)

@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class StructuredSerializeOptions: BridgedDictionary {
     public convenience init(transfer: [JSObject]) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.transfer] = transfer.jsValue()
         self.init(unsafelyWrapping: object)
     }

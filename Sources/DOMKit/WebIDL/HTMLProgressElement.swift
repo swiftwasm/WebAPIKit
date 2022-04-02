@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLProgressElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLProgressElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLProgressElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)

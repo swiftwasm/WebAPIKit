@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamBYOBRequest: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.ReadableStreamBYOBRequest.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamBYOBRequest].function! }
 
     public let jsObject: JSObject
 

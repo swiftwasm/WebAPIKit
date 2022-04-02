@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMParser: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DOMParser.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DOMParser].function! }
 
     public let jsObject: JSObject
 

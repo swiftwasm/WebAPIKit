@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StaticRange: AbstractRange {
-    override public class var constructor: JSFunction { JSObject.global.StaticRange.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.StaticRange].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

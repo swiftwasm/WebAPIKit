@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Event: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.Event.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.Event].function! }
 
     public let jsObject: JSObject
 

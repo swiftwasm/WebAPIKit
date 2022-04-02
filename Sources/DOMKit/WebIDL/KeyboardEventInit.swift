@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class KeyboardEventInit: BridgedDictionary {
     public convenience init(key: String, code: String, location: UInt32, repeat: Bool, isComposing: Bool, charCode: UInt32, keyCode: UInt32) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.key] = key.jsValue()
         object[Strings.code] = code.jsValue()
         object[Strings.location] = location.jsValue()

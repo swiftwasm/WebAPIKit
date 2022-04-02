@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FormData: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global.FormData.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.FormData].function! }
 
     public let jsObject: JSObject
 

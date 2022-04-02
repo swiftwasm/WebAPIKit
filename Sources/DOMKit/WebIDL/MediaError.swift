@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaError: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.MediaError.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.MediaError].function! }
 
     public let jsObject: JSObject
 

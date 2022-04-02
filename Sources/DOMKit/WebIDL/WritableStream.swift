@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WritableStream: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.WritableStream.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.WritableStream].function! }
 
     public let jsObject: JSObject
 

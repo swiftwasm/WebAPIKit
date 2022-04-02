@@ -4,11 +4,12 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VideoTrack: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.VideoTrack.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.VideoTrack].function! }
 
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
         _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
@@ -16,6 +17,9 @@ public class VideoTrack: JSBridgedClass {
         _selected = ReadWriteAttribute(jsObject: jsObject, name: Strings.selected)
         self.jsObject = jsObject
     }
+
+    @ReadonlyAttribute
+    public var sourceBuffer: SourceBuffer?
 
     @ReadonlyAttribute
     public var id: String

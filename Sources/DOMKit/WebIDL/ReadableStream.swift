@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStream: JSBridgedClass, AsyncSequence {
-    public class var constructor: JSFunction { JSObject.global.ReadableStream.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ReadableStream].function! }
 
     public let jsObject: JSObject
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMQuad: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DOMQuad.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DOMQuad].function! }
 
     public let jsObject: JSObject
 

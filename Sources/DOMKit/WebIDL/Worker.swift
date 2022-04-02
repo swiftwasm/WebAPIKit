@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Worker: EventTarget, AbstractWorker {
-    override public class var constructor: JSFunction { JSObject.global.Worker.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.Worker].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)

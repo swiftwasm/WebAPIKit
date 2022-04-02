@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLStyleElement: HTMLElement, LinkStyle {
-    override public class var constructor: JSFunction { JSObject.global.HTMLStyleElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLStyleElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _media = ReadWriteAttribute(jsObject: jsObject, name: Strings.media)

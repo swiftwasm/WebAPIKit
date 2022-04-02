@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLVideoElement: HTMLMediaElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLVideoElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLVideoElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
@@ -13,7 +13,23 @@ public class HTMLVideoElement: HTMLMediaElement {
         _videoHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoHeight)
         _poster = ReadWriteAttribute(jsObject: jsObject, name: Strings.poster)
         _playsInline = ReadWriteAttribute(jsObject: jsObject, name: Strings.playsInline)
+        _onenterpictureinpicture = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onenterpictureinpicture)
+        _onleavepictureinpicture = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onleavepictureinpicture)
+        _autoPictureInPicture = ReadWriteAttribute(jsObject: jsObject, name: Strings.autoPictureInPicture)
+        _disablePictureInPicture = ReadWriteAttribute(jsObject: jsObject, name: Strings.disablePictureInPicture)
         super.init(unsafelyWrapping: jsObject)
+    }
+
+    public func requestVideoFrameCallback(callback: VideoFrameRequestCallback) -> UInt32 {
+        jsObject[Strings.requestVideoFrameCallback]!(callback.jsValue()).fromJSValue()!
+    }
+
+    public func cancelVideoFrameCallback(handle: UInt32) {
+        _ = jsObject[Strings.cancelVideoFrameCallback]!(handle.jsValue())
+    }
+
+    public func getVideoPlaybackQuality() -> VideoPlaybackQuality {
+        jsObject[Strings.getVideoPlaybackQuality]!().fromJSValue()!
     }
 
     public convenience init() {
@@ -37,4 +53,26 @@ public class HTMLVideoElement: HTMLMediaElement {
 
     @ReadWriteAttribute
     public var playsInline: Bool
+
+    public func requestPictureInPicture() -> JSPromise {
+        jsObject[Strings.requestPictureInPicture]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func requestPictureInPicture() async throws -> PictureInPictureWindow {
+        let _promise: JSPromise = jsObject[Strings.requestPictureInPicture]!().fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    @ClosureAttribute.Optional1
+    public var onenterpictureinpicture: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var onleavepictureinpicture: EventHandler
+
+    @ReadWriteAttribute
+    public var autoPictureInPicture: Bool
+
+    @ReadWriteAttribute
+    public var disablePictureInPicture: Bool
 }

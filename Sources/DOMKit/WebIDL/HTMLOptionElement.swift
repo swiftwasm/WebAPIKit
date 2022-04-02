@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLOptionElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLOptionElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOptionElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MessagePort: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.MessagePort.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.MessagePort].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)

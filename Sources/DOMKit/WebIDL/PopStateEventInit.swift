@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class PopStateEventInit: BridgedDictionary {
     public convenience init(state: JSValue) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.state] = state.jsValue()
         self.init(unsafelyWrapping: object)
     }

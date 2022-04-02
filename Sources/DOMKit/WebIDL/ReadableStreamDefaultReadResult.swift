@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class ReadableStreamDefaultReadResult: BridgedDictionary {
     public convenience init(value: JSValue, done: Bool) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.value] = value.jsValue()
         object[Strings.done] = done.jsValue()
         self.init(unsafelyWrapping: object)

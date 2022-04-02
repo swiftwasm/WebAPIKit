@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CountQueuingStrategy: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.CountQueuingStrategy.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.CountQueuingStrategy].function! }
 
     public let jsObject: JSObject
 

@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class DOMMatrix2DInit: BridgedDictionary {
     public convenience init(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double, m11: Double, m12: Double, m21: Double, m22: Double, m41: Double, m42: Double) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.a] = a.jsValue()
         object[Strings.b] = b.jsValue()
         object[Strings.c] = c.jsValue()

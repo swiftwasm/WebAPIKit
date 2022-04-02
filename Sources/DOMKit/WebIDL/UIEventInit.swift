@@ -4,8 +4,9 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class UIEventInit: BridgedDictionary {
-    public convenience init(view: Window?, detail: Int32, which: UInt32) {
-        let object = JSObject.global.Object.function!.new()
+    public convenience init(sourceCapabilities: InputDeviceCapabilities?, view: Window?, detail: Int32, which: UInt32) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.sourceCapabilities] = sourceCapabilities.jsValue()
         object[Strings.view] = view.jsValue()
         object[Strings.detail] = detail.jsValue()
         object[Strings.which] = which.jsValue()
@@ -13,11 +14,15 @@ public class UIEventInit: BridgedDictionary {
     }
 
     public required init(unsafelyWrapping object: JSObject) {
+        _sourceCapabilities = ReadWriteAttribute(jsObject: object, name: Strings.sourceCapabilities)
         _view = ReadWriteAttribute(jsObject: object, name: Strings.view)
         _detail = ReadWriteAttribute(jsObject: object, name: Strings.detail)
         _which = ReadWriteAttribute(jsObject: object, name: Strings.which)
         super.init(unsafelyWrapping: object)
     }
+
+    @ReadWriteAttribute
+    public var sourceCapabilities: InputDeviceCapabilities?
 
     @ReadWriteAttribute
     public var view: Window?

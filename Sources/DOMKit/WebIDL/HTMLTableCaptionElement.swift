@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTableCaptionElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLTableCaptionElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTableCaptionElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)

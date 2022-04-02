@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLFrameSetElement: HTMLElement, WindowEventHandlers {
-    override public class var constructor: JSFunction { JSObject.global.HTMLFrameSetElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFrameSetElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _cols = ReadWriteAttribute(jsObject: jsObject, name: Strings.cols)

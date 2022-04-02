@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Attr: Node {
-    override public class var constructor: JSFunction { JSObject.global.Attr.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.Attr].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.namespaceURI)

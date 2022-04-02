@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageData: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.ImageData.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ImageData].function! }
 
     public let jsObject: JSObject
 

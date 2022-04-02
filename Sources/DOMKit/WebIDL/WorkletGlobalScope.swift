@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WorkletGlobalScope: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.WorkletGlobalScope.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.WorkletGlobalScope].function! }
 
     public let jsObject: JSObject
 

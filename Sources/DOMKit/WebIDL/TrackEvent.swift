@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TrackEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.TrackEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.TrackEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _track = ReadonlyAttribute(jsObject: jsObject, name: Strings.track)

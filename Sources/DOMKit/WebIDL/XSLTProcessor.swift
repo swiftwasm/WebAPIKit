@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XSLTProcessor: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.XSLTProcessor.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.XSLTProcessor].function! }
 
     public let jsObject: JSObject
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTextAreaElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLTextAreaElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTextAreaElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocomplete)

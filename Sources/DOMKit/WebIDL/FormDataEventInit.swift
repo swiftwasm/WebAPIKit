@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class FormDataEventInit: BridgedDictionary {
     public convenience init(formData: FormData) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.formData] = formData.jsValue()
         self.init(unsafelyWrapping: object)
     }

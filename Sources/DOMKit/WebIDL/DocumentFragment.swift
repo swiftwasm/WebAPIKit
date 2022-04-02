@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DocumentFragment: Node, NonElementParentNode, ParentNode {
-    override public class var constructor: JSFunction { JSObject.global.DocumentFragment.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.DocumentFragment].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

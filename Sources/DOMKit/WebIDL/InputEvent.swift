@@ -4,13 +4,21 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class InputEvent: UIEvent {
-    override public class var constructor: JSFunction { JSObject.global.InputEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.InputEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _dataTransfer = ReadonlyAttribute(jsObject: jsObject, name: Strings.dataTransfer)
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
         _isComposing = ReadonlyAttribute(jsObject: jsObject, name: Strings.isComposing)
         _inputType = ReadonlyAttribute(jsObject: jsObject, name: Strings.inputType)
         super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var dataTransfer: DataTransfer?
+
+    public func getTargetRanges() -> [StaticRange] {
+        jsObject[Strings.getTargetRanges]!().fromJSValue()!
     }
 
     public convenience init(type: String, eventInitDict: InputEventInit? = nil) {

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMMatrixReadOnly: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DOMMatrixReadOnly.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DOMMatrixReadOnly].function! }
 
     public let jsObject: JSObject
 

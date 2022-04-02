@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLFormControlsCollection: HTMLCollection {
-    override public class var constructor: JSFunction { JSObject.global.HTMLFormControlsCollection.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFormControlsCollection].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

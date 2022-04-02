@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Headers: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global.Headers.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.Headers].function! }
 
     public let jsObject: JSObject
 

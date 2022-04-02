@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ProgressEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.ProgressEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.ProgressEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _lengthComputable = ReadonlyAttribute(jsObject: jsObject, name: Strings.lengthComputable)

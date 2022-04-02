@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StyleSheetList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.StyleSheetList.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.StyleSheetList].function! }
 
     public let jsObject: JSObject
 

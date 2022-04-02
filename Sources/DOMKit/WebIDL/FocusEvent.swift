@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FocusEvent: UIEvent {
-    override public class var constructor: JSFunction { JSObject.global.FocusEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.FocusEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _relatedTarget = ReadonlyAttribute(jsObject: jsObject, name: Strings.relatedTarget)

@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot {
-    override public class var constructor: JSFunction { JSObject.global.ShadowRoot.function! }
+public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot, InnerHTML {
+    override public class var constructor: JSFunction { JSObject.global[Strings.ShadowRoot].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _mode = ReadonlyAttribute(jsObject: jsObject, name: Strings.mode)

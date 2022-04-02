@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTimeElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLTimeElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTimeElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _dateTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.dateTime)

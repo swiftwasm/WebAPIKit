@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLSpanElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLSpanElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLSpanElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

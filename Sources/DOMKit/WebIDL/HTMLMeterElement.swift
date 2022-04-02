@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLMeterElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLMeterElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMeterElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)

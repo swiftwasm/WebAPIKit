@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLFormElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLFormElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFormElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _acceptCharset = ReadWriteAttribute(jsObject: jsObject, name: Strings.acceptCharset)

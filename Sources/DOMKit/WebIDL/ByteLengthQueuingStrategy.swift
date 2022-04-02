@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ByteLengthQueuingStrategy: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.ByteLengthQueuingStrategy.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.ByteLengthQueuingStrategy].function! }
 
     public let jsObject: JSObject
 

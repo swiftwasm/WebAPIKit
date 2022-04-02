@@ -4,9 +4,11 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLImageElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLImageElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLImageElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
+        _y = ReadonlyAttribute(jsObject: jsObject, name: Strings.y)
         _alt = ReadWriteAttribute(jsObject: jsObject, name: Strings.alt)
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
         _srcset = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcset)
@@ -30,8 +32,15 @@ public class HTMLImageElement: HTMLElement {
         _vspace = ReadWriteAttribute(jsObject: jsObject, name: Strings.vspace)
         _longDesc = ReadWriteAttribute(jsObject: jsObject, name: Strings.longDesc)
         _border = ReadWriteAttribute(jsObject: jsObject, name: Strings.border)
+        _fetchpriority = ReadWriteAttribute(jsObject: jsObject, name: Strings.fetchpriority)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    @ReadonlyAttribute
+    public var x: Int32
+
+    @ReadonlyAttribute
+    public var y: Int32
 
     public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new())
@@ -115,4 +124,7 @@ public class HTMLImageElement: HTMLElement {
 
     @ReadWriteAttribute
     public var border: String
+
+    @ReadWriteAttribute
+    public var fetchpriority: String
 }

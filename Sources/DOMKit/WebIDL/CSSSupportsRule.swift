@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSSupportsRule: CSSConditionRule {
-    override public class var constructor: JSFunction { JSObject.global.CSSSupportsRule.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.CSSSupportsRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

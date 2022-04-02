@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLAllCollection: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.HTMLAllCollection.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.HTMLAllCollection].function! }
 
     public let jsObject: JSObject
 

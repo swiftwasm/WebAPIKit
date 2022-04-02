@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLParagraphElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLParagraphElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLParagraphElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)

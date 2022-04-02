@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NodeList: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global.NodeList.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.NodeList].function! }
 
     public let jsObject: JSObject
 

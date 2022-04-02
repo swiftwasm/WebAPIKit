@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLDListElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLDListElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLDListElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _compact = ReadWriteAttribute(jsObject: jsObject, name: Strings.compact)

@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class MutationObserverInit: BridgedDictionary {
     public convenience init(childList: Bool, attributes: Bool, characterData: Bool, subtree: Bool, attributeOldValue: Bool, characterDataOldValue: Bool, attributeFilter: [String]) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.childList] = childList.jsValue()
         object[Strings.attributes] = attributes.jsValue()
         object[Strings.characterData] = characterData.jsValue()

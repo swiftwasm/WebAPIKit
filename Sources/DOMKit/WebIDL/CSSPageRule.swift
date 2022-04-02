@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSPageRule: CSSGroupingRule {
-    override public class var constructor: JSFunction { JSObject.global.CSSPageRule.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.CSSPageRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _selectorText = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectorText)

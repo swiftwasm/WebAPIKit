@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PageTransitionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.PageTransitionEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.PageTransitionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _persisted = ReadonlyAttribute(jsObject: jsObject, name: Strings.persisted)

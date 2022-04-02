@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class WorkletOptions: BridgedDictionary {
     public convenience init(credentials: RequestCredentials) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.credentials] = credentials.jsValue()
         self.init(unsafelyWrapping: object)
     }

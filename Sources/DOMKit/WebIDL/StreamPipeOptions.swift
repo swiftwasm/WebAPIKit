@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class StreamPipeOptions: BridgedDictionary {
     public convenience init(preventClose: Bool, preventAbort: Bool, preventCancel: Bool, signal: AbortSignal) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.preventClose] = preventClose.jsValue()
         object[Strings.preventAbort] = preventAbort.jsValue()
         object[Strings.preventCancel] = preventCancel.jsValue()

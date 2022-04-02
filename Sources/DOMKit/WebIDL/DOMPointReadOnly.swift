@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMPointReadOnly: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DOMPointReadOnly.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.DOMPointReadOnly].function! }
 
     public let jsObject: JSObject
 

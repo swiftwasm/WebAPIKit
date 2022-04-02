@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMRect: DOMRectReadOnly {
-    override public class var constructor: JSFunction { JSObject.global.DOMRect.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.DOMRect].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadWriteAttribute(jsObject: jsObject, name: Strings.x)

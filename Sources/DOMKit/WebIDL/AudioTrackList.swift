@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioTrackList: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.AudioTrackList.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.AudioTrackList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)

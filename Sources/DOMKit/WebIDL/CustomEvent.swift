@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CustomEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.CustomEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.CustomEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _detail = ReadonlyAttribute(jsObject: jsObject, name: Strings.detail)

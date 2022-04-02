@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Storage: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.Storage.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.Storage].function! }
 
     public let jsObject: JSObject
 

@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class WindowPostMessageOptions: BridgedDictionary {
     public convenience init(targetOrigin: String) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.targetOrigin] = targetOrigin.jsValue()
         self.init(unsafelyWrapping: object)
     }

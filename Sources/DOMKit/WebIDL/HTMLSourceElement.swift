@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLSourceElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global.HTMLSourceElement.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLSourceElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)

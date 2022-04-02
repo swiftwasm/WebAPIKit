@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OffscreenCanvas: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.OffscreenCanvas.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.OffscreenCanvas].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)

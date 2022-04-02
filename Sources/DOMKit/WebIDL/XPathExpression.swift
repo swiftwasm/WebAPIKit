@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XPathExpression: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.XPathExpression.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.XPathExpression].function! }
 
     public let jsObject: JSObject
 

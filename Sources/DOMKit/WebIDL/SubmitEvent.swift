@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SubmitEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.SubmitEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.SubmitEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _submitter = ReadonlyAttribute(jsObject: jsObject, name: Strings.submitter)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PluginArray: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.PluginArray.function! }
+    public class var constructor: JSFunction { JSObject.global[Strings.PluginArray].function! }
 
     public let jsObject: JSObject
 

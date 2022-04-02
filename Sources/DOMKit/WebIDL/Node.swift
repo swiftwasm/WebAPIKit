@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Node: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global.Node.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.Node].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _nodeType = ReadonlyAttribute(jsObject: jsObject, name: Strings.nodeType)

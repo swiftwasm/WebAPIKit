@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMMatrix: DOMMatrixReadOnly {
-    override public class var constructor: JSFunction { JSObject.global.DOMMatrix.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.DOMMatrix].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _a = ReadWriteAttribute(jsObject: jsObject, name: Strings.a)

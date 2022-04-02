@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StorageEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global.StorageEvent.function! }
+    override public class var constructor: JSFunction { JSObject.global[Strings.StorageEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _key = ReadonlyAttribute(jsObject: jsObject, name: Strings.key)

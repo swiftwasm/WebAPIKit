@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public class CustomEventInit: BridgedDictionary {
     public convenience init(detail: JSValue) {
-        let object = JSObject.global.Object.function!.new()
+        let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.detail] = detail.jsValue()
         self.init(unsafelyWrapping: object)
     }
