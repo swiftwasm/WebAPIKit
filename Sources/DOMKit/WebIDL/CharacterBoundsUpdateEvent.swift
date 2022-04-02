@@ -13,7 +13,7 @@ public class CharacterBoundsUpdateEvent: Event {
     }
 
     public convenience init(options: CharacterBoundsUpdateEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

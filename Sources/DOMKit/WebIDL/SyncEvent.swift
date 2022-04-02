@@ -13,7 +13,7 @@ public class SyncEvent: ExtendableEvent {
     }
 
     public convenience init(type: String, init: SyncEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), `init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
     }
 
     @ReadonlyAttribute

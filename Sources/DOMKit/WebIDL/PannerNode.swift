@@ -25,7 +25,7 @@ public class PannerNode: AudioNode {
     }
 
     public convenience init(context: BaseAudioContext, options: PannerOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(context.jsValue(), options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

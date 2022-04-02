@@ -17,7 +17,7 @@ public class EventSource: EventTarget {
     }
 
     public convenience init(url: String, eventSourceInitDict: EventSourceInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(url.jsValue(), eventSourceInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), eventSourceInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

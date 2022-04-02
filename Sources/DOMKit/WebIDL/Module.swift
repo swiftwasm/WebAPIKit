@@ -13,7 +13,7 @@ public class Module: JSBridgedClass {
     }
 
     public convenience init(bytes: BufferSource) {
-        self.init(unsafelyWrapping: Self.constructor.new(bytes.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [bytes.jsValue()]))
     }
 
     public static func exports(moduleObject: Module) -> [ModuleExportDescriptor] {

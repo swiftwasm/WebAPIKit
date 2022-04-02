@@ -13,7 +13,7 @@ public class XRMediaBinding: JSBridgedClass {
     }
 
     public convenience init(session: XRSession) {
-        self.init(unsafelyWrapping: Self.constructor.new(session.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue()]))
     }
 
     public func createQuadLayer(video: HTMLVideoElement, init: XRMediaQuadLayerInit? = nil) -> XRQuadLayer {

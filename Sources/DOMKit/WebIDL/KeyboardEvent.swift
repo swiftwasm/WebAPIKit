@@ -22,7 +22,7 @@ public class KeyboardEvent: UIEvent {
     }
 
     public convenience init(type: String, eventInitDict: KeyboardEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     public static let DOM_KEY_LOCATION_STANDARD: UInt32 = 0x00

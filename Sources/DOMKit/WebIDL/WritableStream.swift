@@ -14,7 +14,7 @@ public class WritableStream: JSBridgedClass {
     }
 
     public convenience init(underlyingSink: JSObject? = nil, strategy: QueuingStrategy? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(underlyingSink?.jsValue() ?? .undefined, strategy?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [underlyingSink?.jsValue() ?? .undefined, strategy?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

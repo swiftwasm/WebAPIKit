@@ -54,7 +54,7 @@ public class MouseEvent: UIEvent {
     public var movementY: Double
 
     public convenience init(type: String, eventInitDict: MouseEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

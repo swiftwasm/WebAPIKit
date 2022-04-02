@@ -12,7 +12,7 @@ public class CSSKeywordValue: CSSStyleValue {
     }
 
     public convenience init(value: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(value.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [value.jsValue()]))
     }
 
     @ReadWriteAttribute

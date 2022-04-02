@@ -13,7 +13,7 @@ public class CSSTransformValue: CSSStyleValue, Sequence {
     }
 
     public convenience init(transforms: [CSSTransformComponent]) {
-        self.init(unsafelyWrapping: Self.constructor.new(transforms.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [transforms.jsValue()]))
     }
 
     public typealias Element = CSSTransformComponent

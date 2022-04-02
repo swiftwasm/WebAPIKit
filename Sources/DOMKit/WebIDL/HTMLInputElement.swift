@@ -68,7 +68,7 @@ public class HTMLInputElement: HTMLElement {
     public var capture: String
 
     public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     @ReadWriteAttribute

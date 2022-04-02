@@ -13,7 +13,7 @@ public class NavigationCurrentEntryChangeEvent: Event {
     }
 
     public convenience init(type: String, eventInit: NavigationCurrentEntryChangeEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInit.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInit.jsValue()]))
     }
 
     @ReadonlyAttribute

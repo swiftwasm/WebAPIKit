@@ -13,7 +13,7 @@ public class CSSParserDeclaration: CSSParserRule {
     }
 
     public convenience init(name: String, body: [CSSParserRule]? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(name.jsValue(), body?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue(), body?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

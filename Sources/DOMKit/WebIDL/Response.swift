@@ -20,7 +20,7 @@ public class Response: JSBridgedClass, Body {
     }
 
     public convenience init(body: BodyInit? = nil, init: ResponseInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(body?.jsValue() ?? .undefined, `init`?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [body?.jsValue() ?? .undefined, `init`?.jsValue() ?? .undefined]))
     }
 
     public static func error() -> Self {

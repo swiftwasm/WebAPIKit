@@ -14,7 +14,7 @@ public class CSSScale: CSSTransformComponent {
     }
 
     public convenience init(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(x.jsValue(), y.jsValue(), z?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x.jsValue(), y.jsValue(), z?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

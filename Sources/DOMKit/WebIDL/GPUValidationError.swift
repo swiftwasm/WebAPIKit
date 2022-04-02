@@ -14,7 +14,7 @@ public class GPUValidationError: JSBridgedClass {
     }
 
     public convenience init(message: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(message.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [message.jsValue()]))
     }
 
     @ReadonlyAttribute

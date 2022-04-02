@@ -20,7 +20,7 @@ public class RTCError: DOMException {
     public var httpRequestStatusCode: Int32?
 
     public convenience init(init: RTCErrorInit, message: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`.jsValue(), message?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue(), message?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

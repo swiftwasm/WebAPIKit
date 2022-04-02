@@ -13,7 +13,7 @@ public class CSSUnitValue: CSSNumericValue {
     }
 
     public convenience init(value: Double, unit: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(value.jsValue(), unit.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [value.jsValue(), unit.jsValue()]))
     }
 
     @ReadWriteAttribute

@@ -15,7 +15,7 @@ public class Blob: JSBridgedClass {
     }
 
     public convenience init(blobParts: [BlobPart]? = nil, options: BlobPropertyBag? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(blobParts?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [blobParts?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

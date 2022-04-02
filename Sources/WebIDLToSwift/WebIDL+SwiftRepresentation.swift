@@ -263,15 +263,28 @@ extension IDLConstant: SwiftRepresentable, Initializable {
 extension IDLConstructor: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         assert(!Context.static)
+        assert(arguments.dropLast().allSatisfy { !$0.variadic })
         if Context.ignored[Context.className.source]?.contains("<constructor>") ?? false {
             return "// XXX: constructor is ignored"
         }
         let args: [SwiftSource] = arguments.map {
             "\($0.name)\($0.optional ? "?" : "").jsValue() \($0.optional ? " ?? .undefined" : "")"
         }
+        let argsArray: SwiftSource
+        if let last = arguments.last, last.variadic {
+            // TODO: handle optional variadics (if necessary?)
+            let variadic: SwiftSource = "\(last.name).map { $0.jsValue() }"
+            if args.count == 1 {
+                argsArray = variadic
+            } else {
+                argsArray = "[\(sequence: args.dropLast())] + \(variadic)"
+            }
+        } else {
+            argsArray = "[\(sequence: args)]"
+        }
         return """
         public convenience init(\(sequence: arguments.map(\.swiftRepresentation))) {
-            self.init(unsafelyWrapping: Self.constructor.new(\(sequence: args)))
+            self.init(unsafelyWrapping: Self.constructor.new(arguments: \(argsArray)))
         }
         """
     }
@@ -390,10 +403,10 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         if let last = arguments.last, last.variadic {
             // TODO: handle optional variadics (if necessary?)
             let variadic: SwiftSource = "\(last.name).map { $0.jsValue() }"
-            if args.count > 1 {
-                argsArray = "[\(sequence: args.dropLast())] + \(variadic)"
-            } else {
+            if args.count == 1 {
                 argsArray = variadic
+            } else {
+                argsArray = "[\(sequence: args.dropLast())] + \(variadic)"
             }
         } else {
             argsArray = "[\(sequence: args)]"

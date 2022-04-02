@@ -23,11 +23,11 @@ public class VideoFrame: JSBridgedClass {
     }
 
     public convenience init(image: CanvasImageSource, init: VideoFrameInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(image.jsValue(), `init`?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [image.jsValue(), `init`?.jsValue() ?? .undefined]))
     }
 
     public convenience init(data: BufferSource, init: VideoFrameBufferInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(data.jsValue(), `init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data.jsValue(), `init`.jsValue()]))
     }
 
     @ReadonlyAttribute

@@ -16,7 +16,7 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     }
 
     public convenience init(stream: WritableStream) {
-        self.init(unsafelyWrapping: Self.constructor.new(stream.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
     }
 
     @ReadonlyAttribute

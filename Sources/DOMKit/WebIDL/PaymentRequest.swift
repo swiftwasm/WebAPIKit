@@ -13,7 +13,7 @@ public class PaymentRequest: EventTarget {
     }
 
     public convenience init(methodData: [PaymentMethodData], details: PaymentDetailsInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(methodData.jsValue(), details.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [methodData.jsValue(), details.jsValue()]))
     }
 
     public func show(detailsPromise: JSPromise? = nil) -> JSPromise {

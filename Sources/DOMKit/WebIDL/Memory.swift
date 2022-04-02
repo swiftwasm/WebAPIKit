@@ -14,7 +14,7 @@ public class Memory: JSBridgedClass {
     }
 
     public convenience init(descriptor: MemoryDescriptor) {
-        self.init(unsafelyWrapping: Self.constructor.new(descriptor.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptor.jsValue()]))
     }
 
     public func grow(delta: UInt32) -> UInt32 {

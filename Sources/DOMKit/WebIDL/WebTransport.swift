@@ -18,7 +18,7 @@ public class WebTransport: JSBridgedClass {
     }
 
     public convenience init(url: String, options: WebTransportOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(url.jsValue(), options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
     public func getStats() -> JSPromise {

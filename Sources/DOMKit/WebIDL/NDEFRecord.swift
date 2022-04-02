@@ -19,7 +19,7 @@ public class NDEFRecord: JSBridgedClass {
     }
 
     public convenience init(recordInit: NDEFRecordInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(recordInit.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [recordInit.jsValue()]))
     }
 
     @ReadonlyAttribute

@@ -12,7 +12,7 @@ public class TaskPriorityChangeEvent: Event {
     }
 
     public convenience init(type: String, priorityChangeEventInitDict: TaskPriorityChangeEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), priorityChangeEventInitDict.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), priorityChangeEventInitDict.jsValue()]))
     }
 
     @ReadonlyAttribute

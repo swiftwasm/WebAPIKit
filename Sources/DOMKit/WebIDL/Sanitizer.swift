@@ -13,7 +13,7 @@ public class Sanitizer: JSBridgedClass {
     }
 
     public convenience init(config: SanitizerConfig? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(config?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [config?.jsValue() ?? .undefined]))
     }
 
     public func sanitize(input: __UNSUPPORTED_UNION__) -> DocumentFragment {

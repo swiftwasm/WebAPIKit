@@ -18,7 +18,7 @@ public class GeolocationSensor: Sensor {
     }
 
     public convenience init(options: GeolocationSensorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
     public static func read(readOptions: ReadOptions? = nil) -> JSPromise {

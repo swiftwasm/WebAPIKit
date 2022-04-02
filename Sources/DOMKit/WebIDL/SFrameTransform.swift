@@ -14,7 +14,7 @@ public class SFrameTransform: JSBridgedClass, GenericTransformStream {
     }
 
     public convenience init(options: SFrameTransformOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
     public func setEncryptionKey(key: CryptoKey, keyID: CryptoKeyID? = nil) -> JSPromise {

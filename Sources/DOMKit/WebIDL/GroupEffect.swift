@@ -16,7 +16,7 @@ public class GroupEffect: JSBridgedClass {
     }
 
     public convenience init(children: [AnimationEffect]?, timing: __UNSUPPORTED_UNION__? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(children.jsValue(), timing?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [children.jsValue(), timing?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

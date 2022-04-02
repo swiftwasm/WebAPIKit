@@ -15,7 +15,7 @@ public class DOMRect: DOMRectReadOnly {
     }
 
     public convenience init(x: Double? = nil, y: Double? = nil, width: Double? = nil, height: Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, width?.jsValue() ?? .undefined, height?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, width?.jsValue() ?? .undefined, height?.jsValue() ?? .undefined]))
     }
 
     // XXX: illegal static override

@@ -13,7 +13,7 @@ public class CSSParserBlock: CSSParserValue {
     }
 
     public convenience init(name: String, body: [CSSParserValue]) {
-        self.init(unsafelyWrapping: Self.constructor.new(name.jsValue(), body.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue(), body.jsValue()]))
     }
 
     @ReadonlyAttribute

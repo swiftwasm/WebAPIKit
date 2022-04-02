@@ -92,7 +92,7 @@ public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode
     public var scrollingElement: Element?
 
     public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     @ReadonlyAttribute

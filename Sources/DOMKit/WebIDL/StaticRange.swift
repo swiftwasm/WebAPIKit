@@ -11,6 +11,6 @@ public class StaticRange: AbstractRange {
     }
 
     public convenience init(init: StaticRangeInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 }

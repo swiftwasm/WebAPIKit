@@ -19,7 +19,7 @@ public class AudioData: JSBridgedClass {
     }
 
     public convenience init(init: AudioDataInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 
     @ReadonlyAttribute

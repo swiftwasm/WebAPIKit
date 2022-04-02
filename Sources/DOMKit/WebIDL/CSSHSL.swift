@@ -15,7 +15,7 @@ public class CSSHSL: CSSColorValue {
     }
 
     public convenience init(h: CSSColorAngle, s: CSSColorPercent, l: CSSColorPercent, alpha: CSSColorPercent? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(h.jsValue(), s.jsValue(), l.jsValue(), alpha?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [h.jsValue(), s.jsValue(), l.jsValue(), alpha?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

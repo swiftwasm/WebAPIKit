@@ -13,7 +13,7 @@ public class Worker: EventTarget, AbstractWorker {
     }
 
     public convenience init(scriptURL: String, options: WorkerOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(scriptURL.jsValue(), options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
     public func terminate() {

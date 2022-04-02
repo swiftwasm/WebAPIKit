@@ -17,7 +17,7 @@ public class XRWebGLLayer: XRLayer {
     }
 
     public convenience init(session: XRSession, context: XRWebGLRenderingContext, layerInit: XRWebGLLayerInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(session.jsValue(), context.jsValue(), layerInit?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue(), context.jsValue(), layerInit?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

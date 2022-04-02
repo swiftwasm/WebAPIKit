@@ -31,7 +31,7 @@ public class Animation: EventTarget {
     public var currentTime: CSSNumberish?
 
     public convenience init(effect: AnimationEffect? = nil, timeline: AnimationTimeline? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(effect?.jsValue() ?? .undefined, timeline?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [effect?.jsValue() ?? .undefined, timeline?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

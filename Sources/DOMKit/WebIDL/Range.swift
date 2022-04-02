@@ -27,7 +27,7 @@ public class Range: AbstractRange {
     }
 
     public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     @ReadonlyAttribute

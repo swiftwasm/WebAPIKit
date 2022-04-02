@@ -18,7 +18,7 @@ public class UIEvent: Event {
     public var sourceCapabilities: InputDeviceCapabilities?
 
     public convenience init(type: String, eventInitDict: UIEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

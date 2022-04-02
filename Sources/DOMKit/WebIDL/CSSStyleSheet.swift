@@ -14,7 +14,7 @@ public class CSSStyleSheet: StyleSheet {
     }
 
     public convenience init(options: CSSStyleSheetInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

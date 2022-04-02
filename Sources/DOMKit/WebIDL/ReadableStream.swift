@@ -14,7 +14,7 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
     }
 
     public convenience init(underlyingSource: JSObject? = nil, strategy: QueuingStrategy? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(underlyingSource?.jsValue() ?? .undefined, strategy?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [underlyingSource?.jsValue() ?? .undefined, strategy?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

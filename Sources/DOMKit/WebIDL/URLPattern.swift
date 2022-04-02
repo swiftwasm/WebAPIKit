@@ -21,7 +21,7 @@ public class URLPattern: JSBridgedClass {
     }
 
     public convenience init(input: URLPatternInput? = nil, baseURL: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined]))
     }
 
     public func test(input: URLPatternInput? = nil, baseURL: String? = nil) -> Bool {

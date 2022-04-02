@@ -29,7 +29,7 @@ public class Request: JSBridgedClass, Body {
     }
 
     public convenience init(input: RequestInfo, init: RequestInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(input.jsValue(), `init`?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [input.jsValue(), `init`?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

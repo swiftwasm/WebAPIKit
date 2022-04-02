@@ -13,7 +13,7 @@ public class FederatedCredential: Credential, CredentialUserData {
     }
 
     public convenience init(data: FederatedCredentialInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(data.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data.jsValue()]))
     }
 
     @ReadonlyAttribute

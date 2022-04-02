@@ -13,7 +13,7 @@ public class XRInputSourceEvent: Event {
     }
 
     public convenience init(type: String, eventInitDict: XRInputSourceEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 
     @ReadonlyAttribute

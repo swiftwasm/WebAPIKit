@@ -13,7 +13,7 @@ public class CSSSkew: CSSTransformComponent {
     }
 
     public convenience init(ax: CSSNumericValue, ay: CSSNumericValue) {
-        self.init(unsafelyWrapping: Self.constructor.new(ax.jsValue(), ay.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [ax.jsValue(), ay.jsValue()]))
     }
 
     @ReadWriteAttribute

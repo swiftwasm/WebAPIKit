@@ -19,7 +19,7 @@ public class USBAlternateInterface: JSBridgedClass {
     }
 
     public convenience init(deviceInterface: USBInterface, alternateSetting: UInt8) {
-        self.init(unsafelyWrapping: Self.constructor.new(deviceInterface.jsValue(), alternateSetting.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [deviceInterface.jsValue(), alternateSetting.jsValue()]))
     }
 
     @ReadonlyAttribute

@@ -13,6 +13,6 @@ public class RTCRtpScriptTransform: JSBridgedClass {
     }
 
     public convenience init(worker: Worker, options: JSValue? = nil, transfer: [JSObject]? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(worker.jsValue(), options?.jsValue() ?? .undefined, transfer?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [worker.jsValue(), options?.jsValue() ?? .undefined, transfer?.jsValue() ?? .undefined]))
     }
 }

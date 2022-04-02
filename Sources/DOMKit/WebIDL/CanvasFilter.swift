@@ -13,6 +13,6 @@ public class CanvasFilter: JSBridgedClass {
     }
 
     public convenience init(filters: __UNSUPPORTED_UNION__? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(filters?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [filters?.jsValue() ?? .undefined]))
     }
 }

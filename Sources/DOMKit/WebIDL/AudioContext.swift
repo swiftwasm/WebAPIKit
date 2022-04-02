@@ -13,7 +13,7 @@ public class AudioContext: BaseAudioContext {
     }
 
     public convenience init(contextOptions: AudioContextOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(contextOptions?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

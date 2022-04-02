@@ -13,6 +13,6 @@ public class CompressionStream: JSBridgedClass, GenericTransformStream {
     }
 
     public convenience init(format: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(format.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [format.jsValue()]))
     }
 }

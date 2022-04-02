@@ -12,7 +12,7 @@ public class CSSUnparsedValue: CSSStyleValue, Sequence {
     }
 
     public convenience init(members: [CSSUnparsedSegment]) {
-        self.init(unsafelyWrapping: Self.constructor.new(members.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [members.jsValue()]))
     }
 
     public typealias Element = CSSUnparsedSegment

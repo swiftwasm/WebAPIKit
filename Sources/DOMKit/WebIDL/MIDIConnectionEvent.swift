@@ -12,7 +12,7 @@ public class MIDIConnectionEvent: Event {
     }
 
     public convenience init(type: String, eventInitDict: MIDIConnectionEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

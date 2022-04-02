@@ -19,7 +19,7 @@ public class Profiler: EventTarget {
     public var stopped: Bool
 
     public convenience init(options: ProfilerInitOptions) {
-        self.init(unsafelyWrapping: Self.constructor.new(options.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options.jsValue()]))
     }
 
     public func stop() -> JSPromise {

@@ -14,7 +14,7 @@ public class Table: JSBridgedClass {
     }
 
     public convenience init(descriptor: TableDescriptor, value: JSValue? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(descriptor.jsValue(), value?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptor.jsValue(), value?.jsValue() ?? .undefined]))
     }
 
     public func grow(delta: UInt32, value: JSValue? = nil) -> UInt32 {

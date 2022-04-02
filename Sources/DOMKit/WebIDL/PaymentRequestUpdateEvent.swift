@@ -11,7 +11,7 @@ public class PaymentRequestUpdateEvent: Event {
     }
 
     public convenience init(type: String, eventInitDict: PaymentRequestUpdateEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     public func updateWith(detailsPromise: JSPromise) {

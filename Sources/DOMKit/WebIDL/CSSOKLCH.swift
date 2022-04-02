@@ -15,7 +15,7 @@ public class CSSOKLCH: CSSColorValue {
     }
 
     public convenience init(l: CSSColorPercent, c: CSSColorPercent, h: CSSColorAngle, alpha: CSSColorPercent? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(l.jsValue(), c.jsValue(), h.jsValue(), alpha?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [l.jsValue(), c.jsValue(), h.jsValue(), alpha?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

@@ -35,7 +35,7 @@ public class URL: JSBridgedClass {
     }
 
     public convenience init(url: String, base: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(url.jsValue(), base?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), base?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

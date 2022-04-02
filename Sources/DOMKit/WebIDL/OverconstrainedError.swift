@@ -12,7 +12,7 @@ public class OverconstrainedError: DOMException {
     }
 
     public convenience init(constraint: String, message: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(constraint.jsValue(), message?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [constraint.jsValue(), message?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

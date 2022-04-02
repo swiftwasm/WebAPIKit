@@ -11,6 +11,6 @@ public class MediaStreamTrackAudioSourceNode: AudioNode {
     }
 
     public convenience init(context: AudioContext, options: MediaStreamTrackAudioSourceOptions) {
-        self.init(unsafelyWrapping: Self.constructor.new(context.jsValue(), options.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options.jsValue()]))
     }
 }

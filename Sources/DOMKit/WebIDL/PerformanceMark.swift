@@ -12,7 +12,7 @@ public class PerformanceMark: PerformanceEntry {
     }
 
     public convenience init(markName: String, markOptions: PerformanceMarkOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(markName.jsValue(), markOptions?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [markName.jsValue(), markOptions?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

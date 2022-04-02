@@ -13,7 +13,7 @@ public class BarcodeDetector: JSBridgedClass {
     }
 
     public convenience init(barcodeDetectorOptions: BarcodeDetectorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(barcodeDetectorOptions?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [barcodeDetectorOptions?.jsValue() ?? .undefined]))
     }
 
     public static func getSupportedFormats() -> JSPromise {

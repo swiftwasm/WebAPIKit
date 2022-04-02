@@ -12,7 +12,7 @@ public class ShadowAnimation: Animation {
     }
 
     public convenience init(source: Animation, newTarget: __UNSUPPORTED_UNION__) {
-        self.init(unsafelyWrapping: Self.constructor.new(source.jsValue(), newTarget.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [source.jsValue(), newTarget.jsValue()]))
     }
 
     @ReadonlyAttribute

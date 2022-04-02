@@ -17,7 +17,7 @@ public class UncalibratedMagnetometer: Sensor {
     }
 
     public convenience init(sensorOptions: MagnetometerSensorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(sensorOptions?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

@@ -21,7 +21,7 @@ public class VTTCue: TextTrackCue {
     }
 
     public convenience init(startTime: Double, endTime: Double, text: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(startTime.jsValue(), endTime.jsValue(), text.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [startTime.jsValue(), endTime.jsValue(), text.jsValue()]))
     }
 
     @ReadWriteAttribute

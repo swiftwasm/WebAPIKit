@@ -15,7 +15,7 @@ public class USBOutTransferResult: JSBridgedClass {
     }
 
     public convenience init(status: USBTransferStatus, bytesWritten: UInt32? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(status.jsValue(), bytesWritten?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [status.jsValue(), bytesWritten?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

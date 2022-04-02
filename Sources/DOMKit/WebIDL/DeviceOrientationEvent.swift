@@ -15,7 +15,7 @@ public class DeviceOrientationEvent: Event {
     }
 
     public convenience init(type: String, eventInitDict: DeviceOrientationEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

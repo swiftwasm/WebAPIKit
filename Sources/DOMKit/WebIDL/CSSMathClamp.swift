@@ -14,7 +14,7 @@ public class CSSMathClamp: CSSMathValue {
     }
 
     public convenience init(lower: CSSNumberish, value: CSSNumberish, upper: CSSNumberish) {
-        self.init(unsafelyWrapping: Self.constructor.new(lower.jsValue(), value.jsValue(), upper.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [lower.jsValue(), value.jsValue(), upper.jsValue()]))
     }
 
     @ReadonlyAttribute

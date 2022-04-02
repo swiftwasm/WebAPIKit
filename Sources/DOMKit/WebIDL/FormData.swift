@@ -13,7 +13,7 @@ public class FormData: JSBridgedClass, Sequence {
     }
 
     public convenience init(form: HTMLFormElement? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(form?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [form?.jsValue() ?? .undefined]))
     }
 
     public func append(name: String, value: String) {

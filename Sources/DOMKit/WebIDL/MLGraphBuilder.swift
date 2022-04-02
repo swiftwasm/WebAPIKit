@@ -13,7 +13,7 @@ public class MLGraphBuilder: JSBridgedClass {
     }
 
     public convenience init(context: MLContext) {
-        self.init(unsafelyWrapping: Self.constructor.new(context.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue()]))
     }
 
     public func input(name: String, desc: MLOperandDescriptor) -> MLOperand {

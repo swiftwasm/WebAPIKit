@@ -11,7 +11,7 @@ public class BackgroundFetchUpdateUIEvent: BackgroundFetchEvent {
     }
 
     public convenience init(type: String, init: BackgroundFetchEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), `init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
     }
 
     public func updateUI(options: BackgroundFetchUIOptions? = nil) -> JSPromise {

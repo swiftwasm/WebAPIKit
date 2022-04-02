@@ -14,7 +14,7 @@ public class BroadcastChannel: EventTarget {
     }
 
     public convenience init(name: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(name.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue()]))
     }
 
     @ReadonlyAttribute

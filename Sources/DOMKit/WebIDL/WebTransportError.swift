@@ -13,7 +13,7 @@ public class WebTransportError: DOMException {
     }
 
     public convenience init(init: WebTransportErrorInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

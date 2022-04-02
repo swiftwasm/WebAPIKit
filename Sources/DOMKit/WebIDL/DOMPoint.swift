@@ -15,7 +15,7 @@ public class DOMPoint: DOMPointReadOnly {
     }
 
     public convenience init(x: Double? = nil, y: Double? = nil, z: Double? = nil, w: Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, w?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, w?.jsValue() ?? .undefined]))
     }
 
     // XXX: illegal static override

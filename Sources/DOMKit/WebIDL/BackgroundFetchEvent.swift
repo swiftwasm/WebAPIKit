@@ -12,7 +12,7 @@ public class BackgroundFetchEvent: ExtendableEvent {
     }
 
     public convenience init(type: String, init: BackgroundFetchEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), `init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
     }
 
     @ReadonlyAttribute

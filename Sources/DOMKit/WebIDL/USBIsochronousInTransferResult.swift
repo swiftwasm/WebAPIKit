@@ -15,7 +15,7 @@ public class USBIsochronousInTransferResult: JSBridgedClass {
     }
 
     public convenience init(packets: [USBIsochronousInTransferPacket], data: DataView? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(packets.jsValue(), data?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [packets.jsValue(), data?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

@@ -13,7 +13,7 @@ public class DataCue: TextTrackCue {
     }
 
     public convenience init(startTime: Double, endTime: Double, value: JSValue, type: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(startTime.jsValue(), endTime.jsValue(), value.jsValue(), type?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [startTime.jsValue(), endTime.jsValue(), value.jsValue(), type?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

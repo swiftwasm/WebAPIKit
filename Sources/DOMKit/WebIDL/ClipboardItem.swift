@@ -15,7 +15,7 @@ public class ClipboardItem: JSBridgedClass {
     }
 
     public convenience init(items: [String: ClipboardItemData], options: ClipboardItemOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(items.jsValue(), options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [items.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

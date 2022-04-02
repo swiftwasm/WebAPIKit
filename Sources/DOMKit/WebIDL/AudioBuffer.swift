@@ -17,7 +17,7 @@ public class AudioBuffer: JSBridgedClass {
     }
 
     public convenience init(options: AudioBufferOptions) {
-        self.init(unsafelyWrapping: Self.constructor.new(options.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options.jsValue()]))
     }
 
     @ReadonlyAttribute

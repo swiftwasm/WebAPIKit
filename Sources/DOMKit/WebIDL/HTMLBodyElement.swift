@@ -21,7 +21,7 @@ public class HTMLBodyElement: HTMLElement, WindowEventHandlers {
     public var onorientationchange: EventHandler
 
     public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     @ReadWriteAttribute

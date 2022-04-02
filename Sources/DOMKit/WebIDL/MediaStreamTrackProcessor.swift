@@ -14,7 +14,7 @@ public class MediaStreamTrackProcessor: JSBridgedClass {
     }
 
     public convenience init(init: MediaStreamTrackProcessorInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 
     @ReadWriteAttribute

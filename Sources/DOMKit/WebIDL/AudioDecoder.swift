@@ -15,7 +15,7 @@ public class AudioDecoder: JSBridgedClass {
     }
 
     public convenience init(init: AudioDecoderInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 
     @ReadonlyAttribute

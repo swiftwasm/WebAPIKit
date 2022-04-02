@@ -15,7 +15,7 @@ public class RTCSessionDescription: JSBridgedClass {
     }
 
     public convenience init(descriptionInitDict: RTCSessionDescriptionInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(descriptionInitDict.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptionInitDict.jsValue()]))
     }
 
     @ReadonlyAttribute

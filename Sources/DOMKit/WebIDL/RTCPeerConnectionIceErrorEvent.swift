@@ -16,7 +16,7 @@ public class RTCPeerConnectionIceErrorEvent: Event {
     }
 
     public convenience init(type: String, eventInitDict: RTCPeerConnectionIceErrorEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 
     @ReadonlyAttribute

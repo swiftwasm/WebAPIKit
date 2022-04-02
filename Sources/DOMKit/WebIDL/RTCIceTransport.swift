@@ -20,7 +20,7 @@ public class RTCIceTransport: EventTarget {
     }
 
     public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     public func gather(options: RTCIceGatherOptions? = nil) {

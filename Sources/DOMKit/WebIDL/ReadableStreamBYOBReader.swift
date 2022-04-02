@@ -13,7 +13,7 @@ public class ReadableStreamBYOBReader: JSBridgedClass, ReadableStreamGenericRead
     }
 
     public convenience init(stream: ReadableStream) {
-        self.init(unsafelyWrapping: Self.constructor.new(stream.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
     }
 
     public func read(view: ArrayBufferView) -> JSPromise {

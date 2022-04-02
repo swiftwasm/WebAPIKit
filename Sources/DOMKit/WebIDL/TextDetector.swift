@@ -13,7 +13,7 @@ public class TextDetector: JSBridgedClass {
     }
 
     public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     public func detect(image: ImageBitmapSource) -> JSPromise {

@@ -12,7 +12,7 @@ public class SharedWorker: EventTarget, AbstractWorker {
     }
 
     public convenience init(scriptURL: String, options: __UNSUPPORTED_UNION__? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(scriptURL.jsValue(), options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

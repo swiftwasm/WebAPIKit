@@ -17,7 +17,7 @@ public class DOMPointReadOnly: JSBridgedClass {
     }
 
     public convenience init(x: Double? = nil, y: Double? = nil, z: Double? = nil, w: Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, w?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, w?.jsValue() ?? .undefined]))
     }
 
     public static func fromPoint(other: DOMPointInit? = nil) -> Self {

@@ -30,7 +30,7 @@ public class FontFace: JSBridgedClass {
     }
 
     public convenience init(family: String, source: __UNSUPPORTED_UNION__, descriptors: FontFaceDescriptors? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(family.jsValue(), source.jsValue(), descriptors?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [family.jsValue(), source.jsValue(), descriptors?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

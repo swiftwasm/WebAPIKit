@@ -12,7 +12,7 @@ public class SensorErrorEvent: Event {
     }
 
     public convenience init(type: String, errorEventInitDict: SensorErrorEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), errorEventInitDict.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), errorEventInitDict.jsValue()]))
     }
 
     @ReadonlyAttribute

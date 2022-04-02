@@ -13,7 +13,7 @@ public class Path2D: JSBridgedClass, CanvasPath {
     }
 
     public convenience init(path: __UNSUPPORTED_UNION__? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(path?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [path?.jsValue() ?? .undefined]))
     }
 
     public func addPath(path: Path2D, transform: DOMMatrix2DInit? = nil) {

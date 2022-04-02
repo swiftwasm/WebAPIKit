@@ -14,7 +14,7 @@ public class AudioProcessingEvent: Event {
     }
 
     public convenience init(type: String, eventInitDict: AudioProcessingEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 
     @ReadonlyAttribute

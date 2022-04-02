@@ -15,7 +15,7 @@ public class USBInTransferResult: JSBridgedClass {
     }
 
     public convenience init(status: USBTransferStatus, data: DataView? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(status.jsValue(), data?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [status.jsValue(), data?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

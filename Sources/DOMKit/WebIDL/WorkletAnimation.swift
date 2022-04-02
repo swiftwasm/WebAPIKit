@@ -12,7 +12,7 @@ public class WorkletAnimation: Animation {
     }
 
     public convenience init(animatorName: String, effects: __UNSUPPORTED_UNION__? = nil, timeline: AnimationTimeline? = nil, options: JSValue? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(animatorName.jsValue(), effects?.jsValue() ?? .undefined, timeline?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [animatorName.jsValue(), effects?.jsValue() ?? .undefined, timeline?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

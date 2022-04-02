@@ -11,7 +11,7 @@ public class IIRFilterNode: AudioNode {
     }
 
     public convenience init(context: BaseAudioContext, options: IIRFilterOptions) {
-        self.init(unsafelyWrapping: Self.constructor.new(context.jsValue(), options.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options.jsValue()]))
     }
 
     public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {

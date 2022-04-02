@@ -17,7 +17,7 @@ public class FetchEvent: ExtendableEvent {
     }
 
     public convenience init(type: String, eventInitDict: FetchEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 
     @ReadonlyAttribute

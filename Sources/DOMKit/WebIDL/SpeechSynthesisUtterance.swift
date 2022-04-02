@@ -24,7 +24,7 @@ public class SpeechSynthesisUtterance: EventTarget {
     }
 
     public convenience init(text: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(text?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [text?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

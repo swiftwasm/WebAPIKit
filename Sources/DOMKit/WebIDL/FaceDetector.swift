@@ -13,7 +13,7 @@ public class FaceDetector: JSBridgedClass {
     }
 
     public convenience init(faceDetectorOptions: FaceDetectorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(faceDetectorOptions?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [faceDetectorOptions?.jsValue() ?? .undefined]))
     }
 
     public func detect(image: ImageBitmapSource) -> JSPromise {

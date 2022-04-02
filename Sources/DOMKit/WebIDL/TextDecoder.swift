@@ -13,7 +13,7 @@ public class TextDecoder: JSBridgedClass, TextDecoderCommon {
     }
 
     public convenience init(label: String? = nil, options: TextDecoderOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(label?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [label?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
     }
 
     public func decode(input: BufferSource? = nil, options: TextDecodeOptions? = nil) -> String {

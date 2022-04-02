@@ -12,7 +12,7 @@ public class GainNode: AudioNode {
     }
 
     public convenience init(context: BaseAudioContext, options: GainOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(context.jsValue(), options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

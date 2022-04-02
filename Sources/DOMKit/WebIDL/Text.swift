@@ -12,7 +12,7 @@ public class Text: CharacterData, GeometryUtils, Slottable {
     }
 
     public convenience init(data: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(data?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data?.jsValue() ?? .undefined]))
     }
 
     public func splitText(offset: UInt32) -> Self {

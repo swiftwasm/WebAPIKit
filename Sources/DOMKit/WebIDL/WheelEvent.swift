@@ -15,7 +15,7 @@ public class WheelEvent: MouseEvent {
     }
 
     public convenience init(type: String, eventInitDict: WheelEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     public static let DOM_DELTA_PIXEL: UInt32 = 0x00

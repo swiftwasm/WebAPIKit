@@ -15,7 +15,7 @@ public class CSSLab: CSSColorValue {
     }
 
     public convenience init(l: CSSColorPercent, a: CSSColorNumber, b: CSSColorNumber, alpha: CSSColorPercent? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(l.jsValue(), a.jsValue(), b.jsValue(), alpha?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [l.jsValue(), a.jsValue(), b.jsValue(), alpha?.jsValue() ?? .undefined]))
     }
 
     @ReadWriteAttribute

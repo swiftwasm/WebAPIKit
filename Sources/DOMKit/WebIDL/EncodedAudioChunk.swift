@@ -17,7 +17,7 @@ public class EncodedAudioChunk: JSBridgedClass {
     }
 
     public convenience init(init: EncodedAudioChunkInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 
     @ReadonlyAttribute

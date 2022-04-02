@@ -12,11 +12,11 @@ public class PasswordCredential: Credential, CredentialUserData {
     }
 
     public convenience init(form: HTMLFormElement) {
-        self.init(unsafelyWrapping: Self.constructor.new(form.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [form.jsValue()]))
     }
 
     public convenience init(data: PasswordCredentialData) {
-        self.init(unsafelyWrapping: Self.constructor.new(data.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data.jsValue()]))
     }
 
     @ReadonlyAttribute

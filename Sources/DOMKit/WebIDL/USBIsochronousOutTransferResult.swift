@@ -14,7 +14,7 @@ public class USBIsochronousOutTransferResult: JSBridgedClass {
     }
 
     public convenience init(packets: [USBIsochronousOutTransferPacket]) {
-        self.init(unsafelyWrapping: Self.constructor.new(packets.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [packets.jsValue()]))
     }
 
     @ReadonlyAttribute

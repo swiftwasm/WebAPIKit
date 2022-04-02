@@ -14,7 +14,7 @@ public class ImageCapture: JSBridgedClass {
     }
 
     public convenience init(videoTrack: MediaStreamTrack) {
-        self.init(unsafelyWrapping: Self.constructor.new(videoTrack.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [videoTrack.jsValue()]))
     }
 
     public func takePhoto(photoSettings: PhotoSettings? = nil) -> JSPromise {

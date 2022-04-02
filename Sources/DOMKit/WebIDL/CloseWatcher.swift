@@ -13,7 +13,7 @@ public class CloseWatcher: EventTarget {
     }
 
     public convenience init(options: CloseWatcherOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
     public func destroy() {

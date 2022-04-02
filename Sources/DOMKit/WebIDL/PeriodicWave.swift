@@ -13,6 +13,6 @@ public class PeriodicWave: JSBridgedClass {
     }
 
     public convenience init(context: BaseAudioContext, options: PeriodicWaveOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(context.jsValue(), options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 }

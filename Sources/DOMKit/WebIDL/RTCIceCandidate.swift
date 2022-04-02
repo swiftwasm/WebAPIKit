@@ -27,7 +27,7 @@ public class RTCIceCandidate: JSBridgedClass {
     }
 
     public convenience init(candidateInitDict: RTCIceCandidateInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(candidateInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [candidateInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

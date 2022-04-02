@@ -13,7 +13,7 @@ public class TextEncoder: JSBridgedClass, TextEncoderCommon {
     }
 
     public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     public func encode(input: String? = nil) -> Uint8Array {

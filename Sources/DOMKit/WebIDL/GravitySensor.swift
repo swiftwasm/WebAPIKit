@@ -11,6 +11,6 @@ public class GravitySensor: Accelerometer {
     }
 
     public convenience init(options: AccelerometerSensorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 }

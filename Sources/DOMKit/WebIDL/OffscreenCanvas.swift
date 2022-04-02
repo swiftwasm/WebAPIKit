@@ -15,7 +15,7 @@ public class OffscreenCanvas: EventTarget {
     }
 
     public convenience init(width: UInt64, height: UInt64) {
-        self.init(unsafelyWrapping: Self.constructor.new(width.jsValue(), height.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [width.jsValue(), height.jsValue()]))
     }
 
     @ReadWriteAttribute

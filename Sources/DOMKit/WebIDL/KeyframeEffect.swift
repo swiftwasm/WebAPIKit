@@ -18,11 +18,11 @@ public class KeyframeEffect: AnimationEffect {
     public var iterationComposite: IterationCompositeOperation
 
     public convenience init(target: Element?, keyframes: JSObject?, options: __UNSUPPORTED_UNION__? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(target.jsValue(), keyframes.jsValue(), options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [target.jsValue(), keyframes.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
     public convenience init(source: KeyframeEffect) {
-        self.init(unsafelyWrapping: Self.constructor.new(source.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [source.jsValue()]))
     }
 
     @ReadWriteAttribute

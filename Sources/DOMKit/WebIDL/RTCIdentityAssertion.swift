@@ -15,7 +15,7 @@ public class RTCIdentityAssertion: JSBridgedClass {
     }
 
     public convenience init(idp: String, name: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(idp.jsValue(), name.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [idp.jsValue(), name.jsValue()]))
     }
 
     @ReadWriteAttribute

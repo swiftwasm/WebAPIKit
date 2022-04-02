@@ -15,7 +15,7 @@ public class FragmentResult: JSBridgedClass {
     }
 
     public convenience init(options: FragmentResultOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

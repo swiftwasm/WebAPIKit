@@ -15,7 +15,7 @@ public class InputDeviceCapabilities: JSBridgedClass {
     }
 
     public convenience init(deviceInitDict: InputDeviceCapabilitiesInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(deviceInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [deviceInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

@@ -21,7 +21,7 @@ public class WebSocket: EventTarget {
     }
 
     public convenience init(url: String, protocols: __UNSUPPORTED_UNION__? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(url.jsValue(), protocols?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), protocols?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

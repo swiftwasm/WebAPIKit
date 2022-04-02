@@ -13,7 +13,7 @@ public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericR
     }
 
     public convenience init(stream: ReadableStream) {
-        self.init(unsafelyWrapping: Self.constructor.new(stream.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
     }
 
     public func read() -> JSPromise {

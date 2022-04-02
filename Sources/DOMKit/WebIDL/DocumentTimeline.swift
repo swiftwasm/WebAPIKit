@@ -11,6 +11,6 @@ public class DocumentTimeline: AnimationTimeline {
     }
 
     public convenience init(options: DocumentTimelineOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 }

@@ -15,15 +15,15 @@ public class MediaStream: EventTarget {
     }
 
     public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     public convenience init(stream: MediaStream) {
-        self.init(unsafelyWrapping: Self.constructor.new(stream.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
     }
 
     public convenience init(tracks: [MediaStreamTrack]) {
-        self.init(unsafelyWrapping: Self.constructor.new(tracks.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [tracks.jsValue()]))
     }
 
     @ReadonlyAttribute

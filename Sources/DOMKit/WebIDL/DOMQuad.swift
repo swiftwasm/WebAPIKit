@@ -17,7 +17,7 @@ public class DOMQuad: JSBridgedClass {
     }
 
     public convenience init(p1: DOMPointInit? = nil, p2: DOMPointInit? = nil, p3: DOMPointInit? = nil, p4: DOMPointInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(p1?.jsValue() ?? .undefined, p2?.jsValue() ?? .undefined, p3?.jsValue() ?? .undefined, p4?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [p1?.jsValue() ?? .undefined, p2?.jsValue() ?? .undefined, p3?.jsValue() ?? .undefined, p4?.jsValue() ?? .undefined]))
     }
 
     public static func fromRect(other: DOMRectInit? = nil) -> Self {

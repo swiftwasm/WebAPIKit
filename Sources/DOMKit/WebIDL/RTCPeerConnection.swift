@@ -61,7 +61,7 @@ public class RTCPeerConnection: EventTarget {
     public var idpErrorInfo: String?
 
     public convenience init(configuration: RTCConfiguration? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(configuration?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [configuration?.jsValue() ?? .undefined]))
     }
 
     // XXX: member 'createOffer' is ignored

@@ -43,7 +43,7 @@ public class HTMLImageElement: HTMLElement {
     public var y: Int32
 
     public convenience init() {
-        self.init(unsafelyWrapping: Self.constructor.new())
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     @ReadWriteAttribute

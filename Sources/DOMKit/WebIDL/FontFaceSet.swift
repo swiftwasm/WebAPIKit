@@ -16,7 +16,7 @@ public class FontFaceSet: EventTarget {
     }
 
     public convenience init(initialFaces: [FontFace]) {
-        self.init(unsafelyWrapping: Self.constructor.new(initialFaces.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [initialFaces.jsValue()]))
     }
 
     // XXX: make me Set-like!

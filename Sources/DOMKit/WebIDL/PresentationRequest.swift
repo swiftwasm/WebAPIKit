@@ -12,11 +12,11 @@ public class PresentationRequest: EventTarget {
     }
 
     public convenience init(url: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(url.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue()]))
     }
 
     public convenience init(urls: [String]) {
-        self.init(unsafelyWrapping: Self.constructor.new(urls.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [urls.jsValue()]))
     }
 
     public func start() -> JSPromise {

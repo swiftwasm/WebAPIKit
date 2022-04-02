@@ -25,7 +25,7 @@ public class XRWebGLBinding: JSBridgedClass {
     }
 
     public convenience init(session: XRSession, context: XRWebGLRenderingContext) {
-        self.init(unsafelyWrapping: Self.constructor.new(session.jsValue(), context.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue(), context.jsValue()]))
     }
 
     @ReadonlyAttribute

@@ -11,7 +11,7 @@ public class TaskController: AbortController {
     }
 
     public convenience init(init: TaskControllerInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 
     public func setPriority(priority: TaskPriority) {

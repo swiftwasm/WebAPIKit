@@ -17,7 +17,7 @@ public class ImageDecoder: JSBridgedClass {
     }
 
     public convenience init(init: ImageDecoderInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 
     @ReadonlyAttribute

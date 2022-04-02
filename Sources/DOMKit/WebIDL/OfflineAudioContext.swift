@@ -13,11 +13,11 @@ public class OfflineAudioContext: BaseAudioContext {
     }
 
     public convenience init(contextOptions: OfflineAudioContextOptions) {
-        self.init(unsafelyWrapping: Self.constructor.new(contextOptions.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions.jsValue()]))
     }
 
     public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
-        self.init(unsafelyWrapping: Self.constructor.new(numberOfChannels.jsValue(), length.jsValue(), sampleRate.jsValue()))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [numberOfChannels.jsValue(), length.jsValue(), sampleRate.jsValue()]))
     }
 
     public func startRendering() -> JSPromise {

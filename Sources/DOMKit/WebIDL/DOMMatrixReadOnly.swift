@@ -37,7 +37,7 @@ public class DOMMatrixReadOnly: JSBridgedClass {
     }
 
     public convenience init(init: __UNSUPPORTED_UNION__? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(`init`?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 
     public static func fromMatrix(other: DOMMatrixInit? = nil) -> Self {

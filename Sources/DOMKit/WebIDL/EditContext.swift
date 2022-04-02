@@ -25,7 +25,7 @@ public class EditContext: EventTarget {
     }
 
     public convenience init(options: EditContextInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
     public func updateText(rangeStart: UInt32, rangeEnd: UInt32, text: String) {

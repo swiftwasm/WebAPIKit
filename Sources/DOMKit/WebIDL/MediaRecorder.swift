@@ -23,7 +23,7 @@ public class MediaRecorder: EventTarget {
     }
 
     public convenience init(stream: MediaStream, options: MediaRecorderOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(stream.jsValue(), options?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute

@@ -12,7 +12,7 @@ public class RTCDTMFToneChangeEvent: Event {
     }
 
     public convenience init(type: String, eventInitDict: RTCDTMFToneChangeEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(type.jsValue(), eventInitDict?.jsValue() ?? .undefined))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute
