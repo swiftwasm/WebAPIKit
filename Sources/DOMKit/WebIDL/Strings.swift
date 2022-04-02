@@ -1790,7 +1790,6 @@ import JavaScriptKit
     @usableFromInline static let createPattern: JSString = "createPattern"
     @usableFromInline static let createPeriodicWave: JSString = "createPeriodicWave"
     @usableFromInline static let createPipelineLayout: JSString = "createPipelineLayout"
-    @usableFromInline static let createPolicy: JSString = "createPolicy"
     @usableFromInline static let createProcessingInstruction: JSString = "createProcessingInstruction"
     @usableFromInline static let createProgram: JSString = "createProgram"
     @usableFromInline static let createProjectionLayer: JSString = "createProjectionLayer"

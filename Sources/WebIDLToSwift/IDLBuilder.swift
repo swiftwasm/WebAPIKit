@@ -35,6 +35,9 @@ enum IDLBuilder {
             else {
                 fatalError("Cannot find name for \(node)")
             }
+            if name == "TrustedTypePolicyOptions" {
+                continue
+            }
             let content = Context.withState(.root(
                 interfaces: merged.interfaces,
                 ignored: [
@@ -69,6 +72,8 @@ enum IDLBuilder {
                     "Window": ["requestIdleCallback"],
                     "WindowOrWorkerGlobalScope": ["queueMicrotask"],
                     "XRSession": ["requestAnimationFrame"],
+                    // variadic callbacks are unsupported
+                    "TrustedTypePolicyFactory": ["createPolicy"],
                     // functions as return types are unsupported
                     "CustomElementRegistry": ["define", "whenDefined"],
                     // NodeFilter

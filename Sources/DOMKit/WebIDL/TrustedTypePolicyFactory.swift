@@ -15,10 +15,7 @@ public class TrustedTypePolicyFactory: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public func createPolicy(policyName: String, policyOptions: TrustedTypePolicyOptions? = nil) -> TrustedTypePolicy {
-        let this = jsObject
-        return this[Strings.createPolicy].function!(this: this, arguments: [policyName.jsValue(), policyOptions?.jsValue() ?? .undefined]).fromJSValue()!
-    }
+    // XXX: member 'createPolicy' is ignored
 
     @inlinable public func isHTML(value: JSValue) -> Bool {
         let this = jsObject
