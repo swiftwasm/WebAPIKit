@@ -32,10 +32,10 @@ public extension HTMLOrSVGElement {
     }
 
     func focus(options: FocusOptions? = nil) {
-        jsObject[Keys.focus]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.focus]!(options?.jsValue() ?? .undefined)
     }
 
     func blur() {
-        jsObject[Keys.blur]!().fromJSValue()!
+        _ = jsObject[Keys.blur]!()
     }
 }

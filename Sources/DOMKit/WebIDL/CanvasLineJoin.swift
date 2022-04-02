@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasLineJoin: JSString, JSValueCompatible {
-    case round = "round"
-    case bevel = "bevel"
-    case miter = "miter"
+public enum CanvasLineJoin: String, JSValueCompatible {
+    case round
+    case bevel
+    case miter
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

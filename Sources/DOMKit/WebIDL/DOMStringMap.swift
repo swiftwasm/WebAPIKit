@@ -18,7 +18,7 @@ public class DOMStringMap: JSBridgedClass {
         jsObject[key].fromJSValue()!
     }
 
-    // XXX: unsupported setter for keys of type `String`
+    // XXX: unsupported setter for keys of type String
 
-    // XXX: unsupported deleter for keys of type `String`
+    // XXX: unsupported deleter for keys of type String
 }

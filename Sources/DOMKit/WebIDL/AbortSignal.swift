@@ -37,7 +37,7 @@ public class AbortSignal: EventTarget {
     public var reason: JSValue
 
     public func throwIfAborted() {
-        jsObject[Keys.throwIfAborted]!().fromJSValue()!
+        _ = jsObject[Keys.throwIfAborted]!()
     }
 
     @ClosureAttribute.Optional1

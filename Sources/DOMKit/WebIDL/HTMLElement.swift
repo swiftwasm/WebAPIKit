@@ -64,7 +64,7 @@ public class HTMLElement: Element, GlobalEventHandlers, DocumentAndElementEventH
     public var inert: Bool
 
     public func click() {
-        jsObject[Keys.click]!().fromJSValue()!
+        _ = jsObject[Keys.click]!()
     }
 
     @ReadWriteAttribute

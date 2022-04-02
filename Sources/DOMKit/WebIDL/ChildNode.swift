@@ -13,18 +13,18 @@ private enum Keys {
 public protocol ChildNode: JSBridgedClass {}
 public extension ChildNode {
     func before(nodes: __UNSUPPORTED_UNION__...) {
-        jsObject[Keys.before]!(nodes.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.before]!(nodes.jsValue())
     }
 
     func after(nodes: __UNSUPPORTED_UNION__...) {
-        jsObject[Keys.after]!(nodes.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.after]!(nodes.jsValue())
     }
 
     func replaceWith(nodes: __UNSUPPORTED_UNION__...) {
-        jsObject[Keys.replaceWith]!(nodes.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.replaceWith]!(nodes.jsValue())
     }
 
     func remove() {
-        jsObject[Keys.remove]!().fromJSValue()!
+        _ = jsObject[Keys.remove]!()
     }
 }

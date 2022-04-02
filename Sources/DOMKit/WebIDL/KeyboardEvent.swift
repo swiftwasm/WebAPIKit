@@ -95,7 +95,7 @@ public class KeyboardEvent: UIEvent {
         let _arg7 = altKey?.jsValue() ?? .undefined
         let _arg8 = shiftKey?.jsValue() ?? .undefined
         let _arg9 = metaKey?.jsValue() ?? .undefined
-        return jsObject[Keys.initKeyboardEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9).fromJSValue()!
+        _ = jsObject[Keys.initKeyboardEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9)
     }
 
     @ReadonlyAttribute

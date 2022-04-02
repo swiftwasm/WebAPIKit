@@ -23,7 +23,7 @@ public class DataTransferItemList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> DataTransferItem {
+    public subscript(key: Int) -> DataTransferItem {
         jsObject[key].fromJSValue()!
     }
 
@@ -36,10 +36,10 @@ public class DataTransferItemList: JSBridgedClass {
     }
 
     public func remove(index: UInt32) {
-        jsObject[Keys.remove]!(index.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.remove]!(index.jsValue())
     }
 
     public func clear() {
-        jsObject[Keys.clear]!().fromJSValue()!
+        _ = jsObject[Keys.clear]!()
     }
 }

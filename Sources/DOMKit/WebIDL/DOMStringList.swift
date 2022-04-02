@@ -22,7 +22,7 @@ public class DOMStringList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> String? {
+    public subscript(key: Int) -> String? {
         jsObject[key].fromJSValue()
     }
 

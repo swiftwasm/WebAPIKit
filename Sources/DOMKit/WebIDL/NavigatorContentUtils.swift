@@ -11,10 +11,10 @@ private enum Keys {
 public protocol NavigatorContentUtils: JSBridgedClass {}
 public extension NavigatorContentUtils {
     func registerProtocolHandler(scheme: String, url: String) {
-        jsObject[Keys.registerProtocolHandler]!(scheme.jsValue(), url.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.registerProtocolHandler]!(scheme.jsValue(), url.jsValue())
     }
 
     func unregisterProtocolHandler(scheme: String, url: String) {
-        jsObject[Keys.unregisterProtocolHandler]!(scheme.jsValue(), url.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.unregisterProtocolHandler]!(scheme.jsValue(), url.jsValue())
     }
 }

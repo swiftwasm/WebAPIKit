@@ -12,14 +12,14 @@ private enum Keys {
 public protocol CanvasRect: JSBridgedClass {}
 public extension CanvasRect {
     func clearRect(x: Double, y: Double, w: Double, h: Double) {
-        jsObject[Keys.clearRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.clearRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
     }
 
     func fillRect(x: Double, y: Double, w: Double, h: Double) {
-        jsObject[Keys.fillRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.fillRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
     }
 
     func strokeRect(x: Double, y: Double, w: Double, h: Double) {
-        jsObject[Keys.strokeRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.strokeRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
     }
 }

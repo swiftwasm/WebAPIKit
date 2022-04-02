@@ -50,6 +50,6 @@ public class NodeIterator: JSBridgedClass {
     }
 
     public func detach() {
-        jsObject[Keys.detach]!().fromJSValue()!
+        _ = jsObject[Keys.detach]!()
     }
 }

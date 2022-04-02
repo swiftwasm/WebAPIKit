@@ -3,7 +3,7 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum DOMParserSupportedType: JSString, JSValueCompatible {
+public enum DOMParserSupportedType: String, JSValueCompatible {
     case textHtml = "text/html"
     case textXml = "text/xml"
     case applicationXml = "application/xml"

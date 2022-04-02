@@ -77,13 +77,13 @@ public class DOMMatrix: DOMMatrixReadOnly {
     }
 
     // XXX: illegal static override
-    // override public static func `fromMatrix`(`other`: `DOMMatrixInit`? = nil) -> Self
+    // override public static func fromMatrix(other: DOMMatrixInit? = nil) -> Self
 
     // XXX: illegal static override
-    // override public static func `fromFloat32Array`(`array32`: `Float32Array`) -> Self
+    // override public static func fromFloat32Array(array32: Float32Array) -> Self
 
     // XXX: illegal static override
-    // override public static func `fromFloat64Array`(`array64`: `Float64Array`) -> Self
+    // override public static func fromFloat64Array(array64: Float64Array) -> Self
 
     private var _a: ReadWriteAttribute<Double>
     override public var a: Double {

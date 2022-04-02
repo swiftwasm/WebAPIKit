@@ -49,7 +49,7 @@ public class HTMLTableRowElement: HTMLElement {
     }
 
     public func deleteCell(index: Int32) {
-        jsObject[Keys.deleteCell]!(index.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.deleteCell]!(index.jsValue())
     }
 
     @ReadWriteAttribute

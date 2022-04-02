@@ -34,7 +34,7 @@ public class WritableStream: JSBridgedClass {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func abort(reason: JSValue? = nil) async throws {
         let _promise: JSPromise = jsObject[Keys.abort]!(reason?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        _ = try await _promise.get()
     }
 
     public func close() -> JSPromise {
@@ -44,7 +44,7 @@ public class WritableStream: JSBridgedClass {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func close() async throws {
         let _promise: JSPromise = jsObject[Keys.close]!().fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        _ = try await _promise.get()
     }
 
     public func getWriter() -> WritableStreamDefaultWriter {

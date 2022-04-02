@@ -18,10 +18,10 @@ public class External: JSBridgedClass {
     }
 
     public func AddSearchProvider() {
-        jsObject[Keys.AddSearchProvider]!().fromJSValue()!
+        _ = jsObject[Keys.AddSearchProvider]!()
     }
 
     public func IsSearchProviderInstalled() {
-        jsObject[Keys.IsSearchProviderInstalled]!().fromJSValue()!
+        _ = jsObject[Keys.IsSearchProviderInstalled]!()
     }
 }

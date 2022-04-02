@@ -34,6 +34,6 @@ public class HTMLSlotElement: HTMLElement {
     }
 
     public func assign(nodes: __UNSUPPORTED_UNION__...) {
-        jsObject[Keys.assign]!(nodes.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.assign]!(nodes.jsValue())
     }
 }

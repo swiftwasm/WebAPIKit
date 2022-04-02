@@ -4,13 +4,13 @@ struct ClosureWrapper: SwiftRepresentable, Equatable {
 
     var name: SwiftSource {
         if nullable {
-            return "Optional\(raw: String(argCount))"
+            return "Optional\(String(argCount))"
         } else {
-            return "Required\(raw: String(argCount))"
+            return "Required\(String(argCount))"
         }
     }
 
-    var indexes: [SwiftSource] { (0 ..< argCount).map(String.init).map(SwiftSource.raw) }
+    var indexes: [String] { (0 ..< argCount).map(String.init) }
 
     private var typeNames: [SwiftSource] {
         indexes.map { "A\($0)" } + ["ReturnType"]

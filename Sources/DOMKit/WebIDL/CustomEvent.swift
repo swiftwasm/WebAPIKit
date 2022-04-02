@@ -24,6 +24,6 @@ public class CustomEvent: Event {
     public var detail: JSValue
 
     public func initCustomEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, detail: JSValue? = nil) {
-        jsObject[Keys.initCustomEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined, detail?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.initCustomEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined, detail?.jsValue() ?? .undefined)
     }
 }

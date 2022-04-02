@@ -70,15 +70,15 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var readyState: UInt16
 
     public func open(method: String, url: String) {
-        jsObject[Keys.open]!(method.jsValue(), url.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.open]!(method.jsValue(), url.jsValue())
     }
 
     public func open(method: String, url: String, async: Bool, username: String? = nil, password: String? = nil) {
-        jsObject[Keys.open]!(method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.open]!(method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined)
     }
 
     public func setRequestHeader(name: String, value: String) {
-        jsObject[Keys.setRequestHeader]!(name.jsValue(), value.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setRequestHeader]!(name.jsValue(), value.jsValue())
     }
 
     @ReadWriteAttribute
@@ -91,11 +91,11 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     public var upload: XMLHttpRequestUpload
 
     public func send(body: __UNSUPPORTED_UNION__? = nil) {
-        jsObject[Keys.send]!(body?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.send]!(body?.jsValue() ?? .undefined)
     }
 
     public func abort() {
-        jsObject[Keys.abort]!().fromJSValue()!
+        _ = jsObject[Keys.abort]!()
     }
 
     @ReadonlyAttribute
@@ -116,7 +116,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     }
 
     public func overrideMimeType(mime: String) {
-        jsObject[Keys.overrideMimeType]!(mime.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.overrideMimeType]!(mime.jsValue())
     }
 
     @ReadWriteAttribute

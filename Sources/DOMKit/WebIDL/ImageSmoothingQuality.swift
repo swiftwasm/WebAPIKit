@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ImageSmoothingQuality: JSString, JSValueCompatible {
-    case low = "low"
-    case medium = "medium"
-    case high = "high"
+public enum ImageSmoothingQuality: String, JSValueCompatible {
+    case low
+    case medium
+    case high
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

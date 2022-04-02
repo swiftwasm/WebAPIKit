@@ -3,14 +3,14 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasFontStretch: JSString, JSValueCompatible {
+public enum CanvasFontStretch: String, JSValueCompatible {
     case ultraCondensed = "ultra-condensed"
     case extraCondensed = "extra-condensed"
-    case condensed = "condensed"
+    case condensed
     case semiCondensed = "semi-condensed"
-    case normal = "normal"
+    case normal
     case semiExpanded = "semi-expanded"
-    case expanded = "expanded"
+    case expanded
     case extraExpanded = "extra-expanded"
     case ultraExpanded = "ultra-expanded"
 

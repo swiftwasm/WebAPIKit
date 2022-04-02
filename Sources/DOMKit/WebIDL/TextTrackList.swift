@@ -25,7 +25,7 @@ public class TextTrackList: EventTarget {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> TextTrack {
+    public subscript(key: Int) -> TextTrack {
         jsObject[key].fromJSValue()!
     }
 

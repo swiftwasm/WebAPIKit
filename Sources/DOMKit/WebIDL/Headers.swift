@@ -25,11 +25,11 @@ public class Headers: JSBridgedClass, Sequence {
     }
 
     public func append(name: String, value: String) {
-        jsObject[Keys.append]!(name.jsValue(), value.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.append]!(name.jsValue(), value.jsValue())
     }
 
     public func delete(name: String) {
-        jsObject[Keys.delete]!(name.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.delete]!(name.jsValue())
     }
 
     public func get(name: String) -> String? {
@@ -41,7 +41,7 @@ public class Headers: JSBridgedClass, Sequence {
     }
 
     public func set(name: String, value: String) {
-        jsObject[Keys.set]!(name.jsValue(), value.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.set]!(name.jsValue(), value.jsValue())
     }
 
     public typealias Element = String

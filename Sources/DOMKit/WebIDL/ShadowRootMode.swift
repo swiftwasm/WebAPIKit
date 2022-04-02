@@ -3,9 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ShadowRootMode: JSString, JSValueCompatible {
-    case open = "open"
-    case closed = "closed"
+public enum ShadowRootMode: String, JSValueCompatible {
+    case open
+    case closed
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

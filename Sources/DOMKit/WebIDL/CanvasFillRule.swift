@@ -3,9 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasFillRule: JSString, JSValueCompatible {
-    case nonzero = "nonzero"
-    case evenodd = "evenodd"
+public enum CanvasFillRule: String, JSValueCompatible {
+    case nonzero
+    case evenodd
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

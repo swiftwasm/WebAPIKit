@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ReadableStreamReaderMode: JSString, JSValueCompatible {
-    case byob = "byob"
+public enum ReadableStreamReaderMode: String, JSValueCompatible {
+    case byob
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

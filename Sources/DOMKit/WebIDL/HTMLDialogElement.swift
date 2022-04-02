@@ -31,14 +31,14 @@ public class HTMLDialogElement: HTMLElement {
     public var returnValue: String
 
     public func show() {
-        jsObject[Keys.show]!().fromJSValue()!
+        _ = jsObject[Keys.show]!()
     }
 
     public func showModal() {
-        jsObject[Keys.showModal]!().fromJSValue()!
+        _ = jsObject[Keys.showModal]!()
     }
 
     public func close(returnValue: String? = nil) {
-        jsObject[Keys.close]!(returnValue?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.close]!(returnValue?.jsValue() ?? .undefined)
     }
 }

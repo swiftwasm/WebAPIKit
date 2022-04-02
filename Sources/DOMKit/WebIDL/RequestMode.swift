@@ -3,11 +3,11 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum RequestMode: JSString, JSValueCompatible {
-    case navigate = "navigate"
+public enum RequestMode: String, JSValueCompatible {
+    case navigate
     case sameOrigin = "same-origin"
     case noCors = "no-cors"
-    case cors = "cors"
+    case cors
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

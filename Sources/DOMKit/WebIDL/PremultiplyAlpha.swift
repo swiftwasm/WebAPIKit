@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum PremultiplyAlpha: JSString, JSValueCompatible {
-    case none = "none"
-    case premultiply = "premultiply"
-    case `default` = "default"
+public enum PremultiplyAlpha: String, JSValueCompatible {
+    case none
+    case premultiply
+    case `default`
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

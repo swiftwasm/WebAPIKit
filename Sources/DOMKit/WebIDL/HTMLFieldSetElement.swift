@@ -69,6 +69,6 @@ public class HTMLFieldSetElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
     }
 }

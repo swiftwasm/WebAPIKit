@@ -58,6 +58,6 @@ public class EventSource: EventTarget {
     public var onerror: EventHandler
 
     public func close() {
-        jsObject[Keys.close]!().fromJSValue()!
+        _ = jsObject[Keys.close]!()
     }
 }

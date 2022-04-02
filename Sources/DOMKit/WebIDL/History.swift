@@ -36,22 +36,22 @@ public class History: JSBridgedClass {
     public var state: JSValue
 
     public func go(delta: Int32? = nil) {
-        jsObject[Keys.go]!(delta?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.go]!(delta?.jsValue() ?? .undefined)
     }
 
     public func back() {
-        jsObject[Keys.back]!().fromJSValue()!
+        _ = jsObject[Keys.back]!()
     }
 
     public func forward() {
-        jsObject[Keys.forward]!().fromJSValue()!
+        _ = jsObject[Keys.forward]!()
     }
 
     public func pushState(data: JSValue, unused: String, url: String? = nil) {
-        jsObject[Keys.pushState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.pushState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
     }
 
     public func replaceState(data: JSValue, unused: String, url: String? = nil) {
-        jsObject[Keys.replaceState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.replaceState]!(data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined)
     }
 }

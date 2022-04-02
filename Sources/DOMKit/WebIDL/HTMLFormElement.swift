@@ -87,7 +87,7 @@ public class HTMLFormElement: HTMLElement {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> Element {
+    public subscript(key: Int) -> Element {
         jsObject[key].fromJSValue()!
     }
 
@@ -96,15 +96,15 @@ public class HTMLFormElement: HTMLElement {
     }
 
     public func submit() {
-        jsObject[Keys.submit]!().fromJSValue()!
+        _ = jsObject[Keys.submit]!()
     }
 
     public func requestSubmit(submitter: HTMLElement? = nil) {
-        jsObject[Keys.requestSubmit]!(submitter?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.requestSubmit]!(submitter?.jsValue() ?? .undefined)
     }
 
     public func reset() {
-        jsObject[Keys.reset]!().fromJSValue()!
+        _ = jsObject[Keys.reset]!()
     }
 
     public func checkValidity() -> Bool {

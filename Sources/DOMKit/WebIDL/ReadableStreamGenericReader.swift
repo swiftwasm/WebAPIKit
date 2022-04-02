@@ -19,6 +19,6 @@ public extension ReadableStreamGenericReader {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     func cancel(reason: JSValue? = nil) async throws {
         let _promise: JSPromise = jsObject[Keys.cancel]!(reason?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        _ = try await _promise.get()
     }
 }

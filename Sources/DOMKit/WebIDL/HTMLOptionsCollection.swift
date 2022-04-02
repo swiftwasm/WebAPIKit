@@ -25,14 +25,14 @@ public class HTMLOptionsCollection: HTMLCollection {
         set { _length.wrappedValue = newValue }
     }
 
-    // XXX: unsupported setter for keys of type `UInt32`
+    // XXX: unsupported setter for keys of type UInt32
 
     public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
-        jsObject[Keys.add]!(element.jsValue(), before?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.add]!(element.jsValue(), before?.jsValue() ?? .undefined)
     }
 
     public func remove(index: Int32) {
-        jsObject[Keys.remove]!(index.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.remove]!(index.jsValue())
     }
 
     @ReadWriteAttribute

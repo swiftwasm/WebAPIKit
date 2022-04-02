@@ -298,15 +298,15 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     }
 
     public func close() {
-        jsObject[Keys.close]!().fromJSValue()!
+        _ = jsObject[Keys.close]!()
     }
 
     public func write(text: String...) {
-        jsObject[Keys.write]!(text.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.write]!(text.jsValue())
     }
 
     public func writeln(text: String...) {
-        jsObject[Keys.writeln]!(text.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.writeln]!(text.jsValue())
     }
 
     @ReadonlyAttribute
@@ -377,15 +377,15 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     public var applets: HTMLCollection
 
     public func clear() {
-        jsObject[Keys.clear]!().fromJSValue()!
+        _ = jsObject[Keys.clear]!()
     }
 
     public func captureEvents() {
-        jsObject[Keys.captureEvents]!().fromJSValue()!
+        _ = jsObject[Keys.captureEvents]!()
     }
 
     public func releaseEvents() {
-        jsObject[Keys.releaseEvents]!().fromJSValue()!
+        _ = jsObject[Keys.releaseEvents]!()
     }
 
     @ReadonlyAttribute

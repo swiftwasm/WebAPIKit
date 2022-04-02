@@ -149,7 +149,7 @@ public class Node: EventTarget {
     public var textContent: String?
 
     public func normalize() {
-        jsObject[Keys.normalize]!().fromJSValue()!
+        _ = jsObject[Keys.normalize]!()
     }
 
     public func cloneNode(deep: Bool? = nil) -> Self {

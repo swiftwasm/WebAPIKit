@@ -88,7 +88,7 @@ public class HTMLSelectElement: HTMLElement {
     @ReadWriteAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> HTMLOptionElement? {
+    public subscript(key: Int) -> HTMLOptionElement? {
         jsObject[key].fromJSValue()
     }
 
@@ -97,18 +97,18 @@ public class HTMLSelectElement: HTMLElement {
     }
 
     public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
-        jsObject[Keys.add]!(element.jsValue(), before?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.add]!(element.jsValue(), before?.jsValue() ?? .undefined)
     }
 
     public func remove() {
-        jsObject[Keys.remove]!().fromJSValue()!
+        _ = jsObject[Keys.remove]!()
     }
 
     public func remove(index: Int32) {
-        jsObject[Keys.remove]!(index.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.remove]!(index.jsValue())
     }
 
-    // XXX: unsupported setter for keys of type `UInt32`
+    // XXX: unsupported setter for keys of type UInt32
 
     @ReadonlyAttribute
     public var selectedOptions: HTMLCollection
@@ -137,7 +137,7 @@ public class HTMLSelectElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
     }
 
     @ReadonlyAttribute

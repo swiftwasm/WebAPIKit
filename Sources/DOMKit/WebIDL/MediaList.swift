@@ -28,15 +28,15 @@ public class MediaList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> String? {
+    public subscript(key: Int) -> String? {
         jsObject[key].fromJSValue()
     }
 
     public func appendMedium(medium: String) {
-        jsObject[Keys.appendMedium]!(medium.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.appendMedium]!(medium.jsValue())
     }
 
     public func deleteMedium(medium: String) {
-        jsObject[Keys.deleteMedium]!(medium.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.deleteMedium]!(medium.jsValue())
     }
 }

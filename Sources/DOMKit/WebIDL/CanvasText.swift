@@ -12,11 +12,11 @@ private enum Keys {
 public protocol CanvasText: JSBridgedClass {}
 public extension CanvasText {
     func fillText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
-        jsObject[Keys.fillText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.fillText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
     }
 
     func strokeText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
-        jsObject[Keys.strokeText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.strokeText]!(text.jsValue(), x.jsValue(), y.jsValue(), maxWidth?.jsValue() ?? .undefined)
     }
 
     func measureText(text: String) -> TextMetrics {

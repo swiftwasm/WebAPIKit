@@ -124,22 +124,22 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var status: String
 
     public func close() {
-        jsObject[Keys.close]!().fromJSValue()!
+        _ = jsObject[Keys.close]!()
     }
 
     @ReadonlyAttribute
     public var closed: Bool
 
     public func stop() {
-        jsObject[Keys.stop]!().fromJSValue()!
+        _ = jsObject[Keys.stop]!()
     }
 
     public func focus() {
-        jsObject[Keys.focus]!().fromJSValue()!
+        _ = jsObject[Keys.focus]!()
     }
 
     public func blur() {
-        jsObject[Keys.blur]!().fromJSValue()!
+        _ = jsObject[Keys.blur]!()
     }
 
     @ReadonlyAttribute
@@ -178,11 +178,11 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     public var originAgentCluster: Bool
 
     public func alert() {
-        jsObject[Keys.alert]!().fromJSValue()!
+        _ = jsObject[Keys.alert]!()
     }
 
     public func alert(message: String) {
-        jsObject[Keys.alert]!(message.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.alert]!(message.jsValue())
     }
 
     public func confirm(message: String? = nil) -> Bool {
@@ -194,23 +194,23 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     }
 
     public func print() {
-        jsObject[Keys.print]!().fromJSValue()!
+        _ = jsObject[Keys.print]!()
     }
 
     public func postMessage(message: JSValue, targetOrigin: String, transfer: [JSObject]? = nil) {
-        jsObject[Keys.postMessage]!(message.jsValue(), targetOrigin.jsValue(), transfer?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.postMessage]!(message.jsValue(), targetOrigin.jsValue(), transfer?.jsValue() ?? .undefined)
     }
 
     public func postMessage(message: JSValue, options: WindowPostMessageOptions? = nil) {
-        jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
     }
 
     public func captureEvents() {
-        jsObject[Keys.captureEvents]!().fromJSValue()!
+        _ = jsObject[Keys.captureEvents]!()
     }
 
     public func releaseEvents() {
-        jsObject[Keys.releaseEvents]!().fromJSValue()!
+        _ = jsObject[Keys.releaseEvents]!()
     }
 
     @ReadonlyAttribute

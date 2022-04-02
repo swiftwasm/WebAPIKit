@@ -225,11 +225,11 @@ public class HTMLInputElement: HTMLElement {
     public var width: UInt32
 
     public func stepUp(n: Int32? = nil) {
-        jsObject[Keys.stepUp]!(n?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.stepUp]!(n?.jsValue() ?? .undefined)
     }
 
     public func stepDown(n: Int32? = nil) {
-        jsObject[Keys.stepDown]!(n?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.stepDown]!(n?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute
@@ -250,14 +250,14 @@ public class HTMLInputElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
     }
 
     @ReadonlyAttribute
     public var labels: NodeList?
 
     public func select() {
-        jsObject[Keys.select]!().fromJSValue()!
+        _ = jsObject[Keys.select]!()
     }
 
     @ReadWriteAttribute
@@ -270,19 +270,19 @@ public class HTMLInputElement: HTMLElement {
     public var selectionDirection: String?
 
     public func setRangeText(replacement: String) {
-        jsObject[Keys.setRangeText]!(replacement.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setRangeText]!(replacement.jsValue())
     }
 
     public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
-        jsObject[Keys.setRangeText]!(replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.setRangeText]!(replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined)
     }
 
     public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
-        jsObject[Keys.setSelectionRange]!(start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.setSelectionRange]!(start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined)
     }
 
     public func showPicker() {
-        jsObject[Keys.showPicker]!().fromJSValue()!
+        _ = jsObject[Keys.showPicker]!()
     }
 
     @ReadWriteAttribute

@@ -27,6 +27,6 @@ public class ImageBitmap: JSBridgedClass {
     public var height: UInt32
 
     public func close() {
-        jsObject[Keys.close]!().fromJSValue()!
+        _ = jsObject[Keys.close]!()
     }
 }

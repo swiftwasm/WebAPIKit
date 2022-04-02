@@ -22,7 +22,7 @@ public class HTMLAllCollection: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> Element {
+    public subscript(key: Int) -> Element {
         jsObject[key].fromJSValue()!
     }
 

@@ -18,16 +18,14 @@ public class MutationObserver: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(callback: MutationCallback) {
-        self.init(unsafelyWrapping: Self.constructor.new(callback.jsValue()))
-    }
+    // XXX: constructor is ignored
 
     public func observe(target: Node, options: MutationObserverInit? = nil) {
-        jsObject[Keys.observe]!(target.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.observe]!(target.jsValue(), options?.jsValue() ?? .undefined)
     }
 
     public func disconnect() {
-        jsObject[Keys.disconnect]!().fromJSValue()!
+        _ = jsObject[Keys.disconnect]!()
     }
 
     public func takeRecords() -> [MutationRecord] {

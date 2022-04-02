@@ -75,10 +75,10 @@ public class HTMLMarqueeElement: HTMLElement {
     public var width: String
 
     public func start() {
-        jsObject[Keys.start]!().fromJSValue()!
+        _ = jsObject[Keys.start]!()
     }
 
     public func stop() {
-        jsObject[Keys.stop]!().fromJSValue()!
+        _ = jsObject[Keys.stop]!()
     }
 }

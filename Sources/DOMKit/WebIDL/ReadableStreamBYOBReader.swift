@@ -32,6 +32,6 @@ public class ReadableStreamBYOBReader: JSBridgedClass, ReadableStreamGenericRead
     }
 
     public func releaseLock() {
-        jsObject[Keys.releaseLock]!().fromJSValue()!
+        _ = jsObject[Keys.releaseLock]!()
     }
 }

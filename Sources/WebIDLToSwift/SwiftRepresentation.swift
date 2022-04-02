@@ -12,3 +12,26 @@ func toSwift<T>(_ value: T) -> SwiftSource {
         fatalError("Type \(String(describing: type(of: x))) has no Swift representation")
     }
 }
+
+extension String: SwiftRepresentable {
+    private static let swiftKeywords: Set = [
+        "init",
+        "where",
+        "protocol",
+        "struct",
+        "class",
+        "enum",
+        "func",
+        "static",
+        "is",
+        "as",
+        "default",
+        "defer",
+        "self",
+        "repeat",
+    ]
+
+    var swiftRepresentation: SwiftSource {
+        SwiftSource(Self.swiftKeywords.contains(self) ? "`\(self)`" : self)
+    }
+}

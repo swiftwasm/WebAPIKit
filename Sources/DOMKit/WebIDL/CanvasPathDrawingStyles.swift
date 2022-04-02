@@ -36,7 +36,7 @@ public extension CanvasPathDrawingStyles {
     }
 
     func setLineDash(segments: [Double]) {
-        jsObject[Keys.setLineDash]!(segments.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setLineDash]!(segments.jsValue())
     }
 
     func getLineDash() -> [Double] {

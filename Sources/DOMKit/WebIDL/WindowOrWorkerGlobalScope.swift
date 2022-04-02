@@ -32,7 +32,7 @@ public extension WindowOrWorkerGlobalScope {
     var crossOriginIsolated: Bool { ReadonlyAttribute[Keys.crossOriginIsolated, in: jsObject] }
 
     func reportError(e: JSValue) {
-        jsObject[Keys.reportError]!(e.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.reportError]!(e.jsValue())
     }
 
     func btoa(data: String) -> String {
@@ -48,7 +48,7 @@ public extension WindowOrWorkerGlobalScope {
     }
 
     func clearTimeout(id: Int32? = nil) {
-        jsObject[Keys.clearTimeout]!(id?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.clearTimeout]!(id?.jsValue() ?? .undefined)
     }
 
     func setInterval(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
@@ -56,12 +56,10 @@ public extension WindowOrWorkerGlobalScope {
     }
 
     func clearInterval(id: Int32? = nil) {
-        jsObject[Keys.clearInterval]!(id?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.clearInterval]!(id?.jsValue() ?? .undefined)
     }
 
-    func queueMicrotask(callback: VoidFunction) {
-        jsObject[Keys.queueMicrotask]!(callback.jsValue()).fromJSValue()!
-    }
+    // XXX: method 'queueMicrotask' is ignored
 
     func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) -> JSPromise {
         jsObject[Keys.createImageBitmap]!(image.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!

@@ -62,7 +62,7 @@ public class HTMLTableElement: HTMLElement {
     }
 
     public func deleteCaption() {
-        jsObject[Keys.deleteCaption]!().fromJSValue()!
+        _ = jsObject[Keys.deleteCaption]!()
     }
 
     @ReadWriteAttribute
@@ -73,7 +73,7 @@ public class HTMLTableElement: HTMLElement {
     }
 
     public func deleteTHead() {
-        jsObject[Keys.deleteTHead]!().fromJSValue()!
+        _ = jsObject[Keys.deleteTHead]!()
     }
 
     @ReadWriteAttribute
@@ -84,7 +84,7 @@ public class HTMLTableElement: HTMLElement {
     }
 
     public func deleteTFoot() {
-        jsObject[Keys.deleteTFoot]!().fromJSValue()!
+        _ = jsObject[Keys.deleteTFoot]!()
     }
 
     @ReadonlyAttribute
@@ -102,7 +102,7 @@ public class HTMLTableElement: HTMLElement {
     }
 
     public func deleteRow(index: Int32) {
-        jsObject[Keys.deleteRow]!(index.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.deleteRow]!(index.jsValue())
     }
 
     @ReadWriteAttribute

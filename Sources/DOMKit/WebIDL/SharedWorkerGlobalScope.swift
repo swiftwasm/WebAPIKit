@@ -22,7 +22,7 @@ public class SharedWorkerGlobalScope: WorkerGlobalScope {
     public var name: String
 
     public func close() {
-        jsObject[Keys.close]!().fromJSValue()!
+        _ = jsObject[Keys.close]!()
     }
 
     @ClosureAttribute.Optional1

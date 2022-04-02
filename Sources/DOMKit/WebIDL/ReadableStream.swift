@@ -36,7 +36,7 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func cancel(reason: JSValue? = nil) async throws {
         let _promise: JSPromise = jsObject[Keys.cancel]!(reason?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        _ = try await _promise.get()
     }
 
     public func getReader(options: ReadableStreamGetReaderOptions? = nil) -> ReadableStreamReader {
@@ -54,7 +54,7 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func pipeTo(destination: WritableStream, options: StreamPipeOptions? = nil) async throws {
         let _promise: JSPromise = jsObject[Keys.pipeTo]!(destination.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        _ = try await _promise.get()
     }
 
     public func tee() -> [ReadableStream] {

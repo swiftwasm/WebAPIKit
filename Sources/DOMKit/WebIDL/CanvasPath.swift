@@ -19,19 +19,19 @@ private enum Keys {
 public protocol CanvasPath: JSBridgedClass {}
 public extension CanvasPath {
     func closePath() {
-        jsObject[Keys.closePath]!().fromJSValue()!
+        _ = jsObject[Keys.closePath]!()
     }
 
     func moveTo(x: Double, y: Double) {
-        jsObject[Keys.moveTo]!(x.jsValue(), y.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.moveTo]!(x.jsValue(), y.jsValue())
     }
 
     func lineTo(x: Double, y: Double) {
-        jsObject[Keys.lineTo]!(x.jsValue(), y.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.lineTo]!(x.jsValue(), y.jsValue())
     }
 
     func quadraticCurveTo(cpx: Double, cpy: Double, x: Double, y: Double) {
-        jsObject[Keys.quadraticCurveTo]!(cpx.jsValue(), cpy.jsValue(), x.jsValue(), y.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.quadraticCurveTo]!(cpx.jsValue(), cpy.jsValue(), x.jsValue(), y.jsValue())
     }
 
     func bezierCurveTo(cp1x: Double, cp1y: Double, cp2x: Double, cp2y: Double, x: Double, y: Double) {
@@ -41,19 +41,19 @@ public extension CanvasPath {
         let _arg3 = cp2y.jsValue()
         let _arg4 = x.jsValue()
         let _arg5 = y.jsValue()
-        return jsObject[Keys.bezierCurveTo]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        _ = jsObject[Keys.bezierCurveTo]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
     }
 
     func arcTo(x1: Double, y1: Double, x2: Double, y2: Double, radius: Double) {
-        jsObject[Keys.arcTo]!(x1.jsValue(), y1.jsValue(), x2.jsValue(), y2.jsValue(), radius.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.arcTo]!(x1.jsValue(), y1.jsValue(), x2.jsValue(), y2.jsValue(), radius.jsValue())
     }
 
     func rect(x: Double, y: Double, w: Double, h: Double) {
-        jsObject[Keys.rect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.rect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue())
     }
 
     func roundRect(x: Double, y: Double, w: Double, h: Double, radii: __UNSUPPORTED_UNION__? = nil) {
-        jsObject[Keys.roundRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue(), radii?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.roundRect]!(x.jsValue(), y.jsValue(), w.jsValue(), h.jsValue(), radii?.jsValue() ?? .undefined)
     }
 
     func arc(x: Double, y: Double, radius: Double, startAngle: Double, endAngle: Double, counterclockwise: Bool? = nil) {
@@ -63,7 +63,7 @@ public extension CanvasPath {
         let _arg3 = startAngle.jsValue()
         let _arg4 = endAngle.jsValue()
         let _arg5 = counterclockwise?.jsValue() ?? .undefined
-        return jsObject[Keys.arc]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        _ = jsObject[Keys.arc]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
     }
 
     func ellipse(x: Double, y: Double, radiusX: Double, radiusY: Double, rotation: Double, startAngle: Double, endAngle: Double, counterclockwise: Bool? = nil) {
@@ -75,6 +75,6 @@ public extension CanvasPath {
         let _arg5 = startAngle.jsValue()
         let _arg6 = endAngle.jsValue()
         let _arg7 = counterclockwise?.jsValue() ?? .undefined
-        return jsObject[Keys.ellipse]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7).fromJSValue()!
+        _ = jsObject[Keys.ellipse]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
     }
 }

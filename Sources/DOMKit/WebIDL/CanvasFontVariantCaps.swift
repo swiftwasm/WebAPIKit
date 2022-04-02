@@ -3,13 +3,13 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasFontVariantCaps: JSString, JSValueCompatible {
-    case normal = "normal"
+public enum CanvasFontVariantCaps: String, JSValueCompatible {
+    case normal
     case smallCaps = "small-caps"
     case allSmallCaps = "all-small-caps"
     case petiteCaps = "petite-caps"
     case allPetiteCaps = "all-petite-caps"
-    case unicase = "unicase"
+    case unicase
     case titlingCaps = "titling-caps"
 
     public static func construct(from jsValue: JSValue) -> Self? {

@@ -16,15 +16,15 @@ private enum Keys {
 public protocol CanvasTransform: JSBridgedClass {}
 public extension CanvasTransform {
     func scale(x: Double, y: Double) {
-        jsObject[Keys.scale]!(x.jsValue(), y.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.scale]!(x.jsValue(), y.jsValue())
     }
 
     func rotate(angle: Double) {
-        jsObject[Keys.rotate]!(angle.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.rotate]!(angle.jsValue())
     }
 
     func translate(x: Double, y: Double) {
-        jsObject[Keys.translate]!(x.jsValue(), y.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.translate]!(x.jsValue(), y.jsValue())
     }
 
     func transform(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double) {
@@ -34,7 +34,7 @@ public extension CanvasTransform {
         let _arg3 = d.jsValue()
         let _arg4 = e.jsValue()
         let _arg5 = f.jsValue()
-        return jsObject[Keys.transform]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        _ = jsObject[Keys.transform]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
     }
 
     func getTransform() -> DOMMatrix {
@@ -48,14 +48,14 @@ public extension CanvasTransform {
         let _arg3 = d.jsValue()
         let _arg4 = e.jsValue()
         let _arg5 = f.jsValue()
-        return jsObject[Keys.setTransform]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5).fromJSValue()!
+        _ = jsObject[Keys.setTransform]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
     }
 
     func setTransform(transform: DOMMatrix2DInit? = nil) {
-        jsObject[Keys.setTransform]!(transform?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.setTransform]!(transform?.jsValue() ?? .undefined)
     }
 
     func resetTransform() {
-        jsObject[Keys.resetTransform]!().fromJSValue()!
+        _ = jsObject[Keys.resetTransform]!()
     }
 }

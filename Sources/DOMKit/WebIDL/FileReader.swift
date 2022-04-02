@@ -44,23 +44,23 @@ public class FileReader: EventTarget {
     }
 
     public func readAsArrayBuffer(blob: Blob) {
-        jsObject[Keys.readAsArrayBuffer]!(blob.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.readAsArrayBuffer]!(blob.jsValue())
     }
 
     public func readAsBinaryString(blob: Blob) {
-        jsObject[Keys.readAsBinaryString]!(blob.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.readAsBinaryString]!(blob.jsValue())
     }
 
     public func readAsText(blob: Blob, encoding: String? = nil) {
-        jsObject[Keys.readAsText]!(blob.jsValue(), encoding?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.readAsText]!(blob.jsValue(), encoding?.jsValue() ?? .undefined)
     }
 
     public func readAsDataURL(blob: Blob) {
-        jsObject[Keys.readAsDataURL]!(blob.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.readAsDataURL]!(blob.jsValue())
     }
 
     public func abort() {
-        jsObject[Keys.abort]!().fromJSValue()!
+        _ = jsObject[Keys.abort]!()
     }
 
     public static let EMPTY: UInt16 = 0

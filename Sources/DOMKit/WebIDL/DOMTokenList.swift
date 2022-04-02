@@ -29,7 +29,7 @@ public class DOMTokenList: JSBridgedClass, Sequence {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> String? {
+    public subscript(key: Int) -> String? {
         jsObject[key].fromJSValue()
     }
 
@@ -38,11 +38,11 @@ public class DOMTokenList: JSBridgedClass, Sequence {
     }
 
     public func add(tokens: String...) {
-        jsObject[Keys.add]!(tokens.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.add]!(tokens.jsValue())
     }
 
     public func remove(tokens: String...) {
-        jsObject[Keys.remove]!(tokens.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.remove]!(tokens.jsValue())
     }
 
     public func toggle(token: String, force: Bool? = nil) -> Bool {

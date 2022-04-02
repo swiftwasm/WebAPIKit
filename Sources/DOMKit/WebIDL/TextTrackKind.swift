@@ -3,12 +3,12 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum TextTrackKind: JSString, JSValueCompatible {
-    case subtitles = "subtitles"
-    case captions = "captions"
-    case descriptions = "descriptions"
-    case chapters = "chapters"
-    case metadata = "metadata"
+public enum TextTrackKind: String, JSValueCompatible {
+    case subtitles
+    case captions
+    case descriptions
+    case chapters
+    case metadata
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

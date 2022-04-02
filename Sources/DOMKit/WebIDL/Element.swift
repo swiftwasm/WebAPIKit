@@ -102,19 +102,19 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
     }
 
     public func setAttribute(qualifiedName: String, value: String) {
-        jsObject[Keys.setAttribute]!(qualifiedName.jsValue(), value.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setAttribute]!(qualifiedName.jsValue(), value.jsValue())
     }
 
     public func setAttributeNS(namespace: String?, qualifiedName: String, value: String) {
-        jsObject[Keys.setAttributeNS]!(namespace.jsValue(), qualifiedName.jsValue(), value.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setAttributeNS]!(namespace.jsValue(), qualifiedName.jsValue(), value.jsValue())
     }
 
     public func removeAttribute(qualifiedName: String) {
-        jsObject[Keys.removeAttribute]!(qualifiedName.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.removeAttribute]!(qualifiedName.jsValue())
     }
 
     public func removeAttributeNS(namespace: String?, localName: String) {
-        jsObject[Keys.removeAttributeNS]!(namespace.jsValue(), localName.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.removeAttributeNS]!(namespace.jsValue(), localName.jsValue())
     }
 
     public func toggleAttribute(qualifiedName: String, force: Bool? = nil) -> Bool {
@@ -185,6 +185,6 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
     }
 
     public func insertAdjacentText(where: String, data: String) {
-        jsObject[Keys.insertAdjacentText]!(`where`.jsValue(), data.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.insertAdjacentText]!(`where`.jsValue(), data.jsValue())
     }
 }

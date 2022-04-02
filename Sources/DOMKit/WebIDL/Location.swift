@@ -66,15 +66,15 @@ public class Location: JSBridgedClass {
     public var hash: String
 
     public func assign(url: String) {
-        jsObject[Keys.assign]!(url.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.assign]!(url.jsValue())
     }
 
     public func replace(url: String) {
-        jsObject[Keys.replace]!(url.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.replace]!(url.jsValue())
     }
 
     public func reload() {
-        jsObject[Keys.reload]!().fromJSValue()!
+        _ = jsObject[Keys.reload]!()
     }
 
     @ReadonlyAttribute

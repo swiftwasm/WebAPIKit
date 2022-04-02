@@ -22,6 +22,6 @@ public class URL: JSBridgedClass {
     }
 
     public static func revokeObjectURL(url: String) {
-        constructor[Keys.revokeObjectURL]!(url.jsValue()).fromJSValue()!
+        _ = constructor[Keys.revokeObjectURL]!(url.jsValue())
     }
 }

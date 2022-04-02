@@ -21,19 +21,19 @@ public class MessagePort: EventTarget {
     }
 
     public func postMessage(message: JSValue, transfer: [JSObject]) {
-        jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue())
     }
 
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
-        jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
     }
 
     public func start() {
-        jsObject[Keys.start]!().fromJSValue()!
+        _ = jsObject[Keys.start]!()
     }
 
     public func close() {
-        jsObject[Keys.close]!().fromJSValue()!
+        _ = jsObject[Keys.close]!()
     }
 
     @ClosureAttribute.Optional1

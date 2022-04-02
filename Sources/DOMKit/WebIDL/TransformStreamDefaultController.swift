@@ -24,14 +24,14 @@ public class TransformStreamDefaultController: JSBridgedClass {
     public var desiredSize: Double?
 
     public func enqueue(chunk: JSValue? = nil) {
-        jsObject[Keys.enqueue]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.enqueue]!(chunk?.jsValue() ?? .undefined)
     }
 
     public func error(reason: JSValue? = nil) {
-        jsObject[Keys.error]!(reason?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.error]!(reason?.jsValue() ?? .undefined)
     }
 
     public func terminate() {
-        jsObject[Keys.terminate]!().fromJSValue()!
+        _ = jsObject[Keys.terminate]!()
     }
 }

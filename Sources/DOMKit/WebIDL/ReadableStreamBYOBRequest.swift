@@ -23,10 +23,10 @@ public class ReadableStreamBYOBRequest: JSBridgedClass {
     public var view: ArrayBufferView?
 
     public func respond(bytesWritten: UInt64) {
-        jsObject[Keys.respond]!(bytesWritten.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.respond]!(bytesWritten.jsValue())
     }
 
     public func respondWithNewView(view: ArrayBufferView) {
-        jsObject[Keys.respondWithNewView]!(view.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.respondWithNewView]!(view.jsValue())
     }
 }

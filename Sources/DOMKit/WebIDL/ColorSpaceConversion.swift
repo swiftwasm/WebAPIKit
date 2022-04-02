@@ -3,9 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ColorSpaceConversion: JSString, JSValueCompatible {
-    case none = "none"
-    case `default` = "default"
+public enum ColorSpaceConversion: String, JSValueCompatible {
+    case none
+    case `default`
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

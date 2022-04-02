@@ -3,9 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum DocumentVisibilityState: JSString, JSValueCompatible {
-    case visible = "visible"
-    case hidden = "hidden"
+public enum DocumentVisibilityState: String, JSValueCompatible {
+    case visible
+    case hidden
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

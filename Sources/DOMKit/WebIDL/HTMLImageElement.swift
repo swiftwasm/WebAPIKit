@@ -119,7 +119,7 @@ public class HTMLImageElement: HTMLElement {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func decode() async throws {
         let _promise: JSPromise = jsObject[Keys.decode]!().fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        _ = try await _promise.get()
     }
 
     @ReadWriteAttribute

@@ -29,11 +29,11 @@ public class BroadcastChannel: EventTarget {
     public var name: String
 
     public func postMessage(message: JSValue) {
-        jsObject[Keys.postMessage]!(message.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.postMessage]!(message.jsValue())
     }
 
     public func close() {
-        jsObject[Keys.close]!().fromJSValue()!
+        _ = jsObject[Keys.close]!()
     }
 
     @ClosureAttribute.Optional1

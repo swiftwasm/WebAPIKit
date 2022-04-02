@@ -27,7 +27,7 @@ public class DOMRect: DOMRectReadOnly {
     }
 
     // XXX: illegal static override
-    // override public static func `fromRect`(`other`: `DOMRectInit`? = nil) -> Self
+    // override public static func fromRect(other: DOMRectInit? = nil) -> Self
 
     private var _x: ReadWriteAttribute<Double>
     override public var x: Double {

@@ -27,7 +27,7 @@ public class VideoTrackList: EventTarget {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> VideoTrack {
+    public subscript(key: Int) -> VideoTrack {
         jsObject[key].fromJSValue()!
     }
 

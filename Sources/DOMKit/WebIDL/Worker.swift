@@ -24,15 +24,15 @@ public class Worker: EventTarget, AbstractWorker {
     }
 
     public func terminate() {
-        jsObject[Keys.terminate]!().fromJSValue()!
+        _ = jsObject[Keys.terminate]!()
     }
 
     public func postMessage(message: JSValue, transfer: [JSObject]) {
-        jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.postMessage]!(message.jsValue(), transfer.jsValue())
     }
 
     public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
-        jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.postMessage]!(message.jsValue(), options?.jsValue() ?? .undefined)
     }
 
     @ClosureAttribute.Optional1

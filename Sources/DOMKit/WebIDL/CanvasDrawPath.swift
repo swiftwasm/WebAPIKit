@@ -15,31 +15,31 @@ private enum Keys {
 public protocol CanvasDrawPath: JSBridgedClass {}
 public extension CanvasDrawPath {
     func beginPath() {
-        jsObject[Keys.beginPath]!().fromJSValue()!
+        _ = jsObject[Keys.beginPath]!()
     }
 
     func fill(fillRule: CanvasFillRule? = nil) {
-        jsObject[Keys.fill]!(fillRule?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.fill]!(fillRule?.jsValue() ?? .undefined)
     }
 
     func fill(path: Path2D, fillRule: CanvasFillRule? = nil) {
-        jsObject[Keys.fill]!(path.jsValue(), fillRule?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.fill]!(path.jsValue(), fillRule?.jsValue() ?? .undefined)
     }
 
     func stroke() {
-        jsObject[Keys.stroke]!().fromJSValue()!
+        _ = jsObject[Keys.stroke]!()
     }
 
     func stroke(path: Path2D) {
-        jsObject[Keys.stroke]!(path.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.stroke]!(path.jsValue())
     }
 
     func clip(fillRule: CanvasFillRule? = nil) {
-        jsObject[Keys.clip]!(fillRule?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.clip]!(fillRule?.jsValue() ?? .undefined)
     }
 
     func clip(path: Path2D, fillRule: CanvasFillRule? = nil) {
-        jsObject[Keys.clip]!(path.jsValue(), fillRule?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.clip]!(path.jsValue(), fillRule?.jsValue() ?? .undefined)
     }
 
     func isPointInPath(x: Double, y: Double, fillRule: CanvasFillRule? = nil) -> Bool {

@@ -111,7 +111,7 @@ public class HTMLObjectElement: HTMLElement {
     }
 
     public func setCustomValidity(error: String) {
-        jsObject[Keys.setCustomValidity]!(error.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setCustomValidity]!(error.jsValue())
     }
 
     @ReadWriteAttribute

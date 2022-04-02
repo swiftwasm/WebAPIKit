@@ -21,7 +21,7 @@ public class DOMRectList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> DOMRect? {
+    public subscript(key: Int) -> DOMRect? {
         jsObject[key].fromJSValue()
     }
 }

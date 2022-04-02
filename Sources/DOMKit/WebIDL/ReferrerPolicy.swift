@@ -3,12 +3,12 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ReferrerPolicy: JSString, JSValueCompatible {
+public enum ReferrerPolicy: String, JSValueCompatible {
     case _empty = ""
     case noReferrer = "no-referrer"
     case noReferrerWhenDowngrade = "no-referrer-when-downgrade"
     case sameOrigin = "same-origin"
-    case origin = "origin"
+    case origin
     case strictOrigin = "strict-origin"
     case originWhenCrossOrigin = "origin-when-cross-origin"
     case strictOriginWhenCrossOrigin = "strict-origin-when-cross-origin"

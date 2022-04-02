@@ -43,7 +43,7 @@ public class DataTransfer: JSBridgedClass {
     public var items: DataTransferItemList
 
     public func setDragImage(image: Element, x: Int32, y: Int32) {
-        jsObject[Keys.setDragImage]!(image.jsValue(), x.jsValue(), y.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setDragImage]!(image.jsValue(), x.jsValue(), y.jsValue())
     }
 
     @ReadonlyAttribute
@@ -54,11 +54,11 @@ public class DataTransfer: JSBridgedClass {
     }
 
     public func setData(format: String, data: String) {
-        jsObject[Keys.setData]!(format.jsValue(), data.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setData]!(format.jsValue(), data.jsValue())
     }
 
     public func clearData(format: String? = nil) {
-        jsObject[Keys.clearData]!(format?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.clearData]!(format?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute

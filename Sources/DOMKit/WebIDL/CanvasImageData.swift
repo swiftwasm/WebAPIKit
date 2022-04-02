@@ -24,7 +24,7 @@ public extension CanvasImageData {
     }
 
     func putImageData(imagedata: ImageData, dx: Int32, dy: Int32) {
-        jsObject[Keys.putImageData]!(imagedata.jsValue(), dx.jsValue(), dy.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.putImageData]!(imagedata.jsValue(), dx.jsValue(), dy.jsValue())
     }
 
     func putImageData(imagedata: ImageData, dx: Int32, dy: Int32, dirtyX: Int32, dirtyY: Int32, dirtyWidth: Int32, dirtyHeight: Int32) {
@@ -35,6 +35,6 @@ public extension CanvasImageData {
         let _arg4 = dirtyY.jsValue()
         let _arg5 = dirtyWidth.jsValue()
         let _arg6 = dirtyHeight.jsValue()
-        return jsObject[Keys.putImageData]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6).fromJSValue()!
+        _ = jsObject[Keys.putImageData]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6)
     }
 }

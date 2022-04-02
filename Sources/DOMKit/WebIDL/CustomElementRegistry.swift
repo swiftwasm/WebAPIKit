@@ -30,6 +30,6 @@ public class CustomElementRegistry: JSBridgedClass {
     // XXX: member 'whenDefined' is ignored
 
     public func upgrade(root: Node) {
-        jsObject[Keys.upgrade]!(root.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.upgrade]!(root.jsValue())
     }
 }

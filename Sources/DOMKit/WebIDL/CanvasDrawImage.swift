@@ -10,11 +10,11 @@ private enum Keys {
 public protocol CanvasDrawImage: JSBridgedClass {}
 public extension CanvasDrawImage {
     func drawImage(image: CanvasImageSource, dx: Double, dy: Double) {
-        jsObject[Keys.drawImage]!(image.jsValue(), dx.jsValue(), dy.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.drawImage]!(image.jsValue(), dx.jsValue(), dy.jsValue())
     }
 
     func drawImage(image: CanvasImageSource, dx: Double, dy: Double, dw: Double, dh: Double) {
-        jsObject[Keys.drawImage]!(image.jsValue(), dx.jsValue(), dy.jsValue(), dw.jsValue(), dh.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.drawImage]!(image.jsValue(), dx.jsValue(), dy.jsValue(), dw.jsValue(), dh.jsValue())
     }
 
     func drawImage(image: CanvasImageSource, sx: Double, sy: Double, sw: Double, sh: Double, dx: Double, dy: Double, dw: Double, dh: Double) {
@@ -27,6 +27,6 @@ public extension CanvasDrawImage {
         let _arg6 = dy.jsValue()
         let _arg7 = dw.jsValue()
         let _arg8 = dh.jsValue()
-        return jsObject[Keys.drawImage]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8).fromJSValue()!
+        _ = jsObject[Keys.drawImage]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
     }
 }

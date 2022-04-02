@@ -24,6 +24,6 @@ public class CompositionEvent: UIEvent {
     public var data: String
 
     public func initCompositionEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: WindowProxy? = nil, dataArg: String? = nil) {
-        jsObject[Keys.initCompositionEvent]!(typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, dataArg?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.initCompositionEvent]!(typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, dataArg?.jsValue() ?? .undefined)
     }
 }

@@ -22,6 +22,6 @@ public class ImageBitmapRenderingContext: JSBridgedClass {
     public var canvas: __UNSUPPORTED_UNION__
 
     public func transferFromImageBitmap(bitmap: ImageBitmap?) {
-        jsObject[Keys.transferFromImageBitmap]!(bitmap.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.transferFromImageBitmap]!(bitmap.jsValue())
     }
 }

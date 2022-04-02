@@ -27,7 +27,7 @@ public class NamedNodeMap: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> Attr? {
+    public subscript(key: Int) -> Attr? {
         jsObject[key].fromJSValue()
     }
 

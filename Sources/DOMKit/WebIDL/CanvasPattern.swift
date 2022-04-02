@@ -17,6 +17,6 @@ public class CanvasPattern: JSBridgedClass {
     }
 
     public func setTransform(transform: DOMMatrix2DInit? = nil) {
-        jsObject[Keys.setTransform]!(transform?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.setTransform]!(transform?.jsValue() ?? .undefined)
     }
 }

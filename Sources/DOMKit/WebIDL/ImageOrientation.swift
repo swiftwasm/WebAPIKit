@@ -3,9 +3,9 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ImageOrientation: JSString, JSValueCompatible {
-    case none = "none"
-    case flipY = "flipY"
+public enum ImageOrientation: String, JSValueCompatible {
+    case none
+    case flipY
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

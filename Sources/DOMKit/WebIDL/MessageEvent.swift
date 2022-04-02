@@ -52,6 +52,6 @@ public class MessageEvent: Event {
         let _arg5 = lastEventId?.jsValue() ?? .undefined
         let _arg6 = source?.jsValue() ?? .undefined
         let _arg7 = ports?.jsValue() ?? .undefined
-        return jsObject[Keys.initMessageEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7).fromJSValue()!
+        _ = jsObject[Keys.initMessageEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
     }
 }

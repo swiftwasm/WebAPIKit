@@ -10,11 +10,9 @@ private enum Keys {
 
 public protocol AnimationFrameProvider: JSBridgedClass {}
 public extension AnimationFrameProvider {
-    func requestAnimationFrame(callback: FrameRequestCallback) -> UInt32 {
-        jsObject[Keys.requestAnimationFrame]!(callback.jsValue()).fromJSValue()!
-    }
+    // XXX: method 'requestAnimationFrame' is ignored
 
     func cancelAnimationFrame(handle: UInt32) {
-        jsObject[Keys.cancelAnimationFrame]!(handle.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.cancelAnimationFrame]!(handle.jsValue())
     }
 }

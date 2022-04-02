@@ -42,7 +42,7 @@ public class WorkerGlobalScope: EventTarget, WindowOrWorkerGlobalScope {
     public var navigator: WorkerNavigator
 
     public func importScripts(urls: String...) {
-        jsObject[Keys.importScripts]!(urls.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.importScripts]!(urls.jsValue())
     }
 
     @ClosureAttribute.Optional5

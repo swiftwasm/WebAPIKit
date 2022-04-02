@@ -3,11 +3,11 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum SelectionMode: JSString, JSValueCompatible {
-    case select = "select"
-    case start = "start"
-    case end = "end"
-    case preserve = "preserve"
+public enum SelectionMode: String, JSValueCompatible {
+    case select
+    case start
+    case end
+    case preserve
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

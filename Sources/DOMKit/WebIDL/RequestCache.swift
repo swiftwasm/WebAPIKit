@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum RequestCache: JSString, JSValueCompatible {
-    case `default` = "default"
+public enum RequestCache: String, JSValueCompatible {
+    case `default`
     case noStore = "no-store"
-    case reload = "reload"
+    case reload
     case noCache = "no-cache"
     case forceCache = "force-cache"
     case onlyIfCached = "only-if-cached"

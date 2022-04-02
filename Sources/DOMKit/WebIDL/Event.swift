@@ -82,14 +82,14 @@ public class Event: JSBridgedClass {
     public var eventPhase: UInt16
 
     public func stopPropagation() {
-        jsObject[Keys.stopPropagation]!().fromJSValue()!
+        _ = jsObject[Keys.stopPropagation]!()
     }
 
     @ReadWriteAttribute
     public var cancelBubble: Bool
 
     public func stopImmediatePropagation() {
-        jsObject[Keys.stopImmediatePropagation]!().fromJSValue()!
+        _ = jsObject[Keys.stopImmediatePropagation]!()
     }
 
     @ReadonlyAttribute
@@ -102,7 +102,7 @@ public class Event: JSBridgedClass {
     public var returnValue: Bool
 
     public func preventDefault() {
-        jsObject[Keys.preventDefault]!().fromJSValue()!
+        _ = jsObject[Keys.preventDefault]!()
     }
 
     @ReadonlyAttribute
@@ -118,6 +118,6 @@ public class Event: JSBridgedClass {
     public var timeStamp: DOMHighResTimeStamp
 
     public func initEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil) {
-        jsObject[Keys.initEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.initEvent]!(type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined)
     }
 }

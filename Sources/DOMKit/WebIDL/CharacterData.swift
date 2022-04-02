@@ -33,18 +33,18 @@ public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
     }
 
     public func appendData(data: String) {
-        jsObject[Keys.appendData]!(data.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.appendData]!(data.jsValue())
     }
 
     public func insertData(offset: UInt32, data: String) {
-        jsObject[Keys.insertData]!(offset.jsValue(), data.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.insertData]!(offset.jsValue(), data.jsValue())
     }
 
     public func deleteData(offset: UInt32, count: UInt32) {
-        jsObject[Keys.deleteData]!(offset.jsValue(), count.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.deleteData]!(offset.jsValue(), count.jsValue())
     }
 
     public func replaceData(offset: UInt32, count: UInt32, data: String) {
-        jsObject[Keys.replaceData]!(offset.jsValue(), count.jsValue(), data.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.replaceData]!(offset.jsValue(), count.jsValue(), data.jsValue())
     }
 }

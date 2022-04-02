@@ -26,15 +26,15 @@ public extension ParentNode {
     var childElementCount: UInt32 { ReadonlyAttribute[Keys.childElementCount, in: jsObject] }
 
     func prepend(nodes: __UNSUPPORTED_UNION__...) {
-        jsObject[Keys.prepend]!(nodes.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.prepend]!(nodes.jsValue())
     }
 
     func append(nodes: __UNSUPPORTED_UNION__...) {
-        jsObject[Keys.append]!(nodes.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.append]!(nodes.jsValue())
     }
 
     func replaceChildren(nodes: __UNSUPPORTED_UNION__...) {
-        jsObject[Keys.replaceChildren]!(nodes.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.replaceChildren]!(nodes.jsValue())
     }
 
     func querySelector(selectors: String) -> Element? {

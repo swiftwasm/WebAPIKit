@@ -28,7 +28,7 @@ public class XSLTProcessor: JSBridgedClass {
     }
 
     public func importStylesheet(style: Node) {
-        jsObject[Keys.importStylesheet]!(style.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.importStylesheet]!(style.jsValue())
     }
 
     public func transformToFragment(source: Node, output: Document) -> DocumentFragment {
@@ -40,7 +40,7 @@ public class XSLTProcessor: JSBridgedClass {
     }
 
     public func setParameter(namespaceURI: String, localName: String, value: JSValue) {
-        jsObject[Keys.setParameter]!(namespaceURI.jsValue(), localName.jsValue(), value.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setParameter]!(namespaceURI.jsValue(), localName.jsValue(), value.jsValue())
     }
 
     public func getParameter(namespaceURI: String, localName: String) -> JSValue {
@@ -48,14 +48,14 @@ public class XSLTProcessor: JSBridgedClass {
     }
 
     public func removeParameter(namespaceURI: String, localName: String) {
-        jsObject[Keys.removeParameter]!(namespaceURI.jsValue(), localName.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.removeParameter]!(namespaceURI.jsValue(), localName.jsValue())
     }
 
     public func clearParameters() {
-        jsObject[Keys.clearParameters]!().fromJSValue()!
+        _ = jsObject[Keys.clearParameters]!()
     }
 
     public func reset() {
-        jsObject[Keys.reset]!().fromJSValue()!
+        _ = jsObject[Keys.reset]!()
     }
 }

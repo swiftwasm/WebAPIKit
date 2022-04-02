@@ -35,14 +35,14 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     public var shadowRoot: ShadowRoot?
 
     public func setFormValue(value: __UNSUPPORTED_UNION__?, state: __UNSUPPORTED_UNION__? = nil) {
-        jsObject[Keys.setFormValue]!(value.jsValue(), state?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.setFormValue]!(value.jsValue(), state?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute
     public var form: HTMLFormElement?
 
     public func setValidity(flags: ValidityStateFlags? = nil, message: String? = nil, anchor: HTMLElement? = nil) {
-        jsObject[Keys.setValidity]!(flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.setValidity]!(flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute

@@ -118,7 +118,7 @@ public class HTMLMediaElement: HTMLElement {
     public var buffered: TimeRanges
 
     public func load() {
-        jsObject[Keys.load]!().fromJSValue()!
+        _ = jsObject[Keys.load]!()
     }
 
     public func canPlayType(type: String) -> CanPlayTypeResult {
@@ -145,7 +145,7 @@ public class HTMLMediaElement: HTMLElement {
     public var currentTime: Double
 
     public func fastSeek(time: Double) {
-        jsObject[Keys.fastSeek]!(time.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.fastSeek]!(time.jsValue())
     }
 
     @ReadonlyAttribute
@@ -189,11 +189,11 @@ public class HTMLMediaElement: HTMLElement {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func play() async throws {
         let _promise: JSPromise = jsObject[Keys.play]!().fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        _ = try await _promise.get()
     }
 
     public func pause() {
-        jsObject[Keys.pause]!().fromJSValue()!
+        _ = jsObject[Keys.pause]!()
     }
 
     @ReadWriteAttribute

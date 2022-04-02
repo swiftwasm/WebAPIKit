@@ -3,8 +3,8 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ReadableStreamType: JSString, JSValueCompatible {
-    case bytes = "bytes"
+public enum ReadableStreamType: String, JSValueCompatible {
+    case bytes
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

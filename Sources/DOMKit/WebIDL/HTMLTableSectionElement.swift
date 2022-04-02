@@ -37,7 +37,7 @@ public class HTMLTableSectionElement: HTMLElement {
     }
 
     public func deleteRow(index: Int32) {
-        jsObject[Keys.deleteRow]!(index.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.deleteRow]!(index.jsValue())
     }
 
     @ReadWriteAttribute

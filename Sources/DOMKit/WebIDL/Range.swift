@@ -47,39 +47,39 @@ public class Range: AbstractRange {
     public var commonAncestorContainer: Node
 
     public func setStart(node: Node, offset: UInt32) {
-        jsObject[Keys.setStart]!(node.jsValue(), offset.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setStart]!(node.jsValue(), offset.jsValue())
     }
 
     public func setEnd(node: Node, offset: UInt32) {
-        jsObject[Keys.setEnd]!(node.jsValue(), offset.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setEnd]!(node.jsValue(), offset.jsValue())
     }
 
     public func setStartBefore(node: Node) {
-        jsObject[Keys.setStartBefore]!(node.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setStartBefore]!(node.jsValue())
     }
 
     public func setStartAfter(node: Node) {
-        jsObject[Keys.setStartAfter]!(node.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setStartAfter]!(node.jsValue())
     }
 
     public func setEndBefore(node: Node) {
-        jsObject[Keys.setEndBefore]!(node.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setEndBefore]!(node.jsValue())
     }
 
     public func setEndAfter(node: Node) {
-        jsObject[Keys.setEndAfter]!(node.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.setEndAfter]!(node.jsValue())
     }
 
     public func collapse(toStart: Bool? = nil) {
-        jsObject[Keys.collapse]!(toStart?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.collapse]!(toStart?.jsValue() ?? .undefined)
     }
 
     public func selectNode(node: Node) {
-        jsObject[Keys.selectNode]!(node.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.selectNode]!(node.jsValue())
     }
 
     public func selectNodeContents(node: Node) {
-        jsObject[Keys.selectNodeContents]!(node.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.selectNodeContents]!(node.jsValue())
     }
 
     public static let START_TO_START: UInt16 = 0
@@ -95,7 +95,7 @@ public class Range: AbstractRange {
     }
 
     public func deleteContents() {
-        jsObject[Keys.deleteContents]!().fromJSValue()!
+        _ = jsObject[Keys.deleteContents]!()
     }
 
     public func extractContents() -> DocumentFragment {
@@ -107,11 +107,11 @@ public class Range: AbstractRange {
     }
 
     public func insertNode(node: Node) {
-        jsObject[Keys.insertNode]!(node.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.insertNode]!(node.jsValue())
     }
 
     public func surroundContents(newParent: Node) {
-        jsObject[Keys.surroundContents]!(newParent.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.surroundContents]!(newParent.jsValue())
     }
 
     public func cloneRange() -> Self {
@@ -119,7 +119,7 @@ public class Range: AbstractRange {
     }
 
     public func detach() {
-        jsObject[Keys.detach]!().fromJSValue()!
+        _ = jsObject[Keys.detach]!()
     }
 
     public func isPointInRange(node: Node, offset: UInt32) -> Bool {

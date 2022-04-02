@@ -18,7 +18,7 @@ public class StyleSheetList: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public subscript(key: UInt32) -> CSSStyleSheet? {
+    public subscript(key: Int) -> CSSStyleSheet? {
         jsObject[key].fromJSValue()
     }
 

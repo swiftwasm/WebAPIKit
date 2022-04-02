@@ -3,11 +3,11 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum ResizeQuality: JSString, JSValueCompatible {
-    case pixelated = "pixelated"
-    case low = "low"
-    case medium = "medium"
-    case high = "high"
+public enum ResizeQuality: String, JSValueCompatible {
+    case pixelated
+    case low
+    case medium
+    case high
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

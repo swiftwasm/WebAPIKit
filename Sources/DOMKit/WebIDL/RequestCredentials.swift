@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum RequestCredentials: JSString, JSValueCompatible {
-    case omit = "omit"
+public enum RequestCredentials: String, JSValueCompatible {
+    case omit
     case sameOrigin = "same-origin"
-    case include = "include"
+    case include
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

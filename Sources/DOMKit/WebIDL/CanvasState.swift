@@ -13,15 +13,15 @@ private enum Keys {
 public protocol CanvasState: JSBridgedClass {}
 public extension CanvasState {
     func save() {
-        jsObject[Keys.save]!().fromJSValue()!
+        _ = jsObject[Keys.save]!()
     }
 
     func restore() {
-        jsObject[Keys.restore]!().fromJSValue()!
+        _ = jsObject[Keys.restore]!()
     }
 
     func reset() {
-        jsObject[Keys.reset]!().fromJSValue()!
+        _ = jsObject[Keys.reset]!()
     }
 
     func isContextLost() -> Bool {

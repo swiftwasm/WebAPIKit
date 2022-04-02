@@ -40,7 +40,7 @@ public class CSSStyleSheet: StyleSheet {
     }
 
     public func deleteRule(index: UInt32) {
-        jsObject[Keys.deleteRule]!(index.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.deleteRule]!(index.jsValue())
     }
 
     public func replace(text: String) -> JSPromise {
@@ -54,7 +54,7 @@ public class CSSStyleSheet: StyleSheet {
     }
 
     public func replaceSync(text: String) {
-        jsObject[Keys.replaceSync]!(text.jsValue()).fromJSValue()!
+        _ = jsObject[Keys.replaceSync]!(text.jsValue())
     }
 
     @ReadonlyAttribute
@@ -65,6 +65,6 @@ public class CSSStyleSheet: StyleSheet {
     }
 
     public func removeRule(index: UInt32? = nil) {
-        jsObject[Keys.removeRule]!(index?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.removeRule]!(index?.jsValue() ?? .undefined)
     }
 }

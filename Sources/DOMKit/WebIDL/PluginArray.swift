@@ -21,13 +21,13 @@ public class PluginArray: JSBridgedClass {
     }
 
     public func refresh() {
-        jsObject[Keys.refresh]!().fromJSValue()!
+        _ = jsObject[Keys.refresh]!()
     }
 
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> Plugin? {
+    public subscript(key: Int) -> Plugin? {
         jsObject[key].fromJSValue()
     }
 

@@ -94,6 +94,6 @@ public class MouseEvent: UIEvent {
         let _arg12 = metaKeyArg?.jsValue() ?? .undefined
         let _arg13 = buttonArg?.jsValue() ?? .undefined
         let _arg14 = relatedTargetArg?.jsValue() ?? .undefined
-        return jsObject[Keys.initMouseEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14).fromJSValue()!
+        _ = jsObject[Keys.initMouseEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14)
     }
 }

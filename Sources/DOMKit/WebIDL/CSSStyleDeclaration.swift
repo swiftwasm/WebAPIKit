@@ -34,7 +34,7 @@ public class CSSStyleDeclaration: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> String {
+    public subscript(key: Int) -> String {
         jsObject[key].fromJSValue()!
     }
 
@@ -47,7 +47,7 @@ public class CSSStyleDeclaration: JSBridgedClass {
     }
 
     public func setProperty(property: String, value: String, priority: String? = nil) {
-        jsObject[Keys.setProperty]!(property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.setProperty]!(property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined)
     }
 
     public func removeProperty(property: String) -> String {

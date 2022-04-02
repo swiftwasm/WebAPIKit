@@ -24,14 +24,14 @@ public class ReadableStreamDefaultController: JSBridgedClass {
     public var desiredSize: Double?
 
     public func close() {
-        jsObject[Keys.close]!().fromJSValue()!
+        _ = jsObject[Keys.close]!()
     }
 
     public func enqueue(chunk: JSValue? = nil) {
-        jsObject[Keys.enqueue]!(chunk?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.enqueue]!(chunk?.jsValue() ?? .undefined)
     }
 
     public func error(e: JSValue? = nil) {
-        jsObject[Keys.error]!(e?.jsValue() ?? .undefined).fromJSValue()!
+        _ = jsObject[Keys.error]!(e?.jsValue() ?? .undefined)
     }
 }

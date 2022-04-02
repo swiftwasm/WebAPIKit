@@ -25,7 +25,7 @@ public class AudioTrackList: EventTarget {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: UInt32) -> AudioTrack {
+    public subscript(key: Int) -> AudioTrack {
         jsObject[key].fromJSValue()!
     }
 

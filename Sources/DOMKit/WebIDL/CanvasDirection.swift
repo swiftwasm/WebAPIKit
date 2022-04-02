@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum CanvasDirection: JSString, JSValueCompatible {
-    case ltr = "ltr"
-    case rtl = "rtl"
-    case inherit = "inherit"
+public enum CanvasDirection: String, JSValueCompatible {
+    case ltr
+    case rtl
+    case inherit
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {

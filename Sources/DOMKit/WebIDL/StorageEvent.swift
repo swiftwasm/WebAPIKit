@@ -52,6 +52,6 @@ public class StorageEvent: Event {
         let _arg5 = newValue?.jsValue() ?? .undefined
         let _arg6 = url?.jsValue() ?? .undefined
         let _arg7 = storageArea?.jsValue() ?? .undefined
-        return jsObject[Keys.initStorageEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7).fromJSValue()!
+        _ = jsObject[Keys.initStorageEvent]!(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
     }
 }

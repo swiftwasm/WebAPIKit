@@ -3,10 +3,10 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public enum TextTrackMode: JSString, JSValueCompatible {
-    case disabled = "disabled"
-    case hidden = "hidden"
-    case showing = "showing"
+public enum TextTrackMode: String, JSValueCompatible {
+    case disabled
+    case hidden
+    case showing
 
     public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
