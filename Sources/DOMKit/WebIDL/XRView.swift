@@ -9,13 +9,16 @@ public class XRView: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _isFirstPersonObserver = ReadonlyAttribute(jsObject: jsObject, name: Strings.isFirstPersonObserver)
         _eye = ReadonlyAttribute(jsObject: jsObject, name: Strings.eye)
         _projectionMatrix = ReadonlyAttribute(jsObject: jsObject, name: Strings.projectionMatrix)
         _transform = ReadonlyAttribute(jsObject: jsObject, name: Strings.transform)
         _recommendedViewportScale = ReadonlyAttribute(jsObject: jsObject, name: Strings.recommendedViewportScale)
-        _isFirstPersonObserver = ReadonlyAttribute(jsObject: jsObject, name: Strings.isFirstPersonObserver)
         self.jsObject = jsObject
     }
+
+    @ReadonlyAttribute
+    public var isFirstPersonObserver: Bool
 
     @ReadonlyAttribute
     public var eye: XREye
@@ -32,7 +35,4 @@ public class XRView: JSBridgedClass {
     public func requestViewportScale(scale: Double?) {
         _ = jsObject[Strings.requestViewportScale]!(scale.jsValue())
     }
-
-    @ReadonlyAttribute
-    public var isFirstPersonObserver: Bool
 }

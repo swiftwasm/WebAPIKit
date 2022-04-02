@@ -7,6 +7,7 @@ public class RTCDataChannel: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.RTCDataChannel].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _priority = ReadonlyAttribute(jsObject: jsObject, name: Strings.priority)
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
         _ordered = ReadonlyAttribute(jsObject: jsObject, name: Strings.ordered)
         _maxPacketLifeTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxPacketLifeTime)
@@ -24,9 +25,11 @@ public class RTCDataChannel: EventTarget {
         _onclose = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onclose)
         _onmessage = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onmessage)
         _binaryType = ReadWriteAttribute(jsObject: jsObject, name: Strings.binaryType)
-        _priority = ReadonlyAttribute(jsObject: jsObject, name: Strings.priority)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    @ReadonlyAttribute
+    public var priority: RTCPriorityType
 
     @ReadonlyAttribute
     public var label: String
@@ -98,7 +101,4 @@ public class RTCDataChannel: EventTarget {
     public func send(data: ArrayBufferView) {
         _ = jsObject[Strings.send]!(data.jsValue())
     }
-
-    @ReadonlyAttribute
-    public var priority: RTCPriorityType
 }

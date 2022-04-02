@@ -16,9 +16,9 @@ enum IDLParser {
         return pipe.fileHandleForReading.readDataToEndOfFile()
     }
 
-    static func parseIDL() throws -> [String: GenericCollection<IDLNode>] {
+    static func parseIDL() throws -> [GenericCollection<IDLNode>] {
         let data = getJSONData()
         print("Building IDL struct tree...")
-        return try JSONDecoder().decode([String: GenericCollection<IDLNode>].self, from: data)
+        return try JSONDecoder().decode([GenericCollection<IDLNode>].self, from: data)
     }
 }

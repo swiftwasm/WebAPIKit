@@ -7,7 +7,6 @@ public class HTMLAnchorElement: HTMLElement, HTMLHyperlinkElementUtils {
     override public class var constructor: JSFunction { JSObject.global[Strings.HTMLAnchorElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _attributionSourceId = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionSourceId)
         _attributionDestination = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionDestination)
         _attributionSourceEventId = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionSourceEventId)
         _attributionReportTo = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionReportTo)
@@ -28,11 +27,9 @@ public class HTMLAnchorElement: HTMLElement, HTMLHyperlinkElementUtils {
         _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
         _rev = ReadWriteAttribute(jsObject: jsObject, name: Strings.rev)
         _shape = ReadWriteAttribute(jsObject: jsObject, name: Strings.shape)
+        _attributionSourceId = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionSourceId)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadWriteAttribute
-    public var attributionSourceId: UInt32
 
     @ReadWriteAttribute
     public var attributionDestination: String
@@ -97,4 +94,7 @@ public class HTMLAnchorElement: HTMLElement, HTMLHyperlinkElementUtils {
 
     @ReadWriteAttribute
     public var shape: String
+
+    @ReadWriteAttribute
+    public var attributionSourceId: UInt32
 }

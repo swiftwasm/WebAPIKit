@@ -4,28 +4,31 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCDataChannelInit: BridgedDictionary {
-    public convenience init(ordered: Bool, maxPacketLifeTime: UInt16, maxRetransmits: UInt16, protocol: String, negotiated: Bool, id: UInt16, priority: RTCPriorityType) {
+    public convenience init(priority: RTCPriorityType, ordered: Bool, maxPacketLifeTime: UInt16, maxRetransmits: UInt16, protocol: String, negotiated: Bool, id: UInt16) {
         let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.priority] = priority.jsValue()
         object[Strings.ordered] = ordered.jsValue()
         object[Strings.maxPacketLifeTime] = maxPacketLifeTime.jsValue()
         object[Strings.maxRetransmits] = maxRetransmits.jsValue()
         object[Strings.protocol] = `protocol`.jsValue()
         object[Strings.negotiated] = negotiated.jsValue()
         object[Strings.id] = id.jsValue()
-        object[Strings.priority] = priority.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
+        _priority = ReadWriteAttribute(jsObject: object, name: Strings.priority)
         _ordered = ReadWriteAttribute(jsObject: object, name: Strings.ordered)
         _maxPacketLifeTime = ReadWriteAttribute(jsObject: object, name: Strings.maxPacketLifeTime)
         _maxRetransmits = ReadWriteAttribute(jsObject: object, name: Strings.maxRetransmits)
         _protocol = ReadWriteAttribute(jsObject: object, name: Strings.protocol)
         _negotiated = ReadWriteAttribute(jsObject: object, name: Strings.negotiated)
         _id = ReadWriteAttribute(jsObject: object, name: Strings.id)
-        _priority = ReadWriteAttribute(jsObject: object, name: Strings.priority)
         super.init(unsafelyWrapping: object)
     }
+
+    @ReadWriteAttribute
+    public var priority: RTCPriorityType
 
     @ReadWriteAttribute
     public var ordered: Bool
@@ -44,7 +47,4 @@ public class RTCDataChannelInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var id: UInt16
-
-    @ReadWriteAttribute
-    public var priority: RTCPriorityType
 }

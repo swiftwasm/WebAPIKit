@@ -9,27 +9,11 @@ public class Performance: EventTarget {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _eventCounts = ReadonlyAttribute(jsObject: jsObject, name: Strings.eventCounts)
         _interactionCounts = ReadonlyAttribute(jsObject: jsObject, name: Strings.interactionCounts)
-        _onresourcetimingbufferfull = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresourcetimingbufferfull)
         _timeOrigin = ReadonlyAttribute(jsObject: jsObject, name: Strings.timeOrigin)
         _timing = ReadonlyAttribute(jsObject: jsObject, name: Strings.timing)
         _navigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigation)
+        _onresourcetimingbufferfull = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresourcetimingbufferfull)
         super.init(unsafelyWrapping: jsObject)
-    }
-
-    public func mark(markName: String, markOptions: PerformanceMarkOptions? = nil) -> PerformanceMark {
-        jsObject[Strings.mark]!(markName.jsValue(), markOptions?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    public func clearMarks(markName: String? = nil) {
-        _ = jsObject[Strings.clearMarks]!(markName?.jsValue() ?? .undefined)
-    }
-
-    public func measure(measureName: String, startOrMeasureOptions: __UNSUPPORTED_UNION__? = nil, endMark: String? = nil) -> PerformanceMeasure {
-        jsObject[Strings.measure]!(measureName.jsValue(), startOrMeasureOptions?.jsValue() ?? .undefined, endMark?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    public func clearMeasures(measureName: String? = nil) {
-        _ = jsObject[Strings.clearMeasures]!(measureName?.jsValue() ?? .undefined)
     }
 
     @ReadonlyAttribute
@@ -37,6 +21,33 @@ public class Performance: EventTarget {
 
     @ReadonlyAttribute
     public var interactionCounts: InteractionCounts
+
+    public func now() -> DOMHighResTimeStamp {
+        jsObject[Strings.now]!().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var timeOrigin: DOMHighResTimeStamp
+
+    public func toJSON() -> JSObject {
+        jsObject[Strings.toJSON]!().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var timing: PerformanceTiming
+
+    @ReadonlyAttribute
+    public var navigation: PerformanceNavigation
+
+    public func measureUserAgentSpecificMemory() -> JSPromise {
+        jsObject[Strings.measureUserAgentSpecificMemory]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func measureUserAgentSpecificMemory() async throws -> MemoryMeasurement {
+        let _promise: JSPromise = jsObject[Strings.measureUserAgentSpecificMemory]!().fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
 
     public func getEntries() -> PerformanceEntryList {
         jsObject[Strings.getEntries]!().fromJSValue()!
@@ -61,30 +72,19 @@ public class Performance: EventTarget {
     @ClosureAttribute.Optional1
     public var onresourcetimingbufferfull: EventHandler
 
-    public func measureUserAgentSpecificMemory() -> JSPromise {
-        jsObject[Strings.measureUserAgentSpecificMemory]!().fromJSValue()!
+    public func mark(markName: String, markOptions: PerformanceMarkOptions? = nil) -> PerformanceMark {
+        jsObject[Strings.mark]!(markName.jsValue(), markOptions?.jsValue() ?? .undefined).fromJSValue()!
     }
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func measureUserAgentSpecificMemory() async throws -> MemoryMeasurement {
-        let _promise: JSPromise = jsObject[Strings.measureUserAgentSpecificMemory]!().fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+    public func clearMarks(markName: String? = nil) {
+        _ = jsObject[Strings.clearMarks]!(markName?.jsValue() ?? .undefined)
     }
 
-    public func now() -> DOMHighResTimeStamp {
-        jsObject[Strings.now]!().fromJSValue()!
+    public func measure(measureName: String, startOrMeasureOptions: __UNSUPPORTED_UNION__? = nil, endMark: String? = nil) -> PerformanceMeasure {
+        jsObject[Strings.measure]!(measureName.jsValue(), startOrMeasureOptions?.jsValue() ?? .undefined, endMark?.jsValue() ?? .undefined).fromJSValue()!
     }
 
-    @ReadonlyAttribute
-    public var timeOrigin: DOMHighResTimeStamp
-
-    public func toJSON() -> JSObject {
-        jsObject[Strings.toJSON]!().fromJSValue()!
+    public func clearMeasures(measureName: String? = nil) {
+        _ = jsObject[Strings.clearMeasures]!(measureName?.jsValue() ?? .undefined)
     }
-
-    @ReadonlyAttribute
-    public var timing: PerformanceTiming
-
-    @ReadonlyAttribute
-    public var navigation: PerformanceNavigation
 }

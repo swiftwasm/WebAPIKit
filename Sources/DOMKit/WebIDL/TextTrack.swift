@@ -7,7 +7,6 @@ public class TextTrack: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.TextTrack].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
         _language = ReadonlyAttribute(jsObject: jsObject, name: Strings.language)
@@ -17,11 +16,9 @@ public class TextTrack: EventTarget {
         _cues = ReadonlyAttribute(jsObject: jsObject, name: Strings.cues)
         _activeCues = ReadonlyAttribute(jsObject: jsObject, name: Strings.activeCues)
         _oncuechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.oncuechange)
+        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadonlyAttribute
-    public var sourceBuffer: SourceBuffer?
 
     @ReadonlyAttribute
     public var kind: TextTrackKind
@@ -57,4 +54,7 @@ public class TextTrack: EventTarget {
 
     @ClosureAttribute.Optional1
     public var oncuechange: EventHandler
+
+    @ReadonlyAttribute
+    public var sourceBuffer: SourceBuffer?
 }

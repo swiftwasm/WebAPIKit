@@ -8,26 +8,6 @@ public enum WebAssembly {
         JSObject.global[Strings.WebAssembly].object!
     }
 
-    public static func compileStreaming(source: JSPromise) -> JSPromise {
-        JSObject.global[Strings.WebAssembly].object![Strings.compileStreaming]!(source.jsValue()).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func compileStreaming(source: JSPromise) async throws -> Module {
-        let _promise: JSPromise = JSObject.global[Strings.WebAssembly].object![Strings.compileStreaming]!(source.jsValue()).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
-    public static func instantiateStreaming(source: JSPromise, importObject: JSObject? = nil) -> JSPromise {
-        JSObject.global[Strings.WebAssembly].object![Strings.instantiateStreaming]!(source.jsValue(), importObject?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func instantiateStreaming(source: JSPromise, importObject: JSObject? = nil) async throws -> WebAssemblyInstantiatedSource {
-        let _promise: JSPromise = JSObject.global[Strings.WebAssembly].object![Strings.instantiateStreaming]!(source.jsValue(), importObject?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
     public static func validate(bytes: BufferSource) -> Bool {
         JSObject.global[Strings.WebAssembly].object![Strings.validate]!(bytes.jsValue()).fromJSValue()!
     }
@@ -59,6 +39,26 @@ public enum WebAssembly {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public static func instantiate(moduleObject: Module, importObject: JSObject? = nil) async throws -> Instance {
         let _promise: JSPromise = JSObject.global[Strings.WebAssembly].object![Strings.instantiate]!(moduleObject.jsValue(), importObject?.jsValue() ?? .undefined).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    public static func compileStreaming(source: JSPromise) -> JSPromise {
+        JSObject.global[Strings.WebAssembly].object![Strings.compileStreaming]!(source.jsValue()).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public static func compileStreaming(source: JSPromise) async throws -> Module {
+        let _promise: JSPromise = JSObject.global[Strings.WebAssembly].object![Strings.compileStreaming]!(source.jsValue()).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    public static func instantiateStreaming(source: JSPromise, importObject: JSObject? = nil) -> JSPromise {
+        JSObject.global[Strings.WebAssembly].object![Strings.instantiateStreaming]!(source.jsValue(), importObject?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public static func instantiateStreaming(source: JSPromise, importObject: JSObject? = nil) async throws -> WebAssemblyInstantiatedSource {
+        let _promise: JSPromise = JSObject.global[Strings.WebAssembly].object![Strings.instantiateStreaming]!(source.jsValue(), importObject?.jsValue() ?? .undefined).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

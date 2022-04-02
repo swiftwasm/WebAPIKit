@@ -14,6 +14,14 @@ public class XRWebGLBinding: JSBridgedClass {
         self.jsObject = jsObject
     }
 
+    public func getDepthInformation(view: XRView) -> XRWebGLDepthInformation? {
+        jsObject[Strings.getDepthInformation]!(view.jsValue()).fromJSValue()!
+    }
+
+    public func getReflectionCubeMap(lightProbe: XRLightProbe) -> WebGLTexture? {
+        jsObject[Strings.getReflectionCubeMap]!(lightProbe.jsValue()).fromJSValue()!
+    }
+
     public convenience init(session: XRSession, context: XRWebGLRenderingContext) {
         self.init(unsafelyWrapping: Self.constructor.new(session.jsValue(), context.jsValue()))
     }
@@ -50,13 +58,5 @@ public class XRWebGLBinding: JSBridgedClass {
 
     public func getViewSubImage(layer: XRProjectionLayer, view: XRView) -> XRWebGLSubImage {
         jsObject[Strings.getViewSubImage]!(layer.jsValue(), view.jsValue()).fromJSValue()!
-    }
-
-    public func getDepthInformation(view: XRView) -> XRWebGLDepthInformation? {
-        jsObject[Strings.getDepthInformation]!(view.jsValue()).fromJSValue()!
-    }
-
-    public func getReflectionCubeMap(lightProbe: XRLightProbe) -> WebGLTexture? {
-        jsObject[Strings.getReflectionCubeMap]!(lightProbe.jsValue()).fromJSValue()!
     }
 }

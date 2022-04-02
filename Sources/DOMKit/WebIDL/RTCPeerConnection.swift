@@ -7,6 +7,9 @@ public class RTCPeerConnection: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.RTCPeerConnection].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _peerIdentity = ReadonlyAttribute(jsObject: jsObject, name: Strings.peerIdentity)
+        _idpLoginUrl = ReadonlyAttribute(jsObject: jsObject, name: Strings.idpLoginUrl)
+        _idpErrorInfo = ReadonlyAttribute(jsObject: jsObject, name: Strings.idpErrorInfo)
         _localDescription = ReadonlyAttribute(jsObject: jsObject, name: Strings.localDescription)
         _currentLocalDescription = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentLocalDescription)
         _pendingLocalDescription = ReadonlyAttribute(jsObject: jsObject, name: Strings.pendingLocalDescription)
@@ -28,11 +31,31 @@ public class RTCPeerConnection: EventTarget {
         _ontrack = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ontrack)
         _sctp = ReadonlyAttribute(jsObject: jsObject, name: Strings.sctp)
         _ondatachannel = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.ondatachannel)
-        _peerIdentity = ReadonlyAttribute(jsObject: jsObject, name: Strings.peerIdentity)
-        _idpLoginUrl = ReadonlyAttribute(jsObject: jsObject, name: Strings.idpLoginUrl)
-        _idpErrorInfo = ReadonlyAttribute(jsObject: jsObject, name: Strings.idpErrorInfo)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    public func setIdentityProvider(provider: String, options: RTCIdentityProviderOptions? = nil) {
+        _ = jsObject[Strings.setIdentityProvider]!(provider.jsValue(), options?.jsValue() ?? .undefined)
+    }
+
+    public func getIdentityAssertion() -> JSPromise {
+        jsObject[Strings.getIdentityAssertion]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func getIdentityAssertion() async throws -> String {
+        let _promise: JSPromise = jsObject[Strings.getIdentityAssertion]!().fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var peerIdentity: JSPromise
+
+    @ReadonlyAttribute
+    public var idpLoginUrl: String?
+
+    @ReadonlyAttribute
+    public var idpErrorInfo: String?
 
     public convenience init(configuration: RTCConfiguration? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(configuration?.jsValue() ?? .undefined))
@@ -204,27 +227,4 @@ public class RTCPeerConnection: EventTarget {
         let _promise: JSPromise = jsObject[Strings.getStats]!(selector?.jsValue() ?? .undefined).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
-
-    public func setIdentityProvider(provider: String, options: RTCIdentityProviderOptions? = nil) {
-        _ = jsObject[Strings.setIdentityProvider]!(provider.jsValue(), options?.jsValue() ?? .undefined)
-    }
-
-    public func getIdentityAssertion() -> JSPromise {
-        jsObject[Strings.getIdentityAssertion]!().fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getIdentityAssertion() async throws -> String {
-        let _promise: JSPromise = jsObject[Strings.getIdentityAssertion]!().fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
-    @ReadonlyAttribute
-    public var peerIdentity: JSPromise
-
-    @ReadonlyAttribute
-    public var idpLoginUrl: String?
-
-    @ReadonlyAttribute
-    public var idpErrorInfo: String?
 }

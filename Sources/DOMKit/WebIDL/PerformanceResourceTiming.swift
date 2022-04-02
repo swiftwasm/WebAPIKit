@@ -7,7 +7,6 @@ public class PerformanceResourceTiming: PerformanceEntry {
     override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceResourceTiming].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _serverTiming = ReadonlyAttribute(jsObject: jsObject, name: Strings.serverTiming)
         _initiatorType = ReadonlyAttribute(jsObject: jsObject, name: Strings.initiatorType)
         _nextHopProtocol = ReadonlyAttribute(jsObject: jsObject, name: Strings.nextHopProtocol)
         _workerStart = ReadonlyAttribute(jsObject: jsObject, name: Strings.workerStart)
@@ -25,11 +24,9 @@ public class PerformanceResourceTiming: PerformanceEntry {
         _transferSize = ReadonlyAttribute(jsObject: jsObject, name: Strings.transferSize)
         _encodedBodySize = ReadonlyAttribute(jsObject: jsObject, name: Strings.encodedBodySize)
         _decodedBodySize = ReadonlyAttribute(jsObject: jsObject, name: Strings.decodedBodySize)
+        _serverTiming = ReadonlyAttribute(jsObject: jsObject, name: Strings.serverTiming)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadonlyAttribute
-    public var serverTiming: [PerformanceServerTiming]
 
     @ReadonlyAttribute
     public var initiatorType: String
@@ -85,4 +82,7 @@ public class PerformanceResourceTiming: PerformanceEntry {
     override public func toJSON() -> JSObject {
         jsObject[Strings.toJSON]!().fromJSValue()!
     }
+
+    @ReadonlyAttribute
+    public var serverTiming: [PerformanceServerTiming]
 }

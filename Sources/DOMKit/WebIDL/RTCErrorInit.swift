@@ -4,26 +4,29 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCErrorInit: BridgedDictionary {
-    public convenience init(errorDetail: RTCErrorDetailType, sdpLineNumber: Int32, sctpCauseCode: Int32, receivedAlert: UInt32, sentAlert: UInt32, httpRequestStatusCode: Int32) {
+    public convenience init(httpRequestStatusCode: Int32, errorDetail: RTCErrorDetailType, sdpLineNumber: Int32, sctpCauseCode: Int32, receivedAlert: UInt32, sentAlert: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.httpRequestStatusCode] = httpRequestStatusCode.jsValue()
         object[Strings.errorDetail] = errorDetail.jsValue()
         object[Strings.sdpLineNumber] = sdpLineNumber.jsValue()
         object[Strings.sctpCauseCode] = sctpCauseCode.jsValue()
         object[Strings.receivedAlert] = receivedAlert.jsValue()
         object[Strings.sentAlert] = sentAlert.jsValue()
-        object[Strings.httpRequestStatusCode] = httpRequestStatusCode.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
+        _httpRequestStatusCode = ReadWriteAttribute(jsObject: object, name: Strings.httpRequestStatusCode)
         _errorDetail = ReadWriteAttribute(jsObject: object, name: Strings.errorDetail)
         _sdpLineNumber = ReadWriteAttribute(jsObject: object, name: Strings.sdpLineNumber)
         _sctpCauseCode = ReadWriteAttribute(jsObject: object, name: Strings.sctpCauseCode)
         _receivedAlert = ReadWriteAttribute(jsObject: object, name: Strings.receivedAlert)
         _sentAlert = ReadWriteAttribute(jsObject: object, name: Strings.sentAlert)
-        _httpRequestStatusCode = ReadWriteAttribute(jsObject: object, name: Strings.httpRequestStatusCode)
         super.init(unsafelyWrapping: object)
     }
+
+    @ReadWriteAttribute
+    public var httpRequestStatusCode: Int32
 
     @ReadWriteAttribute
     public var errorDetail: RTCErrorDetailType
@@ -39,7 +42,4 @@ public class RTCErrorInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var sentAlert: UInt32
-
-    @ReadWriteAttribute
-    public var httpRequestStatusCode: Int32
 }

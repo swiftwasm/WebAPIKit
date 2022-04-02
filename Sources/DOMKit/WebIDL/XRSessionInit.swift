@@ -4,32 +4,32 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRSessionInit: BridgedDictionary {
-    public convenience init(requiredFeatures: [JSValue], optionalFeatures: [JSValue], depthSensing: XRDepthStateInit, domOverlay: XRDOMOverlayInit?) {
+    public convenience init(depthSensing: XRDepthStateInit, domOverlay: XRDOMOverlayInit?, requiredFeatures: [JSValue], optionalFeatures: [JSValue]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.requiredFeatures] = requiredFeatures.jsValue()
-        object[Strings.optionalFeatures] = optionalFeatures.jsValue()
         object[Strings.depthSensing] = depthSensing.jsValue()
         object[Strings.domOverlay] = domOverlay.jsValue()
+        object[Strings.requiredFeatures] = requiredFeatures.jsValue()
+        object[Strings.optionalFeatures] = optionalFeatures.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _requiredFeatures = ReadWriteAttribute(jsObject: object, name: Strings.requiredFeatures)
-        _optionalFeatures = ReadWriteAttribute(jsObject: object, name: Strings.optionalFeatures)
         _depthSensing = ReadWriteAttribute(jsObject: object, name: Strings.depthSensing)
         _domOverlay = ReadWriteAttribute(jsObject: object, name: Strings.domOverlay)
+        _requiredFeatures = ReadWriteAttribute(jsObject: object, name: Strings.requiredFeatures)
+        _optionalFeatures = ReadWriteAttribute(jsObject: object, name: Strings.optionalFeatures)
         super.init(unsafelyWrapping: object)
     }
-
-    @ReadWriteAttribute
-    public var requiredFeatures: [JSValue]
-
-    @ReadWriteAttribute
-    public var optionalFeatures: [JSValue]
 
     @ReadWriteAttribute
     public var depthSensing: XRDepthStateInit
 
     @ReadWriteAttribute
     public var domOverlay: XRDOMOverlayInit?
+
+    @ReadWriteAttribute
+    public var requiredFeatures: [JSValue]
+
+    @ReadWriteAttribute
+    public var optionalFeatures: [JSValue]
 }

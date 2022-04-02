@@ -16,15 +16,17 @@ public class CSSRule: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public static let FONT_FEATURE_VALUES_RULE: UInt16 = 14
-
-    public static let VIEWPORT_RULE: UInt16 = 15
-
-    public static let SUPPORTS_RULE: UInt16 = 12
-
     public static let KEYFRAMES_RULE: UInt16 = 7
 
     public static let KEYFRAME_RULE: UInt16 = 8
+
+    public static let SUPPORTS_RULE: UInt16 = 12
+
+    public static let COUNTER_STYLE_RULE: UInt16 = 11
+
+    public static let VIEWPORT_RULE: UInt16 = 15
+
+    public static let FONT_FEATURE_VALUES_RULE: UInt16 = 14
 
     @ReadWriteAttribute
     public var cssText: String
@@ -53,6 +55,4 @@ public class CSSRule: JSBridgedClass {
     public static let MARGIN_RULE: UInt16 = 9
 
     public static let NAMESPACE_RULE: UInt16 = 10
-
-    public static let COUNTER_STYLE_RULE: UInt16 = 11
 }

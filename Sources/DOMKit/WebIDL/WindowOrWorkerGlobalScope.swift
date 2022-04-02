@@ -5,6 +5,10 @@ import JavaScriptKit
 
 public protocol WindowOrWorkerGlobalScope: JSBridgedClass {}
 public extension WindowOrWorkerGlobalScope {
+    var indexedDB: IDBFactory { ReadonlyAttribute[Strings.indexedDB, in: jsObject] }
+
+    var crypto: Crypto { ReadonlyAttribute[Strings.crypto, in: jsObject] }
+
     func fetch(input: RequestInfo, init: RequestInit? = nil) -> JSPromise {
         jsObject[Strings.fetch]!(input.jsValue(), `init`?.jsValue() ?? .undefined).fromJSValue()!
     }
@@ -15,15 +19,7 @@ public extension WindowOrWorkerGlobalScope {
         return try await _promise.get().fromJSValue()!
     }
 
-    var indexedDB: IDBFactory { ReadonlyAttribute[Strings.indexedDB, in: jsObject] }
-
-    var trustedTypes: TrustedTypePolicyFactory { ReadonlyAttribute[Strings.trustedTypes, in: jsObject] }
-
     var performance: Performance { ReadonlyAttribute[Strings.performance, in: jsObject] }
-
-    var crypto: Crypto { ReadonlyAttribute[Strings.crypto, in: jsObject] }
-
-    var scheduler: Scheduler { ReadonlyAttribute[Strings.scheduler, in: jsObject] }
 
     var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
 
@@ -99,5 +95,9 @@ public extension WindowOrWorkerGlobalScope {
 
     var originPolicyIds: [String] { ReadonlyAttribute[Strings.originPolicyIds, in: jsObject] }
 
+    var scheduler: Scheduler { ReadonlyAttribute[Strings.scheduler, in: jsObject] }
+
     var caches: CacheStorage { ReadonlyAttribute[Strings.caches, in: jsObject] }
+
+    var trustedTypes: TrustedTypePolicyFactory { ReadonlyAttribute[Strings.trustedTypes, in: jsObject] }
 }

@@ -12,6 +12,16 @@ public class StorageManager: JSBridgedClass {
         self.jsObject = jsObject
     }
 
+    public func getDirectory() -> JSPromise {
+        jsObject[Strings.getDirectory]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func getDirectory() async throws -> FileSystemDirectoryHandle {
+        let _promise: JSPromise = jsObject[Strings.getDirectory]!().fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
     public func persisted() -> JSPromise {
         jsObject[Strings.persisted]!().fromJSValue()!
     }
@@ -39,16 +49,6 @@ public class StorageManager: JSBridgedClass {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func estimate() async throws -> StorageEstimate {
         let _promise: JSPromise = jsObject[Strings.estimate]!().fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
-    public func getDirectory() -> JSPromise {
-        jsObject[Strings.getDirectory]!().fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getDirectory() async throws -> FileSystemDirectoryHandle {
-        let _promise: JSPromise = jsObject[Strings.getDirectory]!().fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

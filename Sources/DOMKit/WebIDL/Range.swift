@@ -11,6 +11,18 @@ public class Range: AbstractRange {
         super.init(unsafelyWrapping: jsObject)
     }
 
+    public func createContextualFragment(fragment: String) -> DocumentFragment {
+        jsObject[Strings.createContextualFragment]!(fragment.jsValue()).fromJSValue()!
+    }
+
+    public func getClientRects() -> DOMRectList {
+        jsObject[Strings.getClientRects]!().fromJSValue()!
+    }
+
+    public func getBoundingClientRect() -> DOMRect {
+        jsObject[Strings.getBoundingClientRect]!().fromJSValue()!
+    }
+
     public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new())
     }
@@ -108,17 +120,5 @@ public class Range: AbstractRange {
 
     public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
-    }
-
-    public func getClientRects() -> DOMRectList {
-        jsObject[Strings.getClientRects]!().fromJSValue()!
-    }
-
-    public func getBoundingClientRect() -> DOMRect {
-        jsObject[Strings.getBoundingClientRect]!().fromJSValue()!
-    }
-
-    public func createContextualFragment(fragment: String) -> DocumentFragment {
-        jsObject[Strings.createContextualFragment]!(fragment.jsValue()).fromJSValue()!
     }
 }

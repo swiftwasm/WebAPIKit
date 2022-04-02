@@ -4,20 +4,20 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaStreamConstraints: BridgedDictionary {
-    public convenience init(video: __UNSUPPORTED_UNION__, audio: __UNSUPPORTED_UNION__, peerIdentity: String, preferCurrentTab: Bool) {
+    public convenience init(video: __UNSUPPORTED_UNION__, audio: __UNSUPPORTED_UNION__, preferCurrentTab: Bool, peerIdentity: String) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.video] = video.jsValue()
         object[Strings.audio] = audio.jsValue()
-        object[Strings.peerIdentity] = peerIdentity.jsValue()
         object[Strings.preferCurrentTab] = preferCurrentTab.jsValue()
+        object[Strings.peerIdentity] = peerIdentity.jsValue()
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
         _video = ReadWriteAttribute(jsObject: object, name: Strings.video)
         _audio = ReadWriteAttribute(jsObject: object, name: Strings.audio)
-        _peerIdentity = ReadWriteAttribute(jsObject: object, name: Strings.peerIdentity)
         _preferCurrentTab = ReadWriteAttribute(jsObject: object, name: Strings.preferCurrentTab)
+        _peerIdentity = ReadWriteAttribute(jsObject: object, name: Strings.peerIdentity)
         super.init(unsafelyWrapping: object)
     }
 
@@ -28,8 +28,8 @@ public class MediaStreamConstraints: BridgedDictionary {
     public var audio: __UNSUPPORTED_UNION__
 
     @ReadWriteAttribute
-    public var peerIdentity: String
+    public var preferCurrentTab: Bool
 
     @ReadWriteAttribute
-    public var preferCurrentTab: Bool
+    public var peerIdentity: String
 }

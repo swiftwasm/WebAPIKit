@@ -24,6 +24,14 @@ public class URL: JSBridgedClass {
         self.jsObject = jsObject
     }
 
+    public static func createObjectURL(obj: __UNSUPPORTED_UNION__) -> String {
+        constructor[Strings.createObjectURL]!(obj.jsValue()).fromJSValue()!
+    }
+
+    public static func revokeObjectURL(url: String) {
+        _ = constructor[Strings.revokeObjectURL]!(url.jsValue())
+    }
+
     public convenience init(url: String, base: String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(url.jsValue(), base?.jsValue() ?? .undefined))
     }
@@ -66,13 +74,5 @@ public class URL: JSBridgedClass {
 
     public func toJSON() -> String {
         jsObject[Strings.toJSON]!().fromJSValue()!
-    }
-
-    public static func createObjectURL(obj: __UNSUPPORTED_UNION__) -> String {
-        constructor[Strings.createObjectURL]!(obj.jsValue()).fromJSValue()!
-    }
-
-    public static func revokeObjectURL(url: String) {
-        _ = constructor[Strings.revokeObjectURL]!(url.jsValue())
     }
 }

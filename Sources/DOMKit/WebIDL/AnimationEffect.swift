@@ -15,18 +15,6 @@ public class AnimationEffect: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func getTiming() -> EffectTiming {
-        jsObject[Strings.getTiming]!().fromJSValue()!
-    }
-
-    public func getComputedTiming() -> ComputedEffectTiming {
-        jsObject[Strings.getComputedTiming]!().fromJSValue()!
-    }
-
-    public func updateTiming(timing: OptionalEffectTiming? = nil) {
-        _ = jsObject[Strings.updateTiming]!(timing?.jsValue() ?? .undefined)
-    }
-
     @ReadonlyAttribute
     public var parent: GroupEffect?
 
@@ -50,5 +38,17 @@ public class AnimationEffect: JSBridgedClass {
 
     public func remove() {
         _ = jsObject[Strings.remove]!()
+    }
+
+    public func getTiming() -> EffectTiming {
+        jsObject[Strings.getTiming]!().fromJSValue()!
+    }
+
+    public func getComputedTiming() -> ComputedEffectTiming {
+        jsObject[Strings.getComputedTiming]!().fromJSValue()!
+    }
+
+    public func updateTiming(timing: OptionalEffectTiming? = nil) {
+        _ = jsObject[Strings.updateTiming]!(timing?.jsValue() ?? .undefined)
     }
 }

@@ -4132,7 +4132,6 @@ enum Strings {
     static let requestHitTestSource: JSString = "requestHitTestSource"
     static let requestHitTestSourceForTransientInput: JSString = "requestHitTestSourceForTransientInput"
     static let requestId: JSString = "requestId"
-    static let requestIdleCallback: JSString = "requestIdleCallback"
     static let requestLightProbe: JSString = "requestLightProbe"
     static let requestMIDIAccess: JSString = "requestMIDIAccess"
     static let requestMediaKeySystemAccess: JSString = "requestMediaKeySystemAccess"

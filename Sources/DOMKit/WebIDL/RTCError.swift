@@ -7,14 +7,17 @@ public class RTCError: DOMException {
     override public class var constructor: JSFunction { JSObject.global[Strings.RTCError].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _httpRequestStatusCode = ReadonlyAttribute(jsObject: jsObject, name: Strings.httpRequestStatusCode)
         _errorDetail = ReadonlyAttribute(jsObject: jsObject, name: Strings.errorDetail)
         _sdpLineNumber = ReadonlyAttribute(jsObject: jsObject, name: Strings.sdpLineNumber)
         _sctpCauseCode = ReadonlyAttribute(jsObject: jsObject, name: Strings.sctpCauseCode)
         _receivedAlert = ReadonlyAttribute(jsObject: jsObject, name: Strings.receivedAlert)
         _sentAlert = ReadonlyAttribute(jsObject: jsObject, name: Strings.sentAlert)
-        _httpRequestStatusCode = ReadonlyAttribute(jsObject: jsObject, name: Strings.httpRequestStatusCode)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    @ReadonlyAttribute
+    public var httpRequestStatusCode: Int32?
 
     public convenience init(init: RTCErrorInit, message: String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(`init`.jsValue(), message?.jsValue() ?? .undefined))
@@ -34,7 +37,4 @@ public class RTCError: DOMException {
 
     @ReadonlyAttribute
     public var sentAlert: UInt32?
-
-    @ReadonlyAttribute
-    public var httpRequestStatusCode: Int32?
 }

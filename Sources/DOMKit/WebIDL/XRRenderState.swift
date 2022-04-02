@@ -9,16 +9,13 @@ public class XRRenderState: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _layers = ReadonlyAttribute(jsObject: jsObject, name: Strings.layers)
         _depthNear = ReadonlyAttribute(jsObject: jsObject, name: Strings.depthNear)
         _depthFar = ReadonlyAttribute(jsObject: jsObject, name: Strings.depthFar)
         _inlineVerticalFieldOfView = ReadonlyAttribute(jsObject: jsObject, name: Strings.inlineVerticalFieldOfView)
         _baseLayer = ReadonlyAttribute(jsObject: jsObject, name: Strings.baseLayer)
+        _layers = ReadonlyAttribute(jsObject: jsObject, name: Strings.layers)
         self.jsObject = jsObject
     }
-
-    @ReadonlyAttribute
-    public var layers: [XRLayer]
 
     @ReadonlyAttribute
     public var depthNear: Double
@@ -31,4 +28,7 @@ public class XRRenderState: JSBridgedClass {
 
     @ReadonlyAttribute
     public var baseLayer: XRWebGLLayer?
+
+    @ReadonlyAttribute
+    public var layers: [XRLayer]
 }

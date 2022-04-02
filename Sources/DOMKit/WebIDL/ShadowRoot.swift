@@ -3,7 +3,7 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot, InnerHTML {
+public class ShadowRoot: DocumentFragment, InnerHTML, DocumentOrShadowRoot {
     override public class var constructor: JSFunction { JSObject.global[Strings.ShadowRoot].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

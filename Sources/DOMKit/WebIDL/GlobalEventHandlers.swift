@@ -5,6 +5,26 @@ import JavaScriptKit
 
 public protocol GlobalEventHandlers: JSBridgedClass {}
 public extension GlobalEventHandlers {
+    var onanimationstart: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.onanimationstart, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.onanimationstart, in: jsObject] = newValue }
+    }
+
+    var onanimationiteration: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.onanimationiteration, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.onanimationiteration, in: jsObject] = newValue }
+    }
+
+    var onanimationend: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.onanimationend, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.onanimationend, in: jsObject] = newValue }
+    }
+
+    var onanimationcancel: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.onanimationcancel, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.onanimationcancel, in: jsObject] = newValue }
+    }
+
     var ontransitionrun: EventHandler {
         get { ClosureAttribute.Optional1[Strings.ontransitionrun, in: jsObject] }
         set { ClosureAttribute.Optional1[Strings.ontransitionrun, in: jsObject] = newValue }
@@ -23,41 +43,6 @@ public extension GlobalEventHandlers {
     var ontransitioncancel: EventHandler {
         get { ClosureAttribute.Optional1[Strings.ontransitioncancel, in: jsObject] }
         set { ClosureAttribute.Optional1[Strings.ontransitioncancel, in: jsObject] = newValue }
-    }
-
-    var onselectstart: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onselectstart, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onselectstart, in: jsObject] = newValue }
-    }
-
-    var onselectionchange: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onselectionchange, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onselectionchange, in: jsObject] = newValue }
-    }
-
-    var onbeforexrselect: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onbeforexrselect, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onbeforexrselect, in: jsObject] = newValue }
-    }
-
-    var ontouchstart: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.ontouchstart, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.ontouchstart, in: jsObject] = newValue }
-    }
-
-    var ontouchend: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.ontouchend, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.ontouchend, in: jsObject] = newValue }
-    }
-
-    var ontouchmove: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.ontouchmove, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.ontouchmove, in: jsObject] = newValue }
-    }
-
-    var ontouchcancel: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.ontouchcancel, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.ontouchcancel, in: jsObject] = newValue }
     }
 
     var onabort: EventHandler {
@@ -455,23 +440,38 @@ public extension GlobalEventHandlers {
         set { ClosureAttribute.Optional1[Strings.onpointerleave, in: jsObject] = newValue }
     }
 
-    var onanimationstart: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onanimationstart, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onanimationstart, in: jsObject] = newValue }
+    var onselectstart: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.onselectstart, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.onselectstart, in: jsObject] = newValue }
     }
 
-    var onanimationiteration: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onanimationiteration, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onanimationiteration, in: jsObject] = newValue }
+    var onselectionchange: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.onselectionchange, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.onselectionchange, in: jsObject] = newValue }
     }
 
-    var onanimationend: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onanimationend, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onanimationend, in: jsObject] = newValue }
+    var ontouchstart: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.ontouchstart, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.ontouchstart, in: jsObject] = newValue }
     }
 
-    var onanimationcancel: EventHandler {
-        get { ClosureAttribute.Optional1[Strings.onanimationcancel, in: jsObject] }
-        set { ClosureAttribute.Optional1[Strings.onanimationcancel, in: jsObject] = newValue }
+    var ontouchend: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.ontouchend, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.ontouchend, in: jsObject] = newValue }
+    }
+
+    var ontouchmove: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.ontouchmove, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.ontouchmove, in: jsObject] = newValue }
+    }
+
+    var ontouchcancel: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.ontouchcancel, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.ontouchcancel, in: jsObject] = newValue }
+    }
+
+    var onbeforexrselect: EventHandler {
+        get { ClosureAttribute.Optional1[Strings.onbeforexrselect, in: jsObject] }
+        set { ClosureAttribute.Optional1[Strings.onbeforexrselect, in: jsObject] = newValue }
     }
 }

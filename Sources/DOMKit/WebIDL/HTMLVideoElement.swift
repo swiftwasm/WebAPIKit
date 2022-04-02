@@ -20,12 +20,6 @@ public class HTMLVideoElement: HTMLMediaElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    // XXX: member 'requestVideoFrameCallback' is ignored
-
-    public func cancelVideoFrameCallback(handle: UInt32) {
-        _ = jsObject[Strings.cancelVideoFrameCallback]!(handle.jsValue())
-    }
-
     public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new())
     }
@@ -73,4 +67,10 @@ public class HTMLVideoElement: HTMLMediaElement {
 
     @ReadWriteAttribute
     public var disablePictureInPicture: Bool
+
+    // XXX: member 'requestVideoFrameCallback' is ignored
+
+    public func cancelVideoFrameCallback(handle: UInt32) {
+        _ = jsObject[Strings.cancelVideoFrameCallback]!(handle.jsValue())
+    }
 }

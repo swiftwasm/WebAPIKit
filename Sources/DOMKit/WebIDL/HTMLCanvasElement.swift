@@ -12,10 +12,6 @@ public class HTMLCanvasElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func captureStream(frameRequestRate: Double? = nil) -> MediaStream {
-        jsObject[Strings.captureStream]!(frameRequestRate?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
     public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new())
     }
@@ -38,5 +34,9 @@ public class HTMLCanvasElement: HTMLElement {
 
     public func transferControlToOffscreen() -> OffscreenCanvas {
         jsObject[Strings.transferControlToOffscreen]!().fromJSValue()!
+    }
+
+    public func captureStream(frameRequestRate: Double? = nil) -> MediaStream {
+        jsObject[Strings.captureStream]!(frameRequestRate?.jsValue() ?? .undefined).fromJSValue()!
     }
 }

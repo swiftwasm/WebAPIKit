@@ -3,17 +3,13 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentNode, XPathEvaluatorBase, GeometryUtils, GlobalEventHandlers, DocumentAndElementEventHandlers, FontFaceSource {
+public class Document: Node, FontFaceSource, GeometryUtils, NonElementParentNode, DocumentOrShadowRoot, ParentNode, XPathEvaluatorBase, GlobalEventHandlers, DocumentAndElementEventHandlers {
     override public class var constructor: JSFunction { JSObject.global[Strings.Document].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _fragmentDirective = ReadonlyAttribute(jsObject: jsObject, name: Strings.fragmentDirective)
-        _permissionsPolicy = ReadonlyAttribute(jsObject: jsObject, name: Strings.permissionsPolicy)
+        _rootElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.rootElement)
         _namedFlows = ReadonlyAttribute(jsObject: jsObject, name: Strings.namedFlows)
-        _fullscreenEnabled = ReadonlyAttribute(jsObject: jsObject, name: Strings.fullscreenEnabled)
-        _fullscreen = ReadonlyAttribute(jsObject: jsObject, name: Strings.fullscreen)
-        _onfullscreenchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenchange)
-        _onfullscreenerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenerror)
+        _scrollingElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollingElement)
         _implementation = ReadonlyAttribute(jsObject: jsObject, name: Strings.implementation)
         _URL = ReadonlyAttribute(jsObject: jsObject, name: Strings.URL)
         _documentURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.documentURI)
@@ -24,11 +20,10 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
         _contentType = ReadonlyAttribute(jsObject: jsObject, name: Strings.contentType)
         _doctype = ReadonlyAttribute(jsObject: jsObject, name: Strings.doctype)
         _documentElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.documentElement)
-        _onpointerlockchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpointerlockchange)
-        _onpointerlockerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpointerlockerror)
-        _scrollingElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollingElement)
-        _timeline = ReadonlyAttribute(jsObject: jsObject, name: Strings.timeline)
-        _rootElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.rootElement)
+        _fullscreenEnabled = ReadonlyAttribute(jsObject: jsObject, name: Strings.fullscreenEnabled)
+        _fullscreen = ReadonlyAttribute(jsObject: jsObject, name: Strings.fullscreen)
+        _onfullscreenchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenchange)
+        _onfullscreenerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfullscreenerror)
         _location = ReadonlyAttribute(jsObject: jsObject, name: Strings.location)
         _domain = ReadWriteAttribute(jsObject: jsObject, name: Strings.domain)
         _referrer = ReadonlyAttribute(jsObject: jsObject, name: Strings.referrer)
@@ -60,55 +55,38 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
         _anchors = ReadonlyAttribute(jsObject: jsObject, name: Strings.anchors)
         _applets = ReadonlyAttribute(jsObject: jsObject, name: Strings.applets)
         _all = ReadonlyAttribute(jsObject: jsObject, name: Strings.all)
-        _pictureInPictureEnabled = ReadonlyAttribute(jsObject: jsObject, name: Strings.pictureInPictureEnabled)
         _onfreeze = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onfreeze)
         _onresume = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onresume)
         _wasDiscarded = ReadonlyAttribute(jsObject: jsObject, name: Strings.wasDiscarded)
+        _permissionsPolicy = ReadonlyAttribute(jsObject: jsObject, name: Strings.permissionsPolicy)
+        _pictureInPictureEnabled = ReadonlyAttribute(jsObject: jsObject, name: Strings.pictureInPictureEnabled)
+        _onpointerlockchange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpointerlockchange)
+        _onpointerlockerror = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onpointerlockerror)
+        _fragmentDirective = ReadonlyAttribute(jsObject: jsObject, name: Strings.fragmentDirective)
+        _timeline = ReadonlyAttribute(jsObject: jsObject, name: Strings.timeline)
         super.init(unsafelyWrapping: jsObject)
     }
 
     @ReadonlyAttribute
-    public var fragmentDirective: FragmentDirective
-
-    @ReadonlyAttribute
-    public var permissionsPolicy: PermissionsPolicy
-
-    public func measureElement(element: Element) -> FontMetrics {
-        jsObject[Strings.measureElement]!(element.jsValue()).fromJSValue()!
-    }
-
-    public func measureText(text: String, styleMap: StylePropertyMapReadOnly) -> FontMetrics {
-        jsObject[Strings.measureText]!(text.jsValue(), styleMap.jsValue()).fromJSValue()!
-    }
+    public var rootElement: SVGSVGElement?
 
     @ReadonlyAttribute
     public var namedFlows: NamedFlowMap
 
+    public func elementFromPoint(x: Double, y: Double) -> Element? {
+        jsObject[Strings.elementFromPoint]!(x.jsValue(), y.jsValue()).fromJSValue()!
+    }
+
+    public func elementsFromPoint(x: Double, y: Double) -> [Element] {
+        jsObject[Strings.elementsFromPoint]!(x.jsValue(), y.jsValue()).fromJSValue()!
+    }
+
+    public func caretPositionFromPoint(x: Double, y: Double) -> CaretPosition? {
+        jsObject[Strings.caretPositionFromPoint]!(x.jsValue(), y.jsValue()).fromJSValue()!
+    }
+
     @ReadonlyAttribute
-    public var fullscreenEnabled: Bool
-
-    @ReadonlyAttribute
-    public var fullscreen: Bool
-
-    public func exitFullscreen() -> JSPromise {
-        jsObject[Strings.exitFullscreen]!().fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func exitFullscreen() async throws {
-        let _promise: JSPromise = jsObject[Strings.exitFullscreen]!().fromJSValue()!
-        _ = try await _promise.get()
-    }
-
-    @ClosureAttribute.Optional1
-    public var onfullscreenchange: EventHandler
-
-    @ClosureAttribute.Optional1
-    public var onfullscreenerror: EventHandler
-
-    public func getSelection() -> Selection? {
-        jsObject[Strings.getSelection]!().fromJSValue()!
-    }
+    public var scrollingElement: Element?
 
     public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new())
@@ -212,36 +190,35 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     // XXX: member 'createTreeWalker' is ignored
 
+    public func measureElement(element: Element) -> FontMetrics {
+        jsObject[Strings.measureElement]!(element.jsValue()).fromJSValue()!
+    }
+
+    public func measureText(text: String, styleMap: StylePropertyMapReadOnly) -> FontMetrics {
+        jsObject[Strings.measureText]!(text.jsValue(), styleMap.jsValue()).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var fullscreenEnabled: Bool
+
+    @ReadonlyAttribute
+    public var fullscreen: Bool
+
+    public func exitFullscreen() -> JSPromise {
+        jsObject[Strings.exitFullscreen]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func exitFullscreen() async throws {
+        let _promise: JSPromise = jsObject[Strings.exitFullscreen]!().fromJSValue()!
+        _ = try await _promise.get()
+    }
+
     @ClosureAttribute.Optional1
-    public var onpointerlockchange: EventHandler
+    public var onfullscreenchange: EventHandler
 
     @ClosureAttribute.Optional1
-    public var onpointerlockerror: EventHandler
-
-    public func exitPointerLock() {
-        _ = jsObject[Strings.exitPointerLock]!()
-    }
-
-    public func elementFromPoint(x: Double, y: Double) -> Element? {
-        jsObject[Strings.elementFromPoint]!(x.jsValue(), y.jsValue()).fromJSValue()!
-    }
-
-    public func elementsFromPoint(x: Double, y: Double) -> [Element] {
-        jsObject[Strings.elementsFromPoint]!(x.jsValue(), y.jsValue()).fromJSValue()!
-    }
-
-    public func caretPositionFromPoint(x: Double, y: Double) -> CaretPosition? {
-        jsObject[Strings.caretPositionFromPoint]!(x.jsValue(), y.jsValue()).fromJSValue()!
-    }
-
-    @ReadonlyAttribute
-    public var scrollingElement: Element?
-
-    @ReadonlyAttribute
-    public var timeline: DocumentTimeline
-
-    @ReadonlyAttribute
-    public var rootElement: SVGSVGElement?
+    public var onfullscreenerror: EventHandler
 
     @ReadonlyAttribute
     public var location: Location?
@@ -404,6 +381,48 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     @ReadonlyAttribute
     public var all: HTMLAllCollection
 
+    @ClosureAttribute.Optional1
+    public var onfreeze: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var onresume: EventHandler
+
+    @ReadonlyAttribute
+    public var wasDiscarded: Bool
+
+    @ReadonlyAttribute
+    public var permissionsPolicy: PermissionsPolicy
+
+    @ReadonlyAttribute
+    public var pictureInPictureEnabled: Bool
+
+    public func exitPictureInPicture() -> JSPromise {
+        jsObject[Strings.exitPictureInPicture]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func exitPictureInPicture() async throws {
+        let _promise: JSPromise = jsObject[Strings.exitPictureInPicture]!().fromJSValue()!
+        _ = try await _promise.get()
+    }
+
+    @ClosureAttribute.Optional1
+    public var onpointerlockchange: EventHandler
+
+    @ClosureAttribute.Optional1
+    public var onpointerlockerror: EventHandler
+
+    public func exitPointerLock() {
+        _ = jsObject[Strings.exitPointerLock]!()
+    }
+
+    @ReadonlyAttribute
+    public var fragmentDirective: FragmentDirective
+
+    public func getSelection() -> Selection? {
+        jsObject[Strings.getSelection]!().fromJSValue()!
+    }
+
     public func hasStorageAccess() -> JSPromise {
         jsObject[Strings.hasStorageAccess]!().fromJSValue()!
     }
@@ -425,24 +444,5 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
     }
 
     @ReadonlyAttribute
-    public var pictureInPictureEnabled: Bool
-
-    public func exitPictureInPicture() -> JSPromise {
-        jsObject[Strings.exitPictureInPicture]!().fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func exitPictureInPicture() async throws {
-        let _promise: JSPromise = jsObject[Strings.exitPictureInPicture]!().fromJSValue()!
-        _ = try await _promise.get()
-    }
-
-    @ClosureAttribute.Optional1
-    public var onfreeze: EventHandler
-
-    @ClosureAttribute.Optional1
-    public var onresume: EventHandler
-
-    @ReadonlyAttribute
-    public var wasDiscarded: Bool
+    public var timeline: DocumentTimeline
 }

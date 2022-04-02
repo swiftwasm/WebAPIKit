@@ -16,26 +16,6 @@ public class SVGSVGElement: SVGGraphicsElement, SVGFitToViewBox, WindowEventHand
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func pauseAnimations() {
-        _ = jsObject[Strings.pauseAnimations]!()
-    }
-
-    public func unpauseAnimations() {
-        _ = jsObject[Strings.unpauseAnimations]!()
-    }
-
-    public func animationsPaused() -> Bool {
-        jsObject[Strings.animationsPaused]!().fromJSValue()!
-    }
-
-    public func getCurrentTime() -> Float {
-        jsObject[Strings.getCurrentTime]!().fromJSValue()!
-    }
-
-    public func setCurrentTime(seconds: Float) {
-        _ = jsObject[Strings.setCurrentTime]!(seconds.jsValue())
-    }
-
     @ReadonlyAttribute
     public var x: SVGAnimatedLength
 
@@ -124,5 +104,25 @@ public class SVGSVGElement: SVGGraphicsElement, SVGFitToViewBox, WindowEventHand
 
     public func forceRedraw() {
         _ = jsObject[Strings.forceRedraw]!()
+    }
+
+    public func pauseAnimations() {
+        _ = jsObject[Strings.pauseAnimations]!()
+    }
+
+    public func unpauseAnimations() {
+        _ = jsObject[Strings.unpauseAnimations]!()
+    }
+
+    public func animationsPaused() -> Bool {
+        jsObject[Strings.animationsPaused]!().fromJSValue()!
+    }
+
+    public func getCurrentTime() -> Float {
+        jsObject[Strings.getCurrentTime]!().fromJSValue()!
+    }
+
+    public func setCurrentTime(seconds: Float) {
+        _ = jsObject[Strings.setCurrentTime]!(seconds.jsValue())
     }
 }

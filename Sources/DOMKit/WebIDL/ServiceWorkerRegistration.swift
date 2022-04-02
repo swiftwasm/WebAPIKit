@@ -7,13 +7,13 @@ public class ServiceWorkerRegistration: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorkerRegistration].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _periodicSync = ReadonlyAttribute(jsObject: jsObject, name: Strings.periodicSync)
-        _paymentManager = ReadonlyAttribute(jsObject: jsObject, name: Strings.paymentManager)
-        _index = ReadonlyAttribute(jsObject: jsObject, name: Strings.index)
-        _pushManager = ReadonlyAttribute(jsObject: jsObject, name: Strings.pushManager)
-        _cookies = ReadonlyAttribute(jsObject: jsObject, name: Strings.cookies)
-        _sync = ReadonlyAttribute(jsObject: jsObject, name: Strings.sync)
         _backgroundFetch = ReadonlyAttribute(jsObject: jsObject, name: Strings.backgroundFetch)
+        _sync = ReadonlyAttribute(jsObject: jsObject, name: Strings.sync)
+        _index = ReadonlyAttribute(jsObject: jsObject, name: Strings.index)
+        _cookies = ReadonlyAttribute(jsObject: jsObject, name: Strings.cookies)
+        _paymentManager = ReadonlyAttribute(jsObject: jsObject, name: Strings.paymentManager)
+        _periodicSync = ReadonlyAttribute(jsObject: jsObject, name: Strings.periodicSync)
+        _pushManager = ReadonlyAttribute(jsObject: jsObject, name: Strings.pushManager)
         _installing = ReadonlyAttribute(jsObject: jsObject, name: Strings.installing)
         _waiting = ReadonlyAttribute(jsObject: jsObject, name: Strings.waiting)
         _active = ReadonlyAttribute(jsObject: jsObject, name: Strings.active)
@@ -23,6 +23,18 @@ public class ServiceWorkerRegistration: EventTarget {
         _onupdatefound = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onupdatefound)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    @ReadonlyAttribute
+    public var backgroundFetch: BackgroundFetchManager
+
+    @ReadonlyAttribute
+    public var sync: SyncManager
+
+    @ReadonlyAttribute
+    public var index: ContentIndex
+
+    @ReadonlyAttribute
+    public var cookies: CookieStoreManager
 
     public func showNotification(title: String, options: NotificationOptions? = nil) -> JSPromise {
         jsObject[Strings.showNotification]!(title.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
@@ -45,25 +57,13 @@ public class ServiceWorkerRegistration: EventTarget {
     }
 
     @ReadonlyAttribute
-    public var periodicSync: PeriodicSyncManager
-
-    @ReadonlyAttribute
     public var paymentManager: PaymentManager
 
     @ReadonlyAttribute
-    public var index: ContentIndex
+    public var periodicSync: PeriodicSyncManager
 
     @ReadonlyAttribute
     public var pushManager: PushManager
-
-    @ReadonlyAttribute
-    public var cookies: CookieStoreManager
-
-    @ReadonlyAttribute
-    public var sync: SyncManager
-
-    @ReadonlyAttribute
-    public var backgroundFetch: BackgroundFetchManager
 
     @ReadonlyAttribute
     public var installing: ServiceWorker?

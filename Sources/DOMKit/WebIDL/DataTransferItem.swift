@@ -18,6 +18,16 @@ public class DataTransferItem: JSBridgedClass {
         jsObject[Strings.webkitGetAsEntry]!().fromJSValue()!
     }
 
+    public func getAsFileSystemHandle() -> JSPromise {
+        jsObject[Strings.getAsFileSystemHandle]!().fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func getAsFileSystemHandle() async throws -> FileSystemHandle? {
+        let _promise: JSPromise = jsObject[Strings.getAsFileSystemHandle]!().fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
     @ReadonlyAttribute
     public var kind: String
 
@@ -28,15 +38,5 @@ public class DataTransferItem: JSBridgedClass {
 
     public func getAsFile() -> File? {
         jsObject[Strings.getAsFile]!().fromJSValue()!
-    }
-
-    public func getAsFileSystemHandle() -> JSPromise {
-        jsObject[Strings.getAsFileSystemHandle]!().fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getAsFileSystemHandle() async throws -> FileSystemHandle? {
-        let _promise: JSPromise = jsObject[Strings.getAsFileSystemHandle]!().fromJSValue()!
-        return try await _promise.get().fromJSValue()!
     }
 }

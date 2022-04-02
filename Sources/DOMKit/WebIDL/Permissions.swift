@@ -22,16 +22,6 @@ public class Permissions: JSBridgedClass {
         return try await _promise.get().fromJSValue()!
     }
 
-    public func query(permissionDesc: JSObject) -> JSPromise {
-        jsObject[Strings.query]!(permissionDesc.jsValue()).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func query(permissionDesc: JSObject) async throws -> PermissionStatus {
-        let _promise: JSPromise = jsObject[Strings.query]!(permissionDesc.jsValue()).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
     public func revoke(permissionDesc: JSObject) -> JSPromise {
         jsObject[Strings.revoke]!(permissionDesc.jsValue()).fromJSValue()!
     }
@@ -39,6 +29,16 @@ public class Permissions: JSBridgedClass {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     public func revoke(permissionDesc: JSObject) async throws -> PermissionStatus {
         let _promise: JSPromise = jsObject[Strings.revoke]!(permissionDesc.jsValue()).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    public func query(permissionDesc: JSObject) -> JSPromise {
+        jsObject[Strings.query]!(permissionDesc.jsValue()).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func query(permissionDesc: JSObject) async throws -> PermissionStatus {
+        let _promise: JSPromise = jsObject[Strings.query]!(permissionDesc.jsValue()).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 }

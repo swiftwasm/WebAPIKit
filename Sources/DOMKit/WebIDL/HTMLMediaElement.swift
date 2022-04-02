@@ -11,8 +11,6 @@ public class HTMLMediaElement: HTMLElement {
         _mediaKeys = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaKeys)
         _onencrypted = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onencrypted)
         _onwaitingforkey = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onwaitingforkey)
-        _remote = ReadonlyAttribute(jsObject: jsObject, name: Strings.remote)
-        _disableRemotePlayback = ReadWriteAttribute(jsObject: jsObject, name: Strings.disableRemotePlayback)
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
         _srcObject = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcObject)
@@ -41,6 +39,8 @@ public class HTMLMediaElement: HTMLElement {
         _audioTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioTracks)
         _videoTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoTracks)
         _textTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.textTracks)
+        _remote = ReadonlyAttribute(jsObject: jsObject, name: Strings.remote)
+        _disableRemotePlayback = ReadWriteAttribute(jsObject: jsObject, name: Strings.disableRemotePlayback)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -75,16 +75,6 @@ public class HTMLMediaElement: HTMLElement {
         let _promise: JSPromise = jsObject[Strings.setMediaKeys]!(mediaKeys.jsValue()).fromJSValue()!
         _ = try await _promise.get()
     }
-
-    public func captureStream() -> MediaStream {
-        jsObject[Strings.captureStream]!().fromJSValue()!
-    }
-
-    @ReadonlyAttribute
-    public var remote: RemotePlayback
-
-    @ReadWriteAttribute
-    public var disableRemotePlayback: Bool
 
     @ReadonlyAttribute
     public var error: MediaError?
@@ -221,4 +211,14 @@ public class HTMLMediaElement: HTMLElement {
     public func addTextTrack(kind: TextTrackKind, label: String? = nil, language: String? = nil) -> TextTrack {
         jsObject[Strings.addTextTrack]!(kind.jsValue(), label?.jsValue() ?? .undefined, language?.jsValue() ?? .undefined).fromJSValue()!
     }
+
+    public func captureStream() -> MediaStream {
+        jsObject[Strings.captureStream]!().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var remote: RemotePlayback
+
+    @ReadWriteAttribute
+    public var disableRemotePlayback: Bool
 }

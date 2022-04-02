@@ -8,9 +8,23 @@ public enum CSS {
         JSObject.global[Strings.CSS].object!
     }
 
-    public static var paintWorklet: Worklet { ReadonlyAttribute[Strings.paintWorklet, in: jsObject] }
+    public static var animationWorklet: Worklet { ReadonlyAttribute[Strings.animationWorklet, in: jsObject] }
+
+    public static func supports(property: String, value: String) -> Bool {
+        JSObject.global[Strings.CSS].object![Strings.supports]!(property.jsValue(), value.jsValue()).fromJSValue()!
+    }
+
+    public static func supports(conditionText: String) -> Bool {
+        JSObject.global[Strings.CSS].object![Strings.supports]!(conditionText.jsValue()).fromJSValue()!
+    }
+
+    public static var highlights: HighlightRegistry { ReadonlyAttribute[Strings.highlights, in: jsObject] }
+
+    public static var elementSources: JSValue { ReadonlyAttribute[Strings.elementSources, in: jsObject] }
 
     public static var layoutWorklet: Worklet { ReadonlyAttribute[Strings.layoutWorklet, in: jsObject] }
+
+    public static var paintWorklet: Worklet { ReadonlyAttribute[Strings.paintWorklet, in: jsObject] }
 
     public static func parseStylesheet(css: CSSStringSource, options: CSSParserOptions? = nil) -> JSPromise {
         JSObject.global[Strings.CSS].object![Strings.parseStylesheet]!(css.jsValue(), options?.jsValue() ?? .undefined).fromJSValue()!
@@ -66,6 +80,10 @@ public enum CSS {
 
     public static func parseCommaValueList(css: String) -> [[CSSToken]] {
         JSObject.global[Strings.CSS].object![Strings.parseCommaValueList]!(css.jsValue()).fromJSValue()!
+    }
+
+    public static func registerProperty(definition: PropertyDefinition) {
+        _ = JSObject.global[Strings.CSS].object![Strings.registerProperty]!(definition.jsValue())
     }
 
     public static func number(value: Double) -> CSSUnitValue {
@@ -298,24 +316,6 @@ public enum CSS {
 
     public static func fr(value: Double) -> CSSUnitValue {
         JSObject.global[Strings.CSS].object![Strings.fr]!(value.jsValue()).fromJSValue()!
-    }
-
-    public static var highlights: HighlightRegistry { ReadonlyAttribute[Strings.highlights, in: jsObject] }
-
-    public static var animationWorklet: Worklet { ReadonlyAttribute[Strings.animationWorklet, in: jsObject] }
-
-    public static func supports(property: String, value: String) -> Bool {
-        JSObject.global[Strings.CSS].object![Strings.supports]!(property.jsValue(), value.jsValue()).fromJSValue()!
-    }
-
-    public static func supports(conditionText: String) -> Bool {
-        JSObject.global[Strings.CSS].object![Strings.supports]!(conditionText.jsValue()).fromJSValue()!
-    }
-
-    public static var elementSources: JSValue { ReadonlyAttribute[Strings.elementSources, in: jsObject] }
-
-    public static func registerProperty(definition: PropertyDefinition) {
-        _ = JSObject.global[Strings.CSS].object![Strings.registerProperty]!(definition.jsValue())
     }
 
     public static func escape(ident: String) -> String {

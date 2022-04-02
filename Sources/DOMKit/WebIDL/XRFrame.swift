@@ -9,36 +9,10 @@ public class XRFrame: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _trackedAnchors = ReadonlyAttribute(jsObject: jsObject, name: Strings.trackedAnchors)
         _session = ReadonlyAttribute(jsObject: jsObject, name: Strings.session)
         _predictedDisplayTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.predictedDisplayTime)
-        _trackedAnchors = ReadonlyAttribute(jsObject: jsObject, name: Strings.trackedAnchors)
         self.jsObject = jsObject
-    }
-
-    public func getHitTestResults(hitTestSource: XRHitTestSource) -> [XRHitTestResult] {
-        jsObject[Strings.getHitTestResults]!(hitTestSource.jsValue()).fromJSValue()!
-    }
-
-    public func getHitTestResultsForTransientInput(hitTestSource: XRTransientInputHitTestSource) -> [XRTransientInputHitTestResult] {
-        jsObject[Strings.getHitTestResultsForTransientInput]!(hitTestSource.jsValue()).fromJSValue()!
-    }
-
-    @ReadonlyAttribute
-    public var session: XRSession
-
-    @ReadonlyAttribute
-    public var predictedDisplayTime: DOMHighResTimeStamp
-
-    public func getViewerPose(referenceSpace: XRReferenceSpace) -> XRViewerPose? {
-        jsObject[Strings.getViewerPose]!(referenceSpace.jsValue()).fromJSValue()!
-    }
-
-    public func getPose(space: XRSpace, baseSpace: XRSpace) -> XRPose? {
-        jsObject[Strings.getPose]!(space.jsValue(), baseSpace.jsValue()).fromJSValue()!
-    }
-
-    public func getDepthInformation(view: XRView) -> XRCPUDepthInformation? {
-        jsObject[Strings.getDepthInformation]!(view.jsValue()).fromJSValue()!
     }
 
     public func createAnchor(pose: XRRigidTransform, space: XRSpace) -> JSPromise {
@@ -54,6 +28,10 @@ public class XRFrame: JSBridgedClass {
     @ReadonlyAttribute
     public var trackedAnchors: XRAnchorSet
 
+    public func getDepthInformation(view: XRView) -> XRCPUDepthInformation? {
+        jsObject[Strings.getDepthInformation]!(view.jsValue()).fromJSValue()!
+    }
+
     public func getJointPose(joint: XRJointSpace, baseSpace: XRSpace) -> XRJointPose? {
         jsObject[Strings.getJointPose]!(joint.jsValue(), baseSpace.jsValue()).fromJSValue()!
     }
@@ -66,7 +44,29 @@ public class XRFrame: JSBridgedClass {
         jsObject[Strings.fillPoses]!(spaces.jsValue(), baseSpace.jsValue(), transforms.jsValue()).fromJSValue()!
     }
 
+    public func getHitTestResults(hitTestSource: XRHitTestSource) -> [XRHitTestResult] {
+        jsObject[Strings.getHitTestResults]!(hitTestSource.jsValue()).fromJSValue()!
+    }
+
+    public func getHitTestResultsForTransientInput(hitTestSource: XRTransientInputHitTestSource) -> [XRTransientInputHitTestResult] {
+        jsObject[Strings.getHitTestResultsForTransientInput]!(hitTestSource.jsValue()).fromJSValue()!
+    }
+
     public func getLightEstimate(lightProbe: XRLightProbe) -> XRLightEstimate? {
         jsObject[Strings.getLightEstimate]!(lightProbe.jsValue()).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var session: XRSession
+
+    @ReadonlyAttribute
+    public var predictedDisplayTime: DOMHighResTimeStamp
+
+    public func getViewerPose(referenceSpace: XRReferenceSpace) -> XRViewerPose? {
+        jsObject[Strings.getViewerPose]!(referenceSpace.jsValue()).fromJSValue()!
+    }
+
+    public func getPose(space: XRSpace, baseSpace: XRSpace) -> XRPose? {
+        jsObject[Strings.getPose]!(space.jsValue(), baseSpace.jsValue()).fromJSValue()!
     }
 }

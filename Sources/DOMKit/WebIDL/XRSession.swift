@@ -7,6 +7,12 @@ public class XRSession: EventTarget {
     override public class var constructor: JSFunction { JSObject.global[Strings.XRSession].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _environmentBlendMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.environmentBlendMode)
+        _interactionMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.interactionMode)
+        _depthUsage = ReadonlyAttribute(jsObject: jsObject, name: Strings.depthUsage)
+        _depthDataFormat = ReadonlyAttribute(jsObject: jsObject, name: Strings.depthDataFormat)
+        _domOverlayState = ReadonlyAttribute(jsObject: jsObject, name: Strings.domOverlayState)
+        _preferredReflectionFormat = ReadonlyAttribute(jsObject: jsObject, name: Strings.preferredReflectionFormat)
         _visibilityState = ReadonlyAttribute(jsObject: jsObject, name: Strings.visibilityState)
         _frameRate = ReadonlyAttribute(jsObject: jsObject, name: Strings.frameRate)
         _supportedFrameRates = ReadonlyAttribute(jsObject: jsObject, name: Strings.supportedFrameRates)
@@ -22,14 +28,23 @@ public class XRSession: EventTarget {
         _onsqueezeend = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onsqueezeend)
         _onvisibilitychange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onvisibilitychange)
         _onframeratechange = ClosureAttribute.Optional1(jsObject: jsObject, name: Strings.onframeratechange)
-        _depthUsage = ReadonlyAttribute(jsObject: jsObject, name: Strings.depthUsage)
-        _depthDataFormat = ReadonlyAttribute(jsObject: jsObject, name: Strings.depthDataFormat)
-        _domOverlayState = ReadonlyAttribute(jsObject: jsObject, name: Strings.domOverlayState)
-        _environmentBlendMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.environmentBlendMode)
-        _interactionMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.interactionMode)
-        _preferredReflectionFormat = ReadonlyAttribute(jsObject: jsObject, name: Strings.preferredReflectionFormat)
         super.init(unsafelyWrapping: jsObject)
     }
+
+    @ReadonlyAttribute
+    public var environmentBlendMode: XREnvironmentBlendMode
+
+    @ReadonlyAttribute
+    public var interactionMode: XRInteractionMode
+
+    @ReadonlyAttribute
+    public var depthUsage: XRDepthUsage
+
+    @ReadonlyAttribute
+    public var depthDataFormat: XRDepthDataFormat
+
+    @ReadonlyAttribute
+    public var domOverlayState: XRDOMOverlayState?
 
     public func requestHitTestSource(options: XRHitTestOptionsInit) -> JSPromise {
         jsObject[Strings.requestHitTestSource]!(options.jsValue()).fromJSValue()!
@@ -50,6 +65,19 @@ public class XRSession: EventTarget {
         let _promise: JSPromise = jsObject[Strings.requestHitTestSourceForTransientInput]!(options.jsValue()).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
+
+    public func requestLightProbe(options: XRLightProbeInit? = nil) -> JSPromise {
+        jsObject[Strings.requestLightProbe]!(options?.jsValue() ?? .undefined).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    public func requestLightProbe(options: XRLightProbeInit? = nil) async throws -> XRLightProbe {
+        let _promise: JSPromise = jsObject[Strings.requestLightProbe]!(options?.jsValue() ?? .undefined).fromJSValue()!
+        return try await _promise.get().fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var preferredReflectionFormat: XRReflectionFormat
 
     @ReadonlyAttribute
     public var visibilityState: XRVisibilityState
@@ -135,32 +163,4 @@ public class XRSession: EventTarget {
 
     @ClosureAttribute.Optional1
     public var onframeratechange: EventHandler
-
-    @ReadonlyAttribute
-    public var depthUsage: XRDepthUsage
-
-    @ReadonlyAttribute
-    public var depthDataFormat: XRDepthDataFormat
-
-    @ReadonlyAttribute
-    public var domOverlayState: XRDOMOverlayState?
-
-    @ReadonlyAttribute
-    public var environmentBlendMode: XREnvironmentBlendMode
-
-    @ReadonlyAttribute
-    public var interactionMode: XRInteractionMode
-
-    public func requestLightProbe(options: XRLightProbeInit? = nil) -> JSPromise {
-        jsObject[Strings.requestLightProbe]!(options?.jsValue() ?? .undefined).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestLightProbe(options: XRLightProbeInit? = nil) async throws -> XRLightProbe {
-        let _promise: JSPromise = jsObject[Strings.requestLightProbe]!(options?.jsValue() ?? .undefined).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
-    }
-
-    @ReadonlyAttribute
-    public var preferredReflectionFormat: XRReflectionFormat
 }
