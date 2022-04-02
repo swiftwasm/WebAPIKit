@@ -5,7 +5,8 @@ enum DeclarationMerger {
         "Function",
         "AudioWorkletProcessorConstructor",
         "CustomElementConstructor",
-        "ArrayBufferView"
+        "ArrayBufferView",
+        "RotationMatrixType",
     ]
     static let validExposures: Set<String> = ["Window"]
 

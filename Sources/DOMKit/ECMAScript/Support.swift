@@ -1,7 +1,7 @@
 import JavaScriptKit
 
 /* TODO: fix this */
-public typealias __UNSUPPORTED_UNION__ = JSValue
+public typealias __UNSUPPORTED_BIGINT__ = JSValue
 
 public typealias WindowProxy = Window
 

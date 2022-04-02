@@ -54,7 +54,6 @@ public typealias ConstrainBoolean = Bool_or_ConstrainBooleanParameters
 public typealias ConstrainDOMString = ConstrainDOMStringParameters_or_String_or_seq_of_String
 public typealias Megabit = Double
 public typealias Millisecond = UInt64
-public typealias RotationMatrixType = DOMMatrix_or_Float32Array_or_Float64Array
 public typealias PerformanceEntryList = [PerformanceEntry]
 public typealias PushMessageDataInit = BufferSource_or_String
 public typealias ReportList = [Report]

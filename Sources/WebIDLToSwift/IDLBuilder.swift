@@ -17,7 +17,10 @@ enum IDLBuilder {
         // redundant unions
         "CSSColorValue_or_CSSStyleValue",
         // implemented manually
+        // ArrayBufferView
         "BigInt64Array_or_BigUint64Array_or_DataView_or_Float32Array_or_Float64Array_or_Int16Array_or_Int32Array_or_Int8Array_or_Uint16Array_or_Uint32Array_or_Uint8Array_or_Uint8ClampedArray",
+        // RotationMatrixType
+        "DOMMatrix_or_Float32Array_or_Float64Array",
     ]
 
     static let outDir = "Sources/DOMKit/WebIDL/"
