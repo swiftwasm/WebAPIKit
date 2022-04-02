@@ -140,8 +140,9 @@ extension IDLEnum: SwiftRepresentable {
 
 extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        Context.closurePatterns.insert(ClosurePattern(nullable: false, argCount: arguments.count))
-        Context.closurePatterns.insert(ClosurePattern(nullable: true, argCount: arguments.count))
+        let isVoid = idlType.swiftRepresentation == "Void"
+        Context.closurePatterns.insert(ClosurePattern(nullable: false, void: isVoid, argCount: arguments.count))
+        Context.closurePatterns.insert(ClosurePattern(nullable: true, void: isVoid, argCount: arguments.count))
         return """
         public typealias \(name) = (\(sequence: arguments.map {
             "\($0.idlType)\($0.variadic ? "..." : "")"
@@ -561,14 +562,14 @@ extension IDLType: SwiftRepresentable {
         if case let .single(name) = value {
             let readonlyComment: SwiftSource = readonly ? " /* XXX: should be readonly! */ " : ""
             if let callback = Context.types[name] as? IDLCallback {
-                return "ClosureAttribute\(String(callback.arguments.count))\(readonlyComment)"
+                return "\(closureWrapper(callback, optional: false))\(readonlyComment)"
             }
             if let ref = Context.types[name] as? IDLTypedef,
                case let .single(name) = ref.idlType.value,
                let callback = Context.types[name] as? IDLCallback
             {
                 assert(ref.idlType.nullable)
-                return "ClosureAttribute\(String(callback.arguments.count))Optional\(readonlyComment)"
+                return "\(closureWrapper(callback, optional: true))\(readonlyComment)"
             }
         }
 
@@ -577,6 +578,13 @@ extension IDLType: SwiftRepresentable {
         } else {
             return "ReadWriteAttribute"
         }
+    }
+
+    private func closureWrapper(_ callback: IDLCallback, optional: Bool) -> SwiftSource {
+        let void: SwiftSource = callback.idlType.swiftRepresentation == "Void" ? "Void" : ""
+        let optional: SwiftSource = optional ? "Optional" : ""
+        let argCount = String(callback.arguments.count)
+        return "ClosureAttribute\(argCount)\(optional)\(void)"
     }
 }
 

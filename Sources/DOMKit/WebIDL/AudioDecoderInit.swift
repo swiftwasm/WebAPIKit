@@ -6,20 +6,20 @@ import JavaScriptKit
 public class AudioDecoderInit: BridgedDictionary {
     public convenience init(output: @escaping AudioDataOutputCallback, error: @escaping WebCodecsErrorCallback) {
         let object = JSObject.global[Strings.Object].function!.new()
-        ClosureAttribute1[Strings.output, in: object] = output
-        ClosureAttribute1[Strings.error, in: object] = error
+        ClosureAttribute1Void[Strings.output, in: object] = output
+        ClosureAttribute1Void[Strings.error, in: object] = error
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _output = ClosureAttribute1(jsObject: object, name: Strings.output)
-        _error = ClosureAttribute1(jsObject: object, name: Strings.error)
+        _output = ClosureAttribute1Void(jsObject: object, name: Strings.output)
+        _error = ClosureAttribute1Void(jsObject: object, name: Strings.error)
         super.init(unsafelyWrapping: object)
     }
 
-    @ClosureAttribute1
+    @ClosureAttribute1Void
     public var output: AudioDataOutputCallback
 
-    @ClosureAttribute1
+    @ClosureAttribute1Void
     public var error: WebCodecsErrorCallback
 }

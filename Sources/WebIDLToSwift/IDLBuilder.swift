@@ -69,11 +69,6 @@ enum IDLBuilder {
                     "Window": ["requestIdleCallback"],
                     "WindowOrWorkerGlobalScope": ["queueMicrotask"],
                     "XRSession": ["requestAnimationFrame"],
-                    // Void-returning functions are unsupported
-                    "AudioDecoderInit": ["<constructor>", "output", "error"],
-                    "AudioEncoderInit": ["<constructor>", "output", "error"],
-                    "VideoDecoderInit": ["<constructor > ", "output", "error"],
-                    "VideoEncoderInit": ["<constructor>", "output", "error"],
                     // variadic functions are unsupported
                     "TrustedTypePolicyOptions": ["<constructor>", "createHTML", "createScript", "createScriptURL"],
                     // functions as return types are unsupported

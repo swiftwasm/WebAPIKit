@@ -68,6 +68,68 @@ import JavaScriptKit
     }
 }
 
+@propertyWrapper public final class ClosureAttribute0OptionalVoid {
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: (() -> Void)? {
+        get { ClosureAttribute0OptionalVoid[name, in: jsObject] }
+        set { ClosureAttribute0OptionalVoid[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (() -> Void)? {
+        get {
+            guard let function = jsObject[name].function else {
+                return nil
+            }
+            return { function() }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[name] = JSClosure { _ in
+                    newValue()
+                    return .undefined
+                }.jsValue()
+            } else {
+                jsObject[name] = .null
+            }
+        }
+    }
+}
+
+@propertyWrapper public final class ClosureAttribute0Void {
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: () -> Void {
+        get { ClosureAttribute0Void[name, in: jsObject] }
+        set { ClosureAttribute0Void[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> () -> Void {
+        get {
+            let function = jsObject[name].function!
+            return { function() }
+        }
+        set {
+            jsObject[name] = JSClosure { _ in
+                newValue()
+                return .undefined
+            }.jsValue()
+        }
+    }
+}
+
 @propertyWrapper public final class ClosureAttribute1<A0, ReturnType>
     where A0: JSValueCompatible, ReturnType: JSValueCompatible
 {
@@ -128,6 +190,72 @@ import JavaScriptKit
             } else {
                 jsObject[name] = .null
             }
+        }
+    }
+}
+
+@propertyWrapper public final class ClosureAttribute1OptionalVoid<A0>
+    where A0: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: ((A0) -> Void)? {
+        get { ClosureAttribute1OptionalVoid[name, in: jsObject] }
+        set { ClosureAttribute1OptionalVoid[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0) -> Void)? {
+        get {
+            guard let function = jsObject[name].function else {
+                return nil
+            }
+            return { function($0.jsValue()) }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[name] = JSClosure {
+                    newValue($0[0].fromJSValue()!)
+                    return .undefined
+                }.jsValue()
+            } else {
+                jsObject[name] = .null
+            }
+        }
+    }
+}
+
+@propertyWrapper public final class ClosureAttribute1Void<A0>
+    where A0: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: (A0) -> Void {
+        get { ClosureAttribute1Void[name, in: jsObject] }
+        set { ClosureAttribute1Void[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0) -> Void {
+        get {
+            let function = jsObject[name].function!
+            return { function($0.jsValue()) }
+        }
+        set {
+            jsObject[name] = JSClosure {
+                newValue($0[0].fromJSValue()!)
+                return .undefined
+            }.jsValue()
         }
     }
 }
@@ -196,6 +324,72 @@ import JavaScriptKit
     }
 }
 
+@propertyWrapper public final class ClosureAttribute2OptionalVoid<A0, A1>
+    where A0: JSValueCompatible, A1: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: ((A0, A1) -> Void)? {
+        get { ClosureAttribute2OptionalVoid[name, in: jsObject] }
+        set { ClosureAttribute2OptionalVoid[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1) -> Void)? {
+        get {
+            guard let function = jsObject[name].function else {
+                return nil
+            }
+            return { function($0.jsValue(), $1.jsValue()) }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[name] = JSClosure {
+                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!)
+                    return .undefined
+                }.jsValue()
+            } else {
+                jsObject[name] = .null
+            }
+        }
+    }
+}
+
+@propertyWrapper public final class ClosureAttribute2Void<A0, A1>
+    where A0: JSValueCompatible, A1: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: (A0, A1) -> Void {
+        get { ClosureAttribute2Void[name, in: jsObject] }
+        set { ClosureAttribute2Void[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1) -> Void {
+        get {
+            let function = jsObject[name].function!
+            return { function($0.jsValue(), $1.jsValue()) }
+        }
+        set {
+            jsObject[name] = JSClosure {
+                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!)
+                return .undefined
+            }.jsValue()
+        }
+    }
+}
+
 @propertyWrapper public final class ClosureAttribute3<A0, A1, A2, ReturnType>
     where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
 {
@@ -256,6 +450,72 @@ import JavaScriptKit
             } else {
                 jsObject[name] = .null
             }
+        }
+    }
+}
+
+@propertyWrapper public final class ClosureAttribute3OptionalVoid<A0, A1, A2>
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: ((A0, A1, A2) -> Void)? {
+        get { ClosureAttribute3OptionalVoid[name, in: jsObject] }
+        set { ClosureAttribute3OptionalVoid[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1, A2) -> Void)? {
+        get {
+            guard let function = jsObject[name].function else {
+                return nil
+            }
+            return { function($0.jsValue(), $1.jsValue(), $2.jsValue()) }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[name] = JSClosure {
+                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!)
+                    return .undefined
+                }.jsValue()
+            } else {
+                jsObject[name] = .null
+            }
+        }
+    }
+}
+
+@propertyWrapper public final class ClosureAttribute3Void<A0, A1, A2>
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: (A0, A1, A2) -> Void {
+        get { ClosureAttribute3Void[name, in: jsObject] }
+        set { ClosureAttribute3Void[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2) -> Void {
+        get {
+            let function = jsObject[name].function!
+            return { function($0.jsValue(), $1.jsValue(), $2.jsValue()) }
+        }
+        set {
+            jsObject[name] = JSClosure {
+                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!)
+                return .undefined
+            }.jsValue()
         }
     }
 }
