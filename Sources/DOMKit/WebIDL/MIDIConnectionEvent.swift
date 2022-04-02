@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MIDIConnectionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MIDIConnectionEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MIDIConnectionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _port = ReadonlyAttribute(jsObject: jsObject, name: Strings.port)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: MIDIConnectionEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: MIDIConnectionEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

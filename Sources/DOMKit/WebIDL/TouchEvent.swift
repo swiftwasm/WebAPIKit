@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TouchEvent: UIEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.TouchEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.TouchEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _touches = ReadonlyAttribute(jsObject: jsObject, name: Strings.touches)
@@ -17,7 +17,7 @@ public class TouchEvent: UIEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: TouchEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: TouchEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OES_element_index_uint: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.OES_element_index_uint].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.OES_element_index_uint].function! }
 
     public let jsObject: JSObject
 

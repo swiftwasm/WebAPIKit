@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XSLTProcessor: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XSLTProcessor].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XSLTProcessor].function! }
 
     public let jsObject: JSObject
 
@@ -12,46 +12,46 @@ public class XSLTProcessor: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
-    public func importStylesheet(style: Node) {
+    @inlinable public func importStylesheet(style: Node) {
         let this = jsObject
         _ = this[Strings.importStylesheet].function!(this: this, arguments: [style.jsValue()])
     }
 
-    public func transformToFragment(source: Node, output: Document) -> DocumentFragment {
+    @inlinable public func transformToFragment(source: Node, output: Document) -> DocumentFragment {
         let this = jsObject
         return this[Strings.transformToFragment].function!(this: this, arguments: [source.jsValue(), output.jsValue()]).fromJSValue()!
     }
 
-    public func transformToDocument(source: Node) -> Document {
+    @inlinable public func transformToDocument(source: Node) -> Document {
         let this = jsObject
         return this[Strings.transformToDocument].function!(this: this, arguments: [source.jsValue()]).fromJSValue()!
     }
 
-    public func setParameter(namespaceURI: String, localName: String, value: JSValue) {
+    @inlinable public func setParameter(namespaceURI: String, localName: String, value: JSValue) {
         let this = jsObject
         _ = this[Strings.setParameter].function!(this: this, arguments: [namespaceURI.jsValue(), localName.jsValue(), value.jsValue()])
     }
 
-    public func getParameter(namespaceURI: String, localName: String) -> JSValue {
+    @inlinable public func getParameter(namespaceURI: String, localName: String) -> JSValue {
         let this = jsObject
         return this[Strings.getParameter].function!(this: this, arguments: [namespaceURI.jsValue(), localName.jsValue()]).fromJSValue()!
     }
 
-    public func removeParameter(namespaceURI: String, localName: String) {
+    @inlinable public func removeParameter(namespaceURI: String, localName: String) {
         let this = jsObject
         _ = this[Strings.removeParameter].function!(this: this, arguments: [namespaceURI.jsValue(), localName.jsValue()])
     }
 
-    public func clearParameters() {
+    @inlinable public func clearParameters() {
         let this = jsObject
         _ = this[Strings.clearParameters].function!(this: this, arguments: [])
     }
 
-    public func reset() {
+    @inlinable public func reset() {
         let this = jsObject
         _ = this[Strings.reset].function!(this: this, arguments: [])
     }

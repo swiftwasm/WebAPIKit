@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUValidationError: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUValidationError].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUValidationError].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class GPUValidationError: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(message: String) {
+    @inlinable public convenience init(message: String) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [message.jsValue()]))
     }
 

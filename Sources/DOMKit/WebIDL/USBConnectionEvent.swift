@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class USBConnectionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.USBConnectionEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.USBConnectionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _device = ReadonlyAttribute(jsObject: jsObject, name: Strings.device)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: USBConnectionEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: USBConnectionEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

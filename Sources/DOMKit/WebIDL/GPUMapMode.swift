@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public enum GPUMapMode {
-    public static var jsObject: JSObject {
+    @inlinable public static var jsObject: JSObject {
         JSObject.global[Strings.GPUMapMode].object!
     }
 

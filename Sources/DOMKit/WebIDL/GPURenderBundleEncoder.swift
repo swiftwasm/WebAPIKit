@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPURenderBundleEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMixin, GPUDebugCommandsMixin, GPUProgrammablePassEncoder, GPURenderEncoderBase {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPURenderBundleEncoder].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPURenderBundleEncoder].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class GPURenderBundleEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsM
         self.jsObject = jsObject
     }
 
-    public func finish(descriptor: GPURenderBundleDescriptor? = nil) -> GPURenderBundle {
+    @inlinable public func finish(descriptor: GPURenderBundleDescriptor? = nil) -> GPURenderBundle {
         let this = jsObject
         return this[Strings.finish].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }

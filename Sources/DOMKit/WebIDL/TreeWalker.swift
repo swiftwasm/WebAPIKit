@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TreeWalker: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TreeWalker].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TreeWalker].function! }
 
     public let jsObject: JSObject
 
@@ -26,37 +26,37 @@ public class TreeWalker: JSBridgedClass {
     @ReadWriteAttribute
     public var currentNode: Node
 
-    public func parentNode() -> Node? {
+    @inlinable public func parentNode() -> Node? {
         let this = jsObject
         return this[Strings.parentNode].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func firstChild() -> Node? {
+    @inlinable public func firstChild() -> Node? {
         let this = jsObject
         return this[Strings.firstChild].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func lastChild() -> Node? {
+    @inlinable public func lastChild() -> Node? {
         let this = jsObject
         return this[Strings.lastChild].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func previousSibling() -> Node? {
+    @inlinable public func previousSibling() -> Node? {
         let this = jsObject
         return this[Strings.previousSibling].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func nextSibling() -> Node? {
+    @inlinable public func nextSibling() -> Node? {
         let this = jsObject
         return this[Strings.nextSibling].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func previousNode() -> Node? {
+    @inlinable public func previousNode() -> Node? {
         let this = jsObject
         return this[Strings.previousNode].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func nextNode() -> Node? {
+    @inlinable public func nextNode() -> Node? {
         let this = jsObject
         return this[Strings.nextNode].function!(this: this, arguments: []).fromJSValue()!
     }

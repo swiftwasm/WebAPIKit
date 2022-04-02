@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGTextContentElement: SVGGraphicsElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGTextContentElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGTextContentElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _textLength = ReadonlyAttribute(jsObject: jsObject, name: Strings.textLength)
@@ -24,47 +24,47 @@ public class SVGTextContentElement: SVGGraphicsElement {
     @ReadonlyAttribute
     public var lengthAdjust: SVGAnimatedEnumeration
 
-    public func getNumberOfChars() -> Int32 {
+    @inlinable public func getNumberOfChars() -> Int32 {
         let this = jsObject
         return this[Strings.getNumberOfChars].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getComputedTextLength() -> Float {
+    @inlinable public func getComputedTextLength() -> Float {
         let this = jsObject
         return this[Strings.getComputedTextLength].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getSubStringLength(charnum: UInt32, nchars: UInt32) -> Float {
+    @inlinable public func getSubStringLength(charnum: UInt32, nchars: UInt32) -> Float {
         let this = jsObject
         return this[Strings.getSubStringLength].function!(this: this, arguments: [charnum.jsValue(), nchars.jsValue()]).fromJSValue()!
     }
 
-    public func getStartPositionOfChar(charnum: UInt32) -> DOMPoint {
+    @inlinable public func getStartPositionOfChar(charnum: UInt32) -> DOMPoint {
         let this = jsObject
         return this[Strings.getStartPositionOfChar].function!(this: this, arguments: [charnum.jsValue()]).fromJSValue()!
     }
 
-    public func getEndPositionOfChar(charnum: UInt32) -> DOMPoint {
+    @inlinable public func getEndPositionOfChar(charnum: UInt32) -> DOMPoint {
         let this = jsObject
         return this[Strings.getEndPositionOfChar].function!(this: this, arguments: [charnum.jsValue()]).fromJSValue()!
     }
 
-    public func getExtentOfChar(charnum: UInt32) -> DOMRect {
+    @inlinable public func getExtentOfChar(charnum: UInt32) -> DOMRect {
         let this = jsObject
         return this[Strings.getExtentOfChar].function!(this: this, arguments: [charnum.jsValue()]).fromJSValue()!
     }
 
-    public func getRotationOfChar(charnum: UInt32) -> Float {
+    @inlinable public func getRotationOfChar(charnum: UInt32) -> Float {
         let this = jsObject
         return this[Strings.getRotationOfChar].function!(this: this, arguments: [charnum.jsValue()]).fromJSValue()!
     }
 
-    public func getCharNumAtPosition(point: DOMPointInit? = nil) -> Int32 {
+    @inlinable public func getCharNumAtPosition(point: DOMPointInit? = nil) -> Int32 {
         let this = jsObject
         return this[Strings.getCharNumAtPosition].function!(this: this, arguments: [point?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func selectSubString(charnum: UInt32, nchars: UInt32) {
+    @inlinable public func selectSubString(charnum: UInt32, nchars: UInt32) {
         let this = jsObject
         _ = this[Strings.selectSubString].function!(this: this, arguments: [charnum.jsValue(), nchars.jsValue()])
     }

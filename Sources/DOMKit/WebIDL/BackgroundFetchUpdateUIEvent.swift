@@ -4,23 +4,23 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BackgroundFetchUpdateUIEvent: BackgroundFetchEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BackgroundFetchUpdateUIEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BackgroundFetchUpdateUIEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, init: BackgroundFetchEventInit) {
+    @inlinable public convenience init(type: String, init: BackgroundFetchEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
     }
 
-    public func updateUI(options: BackgroundFetchUIOptions? = nil) -> JSPromise {
+    @inlinable public func updateUI(options: BackgroundFetchUIOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.updateUI].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func updateUI(options: BackgroundFetchUIOptions? = nil) async throws {
+    @inlinable public func updateUI(options: BackgroundFetchUIOptions? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.updateUI].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()

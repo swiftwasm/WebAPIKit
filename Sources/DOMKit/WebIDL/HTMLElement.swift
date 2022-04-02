@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, DocumentAndElementEventHandlers, ElementContentEditable, HTMLOrSVGElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _offsetParent = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetParent)
@@ -43,7 +43,7 @@ public class HTMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, D
     @ReadonlyAttribute
     public var offsetHeight: Int32
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -65,7 +65,7 @@ public class HTMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, D
     @ReadWriteAttribute
     public var inert: Bool
 
-    public func click() {
+    @inlinable public func click() {
         let this = jsObject
         _ = this[Strings.click].function!(this: this, arguments: [])
     }
@@ -91,7 +91,7 @@ public class HTMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, D
     @ReadWriteAttribute
     public var outerText: String
 
-    public func attachInternals() -> ElementInternals {
+    @inlinable public func attachInternals() -> ElementInternals {
         let this = jsObject
         return this[Strings.attachInternals].function!(this: this, arguments: []).fromJSValue()!
     }

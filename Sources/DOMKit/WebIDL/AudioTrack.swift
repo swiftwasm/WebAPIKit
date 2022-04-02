@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioTrack: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AudioTrack].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioTrack].function! }
 
     public let jsObject: JSObject
 

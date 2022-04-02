@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLButtonElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLButtonElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLButtonElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)
@@ -24,7 +24,7 @@ public class HTMLButtonElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -67,17 +67,17 @@ public class HTMLButtonElement: HTMLElement {
     @ReadonlyAttribute
     public var validationMessage: String
 
-    public func checkValidity() -> Bool {
+    @inlinable public func checkValidity() -> Bool {
         let this = jsObject
         return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func reportValidity() -> Bool {
+    @inlinable public func reportValidity() -> Bool {
         let this = jsObject
         return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func setCustomValidity(error: String) {
+    @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
         _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
     }

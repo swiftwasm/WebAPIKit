@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IDBFactory: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.IDBFactory].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.IDBFactory].function! }
 
     public let jsObject: JSObject
 
@@ -12,29 +12,29 @@ public class IDBFactory: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func open(name: String, version: UInt64? = nil) -> IDBOpenDBRequest {
+    @inlinable public func open(name: String, version: UInt64? = nil) -> IDBOpenDBRequest {
         let this = jsObject
         return this[Strings.open].function!(this: this, arguments: [name.jsValue(), version?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func deleteDatabase(name: String) -> IDBOpenDBRequest {
+    @inlinable public func deleteDatabase(name: String) -> IDBOpenDBRequest {
         let this = jsObject
         return this[Strings.deleteDatabase].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func databases() -> JSPromise {
+    @inlinable public func databases() -> JSPromise {
         let this = jsObject
         return this[Strings.databases].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func databases() async throws -> [IDBDatabaseInfo] {
+    @inlinable public func databases() async throws -> [IDBDatabaseInfo] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.databases].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func cmp(first: JSValue, second: JSValue) -> Int16 {
+    @inlinable public func cmp(first: JSValue, second: JSValue) -> Int16 {
         let this = jsObject
         return this[Strings.cmp].function!(this: this, arguments: [first.jsValue(), second.jsValue()]).fromJSValue()!
     }

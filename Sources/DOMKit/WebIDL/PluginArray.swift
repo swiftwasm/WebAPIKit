@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PluginArray: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PluginArray].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PluginArray].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class PluginArray: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func refresh() {
+    @inlinable public func refresh() {
         let this = jsObject
         _ = this[Strings.refresh].function!(this: this, arguments: [])
     }
@@ -21,11 +21,11 @@ public class PluginArray: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> Plugin? {
+    @inlinable public subscript(key: Int) -> Plugin? {
         jsObject[key].fromJSValue()
     }
 
-    public subscript(key: String) -> Plugin? {
+    @inlinable public subscript(key: String) -> Plugin? {
         jsObject[key].fromJSValue()
     }
 }

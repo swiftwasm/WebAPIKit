@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCIdentityAssertion: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCIdentityAssertion].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCIdentityAssertion].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class RTCIdentityAssertion: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(idp: String, name: String) {
+    @inlinable public convenience init(idp: String, name: String) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [idp.jsValue(), name.jsValue()]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLSelectElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLSelectElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLSelectElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocomplete)
@@ -27,7 +27,7 @@ public class HTMLSelectElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -61,26 +61,26 @@ public class HTMLSelectElement: HTMLElement {
     @ReadWriteAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> HTMLOptionElement? {
+    @inlinable public subscript(key: Int) -> HTMLOptionElement? {
         jsObject[key].fromJSValue()
     }
 
-    public func namedItem(name: String) -> HTMLOptionElement? {
+    @inlinable public func namedItem(name: String) -> HTMLOptionElement? {
         let this = jsObject
         return this[Strings.namedItem].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
         let this = jsObject
         _ = this[Strings.add].function!(this: this, arguments: [element.jsValue(), before?.jsValue() ?? .undefined])
     }
 
-    public func remove() {
+    @inlinable public func remove() {
         let this = jsObject
         _ = this[Strings.remove].function!(this: this, arguments: [])
     }
 
-    public func remove(index: Int32) {
+    @inlinable public func remove(index: Int32) {
         let this = jsObject
         _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue()])
     }
@@ -105,17 +105,17 @@ public class HTMLSelectElement: HTMLElement {
     @ReadonlyAttribute
     public var validationMessage: String
 
-    public func checkValidity() -> Bool {
+    @inlinable public func checkValidity() -> Bool {
         let this = jsObject
         return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func reportValidity() -> Bool {
+    @inlinable public func reportValidity() -> Bool {
         let this = jsObject
         return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func setCustomValidity(error: String) {
+    @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
         _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
     }

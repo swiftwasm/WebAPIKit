@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRLayer: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRLayer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRLayer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

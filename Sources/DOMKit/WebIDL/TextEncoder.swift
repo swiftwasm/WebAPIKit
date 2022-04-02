@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextEncoder: JSBridgedClass, TextEncoderCommon {
-    public class var constructor: JSFunction { JSObject.global[Strings.TextEncoder].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TextEncoder].function! }
 
     public let jsObject: JSObject
 
@@ -12,16 +12,16 @@ public class TextEncoder: JSBridgedClass, TextEncoderCommon {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
-    public func encode(input: String? = nil) -> Uint8Array {
+    @inlinable public func encode(input: String? = nil) -> Uint8Array {
         let this = jsObject
         return this[Strings.encode].function!(this: this, arguments: [input?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func encodeInto(source: String, destination: Uint8Array) -> TextEncoderEncodeIntoResult {
+    @inlinable public func encodeInto(source: String, destination: Uint8Array) -> TextEncoderEncodeIntoResult {
         let this = jsObject
         return this[Strings.encodeInto].function!(this: this, arguments: [source.jsValue(), destination.jsValue()]).fromJSValue()!
     }

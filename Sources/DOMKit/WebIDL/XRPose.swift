@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRPose: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRPose].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRPose].function! }
 
     public let jsObject: JSObject
 

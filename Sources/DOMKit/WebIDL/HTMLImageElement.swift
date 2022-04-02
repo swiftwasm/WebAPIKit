@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLImageElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLImageElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLImageElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
@@ -42,7 +42,7 @@ public class HTMLImageElement: HTMLElement {
     @ReadonlyAttribute
     public var y: Int32
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -94,13 +94,13 @@ public class HTMLImageElement: HTMLElement {
     @ReadWriteAttribute
     public var loading: String
 
-    public func decode() -> JSPromise {
+    @inlinable public func decode() -> JSPromise {
         let this = jsObject
         return this[Strings.decode].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func decode() async throws {
+    @inlinable public func decode() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.decode].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CustomStateSet: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CustomStateSet].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CustomStateSet].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class CustomStateSet: JSBridgedClass {
 
     // XXX: make me Set-like!
 
-    public func add(value: String) {
+    @inlinable public func add(value: String) {
         let this = jsObject
         _ = this[Strings.add].function!(this: this, arguments: [value.jsValue()])
     }

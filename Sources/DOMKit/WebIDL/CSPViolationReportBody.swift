@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSPViolationReportBody: ReportBody {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSPViolationReportBody].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSPViolationReportBody].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _documentURL = ReadonlyAttribute(jsObject: jsObject, name: Strings.documentURL)

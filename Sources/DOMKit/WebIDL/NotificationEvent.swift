@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NotificationEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.NotificationEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.NotificationEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _notification = ReadonlyAttribute(jsObject: jsObject, name: Strings.notification)
@@ -12,7 +12,7 @@ public class NotificationEvent: ExtendableEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: NotificationEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: NotificationEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

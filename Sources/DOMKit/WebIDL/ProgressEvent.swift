@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ProgressEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ProgressEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ProgressEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _lengthComputable = ReadonlyAttribute(jsObject: jsObject, name: Strings.lengthComputable)
@@ -13,7 +13,7 @@ public class ProgressEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: ProgressEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: ProgressEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

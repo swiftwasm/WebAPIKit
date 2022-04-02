@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DynamicsCompressorNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.DynamicsCompressorNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DynamicsCompressorNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _threshold = ReadonlyAttribute(jsObject: jsObject, name: Strings.threshold)
@@ -16,7 +16,7 @@ public class DynamicsCompressorNode: AudioNode {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: DynamicsCompressorOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: DynamicsCompressorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

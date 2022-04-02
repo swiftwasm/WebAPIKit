@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSTransition: Animation {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSTransition].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSTransition].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _transitionProperty = ReadonlyAttribute(jsObject: jsObject, name: Strings.transitionProperty)

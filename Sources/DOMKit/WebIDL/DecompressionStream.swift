@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DecompressionStream: JSBridgedClass, GenericTransformStream {
-    public class var constructor: JSFunction { JSObject.global[Strings.DecompressionStream].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DecompressionStream].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class DecompressionStream: JSBridgedClass, GenericTransformStream {
         self.jsObject = jsObject
     }
 
-    public convenience init(format: String) {
+    @inlinable public convenience init(format: String) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [format.jsValue()]))
     }
 }

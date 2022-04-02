@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechSynthesisVoice: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SpeechSynthesisVoice].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SpeechSynthesisVoice].function! }
 
     public let jsObject: JSObject
 

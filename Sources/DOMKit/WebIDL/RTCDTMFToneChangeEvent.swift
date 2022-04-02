@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCDTMFToneChangeEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCDTMFToneChangeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCDTMFToneChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _tone = ReadonlyAttribute(jsObject: jsObject, name: Strings.tone)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: RTCDTMFToneChangeEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: RTCDTMFToneChangeEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

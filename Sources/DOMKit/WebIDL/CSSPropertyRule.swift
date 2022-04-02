@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSPropertyRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSPropertyRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSPropertyRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)

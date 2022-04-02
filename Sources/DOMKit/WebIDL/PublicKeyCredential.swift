@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PublicKeyCredential: Credential {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PublicKeyCredential].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PublicKeyCredential].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _rawId = ReadonlyAttribute(jsObject: jsObject, name: Strings.rawId)
@@ -22,18 +22,18 @@ public class PublicKeyCredential: Credential {
     @ReadonlyAttribute
     public var authenticatorAttachment: String?
 
-    public func getClientExtensionResults() -> AuthenticationExtensionsClientOutputs {
+    @inlinable public func getClientExtensionResults() -> AuthenticationExtensionsClientOutputs {
         let this = jsObject
         return this[Strings.getClientExtensionResults].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public static func isUserVerifyingPlatformAuthenticatorAvailable() -> JSPromise {
+    @inlinable public static func isUserVerifyingPlatformAuthenticatorAvailable() -> JSPromise {
         let this = constructor
         return this[Strings.isUserVerifyingPlatformAuthenticatorAvailable].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func isUserVerifyingPlatformAuthenticatorAvailable() async throws -> Bool {
+    @inlinable public static func isUserVerifyingPlatformAuthenticatorAvailable() async throws -> Bool {
         let this = constructor
         let _promise: JSPromise = this[Strings.isUserVerifyingPlatformAuthenticatorAvailable].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

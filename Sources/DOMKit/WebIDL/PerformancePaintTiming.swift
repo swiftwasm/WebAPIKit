@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformancePaintTiming: PerformanceEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PerformancePaintTiming].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PerformancePaintTiming].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

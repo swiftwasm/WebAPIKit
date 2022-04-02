@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUBindGroup: JSBridgedClass, GPUObjectBase {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUBindGroup].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUBindGroup].function! }
 
     public let jsObject: JSObject
 

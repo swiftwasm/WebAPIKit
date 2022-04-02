@@ -4,17 +4,17 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ExtendableEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ExtendableEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ExtendableEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: ExtendableEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: ExtendableEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
-    public func waitUntil(f: JSPromise) {
+    @inlinable public func waitUntil(f: JSPromise) {
         let this = jsObject
         _ = this[Strings.waitUntil].function!(this: this, arguments: [f.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioBuffer: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AudioBuffer].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioBuffer].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class AudioBuffer: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(options: AudioBufferOptions) {
+    @inlinable public convenience init(options: AudioBufferOptions) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options.jsValue()]))
     }
 
@@ -32,17 +32,17 @@ public class AudioBuffer: JSBridgedClass {
     @ReadonlyAttribute
     public var numberOfChannels: UInt32
 
-    public func getChannelData(channel: UInt32) -> Float32Array {
+    @inlinable public func getChannelData(channel: UInt32) -> Float32Array {
         let this = jsObject
         return this[Strings.getChannelData].function!(this: this, arguments: [channel.jsValue()]).fromJSValue()!
     }
 
-    public func copyFromChannel(destination: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
+    @inlinable public func copyFromChannel(destination: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
         let this = jsObject
         _ = this[Strings.copyFromChannel].function!(this: this, arguments: [destination.jsValue(), channelNumber.jsValue(), bufferOffset?.jsValue() ?? .undefined])
     }
 
-    public func copyToChannel(source: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
+    @inlinable public func copyToChannel(source: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
         let this = jsObject
         _ = this[Strings.copyToChannel].function!(this: this, arguments: [source.jsValue(), channelNumber.jsValue(), bufferOffset?.jsValue() ?? .undefined])
     }

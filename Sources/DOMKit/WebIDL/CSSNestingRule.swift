@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSNestingRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSNestingRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSNestingRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _selectorText = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectorText)
@@ -22,12 +22,12 @@ public class CSSNestingRule: CSSRule {
     @ReadonlyAttribute
     public var cssRules: CSSRuleList
 
-    public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
+    @inlinable public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
         let this = jsObject
         return this[Strings.insertRule].function!(this: this, arguments: [rule.jsValue(), index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func deleteRule(index: UInt32) {
+    @inlinable public func deleteRule(index: UInt32) {
         let this = jsObject
         _ = this[Strings.deleteRule].function!(this: this, arguments: [index.jsValue()])
     }

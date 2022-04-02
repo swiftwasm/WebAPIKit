@@ -5,17 +5,17 @@ import JavaScriptKit
 
 public protocol DocumentAndElementEventHandlers: JSBridgedClass {}
 public extension DocumentAndElementEventHandlers {
-    var oncopy: EventHandler {
+    @inlinable var oncopy: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncopy, in: jsObject] }
         set { ClosureAttribute1Optional[Strings.oncopy, in: jsObject] = newValue }
     }
 
-    var oncut: EventHandler {
+    @inlinable var oncut: EventHandler {
         get { ClosureAttribute1Optional[Strings.oncut, in: jsObject] }
         set { ClosureAttribute1Optional[Strings.oncut, in: jsObject] = newValue }
     }
 
-    var onpaste: EventHandler {
+    @inlinable var onpaste: EventHandler {
         get { ClosureAttribute1Optional[Strings.onpaste, in: jsObject] }
         set { ClosureAttribute1Optional[Strings.onpaste, in: jsObject] = newValue }
     }

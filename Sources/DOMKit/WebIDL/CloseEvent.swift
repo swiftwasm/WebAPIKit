@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CloseEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CloseEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CloseEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _wasClean = ReadonlyAttribute(jsObject: jsObject, name: Strings.wasClean)
@@ -13,7 +13,7 @@ public class CloseEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: CloseEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: CloseEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

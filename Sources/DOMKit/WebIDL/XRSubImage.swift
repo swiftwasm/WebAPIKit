@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRSubImage: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRSubImage].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRSubImage].function! }
 
     public let jsObject: JSObject
 

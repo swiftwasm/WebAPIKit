@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSSkewY: CSSTransformComponent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSSkewY].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSSkewY].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _ay = ReadWriteAttribute(jsObject: jsObject, name: Strings.ay)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(ay: CSSNumericValue) {
+    @inlinable public convenience init(ay: CSSNumericValue) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [ay.jsValue()]))
     }
 

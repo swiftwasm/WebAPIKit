@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLFontElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFontElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFontElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _color = ReadWriteAttribute(jsObject: jsObject, name: Strings.color)
@@ -13,7 +13,7 @@ public class HTMLFontElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

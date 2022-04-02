@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGGradientElement: SVGElement, SVGURIReference {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGGradientElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGGradientElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _gradientUnits = ReadonlyAttribute(jsObject: jsObject, name: Strings.gradientUnits)

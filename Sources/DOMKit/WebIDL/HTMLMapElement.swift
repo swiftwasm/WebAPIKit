@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLMapElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMapElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMapElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
@@ -12,7 +12,7 @@ public class HTMLMapElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

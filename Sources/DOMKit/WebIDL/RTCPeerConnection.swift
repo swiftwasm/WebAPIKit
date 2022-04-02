@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCPeerConnection: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCPeerConnection].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCPeerConnection].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _peerIdentity = ReadonlyAttribute(jsObject: jsObject, name: Strings.peerIdentity)
@@ -34,18 +34,18 @@ public class RTCPeerConnection: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func setIdentityProvider(provider: String, options: RTCIdentityProviderOptions? = nil) {
+    @inlinable public func setIdentityProvider(provider: String, options: RTCIdentityProviderOptions? = nil) {
         let this = jsObject
         _ = this[Strings.setIdentityProvider].function!(this: this, arguments: [provider.jsValue(), options?.jsValue() ?? .undefined])
     }
 
-    public func getIdentityAssertion() -> JSPromise {
+    @inlinable public func getIdentityAssertion() -> JSPromise {
         let this = jsObject
         return this[Strings.getIdentityAssertion].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getIdentityAssertion() async throws -> String {
+    @inlinable public func getIdentityAssertion() async throws -> String {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getIdentityAssertion].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
@@ -60,7 +60,7 @@ public class RTCPeerConnection: EventTarget {
     @ReadonlyAttribute
     public var idpErrorInfo: String?
 
-    public convenience init(configuration: RTCConfiguration? = nil) {
+    @inlinable public convenience init(configuration: RTCConfiguration? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [configuration?.jsValue() ?? .undefined]))
     }
 
@@ -117,22 +117,22 @@ public class RTCPeerConnection: EventTarget {
     @ReadonlyAttribute
     public var canTrickleIceCandidates: Bool?
 
-    public func restartIce() {
+    @inlinable public func restartIce() {
         let this = jsObject
         _ = this[Strings.restartIce].function!(this: this, arguments: [])
     }
 
-    public func getConfiguration() -> RTCConfiguration {
+    @inlinable public func getConfiguration() -> RTCConfiguration {
         let this = jsObject
         return this[Strings.getConfiguration].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func setConfiguration(configuration: RTCConfiguration? = nil) {
+    @inlinable public func setConfiguration(configuration: RTCConfiguration? = nil) {
         let this = jsObject
         _ = this[Strings.setConfiguration].function!(this: this, arguments: [configuration?.jsValue() ?? .undefined])
     }
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
@@ -178,44 +178,44 @@ public class RTCPeerConnection: EventTarget {
 
     // XXX: member 'addIceCandidate' is ignored
 
-    public static func generateCertificate(keygenAlgorithm: AlgorithmIdentifier) -> JSPromise {
+    @inlinable public static func generateCertificate(keygenAlgorithm: AlgorithmIdentifier) -> JSPromise {
         let this = constructor
         return this[Strings.generateCertificate].function!(this: this, arguments: [keygenAlgorithm.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func generateCertificate(keygenAlgorithm: AlgorithmIdentifier) async throws -> RTCCertificate {
+    @inlinable public static func generateCertificate(keygenAlgorithm: AlgorithmIdentifier) async throws -> RTCCertificate {
         let this = constructor
         let _promise: JSPromise = this[Strings.generateCertificate].function!(this: this, arguments: [keygenAlgorithm.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func getSenders() -> [RTCRtpSender] {
+    @inlinable public func getSenders() -> [RTCRtpSender] {
         let this = jsObject
         return this[Strings.getSenders].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getReceivers() -> [RTCRtpReceiver] {
+    @inlinable public func getReceivers() -> [RTCRtpReceiver] {
         let this = jsObject
         return this[Strings.getReceivers].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getTransceivers() -> [RTCRtpTransceiver] {
+    @inlinable public func getTransceivers() -> [RTCRtpTransceiver] {
         let this = jsObject
         return this[Strings.getTransceivers].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func addTrack(track: MediaStreamTrack, streams: MediaStream...) -> RTCRtpSender {
+    @inlinable public func addTrack(track: MediaStreamTrack, streams: MediaStream...) -> RTCRtpSender {
         let this = jsObject
         return this[Strings.addTrack].function!(this: this, arguments: [track.jsValue()] + streams.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func removeTrack(sender: RTCRtpSender) {
+    @inlinable public func removeTrack(sender: RTCRtpSender) {
         let this = jsObject
         _ = this[Strings.removeTrack].function!(this: this, arguments: [sender.jsValue()])
     }
 
-    public func addTransceiver(trackOrKind: __UNSUPPORTED_UNION__, init: RTCRtpTransceiverInit? = nil) -> RTCRtpTransceiver {
+    @inlinable public func addTransceiver(trackOrKind: __UNSUPPORTED_UNION__, init: RTCRtpTransceiverInit? = nil) -> RTCRtpTransceiver {
         let this = jsObject
         return this[Strings.addTransceiver].function!(this: this, arguments: [trackOrKind.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
@@ -226,7 +226,7 @@ public class RTCPeerConnection: EventTarget {
     @ReadonlyAttribute
     public var sctp: RTCSctpTransport?
 
-    public func createDataChannel(label: String, dataChannelDict: RTCDataChannelInit? = nil) -> RTCDataChannel {
+    @inlinable public func createDataChannel(label: String, dataChannelDict: RTCDataChannelInit? = nil) -> RTCDataChannel {
         let this = jsObject
         return this[Strings.createDataChannel].function!(this: this, arguments: [label.jsValue(), dataChannelDict?.jsValue() ?? .undefined]).fromJSValue()!
     }
@@ -234,13 +234,13 @@ public class RTCPeerConnection: EventTarget {
     @ClosureAttribute1Optional
     public var ondatachannel: EventHandler
 
-    public func getStats(selector: MediaStreamTrack? = nil) -> JSPromise {
+    @inlinable public func getStats(selector: MediaStreamTrack? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.getStats].function!(this: this, arguments: [selector?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getStats(selector: MediaStreamTrack? = nil) async throws -> RTCStatsReport {
+    @inlinable public func getStats(selector: MediaStreamTrack? = nil) async throws -> RTCStatsReport {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: [selector?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

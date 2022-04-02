@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLContextEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WebGLContextEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLContextEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _statusMessage = ReadonlyAttribute(jsObject: jsObject, name: Strings.statusMessage)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInit: WebGLContextEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInit: WebGLContextEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInit?.jsValue() ?? .undefined]))
     }
 

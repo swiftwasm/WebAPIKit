@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSFontFaceRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSFontFaceRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSFontFaceRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _style = ReadonlyAttribute(jsObject: jsObject, name: Strings.style)

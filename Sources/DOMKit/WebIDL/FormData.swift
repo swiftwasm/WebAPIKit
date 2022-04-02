@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FormData: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.FormData].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FormData].function! }
 
     public let jsObject: JSObject
 
@@ -12,46 +12,46 @@ public class FormData: JSBridgedClass, Sequence {
         self.jsObject = jsObject
     }
 
-    public convenience init(form: HTMLFormElement? = nil) {
+    @inlinable public convenience init(form: HTMLFormElement? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [form?.jsValue() ?? .undefined]))
     }
 
-    public func append(name: String, value: String) {
+    @inlinable public func append(name: String, value: String) {
         let this = jsObject
         _ = this[Strings.append].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }
 
-    public func append(name: String, blobValue: Blob, filename: String? = nil) {
+    @inlinable public func append(name: String, blobValue: Blob, filename: String? = nil) {
         let this = jsObject
         _ = this[Strings.append].function!(this: this, arguments: [name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined])
     }
 
-    public func delete(name: String) {
+    @inlinable public func delete(name: String) {
         let this = jsObject
         _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue()])
     }
 
-    public func get(name: String) -> FormDataEntryValue? {
+    @inlinable public func get(name: String) -> FormDataEntryValue? {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func getAll(name: String) -> [FormDataEntryValue] {
+    @inlinable public func getAll(name: String) -> [FormDataEntryValue] {
         let this = jsObject
         return this[Strings.getAll].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func has(name: String) -> Bool {
+    @inlinable public func has(name: String) -> Bool {
         let this = jsObject
         return this[Strings.has].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func set(name: String, value: String) {
+    @inlinable public func set(name: String, value: String) {
         let this = jsObject
         _ = this[Strings.set].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }
 
-    public func set(name: String, blobValue: Blob, filename: String? = nil) {
+    @inlinable public func set(name: String, blobValue: Blob, filename: String? = nil) {
         let this = jsObject
         _ = this[Strings.set].function!(this: this, arguments: [name.jsValue(), blobValue.jsValue(), filename?.jsValue() ?? .undefined])
     }

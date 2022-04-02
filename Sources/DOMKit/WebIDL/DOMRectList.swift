@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMRectList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DOMRectList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DOMRectList].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class DOMRectList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> DOMRect? {
+    @inlinable public subscript(key: Int) -> DOMRect? {
         jsObject[key].fromJSValue()
     }
 }

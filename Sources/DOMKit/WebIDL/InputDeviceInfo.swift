@@ -4,13 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class InputDeviceInfo: MediaDeviceInfo {
-    override public class var constructor: JSFunction { JSObject.global[Strings.InputDeviceInfo].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.InputDeviceInfo].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func getCapabilities() -> MediaTrackCapabilities {
+    @inlinable public func getCapabilities() -> MediaTrackCapabilities {
         let this = jsObject
         return this[Strings.getCapabilities].function!(this: this, arguments: []).fromJSValue()!
     }

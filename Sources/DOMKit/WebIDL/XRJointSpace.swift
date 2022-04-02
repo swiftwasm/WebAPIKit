@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRJointSpace: XRSpace {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRJointSpace].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRJointSpace].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _jointName = ReadonlyAttribute(jsObject: jsObject, name: Strings.jointName)

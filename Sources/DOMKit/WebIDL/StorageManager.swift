@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StorageManager: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.StorageManager].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.StorageManager].function! }
 
     public let jsObject: JSObject
 
@@ -12,49 +12,49 @@ public class StorageManager: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func getDirectory() -> JSPromise {
+    @inlinable public func getDirectory() -> JSPromise {
         let this = jsObject
         return this[Strings.getDirectory].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getDirectory() async throws -> FileSystemDirectoryHandle {
+    @inlinable public func getDirectory() async throws -> FileSystemDirectoryHandle {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getDirectory].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func persisted() -> JSPromise {
+    @inlinable public func persisted() -> JSPromise {
         let this = jsObject
         return this[Strings.persisted].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func persisted() async throws -> Bool {
+    @inlinable public func persisted() async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.persisted].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func persist() -> JSPromise {
+    @inlinable public func persist() -> JSPromise {
         let this = jsObject
         return this[Strings.persist].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func persist() async throws -> Bool {
+    @inlinable public func persist() async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.persist].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func estimate() -> JSPromise {
+    @inlinable public func estimate() -> JSPromise {
         let this = jsObject
         return this[Strings.estimate].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func estimate() async throws -> StorageEstimate {
+    @inlinable public func estimate() async throws -> StorageEstimate {
         let this = jsObject
         let _promise: JSPromise = this[Strings.estimate].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

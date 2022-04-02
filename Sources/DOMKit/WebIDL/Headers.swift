@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Headers: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.Headers].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Headers].function! }
 
     public let jsObject: JSObject
 
@@ -12,31 +12,31 @@ public class Headers: JSBridgedClass, Sequence {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: HeadersInit? = nil) {
+    @inlinable public convenience init(init: HeadersInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 
-    public func append(name: String, value: String) {
+    @inlinable public func append(name: String, value: String) {
         let this = jsObject
         _ = this[Strings.append].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }
 
-    public func delete(name: String) {
+    @inlinable public func delete(name: String) {
         let this = jsObject
         _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue()])
     }
 
-    public func get(name: String) -> String? {
+    @inlinable public func get(name: String) -> String? {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func has(name: String) -> Bool {
+    @inlinable public func has(name: String) -> Bool {
         let this = jsObject
         return this[Strings.has].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func set(name: String, value: String) {
+    @inlinable public func set(name: String, value: String) {
         let this = jsObject
         _ = this[Strings.set].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WindowControlsOverlay: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WindowControlsOverlay].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WindowControlsOverlay].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _visible = ReadonlyAttribute(jsObject: jsObject, name: Strings.visible)
@@ -15,7 +15,7 @@ public class WindowControlsOverlay: EventTarget {
     @ReadonlyAttribute
     public var visible: Bool
 
-    public func getTitlebarAreaRect() -> DOMRect {
+    @inlinable public func getTitlebarAreaRect() -> DOMRect {
         let this = jsObject
         return this[Strings.getTitlebarAreaRect].function!(this: this, arguments: []).fromJSValue()!
     }

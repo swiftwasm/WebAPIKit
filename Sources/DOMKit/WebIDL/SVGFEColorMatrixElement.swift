@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEColorMatrixElement: SVGElement, SVGFilterPrimitiveStandardAttributes {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEColorMatrixElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEColorMatrixElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _in1 = ReadonlyAttribute(jsObject: jsObject, name: Strings.in1)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEFloodElement: SVGElement, SVGFilterPrimitiveStandardAttributes {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEFloodElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEFloodElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

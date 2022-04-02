@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSAnimation: Animation {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSAnimation].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSAnimation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _animationName = ReadonlyAttribute(jsObject: jsObject, name: Strings.animationName)

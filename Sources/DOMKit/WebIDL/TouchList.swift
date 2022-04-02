@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TouchList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TouchList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TouchList].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class TouchList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> Touch? {
+    @inlinable public subscript(key: Int) -> Touch? {
         jsObject[key].fromJSValue()
     }
 }

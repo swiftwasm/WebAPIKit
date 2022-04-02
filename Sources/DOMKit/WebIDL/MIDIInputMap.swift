@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MIDIInputMap: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MIDIInputMap].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MIDIInputMap].function! }
 
     public let jsObject: JSObject
 

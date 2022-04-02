@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechRecognition: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SpeechRecognition].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SpeechRecognition].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _grammars = ReadWriteAttribute(jsObject: jsObject, name: Strings.grammars)
@@ -26,7 +26,7 @@ public class SpeechRecognition: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -45,17 +45,17 @@ public class SpeechRecognition: EventTarget {
     @ReadWriteAttribute
     public var maxAlternatives: UInt32
 
-    public func start() {
+    @inlinable public func start() {
         let this = jsObject
         _ = this[Strings.start].function!(this: this, arguments: [])
     }
 
-    public func stop() {
+    @inlinable public func stop() {
         let this = jsObject
         _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
-    public func abort() {
+    @inlinable public func abort() {
         let this = jsObject
         _ = this[Strings.abort].function!(this: this, arguments: [])
     }

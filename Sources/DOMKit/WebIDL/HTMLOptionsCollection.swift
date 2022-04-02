@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLOptionsCollection: HTMLCollection {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOptionsCollection].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOptionsCollection].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadWriteAttribute(jsObject: jsObject, name: Strings.length)
@@ -12,20 +12,20 @@ public class HTMLOptionsCollection: HTMLCollection {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    private var _length: ReadWriteAttribute<UInt32>
-    override public var length: UInt32 {
+    @usableFromInline let _length: ReadWriteAttribute<UInt32>
+    @inlinable override public var length: UInt32 {
         get { _length.wrappedValue }
         set { _length.wrappedValue = newValue }
     }
 
     // XXX: unsupported setter for keys of type UInt32
 
-    public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public func add(element: __UNSUPPORTED_UNION__, before: __UNSUPPORTED_UNION__? = nil) {
         let this = jsObject
         _ = this[Strings.add].function!(this: this, arguments: [element.jsValue(), before?.jsValue() ?? .undefined])
     }
 
-    public func remove(index: Int32) {
+    @inlinable public func remove(index: Int32) {
         let this = jsObject
         _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue()])
     }

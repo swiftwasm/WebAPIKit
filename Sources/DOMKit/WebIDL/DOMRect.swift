@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMRect: DOMRectReadOnly {
-    override public class var constructor: JSFunction { JSObject.global[Strings.DOMRect].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DOMRect].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadWriteAttribute(jsObject: jsObject, name: Strings.x)
@@ -14,33 +14,33 @@ public class DOMRect: DOMRectReadOnly {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(x: Double? = nil, y: Double? = nil, width: Double? = nil, height: Double? = nil) {
+    @inlinable public convenience init(x: Double? = nil, y: Double? = nil, width: Double? = nil, height: Double? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, width?.jsValue() ?? .undefined, height?.jsValue() ?? .undefined]))
     }
 
     // XXX: illegal static override
     // override public static func fromRect(other: DOMRectInit? = nil) -> Self
 
-    private var _x: ReadWriteAttribute<Double>
-    override public var x: Double {
+    @usableFromInline let _x: ReadWriteAttribute<Double>
+    @inlinable override public var x: Double {
         get { _x.wrappedValue }
         set { _x.wrappedValue = newValue }
     }
 
-    private var _y: ReadWriteAttribute<Double>
-    override public var y: Double {
+    @usableFromInline let _y: ReadWriteAttribute<Double>
+    @inlinable override public var y: Double {
         get { _y.wrappedValue }
         set { _y.wrappedValue = newValue }
     }
 
-    private var _width: ReadWriteAttribute<Double>
-    override public var width: Double {
+    @usableFromInline let _width: ReadWriteAttribute<Double>
+    @inlinable override public var width: Double {
         get { _width.wrappedValue }
         set { _width.wrappedValue = newValue }
     }
 
-    private var _height: ReadWriteAttribute<Double>
-    override public var height: Double {
+    @usableFromInline let _height: ReadWriteAttribute<Double>
+    @inlinable override public var height: Double {
         get { _height.wrappedValue }
         set { _height.wrappedValue = newValue }
     }

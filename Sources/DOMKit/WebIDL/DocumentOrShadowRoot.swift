@@ -5,22 +5,22 @@ import JavaScriptKit
 
 public protocol DocumentOrShadowRoot: JSBridgedClass {}
 public extension DocumentOrShadowRoot {
-    var styleSheets: StyleSheetList { ReadonlyAttribute[Strings.styleSheets, in: jsObject] }
+    @inlinable var styleSheets: StyleSheetList { ReadonlyAttribute[Strings.styleSheets, in: jsObject] }
 
-    var adoptedStyleSheets: [CSSStyleSheet] {
+    @inlinable var adoptedStyleSheets: [CSSStyleSheet] {
         get { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] }
         set { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] = newValue }
     }
 
-    var fullscreenElement: Element? { ReadonlyAttribute[Strings.fullscreenElement, in: jsObject] }
+    @inlinable var fullscreenElement: Element? { ReadonlyAttribute[Strings.fullscreenElement, in: jsObject] }
 
-    var activeElement: Element? { ReadonlyAttribute[Strings.activeElement, in: jsObject] }
+    @inlinable var activeElement: Element? { ReadonlyAttribute[Strings.activeElement, in: jsObject] }
 
-    var pictureInPictureElement: Element? { ReadonlyAttribute[Strings.pictureInPictureElement, in: jsObject] }
+    @inlinable var pictureInPictureElement: Element? { ReadonlyAttribute[Strings.pictureInPictureElement, in: jsObject] }
 
-    var pointerLockElement: Element? { ReadonlyAttribute[Strings.pointerLockElement, in: jsObject] }
+    @inlinable var pointerLockElement: Element? { ReadonlyAttribute[Strings.pointerLockElement, in: jsObject] }
 
-    func getAnimations() -> [Animation] {
+    @inlinable func getAnimations() -> [Animation] {
         let this = jsObject
         return this[Strings.getAnimations].function!(this: this, arguments: []).fromJSValue()!
     }

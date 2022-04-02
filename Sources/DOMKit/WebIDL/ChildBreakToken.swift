@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ChildBreakToken: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ChildBreakToken].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ChildBreakToken].function! }
 
     public let jsObject: JSObject
 

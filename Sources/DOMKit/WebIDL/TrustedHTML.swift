@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TrustedHTML: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TrustedHTML].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TrustedHTML].function! }
 
     public let jsObject: JSObject
 
@@ -12,16 +12,16 @@ public class TrustedHTML: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public var description: String {
+    @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
     }
 
-    public func toJSON() -> String {
+    @inlinable public func toJSON() -> String {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public static func fromLiteral(templateStringsArray: JSObject) -> Self {
+    @inlinable public static func fromLiteral(templateStringsArray: JSObject) -> Self {
         let this = constructor
         return this[Strings.fromLiteral].function!(this: this, arguments: [templateStringsArray.jsValue()]).fromJSValue()!
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WorkletAnimationEffect: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WorkletAnimationEffect].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WorkletAnimationEffect].function! }
 
     public let jsObject: JSObject
 
@@ -13,12 +13,12 @@ public class WorkletAnimationEffect: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func getTiming() -> EffectTiming {
+    @inlinable public func getTiming() -> EffectTiming {
         let this = jsObject
         return this[Strings.getTiming].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getComputedTiming() -> ComputedEffectTiming {
+    @inlinable public func getComputedTiming() -> ComputedEffectTiming {
         let this = jsObject
         return this[Strings.getComputedTiming].function!(this: this, arguments: []).fromJSValue()!
     }

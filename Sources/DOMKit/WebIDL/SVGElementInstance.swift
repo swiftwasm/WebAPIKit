@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol SVGElementInstance: JSBridgedClass {}
 public extension SVGElementInstance {
-    var correspondingElement: SVGElement? { ReadonlyAttribute[Strings.correspondingElement, in: jsObject] }
+    @inlinable var correspondingElement: SVGElement? { ReadonlyAttribute[Strings.correspondingElement, in: jsObject] }
 
-    var correspondingUseElement: SVGUseElement? { ReadonlyAttribute[Strings.correspondingUseElement, in: jsObject] }
+    @inlinable var correspondingUseElement: SVGUseElement? { ReadonlyAttribute[Strings.correspondingUseElement, in: jsObject] }
 }

@@ -5,720 +5,720 @@ import JavaScriptKit
 
 public protocol WebGLRenderingContextBase: JSBridgedClass {}
 public extension WebGLRenderingContextBase {
-    static var DEPTH_BUFFER_BIT: GLenum { 0x0000_0100 }
+    @inlinable static var DEPTH_BUFFER_BIT: GLenum { 0x0000_0100 }
 
-    static var STENCIL_BUFFER_BIT: GLenum { 0x0000_0400 }
+    @inlinable static var STENCIL_BUFFER_BIT: GLenum { 0x0000_0400 }
 
-    static var COLOR_BUFFER_BIT: GLenum { 0x0000_4000 }
+    @inlinable static var COLOR_BUFFER_BIT: GLenum { 0x0000_4000 }
 
-    static var POINTS: GLenum { 0x0000 }
+    @inlinable static var POINTS: GLenum { 0x0000 }
 
-    static var LINES: GLenum { 0x0001 }
+    @inlinable static var LINES: GLenum { 0x0001 }
 
-    static var LINE_LOOP: GLenum { 0x0002 }
+    @inlinable static var LINE_LOOP: GLenum { 0x0002 }
 
-    static var LINE_STRIP: GLenum { 0x0003 }
+    @inlinable static var LINE_STRIP: GLenum { 0x0003 }
 
-    static var TRIANGLES: GLenum { 0x0004 }
+    @inlinable static var TRIANGLES: GLenum { 0x0004 }
 
-    static var TRIANGLE_STRIP: GLenum { 0x0005 }
+    @inlinable static var TRIANGLE_STRIP: GLenum { 0x0005 }
 
-    static var TRIANGLE_FAN: GLenum { 0x0006 }
+    @inlinable static var TRIANGLE_FAN: GLenum { 0x0006 }
 
-    static var ZERO: GLenum { 0 }
+    @inlinable static var ZERO: GLenum { 0 }
 
-    static var ONE: GLenum { 1 }
+    @inlinable static var ONE: GLenum { 1 }
 
-    static var SRC_COLOR: GLenum { 0x0300 }
+    @inlinable static var SRC_COLOR: GLenum { 0x0300 }
 
-    static var ONE_MINUS_SRC_COLOR: GLenum { 0x0301 }
+    @inlinable static var ONE_MINUS_SRC_COLOR: GLenum { 0x0301 }
 
-    static var SRC_ALPHA: GLenum { 0x0302 }
+    @inlinable static var SRC_ALPHA: GLenum { 0x0302 }
 
-    static var ONE_MINUS_SRC_ALPHA: GLenum { 0x0303 }
+    @inlinable static var ONE_MINUS_SRC_ALPHA: GLenum { 0x0303 }
 
-    static var DST_ALPHA: GLenum { 0x0304 }
+    @inlinable static var DST_ALPHA: GLenum { 0x0304 }
 
-    static var ONE_MINUS_DST_ALPHA: GLenum { 0x0305 }
+    @inlinable static var ONE_MINUS_DST_ALPHA: GLenum { 0x0305 }
 
-    static var DST_COLOR: GLenum { 0x0306 }
+    @inlinable static var DST_COLOR: GLenum { 0x0306 }
 
-    static var ONE_MINUS_DST_COLOR: GLenum { 0x0307 }
+    @inlinable static var ONE_MINUS_DST_COLOR: GLenum { 0x0307 }
 
-    static var SRC_ALPHA_SATURATE: GLenum { 0x0308 }
+    @inlinable static var SRC_ALPHA_SATURATE: GLenum { 0x0308 }
 
-    static var FUNC_ADD: GLenum { 0x8006 }
+    @inlinable static var FUNC_ADD: GLenum { 0x8006 }
 
-    static var BLEND_EQUATION: GLenum { 0x8009 }
+    @inlinable static var BLEND_EQUATION: GLenum { 0x8009 }
 
-    static var BLEND_EQUATION_RGB: GLenum { 0x8009 }
+    @inlinable static var BLEND_EQUATION_RGB: GLenum { 0x8009 }
 
-    static var BLEND_EQUATION_ALPHA: GLenum { 0x883D }
+    @inlinable static var BLEND_EQUATION_ALPHA: GLenum { 0x883D }
 
-    static var FUNC_SUBTRACT: GLenum { 0x800A }
+    @inlinable static var FUNC_SUBTRACT: GLenum { 0x800A }
 
-    static var FUNC_REVERSE_SUBTRACT: GLenum { 0x800B }
+    @inlinable static var FUNC_REVERSE_SUBTRACT: GLenum { 0x800B }
 
-    static var BLEND_DST_RGB: GLenum { 0x80C8 }
+    @inlinable static var BLEND_DST_RGB: GLenum { 0x80C8 }
 
-    static var BLEND_SRC_RGB: GLenum { 0x80C9 }
+    @inlinable static var BLEND_SRC_RGB: GLenum { 0x80C9 }
 
-    static var BLEND_DST_ALPHA: GLenum { 0x80CA }
+    @inlinable static var BLEND_DST_ALPHA: GLenum { 0x80CA }
 
-    static var BLEND_SRC_ALPHA: GLenum { 0x80CB }
+    @inlinable static var BLEND_SRC_ALPHA: GLenum { 0x80CB }
 
-    static var CONSTANT_COLOR: GLenum { 0x8001 }
+    @inlinable static var CONSTANT_COLOR: GLenum { 0x8001 }
 
-    static var ONE_MINUS_CONSTANT_COLOR: GLenum { 0x8002 }
+    @inlinable static var ONE_MINUS_CONSTANT_COLOR: GLenum { 0x8002 }
 
-    static var CONSTANT_ALPHA: GLenum { 0x8003 }
+    @inlinable static var CONSTANT_ALPHA: GLenum { 0x8003 }
 
-    static var ONE_MINUS_CONSTANT_ALPHA: GLenum { 0x8004 }
+    @inlinable static var ONE_MINUS_CONSTANT_ALPHA: GLenum { 0x8004 }
 
-    static var BLEND_COLOR: GLenum { 0x8005 }
+    @inlinable static var BLEND_COLOR: GLenum { 0x8005 }
 
-    static var ARRAY_BUFFER: GLenum { 0x8892 }
+    @inlinable static var ARRAY_BUFFER: GLenum { 0x8892 }
 
-    static var ELEMENT_ARRAY_BUFFER: GLenum { 0x8893 }
+    @inlinable static var ELEMENT_ARRAY_BUFFER: GLenum { 0x8893 }
 
-    static var ARRAY_BUFFER_BINDING: GLenum { 0x8894 }
+    @inlinable static var ARRAY_BUFFER_BINDING: GLenum { 0x8894 }
 
-    static var ELEMENT_ARRAY_BUFFER_BINDING: GLenum { 0x8895 }
+    @inlinable static var ELEMENT_ARRAY_BUFFER_BINDING: GLenum { 0x8895 }
 
-    static var STREAM_DRAW: GLenum { 0x88E0 }
+    @inlinable static var STREAM_DRAW: GLenum { 0x88E0 }
 
-    static var STATIC_DRAW: GLenum { 0x88E4 }
+    @inlinable static var STATIC_DRAW: GLenum { 0x88E4 }
 
-    static var DYNAMIC_DRAW: GLenum { 0x88E8 }
+    @inlinable static var DYNAMIC_DRAW: GLenum { 0x88E8 }
 
-    static var BUFFER_SIZE: GLenum { 0x8764 }
+    @inlinable static var BUFFER_SIZE: GLenum { 0x8764 }
 
-    static var BUFFER_USAGE: GLenum { 0x8765 }
+    @inlinable static var BUFFER_USAGE: GLenum { 0x8765 }
 
-    static var CURRENT_VERTEX_ATTRIB: GLenum { 0x8626 }
+    @inlinable static var CURRENT_VERTEX_ATTRIB: GLenum { 0x8626 }
 
-    static var FRONT: GLenum { 0x0404 }
+    @inlinable static var FRONT: GLenum { 0x0404 }
 
-    static var BACK: GLenum { 0x0405 }
+    @inlinable static var BACK: GLenum { 0x0405 }
 
-    static var FRONT_AND_BACK: GLenum { 0x0408 }
+    @inlinable static var FRONT_AND_BACK: GLenum { 0x0408 }
 
-    static var CULL_FACE: GLenum { 0x0B44 }
+    @inlinable static var CULL_FACE: GLenum { 0x0B44 }
 
-    static var BLEND: GLenum { 0x0BE2 }
+    @inlinable static var BLEND: GLenum { 0x0BE2 }
 
-    static var DITHER: GLenum { 0x0BD0 }
+    @inlinable static var DITHER: GLenum { 0x0BD0 }
 
-    static var STENCIL_TEST: GLenum { 0x0B90 }
+    @inlinable static var STENCIL_TEST: GLenum { 0x0B90 }
 
-    static var DEPTH_TEST: GLenum { 0x0B71 }
+    @inlinable static var DEPTH_TEST: GLenum { 0x0B71 }
 
-    static var SCISSOR_TEST: GLenum { 0x0C11 }
+    @inlinable static var SCISSOR_TEST: GLenum { 0x0C11 }
 
-    static var POLYGON_OFFSET_FILL: GLenum { 0x8037 }
+    @inlinable static var POLYGON_OFFSET_FILL: GLenum { 0x8037 }
 
-    static var SAMPLE_ALPHA_TO_COVERAGE: GLenum { 0x809E }
+    @inlinable static var SAMPLE_ALPHA_TO_COVERAGE: GLenum { 0x809E }
 
-    static var SAMPLE_COVERAGE: GLenum { 0x80A0 }
+    @inlinable static var SAMPLE_COVERAGE: GLenum { 0x80A0 }
 
-    static var NO_ERROR: GLenum { 0 }
+    @inlinable static var NO_ERROR: GLenum { 0 }
 
-    static var INVALID_ENUM: GLenum { 0x0500 }
+    @inlinable static var INVALID_ENUM: GLenum { 0x0500 }
 
-    static var INVALID_VALUE: GLenum { 0x0501 }
+    @inlinable static var INVALID_VALUE: GLenum { 0x0501 }
 
-    static var INVALID_OPERATION: GLenum { 0x0502 }
+    @inlinable static var INVALID_OPERATION: GLenum { 0x0502 }
 
-    static var OUT_OF_MEMORY: GLenum { 0x0505 }
+    @inlinable static var OUT_OF_MEMORY: GLenum { 0x0505 }
 
-    static var CW: GLenum { 0x0900 }
+    @inlinable static var CW: GLenum { 0x0900 }
 
-    static var CCW: GLenum { 0x0901 }
+    @inlinable static var CCW: GLenum { 0x0901 }
 
-    static var LINE_WIDTH: GLenum { 0x0B21 }
+    @inlinable static var LINE_WIDTH: GLenum { 0x0B21 }
 
-    static var ALIASED_POINT_SIZE_RANGE: GLenum { 0x846D }
+    @inlinable static var ALIASED_POINT_SIZE_RANGE: GLenum { 0x846D }
 
-    static var ALIASED_LINE_WIDTH_RANGE: GLenum { 0x846E }
+    @inlinable static var ALIASED_LINE_WIDTH_RANGE: GLenum { 0x846E }
 
-    static var CULL_FACE_MODE: GLenum { 0x0B45 }
+    @inlinable static var CULL_FACE_MODE: GLenum { 0x0B45 }
 
-    static var FRONT_FACE: GLenum { 0x0B46 }
+    @inlinable static var FRONT_FACE: GLenum { 0x0B46 }
 
-    static var DEPTH_RANGE: GLenum { 0x0B70 }
+    @inlinable static var DEPTH_RANGE: GLenum { 0x0B70 }
 
-    static var DEPTH_WRITEMASK: GLenum { 0x0B72 }
+    @inlinable static var DEPTH_WRITEMASK: GLenum { 0x0B72 }
 
-    static var DEPTH_CLEAR_VALUE: GLenum { 0x0B73 }
+    @inlinable static var DEPTH_CLEAR_VALUE: GLenum { 0x0B73 }
 
-    static var DEPTH_FUNC: GLenum { 0x0B74 }
+    @inlinable static var DEPTH_FUNC: GLenum { 0x0B74 }
 
-    static var STENCIL_CLEAR_VALUE: GLenum { 0x0B91 }
+    @inlinable static var STENCIL_CLEAR_VALUE: GLenum { 0x0B91 }
 
-    static var STENCIL_FUNC: GLenum { 0x0B92 }
+    @inlinable static var STENCIL_FUNC: GLenum { 0x0B92 }
 
-    static var STENCIL_FAIL: GLenum { 0x0B94 }
+    @inlinable static var STENCIL_FAIL: GLenum { 0x0B94 }
 
-    static var STENCIL_PASS_DEPTH_FAIL: GLenum { 0x0B95 }
+    @inlinable static var STENCIL_PASS_DEPTH_FAIL: GLenum { 0x0B95 }
 
-    static var STENCIL_PASS_DEPTH_PASS: GLenum { 0x0B96 }
+    @inlinable static var STENCIL_PASS_DEPTH_PASS: GLenum { 0x0B96 }
 
-    static var STENCIL_REF: GLenum { 0x0B97 }
+    @inlinable static var STENCIL_REF: GLenum { 0x0B97 }
 
-    static var STENCIL_VALUE_MASK: GLenum { 0x0B93 }
+    @inlinable static var STENCIL_VALUE_MASK: GLenum { 0x0B93 }
 
-    static var STENCIL_WRITEMASK: GLenum { 0x0B98 }
+    @inlinable static var STENCIL_WRITEMASK: GLenum { 0x0B98 }
 
-    static var STENCIL_BACK_FUNC: GLenum { 0x8800 }
+    @inlinable static var STENCIL_BACK_FUNC: GLenum { 0x8800 }
 
-    static var STENCIL_BACK_FAIL: GLenum { 0x8801 }
+    @inlinable static var STENCIL_BACK_FAIL: GLenum { 0x8801 }
 
-    static var STENCIL_BACK_PASS_DEPTH_FAIL: GLenum { 0x8802 }
+    @inlinable static var STENCIL_BACK_PASS_DEPTH_FAIL: GLenum { 0x8802 }
 
-    static var STENCIL_BACK_PASS_DEPTH_PASS: GLenum { 0x8803 }
+    @inlinable static var STENCIL_BACK_PASS_DEPTH_PASS: GLenum { 0x8803 }
 
-    static var STENCIL_BACK_REF: GLenum { 0x8CA3 }
+    @inlinable static var STENCIL_BACK_REF: GLenum { 0x8CA3 }
 
-    static var STENCIL_BACK_VALUE_MASK: GLenum { 0x8CA4 }
+    @inlinable static var STENCIL_BACK_VALUE_MASK: GLenum { 0x8CA4 }
 
-    static var STENCIL_BACK_WRITEMASK: GLenum { 0x8CA5 }
+    @inlinable static var STENCIL_BACK_WRITEMASK: GLenum { 0x8CA5 }
 
-    static var VIEWPORT: GLenum { 0x0BA2 }
+    @inlinable static var VIEWPORT: GLenum { 0x0BA2 }
 
-    static var SCISSOR_BOX: GLenum { 0x0C10 }
+    @inlinable static var SCISSOR_BOX: GLenum { 0x0C10 }
 
-    static var COLOR_CLEAR_VALUE: GLenum { 0x0C22 }
+    @inlinable static var COLOR_CLEAR_VALUE: GLenum { 0x0C22 }
 
-    static var COLOR_WRITEMASK: GLenum { 0x0C23 }
+    @inlinable static var COLOR_WRITEMASK: GLenum { 0x0C23 }
 
-    static var UNPACK_ALIGNMENT: GLenum { 0x0CF5 }
+    @inlinable static var UNPACK_ALIGNMENT: GLenum { 0x0CF5 }
 
-    static var PACK_ALIGNMENT: GLenum { 0x0D05 }
+    @inlinable static var PACK_ALIGNMENT: GLenum { 0x0D05 }
 
-    static var MAX_TEXTURE_SIZE: GLenum { 0x0D33 }
+    @inlinable static var MAX_TEXTURE_SIZE: GLenum { 0x0D33 }
 
-    static var MAX_VIEWPORT_DIMS: GLenum { 0x0D3A }
+    @inlinable static var MAX_VIEWPORT_DIMS: GLenum { 0x0D3A }
 
-    static var SUBPIXEL_BITS: GLenum { 0x0D50 }
+    @inlinable static var SUBPIXEL_BITS: GLenum { 0x0D50 }
 
-    static var RED_BITS: GLenum { 0x0D52 }
+    @inlinable static var RED_BITS: GLenum { 0x0D52 }
 
-    static var GREEN_BITS: GLenum { 0x0D53 }
+    @inlinable static var GREEN_BITS: GLenum { 0x0D53 }
 
-    static var BLUE_BITS: GLenum { 0x0D54 }
+    @inlinable static var BLUE_BITS: GLenum { 0x0D54 }
 
-    static var ALPHA_BITS: GLenum { 0x0D55 }
+    @inlinable static var ALPHA_BITS: GLenum { 0x0D55 }
 
-    static var DEPTH_BITS: GLenum { 0x0D56 }
+    @inlinable static var DEPTH_BITS: GLenum { 0x0D56 }
 
-    static var STENCIL_BITS: GLenum { 0x0D57 }
+    @inlinable static var STENCIL_BITS: GLenum { 0x0D57 }
 
-    static var POLYGON_OFFSET_UNITS: GLenum { 0x2A00 }
+    @inlinable static var POLYGON_OFFSET_UNITS: GLenum { 0x2A00 }
 
-    static var POLYGON_OFFSET_FACTOR: GLenum { 0x8038 }
+    @inlinable static var POLYGON_OFFSET_FACTOR: GLenum { 0x8038 }
 
-    static var TEXTURE_BINDING_2D: GLenum { 0x8069 }
+    @inlinable static var TEXTURE_BINDING_2D: GLenum { 0x8069 }
 
-    static var SAMPLE_BUFFERS: GLenum { 0x80A8 }
+    @inlinable static var SAMPLE_BUFFERS: GLenum { 0x80A8 }
 
-    static var SAMPLES: GLenum { 0x80A9 }
+    @inlinable static var SAMPLES: GLenum { 0x80A9 }
 
-    static var SAMPLE_COVERAGE_VALUE: GLenum { 0x80AA }
+    @inlinable static var SAMPLE_COVERAGE_VALUE: GLenum { 0x80AA }
 
-    static var SAMPLE_COVERAGE_INVERT: GLenum { 0x80AB }
+    @inlinable static var SAMPLE_COVERAGE_INVERT: GLenum { 0x80AB }
 
-    static var COMPRESSED_TEXTURE_FORMATS: GLenum { 0x86A3 }
+    @inlinable static var COMPRESSED_TEXTURE_FORMATS: GLenum { 0x86A3 }
 
-    static var DONT_CARE: GLenum { 0x1100 }
+    @inlinable static var DONT_CARE: GLenum { 0x1100 }
 
-    static var FASTEST: GLenum { 0x1101 }
+    @inlinable static var FASTEST: GLenum { 0x1101 }
 
-    static var NICEST: GLenum { 0x1102 }
+    @inlinable static var NICEST: GLenum { 0x1102 }
 
-    static var GENERATE_MIPMAP_HINT: GLenum { 0x8192 }
+    @inlinable static var GENERATE_MIPMAP_HINT: GLenum { 0x8192 }
 
-    static var BYTE: GLenum { 0x1400 }
+    @inlinable static var BYTE: GLenum { 0x1400 }
 
-    static var UNSIGNED_BYTE: GLenum { 0x1401 }
+    @inlinable static var UNSIGNED_BYTE: GLenum { 0x1401 }
 
-    static var SHORT: GLenum { 0x1402 }
+    @inlinable static var SHORT: GLenum { 0x1402 }
 
-    static var UNSIGNED_SHORT: GLenum { 0x1403 }
+    @inlinable static var UNSIGNED_SHORT: GLenum { 0x1403 }
 
-    static var INT: GLenum { 0x1404 }
+    @inlinable static var INT: GLenum { 0x1404 }
 
-    static var UNSIGNED_INT: GLenum { 0x1405 }
+    @inlinable static var UNSIGNED_INT: GLenum { 0x1405 }
 
-    static var FLOAT: GLenum { 0x1406 }
+    @inlinable static var FLOAT: GLenum { 0x1406 }
 
-    static var DEPTH_COMPONENT: GLenum { 0x1902 }
+    @inlinable static var DEPTH_COMPONENT: GLenum { 0x1902 }
 
-    static var ALPHA: GLenum { 0x1906 }
+    @inlinable static var ALPHA: GLenum { 0x1906 }
 
-    static var RGB: GLenum { 0x1907 }
+    @inlinable static var RGB: GLenum { 0x1907 }
 
-    static var RGBA: GLenum { 0x1908 }
+    @inlinable static var RGBA: GLenum { 0x1908 }
 
-    static var LUMINANCE: GLenum { 0x1909 }
+    @inlinable static var LUMINANCE: GLenum { 0x1909 }
 
-    static var LUMINANCE_ALPHA: GLenum { 0x190A }
+    @inlinable static var LUMINANCE_ALPHA: GLenum { 0x190A }
 
-    static var UNSIGNED_SHORT_4_4_4_4: GLenum { 0x8033 }
+    @inlinable static var UNSIGNED_SHORT_4_4_4_4: GLenum { 0x8033 }
 
-    static var UNSIGNED_SHORT_5_5_5_1: GLenum { 0x8034 }
+    @inlinable static var UNSIGNED_SHORT_5_5_5_1: GLenum { 0x8034 }
 
-    static var UNSIGNED_SHORT_5_6_5: GLenum { 0x8363 }
+    @inlinable static var UNSIGNED_SHORT_5_6_5: GLenum { 0x8363 }
 
-    static var FRAGMENT_SHADER: GLenum { 0x8B30 }
+    @inlinable static var FRAGMENT_SHADER: GLenum { 0x8B30 }
 
-    static var VERTEX_SHADER: GLenum { 0x8B31 }
+    @inlinable static var VERTEX_SHADER: GLenum { 0x8B31 }
 
-    static var MAX_VERTEX_ATTRIBS: GLenum { 0x8869 }
+    @inlinable static var MAX_VERTEX_ATTRIBS: GLenum { 0x8869 }
 
-    static var MAX_VERTEX_UNIFORM_VECTORS: GLenum { 0x8DFB }
+    @inlinable static var MAX_VERTEX_UNIFORM_VECTORS: GLenum { 0x8DFB }
 
-    static var MAX_VARYING_VECTORS: GLenum { 0x8DFC }
+    @inlinable static var MAX_VARYING_VECTORS: GLenum { 0x8DFC }
 
-    static var MAX_COMBINED_TEXTURE_IMAGE_UNITS: GLenum { 0x8B4D }
+    @inlinable static var MAX_COMBINED_TEXTURE_IMAGE_UNITS: GLenum { 0x8B4D }
 
-    static var MAX_VERTEX_TEXTURE_IMAGE_UNITS: GLenum { 0x8B4C }
+    @inlinable static var MAX_VERTEX_TEXTURE_IMAGE_UNITS: GLenum { 0x8B4C }
 
-    static var MAX_TEXTURE_IMAGE_UNITS: GLenum { 0x8872 }
+    @inlinable static var MAX_TEXTURE_IMAGE_UNITS: GLenum { 0x8872 }
 
-    static var MAX_FRAGMENT_UNIFORM_VECTORS: GLenum { 0x8DFD }
+    @inlinable static var MAX_FRAGMENT_UNIFORM_VECTORS: GLenum { 0x8DFD }
 
-    static var SHADER_TYPE: GLenum { 0x8B4F }
+    @inlinable static var SHADER_TYPE: GLenum { 0x8B4F }
 
-    static var DELETE_STATUS: GLenum { 0x8B80 }
+    @inlinable static var DELETE_STATUS: GLenum { 0x8B80 }
 
-    static var LINK_STATUS: GLenum { 0x8B82 }
+    @inlinable static var LINK_STATUS: GLenum { 0x8B82 }
 
-    static var VALIDATE_STATUS: GLenum { 0x8B83 }
+    @inlinable static var VALIDATE_STATUS: GLenum { 0x8B83 }
 
-    static var ATTACHED_SHADERS: GLenum { 0x8B85 }
+    @inlinable static var ATTACHED_SHADERS: GLenum { 0x8B85 }
 
-    static var ACTIVE_UNIFORMS: GLenum { 0x8B86 }
+    @inlinable static var ACTIVE_UNIFORMS: GLenum { 0x8B86 }
 
-    static var ACTIVE_ATTRIBUTES: GLenum { 0x8B89 }
+    @inlinable static var ACTIVE_ATTRIBUTES: GLenum { 0x8B89 }
 
-    static var SHADING_LANGUAGE_VERSION: GLenum { 0x8B8C }
+    @inlinable static var SHADING_LANGUAGE_VERSION: GLenum { 0x8B8C }
 
-    static var CURRENT_PROGRAM: GLenum { 0x8B8D }
+    @inlinable static var CURRENT_PROGRAM: GLenum { 0x8B8D }
 
-    static var NEVER: GLenum { 0x0200 }
+    @inlinable static var NEVER: GLenum { 0x0200 }
 
-    static var LESS: GLenum { 0x0201 }
+    @inlinable static var LESS: GLenum { 0x0201 }
 
-    static var EQUAL: GLenum { 0x0202 }
+    @inlinable static var EQUAL: GLenum { 0x0202 }
 
-    static var LEQUAL: GLenum { 0x0203 }
+    @inlinable static var LEQUAL: GLenum { 0x0203 }
 
-    static var GREATER: GLenum { 0x0204 }
+    @inlinable static var GREATER: GLenum { 0x0204 }
 
-    static var NOTEQUAL: GLenum { 0x0205 }
+    @inlinable static var NOTEQUAL: GLenum { 0x0205 }
 
-    static var GEQUAL: GLenum { 0x0206 }
+    @inlinable static var GEQUAL: GLenum { 0x0206 }
 
-    static var ALWAYS: GLenum { 0x0207 }
+    @inlinable static var ALWAYS: GLenum { 0x0207 }
 
-    static var KEEP: GLenum { 0x1E00 }
+    @inlinable static var KEEP: GLenum { 0x1E00 }
 
-    static var REPLACE: GLenum { 0x1E01 }
+    @inlinable static var REPLACE: GLenum { 0x1E01 }
 
-    static var INCR: GLenum { 0x1E02 }
+    @inlinable static var INCR: GLenum { 0x1E02 }
 
-    static var DECR: GLenum { 0x1E03 }
+    @inlinable static var DECR: GLenum { 0x1E03 }
 
-    static var INVERT: GLenum { 0x150A }
+    @inlinable static var INVERT: GLenum { 0x150A }
 
-    static var INCR_WRAP: GLenum { 0x8507 }
+    @inlinable static var INCR_WRAP: GLenum { 0x8507 }
 
-    static var DECR_WRAP: GLenum { 0x8508 }
+    @inlinable static var DECR_WRAP: GLenum { 0x8508 }
 
-    static var VENDOR: GLenum { 0x1F00 }
+    @inlinable static var VENDOR: GLenum { 0x1F00 }
 
-    static var RENDERER: GLenum { 0x1F01 }
+    @inlinable static var RENDERER: GLenum { 0x1F01 }
 
-    static var VERSION: GLenum { 0x1F02 }
+    @inlinable static var VERSION: GLenum { 0x1F02 }
 
-    static var NEAREST: GLenum { 0x2600 }
+    @inlinable static var NEAREST: GLenum { 0x2600 }
 
-    static var LINEAR: GLenum { 0x2601 }
+    @inlinable static var LINEAR: GLenum { 0x2601 }
 
-    static var NEAREST_MIPMAP_NEAREST: GLenum { 0x2700 }
+    @inlinable static var NEAREST_MIPMAP_NEAREST: GLenum { 0x2700 }
 
-    static var LINEAR_MIPMAP_NEAREST: GLenum { 0x2701 }
+    @inlinable static var LINEAR_MIPMAP_NEAREST: GLenum { 0x2701 }
 
-    static var NEAREST_MIPMAP_LINEAR: GLenum { 0x2702 }
+    @inlinable static var NEAREST_MIPMAP_LINEAR: GLenum { 0x2702 }
 
-    static var LINEAR_MIPMAP_LINEAR: GLenum { 0x2703 }
+    @inlinable static var LINEAR_MIPMAP_LINEAR: GLenum { 0x2703 }
 
-    static var TEXTURE_MAG_FILTER: GLenum { 0x2800 }
+    @inlinable static var TEXTURE_MAG_FILTER: GLenum { 0x2800 }
 
-    static var TEXTURE_MIN_FILTER: GLenum { 0x2801 }
+    @inlinable static var TEXTURE_MIN_FILTER: GLenum { 0x2801 }
 
-    static var TEXTURE_WRAP_S: GLenum { 0x2802 }
+    @inlinable static var TEXTURE_WRAP_S: GLenum { 0x2802 }
 
-    static var TEXTURE_WRAP_T: GLenum { 0x2803 }
+    @inlinable static var TEXTURE_WRAP_T: GLenum { 0x2803 }
 
-    static var TEXTURE_2D: GLenum { 0x0DE1 }
+    @inlinable static var TEXTURE_2D: GLenum { 0x0DE1 }
 
-    static var TEXTURE: GLenum { 0x1702 }
+    @inlinable static var TEXTURE: GLenum { 0x1702 }
 
-    static var TEXTURE_CUBE_MAP: GLenum { 0x8513 }
+    @inlinable static var TEXTURE_CUBE_MAP: GLenum { 0x8513 }
 
-    static var TEXTURE_BINDING_CUBE_MAP: GLenum { 0x8514 }
+    @inlinable static var TEXTURE_BINDING_CUBE_MAP: GLenum { 0x8514 }
 
-    static var TEXTURE_CUBE_MAP_POSITIVE_X: GLenum { 0x8515 }
+    @inlinable static var TEXTURE_CUBE_MAP_POSITIVE_X: GLenum { 0x8515 }
 
-    static var TEXTURE_CUBE_MAP_NEGATIVE_X: GLenum { 0x8516 }
+    @inlinable static var TEXTURE_CUBE_MAP_NEGATIVE_X: GLenum { 0x8516 }
 
-    static var TEXTURE_CUBE_MAP_POSITIVE_Y: GLenum { 0x8517 }
+    @inlinable static var TEXTURE_CUBE_MAP_POSITIVE_Y: GLenum { 0x8517 }
 
-    static var TEXTURE_CUBE_MAP_NEGATIVE_Y: GLenum { 0x8518 }
+    @inlinable static var TEXTURE_CUBE_MAP_NEGATIVE_Y: GLenum { 0x8518 }
 
-    static var TEXTURE_CUBE_MAP_POSITIVE_Z: GLenum { 0x8519 }
+    @inlinable static var TEXTURE_CUBE_MAP_POSITIVE_Z: GLenum { 0x8519 }
 
-    static var TEXTURE_CUBE_MAP_NEGATIVE_Z: GLenum { 0x851A }
+    @inlinable static var TEXTURE_CUBE_MAP_NEGATIVE_Z: GLenum { 0x851A }
 
-    static var MAX_CUBE_MAP_TEXTURE_SIZE: GLenum { 0x851C }
+    @inlinable static var MAX_CUBE_MAP_TEXTURE_SIZE: GLenum { 0x851C }
 
-    static var TEXTURE0: GLenum { 0x84C0 }
+    @inlinable static var TEXTURE0: GLenum { 0x84C0 }
 
-    static var TEXTURE1: GLenum { 0x84C1 }
+    @inlinable static var TEXTURE1: GLenum { 0x84C1 }
 
-    static var TEXTURE2: GLenum { 0x84C2 }
+    @inlinable static var TEXTURE2: GLenum { 0x84C2 }
 
-    static var TEXTURE3: GLenum { 0x84C3 }
+    @inlinable static var TEXTURE3: GLenum { 0x84C3 }
 
-    static var TEXTURE4: GLenum { 0x84C4 }
+    @inlinable static var TEXTURE4: GLenum { 0x84C4 }
 
-    static var TEXTURE5: GLenum { 0x84C5 }
+    @inlinable static var TEXTURE5: GLenum { 0x84C5 }
 
-    static var TEXTURE6: GLenum { 0x84C6 }
+    @inlinable static var TEXTURE6: GLenum { 0x84C6 }
 
-    static var TEXTURE7: GLenum { 0x84C7 }
+    @inlinable static var TEXTURE7: GLenum { 0x84C7 }
 
-    static var TEXTURE8: GLenum { 0x84C8 }
+    @inlinable static var TEXTURE8: GLenum { 0x84C8 }
 
-    static var TEXTURE9: GLenum { 0x84C9 }
+    @inlinable static var TEXTURE9: GLenum { 0x84C9 }
 
-    static var TEXTURE10: GLenum { 0x84CA }
+    @inlinable static var TEXTURE10: GLenum { 0x84CA }
 
-    static var TEXTURE11: GLenum { 0x84CB }
+    @inlinable static var TEXTURE11: GLenum { 0x84CB }
 
-    static var TEXTURE12: GLenum { 0x84CC }
+    @inlinable static var TEXTURE12: GLenum { 0x84CC }
 
-    static var TEXTURE13: GLenum { 0x84CD }
+    @inlinable static var TEXTURE13: GLenum { 0x84CD }
 
-    static var TEXTURE14: GLenum { 0x84CE }
+    @inlinable static var TEXTURE14: GLenum { 0x84CE }
 
-    static var TEXTURE15: GLenum { 0x84CF }
+    @inlinable static var TEXTURE15: GLenum { 0x84CF }
 
-    static var TEXTURE16: GLenum { 0x84D0 }
+    @inlinable static var TEXTURE16: GLenum { 0x84D0 }
 
-    static var TEXTURE17: GLenum { 0x84D1 }
+    @inlinable static var TEXTURE17: GLenum { 0x84D1 }
 
-    static var TEXTURE18: GLenum { 0x84D2 }
+    @inlinable static var TEXTURE18: GLenum { 0x84D2 }
 
-    static var TEXTURE19: GLenum { 0x84D3 }
+    @inlinable static var TEXTURE19: GLenum { 0x84D3 }
 
-    static var TEXTURE20: GLenum { 0x84D4 }
+    @inlinable static var TEXTURE20: GLenum { 0x84D4 }
 
-    static var TEXTURE21: GLenum { 0x84D5 }
+    @inlinable static var TEXTURE21: GLenum { 0x84D5 }
 
-    static var TEXTURE22: GLenum { 0x84D6 }
+    @inlinable static var TEXTURE22: GLenum { 0x84D6 }
 
-    static var TEXTURE23: GLenum { 0x84D7 }
+    @inlinable static var TEXTURE23: GLenum { 0x84D7 }
 
-    static var TEXTURE24: GLenum { 0x84D8 }
+    @inlinable static var TEXTURE24: GLenum { 0x84D8 }
 
-    static var TEXTURE25: GLenum { 0x84D9 }
+    @inlinable static var TEXTURE25: GLenum { 0x84D9 }
 
-    static var TEXTURE26: GLenum { 0x84DA }
+    @inlinable static var TEXTURE26: GLenum { 0x84DA }
 
-    static var TEXTURE27: GLenum { 0x84DB }
+    @inlinable static var TEXTURE27: GLenum { 0x84DB }
 
-    static var TEXTURE28: GLenum { 0x84DC }
+    @inlinable static var TEXTURE28: GLenum { 0x84DC }
 
-    static var TEXTURE29: GLenum { 0x84DD }
+    @inlinable static var TEXTURE29: GLenum { 0x84DD }
 
-    static var TEXTURE30: GLenum { 0x84DE }
+    @inlinable static var TEXTURE30: GLenum { 0x84DE }
 
-    static var TEXTURE31: GLenum { 0x84DF }
+    @inlinable static var TEXTURE31: GLenum { 0x84DF }
 
-    static var ACTIVE_TEXTURE: GLenum { 0x84E0 }
+    @inlinable static var ACTIVE_TEXTURE: GLenum { 0x84E0 }
 
-    static var REPEAT: GLenum { 0x2901 }
+    @inlinable static var REPEAT: GLenum { 0x2901 }
 
-    static var CLAMP_TO_EDGE: GLenum { 0x812F }
+    @inlinable static var CLAMP_TO_EDGE: GLenum { 0x812F }
 
-    static var MIRRORED_REPEAT: GLenum { 0x8370 }
+    @inlinable static var MIRRORED_REPEAT: GLenum { 0x8370 }
 
-    static var FLOAT_VEC2: GLenum { 0x8B50 }
+    @inlinable static var FLOAT_VEC2: GLenum { 0x8B50 }
 
-    static var FLOAT_VEC3: GLenum { 0x8B51 }
+    @inlinable static var FLOAT_VEC3: GLenum { 0x8B51 }
 
-    static var FLOAT_VEC4: GLenum { 0x8B52 }
+    @inlinable static var FLOAT_VEC4: GLenum { 0x8B52 }
 
-    static var INT_VEC2: GLenum { 0x8B53 }
+    @inlinable static var INT_VEC2: GLenum { 0x8B53 }
 
-    static var INT_VEC3: GLenum { 0x8B54 }
+    @inlinable static var INT_VEC3: GLenum { 0x8B54 }
 
-    static var INT_VEC4: GLenum { 0x8B55 }
+    @inlinable static var INT_VEC4: GLenum { 0x8B55 }
 
-    static var BOOL: GLenum { 0x8B56 }
+    @inlinable static var BOOL: GLenum { 0x8B56 }
 
-    static var BOOL_VEC2: GLenum { 0x8B57 }
+    @inlinable static var BOOL_VEC2: GLenum { 0x8B57 }
 
-    static var BOOL_VEC3: GLenum { 0x8B58 }
+    @inlinable static var BOOL_VEC3: GLenum { 0x8B58 }
 
-    static var BOOL_VEC4: GLenum { 0x8B59 }
+    @inlinable static var BOOL_VEC4: GLenum { 0x8B59 }
 
-    static var FLOAT_MAT2: GLenum { 0x8B5A }
+    @inlinable static var FLOAT_MAT2: GLenum { 0x8B5A }
 
-    static var FLOAT_MAT3: GLenum { 0x8B5B }
+    @inlinable static var FLOAT_MAT3: GLenum { 0x8B5B }
 
-    static var FLOAT_MAT4: GLenum { 0x8B5C }
+    @inlinable static var FLOAT_MAT4: GLenum { 0x8B5C }
 
-    static var SAMPLER_2D: GLenum { 0x8B5E }
+    @inlinable static var SAMPLER_2D: GLenum { 0x8B5E }
 
-    static var SAMPLER_CUBE: GLenum { 0x8B60 }
+    @inlinable static var SAMPLER_CUBE: GLenum { 0x8B60 }
 
-    static var VERTEX_ATTRIB_ARRAY_ENABLED: GLenum { 0x8622 }
+    @inlinable static var VERTEX_ATTRIB_ARRAY_ENABLED: GLenum { 0x8622 }
 
-    static var VERTEX_ATTRIB_ARRAY_SIZE: GLenum { 0x8623 }
+    @inlinable static var VERTEX_ATTRIB_ARRAY_SIZE: GLenum { 0x8623 }
 
-    static var VERTEX_ATTRIB_ARRAY_STRIDE: GLenum { 0x8624 }
+    @inlinable static var VERTEX_ATTRIB_ARRAY_STRIDE: GLenum { 0x8624 }
 
-    static var VERTEX_ATTRIB_ARRAY_TYPE: GLenum { 0x8625 }
+    @inlinable static var VERTEX_ATTRIB_ARRAY_TYPE: GLenum { 0x8625 }
 
-    static var VERTEX_ATTRIB_ARRAY_NORMALIZED: GLenum { 0x886A }
+    @inlinable static var VERTEX_ATTRIB_ARRAY_NORMALIZED: GLenum { 0x886A }
 
-    static var VERTEX_ATTRIB_ARRAY_POINTER: GLenum { 0x8645 }
+    @inlinable static var VERTEX_ATTRIB_ARRAY_POINTER: GLenum { 0x8645 }
 
-    static var VERTEX_ATTRIB_ARRAY_BUFFER_BINDING: GLenum { 0x889F }
+    @inlinable static var VERTEX_ATTRIB_ARRAY_BUFFER_BINDING: GLenum { 0x889F }
 
-    static var IMPLEMENTATION_COLOR_READ_TYPE: GLenum { 0x8B9A }
+    @inlinable static var IMPLEMENTATION_COLOR_READ_TYPE: GLenum { 0x8B9A }
 
-    static var IMPLEMENTATION_COLOR_READ_FORMAT: GLenum { 0x8B9B }
+    @inlinable static var IMPLEMENTATION_COLOR_READ_FORMAT: GLenum { 0x8B9B }
 
-    static var COMPILE_STATUS: GLenum { 0x8B81 }
+    @inlinable static var COMPILE_STATUS: GLenum { 0x8B81 }
 
-    static var LOW_FLOAT: GLenum { 0x8DF0 }
+    @inlinable static var LOW_FLOAT: GLenum { 0x8DF0 }
 
-    static var MEDIUM_FLOAT: GLenum { 0x8DF1 }
+    @inlinable static var MEDIUM_FLOAT: GLenum { 0x8DF1 }
 
-    static var HIGH_FLOAT: GLenum { 0x8DF2 }
+    @inlinable static var HIGH_FLOAT: GLenum { 0x8DF2 }
 
-    static var LOW_INT: GLenum { 0x8DF3 }
+    @inlinable static var LOW_INT: GLenum { 0x8DF3 }
 
-    static var MEDIUM_INT: GLenum { 0x8DF4 }
+    @inlinable static var MEDIUM_INT: GLenum { 0x8DF4 }
 
-    static var HIGH_INT: GLenum { 0x8DF5 }
+    @inlinable static var HIGH_INT: GLenum { 0x8DF5 }
 
-    static var FRAMEBUFFER: GLenum { 0x8D40 }
+    @inlinable static var FRAMEBUFFER: GLenum { 0x8D40 }
 
-    static var RENDERBUFFER: GLenum { 0x8D41 }
+    @inlinable static var RENDERBUFFER: GLenum { 0x8D41 }
 
-    static var RGBA4: GLenum { 0x8056 }
+    @inlinable static var RGBA4: GLenum { 0x8056 }
 
-    static var RGB5_A1: GLenum { 0x8057 }
+    @inlinable static var RGB5_A1: GLenum { 0x8057 }
 
-    static var RGB565: GLenum { 0x8D62 }
+    @inlinable static var RGB565: GLenum { 0x8D62 }
 
-    static var DEPTH_COMPONENT16: GLenum { 0x81A5 }
+    @inlinable static var DEPTH_COMPONENT16: GLenum { 0x81A5 }
 
-    static var STENCIL_INDEX8: GLenum { 0x8D48 }
+    @inlinable static var STENCIL_INDEX8: GLenum { 0x8D48 }
 
-    static var DEPTH_STENCIL: GLenum { 0x84F9 }
+    @inlinable static var DEPTH_STENCIL: GLenum { 0x84F9 }
 
-    static var RENDERBUFFER_WIDTH: GLenum { 0x8D42 }
+    @inlinable static var RENDERBUFFER_WIDTH: GLenum { 0x8D42 }
 
-    static var RENDERBUFFER_HEIGHT: GLenum { 0x8D43 }
+    @inlinable static var RENDERBUFFER_HEIGHT: GLenum { 0x8D43 }
 
-    static var RENDERBUFFER_INTERNAL_FORMAT: GLenum { 0x8D44 }
+    @inlinable static var RENDERBUFFER_INTERNAL_FORMAT: GLenum { 0x8D44 }
 
-    static var RENDERBUFFER_RED_SIZE: GLenum { 0x8D50 }
+    @inlinable static var RENDERBUFFER_RED_SIZE: GLenum { 0x8D50 }
 
-    static var RENDERBUFFER_GREEN_SIZE: GLenum { 0x8D51 }
+    @inlinable static var RENDERBUFFER_GREEN_SIZE: GLenum { 0x8D51 }
 
-    static var RENDERBUFFER_BLUE_SIZE: GLenum { 0x8D52 }
+    @inlinable static var RENDERBUFFER_BLUE_SIZE: GLenum { 0x8D52 }
 
-    static var RENDERBUFFER_ALPHA_SIZE: GLenum { 0x8D53 }
+    @inlinable static var RENDERBUFFER_ALPHA_SIZE: GLenum { 0x8D53 }
 
-    static var RENDERBUFFER_DEPTH_SIZE: GLenum { 0x8D54 }
+    @inlinable static var RENDERBUFFER_DEPTH_SIZE: GLenum { 0x8D54 }
 
-    static var RENDERBUFFER_STENCIL_SIZE: GLenum { 0x8D55 }
+    @inlinable static var RENDERBUFFER_STENCIL_SIZE: GLenum { 0x8D55 }
 
-    static var FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE: GLenum { 0x8CD0 }
+    @inlinable static var FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE: GLenum { 0x8CD0 }
 
-    static var FRAMEBUFFER_ATTACHMENT_OBJECT_NAME: GLenum { 0x8CD1 }
+    @inlinable static var FRAMEBUFFER_ATTACHMENT_OBJECT_NAME: GLenum { 0x8CD1 }
 
-    static var FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL: GLenum { 0x8CD2 }
+    @inlinable static var FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL: GLenum { 0x8CD2 }
 
-    static var FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE: GLenum { 0x8CD3 }
+    @inlinable static var FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE: GLenum { 0x8CD3 }
 
-    static var COLOR_ATTACHMENT0: GLenum { 0x8CE0 }
+    @inlinable static var COLOR_ATTACHMENT0: GLenum { 0x8CE0 }
 
-    static var DEPTH_ATTACHMENT: GLenum { 0x8D00 }
+    @inlinable static var DEPTH_ATTACHMENT: GLenum { 0x8D00 }
 
-    static var STENCIL_ATTACHMENT: GLenum { 0x8D20 }
+    @inlinable static var STENCIL_ATTACHMENT: GLenum { 0x8D20 }
 
-    static var DEPTH_STENCIL_ATTACHMENT: GLenum { 0x821A }
+    @inlinable static var DEPTH_STENCIL_ATTACHMENT: GLenum { 0x821A }
 
-    static var NONE: GLenum { 0 }
+    @inlinable static var NONE: GLenum { 0 }
 
-    static var FRAMEBUFFER_COMPLETE: GLenum { 0x8CD5 }
+    @inlinable static var FRAMEBUFFER_COMPLETE: GLenum { 0x8CD5 }
 
-    static var FRAMEBUFFER_INCOMPLETE_ATTACHMENT: GLenum { 0x8CD6 }
+    @inlinable static var FRAMEBUFFER_INCOMPLETE_ATTACHMENT: GLenum { 0x8CD6 }
 
-    static var FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT: GLenum { 0x8CD7 }
+    @inlinable static var FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT: GLenum { 0x8CD7 }
 
-    static var FRAMEBUFFER_INCOMPLETE_DIMENSIONS: GLenum { 0x8CD9 }
+    @inlinable static var FRAMEBUFFER_INCOMPLETE_DIMENSIONS: GLenum { 0x8CD9 }
 
-    static var FRAMEBUFFER_UNSUPPORTED: GLenum { 0x8CDD }
+    @inlinable static var FRAMEBUFFER_UNSUPPORTED: GLenum { 0x8CDD }
 
-    static var FRAMEBUFFER_BINDING: GLenum { 0x8CA6 }
+    @inlinable static var FRAMEBUFFER_BINDING: GLenum { 0x8CA6 }
 
-    static var RENDERBUFFER_BINDING: GLenum { 0x8CA7 }
+    @inlinable static var RENDERBUFFER_BINDING: GLenum { 0x8CA7 }
 
-    static var MAX_RENDERBUFFER_SIZE: GLenum { 0x84E8 }
+    @inlinable static var MAX_RENDERBUFFER_SIZE: GLenum { 0x84E8 }
 
-    static var INVALID_FRAMEBUFFER_OPERATION: GLenum { 0x0506 }
+    @inlinable static var INVALID_FRAMEBUFFER_OPERATION: GLenum { 0x0506 }
 
-    static var UNPACK_FLIP_Y_WEBGL: GLenum { 0x9240 }
+    @inlinable static var UNPACK_FLIP_Y_WEBGL: GLenum { 0x9240 }
 
-    static var UNPACK_PREMULTIPLY_ALPHA_WEBGL: GLenum { 0x9241 }
+    @inlinable static var UNPACK_PREMULTIPLY_ALPHA_WEBGL: GLenum { 0x9241 }
 
-    static var CONTEXT_LOST_WEBGL: GLenum { 0x9242 }
+    @inlinable static var CONTEXT_LOST_WEBGL: GLenum { 0x9242 }
 
-    static var UNPACK_COLORSPACE_CONVERSION_WEBGL: GLenum { 0x9243 }
+    @inlinable static var UNPACK_COLORSPACE_CONVERSION_WEBGL: GLenum { 0x9243 }
 
-    static var BROWSER_DEFAULT_WEBGL: GLenum { 0x9244 }
+    @inlinable static var BROWSER_DEFAULT_WEBGL: GLenum { 0x9244 }
 
-    var canvas: __UNSUPPORTED_UNION__ { ReadonlyAttribute[Strings.canvas, in: jsObject] }
+    @inlinable var canvas: __UNSUPPORTED_UNION__ { ReadonlyAttribute[Strings.canvas, in: jsObject] }
 
-    var drawingBufferWidth: GLsizei { ReadonlyAttribute[Strings.drawingBufferWidth, in: jsObject] }
+    @inlinable var drawingBufferWidth: GLsizei { ReadonlyAttribute[Strings.drawingBufferWidth, in: jsObject] }
 
-    var drawingBufferHeight: GLsizei { ReadonlyAttribute[Strings.drawingBufferHeight, in: jsObject] }
+    @inlinable var drawingBufferHeight: GLsizei { ReadonlyAttribute[Strings.drawingBufferHeight, in: jsObject] }
 
-    func getContextAttributes() -> WebGLContextAttributes? {
+    @inlinable func getContextAttributes() -> WebGLContextAttributes? {
         let this = jsObject
         return this[Strings.getContextAttributes].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    func isContextLost() -> Bool {
+    @inlinable func isContextLost() -> Bool {
         let this = jsObject
         return this[Strings.isContextLost].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    func getSupportedExtensions() -> [String]? {
+    @inlinable func getSupportedExtensions() -> [String]? {
         let this = jsObject
         return this[Strings.getSupportedExtensions].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    func getExtension(name: String) -> JSObject? {
+    @inlinable func getExtension(name: String) -> JSObject? {
         let this = jsObject
         return this[Strings.getExtension].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    func activeTexture(texture: GLenum) {
+    @inlinable func activeTexture(texture: GLenum) {
         let this = jsObject
         _ = this[Strings.activeTexture].function!(this: this, arguments: [texture.jsValue()])
     }
 
-    func attachShader(program: WebGLProgram, shader: WebGLShader) {
+    @inlinable func attachShader(program: WebGLProgram, shader: WebGLShader) {
         let this = jsObject
         _ = this[Strings.attachShader].function!(this: this, arguments: [program.jsValue(), shader.jsValue()])
     }
 
-    func bindAttribLocation(program: WebGLProgram, index: GLuint, name: String) {
+    @inlinable func bindAttribLocation(program: WebGLProgram, index: GLuint, name: String) {
         let this = jsObject
         _ = this[Strings.bindAttribLocation].function!(this: this, arguments: [program.jsValue(), index.jsValue(), name.jsValue()])
     }
 
-    func bindBuffer(target: GLenum, buffer: WebGLBuffer?) {
+    @inlinable func bindBuffer(target: GLenum, buffer: WebGLBuffer?) {
         let this = jsObject
         _ = this[Strings.bindBuffer].function!(this: this, arguments: [target.jsValue(), buffer.jsValue()])
     }
 
-    func bindFramebuffer(target: GLenum, framebuffer: WebGLFramebuffer?) {
+    @inlinable func bindFramebuffer(target: GLenum, framebuffer: WebGLFramebuffer?) {
         let this = jsObject
         _ = this[Strings.bindFramebuffer].function!(this: this, arguments: [target.jsValue(), framebuffer.jsValue()])
     }
 
-    func bindRenderbuffer(target: GLenum, renderbuffer: WebGLRenderbuffer?) {
+    @inlinable func bindRenderbuffer(target: GLenum, renderbuffer: WebGLRenderbuffer?) {
         let this = jsObject
         _ = this[Strings.bindRenderbuffer].function!(this: this, arguments: [target.jsValue(), renderbuffer.jsValue()])
     }
 
-    func bindTexture(target: GLenum, texture: WebGLTexture?) {
+    @inlinable func bindTexture(target: GLenum, texture: WebGLTexture?) {
         let this = jsObject
         _ = this[Strings.bindTexture].function!(this: this, arguments: [target.jsValue(), texture.jsValue()])
     }
 
-    func blendColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf) {
+    @inlinable func blendColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf) {
         let this = jsObject
         _ = this[Strings.blendColor].function!(this: this, arguments: [red.jsValue(), green.jsValue(), blue.jsValue(), alpha.jsValue()])
     }
 
-    func blendEquation(mode: GLenum) {
+    @inlinable func blendEquation(mode: GLenum) {
         let this = jsObject
         _ = this[Strings.blendEquation].function!(this: this, arguments: [mode.jsValue()])
     }
 
-    func blendEquationSeparate(modeRGB: GLenum, modeAlpha: GLenum) {
+    @inlinable func blendEquationSeparate(modeRGB: GLenum, modeAlpha: GLenum) {
         let this = jsObject
         _ = this[Strings.blendEquationSeparate].function!(this: this, arguments: [modeRGB.jsValue(), modeAlpha.jsValue()])
     }
 
-    func blendFunc(sfactor: GLenum, dfactor: GLenum) {
+    @inlinable func blendFunc(sfactor: GLenum, dfactor: GLenum) {
         let this = jsObject
         _ = this[Strings.blendFunc].function!(this: this, arguments: [sfactor.jsValue(), dfactor.jsValue()])
     }
 
-    func blendFuncSeparate(srcRGB: GLenum, dstRGB: GLenum, srcAlpha: GLenum, dstAlpha: GLenum) {
+    @inlinable func blendFuncSeparate(srcRGB: GLenum, dstRGB: GLenum, srcAlpha: GLenum, dstAlpha: GLenum) {
         let this = jsObject
         _ = this[Strings.blendFuncSeparate].function!(this: this, arguments: [srcRGB.jsValue(), dstRGB.jsValue(), srcAlpha.jsValue(), dstAlpha.jsValue()])
     }
 
-    func checkFramebufferStatus(target: GLenum) -> GLenum {
+    @inlinable func checkFramebufferStatus(target: GLenum) -> GLenum {
         let this = jsObject
         return this[Strings.checkFramebufferStatus].function!(this: this, arguments: [target.jsValue()]).fromJSValue()!
     }
 
-    func clear(mask: GLbitfield) {
+    @inlinable func clear(mask: GLbitfield) {
         let this = jsObject
         _ = this[Strings.clear].function!(this: this, arguments: [mask.jsValue()])
     }
 
-    func clearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf) {
+    @inlinable func clearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf) {
         let this = jsObject
         _ = this[Strings.clearColor].function!(this: this, arguments: [red.jsValue(), green.jsValue(), blue.jsValue(), alpha.jsValue()])
     }
 
-    func clearDepth(depth: GLclampf) {
+    @inlinable func clearDepth(depth: GLclampf) {
         let this = jsObject
         _ = this[Strings.clearDepth].function!(this: this, arguments: [depth.jsValue()])
     }
 
-    func clearStencil(s: GLint) {
+    @inlinable func clearStencil(s: GLint) {
         let this = jsObject
         _ = this[Strings.clearStencil].function!(this: this, arguments: [s.jsValue()])
     }
 
-    func colorMask(red: GLboolean, green: GLboolean, blue: GLboolean, alpha: GLboolean) {
+    @inlinable func colorMask(red: GLboolean, green: GLboolean, blue: GLboolean, alpha: GLboolean) {
         let this = jsObject
         _ = this[Strings.colorMask].function!(this: this, arguments: [red.jsValue(), green.jsValue(), blue.jsValue(), alpha.jsValue()])
     }
 
-    func compileShader(shader: WebGLShader) {
+    @inlinable func compileShader(shader: WebGLShader) {
         let this = jsObject
         _ = this[Strings.compileShader].function!(this: this, arguments: [shader.jsValue()])
     }
 
-    func copyTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, x: GLint, y: GLint, width: GLsizei, height: GLsizei, border: GLint) {
+    @inlinable func copyTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, x: GLint, y: GLint, width: GLsizei, height: GLsizei, border: GLint) {
         let _arg0 = target.jsValue()
         let _arg1 = level.jsValue()
         let _arg2 = internalformat.jsValue()
@@ -731,7 +731,7 @@ public extension WebGLRenderingContextBase {
         _ = this[Strings.copyTexImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
     }
 
-    func copyTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
+    @inlinable func copyTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
         let _arg0 = target.jsValue()
         let _arg1 = level.jsValue()
         let _arg2 = xoffset.jsValue()
@@ -744,462 +744,462 @@ public extension WebGLRenderingContextBase {
         _ = this[Strings.copyTexSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
     }
 
-    func createBuffer() -> WebGLBuffer? {
+    @inlinable func createBuffer() -> WebGLBuffer? {
         let this = jsObject
         return this[Strings.createBuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    func createFramebuffer() -> WebGLFramebuffer? {
+    @inlinable func createFramebuffer() -> WebGLFramebuffer? {
         let this = jsObject
         return this[Strings.createFramebuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    func createProgram() -> WebGLProgram? {
+    @inlinable func createProgram() -> WebGLProgram? {
         let this = jsObject
         return this[Strings.createProgram].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    func createRenderbuffer() -> WebGLRenderbuffer? {
+    @inlinable func createRenderbuffer() -> WebGLRenderbuffer? {
         let this = jsObject
         return this[Strings.createRenderbuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    func createShader(type: GLenum) -> WebGLShader? {
+    @inlinable func createShader(type: GLenum) -> WebGLShader? {
         let this = jsObject
         return this[Strings.createShader].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
-    func createTexture() -> WebGLTexture? {
+    @inlinable func createTexture() -> WebGLTexture? {
         let this = jsObject
         return this[Strings.createTexture].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    func cullFace(mode: GLenum) {
+    @inlinable func cullFace(mode: GLenum) {
         let this = jsObject
         _ = this[Strings.cullFace].function!(this: this, arguments: [mode.jsValue()])
     }
 
-    func deleteBuffer(buffer: WebGLBuffer?) {
+    @inlinable func deleteBuffer(buffer: WebGLBuffer?) {
         let this = jsObject
         _ = this[Strings.deleteBuffer].function!(this: this, arguments: [buffer.jsValue()])
     }
 
-    func deleteFramebuffer(framebuffer: WebGLFramebuffer?) {
+    @inlinable func deleteFramebuffer(framebuffer: WebGLFramebuffer?) {
         let this = jsObject
         _ = this[Strings.deleteFramebuffer].function!(this: this, arguments: [framebuffer.jsValue()])
     }
 
-    func deleteProgram(program: WebGLProgram?) {
+    @inlinable func deleteProgram(program: WebGLProgram?) {
         let this = jsObject
         _ = this[Strings.deleteProgram].function!(this: this, arguments: [program.jsValue()])
     }
 
-    func deleteRenderbuffer(renderbuffer: WebGLRenderbuffer?) {
+    @inlinable func deleteRenderbuffer(renderbuffer: WebGLRenderbuffer?) {
         let this = jsObject
         _ = this[Strings.deleteRenderbuffer].function!(this: this, arguments: [renderbuffer.jsValue()])
     }
 
-    func deleteShader(shader: WebGLShader?) {
+    @inlinable func deleteShader(shader: WebGLShader?) {
         let this = jsObject
         _ = this[Strings.deleteShader].function!(this: this, arguments: [shader.jsValue()])
     }
 
-    func deleteTexture(texture: WebGLTexture?) {
+    @inlinable func deleteTexture(texture: WebGLTexture?) {
         let this = jsObject
         _ = this[Strings.deleteTexture].function!(this: this, arguments: [texture.jsValue()])
     }
 
-    func depthFunc(func: GLenum) {
+    @inlinable func depthFunc(func: GLenum) {
         let this = jsObject
         _ = this[Strings.depthFunc].function!(this: this, arguments: [`func`.jsValue()])
     }
 
-    func depthMask(flag: GLboolean) {
+    @inlinable func depthMask(flag: GLboolean) {
         let this = jsObject
         _ = this[Strings.depthMask].function!(this: this, arguments: [flag.jsValue()])
     }
 
-    func depthRange(zNear: GLclampf, zFar: GLclampf) {
+    @inlinable func depthRange(zNear: GLclampf, zFar: GLclampf) {
         let this = jsObject
         _ = this[Strings.depthRange].function!(this: this, arguments: [zNear.jsValue(), zFar.jsValue()])
     }
 
-    func detachShader(program: WebGLProgram, shader: WebGLShader) {
+    @inlinable func detachShader(program: WebGLProgram, shader: WebGLShader) {
         let this = jsObject
         _ = this[Strings.detachShader].function!(this: this, arguments: [program.jsValue(), shader.jsValue()])
     }
 
-    func disable(cap: GLenum) {
+    @inlinable func disable(cap: GLenum) {
         let this = jsObject
         _ = this[Strings.disable].function!(this: this, arguments: [cap.jsValue()])
     }
 
-    func disableVertexAttribArray(index: GLuint) {
+    @inlinable func disableVertexAttribArray(index: GLuint) {
         let this = jsObject
         _ = this[Strings.disableVertexAttribArray].function!(this: this, arguments: [index.jsValue()])
     }
 
-    func drawArrays(mode: GLenum, first: GLint, count: GLsizei) {
+    @inlinable func drawArrays(mode: GLenum, first: GLint, count: GLsizei) {
         let this = jsObject
         _ = this[Strings.drawArrays].function!(this: this, arguments: [mode.jsValue(), first.jsValue(), count.jsValue()])
     }
 
-    func drawElements(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr) {
+    @inlinable func drawElements(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr) {
         let this = jsObject
         _ = this[Strings.drawElements].function!(this: this, arguments: [mode.jsValue(), count.jsValue(), type.jsValue(), offset.jsValue()])
     }
 
-    func enable(cap: GLenum) {
+    @inlinable func enable(cap: GLenum) {
         let this = jsObject
         _ = this[Strings.enable].function!(this: this, arguments: [cap.jsValue()])
     }
 
-    func enableVertexAttribArray(index: GLuint) {
+    @inlinable func enableVertexAttribArray(index: GLuint) {
         let this = jsObject
         _ = this[Strings.enableVertexAttribArray].function!(this: this, arguments: [index.jsValue()])
     }
 
-    func finish() {
+    @inlinable func finish() {
         let this = jsObject
         _ = this[Strings.finish].function!(this: this, arguments: [])
     }
 
-    func flush() {
+    @inlinable func flush() {
         let this = jsObject
         _ = this[Strings.flush].function!(this: this, arguments: [])
     }
 
-    func framebufferRenderbuffer(target: GLenum, attachment: GLenum, renderbuffertarget: GLenum, renderbuffer: WebGLRenderbuffer?) {
+    @inlinable func framebufferRenderbuffer(target: GLenum, attachment: GLenum, renderbuffertarget: GLenum, renderbuffer: WebGLRenderbuffer?) {
         let this = jsObject
         _ = this[Strings.framebufferRenderbuffer].function!(this: this, arguments: [target.jsValue(), attachment.jsValue(), renderbuffertarget.jsValue(), renderbuffer.jsValue()])
     }
 
-    func framebufferTexture2D(target: GLenum, attachment: GLenum, textarget: GLenum, texture: WebGLTexture?, level: GLint) {
+    @inlinable func framebufferTexture2D(target: GLenum, attachment: GLenum, textarget: GLenum, texture: WebGLTexture?, level: GLint) {
         let this = jsObject
         _ = this[Strings.framebufferTexture2D].function!(this: this, arguments: [target.jsValue(), attachment.jsValue(), textarget.jsValue(), texture.jsValue(), level.jsValue()])
     }
 
-    func frontFace(mode: GLenum) {
+    @inlinable func frontFace(mode: GLenum) {
         let this = jsObject
         _ = this[Strings.frontFace].function!(this: this, arguments: [mode.jsValue()])
     }
 
-    func generateMipmap(target: GLenum) {
+    @inlinable func generateMipmap(target: GLenum) {
         let this = jsObject
         _ = this[Strings.generateMipmap].function!(this: this, arguments: [target.jsValue()])
     }
 
-    func getActiveAttrib(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
+    @inlinable func getActiveAttrib(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
         let this = jsObject
         return this[Strings.getActiveAttrib].function!(this: this, arguments: [program.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    func getActiveUniform(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
+    @inlinable func getActiveUniform(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
         let this = jsObject
         return this[Strings.getActiveUniform].function!(this: this, arguments: [program.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    func getAttachedShaders(program: WebGLProgram) -> [WebGLShader]? {
+    @inlinable func getAttachedShaders(program: WebGLProgram) -> [WebGLShader]? {
         let this = jsObject
         return this[Strings.getAttachedShaders].function!(this: this, arguments: [program.jsValue()]).fromJSValue()!
     }
 
-    func getAttribLocation(program: WebGLProgram, name: String) -> GLint {
+    @inlinable func getAttribLocation(program: WebGLProgram, name: String) -> GLint {
         let this = jsObject
         return this[Strings.getAttribLocation].function!(this: this, arguments: [program.jsValue(), name.jsValue()]).fromJSValue()!
     }
 
-    func getBufferParameter(target: GLenum, pname: GLenum) -> JSValue {
+    @inlinable func getBufferParameter(target: GLenum, pname: GLenum) -> JSValue {
         let this = jsObject
         return this[Strings.getBufferParameter].function!(this: this, arguments: [target.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
-    func getParameter(pname: GLenum) -> JSValue {
+    @inlinable func getParameter(pname: GLenum) -> JSValue {
         let this = jsObject
         return this[Strings.getParameter].function!(this: this, arguments: [pname.jsValue()]).fromJSValue()!
     }
 
-    func getError() -> GLenum {
+    @inlinable func getError() -> GLenum {
         let this = jsObject
         return this[Strings.getError].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    func getFramebufferAttachmentParameter(target: GLenum, attachment: GLenum, pname: GLenum) -> JSValue {
+    @inlinable func getFramebufferAttachmentParameter(target: GLenum, attachment: GLenum, pname: GLenum) -> JSValue {
         let this = jsObject
         return this[Strings.getFramebufferAttachmentParameter].function!(this: this, arguments: [target.jsValue(), attachment.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
-    func getProgramParameter(program: WebGLProgram, pname: GLenum) -> JSValue {
+    @inlinable func getProgramParameter(program: WebGLProgram, pname: GLenum) -> JSValue {
         let this = jsObject
         return this[Strings.getProgramParameter].function!(this: this, arguments: [program.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
-    func getProgramInfoLog(program: WebGLProgram) -> String? {
+    @inlinable func getProgramInfoLog(program: WebGLProgram) -> String? {
         let this = jsObject
         return this[Strings.getProgramInfoLog].function!(this: this, arguments: [program.jsValue()]).fromJSValue()!
     }
 
-    func getRenderbufferParameter(target: GLenum, pname: GLenum) -> JSValue {
+    @inlinable func getRenderbufferParameter(target: GLenum, pname: GLenum) -> JSValue {
         let this = jsObject
         return this[Strings.getRenderbufferParameter].function!(this: this, arguments: [target.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
-    func getShaderParameter(shader: WebGLShader, pname: GLenum) -> JSValue {
+    @inlinable func getShaderParameter(shader: WebGLShader, pname: GLenum) -> JSValue {
         let this = jsObject
         return this[Strings.getShaderParameter].function!(this: this, arguments: [shader.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
-    func getShaderPrecisionFormat(shadertype: GLenum, precisiontype: GLenum) -> WebGLShaderPrecisionFormat? {
+    @inlinable func getShaderPrecisionFormat(shadertype: GLenum, precisiontype: GLenum) -> WebGLShaderPrecisionFormat? {
         let this = jsObject
         return this[Strings.getShaderPrecisionFormat].function!(this: this, arguments: [shadertype.jsValue(), precisiontype.jsValue()]).fromJSValue()!
     }
 
-    func getShaderInfoLog(shader: WebGLShader) -> String? {
+    @inlinable func getShaderInfoLog(shader: WebGLShader) -> String? {
         let this = jsObject
         return this[Strings.getShaderInfoLog].function!(this: this, arguments: [shader.jsValue()]).fromJSValue()!
     }
 
-    func getShaderSource(shader: WebGLShader) -> String? {
+    @inlinable func getShaderSource(shader: WebGLShader) -> String? {
         let this = jsObject
         return this[Strings.getShaderSource].function!(this: this, arguments: [shader.jsValue()]).fromJSValue()!
     }
 
-    func getTexParameter(target: GLenum, pname: GLenum) -> JSValue {
+    @inlinable func getTexParameter(target: GLenum, pname: GLenum) -> JSValue {
         let this = jsObject
         return this[Strings.getTexParameter].function!(this: this, arguments: [target.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
-    func getUniform(program: WebGLProgram, location: WebGLUniformLocation) -> JSValue {
+    @inlinable func getUniform(program: WebGLProgram, location: WebGLUniformLocation) -> JSValue {
         let this = jsObject
         return this[Strings.getUniform].function!(this: this, arguments: [program.jsValue(), location.jsValue()]).fromJSValue()!
     }
 
-    func getUniformLocation(program: WebGLProgram, name: String) -> WebGLUniformLocation? {
+    @inlinable func getUniformLocation(program: WebGLProgram, name: String) -> WebGLUniformLocation? {
         let this = jsObject
         return this[Strings.getUniformLocation].function!(this: this, arguments: [program.jsValue(), name.jsValue()]).fromJSValue()!
     }
 
-    func getVertexAttrib(index: GLuint, pname: GLenum) -> JSValue {
+    @inlinable func getVertexAttrib(index: GLuint, pname: GLenum) -> JSValue {
         let this = jsObject
         return this[Strings.getVertexAttrib].function!(this: this, arguments: [index.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
-    func getVertexAttribOffset(index: GLuint, pname: GLenum) -> GLintptr {
+    @inlinable func getVertexAttribOffset(index: GLuint, pname: GLenum) -> GLintptr {
         let this = jsObject
         return this[Strings.getVertexAttribOffset].function!(this: this, arguments: [index.jsValue(), pname.jsValue()]).fromJSValue()!
     }
 
-    func hint(target: GLenum, mode: GLenum) {
+    @inlinable func hint(target: GLenum, mode: GLenum) {
         let this = jsObject
         _ = this[Strings.hint].function!(this: this, arguments: [target.jsValue(), mode.jsValue()])
     }
 
-    func isBuffer(buffer: WebGLBuffer?) -> GLboolean {
+    @inlinable func isBuffer(buffer: WebGLBuffer?) -> GLboolean {
         let this = jsObject
         return this[Strings.isBuffer].function!(this: this, arguments: [buffer.jsValue()]).fromJSValue()!
     }
 
-    func isEnabled(cap: GLenum) -> GLboolean {
+    @inlinable func isEnabled(cap: GLenum) -> GLboolean {
         let this = jsObject
         return this[Strings.isEnabled].function!(this: this, arguments: [cap.jsValue()]).fromJSValue()!
     }
 
-    func isFramebuffer(framebuffer: WebGLFramebuffer?) -> GLboolean {
+    @inlinable func isFramebuffer(framebuffer: WebGLFramebuffer?) -> GLboolean {
         let this = jsObject
         return this[Strings.isFramebuffer].function!(this: this, arguments: [framebuffer.jsValue()]).fromJSValue()!
     }
 
-    func isProgram(program: WebGLProgram?) -> GLboolean {
+    @inlinable func isProgram(program: WebGLProgram?) -> GLboolean {
         let this = jsObject
         return this[Strings.isProgram].function!(this: this, arguments: [program.jsValue()]).fromJSValue()!
     }
 
-    func isRenderbuffer(renderbuffer: WebGLRenderbuffer?) -> GLboolean {
+    @inlinable func isRenderbuffer(renderbuffer: WebGLRenderbuffer?) -> GLboolean {
         let this = jsObject
         return this[Strings.isRenderbuffer].function!(this: this, arguments: [renderbuffer.jsValue()]).fromJSValue()!
     }
 
-    func isShader(shader: WebGLShader?) -> GLboolean {
+    @inlinable func isShader(shader: WebGLShader?) -> GLboolean {
         let this = jsObject
         return this[Strings.isShader].function!(this: this, arguments: [shader.jsValue()]).fromJSValue()!
     }
 
-    func isTexture(texture: WebGLTexture?) -> GLboolean {
+    @inlinable func isTexture(texture: WebGLTexture?) -> GLboolean {
         let this = jsObject
         return this[Strings.isTexture].function!(this: this, arguments: [texture.jsValue()]).fromJSValue()!
     }
 
-    func lineWidth(width: GLfloat) {
+    @inlinable func lineWidth(width: GLfloat) {
         let this = jsObject
         _ = this[Strings.lineWidth].function!(this: this, arguments: [width.jsValue()])
     }
 
-    func linkProgram(program: WebGLProgram) {
+    @inlinable func linkProgram(program: WebGLProgram) {
         let this = jsObject
         _ = this[Strings.linkProgram].function!(this: this, arguments: [program.jsValue()])
     }
 
-    func pixelStorei(pname: GLenum, param: GLint) {
+    @inlinable func pixelStorei(pname: GLenum, param: GLint) {
         let this = jsObject
         _ = this[Strings.pixelStorei].function!(this: this, arguments: [pname.jsValue(), param.jsValue()])
     }
 
-    func polygonOffset(factor: GLfloat, units: GLfloat) {
+    @inlinable func polygonOffset(factor: GLfloat, units: GLfloat) {
         let this = jsObject
         _ = this[Strings.polygonOffset].function!(this: this, arguments: [factor.jsValue(), units.jsValue()])
     }
 
-    func renderbufferStorage(target: GLenum, internalformat: GLenum, width: GLsizei, height: GLsizei) {
+    @inlinable func renderbufferStorage(target: GLenum, internalformat: GLenum, width: GLsizei, height: GLsizei) {
         let this = jsObject
         _ = this[Strings.renderbufferStorage].function!(this: this, arguments: [target.jsValue(), internalformat.jsValue(), width.jsValue(), height.jsValue()])
     }
 
-    func sampleCoverage(value: GLclampf, invert: GLboolean) {
+    @inlinable func sampleCoverage(value: GLclampf, invert: GLboolean) {
         let this = jsObject
         _ = this[Strings.sampleCoverage].function!(this: this, arguments: [value.jsValue(), invert.jsValue()])
     }
 
-    func scissor(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
+    @inlinable func scissor(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
         let this = jsObject
         _ = this[Strings.scissor].function!(this: this, arguments: [x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue()])
     }
 
-    func shaderSource(shader: WebGLShader, source: String) {
+    @inlinable func shaderSource(shader: WebGLShader, source: String) {
         let this = jsObject
         _ = this[Strings.shaderSource].function!(this: this, arguments: [shader.jsValue(), source.jsValue()])
     }
 
-    func stencilFunc(func: GLenum, ref: GLint, mask: GLuint) {
+    @inlinable func stencilFunc(func: GLenum, ref: GLint, mask: GLuint) {
         let this = jsObject
         _ = this[Strings.stencilFunc].function!(this: this, arguments: [`func`.jsValue(), ref.jsValue(), mask.jsValue()])
     }
 
-    func stencilFuncSeparate(face: GLenum, func: GLenum, ref: GLint, mask: GLuint) {
+    @inlinable func stencilFuncSeparate(face: GLenum, func: GLenum, ref: GLint, mask: GLuint) {
         let this = jsObject
         _ = this[Strings.stencilFuncSeparate].function!(this: this, arguments: [face.jsValue(), `func`.jsValue(), ref.jsValue(), mask.jsValue()])
     }
 
-    func stencilMask(mask: GLuint) {
+    @inlinable func stencilMask(mask: GLuint) {
         let this = jsObject
         _ = this[Strings.stencilMask].function!(this: this, arguments: [mask.jsValue()])
     }
 
-    func stencilMaskSeparate(face: GLenum, mask: GLuint) {
+    @inlinable func stencilMaskSeparate(face: GLenum, mask: GLuint) {
         let this = jsObject
         _ = this[Strings.stencilMaskSeparate].function!(this: this, arguments: [face.jsValue(), mask.jsValue()])
     }
 
-    func stencilOp(fail: GLenum, zfail: GLenum, zpass: GLenum) {
+    @inlinable func stencilOp(fail: GLenum, zfail: GLenum, zpass: GLenum) {
         let this = jsObject
         _ = this[Strings.stencilOp].function!(this: this, arguments: [fail.jsValue(), zfail.jsValue(), zpass.jsValue()])
     }
 
-    func stencilOpSeparate(face: GLenum, fail: GLenum, zfail: GLenum, zpass: GLenum) {
+    @inlinable func stencilOpSeparate(face: GLenum, fail: GLenum, zfail: GLenum, zpass: GLenum) {
         let this = jsObject
         _ = this[Strings.stencilOpSeparate].function!(this: this, arguments: [face.jsValue(), fail.jsValue(), zfail.jsValue(), zpass.jsValue()])
     }
 
-    func texParameterf(target: GLenum, pname: GLenum, param: GLfloat) {
+    @inlinable func texParameterf(target: GLenum, pname: GLenum, param: GLfloat) {
         let this = jsObject
         _ = this[Strings.texParameterf].function!(this: this, arguments: [target.jsValue(), pname.jsValue(), param.jsValue()])
     }
 
-    func texParameteri(target: GLenum, pname: GLenum, param: GLint) {
+    @inlinable func texParameteri(target: GLenum, pname: GLenum, param: GLint) {
         let this = jsObject
         _ = this[Strings.texParameteri].function!(this: this, arguments: [target.jsValue(), pname.jsValue(), param.jsValue()])
     }
 
-    func uniform1f(location: WebGLUniformLocation?, x: GLfloat) {
+    @inlinable func uniform1f(location: WebGLUniformLocation?, x: GLfloat) {
         let this = jsObject
         _ = this[Strings.uniform1f].function!(this: this, arguments: [location.jsValue(), x.jsValue()])
     }
 
-    func uniform2f(location: WebGLUniformLocation?, x: GLfloat, y: GLfloat) {
+    @inlinable func uniform2f(location: WebGLUniformLocation?, x: GLfloat, y: GLfloat) {
         let this = jsObject
         _ = this[Strings.uniform2f].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue()])
     }
 
-    func uniform3f(location: WebGLUniformLocation?, x: GLfloat, y: GLfloat, z: GLfloat) {
+    @inlinable func uniform3f(location: WebGLUniformLocation?, x: GLfloat, y: GLfloat, z: GLfloat) {
         let this = jsObject
         _ = this[Strings.uniform3f].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
-    func uniform4f(location: WebGLUniformLocation?, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat) {
+    @inlinable func uniform4f(location: WebGLUniformLocation?, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat) {
         let this = jsObject
         _ = this[Strings.uniform4f].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue(), w.jsValue()])
     }
 
-    func uniform1i(location: WebGLUniformLocation?, x: GLint) {
+    @inlinable func uniform1i(location: WebGLUniformLocation?, x: GLint) {
         let this = jsObject
         _ = this[Strings.uniform1i].function!(this: this, arguments: [location.jsValue(), x.jsValue()])
     }
 
-    func uniform2i(location: WebGLUniformLocation?, x: GLint, y: GLint) {
+    @inlinable func uniform2i(location: WebGLUniformLocation?, x: GLint, y: GLint) {
         let this = jsObject
         _ = this[Strings.uniform2i].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue()])
     }
 
-    func uniform3i(location: WebGLUniformLocation?, x: GLint, y: GLint, z: GLint) {
+    @inlinable func uniform3i(location: WebGLUniformLocation?, x: GLint, y: GLint, z: GLint) {
         let this = jsObject
         _ = this[Strings.uniform3i].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
-    func uniform4i(location: WebGLUniformLocation?, x: GLint, y: GLint, z: GLint, w: GLint) {
+    @inlinable func uniform4i(location: WebGLUniformLocation?, x: GLint, y: GLint, z: GLint, w: GLint) {
         let this = jsObject
         _ = this[Strings.uniform4i].function!(this: this, arguments: [location.jsValue(), x.jsValue(), y.jsValue(), z.jsValue(), w.jsValue()])
     }
 
-    func useProgram(program: WebGLProgram?) {
+    @inlinable func useProgram(program: WebGLProgram?) {
         let this = jsObject
         _ = this[Strings.useProgram].function!(this: this, arguments: [program.jsValue()])
     }
 
-    func validateProgram(program: WebGLProgram) {
+    @inlinable func validateProgram(program: WebGLProgram) {
         let this = jsObject
         _ = this[Strings.validateProgram].function!(this: this, arguments: [program.jsValue()])
     }
 
-    func vertexAttrib1f(index: GLuint, x: GLfloat) {
+    @inlinable func vertexAttrib1f(index: GLuint, x: GLfloat) {
         let this = jsObject
         _ = this[Strings.vertexAttrib1f].function!(this: this, arguments: [index.jsValue(), x.jsValue()])
     }
 
-    func vertexAttrib2f(index: GLuint, x: GLfloat, y: GLfloat) {
+    @inlinable func vertexAttrib2f(index: GLuint, x: GLfloat, y: GLfloat) {
         let this = jsObject
         _ = this[Strings.vertexAttrib2f].function!(this: this, arguments: [index.jsValue(), x.jsValue(), y.jsValue()])
     }
 
-    func vertexAttrib3f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat) {
+    @inlinable func vertexAttrib3f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat) {
         let this = jsObject
         _ = this[Strings.vertexAttrib3f].function!(this: this, arguments: [index.jsValue(), x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
-    func vertexAttrib4f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat) {
+    @inlinable func vertexAttrib4f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat) {
         let this = jsObject
         _ = this[Strings.vertexAttrib4f].function!(this: this, arguments: [index.jsValue(), x.jsValue(), y.jsValue(), z.jsValue(), w.jsValue()])
     }
 
-    func vertexAttrib1fv(index: GLuint, values: Float32List) {
+    @inlinable func vertexAttrib1fv(index: GLuint, values: Float32List) {
         let this = jsObject
         _ = this[Strings.vertexAttrib1fv].function!(this: this, arguments: [index.jsValue(), values.jsValue()])
     }
 
-    func vertexAttrib2fv(index: GLuint, values: Float32List) {
+    @inlinable func vertexAttrib2fv(index: GLuint, values: Float32List) {
         let this = jsObject
         _ = this[Strings.vertexAttrib2fv].function!(this: this, arguments: [index.jsValue(), values.jsValue()])
     }
 
-    func vertexAttrib3fv(index: GLuint, values: Float32List) {
+    @inlinable func vertexAttrib3fv(index: GLuint, values: Float32List) {
         let this = jsObject
         _ = this[Strings.vertexAttrib3fv].function!(this: this, arguments: [index.jsValue(), values.jsValue()])
     }
 
-    func vertexAttrib4fv(index: GLuint, values: Float32List) {
+    @inlinable func vertexAttrib4fv(index: GLuint, values: Float32List) {
         let this = jsObject
         _ = this[Strings.vertexAttrib4fv].function!(this: this, arguments: [index.jsValue(), values.jsValue()])
     }
 
-    func vertexAttribPointer(index: GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: GLintptr) {
+    @inlinable func vertexAttribPointer(index: GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: GLintptr) {
         let _arg0 = index.jsValue()
         let _arg1 = size.jsValue()
         let _arg2 = type.jsValue()
@@ -1210,18 +1210,18 @@ public extension WebGLRenderingContextBase {
         _ = this[Strings.vertexAttribPointer].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 
-    func viewport(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
+    @inlinable func viewport(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
         let this = jsObject
         _ = this[Strings.viewport].function!(this: this, arguments: [x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue()])
     }
 
-    func makeXRCompatible() -> JSPromise {
+    @inlinable func makeXRCompatible() -> JSPromise {
         let this = jsObject
         return this[Strings.makeXRCompatible].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func makeXRCompatible() async throws {
+    @inlinable func makeXRCompatible() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.makeXRCompatible].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

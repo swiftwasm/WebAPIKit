@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VisualViewport: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.VisualViewport].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.VisualViewport].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _offsetLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetLeft)

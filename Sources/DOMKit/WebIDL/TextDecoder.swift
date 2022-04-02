@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextDecoder: JSBridgedClass, TextDecoderCommon {
-    public class var constructor: JSFunction { JSObject.global[Strings.TextDecoder].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TextDecoder].function! }
 
     public let jsObject: JSObject
 
@@ -12,11 +12,11 @@ public class TextDecoder: JSBridgedClass, TextDecoderCommon {
         self.jsObject = jsObject
     }
 
-    public convenience init(label: String? = nil, options: TextDecoderOptions? = nil) {
+    @inlinable public convenience init(label: String? = nil, options: TextDecoderOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [label?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
     }
 
-    public func decode(input: BufferSource? = nil, options: TextDecodeOptions? = nil) -> String {
+    @inlinable public func decode(input: BufferSource? = nil, options: TextDecodeOptions? = nil) -> String {
         let this = jsObject
         return this[Strings.decode].function!(this: this, arguments: [input?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
     }

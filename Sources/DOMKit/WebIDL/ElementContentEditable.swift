@@ -5,24 +5,24 @@ import JavaScriptKit
 
 public protocol ElementContentEditable: JSBridgedClass {}
 public extension ElementContentEditable {
-    var contentEditable: String {
+    @inlinable var contentEditable: String {
         get { ReadWriteAttribute[Strings.contentEditable, in: jsObject] }
         set { ReadWriteAttribute[Strings.contentEditable, in: jsObject] = newValue }
     }
 
-    var enterKeyHint: String {
+    @inlinable var enterKeyHint: String {
         get { ReadWriteAttribute[Strings.enterKeyHint, in: jsObject] }
         set { ReadWriteAttribute[Strings.enterKeyHint, in: jsObject] = newValue }
     }
 
-    var isContentEditable: Bool { ReadonlyAttribute[Strings.isContentEditable, in: jsObject] }
+    @inlinable var isContentEditable: Bool { ReadonlyAttribute[Strings.isContentEditable, in: jsObject] }
 
-    var inputMode: String {
+    @inlinable var inputMode: String {
         get { ReadWriteAttribute[Strings.inputMode, in: jsObject] }
         set { ReadWriteAttribute[Strings.inputMode, in: jsObject] = newValue }
     }
 
-    var virtualKeyboardPolicy: String {
+    @inlinable var virtualKeyboardPolicy: String {
         get { ReadWriteAttribute[Strings.virtualKeyboardPolicy, in: jsObject] }
         set { ReadWriteAttribute[Strings.virtualKeyboardPolicy, in: jsObject] = newValue }
     }

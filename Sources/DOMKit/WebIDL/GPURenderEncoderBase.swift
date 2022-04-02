@@ -5,37 +5,37 @@ import JavaScriptKit
 
 public protocol GPURenderEncoderBase: JSBridgedClass {}
 public extension GPURenderEncoderBase {
-    func setPipeline(pipeline: GPURenderPipeline) {
+    @inlinable func setPipeline(pipeline: GPURenderPipeline) {
         let this = jsObject
         _ = this[Strings.setPipeline].function!(this: this, arguments: [pipeline.jsValue()])
     }
 
-    func setIndexBuffer(buffer: GPUBuffer, indexFormat: GPUIndexFormat, offset: GPUSize64? = nil, size: GPUSize64? = nil) {
+    @inlinable func setIndexBuffer(buffer: GPUBuffer, indexFormat: GPUIndexFormat, offset: GPUSize64? = nil, size: GPUSize64? = nil) {
         let this = jsObject
         _ = this[Strings.setIndexBuffer].function!(this: this, arguments: [buffer.jsValue(), indexFormat.jsValue(), offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined])
     }
 
-    func setVertexBuffer(slot: GPUIndex32, buffer: GPUBuffer, offset: GPUSize64? = nil, size: GPUSize64? = nil) {
+    @inlinable func setVertexBuffer(slot: GPUIndex32, buffer: GPUBuffer, offset: GPUSize64? = nil, size: GPUSize64? = nil) {
         let this = jsObject
         _ = this[Strings.setVertexBuffer].function!(this: this, arguments: [slot.jsValue(), buffer.jsValue(), offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined])
     }
 
-    func draw(vertexCount: GPUSize32, instanceCount: GPUSize32? = nil, firstVertex: GPUSize32? = nil, firstInstance: GPUSize32? = nil) {
+    @inlinable func draw(vertexCount: GPUSize32, instanceCount: GPUSize32? = nil, firstVertex: GPUSize32? = nil, firstInstance: GPUSize32? = nil) {
         let this = jsObject
         _ = this[Strings.draw].function!(this: this, arguments: [vertexCount.jsValue(), instanceCount?.jsValue() ?? .undefined, firstVertex?.jsValue() ?? .undefined, firstInstance?.jsValue() ?? .undefined])
     }
 
-    func drawIndexed(indexCount: GPUSize32, instanceCount: GPUSize32? = nil, firstIndex: GPUSize32? = nil, baseVertex: GPUSignedOffset32? = nil, firstInstance: GPUSize32? = nil) {
+    @inlinable func drawIndexed(indexCount: GPUSize32, instanceCount: GPUSize32? = nil, firstIndex: GPUSize32? = nil, baseVertex: GPUSignedOffset32? = nil, firstInstance: GPUSize32? = nil) {
         let this = jsObject
         _ = this[Strings.drawIndexed].function!(this: this, arguments: [indexCount.jsValue(), instanceCount?.jsValue() ?? .undefined, firstIndex?.jsValue() ?? .undefined, baseVertex?.jsValue() ?? .undefined, firstInstance?.jsValue() ?? .undefined])
     }
 
-    func drawIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64) {
+    @inlinable func drawIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64) {
         let this = jsObject
         _ = this[Strings.drawIndirect].function!(this: this, arguments: [indirectBuffer.jsValue(), indirectOffset.jsValue()])
     }
 
-    func drawIndexedIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64) {
+    @inlinable func drawIndexedIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64) {
         let this = jsObject
         _ = this[Strings.drawIndexedIndirect].function!(this: this, arguments: [indirectBuffer.jsValue(), indirectOffset.jsValue()])
     }

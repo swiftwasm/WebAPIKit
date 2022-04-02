@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EventSource: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.EventSource].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.EventSource].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
@@ -16,7 +16,7 @@ public class EventSource: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(url: String, eventSourceInitDict: EventSourceInit? = nil) {
+    @inlinable public convenience init(url: String, eventSourceInitDict: EventSourceInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), eventSourceInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -44,7 +44,7 @@ public class EventSource: EventTarget {
     @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRWebGLSubImage: XRSubImage {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRWebGLSubImage].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRWebGLSubImage].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _colorTexture = ReadonlyAttribute(jsObject: jsObject, name: Strings.colorTexture)

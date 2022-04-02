@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSMathClamp: CSSMathValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSMathClamp].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSMathClamp].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _lower = ReadonlyAttribute(jsObject: jsObject, name: Strings.lower)
@@ -13,7 +13,7 @@ public class CSSMathClamp: CSSMathValue {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(lower: CSSNumberish, value: CSSNumberish, upper: CSSNumberish) {
+    @inlinable public convenience init(lower: CSSNumberish, value: CSSNumberish, upper: CSSNumberish) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [lower.jsValue(), value.jsValue(), upper.jsValue()]))
     }
 

@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SharedWorker: EventTarget, AbstractWorker {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SharedWorker].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SharedWorker].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _port = ReadonlyAttribute(jsObject: jsObject, name: Strings.port)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(scriptURL: String, options: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(scriptURL: String, options: __UNSUPPORTED_UNION__? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioListener: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AudioListener].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioListener].function! }
 
     public let jsObject: JSObject
 
@@ -48,12 +48,12 @@ public class AudioListener: JSBridgedClass {
     @ReadonlyAttribute
     public var upZ: AudioParam
 
-    public func setPosition(x: Float, y: Float, z: Float) {
+    @inlinable public func setPosition(x: Float, y: Float, z: Float) {
         let this = jsObject
         _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
-    public func setOrientation(x: Float, y: Float, z: Float, xUp: Float, yUp: Float, zUp: Float) {
+    @inlinable public func setOrientation(x: Float, y: Float, z: Float, xUp: Float, yUp: Float, zUp: Float) {
         let _arg0 = x.jsValue()
         let _arg1 = y.jsValue()
         let _arg2 = z.jsValue()

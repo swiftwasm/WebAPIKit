@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorAutomationInformation: JSBridgedClass {}
 public extension NavigatorAutomationInformation {
-    var webdriver: Bool { ReadonlyAttribute[Strings.webdriver, in: jsObject] }
+    @inlinable var webdriver: Bool { ReadonlyAttribute[Strings.webdriver, in: jsObject] }
 }

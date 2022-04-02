@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WritableStreamDefaultController: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WritableStreamDefaultController].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WritableStreamDefaultController].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class WritableStreamDefaultController: JSBridgedClass {
     @ReadonlyAttribute
     public var signal: AbortSignal
 
-    public func error(e: JSValue? = nil) {
+    @inlinable public func error(e: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue() ?? .undefined])
     }

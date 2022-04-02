@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSStyleValue: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleValue].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleValue].function! }
 
     public let jsObject: JSObject
 
@@ -12,16 +12,16 @@ public class CSSStyleValue: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public var description: String {
+    @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
     }
 
-    public static func parse(property: String, cssText: String) -> Self {
+    @inlinable public static func parse(property: String, cssText: String) -> Self {
         let this = constructor
         return this[Strings.parse].function!(this: this, arguments: [property.jsValue(), cssText.jsValue()]).fromJSValue()!
     }
 
-    public static func parseAll(property: String, cssText: String) -> [CSSStyleValue] {
+    @inlinable public static func parseAll(property: String, cssText: String) -> [CSSStyleValue] {
         let this = constructor
         return this[Strings.parseAll].function!(this: this, arguments: [property.jsValue(), cssText.jsValue()]).fromJSValue()!
     }

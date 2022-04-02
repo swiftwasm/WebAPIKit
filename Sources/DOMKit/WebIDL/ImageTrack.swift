@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageTrack: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ImageTrack].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ImageTrack].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _animated = ReadonlyAttribute(jsObject: jsObject, name: Strings.animated)

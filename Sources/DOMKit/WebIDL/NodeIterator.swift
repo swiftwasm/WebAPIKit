@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NodeIterator: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.NodeIterator].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.NodeIterator].function! }
 
     public let jsObject: JSObject
 
@@ -30,17 +30,17 @@ public class NodeIterator: JSBridgedClass {
 
     // XXX: member 'filter' is ignored
 
-    public func nextNode() -> Node? {
+    @inlinable public func nextNode() -> Node? {
         let this = jsObject
         return this[Strings.nextNode].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func previousNode() -> Node? {
+    @inlinable public func previousNode() -> Node? {
         let this = jsObject
         return this[Strings.previousNode].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func detach() {
+    @inlinable public func detach() {
         let this = jsObject
         _ = this[Strings.detach].function!(this: this, arguments: [])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCTransformEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCTransformEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCTransformEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _transformer = ReadonlyAttribute(jsObject: jsObject, name: Strings.transformer)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebSocket: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WebSocket].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebSocket].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
@@ -20,7 +20,7 @@ public class WebSocket: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(url: String, protocols: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(url: String, protocols: __UNSUPPORTED_UNION__? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), protocols?.jsValue() ?? .undefined]))
     }
 
@@ -56,7 +56,7 @@ public class WebSocket: EventTarget {
     @ReadonlyAttribute
     public var `protocol`: String
 
-    public func close(code: UInt16? = nil, reason: String? = nil) {
+    @inlinable public func close(code: UInt16? = nil, reason: String? = nil) {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [code?.jsValue() ?? .undefined, reason?.jsValue() ?? .undefined])
     }
@@ -67,7 +67,7 @@ public class WebSocket: EventTarget {
     @ReadWriteAttribute
     public var binaryType: BinaryType
 
-    public func send(data: __UNSUPPORTED_UNION__) {
+    @inlinable public func send(data: __UNSUPPORTED_UNION__) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NavigationEvent: UIEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.NavigationEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.NavigationEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _dir = ReadonlyAttribute(jsObject: jsObject, name: Strings.dir)
@@ -12,7 +12,7 @@ public class NavigationEvent: UIEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: NavigationEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: NavigationEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

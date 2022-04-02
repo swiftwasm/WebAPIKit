@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRLightProbe: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRLightProbe].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRLightProbe].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _probeSpace = ReadonlyAttribute(jsObject: jsObject, name: Strings.probeSpace)

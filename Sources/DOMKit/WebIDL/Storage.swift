@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Storage: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Storage].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Storage].function! }
 
     public let jsObject: JSObject
 
@@ -16,12 +16,12 @@ public class Storage: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public func key(index: UInt32) -> String? {
+    @inlinable public func key(index: UInt32) -> String? {
         let this = jsObject
         return this[Strings.key].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
-    public subscript(key: String) -> String? {
+    @inlinable public subscript(key: String) -> String? {
         jsObject[key].fromJSValue()
     }
 
@@ -29,7 +29,7 @@ public class Storage: JSBridgedClass {
 
     // XXX: unsupported deleter for keys of type String
 
-    public func clear() {
+    @inlinable public func clear() {
         let this = jsObject
         _ = this[Strings.clear].function!(this: this, arguments: [])
     }

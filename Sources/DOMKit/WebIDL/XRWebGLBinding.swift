@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRWebGLBinding: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRWebGLBinding].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRWebGLBinding].function! }
 
     public let jsObject: JSObject
 
@@ -14,17 +14,17 @@ public class XRWebGLBinding: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func getDepthInformation(view: XRView) -> XRWebGLDepthInformation? {
+    @inlinable public func getDepthInformation(view: XRView) -> XRWebGLDepthInformation? {
         let this = jsObject
         return this[Strings.getDepthInformation].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
     }
 
-    public func getReflectionCubeMap(lightProbe: XRLightProbe) -> WebGLTexture? {
+    @inlinable public func getReflectionCubeMap(lightProbe: XRLightProbe) -> WebGLTexture? {
         let this = jsObject
         return this[Strings.getReflectionCubeMap].function!(this: this, arguments: [lightProbe.jsValue()]).fromJSValue()!
     }
 
-    public convenience init(session: XRSession, context: XRWebGLRenderingContext) {
+    @inlinable public convenience init(session: XRSession, context: XRWebGLRenderingContext) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue(), context.jsValue()]))
     }
 
@@ -34,37 +34,37 @@ public class XRWebGLBinding: JSBridgedClass {
     @ReadonlyAttribute
     public var usesDepthValues: Bool
 
-    public func createProjectionLayer(init: XRProjectionLayerInit? = nil) -> XRProjectionLayer {
+    @inlinable public func createProjectionLayer(init: XRProjectionLayerInit? = nil) -> XRProjectionLayer {
         let this = jsObject
         return this[Strings.createProjectionLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func createQuadLayer(init: XRQuadLayerInit? = nil) -> XRQuadLayer {
+    @inlinable public func createQuadLayer(init: XRQuadLayerInit? = nil) -> XRQuadLayer {
         let this = jsObject
         return this[Strings.createQuadLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func createCylinderLayer(init: XRCylinderLayerInit? = nil) -> XRCylinderLayer {
+    @inlinable public func createCylinderLayer(init: XRCylinderLayerInit? = nil) -> XRCylinderLayer {
         let this = jsObject
         return this[Strings.createCylinderLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func createEquirectLayer(init: XREquirectLayerInit? = nil) -> XREquirectLayer {
+    @inlinable public func createEquirectLayer(init: XREquirectLayerInit? = nil) -> XREquirectLayer {
         let this = jsObject
         return this[Strings.createEquirectLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func createCubeLayer(init: XRCubeLayerInit? = nil) -> XRCubeLayer {
+    @inlinable public func createCubeLayer(init: XRCubeLayerInit? = nil) -> XRCubeLayer {
         let this = jsObject
         return this[Strings.createCubeLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func getSubImage(layer: XRCompositionLayer, frame: XRFrame, eye: XREye? = nil) -> XRWebGLSubImage {
+    @inlinable public func getSubImage(layer: XRCompositionLayer, frame: XRFrame, eye: XREye? = nil) -> XRWebGLSubImage {
         let this = jsObject
         return this[Strings.getSubImage].function!(this: this, arguments: [layer.jsValue(), frame.jsValue(), eye?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func getViewSubImage(layer: XRProjectionLayer, view: XRView) -> XRWebGLSubImage {
+    @inlinable public func getViewSubImage(layer: XRProjectionLayer, view: XRView) -> XRWebGLSubImage {
         let this = jsObject
         return this[Strings.getViewSubImage].function!(this: this, arguments: [layer.jsValue(), view.jsValue()]).fromJSValue()!
     }

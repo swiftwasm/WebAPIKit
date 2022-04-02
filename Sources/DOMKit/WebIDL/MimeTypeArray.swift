@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MimeTypeArray: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MimeTypeArray].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MimeTypeArray].function! }
 
     public let jsObject: JSObject
 
@@ -16,11 +16,11 @@ public class MimeTypeArray: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> MimeType? {
+    @inlinable public subscript(key: Int) -> MimeType? {
         jsObject[key].fromJSValue()
     }
 
-    public subscript(key: String) -> MimeType? {
+    @inlinable public subscript(key: String) -> MimeType? {
         jsObject[key].fromJSValue()
     }
 }

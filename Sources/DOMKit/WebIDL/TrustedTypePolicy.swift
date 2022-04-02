@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TrustedTypePolicy: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TrustedTypePolicy].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TrustedTypePolicy].function! }
 
     public let jsObject: JSObject
 
@@ -16,17 +16,17 @@ public class TrustedTypePolicy: JSBridgedClass {
     @ReadonlyAttribute
     public var name: String
 
-    public func createHTML(input: String, arguments: JSValue...) -> TrustedHTML {
+    @inlinable public func createHTML(input: String, arguments: JSValue...) -> TrustedHTML {
         let this = jsObject
         return this[Strings.createHTML].function!(this: this, arguments: [input.jsValue()] + arguments.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func createScript(input: String, arguments: JSValue...) -> TrustedScript {
+    @inlinable public func createScript(input: String, arguments: JSValue...) -> TrustedScript {
         let this = jsObject
         return this[Strings.createScript].function!(this: this, arguments: [input.jsValue()] + arguments.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func createScriptURL(input: String, arguments: JSValue...) -> TrustedScriptURL {
+    @inlinable public func createScriptURL(input: String, arguments: JSValue...) -> TrustedScriptURL {
         let this = jsObject
         return this[Strings.createScriptURL].function!(this: this, arguments: [input.jsValue()] + arguments.map { $0.jsValue() }).fromJSValue()!
     }

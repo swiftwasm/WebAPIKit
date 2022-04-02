@@ -4,13 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLFormControlsCollection: HTMLCollection {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFormControlsCollection].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFormControlsCollection].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public subscript(key: String) -> __UNSUPPORTED_UNION__? {
+    @inlinable public subscript(key: String) -> __UNSUPPORTED_UNION__? {
         jsObject[key].fromJSValue()
     }
 }

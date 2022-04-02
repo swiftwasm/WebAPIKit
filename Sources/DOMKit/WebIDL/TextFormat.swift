@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextFormat: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TextFormat].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TextFormat].function! }
 
     public let jsObject: JSObject
 
@@ -19,7 +19,7 @@ public class TextFormat: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(options: TextFormatInit? = nil) {
+    @inlinable public convenience init(options: TextFormatInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 

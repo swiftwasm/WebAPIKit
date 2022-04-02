@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLTimerQueryEXT: WebGLObject {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WebGLTimerQueryEXT].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLTimerQueryEXT].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

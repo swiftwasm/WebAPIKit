@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CrashReportBody: ReportBody {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CrashReportBody].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CrashReportBody].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _reason = ReadonlyAttribute(jsObject: jsObject, name: Strings.reason)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    override public func toJSON() -> JSObject {
+    @inlinable override public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

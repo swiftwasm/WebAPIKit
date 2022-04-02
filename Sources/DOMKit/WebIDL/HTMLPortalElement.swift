@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLPortalElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLPortalElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLPortalElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
@@ -14,7 +14,7 @@ public class HTMLPortalElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -24,19 +24,19 @@ public class HTMLPortalElement: HTMLElement {
     @ReadWriteAttribute
     public var referrerPolicy: String
 
-    public func activate(options: PortalActivateOptions? = nil) -> JSPromise {
+    @inlinable public func activate(options: PortalActivateOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.activate].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func activate(options: PortalActivateOptions? = nil) async throws {
+    @inlinable public func activate(options: PortalActivateOptions? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.activate].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
+    @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
     }

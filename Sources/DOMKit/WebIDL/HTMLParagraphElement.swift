@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLParagraphElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLParagraphElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLParagraphElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

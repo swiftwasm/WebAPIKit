@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReportBody: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ReportBody].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ReportBody].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class ReportBody: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

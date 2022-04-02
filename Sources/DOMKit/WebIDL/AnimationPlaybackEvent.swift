@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AnimationPlaybackEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AnimationPlaybackEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AnimationPlaybackEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _currentTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentTime)
@@ -12,7 +12,7 @@ public class AnimationPlaybackEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: AnimationPlaybackEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: AnimationPlaybackEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

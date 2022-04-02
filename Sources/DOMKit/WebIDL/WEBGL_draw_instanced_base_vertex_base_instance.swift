@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_draw_instanced_base_vertex_base_instance: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_draw_instanced_base_vertex_base_instance].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_draw_instanced_base_vertex_base_instance].function! }
 
     public let jsObject: JSObject
 
@@ -12,12 +12,12 @@ public class WEBGL_draw_instanced_base_vertex_base_instance: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func drawArraysInstancedBaseInstanceWEBGL(mode: GLenum, first: GLint, count: GLsizei, instanceCount: GLsizei, baseInstance: GLuint) {
+    @inlinable public func drawArraysInstancedBaseInstanceWEBGL(mode: GLenum, first: GLint, count: GLsizei, instanceCount: GLsizei, baseInstance: GLuint) {
         let this = jsObject
         _ = this[Strings.drawArraysInstancedBaseInstanceWEBGL].function!(this: this, arguments: [mode.jsValue(), first.jsValue(), count.jsValue(), instanceCount.jsValue(), baseInstance.jsValue()])
     }
 
-    public func drawElementsInstancedBaseVertexBaseInstanceWEBGL(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr, instanceCount: GLsizei, baseVertex: GLint, baseInstance: GLuint) {
+    @inlinable public func drawElementsInstancedBaseVertexBaseInstanceWEBGL(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr, instanceCount: GLsizei, baseVertex: GLint, baseInstance: GLuint) {
         let _arg0 = mode.jsValue()
         let _arg1 = count.jsValue()
         let _arg2 = type.jsValue()

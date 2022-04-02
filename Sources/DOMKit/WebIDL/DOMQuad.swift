@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMQuad: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DOMQuad].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DOMQuad].function! }
 
     public let jsObject: JSObject
 
@@ -16,16 +16,16 @@ public class DOMQuad: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(p1: DOMPointInit? = nil, p2: DOMPointInit? = nil, p3: DOMPointInit? = nil, p4: DOMPointInit? = nil) {
+    @inlinable public convenience init(p1: DOMPointInit? = nil, p2: DOMPointInit? = nil, p3: DOMPointInit? = nil, p4: DOMPointInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [p1?.jsValue() ?? .undefined, p2?.jsValue() ?? .undefined, p3?.jsValue() ?? .undefined, p4?.jsValue() ?? .undefined]))
     }
 
-    public static func fromRect(other: DOMRectInit? = nil) -> Self {
+    @inlinable public static func fromRect(other: DOMRectInit? = nil) -> Self {
         let this = constructor
         return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public static func fromQuad(other: DOMQuadInit? = nil) -> Self {
+    @inlinable public static func fromQuad(other: DOMQuadInit? = nil) -> Self {
         let this = constructor
         return this[Strings.fromQuad].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
@@ -42,12 +42,12 @@ public class DOMQuad: JSBridgedClass {
     @ReadonlyAttribute
     public var p4: DOMPoint
 
-    public func getBounds() -> DOMRect {
+    @inlinable public func getBounds() -> DOMRect {
         let this = jsObject
         return this[Strings.getBounds].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

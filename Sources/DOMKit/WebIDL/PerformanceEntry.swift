@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceEntry: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PerformanceEntry].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PerformanceEntry].function! }
 
     public let jsObject: JSObject
 
@@ -28,7 +28,7 @@ public class PerformanceEntry: JSBridgedClass {
     @ReadonlyAttribute
     public var duration: DOMHighResTimeStamp
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

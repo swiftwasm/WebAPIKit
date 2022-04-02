@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLOptGroupElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOptGroupElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOptGroupElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _disabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.disabled)
@@ -12,7 +12,7 @@ public class HTMLOptGroupElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

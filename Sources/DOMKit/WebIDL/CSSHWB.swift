@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSHWB: CSSColorValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSHWB].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSHWB].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _h = ReadWriteAttribute(jsObject: jsObject, name: Strings.h)
@@ -14,7 +14,7 @@ public class CSSHWB: CSSColorValue {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(h: CSSNumericValue, w: CSSNumberish, b: CSSNumberish, alpha: CSSNumberish? = nil) {
+    @inlinable public convenience init(h: CSSNumericValue, w: CSSNumberish, b: CSSNumberish, alpha: CSSNumberish? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [h.jsValue(), w.jsValue(), b.jsValue(), alpha?.jsValue() ?? .undefined]))
     }
 

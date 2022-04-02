@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSViewportRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSViewportRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSViewportRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _style = ReadonlyAttribute(jsObject: jsObject, name: Strings.style)

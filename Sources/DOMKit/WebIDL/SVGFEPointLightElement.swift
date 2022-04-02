@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEPointLightElement: SVGElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEPointLightElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEPointLightElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)

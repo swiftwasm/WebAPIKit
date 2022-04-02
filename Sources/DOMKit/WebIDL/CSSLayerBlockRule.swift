@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSLayerBlockRule: CSSGroupingRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSLayerBlockRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSLayerBlockRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)

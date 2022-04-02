@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Profiler: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Profiler].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Profiler].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _sampleInterval = ReadonlyAttribute(jsObject: jsObject, name: Strings.sampleInterval)
@@ -18,17 +18,17 @@ public class Profiler: EventTarget {
     @ReadonlyAttribute
     public var stopped: Bool
 
-    public convenience init(options: ProfilerInitOptions) {
+    @inlinable public convenience init(options: ProfilerInitOptions) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options.jsValue()]))
     }
 
-    public func stop() -> JSPromise {
+    @inlinable public func stop() -> JSPromise {
         let this = jsObject
         return this[Strings.stop].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func stop() async throws -> ProfilerTrace {
+    @inlinable public func stop() async throws -> ProfilerTrace {
         let this = jsObject
         let _promise: JSPromise = this[Strings.stop].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

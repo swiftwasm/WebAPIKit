@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRRigidTransform: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRRigidTransform].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRRigidTransform].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class XRRigidTransform: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(position: DOMPointInit? = nil, orientation: DOMPointInit? = nil) {
+    @inlinable public convenience init(position: DOMPointInit? = nil, orientation: DOMPointInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [position?.jsValue() ?? .undefined, orientation?.jsValue() ?? .undefined]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSRule: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CSSRule].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CSSRule].function! }
 
     public let jsObject: JSObject
 

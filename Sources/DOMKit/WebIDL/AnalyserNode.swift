@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AnalyserNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AnalyserNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AnalyserNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _fftSize = ReadWriteAttribute(jsObject: jsObject, name: Strings.fftSize)
@@ -15,26 +15,26 @@ public class AnalyserNode: AudioNode {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: AnalyserOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: AnalyserOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
-    public func getFloatFrequencyData(array: Float32Array) {
+    @inlinable public func getFloatFrequencyData(array: Float32Array) {
         let this = jsObject
         _ = this[Strings.getFloatFrequencyData].function!(this: this, arguments: [array.jsValue()])
     }
 
-    public func getByteFrequencyData(array: Uint8Array) {
+    @inlinable public func getByteFrequencyData(array: Uint8Array) {
         let this = jsObject
         _ = this[Strings.getByteFrequencyData].function!(this: this, arguments: [array.jsValue()])
     }
 
-    public func getFloatTimeDomainData(array: Float32Array) {
+    @inlinable public func getFloatTimeDomainData(array: Float32Array) {
         let this = jsObject
         _ = this[Strings.getFloatTimeDomainData].function!(this: this, arguments: [array.jsValue()])
     }
 
-    public func getByteTimeDomainData(array: Uint8Array) {
+    @inlinable public func getByteTimeDomainData(array: Uint8Array) {
         let this = jsObject
         _ = this[Strings.getByteTimeDomainData].function!(this: this, arguments: [array.jsValue()])
     }

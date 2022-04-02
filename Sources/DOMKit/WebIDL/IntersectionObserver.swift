@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IntersectionObserver: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.IntersectionObserver].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.IntersectionObserver].function! }
 
     public let jsObject: JSObject
 
@@ -26,22 +26,22 @@ public class IntersectionObserver: JSBridgedClass {
     @ReadonlyAttribute
     public var thresholds: [Double]
 
-    public func observe(target: Element) {
+    @inlinable public func observe(target: Element) {
         let this = jsObject
         _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue()])
     }
 
-    public func unobserve(target: Element) {
+    @inlinable public func unobserve(target: Element) {
         let this = jsObject
         _ = this[Strings.unobserve].function!(this: this, arguments: [target.jsValue()])
     }
 
-    public func disconnect() {
+    @inlinable public func disconnect() {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
-    public func takeRecords() -> [IntersectionObserverEntry] {
+    @inlinable public func takeRecords() -> [IntersectionObserverEntry] {
         let this = jsObject
         return this[Strings.takeRecords].function!(this: this, arguments: []).fromJSValue()!
     }

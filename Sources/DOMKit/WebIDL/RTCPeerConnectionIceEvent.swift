@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCPeerConnectionIceEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCPeerConnectionIceEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCPeerConnectionIceEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _candidate = ReadonlyAttribute(jsObject: jsObject, name: Strings.candidate)
@@ -12,7 +12,7 @@ public class RTCPeerConnectionIceEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: RTCPeerConnectionIceEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: RTCPeerConnectionIceEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

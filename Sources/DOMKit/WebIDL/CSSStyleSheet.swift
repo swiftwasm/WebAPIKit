@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSStyleSheet: StyleSheet {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleSheet].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleSheet].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _ownerRule = ReadonlyAttribute(jsObject: jsObject, name: Strings.ownerRule)
@@ -13,7 +13,7 @@ public class CSSStyleSheet: StyleSheet {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: CSSStyleSheetInit? = nil) {
+    @inlinable public convenience init(options: CSSStyleSheetInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
@@ -23,29 +23,29 @@ public class CSSStyleSheet: StyleSheet {
     @ReadonlyAttribute
     public var cssRules: CSSRuleList
 
-    public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
+    @inlinable public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
         let this = jsObject
         return this[Strings.insertRule].function!(this: this, arguments: [rule.jsValue(), index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func deleteRule(index: UInt32) {
+    @inlinable public func deleteRule(index: UInt32) {
         let this = jsObject
         _ = this[Strings.deleteRule].function!(this: this, arguments: [index.jsValue()])
     }
 
-    public func replace(text: String) -> JSPromise {
+    @inlinable public func replace(text: String) -> JSPromise {
         let this = jsObject
         return this[Strings.replace].function!(this: this, arguments: [text.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func replace(text: String) async throws -> CSSStyleSheet {
+    @inlinable public func replace(text: String) async throws -> CSSStyleSheet {
         let this = jsObject
         let _promise: JSPromise = this[Strings.replace].function!(this: this, arguments: [text.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func replaceSync(text: String) {
+    @inlinable public func replaceSync(text: String) {
         let this = jsObject
         _ = this[Strings.replaceSync].function!(this: this, arguments: [text.jsValue()])
     }
@@ -53,12 +53,12 @@ public class CSSStyleSheet: StyleSheet {
     @ReadonlyAttribute
     public var rules: CSSRuleList
 
-    public func addRule(selector: String? = nil, style: String? = nil, index: UInt32? = nil) -> Int32 {
+    @inlinable public func addRule(selector: String? = nil, style: String? = nil, index: UInt32? = nil) -> Int32 {
         let this = jsObject
         return this[Strings.addRule].function!(this: this, arguments: [selector?.jsValue() ?? .undefined, style?.jsValue() ?? .undefined, index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func removeRule(index: UInt32? = nil) {
+    @inlinable public func removeRule(index: UInt32? = nil) {
         let this = jsObject
         _ = this[Strings.removeRule].function!(this: this, arguments: [index?.jsValue() ?? .undefined])
     }

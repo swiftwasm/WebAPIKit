@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLMenuElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMenuElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMenuElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _compact = ReadWriteAttribute(jsObject: jsObject, name: Strings.compact)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

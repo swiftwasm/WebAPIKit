@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFECompositeElement: SVGElement, SVGFilterPrimitiveStandardAttributes {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFECompositeElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFECompositeElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _in1 = ReadonlyAttribute(jsObject: jsObject, name: Strings.in1)

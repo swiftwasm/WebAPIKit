@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioNode: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AudioNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _context = ReadonlyAttribute(jsObject: jsObject, name: Strings.context)
@@ -16,47 +16,47 @@ public class AudioNode: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func connect(destinationNode: AudioNode, output: UInt32? = nil, input: UInt32? = nil) -> Self {
+    @inlinable public func connect(destinationNode: AudioNode, output: UInt32? = nil, input: UInt32? = nil) -> Self {
         let this = jsObject
         return this[Strings.connect].function!(this: this, arguments: [destinationNode.jsValue(), output?.jsValue() ?? .undefined, input?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func connect(destinationParam: AudioParam, output: UInt32? = nil) {
+    @inlinable public func connect(destinationParam: AudioParam, output: UInt32? = nil) {
         let this = jsObject
         _ = this[Strings.connect].function!(this: this, arguments: [destinationParam.jsValue(), output?.jsValue() ?? .undefined])
     }
 
-    public func disconnect() {
+    @inlinable public func disconnect() {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
-    public func disconnect(output: UInt32) {
+    @inlinable public func disconnect(output: UInt32) {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [output.jsValue()])
     }
 
-    public func disconnect(destinationNode: AudioNode) {
+    @inlinable public func disconnect(destinationNode: AudioNode) {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue()])
     }
 
-    public func disconnect(destinationNode: AudioNode, output: UInt32) {
+    @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32) {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue(), output.jsValue()])
     }
 
-    public func disconnect(destinationNode: AudioNode, output: UInt32, input: UInt32) {
+    @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32, input: UInt32) {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue(), output.jsValue(), input.jsValue()])
     }
 
-    public func disconnect(destinationParam: AudioParam) {
+    @inlinable public func disconnect(destinationParam: AudioParam) {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue()])
     }
 
-    public func disconnect(destinationParam: AudioParam, output: UInt32) {
+    @inlinable public func disconnect(destinationParam: AudioParam, output: UInt32) {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue(), output.jsValue()])
     }

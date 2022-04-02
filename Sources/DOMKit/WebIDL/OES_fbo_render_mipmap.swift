@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OES_fbo_render_mipmap: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.OES_fbo_render_mipmap].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.OES_fbo_render_mipmap].function! }
 
     public let jsObject: JSObject
 

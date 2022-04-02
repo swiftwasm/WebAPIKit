@@ -4,43 +4,43 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FileSystemWritableFileStream: WritableStream {
-    override public class var constructor: JSFunction { JSObject.global[Strings.FileSystemWritableFileStream].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.FileSystemWritableFileStream].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func write(data: FileSystemWriteChunkType) -> JSPromise {
+    @inlinable public func write(data: FileSystemWriteChunkType) -> JSPromise {
         let this = jsObject
         return this[Strings.write].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func write(data: FileSystemWriteChunkType) async throws {
+    @inlinable public func write(data: FileSystemWriteChunkType) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func seek(position: UInt64) -> JSPromise {
+    @inlinable public func seek(position: UInt64) -> JSPromise {
         let this = jsObject
         return this[Strings.seek].function!(this: this, arguments: [position.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func seek(position: UInt64) async throws {
+    @inlinable public func seek(position: UInt64) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.seek].function!(this: this, arguments: [position.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func truncate(size: UInt64) -> JSPromise {
+    @inlinable public func truncate(size: UInt64) -> JSPromise {
         let this = jsObject
         return this[Strings.truncate].function!(this: this, arguments: [size.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func truncate(size: UInt64) async throws {
+    @inlinable public func truncate(size: UInt64) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.truncate].function!(this: this, arguments: [size.jsValue()]).fromJSValue()!
         _ = try await _promise.get()

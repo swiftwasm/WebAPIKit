@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SyncEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SyncEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SyncEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _tag = ReadonlyAttribute(jsObject: jsObject, name: Strings.tag)
@@ -12,7 +12,7 @@ public class SyncEvent: ExtendableEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, init: SyncEventInit) {
+    @inlinable public convenience init(type: String, init: SyncEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
     }
 

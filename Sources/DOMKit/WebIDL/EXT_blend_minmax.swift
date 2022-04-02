@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EXT_blend_minmax: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EXT_blend_minmax].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EXT_blend_minmax].function! }
 
     public let jsObject: JSObject
 

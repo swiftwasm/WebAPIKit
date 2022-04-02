@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Accelerometer: Sensor {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Accelerometer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Accelerometer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
@@ -13,7 +13,7 @@ public class Accelerometer: Sensor {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: AccelerometerSensorOptions? = nil) {
+    @inlinable public convenience init(options: AccelerometerSensorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 

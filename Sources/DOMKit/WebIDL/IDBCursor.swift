@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IDBCursor: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.IDBCursor].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.IDBCursor].function! }
 
     public let jsObject: JSObject
 
@@ -32,27 +32,27 @@ public class IDBCursor: JSBridgedClass {
     @ReadonlyAttribute
     public var request: IDBRequest
 
-    public func advance(count: UInt32) {
+    @inlinable public func advance(count: UInt32) {
         let this = jsObject
         _ = this[Strings.advance].function!(this: this, arguments: [count.jsValue()])
     }
 
-    public func `continue`(key: JSValue? = nil) {
+    @inlinable public func `continue`(key: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.continue].function!(this: this, arguments: [key?.jsValue() ?? .undefined])
     }
 
-    public func continuePrimaryKey(key: JSValue, primaryKey: JSValue) {
+    @inlinable public func continuePrimaryKey(key: JSValue, primaryKey: JSValue) {
         let this = jsObject
         _ = this[Strings.continuePrimaryKey].function!(this: this, arguments: [key.jsValue(), primaryKey.jsValue()])
     }
 
-    public func update(value: JSValue) -> IDBRequest {
+    @inlinable public func update(value: JSValue) -> IDBRequest {
         let this = jsObject
         return this[Strings.update].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
-    public func delete() -> IDBRequest {
+    @inlinable public func delete() -> IDBRequest {
         let this = jsObject
         return this[Strings.delete].function!(this: this, arguments: []).fromJSValue()!
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGAnimatedPreserveAspectRatio: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SVGAnimatedPreserveAspectRatio].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SVGAnimatedPreserveAspectRatio].function! }
 
     public let jsObject: JSObject
 

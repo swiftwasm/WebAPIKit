@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CropTarget: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CropTarget].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CropTarget].function! }
 
     public let jsObject: JSObject
 

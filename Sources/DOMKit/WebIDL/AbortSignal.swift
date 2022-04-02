@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AbortSignal: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AbortSignal].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AbortSignal].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _aborted = ReadonlyAttribute(jsObject: jsObject, name: Strings.aborted)
@@ -13,12 +13,12 @@ public class AbortSignal: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public static func abort(reason: JSValue? = nil) -> Self {
+    @inlinable public static func abort(reason: JSValue? = nil) -> Self {
         let this = constructor
         return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public static func timeout(milliseconds: UInt64) -> Self {
+    @inlinable public static func timeout(milliseconds: UInt64) -> Self {
         let this = constructor
         return this[Strings.timeout].function!(this: this, arguments: [milliseconds.jsValue()]).fromJSValue()!
     }
@@ -29,7 +29,7 @@ public class AbortSignal: EventTarget {
     @ReadonlyAttribute
     public var reason: JSValue
 
-    public func throwIfAborted() {
+    @inlinable public func throwIfAborted() {
         let this = jsObject
         _ = this[Strings.throwIfAborted].function!(this: this, arguments: [])
     }

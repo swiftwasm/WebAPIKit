@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCTrackEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCTrackEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCTrackEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _receiver = ReadonlyAttribute(jsObject: jsObject, name: Strings.receiver)
@@ -14,7 +14,7 @@ public class RTCTrackEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: RTCTrackEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: RTCTrackEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

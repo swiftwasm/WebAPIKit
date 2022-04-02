@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Instance: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Instance].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Instance].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class Instance: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(module: Module, importObject: JSObject? = nil) {
+    @inlinable public convenience init(module: Module, importObject: JSObject? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [module.jsValue(), importObject?.jsValue() ?? .undefined]))
     }
 

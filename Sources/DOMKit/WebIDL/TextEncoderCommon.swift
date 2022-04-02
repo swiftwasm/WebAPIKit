@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol TextEncoderCommon: JSBridgedClass {}
 public extension TextEncoderCommon {
-    var encoding: String { ReadonlyAttribute[Strings.encoding, in: jsObject] }
+    @inlinable var encoding: String { ReadonlyAttribute[Strings.encoding, in: jsObject] }
 }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUBuffer: JSBridgedClass, GPUObjectBase {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUBuffer].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUBuffer].function! }
 
     public let jsObject: JSObject
 
@@ -12,29 +12,29 @@ public class GPUBuffer: JSBridgedClass, GPUObjectBase {
         self.jsObject = jsObject
     }
 
-    public func mapAsync(mode: GPUMapModeFlags, offset: GPUSize64? = nil, size: GPUSize64? = nil) -> JSPromise {
+    @inlinable public func mapAsync(mode: GPUMapModeFlags, offset: GPUSize64? = nil, size: GPUSize64? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.mapAsync].function!(this: this, arguments: [mode.jsValue(), offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func mapAsync(mode: GPUMapModeFlags, offset: GPUSize64? = nil, size: GPUSize64? = nil) async throws {
+    @inlinable public func mapAsync(mode: GPUMapModeFlags, offset: GPUSize64? = nil, size: GPUSize64? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.mapAsync].function!(this: this, arguments: [mode.jsValue(), offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func getMappedRange(offset: GPUSize64? = nil, size: GPUSize64? = nil) -> ArrayBuffer {
+    @inlinable public func getMappedRange(offset: GPUSize64? = nil, size: GPUSize64? = nil) -> ArrayBuffer {
         let this = jsObject
         return this[Strings.getMappedRange].function!(this: this, arguments: [offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func unmap() {
+    @inlinable public func unmap() {
         let this = jsObject
         _ = this[Strings.unmap].function!(this: this, arguments: [])
     }
 
-    public func destroy() {
+    @inlinable public func destroy() {
         let this = jsObject
         _ = this[Strings.destroy].function!(this: this, arguments: [])
     }

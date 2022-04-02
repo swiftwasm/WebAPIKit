@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class UIEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.UIEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.UIEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _sourceCapabilities = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceCapabilities)
@@ -17,7 +17,7 @@ public class UIEvent: Event {
     @ReadonlyAttribute
     public var sourceCapabilities: InputDeviceCapabilities?
 
-    public convenience init(type: String, eventInitDict: UIEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: UIEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -27,7 +27,7 @@ public class UIEvent: Event {
     @ReadonlyAttribute
     public var detail: Int32
 
-    public func initUIEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil) {
+    @inlinable public func initUIEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil) {
         let this = jsObject
         _ = this[Strings.initUIEvent].function!(this: this, arguments: [typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, detailArg?.jsValue() ?? .undefined])
     }

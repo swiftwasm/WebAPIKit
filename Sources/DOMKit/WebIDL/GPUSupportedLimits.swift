@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUSupportedLimits: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUSupportedLimits].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUSupportedLimits].function! }
 
     public let jsObject: JSObject
 

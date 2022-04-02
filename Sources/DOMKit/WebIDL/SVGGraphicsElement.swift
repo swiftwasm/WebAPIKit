@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGGraphicsElement: SVGElement, SVGTests {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGGraphicsElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGGraphicsElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _transform = ReadonlyAttribute(jsObject: jsObject, name: Strings.transform)
@@ -14,17 +14,17 @@ public class SVGGraphicsElement: SVGElement, SVGTests {
     @ReadonlyAttribute
     public var transform: SVGAnimatedTransformList
 
-    public func getBBox(options: SVGBoundingBoxOptions? = nil) -> DOMRect {
+    @inlinable public func getBBox(options: SVGBoundingBoxOptions? = nil) -> DOMRect {
         let this = jsObject
         return this[Strings.getBBox].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func getCTM() -> DOMMatrix? {
+    @inlinable public func getCTM() -> DOMMatrix? {
         let this = jsObject
         return this[Strings.getCTM].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getScreenCTM() -> DOMMatrix? {
+    @inlinable public func getScreenCTM() -> DOMMatrix? {
         let this = jsObject
         return this[Strings.getScreenCTM].function!(this: this, arguments: []).fromJSValue()!
     }

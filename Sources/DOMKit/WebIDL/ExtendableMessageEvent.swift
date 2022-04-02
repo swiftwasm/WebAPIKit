@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ExtendableMessageEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ExtendableMessageEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ExtendableMessageEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
@@ -15,7 +15,7 @@ public class ExtendableMessageEvent: ExtendableEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: ExtendableMessageEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: ExtendableMessageEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

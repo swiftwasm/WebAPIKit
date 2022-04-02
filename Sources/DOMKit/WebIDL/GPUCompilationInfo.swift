@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUCompilationInfo: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUCompilationInfo].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUCompilationInfo].function! }
 
     public let jsObject: JSObject
 

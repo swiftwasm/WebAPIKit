@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FileReaderSync: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FileReaderSync].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FileReaderSync].function! }
 
     public let jsObject: JSObject
 
@@ -12,26 +12,26 @@ public class FileReaderSync: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
-    public func readAsArrayBuffer(blob: Blob) -> ArrayBuffer {
+    @inlinable public func readAsArrayBuffer(blob: Blob) -> ArrayBuffer {
         let this = jsObject
         return this[Strings.readAsArrayBuffer].function!(this: this, arguments: [blob.jsValue()]).fromJSValue()!
     }
 
-    public func readAsBinaryString(blob: Blob) -> String {
+    @inlinable public func readAsBinaryString(blob: Blob) -> String {
         let this = jsObject
         return this[Strings.readAsBinaryString].function!(this: this, arguments: [blob.jsValue()]).fromJSValue()!
     }
 
-    public func readAsText(blob: Blob, encoding: String? = nil) -> String {
+    @inlinable public func readAsText(blob: Blob, encoding: String? = nil) -> String {
         let this = jsObject
         return this[Strings.readAsText].function!(this: this, arguments: [blob.jsValue(), encoding?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func readAsDataURL(blob: Blob) -> String {
+    @inlinable public func readAsDataURL(blob: Blob) -> String {
         let this = jsObject
         return this[Strings.readAsDataURL].function!(this: this, arguments: [blob.jsValue()]).fromJSValue()!
     }

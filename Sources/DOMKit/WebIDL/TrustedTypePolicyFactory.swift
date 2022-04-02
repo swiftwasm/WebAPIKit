@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TrustedTypePolicyFactory: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TrustedTypePolicyFactory].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TrustedTypePolicyFactory].function! }
 
     public let jsObject: JSObject
 
@@ -15,22 +15,22 @@ public class TrustedTypePolicyFactory: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func createPolicy(policyName: String, policyOptions: TrustedTypePolicyOptions? = nil) -> TrustedTypePolicy {
+    @inlinable public func createPolicy(policyName: String, policyOptions: TrustedTypePolicyOptions? = nil) -> TrustedTypePolicy {
         let this = jsObject
         return this[Strings.createPolicy].function!(this: this, arguments: [policyName.jsValue(), policyOptions?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func isHTML(value: JSValue) -> Bool {
+    @inlinable public func isHTML(value: JSValue) -> Bool {
         let this = jsObject
         return this[Strings.isHTML].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
-    public func isScript(value: JSValue) -> Bool {
+    @inlinable public func isScript(value: JSValue) -> Bool {
         let this = jsObject
         return this[Strings.isScript].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
-    public func isScriptURL(value: JSValue) -> Bool {
+    @inlinable public func isScriptURL(value: JSValue) -> Bool {
         let this = jsObject
         return this[Strings.isScriptURL].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
@@ -41,12 +41,12 @@ public class TrustedTypePolicyFactory: JSBridgedClass {
     @ReadonlyAttribute
     public var emptyScript: TrustedScript
 
-    public func getAttributeType(tagName: String, attribute: String, elementNs: String? = nil, attrNs: String? = nil) -> String? {
+    @inlinable public func getAttributeType(tagName: String, attribute: String, elementNs: String? = nil, attrNs: String? = nil) -> String? {
         let this = jsObject
         return this[Strings.getAttributeType].function!(this: this, arguments: [tagName.jsValue(), attribute.jsValue(), elementNs?.jsValue() ?? .undefined, attrNs?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func getPropertyType(tagName: String, property: String, elementNs: String? = nil) -> String? {
+    @inlinable public func getPropertyType(tagName: String, property: String, elementNs: String? = nil) -> String? {
         let this = jsObject
         return this[Strings.getPropertyType].function!(this: this, arguments: [tagName.jsValue(), property.jsValue(), elementNs?.jsValue() ?? .undefined]).fromJSValue()!
     }

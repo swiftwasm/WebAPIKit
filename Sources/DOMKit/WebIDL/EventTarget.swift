@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EventTarget: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EventTarget].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EventTarget].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class EventTarget: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -20,7 +20,7 @@ public class EventTarget: JSBridgedClass {
 
     // XXX: member 'removeEventListener' is ignored
 
-    public func dispatchEvent(event: Event) -> Bool {
+    @inlinable public func dispatchEvent(event: Event) -> Bool {
         let this = jsObject
         return this[Strings.dispatchEvent].function!(this: this, arguments: [event.jsValue()]).fromJSValue()!
     }

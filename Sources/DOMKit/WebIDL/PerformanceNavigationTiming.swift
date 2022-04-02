@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceNavigationTiming: PerformanceResourceTiming {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceNavigationTiming].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceNavigationTiming].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _unloadEventStart = ReadonlyAttribute(jsObject: jsObject, name: Strings.unloadEventStart)
@@ -50,7 +50,7 @@ public class PerformanceNavigationTiming: PerformanceResourceTiming {
     @ReadonlyAttribute
     public var redirectCount: UInt16
 
-    override public func toJSON() -> JSObject {
+    @inlinable override public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

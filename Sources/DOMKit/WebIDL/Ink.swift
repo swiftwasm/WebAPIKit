@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Ink: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Ink].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Ink].function! }
 
     public let jsObject: JSObject
 
@@ -12,13 +12,13 @@ public class Ink: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func requestPresenter(param: InkPresenterParam? = nil) -> JSPromise {
+    @inlinable public func requestPresenter(param: InkPresenterParam? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.requestPresenter].function!(this: this, arguments: [param?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestPresenter(param: InkPresenterParam? = nil) async throws -> InkPresenter {
+    @inlinable public func requestPresenter(param: InkPresenterParam? = nil) async throws -> InkPresenter {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestPresenter].function!(this: this, arguments: [param?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

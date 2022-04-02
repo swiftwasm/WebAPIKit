@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGTSpanElement: SVGTextPositioningElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGTSpanElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGTSpanElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFilterElement: SVGElement, SVGURIReference {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFilterElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFilterElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _filterUnits = ReadonlyAttribute(jsObject: jsObject, name: Strings.filterUnits)

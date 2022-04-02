@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRRay: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRRay].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRRay].function! }
 
     public let jsObject: JSObject
 
@@ -15,11 +15,11 @@ public class XRRay: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(origin: DOMPointInit? = nil, direction: XRRayDirectionInit? = nil) {
+    @inlinable public convenience init(origin: DOMPointInit? = nil, direction: XRRayDirectionInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [origin?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined]))
     }
 
-    public convenience init(transform: XRRigidTransform) {
+    @inlinable public convenience init(transform: XRRigidTransform) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [transform.jsValue()]))
     }
 

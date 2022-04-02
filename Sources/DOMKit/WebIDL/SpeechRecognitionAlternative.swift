@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechRecognitionAlternative: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SpeechRecognitionAlternative].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SpeechRecognitionAlternative].function! }
 
     public let jsObject: JSObject
 

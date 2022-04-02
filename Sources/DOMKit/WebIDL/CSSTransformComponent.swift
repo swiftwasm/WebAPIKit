@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSTransformComponent: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CSSTransformComponent].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CSSTransformComponent].function! }
 
     public let jsObject: JSObject
 
@@ -13,14 +13,14 @@ public class CSSTransformComponent: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public var description: String {
+    @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
     }
 
     @ReadWriteAttribute
     public var is2D: Bool
 
-    public func toMatrix() -> DOMMatrix {
+    @inlinable public func toMatrix() -> DOMMatrix {
         let this = jsObject
         return this[Strings.toMatrix].function!(this: this, arguments: []).fromJSValue()!
     }

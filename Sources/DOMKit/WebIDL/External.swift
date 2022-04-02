@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class External: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.External].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.External].function! }
 
     public let jsObject: JSObject
 
@@ -12,12 +12,12 @@ public class External: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func AddSearchProvider() {
+    @inlinable public func AddSearchProvider() {
         let this = jsObject
         _ = this[Strings.AddSearchProvider].function!(this: this, arguments: [])
     }
 
-    public func IsSearchProviderInstalled() {
+    @inlinable public func IsSearchProviderInstalled() {
         let this = jsObject
         _ = this[Strings.IsSearchProviderInstalled].function!(this: this, arguments: [])
     }

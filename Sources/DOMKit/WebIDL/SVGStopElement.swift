@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGStopElement: SVGElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGStopElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGStopElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _offset = ReadonlyAttribute(jsObject: jsObject, name: Strings.offset)

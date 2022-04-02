@@ -4,76 +4,76 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Range: AbstractRange {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Range].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Range].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _commonAncestorContainer = ReadonlyAttribute(jsObject: jsObject, name: Strings.commonAncestorContainer)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func createContextualFragment(fragment: String) -> DocumentFragment {
+    @inlinable public func createContextualFragment(fragment: String) -> DocumentFragment {
         let this = jsObject
         return this[Strings.createContextualFragment].function!(this: this, arguments: [fragment.jsValue()]).fromJSValue()!
     }
 
-    public func getClientRects() -> DOMRectList {
+    @inlinable public func getClientRects() -> DOMRectList {
         let this = jsObject
         return this[Strings.getClientRects].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getBoundingClientRect() -> DOMRect {
+    @inlinable public func getBoundingClientRect() -> DOMRect {
         let this = jsObject
         return this[Strings.getBoundingClientRect].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     @ReadonlyAttribute
     public var commonAncestorContainer: Node
 
-    public func setStart(node: Node, offset: UInt32) {
+    @inlinable public func setStart(node: Node, offset: UInt32) {
         let this = jsObject
         _ = this[Strings.setStart].function!(this: this, arguments: [node.jsValue(), offset.jsValue()])
     }
 
-    public func setEnd(node: Node, offset: UInt32) {
+    @inlinable public func setEnd(node: Node, offset: UInt32) {
         let this = jsObject
         _ = this[Strings.setEnd].function!(this: this, arguments: [node.jsValue(), offset.jsValue()])
     }
 
-    public func setStartBefore(node: Node) {
+    @inlinable public func setStartBefore(node: Node) {
         let this = jsObject
         _ = this[Strings.setStartBefore].function!(this: this, arguments: [node.jsValue()])
     }
 
-    public func setStartAfter(node: Node) {
+    @inlinable public func setStartAfter(node: Node) {
         let this = jsObject
         _ = this[Strings.setStartAfter].function!(this: this, arguments: [node.jsValue()])
     }
 
-    public func setEndBefore(node: Node) {
+    @inlinable public func setEndBefore(node: Node) {
         let this = jsObject
         _ = this[Strings.setEndBefore].function!(this: this, arguments: [node.jsValue()])
     }
 
-    public func setEndAfter(node: Node) {
+    @inlinable public func setEndAfter(node: Node) {
         let this = jsObject
         _ = this[Strings.setEndAfter].function!(this: this, arguments: [node.jsValue()])
     }
 
-    public func collapse(toStart: Bool? = nil) {
+    @inlinable public func collapse(toStart: Bool? = nil) {
         let this = jsObject
         _ = this[Strings.collapse].function!(this: this, arguments: [toStart?.jsValue() ?? .undefined])
     }
 
-    public func selectNode(node: Node) {
+    @inlinable public func selectNode(node: Node) {
         let this = jsObject
         _ = this[Strings.selectNode].function!(this: this, arguments: [node.jsValue()])
     }
 
-    public func selectNodeContents(node: Node) {
+    @inlinable public func selectNodeContents(node: Node) {
         let this = jsObject
         _ = this[Strings.selectNodeContents].function!(this: this, arguments: [node.jsValue()])
     }
@@ -86,62 +86,62 @@ public class Range: AbstractRange {
 
     public static let END_TO_START: UInt16 = 3
 
-    public func compareBoundaryPoints(how: UInt16, sourceRange: Range) -> Int16 {
+    @inlinable public func compareBoundaryPoints(how: UInt16, sourceRange: Range) -> Int16 {
         let this = jsObject
         return this[Strings.compareBoundaryPoints].function!(this: this, arguments: [how.jsValue(), sourceRange.jsValue()]).fromJSValue()!
     }
 
-    public func deleteContents() {
+    @inlinable public func deleteContents() {
         let this = jsObject
         _ = this[Strings.deleteContents].function!(this: this, arguments: [])
     }
 
-    public func extractContents() -> DocumentFragment {
+    @inlinable public func extractContents() -> DocumentFragment {
         let this = jsObject
         return this[Strings.extractContents].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func cloneContents() -> DocumentFragment {
+    @inlinable public func cloneContents() -> DocumentFragment {
         let this = jsObject
         return this[Strings.cloneContents].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func insertNode(node: Node) {
+    @inlinable public func insertNode(node: Node) {
         let this = jsObject
         _ = this[Strings.insertNode].function!(this: this, arguments: [node.jsValue()])
     }
 
-    public func surroundContents(newParent: Node) {
+    @inlinable public func surroundContents(newParent: Node) {
         let this = jsObject
         _ = this[Strings.surroundContents].function!(this: this, arguments: [newParent.jsValue()])
     }
 
-    public func cloneRange() -> Self {
+    @inlinable public func cloneRange() -> Self {
         let this = jsObject
         return this[Strings.cloneRange].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func detach() {
+    @inlinable public func detach() {
         let this = jsObject
         _ = this[Strings.detach].function!(this: this, arguments: [])
     }
 
-    public func isPointInRange(node: Node, offset: UInt32) -> Bool {
+    @inlinable public func isPointInRange(node: Node, offset: UInt32) -> Bool {
         let this = jsObject
         return this[Strings.isPointInRange].function!(this: this, arguments: [node.jsValue(), offset.jsValue()]).fromJSValue()!
     }
 
-    public func comparePoint(node: Node, offset: UInt32) -> Int16 {
+    @inlinable public func comparePoint(node: Node, offset: UInt32) -> Int16 {
         let this = jsObject
         return this[Strings.comparePoint].function!(this: this, arguments: [node.jsValue(), offset.jsValue()]).fromJSValue()!
     }
 
-    public func intersectsNode(node: Node) -> Bool {
+    @inlinable public func intersectsNode(node: Node) -> Bool {
         let this = jsObject
         return this[Strings.intersectsNode].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
     }
 
-    public var description: String {
+    @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
     }
 }

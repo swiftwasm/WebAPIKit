@@ -5,12 +5,12 @@ import JavaScriptKit
 
 public protocol CanvasImageSmoothing: JSBridgedClass {}
 public extension CanvasImageSmoothing {
-    var imageSmoothingEnabled: Bool {
+    @inlinable var imageSmoothingEnabled: Bool {
         get { ReadWriteAttribute[Strings.imageSmoothingEnabled, in: jsObject] }
         set { ReadWriteAttribute[Strings.imageSmoothingEnabled, in: jsObject] = newValue }
     }
 
-    var imageSmoothingQuality: ImageSmoothingQuality {
+    @inlinable var imageSmoothingQuality: ImageSmoothingQuality {
         get { ReadWriteAttribute[Strings.imageSmoothingQuality, in: jsObject] }
         set { ReadWriteAttribute[Strings.imageSmoothingQuality, in: jsObject] = newValue }
     }

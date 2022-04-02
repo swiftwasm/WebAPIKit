@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRView: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRView].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRView].function! }
 
     public let jsObject: JSObject
 
@@ -32,7 +32,7 @@ public class XRView: JSBridgedClass {
     @ReadonlyAttribute
     public var recommendedViewportScale: Double?
 
-    public func requestViewportScale(scale: Double?) {
+    @inlinable public func requestViewportScale(scale: Double?) {
         let this = jsObject
         _ = this[Strings.requestViewportScale].function!(this: this, arguments: [scale.jsValue()])
     }

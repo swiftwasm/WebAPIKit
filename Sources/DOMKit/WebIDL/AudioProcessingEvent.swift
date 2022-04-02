@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioProcessingEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AudioProcessingEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioProcessingEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _playbackTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.playbackTime)
@@ -13,7 +13,7 @@ public class AudioProcessingEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: AudioProcessingEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: AudioProcessingEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

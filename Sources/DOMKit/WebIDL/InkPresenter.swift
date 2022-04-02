@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class InkPresenter: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.InkPresenter].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.InkPresenter].function! }
 
     public let jsObject: JSObject
 
@@ -20,7 +20,7 @@ public class InkPresenter: JSBridgedClass {
     @ReadonlyAttribute
     public var expectedImprovement: UInt32
 
-    public func updateInkTrailStartPoint(event: PointerEvent, style: InkTrailStyle) {
+    @inlinable public func updateInkTrailStartPoint(event: PointerEvent, style: InkTrailStyle) {
         let this = jsObject
         _ = this[Strings.updateInkTrailStartPoint].function!(this: this, arguments: [event.jsValue(), style.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XPathResult: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XPathResult].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XPathResult].function! }
 
     public let jsObject: JSObject
 
@@ -60,12 +60,12 @@ public class XPathResult: JSBridgedClass {
     @ReadonlyAttribute
     public var snapshotLength: UInt32
 
-    public func iterateNext() -> Node? {
+    @inlinable public func iterateNext() -> Node? {
         let this = jsObject
         return this[Strings.iterateNext].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func snapshotItem(index: UInt32) -> Node? {
+    @inlinable public func snapshotItem(index: UInt32) -> Node? {
         let this = jsObject
         return this[Strings.snapshotItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }

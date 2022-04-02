@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FontFacePalette: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.FontFacePalette].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FontFacePalette].function! }
 
     public let jsObject: JSObject
 
@@ -23,7 +23,7 @@ public class FontFacePalette: JSBridgedClass, Sequence {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> String {
+    @inlinable public subscript(key: Int) -> String {
         jsObject[key].fromJSValue()!
     }
 

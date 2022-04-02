@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSNumericArray: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.CSSNumericArray].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CSSNumericArray].function! }
 
     public let jsObject: JSObject
 
@@ -21,7 +21,7 @@ public class CSSNumericArray: JSBridgedClass, Sequence {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> CSSNumericValue {
+    @inlinable public subscript(key: Int) -> CSSNumericValue {
         jsObject[key].fromJSValue()!
     }
 }

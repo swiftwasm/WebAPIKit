@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NavigationTransition: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.NavigationTransition].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.NavigationTransition].function! }
 
     public let jsObject: JSObject
 
@@ -24,7 +24,7 @@ public class NavigationTransition: JSBridgedClass {
     @ReadonlyAttribute
     public var finished: JSPromise
 
-    public func rollback(options: NavigationOptions? = nil) -> NavigationResult {
+    @inlinable public func rollback(options: NavigationOptions? = nil) -> NavigationResult {
         let this = jsObject
         return this[Strings.rollback].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }

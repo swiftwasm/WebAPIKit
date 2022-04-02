@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BatteryManager: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BatteryManager].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BatteryManager].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _charging = ReadonlyAttribute(jsObject: jsObject, name: Strings.charging)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WorkerNavigator: JSBridgedClass, NavigatorBadge, NavigatorDeviceMemory, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorConcurrentHardware, NavigatorNetworkInformation, NavigatorStorage, NavigatorUA, NavigatorLocks, NavigatorGPU, NavigatorML {
-    public class var constructor: JSFunction { JSObject.global[Strings.WorkerNavigator].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WorkerNavigator].function! }
 
     public let jsObject: JSObject
 

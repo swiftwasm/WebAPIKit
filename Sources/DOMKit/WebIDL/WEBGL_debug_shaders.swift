@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_debug_shaders: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_debug_shaders].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_debug_shaders].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class WEBGL_debug_shaders: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func getTranslatedShaderSource(shader: WebGLShader) -> String {
+    @inlinable public func getTranslatedShaderSource(shader: WebGLShader) -> String {
         let this = jsObject
         return this[Strings.getTranslatedShaderSource].function!(this: this, arguments: [shader.jsValue()]).fromJSValue()!
     }

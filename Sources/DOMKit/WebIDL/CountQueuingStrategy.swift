@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CountQueuingStrategy: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CountQueuingStrategy].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CountQueuingStrategy].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class CountQueuingStrategy: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: QueuingStrategyInit) {
+    @inlinable public convenience init(init: QueuingStrategyInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 

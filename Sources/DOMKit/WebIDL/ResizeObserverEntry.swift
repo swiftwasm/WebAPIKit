@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ResizeObserverEntry: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ResizeObserverEntry].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ResizeObserverEntry].function! }
 
     public let jsObject: JSObject
 

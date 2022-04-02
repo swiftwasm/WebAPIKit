@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTitleElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTitleElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTitleElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _text = ReadWriteAttribute(jsObject: jsObject, name: Strings.text)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

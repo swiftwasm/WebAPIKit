@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaStreamTrackProcessor: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrackProcessor].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrackProcessor].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class MediaStreamTrackProcessor: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: MediaStreamTrackProcessorInit) {
+    @inlinable public convenience init(init: MediaStreamTrackProcessorInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 

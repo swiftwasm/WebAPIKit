@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageTrackList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ImageTrackList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ImageTrackList].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class ImageTrackList: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public subscript(key: Int) -> ImageTrack {
+    @inlinable public subscript(key: Int) -> ImageTrack {
         jsObject[key].fromJSValue()!
     }
 

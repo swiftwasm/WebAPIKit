@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SerialPort: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SerialPort].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SerialPort].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onconnect = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onconnect)
@@ -26,54 +26,54 @@ public class SerialPort: EventTarget {
     @ReadonlyAttribute
     public var writable: WritableStream
 
-    public func getInfo() -> SerialPortInfo {
+    @inlinable public func getInfo() -> SerialPortInfo {
         let this = jsObject
         return this[Strings.getInfo].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func open(options: SerialOptions) -> JSPromise {
+    @inlinable public func open(options: SerialOptions) -> JSPromise {
         let this = jsObject
         return this[Strings.open].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func open(options: SerialOptions) async throws {
+    @inlinable public func open(options: SerialOptions) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func setSignals(signals: SerialOutputSignals? = nil) -> JSPromise {
+    @inlinable public func setSignals(signals: SerialOutputSignals? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.setSignals].function!(this: this, arguments: [signals?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func setSignals(signals: SerialOutputSignals? = nil) async throws {
+    @inlinable public func setSignals(signals: SerialOutputSignals? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.setSignals].function!(this: this, arguments: [signals?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func getSignals() -> JSPromise {
+    @inlinable public func getSignals() -> JSPromise {
         let this = jsObject
         return this[Strings.getSignals].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getSignals() async throws -> SerialInputSignals {
+    @inlinable public func getSignals() async throws -> SerialInputSignals {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getSignals].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func close() -> JSPromise {
+    @inlinable public func close() -> JSPromise {
         let this = jsObject
         return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func close() async throws {
+    @inlinable public func close() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

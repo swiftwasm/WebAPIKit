@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SFrameTransformErrorEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SFrameTransformErrorEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SFrameTransformErrorEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _errorType = ReadonlyAttribute(jsObject: jsObject, name: Strings.errorType)
@@ -13,7 +13,7 @@ public class SFrameTransformErrorEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: SFrameTransformErrorEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: SFrameTransformErrorEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMStringMap: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DOMStringMap].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DOMStringMap].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class DOMStringMap: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public subscript(key: String) -> String {
+    @inlinable public subscript(key: String) -> String {
         jsObject[key].fromJSValue()!
     }
 

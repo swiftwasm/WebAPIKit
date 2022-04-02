@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TimeRanges: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TimeRanges].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TimeRanges].function! }
 
     public let jsObject: JSObject
 
@@ -16,12 +16,12 @@ public class TimeRanges: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public func start(index: UInt32) -> Double {
+    @inlinable public func start(index: UInt32) -> Double {
         let this = jsObject
         return this[Strings.start].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
-    public func end(index: UInt32) -> Double {
+    @inlinable public func end(index: UInt32) -> Double {
         let this = jsObject
         return this[Strings.end].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }

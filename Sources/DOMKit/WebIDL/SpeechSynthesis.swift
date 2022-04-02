@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechSynthesis: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SpeechSynthesis].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SpeechSynthesis].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _pending = ReadonlyAttribute(jsObject: jsObject, name: Strings.pending)
@@ -26,27 +26,27 @@ public class SpeechSynthesis: EventTarget {
     @ClosureAttribute1Optional
     public var onvoiceschanged: EventHandler
 
-    public func speak(utterance: SpeechSynthesisUtterance) {
+    @inlinable public func speak(utterance: SpeechSynthesisUtterance) {
         let this = jsObject
         _ = this[Strings.speak].function!(this: this, arguments: [utterance.jsValue()])
     }
 
-    public func cancel() {
+    @inlinable public func cancel() {
         let this = jsObject
         _ = this[Strings.cancel].function!(this: this, arguments: [])
     }
 
-    public func pause() {
+    @inlinable public func pause() {
         let this = jsObject
         _ = this[Strings.pause].function!(this: this, arguments: [])
     }
 
-    public func resume() {
+    @inlinable public func resume() {
         let this = jsObject
         _ = this[Strings.resume].function!(this: this, arguments: [])
     }
 
-    public func getVoices() -> [SpeechSynthesisVoice] {
+    @inlinable public func getVoices() -> [SpeechSynthesisVoice] {
         let this = jsObject
         return this[Strings.getVoices].function!(this: this, arguments: []).fromJSValue()!
     }

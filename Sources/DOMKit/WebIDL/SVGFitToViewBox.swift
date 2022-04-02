@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol SVGFitToViewBox: JSBridgedClass {}
 public extension SVGFitToViewBox {
-    var viewBox: SVGAnimatedRect { ReadonlyAttribute[Strings.viewBox, in: jsObject] }
+    @inlinable var viewBox: SVGAnimatedRect { ReadonlyAttribute[Strings.viewBox, in: jsObject] }
 
-    var preserveAspectRatio: SVGAnimatedPreserveAspectRatio { ReadonlyAttribute[Strings.preserveAspectRatio, in: jsObject] }
+    @inlinable var preserveAspectRatio: SVGAnimatedPreserveAspectRatio { ReadonlyAttribute[Strings.preserveAspectRatio, in: jsObject] }
 }

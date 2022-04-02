@@ -4,25 +4,25 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BrowserCaptureMediaStreamTrack: MediaStreamTrack {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BrowserCaptureMediaStreamTrack].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BrowserCaptureMediaStreamTrack].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func cropTo(cropTarget: CropTarget?) -> JSPromise {
+    @inlinable public func cropTo(cropTarget: CropTarget?) -> JSPromise {
         let this = jsObject
         return this[Strings.cropTo].function!(this: this, arguments: [cropTarget.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func cropTo(cropTarget: CropTarget?) async throws {
+    @inlinable public func cropTo(cropTarget: CropTarget?) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.cropTo].function!(this: this, arguments: [cropTarget.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    override public func clone() -> Self {
+    @inlinable override public func clone() -> Self {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }

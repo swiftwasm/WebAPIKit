@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUOutOfMemoryError: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUOutOfMemoryError].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUOutOfMemoryError].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class GPUOutOfMemoryError: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 }

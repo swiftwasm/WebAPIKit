@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCRtpScriptTransform: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCRtpScriptTransform].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCRtpScriptTransform].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class RTCRtpScriptTransform: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(worker: Worker, options: JSValue? = nil, transfer: [JSObject]? = nil) {
+    @inlinable public convenience init(worker: Worker, options: JSValue? = nil, transfer: [JSObject]? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [worker.jsValue(), options?.jsValue() ?? .undefined, transfer?.jsValue() ?? .undefined]))
     }
 }

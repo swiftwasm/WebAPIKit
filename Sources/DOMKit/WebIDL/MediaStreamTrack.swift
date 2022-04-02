@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaStreamTrack: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrack].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrack].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
@@ -49,38 +49,38 @@ public class MediaStreamTrack: EventTarget {
     @ClosureAttribute1Optional
     public var onended: EventHandler
 
-    public func clone() -> Self {
+    @inlinable public func clone() -> Self {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func stop() {
+    @inlinable public func stop() {
         let this = jsObject
         _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
-    public func getCapabilities() -> MediaTrackCapabilities {
+    @inlinable public func getCapabilities() -> MediaTrackCapabilities {
         let this = jsObject
         return this[Strings.getCapabilities].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getConstraints() -> MediaTrackConstraints {
+    @inlinable public func getConstraints() -> MediaTrackConstraints {
         let this = jsObject
         return this[Strings.getConstraints].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getSettings() -> MediaTrackSettings {
+    @inlinable public func getSettings() -> MediaTrackSettings {
         let this = jsObject
         return this[Strings.getSettings].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func applyConstraints(constraints: MediaTrackConstraints? = nil) -> JSPromise {
+    @inlinable public func applyConstraints(constraints: MediaTrackConstraints? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func applyConstraints(constraints: MediaTrackConstraints? = nil) async throws {
+    @inlinable public func applyConstraints(constraints: MediaTrackConstraints? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()

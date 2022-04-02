@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaQueryListEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaQueryListEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaQueryListEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
@@ -12,7 +12,7 @@ public class MediaQueryListEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: MediaQueryListEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: MediaQueryListEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRLayerEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRLayerEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRLayerEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _layer = ReadonlyAttribute(jsObject: jsObject, name: Strings.layer)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: XRLayerEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: XRLayerEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

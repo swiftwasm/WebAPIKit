@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MediaList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaList].function! }
 
     public let jsObject: JSObject
 
@@ -20,16 +20,16 @@ public class MediaList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> String? {
+    @inlinable public subscript(key: Int) -> String? {
         jsObject[key].fromJSValue()
     }
 
-    public func appendMedium(medium: String) {
+    @inlinable public func appendMedium(medium: String) {
         let this = jsObject
         _ = this[Strings.appendMedium].function!(this: this, arguments: [medium.jsValue()])
     }
 
-    public func deleteMedium(medium: String) {
+    @inlinable public func deleteMedium(medium: String) {
         let this = jsObject
         _ = this[Strings.deleteMedium].function!(this: this, arguments: [medium.jsValue()])
     }

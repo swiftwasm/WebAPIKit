@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRCylinderLayer: XRCompositionLayer {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRCylinderLayer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRCylinderLayer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _space = ReadWriteAttribute(jsObject: jsObject, name: Strings.space)

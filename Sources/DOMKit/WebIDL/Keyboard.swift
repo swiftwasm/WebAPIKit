@@ -4,37 +4,37 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Keyboard: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Keyboard].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Keyboard].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onlayoutchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onlayoutchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func lock(keyCodes: [String]? = nil) -> JSPromise {
+    @inlinable public func lock(keyCodes: [String]? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.lock].function!(this: this, arguments: [keyCodes?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func lock(keyCodes: [String]? = nil) async throws {
+    @inlinable public func lock(keyCodes: [String]? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.lock].function!(this: this, arguments: [keyCodes?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func unlock() {
+    @inlinable public func unlock() {
         let this = jsObject
         _ = this[Strings.unlock].function!(this: this, arguments: [])
     }
 
-    public func getLayoutMap() -> JSPromise {
+    @inlinable public func getLayoutMap() -> JSPromise {
         let this = jsObject
         return this[Strings.getLayoutMap].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getLayoutMap() async throws -> KeyboardLayoutMap {
+    @inlinable public func getLayoutMap() async throws -> KeyboardLayoutMap {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getLayoutMap].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

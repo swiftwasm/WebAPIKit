@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextDecoderStream: JSBridgedClass, TextDecoderCommon, GenericTransformStream {
-    public class var constructor: JSFunction { JSObject.global[Strings.TextDecoderStream].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TextDecoderStream].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class TextDecoderStream: JSBridgedClass, TextDecoderCommon, GenericTransf
         self.jsObject = jsObject
     }
 
-    public convenience init(label: String? = nil, options: TextDecoderOptions? = nil) {
+    @inlinable public convenience init(label: String? = nil, options: TextDecoderOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [label?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
     }
 }

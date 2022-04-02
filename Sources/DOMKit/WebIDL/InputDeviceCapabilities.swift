@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class InputDeviceCapabilities: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.InputDeviceCapabilities].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.InputDeviceCapabilities].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class InputDeviceCapabilities: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(deviceInitDict: InputDeviceCapabilitiesInit? = nil) {
+    @inlinable public convenience init(deviceInitDict: InputDeviceCapabilitiesInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [deviceInitDict?.jsValue() ?? .undefined]))
     }
 

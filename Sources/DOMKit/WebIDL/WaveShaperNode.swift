@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WaveShaperNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WaveShaperNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WaveShaperNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _curve = ReadWriteAttribute(jsObject: jsObject, name: Strings.curve)
@@ -12,7 +12,7 @@ public class WaveShaperNode: AudioNode {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: WaveShaperOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: WaveShaperOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

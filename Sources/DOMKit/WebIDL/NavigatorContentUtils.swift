@@ -5,12 +5,12 @@ import JavaScriptKit
 
 public protocol NavigatorContentUtils: JSBridgedClass {}
 public extension NavigatorContentUtils {
-    func registerProtocolHandler(scheme: String, url: String) {
+    @inlinable func registerProtocolHandler(scheme: String, url: String) {
         let this = jsObject
         _ = this[Strings.registerProtocolHandler].function!(this: this, arguments: [scheme.jsValue(), url.jsValue()])
     }
 
-    func unregisterProtocolHandler(scheme: String, url: String) {
+    @inlinable func unregisterProtocolHandler(scheme: String, url: String) {
         let this = jsObject
         _ = this[Strings.unregisterProtocolHandler].function!(this: this, arguments: [scheme.jsValue(), url.jsValue()])
     }

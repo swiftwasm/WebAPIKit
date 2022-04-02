@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XMLSerializer: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XMLSerializer].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XMLSerializer].function! }
 
     public let jsObject: JSObject
 
@@ -12,11 +12,11 @@ public class XMLSerializer: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
-    public func serializeToString(root: Node) -> String {
+    @inlinable public func serializeToString(root: Node) -> String {
         let this = jsObject
         return this[Strings.serializeToString].function!(this: this, arguments: [root.jsValue()]).fromJSValue()!
     }

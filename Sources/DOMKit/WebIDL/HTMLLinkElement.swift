@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLLinkElement: HTMLElement, LinkStyle {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLLinkElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLLinkElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _href = ReadWriteAttribute(jsObject: jsObject, name: Strings.href)
@@ -29,7 +29,7 @@ public class HTMLLinkElement: HTMLElement, LinkStyle {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

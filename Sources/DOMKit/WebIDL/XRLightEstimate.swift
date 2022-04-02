@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRLightEstimate: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRLightEstimate].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRLightEstimate].function! }
 
     public let jsObject: JSObject
 

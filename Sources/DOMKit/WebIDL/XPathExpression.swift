@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XPathExpression: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XPathExpression].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XPathExpression].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class XPathExpression: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func evaluate(contextNode: Node, type: UInt16? = nil, result: XPathResult? = nil) -> XPathResult {
+    @inlinable public func evaluate(contextNode: Node, type: UInt16? = nil, result: XPathResult? = nil) -> XPathResult {
         let this = jsObject
         return this[Strings.evaluate].function!(this: this, arguments: [contextNode.jsValue(), type?.jsValue() ?? .undefined, result?.jsValue() ?? .undefined]).fromJSValue()!
     }

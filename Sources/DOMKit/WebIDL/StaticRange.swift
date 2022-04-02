@@ -4,13 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StaticRange: AbstractRange {
-    override public class var constructor: JSFunction { JSObject.global[Strings.StaticRange].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.StaticRange].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(init: StaticRangeInit) {
+    @inlinable public convenience init(init: StaticRangeInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 }

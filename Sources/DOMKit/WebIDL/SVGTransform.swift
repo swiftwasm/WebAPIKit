@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGTransform: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SVGTransform].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SVGTransform].function! }
 
     public let jsObject: JSObject
 
@@ -38,32 +38,32 @@ public class SVGTransform: JSBridgedClass {
     @ReadonlyAttribute
     public var angle: Float
 
-    public func setMatrix(matrix: DOMMatrix2DInit? = nil) {
+    @inlinable public func setMatrix(matrix: DOMMatrix2DInit? = nil) {
         let this = jsObject
         _ = this[Strings.setMatrix].function!(this: this, arguments: [matrix?.jsValue() ?? .undefined])
     }
 
-    public func setTranslate(tx: Float, ty: Float) {
+    @inlinable public func setTranslate(tx: Float, ty: Float) {
         let this = jsObject
         _ = this[Strings.setTranslate].function!(this: this, arguments: [tx.jsValue(), ty.jsValue()])
     }
 
-    public func setScale(sx: Float, sy: Float) {
+    @inlinable public func setScale(sx: Float, sy: Float) {
         let this = jsObject
         _ = this[Strings.setScale].function!(this: this, arguments: [sx.jsValue(), sy.jsValue()])
     }
 
-    public func setRotate(angle: Float, cx: Float, cy: Float) {
+    @inlinable public func setRotate(angle: Float, cx: Float, cy: Float) {
         let this = jsObject
         _ = this[Strings.setRotate].function!(this: this, arguments: [angle.jsValue(), cx.jsValue(), cy.jsValue()])
     }
 
-    public func setSkewX(angle: Float) {
+    @inlinable public func setSkewX(angle: Float) {
         let this = jsObject
         _ = this[Strings.setSkewX].function!(this: this, arguments: [angle.jsValue()])
     }
 
-    public func setSkewY(angle: Float) {
+    @inlinable public func setSkewY(angle: Float) {
         let this = jsObject
         _ = this[Strings.setSkewY].function!(this: this, arguments: [angle.jsValue()])
     }

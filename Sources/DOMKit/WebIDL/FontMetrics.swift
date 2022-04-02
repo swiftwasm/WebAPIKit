@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FontMetrics: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FontMetrics].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FontMetrics].function! }
 
     public let jsObject: JSObject
 

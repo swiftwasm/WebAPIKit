@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TransformStreamDefaultController: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TransformStreamDefaultController].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TransformStreamDefaultController].function! }
 
     public let jsObject: JSObject
 
@@ -16,17 +16,17 @@ public class TransformStreamDefaultController: JSBridgedClass {
     @ReadonlyAttribute
     public var desiredSize: Double?
 
-    public func enqueue(chunk: JSValue? = nil) {
+    @inlinable public func enqueue(chunk: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.enqueue].function!(this: this, arguments: [chunk?.jsValue() ?? .undefined])
     }
 
-    public func error(reason: JSValue? = nil) {
+    @inlinable public func error(reason: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.error].function!(this: this, arguments: [reason?.jsValue() ?? .undefined])
     }
 
-    public func terminate() {
+    @inlinable public func terminate() {
         let this = jsObject
         _ = this[Strings.terminate].function!(this: this, arguments: [])
     }

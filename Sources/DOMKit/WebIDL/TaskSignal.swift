@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TaskSignal: AbortSignal {
-    override public class var constructor: JSFunction { JSObject.global[Strings.TaskSignal].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.TaskSignal].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _priority = ReadonlyAttribute(jsObject: jsObject, name: Strings.priority)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ScreenOrientation: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ScreenOrientation].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ScreenOrientation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
@@ -13,19 +13,19 @@ public class ScreenOrientation: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func lock(orientation: OrientationLockType) -> JSPromise {
+    @inlinable public func lock(orientation: OrientationLockType) -> JSPromise {
         let this = jsObject
         return this[Strings.lock].function!(this: this, arguments: [orientation.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func lock(orientation: OrientationLockType) async throws {
+    @inlinable public func lock(orientation: OrientationLockType) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.lock].function!(this: this, arguments: [orientation.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func unlock() {
+    @inlinable public func unlock() {
         let this = jsObject
         _ = this[Strings.unlock].function!(this: this, arguments: [])
     }

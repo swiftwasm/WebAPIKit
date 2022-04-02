@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageBitmapRenderingContext: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ImageBitmapRenderingContext].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ImageBitmapRenderingContext].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class ImageBitmapRenderingContext: JSBridgedClass {
     @ReadonlyAttribute
     public var canvas: __UNSUPPORTED_UNION__
 
-    public func transferFromImageBitmap(bitmap: ImageBitmap?) {
+    @inlinable public func transferFromImageBitmap(bitmap: ImageBitmap?) {
         let this = jsObject
         _ = this[Strings.transferFromImageBitmap].function!(this: this, arguments: [bitmap.jsValue()])
     }

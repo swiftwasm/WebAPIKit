@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BarcodeDetector: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.BarcodeDetector].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.BarcodeDetector].function! }
 
     public let jsObject: JSObject
 
@@ -12,29 +12,29 @@ public class BarcodeDetector: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(barcodeDetectorOptions: BarcodeDetectorOptions? = nil) {
+    @inlinable public convenience init(barcodeDetectorOptions: BarcodeDetectorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [barcodeDetectorOptions?.jsValue() ?? .undefined]))
     }
 
-    public static func getSupportedFormats() -> JSPromise {
+    @inlinable public static func getSupportedFormats() -> JSPromise {
         let this = constructor
         return this[Strings.getSupportedFormats].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func getSupportedFormats() async throws -> [BarcodeFormat] {
+    @inlinable public static func getSupportedFormats() async throws -> [BarcodeFormat] {
         let this = constructor
         let _promise: JSPromise = this[Strings.getSupportedFormats].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func detect(image: ImageBitmapSource) -> JSPromise {
+    @inlinable public func detect(image: ImageBitmapSource) -> JSPromise {
         let this = jsObject
         return this[Strings.detect].function!(this: this, arguments: [image.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func detect(image: ImageBitmapSource) async throws -> [DetectedBarcode] {
+    @inlinable public func detect(image: ImageBitmapSource) async throws -> [DetectedBarcode] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.detect].function!(this: this, arguments: [image.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

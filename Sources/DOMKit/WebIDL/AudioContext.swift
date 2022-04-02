@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioContext: BaseAudioContext {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AudioContext].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioContext].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _baseLatency = ReadonlyAttribute(jsObject: jsObject, name: Strings.baseLatency)
@@ -12,7 +12,7 @@ public class AudioContext: BaseAudioContext {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(contextOptions: AudioContextOptions? = nil) {
+    @inlinable public convenience init(contextOptions: AudioContextOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions?.jsValue() ?? .undefined]))
     }
 
@@ -22,63 +22,63 @@ public class AudioContext: BaseAudioContext {
     @ReadonlyAttribute
     public var outputLatency: Double
 
-    public func getOutputTimestamp() -> AudioTimestamp {
+    @inlinable public func getOutputTimestamp() -> AudioTimestamp {
         let this = jsObject
         return this[Strings.getOutputTimestamp].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func resume() -> JSPromise {
+    @inlinable public func resume() -> JSPromise {
         let this = jsObject
         return this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func resume() async throws {
+    @inlinable public func resume() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func suspend() -> JSPromise {
+    @inlinable public func suspend() -> JSPromise {
         let this = jsObject
         return this[Strings.suspend].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func suspend() async throws {
+    @inlinable public func suspend() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func close() -> JSPromise {
+    @inlinable public func close() -> JSPromise {
         let this = jsObject
         return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func close() async throws {
+    @inlinable public func close() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func createMediaElementSource(mediaElement: HTMLMediaElement) -> MediaElementAudioSourceNode {
+    @inlinable public func createMediaElementSource(mediaElement: HTMLMediaElement) -> MediaElementAudioSourceNode {
         let this = jsObject
         return this[Strings.createMediaElementSource].function!(this: this, arguments: [mediaElement.jsValue()]).fromJSValue()!
     }
 
-    public func createMediaStreamSource(mediaStream: MediaStream) -> MediaStreamAudioSourceNode {
+    @inlinable public func createMediaStreamSource(mediaStream: MediaStream) -> MediaStreamAudioSourceNode {
         let this = jsObject
         return this[Strings.createMediaStreamSource].function!(this: this, arguments: [mediaStream.jsValue()]).fromJSValue()!
     }
 
-    public func createMediaStreamTrackSource(mediaStreamTrack: MediaStreamTrack) -> MediaStreamTrackAudioSourceNode {
+    @inlinable public func createMediaStreamTrackSource(mediaStreamTrack: MediaStreamTrack) -> MediaStreamTrackAudioSourceNode {
         let this = jsObject
         return this[Strings.createMediaStreamTrackSource].function!(this: this, arguments: [mediaStreamTrack.jsValue()]).fromJSValue()!
     }
 
-    public func createMediaStreamDestination() -> MediaStreamAudioDestinationNode {
+    @inlinable public func createMediaStreamDestination() -> MediaStreamAudioDestinationNode {
         let this = jsObject
         return this[Strings.createMediaStreamDestination].function!(this: this, arguments: []).fromJSValue()!
     }

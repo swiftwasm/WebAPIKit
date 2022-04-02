@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CryptoKey: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CryptoKey].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CryptoKey].function! }
 
     public let jsObject: JSObject
 

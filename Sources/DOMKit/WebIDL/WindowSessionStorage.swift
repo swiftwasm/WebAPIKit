@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol WindowSessionStorage: JSBridgedClass {}
 public extension WindowSessionStorage {
-    var sessionStorage: Storage { ReadonlyAttribute[Strings.sessionStorage, in: jsObject] }
+    @inlinable var sessionStorage: Storage { ReadonlyAttribute[Strings.sessionStorage, in: jsObject] }
 }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRPermissionStatus: PermissionStatus {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRPermissionStatus].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRPermissionStatus].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _granted = ReadWriteAttribute(jsObject: jsObject, name: Strings.granted)

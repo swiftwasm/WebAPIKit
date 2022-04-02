@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMPoint: DOMPointReadOnly {
-    override public class var constructor: JSFunction { JSObject.global[Strings.DOMPoint].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DOMPoint].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadWriteAttribute(jsObject: jsObject, name: Strings.x)
@@ -14,33 +14,33 @@ public class DOMPoint: DOMPointReadOnly {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(x: Double? = nil, y: Double? = nil, z: Double? = nil, w: Double? = nil) {
+    @inlinable public convenience init(x: Double? = nil, y: Double? = nil, z: Double? = nil, w: Double? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, w?.jsValue() ?? .undefined]))
     }
 
     // XXX: illegal static override
     // override public static func fromPoint(other: DOMPointInit? = nil) -> Self
 
-    private var _x: ReadWriteAttribute<Double>
-    override public var x: Double {
+    @usableFromInline let _x: ReadWriteAttribute<Double>
+    @inlinable override public var x: Double {
         get { _x.wrappedValue }
         set { _x.wrappedValue = newValue }
     }
 
-    private var _y: ReadWriteAttribute<Double>
-    override public var y: Double {
+    @usableFromInline let _y: ReadWriteAttribute<Double>
+    @inlinable override public var y: Double {
         get { _y.wrappedValue }
         set { _y.wrappedValue = newValue }
     }
 
-    private var _z: ReadWriteAttribute<Double>
-    override public var z: Double {
+    @usableFromInline let _z: ReadWriteAttribute<Double>
+    @inlinable override public var z: Double {
         get { _z.wrappedValue }
         set { _z.wrappedValue = newValue }
     }
 
-    private var _w: ReadWriteAttribute<Double>
-    override public var w: Double {
+    @usableFromInline let _w: ReadWriteAttribute<Double>
+    @inlinable override public var w: Double {
         get { _w.wrappedValue }
         set { _w.wrappedValue = newValue }
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CanvasGradient: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CanvasGradient].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CanvasGradient].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class CanvasGradient: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func addColorStop(offset: Double, color: String) {
+    @inlinable public func addColorStop(offset: Double, color: String) {
         let this = jsObject
         _ = this[Strings.addColorStop].function!(this: this, arguments: [offset.jsValue(), color.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class USBPermissionResult: PermissionStatus {
-    override public class var constructor: JSFunction { JSObject.global[Strings.USBPermissionResult].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.USBPermissionResult].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _devices = ReadWriteAttribute(jsObject: jsObject, name: Strings.devices)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ScrollTimeline: AnimationTimeline {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ScrollTimeline].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ScrollTimeline].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _source = ReadonlyAttribute(jsObject: jsObject, name: Strings.source)
@@ -13,7 +13,7 @@ public class ScrollTimeline: AnimationTimeline {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: ScrollTimelineOptions? = nil) {
+    @inlinable public convenience init(options: ScrollTimelineOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 

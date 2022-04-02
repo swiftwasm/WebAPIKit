@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Scheduling: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Scheduling].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Scheduling].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class Scheduling: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func isInputPending(isInputPendingOptions: IsInputPendingOptions? = nil) -> Bool {
+    @inlinable public func isInputPending(isInputPendingOptions: IsInputPendingOptions? = nil) -> Bool {
         let this = jsObject
         return this[Strings.isInputPending].function!(this: this, arguments: [isInputPendingOptions?.jsValue() ?? .undefined]).fromJSValue()!
     }

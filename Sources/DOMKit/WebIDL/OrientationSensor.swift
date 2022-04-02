@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OrientationSensor: Sensor {
-    override public class var constructor: JSFunction { JSObject.global[Strings.OrientationSensor].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OrientationSensor].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _quaternion = ReadonlyAttribute(jsObject: jsObject, name: Strings.quaternion)
@@ -14,7 +14,7 @@ public class OrientationSensor: Sensor {
     @ReadonlyAttribute
     public var quaternion: [Double]?
 
-    public func populateMatrix(targetMatrix: RotationMatrixType) {
+    @inlinable public func populateMatrix(targetMatrix: RotationMatrixType) {
         let this = jsObject
         _ = this[Strings.populateMatrix].function!(this: this, arguments: [targetMatrix.jsValue()])
     }

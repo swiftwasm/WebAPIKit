@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Font: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Font].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Font].function! }
 
     public let jsObject: JSObject
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PannerNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PannerNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PannerNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _panningModel = ReadWriteAttribute(jsObject: jsObject, name: Strings.panningModel)
@@ -24,7 +24,7 @@ public class PannerNode: AudioNode {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: PannerOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: PannerOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
@@ -70,12 +70,12 @@ public class PannerNode: AudioNode {
     @ReadWriteAttribute
     public var coneOuterGain: Double
 
-    public func setPosition(x: Float, y: Float, z: Float) {
+    @inlinable public func setPosition(x: Float, y: Float, z: Float) {
         let this = jsObject
         _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue(), y.jsValue(), z.jsValue()])
     }
 
-    public func setOrientation(x: Float, y: Float, z: Float) {
+    @inlinable public func setOrientation(x: Float, y: Float, z: Float) {
         let this = jsObject
         _ = this[Strings.setOrientation].function!(this: this, arguments: [x.jsValue(), y.jsValue(), z.jsValue()])
     }

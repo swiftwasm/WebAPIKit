@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCEncodedAudioFrame: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCEncodedAudioFrame].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCEncodedAudioFrame].function! }
 
     public let jsObject: JSObject
 
@@ -20,7 +20,7 @@ public class RTCEncodedAudioFrame: JSBridgedClass {
     @ReadWriteAttribute
     public var data: ArrayBuffer
 
-    public func getMetadata() -> RTCEncodedAudioFrameMetadata {
+    @inlinable public func getMetadata() -> RTCEncodedAudioFrameMetadata {
         let this = jsObject
         return this[Strings.getMetadata].function!(this: this, arguments: []).fromJSValue()!
     }

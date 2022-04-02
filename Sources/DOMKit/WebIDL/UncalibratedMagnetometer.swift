@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class UncalibratedMagnetometer: Sensor {
-    override public class var constructor: JSFunction { JSObject.global[Strings.UncalibratedMagnetometer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.UncalibratedMagnetometer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
@@ -16,7 +16,7 @@ public class UncalibratedMagnetometer: Sensor {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(sensorOptions: MagnetometerSensorOptions? = nil) {
+    @inlinable public convenience init(sensorOptions: MagnetometerSensorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue() ?? .undefined]))
     }
 

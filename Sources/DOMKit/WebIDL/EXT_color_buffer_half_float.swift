@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EXT_color_buffer_half_float: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EXT_color_buffer_half_float].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EXT_color_buffer_half_float].function! }
 
     public let jsObject: JSObject
 

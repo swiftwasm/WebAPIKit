@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSOKLCH: CSSColorValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSOKLCH].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSOKLCH].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _l = ReadWriteAttribute(jsObject: jsObject, name: Strings.l)
@@ -14,7 +14,7 @@ public class CSSOKLCH: CSSColorValue {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(l: CSSColorPercent, c: CSSColorPercent, h: CSSColorAngle, alpha: CSSColorPercent? = nil) {
+    @inlinable public convenience init(l: CSSColorPercent, c: CSSColorPercent, h: CSSColorAngle, alpha: CSSColorPercent? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [l.jsValue(), c.jsValue(), h.jsValue(), alpha?.jsValue() ?? .undefined]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCError: DOMException {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCError].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCError].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _httpRequestStatusCode = ReadonlyAttribute(jsObject: jsObject, name: Strings.httpRequestStatusCode)
@@ -19,7 +19,7 @@ public class RTCError: DOMException {
     @ReadonlyAttribute
     public var httpRequestStatusCode: Int32?
 
-    public convenience init(init: RTCErrorInit, message: String? = nil) {
+    @inlinable public convenience init(init: RTCErrorInit, message: String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue(), message?.jsValue() ?? .undefined]))
     }
 

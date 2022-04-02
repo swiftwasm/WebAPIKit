@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechGrammarList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SpeechGrammarList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SpeechGrammarList].function! }
 
     public let jsObject: JSObject
 
@@ -13,23 +13,23 @@ public class SpeechGrammarList: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> SpeechGrammar {
+    @inlinable public subscript(key: Int) -> SpeechGrammar {
         jsObject[key].fromJSValue()!
     }
 
-    public func addFromURI(src: String, weight: Float? = nil) {
+    @inlinable public func addFromURI(src: String, weight: Float? = nil) {
         let this = jsObject
         _ = this[Strings.addFromURI].function!(this: this, arguments: [src.jsValue(), weight?.jsValue() ?? .undefined])
     }
 
-    public func addFromString(string: String, weight: Float? = nil) {
+    @inlinable public func addFromString(string: String, weight: Float? = nil) {
         let this = jsObject
         _ = this[Strings.addFromString].function!(this: this, arguments: [string.jsValue(), weight?.jsValue() ?? .undefined])
     }

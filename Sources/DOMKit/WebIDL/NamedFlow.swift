@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NamedFlow: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.NamedFlow].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.NamedFlow].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
@@ -19,7 +19,7 @@ public class NamedFlow: EventTarget {
     @ReadonlyAttribute
     public var overset: Bool
 
-    public func getRegions() -> [Element] {
+    @inlinable public func getRegions() -> [Element] {
         let this = jsObject
         return this[Strings.getRegions].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -27,12 +27,12 @@ public class NamedFlow: EventTarget {
     @ReadonlyAttribute
     public var firstEmptyRegionIndex: Int16
 
-    public func getContent() -> [Node] {
+    @inlinable public func getContent() -> [Node] {
         let this = jsObject
         return this[Strings.getContent].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getRegionsByContent(node: Node) -> [Element] {
+    @inlinable public func getRegionsByContent(node: Node) -> [Element] {
         let this = jsObject
         return this[Strings.getRegionsByContent].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
     }

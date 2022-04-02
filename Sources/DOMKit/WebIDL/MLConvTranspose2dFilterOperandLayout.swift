@@ -8,16 +8,16 @@ public enum MLConvTranspose2dFilterOperandLayout: JSString, JSValueCompatible {
     case hwoi = "hwoi"
     case ohwi = "ohwi"
 
-    public static func construct(from jsValue: JSValue) -> Self? {
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
     }
 
-    public init?(string: String) {
+    @inlinable public init?(string: String) {
         self.init(rawValue: JSString(string))
     }
 
-    public func jsValue() -> JSValue { rawValue.jsValue() }
+    @inlinable public func jsValue() -> JSValue { rawValue.jsValue() }
 }

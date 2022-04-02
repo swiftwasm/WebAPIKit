@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MutationRecord: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MutationRecord].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MutationRecord].function! }
 
     public let jsObject: JSObject
 

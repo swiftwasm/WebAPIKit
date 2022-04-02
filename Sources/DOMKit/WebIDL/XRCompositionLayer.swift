@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRCompositionLayer: XRLayer {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRCompositionLayer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRCompositionLayer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _layout = ReadonlyAttribute(jsObject: jsObject, name: Strings.layout)
@@ -30,7 +30,7 @@ public class XRCompositionLayer: XRLayer {
     @ReadonlyAttribute
     public var needsRedraw: Bool
 
-    public func destroy() {
+    @inlinable public func destroy() {
         let this = jsObject
         _ = this[Strings.destroy].function!(this: this, arguments: [])
     }

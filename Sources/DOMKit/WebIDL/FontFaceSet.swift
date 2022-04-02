@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FontFaceSet: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.FontFaceSet].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.FontFaceSet].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onloading = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onloading)
@@ -15,23 +15,23 @@ public class FontFaceSet: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(initialFaces: [FontFace]) {
+    @inlinable public convenience init(initialFaces: [FontFace]) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [initialFaces.jsValue()]))
     }
 
     // XXX: make me Set-like!
 
-    public func add(font: FontFace) -> Self {
+    @inlinable public func add(font: FontFace) -> Self {
         let this = jsObject
         return this[Strings.add].function!(this: this, arguments: [font.jsValue()]).fromJSValue()!
     }
 
-    public func delete(font: FontFace) -> Bool {
+    @inlinable public func delete(font: FontFace) -> Bool {
         let this = jsObject
         return this[Strings.delete].function!(this: this, arguments: [font.jsValue()]).fromJSValue()!
     }
 
-    public func clear() {
+    @inlinable public func clear() {
         let this = jsObject
         _ = this[Strings.clear].function!(this: this, arguments: [])
     }
@@ -45,19 +45,19 @@ public class FontFaceSet: EventTarget {
     @ClosureAttribute1Optional
     public var onloadingerror: EventHandler
 
-    public func load(font: String, text: String? = nil) -> JSPromise {
+    @inlinable public func load(font: String, text: String? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.load].function!(this: this, arguments: [font.jsValue(), text?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func load(font: String, text: String? = nil) async throws -> [FontFace] {
+    @inlinable public func load(font: String, text: String? = nil) async throws -> [FontFace] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.load].function!(this: this, arguments: [font.jsValue(), text?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func check(font: String, text: String? = nil) -> Bool {
+    @inlinable public func check(font: String, text: String? = nil) -> Bool {
         let this = jsObject
         return this[Strings.check].function!(this: this, arguments: [font.jsValue(), text?.jsValue() ?? .undefined]).fromJSValue()!
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class InputEvent: UIEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.InputEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.InputEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _dataTransfer = ReadonlyAttribute(jsObject: jsObject, name: Strings.dataTransfer)
@@ -17,12 +17,12 @@ public class InputEvent: UIEvent {
     @ReadonlyAttribute
     public var dataTransfer: DataTransfer?
 
-    public func getTargetRanges() -> [StaticRange] {
+    @inlinable public func getTargetRanges() -> [StaticRange] {
         let this = jsObject
         return this[Strings.getTargetRanges].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public convenience init(type: String, eventInitDict: InputEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: InputEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

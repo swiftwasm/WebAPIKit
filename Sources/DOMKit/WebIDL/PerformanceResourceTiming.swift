@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceResourceTiming: PerformanceEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceResourceTiming].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceResourceTiming].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _initiatorType = ReadonlyAttribute(jsObject: jsObject, name: Strings.initiatorType)
@@ -79,7 +79,7 @@ public class PerformanceResourceTiming: PerformanceEntry {
     @ReadonlyAttribute
     public var decodedBodySize: UInt64
 
-    override public func toJSON() -> JSObject {
+    @inlinable override public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

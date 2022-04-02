@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Credential: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Credential].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Credential].function! }
 
     public let jsObject: JSObject
 
@@ -20,7 +20,7 @@ public class Credential: JSBridgedClass {
     @ReadonlyAttribute
     public var type: String
 
-    public static func isConditionalMediationAvailable() -> Bool {
+    @inlinable public static func isConditionalMediationAvailable() -> Bool {
         let this = constructor
         return this[Strings.isConditionalMediationAvailable].function!(this: this, arguments: []).fromJSValue()!
     }

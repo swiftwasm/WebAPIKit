@@ -5,22 +5,22 @@ import JavaScriptKit
 
 public protocol CanvasFillStrokeStyles: JSBridgedClass {}
 public extension CanvasFillStrokeStyles {
-    var strokeStyle: __UNSUPPORTED_UNION__ {
+    @inlinable var strokeStyle: __UNSUPPORTED_UNION__ {
         get { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] }
         set { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] = newValue }
     }
 
-    var fillStyle: __UNSUPPORTED_UNION__ {
+    @inlinable var fillStyle: __UNSUPPORTED_UNION__ {
         get { ReadWriteAttribute[Strings.fillStyle, in: jsObject] }
         set { ReadWriteAttribute[Strings.fillStyle, in: jsObject] = newValue }
     }
 
-    func createLinearGradient(x0: Double, y0: Double, x1: Double, y1: Double) -> CanvasGradient {
+    @inlinable func createLinearGradient(x0: Double, y0: Double, x1: Double, y1: Double) -> CanvasGradient {
         let this = jsObject
         return this[Strings.createLinearGradient].function!(this: this, arguments: [x0.jsValue(), y0.jsValue(), x1.jsValue(), y1.jsValue()]).fromJSValue()!
     }
 
-    func createRadialGradient(x0: Double, y0: Double, r0: Double, x1: Double, y1: Double, r1: Double) -> CanvasGradient {
+    @inlinable func createRadialGradient(x0: Double, y0: Double, r0: Double, x1: Double, y1: Double, r1: Double) -> CanvasGradient {
         let _arg0 = x0.jsValue()
         let _arg1 = y0.jsValue()
         let _arg2 = r0.jsValue()
@@ -31,12 +31,12 @@ public extension CanvasFillStrokeStyles {
         return this[Strings.createRadialGradient].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
     }
 
-    func createConicGradient(startAngle: Double, x: Double, y: Double) -> CanvasGradient {
+    @inlinable func createConicGradient(startAngle: Double, x: Double, y: Double) -> CanvasGradient {
         let this = jsObject
         return this[Strings.createConicGradient].function!(this: this, arguments: [startAngle.jsValue(), x.jsValue(), y.jsValue()]).fromJSValue()!
     }
 
-    func createPattern(image: CanvasImageSource, repetition: String) -> CanvasPattern? {
+    @inlinable func createPattern(image: CanvasImageSource, repetition: String) -> CanvasPattern? {
         let this = jsObject
         return this[Strings.createPattern].function!(this: this, arguments: [image.jsValue(), repetition.jsValue()]).fromJSValue()!
     }

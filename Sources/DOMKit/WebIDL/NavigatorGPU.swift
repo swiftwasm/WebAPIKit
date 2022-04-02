@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorGPU: JSBridgedClass {}
 public extension NavigatorGPU {
-    var gpu: GPU { ReadonlyAttribute[Strings.gpu, in: jsObject] }
+    @inlinable var gpu: GPU { ReadonlyAttribute[Strings.gpu, in: jsObject] }
 }

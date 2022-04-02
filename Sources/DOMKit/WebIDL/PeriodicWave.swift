@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PeriodicWave: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PeriodicWave].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PeriodicWave].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class PeriodicWave: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(context: BaseAudioContext, options: PeriodicWaveOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: PeriodicWaveOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 }

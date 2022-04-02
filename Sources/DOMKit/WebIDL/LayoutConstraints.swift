@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class LayoutConstraints: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.LayoutConstraints].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.LayoutConstraints].function! }
 
     public let jsObject: JSObject
 

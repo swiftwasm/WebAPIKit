@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSFontFeatureValuesRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSFontFeatureValuesRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSFontFeatureValuesRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _fontFamily = ReadWriteAttribute(jsObject: jsObject, name: Strings.fontFamily)

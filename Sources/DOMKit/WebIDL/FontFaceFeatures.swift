@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FontFaceFeatures: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FontFaceFeatures].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FontFaceFeatures].function! }
 
     public let jsObject: JSObject
 

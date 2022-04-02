@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGAnimateTransformElement: SVGAnimationElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGAnimateTransformElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGAnimateTransformElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLVertexArrayObject: WebGLObject {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WebGLVertexArrayObject].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLVertexArrayObject].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

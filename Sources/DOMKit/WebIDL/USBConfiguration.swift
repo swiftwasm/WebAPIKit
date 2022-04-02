@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class USBConfiguration: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.USBConfiguration].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.USBConfiguration].function! }
 
     public let jsObject: JSObject
 
@@ -15,7 +15,7 @@ public class USBConfiguration: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(device: USBDevice, configurationValue: UInt8) {
+    @inlinable public convenience init(device: USBDevice, configurationValue: UInt8) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [device.jsValue(), configurationValue.jsValue()]))
     }
 

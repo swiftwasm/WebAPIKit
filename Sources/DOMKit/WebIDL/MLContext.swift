@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MLContext: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MLContext].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MLContext].function! }
 
     public let jsObject: JSObject
 

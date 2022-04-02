@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AuthenticatorResponse: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AuthenticatorResponse].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AuthenticatorResponse].function! }
 
     public let jsObject: JSObject
 

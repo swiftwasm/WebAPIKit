@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ML: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ML].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ML].function! }
 
     public let jsObject: JSObject
 
@@ -12,17 +12,17 @@ public class ML: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func createContext(options: MLContextOptions? = nil) -> MLContext {
+    @inlinable public func createContext(options: MLContextOptions? = nil) -> MLContext {
         let this = jsObject
         return this[Strings.createContext].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func createContext(glContext: WebGLRenderingContext) -> MLContext {
+    @inlinable public func createContext(glContext: WebGLRenderingContext) -> MLContext {
         let this = jsObject
         return this[Strings.createContext].function!(this: this, arguments: [glContext.jsValue()]).fromJSValue()!
     }
 
-    public func createContext(gpuDevice: GPUDevice) -> MLContext {
+    @inlinable public func createContext(gpuDevice: GPUDevice) -> MLContext {
         let this = jsObject
         return this[Strings.createContext].function!(this: this, arguments: [gpuDevice.jsValue()]).fromJSValue()!
     }

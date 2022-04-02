@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol AbstractWorker: JSBridgedClass {}
 public extension AbstractWorker {
-    var onerror: EventHandler {
+    @inlinable var onerror: EventHandler {
         get { ClosureAttribute1Optional[Strings.onerror, in: jsObject] }
         set { ClosureAttribute1Optional[Strings.onerror, in: jsObject] = newValue }
     }

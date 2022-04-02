@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HIDInputReportEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HIDInputReportEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HIDInputReportEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _device = ReadonlyAttribute(jsObject: jsObject, name: Strings.device)
@@ -13,7 +13,7 @@ public class HIDInputReportEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: HIDInputReportEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: HIDInputReportEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

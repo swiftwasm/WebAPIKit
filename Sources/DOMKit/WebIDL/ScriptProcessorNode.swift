@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ScriptProcessorNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ScriptProcessorNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ScriptProcessorNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onaudioprocess = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaudioprocess)

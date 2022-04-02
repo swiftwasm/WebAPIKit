@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCIceTransport: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCIceTransport].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCIceTransport].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
@@ -19,26 +19,26 @@ public class RTCIceTransport: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
-    public func gather(options: RTCIceGatherOptions? = nil) {
+    @inlinable public func gather(options: RTCIceGatherOptions? = nil) {
         let this = jsObject
         _ = this[Strings.gather].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
-    public func start(remoteParameters: RTCIceParameters? = nil, role: RTCIceRole? = nil) {
+    @inlinable public func start(remoteParameters: RTCIceParameters? = nil, role: RTCIceRole? = nil) {
         let this = jsObject
         _ = this[Strings.start].function!(this: this, arguments: [remoteParameters?.jsValue() ?? .undefined, role?.jsValue() ?? .undefined])
     }
 
-    public func stop() {
+    @inlinable public func stop() {
         let this = jsObject
         _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
-    public func addRemoteCandidate(remoteCandidate: RTCIceCandidateInit? = nil) {
+    @inlinable public func addRemoteCandidate(remoteCandidate: RTCIceCandidateInit? = nil) {
         let this = jsObject
         _ = this[Strings.addRemoteCandidate].function!(this: this, arguments: [remoteCandidate?.jsValue() ?? .undefined])
     }
@@ -61,27 +61,27 @@ public class RTCIceTransport: EventTarget {
     @ReadonlyAttribute
     public var gatheringState: RTCIceGathererState
 
-    public func getLocalCandidates() -> [RTCIceCandidate] {
+    @inlinable public func getLocalCandidates() -> [RTCIceCandidate] {
         let this = jsObject
         return this[Strings.getLocalCandidates].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getRemoteCandidates() -> [RTCIceCandidate] {
+    @inlinable public func getRemoteCandidates() -> [RTCIceCandidate] {
         let this = jsObject
         return this[Strings.getRemoteCandidates].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getSelectedCandidatePair() -> RTCIceCandidatePair? {
+    @inlinable public func getSelectedCandidatePair() -> RTCIceCandidatePair? {
         let this = jsObject
         return this[Strings.getSelectedCandidatePair].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getLocalParameters() -> RTCIceParameters? {
+    @inlinable public func getLocalParameters() -> RTCIceParameters? {
         let this = jsObject
         return this[Strings.getLocalParameters].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getRemoteParameters() -> RTCIceParameters? {
+    @inlinable public func getRemoteParameters() -> RTCIceParameters? {
         let this = jsObject
         return this[Strings.getRemoteParameters].function!(this: this, arguments: []).fromJSValue()!
     }

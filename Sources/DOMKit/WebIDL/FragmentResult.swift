@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FragmentResult: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FragmentResult].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FragmentResult].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class FragmentResult: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(options: FragmentResultOptions? = nil) {
+    @inlinable public convenience init(options: FragmentResultOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRViewerPose: XRPose {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRViewerPose].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRViewerPose].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _views = ReadonlyAttribute(jsObject: jsObject, name: Strings.views)

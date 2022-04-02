@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCDataChannel: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCDataChannel].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCDataChannel].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _priority = ReadonlyAttribute(jsObject: jsObject, name: Strings.priority)
@@ -76,7 +76,7 @@ public class RTCDataChannel: EventTarget {
     @ClosureAttribute1Optional
     public var onclose: EventHandler
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
@@ -87,22 +87,22 @@ public class RTCDataChannel: EventTarget {
     @ReadWriteAttribute
     public var binaryType: BinaryType
 
-    public func send(data: String) {
+    @inlinable public func send(data: String) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
-    public func send(data: Blob) {
+    @inlinable public func send(data: Blob) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
-    public func send(data: ArrayBuffer) {
+    @inlinable public func send(data: ArrayBuffer) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
-    public func send(data: ArrayBufferView) {
+    @inlinable public func send(data: ArrayBufferView) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }

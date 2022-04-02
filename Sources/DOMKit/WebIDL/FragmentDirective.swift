@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FragmentDirective: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FragmentDirective].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FragmentDirective].function! }
 
     public let jsObject: JSObject
 

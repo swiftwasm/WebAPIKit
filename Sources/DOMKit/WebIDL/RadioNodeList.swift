@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RadioNodeList: NodeList {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RadioNodeList].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RadioNodeList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)

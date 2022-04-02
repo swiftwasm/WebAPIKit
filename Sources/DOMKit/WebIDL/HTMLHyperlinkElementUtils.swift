@@ -5,54 +5,54 @@ import JavaScriptKit
 
 public protocol HTMLHyperlinkElementUtils: JSBridgedClass {}
 public extension HTMLHyperlinkElementUtils {
-    var href: String {
+    @inlinable var href: String {
         get { ReadWriteAttribute[Strings.href, in: jsObject] }
         set { ReadWriteAttribute[Strings.href, in: jsObject] = newValue }
     }
 
-    var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
+    @inlinable var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
 
-    var `protocol`: String {
+    @inlinable var `protocol`: String {
         get { ReadWriteAttribute[Strings.protocol, in: jsObject] }
         set { ReadWriteAttribute[Strings.protocol, in: jsObject] = newValue }
     }
 
-    var username: String {
+    @inlinable var username: String {
         get { ReadWriteAttribute[Strings.username, in: jsObject] }
         set { ReadWriteAttribute[Strings.username, in: jsObject] = newValue }
     }
 
-    var password: String {
+    @inlinable var password: String {
         get { ReadWriteAttribute[Strings.password, in: jsObject] }
         set { ReadWriteAttribute[Strings.password, in: jsObject] = newValue }
     }
 
-    var host: String {
+    @inlinable var host: String {
         get { ReadWriteAttribute[Strings.host, in: jsObject] }
         set { ReadWriteAttribute[Strings.host, in: jsObject] = newValue }
     }
 
-    var hostname: String {
+    @inlinable var hostname: String {
         get { ReadWriteAttribute[Strings.hostname, in: jsObject] }
         set { ReadWriteAttribute[Strings.hostname, in: jsObject] = newValue }
     }
 
-    var port: String {
+    @inlinable var port: String {
         get { ReadWriteAttribute[Strings.port, in: jsObject] }
         set { ReadWriteAttribute[Strings.port, in: jsObject] = newValue }
     }
 
-    var pathname: String {
+    @inlinable var pathname: String {
         get { ReadWriteAttribute[Strings.pathname, in: jsObject] }
         set { ReadWriteAttribute[Strings.pathname, in: jsObject] = newValue }
     }
 
-    var search: String {
+    @inlinable var search: String {
         get { ReadWriteAttribute[Strings.search, in: jsObject] }
         set { ReadWriteAttribute[Strings.search, in: jsObject] = newValue }
     }
 
-    var hash: String {
+    @inlinable var hash: String {
         get { ReadWriteAttribute[Strings.hash, in: jsObject] }
         set { ReadWriteAttribute[Strings.hash, in: jsObject] = newValue }
     }

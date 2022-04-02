@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SourceBuffer: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SourceBuffer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SourceBuffer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _mode = ReadWriteAttribute(jsObject: jsObject, name: Strings.mode)
@@ -66,22 +66,22 @@ public class SourceBuffer: EventTarget {
     @ClosureAttribute1Optional
     public var onabort: EventHandler
 
-    public func appendBuffer(data: BufferSource) {
+    @inlinable public func appendBuffer(data: BufferSource) {
         let this = jsObject
         _ = this[Strings.appendBuffer].function!(this: this, arguments: [data.jsValue()])
     }
 
-    public func abort() {
+    @inlinable public func abort() {
         let this = jsObject
         _ = this[Strings.abort].function!(this: this, arguments: [])
     }
 
-    public func changeType(type: String) {
+    @inlinable public func changeType(type: String) {
         let this = jsObject
         _ = this[Strings.changeType].function!(this: this, arguments: [type.jsValue()])
     }
 
-    public func remove(start: Double, end: Double) {
+    @inlinable public func remove(start: Double, end: Double) {
         let this = jsObject
         _ = this[Strings.remove].function!(this: this, arguments: [start.jsValue(), end.jsValue()])
     }

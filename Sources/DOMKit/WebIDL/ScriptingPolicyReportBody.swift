@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ScriptingPolicyReportBody: ReportBody {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ScriptingPolicyReportBody].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ScriptingPolicyReportBody].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _violationType = ReadonlyAttribute(jsObject: jsObject, name: Strings.violationType)
@@ -15,7 +15,7 @@ public class ScriptingPolicyReportBody: ReportBody {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    override public func toJSON() -> JSObject {
+    @inlinable override public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

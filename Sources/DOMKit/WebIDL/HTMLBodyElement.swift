@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLBodyElement: HTMLElement, WindowEventHandlers {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLBodyElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLBodyElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onorientationchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onorientationchange)
@@ -20,7 +20,7 @@ public class HTMLBodyElement: HTMLElement, WindowEventHandlers {
     @ClosureAttribute1Optional
     public var onorientationchange: EventHandler
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

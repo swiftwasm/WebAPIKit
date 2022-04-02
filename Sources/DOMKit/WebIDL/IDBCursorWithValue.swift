@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IDBCursorWithValue: IDBCursor {
-    override public class var constructor: JSFunction { JSObject.global[Strings.IDBCursorWithValue].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.IDBCursorWithValue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadonlyAttribute(jsObject: jsObject, name: Strings.value)

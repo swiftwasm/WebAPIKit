@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CookieChangeEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CookieChangeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CookieChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _changed = ReadonlyAttribute(jsObject: jsObject, name: Strings.changed)
@@ -12,7 +12,7 @@ public class CookieChangeEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: CookieChangeEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: CookieChangeEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

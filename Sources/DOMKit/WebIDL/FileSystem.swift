@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FileSystem: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FileSystem].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FileSystem].function! }
 
     public let jsObject: JSObject
 

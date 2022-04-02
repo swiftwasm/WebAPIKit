@@ -105,9 +105,9 @@ enum IDLBuilder {
     static func generateStrings() throws {
         let strings = Context.strings.sorted()
         let stringsContent: SwiftSource = """
-            enum Strings {
+            @usableFromInline enum Strings {
                 static let _self: JSString = "self"
-                \(lines: strings.map { "static let `\(raw: $0)`: JSString = \(quoted: $0)" })
+                \(lines: strings.map { "@usableFromInline static let `\(raw: $0)`: JSString = \(quoted: $0)" })
             }
         """
 

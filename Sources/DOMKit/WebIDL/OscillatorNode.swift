@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OscillatorNode: AudioScheduledSourceNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.OscillatorNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OscillatorNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
@@ -13,7 +13,7 @@ public class OscillatorNode: AudioScheduledSourceNode {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: OscillatorOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: OscillatorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
@@ -26,7 +26,7 @@ public class OscillatorNode: AudioScheduledSourceNode {
     @ReadonlyAttribute
     public var detune: AudioParam
 
-    public func setPeriodicWave(periodicWave: PeriodicWave) {
+    @inlinable public func setPeriodicWave(periodicWave: PeriodicWave) {
         let this = jsObject
         _ = this[Strings.setPeriodicWave].function!(this: this, arguments: [periodicWave.jsValue()])
     }

@@ -5,17 +5,17 @@ import JavaScriptKit
 
 public protocol GPUDebugCommandsMixin: JSBridgedClass {}
 public extension GPUDebugCommandsMixin {
-    func pushDebugGroup(groupLabel: String) {
+    @inlinable func pushDebugGroup(groupLabel: String) {
         let this = jsObject
         _ = this[Strings.pushDebugGroup].function!(this: this, arguments: [groupLabel.jsValue()])
     }
 
-    func popDebugGroup() {
+    @inlinable func popDebugGroup() {
         let this = jsObject
         _ = this[Strings.popDebugGroup].function!(this: this, arguments: [])
     }
 
-    func insertDebugMarker(markerLabel: String) {
+    @inlinable func insertDebugMarker(markerLabel: String) {
         let this = jsObject
         _ = this[Strings.insertDebugMarker].function!(this: this, arguments: [markerLabel.jsValue()])
     }

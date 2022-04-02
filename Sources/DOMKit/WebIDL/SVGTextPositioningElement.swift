@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGTextPositioningElement: SVGTextContentElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGTextPositioningElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGTextPositioningElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)

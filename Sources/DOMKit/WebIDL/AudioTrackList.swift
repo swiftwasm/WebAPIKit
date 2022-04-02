@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioTrackList: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AudioTrackList].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioTrackList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
@@ -17,11 +17,11 @@ public class AudioTrackList: EventTarget {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> AudioTrack {
+    @inlinable public subscript(key: Int) -> AudioTrack {
         jsObject[key].fromJSValue()!
     }
 
-    public func getTrackById(id: String) -> AudioTrack? {
+    @inlinable public func getTrackById(id: String) -> AudioTrack? {
         let this = jsObject
         return this[Strings.getTrackById].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
     }

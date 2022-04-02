@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSRotate: CSSTransformComponent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSRotate].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSRotate].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadWriteAttribute(jsObject: jsObject, name: Strings.x)
@@ -14,11 +14,11 @@ public class CSSRotate: CSSTransformComponent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(angle: CSSNumericValue) {
+    @inlinable public convenience init(angle: CSSNumericValue) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [angle.jsValue()]))
     }
 
-    public convenience init(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish, angle: CSSNumericValue) {
+    @inlinable public convenience init(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish, angle: CSSNumericValue) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [x.jsValue(), y.jsValue(), z.jsValue(), angle.jsValue()]))
     }
 

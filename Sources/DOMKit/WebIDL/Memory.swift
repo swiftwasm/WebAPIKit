@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Memory: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Memory].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Memory].function! }
 
     public let jsObject: JSObject
 
@@ -13,11 +13,11 @@ public class Memory: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(descriptor: MemoryDescriptor) {
+    @inlinable public convenience init(descriptor: MemoryDescriptor) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptor.jsValue()]))
     }
 
-    public func grow(delta: UInt32) -> UInt32 {
+    @inlinable public func grow(delta: UInt32) -> UInt32 {
         let this = jsObject
         return this[Strings.grow].function!(this: this, arguments: [delta.jsValue()]).fromJSValue()!
     }

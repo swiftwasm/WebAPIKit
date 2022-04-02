@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MouseEvent: UIEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MouseEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MouseEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _pageX = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageX)
@@ -53,7 +53,7 @@ public class MouseEvent: UIEvent {
     @ReadonlyAttribute
     public var movementY: Double
 
-    public convenience init(type: String, eventInitDict: MouseEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: MouseEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -90,12 +90,12 @@ public class MouseEvent: UIEvent {
     @ReadonlyAttribute
     public var relatedTarget: EventTarget?
 
-    public func getModifierState(keyArg: String) -> Bool {
+    @inlinable public func getModifierState(keyArg: String) -> Bool {
         let this = jsObject
         return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue()]).fromJSValue()!
     }
 
-    public func initMouseEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil, screenXArg: Int32? = nil, screenYArg: Int32? = nil, clientXArg: Int32? = nil, clientYArg: Int32? = nil, ctrlKeyArg: Bool? = nil, altKeyArg: Bool? = nil, shiftKeyArg: Bool? = nil, metaKeyArg: Bool? = nil, buttonArg: Int16? = nil, relatedTargetArg: EventTarget? = nil) {
+    @inlinable public func initMouseEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil, screenXArg: Int32? = nil, screenYArg: Int32? = nil, clientXArg: Int32? = nil, clientYArg: Int32? = nil, ctrlKeyArg: Bool? = nil, altKeyArg: Bool? = nil, shiftKeyArg: Bool? = nil, metaKeyArg: Bool? = nil, buttonArg: Int16? = nil, relatedTargetArg: EventTarget? = nil) {
         let _arg0 = typeArg.jsValue()
         let _arg1 = bubblesArg?.jsValue() ?? .undefined
         let _arg2 = cancelableArg?.jsValue() ?? .undefined

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaStream: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaStream].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStream].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
@@ -14,52 +14,52 @@ public class MediaStream: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
-    public convenience init(stream: MediaStream) {
+    @inlinable public convenience init(stream: MediaStream) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
     }
 
-    public convenience init(tracks: [MediaStreamTrack]) {
+    @inlinable public convenience init(tracks: [MediaStreamTrack]) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [tracks.jsValue()]))
     }
 
     @ReadonlyAttribute
     public var id: String
 
-    public func getAudioTracks() -> [MediaStreamTrack] {
+    @inlinable public func getAudioTracks() -> [MediaStreamTrack] {
         let this = jsObject
         return this[Strings.getAudioTracks].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getVideoTracks() -> [MediaStreamTrack] {
+    @inlinable public func getVideoTracks() -> [MediaStreamTrack] {
         let this = jsObject
         return this[Strings.getVideoTracks].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getTracks() -> [MediaStreamTrack] {
+    @inlinable public func getTracks() -> [MediaStreamTrack] {
         let this = jsObject
         return this[Strings.getTracks].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getTrackById(trackId: String) -> MediaStreamTrack? {
+    @inlinable public func getTrackById(trackId: String) -> MediaStreamTrack? {
         let this = jsObject
         return this[Strings.getTrackById].function!(this: this, arguments: [trackId.jsValue()]).fromJSValue()!
     }
 
-    public func addTrack(track: MediaStreamTrack) {
+    @inlinable public func addTrack(track: MediaStreamTrack) {
         let this = jsObject
         _ = this[Strings.addTrack].function!(this: this, arguments: [track.jsValue()])
     }
 
-    public func removeTrack(track: MediaStreamTrack) {
+    @inlinable public func removeTrack(track: MediaStreamTrack) {
         let this = jsObject
         _ = this[Strings.removeTrack].function!(this: this, arguments: [track.jsValue()])
     }
 
-    public func clone() -> Self {
+    @inlinable public func clone() -> Self {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }

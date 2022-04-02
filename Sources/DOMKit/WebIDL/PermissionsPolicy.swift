@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PermissionsPolicy: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PermissionsPolicy].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PermissionsPolicy].function! }
 
     public let jsObject: JSObject
 
@@ -12,22 +12,22 @@ public class PermissionsPolicy: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func allowsFeature(feature: String, origin: String? = nil) -> Bool {
+    @inlinable public func allowsFeature(feature: String, origin: String? = nil) -> Bool {
         let this = jsObject
         return this[Strings.allowsFeature].function!(this: this, arguments: [feature.jsValue(), origin?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func features() -> [String] {
+    @inlinable public func features() -> [String] {
         let this = jsObject
         return this[Strings.features].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func allowedFeatures() -> [String] {
+    @inlinable public func allowedFeatures() -> [String] {
         let this = jsObject
         return this[Strings.allowedFeatures].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getAllowlistForFeature(feature: String) -> [String] {
+    @inlinable public func getAllowlistForFeature(feature: String) -> [String] {
         let this = jsObject
         return this[Strings.getAllowlistForFeature].function!(this: this, arguments: [feature.jsValue()]).fromJSValue()!
     }

@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol WindowLocalStorage: JSBridgedClass {}
 public extension WindowLocalStorage {
-    var localStorage: Storage { ReadonlyAttribute[Strings.localStorage, in: jsObject] }
+    @inlinable var localStorage: Storage { ReadonlyAttribute[Strings.localStorage, in: jsObject] }
 }

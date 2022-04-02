@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CloseWatcher: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CloseWatcher].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CloseWatcher].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _oncancel = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncancel)
@@ -12,16 +12,16 @@ public class CloseWatcher: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: CloseWatcherOptions? = nil) {
+    @inlinable public convenience init(options: CloseWatcherOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
-    public func destroy() {
+    @inlinable public func destroy() {
         let this = jsObject
         _ = this[Strings.destroy].function!(this: this, arguments: [])
     }
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }

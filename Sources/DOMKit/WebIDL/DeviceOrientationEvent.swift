@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DeviceOrientationEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.DeviceOrientationEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DeviceOrientationEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _alpha = ReadonlyAttribute(jsObject: jsObject, name: Strings.alpha)
@@ -14,7 +14,7 @@ public class DeviceOrientationEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: DeviceOrientationEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: DeviceOrientationEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -30,13 +30,13 @@ public class DeviceOrientationEvent: Event {
     @ReadonlyAttribute
     public var absolute: Bool
 
-    public static func requestPermission() -> JSPromise {
+    @inlinable public static func requestPermission() -> JSPromise {
         let this = constructor
         return this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func requestPermission() async throws -> PermissionState {
+    @inlinable public static func requestPermission() async throws -> PermissionState {
         let this = constructor
         let _promise: JSPromise = this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

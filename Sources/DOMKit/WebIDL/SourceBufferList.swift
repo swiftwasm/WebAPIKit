@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SourceBufferList: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SourceBufferList].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SourceBufferList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
@@ -22,7 +22,7 @@ public class SourceBufferList: EventTarget {
     @ClosureAttribute1Optional
     public var onremovesourcebuffer: EventHandler
 
-    public subscript(key: Int) -> SourceBuffer {
+    @inlinable public subscript(key: Int) -> SourceBuffer {
         jsObject[key].fromJSValue()!
     }
 }

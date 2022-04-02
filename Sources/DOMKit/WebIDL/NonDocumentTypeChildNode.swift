@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol NonDocumentTypeChildNode: JSBridgedClass {}
 public extension NonDocumentTypeChildNode {
-    var previousElementSibling: Element? { ReadonlyAttribute[Strings.previousElementSibling, in: jsObject] }
+    @inlinable var previousElementSibling: Element? { ReadonlyAttribute[Strings.previousElementSibling, in: jsObject] }
 
-    var nextElementSibling: Element? { ReadonlyAttribute[Strings.nextElementSibling, in: jsObject] }
+    @inlinable var nextElementSibling: Element? { ReadonlyAttribute[Strings.nextElementSibling, in: jsObject] }
 }

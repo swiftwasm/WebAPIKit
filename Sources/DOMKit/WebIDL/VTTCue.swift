@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VTTCue: TextTrackCue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.VTTCue].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.VTTCue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _region = ReadWriteAttribute(jsObject: jsObject, name: Strings.region)
@@ -20,7 +20,7 @@ public class VTTCue: TextTrackCue {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(startTime: Double, endTime: Double, text: String) {
+    @inlinable public convenience init(startTime: Double, endTime: Double, text: String) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [startTime.jsValue(), endTime.jsValue(), text.jsValue()]))
     }
 
@@ -54,7 +54,7 @@ public class VTTCue: TextTrackCue {
     @ReadWriteAttribute
     public var text: String
 
-    public func getCueAsHTML() -> DocumentFragment {
+    @inlinable public func getCueAsHTML() -> DocumentFragment {
         let this = jsObject
         return this[Strings.getCueAsHTML].function!(this: this, arguments: []).fromJSValue()!
     }

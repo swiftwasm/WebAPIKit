@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PageTransitionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PageTransitionEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PageTransitionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _persisted = ReadonlyAttribute(jsObject: jsObject, name: Strings.persisted)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PageTransitionEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: PageTransitionEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

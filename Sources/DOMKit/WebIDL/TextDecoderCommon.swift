@@ -5,9 +5,9 @@ import JavaScriptKit
 
 public protocol TextDecoderCommon: JSBridgedClass {}
 public extension TextDecoderCommon {
-    var encoding: String { ReadonlyAttribute[Strings.encoding, in: jsObject] }
+    @inlinable var encoding: String { ReadonlyAttribute[Strings.encoding, in: jsObject] }
 
-    var fatal: Bool { ReadonlyAttribute[Strings.fatal, in: jsObject] }
+    @inlinable var fatal: Bool { ReadonlyAttribute[Strings.fatal, in: jsObject] }
 
-    var ignoreBOM: Bool { ReadonlyAttribute[Strings.ignoreBOM, in: jsObject] }
+    @inlinable var ignoreBOM: Bool { ReadonlyAttribute[Strings.ignoreBOM, in: jsObject] }
 }

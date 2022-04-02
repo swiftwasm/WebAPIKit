@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPURenderPipeline: JSBridgedClass, GPUObjectBase, GPUPipelineBase {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPURenderPipeline].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPURenderPipeline].function! }
 
     public let jsObject: JSObject
 

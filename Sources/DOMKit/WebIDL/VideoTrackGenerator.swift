@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VideoTrackGenerator: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.VideoTrackGenerator].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.VideoTrackGenerator].function! }
 
     public let jsObject: JSObject
 
@@ -15,7 +15,7 @@ public class VideoTrackGenerator: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

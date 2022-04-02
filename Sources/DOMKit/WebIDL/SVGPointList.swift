@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGPointList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SVGPointList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SVGPointList].function! }
 
     public let jsObject: JSObject
 
@@ -20,36 +20,36 @@ public class SVGPointList: JSBridgedClass {
     @ReadonlyAttribute
     public var numberOfItems: UInt32
 
-    public func clear() {
+    @inlinable public func clear() {
         let this = jsObject
         _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 
-    public func initialize(newItem: DOMPoint) -> DOMPoint {
+    @inlinable public func initialize(newItem: DOMPoint) -> DOMPoint {
         let this = jsObject
         return this[Strings.initialize].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }
 
-    public subscript(key: Int) -> DOMPoint {
+    @inlinable public subscript(key: Int) -> DOMPoint {
         jsObject[key].fromJSValue()!
     }
 
-    public func insertItemBefore(newItem: DOMPoint, index: UInt32) -> DOMPoint {
+    @inlinable public func insertItemBefore(newItem: DOMPoint, index: UInt32) -> DOMPoint {
         let this = jsObject
         return this[Strings.insertItemBefore].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    public func replaceItem(newItem: DOMPoint, index: UInt32) -> DOMPoint {
+    @inlinable public func replaceItem(newItem: DOMPoint, index: UInt32) -> DOMPoint {
         let this = jsObject
         return this[Strings.replaceItem].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    public func removeItem(index: UInt32) -> DOMPoint {
+    @inlinable public func removeItem(index: UInt32) -> DOMPoint {
         let this = jsObject
         return this[Strings.removeItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
-    public func appendItem(newItem: DOMPoint) -> DOMPoint {
+    @inlinable public func appendItem(newItem: DOMPoint) -> DOMPoint {
         let this = jsObject
         return this[Strings.appendItem].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }

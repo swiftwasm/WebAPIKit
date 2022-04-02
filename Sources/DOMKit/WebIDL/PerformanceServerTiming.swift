@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceServerTiming: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PerformanceServerTiming].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PerformanceServerTiming].function! }
 
     public let jsObject: JSObject
 
@@ -24,7 +24,7 @@ public class PerformanceServerTiming: JSBridgedClass {
     @ReadonlyAttribute
     public var description: String
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

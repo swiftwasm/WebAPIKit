@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEMergeElement: SVGElement, SVGFilterPrimitiveStandardAttributes {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEMergeElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEMergeElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

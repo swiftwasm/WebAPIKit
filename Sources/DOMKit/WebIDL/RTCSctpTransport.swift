@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCSctpTransport: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCSctpTransport].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCSctpTransport].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _transport = ReadonlyAttribute(jsObject: jsObject, name: Strings.transport)

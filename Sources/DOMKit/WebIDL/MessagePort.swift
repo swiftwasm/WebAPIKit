@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MessagePort: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MessagePort].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MessagePort].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
@@ -12,22 +12,22 @@ public class MessagePort: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func postMessage(message: JSValue, transfer: [JSObject]) {
+    @inlinable public func postMessage(message: JSValue, transfer: [JSObject]) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), transfer.jsValue()])
     }
 
-    public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
+    @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
     }
 
-    public func start() {
+    @inlinable public func start() {
         let this = jsObject
         _ = this[Strings.start].function!(this: this, arguments: [])
     }
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }

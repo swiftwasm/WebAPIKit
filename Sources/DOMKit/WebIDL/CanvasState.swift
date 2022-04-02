@@ -5,22 +5,22 @@ import JavaScriptKit
 
 public protocol CanvasState: JSBridgedClass {}
 public extension CanvasState {
-    func save() {
+    @inlinable func save() {
         let this = jsObject
         _ = this[Strings.save].function!(this: this, arguments: [])
     }
 
-    func restore() {
+    @inlinable func restore() {
         let this = jsObject
         _ = this[Strings.restore].function!(this: this, arguments: [])
     }
 
-    func reset() {
+    @inlinable func reset() {
         let this = jsObject
         _ = this[Strings.reset].function!(this: this, arguments: [])
     }
 
-    func isContextLost() -> Bool {
+    @inlinable func isContextLost() -> Bool {
         let this = jsObject
         return this[Strings.isContextLost].function!(this: this, arguments: []).fromJSValue()!
     }

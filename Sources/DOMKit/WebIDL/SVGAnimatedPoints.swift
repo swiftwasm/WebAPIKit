@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol SVGAnimatedPoints: JSBridgedClass {}
 public extension SVGAnimatedPoints {
-    var points: SVGPointList { ReadonlyAttribute[Strings.points, in: jsObject] }
+    @inlinable var points: SVGPointList { ReadonlyAttribute[Strings.points, in: jsObject] }
 
-    var animatedPoints: SVGPointList { ReadonlyAttribute[Strings.animatedPoints, in: jsObject] }
+    @inlinable var animatedPoints: SVGPointList { ReadonlyAttribute[Strings.animatedPoints, in: jsObject] }
 }

@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ConstantSourceNode: AudioScheduledSourceNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ConstantSourceNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ConstantSourceNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _offset = ReadonlyAttribute(jsObject: jsObject, name: Strings.offset)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: ConstantSourceOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: ConstantSourceOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

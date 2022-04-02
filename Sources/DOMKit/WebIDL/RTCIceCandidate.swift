@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCIceCandidate: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCIceCandidate].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCIceCandidate].function! }
 
     public let jsObject: JSObject
 
@@ -26,7 +26,7 @@ public class RTCIceCandidate: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(candidateInitDict: RTCIceCandidateInit? = nil) {
+    @inlinable public convenience init(candidateInitDict: RTCIceCandidateInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [candidateInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -72,7 +72,7 @@ public class RTCIceCandidate: JSBridgedClass {
     @ReadonlyAttribute
     public var usernameFragment: String?
 
-    public func toJSON() -> RTCIceCandidateInit {
+    @inlinable public func toJSON() -> RTCIceCandidateInit {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

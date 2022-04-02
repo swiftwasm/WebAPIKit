@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceObserverEntryList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PerformanceObserverEntryList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PerformanceObserverEntryList].function! }
 
     public let jsObject: JSObject
 
@@ -12,17 +12,17 @@ public class PerformanceObserverEntryList: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func getEntries() -> PerformanceEntryList {
+    @inlinable public func getEntries() -> PerformanceEntryList {
         let this = jsObject
         return this[Strings.getEntries].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getEntriesByType(type: String) -> PerformanceEntryList {
+    @inlinable public func getEntriesByType(type: String) -> PerformanceEntryList {
         let this = jsObject
         return this[Strings.getEntriesByType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
-    public func getEntriesByName(name: String, type: String? = nil) -> PerformanceEntryList {
+    @inlinable public func getEntriesByName(name: String, type: String? = nil) -> PerformanceEntryList {
         let this = jsObject
         return this[Strings.getEntriesByName].function!(this: this, arguments: [name.jsValue(), type?.jsValue() ?? .undefined]).fromJSValue()!
     }

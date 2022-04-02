@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Selection: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Selection].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Selection].function! }
 
     public let jsObject: JSObject
 
@@ -40,77 +40,77 @@ public class Selection: JSBridgedClass {
     @ReadonlyAttribute
     public var type: String
 
-    public func getRangeAt(index: UInt32) -> Range {
+    @inlinable public func getRangeAt(index: UInt32) -> Range {
         let this = jsObject
         return this[Strings.getRangeAt].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
-    public func addRange(range: Range) {
+    @inlinable public func addRange(range: Range) {
         let this = jsObject
         _ = this[Strings.addRange].function!(this: this, arguments: [range.jsValue()])
     }
 
-    public func removeRange(range: Range) {
+    @inlinable public func removeRange(range: Range) {
         let this = jsObject
         _ = this[Strings.removeRange].function!(this: this, arguments: [range.jsValue()])
     }
 
-    public func removeAllRanges() {
+    @inlinable public func removeAllRanges() {
         let this = jsObject
         _ = this[Strings.removeAllRanges].function!(this: this, arguments: [])
     }
 
-    public func empty() {
+    @inlinable public func empty() {
         let this = jsObject
         _ = this[Strings.empty].function!(this: this, arguments: [])
     }
 
-    public func collapse(node: Node?, offset: UInt32? = nil) {
+    @inlinable public func collapse(node: Node?, offset: UInt32? = nil) {
         let this = jsObject
         _ = this[Strings.collapse].function!(this: this, arguments: [node.jsValue(), offset?.jsValue() ?? .undefined])
     }
 
-    public func setPosition(node: Node?, offset: UInt32? = nil) {
+    @inlinable public func setPosition(node: Node?, offset: UInt32? = nil) {
         let this = jsObject
         _ = this[Strings.setPosition].function!(this: this, arguments: [node.jsValue(), offset?.jsValue() ?? .undefined])
     }
 
-    public func collapseToStart() {
+    @inlinable public func collapseToStart() {
         let this = jsObject
         _ = this[Strings.collapseToStart].function!(this: this, arguments: [])
     }
 
-    public func collapseToEnd() {
+    @inlinable public func collapseToEnd() {
         let this = jsObject
         _ = this[Strings.collapseToEnd].function!(this: this, arguments: [])
     }
 
-    public func extend(node: Node, offset: UInt32? = nil) {
+    @inlinable public func extend(node: Node, offset: UInt32? = nil) {
         let this = jsObject
         _ = this[Strings.extend].function!(this: this, arguments: [node.jsValue(), offset?.jsValue() ?? .undefined])
     }
 
-    public func setBaseAndExtent(anchorNode: Node, anchorOffset: UInt32, focusNode: Node, focusOffset: UInt32) {
+    @inlinable public func setBaseAndExtent(anchorNode: Node, anchorOffset: UInt32, focusNode: Node, focusOffset: UInt32) {
         let this = jsObject
         _ = this[Strings.setBaseAndExtent].function!(this: this, arguments: [anchorNode.jsValue(), anchorOffset.jsValue(), focusNode.jsValue(), focusOffset.jsValue()])
     }
 
-    public func selectAllChildren(node: Node) {
+    @inlinable public func selectAllChildren(node: Node) {
         let this = jsObject
         _ = this[Strings.selectAllChildren].function!(this: this, arguments: [node.jsValue()])
     }
 
-    public func deleteFromDocument() {
+    @inlinable public func deleteFromDocument() {
         let this = jsObject
         _ = this[Strings.deleteFromDocument].function!(this: this, arguments: [])
     }
 
-    public func containsNode(node: Node, allowPartialContainment: Bool? = nil) -> Bool {
+    @inlinable public func containsNode(node: Node, allowPartialContainment: Bool? = nil) -> Bool {
         let this = jsObject
         return this[Strings.containsNode].function!(this: this, arguments: [node.jsValue(), allowPartialContainment?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public var description: String {
+    @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
     }
 }

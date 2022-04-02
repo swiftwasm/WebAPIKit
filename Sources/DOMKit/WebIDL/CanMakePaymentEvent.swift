@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CanMakePaymentEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CanMakePaymentEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CanMakePaymentEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _topOrigin = ReadonlyAttribute(jsObject: jsObject, name: Strings.topOrigin)
@@ -13,7 +13,7 @@ public class CanMakePaymentEvent: ExtendableEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: CanMakePaymentEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: CanMakePaymentEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -26,7 +26,7 @@ public class CanMakePaymentEvent: ExtendableEvent {
     @ReadonlyAttribute
     public var methodData: [PaymentMethodData]
 
-    public func respondWith(canMakePaymentResponse: JSPromise) {
+    @inlinable public func respondWith(canMakePaymentResponse: JSPromise) {
         let this = jsObject
         _ = this[Strings.respondWith].function!(this: this, arguments: [canMakePaymentResponse.jsValue()])
     }

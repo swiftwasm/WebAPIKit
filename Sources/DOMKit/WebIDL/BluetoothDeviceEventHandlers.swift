@@ -5,12 +5,12 @@ import JavaScriptKit
 
 public protocol BluetoothDeviceEventHandlers: JSBridgedClass {}
 public extension BluetoothDeviceEventHandlers {
-    var onadvertisementreceived: EventHandler {
+    @inlinable var onadvertisementreceived: EventHandler {
         get { ClosureAttribute1Optional[Strings.onadvertisementreceived, in: jsObject] }
         set { ClosureAttribute1Optional[Strings.onadvertisementreceived, in: jsObject] = newValue }
     }
 
-    var ongattserverdisconnected: EventHandler {
+    @inlinable var ongattserverdisconnected: EventHandler {
         get { ClosureAttribute1Optional[Strings.ongattserverdisconnected, in: jsObject] }
         set { ClosureAttribute1Optional[Strings.ongattserverdisconnected, in: jsObject] = newValue }
     }

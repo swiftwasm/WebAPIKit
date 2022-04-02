@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUTextureView: JSBridgedClass, GPUObjectBase {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUTextureView].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUTextureView].function! }
 
     public let jsObject: JSObject
 

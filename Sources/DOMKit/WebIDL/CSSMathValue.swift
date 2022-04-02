@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSMathValue: CSSNumericValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSMathValue].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSMathValue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _operator = ReadonlyAttribute(jsObject: jsObject, name: Strings.operator)

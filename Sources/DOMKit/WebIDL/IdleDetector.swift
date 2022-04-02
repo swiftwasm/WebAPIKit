@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IdleDetector: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.IdleDetector].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.IdleDetector].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _userState = ReadonlyAttribute(jsObject: jsObject, name: Strings.userState)
@@ -13,7 +13,7 @@ public class IdleDetector: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -26,25 +26,25 @@ public class IdleDetector: EventTarget {
     @ClosureAttribute1Optional
     public var onchange: EventHandler
 
-    public static func requestPermission() -> JSPromise {
+    @inlinable public static func requestPermission() -> JSPromise {
         let this = constructor
         return this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func requestPermission() async throws -> PermissionState {
+    @inlinable public static func requestPermission() async throws -> PermissionState {
         let this = constructor
         let _promise: JSPromise = this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func start(options: IdleOptions? = nil) -> JSPromise {
+    @inlinable public func start(options: IdleOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.start].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func start(options: IdleOptions? = nil) async throws {
+    @inlinable public func start(options: IdleOptions? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.start].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()

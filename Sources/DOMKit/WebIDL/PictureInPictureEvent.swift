@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PictureInPictureEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PictureInPictureEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PictureInPictureEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _pictureInPictureWindow = ReadonlyAttribute(jsObject: jsObject, name: Strings.pictureInPictureWindow)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PictureInPictureEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: PictureInPictureEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

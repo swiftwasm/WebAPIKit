@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StorageEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.StorageEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.StorageEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _key = ReadonlyAttribute(jsObject: jsObject, name: Strings.key)
@@ -15,7 +15,7 @@ public class StorageEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: StorageEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: StorageEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -34,7 +34,7 @@ public class StorageEvent: Event {
     @ReadonlyAttribute
     public var storageArea: Storage?
 
-    public func initStorageEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, key: String? = nil, oldValue: String? = nil, newValue: String? = nil, url: String? = nil, storageArea: Storage? = nil) {
+    @inlinable public func initStorageEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, key: String? = nil, oldValue: String? = nil, newValue: String? = nil, url: String? = nil, storageArea: Storage? = nil) {
         let _arg0 = type.jsValue()
         let _arg1 = bubbles?.jsValue() ?? .undefined
         let _arg2 = cancelable?.jsValue() ?? .undefined

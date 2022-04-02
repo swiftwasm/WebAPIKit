@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XMLDocument: Document {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XMLDocument].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XMLDocument].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

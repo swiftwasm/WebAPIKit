@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class File: Blob {
-    override public class var constructor: JSFunction { JSObject.global[Strings.File].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.File].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
@@ -13,7 +13,7 @@ public class File: Blob {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(fileBits: [BlobPart], fileName: String, options: FilePropertyBag? = nil) {
+    @inlinable public convenience init(fileBits: [BlobPart], fileName: String, options: FilePropertyBag? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [fileBits.jsValue(), fileName.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

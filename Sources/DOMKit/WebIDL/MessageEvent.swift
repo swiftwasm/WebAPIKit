@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MessageEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MessageEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MessageEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
@@ -15,7 +15,7 @@ public class MessageEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: MessageEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: MessageEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -34,7 +34,7 @@ public class MessageEvent: Event {
     @ReadonlyAttribute
     public var ports: [MessagePort]
 
-    public func initMessageEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, data: JSValue? = nil, origin: String? = nil, lastEventId: String? = nil, source: MessageEventSource? = nil, ports: [MessagePort]? = nil) {
+    @inlinable public func initMessageEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, data: JSValue? = nil, origin: String? = nil, lastEventId: String? = nil, source: MessageEventSource? = nil, ports: [MessagePort]? = nil) {
         let _arg0 = type.jsValue()
         let _arg1 = bubbles?.jsValue() ?? .undefined
         let _arg2 = cancelable?.jsValue() ?? .undefined

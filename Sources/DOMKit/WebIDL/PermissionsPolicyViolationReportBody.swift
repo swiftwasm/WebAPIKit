@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PermissionsPolicyViolationReportBody: ReportBody {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PermissionsPolicyViolationReportBody].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PermissionsPolicyViolationReportBody].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _featureId = ReadonlyAttribute(jsObject: jsObject, name: Strings.featureId)

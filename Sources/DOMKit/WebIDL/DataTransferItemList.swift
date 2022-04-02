@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DataTransferItemList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DataTransferItemList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DataTransferItemList].function! }
 
     public let jsObject: JSObject
 
@@ -16,26 +16,26 @@ public class DataTransferItemList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> DataTransferItem {
+    @inlinable public subscript(key: Int) -> DataTransferItem {
         jsObject[key].fromJSValue()!
     }
 
-    public func add(data: String, type: String) -> DataTransferItem? {
+    @inlinable public func add(data: String, type: String) -> DataTransferItem? {
         let this = jsObject
         return this[Strings.add].function!(this: this, arguments: [data.jsValue(), type.jsValue()]).fromJSValue()!
     }
 
-    public func add(data: File) -> DataTransferItem? {
+    @inlinable public func add(data: File) -> DataTransferItem? {
         let this = jsObject
         return this[Strings.add].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
-    public func remove(index: UInt32) {
+    @inlinable public func remove(index: UInt32) {
         let this = jsObject
         _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue()])
     }
 
-    public func clear() {
+    @inlinable public func clear() {
         let this = jsObject
         _ = this[Strings.clear].function!(this: this, arguments: [])
     }

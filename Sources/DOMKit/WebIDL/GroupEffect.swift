@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GroupEffect: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GroupEffect].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GroupEffect].function! }
 
     public let jsObject: JSObject
 
@@ -15,7 +15,7 @@ public class GroupEffect: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(children: [AnimationEffect]?, timing: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(children: [AnimationEffect]?, timing: __UNSUPPORTED_UNION__? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [children.jsValue(), timing?.jsValue() ?? .undefined]))
     }
 
@@ -28,17 +28,17 @@ public class GroupEffect: JSBridgedClass {
     @ReadonlyAttribute
     public var lastChild: AnimationEffect?
 
-    public func clone() -> Self {
+    @inlinable public func clone() -> Self {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func prepend(effects: AnimationEffect...) {
+    @inlinable public func prepend(effects: AnimationEffect...) {
         let this = jsObject
         _ = this[Strings.prepend].function!(this: this, arguments: effects.map { $0.jsValue() })
     }
 
-    public func append(effects: AnimationEffect...) {
+    @inlinable public func append(effects: AnimationEffect...) {
         let this = jsObject
         _ = this[Strings.append].function!(this: this, arguments: effects.map { $0.jsValue() })
     }

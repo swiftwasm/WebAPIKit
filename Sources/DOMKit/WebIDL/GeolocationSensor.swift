@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GeolocationSensor: Sensor {
-    override public class var constructor: JSFunction { JSObject.global[Strings.GeolocationSensor].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.GeolocationSensor].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _latitude = ReadonlyAttribute(jsObject: jsObject, name: Strings.latitude)
@@ -17,17 +17,17 @@ public class GeolocationSensor: Sensor {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: GeolocationSensorOptions? = nil) {
+    @inlinable public convenience init(options: GeolocationSensorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
-    public static func read(readOptions: ReadOptions? = nil) -> JSPromise {
+    @inlinable public static func read(readOptions: ReadOptions? = nil) -> JSPromise {
         let this = constructor
         return this[Strings.read].function!(this: this, arguments: [readOptions?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func read(readOptions: ReadOptions? = nil) async throws -> GeolocationSensorReading {
+    @inlinable public static func read(readOptions: ReadOptions? = nil) async throws -> GeolocationSensorReading {
         let this = constructor
         let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: [readOptions?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

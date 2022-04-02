@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Location: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Location].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Location].function! }
 
     public let jsObject: JSObject
 
@@ -49,17 +49,17 @@ public class Location: JSBridgedClass {
     @ReadWriteAttribute
     public var hash: String
 
-    public func assign(url: String) {
+    @inlinable public func assign(url: String) {
         let this = jsObject
         _ = this[Strings.assign].function!(this: this, arguments: [url.jsValue()])
     }
 
-    public func replace(url: String) {
+    @inlinable public func replace(url: String) {
         let this = jsObject
         _ = this[Strings.replace].function!(this: this, arguments: [url.jsValue()])
     }
 
-    public func reload() {
+    @inlinable public func reload() {
         let this = jsObject
         _ = this[Strings.reload].function!(this: this, arguments: [])
     }

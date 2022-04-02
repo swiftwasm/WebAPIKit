@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLObject: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WebGLObject].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WebGLObject].function! }
 
     public let jsObject: JSObject
 

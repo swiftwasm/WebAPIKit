@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLModElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLModElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLModElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _cite = ReadWriteAttribute(jsObject: jsObject, name: Strings.cite)
@@ -12,7 +12,7 @@ public class HTMLModElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

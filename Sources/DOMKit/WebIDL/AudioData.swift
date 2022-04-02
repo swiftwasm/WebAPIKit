@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioData: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AudioData].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioData].function! }
 
     public let jsObject: JSObject
 
@@ -18,7 +18,7 @@ public class AudioData: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: AudioDataInit) {
+    @inlinable public convenience init(init: AudioDataInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 
@@ -40,22 +40,22 @@ public class AudioData: JSBridgedClass {
     @ReadonlyAttribute
     public var timestamp: Int64
 
-    public func allocationSize(options: AudioDataCopyToOptions) -> UInt32 {
+    @inlinable public func allocationSize(options: AudioDataCopyToOptions) -> UInt32 {
         let this = jsObject
         return this[Strings.allocationSize].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
     }
 
-    public func copyTo(destination: BufferSource, options: AudioDataCopyToOptions) {
+    @inlinable public func copyTo(destination: BufferSource, options: AudioDataCopyToOptions) {
         let this = jsObject
         _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue(), options.jsValue()])
     }
 
-    public func clone() -> Self {
+    @inlinable public func clone() -> Self {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }

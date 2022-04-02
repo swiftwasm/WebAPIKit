@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PresentationAvailability: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PresentationAvailability].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PresentationAvailability].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadonlyAttribute(jsObject: jsObject, name: Strings.value)

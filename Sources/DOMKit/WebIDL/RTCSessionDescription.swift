@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCSessionDescription: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCSessionDescription].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCSessionDescription].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class RTCSessionDescription: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(descriptionInitDict: RTCSessionDescriptionInit) {
+    @inlinable public convenience init(descriptionInitDict: RTCSessionDescriptionInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptionInitDict.jsValue()]))
     }
 
@@ -24,7 +24,7 @@ public class RTCSessionDescription: JSBridgedClass {
     @ReadonlyAttribute
     public var sdp: String
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

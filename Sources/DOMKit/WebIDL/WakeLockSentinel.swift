@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WakeLockSentinel: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WakeLockSentinel].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WakeLockSentinel].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _released = ReadonlyAttribute(jsObject: jsObject, name: Strings.released)
@@ -19,13 +19,13 @@ public class WakeLockSentinel: EventTarget {
     @ReadonlyAttribute
     public var type: WakeLockType
 
-    public func release() -> JSPromise {
+    @inlinable public func release() -> JSPromise {
         let this = jsObject
         return this[Strings.release].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func release() async throws {
+    @inlinable public func release() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.release].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

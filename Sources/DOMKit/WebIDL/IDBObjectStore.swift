@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IDBObjectStore: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.IDBObjectStore].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.IDBObjectStore].function! }
 
     public let jsObject: JSObject
 
@@ -32,72 +32,72 @@ public class IDBObjectStore: JSBridgedClass {
     @ReadonlyAttribute
     public var autoIncrement: Bool
 
-    public func put(value: JSValue, key: JSValue? = nil) -> IDBRequest {
+    @inlinable public func put(value: JSValue, key: JSValue? = nil) -> IDBRequest {
         let this = jsObject
         return this[Strings.put].function!(this: this, arguments: [value.jsValue(), key?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func add(value: JSValue, key: JSValue? = nil) -> IDBRequest {
+    @inlinable public func add(value: JSValue, key: JSValue? = nil) -> IDBRequest {
         let this = jsObject
         return this[Strings.add].function!(this: this, arguments: [value.jsValue(), key?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func delete(query: JSValue) -> IDBRequest {
+    @inlinable public func delete(query: JSValue) -> IDBRequest {
         let this = jsObject
         return this[Strings.delete].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
     }
 
-    public func clear() -> IDBRequest {
+    @inlinable public func clear() -> IDBRequest {
         let this = jsObject
         return this[Strings.clear].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func get(query: JSValue) -> IDBRequest {
+    @inlinable public func get(query: JSValue) -> IDBRequest {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
     }
 
-    public func getKey(query: JSValue) -> IDBRequest {
+    @inlinable public func getKey(query: JSValue) -> IDBRequest {
         let this = jsObject
         return this[Strings.getKey].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
     }
 
-    public func getAll(query: JSValue? = nil, count: UInt32? = nil) -> IDBRequest {
+    @inlinable public func getAll(query: JSValue? = nil, count: UInt32? = nil) -> IDBRequest {
         let this = jsObject
         return this[Strings.getAll].function!(this: this, arguments: [query?.jsValue() ?? .undefined, count?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func getAllKeys(query: JSValue? = nil, count: UInt32? = nil) -> IDBRequest {
+    @inlinable public func getAllKeys(query: JSValue? = nil, count: UInt32? = nil) -> IDBRequest {
         let this = jsObject
         return this[Strings.getAllKeys].function!(this: this, arguments: [query?.jsValue() ?? .undefined, count?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func count(query: JSValue? = nil) -> IDBRequest {
+    @inlinable public func count(query: JSValue? = nil) -> IDBRequest {
         let this = jsObject
         return this[Strings.count].function!(this: this, arguments: [query?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func openCursor(query: JSValue? = nil, direction: IDBCursorDirection? = nil) -> IDBRequest {
+    @inlinable public func openCursor(query: JSValue? = nil, direction: IDBCursorDirection? = nil) -> IDBRequest {
         let this = jsObject
         return this[Strings.openCursor].function!(this: this, arguments: [query?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func openKeyCursor(query: JSValue? = nil, direction: IDBCursorDirection? = nil) -> IDBRequest {
+    @inlinable public func openKeyCursor(query: JSValue? = nil, direction: IDBCursorDirection? = nil) -> IDBRequest {
         let this = jsObject
         return this[Strings.openKeyCursor].function!(this: this, arguments: [query?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func index(name: String) -> IDBIndex {
+    @inlinable public func index(name: String) -> IDBIndex {
         let this = jsObject
         return this[Strings.index].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func createIndex(name: String, keyPath: __UNSUPPORTED_UNION__, options: IDBIndexParameters? = nil) -> IDBIndex {
+    @inlinable public func createIndex(name: String, keyPath: __UNSUPPORTED_UNION__, options: IDBIndexParameters? = nil) -> IDBIndex {
         let this = jsObject
         return this[Strings.createIndex].function!(this: this, arguments: [name.jsValue(), keyPath.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func deleteIndex(name: String) {
+    @inlinable public func deleteIndex(name: String) {
         let this = jsObject
         _ = this[Strings.deleteIndex].function!(this: this, arguments: [name.jsValue()])
     }

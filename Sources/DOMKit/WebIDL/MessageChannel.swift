@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MessageChannel: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MessageChannel].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MessageChannel].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class MessageChannel: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

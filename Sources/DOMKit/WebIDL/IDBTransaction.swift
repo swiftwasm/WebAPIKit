@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IDBTransaction: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.IDBTransaction].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.IDBTransaction].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _objectStoreNames = ReadonlyAttribute(jsObject: jsObject, name: Strings.objectStoreNames)
@@ -33,17 +33,17 @@ public class IDBTransaction: EventTarget {
     @ReadonlyAttribute
     public var error: DOMException?
 
-    public func objectStore(name: String) -> IDBObjectStore {
+    @inlinable public func objectStore(name: String) -> IDBObjectStore {
         let this = jsObject
         return this[Strings.objectStore].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func commit() {
+    @inlinable public func commit() {
         let this = jsObject
         _ = this[Strings.commit].function!(this: this, arguments: [])
     }
 
-    public func abort() {
+    @inlinable public func abort() {
         let this = jsObject
         _ = this[Strings.abort].function!(this: this, arguments: [])
     }

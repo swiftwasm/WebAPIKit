@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Navigation: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Navigation].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Navigation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _currentEntry = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentEntry)
@@ -18,7 +18,7 @@ public class Navigation: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func entries() -> [NavigationHistoryEntry] {
+    @inlinable public func entries() -> [NavigationHistoryEntry] {
         let this = jsObject
         return this[Strings.entries].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -26,7 +26,7 @@ public class Navigation: EventTarget {
     @ReadonlyAttribute
     public var currentEntry: NavigationHistoryEntry?
 
-    public func updateCurrentEntry(options: NavigationUpdateCurrentEntryOptions) {
+    @inlinable public func updateCurrentEntry(options: NavigationUpdateCurrentEntryOptions) {
         let this = jsObject
         _ = this[Strings.updateCurrentEntry].function!(this: this, arguments: [options.jsValue()])
     }
@@ -40,27 +40,27 @@ public class Navigation: EventTarget {
     @ReadonlyAttribute
     public var canGoForward: Bool
 
-    public func navigate(url: String, options: NavigationNavigateOptions? = nil) -> NavigationResult {
+    @inlinable public func navigate(url: String, options: NavigationNavigateOptions? = nil) -> NavigationResult {
         let this = jsObject
         return this[Strings.navigate].function!(this: this, arguments: [url.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reload(options: NavigationReloadOptions? = nil) -> NavigationResult {
+    @inlinable public func reload(options: NavigationReloadOptions? = nil) -> NavigationResult {
         let this = jsObject
         return this[Strings.reload].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func traverseTo(key: String, options: NavigationOptions? = nil) -> NavigationResult {
+    @inlinable public func traverseTo(key: String, options: NavigationOptions? = nil) -> NavigationResult {
         let this = jsObject
         return this[Strings.traverseTo].function!(this: this, arguments: [key.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func back(options: NavigationOptions? = nil) -> NavigationResult {
+    @inlinable public func back(options: NavigationOptions? = nil) -> NavigationResult {
         let this = jsObject
         return this[Strings.back].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func forward(options: NavigationOptions? = nil) -> NavigationResult {
+    @inlinable public func forward(options: NavigationOptions? = nil) -> NavigationResult {
         let this = jsObject
         return this[Strings.forward].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }

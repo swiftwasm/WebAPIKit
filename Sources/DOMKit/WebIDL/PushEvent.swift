@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PushEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PushEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PushEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PushEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: PushEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

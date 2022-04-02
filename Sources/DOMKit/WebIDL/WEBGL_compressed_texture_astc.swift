@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_compressed_texture_astc: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_compressed_texture_astc].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_compressed_texture_astc].function! }
 
     public let jsObject: JSObject
 
@@ -68,7 +68,7 @@ public class WEBGL_compressed_texture_astc: JSBridgedClass {
 
     public static let COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR: GLenum = 0x93DD
 
-    public func getSupportedProfiles() -> [String] {
+    @inlinable public func getSupportedProfiles() -> [String] {
         let this = jsObject
         return this[Strings.getSupportedProfiles].function!(this: this, arguments: []).fromJSValue()!
     }

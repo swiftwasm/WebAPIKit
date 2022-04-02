@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PresentationConnection: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PresentationConnection].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PresentationConnection].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
@@ -27,12 +27,12 @@ public class PresentationConnection: EventTarget {
     @ReadonlyAttribute
     public var state: PresentationConnectionState
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    public func terminate() {
+    @inlinable public func terminate() {
         let this = jsObject
         _ = this[Strings.terminate].function!(this: this, arguments: [])
     }
@@ -52,22 +52,22 @@ public class PresentationConnection: EventTarget {
     @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
-    public func send(message: String) {
+    @inlinable public func send(message: String) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [message.jsValue()])
     }
 
-    public func send(data: Blob) {
+    @inlinable public func send(data: Blob) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
-    public func send(data: ArrayBuffer) {
+    @inlinable public func send(data: ArrayBuffer) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }
 
-    public func send(data: ArrayBufferView) {
+    @inlinable public func send(data: ArrayBufferView) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
     }

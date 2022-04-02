@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FileReader: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.FileReader].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.FileReader].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
@@ -19,31 +19,31 @@ public class FileReader: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
-    public func readAsArrayBuffer(blob: Blob) {
+    @inlinable public func readAsArrayBuffer(blob: Blob) {
         let this = jsObject
         _ = this[Strings.readAsArrayBuffer].function!(this: this, arguments: [blob.jsValue()])
     }
 
-    public func readAsBinaryString(blob: Blob) {
+    @inlinable public func readAsBinaryString(blob: Blob) {
         let this = jsObject
         _ = this[Strings.readAsBinaryString].function!(this: this, arguments: [blob.jsValue()])
     }
 
-    public func readAsText(blob: Blob, encoding: String? = nil) {
+    @inlinable public func readAsText(blob: Blob, encoding: String? = nil) {
         let this = jsObject
         _ = this[Strings.readAsText].function!(this: this, arguments: [blob.jsValue(), encoding?.jsValue() ?? .undefined])
     }
 
-    public func readAsDataURL(blob: Blob) {
+    @inlinable public func readAsDataURL(blob: Blob) {
         let this = jsObject
         _ = this[Strings.readAsDataURL].function!(this: this, arguments: [blob.jsValue()])
     }
 
-    public func abort() {
+    @inlinable public func abort() {
         let this = jsObject
         _ = this[Strings.abort].function!(this: this, arguments: [])
     }

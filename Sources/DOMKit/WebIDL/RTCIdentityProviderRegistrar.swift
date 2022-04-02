@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCIdentityProviderRegistrar: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCIdentityProviderRegistrar].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCIdentityProviderRegistrar].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class RTCIdentityProviderRegistrar: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func register(idp: RTCIdentityProvider) {
+    @inlinable public func register(idp: RTCIdentityProvider) {
         let this = jsObject
         _ = this[Strings.register].function!(this: this, arguments: [idp.jsValue()])
     }

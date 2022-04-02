@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AbortController: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AbortController].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AbortController].function! }
 
     public let jsObject: JSObject
 
@@ -13,14 +13,14 @@ public class AbortController: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     @ReadonlyAttribute
     public var signal: AbortSignal
 
-    public func abort(reason: JSValue? = nil) {
+    @inlinable public func abort(reason: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined])
     }

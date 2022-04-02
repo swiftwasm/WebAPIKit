@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AnimationTimeline: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AnimationTimeline].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AnimationTimeline].function! }
 
     public let jsObject: JSObject
 
@@ -18,7 +18,7 @@ public class AnimationTimeline: JSBridgedClass {
     @ReadonlyAttribute
     public var duration: CSSNumberish?
 
-    public func play(effect: AnimationEffect? = nil) -> Animation {
+    @inlinable public func play(effect: AnimationEffect? = nil) -> Animation {
         let this = jsObject
         return this[Strings.play].function!(this: this, arguments: [effect?.jsValue() ?? .undefined]).fromJSValue()!
     }

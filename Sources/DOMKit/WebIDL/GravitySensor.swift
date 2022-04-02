@@ -4,13 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GravitySensor: Accelerometer {
-    override public class var constructor: JSFunction { JSObject.global[Strings.GravitySensor].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.GravitySensor].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: AccelerometerSensorOptions? = nil) {
+    @inlinable public convenience init(options: AccelerometerSensorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 }

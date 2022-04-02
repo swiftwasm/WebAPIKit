@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XMLHttpRequestEventTarget: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XMLHttpRequestEventTarget].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XMLHttpRequestEventTarget].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onloadstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onloadstart)

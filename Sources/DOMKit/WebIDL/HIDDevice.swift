@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HIDDevice: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HIDDevice].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HIDDevice].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _oninputreport = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oninputreport)
@@ -34,73 +34,73 @@ public class HIDDevice: EventTarget {
     @ReadonlyAttribute
     public var collections: [HIDCollectionInfo]
 
-    public func open() -> JSPromise {
+    @inlinable public func open() -> JSPromise {
         let this = jsObject
         return this[Strings.open].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func open() async throws {
+    @inlinable public func open() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func close() -> JSPromise {
+    @inlinable public func close() -> JSPromise {
         let this = jsObject
         return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func close() async throws {
+    @inlinable public func close() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func forget() -> JSPromise {
+    @inlinable public func forget() -> JSPromise {
         let this = jsObject
         return this[Strings.forget].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func forget() async throws {
+    @inlinable public func forget() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.forget].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func sendReport(reportId: UInt8, data: BufferSource) -> JSPromise {
+    @inlinable public func sendReport(reportId: UInt8, data: BufferSource) -> JSPromise {
         let this = jsObject
         return this[Strings.sendReport].function!(this: this, arguments: [reportId.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func sendReport(reportId: UInt8, data: BufferSource) async throws {
+    @inlinable public func sendReport(reportId: UInt8, data: BufferSource) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.sendReport].function!(this: this, arguments: [reportId.jsValue(), data.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func sendFeatureReport(reportId: UInt8, data: BufferSource) -> JSPromise {
+    @inlinable public func sendFeatureReport(reportId: UInt8, data: BufferSource) -> JSPromise {
         let this = jsObject
         return this[Strings.sendFeatureReport].function!(this: this, arguments: [reportId.jsValue(), data.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func sendFeatureReport(reportId: UInt8, data: BufferSource) async throws {
+    @inlinable public func sendFeatureReport(reportId: UInt8, data: BufferSource) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.sendFeatureReport].function!(this: this, arguments: [reportId.jsValue(), data.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func receiveFeatureReport(reportId: UInt8) -> JSPromise {
+    @inlinable public func receiveFeatureReport(reportId: UInt8) -> JSPromise {
         let this = jsObject
         return this[Strings.receiveFeatureReport].function!(this: this, arguments: [reportId.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func receiveFeatureReport(reportId: UInt8) async throws -> DataView {
+    @inlinable public func receiveFeatureReport(reportId: UInt8) async throws -> DataView {
         let this = jsObject
         let _promise: JSPromise = this[Strings.receiveFeatureReport].function!(this: this, arguments: [reportId.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

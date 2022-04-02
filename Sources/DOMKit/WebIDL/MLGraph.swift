@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MLGraph: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MLGraph].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MLGraph].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class MLGraph: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func compute(inputs: MLNamedInputs, outputs: MLNamedOutputs) {
+    @inlinable public func compute(inputs: MLNamedInputs, outputs: MLNamedOutputs) {
         let this = jsObject
         _ = this[Strings.compute].function!(this: this, arguments: [inputs.jsValue(), outputs.jsValue()])
     }

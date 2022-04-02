@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioWorkletGlobalScope: WorkletGlobalScope {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AudioWorkletGlobalScope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioWorkletGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _currentFrame = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentFrame)

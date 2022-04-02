@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaMetadata: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MediaMetadata].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaMetadata].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class MediaMetadata: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: MediaMetadataInit? = nil) {
+    @inlinable public convenience init(init: MediaMetadataInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 

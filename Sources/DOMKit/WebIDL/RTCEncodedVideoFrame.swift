@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCEncodedVideoFrame: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCEncodedVideoFrame].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCEncodedVideoFrame].function! }
 
     public let jsObject: JSObject
 
@@ -24,7 +24,7 @@ public class RTCEncodedVideoFrame: JSBridgedClass {
     @ReadWriteAttribute
     public var data: ArrayBuffer
 
-    public func getMetadata() -> RTCEncodedVideoFrameMetadata {
+    @inlinable public func getMetadata() -> RTCEncodedVideoFrameMetadata {
         let this = jsObject
         return this[Strings.getMetadata].function!(this: this, arguments: []).fromJSValue()!
     }

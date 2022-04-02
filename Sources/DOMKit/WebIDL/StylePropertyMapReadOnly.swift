@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StylePropertyMapReadOnly: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.StylePropertyMapReadOnly].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.StylePropertyMapReadOnly].function! }
 
     public let jsObject: JSObject
 
@@ -18,17 +18,17 @@ public class StylePropertyMapReadOnly: JSBridgedClass, Sequence {
         ValueIterableIterator(sequence: self)
     }
 
-    public func get(property: String) -> JSValue {
+    @inlinable public func get(property: String) -> JSValue {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
-    public func getAll(property: String) -> [CSSStyleValue] {
+    @inlinable public func getAll(property: String) -> [CSSStyleValue] {
         let this = jsObject
         return this[Strings.getAll].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
-    public func has(property: String) -> Bool {
+    @inlinable public func has(property: String) -> Bool {
         let this = jsObject
         return this[Strings.has].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }

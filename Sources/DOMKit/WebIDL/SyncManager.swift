@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SyncManager: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SyncManager].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SyncManager].function! }
 
     public let jsObject: JSObject
 
@@ -12,25 +12,25 @@ public class SyncManager: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func register(tag: String) -> JSPromise {
+    @inlinable public func register(tag: String) -> JSPromise {
         let this = jsObject
         return this[Strings.register].function!(this: this, arguments: [tag.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func register(tag: String) async throws {
+    @inlinable public func register(tag: String) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.register].function!(this: this, arguments: [tag.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func getTags() -> JSPromise {
+    @inlinable public func getTags() -> JSPromise {
         let this = jsObject
         return this[Strings.getTags].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getTags() async throws -> [String] {
+    @inlinable public func getTags() async throws -> [String] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getTags].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

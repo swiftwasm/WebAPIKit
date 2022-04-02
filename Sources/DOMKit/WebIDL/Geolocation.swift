@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Geolocation: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Geolocation].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Geolocation].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class Geolocation: JSBridgedClass {
 
     // XXX: member 'watchPosition' is ignored
 
-    public func clearWatch(watchId: Int32) {
+    @inlinable public func clearWatch(watchId: Int32) {
         let this = jsObject
         _ = this[Strings.clearWatch].function!(this: this, arguments: [watchId.jsValue()])
     }

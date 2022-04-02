@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BluetoothCharacteristicProperties: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.BluetoothCharacteristicProperties].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.BluetoothCharacteristicProperties].function! }
 
     public let jsObject: JSObject
 

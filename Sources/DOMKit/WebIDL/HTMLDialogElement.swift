@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLDialogElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLDialogElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLDialogElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _open = ReadWriteAttribute(jsObject: jsObject, name: Strings.open)
@@ -12,7 +12,7 @@ public class HTMLDialogElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -22,17 +22,17 @@ public class HTMLDialogElement: HTMLElement {
     @ReadWriteAttribute
     public var returnValue: String
 
-    public func show() {
+    @inlinable public func show() {
         let this = jsObject
         _ = this[Strings.show].function!(this: this, arguments: [])
     }
 
-    public func showModal() {
+    @inlinable public func showModal() {
         let this = jsObject
         _ = this[Strings.showModal].function!(this: this, arguments: [])
     }
 
-    public func close(returnValue: String? = nil) {
+    @inlinable public func close(returnValue: String? = nil) {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [returnValue?.jsValue() ?? .undefined])
     }

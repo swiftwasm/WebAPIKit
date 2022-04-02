@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PaymentRequestEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PaymentRequestEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PaymentRequestEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _topOrigin = ReadonlyAttribute(jsObject: jsObject, name: Strings.topOrigin)
@@ -16,7 +16,7 @@ public class PaymentRequestEvent: ExtendableEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PaymentRequestEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: PaymentRequestEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -38,31 +38,31 @@ public class PaymentRequestEvent: ExtendableEvent {
     @ReadonlyAttribute
     public var modifiers: [PaymentDetailsModifier]
 
-    public func openWindow(url: String) -> JSPromise {
+    @inlinable public func openWindow(url: String) -> JSPromise {
         let this = jsObject
         return this[Strings.openWindow].function!(this: this, arguments: [url.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func openWindow(url: String) async throws -> WindowClient? {
+    @inlinable public func openWindow(url: String) async throws -> WindowClient? {
         let this = jsObject
         let _promise: JSPromise = this[Strings.openWindow].function!(this: this, arguments: [url.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func changePaymentMethod(methodName: String, methodDetails: JSObject? = nil) -> JSPromise {
+    @inlinable public func changePaymentMethod(methodName: String, methodDetails: JSObject? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.changePaymentMethod].function!(this: this, arguments: [methodName.jsValue(), methodDetails?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func changePaymentMethod(methodName: String, methodDetails: JSObject? = nil) async throws -> PaymentRequestDetailsUpdate? {
+    @inlinable public func changePaymentMethod(methodName: String, methodDetails: JSObject? = nil) async throws -> PaymentRequestDetailsUpdate? {
         let this = jsObject
         let _promise: JSPromise = this[Strings.changePaymentMethod].function!(this: this, arguments: [methodName.jsValue(), methodDetails?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func respondWith(handlerResponsePromise: JSPromise) {
+    @inlinable public func respondWith(handlerResponsePromise: JSPromise) {
         let this = jsObject
         _ = this[Strings.respondWith].function!(this: this, arguments: [handlerResponsePromise.jsValue()])
     }

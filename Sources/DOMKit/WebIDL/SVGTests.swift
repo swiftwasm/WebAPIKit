@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol SVGTests: JSBridgedClass {}
 public extension SVGTests {
-    var requiredExtensions: SVGStringList { ReadonlyAttribute[Strings.requiredExtensions, in: jsObject] }
+    @inlinable var requiredExtensions: SVGStringList { ReadonlyAttribute[Strings.requiredExtensions, in: jsObject] }
 
-    var systemLanguage: SVGStringList { ReadonlyAttribute[Strings.systemLanguage, in: jsObject] }
+    @inlinable var systemLanguage: SVGStringList { ReadonlyAttribute[Strings.systemLanguage, in: jsObject] }
 }

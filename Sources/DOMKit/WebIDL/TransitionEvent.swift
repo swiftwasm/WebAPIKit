@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TransitionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.TransitionEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.TransitionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _propertyName = ReadonlyAttribute(jsObject: jsObject, name: Strings.propertyName)
@@ -13,7 +13,7 @@ public class TransitionEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, transitionEventInitDict: TransitionEventInit? = nil) {
+    @inlinable public convenience init(type: String, transitionEventInitDict: TransitionEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), transitionEventInitDict?.jsValue() ?? .undefined]))
     }
 

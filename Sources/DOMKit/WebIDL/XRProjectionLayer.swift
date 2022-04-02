@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRProjectionLayer: XRCompositionLayer {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRProjectionLayer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRProjectionLayer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _textureWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.textureWidth)

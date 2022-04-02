@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PeriodicSyncEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PeriodicSyncEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PeriodicSyncEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _tag = ReadonlyAttribute(jsObject: jsObject, name: Strings.tag)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, init: PeriodicSyncEventInit) {
+    @inlinable public convenience init(type: String, init: PeriodicSyncEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGLinearGradientElement: SVGGradientElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGLinearGradientElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGLinearGradientElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x1 = ReadonlyAttribute(jsObject: jsObject, name: Strings.x1)

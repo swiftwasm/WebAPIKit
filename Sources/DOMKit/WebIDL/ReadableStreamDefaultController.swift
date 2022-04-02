@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamDefaultController: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamDefaultController].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamDefaultController].function! }
 
     public let jsObject: JSObject
 
@@ -16,17 +16,17 @@ public class ReadableStreamDefaultController: JSBridgedClass {
     @ReadonlyAttribute
     public var desiredSize: Double?
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    public func enqueue(chunk: JSValue? = nil) {
+    @inlinable public func enqueue(chunk: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.enqueue].function!(this: this, arguments: [chunk?.jsValue() ?? .undefined])
     }
 
-    public func error(e: JSValue? = nil) {
+    @inlinable public func error(e: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue() ?? .undefined])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceElementTiming: PerformanceEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceElementTiming].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceElementTiming].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _renderTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.renderTime)
@@ -46,7 +46,7 @@ public class PerformanceElementTiming: PerformanceEntry {
     @ReadonlyAttribute
     public var url: String
 
-    override public func toJSON() -> JSObject {
+    @inlinable override public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

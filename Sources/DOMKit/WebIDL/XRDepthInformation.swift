@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRDepthInformation: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRDepthInformation].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRDepthInformation].function! }
 
     public let jsObject: JSObject
 

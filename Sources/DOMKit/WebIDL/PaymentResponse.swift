@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PaymentResponse: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PaymentResponse].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PaymentResponse].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _requestId = ReadonlyAttribute(jsObject: jsObject, name: Strings.requestId)
@@ -13,7 +13,7 @@ public class PaymentResponse: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -27,25 +27,25 @@ public class PaymentResponse: EventTarget {
     @ReadonlyAttribute
     public var details: JSObject
 
-    public func complete(result: PaymentComplete? = nil) -> JSPromise {
+    @inlinable public func complete(result: PaymentComplete? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.complete].function!(this: this, arguments: [result?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func complete(result: PaymentComplete? = nil) async throws {
+    @inlinable public func complete(result: PaymentComplete? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.complete].function!(this: this, arguments: [result?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func retry(errorFields: PaymentValidationErrors? = nil) -> JSPromise {
+    @inlinable public func retry(errorFields: PaymentValidationErrors? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.retry].function!(this: this, arguments: [errorFields?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func retry(errorFields: PaymentValidationErrors? = nil) async throws {
+    @inlinable public func retry(errorFields: PaymentValidationErrors? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.retry].function!(this: this, arguments: [errorFields?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()

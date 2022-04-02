@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ContactAddress: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ContactAddress].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ContactAddress].function! }
 
     public let jsObject: JSObject
 
@@ -22,7 +22,7 @@ public class ContactAddress: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

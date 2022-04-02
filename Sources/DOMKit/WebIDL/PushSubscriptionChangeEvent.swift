@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PushSubscriptionChangeEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PushSubscriptionChangeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PushSubscriptionChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _newSubscription = ReadonlyAttribute(jsObject: jsObject, name: Strings.newSubscription)
@@ -12,7 +12,7 @@ public class PushSubscriptionChangeEvent: ExtendableEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PushSubscriptionChangeEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: PushSubscriptionChangeEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

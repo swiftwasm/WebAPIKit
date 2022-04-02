@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FileList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FileList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FileList].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class FileList: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public subscript(key: Int) -> File? {
+    @inlinable public subscript(key: Int) -> File? {
         jsObject[key].fromJSValue()
     }
 

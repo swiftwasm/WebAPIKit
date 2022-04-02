@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLVideoElement: HTMLMediaElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLVideoElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLVideoElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
@@ -20,7 +20,7 @@ public class HTMLVideoElement: HTMLMediaElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -42,18 +42,18 @@ public class HTMLVideoElement: HTMLMediaElement {
     @ReadWriteAttribute
     public var playsInline: Bool
 
-    public func getVideoPlaybackQuality() -> VideoPlaybackQuality {
+    @inlinable public func getVideoPlaybackQuality() -> VideoPlaybackQuality {
         let this = jsObject
         return this[Strings.getVideoPlaybackQuality].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func requestPictureInPicture() -> JSPromise {
+    @inlinable public func requestPictureInPicture() -> JSPromise {
         let this = jsObject
         return this[Strings.requestPictureInPicture].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestPictureInPicture() async throws -> PictureInPictureWindow {
+    @inlinable public func requestPictureInPicture() async throws -> PictureInPictureWindow {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestPictureInPicture].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
@@ -73,7 +73,7 @@ public class HTMLVideoElement: HTMLMediaElement {
 
     // XXX: member 'requestVideoFrameCallback' is ignored
 
-    public func cancelVideoFrameCallback(handle: UInt32) {
+    @inlinable public func cancelVideoFrameCallback(handle: UInt32) {
         let this = jsObject
         _ = this[Strings.cancelVideoFrameCallback].function!(this: this, arguments: [handle.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VideoFrame: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.VideoFrame].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.VideoFrame].function! }
 
     public let jsObject: JSObject
 
@@ -22,11 +22,11 @@ public class VideoFrame: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(image: CanvasImageSource, init: VideoFrameInit? = nil) {
+    @inlinable public convenience init(image: CanvasImageSource, init: VideoFrameInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [image.jsValue(), `init`?.jsValue() ?? .undefined]))
     }
 
-    public convenience init(data: BufferSource, init: VideoFrameBufferInit) {
+    @inlinable public convenience init(data: BufferSource, init: VideoFrameBufferInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [data.jsValue(), `init`.jsValue()]))
     }
 
@@ -60,29 +60,29 @@ public class VideoFrame: JSBridgedClass {
     @ReadonlyAttribute
     public var colorSpace: VideoColorSpace
 
-    public func allocationSize(options: VideoFrameCopyToOptions? = nil) -> UInt32 {
+    @inlinable public func allocationSize(options: VideoFrameCopyToOptions? = nil) -> UInt32 {
         let this = jsObject
         return this[Strings.allocationSize].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func copyTo(destination: BufferSource, options: VideoFrameCopyToOptions? = nil) -> JSPromise {
+    @inlinable public func copyTo(destination: BufferSource, options: VideoFrameCopyToOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func copyTo(destination: BufferSource, options: VideoFrameCopyToOptions? = nil) async throws -> [PlaneLayout] {
+    @inlinable public func copyTo(destination: BufferSource, options: VideoFrameCopyToOptions? = nil) async throws -> [PlaneLayout] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func clone() -> Self {
+    @inlinable public func clone() -> Self {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }

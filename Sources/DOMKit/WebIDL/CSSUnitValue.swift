@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSUnitValue: CSSNumericValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSUnitValue].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSUnitValue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
@@ -12,7 +12,7 @@ public class CSSUnitValue: CSSNumericValue {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(value: Double, unit: String) {
+    @inlinable public convenience init(value: Double, unit: String) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [value.jsValue(), unit.jsValue()]))
     }
 

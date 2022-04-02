@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VideoTrackList: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.VideoTrackList].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.VideoTrackList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
@@ -18,11 +18,11 @@ public class VideoTrackList: EventTarget {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> VideoTrack {
+    @inlinable public subscript(key: Int) -> VideoTrack {
         jsObject[key].fromJSValue()!
     }
 
-    public func getTrackById(id: String) -> VideoTrack? {
+    @inlinable public func getTrackById(id: String) -> VideoTrack? {
         let this = jsObject
         return this[Strings.getTrackById].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
     }

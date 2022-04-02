@@ -4,18 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PasswordCredential: Credential, CredentialUserData {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PasswordCredential].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PasswordCredential].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _password = ReadonlyAttribute(jsObject: jsObject, name: Strings.password)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(form: HTMLFormElement) {
+    @inlinable public convenience init(form: HTMLFormElement) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [form.jsValue()]))
     }
 
-    public convenience init(data: PasswordCredentialData) {
+    @inlinable public convenience init(data: PasswordCredentialData) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [data.jsValue()]))
     }
 

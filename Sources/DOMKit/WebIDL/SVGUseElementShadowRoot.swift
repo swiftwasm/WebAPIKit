@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGUseElementShadowRoot: ShadowRoot {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGUseElementShadowRoot].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGUseElementShadowRoot].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

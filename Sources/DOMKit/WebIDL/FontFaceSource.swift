@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol FontFaceSource: JSBridgedClass {}
 public extension FontFaceSource {
-    var fonts: FontFaceSet { ReadonlyAttribute[Strings.fonts, in: jsObject] }
+    @inlinable var fonts: FontFaceSet { ReadonlyAttribute[Strings.fonts, in: jsObject] }
 }

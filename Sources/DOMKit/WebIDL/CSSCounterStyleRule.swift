@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSCounterStyleRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSCounterStyleRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSCounterStyleRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)

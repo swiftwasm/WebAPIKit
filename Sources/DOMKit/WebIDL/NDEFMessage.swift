@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NDEFMessage: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.NDEFMessage].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.NDEFMessage].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class NDEFMessage: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(messageInit: NDEFMessageInit) {
+    @inlinable public convenience init(messageInit: NDEFMessageInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [messageInit.jsValue()]))
     }
 

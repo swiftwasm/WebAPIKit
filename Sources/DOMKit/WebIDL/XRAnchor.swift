@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRAnchor: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRAnchor].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRAnchor].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class XRAnchor: JSBridgedClass {
     @ReadonlyAttribute
     public var anchorSpace: XRSpace
 
-    public func delete() {
+    @inlinable public func delete() {
         let this = jsObject
         _ = this[Strings.delete].function!(this: this, arguments: [])
     }

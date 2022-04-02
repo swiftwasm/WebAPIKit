@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CustomElementRegistry: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CustomElementRegistry].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CustomElementRegistry].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class CustomElementRegistry: JSBridgedClass {
 
     // XXX: member 'define' is ignored
 
-    public func get(name: String) -> __UNSUPPORTED_UNION__ {
+    @inlinable public func get(name: String) -> __UNSUPPORTED_UNION__ {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
@@ -23,7 +23,7 @@ public class CustomElementRegistry: JSBridgedClass {
 
     // XXX: member 'whenDefined' is ignored
 
-    public func upgrade(root: Node) {
+    @inlinable public func upgrade(root: Node) {
         let this = jsObject
         _ = this[Strings.upgrade].function!(this: this, arguments: [root.jsValue()])
     }

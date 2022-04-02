@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorCookies: JSBridgedClass {}
 public extension NavigatorCookies {
-    var cookieEnabled: Bool { ReadonlyAttribute[Strings.cookieEnabled, in: jsObject] }
+    @inlinable var cookieEnabled: Bool { ReadonlyAttribute[Strings.cookieEnabled, in: jsObject] }
 }

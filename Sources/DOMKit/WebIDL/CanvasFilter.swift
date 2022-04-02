@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CanvasFilter: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CanvasFilter].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CanvasFilter].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class CanvasFilter: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(filters: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(filters: __UNSUPPORTED_UNION__? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [filters?.jsValue() ?? .undefined]))
     }
 }

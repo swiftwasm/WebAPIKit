@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextTrackList: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.TextTrackList].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.TextTrackList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
@@ -17,11 +17,11 @@ public class TextTrackList: EventTarget {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> TextTrack {
+    @inlinable public subscript(key: Int) -> TextTrack {
         jsObject[key].fromJSValue()!
     }
 
-    public func getTrackById(id: String) -> TextTrack? {
+    @inlinable public func getTrackById(id: String) -> TextTrack? {
         let this = jsObject
         return this[Strings.getTrackById].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
     }

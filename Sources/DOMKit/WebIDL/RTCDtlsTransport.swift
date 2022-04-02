@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCDtlsTransport: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCDtlsTransport].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCDtlsTransport].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _iceTransport = ReadonlyAttribute(jsObject: jsObject, name: Strings.iceTransport)
@@ -20,7 +20,7 @@ public class RTCDtlsTransport: EventTarget {
     @ReadonlyAttribute
     public var state: RTCDtlsTransportState
 
-    public func getRemoteCertificates() -> [ArrayBuffer] {
+    @inlinable public func getRemoteCertificates() -> [ArrayBuffer] {
         let this = jsObject
         return this[Strings.getRemoteCertificates].function!(this: this, arguments: []).fromJSValue()!
     }

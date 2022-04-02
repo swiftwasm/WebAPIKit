@@ -5,22 +5,22 @@ import JavaScriptKit
 
 public protocol CanvasUserInterface: JSBridgedClass {}
 public extension CanvasUserInterface {
-    func drawFocusIfNeeded(element: Element) {
+    @inlinable func drawFocusIfNeeded(element: Element) {
         let this = jsObject
         _ = this[Strings.drawFocusIfNeeded].function!(this: this, arguments: [element.jsValue()])
     }
 
-    func drawFocusIfNeeded(path: Path2D, element: Element) {
+    @inlinable func drawFocusIfNeeded(path: Path2D, element: Element) {
         let this = jsObject
         _ = this[Strings.drawFocusIfNeeded].function!(this: this, arguments: [path.jsValue(), element.jsValue()])
     }
 
-    func scrollPathIntoView() {
+    @inlinable func scrollPathIntoView() {
         let this = jsObject
         _ = this[Strings.scrollPathIntoView].function!(this: this, arguments: [])
     }
 
-    func scrollPathIntoView(path: Path2D) {
+    @inlinable func scrollPathIntoView(path: Path2D) {
         let this = jsObject
         _ = this[Strings.scrollPathIntoView].function!(this: this, arguments: [path.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSColor: CSSColorValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSColor].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSColor].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _channels = ReadWriteAttribute(jsObject: jsObject, name: Strings.channels)
@@ -12,7 +12,7 @@ public class CSSColor: CSSColorValue {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(colorSpace: CSSKeywordish, channels: [CSSColorPercent], alpha: CSSNumberish? = nil) {
+    @inlinable public convenience init(colorSpace: CSSKeywordish, channels: [CSSColorPercent], alpha: CSSNumberish? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [colorSpace.jsValue(), channels.jsValue(), alpha?.jsValue() ?? .undefined]))
     }
 

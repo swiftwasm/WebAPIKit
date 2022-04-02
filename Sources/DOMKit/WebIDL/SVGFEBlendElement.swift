@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEBlendElement: SVGElement, SVGFilterPrimitiveStandardAttributes {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEBlendElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEBlendElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _in1 = ReadonlyAttribute(jsObject: jsObject, name: Strings.in1)

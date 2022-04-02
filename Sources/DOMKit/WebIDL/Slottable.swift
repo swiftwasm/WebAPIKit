@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol Slottable: JSBridgedClass {}
 public extension Slottable {
-    var assignedSlot: HTMLSlotElement? { ReadonlyAttribute[Strings.assignedSlot, in: jsObject] }
+    @inlinable var assignedSlot: HTMLSlotElement? { ReadonlyAttribute[Strings.assignedSlot, in: jsObject] }
 }

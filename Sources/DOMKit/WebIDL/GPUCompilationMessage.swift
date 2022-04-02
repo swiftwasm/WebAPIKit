@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUCompilationMessage: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUCompilationMessage].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUCompilationMessage].function! }
 
     public let jsObject: JSObject
 

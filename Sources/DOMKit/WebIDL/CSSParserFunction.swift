@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSParserFunction: CSSParserValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSParserFunction].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSParserFunction].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
@@ -12,7 +12,7 @@ public class CSSParserFunction: CSSParserValue {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(name: String, args: [[CSSParserValue]]) {
+    @inlinable public convenience init(name: String, args: [[CSSParserValue]]) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue(), args.jsValue()]))
     }
 
@@ -22,7 +22,7 @@ public class CSSParserFunction: CSSParserValue {
     @ReadonlyAttribute
     public var args: [[CSSParserValue]]
 
-    public var description: String {
+    @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
     }
 }

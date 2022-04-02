@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BiquadFilterNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BiquadFilterNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BiquadFilterNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
@@ -15,7 +15,7 @@ public class BiquadFilterNode: AudioNode {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: BiquadFilterOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: BiquadFilterOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
@@ -34,7 +34,7 @@ public class BiquadFilterNode: AudioNode {
     @ReadonlyAttribute
     public var gain: AudioParam
 
-    public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
+    @inlinable public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
         let this = jsObject
         _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue(), magResponse.jsValue(), phaseResponse.jsValue()])
     }

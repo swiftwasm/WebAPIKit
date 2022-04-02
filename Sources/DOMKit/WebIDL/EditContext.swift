@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EditContext: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.EditContext].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.EditContext].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _text = ReadonlyAttribute(jsObject: jsObject, name: Strings.text)
@@ -24,36 +24,36 @@ public class EditContext: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: EditContextInit? = nil) {
+    @inlinable public convenience init(options: EditContextInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
-    public func updateText(rangeStart: UInt32, rangeEnd: UInt32, text: String) {
+    @inlinable public func updateText(rangeStart: UInt32, rangeEnd: UInt32, text: String) {
         let this = jsObject
         _ = this[Strings.updateText].function!(this: this, arguments: [rangeStart.jsValue(), rangeEnd.jsValue(), text.jsValue()])
     }
 
-    public func updateSelection(start: UInt32, end: UInt32) {
+    @inlinable public func updateSelection(start: UInt32, end: UInt32) {
         let this = jsObject
         _ = this[Strings.updateSelection].function!(this: this, arguments: [start.jsValue(), end.jsValue()])
     }
 
-    public func updateControlBound(controlBound: DOMRect) {
+    @inlinable public func updateControlBound(controlBound: DOMRect) {
         let this = jsObject
         _ = this[Strings.updateControlBound].function!(this: this, arguments: [controlBound.jsValue()])
     }
 
-    public func updateSelectionBound(selectionBound: DOMRect) {
+    @inlinable public func updateSelectionBound(selectionBound: DOMRect) {
         let this = jsObject
         _ = this[Strings.updateSelectionBound].function!(this: this, arguments: [selectionBound.jsValue()])
     }
 
-    public func updateCharacterBounds(rangeStart: UInt32, characterBounds: [DOMRect]) {
+    @inlinable public func updateCharacterBounds(rangeStart: UInt32, characterBounds: [DOMRect]) {
         let this = jsObject
         _ = this[Strings.updateCharacterBounds].function!(this: this, arguments: [rangeStart.jsValue(), characterBounds.jsValue()])
     }
 
-    public func attachedElements() -> [Element] {
+    @inlinable public func attachedElements() -> [Element] {
         let this = jsObject
         return this[Strings.attachedElements].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -85,7 +85,7 @@ public class EditContext: EventTarget {
     @ReadonlyAttribute
     public var characterBoundsRangeStart: UInt32
 
-    public func characterBounds() -> [DOMRect] {
+    @inlinable public func characterBounds() -> [DOMRect] {
         let this = jsObject
         return this[Strings.characterBounds].function!(this: this, arguments: []).fromJSValue()!
     }

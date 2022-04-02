@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGPolylineElement: SVGGeometryElement, SVGAnimatedPoints {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGPolylineElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGPolylineElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

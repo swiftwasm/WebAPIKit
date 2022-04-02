@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EXT_texture_filter_anisotropic: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EXT_texture_filter_anisotropic].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EXT_texture_filter_anisotropic].function! }
 
     public let jsObject: JSObject
 

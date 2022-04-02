@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamBYOBRequest: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamBYOBRequest].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamBYOBRequest].function! }
 
     public let jsObject: JSObject
 
@@ -16,12 +16,12 @@ public class ReadableStreamBYOBRequest: JSBridgedClass {
     @ReadonlyAttribute
     public var view: ArrayBufferView?
 
-    public func respond(bytesWritten: UInt64) {
+    @inlinable public func respond(bytesWritten: UInt64) {
         let this = jsObject
         _ = this[Strings.respond].function!(this: this, arguments: [bytesWritten.jsValue()])
     }
 
-    public func respondWithNewView(view: ArrayBufferView) {
+    @inlinable public func respondWithNewView(view: ArrayBufferView) {
         let this = jsObject
         _ = this[Strings.respondWithNewView].function!(this: this, arguments: [view.jsValue()])
     }

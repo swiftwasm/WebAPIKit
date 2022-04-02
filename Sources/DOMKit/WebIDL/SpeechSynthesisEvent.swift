@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechSynthesisEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SpeechSynthesisEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SpeechSynthesisEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _utterance = ReadonlyAttribute(jsObject: jsObject, name: Strings.utterance)
@@ -15,7 +15,7 @@ public class SpeechSynthesisEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: SpeechSynthesisEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: SpeechSynthesisEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

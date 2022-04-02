@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLIFrameElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLIFrameElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLIFrameElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _csp = ReadWriteAttribute(jsObject: jsObject, name: Strings.csp)
@@ -34,7 +34,7 @@ public class HTMLIFrameElement: HTMLElement {
     @ReadWriteAttribute
     public var csp: String
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -74,7 +74,7 @@ public class HTMLIFrameElement: HTMLElement {
     @ReadonlyAttribute
     public var contentWindow: WindowProxy?
 
-    public func getSVGDocument() -> Document? {
+    @inlinable public func getSVGDocument() -> Document? {
         let this = jsObject
         return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()!
     }

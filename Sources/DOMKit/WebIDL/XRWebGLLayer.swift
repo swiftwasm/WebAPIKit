@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRWebGLLayer: XRLayer {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRWebGLLayer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRWebGLLayer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _antialias = ReadonlyAttribute(jsObject: jsObject, name: Strings.antialias)
@@ -16,7 +16,7 @@ public class XRWebGLLayer: XRLayer {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(session: XRSession, context: XRWebGLRenderingContext, layerInit: XRWebGLLayerInit? = nil) {
+    @inlinable public convenience init(session: XRSession, context: XRWebGLRenderingContext, layerInit: XRWebGLLayerInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue(), context.jsValue(), layerInit?.jsValue() ?? .undefined]))
     }
 
@@ -38,12 +38,12 @@ public class XRWebGLLayer: XRLayer {
     @ReadonlyAttribute
     public var framebufferHeight: UInt32
 
-    public func getViewport(view: XRView) -> XRViewport? {
+    @inlinable public func getViewport(view: XRView) -> XRViewport? {
         let this = jsObject
         return this[Strings.getViewport].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
     }
 
-    public static func getNativeFramebufferScaleFactor(session: XRSession) -> Double {
+    @inlinable public static func getNativeFramebufferScaleFactor(session: XRSession) -> Double {
         let this = constructor
         return this[Strings.getNativeFramebufferScaleFactor].function!(this: this, arguments: [session.jsValue()]).fromJSValue()!
     }

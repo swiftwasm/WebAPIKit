@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSKeyframeRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSKeyframeRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSKeyframeRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _keyText = ReadWriteAttribute(jsObject: jsObject, name: Strings.keyText)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechGrammar: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SpeechGrammar].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SpeechGrammar].function! }
 
     public let jsObject: JSObject
 

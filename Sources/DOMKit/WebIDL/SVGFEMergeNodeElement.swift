@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEMergeNodeElement: SVGElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEMergeNodeElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEMergeNodeElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _in1 = ReadonlyAttribute(jsObject: jsObject, name: Strings.in1)

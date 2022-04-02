@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUAdapter: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUAdapter].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUAdapter].function! }
 
     public let jsObject: JSObject
 
@@ -28,13 +28,13 @@ public class GPUAdapter: JSBridgedClass {
     @ReadonlyAttribute
     public var isFallbackAdapter: Bool
 
-    public func requestDevice(descriptor: GPUDeviceDescriptor? = nil) -> JSPromise {
+    @inlinable public func requestDevice(descriptor: GPUDeviceDescriptor? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.requestDevice].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestDevice(descriptor: GPUDeviceDescriptor? = nil) async throws -> GPUDevice {
+    @inlinable public func requestDevice(descriptor: GPUDeviceDescriptor? = nil) async throws -> GPUDevice {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestDevice].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

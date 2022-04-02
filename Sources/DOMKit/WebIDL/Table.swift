@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Table: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Table].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Table].function! }
 
     public let jsObject: JSObject
 
@@ -13,21 +13,21 @@ public class Table: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(descriptor: TableDescriptor, value: JSValue? = nil) {
+    @inlinable public convenience init(descriptor: TableDescriptor, value: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptor.jsValue(), value?.jsValue() ?? .undefined]))
     }
 
-    public func grow(delta: UInt32, value: JSValue? = nil) -> UInt32 {
+    @inlinable public func grow(delta: UInt32, value: JSValue? = nil) -> UInt32 {
         let this = jsObject
         return this[Strings.grow].function!(this: this, arguments: [delta.jsValue(), value?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func get(index: UInt32) -> JSValue {
+    @inlinable public func get(index: UInt32) -> JSValue {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
-    public func set(index: UInt32, value: JSValue? = nil) {
+    @inlinable public func set(index: UInt32, value: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.set].function!(this: this, arguments: [index.jsValue(), value?.jsValue() ?? .undefined])
     }

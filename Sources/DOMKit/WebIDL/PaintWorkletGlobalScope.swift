@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PaintWorkletGlobalScope: WorkletGlobalScope {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PaintWorkletGlobalScope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PaintWorkletGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _devicePixelRatio = ReadonlyAttribute(jsObject: jsObject, name: Strings.devicePixelRatio)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaKeyStatusMap: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.MediaKeyStatusMap].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaKeyStatusMap].function! }
 
     public let jsObject: JSObject
 
@@ -21,12 +21,12 @@ public class MediaKeyStatusMap: JSBridgedClass, Sequence {
     @ReadonlyAttribute
     public var size: UInt32
 
-    public func has(keyId: BufferSource) -> Bool {
+    @inlinable public func has(keyId: BufferSource) -> Bool {
         let this = jsObject
         return this[Strings.has].function!(this: this, arguments: [keyId.jsValue()]).fromJSValue()!
     }
 
-    public func get(keyId: BufferSource) -> __UNSUPPORTED_UNION__ {
+    @inlinable public func get(keyId: BufferSource) -> __UNSUPPORTED_UNION__ {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [keyId.jsValue()]).fromJSValue()!
     }

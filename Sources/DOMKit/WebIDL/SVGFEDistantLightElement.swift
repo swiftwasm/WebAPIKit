@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEDistantLightElement: SVGElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEDistantLightElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEDistantLightElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _azimuth = ReadonlyAttribute(jsObject: jsObject, name: Strings.azimuth)

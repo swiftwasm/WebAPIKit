@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StereoPannerNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.StereoPannerNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.StereoPannerNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _pan = ReadonlyAttribute(jsObject: jsObject, name: Strings.pan)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: StereoPannerOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: StereoPannerOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

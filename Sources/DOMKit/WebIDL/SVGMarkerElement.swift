@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGMarkerElement: SVGElement, SVGFitToViewBox {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGMarkerElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGMarkerElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _refX = ReadonlyAttribute(jsObject: jsObject, name: Strings.refX)
@@ -54,12 +54,12 @@ public class SVGMarkerElement: SVGElement, SVGFitToViewBox {
     @ReadWriteAttribute
     public var orient: String
 
-    public func setOrientToAuto() {
+    @inlinable public func setOrientToAuto() {
         let this = jsObject
         _ = this[Strings.setOrientToAuto].function!(this: this, arguments: [])
     }
 
-    public func setOrientToAngle(angle: SVGAngle) {
+    @inlinable public func setOrientToAngle(angle: SVGAngle) {
         let this = jsObject
         _ = this[Strings.setOrientToAngle].function!(this: this, arguments: [angle.jsValue()])
     }

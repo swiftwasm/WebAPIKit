@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MutationEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MutationEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MutationEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _relatedNode = ReadonlyAttribute(jsObject: jsObject, name: Strings.relatedNode)
@@ -36,7 +36,7 @@ public class MutationEvent: Event {
     @ReadonlyAttribute
     public var attrChange: UInt16
 
-    public func initMutationEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, relatedNodeArg: Node? = nil, prevValueArg: String? = nil, newValueArg: String? = nil, attrNameArg: String? = nil, attrChangeArg: UInt16? = nil) {
+    @inlinable public func initMutationEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, relatedNodeArg: Node? = nil, prevValueArg: String? = nil, newValueArg: String? = nil, attrNameArg: String? = nil, attrChangeArg: UInt16? = nil) {
         let _arg0 = typeArg.jsValue()
         let _arg1 = bubblesArg?.jsValue() ?? .undefined
         let _arg2 = cancelableArg?.jsValue() ?? .undefined

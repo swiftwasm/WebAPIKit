@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CharacterBoundsUpdateEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CharacterBoundsUpdateEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CharacterBoundsUpdateEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _rangeStart = ReadonlyAttribute(jsObject: jsObject, name: Strings.rangeStart)
@@ -12,7 +12,7 @@ public class CharacterBoundsUpdateEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: CharacterBoundsUpdateEventInit? = nil) {
+    @inlinable public convenience init(options: CharacterBoundsUpdateEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 

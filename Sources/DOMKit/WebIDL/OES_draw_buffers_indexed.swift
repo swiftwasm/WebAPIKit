@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OES_draw_buffers_indexed: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.OES_draw_buffers_indexed].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.OES_draw_buffers_indexed].function! }
 
     public let jsObject: JSObject
 
@@ -12,37 +12,37 @@ public class OES_draw_buffers_indexed: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func enableiOES(target: GLenum, index: GLuint) {
+    @inlinable public func enableiOES(target: GLenum, index: GLuint) {
         let this = jsObject
         _ = this[Strings.enableiOES].function!(this: this, arguments: [target.jsValue(), index.jsValue()])
     }
 
-    public func disableiOES(target: GLenum, index: GLuint) {
+    @inlinable public func disableiOES(target: GLenum, index: GLuint) {
         let this = jsObject
         _ = this[Strings.disableiOES].function!(this: this, arguments: [target.jsValue(), index.jsValue()])
     }
 
-    public func blendEquationiOES(buf: GLuint, mode: GLenum) {
+    @inlinable public func blendEquationiOES(buf: GLuint, mode: GLenum) {
         let this = jsObject
         _ = this[Strings.blendEquationiOES].function!(this: this, arguments: [buf.jsValue(), mode.jsValue()])
     }
 
-    public func blendEquationSeparateiOES(buf: GLuint, modeRGB: GLenum, modeAlpha: GLenum) {
+    @inlinable public func blendEquationSeparateiOES(buf: GLuint, modeRGB: GLenum, modeAlpha: GLenum) {
         let this = jsObject
         _ = this[Strings.blendEquationSeparateiOES].function!(this: this, arguments: [buf.jsValue(), modeRGB.jsValue(), modeAlpha.jsValue()])
     }
 
-    public func blendFunciOES(buf: GLuint, src: GLenum, dst: GLenum) {
+    @inlinable public func blendFunciOES(buf: GLuint, src: GLenum, dst: GLenum) {
         let this = jsObject
         _ = this[Strings.blendFunciOES].function!(this: this, arguments: [buf.jsValue(), src.jsValue(), dst.jsValue()])
     }
 
-    public func blendFuncSeparateiOES(buf: GLuint, srcRGB: GLenum, dstRGB: GLenum, srcAlpha: GLenum, dstAlpha: GLenum) {
+    @inlinable public func blendFuncSeparateiOES(buf: GLuint, srcRGB: GLenum, dstRGB: GLenum, srcAlpha: GLenum, dstAlpha: GLenum) {
         let this = jsObject
         _ = this[Strings.blendFuncSeparateiOES].function!(this: this, arguments: [buf.jsValue(), srcRGB.jsValue(), dstRGB.jsValue(), srcAlpha.jsValue(), dstAlpha.jsValue()])
     }
 
-    public func colorMaskiOES(buf: GLuint, r: GLboolean, g: GLboolean, b: GLboolean, a: GLboolean) {
+    @inlinable public func colorMaskiOES(buf: GLuint, r: GLboolean, g: GLboolean, b: GLboolean, a: GLboolean) {
         let this = jsObject
         _ = this[Strings.colorMaskiOES].function!(this: this, arguments: [buf.jsValue(), r.jsValue(), g.jsValue(), b.jsValue(), a.jsValue()])
     }

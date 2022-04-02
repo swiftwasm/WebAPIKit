@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Request: JSBridgedClass, Body {
-    public class var constructor: JSFunction { JSObject.global[Strings.Request].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Request].function! }
 
     public let jsObject: JSObject
 
@@ -28,7 +28,7 @@ public class Request: JSBridgedClass, Body {
         self.jsObject = jsObject
     }
 
-    public convenience init(input: RequestInfo, init: RequestInit? = nil) {
+    @inlinable public convenience init(input: RequestInfo, init: RequestInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [input.jsValue(), `init`?.jsValue() ?? .undefined]))
     }
 
@@ -77,7 +77,7 @@ public class Request: JSBridgedClass, Body {
     @ReadonlyAttribute
     public var signal: AbortSignal
 
-    public func clone() -> Self {
+    @inlinable public func clone() -> Self {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }

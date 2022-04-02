@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebTransportError: DOMException {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WebTransportError].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebTransportError].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _source = ReadonlyAttribute(jsObject: jsObject, name: Strings.source)
@@ -12,7 +12,7 @@ public class WebTransportError: DOMException {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(init: WebTransportErrorInit? = nil) {
+    @inlinable public convenience init(init: WebTransportErrorInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableByteStreamController: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ReadableByteStreamController].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ReadableByteStreamController].function! }
 
     public let jsObject: JSObject
 
@@ -20,17 +20,17 @@ public class ReadableByteStreamController: JSBridgedClass {
     @ReadonlyAttribute
     public var desiredSize: Double?
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    public func enqueue(chunk: ArrayBufferView) {
+    @inlinable public func enqueue(chunk: ArrayBufferView) {
         let this = jsObject
         _ = this[Strings.enqueue].function!(this: this, arguments: [chunk.jsValue()])
     }
 
-    public func error(e: JSValue? = nil) {
+    @inlinable public func error(e: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue() ?? .undefined])
     }

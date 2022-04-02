@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PictureInPictureWindow: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PictureInPictureWindow].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PictureInPictureWindow].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _width = ReadonlyAttribute(jsObject: jsObject, name: Strings.width)

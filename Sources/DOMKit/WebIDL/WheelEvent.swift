@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WheelEvent: MouseEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WheelEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WheelEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _deltaX = ReadonlyAttribute(jsObject: jsObject, name: Strings.deltaX)
@@ -14,7 +14,7 @@ public class WheelEvent: MouseEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: WheelEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: WheelEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

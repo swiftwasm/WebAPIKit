@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Sensor: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Sensor].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Sensor].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _activated = ReadonlyAttribute(jsObject: jsObject, name: Strings.activated)
@@ -25,12 +25,12 @@ public class Sensor: EventTarget {
     @ReadonlyAttribute
     public var timestamp: DOMHighResTimeStamp?
 
-    public func start() {
+    @inlinable public func start() {
         let this = jsObject
         _ = this[Strings.start].function!(this: this, arguments: [])
     }
 
-    public func stop() {
+    @inlinable public func stop() {
         let this = jsObject
         _ = this[Strings.stop].function!(this: this, arguments: [])
     }

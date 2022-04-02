@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamBYOBReader: JSBridgedClass, ReadableStreamGenericReader {
-    public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamBYOBReader].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamBYOBReader].function! }
 
     public let jsObject: JSObject
 
@@ -12,23 +12,23 @@ public class ReadableStreamBYOBReader: JSBridgedClass, ReadableStreamGenericRead
         self.jsObject = jsObject
     }
 
-    public convenience init(stream: ReadableStream) {
+    @inlinable public convenience init(stream: ReadableStream) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
     }
 
-    public func read(view: ArrayBufferView) -> JSPromise {
+    @inlinable public func read(view: ArrayBufferView) -> JSPromise {
         let this = jsObject
         return this[Strings.read].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func read(view: ArrayBufferView) async throws -> ReadableStreamBYOBReadResult {
+    @inlinable public func read(view: ArrayBufferView) async throws -> ReadableStreamBYOBReadResult {
         let this = jsObject
         let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func releaseLock() {
+    @inlinable public func releaseLock() {
         let this = jsObject
         _ = this[Strings.releaseLock].function!(this: this, arguments: [])
     }

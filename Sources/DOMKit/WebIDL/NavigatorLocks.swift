@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorLocks: JSBridgedClass {}
 public extension NavigatorLocks {
-    var locks: LockManager { ReadonlyAttribute[Strings.locks, in: jsObject] }
+    @inlinable var locks: LockManager { ReadonlyAttribute[Strings.locks, in: jsObject] }
 }

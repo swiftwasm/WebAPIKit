@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericReader {
-    public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamDefaultReader].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ReadableStreamDefaultReader].function! }
 
     public let jsObject: JSObject
 
@@ -12,23 +12,23 @@ public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericR
         self.jsObject = jsObject
     }
 
-    public convenience init(stream: ReadableStream) {
+    @inlinable public convenience init(stream: ReadableStream) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
     }
 
-    public func read() -> JSPromise {
+    @inlinable public func read() -> JSPromise {
         let this = jsObject
         return this[Strings.read].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func read() async throws -> ReadableStreamDefaultReadResult {
+    @inlinable public func read() async throws -> ReadableStreamDefaultReadResult {
         let this = jsObject
         let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func releaseLock() {
+    @inlinable public func releaseLock() {
         let this = jsObject
         _ = this[Strings.releaseLock].function!(this: this, arguments: [])
     }

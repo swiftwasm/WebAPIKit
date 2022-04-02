@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCRtpScriptTransformer: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCRtpScriptTransformer].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCRtpScriptTransformer].function! }
 
     public let jsObject: JSObject
 
@@ -24,25 +24,25 @@ public class RTCRtpScriptTransformer: JSBridgedClass {
     @ReadonlyAttribute
     public var options: JSValue
 
-    public func generateKeyFrame(rids: [String]? = nil) -> JSPromise {
+    @inlinable public func generateKeyFrame(rids: [String]? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.generateKeyFrame].function!(this: this, arguments: [rids?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func generateKeyFrame(rids: [String]? = nil) async throws {
+    @inlinable public func generateKeyFrame(rids: [String]? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.generateKeyFrame].function!(this: this, arguments: [rids?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func sendKeyFrameRequest() -> JSPromise {
+    @inlinable public func sendKeyFrameRequest() -> JSPromise {
         let this = jsObject
         return this[Strings.sendKeyFrameRequest].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func sendKeyFrameRequest() async throws {
+    @inlinable public func sendKeyFrameRequest() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.sendKeyFrameRequest].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

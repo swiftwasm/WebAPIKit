@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PaymentMethodChangeEvent: PaymentRequestUpdateEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PaymentMethodChangeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PaymentMethodChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _methodName = ReadonlyAttribute(jsObject: jsObject, name: Strings.methodName)
@@ -12,7 +12,7 @@ public class PaymentMethodChangeEvent: PaymentRequestUpdateEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PaymentMethodChangeEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: PaymentMethodChangeEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

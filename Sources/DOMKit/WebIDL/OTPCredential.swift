@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OTPCredential: Credential {
-    override public class var constructor: JSFunction { JSObject.global[Strings.OTPCredential].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OTPCredential].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _code = ReadonlyAttribute(jsObject: jsObject, name: Strings.code)

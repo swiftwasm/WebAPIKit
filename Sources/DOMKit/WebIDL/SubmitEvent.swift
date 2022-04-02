@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SubmitEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SubmitEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SubmitEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _submitter = ReadonlyAttribute(jsObject: jsObject, name: Strings.submitter)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: SubmitEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: SubmitEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

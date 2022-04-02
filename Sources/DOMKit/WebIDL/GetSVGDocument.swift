@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol GetSVGDocument: JSBridgedClass {}
 public extension GetSVGDocument {
-    func getSVGDocument() -> Document {
+    @inlinable func getSVGDocument() -> Document {
         let this = jsObject
         return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()!
     }

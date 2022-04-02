@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VTTRegion: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.VTTRegion].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.VTTRegion].function! }
 
     public let jsObject: JSObject
 
@@ -20,7 +20,7 @@ public class VTTRegion: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FontFace: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FontFace].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FontFace].function! }
 
     public let jsObject: JSObject
 
@@ -29,7 +29,7 @@ public class FontFace: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(family: String, source: __UNSUPPORTED_UNION__, descriptors: FontFaceDescriptors? = nil) {
+    @inlinable public convenience init(family: String, source: __UNSUPPORTED_UNION__, descriptors: FontFaceDescriptors? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [family.jsValue(), source.jsValue(), descriptors?.jsValue() ?? .undefined]))
     }
 
@@ -72,13 +72,13 @@ public class FontFace: JSBridgedClass {
     @ReadonlyAttribute
     public var status: FontFaceLoadStatus
 
-    public func load() -> JSPromise {
+    @inlinable public func load() -> JSPromise {
         let this = jsObject
         return this[Strings.load].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func load() async throws -> FontFace {
+    @inlinable public func load() async throws -> FontFace {
         let this = jsObject
         let _promise: JSPromise = this[Strings.load].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

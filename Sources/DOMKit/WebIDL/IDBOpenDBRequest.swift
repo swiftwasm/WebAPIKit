@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IDBOpenDBRequest: IDBRequest {
-    override public class var constructor: JSFunction { JSObject.global[Strings.IDBOpenDBRequest].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.IDBOpenDBRequest].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onblocked = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onblocked)

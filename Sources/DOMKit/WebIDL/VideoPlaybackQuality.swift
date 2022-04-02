@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VideoPlaybackQuality: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.VideoPlaybackQuality].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.VideoPlaybackQuality].function! }
 
     public let jsObject: JSObject
 

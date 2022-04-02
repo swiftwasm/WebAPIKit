@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PointerEvent: MouseEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PointerEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PointerEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _pointerId = ReadonlyAttribute(jsObject: jsObject, name: Strings.pointerId)
@@ -22,7 +22,7 @@ public class PointerEvent: MouseEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PointerEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: PointerEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -62,12 +62,12 @@ public class PointerEvent: MouseEvent {
     @ReadonlyAttribute
     public var isPrimary: Bool
 
-    public func getCoalescedEvents() -> [PointerEvent] {
+    @inlinable public func getCoalescedEvents() -> [PointerEvent] {
         let this = jsObject
         return this[Strings.getCoalescedEvents].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getPredictedEvents() -> [PointerEvent] {
+    @inlinable public func getPredictedEvents() -> [PointerEvent] {
         let this = jsObject
         return this[Strings.getPredictedEvents].function!(this: this, arguments: []).fromJSValue()!
     }

@@ -4,13 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RelativeOrientationSensor: OrientationSensor {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RelativeOrientationSensor].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RelativeOrientationSensor].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(sensorOptions: OrientationSensorOptions? = nil) {
+    @inlinable public convenience init(sensorOptions: OrientationSensorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue() ?? .undefined]))
     }
 }

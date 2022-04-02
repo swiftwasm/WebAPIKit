@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCStatsReport: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCStatsReport].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCStatsReport].function! }
 
     public let jsObject: JSObject
 

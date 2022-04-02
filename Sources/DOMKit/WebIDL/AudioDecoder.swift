@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioDecoder: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AudioDecoder].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioDecoder].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class AudioDecoder: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: AudioDecoderInit) {
+    @inlinable public convenience init(init: AudioDecoderInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 
@@ -24,45 +24,45 @@ public class AudioDecoder: JSBridgedClass {
     @ReadonlyAttribute
     public var decodeQueueSize: UInt32
 
-    public func configure(config: AudioDecoderConfig) {
+    @inlinable public func configure(config: AudioDecoderConfig) {
         let this = jsObject
         _ = this[Strings.configure].function!(this: this, arguments: [config.jsValue()])
     }
 
-    public func decode(chunk: EncodedAudioChunk) {
+    @inlinable public func decode(chunk: EncodedAudioChunk) {
         let this = jsObject
         _ = this[Strings.decode].function!(this: this, arguments: [chunk.jsValue()])
     }
 
-    public func flush() -> JSPromise {
+    @inlinable public func flush() -> JSPromise {
         let this = jsObject
         return this[Strings.flush].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func flush() async throws {
+    @inlinable public func flush() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.flush].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func reset() {
+    @inlinable public func reset() {
         let this = jsObject
         _ = this[Strings.reset].function!(this: this, arguments: [])
     }
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    public static func isConfigSupported(config: AudioDecoderConfig) -> JSPromise {
+    @inlinable public static func isConfigSupported(config: AudioDecoderConfig) -> JSPromise {
         let this = constructor
         return this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func isConfigSupported(config: AudioDecoderConfig) async throws -> AudioDecoderSupport {
+    @inlinable public static func isConfigSupported(config: AudioDecoderConfig) async throws -> AudioDecoderSupport {
         let this = constructor
         let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

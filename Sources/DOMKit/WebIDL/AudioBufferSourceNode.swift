@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioBufferSourceNode: AudioScheduledSourceNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AudioBufferSourceNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioBufferSourceNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _buffer = ReadWriteAttribute(jsObject: jsObject, name: Strings.buffer)
@@ -16,7 +16,7 @@ public class AudioBufferSourceNode: AudioScheduledSourceNode {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: AudioBufferSourceOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: AudioBufferSourceOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
@@ -38,7 +38,7 @@ public class AudioBufferSourceNode: AudioScheduledSourceNode {
     @ReadWriteAttribute
     public var loopEnd: Double
 
-    override public func start(when: Double? = nil, offset: Double? = nil, duration: Double? = nil) {
+    @inlinable override public func start(when: Double? = nil, offset: Double? = nil, duration: Double? = nil) {
         let this = jsObject
         _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue() ?? .undefined, offset?.jsValue() ?? .undefined, duration?.jsValue() ?? .undefined])
     }

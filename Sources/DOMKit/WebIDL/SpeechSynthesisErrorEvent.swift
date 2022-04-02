@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechSynthesisErrorEvent: SpeechSynthesisEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SpeechSynthesisErrorEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SpeechSynthesisErrorEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: SpeechSynthesisErrorEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: SpeechSynthesisErrorEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorStorage: JSBridgedClass {}
 public extension NavigatorStorage {
-    var storage: StorageManager { ReadonlyAttribute[Strings.storage, in: jsObject] }
+    @inlinable var storage: StorageManager { ReadonlyAttribute[Strings.storage, in: jsObject] }
 }

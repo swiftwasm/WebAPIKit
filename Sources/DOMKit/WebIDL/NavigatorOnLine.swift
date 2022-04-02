@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorOnLine: JSBridgedClass {}
 public extension NavigatorOnLine {
-    var onLine: Bool { ReadonlyAttribute[Strings.onLine, in: jsObject] }
+    @inlinable var onLine: Bool { ReadonlyAttribute[Strings.onLine, in: jsObject] }
 }

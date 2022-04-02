@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BluetoothRemoteGATTCharacteristic: EventTarget, CharacteristicEventHandlers {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BluetoothRemoteGATTCharacteristic].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BluetoothRemoteGATTCharacteristic].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _service = ReadonlyAttribute(jsObject: jsObject, name: Strings.service)
@@ -26,97 +26,97 @@ public class BluetoothRemoteGATTCharacteristic: EventTarget, CharacteristicEvent
     @ReadonlyAttribute
     public var value: DataView?
 
-    public func getDescriptor(descriptor: BluetoothDescriptorUUID) -> JSPromise {
+    @inlinable public func getDescriptor(descriptor: BluetoothDescriptorUUID) -> JSPromise {
         let this = jsObject
         return this[Strings.getDescriptor].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getDescriptor(descriptor: BluetoothDescriptorUUID) async throws -> BluetoothRemoteGATTDescriptor {
+    @inlinable public func getDescriptor(descriptor: BluetoothDescriptorUUID) async throws -> BluetoothRemoteGATTDescriptor {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getDescriptor].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func getDescriptors(descriptor: BluetoothDescriptorUUID? = nil) -> JSPromise {
+    @inlinable public func getDescriptors(descriptor: BluetoothDescriptorUUID? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.getDescriptors].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getDescriptors(descriptor: BluetoothDescriptorUUID? = nil) async throws -> [BluetoothRemoteGATTDescriptor] {
+    @inlinable public func getDescriptors(descriptor: BluetoothDescriptorUUID? = nil) async throws -> [BluetoothRemoteGATTDescriptor] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getDescriptors].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func readValue() -> JSPromise {
+    @inlinable public func readValue() -> JSPromise {
         let this = jsObject
         return this[Strings.readValue].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func readValue() async throws -> DataView {
+    @inlinable public func readValue() async throws -> DataView {
         let this = jsObject
         let _promise: JSPromise = this[Strings.readValue].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func writeValue(value: BufferSource) -> JSPromise {
+    @inlinable public func writeValue(value: BufferSource) -> JSPromise {
         let this = jsObject
         return this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func writeValue(value: BufferSource) async throws {
+    @inlinable public func writeValue(value: BufferSource) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func writeValueWithResponse(value: BufferSource) -> JSPromise {
+    @inlinable public func writeValueWithResponse(value: BufferSource) -> JSPromise {
         let this = jsObject
         return this[Strings.writeValueWithResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func writeValueWithResponse(value: BufferSource) async throws {
+    @inlinable public func writeValueWithResponse(value: BufferSource) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.writeValueWithResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func writeValueWithoutResponse(value: BufferSource) -> JSPromise {
+    @inlinable public func writeValueWithoutResponse(value: BufferSource) -> JSPromise {
         let this = jsObject
         return this[Strings.writeValueWithoutResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func writeValueWithoutResponse(value: BufferSource) async throws {
+    @inlinable public func writeValueWithoutResponse(value: BufferSource) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.writeValueWithoutResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func startNotifications() -> JSPromise {
+    @inlinable public func startNotifications() -> JSPromise {
         let this = jsObject
         return this[Strings.startNotifications].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func startNotifications() async throws -> BluetoothRemoteGATTCharacteristic {
+    @inlinable public func startNotifications() async throws -> BluetoothRemoteGATTCharacteristic {
         let this = jsObject
         let _promise: JSPromise = this[Strings.startNotifications].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func stopNotifications() -> JSPromise {
+    @inlinable public func stopNotifications() -> JSPromise {
         let this = jsObject
         return this[Strings.stopNotifications].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func stopNotifications() async throws -> BluetoothRemoteGATTCharacteristic {
+    @inlinable public func stopNotifications() async throws -> BluetoothRemoteGATTCharacteristic {
         let this = jsObject
         let _promise: JSPromise = this[Strings.stopNotifications].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

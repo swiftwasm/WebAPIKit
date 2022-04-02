@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSNamespaceRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSNamespaceRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSNamespaceRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.namespaceURI)

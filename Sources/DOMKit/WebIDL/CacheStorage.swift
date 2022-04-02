@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CacheStorage: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CacheStorage].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CacheStorage].function! }
 
     public let jsObject: JSObject
 
@@ -12,61 +12,61 @@ public class CacheStorage: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func match(request: RequestInfo, options: MultiCacheQueryOptions? = nil) -> JSPromise {
+    @inlinable public func match(request: RequestInfo, options: MultiCacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func match(request: RequestInfo, options: MultiCacheQueryOptions? = nil) async throws -> __UNSUPPORTED_UNION__ {
+    @inlinable public func match(request: RequestInfo, options: MultiCacheQueryOptions? = nil) async throws -> __UNSUPPORTED_UNION__ {
         let this = jsObject
         let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func has(cacheName: String) -> JSPromise {
+    @inlinable public func has(cacheName: String) -> JSPromise {
         let this = jsObject
         return this[Strings.has].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func has(cacheName: String) async throws -> Bool {
+    @inlinable public func has(cacheName: String) async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.has].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func open(cacheName: String) -> JSPromise {
+    @inlinable public func open(cacheName: String) -> JSPromise {
         let this = jsObject
         return this[Strings.open].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func open(cacheName: String) async throws -> Cache {
+    @inlinable public func open(cacheName: String) async throws -> Cache {
         let this = jsObject
         let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func delete(cacheName: String) -> JSPromise {
+    @inlinable public func delete(cacheName: String) -> JSPromise {
         let this = jsObject
         return this[Strings.delete].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func delete(cacheName: String) async throws -> Bool {
+    @inlinable public func delete(cacheName: String) async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [cacheName.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func keys() -> JSPromise {
+    @inlinable public func keys() -> JSPromise {
         let this = jsObject
         return this[Strings.keys].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func keys() async throws -> [String] {
+    @inlinable public func keys() async throws -> [String] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.keys].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

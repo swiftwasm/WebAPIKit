@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AnimationEffect: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AnimationEffect].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AnimationEffect].function! }
 
     public let jsObject: JSObject
 
@@ -24,37 +24,37 @@ public class AnimationEffect: JSBridgedClass {
     @ReadonlyAttribute
     public var nextSibling: AnimationEffect?
 
-    public func before(effects: AnimationEffect...) {
+    @inlinable public func before(effects: AnimationEffect...) {
         let this = jsObject
         _ = this[Strings.before].function!(this: this, arguments: effects.map { $0.jsValue() })
     }
 
-    public func after(effects: AnimationEffect...) {
+    @inlinable public func after(effects: AnimationEffect...) {
         let this = jsObject
         _ = this[Strings.after].function!(this: this, arguments: effects.map { $0.jsValue() })
     }
 
-    public func replace(effects: AnimationEffect...) {
+    @inlinable public func replace(effects: AnimationEffect...) {
         let this = jsObject
         _ = this[Strings.replace].function!(this: this, arguments: effects.map { $0.jsValue() })
     }
 
-    public func remove() {
+    @inlinable public func remove() {
         let this = jsObject
         _ = this[Strings.remove].function!(this: this, arguments: [])
     }
 
-    public func getTiming() -> EffectTiming {
+    @inlinable public func getTiming() -> EffectTiming {
         let this = jsObject
         return this[Strings.getTiming].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getComputedTiming() -> ComputedEffectTiming {
+    @inlinable public func getComputedTiming() -> ComputedEffectTiming {
         let this = jsObject
         return this[Strings.getComputedTiming].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func updateTiming(timing: OptionalEffectTiming? = nil) {
+    @inlinable public func updateTiming(timing: OptionalEffectTiming? = nil) {
         let this = jsObject
         _ = this[Strings.updateTiming].function!(this: this, arguments: [timing?.jsValue() ?? .undefined])
     }

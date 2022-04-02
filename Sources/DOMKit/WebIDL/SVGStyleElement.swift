@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGStyleElement: SVGElement, LinkStyle {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGStyleElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGStyleElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)

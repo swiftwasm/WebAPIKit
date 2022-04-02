@@ -4,18 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MIDIOutput: MIDIPort {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MIDIOutput].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MIDIOutput].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func send(data: [UInt8], timestamp: DOMHighResTimeStamp? = nil) {
+    @inlinable public func send(data: [UInt8], timestamp: DOMHighResTimeStamp? = nil) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [data.jsValue(), timestamp?.jsValue() ?? .undefined])
     }
 
-    public func clear() {
+    @inlinable public func clear() {
         let this = jsObject
         _ = this[Strings.clear].function!(this: this, arguments: [])
     }

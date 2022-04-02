@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XMLHttpRequest: XMLHttpRequestEventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XMLHttpRequest].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XMLHttpRequest].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onreadystatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onreadystatechange)
@@ -22,7 +22,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -42,17 +42,17 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     @ReadonlyAttribute
     public var readyState: UInt16
 
-    public func open(method: String, url: String) {
+    @inlinable public func open(method: String, url: String) {
         let this = jsObject
         _ = this[Strings.open].function!(this: this, arguments: [method.jsValue(), url.jsValue()])
     }
 
-    public func open(method: String, url: String, async: Bool, username: String? = nil, password: String? = nil) {
+    @inlinable public func open(method: String, url: String, async: Bool, username: String? = nil, password: String? = nil) {
         let this = jsObject
         _ = this[Strings.open].function!(this: this, arguments: [method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined])
     }
 
-    public func setRequestHeader(name: String, value: String) {
+    @inlinable public func setRequestHeader(name: String, value: String) {
         let this = jsObject
         _ = this[Strings.setRequestHeader].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }
@@ -66,12 +66,12 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     @ReadonlyAttribute
     public var upload: XMLHttpRequestUpload
 
-    public func send(body: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public func send(body: __UNSUPPORTED_UNION__? = nil) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [body?.jsValue() ?? .undefined])
     }
 
-    public func abort() {
+    @inlinable public func abort() {
         let this = jsObject
         _ = this[Strings.abort].function!(this: this, arguments: [])
     }
@@ -85,17 +85,17 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     @ReadonlyAttribute
     public var statusText: String
 
-    public func getResponseHeader(name: String) -> String? {
+    @inlinable public func getResponseHeader(name: String) -> String? {
         let this = jsObject
         return this[Strings.getResponseHeader].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func getAllResponseHeaders() -> String {
+    @inlinable public func getAllResponseHeaders() -> String {
         let this = jsObject
         return this[Strings.getAllResponseHeaders].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func overrideMimeType(mime: String) {
+    @inlinable public func overrideMimeType(mime: String) {
         let this = jsObject
         _ = this[Strings.overrideMimeType].function!(this: this, arguments: [mime.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebTransport: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WebTransport].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WebTransport].function! }
 
     public let jsObject: JSObject
 
@@ -17,17 +17,17 @@ public class WebTransport: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(url: String, options: WebTransportOptions? = nil) {
+    @inlinable public convenience init(url: String, options: WebTransportOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
-    public func getStats() -> JSPromise {
+    @inlinable public func getStats() -> JSPromise {
         let this = jsObject
         return this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getStats() async throws -> WebTransportStats {
+    @inlinable public func getStats() async throws -> WebTransportStats {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
@@ -39,7 +39,7 @@ public class WebTransport: JSBridgedClass {
     @ReadonlyAttribute
     public var closed: JSPromise
 
-    public func close(closeInfo: WebTransportCloseInfo? = nil) {
+    @inlinable public func close(closeInfo: WebTransportCloseInfo? = nil) {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [closeInfo?.jsValue() ?? .undefined])
     }
@@ -47,13 +47,13 @@ public class WebTransport: JSBridgedClass {
     @ReadonlyAttribute
     public var datagrams: WebTransportDatagramDuplexStream
 
-    public func createBidirectionalStream() -> JSPromise {
+    @inlinable public func createBidirectionalStream() -> JSPromise {
         let this = jsObject
         return this[Strings.createBidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func createBidirectionalStream() async throws -> WebTransportBidirectionalStream {
+    @inlinable public func createBidirectionalStream() async throws -> WebTransportBidirectionalStream {
         let this = jsObject
         let _promise: JSPromise = this[Strings.createBidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
@@ -62,13 +62,13 @@ public class WebTransport: JSBridgedClass {
     @ReadonlyAttribute
     public var incomingBidirectionalStreams: ReadableStream
 
-    public func createUnidirectionalStream() -> JSPromise {
+    @inlinable public func createUnidirectionalStream() -> JSPromise {
         let this = jsObject
         return this[Strings.createUnidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func createUnidirectionalStream() async throws -> WritableStream {
+    @inlinable public func createUnidirectionalStream() async throws -> WritableStream {
         let this = jsObject
         let _promise: JSPromise = this[Strings.createUnidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

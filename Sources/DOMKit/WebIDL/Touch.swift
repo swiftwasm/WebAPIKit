@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Touch: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Touch].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Touch].function! }
 
     public let jsObject: JSObject
 
@@ -27,7 +27,7 @@ public class Touch: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(touchInitDict: TouchInit) {
+    @inlinable public convenience init(touchInitDict: TouchInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [touchInitDict.jsValue()]))
     }
 

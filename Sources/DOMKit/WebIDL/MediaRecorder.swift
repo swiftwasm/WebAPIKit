@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaRecorder: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaRecorder].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaRecorder].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _stream = ReadonlyAttribute(jsObject: jsObject, name: Strings.stream)
@@ -22,7 +22,7 @@ public class MediaRecorder: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(stream: MediaStream, options: MediaRecorderOptions? = nil) {
+    @inlinable public convenience init(stream: MediaStream, options: MediaRecorderOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
@@ -62,32 +62,32 @@ public class MediaRecorder: EventTarget {
     @ReadonlyAttribute
     public var audioBitrateMode: BitrateMode
 
-    public func start(timeslice: UInt32? = nil) {
+    @inlinable public func start(timeslice: UInt32? = nil) {
         let this = jsObject
         _ = this[Strings.start].function!(this: this, arguments: [timeslice?.jsValue() ?? .undefined])
     }
 
-    public func stop() {
+    @inlinable public func stop() {
         let this = jsObject
         _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
-    public func pause() {
+    @inlinable public func pause() {
         let this = jsObject
         _ = this[Strings.pause].function!(this: this, arguments: [])
     }
 
-    public func resume() {
+    @inlinable public func resume() {
         let this = jsObject
         _ = this[Strings.resume].function!(this: this, arguments: [])
     }
 
-    public func requestData() {
+    @inlinable public func requestData() {
         let this = jsObject
         _ = this[Strings.requestData].function!(this: this, arguments: [])
     }
 
-    public static func isTypeSupported(type: String) -> Bool {
+    @inlinable public static func isTypeSupported(type: String) -> Bool {
         let this = constructor
         return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }

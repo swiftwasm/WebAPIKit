@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSTranslate: CSSTransformComponent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSTranslate].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSTranslate].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadWriteAttribute(jsObject: jsObject, name: Strings.x)
@@ -13,7 +13,7 @@ public class CSSTranslate: CSSTransformComponent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(x: CSSNumericValue, y: CSSNumericValue, z: CSSNumericValue? = nil) {
+    @inlinable public convenience init(x: CSSNumericValue, y: CSSNumericValue, z: CSSNumericValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [x.jsValue(), y.jsValue(), z?.jsValue() ?? .undefined]))
     }
 

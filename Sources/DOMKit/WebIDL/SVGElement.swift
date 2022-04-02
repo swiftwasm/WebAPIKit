@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGElement: Element, GlobalEventHandlers, DocumentAndElementEventHandlers, SVGElementInstance, HTMLOrSVGElement, ElementCSSInlineStyle {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _ownerSVGElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.ownerSVGElement)

@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PopStateEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PopStateEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PopStateEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PopStateEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: PopStateEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

@@ -4,31 +4,31 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FileSystemFileHandle: FileSystemHandle {
-    override public class var constructor: JSFunction { JSObject.global[Strings.FileSystemFileHandle].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.FileSystemFileHandle].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func getFile() -> JSPromise {
+    @inlinable public func getFile() -> JSPromise {
         let this = jsObject
         return this[Strings.getFile].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getFile() async throws -> File {
+    @inlinable public func getFile() async throws -> File {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getFile].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func createWritable(options: FileSystemCreateWritableOptions? = nil) -> JSPromise {
+    @inlinable public func createWritable(options: FileSystemCreateWritableOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.createWritable].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func createWritable(options: FileSystemCreateWritableOptions? = nil) async throws -> FileSystemWritableFileStream {
+    @inlinable public func createWritable(options: FileSystemCreateWritableOptions? = nil) async throws -> FileSystemWritableFileStream {
         let this = jsObject
         let _promise: JSPromise = this[Strings.createWritable].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

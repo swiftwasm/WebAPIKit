@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DeviceMotionEventRotationRate: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DeviceMotionEventRotationRate].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DeviceMotionEventRotationRate].function! }
 
     public let jsObject: JSObject
 

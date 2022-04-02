@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Node: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Node].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Node].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _nodeType = ReadonlyAttribute(jsObject: jsObject, name: Strings.nodeType)
@@ -63,7 +63,7 @@ public class Node: EventTarget {
     @ReadonlyAttribute
     public var ownerDocument: Document?
 
-    public func getRootNode(options: GetRootNodeOptions? = nil) -> Self {
+    @inlinable public func getRootNode(options: GetRootNodeOptions? = nil) -> Self {
         let this = jsObject
         return this[Strings.getRootNode].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
@@ -74,7 +74,7 @@ public class Node: EventTarget {
     @ReadonlyAttribute
     public var parentElement: Element?
 
-    public func hasChildNodes() -> Bool {
+    @inlinable public func hasChildNodes() -> Bool {
         let this = jsObject
         return this[Strings.hasChildNodes].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -100,22 +100,22 @@ public class Node: EventTarget {
     @ReadWriteAttribute
     public var textContent: String?
 
-    public func normalize() {
+    @inlinable public func normalize() {
         let this = jsObject
         _ = this[Strings.normalize].function!(this: this, arguments: [])
     }
 
-    public func cloneNode(deep: Bool? = nil) -> Self {
+    @inlinable public func cloneNode(deep: Bool? = nil) -> Self {
         let this = jsObject
         return this[Strings.cloneNode].function!(this: this, arguments: [deep?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func isEqualNode(otherNode: Node?) -> Bool {
+    @inlinable public func isEqualNode(otherNode: Node?) -> Bool {
         let this = jsObject
         return this[Strings.isEqualNode].function!(this: this, arguments: [otherNode.jsValue()]).fromJSValue()!
     }
 
-    public func isSameNode(otherNode: Node?) -> Bool {
+    @inlinable public func isSameNode(otherNode: Node?) -> Bool {
         let this = jsObject
         return this[Strings.isSameNode].function!(this: this, arguments: [otherNode.jsValue()]).fromJSValue()!
     }
@@ -132,47 +132,47 @@ public class Node: EventTarget {
 
     public static let DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: UInt16 = 0x20
 
-    public func compareDocumentPosition(other: Node) -> UInt16 {
+    @inlinable public func compareDocumentPosition(other: Node) -> UInt16 {
         let this = jsObject
         return this[Strings.compareDocumentPosition].function!(this: this, arguments: [other.jsValue()]).fromJSValue()!
     }
 
-    public func contains(other: Node?) -> Bool {
+    @inlinable public func contains(other: Node?) -> Bool {
         let this = jsObject
         return this[Strings.contains].function!(this: this, arguments: [other.jsValue()]).fromJSValue()!
     }
 
-    public func lookupPrefix(namespace: String?) -> String? {
+    @inlinable public func lookupPrefix(namespace: String?) -> String? {
         let this = jsObject
         return this[Strings.lookupPrefix].function!(this: this, arguments: [namespace.jsValue()]).fromJSValue()!
     }
 
-    public func lookupNamespaceURI(prefix: String?) -> String? {
+    @inlinable public func lookupNamespaceURI(prefix: String?) -> String? {
         let this = jsObject
         return this[Strings.lookupNamespaceURI].function!(this: this, arguments: [prefix.jsValue()]).fromJSValue()!
     }
 
-    public func isDefaultNamespace(namespace: String?) -> Bool {
+    @inlinable public func isDefaultNamespace(namespace: String?) -> Bool {
         let this = jsObject
         return this[Strings.isDefaultNamespace].function!(this: this, arguments: [namespace.jsValue()]).fromJSValue()!
     }
 
-    public func insertBefore(node: Node, child: Node?) -> Self {
+    @inlinable public func insertBefore(node: Node, child: Node?) -> Self {
         let this = jsObject
         return this[Strings.insertBefore].function!(this: this, arguments: [node.jsValue(), child.jsValue()]).fromJSValue()!
     }
 
-    public func appendChild(node: Node) -> Self {
+    @inlinable public func appendChild(node: Node) -> Self {
         let this = jsObject
         return this[Strings.appendChild].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
     }
 
-    public func replaceChild(node: Node, child: Node) -> Self {
+    @inlinable public func replaceChild(node: Node, child: Node) -> Self {
         let this = jsObject
         return this[Strings.replaceChild].function!(this: this, arguments: [node.jsValue(), child.jsValue()]).fromJSValue()!
     }
 
-    public func removeChild(child: Node) -> Self {
+    @inlinable public func removeChild(child: Node) -> Self {
         let this = jsObject
         return this[Strings.removeChild].function!(this: this, arguments: [child.jsValue()]).fromJSValue()!
     }

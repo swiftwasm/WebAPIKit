@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUCanvasContext: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUCanvasContext].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUCanvasContext].function! }
 
     public let jsObject: JSObject
 
@@ -16,22 +16,22 @@ public class GPUCanvasContext: JSBridgedClass {
     @ReadonlyAttribute
     public var canvas: __UNSUPPORTED_UNION__
 
-    public func configure(configuration: GPUCanvasConfiguration) {
+    @inlinable public func configure(configuration: GPUCanvasConfiguration) {
         let this = jsObject
         _ = this[Strings.configure].function!(this: this, arguments: [configuration.jsValue()])
     }
 
-    public func unconfigure() {
+    @inlinable public func unconfigure() {
         let this = jsObject
         _ = this[Strings.unconfigure].function!(this: this, arguments: [])
     }
 
-    public func getPreferredFormat(adapter: GPUAdapter) -> GPUTextureFormat {
+    @inlinable public func getPreferredFormat(adapter: GPUAdapter) -> GPUTextureFormat {
         let this = jsObject
         return this[Strings.getPreferredFormat].function!(this: this, arguments: [adapter.jsValue()]).fromJSValue()!
     }
 
-    public func getCurrentTexture() -> GPUTexture {
+    @inlinable public func getCurrentTexture() -> GPUTexture {
         let this = jsObject
         return this[Strings.getCurrentTexture].function!(this: this, arguments: []).fromJSValue()!
     }

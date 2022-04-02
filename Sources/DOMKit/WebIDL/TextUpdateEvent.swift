@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextUpdateEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.TextUpdateEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.TextUpdateEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _updateRangeStart = ReadonlyAttribute(jsObject: jsObject, name: Strings.updateRangeStart)
@@ -17,7 +17,7 @@ public class TextUpdateEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: TextUpdateEventInit? = nil) {
+    @inlinable public convenience init(options: TextUpdateEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 

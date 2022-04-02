@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLShaderPrecisionFormat: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WebGLShaderPrecisionFormat].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WebGLShaderPrecisionFormat].function! }
 
     public let jsObject: JSObject
 

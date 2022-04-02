@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EXT_float_blend: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EXT_float_blend].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EXT_float_blend].function! }
 
     public let jsObject: JSObject
 

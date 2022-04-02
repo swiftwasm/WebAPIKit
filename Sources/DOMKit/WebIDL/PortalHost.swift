@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PortalHost: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PortalHost].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PortalHost].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
@@ -12,7 +12,7 @@ public class PortalHost: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
+    @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
     }

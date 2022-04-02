@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OVR_multiview2: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.OVR_multiview2].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.OVR_multiview2].function! }
 
     public let jsObject: JSObject
 
@@ -20,7 +20,7 @@ public class OVR_multiview2: JSBridgedClass {
 
     public static let FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR: GLenum = 0x9633
 
-    public func framebufferTextureMultiviewOVR(target: GLenum, attachment: GLenum, texture: WebGLTexture?, level: GLint, baseViewIndex: GLint, numViews: GLsizei) {
+    @inlinable public func framebufferTextureMultiviewOVR(target: GLenum, attachment: GLenum, texture: WebGLTexture?, level: GLint, baseViewIndex: GLint, numViews: GLsizei) {
         let _arg0 = target.jsValue()
         let _arg1 = attachment.jsValue()
         let _arg2 = texture.jsValue()

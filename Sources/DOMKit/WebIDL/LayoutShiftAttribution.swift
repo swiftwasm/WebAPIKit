@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class LayoutShiftAttribution: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.LayoutShiftAttribution].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.LayoutShiftAttribution].function! }
 
     public let jsObject: JSObject
 

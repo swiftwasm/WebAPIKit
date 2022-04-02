@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ErrorEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ErrorEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ErrorEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _message = ReadonlyAttribute(jsObject: jsObject, name: Strings.message)
@@ -15,7 +15,7 @@ public class ErrorEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: ErrorEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: ErrorEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFETurbulenceElement: SVGElement, SVGFilterPrimitiveStandardAttributes {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFETurbulenceElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFETurbulenceElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _baseFrequencyX = ReadonlyAttribute(jsObject: jsObject, name: Strings.baseFrequencyX)

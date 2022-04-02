@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPURenderPassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMixin, GPUDebugCommandsMixin, GPUProgrammablePassEncoder, GPURenderEncoderBase {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPURenderPassEncoder].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPURenderPassEncoder].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class GPURenderPassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMix
         self.jsObject = jsObject
     }
 
-    public func setViewport(x: Float, y: Float, width: Float, height: Float, minDepth: Float, maxDepth: Float) {
+    @inlinable public func setViewport(x: Float, y: Float, width: Float, height: Float, minDepth: Float, maxDepth: Float) {
         let _arg0 = x.jsValue()
         let _arg1 = y.jsValue()
         let _arg2 = width.jsValue()
@@ -23,37 +23,37 @@ public class GPURenderPassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMix
         _ = this[Strings.setViewport].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 
-    public func setScissorRect(x: GPUIntegerCoordinate, y: GPUIntegerCoordinate, width: GPUIntegerCoordinate, height: GPUIntegerCoordinate) {
+    @inlinable public func setScissorRect(x: GPUIntegerCoordinate, y: GPUIntegerCoordinate, width: GPUIntegerCoordinate, height: GPUIntegerCoordinate) {
         let this = jsObject
         _ = this[Strings.setScissorRect].function!(this: this, arguments: [x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue()])
     }
 
-    public func setBlendConstant(color: GPUColor) {
+    @inlinable public func setBlendConstant(color: GPUColor) {
         let this = jsObject
         _ = this[Strings.setBlendConstant].function!(this: this, arguments: [color.jsValue()])
     }
 
-    public func setStencilReference(reference: GPUStencilValue) {
+    @inlinable public func setStencilReference(reference: GPUStencilValue) {
         let this = jsObject
         _ = this[Strings.setStencilReference].function!(this: this, arguments: [reference.jsValue()])
     }
 
-    public func beginOcclusionQuery(queryIndex: GPUSize32) {
+    @inlinable public func beginOcclusionQuery(queryIndex: GPUSize32) {
         let this = jsObject
         _ = this[Strings.beginOcclusionQuery].function!(this: this, arguments: [queryIndex.jsValue()])
     }
 
-    public func endOcclusionQuery() {
+    @inlinable public func endOcclusionQuery() {
         let this = jsObject
         _ = this[Strings.endOcclusionQuery].function!(this: this, arguments: [])
     }
 
-    public func executeBundles(bundles: [GPURenderBundle]) {
+    @inlinable public func executeBundles(bundles: [GPURenderBundle]) {
         let this = jsObject
         _ = this[Strings.executeBundles].function!(this: this, arguments: [bundles.jsValue()])
     }
 
-    public func end() {
+    @inlinable public func end() {
         let this = jsObject
         _ = this[Strings.end].function!(this: this, arguments: [])
     }

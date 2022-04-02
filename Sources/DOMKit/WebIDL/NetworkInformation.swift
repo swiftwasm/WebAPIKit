@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NetworkInformation: EventTarget, NetworkInformationSaveData {
-    override public class var constructor: JSFunction { JSObject.global[Strings.NetworkInformation].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.NetworkInformation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)

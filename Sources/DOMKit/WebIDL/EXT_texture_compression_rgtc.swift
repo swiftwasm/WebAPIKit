@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EXT_texture_compression_rgtc: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EXT_texture_compression_rgtc].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EXT_texture_compression_rgtc].function! }
 
     public let jsObject: JSObject
 

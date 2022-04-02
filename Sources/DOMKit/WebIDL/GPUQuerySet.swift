@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUQuerySet: JSBridgedClass, GPUObjectBase {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUQuerySet].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUQuerySet].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class GPUQuerySet: JSBridgedClass, GPUObjectBase {
         self.jsObject = jsObject
     }
 
-    public func destroy() {
+    @inlinable public func destroy() {
         let this = jsObject
         _ = this[Strings.destroy].function!(this: this, arguments: [])
     }

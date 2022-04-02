@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MathMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, DocumentAndElementEventHandlers, HTMLOrSVGElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MathMLElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MathMLElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

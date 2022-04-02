@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FetchEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.FetchEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.FetchEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _request = ReadonlyAttribute(jsObject: jsObject, name: Strings.request)
@@ -16,7 +16,7 @@ public class FetchEvent: ExtendableEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: FetchEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: FetchEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 
@@ -38,7 +38,7 @@ public class FetchEvent: ExtendableEvent {
     @ReadonlyAttribute
     public var handled: JSPromise
 
-    public func respondWith(r: JSPromise) {
+    @inlinable public func respondWith(r: JSPromise) {
         let this = jsObject
         _ = this[Strings.respondWith].function!(this: this, arguments: [r.jsValue()])
     }

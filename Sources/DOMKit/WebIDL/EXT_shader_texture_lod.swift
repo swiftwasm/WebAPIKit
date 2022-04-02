@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EXT_shader_texture_lod: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EXT_shader_texture_lod].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EXT_shader_texture_lod].function! }
 
     public let jsObject: JSObject
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMRectReadOnly: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DOMRectReadOnly].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DOMRectReadOnly].function! }
 
     public let jsObject: JSObject
 
@@ -20,11 +20,11 @@ public class DOMRectReadOnly: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(x: Double? = nil, y: Double? = nil, width: Double? = nil, height: Double? = nil) {
+    @inlinable public convenience init(x: Double? = nil, y: Double? = nil, width: Double? = nil, height: Double? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, width?.jsValue() ?? .undefined, height?.jsValue() ?? .undefined]))
     }
 
-    public static func fromRect(other: DOMRectInit? = nil) -> Self {
+    @inlinable public static func fromRect(other: DOMRectInit? = nil) -> Self {
         let this = constructor
         return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
@@ -53,7 +53,7 @@ public class DOMRectReadOnly: JSBridgedClass {
     @ReadonlyAttribute
     public var left: Double
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

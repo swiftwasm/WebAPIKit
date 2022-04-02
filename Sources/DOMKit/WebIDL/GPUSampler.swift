@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUSampler: JSBridgedClass, GPUObjectBase {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUSampler].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUSampler].function! }
 
     public let jsObject: JSObject
 

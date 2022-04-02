@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_blend_equation_advanced_coherent: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_blend_equation_advanced_coherent].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_blend_equation_advanced_coherent].function! }
 
     public let jsObject: JSObject
 

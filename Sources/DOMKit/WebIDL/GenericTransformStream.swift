@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol GenericTransformStream: JSBridgedClass {}
 public extension GenericTransformStream {
-    var readable: ReadableStream { ReadonlyAttribute[Strings.readable, in: jsObject] }
+    @inlinable var readable: ReadableStream { ReadonlyAttribute[Strings.readable, in: jsObject] }
 
-    var writable: WritableStream { ReadonlyAttribute[Strings.writable, in: jsObject] }
+    @inlinable var writable: WritableStream { ReadonlyAttribute[Strings.writable, in: jsObject] }
 }

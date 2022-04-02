@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ResizeObserver: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ResizeObserver].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ResizeObserver].function! }
 
     public let jsObject: JSObject
 
@@ -14,17 +14,17 @@ public class ResizeObserver: JSBridgedClass {
 
     // XXX: constructor is ignored
 
-    public func observe(target: Element, options: ResizeObserverOptions? = nil) {
+    @inlinable public func observe(target: Element, options: ResizeObserverOptions? = nil) {
         let this = jsObject
         _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue(), options?.jsValue() ?? .undefined])
     }
 
-    public func unobserve(target: Element) {
+    @inlinable public func unobserve(target: Element) {
         let this = jsObject
         _ = this[Strings.unobserve].function!(this: this, arguments: [target.jsValue()])
     }
 
-    public func disconnect() {
+    @inlinable public func disconnect() {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }

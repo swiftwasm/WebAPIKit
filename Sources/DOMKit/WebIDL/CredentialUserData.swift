@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol CredentialUserData: JSBridgedClass {}
 public extension CredentialUserData {
-    var name: String { ReadonlyAttribute[Strings.name, in: jsObject] }
+    @inlinable var name: String { ReadonlyAttribute[Strings.name, in: jsObject] }
 
-    var iconURL: String { ReadonlyAttribute[Strings.iconURL, in: jsObject] }
+    @inlinable var iconURL: String { ReadonlyAttribute[Strings.iconURL, in: jsObject] }
 }

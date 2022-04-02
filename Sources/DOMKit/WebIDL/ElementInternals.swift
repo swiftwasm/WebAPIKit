@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ElementInternals: JSBridgedClass, ARIAMixin {
-    public class var constructor: JSFunction { JSObject.global[Strings.ElementInternals].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ElementInternals].function! }
 
     public let jsObject: JSObject
 
@@ -25,7 +25,7 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     @ReadonlyAttribute
     public var shadowRoot: ShadowRoot?
 
-    public func setFormValue(value: __UNSUPPORTED_UNION__?, state: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public func setFormValue(value: __UNSUPPORTED_UNION__?, state: __UNSUPPORTED_UNION__? = nil) {
         let this = jsObject
         _ = this[Strings.setFormValue].function!(this: this, arguments: [value.jsValue(), state?.jsValue() ?? .undefined])
     }
@@ -33,7 +33,7 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     @ReadonlyAttribute
     public var form: HTMLFormElement?
 
-    public func setValidity(flags: ValidityStateFlags? = nil, message: String? = nil, anchor: HTMLElement? = nil) {
+    @inlinable public func setValidity(flags: ValidityStateFlags? = nil, message: String? = nil, anchor: HTMLElement? = nil) {
         let this = jsObject
         _ = this[Strings.setValidity].function!(this: this, arguments: [flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined])
     }
@@ -47,12 +47,12 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     @ReadonlyAttribute
     public var validationMessage: String
 
-    public func checkValidity() -> Bool {
+    @inlinable public func checkValidity() -> Bool {
         let this = jsObject
         return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func reportValidity() -> Bool {
+    @inlinable public func reportValidity() -> Bool {
         let this = jsObject
         return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }

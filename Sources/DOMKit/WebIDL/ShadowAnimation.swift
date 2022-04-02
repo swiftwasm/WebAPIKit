@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ShadowAnimation: Animation {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ShadowAnimation].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ShadowAnimation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _sourceAnimation = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceAnimation)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(source: Animation, newTarget: __UNSUPPORTED_UNION__) {
+    @inlinable public convenience init(source: Animation, newTarget: __UNSUPPORTED_UNION__) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [source.jsValue(), newTarget.jsValue()]))
     }
 

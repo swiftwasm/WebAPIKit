@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLObjectElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLObjectElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLObjectElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadWriteAttribute(jsObject: jsObject, name: Strings.data)
@@ -32,7 +32,7 @@ public class HTMLObjectElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -60,7 +60,7 @@ public class HTMLObjectElement: HTMLElement {
     @ReadonlyAttribute
     public var contentWindow: WindowProxy?
 
-    public func getSVGDocument() -> Document? {
+    @inlinable public func getSVGDocument() -> Document? {
         let this = jsObject
         return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -74,17 +74,17 @@ public class HTMLObjectElement: HTMLElement {
     @ReadonlyAttribute
     public var validationMessage: String
 
-    public func checkValidity() -> Bool {
+    @inlinable public func checkValidity() -> Bool {
         let this = jsObject
         return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func reportValidity() -> Bool {
+    @inlinable public func reportValidity() -> Bool {
         let this = jsObject
         return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func setCustomValidity(error: String) {
+    @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
         _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
     }

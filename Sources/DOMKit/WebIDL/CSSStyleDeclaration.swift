@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSStyleDeclaration: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleDeclaration].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleDeclaration].function! }
 
     public let jsObject: JSObject
 
@@ -22,26 +22,26 @@ public class CSSStyleDeclaration: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> String {
+    @inlinable public subscript(key: Int) -> String {
         jsObject[key].fromJSValue()!
     }
 
-    public func getPropertyValue(property: String) -> String {
+    @inlinable public func getPropertyValue(property: String) -> String {
         let this = jsObject
         return this[Strings.getPropertyValue].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
-    public func getPropertyPriority(property: String) -> String {
+    @inlinable public func getPropertyPriority(property: String) -> String {
         let this = jsObject
         return this[Strings.getPropertyPriority].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }
 
-    public func setProperty(property: String, value: String, priority: String? = nil) {
+    @inlinable public func setProperty(property: String, value: String, priority: String? = nil) {
         let this = jsObject
         _ = this[Strings.setProperty].function!(this: this, arguments: [property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined])
     }
 
-    public func removeProperty(property: String) -> String {
+    @inlinable public func removeProperty(property: String) -> String {
         let this = jsObject
         return this[Strings.removeProperty].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
     }

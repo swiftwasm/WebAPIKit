@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class URLPattern: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.URLPattern].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.URLPattern].function! }
 
     public let jsObject: JSObject
 
@@ -20,16 +20,16 @@ public class URLPattern: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(input: URLPatternInput? = nil, baseURL: String? = nil) {
+    @inlinable public convenience init(input: URLPatternInput? = nil, baseURL: String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined]))
     }
 
-    public func test(input: URLPatternInput? = nil, baseURL: String? = nil) -> Bool {
+    @inlinable public func test(input: URLPatternInput? = nil, baseURL: String? = nil) -> Bool {
         let this = jsObject
         return this[Strings.test].function!(this: this, arguments: [input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func exec(input: URLPatternInput? = nil, baseURL: String? = nil) -> URLPatternResult? {
+    @inlinable public func exec(input: URLPatternInput? = nil, baseURL: String? = nil) -> URLPatternResult? {
         let this = jsObject
         return this[Strings.exec].function!(this: this, arguments: [input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined]).fromJSValue()!
     }

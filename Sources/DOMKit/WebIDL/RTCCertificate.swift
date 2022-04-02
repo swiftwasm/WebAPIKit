@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCCertificate: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCCertificate].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCCertificate].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class RTCCertificate: JSBridgedClass {
     @ReadonlyAttribute
     public var expires: EpochTimeStamp
 
-    public func getFingerprints() -> [RTCDtlsFingerprint] {
+    @inlinable public func getFingerprints() -> [RTCDtlsFingerprint] {
         let this = jsObject
         return this[Strings.getFingerprints].function!(this: this, arguments: []).fromJSValue()!
     }

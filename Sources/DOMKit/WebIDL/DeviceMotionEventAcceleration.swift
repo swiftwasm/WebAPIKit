@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DeviceMotionEventAcceleration: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DeviceMotionEventAcceleration].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DeviceMotionEventAcceleration].function! }
 
     public let jsObject: JSObject
 

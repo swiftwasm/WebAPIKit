@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebTransportDatagramDuplexStream: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WebTransportDatagramDuplexStream].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WebTransportDatagramDuplexStream].function! }
 
     public let jsObject: JSObject
 

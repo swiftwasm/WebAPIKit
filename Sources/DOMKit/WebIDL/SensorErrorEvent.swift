@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SensorErrorEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SensorErrorEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SensorErrorEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, errorEventInitDict: SensorErrorEventInit) {
+    @inlinable public convenience init(type: String, errorEventInitDict: SensorErrorEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), errorEventInitDict.jsValue()]))
     }
 

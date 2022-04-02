@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NavigationDestination: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.NavigationDestination].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.NavigationDestination].function! }
 
     public let jsObject: JSObject
 
@@ -32,7 +32,7 @@ public class NavigationDestination: JSBridgedClass {
     @ReadonlyAttribute
     public var sameDocument: Bool
 
-    public func getState() -> JSValue {
+    @inlinable public func getState() -> JSValue {
         let this = jsObject
         return this[Strings.getState].function!(this: this, arguments: []).fromJSValue()!
     }

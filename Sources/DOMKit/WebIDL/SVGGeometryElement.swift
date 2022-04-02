@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGGeometryElement: SVGGraphicsElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGGeometryElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGGeometryElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _pathLength = ReadonlyAttribute(jsObject: jsObject, name: Strings.pathLength)
@@ -14,22 +14,22 @@ public class SVGGeometryElement: SVGGraphicsElement {
     @ReadonlyAttribute
     public var pathLength: SVGAnimatedNumber
 
-    public func isPointInFill(point: DOMPointInit? = nil) -> Bool {
+    @inlinable public func isPointInFill(point: DOMPointInit? = nil) -> Bool {
         let this = jsObject
         return this[Strings.isPointInFill].function!(this: this, arguments: [point?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func isPointInStroke(point: DOMPointInit? = nil) -> Bool {
+    @inlinable public func isPointInStroke(point: DOMPointInit? = nil) -> Bool {
         let this = jsObject
         return this[Strings.isPointInStroke].function!(this: this, arguments: [point?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func getTotalLength() -> Float {
+    @inlinable public func getTotalLength() -> Float {
         let this = jsObject
         return this[Strings.getTotalLength].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getPointAtLength(distance: Float) -> DOMPoint {
+    @inlinable public func getPointAtLength(distance: Float) -> DOMPoint {
         let this = jsObject
         return this[Strings.getPointAtLength].function!(this: this, arguments: [distance.jsValue()]).fromJSValue()!
     }

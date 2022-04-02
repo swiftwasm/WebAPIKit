@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CookieStoreManager: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CookieStoreManager].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CookieStoreManager].function! }
 
     public let jsObject: JSObject
 
@@ -12,37 +12,37 @@ public class CookieStoreManager: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func subscribe(subscriptions: [CookieStoreGetOptions]) -> JSPromise {
+    @inlinable public func subscribe(subscriptions: [CookieStoreGetOptions]) -> JSPromise {
         let this = jsObject
         return this[Strings.subscribe].function!(this: this, arguments: [subscriptions.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func subscribe(subscriptions: [CookieStoreGetOptions]) async throws {
+    @inlinable public func subscribe(subscriptions: [CookieStoreGetOptions]) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.subscribe].function!(this: this, arguments: [subscriptions.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func getSubscriptions() -> JSPromise {
+    @inlinable public func getSubscriptions() -> JSPromise {
         let this = jsObject
         return this[Strings.getSubscriptions].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getSubscriptions() async throws -> [CookieStoreGetOptions] {
+    @inlinable public func getSubscriptions() async throws -> [CookieStoreGetOptions] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getSubscriptions].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func unsubscribe(subscriptions: [CookieStoreGetOptions]) -> JSPromise {
+    @inlinable public func unsubscribe(subscriptions: [CookieStoreGetOptions]) -> JSPromise {
         let this = jsObject
         return this[Strings.unsubscribe].function!(this: this, arguments: [subscriptions.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func unsubscribe(subscriptions: [CookieStoreGetOptions]) async throws {
+    @inlinable public func unsubscribe(subscriptions: [CookieStoreGetOptions]) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.unsubscribe].function!(this: this, arguments: [subscriptions.jsValue()]).fromJSValue()!
         _ = try await _promise.get()

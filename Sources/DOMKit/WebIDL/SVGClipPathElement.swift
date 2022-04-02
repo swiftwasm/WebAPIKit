@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGClipPathElement: SVGElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGClipPathElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGClipPathElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _clipPathUnits = ReadonlyAttribute(jsObject: jsObject, name: Strings.clipPathUnits)

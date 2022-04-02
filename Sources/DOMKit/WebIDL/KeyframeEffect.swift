@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class KeyframeEffect: AnimationEffect {
-    override public class var constructor: JSFunction { JSObject.global[Strings.KeyframeEffect].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.KeyframeEffect].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _iterationComposite = ReadWriteAttribute(jsObject: jsObject, name: Strings.iterationComposite)
@@ -17,11 +17,11 @@ public class KeyframeEffect: AnimationEffect {
     @ReadWriteAttribute
     public var iterationComposite: IterationCompositeOperation
 
-    public convenience init(target: Element?, keyframes: JSObject?, options: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(target: Element?, keyframes: JSObject?, options: __UNSUPPORTED_UNION__? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [target.jsValue(), keyframes.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
-    public convenience init(source: KeyframeEffect) {
+    @inlinable public convenience init(source: KeyframeEffect) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [source.jsValue()]))
     }
 
@@ -34,12 +34,12 @@ public class KeyframeEffect: AnimationEffect {
     @ReadWriteAttribute
     public var composite: CompositeOperation
 
-    public func getKeyframes() -> [JSObject] {
+    @inlinable public func getKeyframes() -> [JSObject] {
         let this = jsObject
         return this[Strings.getKeyframes].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func setKeyframes(keyframes: JSObject?) {
+    @inlinable public func setKeyframes(keyframes: JSObject?) {
         let this = jsObject
         _ = this[Strings.setKeyframes].function!(this: this, arguments: [keyframes.jsValue()])
     }

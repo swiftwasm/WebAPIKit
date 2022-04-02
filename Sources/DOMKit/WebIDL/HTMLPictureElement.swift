@@ -4,13 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLPictureElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLPictureElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLPictureElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 }

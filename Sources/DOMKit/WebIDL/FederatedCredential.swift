@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FederatedCredential: Credential, CredentialUserData {
-    override public class var constructor: JSFunction { JSObject.global[Strings.FederatedCredential].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.FederatedCredential].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _provider = ReadonlyAttribute(jsObject: jsObject, name: Strings.provider)
@@ -12,7 +12,7 @@ public class FederatedCredential: Credential, CredentialUserData {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(data: FederatedCredentialInit) {
+    @inlinable public convenience init(data: FederatedCredentialInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [data.jsValue()]))
     }
 

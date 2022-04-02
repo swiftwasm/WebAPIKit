@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLRenderingContext: JSBridgedClass, WebGLRenderingContextBase, WebGLRenderingContextOverloads {
-    public class var constructor: JSFunction { JSObject.global[Strings.WebGLRenderingContext].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WebGLRenderingContext].function! }
 
     public let jsObject: JSObject
 

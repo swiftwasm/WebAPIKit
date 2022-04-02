@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCRtpReceiver: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCRtpReceiver].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCRtpReceiver].function! }
 
     public let jsObject: JSObject
 
@@ -24,33 +24,33 @@ public class RTCRtpReceiver: JSBridgedClass {
     @ReadonlyAttribute
     public var transport: RTCDtlsTransport?
 
-    public static func getCapabilities(kind: String) -> RTCRtpCapabilities? {
+    @inlinable public static func getCapabilities(kind: String) -> RTCRtpCapabilities? {
         let this = constructor
         return this[Strings.getCapabilities].function!(this: this, arguments: [kind.jsValue()]).fromJSValue()!
     }
 
-    public func getParameters() -> RTCRtpReceiveParameters {
+    @inlinable public func getParameters() -> RTCRtpReceiveParameters {
         let this = jsObject
         return this[Strings.getParameters].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getContributingSources() -> [RTCRtpContributingSource] {
+    @inlinable public func getContributingSources() -> [RTCRtpContributingSource] {
         let this = jsObject
         return this[Strings.getContributingSources].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getSynchronizationSources() -> [RTCRtpSynchronizationSource] {
+    @inlinable public func getSynchronizationSources() -> [RTCRtpSynchronizationSource] {
         let this = jsObject
         return this[Strings.getSynchronizationSources].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getStats() -> JSPromise {
+    @inlinable public func getStats() -> JSPromise {
         let this = jsObject
         return this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getStats() async throws -> RTCStatsReport {
+    @inlinable public func getStats() async throws -> RTCStatsReport {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

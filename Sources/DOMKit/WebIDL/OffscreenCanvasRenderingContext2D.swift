@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OffscreenCanvasRenderingContext2D: JSBridgedClass, CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasText, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasTextDrawingStyles, CanvasPath {
-    public class var constructor: JSFunction { JSObject.global[Strings.OffscreenCanvasRenderingContext2D].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.OffscreenCanvasRenderingContext2D].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class OffscreenCanvasRenderingContext2D: JSBridgedClass, CanvasState, Can
         self.jsObject = jsObject
     }
 
-    public func commit() {
+    @inlinable public func commit() {
         let this = jsObject
         _ = this[Strings.commit].function!(this: this, arguments: [])
     }

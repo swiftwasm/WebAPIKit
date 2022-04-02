@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLCollection: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.HTMLCollection].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.HTMLCollection].function! }
 
     public let jsObject: JSObject
 
@@ -16,11 +16,11 @@ public class HTMLCollection: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> Element? {
+    @inlinable public subscript(key: Int) -> Element? {
         jsObject[key].fromJSValue()
     }
 
-    public subscript(key: String) -> Element? {
+    @inlinable public subscript(key: String) -> Element? {
         jsObject[key].fromJSValue()
     }
 }

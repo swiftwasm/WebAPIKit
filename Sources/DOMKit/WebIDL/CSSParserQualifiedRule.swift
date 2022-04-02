@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSParserQualifiedRule: CSSParserRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSParserQualifiedRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSParserQualifiedRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _prelude = ReadonlyAttribute(jsObject: jsObject, name: Strings.prelude)
@@ -12,7 +12,7 @@ public class CSSParserQualifiedRule: CSSParserRule {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(prelude: [CSSToken], body: [CSSParserRule]? = nil) {
+    @inlinable public convenience init(prelude: [CSSToken], body: [CSSParserRule]? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [prelude.jsValue(), body?.jsValue() ?? .undefined]))
     }
 
@@ -22,7 +22,7 @@ public class CSSParserQualifiedRule: CSSParserRule {
     @ReadonlyAttribute
     public var body: [CSSParserRule]
 
-    public var description: String {
+    @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
     }
 }

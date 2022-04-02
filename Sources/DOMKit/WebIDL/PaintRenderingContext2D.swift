@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PaintRenderingContext2D: JSBridgedClass, CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasRect, CanvasDrawPath, CanvasDrawImage, CanvasPathDrawingStyles, CanvasPath {
-    public class var constructor: JSFunction { JSObject.global[Strings.PaintRenderingContext2D].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PaintRenderingContext2D].function! }
 
     public let jsObject: JSObject
 

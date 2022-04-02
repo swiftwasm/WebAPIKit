@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLLIElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLLIElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLLIElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
@@ -12,7 +12,7 @@ public class HTMLLIElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

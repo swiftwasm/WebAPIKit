@@ -4,13 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FileSystemDirectoryEntry: FileSystemEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.FileSystemDirectoryEntry].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.FileSystemDirectoryEntry].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func createReader() -> FileSystemDirectoryReader {
+    @inlinable public func createReader() -> FileSystemDirectoryReader {
         let this = jsObject
         return this[Strings.createReader].function!(this: this, arguments: []).fromJSValue()!
     }

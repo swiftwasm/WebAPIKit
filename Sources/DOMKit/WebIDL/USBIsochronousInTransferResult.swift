@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class USBIsochronousInTransferResult: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.USBIsochronousInTransferResult].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.USBIsochronousInTransferResult].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class USBIsochronousInTransferResult: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(packets: [USBIsochronousInTransferPacket], data: DataView? = nil) {
+    @inlinable public convenience init(packets: [USBIsochronousInTransferPacket], data: DataView? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [packets.jsValue(), data?.jsValue() ?? .undefined]))
     }
 

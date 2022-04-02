@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceObserver: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PerformanceObserver].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PerformanceObserver].function! }
 
     public let jsObject: JSObject
 
@@ -15,17 +15,17 @@ public class PerformanceObserver: JSBridgedClass {
 
     // XXX: constructor is ignored
 
-    public func observe(options: PerformanceObserverInit? = nil) {
+    @inlinable public func observe(options: PerformanceObserverInit? = nil) {
         let this = jsObject
         _ = this[Strings.observe].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
-    public func disconnect() {
+    @inlinable public func disconnect() {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
-    public func takeRecords() -> PerformanceEntryList {
+    @inlinable public func takeRecords() -> PerformanceEntryList {
         let this = jsObject
         return this[Strings.takeRecords].function!(this: this, arguments: []).fromJSValue()!
     }

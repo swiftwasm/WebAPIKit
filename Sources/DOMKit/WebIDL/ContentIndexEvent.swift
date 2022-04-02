@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ContentIndexEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ContentIndexEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ContentIndexEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, init: ContentIndexEventInit) {
+    @inlinable public convenience init(type: String, init: ContentIndexEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
     }
 

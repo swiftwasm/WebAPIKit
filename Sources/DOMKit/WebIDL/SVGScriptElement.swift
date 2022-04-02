@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGScriptElement: SVGElement, SVGURIReference {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGScriptElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGScriptElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)

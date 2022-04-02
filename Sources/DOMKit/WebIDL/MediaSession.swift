@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaSession: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MediaSession].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaSession].function! }
 
     public let jsObject: JSObject
 
@@ -22,17 +22,17 @@ public class MediaSession: JSBridgedClass {
 
     // XXX: member 'setActionHandler' is ignored
 
-    public func setPositionState(state: MediaPositionState? = nil) {
+    @inlinable public func setPositionState(state: MediaPositionState? = nil) {
         let this = jsObject
         _ = this[Strings.setPositionState].function!(this: this, arguments: [state?.jsValue() ?? .undefined])
     }
 
-    public func setMicrophoneActive(active: Bool) {
+    @inlinable public func setMicrophoneActive(active: Bool) {
         let this = jsObject
         _ = this[Strings.setMicrophoneActive].function!(this: this, arguments: [active.jsValue()])
     }
 
-    public func setCameraActive(active: Bool) {
+    @inlinable public func setCameraActive(active: Bool) {
         let this = jsObject
         _ = this[Strings.setCameraActive].function!(this: this, arguments: [active.jsValue()])
     }

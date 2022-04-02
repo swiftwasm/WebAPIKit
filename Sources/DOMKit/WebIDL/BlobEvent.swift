@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BlobEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BlobEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BlobEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
@@ -12,7 +12,7 @@ public class BlobEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: BlobEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: BlobEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

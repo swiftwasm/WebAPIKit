@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRViewport: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRViewport].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRViewport].function! }
 
     public let jsObject: JSObject
 

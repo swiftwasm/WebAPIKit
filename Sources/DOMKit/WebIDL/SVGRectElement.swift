@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGRectElement: SVGGeometryElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGRectElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGRectElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)

@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSMathMin: CSSMathValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSMathMin].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSMathMin].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _values = ReadonlyAttribute(jsObject: jsObject, name: Strings.values)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(args: CSSNumberish...) {
+    @inlinable public convenience init(args: CSSNumberish...) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: args.map { $0.jsValue() }))
     }
 

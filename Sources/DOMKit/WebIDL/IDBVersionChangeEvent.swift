@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IDBVersionChangeEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.IDBVersionChangeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.IDBVersionChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _oldVersion = ReadonlyAttribute(jsObject: jsObject, name: Strings.oldVersion)
@@ -12,7 +12,7 @@ public class IDBVersionChangeEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: IDBVersionChangeEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: IDBVersionChangeEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

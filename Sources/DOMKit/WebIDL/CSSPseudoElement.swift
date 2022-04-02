@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSPseudoElement: EventTarget, GeometryUtils {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSPseudoElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSPseudoElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
@@ -22,7 +22,7 @@ public class CSSPseudoElement: EventTarget, GeometryUtils {
     @ReadonlyAttribute
     public var parent: __UNSUPPORTED_UNION__
 
-    public func pseudo(type: String) -> CSSPseudoElement? {
+    @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
         let this = jsObject
         return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }

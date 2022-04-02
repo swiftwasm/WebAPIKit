@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class LayoutWorkletGlobalScope: WorkletGlobalScope {
-    override public class var constructor: JSFunction { JSObject.global[Strings.LayoutWorkletGlobalScope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.LayoutWorkletGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

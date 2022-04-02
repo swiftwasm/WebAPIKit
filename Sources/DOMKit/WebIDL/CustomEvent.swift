@@ -4,21 +4,21 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CustomEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CustomEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CustomEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _detail = ReadonlyAttribute(jsObject: jsObject, name: Strings.detail)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: CustomEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: CustomEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute
     public var detail: JSValue
 
-    public func initCustomEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, detail: JSValue? = nil) {
+    @inlinable public func initCustomEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, detail: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.initCustomEvent].function!(this: this, arguments: [type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined, detail?.jsValue() ?? .undefined])
     }

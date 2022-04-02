@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ServiceWorker: EventTarget, AbstractWorker {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorker].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorker].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _scriptURL = ReadonlyAttribute(jsObject: jsObject, name: Strings.scriptURL)
@@ -19,12 +19,12 @@ public class ServiceWorker: EventTarget, AbstractWorker {
     @ReadonlyAttribute
     public var state: ServiceWorkerState
 
-    public func postMessage(message: JSValue, transfer: [JSObject]) {
+    @inlinable public func postMessage(message: JSValue, transfer: [JSObject]) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), transfer.jsValue()])
     }
 
-    public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
+    @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
     }

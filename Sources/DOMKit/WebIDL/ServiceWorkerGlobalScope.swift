@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ServiceWorkerGlobalScope: WorkerGlobalScope {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorkerGlobalScope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorkerGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onbackgroundfetchsuccess = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onbackgroundfetchsuccess)
@@ -87,13 +87,13 @@ public class ServiceWorkerGlobalScope: WorkerGlobalScope {
     @ReadonlyAttribute
     public var serviceWorker: ServiceWorker
 
-    public func skipWaiting() -> JSPromise {
+    @inlinable public func skipWaiting() -> JSPromise {
         let this = jsObject
         return this[Strings.skipWaiting].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func skipWaiting() async throws {
+    @inlinable public func skipWaiting() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.skipWaiting].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

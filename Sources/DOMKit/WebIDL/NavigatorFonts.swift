@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorFonts: JSBridgedClass {}
 public extension NavigatorFonts {
-    var fonts: FontManager { ReadonlyAttribute[Strings.fonts, in: jsObject] }
+    @inlinable var fonts: FontManager { ReadonlyAttribute[Strings.fonts, in: jsObject] }
 }

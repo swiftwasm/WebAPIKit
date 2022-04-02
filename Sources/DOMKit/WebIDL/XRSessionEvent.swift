@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRSessionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRSessionEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRSessionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _session = ReadonlyAttribute(jsObject: jsObject, name: Strings.session)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: XRSessionEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: XRSessionEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

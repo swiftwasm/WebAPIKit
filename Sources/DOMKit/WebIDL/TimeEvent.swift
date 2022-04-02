@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TimeEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.TimeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.TimeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _view = ReadonlyAttribute(jsObject: jsObject, name: Strings.view)
@@ -18,7 +18,7 @@ public class TimeEvent: Event {
     @ReadonlyAttribute
     public var detail: Int32
 
-    public func initTimeEvent(typeArg: String, viewArg: Window?, detailArg: Int32) {
+    @inlinable public func initTimeEvent(typeArg: String, viewArg: Window?, detailArg: Int32) {
         let this = jsObject
         _ = this[Strings.initTimeEvent].function!(this: this, arguments: [typeArg.jsValue(), viewArg.jsValue(), detailArg.jsValue()])
     }

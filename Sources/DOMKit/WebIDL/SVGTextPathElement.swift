@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGTextPathElement: SVGTextContentElement, SVGURIReference {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGTextPathElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGTextPathElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _startOffset = ReadonlyAttribute(jsObject: jsObject, name: Strings.startOffset)

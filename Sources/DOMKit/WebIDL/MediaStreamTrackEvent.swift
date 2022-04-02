@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaStreamTrackEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrackEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrackEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _track = ReadonlyAttribute(jsObject: jsObject, name: Strings.track)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: MediaStreamTrackEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: MediaStreamTrackEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

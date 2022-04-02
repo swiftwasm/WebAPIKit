@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VideoTrack: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.VideoTrack].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.VideoTrack].function! }
 
     public let jsObject: JSObject
 

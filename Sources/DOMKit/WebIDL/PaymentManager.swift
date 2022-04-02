@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PaymentManager: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PaymentManager].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PaymentManager].function! }
 
     public let jsObject: JSObject
 

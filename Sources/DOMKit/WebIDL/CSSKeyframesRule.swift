@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSKeyframesRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSKeyframesRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSKeyframesRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
@@ -18,17 +18,17 @@ public class CSSKeyframesRule: CSSRule {
     @ReadonlyAttribute
     public var cssRules: CSSRuleList
 
-    public func appendRule(rule: String) {
+    @inlinable public func appendRule(rule: String) {
         let this = jsObject
         _ = this[Strings.appendRule].function!(this: this, arguments: [rule.jsValue()])
     }
 
-    public func deleteRule(select: String) {
+    @inlinable public func deleteRule(select: String) {
         let this = jsObject
         _ = this[Strings.deleteRule].function!(this: this, arguments: [select.jsValue()])
     }
 
-    public func findRule(select: String) -> CSSKeyframeRule? {
+    @inlinable public func findRule(select: String) -> CSSKeyframeRule? {
         let this = jsObject
         return this[Strings.findRule].function!(this: this, arguments: [select.jsValue()]).fromJSValue()!
     }

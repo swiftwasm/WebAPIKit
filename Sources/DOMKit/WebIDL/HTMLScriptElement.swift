@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLScriptElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLScriptElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLScriptElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
@@ -24,7 +24,7 @@ public class HTMLScriptElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -58,7 +58,7 @@ public class HTMLScriptElement: HTMLElement {
     @ReadonlyAttribute
     public var blocking: DOMTokenList
 
-    public static func supports(type: String) -> Bool {
+    @inlinable public static func supports(type: String) -> Bool {
         let this = constructor
         return this[Strings.supports].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }

@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSUnparsedValue: CSSStyleValue, Sequence {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSUnparsedValue].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSUnparsedValue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(members: [CSSUnparsedSegment]) {
+    @inlinable public convenience init(members: [CSSUnparsedSegment]) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [members.jsValue()]))
     }
 
@@ -23,7 +23,7 @@ public class CSSUnparsedValue: CSSStyleValue, Sequence {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> CSSUnparsedSegment {
+    @inlinable public subscript(key: Int) -> CSSUnparsedSegment {
         jsObject[key].fromJSValue()!
     }
 

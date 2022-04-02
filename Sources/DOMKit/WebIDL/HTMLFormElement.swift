@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLFormElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFormElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLFormElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _acceptCharset = ReadWriteAttribute(jsObject: jsObject, name: Strings.acceptCharset)
@@ -23,7 +23,7 @@ public class HTMLFormElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -66,35 +66,35 @@ public class HTMLFormElement: HTMLElement {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> Element {
+    @inlinable public subscript(key: Int) -> Element {
         jsObject[key].fromJSValue()!
     }
 
-    public subscript(key: String) -> __UNSUPPORTED_UNION__ {
+    @inlinable public subscript(key: String) -> __UNSUPPORTED_UNION__ {
         jsObject[key].fromJSValue()!
     }
 
-    public func submit() {
+    @inlinable public func submit() {
         let this = jsObject
         _ = this[Strings.submit].function!(this: this, arguments: [])
     }
 
-    public func requestSubmit(submitter: HTMLElement? = nil) {
+    @inlinable public func requestSubmit(submitter: HTMLElement? = nil) {
         let this = jsObject
         _ = this[Strings.requestSubmit].function!(this: this, arguments: [submitter?.jsValue() ?? .undefined])
     }
 
-    public func reset() {
+    @inlinable public func reset() {
         let this = jsObject
         _ = this[Strings.reset].function!(this: this, arguments: [])
     }
 
-    public func checkValidity() -> Bool {
+    @inlinable public func checkValidity() -> Bool {
         let this = jsObject
         return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func reportValidity() -> Bool {
+    @inlinable public func reportValidity() -> Bool {
         let this = jsObject
         return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }

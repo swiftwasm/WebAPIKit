@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaEncryptedEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaEncryptedEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaEncryptedEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _initDataType = ReadonlyAttribute(jsObject: jsObject, name: Strings.initDataType)
@@ -12,7 +12,7 @@ public class MediaEncryptedEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: MediaEncryptedEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: MediaEncryptedEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

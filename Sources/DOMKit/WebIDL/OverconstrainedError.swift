@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OverconstrainedError: DOMException {
-    override public class var constructor: JSFunction { JSObject.global[Strings.OverconstrainedError].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OverconstrainedError].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _constraint = ReadonlyAttribute(jsObject: jsObject, name: Strings.constraint)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(constraint: String, message: String? = nil) {
+    @inlinable public convenience init(constraint: String, message: String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [constraint.jsValue(), message?.jsValue() ?? .undefined]))
     }
 

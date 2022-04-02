@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class StyleSheetList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.StyleSheetList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.StyleSheetList].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class StyleSheetList: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public subscript(key: Int) -> CSSStyleSheet? {
+    @inlinable public subscript(key: Int) -> CSSStyleSheet? {
         jsObject[key].fromJSValue()
     }
 

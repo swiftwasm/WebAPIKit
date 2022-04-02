@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_compressed_texture_s3tc: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_compressed_texture_s3tc].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_compressed_texture_s3tc].function! }
 
     public let jsObject: JSObject
 

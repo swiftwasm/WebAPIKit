@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MimeType: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MimeType].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MimeType].function! }
 
     public let jsObject: JSObject
 

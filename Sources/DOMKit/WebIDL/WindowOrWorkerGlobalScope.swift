@@ -5,80 +5,80 @@ import JavaScriptKit
 
 public protocol WindowOrWorkerGlobalScope: JSBridgedClass {}
 public extension WindowOrWorkerGlobalScope {
-    var indexedDB: IDBFactory { ReadonlyAttribute[Strings.indexedDB, in: jsObject] }
+    @inlinable var indexedDB: IDBFactory { ReadonlyAttribute[Strings.indexedDB, in: jsObject] }
 
-    var crypto: Crypto { ReadonlyAttribute[Strings.crypto, in: jsObject] }
+    @inlinable var crypto: Crypto { ReadonlyAttribute[Strings.crypto, in: jsObject] }
 
-    func fetch(input: RequestInfo, init: RequestInit? = nil) -> JSPromise {
+    @inlinable func fetch(input: RequestInfo, init: RequestInit? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.fetch].function!(this: this, arguments: [input.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func fetch(input: RequestInfo, init: RequestInit? = nil) async throws -> Response {
+    @inlinable func fetch(input: RequestInfo, init: RequestInit? = nil) async throws -> Response {
         let this = jsObject
         let _promise: JSPromise = this[Strings.fetch].function!(this: this, arguments: [input.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    var performance: Performance { ReadonlyAttribute[Strings.performance, in: jsObject] }
+    @inlinable var performance: Performance { ReadonlyAttribute[Strings.performance, in: jsObject] }
 
-    var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
+    @inlinable var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
 
-    var isSecureContext: Bool { ReadonlyAttribute[Strings.isSecureContext, in: jsObject] }
+    @inlinable var isSecureContext: Bool { ReadonlyAttribute[Strings.isSecureContext, in: jsObject] }
 
-    var crossOriginIsolated: Bool { ReadonlyAttribute[Strings.crossOriginIsolated, in: jsObject] }
+    @inlinable var crossOriginIsolated: Bool { ReadonlyAttribute[Strings.crossOriginIsolated, in: jsObject] }
 
-    func reportError(e: JSValue) {
+    @inlinable func reportError(e: JSValue) {
         let this = jsObject
         _ = this[Strings.reportError].function!(this: this, arguments: [e.jsValue()])
     }
 
-    func btoa(data: String) -> String {
+    @inlinable func btoa(data: String) -> String {
         let this = jsObject
         return this[Strings.btoa].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
-    func atob(data: String) -> String {
+    @inlinable func atob(data: String) -> String {
         let this = jsObject
         return this[Strings.atob].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
     }
 
-    func setTimeout(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
+    @inlinable func setTimeout(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
         let this = jsObject
         return this[Strings.setTimeout].function!(this: this, arguments: [handler.jsValue(), timeout?.jsValue() ?? .undefined] + arguments.map { $0.jsValue() }).fromJSValue()!
     }
 
-    func clearTimeout(id: Int32? = nil) {
+    @inlinable func clearTimeout(id: Int32? = nil) {
         let this = jsObject
         _ = this[Strings.clearTimeout].function!(this: this, arguments: [id?.jsValue() ?? .undefined])
     }
 
-    func setInterval(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
+    @inlinable func setInterval(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
         let this = jsObject
         return this[Strings.setInterval].function!(this: this, arguments: [handler.jsValue(), timeout?.jsValue() ?? .undefined] + arguments.map { $0.jsValue() }).fromJSValue()!
     }
 
-    func clearInterval(id: Int32? = nil) {
+    @inlinable func clearInterval(id: Int32? = nil) {
         let this = jsObject
         _ = this[Strings.clearInterval].function!(this: this, arguments: [id?.jsValue() ?? .undefined])
     }
 
     // XXX: method 'queueMicrotask' is ignored
 
-    func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) -> JSPromise {
+    @inlinable func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.createImageBitmap].function!(this: this, arguments: [image.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) async throws -> ImageBitmap {
+    @inlinable func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) async throws -> ImageBitmap {
         let this = jsObject
         let _promise: JSPromise = this[Strings.createImageBitmap].function!(this: this, arguments: [image.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    func createImageBitmap(image: ImageBitmapSource, sx: Int32, sy: Int32, sw: Int32, sh: Int32, options: ImageBitmapOptions? = nil) -> JSPromise {
+    @inlinable func createImageBitmap(image: ImageBitmapSource, sx: Int32, sy: Int32, sw: Int32, sh: Int32, options: ImageBitmapOptions? = nil) -> JSPromise {
         let _arg0 = image.jsValue()
         let _arg1 = sx.jsValue()
         let _arg2 = sy.jsValue()
@@ -90,7 +90,7 @@ public extension WindowOrWorkerGlobalScope {
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func createImageBitmap(image: ImageBitmapSource, sx: Int32, sy: Int32, sw: Int32, sh: Int32, options: ImageBitmapOptions? = nil) async throws -> ImageBitmap {
+    @inlinable func createImageBitmap(image: ImageBitmapSource, sx: Int32, sy: Int32, sw: Int32, sh: Int32, options: ImageBitmapOptions? = nil) async throws -> ImageBitmap {
         let _arg0 = image.jsValue()
         let _arg1 = sx.jsValue()
         let _arg2 = sy.jsValue()
@@ -102,16 +102,16 @@ public extension WindowOrWorkerGlobalScope {
         return try await _promise.get().fromJSValue()!
     }
 
-    func structuredClone(value: JSValue, options: StructuredSerializeOptions? = nil) -> JSValue {
+    @inlinable func structuredClone(value: JSValue, options: StructuredSerializeOptions? = nil) -> JSValue {
         let this = jsObject
         return this[Strings.structuredClone].function!(this: this, arguments: [value.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    var originPolicyIds: [String] { ReadonlyAttribute[Strings.originPolicyIds, in: jsObject] }
+    @inlinable var originPolicyIds: [String] { ReadonlyAttribute[Strings.originPolicyIds, in: jsObject] }
 
-    var scheduler: Scheduler { ReadonlyAttribute[Strings.scheduler, in: jsObject] }
+    @inlinable var scheduler: Scheduler { ReadonlyAttribute[Strings.scheduler, in: jsObject] }
 
-    var caches: CacheStorage { ReadonlyAttribute[Strings.caches, in: jsObject] }
+    @inlinable var caches: CacheStorage { ReadonlyAttribute[Strings.caches, in: jsObject] }
 
-    var trustedTypes: TrustedTypePolicyFactory { ReadonlyAttribute[Strings.trustedTypes, in: jsObject] }
+    @inlinable var trustedTypes: TrustedTypePolicyFactory { ReadonlyAttribute[Strings.trustedTypes, in: jsObject] }
 }

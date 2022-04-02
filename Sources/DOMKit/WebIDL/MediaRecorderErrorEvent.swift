@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaRecorderErrorEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaRecorderErrorEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaRecorderErrorEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: MediaRecorderErrorEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: MediaRecorderErrorEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

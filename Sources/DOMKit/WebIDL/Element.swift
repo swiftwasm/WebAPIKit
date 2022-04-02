@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin, Animatable {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Element].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Element].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _outerHTML = ReadWriteAttribute(jsObject: jsObject, name: Strings.outerHTML)
@@ -37,27 +37,27 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
     @ReadWriteAttribute
     public var outerHTML: String
 
-    public func insertAdjacentHTML(position: String, text: String) {
+    @inlinable public func insertAdjacentHTML(position: String, text: String) {
         let this = jsObject
         _ = this[Strings.insertAdjacentHTML].function!(this: this, arguments: [position.jsValue(), text.jsValue()])
     }
 
-    public func getSpatialNavigationContainer() -> Node {
+    @inlinable public func getSpatialNavigationContainer() -> Node {
         let this = jsObject
         return this[Strings.getSpatialNavigationContainer].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func focusableAreas(option: FocusableAreasOption? = nil) -> [Node] {
+    @inlinable public func focusableAreas(option: FocusableAreasOption? = nil) -> [Node] {
         let this = jsObject
         return this[Strings.focusableAreas].function!(this: this, arguments: [option?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func spatialNavigationSearch(dir: SpatialNavigationDirection, options: SpatialNavigationSearchOptions? = nil) -> Node? {
+    @inlinable public func spatialNavigationSearch(dir: SpatialNavigationDirection, options: SpatialNavigationSearchOptions? = nil) -> Node? {
         let this = jsObject
         return this[Strings.spatialNavigationSearch].function!(this: this, arguments: [dir.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func pseudo(type: String) -> CSSPseudoElement? {
+    @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
         let this = jsObject
         return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
@@ -65,57 +65,57 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
     @ReadonlyAttribute
     public var part: DOMTokenList
 
-    public func computedStyleMap() -> StylePropertyMapReadOnly {
+    @inlinable public func computedStyleMap() -> StylePropertyMapReadOnly {
         let this = jsObject
         return this[Strings.computedStyleMap].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getClientRects() -> DOMRectList {
+    @inlinable public func getClientRects() -> DOMRectList {
         let this = jsObject
         return this[Strings.getClientRects].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getBoundingClientRect() -> DOMRect {
+    @inlinable public func getBoundingClientRect() -> DOMRect {
         let this = jsObject
         return this[Strings.getBoundingClientRect].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func isVisible(options: IsVisibleOptions? = nil) -> Bool {
+    @inlinable public func isVisible(options: IsVisibleOptions? = nil) -> Bool {
         let this = jsObject
         return this[Strings.isVisible].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func scrollIntoView(arg: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public func scrollIntoView(arg: __UNSUPPORTED_UNION__? = nil) {
         let this = jsObject
         _ = this[Strings.scrollIntoView].function!(this: this, arguments: [arg?.jsValue() ?? .undefined])
     }
 
-    public func scroll(options: ScrollToOptions? = nil) {
+    @inlinable public func scroll(options: ScrollToOptions? = nil) {
         let this = jsObject
         _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
-    public func scroll(x: Double, y: Double) {
+    @inlinable public func scroll(x: Double, y: Double) {
         let this = jsObject
         _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
     }
 
-    public func scrollTo(options: ScrollToOptions? = nil) {
+    @inlinable public func scrollTo(options: ScrollToOptions? = nil) {
         let this = jsObject
         _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
-    public func scrollTo(x: Double, y: Double) {
+    @inlinable public func scrollTo(x: Double, y: Double) {
         let this = jsObject
         _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
     }
 
-    public func scrollBy(options: ScrollToOptions? = nil) {
+    @inlinable public func scrollBy(options: ScrollToOptions? = nil) {
         let this = jsObject
         _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
     }
 
-    public func scrollBy(x: Double, y: Double) {
+    @inlinable public func scrollBy(x: Double, y: Double) {
         let this = jsObject
         _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
     }
@@ -168,7 +168,7 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
     @ReadWriteAttribute
     public var slot: String
 
-    public func hasAttributes() -> Bool {
+    @inlinable public func hasAttributes() -> Bool {
         let this = jsObject
         return this[Strings.hasAttributes].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -176,82 +176,82 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
     @ReadonlyAttribute
     public var attributes: NamedNodeMap
 
-    public func getAttributeNames() -> [String] {
+    @inlinable public func getAttributeNames() -> [String] {
         let this = jsObject
         return this[Strings.getAttributeNames].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getAttribute(qualifiedName: String) -> String? {
+    @inlinable public func getAttribute(qualifiedName: String) -> String? {
         let this = jsObject
         return this[Strings.getAttribute].function!(this: this, arguments: [qualifiedName.jsValue()]).fromJSValue()!
     }
 
-    public func getAttributeNS(namespace: String?, localName: String) -> String? {
+    @inlinable public func getAttributeNS(namespace: String?, localName: String) -> String? {
         let this = jsObject
         return this[Strings.getAttributeNS].function!(this: this, arguments: [namespace.jsValue(), localName.jsValue()]).fromJSValue()!
     }
 
-    public func setAttribute(qualifiedName: String, value: String) {
+    @inlinable public func setAttribute(qualifiedName: String, value: String) {
         let this = jsObject
         _ = this[Strings.setAttribute].function!(this: this, arguments: [qualifiedName.jsValue(), value.jsValue()])
     }
 
-    public func setAttributeNS(namespace: String?, qualifiedName: String, value: String) {
+    @inlinable public func setAttributeNS(namespace: String?, qualifiedName: String, value: String) {
         let this = jsObject
         _ = this[Strings.setAttributeNS].function!(this: this, arguments: [namespace.jsValue(), qualifiedName.jsValue(), value.jsValue()])
     }
 
-    public func removeAttribute(qualifiedName: String) {
+    @inlinable public func removeAttribute(qualifiedName: String) {
         let this = jsObject
         _ = this[Strings.removeAttribute].function!(this: this, arguments: [qualifiedName.jsValue()])
     }
 
-    public func removeAttributeNS(namespace: String?, localName: String) {
+    @inlinable public func removeAttributeNS(namespace: String?, localName: String) {
         let this = jsObject
         _ = this[Strings.removeAttributeNS].function!(this: this, arguments: [namespace.jsValue(), localName.jsValue()])
     }
 
-    public func toggleAttribute(qualifiedName: String, force: Bool? = nil) -> Bool {
+    @inlinable public func toggleAttribute(qualifiedName: String, force: Bool? = nil) -> Bool {
         let this = jsObject
         return this[Strings.toggleAttribute].function!(this: this, arguments: [qualifiedName.jsValue(), force?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func hasAttribute(qualifiedName: String) -> Bool {
+    @inlinable public func hasAttribute(qualifiedName: String) -> Bool {
         let this = jsObject
         return this[Strings.hasAttribute].function!(this: this, arguments: [qualifiedName.jsValue()]).fromJSValue()!
     }
 
-    public func hasAttributeNS(namespace: String?, localName: String) -> Bool {
+    @inlinable public func hasAttributeNS(namespace: String?, localName: String) -> Bool {
         let this = jsObject
         return this[Strings.hasAttributeNS].function!(this: this, arguments: [namespace.jsValue(), localName.jsValue()]).fromJSValue()!
     }
 
-    public func getAttributeNode(qualifiedName: String) -> Attr? {
+    @inlinable public func getAttributeNode(qualifiedName: String) -> Attr? {
         let this = jsObject
         return this[Strings.getAttributeNode].function!(this: this, arguments: [qualifiedName.jsValue()]).fromJSValue()!
     }
 
-    public func getAttributeNodeNS(namespace: String?, localName: String) -> Attr? {
+    @inlinable public func getAttributeNodeNS(namespace: String?, localName: String) -> Attr? {
         let this = jsObject
         return this[Strings.getAttributeNodeNS].function!(this: this, arguments: [namespace.jsValue(), localName.jsValue()]).fromJSValue()!
     }
 
-    public func setAttributeNode(attr: Attr) -> Attr? {
+    @inlinable public func setAttributeNode(attr: Attr) -> Attr? {
         let this = jsObject
         return this[Strings.setAttributeNode].function!(this: this, arguments: [attr.jsValue()]).fromJSValue()!
     }
 
-    public func setAttributeNodeNS(attr: Attr) -> Attr? {
+    @inlinable public func setAttributeNodeNS(attr: Attr) -> Attr? {
         let this = jsObject
         return this[Strings.setAttributeNodeNS].function!(this: this, arguments: [attr.jsValue()]).fromJSValue()!
     }
 
-    public func removeAttributeNode(attr: Attr) -> Attr {
+    @inlinable public func removeAttributeNode(attr: Attr) -> Attr {
         let this = jsObject
         return this[Strings.removeAttributeNode].function!(this: this, arguments: [attr.jsValue()]).fromJSValue()!
     }
 
-    public func attachShadow(init: ShadowRootInit) -> ShadowRoot {
+    @inlinable public func attachShadow(init: ShadowRootInit) -> ShadowRoot {
         let this = jsObject
         return this[Strings.attachShadow].function!(this: this, arguments: [`init`.jsValue()]).fromJSValue()!
     }
@@ -259,42 +259,42 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
     @ReadonlyAttribute
     public var shadowRoot: ShadowRoot?
 
-    public func closest(selectors: String) -> Element? {
+    @inlinable public func closest(selectors: String) -> Element? {
         let this = jsObject
         return this[Strings.closest].function!(this: this, arguments: [selectors.jsValue()]).fromJSValue()!
     }
 
-    public func matches(selectors: String) -> Bool {
+    @inlinable public func matches(selectors: String) -> Bool {
         let this = jsObject
         return this[Strings.matches].function!(this: this, arguments: [selectors.jsValue()]).fromJSValue()!
     }
 
-    public func webkitMatchesSelector(selectors: String) -> Bool {
+    @inlinable public func webkitMatchesSelector(selectors: String) -> Bool {
         let this = jsObject
         return this[Strings.webkitMatchesSelector].function!(this: this, arguments: [selectors.jsValue()]).fromJSValue()!
     }
 
-    public func getElementsByTagName(qualifiedName: String) -> HTMLCollection {
+    @inlinable public func getElementsByTagName(qualifiedName: String) -> HTMLCollection {
         let this = jsObject
         return this[Strings.getElementsByTagName].function!(this: this, arguments: [qualifiedName.jsValue()]).fromJSValue()!
     }
 
-    public func getElementsByTagNameNS(namespace: String?, localName: String) -> HTMLCollection {
+    @inlinable public func getElementsByTagNameNS(namespace: String?, localName: String) -> HTMLCollection {
         let this = jsObject
         return this[Strings.getElementsByTagNameNS].function!(this: this, arguments: [namespace.jsValue(), localName.jsValue()]).fromJSValue()!
     }
 
-    public func getElementsByClassName(classNames: String) -> HTMLCollection {
+    @inlinable public func getElementsByClassName(classNames: String) -> HTMLCollection {
         let this = jsObject
         return this[Strings.getElementsByClassName].function!(this: this, arguments: [classNames.jsValue()]).fromJSValue()!
     }
 
-    public func insertAdjacentElement(where: String, element: Element) -> Element? {
+    @inlinable public func insertAdjacentElement(where: String, element: Element) -> Element? {
         let this = jsObject
         return this[Strings.insertAdjacentElement].function!(this: this, arguments: [`where`.jsValue(), element.jsValue()]).fromJSValue()!
     }
 
-    public func insertAdjacentText(where: String, data: String) {
+    @inlinable public func insertAdjacentText(where: String, data: String) {
         let this = jsObject
         _ = this[Strings.insertAdjacentText].function!(this: this, arguments: [`where`.jsValue(), data.jsValue()])
     }
@@ -305,13 +305,13 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
     @ReadWriteAttribute
     public var elementTiming: String
 
-    public func requestFullscreen(options: FullscreenOptions? = nil) -> JSPromise {
+    @inlinable public func requestFullscreen(options: FullscreenOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.requestFullscreen].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestFullscreen(options: FullscreenOptions? = nil) async throws {
+    @inlinable public func requestFullscreen(options: FullscreenOptions? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestFullscreen].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
@@ -323,27 +323,27 @@ public class Element: Node, InnerHTML, Region, GeometryUtils, ParentNode, NonDoc
     @ClosureAttribute1Optional
     public var onfullscreenerror: EventHandler
 
-    public func setPointerCapture(pointerId: Int32) {
+    @inlinable public func setPointerCapture(pointerId: Int32) {
         let this = jsObject
         _ = this[Strings.setPointerCapture].function!(this: this, arguments: [pointerId.jsValue()])
     }
 
-    public func releasePointerCapture(pointerId: Int32) {
+    @inlinable public func releasePointerCapture(pointerId: Int32) {
         let this = jsObject
         _ = this[Strings.releasePointerCapture].function!(this: this, arguments: [pointerId.jsValue()])
     }
 
-    public func hasPointerCapture(pointerId: Int32) -> Bool {
+    @inlinable public func hasPointerCapture(pointerId: Int32) -> Bool {
         let this = jsObject
         return this[Strings.hasPointerCapture].function!(this: this, arguments: [pointerId.jsValue()]).fromJSValue()!
     }
 
-    public func requestPointerLock() {
+    @inlinable public func requestPointerLock() {
         let this = jsObject
         _ = this[Strings.requestPointerLock].function!(this: this, arguments: [])
     }
 
-    public func setHTML(input: String, options: SetHTMLOptions? = nil) {
+    @inlinable public func setHTML(input: String, options: SetHTMLOptions? = nil) {
         let this = jsObject
         _ = this[Strings.setHTML].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined])
     }

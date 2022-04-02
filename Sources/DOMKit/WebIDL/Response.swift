@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Response: JSBridgedClass, Body {
-    public class var constructor: JSFunction { JSObject.global[Strings.Response].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Response].function! }
 
     public let jsObject: JSObject
 
@@ -19,16 +19,16 @@ public class Response: JSBridgedClass, Body {
         self.jsObject = jsObject
     }
 
-    public convenience init(body: BodyInit? = nil, init: ResponseInit? = nil) {
+    @inlinable public convenience init(body: BodyInit? = nil, init: ResponseInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [body?.jsValue() ?? .undefined, `init`?.jsValue() ?? .undefined]))
     }
 
-    public static func error() -> Self {
+    @inlinable public static func error() -> Self {
         let this = constructor
         return this[Strings.error].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public static func redirect(url: String, status: UInt16? = nil) -> Self {
+    @inlinable public static func redirect(url: String, status: UInt16? = nil) -> Self {
         let this = constructor
         return this[Strings.redirect].function!(this: this, arguments: [url.jsValue(), status?.jsValue() ?? .undefined]).fromJSValue()!
     }
@@ -54,7 +54,7 @@ public class Response: JSBridgedClass, Body {
     @ReadonlyAttribute
     public var headers: Headers
 
-    public func clone() -> Self {
+    @inlinable public func clone() -> Self {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }

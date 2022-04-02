@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Baseline: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Baseline].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Baseline].function! }
 
     public let jsObject: JSObject
 

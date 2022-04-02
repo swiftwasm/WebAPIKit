@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NDEFReadingEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.NDEFReadingEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.NDEFReadingEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _serialNumber = ReadonlyAttribute(jsObject: jsObject, name: Strings.serialNumber)
@@ -12,7 +12,7 @@ public class NDEFReadingEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, readingEventInitDict: NDEFReadingEventInit) {
+    @inlinable public convenience init(type: String, readingEventInitDict: NDEFReadingEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), readingEventInitDict.jsValue()]))
     }
 

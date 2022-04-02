@@ -5,27 +5,27 @@ import JavaScriptKit
 
 public protocol CanvasImageData: JSBridgedClass {}
 public extension CanvasImageData {
-    func createImageData(sw: Int32, sh: Int32, settings: ImageDataSettings? = nil) -> ImageData {
+    @inlinable func createImageData(sw: Int32, sh: Int32, settings: ImageDataSettings? = nil) -> ImageData {
         let this = jsObject
         return this[Strings.createImageData].function!(this: this, arguments: [sw.jsValue(), sh.jsValue(), settings?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    func createImageData(imagedata: ImageData) -> ImageData {
+    @inlinable func createImageData(imagedata: ImageData) -> ImageData {
         let this = jsObject
         return this[Strings.createImageData].function!(this: this, arguments: [imagedata.jsValue()]).fromJSValue()!
     }
 
-    func getImageData(sx: Int32, sy: Int32, sw: Int32, sh: Int32, settings: ImageDataSettings? = nil) -> ImageData {
+    @inlinable func getImageData(sx: Int32, sy: Int32, sw: Int32, sh: Int32, settings: ImageDataSettings? = nil) -> ImageData {
         let this = jsObject
         return this[Strings.getImageData].function!(this: this, arguments: [sx.jsValue(), sy.jsValue(), sw.jsValue(), sh.jsValue(), settings?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    func putImageData(imagedata: ImageData, dx: Int32, dy: Int32) {
+    @inlinable func putImageData(imagedata: ImageData, dx: Int32, dy: Int32) {
         let this = jsObject
         _ = this[Strings.putImageData].function!(this: this, arguments: [imagedata.jsValue(), dx.jsValue(), dy.jsValue()])
     }
 
-    func putImageData(imagedata: ImageData, dx: Int32, dy: Int32, dirtyX: Int32, dirtyY: Int32, dirtyWidth: Int32, dirtyHeight: Int32) {
+    @inlinable func putImageData(imagedata: ImageData, dx: Int32, dy: Int32, dirtyX: Int32, dirtyY: Int32, dirtyWidth: Int32, dirtyHeight: Int32) {
         let _arg0 = imagedata.jsValue()
         let _arg1 = dx.jsValue()
         let _arg2 = dy.jsValue()

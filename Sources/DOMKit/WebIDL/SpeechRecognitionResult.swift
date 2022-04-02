@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechRecognitionResult: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SpeechRecognitionResult].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SpeechRecognitionResult].function! }
 
     public let jsObject: JSObject
 
@@ -17,7 +17,7 @@ public class SpeechRecognitionResult: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> SpeechRecognitionAlternative {
+    @inlinable public subscript(key: Int) -> SpeechRecognitionAlternative {
         jsObject[key].fromJSValue()!
     }
 

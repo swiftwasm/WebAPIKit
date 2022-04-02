@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageCapture: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ImageCapture].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ImageCapture].function! }
 
     public let jsObject: JSObject
 
@@ -13,53 +13,53 @@ public class ImageCapture: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(videoTrack: MediaStreamTrack) {
+    @inlinable public convenience init(videoTrack: MediaStreamTrack) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [videoTrack.jsValue()]))
     }
 
-    public func takePhoto(photoSettings: PhotoSettings? = nil) -> JSPromise {
+    @inlinable public func takePhoto(photoSettings: PhotoSettings? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.takePhoto].function!(this: this, arguments: [photoSettings?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func takePhoto(photoSettings: PhotoSettings? = nil) async throws -> Blob {
+    @inlinable public func takePhoto(photoSettings: PhotoSettings? = nil) async throws -> Blob {
         let this = jsObject
         let _promise: JSPromise = this[Strings.takePhoto].function!(this: this, arguments: [photoSettings?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func getPhotoCapabilities() -> JSPromise {
+    @inlinable public func getPhotoCapabilities() -> JSPromise {
         let this = jsObject
         return this[Strings.getPhotoCapabilities].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getPhotoCapabilities() async throws -> PhotoCapabilities {
+    @inlinable public func getPhotoCapabilities() async throws -> PhotoCapabilities {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getPhotoCapabilities].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func getPhotoSettings() -> JSPromise {
+    @inlinable public func getPhotoSettings() -> JSPromise {
         let this = jsObject
         return this[Strings.getPhotoSettings].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getPhotoSettings() async throws -> PhotoSettings {
+    @inlinable public func getPhotoSettings() async throws -> PhotoSettings {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getPhotoSettings].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func grabFrame() -> JSPromise {
+    @inlinable public func grabFrame() -> JSPromise {
         let this = jsObject
         return this[Strings.grabFrame].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func grabFrame() async throws -> ImageBitmap {
+    @inlinable public func grabFrame() async throws -> ImageBitmap {
         let this = jsObject
         let _promise: JSPromise = this[Strings.grabFrame].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

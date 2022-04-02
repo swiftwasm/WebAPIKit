@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class KeyboardLayoutMap: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.KeyboardLayoutMap].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.KeyboardLayoutMap].function! }
 
     public let jsObject: JSObject
 

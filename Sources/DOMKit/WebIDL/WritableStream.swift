@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WritableStream: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WritableStream].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WritableStream].function! }
 
     public let jsObject: JSObject
 
@@ -13,38 +13,38 @@ public class WritableStream: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(underlyingSink: JSObject? = nil, strategy: QueuingStrategy? = nil) {
+    @inlinable public convenience init(underlyingSink: JSObject? = nil, strategy: QueuingStrategy? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [underlyingSink?.jsValue() ?? .undefined, strategy?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute
     public var locked: Bool
 
-    public func abort(reason: JSValue? = nil) -> JSPromise {
+    @inlinable public func abort(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func abort(reason: JSValue? = nil) async throws {
+    @inlinable public func abort(reason: JSValue? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func close() -> JSPromise {
+    @inlinable public func close() -> JSPromise {
         let this = jsObject
         return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func close() async throws {
+    @inlinable public func close() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func getWriter() -> WritableStreamDefaultWriter {
+    @inlinable public func getWriter() -> WritableStreamDefaultWriter {
         let this = jsObject
         return this[Strings.getWriter].function!(this: this, arguments: []).fromJSValue()!
     }

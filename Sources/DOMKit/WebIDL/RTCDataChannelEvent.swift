@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCDataChannelEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCDataChannelEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCDataChannelEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _channel = ReadonlyAttribute(jsObject: jsObject, name: Strings.channel)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: RTCDataChannelEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: RTCDataChannelEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

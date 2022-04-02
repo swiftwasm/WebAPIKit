@@ -5,13 +5,13 @@ import JavaScriptKit
 
 public protocol SVGFilterPrimitiveStandardAttributes: JSBridgedClass {}
 public extension SVGFilterPrimitiveStandardAttributes {
-    var x: SVGAnimatedLength { ReadonlyAttribute[Strings.x, in: jsObject] }
+    @inlinable var x: SVGAnimatedLength { ReadonlyAttribute[Strings.x, in: jsObject] }
 
-    var y: SVGAnimatedLength { ReadonlyAttribute[Strings.y, in: jsObject] }
+    @inlinable var y: SVGAnimatedLength { ReadonlyAttribute[Strings.y, in: jsObject] }
 
-    var width: SVGAnimatedLength { ReadonlyAttribute[Strings.width, in: jsObject] }
+    @inlinable var width: SVGAnimatedLength { ReadonlyAttribute[Strings.width, in: jsObject] }
 
-    var height: SVGAnimatedLength { ReadonlyAttribute[Strings.height, in: jsObject] }
+    @inlinable var height: SVGAnimatedLength { ReadonlyAttribute[Strings.height, in: jsObject] }
 
-    var result: SVGAnimatedString { ReadonlyAttribute[Strings.result, in: jsObject] }
+    @inlinable var result: SVGAnimatedString { ReadonlyAttribute[Strings.result, in: jsObject] }
 }

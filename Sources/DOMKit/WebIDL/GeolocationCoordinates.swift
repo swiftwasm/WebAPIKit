@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GeolocationCoordinates: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GeolocationCoordinates].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GeolocationCoordinates].function! }
 
     public let jsObject: JSObject
 

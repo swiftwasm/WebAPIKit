@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HighlightRegistry: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.HighlightRegistry].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.HighlightRegistry].function! }
 
     public let jsObject: JSObject
 

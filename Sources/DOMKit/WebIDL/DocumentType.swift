@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DocumentType: Node, ChildNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.DocumentType].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DocumentType].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)

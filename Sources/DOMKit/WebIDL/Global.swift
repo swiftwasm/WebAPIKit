@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Global: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Global].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Global].function! }
 
     public let jsObject: JSObject
 
@@ -13,11 +13,11 @@ public class Global: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(descriptor: GlobalDescriptor, v: JSValue? = nil) {
+    @inlinable public convenience init(descriptor: GlobalDescriptor, v: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptor.jsValue(), v?.jsValue() ?? .undefined]))
     }
 
-    public func valueOf() -> JSValue {
+    @inlinable public func valueOf() -> JSValue {
         let this = jsObject
         return this[Strings.valueOf].function!(this: this, arguments: []).fromJSValue()!
     }

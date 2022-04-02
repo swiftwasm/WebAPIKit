@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Permissions: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Permissions].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Permissions].function! }
 
     public let jsObject: JSObject
 
@@ -12,37 +12,37 @@ public class Permissions: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func request(permissionDesc: JSObject) -> JSPromise {
+    @inlinable public func request(permissionDesc: JSObject) -> JSPromise {
         let this = jsObject
         return this[Strings.request].function!(this: this, arguments: [permissionDesc.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func request(permissionDesc: JSObject) async throws -> PermissionStatus {
+    @inlinable public func request(permissionDesc: JSObject) async throws -> PermissionStatus {
         let this = jsObject
         let _promise: JSPromise = this[Strings.request].function!(this: this, arguments: [permissionDesc.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func revoke(permissionDesc: JSObject) -> JSPromise {
+    @inlinable public func revoke(permissionDesc: JSObject) -> JSPromise {
         let this = jsObject
         return this[Strings.revoke].function!(this: this, arguments: [permissionDesc.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func revoke(permissionDesc: JSObject) async throws -> PermissionStatus {
+    @inlinable public func revoke(permissionDesc: JSObject) async throws -> PermissionStatus {
         let this = jsObject
         let _promise: JSPromise = this[Strings.revoke].function!(this: this, arguments: [permissionDesc.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func query(permissionDesc: JSObject) -> JSPromise {
+    @inlinable public func query(permissionDesc: JSObject) -> JSPromise {
         let this = jsObject
         return this[Strings.query].function!(this: this, arguments: [permissionDesc.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func query(permissionDesc: JSObject) async throws -> PermissionStatus {
+    @inlinable public func query(permissionDesc: JSObject) async throws -> PermissionStatus {
         let this = jsObject
         let _promise: JSPromise = this[Strings.query].function!(this: this, arguments: [permissionDesc.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

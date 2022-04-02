@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MutationObserver: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MutationObserver].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MutationObserver].function! }
 
     public let jsObject: JSObject
 
@@ -14,17 +14,17 @@ public class MutationObserver: JSBridgedClass {
 
     // XXX: constructor is ignored
 
-    public func observe(target: Node, options: MutationObserverInit? = nil) {
+    @inlinable public func observe(target: Node, options: MutationObserverInit? = nil) {
         let this = jsObject
         _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue(), options?.jsValue() ?? .undefined])
     }
 
-    public func disconnect() {
+    @inlinable public func disconnect() {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
-    public func takeRecords() -> [MutationRecord] {
+    @inlinable public func takeRecords() -> [MutationRecord] {
         let this = jsObject
         return this[Strings.takeRecords].function!(this: this, arguments: []).fromJSValue()!
     }

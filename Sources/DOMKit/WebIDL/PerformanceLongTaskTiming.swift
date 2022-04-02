@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceLongTaskTiming: PerformanceEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceLongTaskTiming].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceLongTaskTiming].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _attribution = ReadonlyAttribute(jsObject: jsObject, name: Strings.attribution)
@@ -14,7 +14,7 @@ public class PerformanceLongTaskTiming: PerformanceEntry {
     @ReadonlyAttribute
     public var attribution: [TaskAttributionTiming]
 
-    override public func toJSON() -> JSObject {
+    @inlinable override public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

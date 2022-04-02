@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGMaskElement: SVGElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGMaskElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGMaskElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _maskUnits = ReadonlyAttribute(jsObject: jsObject, name: Strings.maskUnits)

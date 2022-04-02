@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLMarqueeElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMarqueeElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMarqueeElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _behavior = ReadWriteAttribute(jsObject: jsObject, name: Strings.behavior)
@@ -21,7 +21,7 @@ public class HTMLMarqueeElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -58,12 +58,12 @@ public class HTMLMarqueeElement: HTMLElement {
     @ReadWriteAttribute
     public var width: String
 
-    public func start() {
+    @inlinable public func start() {
         let this = jsObject
         _ = this[Strings.start].function!(this: this, arguments: [])
     }
 
-    public func stop() {
+    @inlinable public func stop() {
         let this = jsObject
         _ = this[Strings.stop].function!(this: this, arguments: [])
     }

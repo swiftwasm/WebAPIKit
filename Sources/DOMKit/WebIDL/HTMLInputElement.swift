@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLInputElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLInputElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLInputElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _webkitdirectory = ReadWriteAttribute(jsObject: jsObject, name: Strings.webkitdirectory)
@@ -67,7 +67,7 @@ public class HTMLInputElement: HTMLElement {
     @ReadWriteAttribute
     public var capture: String
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -179,12 +179,12 @@ public class HTMLInputElement: HTMLElement {
     @ReadWriteAttribute
     public var width: UInt32
 
-    public func stepUp(n: Int32? = nil) {
+    @inlinable public func stepUp(n: Int32? = nil) {
         let this = jsObject
         _ = this[Strings.stepUp].function!(this: this, arguments: [n?.jsValue() ?? .undefined])
     }
 
-    public func stepDown(n: Int32? = nil) {
+    @inlinable public func stepDown(n: Int32? = nil) {
         let this = jsObject
         _ = this[Strings.stepDown].function!(this: this, arguments: [n?.jsValue() ?? .undefined])
     }
@@ -198,17 +198,17 @@ public class HTMLInputElement: HTMLElement {
     @ReadonlyAttribute
     public var validationMessage: String
 
-    public func checkValidity() -> Bool {
+    @inlinable public func checkValidity() -> Bool {
         let this = jsObject
         return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func reportValidity() -> Bool {
+    @inlinable public func reportValidity() -> Bool {
         let this = jsObject
         return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func setCustomValidity(error: String) {
+    @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
         _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
     }
@@ -216,7 +216,7 @@ public class HTMLInputElement: HTMLElement {
     @ReadonlyAttribute
     public var labels: NodeList?
 
-    public func select() {
+    @inlinable public func select() {
         let this = jsObject
         _ = this[Strings.select].function!(this: this, arguments: [])
     }
@@ -230,22 +230,22 @@ public class HTMLInputElement: HTMLElement {
     @ReadWriteAttribute
     public var selectionDirection: String?
 
-    public func setRangeText(replacement: String) {
+    @inlinable public func setRangeText(replacement: String) {
         let this = jsObject
         _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue()])
     }
 
-    public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
+    @inlinable public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
         let this = jsObject
         _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined])
     }
 
-    public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
+    @inlinable public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
         let this = jsObject
         _ = this[Strings.setSelectionRange].function!(this: this, arguments: [start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined])
     }
 
-    public func showPicker() {
+    @inlinable public func showPicker() {
         let this = jsObject
         _ = this[Strings.showPicker].function!(this: this, arguments: [])
     }

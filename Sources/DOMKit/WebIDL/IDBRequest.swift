@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IDBRequest: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.IDBRequest].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.IDBRequest].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _result = ReadonlyAttribute(jsObject: jsObject, name: Strings.result)

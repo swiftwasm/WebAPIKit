@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FontFaceSetLoadEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.FontFaceSetLoadEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.FontFaceSetLoadEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _fontfaces = ReadonlyAttribute(jsObject: jsObject, name: Strings.fontfaces)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: FontFaceSetLoadEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: FontFaceSetLoadEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorML: JSBridgedClass {}
 public extension NavigatorML {
-    var ml: ML { ReadonlyAttribute[Strings.ml, in: jsObject] }
+    @inlinable var ml: ML { ReadonlyAttribute[Strings.ml, in: jsObject] }
 }

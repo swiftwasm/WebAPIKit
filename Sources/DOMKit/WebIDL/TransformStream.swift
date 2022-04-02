@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TransformStream: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TransformStream].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TransformStream].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class TransformStream: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(transformer: JSObject? = nil, writableStrategy: QueuingStrategy? = nil, readableStrategy: QueuingStrategy? = nil) {
+    @inlinable public convenience init(transformer: JSObject? = nil, writableStrategy: QueuingStrategy? = nil, readableStrategy: QueuingStrategy? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [transformer?.jsValue() ?? .undefined, writableStrategy?.jsValue() ?? .undefined, readableStrategy?.jsValue() ?? .undefined]))
     }
 

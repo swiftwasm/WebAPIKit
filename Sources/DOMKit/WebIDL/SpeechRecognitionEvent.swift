@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SpeechRecognitionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SpeechRecognitionEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SpeechRecognitionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _resultIndex = ReadonlyAttribute(jsObject: jsObject, name: Strings.resultIndex)
@@ -12,7 +12,7 @@ public class SpeechRecognitionEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: SpeechRecognitionEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: SpeechRecognitionEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

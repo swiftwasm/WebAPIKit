@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGLengthList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SVGLengthList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SVGLengthList].function! }
 
     public let jsObject: JSObject
 
@@ -20,36 +20,36 @@ public class SVGLengthList: JSBridgedClass {
     @ReadonlyAttribute
     public var numberOfItems: UInt32
 
-    public func clear() {
+    @inlinable public func clear() {
         let this = jsObject
         _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 
-    public func initialize(newItem: SVGLength) -> SVGLength {
+    @inlinable public func initialize(newItem: SVGLength) -> SVGLength {
         let this = jsObject
         return this[Strings.initialize].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }
 
-    public subscript(key: Int) -> SVGLength {
+    @inlinable public subscript(key: Int) -> SVGLength {
         jsObject[key].fromJSValue()!
     }
 
-    public func insertItemBefore(newItem: SVGLength, index: UInt32) -> SVGLength {
+    @inlinable public func insertItemBefore(newItem: SVGLength, index: UInt32) -> SVGLength {
         let this = jsObject
         return this[Strings.insertItemBefore].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    public func replaceItem(newItem: SVGLength, index: UInt32) -> SVGLength {
+    @inlinable public func replaceItem(newItem: SVGLength, index: UInt32) -> SVGLength {
         let this = jsObject
         return this[Strings.replaceItem].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    public func removeItem(index: UInt32) -> SVGLength {
+    @inlinable public func removeItem(index: UInt32) -> SVGLength {
         let this = jsObject
         return this[Strings.removeItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
-    public func appendItem(newItem: SVGLength) -> SVGLength {
+    @inlinable public func appendItem(newItem: SVGLength) -> SVGLength {
         let this = jsObject
         return this[Strings.appendItem].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }

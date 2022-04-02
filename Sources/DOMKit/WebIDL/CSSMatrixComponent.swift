@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSMatrixComponent: CSSTransformComponent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSMatrixComponent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSMatrixComponent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _matrix = ReadWriteAttribute(jsObject: jsObject, name: Strings.matrix)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(matrix: DOMMatrixReadOnly, options: CSSMatrixComponentOptions? = nil) {
+    @inlinable public convenience init(matrix: DOMMatrixReadOnly, options: CSSMatrixComponentOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [matrix.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

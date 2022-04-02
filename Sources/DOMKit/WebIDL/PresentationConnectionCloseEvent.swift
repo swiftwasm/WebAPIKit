@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PresentationConnectionCloseEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PresentationConnectionCloseEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PresentationConnectionCloseEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _reason = ReadonlyAttribute(jsObject: jsObject, name: Strings.reason)
@@ -12,7 +12,7 @@ public class PresentationConnectionCloseEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PresentationConnectionCloseEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: PresentationConnectionCloseEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

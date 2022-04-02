@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaQueryList: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaQueryList].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaQueryList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)

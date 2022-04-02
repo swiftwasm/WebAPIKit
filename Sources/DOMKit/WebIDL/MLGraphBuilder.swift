@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MLGraphBuilder: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MLGraphBuilder].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MLGraphBuilder].function! }
 
     public let jsObject: JSObject
 
@@ -12,156 +12,156 @@ public class MLGraphBuilder: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(context: MLContext) {
+    @inlinable public convenience init(context: MLContext) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue()]))
     }
 
-    public func input(name: String, desc: MLOperandDescriptor) -> MLOperand {
+    @inlinable public func input(name: String, desc: MLOperandDescriptor) -> MLOperand {
         let this = jsObject
         return this[Strings.input].function!(this: this, arguments: [name.jsValue(), desc.jsValue()]).fromJSValue()!
     }
 
-    public func constant(desc: MLOperandDescriptor, bufferView: MLBufferView) -> MLOperand {
+    @inlinable public func constant(desc: MLOperandDescriptor, bufferView: MLBufferView) -> MLOperand {
         let this = jsObject
         return this[Strings.constant].function!(this: this, arguments: [desc.jsValue(), bufferView.jsValue()]).fromJSValue()!
     }
 
-    public func constant(value: Double, type: MLOperandType? = nil) -> MLOperand {
+    @inlinable public func constant(value: Double, type: MLOperandType? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.constant].function!(this: this, arguments: [value.jsValue(), type?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func build(outputs: MLNamedOperands) -> MLGraph {
+    @inlinable public func build(outputs: MLNamedOperands) -> MLGraph {
         let this = jsObject
         return this[Strings.build].function!(this: this, arguments: [outputs.jsValue()]).fromJSValue()!
     }
 
-    public func batchNormalization(input: MLOperand, mean: MLOperand, variance: MLOperand, options: MLBatchNormalizationOptions? = nil) -> MLOperand {
+    @inlinable public func batchNormalization(input: MLOperand, mean: MLOperand, variance: MLOperand, options: MLBatchNormalizationOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.batchNormalization].function!(this: this, arguments: [input.jsValue(), mean.jsValue(), variance.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func clamp(x: MLOperand, options: MLClampOptions? = nil) -> MLOperand {
+    @inlinable public func clamp(x: MLOperand, options: MLClampOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.clamp].function!(this: this, arguments: [x.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func clamp(options: MLClampOptions? = nil) -> MLOperator {
+    @inlinable public func clamp(options: MLClampOptions? = nil) -> MLOperator {
         let this = jsObject
         return this[Strings.clamp].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func concat(inputs: [MLOperand], axis: Int32) -> MLOperand {
+    @inlinable public func concat(inputs: [MLOperand], axis: Int32) -> MLOperand {
         let this = jsObject
         return this[Strings.concat].function!(this: this, arguments: [inputs.jsValue(), axis.jsValue()]).fromJSValue()!
     }
 
-    public func conv2d(input: MLOperand, filter: MLOperand, options: MLConv2dOptions? = nil) -> MLOperand {
+    @inlinable public func conv2d(input: MLOperand, filter: MLOperand, options: MLConv2dOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.conv2d].function!(this: this, arguments: [input.jsValue(), filter.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func convTranspose2d(input: MLOperand, filter: MLOperand, options: MLConvTranspose2dOptions? = nil) -> MLOperand {
+    @inlinable public func convTranspose2d(input: MLOperand, filter: MLOperand, options: MLConvTranspose2dOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.convTranspose2d].function!(this: this, arguments: [input.jsValue(), filter.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func add(a: MLOperand, b: MLOperand) -> MLOperand {
+    @inlinable public func add(a: MLOperand, b: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.add].function!(this: this, arguments: [a.jsValue(), b.jsValue()]).fromJSValue()!
     }
 
-    public func sub(a: MLOperand, b: MLOperand) -> MLOperand {
+    @inlinable public func sub(a: MLOperand, b: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.sub].function!(this: this, arguments: [a.jsValue(), b.jsValue()]).fromJSValue()!
     }
 
-    public func mul(a: MLOperand, b: MLOperand) -> MLOperand {
+    @inlinable public func mul(a: MLOperand, b: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.mul].function!(this: this, arguments: [a.jsValue(), b.jsValue()]).fromJSValue()!
     }
 
-    public func div(a: MLOperand, b: MLOperand) -> MLOperand {
+    @inlinable public func div(a: MLOperand, b: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.div].function!(this: this, arguments: [a.jsValue(), b.jsValue()]).fromJSValue()!
     }
 
-    public func max(a: MLOperand, b: MLOperand) -> MLOperand {
+    @inlinable public func max(a: MLOperand, b: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.max].function!(this: this, arguments: [a.jsValue(), b.jsValue()]).fromJSValue()!
     }
 
-    public func min(a: MLOperand, b: MLOperand) -> MLOperand {
+    @inlinable public func min(a: MLOperand, b: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.min].function!(this: this, arguments: [a.jsValue(), b.jsValue()]).fromJSValue()!
     }
 
-    public func pow(a: MLOperand, b: MLOperand) -> MLOperand {
+    @inlinable public func pow(a: MLOperand, b: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.pow].function!(this: this, arguments: [a.jsValue(), b.jsValue()]).fromJSValue()!
     }
 
-    public func abs(x: MLOperand) -> MLOperand {
+    @inlinable public func abs(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.abs].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func ceil(x: MLOperand) -> MLOperand {
+    @inlinable public func ceil(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.ceil].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func cos(x: MLOperand) -> MLOperand {
+    @inlinable public func cos(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.cos].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func exp(x: MLOperand) -> MLOperand {
+    @inlinable public func exp(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.exp].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func floor(x: MLOperand) -> MLOperand {
+    @inlinable public func floor(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.floor].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func log(x: MLOperand) -> MLOperand {
+    @inlinable public func log(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.log].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func neg(x: MLOperand) -> MLOperand {
+    @inlinable public func neg(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.neg].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func sin(x: MLOperand) -> MLOperand {
+    @inlinable public func sin(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.sin].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func tan(x: MLOperand) -> MLOperand {
+    @inlinable public func tan(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.tan].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func elu(x: MLOperand, options: MLEluOptions? = nil) -> MLOperand {
+    @inlinable public func elu(x: MLOperand, options: MLEluOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.elu].function!(this: this, arguments: [x.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func elu(options: MLEluOptions? = nil) -> MLOperator {
+    @inlinable public func elu(options: MLEluOptions? = nil) -> MLOperator {
         let this = jsObject
         return this[Strings.elu].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func gemm(a: MLOperand, b: MLOperand, options: MLGemmOptions? = nil) -> MLOperand {
+    @inlinable public func gemm(a: MLOperand, b: MLOperand, options: MLGemmOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.gemm].function!(this: this, arguments: [a.jsValue(), b.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func gru(input: MLOperand, weight: MLOperand, recurrentWeight: MLOperand, steps: Int32, hiddenSize: Int32, options: MLGruOptions? = nil) -> [MLOperand] {
+    @inlinable public func gru(input: MLOperand, weight: MLOperand, recurrentWeight: MLOperand, steps: Int32, hiddenSize: Int32, options: MLGruOptions? = nil) -> [MLOperand] {
         let _arg0 = input.jsValue()
         let _arg1 = weight.jsValue()
         let _arg2 = recurrentWeight.jsValue()
@@ -172,7 +172,7 @@ public class MLGraphBuilder: JSBridgedClass {
         return this[Strings.gru].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
     }
 
-    public func gruCell(input: MLOperand, weight: MLOperand, recurrentWeight: MLOperand, hiddenState: MLOperand, hiddenSize: Int32, options: MLGruCellOptions? = nil) -> MLOperand {
+    @inlinable public func gruCell(input: MLOperand, weight: MLOperand, recurrentWeight: MLOperand, hiddenState: MLOperand, hiddenSize: Int32, options: MLGruCellOptions? = nil) -> MLOperand {
         let _arg0 = input.jsValue()
         let _arg1 = weight.jsValue()
         let _arg2 = recurrentWeight.jsValue()
@@ -183,207 +183,207 @@ public class MLGraphBuilder: JSBridgedClass {
         return this[Strings.gruCell].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
     }
 
-    public func hardSigmoid(x: MLOperand, options: MLHardSigmoidOptions? = nil) -> MLOperand {
+    @inlinable public func hardSigmoid(x: MLOperand, options: MLHardSigmoidOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.hardSigmoid].function!(this: this, arguments: [x.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func hardSigmoid(options: MLHardSigmoidOptions? = nil) -> MLOperator {
+    @inlinable public func hardSigmoid(options: MLHardSigmoidOptions? = nil) -> MLOperator {
         let this = jsObject
         return this[Strings.hardSigmoid].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func hardSwish(x: MLOperand) -> MLOperand {
+    @inlinable public func hardSwish(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.hardSwish].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func hardSwish() -> MLOperator {
+    @inlinable public func hardSwish() -> MLOperator {
         let this = jsObject
         return this[Strings.hardSwish].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func instanceNormalization(input: MLOperand, options: MLInstanceNormalizationOptions? = nil) -> MLOperand {
+    @inlinable public func instanceNormalization(input: MLOperand, options: MLInstanceNormalizationOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.instanceNormalization].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func leakyRelu(x: MLOperand, options: MLLeakyReluOptions? = nil) -> MLOperand {
+    @inlinable public func leakyRelu(x: MLOperand, options: MLLeakyReluOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.leakyRelu].function!(this: this, arguments: [x.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func leakyRelu(options: MLLeakyReluOptions? = nil) -> MLOperator {
+    @inlinable public func leakyRelu(options: MLLeakyReluOptions? = nil) -> MLOperator {
         let this = jsObject
         return this[Strings.leakyRelu].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func matmul(a: MLOperand, b: MLOperand) -> MLOperand {
+    @inlinable public func matmul(a: MLOperand, b: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.matmul].function!(this: this, arguments: [a.jsValue(), b.jsValue()]).fromJSValue()!
     }
 
-    public func linear(x: MLOperand, options: MLLinearOptions? = nil) -> MLOperand {
+    @inlinable public func linear(x: MLOperand, options: MLLinearOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.linear].function!(this: this, arguments: [x.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func linear(options: MLLinearOptions? = nil) -> MLOperator {
+    @inlinable public func linear(options: MLLinearOptions? = nil) -> MLOperator {
         let this = jsObject
         return this[Strings.linear].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func pad(input: MLOperand, padding: MLOperand, options: MLPadOptions? = nil) -> MLOperand {
+    @inlinable public func pad(input: MLOperand, padding: MLOperand, options: MLPadOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.pad].function!(this: this, arguments: [input.jsValue(), padding.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func averagePool2d(input: MLOperand, options: MLPool2dOptions? = nil) -> MLOperand {
+    @inlinable public func averagePool2d(input: MLOperand, options: MLPool2dOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.averagePool2d].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func l2Pool2d(input: MLOperand, options: MLPool2dOptions? = nil) -> MLOperand {
+    @inlinable public func l2Pool2d(input: MLOperand, options: MLPool2dOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.l2Pool2d].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func maxPool2d(input: MLOperand, options: MLPool2dOptions? = nil) -> MLOperand {
+    @inlinable public func maxPool2d(input: MLOperand, options: MLPool2dOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.maxPool2d].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceL1(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceL1(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceL1].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceL2(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceL2(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceL2].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceLogSum(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceLogSum(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceLogSum].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceLogSumExp(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceLogSumExp(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceLogSumExp].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceMax(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceMax(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceMax].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceMean(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceMean(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceMean].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceMin(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceMin(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceMin].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceProduct(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceProduct(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceProduct].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceSum(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceSum(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceSum].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reduceSumSquare(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
+    @inlinable public func reduceSumSquare(input: MLOperand, options: MLReduceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.reduceSumSquare].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func relu(x: MLOperand) -> MLOperand {
+    @inlinable public func relu(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.relu].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func relu() -> MLOperator {
+    @inlinable public func relu() -> MLOperator {
         let this = jsObject
         return this[Strings.relu].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func resample2d(input: MLOperand, options: MLResample2dOptions? = nil) -> MLOperand {
+    @inlinable public func resample2d(input: MLOperand, options: MLResample2dOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.resample2d].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func reshape(input: MLOperand, newShape: [Int32]) -> MLOperand {
+    @inlinable public func reshape(input: MLOperand, newShape: [Int32]) -> MLOperand {
         let this = jsObject
         return this[Strings.reshape].function!(this: this, arguments: [input.jsValue(), newShape.jsValue()]).fromJSValue()!
     }
 
-    public func sigmoid(x: MLOperand) -> MLOperand {
+    @inlinable public func sigmoid(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.sigmoid].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func sigmoid() -> MLOperator {
+    @inlinable public func sigmoid() -> MLOperator {
         let this = jsObject
         return this[Strings.sigmoid].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func slice(input: MLOperand, starts: [Int32], sizes: [Int32], options: MLSliceOptions? = nil) -> MLOperand {
+    @inlinable public func slice(input: MLOperand, starts: [Int32], sizes: [Int32], options: MLSliceOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.slice].function!(this: this, arguments: [input.jsValue(), starts.jsValue(), sizes.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func softmax(x: MLOperand) -> MLOperand {
+    @inlinable public func softmax(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.softmax].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func softplus(x: MLOperand, options: MLSoftplusOptions? = nil) -> MLOperand {
+    @inlinable public func softplus(x: MLOperand, options: MLSoftplusOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.softplus].function!(this: this, arguments: [x.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func softplus(options: MLSoftplusOptions? = nil) -> MLOperator {
+    @inlinable public func softplus(options: MLSoftplusOptions? = nil) -> MLOperator {
         let this = jsObject
         return this[Strings.softplus].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func softsign(x: MLOperand) -> MLOperand {
+    @inlinable public func softsign(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.softsign].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func softsign() -> MLOperator {
+    @inlinable public func softsign() -> MLOperator {
         let this = jsObject
         return this[Strings.softsign].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func split(input: MLOperand, splits: __UNSUPPORTED_UNION__, options: MLSplitOptions? = nil) -> [MLOperand] {
+    @inlinable public func split(input: MLOperand, splits: __UNSUPPORTED_UNION__, options: MLSplitOptions? = nil) -> [MLOperand] {
         let this = jsObject
         return this[Strings.split].function!(this: this, arguments: [input.jsValue(), splits.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func squeeze(input: MLOperand, options: MLSqueezeOptions? = nil) -> MLOperand {
+    @inlinable public func squeeze(input: MLOperand, options: MLSqueezeOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.squeeze].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func tanh(x: MLOperand) -> MLOperand {
+    @inlinable public func tanh(x: MLOperand) -> MLOperand {
         let this = jsObject
         return this[Strings.tanh].function!(this: this, arguments: [x.jsValue()]).fromJSValue()!
     }
 
-    public func tanh() -> MLOperator {
+    @inlinable public func tanh() -> MLOperator {
         let this = jsObject
         return this[Strings.tanh].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func transpose(input: MLOperand, options: MLTransposeOptions? = nil) -> MLOperand {
+    @inlinable public func transpose(input: MLOperand, options: MLTransposeOptions? = nil) -> MLOperand {
         let this = jsObject
         return this[Strings.transpose].function!(this: this, arguments: [input.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }

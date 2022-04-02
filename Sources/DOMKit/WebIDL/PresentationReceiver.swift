@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PresentationReceiver: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PresentationReceiver].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PresentationReceiver].function! }
 
     public let jsObject: JSObject
 

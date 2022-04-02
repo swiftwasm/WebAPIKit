@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GamepadEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.GamepadEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.GamepadEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _gamepad = ReadonlyAttribute(jsObject: jsObject, name: Strings.gamepad)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: GamepadEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: GamepadEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ClipboardEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ClipboardEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ClipboardEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _clipboardData = ReadonlyAttribute(jsObject: jsObject, name: Strings.clipboardData)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: ClipboardEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: ClipboardEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

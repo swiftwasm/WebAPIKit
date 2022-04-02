@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol GPUObjectBase: JSBridgedClass {}
 public extension GPUObjectBase {
-    var label: __UNSUPPORTED_UNION__ {
+    @inlinable var label: __UNSUPPORTED_UNION__ {
         get { ReadWriteAttribute[Strings.label, in: jsObject] }
         set { ReadWriteAttribute[Strings.label, in: jsObject] = newValue }
     }

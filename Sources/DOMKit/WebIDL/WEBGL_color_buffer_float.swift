@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_color_buffer_float: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_color_buffer_float].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_color_buffer_float].function! }
 
     public let jsObject: JSObject
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSMediaRule: CSSConditionRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSMediaRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSMediaRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)

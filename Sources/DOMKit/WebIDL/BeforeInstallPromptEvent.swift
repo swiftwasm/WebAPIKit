@@ -4,23 +4,23 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BeforeInstallPromptEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BeforeInstallPromptEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BeforeInstallPromptEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: EventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: EventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
-    public func prompt() -> JSPromise {
+    @inlinable public func prompt() -> JSPromise {
         let this = jsObject
         return this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func prompt() async throws -> PromptResponseObject {
+    @inlinable public func prompt() async throws -> PromptResponseObject {
         let this = jsObject
         let _promise: JSPromise = this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

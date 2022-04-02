@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLLabelElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLLabelElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLLabelElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _form = ReadonlyAttribute(jsObject: jsObject, name: Strings.form)
@@ -13,7 +13,7 @@ public class HTMLLabelElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

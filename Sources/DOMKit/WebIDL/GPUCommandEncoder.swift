@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUCommandEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMixin, GPUDebugCommandsMixin {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUCommandEncoder].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUCommandEncoder].function! }
 
     public let jsObject: JSObject
 
@@ -12,52 +12,52 @@ public class GPUCommandEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMixin,
         self.jsObject = jsObject
     }
 
-    public func beginRenderPass(descriptor: GPURenderPassDescriptor) -> GPURenderPassEncoder {
+    @inlinable public func beginRenderPass(descriptor: GPURenderPassDescriptor) -> GPURenderPassEncoder {
         let this = jsObject
         return this[Strings.beginRenderPass].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
     }
 
-    public func beginComputePass(descriptor: GPUComputePassDescriptor? = nil) -> GPUComputePassEncoder {
+    @inlinable public func beginComputePass(descriptor: GPUComputePassDescriptor? = nil) -> GPUComputePassEncoder {
         let this = jsObject
         return this[Strings.beginComputePass].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func copyBufferToBuffer(source: GPUBuffer, sourceOffset: GPUSize64, destination: GPUBuffer, destinationOffset: GPUSize64, size: GPUSize64) {
+    @inlinable public func copyBufferToBuffer(source: GPUBuffer, sourceOffset: GPUSize64, destination: GPUBuffer, destinationOffset: GPUSize64, size: GPUSize64) {
         let this = jsObject
         _ = this[Strings.copyBufferToBuffer].function!(this: this, arguments: [source.jsValue(), sourceOffset.jsValue(), destination.jsValue(), destinationOffset.jsValue(), size.jsValue()])
     }
 
-    public func copyBufferToTexture(source: GPUImageCopyBuffer, destination: GPUImageCopyTexture, copySize: GPUExtent3D) {
+    @inlinable public func copyBufferToTexture(source: GPUImageCopyBuffer, destination: GPUImageCopyTexture, copySize: GPUExtent3D) {
         let this = jsObject
         _ = this[Strings.copyBufferToTexture].function!(this: this, arguments: [source.jsValue(), destination.jsValue(), copySize.jsValue()])
     }
 
-    public func copyTextureToBuffer(source: GPUImageCopyTexture, destination: GPUImageCopyBuffer, copySize: GPUExtent3D) {
+    @inlinable public func copyTextureToBuffer(source: GPUImageCopyTexture, destination: GPUImageCopyBuffer, copySize: GPUExtent3D) {
         let this = jsObject
         _ = this[Strings.copyTextureToBuffer].function!(this: this, arguments: [source.jsValue(), destination.jsValue(), copySize.jsValue()])
     }
 
-    public func copyTextureToTexture(source: GPUImageCopyTexture, destination: GPUImageCopyTexture, copySize: GPUExtent3D) {
+    @inlinable public func copyTextureToTexture(source: GPUImageCopyTexture, destination: GPUImageCopyTexture, copySize: GPUExtent3D) {
         let this = jsObject
         _ = this[Strings.copyTextureToTexture].function!(this: this, arguments: [source.jsValue(), destination.jsValue(), copySize.jsValue()])
     }
 
-    public func clearBuffer(buffer: GPUBuffer, offset: GPUSize64? = nil, size: GPUSize64? = nil) {
+    @inlinable public func clearBuffer(buffer: GPUBuffer, offset: GPUSize64? = nil, size: GPUSize64? = nil) {
         let this = jsObject
         _ = this[Strings.clearBuffer].function!(this: this, arguments: [buffer.jsValue(), offset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined])
     }
 
-    public func writeTimestamp(querySet: GPUQuerySet, queryIndex: GPUSize32) {
+    @inlinable public func writeTimestamp(querySet: GPUQuerySet, queryIndex: GPUSize32) {
         let this = jsObject
         _ = this[Strings.writeTimestamp].function!(this: this, arguments: [querySet.jsValue(), queryIndex.jsValue()])
     }
 
-    public func resolveQuerySet(querySet: GPUQuerySet, firstQuery: GPUSize32, queryCount: GPUSize32, destination: GPUBuffer, destinationOffset: GPUSize64) {
+    @inlinable public func resolveQuerySet(querySet: GPUQuerySet, firstQuery: GPUSize32, queryCount: GPUSize32, destination: GPUBuffer, destinationOffset: GPUSize64) {
         let this = jsObject
         _ = this[Strings.resolveQuerySet].function!(this: this, arguments: [querySet.jsValue(), firstQuery.jsValue(), queryCount.jsValue(), destination.jsValue(), destinationOffset.jsValue()])
     }
 
-    public func finish(descriptor: GPUCommandBufferDescriptor? = nil) -> GPUCommandBuffer {
+    @inlinable public func finish(descriptor: GPUCommandBufferDescriptor? = nil) -> GPUCommandBuffer {
         let this = jsObject
         return this[Strings.finish].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }

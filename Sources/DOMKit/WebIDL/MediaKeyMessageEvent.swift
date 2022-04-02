@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaKeyMessageEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaKeyMessageEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaKeyMessageEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _messageType = ReadonlyAttribute(jsObject: jsObject, name: Strings.messageType)
@@ -12,7 +12,7 @@ public class MediaKeyMessageEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: MediaKeyMessageEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: MediaKeyMessageEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

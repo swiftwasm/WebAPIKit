@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaSource: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaSource].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaSource].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _sourceBuffers = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffers)
@@ -18,7 +18,7 @@ public class MediaSource: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -46,32 +46,32 @@ public class MediaSource: EventTarget {
     @ReadonlyAttribute
     public var canConstructInDedicatedWorker: Bool
 
-    public func addSourceBuffer(type: String) -> SourceBuffer {
+    @inlinable public func addSourceBuffer(type: String) -> SourceBuffer {
         let this = jsObject
         return this[Strings.addSourceBuffer].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
-    public func removeSourceBuffer(sourceBuffer: SourceBuffer) {
+    @inlinable public func removeSourceBuffer(sourceBuffer: SourceBuffer) {
         let this = jsObject
         _ = this[Strings.removeSourceBuffer].function!(this: this, arguments: [sourceBuffer.jsValue()])
     }
 
-    public func endOfStream(error: EndOfStreamError? = nil) {
+    @inlinable public func endOfStream(error: EndOfStreamError? = nil) {
         let this = jsObject
         _ = this[Strings.endOfStream].function!(this: this, arguments: [error?.jsValue() ?? .undefined])
     }
 
-    public func setLiveSeekableRange(start: Double, end: Double) {
+    @inlinable public func setLiveSeekableRange(start: Double, end: Double) {
         let this = jsObject
         _ = this[Strings.setLiveSeekableRange].function!(this: this, arguments: [start.jsValue(), end.jsValue()])
     }
 
-    public func clearLiveSeekableRange() {
+    @inlinable public func clearLiveSeekableRange() {
         let this = jsObject
         _ = this[Strings.clearLiveSeekableRange].function!(this: this, arguments: [])
     }
 
-    public static func isTypeSupported(type: String) -> Bool {
+    @inlinable public static func isTypeSupported(type: String) -> Bool {
         let this = constructor
         return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGLength: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SVGLength].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SVGLength].function! }
 
     public let jsObject: JSObject
 
@@ -50,12 +50,12 @@ public class SVGLength: JSBridgedClass {
     @ReadWriteAttribute
     public var valueAsString: String
 
-    public func newValueSpecifiedUnits(unitType: UInt16, valueInSpecifiedUnits: Float) {
+    @inlinable public func newValueSpecifiedUnits(unitType: UInt16, valueInSpecifiedUnits: Float) {
         let this = jsObject
         _ = this[Strings.newValueSpecifiedUnits].function!(this: this, arguments: [unitType.jsValue(), valueInSpecifiedUnits.jsValue()])
     }
 
-    public func convertToSpecifiedUnits(unitType: UInt16) {
+    @inlinable public func convertToSpecifiedUnits(unitType: UInt16) {
         let this = jsObject
         _ = this[Strings.convertToSpecifiedUnits].function!(this: this, arguments: [unitType.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLAnchorElement: HTMLElement, HTMLHyperlinkElementUtils {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLAnchorElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLAnchorElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _attributionDestination = ReadWriteAttribute(jsObject: jsObject, name: Strings.attributionDestination)
@@ -49,7 +49,7 @@ public class HTMLAnchorElement: HTMLElement, HTMLHyperlinkElementUtils {
     @ReadWriteAttribute
     public var registerAttributionSource: Bool
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

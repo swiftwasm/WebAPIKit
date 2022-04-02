@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRInputSource: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRInputSource].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRInputSource].function! }
 
     public let jsObject: JSObject
 

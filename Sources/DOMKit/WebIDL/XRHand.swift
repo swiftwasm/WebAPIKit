@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRHand: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRHand].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRHand].function! }
 
     public let jsObject: JSObject
 
@@ -21,7 +21,7 @@ public class XRHand: JSBridgedClass, Sequence {
     @ReadonlyAttribute
     public var size: UInt32
 
-    public func get(key: XRHandJoint) -> XRJointSpace {
+    @inlinable public func get(key: XRHandJoint) -> XRJointSpace {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [key.jsValue()]).fromJSValue()!
     }

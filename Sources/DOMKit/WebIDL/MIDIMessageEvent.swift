@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MIDIMessageEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MIDIMessageEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MIDIMessageEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: MIDIMessageEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: MIDIMessageEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

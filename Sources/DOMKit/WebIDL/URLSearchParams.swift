@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class URLSearchParams: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.URLSearchParams].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.URLSearchParams].function! }
 
     public let jsObject: JSObject
 
@@ -12,41 +12,41 @@ public class URLSearchParams: JSBridgedClass, Sequence {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(init: __UNSUPPORTED_UNION__? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 
-    public func append(name: String, value: String) {
+    @inlinable public func append(name: String, value: String) {
         let this = jsObject
         _ = this[Strings.append].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }
 
-    public func delete(name: String) {
+    @inlinable public func delete(name: String) {
         let this = jsObject
         _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue()])
     }
 
-    public func get(name: String) -> String? {
+    @inlinable public func get(name: String) -> String? {
         let this = jsObject
         return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func getAll(name: String) -> [String] {
+    @inlinable public func getAll(name: String) -> [String] {
         let this = jsObject
         return this[Strings.getAll].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func has(name: String) -> Bool {
+    @inlinable public func has(name: String) -> Bool {
         let this = jsObject
         return this[Strings.has].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
     }
 
-    public func set(name: String, value: String) {
+    @inlinable public func set(name: String, value: String) {
         let this = jsObject
         _ = this[Strings.set].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
     }
 
-    public func sort() {
+    @inlinable public func sort() {
         let this = jsObject
         _ = this[Strings.sort].function!(this: this, arguments: [])
     }
@@ -56,7 +56,7 @@ public class URLSearchParams: JSBridgedClass, Sequence {
         ValueIterableIterator(sequence: self)
     }
 
-    public var description: String {
+    @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
     }
 }

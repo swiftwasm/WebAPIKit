@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ServiceWorkerRegistration: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorkerRegistration].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorkerRegistration].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _backgroundFetch = ReadonlyAttribute(jsObject: jsObject, name: Strings.backgroundFetch)
@@ -36,25 +36,25 @@ public class ServiceWorkerRegistration: EventTarget {
     @ReadonlyAttribute
     public var cookies: CookieStoreManager
 
-    public func showNotification(title: String, options: NotificationOptions? = nil) -> JSPromise {
+    @inlinable public func showNotification(title: String, options: NotificationOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.showNotification].function!(this: this, arguments: [title.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func showNotification(title: String, options: NotificationOptions? = nil) async throws {
+    @inlinable public func showNotification(title: String, options: NotificationOptions? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.showNotification].function!(this: this, arguments: [title.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func getNotifications(filter: GetNotificationOptions? = nil) -> JSPromise {
+    @inlinable public func getNotifications(filter: GetNotificationOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.getNotifications].function!(this: this, arguments: [filter?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getNotifications(filter: GetNotificationOptions? = nil) async throws -> [Notification] {
+    @inlinable public func getNotifications(filter: GetNotificationOptions? = nil) async throws -> [Notification] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getNotifications].function!(this: this, arguments: [filter?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
@@ -87,25 +87,25 @@ public class ServiceWorkerRegistration: EventTarget {
     @ReadonlyAttribute
     public var updateViaCache: ServiceWorkerUpdateViaCache
 
-    public func update() -> JSPromise {
+    @inlinable public func update() -> JSPromise {
         let this = jsObject
         return this[Strings.update].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func update() async throws {
+    @inlinable public func update() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.update].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func unregister() -> JSPromise {
+    @inlinable public func unregister() -> JSPromise {
         let this = jsObject
         return this[Strings.unregister].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func unregister() async throws -> Bool {
+    @inlinable public func unregister() async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.unregister].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

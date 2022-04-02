@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AnimationNodeList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AnimationNodeList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AnimationNodeList].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class AnimationNodeList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> AnimationEffect? {
+    @inlinable public subscript(key: Int) -> AnimationEffect? {
         jsObject[key].fromJSValue()
     }
 }

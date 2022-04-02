@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Path2D: JSBridgedClass, CanvasPath {
-    public class var constructor: JSFunction { JSObject.global[Strings.Path2D].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Path2D].function! }
 
     public let jsObject: JSObject
 
@@ -12,11 +12,11 @@ public class Path2D: JSBridgedClass, CanvasPath {
         self.jsObject = jsObject
     }
 
-    public convenience init(path: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(path: __UNSUPPORTED_UNION__? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [path?.jsValue() ?? .undefined]))
     }
 
-    public func addPath(path: Path2D, transform: DOMMatrix2DInit? = nil) {
+    @inlinable public func addPath(path: Path2D, transform: DOMMatrix2DInit? = nil) {
         let this = jsObject
         _ = this[Strings.addPath].function!(this: this, arguments: [path.jsValue(), transform?.jsValue() ?? .undefined])
     }

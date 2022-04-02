@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EXT_sRGB: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EXT_sRGB].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EXT_sRGB].function! }
 
     public let jsObject: JSObject
 

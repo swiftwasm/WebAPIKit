@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSImportRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSImportRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSImportRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _layerName = ReadonlyAttribute(jsObject: jsObject, name: Strings.layerName)

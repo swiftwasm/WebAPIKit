@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioScheduledSourceNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AudioScheduledSourceNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioScheduledSourceNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _onended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onended)
@@ -14,12 +14,12 @@ public class AudioScheduledSourceNode: AudioNode {
     @ClosureAttribute1Optional
     public var onended: EventHandler
 
-    public func start(when: Double? = nil) {
+    @inlinable public func start(when: Double? = nil) {
         let this = jsObject
         _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue() ?? .undefined])
     }
 
-    public func stop(when: Double? = nil) {
+    @inlinable public func stop(when: Double? = nil) {
         let this = jsObject
         _ = this[Strings.stop].function!(this: this, arguments: [when?.jsValue() ?? .undefined])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLSync: WebGLObject {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WebGLSync].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLSync].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

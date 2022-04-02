@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTableElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTableElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTableElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _caption = ReadWriteAttribute(jsObject: jsObject, name: Strings.caption)
@@ -24,19 +24,19 @@ public class HTMLTableElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
     @ReadWriteAttribute
     public var caption: HTMLTableCaptionElement?
 
-    public func createCaption() -> HTMLTableCaptionElement {
+    @inlinable public func createCaption() -> HTMLTableCaptionElement {
         let this = jsObject
         return this[Strings.createCaption].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func deleteCaption() {
+    @inlinable public func deleteCaption() {
         let this = jsObject
         _ = this[Strings.deleteCaption].function!(this: this, arguments: [])
     }
@@ -44,12 +44,12 @@ public class HTMLTableElement: HTMLElement {
     @ReadWriteAttribute
     public var tHead: HTMLTableSectionElement?
 
-    public func createTHead() -> HTMLTableSectionElement {
+    @inlinable public func createTHead() -> HTMLTableSectionElement {
         let this = jsObject
         return this[Strings.createTHead].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func deleteTHead() {
+    @inlinable public func deleteTHead() {
         let this = jsObject
         _ = this[Strings.deleteTHead].function!(this: this, arguments: [])
     }
@@ -57,12 +57,12 @@ public class HTMLTableElement: HTMLElement {
     @ReadWriteAttribute
     public var tFoot: HTMLTableSectionElement?
 
-    public func createTFoot() -> HTMLTableSectionElement {
+    @inlinable public func createTFoot() -> HTMLTableSectionElement {
         let this = jsObject
         return this[Strings.createTFoot].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func deleteTFoot() {
+    @inlinable public func deleteTFoot() {
         let this = jsObject
         _ = this[Strings.deleteTFoot].function!(this: this, arguments: [])
     }
@@ -70,7 +70,7 @@ public class HTMLTableElement: HTMLElement {
     @ReadonlyAttribute
     public var tBodies: HTMLCollection
 
-    public func createTBody() -> HTMLTableSectionElement {
+    @inlinable public func createTBody() -> HTMLTableSectionElement {
         let this = jsObject
         return this[Strings.createTBody].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -78,12 +78,12 @@ public class HTMLTableElement: HTMLElement {
     @ReadonlyAttribute
     public var rows: HTMLCollection
 
-    public func insertRow(index: Int32? = nil) -> HTMLTableRowElement {
+    @inlinable public func insertRow(index: Int32? = nil) -> HTMLTableRowElement {
         let this = jsObject
         return this[Strings.insertRow].function!(this: this, arguments: [index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func deleteRow(index: Int32) {
+    @inlinable public func deleteRow(index: Int32) {
         let this = jsObject
         _ = this[Strings.deleteRow].function!(this: this, arguments: [index.jsValue()])
     }

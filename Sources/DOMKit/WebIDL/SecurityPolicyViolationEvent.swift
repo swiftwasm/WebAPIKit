@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SecurityPolicyViolationEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SecurityPolicyViolationEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SecurityPolicyViolationEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _documentURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.documentURI)
@@ -22,7 +22,7 @@ public class SecurityPolicyViolationEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: SecurityPolicyViolationEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: SecurityPolicyViolationEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 

@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TaskPriorityChangeEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.TaskPriorityChangeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.TaskPriorityChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _previousPriority = ReadonlyAttribute(jsObject: jsObject, name: Strings.previousPriority)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, priorityChangeEventInitDict: TaskPriorityChangeEventInit) {
+    @inlinable public convenience init(type: String, priorityChangeEventInitDict: TaskPriorityChangeEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), priorityChangeEventInitDict.jsValue()]))
     }
 

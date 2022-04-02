@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_lose_context: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_lose_context].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_lose_context].function! }
 
     public let jsObject: JSObject
 
@@ -12,12 +12,12 @@ public class WEBGL_lose_context: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func loseContext() {
+    @inlinable public func loseContext() {
         let this = jsObject
         _ = this[Strings.loseContext].function!(this: this, arguments: [])
     }
 
-    public func restoreContext() {
+    @inlinable public func restoreContext() {
         let this = jsObject
         _ = this[Strings.restoreContext].function!(this: this, arguments: [])
     }

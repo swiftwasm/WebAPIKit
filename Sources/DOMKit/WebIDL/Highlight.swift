@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Highlight: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Highlight].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Highlight].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class Highlight: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(initialRanges: AbstractRange...) {
+    @inlinable public convenience init(initialRanges: AbstractRange...) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: initialRanges.map { $0.jsValue() }))
     }
 

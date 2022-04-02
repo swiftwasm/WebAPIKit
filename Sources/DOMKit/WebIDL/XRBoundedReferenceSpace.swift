@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRBoundedReferenceSpace: XRReferenceSpace {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRBoundedReferenceSpace].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRBoundedReferenceSpace].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _boundsGeometry = ReadonlyAttribute(jsObject: jsObject, name: Strings.boundsGeometry)

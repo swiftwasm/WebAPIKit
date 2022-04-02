@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OfflineAudioContext: BaseAudioContext {
-    override public class var constructor: JSFunction { JSObject.global[Strings.OfflineAudioContext].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OfflineAudioContext].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
@@ -12,45 +12,45 @@ public class OfflineAudioContext: BaseAudioContext {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(contextOptions: OfflineAudioContextOptions) {
+    @inlinable public convenience init(contextOptions: OfflineAudioContextOptions) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions.jsValue()]))
     }
 
-    public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
+    @inlinable public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [numberOfChannels.jsValue(), length.jsValue(), sampleRate.jsValue()]))
     }
 
-    public func startRendering() -> JSPromise {
+    @inlinable public func startRendering() -> JSPromise {
         let this = jsObject
         return this[Strings.startRendering].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func startRendering() async throws -> AudioBuffer {
+    @inlinable public func startRendering() async throws -> AudioBuffer {
         let this = jsObject
         let _promise: JSPromise = this[Strings.startRendering].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func resume() -> JSPromise {
+    @inlinable public func resume() -> JSPromise {
         let this = jsObject
         return this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func resume() async throws {
+    @inlinable public func resume() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func suspend(suspendTime: Double) -> JSPromise {
+    @inlinable public func suspend(suspendTime: Double) -> JSPromise {
         let this = jsObject
         return this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func suspend(suspendTime: Double) async throws {
+    @inlinable public func suspend(suspendTime: Double) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue()]).fromJSValue()!
         _ = try await _promise.get()

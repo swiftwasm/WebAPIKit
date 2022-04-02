@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ReportingObserver: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ReportingObserver].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ReportingObserver].function! }
 
     public let jsObject: JSObject
 
@@ -14,17 +14,17 @@ public class ReportingObserver: JSBridgedClass {
 
     // XXX: constructor is ignored
 
-    public func observe() {
+    @inlinable public func observe() {
         let this = jsObject
         _ = this[Strings.observe].function!(this: this, arguments: [])
     }
 
-    public func disconnect() {
+    @inlinable public func disconnect() {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
-    public func takeRecords() -> ReportList {
+    @inlinable public func takeRecords() -> ReportList {
         let this = jsObject
         return this[Strings.takeRecords].function!(this: this, arguments: []).fromJSValue()!
     }

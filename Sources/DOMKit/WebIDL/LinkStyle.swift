@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol LinkStyle: JSBridgedClass {}
 public extension LinkStyle {
-    var sheet: CSSStyleSheet? { ReadonlyAttribute[Strings.sheet, in: jsObject] }
+    @inlinable var sheet: CSSStyleSheet? { ReadonlyAttribute[Strings.sheet, in: jsObject] }
 }

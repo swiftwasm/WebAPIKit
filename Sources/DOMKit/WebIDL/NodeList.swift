@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NodeList: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.NodeList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.NodeList].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class NodeList: JSBridgedClass, Sequence {
         self.jsObject = jsObject
     }
 
-    public subscript(key: Int) -> Node? {
+    @inlinable public subscript(key: Int) -> Node? {
         jsObject[key].fromJSValue()
     }
 

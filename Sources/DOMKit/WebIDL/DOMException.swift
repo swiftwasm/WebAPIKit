@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMException: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DOMException].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DOMException].function! }
 
     public let jsObject: JSObject
 
@@ -15,7 +15,7 @@ public class DOMException: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(message: String? = nil, name: String? = nil) {
+    @inlinable public convenience init(message: String? = nil, name: String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [message?.jsValue() ?? .undefined, name?.jsValue() ?? .undefined]))
     }
 

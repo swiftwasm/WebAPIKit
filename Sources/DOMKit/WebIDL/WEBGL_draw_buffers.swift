@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_draw_buffers: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_draw_buffers].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_draw_buffers].function! }
 
     public let jsObject: JSObject
 
@@ -80,7 +80,7 @@ public class WEBGL_draw_buffers: JSBridgedClass {
 
     public static let MAX_DRAW_BUFFERS_WEBGL: GLenum = 0x8824
 
-    public func drawBuffersWEBGL(buffers: [GLenum]) {
+    @inlinable public func drawBuffersWEBGL(buffers: [GLenum]) {
         let this = jsObject
         _ = this[Strings.drawBuffersWEBGL].function!(this: this, arguments: [buffers.jsValue()])
     }

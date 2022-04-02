@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSVariableReferenceValue: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CSSVariableReferenceValue].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CSSVariableReferenceValue].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class CSSVariableReferenceValue: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(variable: String, fallback: CSSUnparsedValue? = nil) {
+    @inlinable public convenience init(variable: String, fallback: CSSUnparsedValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [variable.jsValue(), fallback?.jsValue() ?? .undefined]))
     }
 

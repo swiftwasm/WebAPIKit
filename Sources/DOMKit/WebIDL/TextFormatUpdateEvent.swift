@@ -4,17 +4,17 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextFormatUpdateEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.TextFormatUpdateEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.TextFormatUpdateEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(options: TextFormatUpdateEventInit? = nil) {
+    @inlinable public convenience init(options: TextFormatUpdateEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
-    public func getTextFormats() -> [TextFormat] {
+    @inlinable public func getTextFormats() -> [TextFormat] {
         let this = jsObject
         return this[Strings.getTextFormats].function!(this: this, arguments: []).fromJSValue()!
     }

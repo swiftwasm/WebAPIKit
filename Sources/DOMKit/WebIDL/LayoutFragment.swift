@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class LayoutFragment: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.LayoutFragment].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.LayoutFragment].function! }
 
     public let jsObject: JSObject
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioWorkletProcessor: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.AudioWorkletProcessor].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioWorkletProcessor].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class AudioWorkletProcessor: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Crypto: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Crypto].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Crypto].function! }
 
     public let jsObject: JSObject
 
@@ -16,12 +16,12 @@ public class Crypto: JSBridgedClass {
     @ReadonlyAttribute
     public var subtle: SubtleCrypto
 
-    public func getRandomValues(array: ArrayBufferView) -> ArrayBufferView {
+    @inlinable public func getRandomValues(array: ArrayBufferView) -> ArrayBufferView {
         let this = jsObject
         return this[Strings.getRandomValues].function!(this: this, arguments: [array.jsValue()]).fromJSValue()!
     }
 
-    public func randomUUID() -> String {
+    @inlinable public func randomUUID() -> String {
         let this = jsObject
         return this[Strings.randomUUID].function!(this: this, arguments: []).fromJSValue()!
     }

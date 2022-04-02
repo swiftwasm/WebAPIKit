@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PresentationConnectionList: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PresentationConnectionList].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PresentationConnectionList].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _connections = ReadonlyAttribute(jsObject: jsObject, name: Strings.connections)

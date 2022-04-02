@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OffscreenCanvas: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.OffscreenCanvas].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OffscreenCanvas].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
@@ -14,7 +14,7 @@ public class OffscreenCanvas: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(width: UInt64, height: UInt64) {
+    @inlinable public convenience init(width: UInt64, height: UInt64) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [width.jsValue(), height.jsValue()]))
     }
 
@@ -24,23 +24,23 @@ public class OffscreenCanvas: EventTarget {
     @ReadWriteAttribute
     public var height: UInt64
 
-    public func getContext(contextId: OffscreenRenderingContextId, options: JSValue? = nil) -> OffscreenRenderingContext? {
+    @inlinable public func getContext(contextId: OffscreenRenderingContextId, options: JSValue? = nil) -> OffscreenRenderingContext? {
         let this = jsObject
         return this[Strings.getContext].function!(this: this, arguments: [contextId.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func transferToImageBitmap() -> ImageBitmap {
+    @inlinable public func transferToImageBitmap() -> ImageBitmap {
         let this = jsObject
         return this[Strings.transferToImageBitmap].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func convertToBlob(options: ImageEncodeOptions? = nil) -> JSPromise {
+    @inlinable public func convertToBlob(options: ImageEncodeOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func convertToBlob(options: ImageEncodeOptions? = nil) async throws -> Blob {
+    @inlinable public func convertToBlob(options: ImageEncodeOptions? = nil) async throws -> Blob {
         let this = jsObject
         let _promise: JSPromise = this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

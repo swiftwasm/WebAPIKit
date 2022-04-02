@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEGaussianBlurElement: SVGElement, SVGFilterPrimitiveStandardAttributes {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEGaussianBlurElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEGaussianBlurElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _in1 = ReadonlyAttribute(jsObject: jsObject, name: Strings.in1)
@@ -34,7 +34,7 @@ public class SVGFEGaussianBlurElement: SVGElement, SVGFilterPrimitiveStandardAtt
     @ReadonlyAttribute
     public var edgeMode: SVGAnimatedEnumeration
 
-    public func setStdDeviation(stdDeviationX: Float, stdDeviationY: Float) {
+    @inlinable public func setStdDeviation(stdDeviationX: Float, stdDeviationY: Float) {
         let this = jsObject
         _ = this[Strings.setStdDeviation].function!(this: this, arguments: [stdDeviationX.jsValue(), stdDeviationY.jsValue()])
     }

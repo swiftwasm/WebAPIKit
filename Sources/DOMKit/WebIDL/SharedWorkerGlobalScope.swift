@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SharedWorkerGlobalScope: WorkerGlobalScope {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SharedWorkerGlobalScope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SharedWorkerGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
@@ -15,7 +15,7 @@ public class SharedWorkerGlobalScope: WorkerGlobalScope {
     @ReadonlyAttribute
     public var name: String
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }

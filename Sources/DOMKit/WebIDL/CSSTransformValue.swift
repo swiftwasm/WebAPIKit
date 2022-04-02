@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSTransformValue: CSSStyleValue, Sequence {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSTransformValue].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSTransformValue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
@@ -12,7 +12,7 @@ public class CSSTransformValue: CSSStyleValue, Sequence {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(transforms: [CSSTransformComponent]) {
+    @inlinable public convenience init(transforms: [CSSTransformComponent]) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [transforms.jsValue()]))
     }
 
@@ -24,7 +24,7 @@ public class CSSTransformValue: CSSStyleValue, Sequence {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> CSSTransformComponent {
+    @inlinable public subscript(key: Int) -> CSSTransformComponent {
         jsObject[key].fromJSValue()!
     }
 
@@ -33,7 +33,7 @@ public class CSSTransformValue: CSSStyleValue, Sequence {
     @ReadonlyAttribute
     public var is2D: Bool
 
-    public func toMatrix() -> DOMMatrix {
+    @inlinable public func toMatrix() -> DOMMatrix {
         let this = jsObject
         return this[Strings.toMatrix].function!(this: this, arguments: []).fromJSValue()!
     }

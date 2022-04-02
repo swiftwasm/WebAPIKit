@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EyeDropper: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EyeDropper].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EyeDropper].function! }
 
     public let jsObject: JSObject
 
@@ -12,17 +12,17 @@ public class EyeDropper: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
-    public func open(options: ColorSelectionOptions? = nil) -> JSPromise {
+    @inlinable public func open(options: ColorSelectionOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.open].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func open(options: ColorSelectionOptions? = nil) async throws -> ColorSelectionResult {
+    @inlinable public func open(options: ColorSelectionOptions? = nil) async throws -> ColorSelectionResult {
         let this = jsObject
         let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

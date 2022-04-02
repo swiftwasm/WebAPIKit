@@ -4,21 +4,21 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PortalActivateEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PortalActivateEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PortalActivateEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: PortalActivateEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: PortalActivateEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
     @ReadonlyAttribute
     public var data: JSValue
 
-    public func adoptPredecessor() -> HTMLPortalElement {
+    @inlinable public func adoptPredecessor() -> HTMLPortalElement {
         let this = jsObject
         return this[Strings.adoptPredecessor].function!(this: this, arguments: []).fromJSValue()!
     }

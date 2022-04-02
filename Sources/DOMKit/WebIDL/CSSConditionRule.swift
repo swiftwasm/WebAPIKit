@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSConditionRule: CSSGroupingRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSConditionRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSConditionRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _conditionText = ReadWriteAttribute(jsObject: jsObject, name: Strings.conditionText)

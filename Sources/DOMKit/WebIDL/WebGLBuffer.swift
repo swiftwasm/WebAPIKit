@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLBuffer: WebGLObject {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WebGLBuffer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLBuffer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

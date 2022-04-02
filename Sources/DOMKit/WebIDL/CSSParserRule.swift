@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSParserRule: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CSSParserRule].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CSSParserRule].function! }
 
     public let jsObject: JSObject
 

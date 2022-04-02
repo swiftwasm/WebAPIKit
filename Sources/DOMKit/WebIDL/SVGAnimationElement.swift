@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGAnimationElement: SVGElement, SVGTests {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGAnimationElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGAnimationElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _targetElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.targetElement)
@@ -26,37 +26,37 @@ public class SVGAnimationElement: SVGElement, SVGTests {
     @ClosureAttribute1Optional
     public var onrepeat: EventHandler
 
-    public func getStartTime() -> Float {
+    @inlinable public func getStartTime() -> Float {
         let this = jsObject
         return this[Strings.getStartTime].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getCurrentTime() -> Float {
+    @inlinable public func getCurrentTime() -> Float {
         let this = jsObject
         return this[Strings.getCurrentTime].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getSimpleDuration() -> Float {
+    @inlinable public func getSimpleDuration() -> Float {
         let this = jsObject
         return this[Strings.getSimpleDuration].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func beginElement() {
+    @inlinable public func beginElement() {
         let this = jsObject
         _ = this[Strings.beginElement].function!(this: this, arguments: [])
     }
 
-    public func beginElementAt(offset: Float) {
+    @inlinable public func beginElementAt(offset: Float) {
         let this = jsObject
         _ = this[Strings.beginElementAt].function!(this: this, arguments: [offset.jsValue()])
     }
 
-    public func endElement() {
+    @inlinable public func endElement() {
         let this = jsObject
         _ = this[Strings.endElement].function!(this: this, arguments: [])
     }
 
-    public func endElementAt(offset: Float) {
+    @inlinable public func endElementAt(offset: Float) {
         let this = jsObject
         _ = this[Strings.endElementAt].function!(this: this, arguments: [offset.jsValue()])
     }

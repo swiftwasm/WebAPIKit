@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSLayerStatementRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSLayerStatementRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSLayerStatementRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _nameList = ReadonlyAttribute(jsObject: jsObject, name: Strings.nameList)

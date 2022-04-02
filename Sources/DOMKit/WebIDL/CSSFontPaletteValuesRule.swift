@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSFontPaletteValuesRule: CSSRule {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSFontPaletteValuesRule].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSFontPaletteValuesRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)

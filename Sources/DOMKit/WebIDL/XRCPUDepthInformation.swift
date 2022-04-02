@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRCPUDepthInformation: XRDepthInformation {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRCPUDepthInformation].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRCPUDepthInformation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
@@ -14,7 +14,7 @@ public class XRCPUDepthInformation: XRDepthInformation {
     @ReadonlyAttribute
     public var data: ArrayBuffer
 
-    public func getDepthInMeters(x: Float, y: Float) -> Float {
+    @inlinable public func getDepthInMeters(x: Float, y: Float) -> Float {
         let this = jsObject
         return this[Strings.getDepthInMeters].function!(this: this, arguments: [x.jsValue(), y.jsValue()]).fromJSValue()!
     }

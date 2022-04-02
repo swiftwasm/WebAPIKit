@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceNavigation: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PerformanceNavigation].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PerformanceNavigation].function! }
 
     public let jsObject: JSObject
 
@@ -28,7 +28,7 @@ public class PerformanceNavigation: JSBridgedClass {
     @ReadonlyAttribute
     public var redirectCount: UInt16
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

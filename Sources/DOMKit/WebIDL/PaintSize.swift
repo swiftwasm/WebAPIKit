@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PaintSize: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PaintSize].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PaintSize].function! }
 
     public let jsObject: JSObject
 

@@ -5,35 +5,35 @@ import JavaScriptKit
 
 public protocol ParentNode: JSBridgedClass {}
 public extension ParentNode {
-    var children: HTMLCollection { ReadonlyAttribute[Strings.children, in: jsObject] }
+    @inlinable var children: HTMLCollection { ReadonlyAttribute[Strings.children, in: jsObject] }
 
-    var firstElementChild: Element? { ReadonlyAttribute[Strings.firstElementChild, in: jsObject] }
+    @inlinable var firstElementChild: Element? { ReadonlyAttribute[Strings.firstElementChild, in: jsObject] }
 
-    var lastElementChild: Element? { ReadonlyAttribute[Strings.lastElementChild, in: jsObject] }
+    @inlinable var lastElementChild: Element? { ReadonlyAttribute[Strings.lastElementChild, in: jsObject] }
 
-    var childElementCount: UInt32 { ReadonlyAttribute[Strings.childElementCount, in: jsObject] }
+    @inlinable var childElementCount: UInt32 { ReadonlyAttribute[Strings.childElementCount, in: jsObject] }
 
-    func prepend(nodes: __UNSUPPORTED_UNION__...) {
+    @inlinable func prepend(nodes: __UNSUPPORTED_UNION__...) {
         let this = jsObject
         _ = this[Strings.prepend].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
-    func append(nodes: __UNSUPPORTED_UNION__...) {
+    @inlinable func append(nodes: __UNSUPPORTED_UNION__...) {
         let this = jsObject
         _ = this[Strings.append].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
-    func replaceChildren(nodes: __UNSUPPORTED_UNION__...) {
+    @inlinable func replaceChildren(nodes: __UNSUPPORTED_UNION__...) {
         let this = jsObject
         _ = this[Strings.replaceChildren].function!(this: this, arguments: nodes.map { $0.jsValue() })
     }
 
-    func querySelector(selectors: String) -> Element? {
+    @inlinable func querySelector(selectors: String) -> Element? {
         let this = jsObject
         return this[Strings.querySelector].function!(this: this, arguments: [selectors.jsValue()]).fromJSValue()!
     }
 
-    func querySelectorAll(selectors: String) -> NodeList {
+    @inlinable func querySelectorAll(selectors: String) -> NodeList {
         let this = jsObject
         return this[Strings.querySelectorAll].function!(this: this, arguments: [selectors.jsValue()]).fromJSValue()!
     }

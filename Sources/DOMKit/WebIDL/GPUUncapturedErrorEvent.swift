@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUUncapturedErrorEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.GPUUncapturedErrorEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.GPUUncapturedErrorEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, gpuUncapturedErrorEventInitDict: GPUUncapturedErrorEventInit) {
+    @inlinable public convenience init(type: String, gpuUncapturedErrorEventInitDict: GPUUncapturedErrorEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), gpuUncapturedErrorEventInitDict.jsValue()]))
     }
 

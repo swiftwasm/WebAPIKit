@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLOListElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOListElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOListElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _reversed = ReadWriteAttribute(jsObject: jsObject, name: Strings.reversed)
@@ -14,7 +14,7 @@ public class HTMLOListElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

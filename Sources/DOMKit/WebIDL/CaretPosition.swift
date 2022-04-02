@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CaretPosition: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CaretPosition].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CaretPosition].function! }
 
     public let jsObject: JSObject
 
@@ -20,7 +20,7 @@ public class CaretPosition: JSBridgedClass {
     @ReadonlyAttribute
     public var offset: UInt32
 
-    public func getClientRect() -> DOMRect? {
+    @inlinable public func getClientRect() -> DOMRect? {
         let this = jsObject
         return this[Strings.getClientRect].function!(this: this, arguments: []).fromJSValue()!
     }

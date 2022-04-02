@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGMPathElement: SVGElement, SVGURIReference {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGMPathElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGMPathElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

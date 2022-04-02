@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSImageValue: CSSStyleValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSImageValue].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSImageValue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

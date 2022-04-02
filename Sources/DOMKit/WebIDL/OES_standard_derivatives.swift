@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OES_standard_derivatives: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.OES_standard_derivatives].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.OES_standard_derivatives].function! }
 
     public let jsObject: JSObject
 

@@ -4,13 +4,13 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ChannelSplitterNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ChannelSplitterNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ChannelSplitterNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: ChannelSplitterOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: ChannelSplitterOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 }

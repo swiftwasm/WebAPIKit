@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class KeyboardEvent: UIEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.KeyboardEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.KeyboardEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _key = ReadonlyAttribute(jsObject: jsObject, name: Strings.key)
@@ -21,7 +21,7 @@ public class KeyboardEvent: UIEvent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: KeyboardEventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: KeyboardEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -60,12 +60,12 @@ public class KeyboardEvent: UIEvent {
     @ReadonlyAttribute
     public var isComposing: Bool
 
-    public func getModifierState(keyArg: String) -> Bool {
+    @inlinable public func getModifierState(keyArg: String) -> Bool {
         let this = jsObject
         return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue()]).fromJSValue()!
     }
 
-    public func initKeyboardEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, keyArg: String? = nil, locationArg: UInt32? = nil, ctrlKey: Bool? = nil, altKey: Bool? = nil, shiftKey: Bool? = nil, metaKey: Bool? = nil) {
+    @inlinable public func initKeyboardEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, keyArg: String? = nil, locationArg: UInt32? = nil, ctrlKey: Bool? = nil, altKey: Bool? = nil, shiftKey: Bool? = nil, metaKey: Bool? = nil) {
         let _arg0 = typeArg.jsValue()
         let _arg1 = bubblesArg?.jsValue() ?? .undefined
         let _arg2 = cancelableArg?.jsValue() ?? .undefined

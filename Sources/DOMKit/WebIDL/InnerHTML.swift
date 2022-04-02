@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol InnerHTML: JSBridgedClass {}
 public extension InnerHTML {
-    var innerHTML: String {
+    @inlinable var innerHTML: String {
         get { ReadWriteAttribute[Strings.innerHTML, in: jsObject] }
         set { ReadWriteAttribute[Strings.innerHTML, in: jsObject] = newValue }
     }

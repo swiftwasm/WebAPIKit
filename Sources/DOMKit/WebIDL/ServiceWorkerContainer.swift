@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ServiceWorkerContainer: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorkerContainer].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ServiceWorkerContainer].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _controller = ReadonlyAttribute(jsObject: jsObject, name: Strings.controller)
@@ -21,43 +21,43 @@ public class ServiceWorkerContainer: EventTarget {
     @ReadonlyAttribute
     public var ready: JSPromise
 
-    public func register(scriptURL: String, options: RegistrationOptions? = nil) -> JSPromise {
+    @inlinable public func register(scriptURL: String, options: RegistrationOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func register(scriptURL: String, options: RegistrationOptions? = nil) async throws -> ServiceWorkerRegistration {
+    @inlinable public func register(scriptURL: String, options: RegistrationOptions? = nil) async throws -> ServiceWorkerRegistration {
         let this = jsObject
         let _promise: JSPromise = this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func getRegistration(clientURL: String? = nil) -> JSPromise {
+    @inlinable public func getRegistration(clientURL: String? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getRegistration(clientURL: String? = nil) async throws -> __UNSUPPORTED_UNION__ {
+    @inlinable public func getRegistration(clientURL: String? = nil) async throws -> __UNSUPPORTED_UNION__ {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func getRegistrations() -> JSPromise {
+    @inlinable public func getRegistrations() -> JSPromise {
         let this = jsObject
         return this[Strings.getRegistrations].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getRegistrations() async throws -> [ServiceWorkerRegistration] {
+    @inlinable public func getRegistrations() async throws -> [ServiceWorkerRegistration] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getRegistrations].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func startMessages() {
+    @inlinable public func startMessages() {
         let this = jsObject
         _ = this[Strings.startMessages].function!(this: this, arguments: [])
     }

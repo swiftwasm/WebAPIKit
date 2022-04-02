@@ -5,12 +5,12 @@ import JavaScriptKit
 
 public protocol CanvasCompositing: JSBridgedClass {}
 public extension CanvasCompositing {
-    var globalAlpha: Double {
+    @inlinable var globalAlpha: Double {
         get { ReadWriteAttribute[Strings.globalAlpha, in: jsObject] }
         set { ReadWriteAttribute[Strings.globalAlpha, in: jsObject] = newValue }
     }
 
-    var globalCompositeOperation: String {
+    @inlinable var globalCompositeOperation: String {
         get { ReadWriteAttribute[Strings.globalCompositeOperation, in: jsObject] }
         set { ReadWriteAttribute[Strings.globalCompositeOperation, in: jsObject] = newValue }
     }

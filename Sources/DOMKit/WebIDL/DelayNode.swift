@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DelayNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.DelayNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DelayNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _delayTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.delayTime)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: DelayOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: DelayOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

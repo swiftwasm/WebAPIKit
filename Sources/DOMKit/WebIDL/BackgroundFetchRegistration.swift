@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BackgroundFetchRegistration: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BackgroundFetchRegistration].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BackgroundFetchRegistration].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
@@ -46,37 +46,37 @@ public class BackgroundFetchRegistration: EventTarget {
     @ClosureAttribute1Optional
     public var onprogress: EventHandler
 
-    public func abort() -> JSPromise {
+    @inlinable public func abort() -> JSPromise {
         let this = jsObject
         return this[Strings.abort].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func abort() async throws -> Bool {
+    @inlinable public func abort() async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func match(request: RequestInfo, options: CacheQueryOptions? = nil) -> JSPromise {
+    @inlinable public func match(request: RequestInfo, options: CacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func match(request: RequestInfo, options: CacheQueryOptions? = nil) async throws -> BackgroundFetchRecord {
+    @inlinable public func match(request: RequestInfo, options: CacheQueryOptions? = nil) async throws -> BackgroundFetchRecord {
         let this = jsObject
         let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) -> JSPromise {
+    @inlinable public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) async throws -> [BackgroundFetchRecord] {
+    @inlinable public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) async throws -> [BackgroundFetchRecord] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IDBDatabase: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.IDBDatabase].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.IDBDatabase].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
@@ -26,22 +26,22 @@ public class IDBDatabase: EventTarget {
     @ReadonlyAttribute
     public var objectStoreNames: DOMStringList
 
-    public func transaction(storeNames: __UNSUPPORTED_UNION__, mode: IDBTransactionMode? = nil, options: IDBTransactionOptions? = nil) -> IDBTransaction {
+    @inlinable public func transaction(storeNames: __UNSUPPORTED_UNION__, mode: IDBTransactionMode? = nil, options: IDBTransactionOptions? = nil) -> IDBTransaction {
         let this = jsObject
         return this[Strings.transaction].function!(this: this, arguments: [storeNames.jsValue(), mode?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    public func createObjectStore(name: String, options: IDBObjectStoreParameters? = nil) -> IDBObjectStore {
+    @inlinable public func createObjectStore(name: String, options: IDBObjectStoreParameters? = nil) -> IDBObjectStore {
         let this = jsObject
         return this[Strings.createObjectStore].function!(this: this, arguments: [name.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func deleteObjectStore(name: String) {
+    @inlinable public func deleteObjectStore(name: String) {
         let this = jsObject
         _ = this[Strings.deleteObjectStore].function!(this: this, arguments: [name.jsValue()])
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VideoColorSpace: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.VideoColorSpace].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.VideoColorSpace].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class VideoColorSpace: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: VideoColorSpaceInit? = nil) {
+    @inlinable public convenience init(init: VideoColorSpaceInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
     }
 
@@ -32,7 +32,7 @@ public class VideoColorSpace: JSBridgedClass {
     @ReadonlyAttribute
     public var fullRange: Bool?
 
-    public func toJSON() -> VideoColorSpaceInit {
+    @inlinable public func toJSON() -> VideoColorSpaceInit {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

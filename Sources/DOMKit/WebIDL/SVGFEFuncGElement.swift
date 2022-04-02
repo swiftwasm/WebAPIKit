@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEFuncGElement: SVGComponentTransferFunctionElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEFuncGElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEFuncGElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

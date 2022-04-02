@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRRenderState: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRRenderState].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRRenderState].function! }
 
     public let jsObject: JSObject
 

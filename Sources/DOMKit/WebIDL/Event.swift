@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Event: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Event].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Event].function! }
 
     public let jsObject: JSObject
 
@@ -25,7 +25,7 @@ public class Event: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(type: String, eventInitDict: EventInit? = nil) {
+    @inlinable public convenience init(type: String, eventInitDict: EventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
     }
 
@@ -41,7 +41,7 @@ public class Event: JSBridgedClass {
     @ReadonlyAttribute
     public var currentTarget: EventTarget?
 
-    public func composedPath() -> [EventTarget] {
+    @inlinable public func composedPath() -> [EventTarget] {
         let this = jsObject
         return this[Strings.composedPath].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -57,7 +57,7 @@ public class Event: JSBridgedClass {
     @ReadonlyAttribute
     public var eventPhase: UInt16
 
-    public func stopPropagation() {
+    @inlinable public func stopPropagation() {
         let this = jsObject
         _ = this[Strings.stopPropagation].function!(this: this, arguments: [])
     }
@@ -65,7 +65,7 @@ public class Event: JSBridgedClass {
     @ReadWriteAttribute
     public var cancelBubble: Bool
 
-    public func stopImmediatePropagation() {
+    @inlinable public func stopImmediatePropagation() {
         let this = jsObject
         _ = this[Strings.stopImmediatePropagation].function!(this: this, arguments: [])
     }
@@ -79,7 +79,7 @@ public class Event: JSBridgedClass {
     @ReadWriteAttribute
     public var returnValue: Bool
 
-    public func preventDefault() {
+    @inlinable public func preventDefault() {
         let this = jsObject
         _ = this[Strings.preventDefault].function!(this: this, arguments: [])
     }
@@ -96,7 +96,7 @@ public class Event: JSBridgedClass {
     @ReadonlyAttribute
     public var timeStamp: DOMHighResTimeStamp
 
-    public func initEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil) {
+    @inlinable public func initEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil) {
         let this = jsObject
         _ = this[Strings.initEvent].function!(this: this, arguments: [type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined])
     }

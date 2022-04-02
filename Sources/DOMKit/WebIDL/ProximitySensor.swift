@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ProximitySensor: Sensor {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ProximitySensor].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ProximitySensor].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _distance = ReadonlyAttribute(jsObject: jsObject, name: Strings.distance)
@@ -13,7 +13,7 @@ public class ProximitySensor: Sensor {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(sensorOptions: SensorOptions? = nil) {
+    @inlinable public convenience init(sensorOptions: SensorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue() ?? .undefined]))
     }
 

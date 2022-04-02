@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CanvasPattern: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CanvasPattern].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CanvasPattern].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class CanvasPattern: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func setTransform(transform: DOMMatrix2DInit? = nil) {
+    @inlinable public func setTransform(transform: DOMMatrix2DInit? = nil) {
         let this = jsObject
         _ = this[Strings.setTransform].function!(this: this, arguments: [transform?.jsValue() ?? .undefined])
     }

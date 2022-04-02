@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class LayoutChild: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.LayoutChild].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.LayoutChild].function! }
 
     public let jsObject: JSObject
 
@@ -16,25 +16,25 @@ public class LayoutChild: JSBridgedClass {
     @ReadonlyAttribute
     public var styleMap: StylePropertyMapReadOnly
 
-    public func intrinsicSizes() -> JSPromise {
+    @inlinable public func intrinsicSizes() -> JSPromise {
         let this = jsObject
         return this[Strings.intrinsicSizes].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func intrinsicSizes() async throws -> IntrinsicSizes {
+    @inlinable public func intrinsicSizes() async throws -> IntrinsicSizes {
         let this = jsObject
         let _promise: JSPromise = this[Strings.intrinsicSizes].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func layoutNextFragment(constraints: LayoutConstraintsOptions, breakToken: ChildBreakToken) -> JSPromise {
+    @inlinable public func layoutNextFragment(constraints: LayoutConstraintsOptions, breakToken: ChildBreakToken) -> JSPromise {
         let this = jsObject
         return this[Strings.layoutNextFragment].function!(this: this, arguments: [constraints.jsValue(), breakToken.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func layoutNextFragment(constraints: LayoutConstraintsOptions, breakToken: ChildBreakToken) async throws -> LayoutFragment {
+    @inlinable public func layoutNextFragment(constraints: LayoutConstraintsOptions, breakToken: ChildBreakToken) async throws -> LayoutFragment {
         let this = jsObject
         let _promise: JSPromise = this[Strings.layoutNextFragment].function!(this: this, arguments: [constraints.jsValue(), breakToken.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

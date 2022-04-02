@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGTransformList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SVGTransformList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SVGTransformList].function! }
 
     public let jsObject: JSObject
 
@@ -20,48 +20,48 @@ public class SVGTransformList: JSBridgedClass {
     @ReadonlyAttribute
     public var numberOfItems: UInt32
 
-    public func clear() {
+    @inlinable public func clear() {
         let this = jsObject
         _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 
-    public func initialize(newItem: SVGTransform) -> SVGTransform {
+    @inlinable public func initialize(newItem: SVGTransform) -> SVGTransform {
         let this = jsObject
         return this[Strings.initialize].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }
 
-    public subscript(key: Int) -> SVGTransform {
+    @inlinable public subscript(key: Int) -> SVGTransform {
         jsObject[key].fromJSValue()!
     }
 
-    public func insertItemBefore(newItem: SVGTransform, index: UInt32) -> SVGTransform {
+    @inlinable public func insertItemBefore(newItem: SVGTransform, index: UInt32) -> SVGTransform {
         let this = jsObject
         return this[Strings.insertItemBefore].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    public func replaceItem(newItem: SVGTransform, index: UInt32) -> SVGTransform {
+    @inlinable public func replaceItem(newItem: SVGTransform, index: UInt32) -> SVGTransform {
         let this = jsObject
         return this[Strings.replaceItem].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    public func removeItem(index: UInt32) -> SVGTransform {
+    @inlinable public func removeItem(index: UInt32) -> SVGTransform {
         let this = jsObject
         return this[Strings.removeItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
-    public func appendItem(newItem: SVGTransform) -> SVGTransform {
+    @inlinable public func appendItem(newItem: SVGTransform) -> SVGTransform {
         let this = jsObject
         return this[Strings.appendItem].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }
 
     // XXX: unsupported setter for keys of type UInt32
 
-    public func createSVGTransformFromMatrix(matrix: DOMMatrix2DInit? = nil) -> SVGTransform {
+    @inlinable public func createSVGTransformFromMatrix(matrix: DOMMatrix2DInit? = nil) -> SVGTransform {
         let this = jsObject
         return this[Strings.createSVGTransformFromMatrix].function!(this: this, arguments: [matrix?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func consolidate() -> SVGTransform? {
+    @inlinable public func consolidate() -> SVGTransform? {
         let this = jsObject
         return this[Strings.consolidate].function!(this: this, arguments: []).fromJSValue()!
     }

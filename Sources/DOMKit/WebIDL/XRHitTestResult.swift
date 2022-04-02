@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRHitTestResult: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRHitTestResult].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRHitTestResult].function! }
 
     public let jsObject: JSObject
 
@@ -12,19 +12,19 @@ public class XRHitTestResult: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func createAnchor() -> JSPromise {
+    @inlinable public func createAnchor() -> JSPromise {
         let this = jsObject
         return this[Strings.createAnchor].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func createAnchor() async throws -> XRAnchor {
+    @inlinable public func createAnchor() async throws -> XRAnchor {
         let this = jsObject
         let _promise: JSPromise = this[Strings.createAnchor].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func getPose(baseSpace: XRSpace) -> XRPose? {
+    @inlinable public func getPose(baseSpace: XRSpace) -> XRPose? {
         let this = jsObject
         return this[Strings.getPose].function!(this: this, arguments: [baseSpace.jsValue()]).fromJSValue()!
     }

@@ -5,9 +5,9 @@ import JavaScriptKit
 
 public protocol Region: JSBridgedClass {}
 public extension Region {
-    var regionOverset: String { ReadonlyAttribute[Strings.regionOverset, in: jsObject] }
+    @inlinable var regionOverset: String { ReadonlyAttribute[Strings.regionOverset, in: jsObject] }
 
-    func getRegionFlowRanges() -> [Range]? {
+    @inlinable func getRegionFlowRanges() -> [Range]? {
         let this = jsObject
         return this[Strings.getRegionFlowRanges].function!(this: this, arguments: []).fromJSValue()!
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_multi_draw_instanced_base_vertex_base_instance: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_multi_draw_instanced_base_vertex_base_instance].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_multi_draw_instanced_base_vertex_base_instance].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class WEBGL_multi_draw_instanced_base_vertex_base_instance: JSBridgedClas
         self.jsObject = jsObject
     }
 
-    public func multiDrawArraysInstancedBaseInstanceWEBGL(mode: GLenum, firstsList: __UNSUPPORTED_UNION__, firstsOffset: GLuint, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, instanceCountsList: __UNSUPPORTED_UNION__, instanceCountsOffset: GLuint, baseInstancesList: __UNSUPPORTED_UNION__, baseInstancesOffset: GLuint, drawCount: GLsizei) {
+    @inlinable public func multiDrawArraysInstancedBaseInstanceWEBGL(mode: GLenum, firstsList: __UNSUPPORTED_UNION__, firstsOffset: GLuint, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, instanceCountsList: __UNSUPPORTED_UNION__, instanceCountsOffset: GLuint, baseInstancesList: __UNSUPPORTED_UNION__, baseInstancesOffset: GLuint, drawCount: GLsizei) {
         let _arg0 = mode.jsValue()
         let _arg1 = firstsList.jsValue()
         let _arg2 = firstsOffset.jsValue()
@@ -27,7 +27,7 @@ public class WEBGL_multi_draw_instanced_base_vertex_base_instance: JSBridgedClas
         _ = this[Strings.multiDrawArraysInstancedBaseInstanceWEBGL].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
     }
 
-    public func multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL(mode: GLenum, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, type: GLenum, offsetsList: __UNSUPPORTED_UNION__, offsetsOffset: GLuint, instanceCountsList: __UNSUPPORTED_UNION__, instanceCountsOffset: GLuint, baseVerticesList: __UNSUPPORTED_UNION__, baseVerticesOffset: GLuint, baseInstancesList: __UNSUPPORTED_UNION__, baseInstancesOffset: GLuint, drawCount: GLsizei) {
+    @inlinable public func multiDrawElementsInstancedBaseVertexBaseInstanceWEBGL(mode: GLenum, countsList: __UNSUPPORTED_UNION__, countsOffset: GLuint, type: GLenum, offsetsList: __UNSUPPORTED_UNION__, offsetsOffset: GLuint, instanceCountsList: __UNSUPPORTED_UNION__, instanceCountsOffset: GLuint, baseVerticesList: __UNSUPPORTED_UNION__, baseVerticesOffset: GLuint, baseInstancesList: __UNSUPPORTED_UNION__, baseInstancesOffset: GLuint, drawCount: GLsizei) {
         let _arg0 = mode.jsValue()
         let _arg1 = countsList.jsValue()
         let _arg2 = countsOffset.jsValue()

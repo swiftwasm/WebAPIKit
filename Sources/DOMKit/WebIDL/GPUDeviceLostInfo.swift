@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUDeviceLostInfo: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUDeviceLostInfo].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUDeviceLostInfo].function! }
 
     public let jsObject: JSObject
 

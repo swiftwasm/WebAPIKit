@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EXT_disjoint_timer_query_webgl2: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EXT_disjoint_timer_query_webgl2].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EXT_disjoint_timer_query_webgl2].function! }
 
     public let jsObject: JSObject
 
@@ -20,7 +20,7 @@ public class EXT_disjoint_timer_query_webgl2: JSBridgedClass {
 
     public static let GPU_DISJOINT_EXT: GLenum = 0x8FBB
 
-    public func queryCounterEXT(query: WebGLQuery, target: GLenum) {
+    @inlinable public func queryCounterEXT(query: WebGLQuery, target: GLenum) {
         let this = jsObject
         _ = this[Strings.queryCounterEXT].function!(this: this, arguments: [query.jsValue(), target.jsValue()])
     }

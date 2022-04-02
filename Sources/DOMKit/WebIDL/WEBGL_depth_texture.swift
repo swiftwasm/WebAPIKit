@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WEBGL_depth_texture: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_depth_texture].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WEBGL_depth_texture].function! }
 
     public let jsObject: JSObject
 

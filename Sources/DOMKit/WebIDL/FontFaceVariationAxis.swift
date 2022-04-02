@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FontFaceVariationAxis: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FontFaceVariationAxis].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FontFaceVariationAxis].function! }
 
     public let jsObject: JSObject
 

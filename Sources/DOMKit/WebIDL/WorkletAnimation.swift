@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WorkletAnimation: Animation {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WorkletAnimation].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WorkletAnimation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _animatorName = ReadonlyAttribute(jsObject: jsObject, name: Strings.animatorName)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(animatorName: String, effects: __UNSUPPORTED_UNION__? = nil, timeline: AnimationTimeline? = nil, options: JSValue? = nil) {
+    @inlinable public convenience init(animatorName: String, effects: __UNSUPPORTED_UNION__? = nil, timeline: AnimationTimeline? = nil, options: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [animatorName.jsValue(), effects?.jsValue() ?? .undefined, timeline?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
     }
 

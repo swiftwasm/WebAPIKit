@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FontMetadata: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.FontMetadata].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.FontMetadata].function! }
 
     public let jsObject: JSObject
 
@@ -16,13 +16,13 @@ public class FontMetadata: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func blob() -> JSPromise {
+    @inlinable public func blob() -> JSPromise {
         let this = jsObject
         return this[Strings.blob].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func blob() async throws -> Blob {
+    @inlinable public func blob() async throws -> Blob {
         let this = jsObject
         let _promise: JSPromise = this[Strings.blob].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

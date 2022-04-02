@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BackgroundFetchEvent: ExtendableEvent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BackgroundFetchEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BackgroundFetchEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _registration = ReadonlyAttribute(jsObject: jsObject, name: Strings.registration)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, init: BackgroundFetchEventInit) {
+    @inlinable public convenience init(type: String, init: BackgroundFetchEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ComputePressureObserver: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ComputePressureObserver].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ComputePressureObserver].function! }
 
     public let jsObject: JSObject
 
@@ -15,22 +15,22 @@ public class ComputePressureObserver: JSBridgedClass {
 
     // XXX: constructor is ignored
 
-    public func observe(source: ComputePressureSource) {
+    @inlinable public func observe(source: ComputePressureSource) {
         let this = jsObject
         _ = this[Strings.observe].function!(this: this, arguments: [source.jsValue()])
     }
 
-    public func unobserve(source: ComputePressureSource) {
+    @inlinable public func unobserve(source: ComputePressureSource) {
         let this = jsObject
         _ = this[Strings.unobserve].function!(this: this, arguments: [source.jsValue()])
     }
 
-    public func disconnect() {
+    @inlinable public func disconnect() {
         let this = jsObject
         _ = this[Strings.disconnect].function!(this: this, arguments: [])
     }
 
-    public func takeRecords() -> [ComputePressureRecord] {
+    @inlinable public func takeRecords() -> [ComputePressureRecord] {
         let this = jsObject
         return this[Strings.takeRecords].function!(this: this, arguments: []).fromJSValue()!
     }
@@ -38,13 +38,13 @@ public class ComputePressureObserver: JSBridgedClass {
     @ReadonlyAttribute
     public var supportedSources: [ComputePressureSource]
 
-    public static func requestPermission() -> JSPromise {
+    @inlinable public static func requestPermission() -> JSPromise {
         let this = constructor
         return this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func requestPermission() async throws -> PermissionState {
+    @inlinable public static func requestPermission() async throws -> PermissionState {
         let this = constructor
         let _promise: JSPromise = this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

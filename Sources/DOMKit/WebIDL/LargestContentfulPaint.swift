@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class LargestContentfulPaint: PerformanceEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.LargestContentfulPaint].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.LargestContentfulPaint].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _renderTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.renderTime)
@@ -34,7 +34,7 @@ public class LargestContentfulPaint: PerformanceEntry {
     @ReadonlyAttribute
     public var element: Element?
 
-    override public func toJSON() -> JSObject {
+    @inlinable override public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

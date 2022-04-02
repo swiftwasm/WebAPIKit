@@ -7,7 +7,7 @@ public protocol AnimationFrameProvider: JSBridgedClass {}
 public extension AnimationFrameProvider {
     // XXX: method 'requestAnimationFrame' is ignored
 
-    func cancelAnimationFrame(handle: UInt32) {
+    @inlinable func cancelAnimationFrame(handle: UInt32) {
         let this = jsObject
         _ = this[Strings.cancelAnimationFrame].function!(this: this, arguments: [handle.jsValue()])
     }

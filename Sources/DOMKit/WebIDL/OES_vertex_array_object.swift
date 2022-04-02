@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OES_vertex_array_object: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.OES_vertex_array_object].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.OES_vertex_array_object].function! }
 
     public let jsObject: JSObject
 
@@ -14,22 +14,22 @@ public class OES_vertex_array_object: JSBridgedClass {
 
     public static let VERTEX_ARRAY_BINDING_OES: GLenum = 0x85B5
 
-    public func createVertexArrayOES() -> WebGLVertexArrayObjectOES? {
+    @inlinable public func createVertexArrayOES() -> WebGLVertexArrayObjectOES? {
         let this = jsObject
         return this[Strings.createVertexArrayOES].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES?) {
+    @inlinable public func deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES?) {
         let this = jsObject
         _ = this[Strings.deleteVertexArrayOES].function!(this: this, arguments: [arrayObject.jsValue()])
     }
 
-    public func isVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES?) -> GLboolean {
+    @inlinable public func isVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES?) -> GLboolean {
         let this = jsObject
         return this[Strings.isVertexArrayOES].function!(this: this, arguments: [arrayObject.jsValue()]).fromJSValue()!
     }
 
-    public func bindVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES?) {
+    @inlinable public func bindVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES?) {
         let this = jsObject
         _ = this[Strings.bindVertexArrayOES].function!(this: this, arguments: [arrayObject.jsValue()])
     }

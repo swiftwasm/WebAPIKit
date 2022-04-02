@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRInputSourceArray: JSBridgedClass, Sequence {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRInputSourceArray].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRInputSourceArray].function! }
 
     public let jsObject: JSObject
 
@@ -21,7 +21,7 @@ public class XRInputSourceArray: JSBridgedClass, Sequence {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> XRInputSource {
+    @inlinable public subscript(key: Int) -> XRInputSource {
         jsObject[key].fromJSValue()!
     }
 }

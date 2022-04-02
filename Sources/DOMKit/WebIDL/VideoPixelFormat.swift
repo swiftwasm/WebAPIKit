@@ -14,16 +14,16 @@ public enum VideoPixelFormat: JSString, JSValueCompatible {
     case bGRA = "BGRA"
     case bGRX = "BGRX"
 
-    public static func construct(from jsValue: JSValue) -> Self? {
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
             return Self(rawValue: string)
         }
         return nil
     }
 
-    public init?(string: String) {
+    @inlinable public init?(string: String) {
         self.init(rawValue: JSString(string))
     }
 
-    public func jsValue() -> JSValue { rawValue.jsValue() }
+    @inlinable public func jsValue() -> JSValue { rawValue.jsValue() }
 }

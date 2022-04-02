@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ConvolverNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ConvolverNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ConvolverNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _buffer = ReadWriteAttribute(jsObject: jsObject, name: Strings.buffer)
@@ -12,7 +12,7 @@ public class ConvolverNode: AudioNode {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, options: ConvolverOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, options: ConvolverOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

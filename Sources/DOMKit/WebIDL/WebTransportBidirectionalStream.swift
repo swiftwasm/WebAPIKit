@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebTransportBidirectionalStream: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WebTransportBidirectionalStream].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WebTransportBidirectionalStream].function! }
 
     public let jsObject: JSObject
 

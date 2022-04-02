@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HIDConnectionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HIDConnectionEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HIDConnectionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _device = ReadonlyAttribute(jsObject: jsObject, name: Strings.device)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: HIDConnectionEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: HIDConnectionEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorDeviceMemory: JSBridgedClass {}
 public extension NavigatorDeviceMemory {
-    var deviceMemory: Double { ReadonlyAttribute[Strings.deviceMemory, in: jsObject] }
+    @inlinable var deviceMemory: Double { ReadonlyAttribute[Strings.deviceMemory, in: jsObject] }
 }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class LayoutShift: PerformanceEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.LayoutShift].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.LayoutShift].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadonlyAttribute(jsObject: jsObject, name: Strings.value)
@@ -26,7 +26,7 @@ public class LayoutShift: PerformanceEntry {
     @ReadonlyAttribute
     public var sources: [LayoutShiftAttribution]
 
-    override public func toJSON() -> JSObject {
+    @inlinable override public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

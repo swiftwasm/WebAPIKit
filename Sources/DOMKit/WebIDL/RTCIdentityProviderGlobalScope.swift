@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCIdentityProviderGlobalScope: WorkerGlobalScope {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCIdentityProviderGlobalScope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCIdentityProviderGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _rtcIdentityProvider = ReadonlyAttribute(jsObject: jsObject, name: Strings.rtcIdentityProvider)

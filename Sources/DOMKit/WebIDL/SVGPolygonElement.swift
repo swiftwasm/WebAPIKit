@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGPolygonElement: SVGGeometryElement, SVGAnimatedPoints {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGPolygonElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGPolygonElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

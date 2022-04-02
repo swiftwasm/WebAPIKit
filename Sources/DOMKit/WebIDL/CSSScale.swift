@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSScale: CSSTransformComponent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSScale].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSScale].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadWriteAttribute(jsObject: jsObject, name: Strings.x)
@@ -13,7 +13,7 @@ public class CSSScale: CSSTransformComponent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish? = nil) {
+    @inlinable public convenience init(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [x.jsValue(), y.jsValue(), z?.jsValue() ?? .undefined]))
     }
 

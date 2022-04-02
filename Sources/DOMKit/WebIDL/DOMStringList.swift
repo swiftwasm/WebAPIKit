@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMStringList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DOMStringList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DOMStringList].function! }
 
     public let jsObject: JSObject
 
@@ -16,11 +16,11 @@ public class DOMStringList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> String? {
+    @inlinable public subscript(key: Int) -> String? {
         jsObject[key].fromJSValue()
     }
 
-    public func contains(string: String) -> Bool {
+    @inlinable public func contains(string: String) -> Bool {
         let this = jsObject
         return this[Strings.contains].function!(this: this, arguments: [string.jsValue()]).fromJSValue()!
     }

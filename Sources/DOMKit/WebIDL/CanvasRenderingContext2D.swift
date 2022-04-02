@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CanvasRenderingContext2D: JSBridgedClass, CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasUserInterface, CanvasText, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasTextDrawingStyles, CanvasPath {
-    public class var constructor: JSFunction { JSObject.global[Strings.CanvasRenderingContext2D].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CanvasRenderingContext2D].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class CanvasRenderingContext2D: JSBridgedClass, CanvasState, CanvasTransf
     @ReadonlyAttribute
     public var canvas: HTMLCanvasElement
 
-    public func getContextAttributes() -> CanvasRenderingContext2DSettings {
+    @inlinable public func getContextAttributes() -> CanvasRenderingContext2DSettings {
         let this = jsObject
         return this[Strings.getContextAttributes].function!(this: this, arguments: []).fromJSValue()!
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AnimationEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AnimationEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AnimationEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _animationName = ReadonlyAttribute(jsObject: jsObject, name: Strings.animationName)
@@ -13,7 +13,7 @@ public class AnimationEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, animationEventInitDict: AnimationEventInit? = nil) {
+    @inlinable public convenience init(type: String, animationEventInitDict: AnimationEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), animationEventInitDict?.jsValue() ?? .undefined]))
     }
 

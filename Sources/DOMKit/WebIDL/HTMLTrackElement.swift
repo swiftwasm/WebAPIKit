@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTrackElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTrackElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTrackElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _kind = ReadWriteAttribute(jsObject: jsObject, name: Strings.kind)
@@ -17,7 +17,7 @@ public class HTMLTrackElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MIDIPort: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MIDIPort].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MIDIPort].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
@@ -42,25 +42,25 @@ public class MIDIPort: EventTarget {
     @ClosureAttribute1Optional
     public var onstatechange: EventHandler
 
-    public func open() -> JSPromise {
+    @inlinable public func open() -> JSPromise {
         let this = jsObject
         return this[Strings.open].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func open() async throws -> MIDIPort {
+    @inlinable public func open() async throws -> MIDIPort {
         let this = jsObject
         let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func close() -> JSPromise {
+    @inlinable public func close() -> JSPromise {
         let this = jsObject
         return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func close() async throws -> MIDIPort {
+    @inlinable public func close() async throws -> MIDIPort {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

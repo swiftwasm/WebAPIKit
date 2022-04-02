@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Blob: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Blob].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Blob].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class Blob: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(blobParts: [BlobPart]? = nil, options: BlobPropertyBag? = nil) {
+    @inlinable public convenience init(blobParts: [BlobPart]? = nil, options: BlobPropertyBag? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [blobParts?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
     }
 
@@ -24,35 +24,35 @@ public class Blob: JSBridgedClass {
     @ReadonlyAttribute
     public var type: String
 
-    public func slice(start: Int64? = nil, end: Int64? = nil, contentType: String? = nil) -> Self {
+    @inlinable public func slice(start: Int64? = nil, end: Int64? = nil, contentType: String? = nil) -> Self {
         let this = jsObject
         return this[Strings.slice].function!(this: this, arguments: [start?.jsValue() ?? .undefined, end?.jsValue() ?? .undefined, contentType?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func stream() -> ReadableStream {
+    @inlinable public func stream() -> ReadableStream {
         let this = jsObject
         return this[Strings.stream].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func text() -> JSPromise {
+    @inlinable public func text() -> JSPromise {
         let this = jsObject
         return this[Strings.text].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func text() async throws -> String {
+    @inlinable public func text() async throws -> String {
         let this = jsObject
         let _promise: JSPromise = this[Strings.text].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func arrayBuffer() -> JSPromise {
+    @inlinable public func arrayBuffer() -> JSPromise {
         let this = jsObject
         return this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func arrayBuffer() async throws -> ArrayBuffer {
+    @inlinable public func arrayBuffer() async throws -> ArrayBuffer {
         let this = jsObject
         let _promise: JSPromise = this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

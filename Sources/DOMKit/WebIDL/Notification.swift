@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Notification: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Notification].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Notification].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _permission = ReadonlyAttribute(jsObject: jsObject, name: Strings.permission)
@@ -31,7 +31,7 @@ public class Notification: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(title: String, options: NotificationOptions? = nil) {
+    @inlinable public convenience init(title: String, options: NotificationOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [title.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
@@ -102,7 +102,7 @@ public class Notification: EventTarget {
     @ReadonlyAttribute
     public var actions: [NotificationAction]
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }

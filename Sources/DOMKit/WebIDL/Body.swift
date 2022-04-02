@@ -5,65 +5,65 @@ import JavaScriptKit
 
 public protocol Body: JSBridgedClass {}
 public extension Body {
-    var body: ReadableStream? { ReadonlyAttribute[Strings.body, in: jsObject] }
+    @inlinable var body: ReadableStream? { ReadonlyAttribute[Strings.body, in: jsObject] }
 
-    var bodyUsed: Bool { ReadonlyAttribute[Strings.bodyUsed, in: jsObject] }
+    @inlinable var bodyUsed: Bool { ReadonlyAttribute[Strings.bodyUsed, in: jsObject] }
 
-    func arrayBuffer() -> JSPromise {
+    @inlinable func arrayBuffer() -> JSPromise {
         let this = jsObject
         return this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func arrayBuffer() async throws -> ArrayBuffer {
+    @inlinable func arrayBuffer() async throws -> ArrayBuffer {
         let this = jsObject
         let _promise: JSPromise = this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    func blob() -> JSPromise {
+    @inlinable func blob() -> JSPromise {
         let this = jsObject
         return this[Strings.blob].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func blob() async throws -> Blob {
+    @inlinable func blob() async throws -> Blob {
         let this = jsObject
         let _promise: JSPromise = this[Strings.blob].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    func formData() -> JSPromise {
+    @inlinable func formData() -> JSPromise {
         let this = jsObject
         return this[Strings.formData].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func formData() async throws -> FormData {
+    @inlinable func formData() async throws -> FormData {
         let this = jsObject
         let _promise: JSPromise = this[Strings.formData].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    func json() -> JSPromise {
+    @inlinable func json() -> JSPromise {
         let this = jsObject
         return this[Strings.json].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func json() async throws -> JSValue {
+    @inlinable func json() async throws -> JSValue {
         let this = jsObject
         let _promise: JSPromise = this[Strings.json].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    func text() -> JSPromise {
+    @inlinable func text() -> JSPromise {
         let this = jsObject
         return this[Strings.text].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func text() async throws -> String {
+    @inlinable func text() async throws -> String {
         let this = jsObject
         let _promise: JSPromise = this[Strings.text].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

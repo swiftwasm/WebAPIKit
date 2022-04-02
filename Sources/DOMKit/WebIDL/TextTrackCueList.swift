@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextTrackCueList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.TextTrackCueList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TextTrackCueList].function! }
 
     public let jsObject: JSObject
 
@@ -16,11 +16,11 @@ public class TextTrackCueList: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> TextTrackCue {
+    @inlinable public subscript(key: Int) -> TextTrackCue {
         jsObject[key].fromJSValue()!
     }
 
-    public func getCueById(id: String) -> TextTrackCue? {
+    @inlinable public func getCueById(id: String) -> TextTrackCue? {
         let this = jsObject
         return this[Strings.getCueById].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
     }

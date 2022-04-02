@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceMeasure: PerformanceEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceMeasure].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceMeasure].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _detail = ReadonlyAttribute(jsObject: jsObject, name: Strings.detail)

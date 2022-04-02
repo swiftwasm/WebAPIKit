@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRTransientInputHitTestResult: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRTransientInputHitTestResult].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRTransientInputHitTestResult].function! }
 
     public let jsObject: JSObject
 

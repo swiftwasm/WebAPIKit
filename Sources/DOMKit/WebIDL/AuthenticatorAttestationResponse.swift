@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AuthenticatorAttestationResponse: AuthenticatorResponse {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AuthenticatorAttestationResponse].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AuthenticatorAttestationResponse].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _attestationObject = ReadonlyAttribute(jsObject: jsObject, name: Strings.attestationObject)
@@ -14,22 +14,22 @@ public class AuthenticatorAttestationResponse: AuthenticatorResponse {
     @ReadonlyAttribute
     public var attestationObject: ArrayBuffer
 
-    public func getTransports() -> [String] {
+    @inlinable public func getTransports() -> [String] {
         let this = jsObject
         return this[Strings.getTransports].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getAuthenticatorData() -> ArrayBuffer {
+    @inlinable public func getAuthenticatorData() -> ArrayBuffer {
         let this = jsObject
         return this[Strings.getAuthenticatorData].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getPublicKey() -> ArrayBuffer? {
+    @inlinable public func getPublicKey() -> ArrayBuffer? {
         let this = jsObject
         return this[Strings.getPublicKey].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func getPublicKeyAlgorithm() -> COSEAlgorithmIdentifier {
+    @inlinable public func getPublicKeyAlgorithm() -> COSEAlgorithmIdentifier {
         let this = jsObject
         return this[Strings.getPublicKeyAlgorithm].function!(this: this, arguments: []).fromJSValue()!
     }

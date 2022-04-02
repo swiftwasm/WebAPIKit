@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IdleDeadline: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.IdleDeadline].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.IdleDeadline].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class IdleDeadline: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func timeRemaining() -> DOMHighResTimeStamp {
+    @inlinable public func timeRemaining() -> DOMHighResTimeStamp {
         let this = jsObject
         return this[Strings.timeRemaining].function!(this: this, arguments: []).fromJSValue()!
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NavigationCurrentEntryChangeEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.NavigationCurrentEntryChangeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.NavigationCurrentEntryChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _navigationType = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigationType)
@@ -12,7 +12,7 @@ public class NavigationCurrentEntryChangeEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInit: NavigationCurrentEntryChangeEventInit) {
+    @inlinable public convenience init(type: String, eventInit: NavigationCurrentEntryChangeEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInit.jsValue()]))
     }
 

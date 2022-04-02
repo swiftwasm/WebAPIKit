@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BluetoothServiceDataMap: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.BluetoothServiceDataMap].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.BluetoothServiceDataMap].function! }
 
     public let jsObject: JSObject
 

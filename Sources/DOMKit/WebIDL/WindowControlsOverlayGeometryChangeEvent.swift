@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WindowControlsOverlayGeometryChangeEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WindowControlsOverlayGeometryChangeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WindowControlsOverlayGeometryChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _titlebarAreaRect = ReadonlyAttribute(jsObject: jsObject, name: Strings.titlebarAreaRect)
@@ -12,7 +12,7 @@ public class WindowControlsOverlayGeometryChangeEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: WindowControlsOverlayGeometryChangeEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: WindowControlsOverlayGeometryChangeEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

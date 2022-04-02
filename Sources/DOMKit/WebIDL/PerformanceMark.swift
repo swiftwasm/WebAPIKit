@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceMark: PerformanceEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceMark].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceMark].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _detail = ReadonlyAttribute(jsObject: jsObject, name: Strings.detail)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(markName: String, markOptions: PerformanceMarkOptions? = nil) {
+    @inlinable public convenience init(markName: String, markOptions: PerformanceMarkOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [markName.jsValue(), markOptions?.jsValue() ?? .undefined]))
     }
 

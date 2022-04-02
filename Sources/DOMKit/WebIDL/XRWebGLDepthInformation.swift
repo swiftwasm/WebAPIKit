@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRWebGLDepthInformation: XRDepthInformation {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRWebGLDepthInformation].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRWebGLDepthInformation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _texture = ReadonlyAttribute(jsObject: jsObject, name: Strings.texture)

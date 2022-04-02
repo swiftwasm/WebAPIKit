@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRHitTestSource: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRHitTestSource].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRHitTestSource].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class XRHitTestSource: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func cancel() {
+    @inlinable public func cancel() {
         let this = jsObject
         _ = this[Strings.cancel].function!(this: this, arguments: [])
     }

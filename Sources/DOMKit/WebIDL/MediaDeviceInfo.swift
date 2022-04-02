@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaDeviceInfo: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MediaDeviceInfo].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaDeviceInfo].function! }
 
     public let jsObject: JSObject
 
@@ -28,7 +28,7 @@ public class MediaDeviceInfo: JSBridgedClass {
     @ReadonlyAttribute
     public var groupId: String
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

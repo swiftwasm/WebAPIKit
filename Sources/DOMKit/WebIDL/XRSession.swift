@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRSession: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRSession].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRSession].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _environmentBlendMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.environmentBlendMode)
@@ -46,37 +46,37 @@ public class XRSession: EventTarget {
     @ReadonlyAttribute
     public var domOverlayState: XRDOMOverlayState?
 
-    public func requestHitTestSource(options: XRHitTestOptionsInit) -> JSPromise {
+    @inlinable public func requestHitTestSource(options: XRHitTestOptionsInit) -> JSPromise {
         let this = jsObject
         return this[Strings.requestHitTestSource].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestHitTestSource(options: XRHitTestOptionsInit) async throws -> XRHitTestSource {
+    @inlinable public func requestHitTestSource(options: XRHitTestOptionsInit) async throws -> XRHitTestSource {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestHitTestSource].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) -> JSPromise {
+    @inlinable public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) -> JSPromise {
         let this = jsObject
         return this[Strings.requestHitTestSourceForTransientInput].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) async throws -> XRTransientInputHitTestSource {
+    @inlinable public func requestHitTestSourceForTransientInput(options: XRTransientInputHitTestOptionsInit) async throws -> XRTransientInputHitTestSource {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestHitTestSourceForTransientInput].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func requestLightProbe(options: XRLightProbeInit? = nil) -> JSPromise {
+    @inlinable public func requestLightProbe(options: XRLightProbeInit? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.requestLightProbe].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestLightProbe(options: XRLightProbeInit? = nil) async throws -> XRLightProbe {
+    @inlinable public func requestLightProbe(options: XRLightProbeInit? = nil) async throws -> XRLightProbe {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestLightProbe].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
@@ -100,30 +100,30 @@ public class XRSession: EventTarget {
     @ReadonlyAttribute
     public var inputSources: XRInputSourceArray
 
-    public func updateRenderState(state: XRRenderStateInit? = nil) {
+    @inlinable public func updateRenderState(state: XRRenderStateInit? = nil) {
         let this = jsObject
         _ = this[Strings.updateRenderState].function!(this: this, arguments: [state?.jsValue() ?? .undefined])
     }
 
-    public func updateTargetFrameRate(rate: Float) -> JSPromise {
+    @inlinable public func updateTargetFrameRate(rate: Float) -> JSPromise {
         let this = jsObject
         return this[Strings.updateTargetFrameRate].function!(this: this, arguments: [rate.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func updateTargetFrameRate(rate: Float) async throws {
+    @inlinable public func updateTargetFrameRate(rate: Float) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.updateTargetFrameRate].function!(this: this, arguments: [rate.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func requestReferenceSpace(type: XRReferenceSpaceType) -> JSPromise {
+    @inlinable public func requestReferenceSpace(type: XRReferenceSpaceType) -> JSPromise {
         let this = jsObject
         return this[Strings.requestReferenceSpace].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func requestReferenceSpace(type: XRReferenceSpaceType) async throws -> XRReferenceSpace {
+    @inlinable public func requestReferenceSpace(type: XRReferenceSpaceType) async throws -> XRReferenceSpace {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestReferenceSpace].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
@@ -131,18 +131,18 @@ public class XRSession: EventTarget {
 
     // XXX: member 'requestAnimationFrame' is ignored
 
-    public func cancelAnimationFrame(handle: UInt32) {
+    @inlinable public func cancelAnimationFrame(handle: UInt32) {
         let this = jsObject
         _ = this[Strings.cancelAnimationFrame].function!(this: this, arguments: [handle.jsValue()])
     }
 
-    public func end() -> JSPromise {
+    @inlinable public func end() -> JSPromise {
         let this = jsObject
         return this[Strings.end].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func end() async throws {
+    @inlinable public func end() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.end].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

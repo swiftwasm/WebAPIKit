@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AnimationWorkletGlobalScope: WorkletGlobalScope {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AnimationWorkletGlobalScope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AnimationWorkletGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

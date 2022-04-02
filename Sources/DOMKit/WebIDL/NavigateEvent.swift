@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NavigateEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.NavigateEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.NavigateEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _navigationType = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigationType)
@@ -18,7 +18,7 @@ public class NavigateEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInit: NavigateEventInit) {
+    @inlinable public convenience init(type: String, eventInit: NavigateEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInit.jsValue()]))
     }
 
@@ -46,7 +46,7 @@ public class NavigateEvent: Event {
     @ReadonlyAttribute
     public var info: JSValue
 
-    public func transitionWhile(newNavigationAction: JSPromise) {
+    @inlinable public func transitionWhile(newNavigationAction: JSPromise) {
         let this = jsObject
         _ = this[Strings.transitionWhile].function!(this: this, arguments: [newNavigationAction.jsValue()])
     }

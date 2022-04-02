@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BluetoothRemoteGATTDescriptor: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.BluetoothRemoteGATTDescriptor].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.BluetoothRemoteGATTDescriptor].function! }
 
     public let jsObject: JSObject
 
@@ -24,25 +24,25 @@ public class BluetoothRemoteGATTDescriptor: JSBridgedClass {
     @ReadonlyAttribute
     public var value: DataView?
 
-    public func readValue() -> JSPromise {
+    @inlinable public func readValue() -> JSPromise {
         let this = jsObject
         return this[Strings.readValue].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func readValue() async throws -> DataView {
+    @inlinable public func readValue() async throws -> DataView {
         let this = jsObject
         let _promise: JSPromise = this[Strings.readValue].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func writeValue(value: BufferSource) -> JSPromise {
+    @inlinable public func writeValue(value: BufferSource) -> JSPromise {
         let this = jsObject
         return this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func writeValue(value: BufferSource) async throws {
+    @inlinable public func writeValue(value: BufferSource) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
         _ = try await _promise.get()

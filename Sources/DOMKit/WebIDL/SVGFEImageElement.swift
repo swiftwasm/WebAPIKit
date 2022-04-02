@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGFEImageElement: SVGElement, SVGFilterPrimitiveStandardAttributes, SVGURIReference {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEImageElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGFEImageElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _preserveAspectRatio = ReadonlyAttribute(jsObject: jsObject, name: Strings.preserveAspectRatio)

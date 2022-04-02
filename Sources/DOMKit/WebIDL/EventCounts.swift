@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EventCounts: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EventCounts].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EventCounts].function! }
 
     public let jsObject: JSObject
 

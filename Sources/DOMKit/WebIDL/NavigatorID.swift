@@ -5,28 +5,28 @@ import JavaScriptKit
 
 public protocol NavigatorID: JSBridgedClass {}
 public extension NavigatorID {
-    var appCodeName: String { ReadonlyAttribute[Strings.appCodeName, in: jsObject] }
+    @inlinable var appCodeName: String { ReadonlyAttribute[Strings.appCodeName, in: jsObject] }
 
-    var appName: String { ReadonlyAttribute[Strings.appName, in: jsObject] }
+    @inlinable var appName: String { ReadonlyAttribute[Strings.appName, in: jsObject] }
 
-    var appVersion: String { ReadonlyAttribute[Strings.appVersion, in: jsObject] }
+    @inlinable var appVersion: String { ReadonlyAttribute[Strings.appVersion, in: jsObject] }
 
-    var platform: String { ReadonlyAttribute[Strings.platform, in: jsObject] }
+    @inlinable var platform: String { ReadonlyAttribute[Strings.platform, in: jsObject] }
 
-    var product: String { ReadonlyAttribute[Strings.product, in: jsObject] }
+    @inlinable var product: String { ReadonlyAttribute[Strings.product, in: jsObject] }
 
-    var productSub: String { ReadonlyAttribute[Strings.productSub, in: jsObject] }
+    @inlinable var productSub: String { ReadonlyAttribute[Strings.productSub, in: jsObject] }
 
-    var userAgent: String { ReadonlyAttribute[Strings.userAgent, in: jsObject] }
+    @inlinable var userAgent: String { ReadonlyAttribute[Strings.userAgent, in: jsObject] }
 
-    var vendor: String { ReadonlyAttribute[Strings.vendor, in: jsObject] }
+    @inlinable var vendor: String { ReadonlyAttribute[Strings.vendor, in: jsObject] }
 
-    var vendorSub: String { ReadonlyAttribute[Strings.vendorSub, in: jsObject] }
+    @inlinable var vendorSub: String { ReadonlyAttribute[Strings.vendorSub, in: jsObject] }
 
-    func taintEnabled() -> Bool {
+    @inlinable func taintEnabled() -> Bool {
         let this = jsObject
         return this[Strings.taintEnabled].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    var oscpu: String { ReadonlyAttribute[Strings.oscpu, in: jsObject] }
+    @inlinable var oscpu: String { ReadonlyAttribute[Strings.oscpu, in: jsObject] }
 }

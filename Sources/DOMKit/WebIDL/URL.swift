@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class URL: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.URL].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.URL].function! }
 
     public let jsObject: JSObject
 
@@ -24,17 +24,17 @@ public class URL: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public static func createObjectURL(obj: __UNSUPPORTED_UNION__) -> String {
+    @inlinable public static func createObjectURL(obj: __UNSUPPORTED_UNION__) -> String {
         let this = constructor
         return this[Strings.createObjectURL].function!(this: this, arguments: [obj.jsValue()]).fromJSValue()!
     }
 
-    public static func revokeObjectURL(url: String) {
+    @inlinable public static func revokeObjectURL(url: String) {
         let this = constructor
         _ = this[Strings.revokeObjectURL].function!(this: this, arguments: [url.jsValue()])
     }
 
-    public convenience init(url: String, base: String? = nil) {
+    @inlinable public convenience init(url: String, base: String? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), base?.jsValue() ?? .undefined]))
     }
 
@@ -74,7 +74,7 @@ public class URL: JSBridgedClass {
     @ReadWriteAttribute
     public var hash: String
 
-    public func toJSON() -> String {
+    @inlinable public func toJSON() -> String {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

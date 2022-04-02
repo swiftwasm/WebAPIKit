@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Gyroscope: Sensor {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Gyroscope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Gyroscope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
@@ -13,7 +13,7 @@ public class Gyroscope: Sensor {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(sensorOptions: GyroscopeSensorOptions? = nil) {
+    @inlinable public convenience init(sensorOptions: GyroscopeSensorOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue() ?? .undefined]))
     }
 

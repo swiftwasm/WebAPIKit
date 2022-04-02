@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class IntersectionObserverEntry: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.IntersectionObserverEntry].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.IntersectionObserverEntry].function! }
 
     public let jsObject: JSObject
 
@@ -19,7 +19,7 @@ public class IntersectionObserverEntry: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(intersectionObserverEntryInit: IntersectionObserverEntryInit) {
+    @inlinable public convenience init(intersectionObserverEntryInit: IntersectionObserverEntryInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [intersectionObserverEntryInit.jsValue()]))
     }
 

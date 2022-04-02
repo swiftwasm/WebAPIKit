@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGNumberList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SVGNumberList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SVGNumberList].function! }
 
     public let jsObject: JSObject
 
@@ -20,36 +20,36 @@ public class SVGNumberList: JSBridgedClass {
     @ReadonlyAttribute
     public var numberOfItems: UInt32
 
-    public func clear() {
+    @inlinable public func clear() {
         let this = jsObject
         _ = this[Strings.clear].function!(this: this, arguments: [])
     }
 
-    public func initialize(newItem: SVGNumber) -> SVGNumber {
+    @inlinable public func initialize(newItem: SVGNumber) -> SVGNumber {
         let this = jsObject
         return this[Strings.initialize].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }
 
-    public subscript(key: Int) -> SVGNumber {
+    @inlinable public subscript(key: Int) -> SVGNumber {
         jsObject[key].fromJSValue()!
     }
 
-    public func insertItemBefore(newItem: SVGNumber, index: UInt32) -> SVGNumber {
+    @inlinable public func insertItemBefore(newItem: SVGNumber, index: UInt32) -> SVGNumber {
         let this = jsObject
         return this[Strings.insertItemBefore].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    public func replaceItem(newItem: SVGNumber, index: UInt32) -> SVGNumber {
+    @inlinable public func replaceItem(newItem: SVGNumber, index: UInt32) -> SVGNumber {
         let this = jsObject
         return this[Strings.replaceItem].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
     }
 
-    public func removeItem(index: UInt32) -> SVGNumber {
+    @inlinable public func removeItem(index: UInt32) -> SVGNumber {
         let this = jsObject
         return this[Strings.removeItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
     }
 
-    public func appendItem(newItem: SVGNumber) -> SVGNumber {
+    @inlinable public func appendItem(newItem: SVGNumber) -> SVGNumber {
         let this = jsObject
         return this[Strings.appendItem].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
     }

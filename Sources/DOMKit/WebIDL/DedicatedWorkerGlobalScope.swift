@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DedicatedWorkerGlobalScope: WorkerGlobalScope, AnimationFrameProvider {
-    override public class var constructor: JSFunction { JSObject.global[Strings.DedicatedWorkerGlobalScope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DedicatedWorkerGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
@@ -17,17 +17,17 @@ public class DedicatedWorkerGlobalScope: WorkerGlobalScope, AnimationFrameProvid
     @ReadonlyAttribute
     public var name: String
 
-    public func postMessage(message: JSValue, transfer: [JSObject]) {
+    @inlinable public func postMessage(message: JSValue, transfer: [JSObject]) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), transfer.jsValue()])
     }
 
-    public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
+    @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
     }
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }

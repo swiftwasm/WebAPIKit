@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AuthenticatorAssertionResponse: AuthenticatorResponse {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AuthenticatorAssertionResponse].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AuthenticatorAssertionResponse].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _authenticatorData = ReadonlyAttribute(jsObject: jsObject, name: Strings.authenticatorData)

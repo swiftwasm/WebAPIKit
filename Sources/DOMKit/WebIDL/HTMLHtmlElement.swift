@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLHtmlElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLHtmlElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLHtmlElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _version = ReadWriteAttribute(jsObject: jsObject, name: Strings.version)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 

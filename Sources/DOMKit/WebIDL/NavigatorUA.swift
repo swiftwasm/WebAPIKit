@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorUA: JSBridgedClass {}
 public extension NavigatorUA {
-    var userAgentData: NavigatorUAData { ReadonlyAttribute[Strings.userAgentData, in: jsObject] }
+    @inlinable var userAgentData: NavigatorUAData { ReadonlyAttribute[Strings.userAgentData, in: jsObject] }
 }

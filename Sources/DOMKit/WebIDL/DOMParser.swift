@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMParser: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DOMParser].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DOMParser].function! }
 
     public let jsObject: JSObject
 
@@ -12,11 +12,11 @@ public class DOMParser: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
-    public func parseFromString(string: String, type: DOMParserSupportedType) -> Document {
+    @inlinable public func parseFromString(string: String, type: DOMParserSupportedType) -> Document {
         let this = jsObject
         return this[Strings.parseFromString].function!(this: this, arguments: [string.jsValue(), type.jsValue()]).fromJSValue()!
     }

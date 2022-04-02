@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DataTransfer: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DataTransfer].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DataTransfer].function! }
 
     public let jsObject: JSObject
 
@@ -17,7 +17,7 @@ public class DataTransfer: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -30,7 +30,7 @@ public class DataTransfer: JSBridgedClass {
     @ReadonlyAttribute
     public var items: DataTransferItemList
 
-    public func setDragImage(image: Element, x: Int32, y: Int32) {
+    @inlinable public func setDragImage(image: Element, x: Int32, y: Int32) {
         let this = jsObject
         _ = this[Strings.setDragImage].function!(this: this, arguments: [image.jsValue(), x.jsValue(), y.jsValue()])
     }
@@ -38,17 +38,17 @@ public class DataTransfer: JSBridgedClass {
     @ReadonlyAttribute
     public var types: [String]
 
-    public func getData(format: String) -> String {
+    @inlinable public func getData(format: String) -> String {
         let this = jsObject
         return this[Strings.getData].function!(this: this, arguments: [format.jsValue()]).fromJSValue()!
     }
 
-    public func setData(format: String, data: String) {
+    @inlinable public func setData(format: String, data: String) {
         let this = jsObject
         _ = this[Strings.setData].function!(this: this, arguments: [format.jsValue(), data.jsValue()])
     }
 
-    public func clearData(format: String? = nil) {
+    @inlinable public func clearData(format: String? = nil) {
         let this = jsObject
         _ = this[Strings.clearData].function!(this: this, arguments: [format?.jsValue() ?? .undefined])
     }

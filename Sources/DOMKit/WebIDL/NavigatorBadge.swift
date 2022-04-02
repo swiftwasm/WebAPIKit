@@ -5,25 +5,25 @@ import JavaScriptKit
 
 public protocol NavigatorBadge: JSBridgedClass {}
 public extension NavigatorBadge {
-    func setAppBadge(contents: UInt64? = nil) -> JSPromise {
+    @inlinable func setAppBadge(contents: UInt64? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.setAppBadge].function!(this: this, arguments: [contents?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func setAppBadge(contents: UInt64? = nil) async throws {
+    @inlinable func setAppBadge(contents: UInt64? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.setAppBadge].function!(this: this, arguments: [contents?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    func clearAppBadge() -> JSPromise {
+    @inlinable func clearAppBadge() -> JSPromise {
         let this = jsObject
         return this[Strings.clearAppBadge].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    func clearAppBadge() async throws {
+    @inlinable func clearAppBadge() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.clearAppBadge].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RemotePlayback: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RemotePlayback].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RemotePlayback].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
@@ -18,13 +18,13 @@ public class RemotePlayback: EventTarget {
 
     // XXX: member 'watchAvailability' is ignored
 
-    public func cancelWatchAvailability(id: Int32? = nil) -> JSPromise {
+    @inlinable public func cancelWatchAvailability(id: Int32? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.cancelWatchAvailability].function!(this: this, arguments: [id?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func cancelWatchAvailability(id: Int32? = nil) async throws {
+    @inlinable public func cancelWatchAvailability(id: Int32? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.cancelWatchAvailability].function!(this: this, arguments: [id?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
@@ -42,13 +42,13 @@ public class RemotePlayback: EventTarget {
     @ClosureAttribute1Optional
     public var ondisconnect: EventHandler
 
-    public func prompt() -> JSPromise {
+    @inlinable public func prompt() -> JSPromise {
         let this = jsObject
         return this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func prompt() async throws {
+    @inlinable public func prompt() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorNetworkInformation: JSBridgedClass {}
 public extension NavigatorNetworkInformation {
-    var connection: NetworkInformation { ReadonlyAttribute[Strings.connection, in: jsObject] }
+    @inlinable var connection: NetworkInformation { ReadonlyAttribute[Strings.connection, in: jsObject] }
 }

@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ValueEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.ValueEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ValueEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadonlyAttribute(jsObject: jsObject, name: Strings.value)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, initDict: ValueEventInit? = nil) {
+    @inlinable public convenience init(type: String, initDict: ValueEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), initDict?.jsValue() ?? .undefined]))
     }
 

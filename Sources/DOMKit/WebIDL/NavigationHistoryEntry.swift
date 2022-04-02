@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NavigationHistoryEntry: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.NavigationHistoryEntry].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.NavigationHistoryEntry].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
@@ -34,7 +34,7 @@ public class NavigationHistoryEntry: EventTarget {
     @ReadonlyAttribute
     public var sameDocument: Bool
 
-    public func getState() -> JSValue {
+    @inlinable public func getState() -> JSValue {
         let this = jsObject
         return this[Strings.getState].function!(this: this, arguments: []).fromJSValue()!
     }

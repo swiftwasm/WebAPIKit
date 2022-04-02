@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Animation: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.Animation].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Animation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _startTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.startTime)
@@ -30,7 +30,7 @@ public class Animation: EventTarget {
     @ReadWriteAttribute
     public var currentTime: CSSNumberish?
 
-    public convenience init(effect: AnimationEffect? = nil, timeline: AnimationTimeline? = nil) {
+    @inlinable public convenience init(effect: AnimationEffect? = nil, timeline: AnimationTimeline? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [effect?.jsValue() ?? .undefined, timeline?.jsValue() ?? .undefined]))
     }
 
@@ -70,42 +70,42 @@ public class Animation: EventTarget {
     @ClosureAttribute1Optional
     public var onremove: EventHandler
 
-    public func cancel() {
+    @inlinable public func cancel() {
         let this = jsObject
         _ = this[Strings.cancel].function!(this: this, arguments: [])
     }
 
-    public func finish() {
+    @inlinable public func finish() {
         let this = jsObject
         _ = this[Strings.finish].function!(this: this, arguments: [])
     }
 
-    public func play() {
+    @inlinable public func play() {
         let this = jsObject
         _ = this[Strings.play].function!(this: this, arguments: [])
     }
 
-    public func pause() {
+    @inlinable public func pause() {
         let this = jsObject
         _ = this[Strings.pause].function!(this: this, arguments: [])
     }
 
-    public func updatePlaybackRate(playbackRate: Double) {
+    @inlinable public func updatePlaybackRate(playbackRate: Double) {
         let this = jsObject
         _ = this[Strings.updatePlaybackRate].function!(this: this, arguments: [playbackRate.jsValue()])
     }
 
-    public func reverse() {
+    @inlinable public func reverse() {
         let this = jsObject
         _ = this[Strings.reverse].function!(this: this, arguments: [])
     }
 
-    public func persist() {
+    @inlinable public func persist() {
         let this = jsObject
         _ = this[Strings.persist].function!(this: this, arguments: [])
     }
 
-    public func commitStyles() {
+    @inlinable public func commitStyles() {
         let this = jsObject
         _ = this[Strings.commitStyles].function!(this: this, arguments: [])
     }

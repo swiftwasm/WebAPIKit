@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class BluetoothAdvertisingEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.BluetoothAdvertisingEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BluetoothAdvertisingEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _device = ReadonlyAttribute(jsObject: jsObject, name: Strings.device)
@@ -18,7 +18,7 @@ public class BluetoothAdvertisingEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, init: BluetoothAdvertisingEventInit) {
+    @inlinable public convenience init(type: String, init: BluetoothAdvertisingEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class DOMPointReadOnly: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.DOMPointReadOnly].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.DOMPointReadOnly].function! }
 
     public let jsObject: JSObject
 
@@ -16,11 +16,11 @@ public class DOMPointReadOnly: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(x: Double? = nil, y: Double? = nil, z: Double? = nil, w: Double? = nil) {
+    @inlinable public convenience init(x: Double? = nil, y: Double? = nil, z: Double? = nil, w: Double? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, w?.jsValue() ?? .undefined]))
     }
 
-    public static func fromPoint(other: DOMPointInit? = nil) -> Self {
+    @inlinable public static func fromPoint(other: DOMPointInit? = nil) -> Self {
         let this = constructor
         return this[Strings.fromPoint].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
     }
@@ -37,12 +37,12 @@ public class DOMPointReadOnly: JSBridgedClass {
     @ReadonlyAttribute
     public var w: Double
 
-    public func matrixTransform(matrix: DOMMatrixInit? = nil) -> DOMPoint {
+    @inlinable public func matrixTransform(matrix: DOMMatrixInit? = nil) -> DOMPoint {
         let this = jsObject
         return this[Strings.matrixTransform].function!(this: this, arguments: [matrix?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func toJSON() -> JSObject {
+    @inlinable public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

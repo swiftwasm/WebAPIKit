@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol SVGURIReference: JSBridgedClass {}
 public extension SVGURIReference {
-    var href: SVGAnimatedString { ReadonlyAttribute[Strings.href, in: jsObject] }
+    @inlinable var href: SVGAnimatedString { ReadonlyAttribute[Strings.href, in: jsObject] }
 }

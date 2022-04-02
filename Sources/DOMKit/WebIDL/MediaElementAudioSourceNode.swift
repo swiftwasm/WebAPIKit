@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaElementAudioSourceNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaElementAudioSourceNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaElementAudioSourceNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _mediaElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaElement)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: AudioContext, options: MediaElementAudioSourceOptions) {
+    @inlinable public convenience init(context: AudioContext, options: MediaElementAudioSourceOptions) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options.jsValue()]))
     }
 

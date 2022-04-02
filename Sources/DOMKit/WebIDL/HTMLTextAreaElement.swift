@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTextAreaElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTextAreaElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTextAreaElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _autocomplete = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocomplete)
@@ -34,7 +34,7 @@ public class HTMLTextAreaElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -98,17 +98,17 @@ public class HTMLTextAreaElement: HTMLElement {
     @ReadonlyAttribute
     public var validationMessage: String
 
-    public func checkValidity() -> Bool {
+    @inlinable public func checkValidity() -> Bool {
         let this = jsObject
         return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func reportValidity() -> Bool {
+    @inlinable public func reportValidity() -> Bool {
         let this = jsObject
         return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func setCustomValidity(error: String) {
+    @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
         _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
     }
@@ -116,7 +116,7 @@ public class HTMLTextAreaElement: HTMLElement {
     @ReadonlyAttribute
     public var labels: NodeList
 
-    public func select() {
+    @inlinable public func select() {
         let this = jsObject
         _ = this[Strings.select].function!(this: this, arguments: [])
     }
@@ -130,17 +130,17 @@ public class HTMLTextAreaElement: HTMLElement {
     @ReadWriteAttribute
     public var selectionDirection: String
 
-    public func setRangeText(replacement: String) {
+    @inlinable public func setRangeText(replacement: String) {
         let this = jsObject
         _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue()])
     }
 
-    public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
+    @inlinable public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
         let this = jsObject
         _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined])
     }
 
-    public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
+    @inlinable public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
         let this = jsObject
         _ = this[Strings.setSelectionRange].function!(this: this, arguments: [start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined])
     }

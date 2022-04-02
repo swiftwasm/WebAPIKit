@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ClipboardItem: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ClipboardItem].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ClipboardItem].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class ClipboardItem: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(items: [String: ClipboardItemData], options: ClipboardItemOptions? = nil) {
+    @inlinable public convenience init(items: [String: ClipboardItemData], options: ClipboardItemOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [items.jsValue(), options?.jsValue() ?? .undefined]))
     }
 
@@ -24,13 +24,13 @@ public class ClipboardItem: JSBridgedClass {
     @ReadonlyAttribute
     public var types: [String]
 
-    public func getType(type: String) -> JSPromise {
+    @inlinable public func getType(type: String) -> JSPromise {
         let this = jsObject
         return this[Strings.getType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getType(type: String) async throws -> Blob {
+    @inlinable public func getType(type: String) async throws -> Blob {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

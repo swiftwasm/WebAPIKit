@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaKeys: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.MediaKeys].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaKeys].function! }
 
     public let jsObject: JSObject
 
@@ -12,18 +12,18 @@ public class MediaKeys: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func createSession(sessionType: MediaKeySessionType? = nil) -> MediaKeySession {
+    @inlinable public func createSession(sessionType: MediaKeySessionType? = nil) -> MediaKeySession {
         let this = jsObject
         return this[Strings.createSession].function!(this: this, arguments: [sessionType?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func setServerCertificate(serverCertificate: BufferSource) -> JSPromise {
+    @inlinable public func setServerCertificate(serverCertificate: BufferSource) -> JSPromise {
         let this = jsObject
         return this[Strings.setServerCertificate].function!(this: this, arguments: [serverCertificate.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func setServerCertificate(serverCertificate: BufferSource) async throws -> Bool {
+    @inlinable public func setServerCertificate(serverCertificate: BufferSource) async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.setServerCertificate].function!(this: this, arguments: [serverCertificate.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

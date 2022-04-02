@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WorkerGlobalScope: EventTarget, FontFaceSource, WindowOrWorkerGlobalScope {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WorkerGlobalScope].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WorkerGlobalScope].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _self = ReadonlyAttribute(jsObject: jsObject, name: Strings._self)
@@ -28,7 +28,7 @@ public class WorkerGlobalScope: EventTarget, FontFaceSource, WindowOrWorkerGloba
     @ReadonlyAttribute
     public var navigator: WorkerNavigator
 
-    public func importScripts(urls: String...) {
+    @inlinable public func importScripts(urls: String...) {
         let this = jsObject
         _ = this[Strings.importScripts].function!(this: this, arguments: urls.map { $0.jsValue() })
     }

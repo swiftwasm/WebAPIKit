@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextEncoderStream: JSBridgedClass, TextEncoderCommon, GenericTransformStream {
-    public class var constructor: JSFunction { JSObject.global[Strings.TextEncoderStream].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.TextEncoderStream].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class TextEncoderStream: JSBridgedClass, TextEncoderCommon, GenericTransf
         self.jsObject = jsObject
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 }

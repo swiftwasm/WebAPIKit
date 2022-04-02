@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSRuleList: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CSSRuleList].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CSSRuleList].function! }
 
     public let jsObject: JSObject
 
@@ -13,7 +13,7 @@ public class CSSRuleList: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public subscript(key: Int) -> CSSRule? {
+    @inlinable public subscript(key: Int) -> CSSRule? {
         jsObject[key].fromJSValue()
     }
 

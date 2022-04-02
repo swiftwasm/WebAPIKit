@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUComputePassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMixin, GPUDebugCommandsMixin, GPUProgrammablePassEncoder {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUComputePassEncoder].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUComputePassEncoder].function! }
 
     public let jsObject: JSObject
 
@@ -12,22 +12,22 @@ public class GPUComputePassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMi
         self.jsObject = jsObject
     }
 
-    public func setPipeline(pipeline: GPUComputePipeline) {
+    @inlinable public func setPipeline(pipeline: GPUComputePipeline) {
         let this = jsObject
         _ = this[Strings.setPipeline].function!(this: this, arguments: [pipeline.jsValue()])
     }
 
-    public func dispatch(workgroupCountX: GPUSize32, workgroupCountY: GPUSize32? = nil, workgroupCountZ: GPUSize32? = nil) {
+    @inlinable public func dispatch(workgroupCountX: GPUSize32, workgroupCountY: GPUSize32? = nil, workgroupCountZ: GPUSize32? = nil) {
         let this = jsObject
         _ = this[Strings.dispatch].function!(this: this, arguments: [workgroupCountX.jsValue(), workgroupCountY?.jsValue() ?? .undefined, workgroupCountZ?.jsValue() ?? .undefined])
     }
 
-    public func dispatchIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64) {
+    @inlinable public func dispatchIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64) {
         let this = jsObject
         _ = this[Strings.dispatchIndirect].function!(this: this, arguments: [indirectBuffer.jsValue(), indirectOffset.jsValue()])
     }
 
-    public func end() {
+    @inlinable public func end() {
         let this = jsObject
         _ = this[Strings.end].function!(this: this, arguments: [])
     }

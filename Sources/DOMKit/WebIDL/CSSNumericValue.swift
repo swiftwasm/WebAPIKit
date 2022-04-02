@@ -4,58 +4,58 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSNumericValue: CSSStyleValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSNumericValue].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSNumericValue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func add(values: CSSNumberish...) -> Self {
+    @inlinable public func add(values: CSSNumberish...) -> Self {
         let this = jsObject
         return this[Strings.add].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func sub(values: CSSNumberish...) -> Self {
+    @inlinable public func sub(values: CSSNumberish...) -> Self {
         let this = jsObject
         return this[Strings.sub].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func mul(values: CSSNumberish...) -> Self {
+    @inlinable public func mul(values: CSSNumberish...) -> Self {
         let this = jsObject
         return this[Strings.mul].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func div(values: CSSNumberish...) -> Self {
+    @inlinable public func div(values: CSSNumberish...) -> Self {
         let this = jsObject
         return this[Strings.div].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func min(values: CSSNumberish...) -> Self {
+    @inlinable public func min(values: CSSNumberish...) -> Self {
         let this = jsObject
         return this[Strings.min].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func max(values: CSSNumberish...) -> Self {
+    @inlinable public func max(values: CSSNumberish...) -> Self {
         let this = jsObject
         return this[Strings.max].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func equals(value: CSSNumberish...) -> Bool {
+    @inlinable public func equals(value: CSSNumberish...) -> Bool {
         let this = jsObject
         return this[Strings.equals].function!(this: this, arguments: value.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func to(unit: String) -> CSSUnitValue {
+    @inlinable public func to(unit: String) -> CSSUnitValue {
         let this = jsObject
         return this[Strings.to].function!(this: this, arguments: [unit.jsValue()]).fromJSValue()!
     }
 
-    public func toSum(units: String...) -> CSSMathSum {
+    @inlinable public func toSum(units: String...) -> CSSMathSum {
         let this = jsObject
         return this[Strings.toSum].function!(this: this, arguments: units.map { $0.jsValue() }).fromJSValue()!
     }
 
-    public func type() -> CSSNumericType {
+    @inlinable public func type() -> CSSNumericType {
         let this = jsObject
         return this[Strings.type].function!(this: this, arguments: []).fromJSValue()!
     }

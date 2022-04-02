@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Module: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Module].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Module].function! }
 
     public let jsObject: JSObject
 
@@ -12,21 +12,21 @@ public class Module: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(bytes: BufferSource) {
+    @inlinable public convenience init(bytes: BufferSource) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [bytes.jsValue()]))
     }
 
-    public static func exports(moduleObject: Module) -> [ModuleExportDescriptor] {
+    @inlinable public static func exports(moduleObject: Module) -> [ModuleExportDescriptor] {
         let this = constructor
         return this[Strings.exports].function!(this: this, arguments: [moduleObject.jsValue()]).fromJSValue()!
     }
 
-    public static func imports(moduleObject: Module) -> [ModuleImportDescriptor] {
+    @inlinable public static func imports(moduleObject: Module) -> [ModuleImportDescriptor] {
         let this = constructor
         return this[Strings.imports].function!(this: this, arguments: [moduleObject.jsValue()]).fromJSValue()!
     }
 
-    public static func customSections(moduleObject: Module, sectionName: String) -> [ArrayBuffer] {
+    @inlinable public static func customSections(moduleObject: Module, sectionName: String) -> [ArrayBuffer] {
         let this = constructor
         return this[Strings.customSections].function!(this: this, arguments: [moduleObject.jsValue(), sectionName.jsValue()]).fromJSValue()!
     }

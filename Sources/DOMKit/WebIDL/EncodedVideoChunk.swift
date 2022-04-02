@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EncodedVideoChunk: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EncodedVideoChunk].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EncodedVideoChunk].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class EncodedVideoChunk: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: EncodedVideoChunkInit) {
+    @inlinable public convenience init(init: EncodedVideoChunkInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 
@@ -32,7 +32,7 @@ public class EncodedVideoChunk: JSBridgedClass {
     @ReadonlyAttribute
     public var byteLength: UInt32
 
-    public func copyTo(destination: BufferSource) {
+    @inlinable public func copyTo(destination: BufferSource) {
         let this = jsObject
         _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue()])
     }

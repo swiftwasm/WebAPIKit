@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCDTMFSender: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.RTCDTMFSender].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.RTCDTMFSender].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _ontonechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ontonechange)
@@ -13,7 +13,7 @@ public class RTCDTMFSender: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func insertDTMF(tones: String, duration: UInt32? = nil, interToneGap: UInt32? = nil) {
+    @inlinable public func insertDTMF(tones: String, duration: UInt32? = nil, interToneGap: UInt32? = nil) {
         let this = jsObject
         _ = this[Strings.insertDTMF].function!(this: this, arguments: [tones.jsValue(), duration?.jsValue() ?? .undefined, interToneGap?.jsValue() ?? .undefined])
     }

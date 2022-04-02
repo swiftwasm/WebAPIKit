@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NDEFRecord: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.NDEFRecord].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.NDEFRecord].function! }
 
     public let jsObject: JSObject
 
@@ -18,7 +18,7 @@ public class NDEFRecord: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(recordInit: NDEFRecordInit) {
+    @inlinable public convenience init(recordInit: NDEFRecordInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [recordInit.jsValue()]))
     }
 
@@ -40,7 +40,7 @@ public class NDEFRecord: JSBridgedClass {
     @ReadonlyAttribute
     public var lang: String?
 
-    public func toRecords() -> [NDEFRecord]? {
+    @inlinable public func toRecords() -> [NDEFRecord]? {
         let this = jsObject
         return this[Strings.toRecords].function!(this: this, arguments: []).fromJSValue()!
     }

@@ -4,17 +4,17 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public enum TestUtils {
-    public static var jsObject: JSObject {
+    @inlinable public static var jsObject: JSObject {
         JSObject.global[Strings.TestUtils].object!
     }
 
-    public static func gc() -> JSPromise {
+    @inlinable public static func gc() -> JSPromise {
         let this = JSObject.global[Strings.TestUtils].object!
         return this[Strings.gc].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func gc() async throws {
+    @inlinable public static func gc() async throws {
         let this = JSObject.global[Strings.TestUtils].object!
         let _promise: JSPromise = this[Strings.gc].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class EXT_texture_norm16: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.EXT_texture_norm16].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.EXT_texture_norm16].function! }
 
     public let jsObject: JSObject
 

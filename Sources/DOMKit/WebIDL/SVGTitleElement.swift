@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGTitleElement: SVGElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGTitleElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGTitleElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

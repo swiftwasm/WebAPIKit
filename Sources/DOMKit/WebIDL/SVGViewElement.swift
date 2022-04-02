@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGViewElement: SVGElement, SVGFitToViewBox {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGViewElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGViewElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

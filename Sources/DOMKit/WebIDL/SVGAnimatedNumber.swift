@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGAnimatedNumber: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.SVGAnimatedNumber].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SVGAnimatedNumber].function! }
 
     public let jsObject: JSObject
 

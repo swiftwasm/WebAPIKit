@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGPatternElement: SVGElement, SVGFitToViewBox, SVGURIReference {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGPatternElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGPatternElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _patternUnits = ReadonlyAttribute(jsObject: jsObject, name: Strings.patternUnits)

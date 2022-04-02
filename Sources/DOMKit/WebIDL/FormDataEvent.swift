@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class FormDataEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.FormDataEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.FormDataEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _formData = ReadonlyAttribute(jsObject: jsObject, name: Strings.formData)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: FormDataEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: FormDataEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PerformanceEventTiming: PerformanceEntry {
-    override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceEventTiming].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PerformanceEventTiming].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _processingStart = ReadonlyAttribute(jsObject: jsObject, name: Strings.processingStart)
@@ -30,7 +30,7 @@ public class PerformanceEventTiming: PerformanceEntry {
     @ReadonlyAttribute
     public var interactionId: UInt64
 
-    override public func toJSON() -> JSObject {
+    @inlinable override public func toJSON() -> JSObject {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

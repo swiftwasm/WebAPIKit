@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class LockManager: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.LockManager].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.LockManager].function! }
 
     public let jsObject: JSObject
 
@@ -20,13 +20,13 @@ public class LockManager: JSBridgedClass {
 
     // XXX: member 'request' is ignored
 
-    public func query() -> JSPromise {
+    @inlinable public func query() -> JSPromise {
         let this = jsObject
         return this[Strings.query].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func query() async throws -> LockManagerSnapshot {
+    @inlinable public func query() async throws -> LockManagerSnapshot {
         let this = jsObject
         let _promise: JSPromise = this[Strings.query].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!

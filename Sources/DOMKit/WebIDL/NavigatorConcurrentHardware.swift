@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NavigatorConcurrentHardware: JSBridgedClass {}
 public extension NavigatorConcurrentHardware {
-    var hardwareConcurrency: UInt64 { ReadonlyAttribute[Strings.hardwareConcurrency, in: jsObject] }
+    @inlinable var hardwareConcurrency: UInt64 { ReadonlyAttribute[Strings.hardwareConcurrency, in: jsObject] }
 }

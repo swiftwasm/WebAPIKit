@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLEmbedElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLEmbedElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLEmbedElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
@@ -16,7 +16,7 @@ public class HTMLEmbedElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -32,7 +32,7 @@ public class HTMLEmbedElement: HTMLElement {
     @ReadWriteAttribute
     public var height: String
 
-    public func getSVGDocument() -> Document? {
+    @inlinable public func getSVGDocument() -> Document? {
         let this = jsObject
         return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()!
     }

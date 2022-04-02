@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SFrameTransform: JSBridgedClass, GenericTransformStream {
-    public class var constructor: JSFunction { JSObject.global[Strings.SFrameTransform].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.SFrameTransform].function! }
 
     public let jsObject: JSObject
 
@@ -13,17 +13,17 @@ public class SFrameTransform: JSBridgedClass, GenericTransformStream {
         self.jsObject = jsObject
     }
 
-    public convenience init(options: SFrameTransformOptions? = nil) {
+    @inlinable public convenience init(options: SFrameTransformOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
     }
 
-    public func setEncryptionKey(key: CryptoKey, keyID: CryptoKeyID? = nil) -> JSPromise {
+    @inlinable public func setEncryptionKey(key: CryptoKey, keyID: CryptoKeyID? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.setEncryptionKey].function!(this: this, arguments: [key.jsValue(), keyID?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func setEncryptionKey(key: CryptoKey, keyID: CryptoKeyID? = nil) async throws {
+    @inlinable public func setEncryptionKey(key: CryptoKey, keyID: CryptoKeyID? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.setEncryptionKey].function!(this: this, arguments: [key.jsValue(), keyID?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()

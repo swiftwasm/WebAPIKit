@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Client: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Client].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Client].function! }
 
     public let jsObject: JSObject
 
@@ -32,12 +32,12 @@ public class Client: JSBridgedClass {
     @ReadonlyAttribute
     public var type: ClientType
 
-    public func postMessage(message: JSValue, transfer: [JSObject]) {
+    @inlinable public func postMessage(message: JSValue, transfer: [JSObject]) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), transfer.jsValue()])
     }
 
-    public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
+    @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
         _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
     }

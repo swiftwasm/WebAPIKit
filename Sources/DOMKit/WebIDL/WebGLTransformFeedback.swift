@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLTransformFeedback: WebGLObject {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WebGLTransformFeedback].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLTransformFeedback].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

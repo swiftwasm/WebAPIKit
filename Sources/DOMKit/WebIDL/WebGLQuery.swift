@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WebGLQuery: WebGLObject {
-    override public class var constructor: JSFunction { JSObject.global[Strings.WebGLQuery].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLQuery].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRInputSourcesChangeEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.XRInputSourcesChangeEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.XRInputSourcesChangeEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _session = ReadonlyAttribute(jsObject: jsObject, name: Strings.session)
@@ -13,7 +13,7 @@ public class XRInputSourcesChangeEvent: Event {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: XRInputSourcesChangeEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: XRInputSourcesChangeEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VirtualKeyboard: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.VirtualKeyboard].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.VirtualKeyboard].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _boundingRect = ReadonlyAttribute(jsObject: jsObject, name: Strings.boundingRect)
@@ -13,12 +13,12 @@ public class VirtualKeyboard: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public func show() {
+    @inlinable public func show() {
         let this = jsObject
         _ = this[Strings.show].function!(this: this, arguments: [])
     }
 
-    public func hide() {
+    @inlinable public func hide() {
         let this = jsObject
         _ = this[Strings.hide].function!(this: this, arguments: [])
     }

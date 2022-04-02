@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class XRAnchorSet: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.XRAnchorSet].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.XRAnchorSet].function! }
 
     public let jsObject: JSObject
 

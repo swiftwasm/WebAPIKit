@@ -5,5 +5,5 @@ import JavaScriptKit
 
 public protocol NetworkInformationSaveData: JSBridgedClass {}
 public extension NetworkInformationSaveData {
-    var saveData: Bool { ReadonlyAttribute[Strings.saveData, in: jsObject] }
+    @inlinable var saveData: Bool { ReadonlyAttribute[Strings.saveData, in: jsObject] }
 }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MIDIAccess: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MIDIAccess].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MIDIAccess].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _inputs = ReadonlyAttribute(jsObject: jsObject, name: Strings.inputs)

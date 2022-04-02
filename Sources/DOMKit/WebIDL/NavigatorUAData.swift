@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class NavigatorUAData: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.NavigatorUAData].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.NavigatorUAData].function! }
 
     public let jsObject: JSObject
 
@@ -24,19 +24,19 @@ public class NavigatorUAData: JSBridgedClass {
     @ReadonlyAttribute
     public var platform: String
 
-    public func getHighEntropyValues(hints: [String]) -> JSPromise {
+    @inlinable public func getHighEntropyValues(hints: [String]) -> JSPromise {
         let this = jsObject
         return this[Strings.getHighEntropyValues].function!(this: this, arguments: [hints.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getHighEntropyValues(hints: [String]) async throws -> UADataValues {
+    @inlinable public func getHighEntropyValues(hints: [String]) async throws -> UADataValues {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getHighEntropyValues].function!(this: this, arguments: [hints.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func toJSON() -> UALowEntropyJSON {
+    @inlinable public func toJSON() -> UALowEntropyJSON {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }

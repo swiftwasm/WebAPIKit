@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaKeySession: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.MediaKeySession].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaKeySession].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _sessionId = ReadonlyAttribute(jsObject: jsObject, name: Strings.sessionId)
@@ -34,61 +34,61 @@ public class MediaKeySession: EventTarget {
     @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
-    public func generateRequest(initDataType: String, initData: BufferSource) -> JSPromise {
+    @inlinable public func generateRequest(initDataType: String, initData: BufferSource) -> JSPromise {
         let this = jsObject
         return this[Strings.generateRequest].function!(this: this, arguments: [initDataType.jsValue(), initData.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func generateRequest(initDataType: String, initData: BufferSource) async throws {
+    @inlinable public func generateRequest(initDataType: String, initData: BufferSource) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.generateRequest].function!(this: this, arguments: [initDataType.jsValue(), initData.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func load(sessionId: String) -> JSPromise {
+    @inlinable public func load(sessionId: String) -> JSPromise {
         let this = jsObject
         return this[Strings.load].function!(this: this, arguments: [sessionId.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func load(sessionId: String) async throws -> Bool {
+    @inlinable public func load(sessionId: String) async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.load].function!(this: this, arguments: [sessionId.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func update(response: BufferSource) -> JSPromise {
+    @inlinable public func update(response: BufferSource) -> JSPromise {
         let this = jsObject
         return this[Strings.update].function!(this: this, arguments: [response.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func update(response: BufferSource) async throws {
+    @inlinable public func update(response: BufferSource) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.update].function!(this: this, arguments: [response.jsValue()]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func close() -> JSPromise {
+    @inlinable public func close() -> JSPromise {
         let this = jsObject
         return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func close() async throws {
+    @inlinable public func close() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func remove() -> JSPromise {
+    @inlinable public func remove() -> JSPromise {
         let this = jsObject
         return this[Strings.remove].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func remove() async throws {
+    @inlinable public func remove() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.remove].function!(this: this, arguments: []).fromJSValue()!
         _ = try await _promise.get()

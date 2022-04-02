@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Scheduler: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Scheduler].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Scheduler].function! }
 
     public let jsObject: JSObject
 

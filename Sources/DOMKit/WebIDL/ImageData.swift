@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageData: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ImageData].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ImageData].function! }
 
     public let jsObject: JSObject
 
@@ -16,11 +16,11 @@ public class ImageData: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(sw: UInt32, sh: UInt32, settings: ImageDataSettings? = nil) {
+    @inlinable public convenience init(sw: UInt32, sh: UInt32, settings: ImageDataSettings? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [sw.jsValue(), sh.jsValue(), settings?.jsValue() ?? .undefined]))
     }
 
-    public convenience init(data: Uint8ClampedArray, sw: UInt32, sh: UInt32? = nil, settings: ImageDataSettings? = nil) {
+    @inlinable public convenience init(data: Uint8ClampedArray, sw: UInt32, sh: UInt32? = nil, settings: ImageDataSettings? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [data.jsValue(), sw.jsValue(), sh?.jsValue() ?? .undefined, settings?.jsValue() ?? .undefined]))
     }
 

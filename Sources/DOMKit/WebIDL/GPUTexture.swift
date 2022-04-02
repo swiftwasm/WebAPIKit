@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GPUTexture: JSBridgedClass, GPUObjectBase {
-    public class var constructor: JSFunction { JSObject.global[Strings.GPUTexture].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GPUTexture].function! }
 
     public let jsObject: JSObject
 
@@ -12,12 +12,12 @@ public class GPUTexture: JSBridgedClass, GPUObjectBase {
         self.jsObject = jsObject
     }
 
-    public func createView(descriptor: GPUTextureViewDescriptor? = nil) -> GPUTextureView {
+    @inlinable public func createView(descriptor: GPUTextureViewDescriptor? = nil) -> GPUTextureView {
         let this = jsObject
         return this[Strings.createView].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func destroy() {
+    @inlinable public func destroy() {
         let this = jsObject
         _ = this[Strings.destroy].function!(this: this, arguments: [])
     }

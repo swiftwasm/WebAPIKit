@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSFontFeatureValuesMap: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.CSSFontFeatureValuesMap].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CSSFontFeatureValuesMap].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class CSSFontFeatureValuesMap: JSBridgedClass {
 
     // XXX: make me Map-like!
 
-    public func set(featureValueName: String, values: __UNSUPPORTED_UNION__) {
+    @inlinable public func set(featureValueName: String, values: __UNSUPPORTED_UNION__) {
         let this = jsObject
         _ = this[Strings.set].function!(this: this, arguments: [featureValueName.jsValue(), values.jsValue()])
     }

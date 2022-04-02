@@ -25,8 +25,8 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
             assert(!Context.static)
             // can't do property wrappers on override declarations
             return """
-            private var \(wrapperName): \(idlType.propertyWrapper(readonly: readonly))<\(idlType)>
-            override public var \(name): \(idlType) {
+            @usableFromInline let \(wrapperName): \(idlType.propertyWrapper(readonly: readonly))<\(idlType)>
+            @inlinable override public var \(name): \(idlType) {
                 get { \(wrapperName).wrappedValue }
                 \(readonly ? "" : "set { \(wrapperName).wrappedValue = newValue }")
             }
@@ -38,7 +38,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
             """
 
             return """
-            public\(raw: Context.static ? " static" : "") var \(name): \(idlType) {
+            @inlinable public\(raw: Context.static ? " static" : "") var \(name): \(idlType) {
                 get { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] }
                 \(readonly ? "" : setter)
             }
@@ -121,18 +121,18 @@ extension IDLEnum: SwiftRepresentable {
         public enum \(name): JSString, JSValueCompatible {
             \(lines: cases.map { "case \($0.camelized) = \(quoted: $0)" })
 
-            public static func construct(from jsValue: JSValue) -> Self? {
+            @inlinable public static func construct(from jsValue: JSValue) -> Self? {
                 if let string = jsValue.jsString {
                     return Self(rawValue: string)
                 }
                 return nil
             }
 
-            public init?(string: String) {
+            @inlinable public init?(string: String) {
                 self.init(rawValue: JSString(string))
             }
 
-            public func jsValue() -> JSValue { rawValue.jsValue() }
+            @inlinable public func jsValue() -> JSValue { rawValue.jsValue() }
         }
         """
     }
@@ -188,7 +188,7 @@ extension MergedInterface: SwiftRepresentable {
         let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
         return """
         public class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
-            public\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction { \(constructor) }
+            @inlinable public\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction { \(constructor) }
 
             \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
 
@@ -255,7 +255,7 @@ extension IDLConstant: SwiftRepresentable, Initializable {
         if Context.inProtocol {
             // Static stored properties not supported in protocol extensions
             return """
-            public static var \(name): \(idlType) { \(value) }
+            @inlinable public static var \(name): \(idlType) { \(value) }
             """
         } else {
             return """
@@ -290,7 +290,7 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
             argsArray = "[\(sequence: args)]"
         }
         return """
-        public convenience init(\(sequence: arguments.map(\.swiftRepresentation))) {
+        @inlinable public convenience init(\(sequence: arguments.map(\.swiftRepresentation))) {
             self.init(unsafelyWrapping: Self.constructor.new(arguments: \(argsArray)))
         }
         """
@@ -330,7 +330,7 @@ extension MergedNamespace: SwiftRepresentable {
         }
         return """
         public enum \(name) {
-            public static var jsObject: JSObject {
+            @inlinable public static var jsObject: JSObject {
                 \(this)
             }
 
@@ -354,7 +354,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             switch special {
             case "stringifier":
                 return """
-                public var description: String {
+                @inlinable public var description: String {
                     \(Context.this)[Strings.toString]!().fromJSValue()!
                 }
                 """
@@ -368,7 +368,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                     keyType = "Int"
                 }
                 return """
-                public subscript(key: \(keyType)) -> \(idlType!) {
+                @inlinable public subscript(key: \(keyType)) -> \(idlType!) {
                     jsObject[key].fromJSValue()\(idlType!.nullable ? "" : "!")
                 }
                 """
@@ -459,7 +459,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         }
 
         return """
-        \(nameAndParams) -> \(returnType) {
+        @inlinable \(nameAndParams) -> \(returnType) {
             \(prep)
             \(body)
         }
@@ -504,7 +504,7 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
         }
         return """
         @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-        \(operation.nameAndParams) async throws -> \(returnType) {
+        @inlinable \(operation.nameAndParams) async throws -> \(returnType) {
             \(prep)
             let _promise: JSPromise = \(call).fromJSValue()!
             \(result)

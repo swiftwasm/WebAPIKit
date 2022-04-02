@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ImageDecoder: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ImageDecoder].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ImageDecoder].function! }
 
     public let jsObject: JSObject
 
@@ -16,7 +16,7 @@ public class ImageDecoder: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: ImageDecoderInit) {
+    @inlinable public convenience init(init: ImageDecoderInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 
@@ -32,35 +32,35 @@ public class ImageDecoder: JSBridgedClass {
     @ReadonlyAttribute
     public var tracks: ImageTrackList
 
-    public func decode(options: ImageDecodeOptions? = nil) -> JSPromise {
+    @inlinable public func decode(options: ImageDecodeOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.decode].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func decode(options: ImageDecodeOptions? = nil) async throws -> ImageDecodeResult {
+    @inlinable public func decode(options: ImageDecodeOptions? = nil) async throws -> ImageDecodeResult {
         let this = jsObject
         let _promise: JSPromise = this[Strings.decode].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func reset() {
+    @inlinable public func reset() {
         let this = jsObject
         _ = this[Strings.reset].function!(this: this, arguments: [])
     }
 
-    public func close() {
+    @inlinable public func close() {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    public static func isTypeSupported(type: String) -> JSPromise {
+    @inlinable public static func isTypeSupported(type: String) -> JSPromise {
         let this = constructor
         return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public static func isTypeSupported(type: String) async throws -> Bool {
+    @inlinable public static func isTypeSupported(type: String) async throws -> Bool {
         let this = constructor
         let _promise: JSPromise = this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

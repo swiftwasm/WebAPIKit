@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RTCRtpTransceiver: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.RTCRtpTransceiver].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.RTCRtpTransceiver].function! }
 
     public let jsObject: JSObject
 
@@ -32,12 +32,12 @@ public class RTCRtpTransceiver: JSBridgedClass {
     @ReadonlyAttribute
     public var currentDirection: RTCRtpTransceiverDirection?
 
-    public func stop() {
+    @inlinable public func stop() {
         let this = jsObject
         _ = this[Strings.stop].function!(this: this, arguments: [])
     }
 
-    public func setCodecPreferences(codecs: [RTCRtpCodecCapability]) {
+    @inlinable public func setCodecPreferences(codecs: [RTCRtpCodecCapability]) {
         let this = jsObject
         _ = this[Strings.setCodecPreferences].function!(this: this, arguments: [codecs.jsValue()])
     }

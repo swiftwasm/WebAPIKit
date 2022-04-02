@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OfflineAudioCompletionEvent: Event {
-    override public class var constructor: JSFunction { JSObject.global[Strings.OfflineAudioCompletionEvent].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OfflineAudioCompletionEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _renderedBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.renderedBuffer)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(type: String, eventInitDict: OfflineAudioCompletionEventInit) {
+    @inlinable public convenience init(type: String, eventInitDict: OfflineAudioCompletionEventInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
     }
 

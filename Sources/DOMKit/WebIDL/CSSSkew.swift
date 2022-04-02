@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSSkew: CSSTransformComponent {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSSkew].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSSkew].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _ax = ReadWriteAttribute(jsObject: jsObject, name: Strings.ax)
@@ -12,7 +12,7 @@ public class CSSSkew: CSSTransformComponent {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(ax: CSSNumericValue, ay: CSSNumericValue) {
+    @inlinable public convenience init(ax: CSSNumericValue, ay: CSSNumericValue) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [ax.jsValue(), ay.jsValue()]))
     }
 

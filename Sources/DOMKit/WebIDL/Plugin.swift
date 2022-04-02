@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class Plugin: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.Plugin].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Plugin].function! }
 
     public let jsObject: JSObject
 
@@ -28,11 +28,11 @@ public class Plugin: JSBridgedClass {
     @ReadonlyAttribute
     public var length: UInt32
 
-    public subscript(key: Int) -> MimeType? {
+    @inlinable public subscript(key: Int) -> MimeType? {
         jsObject[key].fromJSValue()
     }
 
-    public subscript(key: String) -> MimeType? {
+    @inlinable public subscript(key: String) -> MimeType? {
         jsObject[key].fromJSValue()
     }
 }

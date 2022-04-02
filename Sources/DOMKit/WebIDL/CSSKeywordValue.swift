@@ -4,14 +4,14 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class CSSKeywordValue: CSSStyleValue {
-    override public class var constructor: JSFunction { JSObject.global[Strings.CSSKeywordValue].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSKeywordValue].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(value: String) {
+    @inlinable public convenience init(value: String) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [value.jsValue()]))
     }
 

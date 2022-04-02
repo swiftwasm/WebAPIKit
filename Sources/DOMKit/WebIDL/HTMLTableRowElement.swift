@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLTableRowElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTableRowElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLTableRowElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _rowIndex = ReadonlyAttribute(jsObject: jsObject, name: Strings.rowIndex)
@@ -18,7 +18,7 @@ public class HTMLTableRowElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -31,12 +31,12 @@ public class HTMLTableRowElement: HTMLElement {
     @ReadonlyAttribute
     public var cells: HTMLCollection
 
-    public func insertCell(index: Int32? = nil) -> HTMLTableCellElement {
+    @inlinable public func insertCell(index: Int32? = nil) -> HTMLTableCellElement {
         let this = jsObject
         return this[Strings.insertCell].function!(this: this, arguments: [index?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
-    public func deleteCell(index: Int32) {
+    @inlinable public func deleteCell(index: Int32) {
         let this = jsObject
         _ = this[Strings.deleteCell].function!(this: this, arguments: [index.jsValue()])
     }

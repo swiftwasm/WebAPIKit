@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioWorkletNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AudioWorkletNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioWorkletNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _parameters = ReadonlyAttribute(jsObject: jsObject, name: Strings.parameters)
@@ -13,7 +13,7 @@ public class AudioWorkletNode: AudioNode {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(context: BaseAudioContext, name: String, options: AudioWorkletNodeOptions? = nil) {
+    @inlinable public convenience init(context: BaseAudioContext, name: String, options: AudioWorkletNodeOptions? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), name.jsValue(), options?.jsValue() ?? .undefined]))
     }
 

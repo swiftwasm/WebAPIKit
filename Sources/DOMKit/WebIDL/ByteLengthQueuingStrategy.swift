@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class ByteLengthQueuingStrategy: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.ByteLengthQueuingStrategy].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ByteLengthQueuingStrategy].function! }
 
     public let jsObject: JSObject
 
@@ -14,7 +14,7 @@ public class ByteLengthQueuingStrategy: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public convenience init(init: QueuingStrategyInit) {
+    @inlinable public convenience init(init: QueuingStrategyInit) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
     }
 

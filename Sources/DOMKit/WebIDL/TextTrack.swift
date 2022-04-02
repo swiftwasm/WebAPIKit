@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class TextTrack: EventTarget {
-    override public class var constructor: JSFunction { JSObject.global[Strings.TextTrack].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.TextTrack].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
@@ -44,12 +44,12 @@ public class TextTrack: EventTarget {
     @ReadonlyAttribute
     public var activeCues: TextTrackCueList?
 
-    public func addCue(cue: TextTrackCue) {
+    @inlinable public func addCue(cue: TextTrackCue) {
         let this = jsObject
         _ = this[Strings.addCue].function!(this: this, arguments: [cue.jsValue()])
     }
 
-    public func removeCue(cue: TextTrackCue) {
+    @inlinable public func removeCue(cue: TextTrackCue) {
         let this = jsObject
         _ = this[Strings.removeCue].function!(this: this, arguments: [cue.jsValue()])
     }

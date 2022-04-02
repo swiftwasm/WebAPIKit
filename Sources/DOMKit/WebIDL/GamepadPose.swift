@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GamepadPose: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GamepadPose].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GamepadPose].function! }
 
     public let jsObject: JSObject
 

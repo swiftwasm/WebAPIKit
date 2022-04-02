@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class HTMLOutputElement: HTMLElement {
-    override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOutputElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLOutputElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _htmlFor = ReadonlyAttribute(jsObject: jsObject, name: Strings.htmlFor)
@@ -20,7 +20,7 @@ public class HTMLOutputElement: HTMLElement {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init() {
+    @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }
 
@@ -51,17 +51,17 @@ public class HTMLOutputElement: HTMLElement {
     @ReadonlyAttribute
     public var validationMessage: String
 
-    public func checkValidity() -> Bool {
+    @inlinable public func checkValidity() -> Bool {
         let this = jsObject
         return this[Strings.checkValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func reportValidity() -> Bool {
+    @inlinable public func reportValidity() -> Bool {
         let this = jsObject
         return this[Strings.reportValidity].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    public func setCustomValidity(error: String) {
+    @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
         _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
     }

@@ -4,17 +4,17 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SequenceEffect: GroupEffect {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SequenceEffect].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SequenceEffect].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    public convenience init(children: [AnimationEffect]?, timing: __UNSUPPORTED_UNION__? = nil) {
+    @inlinable public convenience init(children: [AnimationEffect]?, timing: __UNSUPPORTED_UNION__? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [children.jsValue(), timing?.jsValue() ?? .undefined]))
     }
 
-    override public func clone() -> Self {
+    @inlinable override public func clone() -> Self {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }

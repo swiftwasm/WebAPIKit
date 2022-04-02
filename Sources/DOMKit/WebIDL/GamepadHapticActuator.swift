@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class GamepadHapticActuator: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.GamepadHapticActuator].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.GamepadHapticActuator].function! }
 
     public let jsObject: JSObject
 
@@ -16,13 +16,13 @@ public class GamepadHapticActuator: JSBridgedClass {
     @ReadonlyAttribute
     public var type: GamepadHapticActuatorType
 
-    public func pulse(value: Double, duration: Double) -> JSPromise {
+    @inlinable public func pulse(value: Double, duration: Double) -> JSPromise {
         let this = jsObject
         return this[Strings.pulse].function!(this: this, arguments: [value.jsValue(), duration.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func pulse(value: Double, duration: Double) async throws -> Bool {
+    @inlinable public func pulse(value: Double, duration: Double) async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.pulse].function!(this: this, arguments: [value.jsValue(), duration.jsValue()]).fromJSValue()!
         return try await _promise.get().fromJSValue()!

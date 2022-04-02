@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class SVGAElement: SVGGraphicsElement, SVGURIReference {
-    override public class var constructor: JSFunction { JSObject.global[Strings.SVGAElement].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.SVGAElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _target = ReadonlyAttribute(jsObject: jsObject, name: Strings.target)

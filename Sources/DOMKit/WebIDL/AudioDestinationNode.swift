@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class AudioDestinationNode: AudioNode {
-    override public class var constructor: JSFunction { JSObject.global[Strings.AudioDestinationNode].function! }
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioDestinationNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _maxChannelCount = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxChannelCount)

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class PeriodicSyncManager: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.PeriodicSyncManager].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PeriodicSyncManager].function! }
 
     public let jsObject: JSObject
 
@@ -12,37 +12,37 @@ public class PeriodicSyncManager: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func register(tag: String, options: BackgroundSyncOptions? = nil) -> JSPromise {
+    @inlinable public func register(tag: String, options: BackgroundSyncOptions? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.register].function!(this: this, arguments: [tag.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func register(tag: String, options: BackgroundSyncOptions? = nil) async throws {
+    @inlinable public func register(tag: String, options: BackgroundSyncOptions? = nil) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.register].function!(this: this, arguments: [tag.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
         _ = try await _promise.get()
     }
 
-    public func getTags() -> JSPromise {
+    @inlinable public func getTags() -> JSPromise {
         let this = jsObject
         return this[Strings.getTags].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func getTags() async throws -> [String] {
+    @inlinable public func getTags() async throws -> [String] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getTags].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.get().fromJSValue()!
     }
 
-    public func unregister(tag: String) -> JSPromise {
+    @inlinable public func unregister(tag: String) -> JSPromise {
         let this = jsObject
         return this[Strings.unregister].function!(this: this, arguments: [tag.jsValue()]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    public func unregister(tag: String) async throws {
+    @inlinable public func unregister(tag: String) async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.unregister].function!(this: this, arguments: [tag.jsValue()]).fromJSValue()!
         _ = try await _promise.get()

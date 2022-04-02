@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class WorkletGroupEffect: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.WorkletGroupEffect].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WorkletGroupEffect].function! }
 
     public let jsObject: JSObject
 
@@ -12,7 +12,7 @@ public class WorkletGroupEffect: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    public func getChildren() -> [WorkletAnimationEffect] {
+    @inlinable public func getChildren() -> [WorkletAnimationEffect] {
         let this = jsObject
         return this[Strings.getChildren].function!(this: this, arguments: []).fromJSValue()!
     }

@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OES_texture_float: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global[Strings.OES_texture_float].function! }
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.OES_texture_float].function! }
 
     public let jsObject: JSObject
 
