@@ -38,8 +38,5 @@ public class AudioBufferSourceNode: AudioScheduledSourceNode {
     @ReadWriteAttribute
     public var loopEnd: Double
 
-    @inlinable override public func start(when: Double? = nil, offset: Double? = nil, duration: Double? = nil) {
-        let this = jsObject
-        _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue() ?? .undefined, offset?.jsValue() ?? .undefined, duration?.jsValue() ?? .undefined])
-    }
+    // XXX: member 'start' is ignored
 }

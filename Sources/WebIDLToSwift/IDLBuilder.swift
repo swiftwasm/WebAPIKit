@@ -87,6 +87,7 @@ enum IDLBuilder {
                     "BeforeUnloadEvent": ["returnValue"],
                     "CSSColor": ["colorSpace"],
                     "SVGElement": ["className"],
+                    "AudioBufferSourceNode": ["start"],
                     // XPathNSResolver
                     "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
                 ],
