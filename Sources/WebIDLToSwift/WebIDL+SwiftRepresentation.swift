@@ -81,7 +81,7 @@ extension MergedDictionary: SwiftRepresentable {
         }
         return """
         public convenience init(\(sequence: params)) {
-            let object = JSObject.global.Object.function!.new()
+            let object = JSObject.global[\(Context.source(for: "Object"))].function!.new()
             \(lines: membersWithPropertyWrapper.map { member, wrapper in
                 if member.idlType.isFunction {
                     return """
@@ -161,7 +161,7 @@ protocol Initializable {
 
 extension MergedInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let constructor: SwiftSource = "JSObject.global.\(name).function!"
+        let constructor: SwiftSource = "JSObject.global[\(Context.source(for: name))].function!"
         let body = Context.withState(.instance(constructor: constructor, this: "jsObject", className: "\(name)")) {
             members.map { member in
                 let isOverride: Bool
@@ -286,7 +286,7 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
 
 extension MergedNamespace: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let this: SwiftSource = "JSObject.global.\(name).object!"
+        let this: SwiftSource = "JSObject.global.[\(Context.source(for: name))].object!"
         let body = Context.withState(.static(this: this, inClass: false, className: "\(name)")) {
             members.map(toSwift).joined(separator: "\n\n")
         }
