@@ -14,6 +14,7 @@ enum IDLBuilder {
     static let ignoredNames: Set = [
         "BreakTokenOptions", "TrustedTypePolicyOptions", "FragmentResultOptions",
         "Client_or_MessagePort_or_ServiceWorker", "ExtendableMessageEventInit",
+        "CSSColorValue_or_CSSStyleValue",
     ]
 
     static let outDir = "Sources/DOMKit/WebIDL/"
