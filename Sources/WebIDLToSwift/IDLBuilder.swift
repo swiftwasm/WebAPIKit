@@ -133,9 +133,8 @@ enum IDLBuilder {
 
     static func generateUnions() throws {
         for union in Context.unions {
-            let file = UnionProtocol(types: union)
-            guard !ignoredNames.contains(file.types.inlineTypeName) else { continue }
-            try writeFile(named: file.types.inlineTypeName, content: file.swiftRepresentation.source)
+            guard !ignoredNames.contains(union.name) else { continue }
+            try writeFile(named: union.name, content: union.swiftRepresentation.source)
         }
     }
 }

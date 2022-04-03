@@ -4,79 +4,50 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public typealias GLuint64EXT = UInt64
-public typealias BlobPart = Blob_or_BufferSource_or_String
-public typealias AlgorithmIdentifier = JSObject_or_String
+
 public typealias HashAlgorithmIdentifier = AlgorithmIdentifier
 public typealias BigInteger = Uint8Array
 public typealias NamedCurve = String
 public typealias ClipboardItemData = JSPromise
 public typealias ClipboardItems = [ClipboardItem]
 public typealias CookieList = [CookieListItem]
-public typealias PasswordCredentialInit = HTMLFormElement_or_PasswordCredentialData
-public typealias BinaryData = ArrayBuffer_or_ArrayBufferView
-public typealias CSSStringSource = ReadableStream_or_String
-public typealias CSSToken = CSSParserValue_or_CSSStyleValue_or_String
-public typealias CSSUnparsedSegment = CSSVariableReferenceValue_or_String
-public typealias CSSKeywordish = CSSKeywordValue_or_String
-public typealias CSSNumberish = CSSNumericValue_or_Double
-public typealias CSSPerspectiveValue = CSSKeywordish_or_CSSNumericValue
-public typealias CSSColorRGBComp = CSSKeywordish_or_CSSNumberish
-public typealias CSSColorPercent = CSSKeywordish_or_CSSNumberish
-public typealias CSSColorNumber = CSSKeywordish_or_CSSNumberish
-public typealias CSSColorAngle = CSSKeywordish_or_CSSNumberish
-public typealias GeometryNode = CSSPseudoElement_or_Document_or_Element_or_Text
-public typealias HeadersInit = record_String_to_String_or_seq_of_seq_of_String
-public typealias XMLHttpRequestBodyInit = Blob_or_BufferSource_or_FormData_or_String_or_URLSearchParams
-public typealias BodyInit = ReadableStream_or_XMLHttpRequestBodyInit
-public typealias RequestInfo = Request_or_String
-public typealias FileSystemWriteChunkType = Blob_or_BufferSource_or_String_or_WriteParams
-public typealias StartInDirectory = FileSystemHandle_or_WellKnownDirectory
+
+public typealias CSSColorPercent = CSSColorRGBComp
+public typealias CSSColorNumber = CSSColorRGBComp
+public typealias CSSColorAngle = CSSColorRGBComp
+
 public typealias DOMHighResTimeStamp = Double
 public typealias EpochTimeStamp = UInt64
-public typealias HTMLOrSVGScriptElement = HTMLScriptElement_or_SVGScriptElement
-public typealias MediaProvider = Blob_or_MediaSource_or_MediaStream
-public typealias RenderingContext = CanvasRenderingContext2D_or_GPUCanvasContext_or_ImageBitmapRenderingContext_or_WebGL2RenderingContext_or_WebGLRenderingContext
-public typealias HTMLOrSVGImageElement = HTMLImageElement_or_SVGImageElement
-public typealias CanvasImageSource = HTMLCanvasElement_or_HTMLOrSVGImageElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas_or_VideoFrame
+
 public typealias CanvasFilterInput = [String: JSValue]
-public typealias OffscreenRenderingContext = GPUCanvasContext_or_ImageBitmapRenderingContext_or_OffscreenCanvasRenderingContext2D_or_WebGL2RenderingContext_or_WebGLRenderingContext
+
 public typealias EventHandler = EventHandlerNonNull?
 public typealias OnErrorEventHandler = OnErrorEventHandlerNonNull?
 public typealias OnBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull?
-public typealias TimerHandler = JSFunction_or_String
-public typealias ImageBitmapSource = Blob_or_CanvasImageSource_or_ImageData
-public typealias MessageEventSource = MessagePort_or_ServiceWorker_or_WindowProxy
-public typealias ConstrainPoint2D = ConstrainPoint2DParameters_or_seq_of_Point2D
+
 public typealias ProfilerResource = String
-public typealias ConstrainULong = ConstrainULongRange_or_UInt32
-public typealias ConstrainDouble = ConstrainDoubleRange_or_Double
-public typealias ConstrainBoolean = Bool_or_ConstrainBooleanParameters
-public typealias ConstrainDOMString = ConstrainDOMStringParameters_or_String_or_seq_of_String
+
 public typealias Megabit = Double
 public typealias Millisecond = UInt64
 public typealias PerformanceEntryList = [PerformanceEntry]
-public typealias PushMessageDataInit = BufferSource_or_String
+
 public typealias ReportList = [Report]
 public typealias AttributeMatchList = [String: [String]]
-public typealias ContainerBasedOffset = CSSKeywordish_or_CSSNumericValue
-public typealias ScrollTimelineOffset = ContainerBasedOffset_or_ElementBasedOffset
-public typealias ReadableStreamReader = ReadableStreamBYOBReader_or_ReadableStreamDefaultReader
-public typealias ReadableStreamController = ReadableByteStreamController_or_ReadableStreamDefaultController
+public typealias ContainerBasedOffset = CSSPerspectiveValue
+
 public typealias HTMLString = String
 public typealias ScriptString = String
 public typealias ScriptURLString = String
-public typealias TrustedType = TrustedHTML_or_TrustedScript_or_TrustedScriptURL
-public typealias URLPatternInput = String_or_URLPatternInit
-public typealias VibratePattern = UInt32_or_seq_of_UInt32
+
 public typealias UUID = String
-public typealias BluetoothServiceUUID = String_or_UInt32
-public typealias BluetoothCharacteristicUUID = String_or_UInt32
-public typealias BluetoothDescriptorUUID = String_or_UInt32
-public typealias NDEFMessageSource = BufferSource_or_NDEFMessageInit_or_String
+
+public typealias BluetoothCharacteristicUUID = BluetoothServiceUUID
+public typealias BluetoothDescriptorUUID = BluetoothServiceUUID
+
 public typealias COSEAlgorithmIdentifier = Int32
 public typealias UvmEntry = [UInt32]
 public typealias UvmEntries = [UvmEntry]
-public typealias ImageBufferSource = BufferSource_or_ReadableStream
+
 public typealias GLenum = UInt32
 public typealias GLboolean = Bool
 public typealias GLbitfield = UInt32
@@ -91,22 +62,20 @@ public typealias GLushort = UInt16
 public typealias GLuint = UInt32
 public typealias GLfloat = Float
 public typealias GLclampf = Float
-public typealias TexImageSource = HTMLCanvasElement_or_HTMLImageElement_or_HTMLVideoElement_or_ImageBitmap_or_ImageData_or_OffscreenCanvas_or_VideoFrame
-public typealias Float32List = Float32Array_or_seq_of_GLfloat
-public typealias Int32List = Int32Array_or_seq_of_GLint
+
 public typealias GLint64 = Int64
 public typealias GLuint64 = UInt64
-public typealias Uint32List = Uint32Array_or_seq_of_GLuint
+
 public typealias GPUBufferUsageFlags = UInt32
 public typealias GPUMapModeFlags = UInt32
 public typealias GPUTextureUsageFlags = UInt32
 public typealias GPUShaderStageFlags = UInt32
-public typealias GPUBindingResource = GPUBufferBinding_or_GPUExternalTexture_or_GPUSampler_or_GPUTextureView
+
 public typealias GPUPipelineConstantValue = Double
 public typealias GPUColorWriteFlags = UInt32
 public typealias GPUComputePassTimestampWrites = [GPUComputePassTimestampWrite]
 public typealias GPURenderPassTimestampWrites = [GPURenderPassTimestampWrite]
-public typealias GPUError = GPUOutOfMemoryError_or_GPUValidationError
+
 public typealias GPUBufferDynamicOffset = UInt32
 public typealias GPUStencilValue = UInt32
 public typealias GPUSampleMask = UInt32
@@ -117,23 +86,16 @@ public typealias GPUIndex32 = UInt32
 public typealias GPUSize32 = UInt32
 public typealias GPUSignedOffset32 = Int32
 public typealias GPUFlagsConstant = UInt32
-public typealias GPUColor = GPUColorDict_or_seq_of_Double
-public typealias GPUOrigin2D = GPUOrigin2DDict_or_seq_of_GPUIntegerCoordinate
-public typealias GPUOrigin3D = GPUOrigin3DDict_or_seq_of_GPUIntegerCoordinate
-public typealias GPUExtent3D = GPUExtent3DDict_or_seq_of_GPUIntegerCoordinate
-public typealias BufferSource = ArrayBuffer_or_ArrayBufferView
+
+public typealias BufferSource = BinaryData
 public typealias DOMTimeStamp = UInt64
 public typealias MLNamedOperands = [String: MLOperand]
-public typealias MLBufferView = ArrayBufferView_or_MLBufferResourceView
-public typealias MLResource = GPUTexture_or_MLBufferView_or_WebGLTexture
+
 public typealias MLNamedInputs = [String: MLInput_or_MLResource]
 public typealias MLNamedOutputs = [String: MLResource]
-public typealias RTCRtpTransform = RTCRtpScriptTransform_or_SFrameTransform
+
 public typealias SmallCryptoKeyID = UInt64
-public typealias CryptoKeyID = SmallCryptoKeyID_or___UNSUPPORTED_BIGINT__
-public typealias LineAndPositionSetting = AutoKeyword_or_Double
-public typealias XRWebGLRenderingContext = WebGL2RenderingContext_or_WebGLRenderingContext
-public typealias FormDataEntryValue = File_or_String
+
 public typealias ComputePressureUpdateCallback = ([ComputePressureRecord], ComputePressureObserver) -> Void
 public typealias AnimatorInstanceConstructor = (JSValue, JSValue) -> JSValue
 public typealias MutationCallback = ([MutationRecord], MutationObserver) -> Void

@@ -1,5 +1,25 @@
 import WebIDL
 
+class UnionType: Hashable, Equatable {
+    let types: Set<SlimIDLType>
+    var friendlyName: String?
+    let defaultName: String
+
+    init(types: Set<SlimIDLType>, friendlyName: String? = nil) {
+        self.types = types
+        self.friendlyName = friendlyName
+        defaultName = types.map(\.inlineTypeName).sorted().joined(separator: "_or_")
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(defaultName)
+    }
+
+    static func == (lhs: UnionType, rhs: UnionType) -> Bool {
+        lhs.types == rhs.types
+    }
+}
+
 struct SlimIDLType: Hashable, Encodable {
     let value: TypeValue
     let nullable: Bool
@@ -28,7 +48,7 @@ struct SlimIDLType: Hashable, Encodable {
     enum TypeValue: Encodable {
         case generic(String, args: [SlimIDLType])
         case single(String)
-        case union([SlimIDLType])
+        case union(Set<SlimIDLType>)
 
         init(_ value: IDLType.TypeValue) {
             switch value {
@@ -37,17 +57,11 @@ struct SlimIDLType: Hashable, Encodable {
             case let .single(name):
                 self = .single(name)
             case let .union(types):
-                let slimmed = types.map(SlimIDLType.init)
+                let slimmed = Set(types.map(SlimIDLType.init))
                 self = .union(slimmed)
-                Context.unions.insert(Set(slimmed))
+                Context.unions.insert(UnionType(types: slimmed))
             }
         }
-    }
-}
-
-extension Set where Element == SlimIDLType {
-    var inlineTypeName: String {
-        map(\.inlineTypeName).sorted().joined(separator: "_or_")
     }
 }
 
@@ -78,7 +92,7 @@ extension SlimIDLType.TypeValue {
                 return "\(name)"
             }
         case let .union(types):
-            return Set(types).inlineTypeName
+            return unionName(types: types)
         }
     }
 }

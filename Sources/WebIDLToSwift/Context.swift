@@ -6,7 +6,7 @@ enum Context {
 
     static var closurePatterns: Set<ClosurePattern> = []
     private(set) static var strings: Set<String> = ["toString"]
-    static var unions: Set<Set<SlimIDLType>> = []
+    static var unions: Set<UnionType> = []
 
     static func source(for name: String) -> SwiftSource {
         assert(!name.isEmpty)
