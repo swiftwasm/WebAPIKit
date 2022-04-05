@@ -19,11 +19,11 @@ public class MediaStream: EventTarget {
     }
 
     @inlinable public convenience init(stream: MediaStream) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue]))
     }
 
     @inlinable public convenience init(tracks: [MediaStreamTrack]) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [tracks.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [tracks.jsValue]))
     }
 
     @ReadonlyAttribute
@@ -46,17 +46,17 @@ public class MediaStream: EventTarget {
 
     @inlinable public func getTrackById(trackId: String) -> MediaStreamTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [trackId.jsValue()]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [trackId.jsValue]).fromJSValue()!
     }
 
     @inlinable public func addTrack(track: MediaStreamTrack) {
         let this = jsObject
-        _ = this[Strings.addTrack].function!(this: this, arguments: [track.jsValue()])
+        _ = this[Strings.addTrack].function!(this: this, arguments: [track.jsValue])
     }
 
     @inlinable public func removeTrack(track: MediaStreamTrack) {
         let this = jsObject
-        _ = this[Strings.removeTrack].function!(this: this, arguments: [track.jsValue()])
+        _ = this[Strings.removeTrack].function!(this: this, arguments: [track.jsValue])
     }
 
     @inlinable public func clone() -> Self {

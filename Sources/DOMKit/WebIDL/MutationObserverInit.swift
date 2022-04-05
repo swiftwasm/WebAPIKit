@@ -6,13 +6,13 @@ import JavaScriptKit
 public class MutationObserverInit: BridgedDictionary {
     public convenience init(childList: Bool, attributes: Bool, characterData: Bool, subtree: Bool, attributeOldValue: Bool, characterDataOldValue: Bool, attributeFilter: [String]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.childList] = childList.jsValue()
-        object[Strings.attributes] = attributes.jsValue()
-        object[Strings.characterData] = characterData.jsValue()
-        object[Strings.subtree] = subtree.jsValue()
-        object[Strings.attributeOldValue] = attributeOldValue.jsValue()
-        object[Strings.characterDataOldValue] = characterDataOldValue.jsValue()
-        object[Strings.attributeFilter] = attributeFilter.jsValue()
+        object[Strings.childList] = childList.jsValue
+        object[Strings.attributes] = attributes.jsValue
+        object[Strings.characterData] = characterData.jsValue
+        object[Strings.subtree] = subtree.jsValue
+        object[Strings.attributeOldValue] = attributeOldValue.jsValue
+        object[Strings.characterDataOldValue] = characterDataOldValue.jsValue
+        object[Strings.attributeFilter] = attributeFilter.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,13 +6,13 @@ import JavaScriptKit
 public class ImageDecoderInit: BridgedDictionary {
     public convenience init(type: String, data: ImageBufferSource, premultiplyAlpha: PremultiplyAlpha, colorSpaceConversion: ColorSpaceConversion, desiredWidth: UInt32, desiredHeight: UInt32, preferAnimation: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.data] = data.jsValue()
-        object[Strings.premultiplyAlpha] = premultiplyAlpha.jsValue()
-        object[Strings.colorSpaceConversion] = colorSpaceConversion.jsValue()
-        object[Strings.desiredWidth] = desiredWidth.jsValue()
-        object[Strings.desiredHeight] = desiredHeight.jsValue()
-        object[Strings.preferAnimation] = preferAnimation.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.data] = data.jsValue
+        object[Strings.premultiplyAlpha] = premultiplyAlpha.jsValue
+        object[Strings.colorSpaceConversion] = colorSpaceConversion.jsValue
+        object[Strings.desiredWidth] = desiredWidth.jsValue
+        object[Strings.desiredHeight] = desiredHeight.jsValue
+        object[Strings.preferAnimation] = preferAnimation.jsValue
         self.init(unsafelyWrapping: object)
     }
 

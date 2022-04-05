@@ -6,8 +6,8 @@ import JavaScriptKit
 public class FilePickerAcceptType: BridgedDictionary {
     public convenience init(description: String, accept: [String: String_or_seq_of_String]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.description] = description.jsValue()
-        object[Strings.accept] = accept.jsValue()
+        object[Strings.description] = description.jsValue
+        object[Strings.accept] = accept.jsValue
         self.init(unsafelyWrapping: object)
     }
 

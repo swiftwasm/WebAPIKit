@@ -21,12 +21,12 @@ public enum ReadableStreamController: JSValueCompatible, Any_ReadableStreamContr
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .readableByteStreamController(readableByteStreamController):
-            return readableByteStreamController.jsValue()
+            return readableByteStreamController.jsValue
         case let .readableStreamDefaultController(readableStreamDefaultController):
-            return readableStreamDefaultController.jsValue()
+            return readableStreamDefaultController.jsValue
         }
     }
 }

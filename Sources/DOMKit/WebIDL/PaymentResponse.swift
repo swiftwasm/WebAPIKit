@@ -29,25 +29,25 @@ public class PaymentResponse: EventTarget {
 
     @inlinable public func complete(result: PaymentComplete? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.complete].function!(this: this, arguments: [result?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.complete].function!(this: this, arguments: [result?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func complete(result: PaymentComplete? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.complete].function!(this: this, arguments: [result?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.complete].function!(this: this, arguments: [result?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func retry(errorFields: PaymentValidationErrors? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.retry].function!(this: this, arguments: [errorFields?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.retry].function!(this: this, arguments: [errorFields?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func retry(errorFields: PaymentValidationErrors? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.retry].function!(this: this, arguments: [errorFields?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.retry].function!(this: this, arguments: [errorFields?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 }

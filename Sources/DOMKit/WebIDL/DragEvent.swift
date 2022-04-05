@@ -12,7 +12,7 @@ public class DragEvent: MouseEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: DragEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

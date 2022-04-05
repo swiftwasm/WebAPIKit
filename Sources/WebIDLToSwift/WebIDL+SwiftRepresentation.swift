@@ -89,7 +89,7 @@ extension MergedDictionary: SwiftRepresentable {
                     """
                 } else {
                     return """
-                    object[\(Context.source(for: member.name))] = \(member.name).jsValue()
+                    object[\(Context.source(for: member.name))] = \(member.name).jsValue
                     """
                 }
             })
@@ -132,7 +132,7 @@ extension IDLEnum: SwiftRepresentable {
                 self.init(rawValue: JSString(string))
             }
 
-            @inlinable public func jsValue() -> JSValue { rawValue.jsValue() }
+            @inlinable public var jsValue: JSValue { rawValue.jsValue }
         }
         """
     }
@@ -275,12 +275,12 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
             return "// XXX: constructor is ignored"
         }
         let args: [SwiftSource] = arguments.map {
-            "\($0.name)\($0.optional ? "?" : "").jsValue() \($0.optional ? " ?? .undefined" : "")"
+            "\($0.name)\($0.optional ? "?" : "").jsValue \($0.optional ? " ?? .undefined" : "")"
         }
         let argsArray: SwiftSource
         if let last = arguments.last, last.variadic {
             // TODO: handle optional variadics (if necessary?)
-            let variadic: SwiftSource = "\(last.name).map { $0.jsValue() }"
+            let variadic: SwiftSource = "\(last.name).map(\\.jsValue)"
             if args.count == 1 {
                 argsArray = variadic
             } else {
@@ -389,9 +389,9 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         if arguments.count <= 5 {
             args = arguments.map { arg in
                 if arg.optional {
-                    return "\(arg.name)?.jsValue() ?? .undefined"
+                    return "\(arg.name)?.jsValue ?? .undefined"
                 } else {
-                    return "\(arg.name).jsValue()"
+                    return "\(arg.name).jsValue"
                 }
             }
             prep = []
@@ -399,9 +399,9 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             args = (0 ..< arguments.count).map { "_arg\(String($0))" }
             prep = arguments.enumerated().map { i, arg in
                 if arg.optional {
-                    return "let _arg\(String(i)) = \(arg.name)?.jsValue() ?? .undefined"
+                    return "let _arg\(String(i)) = \(arg.name)?.jsValue ?? .undefined"
                 } else {
-                    return "let _arg\(String(i)) = \(arg.name).jsValue()"
+                    return "let _arg\(String(i)) = \(arg.name).jsValue"
                 }
             }
         }
@@ -409,7 +409,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         let argsArray: SwiftSource
         if let last = arguments.last, last.variadic {
             // TODO: handle optional variadics (if necessary?)
-            let variadic: SwiftSource = "\(last.name).map { $0.jsValue() }"
+            let variadic: SwiftSource = "\(last.name).map(\\.jsValue)"
             if args.count == 1 {
                 argsArray = variadic
             } else {
@@ -498,9 +498,9 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
         let (prep, call) = operation.defaultBody
         let result: SwiftSource
         if returnType.swiftRepresentation.source == "Void" {
-            result = "_ = try await _promise.get()"
+            result = "_ = try await _promise.value"
         } else {
-            result = "return try await _promise.get().fromJSValue()!"
+            result = "return try await _promise.value.fromJSValue()!"
         }
         return """
         @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)

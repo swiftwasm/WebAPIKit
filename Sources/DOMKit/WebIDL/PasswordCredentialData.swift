@@ -6,10 +6,10 @@ import JavaScriptKit
 public class PasswordCredentialData: BridgedDictionary {
     public convenience init(name: String, iconURL: String, origin: String, password: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue()
-        object[Strings.iconURL] = iconURL.jsValue()
-        object[Strings.origin] = origin.jsValue()
-        object[Strings.password] = password.jsValue()
+        object[Strings.name] = name.jsValue
+        object[Strings.iconURL] = iconURL.jsValue
+        object[Strings.origin] = origin.jsValue
+        object[Strings.password] = password.jsValue
         self.init(unsafelyWrapping: object)
     }
 

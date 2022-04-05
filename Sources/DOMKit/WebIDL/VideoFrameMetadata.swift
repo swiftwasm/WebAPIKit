@@ -6,16 +6,16 @@ import JavaScriptKit
 public class VideoFrameMetadata: BridgedDictionary {
     public convenience init(presentationTime: DOMHighResTimeStamp, expectedDisplayTime: DOMHighResTimeStamp, width: UInt32, height: UInt32, mediaTime: Double, presentedFrames: UInt32, processingDuration: Double, captureTime: DOMHighResTimeStamp, receiveTime: DOMHighResTimeStamp, rtpTimestamp: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.presentationTime] = presentationTime.jsValue()
-        object[Strings.expectedDisplayTime] = expectedDisplayTime.jsValue()
-        object[Strings.width] = width.jsValue()
-        object[Strings.height] = height.jsValue()
-        object[Strings.mediaTime] = mediaTime.jsValue()
-        object[Strings.presentedFrames] = presentedFrames.jsValue()
-        object[Strings.processingDuration] = processingDuration.jsValue()
-        object[Strings.captureTime] = captureTime.jsValue()
-        object[Strings.receiveTime] = receiveTime.jsValue()
-        object[Strings.rtpTimestamp] = rtpTimestamp.jsValue()
+        object[Strings.presentationTime] = presentationTime.jsValue
+        object[Strings.expectedDisplayTime] = expectedDisplayTime.jsValue
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.mediaTime] = mediaTime.jsValue
+        object[Strings.presentedFrames] = presentedFrames.jsValue
+        object[Strings.processingDuration] = processingDuration.jsValue
+        object[Strings.captureTime] = captureTime.jsValue
+        object[Strings.receiveTime] = receiveTime.jsValue
+        object[Strings.rtpTimestamp] = rtpTimestamp.jsValue
         self.init(unsafelyWrapping: object)
     }
 

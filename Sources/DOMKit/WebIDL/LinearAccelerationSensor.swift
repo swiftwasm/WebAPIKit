@@ -11,6 +11,6 @@ public class LinearAccelerationSensor: Accelerometer {
     }
 
     @inlinable public convenience init(options: AccelerometerSensorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue ?? .undefined]))
     }
 }

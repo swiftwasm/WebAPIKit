@@ -6,8 +6,8 @@ import JavaScriptKit
 public class SyncEventInit: BridgedDictionary {
     public convenience init(tag: String, lastChance: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.tag] = tag.jsValue()
-        object[Strings.lastChance] = lastChance.jsValue()
+        object[Strings.tag] = tag.jsValue
+        object[Strings.lastChance] = lastChance.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class LockInfo: BridgedDictionary {
     public convenience init(name: String, mode: LockMode, clientId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue()
-        object[Strings.mode] = mode.jsValue()
-        object[Strings.clientId] = clientId.jsValue()
+        object[Strings.name] = name.jsValue
+        object[Strings.mode] = mode.jsValue
+        object[Strings.clientId] = clientId.jsValue
         self.init(unsafelyWrapping: object)
     }
 

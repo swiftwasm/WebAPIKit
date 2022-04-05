@@ -6,9 +6,9 @@ import JavaScriptKit
 public class MediaPositionState: BridgedDictionary {
     public convenience init(duration: Double, playbackRate: Double, position: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.duration] = duration.jsValue()
-        object[Strings.playbackRate] = playbackRate.jsValue()
-        object[Strings.position] = position.jsValue()
+        object[Strings.duration] = duration.jsValue
+        object[Strings.playbackRate] = playbackRate.jsValue
+        object[Strings.position] = position.jsValue
         self.init(unsafelyWrapping: object)
     }
 

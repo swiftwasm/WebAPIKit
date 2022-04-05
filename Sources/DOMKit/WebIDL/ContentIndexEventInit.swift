@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ContentIndexEventInit: BridgedDictionary {
     public convenience init(id: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.id] = id.jsValue()
+        object[Strings.id] = id.jsValue
         self.init(unsafelyWrapping: object)
     }
 

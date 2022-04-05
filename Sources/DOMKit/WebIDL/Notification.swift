@@ -32,7 +32,7 @@ public class Notification: EventTarget {
     }
 
     @inlinable public convenience init(title: String, options: NotificationOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [title.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [title.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

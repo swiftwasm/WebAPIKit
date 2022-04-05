@@ -13,7 +13,7 @@ public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericR
     }
 
     @inlinable public convenience init(stream: ReadableStream) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue]))
     }
 
     @inlinable public func read() -> JSPromise {
@@ -25,7 +25,7 @@ public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericR
     @inlinable public func read() async throws -> ReadableStreamDefaultReadResult {
         let this = jsObject
         let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func releaseLock() {

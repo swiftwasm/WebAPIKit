@@ -14,7 +14,7 @@ public class NDEFMessage: JSBridgedClass {
     }
 
     @inlinable public convenience init(messageInit: NDEFMessageInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [messageInit.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [messageInit.jsValue]))
     }
 
     @ReadonlyAttribute

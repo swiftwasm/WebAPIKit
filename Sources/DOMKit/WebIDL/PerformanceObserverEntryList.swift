@@ -19,11 +19,11 @@ public class PerformanceObserverEntryList: JSBridgedClass {
 
     @inlinable public func getEntriesByType(type: String) -> PerformanceEntryList {
         let this = jsObject
-        return this[Strings.getEntriesByType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.getEntriesByType].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getEntriesByName(name: String, type: String? = nil) -> PerformanceEntryList {
         let this = jsObject
-        return this[Strings.getEntriesByName].function!(this: this, arguments: [name.jsValue(), type?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getEntriesByName].function!(this: this, arguments: [name.jsValue, type?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class ProximityReadingValues: BridgedDictionary {
     public convenience init(distance: Double?, max: Double?, near: Bool?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.distance] = distance.jsValue()
-        object[Strings.max] = max.jsValue()
-        object[Strings.near] = near.jsValue()
+        object[Strings.distance] = distance.jsValue
+        object[Strings.max] = max.jsValue
+        object[Strings.near] = near.jsValue
         self.init(unsafelyWrapping: object)
     }
 

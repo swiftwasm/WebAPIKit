@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RTCIceGatherOptions: BridgedDictionary {
     public convenience init(gatherPolicy: RTCIceTransportPolicy, iceServers: [RTCIceServer]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.gatherPolicy] = gatherPolicy.jsValue()
-        object[Strings.iceServers] = iceServers.jsValue()
+        object[Strings.gatherPolicy] = gatherPolicy.jsValue
+        object[Strings.iceServers] = iceServers.jsValue
         self.init(unsafelyWrapping: object)
     }
 

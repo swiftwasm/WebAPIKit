@@ -6,9 +6,9 @@ import JavaScriptKit
 public class MockCaptureDeviceConfiguration: BridgedDictionary {
     public convenience init(label: String, deviceId: String, groupId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.label] = label.jsValue()
-        object[Strings.deviceId] = deviceId.jsValue()
-        object[Strings.groupId] = groupId.jsValue()
+        object[Strings.label] = label.jsValue
+        object[Strings.deviceId] = deviceId.jsValue
+        object[Strings.groupId] = groupId.jsValue
         self.init(unsafelyWrapping: object)
     }
 

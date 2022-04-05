@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ChannelSplitterOptions: BridgedDictionary {
     public convenience init(numberOfOutputs: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue()
+        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class DirectoryPickerOptions: BridgedDictionary {
     public convenience init(id: String, startIn: StartInDirectory) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.id] = id.jsValue()
-        object[Strings.startIn] = startIn.jsValue()
+        object[Strings.id] = id.jsValue
+        object[Strings.startIn] = startIn.jsValue
         self.init(unsafelyWrapping: object)
     }
 

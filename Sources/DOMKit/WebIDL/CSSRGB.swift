@@ -15,7 +15,7 @@ public class CSSRGB: CSSColorValue {
     }
 
     @inlinable public convenience init(r: CSSColorRGBComp, g: CSSColorRGBComp, b: CSSColorRGBComp, alpha: CSSColorPercent? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [r.jsValue(), g.jsValue(), b.jsValue(), alpha?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [r.jsValue, g.jsValue, b.jsValue, alpha?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute

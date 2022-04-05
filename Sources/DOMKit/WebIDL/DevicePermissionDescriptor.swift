@@ -6,7 +6,7 @@ import JavaScriptKit
 public class DevicePermissionDescriptor: BridgedDictionary {
     public convenience init(deviceId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.deviceId] = deviceId.jsValue()
+        object[Strings.deviceId] = deviceId.jsValue
         self.init(unsafelyWrapping: object)
     }
 

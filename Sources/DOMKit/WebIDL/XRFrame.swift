@@ -17,14 +17,14 @@ public class XRFrame: JSBridgedClass {
 
     @inlinable public func createAnchor(pose: XRRigidTransform, space: XRSpace) -> JSPromise {
         let this = jsObject
-        return this[Strings.createAnchor].function!(this: this, arguments: [pose.jsValue(), space.jsValue()]).fromJSValue()!
+        return this[Strings.createAnchor].function!(this: this, arguments: [pose.jsValue, space.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func createAnchor(pose: XRRigidTransform, space: XRSpace) async throws -> XRAnchor {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.createAnchor].function!(this: this, arguments: [pose.jsValue(), space.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.createAnchor].function!(this: this, arguments: [pose.jsValue, space.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -32,37 +32,37 @@ public class XRFrame: JSBridgedClass {
 
     @inlinable public func getDepthInformation(view: XRView) -> XRCPUDepthInformation? {
         let this = jsObject
-        return this[Strings.getDepthInformation].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
+        return this[Strings.getDepthInformation].function!(this: this, arguments: [view.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getJointPose(joint: XRJointSpace, baseSpace: XRSpace) -> XRJointPose? {
         let this = jsObject
-        return this[Strings.getJointPose].function!(this: this, arguments: [joint.jsValue(), baseSpace.jsValue()]).fromJSValue()!
+        return this[Strings.getJointPose].function!(this: this, arguments: [joint.jsValue, baseSpace.jsValue]).fromJSValue()!
     }
 
     @inlinable public func fillJointRadii(jointSpaces: [XRJointSpace], radii: Float32Array) -> Bool {
         let this = jsObject
-        return this[Strings.fillJointRadii].function!(this: this, arguments: [jointSpaces.jsValue(), radii.jsValue()]).fromJSValue()!
+        return this[Strings.fillJointRadii].function!(this: this, arguments: [jointSpaces.jsValue, radii.jsValue]).fromJSValue()!
     }
 
     @inlinable public func fillPoses(spaces: [XRSpace], baseSpace: XRSpace, transforms: Float32Array) -> Bool {
         let this = jsObject
-        return this[Strings.fillPoses].function!(this: this, arguments: [spaces.jsValue(), baseSpace.jsValue(), transforms.jsValue()]).fromJSValue()!
+        return this[Strings.fillPoses].function!(this: this, arguments: [spaces.jsValue, baseSpace.jsValue, transforms.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getHitTestResults(hitTestSource: XRHitTestSource) -> [XRHitTestResult] {
         let this = jsObject
-        return this[Strings.getHitTestResults].function!(this: this, arguments: [hitTestSource.jsValue()]).fromJSValue()!
+        return this[Strings.getHitTestResults].function!(this: this, arguments: [hitTestSource.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getHitTestResultsForTransientInput(hitTestSource: XRTransientInputHitTestSource) -> [XRTransientInputHitTestResult] {
         let this = jsObject
-        return this[Strings.getHitTestResultsForTransientInput].function!(this: this, arguments: [hitTestSource.jsValue()]).fromJSValue()!
+        return this[Strings.getHitTestResultsForTransientInput].function!(this: this, arguments: [hitTestSource.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getLightEstimate(lightProbe: XRLightProbe) -> XRLightEstimate? {
         let this = jsObject
-        return this[Strings.getLightEstimate].function!(this: this, arguments: [lightProbe.jsValue()]).fromJSValue()!
+        return this[Strings.getLightEstimate].function!(this: this, arguments: [lightProbe.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -73,11 +73,11 @@ public class XRFrame: JSBridgedClass {
 
     @inlinable public func getViewerPose(referenceSpace: XRReferenceSpace) -> XRViewerPose? {
         let this = jsObject
-        return this[Strings.getViewerPose].function!(this: this, arguments: [referenceSpace.jsValue()]).fromJSValue()!
+        return this[Strings.getViewerPose].function!(this: this, arguments: [referenceSpace.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getPose(space: XRSpace, baseSpace: XRSpace) -> XRPose? {
         let this = jsObject
-        return this[Strings.getPose].function!(this: this, arguments: [space.jsValue(), baseSpace.jsValue()]).fromJSValue()!
+        return this[Strings.getPose].function!(this: this, arguments: [space.jsValue, baseSpace.jsValue]).fromJSValue()!
     }
 }

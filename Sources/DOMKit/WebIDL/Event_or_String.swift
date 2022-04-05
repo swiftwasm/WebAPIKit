@@ -21,12 +21,12 @@ public enum Event_or_String: JSValueCompatible, Any_Event_or_String {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .event(event):
-            return event.jsValue()
+            return event.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

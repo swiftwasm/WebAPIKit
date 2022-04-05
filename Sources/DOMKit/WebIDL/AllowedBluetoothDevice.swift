@@ -6,10 +6,10 @@ import JavaScriptKit
 public class AllowedBluetoothDevice: BridgedDictionary {
     public convenience init(deviceId: String, mayUseGATT: Bool, allowedServices: String_or_seq_of_UUID, allowedManufacturerData: [UInt16]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.deviceId] = deviceId.jsValue()
-        object[Strings.mayUseGATT] = mayUseGATT.jsValue()
-        object[Strings.allowedServices] = allowedServices.jsValue()
-        object[Strings.allowedManufacturerData] = allowedManufacturerData.jsValue()
+        object[Strings.deviceId] = deviceId.jsValue
+        object[Strings.mayUseGATT] = mayUseGATT.jsValue
+        object[Strings.allowedServices] = allowedServices.jsValue
+        object[Strings.allowedManufacturerData] = allowedManufacturerData.jsValue
         self.init(unsafelyWrapping: object)
     }
 

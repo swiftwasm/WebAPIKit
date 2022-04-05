@@ -21,12 +21,12 @@ public enum AlgorithmIdentifier: JSValueCompatible, Any_AlgorithmIdentifier {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .jSObject(jSObject):
-            return jSObject.jsValue()
+            return jSObject.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

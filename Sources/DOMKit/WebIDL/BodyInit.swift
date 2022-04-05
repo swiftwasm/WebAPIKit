@@ -21,12 +21,12 @@ public enum BodyInit: JSValueCompatible, Any_BodyInit {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .readableStream(readableStream):
-            return readableStream.jsValue()
+            return readableStream.jsValue
         case let .xMLHttpRequestBodyInit(xMLHttpRequestBodyInit):
-            return xMLHttpRequestBodyInit.jsValue()
+            return xMLHttpRequestBodyInit.jsValue
         }
     }
 }

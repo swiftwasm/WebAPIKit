@@ -6,8 +6,8 @@ import JavaScriptKit
 public class BlobPropertyBag: BridgedDictionary {
     public convenience init(type: String, endings: EndingType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.endings] = endings.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.endings] = endings.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -21,12 +21,12 @@ public enum HTMLOrSVGScriptElement: JSValueCompatible, Any_HTMLOrSVGScriptElemen
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .hTMLScriptElement(hTMLScriptElement):
-            return hTMLScriptElement.jsValue()
+            return hTMLScriptElement.jsValue
         case let .sVGScriptElement(sVGScriptElement):
-            return sVGScriptElement.jsValue()
+            return sVGScriptElement.jsValue
         }
     }
 }

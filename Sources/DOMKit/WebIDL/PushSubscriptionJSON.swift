@@ -6,9 +6,9 @@ import JavaScriptKit
 public class PushSubscriptionJSON: BridgedDictionary {
     public convenience init(endpoint: String, expirationTime: EpochTimeStamp?, keys: [String: String]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.endpoint] = endpoint.jsValue()
-        object[Strings.expirationTime] = expirationTime.jsValue()
-        object[Strings.keys] = keys.jsValue()
+        object[Strings.endpoint] = endpoint.jsValue
+        object[Strings.expirationTime] = expirationTime.jsValue
+        object[Strings.keys] = keys.jsValue
         self.init(unsafelyWrapping: object)
     }
 

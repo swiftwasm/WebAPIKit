@@ -6,7 +6,7 @@ import JavaScriptKit
 public class BluetoothPermissionStorage: BridgedDictionary {
     public convenience init(allowedDevices: [AllowedBluetoothDevice]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.allowedDevices] = allowedDevices.jsValue()
+        object[Strings.allowedDevices] = allowedDevices.jsValue
         self.init(unsafelyWrapping: object)
     }
 

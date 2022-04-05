@@ -6,8 +6,8 @@ import JavaScriptKit
 public class GPUBlendState: BridgedDictionary {
     public convenience init(color: GPUBlendComponent, alpha: GPUBlendComponent) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.color] = color.jsValue()
-        object[Strings.alpha] = alpha.jsValue()
+        object[Strings.color] = color.jsValue
+        object[Strings.alpha] = alpha.jsValue
         self.init(unsafelyWrapping: object)
     }
 

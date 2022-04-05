@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RTCRtcpParameters: BridgedDictionary {
     public convenience init(cname: String, reducedSize: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.cname] = cname.jsValue()
-        object[Strings.reducedSize] = reducedSize.jsValue()
+        object[Strings.cname] = cname.jsValue
+        object[Strings.reducedSize] = reducedSize.jsValue
         self.init(unsafelyWrapping: object)
     }
 

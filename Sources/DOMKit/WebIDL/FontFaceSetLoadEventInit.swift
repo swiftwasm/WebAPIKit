@@ -6,7 +6,7 @@ import JavaScriptKit
 public class FontFaceSetLoadEventInit: BridgedDictionary {
     public convenience init(fontfaces: [FontFace]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.fontfaces] = fontfaces.jsValue()
+        object[Strings.fontfaces] = fontfaces.jsValue
         self.init(unsafelyWrapping: object)
     }
 

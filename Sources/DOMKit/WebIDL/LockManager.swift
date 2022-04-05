@@ -29,6 +29,6 @@ public class LockManager: JSBridgedClass {
     @inlinable public func query() async throws -> LockManagerSnapshot {
         let this = jsObject
         let _promise: JSPromise = this[Strings.query].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

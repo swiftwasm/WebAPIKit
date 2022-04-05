@@ -21,12 +21,12 @@ public enum RTCRtpTransform: JSValueCompatible, Any_RTCRtpTransform {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .rTCRtpScriptTransform(rTCRtpScriptTransform):
-            return rTCRtpScriptTransform.jsValue()
+            return rTCRtpScriptTransform.jsValue
         case let .sFrameTransform(sFrameTransform):
-            return sFrameTransform.jsValue()
+            return sFrameTransform.jsValue
         }
     }
 }

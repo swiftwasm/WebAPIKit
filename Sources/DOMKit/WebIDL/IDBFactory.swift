@@ -14,12 +14,12 @@ public class IDBFactory: JSBridgedClass {
 
     @inlinable public func open(name: String, version: UInt64? = nil) -> IDBOpenDBRequest {
         let this = jsObject
-        return this[Strings.open].function!(this: this, arguments: [name.jsValue(), version?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.open].function!(this: this, arguments: [name.jsValue, version?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func deleteDatabase(name: String) -> IDBOpenDBRequest {
         let this = jsObject
-        return this[Strings.deleteDatabase].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.deleteDatabase].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @inlinable public func databases() -> JSPromise {
@@ -31,11 +31,11 @@ public class IDBFactory: JSBridgedClass {
     @inlinable public func databases() async throws -> [IDBDatabaseInfo] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.databases].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func cmp(first: JSValue, second: JSValue) -> Int16 {
         let this = jsObject
-        return this[Strings.cmp].function!(this: this, arguments: [first.jsValue(), second.jsValue()]).fromJSValue()!
+        return this[Strings.cmp].function!(this: this, arguments: [first.jsValue, second.jsValue]).fromJSValue()!
     }
 }

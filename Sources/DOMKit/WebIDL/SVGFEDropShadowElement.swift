@@ -32,6 +32,6 @@ public class SVGFEDropShadowElement: SVGElement, SVGFilterPrimitiveStandardAttri
 
     @inlinable public func setStdDeviation(stdDeviationX: Float, stdDeviationY: Float) {
         let this = jsObject
-        _ = this[Strings.setStdDeviation].function!(this: this, arguments: [stdDeviationX.jsValue(), stdDeviationY.jsValue()])
+        _ = this[Strings.setStdDeviation].function!(this: this, arguments: [stdDeviationX.jsValue, stdDeviationY.jsValue])
     }
 }

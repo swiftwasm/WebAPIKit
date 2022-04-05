@@ -6,13 +6,13 @@ import JavaScriptKit
 public class KeyboardEventInit: BridgedDictionary {
     public convenience init(key: String, code: String, location: UInt32, repeat: Bool, isComposing: Bool, charCode: UInt32, keyCode: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.key] = key.jsValue()
-        object[Strings.code] = code.jsValue()
-        object[Strings.location] = location.jsValue()
-        object[Strings.repeat] = `repeat`.jsValue()
-        object[Strings.isComposing] = isComposing.jsValue()
-        object[Strings.charCode] = charCode.jsValue()
-        object[Strings.keyCode] = keyCode.jsValue()
+        object[Strings.key] = key.jsValue
+        object[Strings.code] = code.jsValue
+        object[Strings.location] = location.jsValue
+        object[Strings.repeat] = `repeat`.jsValue
+        object[Strings.isComposing] = isComposing.jsValue
+        object[Strings.charCode] = charCode.jsValue
+        object[Strings.keyCode] = keyCode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

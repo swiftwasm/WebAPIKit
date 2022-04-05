@@ -6,8 +6,8 @@ import JavaScriptKit
 public class AesCtrParams: BridgedDictionary {
     public convenience init(counter: BufferSource, length: UInt8) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.counter] = counter.jsValue()
-        object[Strings.length] = length.jsValue()
+        object[Strings.counter] = counter.jsValue
+        object[Strings.length] = length.jsValue
         self.init(unsafelyWrapping: object)
     }
 

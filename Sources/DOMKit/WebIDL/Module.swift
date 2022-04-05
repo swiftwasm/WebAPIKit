@@ -13,21 +13,21 @@ public class Module: JSBridgedClass {
     }
 
     @inlinable public convenience init(bytes: BufferSource) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [bytes.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [bytes.jsValue]))
     }
 
     @inlinable public static func exports(moduleObject: Module) -> [ModuleExportDescriptor] {
         let this = constructor
-        return this[Strings.exports].function!(this: this, arguments: [moduleObject.jsValue()]).fromJSValue()!
+        return this[Strings.exports].function!(this: this, arguments: [moduleObject.jsValue]).fromJSValue()!
     }
 
     @inlinable public static func imports(moduleObject: Module) -> [ModuleImportDescriptor] {
         let this = constructor
-        return this[Strings.imports].function!(this: this, arguments: [moduleObject.jsValue()]).fromJSValue()!
+        return this[Strings.imports].function!(this: this, arguments: [moduleObject.jsValue]).fromJSValue()!
     }
 
     @inlinable public static func customSections(moduleObject: Module, sectionName: String) -> [ArrayBuffer] {
         let this = constructor
-        return this[Strings.customSections].function!(this: this, arguments: [moduleObject.jsValue(), sectionName.jsValue()]).fromJSValue()!
+        return this[Strings.customSections].function!(this: this, arguments: [moduleObject.jsValue, sectionName.jsValue]).fromJSValue()!
     }
 }

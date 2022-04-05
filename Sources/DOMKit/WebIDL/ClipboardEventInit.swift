@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ClipboardEventInit: BridgedDictionary {
     public convenience init(clipboardData: DataTransfer?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.clipboardData] = clipboardData.jsValue()
+        object[Strings.clipboardData] = clipboardData.jsValue
         self.init(unsafelyWrapping: object)
     }
 

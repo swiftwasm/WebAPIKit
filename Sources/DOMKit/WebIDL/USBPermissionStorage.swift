@@ -6,7 +6,7 @@ import JavaScriptKit
 public class USBPermissionStorage: BridgedDictionary {
     public convenience init(allowedDevices: [AllowedUSBDevice]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.allowedDevices] = allowedDevices.jsValue()
+        object[Strings.allowedDevices] = allowedDevices.jsValue
         self.init(unsafelyWrapping: object)
     }
 

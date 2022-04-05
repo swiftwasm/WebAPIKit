@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PublicKeyCredentialUserEntity: BridgedDictionary {
     public convenience init(id: BufferSource, displayName: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.id] = id.jsValue()
-        object[Strings.displayName] = displayName.jsValue()
+        object[Strings.id] = id.jsValue
+        object[Strings.displayName] = displayName.jsValue
         self.init(unsafelyWrapping: object)
     }
 

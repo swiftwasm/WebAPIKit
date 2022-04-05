@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PeriodicWaveOptions: BridgedDictionary {
     public convenience init(real: [Float], imag: [Float]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.real] = real.jsValue()
-        object[Strings.imag] = imag.jsValue()
+        object[Strings.real] = real.jsValue
+        object[Strings.imag] = imag.jsValue
         self.init(unsafelyWrapping: object)
     }
 

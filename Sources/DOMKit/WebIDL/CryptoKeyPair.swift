@@ -6,8 +6,8 @@ import JavaScriptKit
 public class CryptoKeyPair: BridgedDictionary {
     public convenience init(publicKey: CryptoKey, privateKey: CryptoKey) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.publicKey] = publicKey.jsValue()
-        object[Strings.privateKey] = privateKey.jsValue()
+        object[Strings.publicKey] = publicKey.jsValue
+        object[Strings.privateKey] = privateKey.jsValue
         self.init(unsafelyWrapping: object)
     }
 

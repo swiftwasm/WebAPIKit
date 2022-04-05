@@ -6,7 +6,7 @@ import JavaScriptKit
 public class CameraDevicePermissionDescriptor: BridgedDictionary {
     public convenience init(panTiltZoom: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.panTiltZoom] = panTiltZoom.jsValue()
+        object[Strings.panTiltZoom] = panTiltZoom.jsValue
         self.init(unsafelyWrapping: object)
     }
 

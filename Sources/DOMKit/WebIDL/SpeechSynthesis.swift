@@ -28,7 +28,7 @@ public class SpeechSynthesis: EventTarget {
 
     @inlinable public func speak(utterance: SpeechSynthesisUtterance) {
         let this = jsObject
-        _ = this[Strings.speak].function!(this: this, arguments: [utterance.jsValue()])
+        _ = this[Strings.speak].function!(this: this, arguments: [utterance.jsValue])
     }
 
     @inlinable public func cancel() {

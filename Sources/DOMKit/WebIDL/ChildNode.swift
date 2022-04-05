@@ -7,17 +7,17 @@ public protocol ChildNode: JSBridgedClass {}
 public extension ChildNode {
     @inlinable func before(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.before].function!(this: this, arguments: nodes.map { $0.jsValue() })
+        _ = this[Strings.before].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
     @inlinable func after(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.after].function!(this: this, arguments: nodes.map { $0.jsValue() })
+        _ = this[Strings.after].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
     @inlinable func replaceWith(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.replaceWith].function!(this: this, arguments: nodes.map { $0.jsValue() })
+        _ = this[Strings.replaceWith].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
     @inlinable func remove() {

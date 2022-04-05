@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUBufferDescriptor: BridgedDictionary {
     public convenience init(size: GPUSize64, usage: GPUBufferUsageFlags, mappedAtCreation: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.size] = size.jsValue()
-        object[Strings.usage] = usage.jsValue()
-        object[Strings.mappedAtCreation] = mappedAtCreation.jsValue()
+        object[Strings.size] = size.jsValue
+        object[Strings.usage] = usage.jsValue
+        object[Strings.mappedAtCreation] = mappedAtCreation.jsValue
         self.init(unsafelyWrapping: object)
     }
 

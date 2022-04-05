@@ -6,9 +6,9 @@ import JavaScriptKit
 public class PaymentItem: BridgedDictionary {
     public convenience init(label: String, amount: PaymentCurrencyAmount, pending: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.label] = label.jsValue()
-        object[Strings.amount] = amount.jsValue()
-        object[Strings.pending] = pending.jsValue()
+        object[Strings.label] = label.jsValue
+        object[Strings.amount] = amount.jsValue
+        object[Strings.pending] = pending.jsValue
         self.init(unsafelyWrapping: object)
     }
 

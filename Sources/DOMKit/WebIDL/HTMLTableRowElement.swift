@@ -33,12 +33,12 @@ public class HTMLTableRowElement: HTMLElement {
 
     @inlinable public func insertCell(index: Int32? = nil) -> HTMLTableCellElement {
         let this = jsObject
-        return this[Strings.insertCell].function!(this: this, arguments: [index?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.insertCell].function!(this: this, arguments: [index?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func deleteCell(index: Int32) {
         let this = jsObject
-        _ = this[Strings.deleteCell].function!(this: this, arguments: [index.jsValue()])
+        _ = this[Strings.deleteCell].function!(this: this, arguments: [index.jsValue])
     }
 
     @ReadWriteAttribute

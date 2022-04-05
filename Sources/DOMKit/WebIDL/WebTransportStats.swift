@@ -6,18 +6,18 @@ import JavaScriptKit
 public class WebTransportStats: BridgedDictionary {
     public convenience init(timestamp: DOMHighResTimeStamp, bytesSent: UInt64, packetsSent: UInt64, packetsLost: UInt64, numOutgoingStreamsCreated: UInt32, numIncomingStreamsCreated: UInt32, bytesReceived: UInt64, packetsReceived: UInt64, smoothedRtt: DOMHighResTimeStamp, rttVariation: DOMHighResTimeStamp, minRtt: DOMHighResTimeStamp, numReceivedDatagramsDropped: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.timestamp] = timestamp.jsValue()
-        object[Strings.bytesSent] = bytesSent.jsValue()
-        object[Strings.packetsSent] = packetsSent.jsValue()
-        object[Strings.packetsLost] = packetsLost.jsValue()
-        object[Strings.numOutgoingStreamsCreated] = numOutgoingStreamsCreated.jsValue()
-        object[Strings.numIncomingStreamsCreated] = numIncomingStreamsCreated.jsValue()
-        object[Strings.bytesReceived] = bytesReceived.jsValue()
-        object[Strings.packetsReceived] = packetsReceived.jsValue()
-        object[Strings.smoothedRtt] = smoothedRtt.jsValue()
-        object[Strings.rttVariation] = rttVariation.jsValue()
-        object[Strings.minRtt] = minRtt.jsValue()
-        object[Strings.numReceivedDatagramsDropped] = numReceivedDatagramsDropped.jsValue()
+        object[Strings.timestamp] = timestamp.jsValue
+        object[Strings.bytesSent] = bytesSent.jsValue
+        object[Strings.packetsSent] = packetsSent.jsValue
+        object[Strings.packetsLost] = packetsLost.jsValue
+        object[Strings.numOutgoingStreamsCreated] = numOutgoingStreamsCreated.jsValue
+        object[Strings.numIncomingStreamsCreated] = numIncomingStreamsCreated.jsValue
+        object[Strings.bytesReceived] = bytesReceived.jsValue
+        object[Strings.packetsReceived] = packetsReceived.jsValue
+        object[Strings.smoothedRtt] = smoothedRtt.jsValue
+        object[Strings.rttVariation] = rttVariation.jsValue
+        object[Strings.minRtt] = minRtt.jsValue
+        object[Strings.numReceivedDatagramsDropped] = numReceivedDatagramsDropped.jsValue
         self.init(unsafelyWrapping: object)
     }
 

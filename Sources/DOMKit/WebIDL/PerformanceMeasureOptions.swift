@@ -6,10 +6,10 @@ import JavaScriptKit
 public class PerformanceMeasureOptions: BridgedDictionary {
     public convenience init(detail: JSValue, start: DOMHighResTimeStamp_or_String, duration: DOMHighResTimeStamp, end: DOMHighResTimeStamp_or_String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.detail] = detail.jsValue()
-        object[Strings.start] = start.jsValue()
-        object[Strings.duration] = duration.jsValue()
-        object[Strings.end] = end.jsValue()
+        object[Strings.detail] = detail.jsValue
+        object[Strings.start] = start.jsValue
+        object[Strings.duration] = duration.jsValue
+        object[Strings.end] = end.jsValue
         self.init(unsafelyWrapping: object)
     }
 

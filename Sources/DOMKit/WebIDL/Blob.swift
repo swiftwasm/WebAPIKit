@@ -15,7 +15,7 @@ public class Blob: JSBridgedClass {
     }
 
     @inlinable public convenience init(blobParts: [BlobPart]? = nil, options: BlobPropertyBag? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [blobParts?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [blobParts?.jsValue ?? .undefined, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -26,7 +26,7 @@ public class Blob: JSBridgedClass {
 
     @inlinable public func slice(start: Int64? = nil, end: Int64? = nil, contentType: String? = nil) -> Self {
         let this = jsObject
-        return this[Strings.slice].function!(this: this, arguments: [start?.jsValue() ?? .undefined, end?.jsValue() ?? .undefined, contentType?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.slice].function!(this: this, arguments: [start?.jsValue ?? .undefined, end?.jsValue ?? .undefined, contentType?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func stream() -> ReadableStream {
@@ -43,7 +43,7 @@ public class Blob: JSBridgedClass {
     @inlinable public func text() async throws -> String {
         let this = jsObject
         let _promise: JSPromise = this[Strings.text].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func arrayBuffer() -> JSPromise {
@@ -55,6 +55,6 @@ public class Blob: JSBridgedClass {
     @inlinable public func arrayBuffer() async throws -> ArrayBuffer {
         let this = jsObject
         let _promise: JSPromise = this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

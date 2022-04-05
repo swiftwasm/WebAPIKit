@@ -23,6 +23,6 @@ public class XRHand: JSBridgedClass, Sequence {
 
     @inlinable public func get(key: XRHandJoint) -> XRJointSpace {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [key.jsValue()]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [key.jsValue]).fromJSValue()!
     }
 }

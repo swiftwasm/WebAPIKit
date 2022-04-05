@@ -6,8 +6,8 @@ import JavaScriptKit
 public class SpatialNavigationSearchOptions: BridgedDictionary {
     public convenience init(candidates: [Node]?, container: Node?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.candidates] = candidates.jsValue()
-        object[Strings.container] = container.jsValue()
+        object[Strings.candidates] = candidates.jsValue
+        object[Strings.container] = container.jsValue
         self.init(unsafelyWrapping: object)
     }
 

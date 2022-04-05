@@ -6,7 +6,7 @@ import JavaScriptKit
 public class PictureInPictureEventInit: BridgedDictionary {
     public convenience init(pictureInPictureWindow: PictureInPictureWindow) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.pictureInPictureWindow] = pictureInPictureWindow.jsValue()
+        object[Strings.pictureInPictureWindow] = pictureInPictureWindow.jsValue
         self.init(unsafelyWrapping: object)
     }
 

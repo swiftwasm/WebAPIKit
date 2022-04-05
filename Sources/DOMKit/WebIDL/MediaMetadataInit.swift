@@ -6,10 +6,10 @@ import JavaScriptKit
 public class MediaMetadataInit: BridgedDictionary {
     public convenience init(title: String, artist: String, album: String, artwork: [MediaImage]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.title] = title.jsValue()
-        object[Strings.artist] = artist.jsValue()
-        object[Strings.album] = album.jsValue()
-        object[Strings.artwork] = artwork.jsValue()
+        object[Strings.title] = title.jsValue
+        object[Strings.artist] = artist.jsValue
+        object[Strings.album] = album.jsValue
+        object[Strings.artwork] = artwork.jsValue
         self.init(unsafelyWrapping: object)
     }
 

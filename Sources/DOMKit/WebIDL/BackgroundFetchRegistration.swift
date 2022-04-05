@@ -55,30 +55,30 @@ public class BackgroundFetchRegistration: EventTarget {
     @inlinable public func abort() async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func match(request: RequestInfo, options: CacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.match].function!(this: this, arguments: [request.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func match(request: RequestInfo, options: CacheQueryOptions? = nil) async throws -> BackgroundFetchRecord {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [request.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [request.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue ?? .undefined, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) async throws -> [BackgroundFetchRecord] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue ?? .undefined, options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

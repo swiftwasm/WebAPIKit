@@ -21,12 +21,12 @@ public enum MediaStreamTrack_or_String: JSValueCompatible, Any_MediaStreamTrack_
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .mediaStreamTrack(mediaStreamTrack):
-            return mediaStreamTrack.jsValue()
+            return mediaStreamTrack.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

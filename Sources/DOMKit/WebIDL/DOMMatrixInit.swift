@@ -6,17 +6,17 @@ import JavaScriptKit
 public class DOMMatrixInit: BridgedDictionary {
     public convenience init(m13: Double, m14: Double, m23: Double, m24: Double, m31: Double, m32: Double, m33: Double, m34: Double, m43: Double, m44: Double, is2D: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.m13] = m13.jsValue()
-        object[Strings.m14] = m14.jsValue()
-        object[Strings.m23] = m23.jsValue()
-        object[Strings.m24] = m24.jsValue()
-        object[Strings.m31] = m31.jsValue()
-        object[Strings.m32] = m32.jsValue()
-        object[Strings.m33] = m33.jsValue()
-        object[Strings.m34] = m34.jsValue()
-        object[Strings.m43] = m43.jsValue()
-        object[Strings.m44] = m44.jsValue()
-        object[Strings.is2D] = is2D.jsValue()
+        object[Strings.m13] = m13.jsValue
+        object[Strings.m14] = m14.jsValue
+        object[Strings.m23] = m23.jsValue
+        object[Strings.m24] = m24.jsValue
+        object[Strings.m31] = m31.jsValue
+        object[Strings.m32] = m32.jsValue
+        object[Strings.m33] = m33.jsValue
+        object[Strings.m34] = m34.jsValue
+        object[Strings.m43] = m43.jsValue
+        object[Strings.m44] = m44.jsValue
+        object[Strings.is2D] = is2D.jsValue
         self.init(unsafelyWrapping: object)
     }
 

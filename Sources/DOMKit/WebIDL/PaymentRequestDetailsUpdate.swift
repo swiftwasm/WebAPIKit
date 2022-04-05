@@ -6,10 +6,10 @@ import JavaScriptKit
 public class PaymentRequestDetailsUpdate: BridgedDictionary {
     public convenience init(error: String, total: PaymentCurrencyAmount, modifiers: [PaymentDetailsModifier], paymentMethodErrors: JSObject) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.error] = error.jsValue()
-        object[Strings.total] = total.jsValue()
-        object[Strings.modifiers] = modifiers.jsValue()
-        object[Strings.paymentMethodErrors] = paymentMethodErrors.jsValue()
+        object[Strings.error] = error.jsValue
+        object[Strings.total] = total.jsValue
+        object[Strings.modifiers] = modifiers.jsValue
+        object[Strings.paymentMethodErrors] = paymentMethodErrors.jsValue
         self.init(unsafelyWrapping: object)
     }
 

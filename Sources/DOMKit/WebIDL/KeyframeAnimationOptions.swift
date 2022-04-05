@@ -6,8 +6,8 @@ import JavaScriptKit
 public class KeyframeAnimationOptions: BridgedDictionary {
     public convenience init(id: String, timeline: AnimationTimeline?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.id] = id.jsValue()
-        object[Strings.timeline] = timeline.jsValue()
+        object[Strings.id] = id.jsValue
+        object[Strings.timeline] = timeline.jsValue
         self.init(unsafelyWrapping: object)
     }
 

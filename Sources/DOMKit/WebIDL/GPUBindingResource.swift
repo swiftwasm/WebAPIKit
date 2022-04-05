@@ -31,16 +31,16 @@ public enum GPUBindingResource: JSValueCompatible, Any_GPUBindingResource {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .gPUBufferBinding(gPUBufferBinding):
-            return gPUBufferBinding.jsValue()
+            return gPUBufferBinding.jsValue
         case let .gPUExternalTexture(gPUExternalTexture):
-            return gPUExternalTexture.jsValue()
+            return gPUExternalTexture.jsValue
         case let .gPUSampler(gPUSampler):
-            return gPUSampler.jsValue()
+            return gPUSampler.jsValue
         case let .gPUTextureView(gPUTextureView):
-            return gPUTextureView.jsValue()
+            return gPUTextureView.jsValue
         }
     }
 }

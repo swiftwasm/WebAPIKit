@@ -6,13 +6,13 @@ import JavaScriptKit
 public class GPUCanvasConfiguration: BridgedDictionary {
     public convenience init(device: GPUDevice, format: GPUTextureFormat, usage: GPUTextureUsageFlags, viewFormats: [GPUTextureFormat], colorSpace: GPUPredefinedColorSpace, compositingAlphaMode: GPUCanvasCompositingAlphaMode, size: GPUExtent3D) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.device] = device.jsValue()
-        object[Strings.format] = format.jsValue()
-        object[Strings.usage] = usage.jsValue()
-        object[Strings.viewFormats] = viewFormats.jsValue()
-        object[Strings.colorSpace] = colorSpace.jsValue()
-        object[Strings.compositingAlphaMode] = compositingAlphaMode.jsValue()
-        object[Strings.size] = size.jsValue()
+        object[Strings.device] = device.jsValue
+        object[Strings.format] = format.jsValue
+        object[Strings.usage] = usage.jsValue
+        object[Strings.viewFormats] = viewFormats.jsValue
+        object[Strings.colorSpace] = colorSpace.jsValue
+        object[Strings.compositingAlphaMode] = compositingAlphaMode.jsValue
+        object[Strings.size] = size.jsValue
         self.init(unsafelyWrapping: object)
     }
 

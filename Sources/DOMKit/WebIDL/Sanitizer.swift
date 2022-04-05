@@ -13,17 +13,17 @@ public class Sanitizer: JSBridgedClass {
     }
 
     @inlinable public convenience init(config: SanitizerConfig? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [config?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [config?.jsValue ?? .undefined]))
     }
 
     @inlinable public func sanitize(input: Document_or_DocumentFragment) -> DocumentFragment {
         let this = jsObject
-        return this[Strings.sanitize].function!(this: this, arguments: [input.jsValue()]).fromJSValue()!
+        return this[Strings.sanitize].function!(this: this, arguments: [input.jsValue]).fromJSValue()!
     }
 
     @inlinable public func sanitizeFor(element: String, input: String) -> Element? {
         let this = jsObject
-        return this[Strings.sanitizeFor].function!(this: this, arguments: [element.jsValue(), input.jsValue()]).fromJSValue()!
+        return this[Strings.sanitizeFor].function!(this: this, arguments: [element.jsValue, input.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getConfiguration() -> SanitizerConfig {

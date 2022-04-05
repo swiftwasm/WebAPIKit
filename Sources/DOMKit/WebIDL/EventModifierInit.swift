@@ -6,20 +6,20 @@ import JavaScriptKit
 public class EventModifierInit: BridgedDictionary {
     public convenience init(ctrlKey: Bool, shiftKey: Bool, altKey: Bool, metaKey: Bool, modifierAltGraph: Bool, modifierCapsLock: Bool, modifierFn: Bool, modifierFnLock: Bool, modifierHyper: Bool, modifierNumLock: Bool, modifierScrollLock: Bool, modifierSuper: Bool, modifierSymbol: Bool, modifierSymbolLock: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.ctrlKey] = ctrlKey.jsValue()
-        object[Strings.shiftKey] = shiftKey.jsValue()
-        object[Strings.altKey] = altKey.jsValue()
-        object[Strings.metaKey] = metaKey.jsValue()
-        object[Strings.modifierAltGraph] = modifierAltGraph.jsValue()
-        object[Strings.modifierCapsLock] = modifierCapsLock.jsValue()
-        object[Strings.modifierFn] = modifierFn.jsValue()
-        object[Strings.modifierFnLock] = modifierFnLock.jsValue()
-        object[Strings.modifierHyper] = modifierHyper.jsValue()
-        object[Strings.modifierNumLock] = modifierNumLock.jsValue()
-        object[Strings.modifierScrollLock] = modifierScrollLock.jsValue()
-        object[Strings.modifierSuper] = modifierSuper.jsValue()
-        object[Strings.modifierSymbol] = modifierSymbol.jsValue()
-        object[Strings.modifierSymbolLock] = modifierSymbolLock.jsValue()
+        object[Strings.ctrlKey] = ctrlKey.jsValue
+        object[Strings.shiftKey] = shiftKey.jsValue
+        object[Strings.altKey] = altKey.jsValue
+        object[Strings.metaKey] = metaKey.jsValue
+        object[Strings.modifierAltGraph] = modifierAltGraph.jsValue
+        object[Strings.modifierCapsLock] = modifierCapsLock.jsValue
+        object[Strings.modifierFn] = modifierFn.jsValue
+        object[Strings.modifierFnLock] = modifierFnLock.jsValue
+        object[Strings.modifierHyper] = modifierHyper.jsValue
+        object[Strings.modifierNumLock] = modifierNumLock.jsValue
+        object[Strings.modifierScrollLock] = modifierScrollLock.jsValue
+        object[Strings.modifierSuper] = modifierSuper.jsValue
+        object[Strings.modifierSymbol] = modifierSymbol.jsValue
+        object[Strings.modifierSymbolLock] = modifierSymbolLock.jsValue
         self.init(unsafelyWrapping: object)
     }
 

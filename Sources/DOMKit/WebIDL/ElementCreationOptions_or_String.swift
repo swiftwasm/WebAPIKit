@@ -21,12 +21,12 @@ public enum ElementCreationOptions_or_String: JSValueCompatible, Any_ElementCrea
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .elementCreationOptions(elementCreationOptions):
-            return elementCreationOptions.jsValue()
+            return elementCreationOptions.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

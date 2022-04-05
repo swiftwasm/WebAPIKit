@@ -103,7 +103,7 @@ public class HTMLImageElement: HTMLElement {
     @inlinable public func decode() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.decode].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @ReadWriteAttribute

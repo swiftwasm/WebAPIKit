@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RTCRtpStreamStats: BridgedDictionary {
     public convenience init(ssrc: UInt32, kind: String, transportId: String, codecId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.ssrc] = ssrc.jsValue()
-        object[Strings.kind] = kind.jsValue()
-        object[Strings.transportId] = transportId.jsValue()
-        object[Strings.codecId] = codecId.jsValue()
+        object[Strings.ssrc] = ssrc.jsValue
+        object[Strings.kind] = kind.jsValue
+        object[Strings.transportId] = transportId.jsValue
+        object[Strings.codecId] = codecId.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,13 +6,13 @@ import JavaScriptKit
 public class TextUpdateEventInit: BridgedDictionary {
     public convenience init(updateRangeStart: UInt32, updateRangeEnd: UInt32, text: String, selectionStart: UInt32, selectionEnd: UInt32, compositionStart: UInt32, compositionEnd: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.updateRangeStart] = updateRangeStart.jsValue()
-        object[Strings.updateRangeEnd] = updateRangeEnd.jsValue()
-        object[Strings.text] = text.jsValue()
-        object[Strings.selectionStart] = selectionStart.jsValue()
-        object[Strings.selectionEnd] = selectionEnd.jsValue()
-        object[Strings.compositionStart] = compositionStart.jsValue()
-        object[Strings.compositionEnd] = compositionEnd.jsValue()
+        object[Strings.updateRangeStart] = updateRangeStart.jsValue
+        object[Strings.updateRangeEnd] = updateRangeEnd.jsValue
+        object[Strings.text] = text.jsValue
+        object[Strings.selectionStart] = selectionStart.jsValue
+        object[Strings.selectionEnd] = selectionEnd.jsValue
+        object[Strings.compositionStart] = compositionStart.jsValue
+        object[Strings.compositionEnd] = compositionEnd.jsValue
         self.init(unsafelyWrapping: object)
     }
 

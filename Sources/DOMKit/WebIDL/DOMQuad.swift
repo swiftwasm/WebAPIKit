@@ -17,17 +17,17 @@ public class DOMQuad: JSBridgedClass {
     }
 
     @inlinable public convenience init(p1: DOMPointInit? = nil, p2: DOMPointInit? = nil, p3: DOMPointInit? = nil, p4: DOMPointInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [p1?.jsValue() ?? .undefined, p2?.jsValue() ?? .undefined, p3?.jsValue() ?? .undefined, p4?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [p1?.jsValue ?? .undefined, p2?.jsValue ?? .undefined, p3?.jsValue ?? .undefined, p4?.jsValue ?? .undefined]))
     }
 
     @inlinable public static func fromRect(other: DOMRectInit? = nil) -> Self {
         let this = constructor
-        return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public static func fromQuad(other: DOMQuadInit? = nil) -> Self {
         let this = constructor
-        return this[Strings.fromQuad].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.fromQuad].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

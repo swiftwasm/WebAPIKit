@@ -12,7 +12,7 @@ public class GPUUncapturedErrorEvent: Event {
     }
 
     @inlinable public convenience init(type: String, gpuUncapturedErrorEventInitDict: GPUUncapturedErrorEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), gpuUncapturedErrorEventInitDict.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, gpuUncapturedErrorEventInitDict.jsValue]))
     }
 
     @ReadonlyAttribute

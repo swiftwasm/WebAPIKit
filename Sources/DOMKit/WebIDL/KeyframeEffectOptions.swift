@@ -6,9 +6,9 @@ import JavaScriptKit
 public class KeyframeEffectOptions: BridgedDictionary {
     public convenience init(iterationComposite: IterationCompositeOperation, composite: CompositeOperation, pseudoElement: String?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.iterationComposite] = iterationComposite.jsValue()
-        object[Strings.composite] = composite.jsValue()
-        object[Strings.pseudoElement] = pseudoElement.jsValue()
+        object[Strings.iterationComposite] = iterationComposite.jsValue
+        object[Strings.composite] = composite.jsValue
+        object[Strings.pseudoElement] = pseudoElement.jsValue
         self.init(unsafelyWrapping: object)
     }
 

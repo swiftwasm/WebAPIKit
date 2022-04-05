@@ -67,12 +67,12 @@ public class HTMLSelectElement: HTMLElement {
 
     @inlinable public func namedItem(name: String) -> HTMLOptionElement? {
         let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.namedItem].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @inlinable public func add(element: HTMLOptGroupElement_or_HTMLOptionElement, before: HTMLElement_or_Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.add].function!(this: this, arguments: [element.jsValue(), before?.jsValue() ?? .undefined])
+        _ = this[Strings.add].function!(this: this, arguments: [element.jsValue, before?.jsValue ?? .undefined])
     }
 
     @inlinable public func remove() {
@@ -82,7 +82,7 @@ public class HTMLSelectElement: HTMLElement {
 
     @inlinable public func remove(index: Int32) {
         let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue()])
+        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue])
     }
 
     // XXX: unsupported setter for keys of type UInt32
@@ -117,7 +117,7 @@ public class HTMLSelectElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
     }
 
     @ReadonlyAttribute

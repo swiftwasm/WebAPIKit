@@ -6,8 +6,8 @@ import JavaScriptKit
 public class NavigationCurrentEntryChangeEventInit: BridgedDictionary {
     public convenience init(navigationType: NavigationNavigationType?, destination: NavigationHistoryEntry) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.navigationType] = navigationType.jsValue()
-        object[Strings.destination] = destination.jsValue()
+        object[Strings.navigationType] = navigationType.jsValue
+        object[Strings.destination] = destination.jsValue
         self.init(unsafelyWrapping: object)
     }
 

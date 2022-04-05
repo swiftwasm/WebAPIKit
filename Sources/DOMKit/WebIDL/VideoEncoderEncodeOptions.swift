@@ -6,7 +6,7 @@ import JavaScriptKit
 public class VideoEncoderEncodeOptions: BridgedDictionary {
     public convenience init(keyFrame: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.keyFrame] = keyFrame.jsValue()
+        object[Strings.keyFrame] = keyFrame.jsValue
         self.init(unsafelyWrapping: object)
     }
 

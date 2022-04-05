@@ -28,7 +28,7 @@ public class IDBDatabase: EventTarget {
 
     @inlinable public func transaction(storeNames: String_or_seq_of_String, mode: IDBTransactionMode? = nil, options: IDBTransactionOptions? = nil) -> IDBTransaction {
         let this = jsObject
-        return this[Strings.transaction].function!(this: this, arguments: [storeNames.jsValue(), mode?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.transaction].function!(this: this, arguments: [storeNames.jsValue, mode?.jsValue ?? .undefined, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func close() {
@@ -38,12 +38,12 @@ public class IDBDatabase: EventTarget {
 
     @inlinable public func createObjectStore(name: String, options: IDBObjectStoreParameters? = nil) -> IDBObjectStore {
         let this = jsObject
-        return this[Strings.createObjectStore].function!(this: this, arguments: [name.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createObjectStore].function!(this: this, arguments: [name.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func deleteObjectStore(name: String) {
         let this = jsObject
-        _ = this[Strings.deleteObjectStore].function!(this: this, arguments: [name.jsValue()])
+        _ = this[Strings.deleteObjectStore].function!(this: this, arguments: [name.jsValue])
     }
 
     @ClosureAttribute1Optional

@@ -21,12 +21,12 @@ public enum HTMLOptGroupElement_or_HTMLOptionElement: JSValueCompatible, Any_HTM
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .hTMLOptGroupElement(hTMLOptGroupElement):
-            return hTMLOptGroupElement.jsValue()
+            return hTMLOptGroupElement.jsValue
         case let .hTMLOptionElement(hTMLOptionElement):
-            return hTMLOptionElement.jsValue()
+            return hTMLOptionElement.jsValue
         }
     }
 }

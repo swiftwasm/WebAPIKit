@@ -6,12 +6,12 @@ import JavaScriptKit
 public class AuthenticationExtensionsClientInputs: BridgedDictionary {
     public convenience init(payment: AuthenticationExtensionsPaymentInputs, appid: String, appidExclude: String, uvm: Bool, credProps: Bool, largeBlob: AuthenticationExtensionsLargeBlobInputs) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.payment] = payment.jsValue()
-        object[Strings.appid] = appid.jsValue()
-        object[Strings.appidExclude] = appidExclude.jsValue()
-        object[Strings.uvm] = uvm.jsValue()
-        object[Strings.credProps] = credProps.jsValue()
-        object[Strings.largeBlob] = largeBlob.jsValue()
+        object[Strings.payment] = payment.jsValue
+        object[Strings.appid] = appid.jsValue
+        object[Strings.appidExclude] = appidExclude.jsValue
+        object[Strings.uvm] = uvm.jsValue
+        object[Strings.credProps] = credProps.jsValue
+        object[Strings.largeBlob] = largeBlob.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PresentationConnectionCloseEventInit: BridgedDictionary {
     public convenience init(reason: PresentationConnectionCloseReason, message: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.reason] = reason.jsValue()
-        object[Strings.message] = message.jsValue()
+        object[Strings.reason] = reason.jsValue
+        object[Strings.message] = message.jsValue
         self.init(unsafelyWrapping: object)
     }
 

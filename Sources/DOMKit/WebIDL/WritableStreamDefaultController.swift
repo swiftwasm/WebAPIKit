@@ -18,6 +18,6 @@ public class WritableStreamDefaultController: JSBridgedClass {
 
     @inlinable public func error(e: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue() ?? .undefined])
+        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue ?? .undefined])
     }
 }

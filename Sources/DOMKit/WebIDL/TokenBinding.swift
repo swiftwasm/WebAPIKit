@@ -6,8 +6,8 @@ import JavaScriptKit
 public class TokenBinding: BridgedDictionary {
     public convenience init(status: String, id: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.status] = status.jsValue()
-        object[Strings.id] = id.jsValue()
+        object[Strings.status] = status.jsValue
+        object[Strings.id] = id.jsValue
         self.init(unsafelyWrapping: object)
     }
 

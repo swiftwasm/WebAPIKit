@@ -21,12 +21,12 @@ public enum Double_or_EffectTiming: JSValueCompatible, Any_Double_or_EffectTimin
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .double(double):
-            return double.jsValue()
+            return double.jsValue
         case let .effectTiming(effectTiming):
-            return effectTiming.jsValue()
+            return effectTiming.jsValue
         }
     }
 }

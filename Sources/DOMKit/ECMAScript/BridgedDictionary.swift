@@ -3,8 +3,8 @@ import JavaScriptKit
 public class BridgedDictionary: JSValueCompatible {
     public let jsObject: JSObject
 
-    public func jsValue() -> JSValue {
-        jsObject.jsValue()
+    public var jsValue: JSValue {
+        jsObject.jsValue
     }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

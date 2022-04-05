@@ -12,7 +12,7 @@ public class ClipboardEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: ClipboardEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

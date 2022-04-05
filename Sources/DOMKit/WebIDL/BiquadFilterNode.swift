@@ -16,7 +16,7 @@ public class BiquadFilterNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: BiquadFilterOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute
@@ -36,6 +36,6 @@ public class BiquadFilterNode: AudioNode {
 
     @inlinable public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
         let this = jsObject
-        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue(), magResponse.jsValue(), phaseResponse.jsValue()])
+        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue, magResponse.jsValue, phaseResponse.jsValue])
     }
 }

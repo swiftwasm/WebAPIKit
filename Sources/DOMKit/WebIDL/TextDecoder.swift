@@ -13,11 +13,11 @@ public class TextDecoder: JSBridgedClass, TextDecoderCommon {
     }
 
     @inlinable public convenience init(label: String? = nil, options: TextDecoderOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [label?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [label?.jsValue ?? .undefined, options?.jsValue ?? .undefined]))
     }
 
     @inlinable public func decode(input: BufferSource? = nil, options: TextDecodeOptions? = nil) -> String {
         let this = jsObject
-        return this[Strings.decode].function!(this: this, arguments: [input?.jsValue() ?? .undefined, options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.decode].function!(this: this, arguments: [input?.jsValue ?? .undefined, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

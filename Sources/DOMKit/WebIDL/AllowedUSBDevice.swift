@@ -6,9 +6,9 @@ import JavaScriptKit
 public class AllowedUSBDevice: BridgedDictionary {
     public convenience init(vendorId: UInt8, productId: UInt8, serialNumber: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.vendorId] = vendorId.jsValue()
-        object[Strings.productId] = productId.jsValue()
-        object[Strings.serialNumber] = serialNumber.jsValue()
+        object[Strings.vendorId] = vendorId.jsValue
+        object[Strings.productId] = productId.jsValue
+        object[Strings.serialNumber] = serialNumber.jsValue
         self.init(unsafelyWrapping: object)
     }
 

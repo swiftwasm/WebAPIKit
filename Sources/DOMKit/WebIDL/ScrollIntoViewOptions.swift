@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ScrollIntoViewOptions: BridgedDictionary {
     public convenience init(block: ScrollLogicalPosition, inline: ScrollLogicalPosition) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.block] = block.jsValue()
-        object[Strings.inline] = inline.jsValue()
+        object[Strings.block] = block.jsValue
+        object[Strings.inline] = inline.jsValue
         self.init(unsafelyWrapping: object)
     }
 

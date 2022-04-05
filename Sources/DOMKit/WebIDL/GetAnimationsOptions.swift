@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GetAnimationsOptions: BridgedDictionary {
     public convenience init(subtree: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.subtree] = subtree.jsValue()
+        object[Strings.subtree] = subtree.jsValue
         self.init(unsafelyWrapping: object)
     }
 

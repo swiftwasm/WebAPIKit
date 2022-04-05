@@ -6,9 +6,9 @@ import JavaScriptKit
 public class MediaCapabilitiesInfo: BridgedDictionary {
     public convenience init(supported: Bool, smooth: Bool, powerEfficient: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.supported] = supported.jsValue()
-        object[Strings.smooth] = smooth.jsValue()
-        object[Strings.powerEfficient] = powerEfficient.jsValue()
+        object[Strings.supported] = supported.jsValue
+        object[Strings.smooth] = smooth.jsValue
+        object[Strings.powerEfficient] = powerEfficient.jsValue
         self.init(unsafelyWrapping: object)
     }
 

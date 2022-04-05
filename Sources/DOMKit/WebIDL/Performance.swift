@@ -50,7 +50,7 @@ public class Performance: EventTarget {
     @inlinable public func measureUserAgentSpecificMemory() async throws -> MemoryMeasurement {
         let this = jsObject
         let _promise: JSPromise = this[Strings.measureUserAgentSpecificMemory].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getEntries() -> PerformanceEntryList {
@@ -60,12 +60,12 @@ public class Performance: EventTarget {
 
     @inlinable public func getEntriesByType(type: String) -> PerformanceEntryList {
         let this = jsObject
-        return this[Strings.getEntriesByType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.getEntriesByType].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getEntriesByName(name: String, type: String? = nil) -> PerformanceEntryList {
         let this = jsObject
-        return this[Strings.getEntriesByName].function!(this: this, arguments: [name.jsValue(), type?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getEntriesByName].function!(this: this, arguments: [name.jsValue, type?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func clearResourceTimings() {
@@ -75,7 +75,7 @@ public class Performance: EventTarget {
 
     @inlinable public func setResourceTimingBufferSize(maxSize: UInt32) {
         let this = jsObject
-        _ = this[Strings.setResourceTimingBufferSize].function!(this: this, arguments: [maxSize.jsValue()])
+        _ = this[Strings.setResourceTimingBufferSize].function!(this: this, arguments: [maxSize.jsValue])
     }
 
     @ClosureAttribute1Optional
@@ -83,21 +83,21 @@ public class Performance: EventTarget {
 
     @inlinable public func mark(markName: String, markOptions: PerformanceMarkOptions? = nil) -> PerformanceMark {
         let this = jsObject
-        return this[Strings.mark].function!(this: this, arguments: [markName.jsValue(), markOptions?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.mark].function!(this: this, arguments: [markName.jsValue, markOptions?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func clearMarks(markName: String? = nil) {
         let this = jsObject
-        _ = this[Strings.clearMarks].function!(this: this, arguments: [markName?.jsValue() ?? .undefined])
+        _ = this[Strings.clearMarks].function!(this: this, arguments: [markName?.jsValue ?? .undefined])
     }
 
     @inlinable public func measure(measureName: String, startOrMeasureOptions: PerformanceMeasureOptions_or_String? = nil, endMark: String? = nil) -> PerformanceMeasure {
         let this = jsObject
-        return this[Strings.measure].function!(this: this, arguments: [measureName.jsValue(), startOrMeasureOptions?.jsValue() ?? .undefined, endMark?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.measure].function!(this: this, arguments: [measureName.jsValue, startOrMeasureOptions?.jsValue ?? .undefined, endMark?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func clearMeasures(measureName: String? = nil) {
         let this = jsObject
-        _ = this[Strings.clearMeasures].function!(this: this, arguments: [measureName?.jsValue() ?? .undefined])
+        _ = this[Strings.clearMeasures].function!(this: this, arguments: [measureName?.jsValue ?? .undefined])
     }
 }

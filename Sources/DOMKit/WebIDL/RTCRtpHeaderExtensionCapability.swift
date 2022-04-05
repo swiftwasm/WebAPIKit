@@ -6,7 +6,7 @@ import JavaScriptKit
 public class RTCRtpHeaderExtensionCapability: BridgedDictionary {
     public convenience init(uri: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.uri] = uri.jsValue()
+        object[Strings.uri] = uri.jsValue
         self.init(unsafelyWrapping: object)
     }
 

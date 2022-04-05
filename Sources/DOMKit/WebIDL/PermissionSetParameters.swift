@@ -6,9 +6,9 @@ import JavaScriptKit
 public class PermissionSetParameters: BridgedDictionary {
     public convenience init(descriptor: PermissionDescriptor, state: PermissionState, oneRealm: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.descriptor] = descriptor.jsValue()
-        object[Strings.state] = state.jsValue()
-        object[Strings.oneRealm] = oneRealm.jsValue()
+        object[Strings.descriptor] = descriptor.jsValue
+        object[Strings.state] = state.jsValue
+        object[Strings.oneRealm] = oneRealm.jsValue
         self.init(unsafelyWrapping: object)
     }
 

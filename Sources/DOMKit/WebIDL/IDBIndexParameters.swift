@@ -6,8 +6,8 @@ import JavaScriptKit
 public class IDBIndexParameters: BridgedDictionary {
     public convenience init(unique: Bool, multiEntry: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.unique] = unique.jsValue()
-        object[Strings.multiEntry] = multiEntry.jsValue()
+        object[Strings.unique] = unique.jsValue
+        object[Strings.multiEntry] = multiEntry.jsValue
         self.init(unsafelyWrapping: object)
     }
 

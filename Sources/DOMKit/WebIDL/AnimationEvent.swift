@@ -14,7 +14,7 @@ public class AnimationEvent: Event {
     }
 
     @inlinable public convenience init(type: String, animationEventInitDict: AnimationEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), animationEventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, animationEventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

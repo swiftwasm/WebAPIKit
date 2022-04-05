@@ -16,7 +16,7 @@ import JavaScriptKit
 
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> Wrapped {
         get { jsObject[name].fromJSValue()! }
-        set { jsObject[name] = newValue.jsValue() }
+        set { jsObject[name] = newValue.jsValue }
     }
 }
 

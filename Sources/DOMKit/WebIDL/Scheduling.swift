@@ -14,6 +14,6 @@ public class Scheduling: JSBridgedClass {
 
     @inlinable public func isInputPending(isInputPendingOptions: IsInputPendingOptions? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.isInputPending].function!(this: this, arguments: [isInputPendingOptions?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.isInputPending].function!(this: this, arguments: [isInputPendingOptions?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

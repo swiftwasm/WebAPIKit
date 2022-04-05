@@ -21,12 +21,12 @@ public enum HTMLOrSVGImageElement: JSValueCompatible, Any_HTMLOrSVGImageElement 
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .hTMLImageElement(hTMLImageElement):
-            return hTMLImageElement.jsValue()
+            return hTMLImageElement.jsValue
         case let .sVGImageElement(sVGImageElement):
-            return sVGImageElement.jsValue()
+            return sVGImageElement.jsValue
         }
     }
 }

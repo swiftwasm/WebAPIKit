@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MLLinearOptions: BridgedDictionary {
     public convenience init(alpha: Float, beta: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.alpha] = alpha.jsValue()
-        object[Strings.beta] = beta.jsValue()
+        object[Strings.alpha] = alpha.jsValue
+        object[Strings.beta] = beta.jsValue
         self.init(unsafelyWrapping: object)
     }
 

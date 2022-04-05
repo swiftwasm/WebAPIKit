@@ -12,7 +12,7 @@ public class MediaStreamAudioDestinationNode: AudioNode {
     }
 
     @inlinable public convenience init(context: AudioContext, options: AudioNodeOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

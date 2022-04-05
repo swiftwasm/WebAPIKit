@@ -21,12 +21,12 @@ public enum Bool_or_ConstrainDouble: JSValueCompatible, Any_Bool_or_ConstrainDou
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .bool(bool):
-            return bool.jsValue()
+            return bool.jsValue
         case let .constrainDouble(constrainDouble):
-            return constrainDouble.jsValue()
+            return constrainDouble.jsValue
         }
     }
 }

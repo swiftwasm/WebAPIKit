@@ -6,11 +6,11 @@ import JavaScriptKit
 public class GPURenderPipelineDescriptor: BridgedDictionary {
     public convenience init(vertex: GPUVertexState, primitive: GPUPrimitiveState, depthStencil: GPUDepthStencilState, multisample: GPUMultisampleState, fragment: GPUFragmentState) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.vertex] = vertex.jsValue()
-        object[Strings.primitive] = primitive.jsValue()
-        object[Strings.depthStencil] = depthStencil.jsValue()
-        object[Strings.multisample] = multisample.jsValue()
-        object[Strings.fragment] = fragment.jsValue()
+        object[Strings.vertex] = vertex.jsValue
+        object[Strings.primitive] = primitive.jsValue
+        object[Strings.depthStencil] = depthStencil.jsValue
+        object[Strings.multisample] = multisample.jsValue
+        object[Strings.fragment] = fragment.jsValue
         self.init(unsafelyWrapping: object)
     }
 

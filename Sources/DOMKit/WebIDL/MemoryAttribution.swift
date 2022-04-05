@@ -6,9 +6,9 @@ import JavaScriptKit
 public class MemoryAttribution: BridgedDictionary {
     public convenience init(url: String, container: MemoryAttributionContainer, scope: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.url] = url.jsValue()
-        object[Strings.container] = container.jsValue()
-        object[Strings.scope] = scope.jsValue()
+        object[Strings.url] = url.jsValue
+        object[Strings.container] = container.jsValue
+        object[Strings.scope] = scope.jsValue
         self.init(unsafelyWrapping: object)
     }
 

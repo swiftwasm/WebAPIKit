@@ -25,12 +25,12 @@ public class RTCIceTransport: EventTarget {
 
     @inlinable public func gather(options: RTCIceGatherOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.gather].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
+        _ = this[Strings.gather].function!(this: this, arguments: [options?.jsValue ?? .undefined])
     }
 
     @inlinable public func start(remoteParameters: RTCIceParameters? = nil, role: RTCIceRole? = nil) {
         let this = jsObject
-        _ = this[Strings.start].function!(this: this, arguments: [remoteParameters?.jsValue() ?? .undefined, role?.jsValue() ?? .undefined])
+        _ = this[Strings.start].function!(this: this, arguments: [remoteParameters?.jsValue ?? .undefined, role?.jsValue ?? .undefined])
     }
 
     @inlinable public func stop() {
@@ -40,7 +40,7 @@ public class RTCIceTransport: EventTarget {
 
     @inlinable public func addRemoteCandidate(remoteCandidate: RTCIceCandidateInit? = nil) {
         let this = jsObject
-        _ = this[Strings.addRemoteCandidate].function!(this: this, arguments: [remoteCandidate?.jsValue() ?? .undefined])
+        _ = this[Strings.addRemoteCandidate].function!(this: this, arguments: [remoteCandidate?.jsValue ?? .undefined])
     }
 
     @ClosureAttribute1Optional

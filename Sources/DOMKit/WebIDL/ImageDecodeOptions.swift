@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ImageDecodeOptions: BridgedDictionary {
     public convenience init(frameIndex: UInt32, completeFramesOnly: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.frameIndex] = frameIndex.jsValue()
-        object[Strings.completeFramesOnly] = completeFramesOnly.jsValue()
+        object[Strings.frameIndex] = frameIndex.jsValue
+        object[Strings.completeFramesOnly] = completeFramesOnly.jsValue
         self.init(unsafelyWrapping: object)
     }
 

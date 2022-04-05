@@ -25,14 +25,14 @@ public class BluetoothDevice: EventTarget, BluetoothDeviceEventHandlers, Charact
 
     @inlinable public func watchAdvertisements(options: WatchAdvertisementsOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.watchAdvertisements].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.watchAdvertisements].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func watchAdvertisements(options: WatchAdvertisementsOptions? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.watchAdvertisements].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.watchAdvertisements].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @ReadonlyAttribute

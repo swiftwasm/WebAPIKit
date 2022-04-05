@@ -12,7 +12,7 @@ public class SubmitEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: SubmitEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

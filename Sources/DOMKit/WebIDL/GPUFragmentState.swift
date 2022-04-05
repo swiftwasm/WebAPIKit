@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GPUFragmentState: BridgedDictionary {
     public convenience init(targets: [GPUColorTargetState?]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.targets] = targets.jsValue()
+        object[Strings.targets] = targets.jsValue
         self.init(unsafelyWrapping: object)
     }
 

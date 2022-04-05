@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RTCTrackEventInit: BridgedDictionary {
     public convenience init(receiver: RTCRtpReceiver, track: MediaStreamTrack, streams: [MediaStream], transceiver: RTCRtpTransceiver) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.receiver] = receiver.jsValue()
-        object[Strings.track] = track.jsValue()
-        object[Strings.streams] = streams.jsValue()
-        object[Strings.transceiver] = transceiver.jsValue()
+        object[Strings.receiver] = receiver.jsValue
+        object[Strings.track] = track.jsValue
+        object[Strings.streams] = streams.jsValue
+        object[Strings.transceiver] = transceiver.jsValue
         self.init(unsafelyWrapping: object)
     }
 

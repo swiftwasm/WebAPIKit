@@ -32,7 +32,7 @@ public class DataTransfer: JSBridgedClass {
 
     @inlinable public func setDragImage(image: Element, x: Int32, y: Int32) {
         let this = jsObject
-        _ = this[Strings.setDragImage].function!(this: this, arguments: [image.jsValue(), x.jsValue(), y.jsValue()])
+        _ = this[Strings.setDragImage].function!(this: this, arguments: [image.jsValue, x.jsValue, y.jsValue])
     }
 
     @ReadonlyAttribute
@@ -40,17 +40,17 @@ public class DataTransfer: JSBridgedClass {
 
     @inlinable public func getData(format: String) -> String {
         let this = jsObject
-        return this[Strings.getData].function!(this: this, arguments: [format.jsValue()]).fromJSValue()!
+        return this[Strings.getData].function!(this: this, arguments: [format.jsValue]).fromJSValue()!
     }
 
     @inlinable public func setData(format: String, data: String) {
         let this = jsObject
-        _ = this[Strings.setData].function!(this: this, arguments: [format.jsValue(), data.jsValue()])
+        _ = this[Strings.setData].function!(this: this, arguments: [format.jsValue, data.jsValue])
     }
 
     @inlinable public func clearData(format: String? = nil) {
         let this = jsObject
-        _ = this[Strings.clearData].function!(this: this, arguments: [format?.jsValue() ?? .undefined])
+        _ = this[Strings.clearData].function!(this: this, arguments: [format?.jsValue ?? .undefined])
     }
 
     @ReadonlyAttribute

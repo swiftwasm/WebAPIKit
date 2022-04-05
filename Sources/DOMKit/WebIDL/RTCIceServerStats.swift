@@ -6,12 +6,12 @@ import JavaScriptKit
 public class RTCIceServerStats: BridgedDictionary {
     public convenience init(url: String, port: Int32, relayProtocol: String, totalRequestsSent: UInt32, totalResponsesReceived: UInt32, totalRoundTripTime: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.url] = url.jsValue()
-        object[Strings.port] = port.jsValue()
-        object[Strings.relayProtocol] = relayProtocol.jsValue()
-        object[Strings.totalRequestsSent] = totalRequestsSent.jsValue()
-        object[Strings.totalResponsesReceived] = totalResponsesReceived.jsValue()
-        object[Strings.totalRoundTripTime] = totalRoundTripTime.jsValue()
+        object[Strings.url] = url.jsValue
+        object[Strings.port] = port.jsValue
+        object[Strings.relayProtocol] = relayProtocol.jsValue
+        object[Strings.totalRequestsSent] = totalRequestsSent.jsValue
+        object[Strings.totalResponsesReceived] = totalResponsesReceived.jsValue
+        object[Strings.totalRoundTripTime] = totalRoundTripTime.jsValue
         self.init(unsafelyWrapping: object)
     }
 

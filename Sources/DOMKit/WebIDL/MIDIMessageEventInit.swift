@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MIDIMessageEventInit: BridgedDictionary {
     public convenience init(data: Uint8Array) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.data] = data.jsValue()
+        object[Strings.data] = data.jsValue
         self.init(unsafelyWrapping: object)
     }
 

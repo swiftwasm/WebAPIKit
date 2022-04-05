@@ -24,7 +24,7 @@ public class VideoTrackList: EventTarget {
 
     @inlinable public func getTrackById(id: String) -> VideoTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [id.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute

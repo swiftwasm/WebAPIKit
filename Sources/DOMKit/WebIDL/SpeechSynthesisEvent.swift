@@ -16,7 +16,7 @@ public class SpeechSynthesisEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: SpeechSynthesisEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
     }
 
     @ReadonlyAttribute

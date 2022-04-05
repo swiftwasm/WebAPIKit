@@ -15,12 +15,12 @@ public class AbortSignal: EventTarget {
 
     @inlinable public static func abort(reason: JSValue? = nil) -> Self {
         let this = constructor
-        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public static func timeout(milliseconds: UInt64) -> Self {
         let this = constructor
-        return this[Strings.timeout].function!(this: this, arguments: [milliseconds.jsValue()]).fromJSValue()!
+        return this[Strings.timeout].function!(this: this, arguments: [milliseconds.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute

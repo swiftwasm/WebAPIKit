@@ -61,6 +61,6 @@ public class SVGMarkerElement: SVGElement, SVGFitToViewBox {
 
     @inlinable public func setOrientToAngle(angle: SVGAngle) {
         let this = jsObject
-        _ = this[Strings.setOrientToAngle].function!(this: this, arguments: [angle.jsValue()])
+        _ = this[Strings.setOrientToAngle].function!(this: this, arguments: [angle.jsValue])
     }
 }

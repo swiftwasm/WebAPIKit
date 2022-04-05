@@ -14,7 +14,7 @@ public class OscillatorNode: AudioScheduledSourceNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: OscillatorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute
@@ -28,6 +28,6 @@ public class OscillatorNode: AudioScheduledSourceNode {
 
     @inlinable public func setPeriodicWave(periodicWave: PeriodicWave) {
         let this = jsObject
-        _ = this[Strings.setPeriodicWave].function!(this: this, arguments: [periodicWave.jsValue()])
+        _ = this[Strings.setPeriodicWave].function!(this: this, arguments: [periodicWave.jsValue])
     }
 }

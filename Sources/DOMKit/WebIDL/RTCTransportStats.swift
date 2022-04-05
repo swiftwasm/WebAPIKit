@@ -6,23 +6,23 @@ import JavaScriptKit
 public class RTCTransportStats: BridgedDictionary {
     public convenience init(packetsSent: UInt64, packetsReceived: UInt64, bytesSent: UInt64, bytesReceived: UInt64, rtcpTransportStatsId: String, iceRole: RTCIceRole, iceLocalUsernameFragment: String, dtlsState: RTCDtlsTransportState, iceState: RTCIceTransportState, selectedCandidatePairId: String, localCertificateId: String, remoteCertificateId: String, tlsVersion: String, dtlsCipher: String, srtpCipher: String, tlsGroup: String, selectedCandidatePairChanges: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.packetsSent] = packetsSent.jsValue()
-        object[Strings.packetsReceived] = packetsReceived.jsValue()
-        object[Strings.bytesSent] = bytesSent.jsValue()
-        object[Strings.bytesReceived] = bytesReceived.jsValue()
-        object[Strings.rtcpTransportStatsId] = rtcpTransportStatsId.jsValue()
-        object[Strings.iceRole] = iceRole.jsValue()
-        object[Strings.iceLocalUsernameFragment] = iceLocalUsernameFragment.jsValue()
-        object[Strings.dtlsState] = dtlsState.jsValue()
-        object[Strings.iceState] = iceState.jsValue()
-        object[Strings.selectedCandidatePairId] = selectedCandidatePairId.jsValue()
-        object[Strings.localCertificateId] = localCertificateId.jsValue()
-        object[Strings.remoteCertificateId] = remoteCertificateId.jsValue()
-        object[Strings.tlsVersion] = tlsVersion.jsValue()
-        object[Strings.dtlsCipher] = dtlsCipher.jsValue()
-        object[Strings.srtpCipher] = srtpCipher.jsValue()
-        object[Strings.tlsGroup] = tlsGroup.jsValue()
-        object[Strings.selectedCandidatePairChanges] = selectedCandidatePairChanges.jsValue()
+        object[Strings.packetsSent] = packetsSent.jsValue
+        object[Strings.packetsReceived] = packetsReceived.jsValue
+        object[Strings.bytesSent] = bytesSent.jsValue
+        object[Strings.bytesReceived] = bytesReceived.jsValue
+        object[Strings.rtcpTransportStatsId] = rtcpTransportStatsId.jsValue
+        object[Strings.iceRole] = iceRole.jsValue
+        object[Strings.iceLocalUsernameFragment] = iceLocalUsernameFragment.jsValue
+        object[Strings.dtlsState] = dtlsState.jsValue
+        object[Strings.iceState] = iceState.jsValue
+        object[Strings.selectedCandidatePairId] = selectedCandidatePairId.jsValue
+        object[Strings.localCertificateId] = localCertificateId.jsValue
+        object[Strings.remoteCertificateId] = remoteCertificateId.jsValue
+        object[Strings.tlsVersion] = tlsVersion.jsValue
+        object[Strings.dtlsCipher] = dtlsCipher.jsValue
+        object[Strings.srtpCipher] = srtpCipher.jsValue
+        object[Strings.tlsGroup] = tlsGroup.jsValue
+        object[Strings.selectedCandidatePairChanges] = selectedCandidatePairChanges.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class BoxQuadOptions: BridgedDictionary {
     public convenience init(box: CSSBoxType, relativeTo: GeometryNode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.box] = box.jsValue()
-        object[Strings.relativeTo] = relativeTo.jsValue()
+        object[Strings.box] = box.jsValue
+        object[Strings.relativeTo] = relativeTo.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ConstrainBooleanParameters: BridgedDictionary {
     public convenience init(exact: Bool, ideal: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.exact] = exact.jsValue()
-        object[Strings.ideal] = ideal.jsValue()
+        object[Strings.exact] = exact.jsValue
+        object[Strings.ideal] = ideal.jsValue
         self.init(unsafelyWrapping: object)
     }
 

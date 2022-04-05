@@ -34,6 +34,6 @@ public class NamedFlow: EventTarget {
 
     @inlinable public func getRegionsByContent(node: Node) -> [Element] {
         let this = jsObject
-        return this[Strings.getRegionsByContent].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
+        return this[Strings.getRegionsByContent].function!(this: this, arguments: [node.jsValue]).fromJSValue()!
     }
 }

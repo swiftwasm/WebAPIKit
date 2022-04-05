@@ -68,7 +68,7 @@ public class SourceBuffer: EventTarget {
 
     @inlinable public func appendBuffer(data: BufferSource) {
         let this = jsObject
-        _ = this[Strings.appendBuffer].function!(this: this, arguments: [data.jsValue()])
+        _ = this[Strings.appendBuffer].function!(this: this, arguments: [data.jsValue])
     }
 
     @inlinable public func abort() {
@@ -78,11 +78,11 @@ public class SourceBuffer: EventTarget {
 
     @inlinable public func changeType(type: String) {
         let this = jsObject
-        _ = this[Strings.changeType].function!(this: this, arguments: [type.jsValue()])
+        _ = this[Strings.changeType].function!(this: this, arguments: [type.jsValue])
     }
 
     @inlinable public func remove(start: Double, end: Double) {
         let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: [start.jsValue(), end.jsValue()])
+        _ = this[Strings.remove].function!(this: this, arguments: [start.jsValue, end.jsValue])
     }
 }

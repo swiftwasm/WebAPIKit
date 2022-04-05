@@ -21,12 +21,12 @@ public enum Int32Array_or_seq_of_GLsizei: JSValueCompatible, Any_Int32Array_or_s
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .int32Array(int32Array):
-            return int32Array.jsValue()
+            return int32Array.jsValue
         case let .seq_of_GLsizei(seq_of_GLsizei):
-            return seq_of_GLsizei.jsValue()
+            return seq_of_GLsizei.jsValue
         }
     }
 }

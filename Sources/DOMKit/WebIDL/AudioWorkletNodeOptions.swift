@@ -6,11 +6,11 @@ import JavaScriptKit
 public class AudioWorkletNodeOptions: BridgedDictionary {
     public convenience init(numberOfInputs: UInt32, numberOfOutputs: UInt32, outputChannelCount: [UInt32], parameterData: [String: Double], processorOptions: JSObject) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.numberOfInputs] = numberOfInputs.jsValue()
-        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue()
-        object[Strings.outputChannelCount] = outputChannelCount.jsValue()
-        object[Strings.parameterData] = parameterData.jsValue()
-        object[Strings.processorOptions] = processorOptions.jsValue()
+        object[Strings.numberOfInputs] = numberOfInputs.jsValue
+        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue
+        object[Strings.outputChannelCount] = outputChannelCount.jsValue
+        object[Strings.parameterData] = parameterData.jsValue
+        object[Strings.processorOptions] = processorOptions.jsValue
         self.init(unsafelyWrapping: object)
     }
 

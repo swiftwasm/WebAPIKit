@@ -6,10 +6,10 @@ import JavaScriptKit
 public class ProfilerFrame: BridgedDictionary {
     public convenience init(name: String, resourceId: UInt64, line: UInt64, column: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue()
-        object[Strings.resourceId] = resourceId.jsValue()
-        object[Strings.line] = line.jsValue()
-        object[Strings.column] = column.jsValue()
+        object[Strings.name] = name.jsValue
+        object[Strings.resourceId] = resourceId.jsValue
+        object[Strings.line] = line.jsValue
+        object[Strings.column] = column.jsValue
         self.init(unsafelyWrapping: object)
     }
 

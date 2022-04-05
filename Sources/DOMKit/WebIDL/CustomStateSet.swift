@@ -16,6 +16,6 @@ public class CustomStateSet: JSBridgedClass {
 
     @inlinable public func add(value: String) {
         let this = jsObject
-        _ = this[Strings.add].function!(this: this, arguments: [value.jsValue()])
+        _ = this[Strings.add].function!(this: this, arguments: [value.jsValue])
     }
 }

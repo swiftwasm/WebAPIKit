@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ProfilerInitOptions: BridgedDictionary {
     public convenience init(sampleInterval: DOMHighResTimeStamp, maxBufferSize: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.sampleInterval] = sampleInterval.jsValue()
-        object[Strings.maxBufferSize] = maxBufferSize.jsValue()
+        object[Strings.sampleInterval] = sampleInterval.jsValue
+        object[Strings.maxBufferSize] = maxBufferSize.jsValue
         self.init(unsafelyWrapping: object)
     }
 

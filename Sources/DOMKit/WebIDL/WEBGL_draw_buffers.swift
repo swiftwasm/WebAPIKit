@@ -82,6 +82,6 @@ public class WEBGL_draw_buffers: JSBridgedClass {
 
     @inlinable public func drawBuffersWEBGL(buffers: [GLenum]) {
         let this = jsObject
-        _ = this[Strings.drawBuffersWEBGL].function!(this: this, arguments: [buffers.jsValue()])
+        _ = this[Strings.drawBuffersWEBGL].function!(this: this, arguments: [buffers.jsValue])
     }
 }

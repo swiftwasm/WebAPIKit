@@ -6,7 +6,7 @@ import JavaScriptKit
 public class RsaOaepParams: BridgedDictionary {
     public convenience init(label: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.label] = label.jsValue()
+        object[Strings.label] = label.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,10 +6,10 @@ import JavaScriptKit
 public class WriteParams: BridgedDictionary {
     public convenience init(type: WriteCommandType, size: UInt64?, position: UInt64?, data: Blob_or_BufferSource_or_String?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.size] = size.jsValue()
-        object[Strings.position] = position.jsValue()
-        object[Strings.data] = data.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.size] = size.jsValue
+        object[Strings.position] = position.jsValue
+        object[Strings.data] = data.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,10 +6,10 @@ import JavaScriptKit
 public class OscillatorOptions: BridgedDictionary {
     public convenience init(type: OscillatorType, frequency: Float, detune: Float, periodicWave: PeriodicWave) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.frequency] = frequency.jsValue()
-        object[Strings.detune] = detune.jsValue()
-        object[Strings.periodicWave] = periodicWave.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.frequency] = frequency.jsValue
+        object[Strings.detune] = detune.jsValue
+        object[Strings.periodicWave] = periodicWave.jsValue
         self.init(unsafelyWrapping: object)
     }
 

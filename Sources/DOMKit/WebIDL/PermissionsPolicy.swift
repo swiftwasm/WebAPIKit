@@ -14,7 +14,7 @@ public class PermissionsPolicy: JSBridgedClass {
 
     @inlinable public func allowsFeature(feature: String, origin: String? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.allowsFeature].function!(this: this, arguments: [feature.jsValue(), origin?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.allowsFeature].function!(this: this, arguments: [feature.jsValue, origin?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func features() -> [String] {
@@ -29,6 +29,6 @@ public class PermissionsPolicy: JSBridgedClass {
 
     @inlinable public func getAllowlistForFeature(feature: String) -> [String] {
         let this = jsObject
-        return this[Strings.getAllowlistForFeature].function!(this: this, arguments: [feature.jsValue()]).fromJSValue()!
+        return this[Strings.getAllowlistForFeature].function!(this: this, arguments: [feature.jsValue]).fromJSValue()!
     }
 }

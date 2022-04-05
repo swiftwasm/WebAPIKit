@@ -26,14 +26,14 @@ public enum HTMLCanvasElement_or_ImageBitmap_or_OffscreenCanvas: JSValueCompatib
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .hTMLCanvasElement(hTMLCanvasElement):
-            return hTMLCanvasElement.jsValue()
+            return hTMLCanvasElement.jsValue
         case let .imageBitmap(imageBitmap):
-            return imageBitmap.jsValue()
+            return imageBitmap.jsValue
         case let .offscreenCanvas(offscreenCanvas):
-            return offscreenCanvas.jsValue()
+            return offscreenCanvas.jsValue
         }
     }
 }

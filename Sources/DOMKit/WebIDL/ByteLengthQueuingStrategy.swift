@@ -15,7 +15,7 @@ public class ByteLengthQueuingStrategy: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: QueuingStrategyInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue]))
     }
 
     @ReadonlyAttribute

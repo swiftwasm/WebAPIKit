@@ -6,11 +6,11 @@ import JavaScriptKit
 public class InputEventInit: BridgedDictionary {
     public convenience init(dataTransfer: DataTransfer?, targetRanges: [StaticRange], data: String?, isComposing: Bool, inputType: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.dataTransfer] = dataTransfer.jsValue()
-        object[Strings.targetRanges] = targetRanges.jsValue()
-        object[Strings.data] = data.jsValue()
-        object[Strings.isComposing] = isComposing.jsValue()
-        object[Strings.inputType] = inputType.jsValue()
+        object[Strings.dataTransfer] = dataTransfer.jsValue
+        object[Strings.targetRanges] = targetRanges.jsValue
+        object[Strings.data] = data.jsValue
+        object[Strings.isComposing] = isComposing.jsValue
+        object[Strings.inputType] = inputType.jsValue
         self.init(unsafelyWrapping: object)
     }
 

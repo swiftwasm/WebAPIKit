@@ -6,7 +6,7 @@ import JavaScriptKit
 public class CSSMatrixComponentOptions: BridgedDictionary {
     public convenience init(is2D: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.is2D] = is2D.jsValue()
+        object[Strings.is2D] = is2D.jsValue
         self.init(unsafelyWrapping: object)
     }
 

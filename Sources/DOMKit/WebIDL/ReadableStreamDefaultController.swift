@@ -23,11 +23,11 @@ public class ReadableStreamDefaultController: JSBridgedClass {
 
     @inlinable public func enqueue(chunk: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk?.jsValue() ?? .undefined])
+        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk?.jsValue ?? .undefined])
     }
 
     @inlinable public func error(e: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue() ?? .undefined])
+        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue ?? .undefined])
     }
 }

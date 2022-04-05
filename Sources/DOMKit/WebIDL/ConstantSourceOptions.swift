@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ConstantSourceOptions: BridgedDictionary {
     public convenience init(offset: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = offset.jsValue()
+        object[Strings.offset] = offset.jsValue
         self.init(unsafelyWrapping: object)
     }
 

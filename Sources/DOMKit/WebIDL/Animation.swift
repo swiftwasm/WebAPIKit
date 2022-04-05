@@ -31,7 +31,7 @@ public class Animation: EventTarget {
     public var currentTime: CSSNumberish?
 
     @inlinable public convenience init(effect: AnimationEffect? = nil, timeline: AnimationTimeline? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [effect?.jsValue() ?? .undefined, timeline?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [effect?.jsValue ?? .undefined, timeline?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute
@@ -92,7 +92,7 @@ public class Animation: EventTarget {
 
     @inlinable public func updatePlaybackRate(playbackRate: Double) {
         let this = jsObject
-        _ = this[Strings.updatePlaybackRate].function!(this: this, arguments: [playbackRate.jsValue()])
+        _ = this[Strings.updatePlaybackRate].function!(this: this, arguments: [playbackRate.jsValue])
     }
 
     @inlinable public func reverse() {

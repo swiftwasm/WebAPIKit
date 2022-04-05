@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PushSubscriptionChangeEventInit: BridgedDictionary {
     public convenience init(newSubscription: PushSubscription, oldSubscription: PushSubscription) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.newSubscription] = newSubscription.jsValue()
-        object[Strings.oldSubscription] = oldSubscription.jsValue()
+        object[Strings.newSubscription] = newSubscription.jsValue
+        object[Strings.oldSubscription] = oldSubscription.jsValue
         self.init(unsafelyWrapping: object)
     }
 

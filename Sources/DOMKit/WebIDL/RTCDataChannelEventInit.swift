@@ -6,7 +6,7 @@ import JavaScriptKit
 public class RTCDataChannelEventInit: BridgedDictionary {
     public convenience init(channel: RTCDataChannel) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.channel] = channel.jsValue()
+        object[Strings.channel] = channel.jsValue
         self.init(unsafelyWrapping: object)
     }
 

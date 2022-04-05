@@ -6,14 +6,14 @@ import JavaScriptKit
 public class NavigateEventInit: BridgedDictionary {
     public convenience init(navigationType: NavigationNavigationType, destination: NavigationDestination, canTransition: Bool, userInitiated: Bool, hashChange: Bool, signal: AbortSignal, formData: FormData?, info: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.navigationType] = navigationType.jsValue()
-        object[Strings.destination] = destination.jsValue()
-        object[Strings.canTransition] = canTransition.jsValue()
-        object[Strings.userInitiated] = userInitiated.jsValue()
-        object[Strings.hashChange] = hashChange.jsValue()
-        object[Strings.signal] = signal.jsValue()
-        object[Strings.formData] = formData.jsValue()
-        object[Strings.info] = info.jsValue()
+        object[Strings.navigationType] = navigationType.jsValue
+        object[Strings.destination] = destination.jsValue
+        object[Strings.canTransition] = canTransition.jsValue
+        object[Strings.userInitiated] = userInitiated.jsValue
+        object[Strings.hashChange] = hashChange.jsValue
+        object[Strings.signal] = signal.jsValue
+        object[Strings.formData] = formData.jsValue
+        object[Strings.info] = info.jsValue
         self.init(unsafelyWrapping: object)
     }
 

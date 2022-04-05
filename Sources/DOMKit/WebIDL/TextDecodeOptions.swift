@@ -6,7 +6,7 @@ import JavaScriptKit
 public class TextDecodeOptions: BridgedDictionary {
     public convenience init(stream: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.stream] = stream.jsValue()
+        object[Strings.stream] = stream.jsValue
         self.init(unsafelyWrapping: object)
     }
 

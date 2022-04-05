@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUImageDataLayout: BridgedDictionary {
     public convenience init(offset: GPUSize64, bytesPerRow: GPUSize32, rowsPerImage: GPUSize32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = offset.jsValue()
-        object[Strings.bytesPerRow] = bytesPerRow.jsValue()
-        object[Strings.rowsPerImage] = rowsPerImage.jsValue()
+        object[Strings.offset] = offset.jsValue
+        object[Strings.bytesPerRow] = bytesPerRow.jsValue
+        object[Strings.rowsPerImage] = rowsPerImage.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,11 +6,11 @@ import JavaScriptKit
 public class MLGemmOptions: BridgedDictionary {
     public convenience init(c: MLOperand, alpha: Float, beta: Float, aTranspose: Bool, bTranspose: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.c] = c.jsValue()
-        object[Strings.alpha] = alpha.jsValue()
-        object[Strings.beta] = beta.jsValue()
-        object[Strings.aTranspose] = aTranspose.jsValue()
-        object[Strings.bTranspose] = bTranspose.jsValue()
+        object[Strings.c] = c.jsValue
+        object[Strings.alpha] = alpha.jsValue
+        object[Strings.beta] = beta.jsValue
+        object[Strings.aTranspose] = aTranspose.jsValue
+        object[Strings.bTranspose] = bTranspose.jsValue
         self.init(unsafelyWrapping: object)
     }
 

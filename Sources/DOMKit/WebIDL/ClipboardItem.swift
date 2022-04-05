@@ -15,7 +15,7 @@ public class ClipboardItem: JSBridgedClass {
     }
 
     @inlinable public convenience init(items: [String: ClipboardItemData], options: ClipboardItemOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [items.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [items.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -26,13 +26,13 @@ public class ClipboardItem: JSBridgedClass {
 
     @inlinable public func getType(type: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.getType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.getType].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getType(type: String) async throws -> Blob {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getType].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getType].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MockMicrophoneConfiguration: BridgedDictionary {
     public convenience init(defaultSampleRate: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.defaultSampleRate] = defaultSampleRate.jsValue()
+        object[Strings.defaultSampleRate] = defaultSampleRate.jsValue
         self.init(unsafelyWrapping: object)
     }
 

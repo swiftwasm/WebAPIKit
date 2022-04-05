@@ -6,9 +6,9 @@ import JavaScriptKit
 public class CSSStyleSheetInit: BridgedDictionary {
     public convenience init(baseURL: String, media: MediaList_or_String, disabled: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.baseURL] = baseURL.jsValue()
-        object[Strings.media] = media.jsValue()
-        object[Strings.disabled] = disabled.jsValue()
+        object[Strings.baseURL] = baseURL.jsValue
+        object[Strings.media] = media.jsValue
+        object[Strings.disabled] = disabled.jsValue
         self.init(unsafelyWrapping: object)
     }
 

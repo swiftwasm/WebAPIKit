@@ -21,12 +21,12 @@ public enum IDBIndex_or_IDBObjectStore: JSValueCompatible, Any_IDBIndex_or_IDBOb
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .iDBIndex(iDBIndex):
-            return iDBIndex.jsValue()
+            return iDBIndex.jsValue
         case let .iDBObjectStore(iDBObjectStore):
-            return iDBObjectStore.jsValue()
+            return iDBObjectStore.jsValue
         }
     }
 }

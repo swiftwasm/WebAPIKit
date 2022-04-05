@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPURenderPassTimestampWrite: BridgedDictionary {
     public convenience init(querySet: GPUQuerySet, queryIndex: GPUSize32, location: GPURenderPassTimestampLocation) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.querySet] = querySet.jsValue()
-        object[Strings.queryIndex] = queryIndex.jsValue()
-        object[Strings.location] = location.jsValue()
+        object[Strings.querySet] = querySet.jsValue
+        object[Strings.queryIndex] = queryIndex.jsValue
+        object[Strings.location] = location.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MemoryAttributionContainer: BridgedDictionary {
     public convenience init(id: String, src: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.id] = id.jsValue()
-        object[Strings.src] = src.jsValue()
+        object[Strings.id] = id.jsValue
+        object[Strings.src] = src.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,12 +6,12 @@ import JavaScriptKit
 public class ComputedEffectTiming: BridgedDictionary {
     public convenience init(startTime: CSSNumberish, endTime: CSSNumberish, activeDuration: CSSNumberish, localTime: CSSNumberish?, progress: Double?, currentIteration: Double?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.startTime] = startTime.jsValue()
-        object[Strings.endTime] = endTime.jsValue()
-        object[Strings.activeDuration] = activeDuration.jsValue()
-        object[Strings.localTime] = localTime.jsValue()
-        object[Strings.progress] = progress.jsValue()
-        object[Strings.currentIteration] = currentIteration.jsValue()
+        object[Strings.startTime] = startTime.jsValue
+        object[Strings.endTime] = endTime.jsValue
+        object[Strings.activeDuration] = activeDuration.jsValue
+        object[Strings.localTime] = localTime.jsValue
+        object[Strings.progress] = progress.jsValue
+        object[Strings.currentIteration] = currentIteration.jsValue
         self.init(unsafelyWrapping: object)
     }
 

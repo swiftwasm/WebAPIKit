@@ -26,14 +26,14 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .blob(blob):
-            return blob.jsValue()
+            return blob.jsValue
         case let .canvasImageSource(canvasImageSource):
-            return canvasImageSource.jsValue()
+            return canvasImageSource.jsValue
         case let .imageData(imageData):
-            return imageData.jsValue()
+            return imageData.jsValue
         }
     }
 }

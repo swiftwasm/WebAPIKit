@@ -16,7 +16,7 @@ public class CSSColorValue: CSSStyleValue {
 
     @inlinable public func to(colorSpace: CSSKeywordish) -> Self {
         let this = jsObject
-        return this[Strings.to].function!(this: this, arguments: [colorSpace.jsValue()]).fromJSValue()!
+        return this[Strings.to].function!(this: this, arguments: [colorSpace.jsValue]).fromJSValue()!
     }
 
     // XXX: illegal static override

@@ -14,7 +14,7 @@ public class AudioWorkletNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, name: String, options: AudioWorkletNodeOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), name.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, name.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

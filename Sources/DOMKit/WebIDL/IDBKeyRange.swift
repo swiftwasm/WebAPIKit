@@ -30,26 +30,26 @@ public class IDBKeyRange: JSBridgedClass {
 
     @inlinable public static func only(value: JSValue) -> Self {
         let this = constructor
-        return this[Strings.only].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
+        return this[Strings.only].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
     }
 
     @inlinable public static func lowerBound(lower: JSValue, open: Bool? = nil) -> Self {
         let this = constructor
-        return this[Strings.lowerBound].function!(this: this, arguments: [lower.jsValue(), open?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.lowerBound].function!(this: this, arguments: [lower.jsValue, open?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public static func upperBound(upper: JSValue, open: Bool? = nil) -> Self {
         let this = constructor
-        return this[Strings.upperBound].function!(this: this, arguments: [upper.jsValue(), open?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.upperBound].function!(this: this, arguments: [upper.jsValue, open?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public static func bound(lower: JSValue, upper: JSValue, lowerOpen: Bool? = nil, upperOpen: Bool? = nil) -> Self {
         let this = constructor
-        return this[Strings.bound].function!(this: this, arguments: [lower.jsValue(), upper.jsValue(), lowerOpen?.jsValue() ?? .undefined, upperOpen?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.bound].function!(this: this, arguments: [lower.jsValue, upper.jsValue, lowerOpen?.jsValue ?? .undefined, upperOpen?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func includes(key: JSValue) -> Bool {
         let this = jsObject
-        return this[Strings.includes].function!(this: this, arguments: [key.jsValue()]).fromJSValue()!
+        return this[Strings.includes].function!(this: this, arguments: [key.jsValue]).fromJSValue()!
     }
 }

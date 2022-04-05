@@ -23,7 +23,7 @@ public class MediaRecorder: EventTarget {
     }
 
     @inlinable public convenience init(stream: MediaStream, options: MediaRecorderOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -64,7 +64,7 @@ public class MediaRecorder: EventTarget {
 
     @inlinable public func start(timeslice: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.start].function!(this: this, arguments: [timeslice?.jsValue() ?? .undefined])
+        _ = this[Strings.start].function!(this: this, arguments: [timeslice?.jsValue ?? .undefined])
     }
 
     @inlinable public func stop() {
@@ -89,6 +89,6 @@ public class MediaRecorder: EventTarget {
 
     @inlinable public static func isTypeSupported(type: String) -> Bool {
         let this = constructor
-        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 }

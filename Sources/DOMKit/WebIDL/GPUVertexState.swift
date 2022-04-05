@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GPUVertexState: BridgedDictionary {
     public convenience init(buffers: [GPUVertexBufferLayout?]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.buffers] = buffers.jsValue()
+        object[Strings.buffers] = buffers.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -14,7 +14,7 @@ public class TransitionEvent: Event {
     }
 
     @inlinable public convenience init(type: String, transitionEventInitDict: TransitionEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), transitionEventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, transitionEventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

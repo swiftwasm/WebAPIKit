@@ -6,8 +6,8 @@ import JavaScriptKit
 public class WaveShaperOptions: BridgedDictionary {
     public convenience init(curve: [Float], oversample: OverSampleType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.curve] = curve.jsValue()
-        object[Strings.oversample] = oversample.jsValue()
+        object[Strings.curve] = curve.jsValue
+        object[Strings.oversample] = oversample.jsValue
         self.init(unsafelyWrapping: object)
     }
 

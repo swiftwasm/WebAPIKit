@@ -14,14 +14,14 @@ public class DigitalGoodsService: JSBridgedClass {
 
     @inlinable public func getDetails(itemIds: [String]) -> JSPromise {
         let this = jsObject
-        return this[Strings.getDetails].function!(this: this, arguments: [itemIds.jsValue()]).fromJSValue()!
+        return this[Strings.getDetails].function!(this: this, arguments: [itemIds.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getDetails(itemIds: [String]) async throws -> [ItemDetails] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getDetails].function!(this: this, arguments: [itemIds.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getDetails].function!(this: this, arguments: [itemIds.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func listPurchases() -> JSPromise {
@@ -33,7 +33,7 @@ public class DigitalGoodsService: JSBridgedClass {
     @inlinable public func listPurchases() async throws -> [PurchaseDetails] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.listPurchases].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func listPurchaseHistory() -> JSPromise {
@@ -45,18 +45,18 @@ public class DigitalGoodsService: JSBridgedClass {
     @inlinable public func listPurchaseHistory() async throws -> [PurchaseDetails] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.listPurchaseHistory].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func consume(purchaseToken: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.consume].function!(this: this, arguments: [purchaseToken.jsValue()]).fromJSValue()!
+        return this[Strings.consume].function!(this: this, arguments: [purchaseToken.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func consume(purchaseToken: String) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.consume].function!(this: this, arguments: [purchaseToken.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.consume].function!(this: this, arguments: [purchaseToken.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 }

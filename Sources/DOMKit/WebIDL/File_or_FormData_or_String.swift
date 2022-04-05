@@ -26,14 +26,14 @@ public enum File_or_FormData_or_String: JSValueCompatible, Any_File_or_FormData_
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .file(file):
-            return file.jsValue()
+            return file.jsValue
         case let .formData(formData):
-            return formData.jsValue()
+            return formData.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

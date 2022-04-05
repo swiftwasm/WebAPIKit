@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RTCRtpSendParameters: BridgedDictionary {
     public convenience init(degradationPreference: RTCDegradationPreference, transactionId: String, encodings: [RTCRtpEncodingParameters]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.degradationPreference] = degradationPreference.jsValue()
-        object[Strings.transactionId] = transactionId.jsValue()
-        object[Strings.encodings] = encodings.jsValue()
+        object[Strings.degradationPreference] = degradationPreference.jsValue
+        object[Strings.transactionId] = transactionId.jsValue
+        object[Strings.encodings] = encodings.jsValue
         self.init(unsafelyWrapping: object)
     }
 

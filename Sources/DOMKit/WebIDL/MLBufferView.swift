@@ -21,12 +21,12 @@ public enum MLBufferView: JSValueCompatible, Any_MLBufferView {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .arrayBufferView(arrayBufferView):
-            return arrayBufferView.jsValue()
+            return arrayBufferView.jsValue
         case let .mLBufferResourceView(mLBufferResourceView):
-            return mLBufferResourceView.jsValue()
+            return mLBufferResourceView.jsValue
         }
     }
 }

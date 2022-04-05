@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ImageEncodeOptions: BridgedDictionary {
     public convenience init(type: String, quality: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.quality] = quality.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.quality] = quality.jsValue
         self.init(unsafelyWrapping: object)
     }
 

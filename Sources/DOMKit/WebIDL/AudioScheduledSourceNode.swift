@@ -16,11 +16,11 @@ public class AudioScheduledSourceNode: AudioNode {
 
     @inlinable public func start(when: Double? = nil) {
         let this = jsObject
-        _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue() ?? .undefined])
+        _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue ?? .undefined])
     }
 
     @inlinable public func stop(when: Double? = nil) {
         let this = jsObject
-        _ = this[Strings.stop].function!(this: this, arguments: [when?.jsValue() ?? .undefined])
+        _ = this[Strings.stop].function!(this: this, arguments: [when?.jsValue ?? .undefined])
     }
 }

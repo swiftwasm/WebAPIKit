@@ -6,8 +6,8 @@ import JavaScriptKit
 public class InputDeviceCapabilitiesInit: BridgedDictionary {
     public convenience init(firesTouchEvents: Bool, pointerMovementScrolls: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.firesTouchEvents] = firesTouchEvents.jsValue()
-        object[Strings.pointerMovementScrolls] = pointerMovementScrolls.jsValue()
+        object[Strings.firesTouchEvents] = firesTouchEvents.jsValue
+        object[Strings.pointerMovementScrolls] = pointerMovementScrolls.jsValue
         self.init(unsafelyWrapping: object)
     }
 

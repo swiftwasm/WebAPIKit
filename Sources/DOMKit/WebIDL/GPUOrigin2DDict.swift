@@ -6,8 +6,8 @@ import JavaScriptKit
 public class GPUOrigin2DDict: BridgedDictionary {
     public convenience init(x: GPUIntegerCoordinate, y: GPUIntegerCoordinate) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.x] = x.jsValue()
-        object[Strings.y] = y.jsValue()
+        object[Strings.x] = x.jsValue
+        object[Strings.y] = y.jsValue
         self.init(unsafelyWrapping: object)
     }
 

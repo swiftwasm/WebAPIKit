@@ -6,9 +6,9 @@ import JavaScriptKit
 public class PublicKeyCredentialDescriptor: BridgedDictionary {
     public convenience init(type: String, id: BufferSource, transports: [String]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.id] = id.jsValue()
-        object[Strings.transports] = transports.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.id] = id.jsValue
+        object[Strings.transports] = transports.jsValue
         self.init(unsafelyWrapping: object)
     }
 

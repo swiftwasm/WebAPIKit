@@ -26,7 +26,7 @@ public class History: JSBridgedClass {
 
     @inlinable public func go(delta: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.go].function!(this: this, arguments: [delta?.jsValue() ?? .undefined])
+        _ = this[Strings.go].function!(this: this, arguments: [delta?.jsValue ?? .undefined])
     }
 
     @inlinable public func back() {
@@ -41,11 +41,11 @@ public class History: JSBridgedClass {
 
     @inlinable public func pushState(data: JSValue, unused: String, url: String? = nil) {
         let this = jsObject
-        _ = this[Strings.pushState].function!(this: this, arguments: [data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined])
+        _ = this[Strings.pushState].function!(this: this, arguments: [data.jsValue, unused.jsValue, url?.jsValue ?? .undefined])
     }
 
     @inlinable public func replaceState(data: JSValue, unused: String, url: String? = nil) {
         let this = jsObject
-        _ = this[Strings.replaceState].function!(this: this, arguments: [data.jsValue(), unused.jsValue(), url?.jsValue() ?? .undefined])
+        _ = this[Strings.replaceState].function!(this: this, arguments: [data.jsValue, unused.jsValue, url?.jsValue ?? .undefined])
     }
 }

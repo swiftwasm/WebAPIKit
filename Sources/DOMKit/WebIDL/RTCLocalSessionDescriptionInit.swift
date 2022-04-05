@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RTCLocalSessionDescriptionInit: BridgedDictionary {
     public convenience init(type: RTCSdpType, sdp: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.sdp] = sdp.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.sdp] = sdp.jsValue
         self.init(unsafelyWrapping: object)
     }
 

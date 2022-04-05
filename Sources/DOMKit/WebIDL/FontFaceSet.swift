@@ -16,19 +16,19 @@ public class FontFaceSet: EventTarget {
     }
 
     @inlinable public convenience init(initialFaces: [FontFace]) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [initialFaces.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [initialFaces.jsValue]))
     }
 
     // XXX: make me Set-like!
 
     @inlinable public func add(font: FontFace) -> Self {
         let this = jsObject
-        return this[Strings.add].function!(this: this, arguments: [font.jsValue()]).fromJSValue()!
+        return this[Strings.add].function!(this: this, arguments: [font.jsValue]).fromJSValue()!
     }
 
     @inlinable public func delete(font: FontFace) -> Bool {
         let this = jsObject
-        return this[Strings.delete].function!(this: this, arguments: [font.jsValue()]).fromJSValue()!
+        return this[Strings.delete].function!(this: this, arguments: [font.jsValue]).fromJSValue()!
     }
 
     @inlinable public func clear() {
@@ -47,19 +47,19 @@ public class FontFaceSet: EventTarget {
 
     @inlinable public func load(font: String, text: String? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.load].function!(this: this, arguments: [font.jsValue(), text?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.load].function!(this: this, arguments: [font.jsValue, text?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func load(font: String, text: String? = nil) async throws -> [FontFace] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.load].function!(this: this, arguments: [font.jsValue(), text?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.load].function!(this: this, arguments: [font.jsValue, text?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func check(font: String, text: String? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.check].function!(this: this, arguments: [font.jsValue(), text?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.check].function!(this: this, arguments: [font.jsValue, text?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

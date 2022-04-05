@@ -6,8 +6,8 @@ import JavaScriptKit
 public class URLPatternComponentResult: BridgedDictionary {
     public convenience init(input: String, groups: [String: String?]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.input] = input.jsValue()
-        object[Strings.groups] = groups.jsValue()
+        object[Strings.input] = input.jsValue
+        object[Strings.groups] = groups.jsValue
         self.init(unsafelyWrapping: object)
     }
 

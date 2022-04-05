@@ -21,12 +21,12 @@ public enum CSSUnparsedSegment: JSValueCompatible, Any_CSSUnparsedSegment {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .cSSVariableReferenceValue(cSSVariableReferenceValue):
-            return cSSVariableReferenceValue.jsValue()
+            return cSSVariableReferenceValue.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class OrientationSensorOptions: BridgedDictionary {
     public convenience init(referenceFrame: OrientationSensorLocalCoordinateSystem) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.referenceFrame] = referenceFrame.jsValue()
+        object[Strings.referenceFrame] = referenceFrame.jsValue
         self.init(unsafelyWrapping: object)
     }
 

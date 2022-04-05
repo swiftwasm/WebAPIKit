@@ -14,17 +14,17 @@ public class WEBGL_draw_instanced_base_vertex_base_instance: JSBridgedClass {
 
     @inlinable public func drawArraysInstancedBaseInstanceWEBGL(mode: GLenum, first: GLint, count: GLsizei, instanceCount: GLsizei, baseInstance: GLuint) {
         let this = jsObject
-        _ = this[Strings.drawArraysInstancedBaseInstanceWEBGL].function!(this: this, arguments: [mode.jsValue(), first.jsValue(), count.jsValue(), instanceCount.jsValue(), baseInstance.jsValue()])
+        _ = this[Strings.drawArraysInstancedBaseInstanceWEBGL].function!(this: this, arguments: [mode.jsValue, first.jsValue, count.jsValue, instanceCount.jsValue, baseInstance.jsValue])
     }
 
     @inlinable public func drawElementsInstancedBaseVertexBaseInstanceWEBGL(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr, instanceCount: GLsizei, baseVertex: GLint, baseInstance: GLuint) {
-        let _arg0 = mode.jsValue()
-        let _arg1 = count.jsValue()
-        let _arg2 = type.jsValue()
-        let _arg3 = offset.jsValue()
-        let _arg4 = instanceCount.jsValue()
-        let _arg5 = baseVertex.jsValue()
-        let _arg6 = baseInstance.jsValue()
+        let _arg0 = mode.jsValue
+        let _arg1 = count.jsValue
+        let _arg2 = type.jsValue
+        let _arg3 = offset.jsValue
+        let _arg4 = instanceCount.jsValue
+        let _arg5 = baseVertex.jsValue
+        let _arg6 = baseInstance.jsValue
         let this = jsObject
         _ = this[Strings.drawElementsInstancedBaseVertexBaseInstanceWEBGL].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6])
     }

@@ -15,26 +15,26 @@ public extension ParentNode {
 
     @inlinable func prepend(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.prepend].function!(this: this, arguments: nodes.map { $0.jsValue() })
+        _ = this[Strings.prepend].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
     @inlinable func append(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: nodes.map { $0.jsValue() })
+        _ = this[Strings.append].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
     @inlinable func replaceChildren(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.replaceChildren].function!(this: this, arguments: nodes.map { $0.jsValue() })
+        _ = this[Strings.replaceChildren].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
     @inlinable func querySelector(selectors: String) -> Element? {
         let this = jsObject
-        return this[Strings.querySelector].function!(this: this, arguments: [selectors.jsValue()]).fromJSValue()!
+        return this[Strings.querySelector].function!(this: this, arguments: [selectors.jsValue]).fromJSValue()!
     }
 
     @inlinable func querySelectorAll(selectors: String) -> NodeList {
         let this = jsObject
-        return this[Strings.querySelectorAll].function!(this: this, arguments: [selectors.jsValue()]).fromJSValue()!
+        return this[Strings.querySelectorAll].function!(this: this, arguments: [selectors.jsValue]).fromJSValue()!
     }
 }

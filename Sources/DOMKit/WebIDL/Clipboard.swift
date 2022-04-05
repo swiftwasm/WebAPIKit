@@ -19,7 +19,7 @@ public class Clipboard: EventTarget {
     @inlinable public func read() async throws -> ClipboardItems {
         let this = jsObject
         let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func readText() -> JSPromise {
@@ -31,30 +31,30 @@ public class Clipboard: EventTarget {
     @inlinable public func readText() async throws -> String {
         let this = jsObject
         let _promise: JSPromise = this[Strings.readText].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func write(data: ClipboardItems) -> JSPromise {
         let this = jsObject
-        return this[Strings.write].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
+        return this[Strings.write].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func write(data: ClipboardItems) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func writeText(data: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.writeText].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
+        return this[Strings.writeText].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func writeText(data: String) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.writeText].function!(this: this, arguments: [data.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.writeText].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 }

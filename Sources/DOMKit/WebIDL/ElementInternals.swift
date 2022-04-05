@@ -27,7 +27,7 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
 
     @inlinable public func setFormValue(value: File_or_FormData_or_String?, state: File_or_FormData_or_String? = nil) {
         let this = jsObject
-        _ = this[Strings.setFormValue].function!(this: this, arguments: [value.jsValue(), state?.jsValue() ?? .undefined])
+        _ = this[Strings.setFormValue].function!(this: this, arguments: [value.jsValue, state?.jsValue ?? .undefined])
     }
 
     @ReadonlyAttribute
@@ -35,7 +35,7 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
 
     @inlinable public func setValidity(flags: ValidityStateFlags? = nil, message: String? = nil, anchor: HTMLElement? = nil) {
         let this = jsObject
-        _ = this[Strings.setValidity].function!(this: this, arguments: [flags?.jsValue() ?? .undefined, message?.jsValue() ?? .undefined, anchor?.jsValue() ?? .undefined])
+        _ = this[Strings.setValidity].function!(this: this, arguments: [flags?.jsValue ?? .undefined, message?.jsValue ?? .undefined, anchor?.jsValue ?? .undefined])
     }
 
     @ReadonlyAttribute

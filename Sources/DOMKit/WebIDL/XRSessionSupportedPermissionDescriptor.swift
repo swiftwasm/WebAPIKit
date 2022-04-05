@@ -6,7 +6,7 @@ import JavaScriptKit
 public class XRSessionSupportedPermissionDescriptor: BridgedDictionary {
     public convenience init(mode: XRSessionMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mode] = mode.jsValue()
+        object[Strings.mode] = mode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

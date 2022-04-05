@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ConstrainDoubleRange: BridgedDictionary {
     public convenience init(exact: Double, ideal: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.exact] = exact.jsValue()
-        object[Strings.ideal] = ideal.jsValue()
+        object[Strings.exact] = exact.jsValue
+        object[Strings.ideal] = ideal.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -12,7 +12,7 @@ public class CSSMathInvert: CSSMathValue {
     }
 
     @inlinable public convenience init(arg: CSSNumberish) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [arg.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [arg.jsValue]))
     }
 
     @ReadonlyAttribute

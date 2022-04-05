@@ -6,7 +6,7 @@ import JavaScriptKit
 public class CredentialPropertiesOutput: BridgedDictionary {
     public convenience init(rk: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.rk] = rk.jsValue()
+        object[Strings.rk] = rk.jsValue
         self.init(unsafelyWrapping: object)
     }
 

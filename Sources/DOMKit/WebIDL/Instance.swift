@@ -14,7 +14,7 @@ public class Instance: JSBridgedClass {
     }
 
     @inlinable public convenience init(module: Module, importObject: JSObject? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [module.jsValue(), importObject?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [module.jsValue, importObject?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

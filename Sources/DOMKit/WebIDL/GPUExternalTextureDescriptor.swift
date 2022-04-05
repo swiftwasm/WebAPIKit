@@ -6,8 +6,8 @@ import JavaScriptKit
 public class GPUExternalTextureDescriptor: BridgedDictionary {
     public convenience init(source: HTMLVideoElement, colorSpace: GPUPredefinedColorSpace) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.source] = source.jsValue()
-        object[Strings.colorSpace] = colorSpace.jsValue()
+        object[Strings.source] = source.jsValue
+        object[Strings.colorSpace] = colorSpace.jsValue
         self.init(unsafelyWrapping: object)
     }
 

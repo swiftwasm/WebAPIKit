@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RTCRtpTransceiverStats: BridgedDictionary {
     public convenience init(senderId: String, receiverId: String, mid: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.senderId] = senderId.jsValue()
-        object[Strings.receiverId] = receiverId.jsValue()
-        object[Strings.mid] = mid.jsValue()
+        object[Strings.senderId] = senderId.jsValue
+        object[Strings.receiverId] = receiverId.jsValue
+        object[Strings.mid] = mid.jsValue
         self.init(unsafelyWrapping: object)
     }
 

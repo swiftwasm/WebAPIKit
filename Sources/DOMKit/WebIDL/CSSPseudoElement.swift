@@ -24,6 +24,6 @@ public class CSSPseudoElement: EventTarget, GeometryUtils {
 
     @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
         let this = jsObject
-        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 }

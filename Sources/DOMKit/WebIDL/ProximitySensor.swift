@@ -14,7 +14,7 @@ public class ProximitySensor: Sensor {
     }
 
     @inlinable public convenience init(sensorOptions: SensorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

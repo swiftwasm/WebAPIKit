@@ -12,7 +12,7 @@ public class CSSPerspective: CSSTransformComponent {
     }
 
     @inlinable public convenience init(length: CSSPerspectiveValue) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [length.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [length.jsValue]))
     }
 
     @ReadWriteAttribute

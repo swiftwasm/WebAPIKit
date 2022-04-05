@@ -20,26 +20,26 @@ public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
 
     @inlinable public func substringData(offset: UInt32, count: UInt32) -> String {
         let this = jsObject
-        return this[Strings.substringData].function!(this: this, arguments: [offset.jsValue(), count.jsValue()]).fromJSValue()!
+        return this[Strings.substringData].function!(this: this, arguments: [offset.jsValue, count.jsValue]).fromJSValue()!
     }
 
     @inlinable public func appendData(data: String) {
         let this = jsObject
-        _ = this[Strings.appendData].function!(this: this, arguments: [data.jsValue()])
+        _ = this[Strings.appendData].function!(this: this, arguments: [data.jsValue])
     }
 
     @inlinable public func insertData(offset: UInt32, data: String) {
         let this = jsObject
-        _ = this[Strings.insertData].function!(this: this, arguments: [offset.jsValue(), data.jsValue()])
+        _ = this[Strings.insertData].function!(this: this, arguments: [offset.jsValue, data.jsValue])
     }
 
     @inlinable public func deleteData(offset: UInt32, count: UInt32) {
         let this = jsObject
-        _ = this[Strings.deleteData].function!(this: this, arguments: [offset.jsValue(), count.jsValue()])
+        _ = this[Strings.deleteData].function!(this: this, arguments: [offset.jsValue, count.jsValue])
     }
 
     @inlinable public func replaceData(offset: UInt32, count: UInt32, data: String) {
         let this = jsObject
-        _ = this[Strings.replaceData].function!(this: this, arguments: [offset.jsValue(), count.jsValue(), data.jsValue()])
+        _ = this[Strings.replaceData].function!(this: this, arguments: [offset.jsValue, count.jsValue, data.jsValue])
     }
 }

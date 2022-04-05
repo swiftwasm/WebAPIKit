@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RTCEncodedAudioFrameMetadata: BridgedDictionary {
     public convenience init(synchronizationSource: Int32, payloadType: UInt8, contributingSources: [Int32]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.synchronizationSource] = synchronizationSource.jsValue()
-        object[Strings.payloadType] = payloadType.jsValue()
-        object[Strings.contributingSources] = contributingSources.jsValue()
+        object[Strings.synchronizationSource] = synchronizationSource.jsValue
+        object[Strings.payloadType] = payloadType.jsValue
+        object[Strings.contributingSources] = contributingSources.jsValue
         self.init(unsafelyWrapping: object)
     }
 

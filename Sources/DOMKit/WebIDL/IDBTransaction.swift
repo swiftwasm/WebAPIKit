@@ -35,7 +35,7 @@ public class IDBTransaction: EventTarget {
 
     @inlinable public func objectStore(name: String) -> IDBObjectStore {
         let this = jsObject
-        return this[Strings.objectStore].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.objectStore].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @inlinable public func commit() {

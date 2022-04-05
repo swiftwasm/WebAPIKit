@@ -13,11 +13,11 @@ public class OfflineAudioContext: BaseAudioContext {
     }
 
     @inlinable public convenience init(contextOptions: OfflineAudioContextOptions) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions.jsValue]))
     }
 
     @inlinable public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [numberOfChannels.jsValue(), length.jsValue(), sampleRate.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [numberOfChannels.jsValue, length.jsValue, sampleRate.jsValue]))
     }
 
     @inlinable public func startRendering() -> JSPromise {
@@ -29,7 +29,7 @@ public class OfflineAudioContext: BaseAudioContext {
     @inlinable public func startRendering() async throws -> AudioBuffer {
         let this = jsObject
         let _promise: JSPromise = this[Strings.startRendering].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func resume() -> JSPromise {
@@ -41,19 +41,19 @@ public class OfflineAudioContext: BaseAudioContext {
     @inlinable public func resume() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func suspend(suspendTime: Double) -> JSPromise {
         let this = jsObject
-        return this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue()]).fromJSValue()!
+        return this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func suspend(suspendTime: Double) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @ReadonlyAttribute

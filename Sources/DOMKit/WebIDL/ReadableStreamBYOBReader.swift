@@ -13,19 +13,19 @@ public class ReadableStreamBYOBReader: JSBridgedClass, ReadableStreamGenericRead
     }
 
     @inlinable public convenience init(stream: ReadableStream) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue]))
     }
 
     @inlinable public func read(view: ArrayBufferView) -> JSPromise {
         let this = jsObject
-        return this[Strings.read].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
+        return this[Strings.read].function!(this: this, arguments: [view.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func read(view: ArrayBufferView) async throws -> ReadableStreamBYOBReadResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: [view.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func releaseLock() {

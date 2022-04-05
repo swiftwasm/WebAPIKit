@@ -21,12 +21,12 @@ public enum Bool_or_ScrollIntoViewOptions: JSValueCompatible, Any_Bool_or_Scroll
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .bool(bool):
-            return bool.jsValue()
+            return bool.jsValue
         case let .scrollIntoViewOptions(scrollIntoViewOptions):
-            return scrollIntoViewOptions.jsValue()
+            return scrollIntoViewOptions.jsValue
         }
     }
 }

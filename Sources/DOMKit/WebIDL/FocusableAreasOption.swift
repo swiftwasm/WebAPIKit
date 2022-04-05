@@ -6,7 +6,7 @@ import JavaScriptKit
 public class FocusableAreasOption: BridgedDictionary {
     public convenience init(mode: FocusableAreaSearchMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mode] = mode.jsValue()
+        object[Strings.mode] = mode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

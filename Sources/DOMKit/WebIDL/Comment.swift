@@ -11,6 +11,6 @@ public class Comment: CharacterData {
     }
 
     @inlinable public convenience init(data: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data?.jsValue ?? .undefined]))
     }
 }

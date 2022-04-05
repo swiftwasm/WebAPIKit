@@ -6,16 +6,16 @@ import JavaScriptKit
 public class VideoFrameBufferInit: BridgedDictionary {
     public convenience init(format: VideoPixelFormat, codedWidth: UInt32, codedHeight: UInt32, timestamp: Int64, duration: UInt64, layout: [PlaneLayout], visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32, colorSpace: VideoColorSpaceInit) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.format] = format.jsValue()
-        object[Strings.codedWidth] = codedWidth.jsValue()
-        object[Strings.codedHeight] = codedHeight.jsValue()
-        object[Strings.timestamp] = timestamp.jsValue()
-        object[Strings.duration] = duration.jsValue()
-        object[Strings.layout] = layout.jsValue()
-        object[Strings.visibleRect] = visibleRect.jsValue()
-        object[Strings.displayWidth] = displayWidth.jsValue()
-        object[Strings.displayHeight] = displayHeight.jsValue()
-        object[Strings.colorSpace] = colorSpace.jsValue()
+        object[Strings.format] = format.jsValue
+        object[Strings.codedWidth] = codedWidth.jsValue
+        object[Strings.codedHeight] = codedHeight.jsValue
+        object[Strings.timestamp] = timestamp.jsValue
+        object[Strings.duration] = duration.jsValue
+        object[Strings.layout] = layout.jsValue
+        object[Strings.visibleRect] = visibleRect.jsValue
+        object[Strings.displayWidth] = displayWidth.jsValue
+        object[Strings.displayHeight] = displayHeight.jsValue
+        object[Strings.colorSpace] = colorSpace.jsValue
         self.init(unsafelyWrapping: object)
     }
 

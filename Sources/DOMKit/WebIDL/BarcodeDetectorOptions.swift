@@ -6,7 +6,7 @@ import JavaScriptKit
 public class BarcodeDetectorOptions: BridgedDictionary {
     public convenience init(formats: [BarcodeFormat]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.formats] = formats.jsValue()
+        object[Strings.formats] = formats.jsValue
         self.init(unsafelyWrapping: object)
     }
 

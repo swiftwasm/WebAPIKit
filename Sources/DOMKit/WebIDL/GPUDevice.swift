@@ -31,91 +31,91 @@ public class GPUDevice: EventTarget, GPUObjectBase {
 
     @inlinable public func createBuffer(descriptor: GPUBufferDescriptor) -> GPUBuffer {
         let this = jsObject
-        return this[Strings.createBuffer].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createBuffer].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createTexture(descriptor: GPUTextureDescriptor) -> GPUTexture {
         let this = jsObject
-        return this[Strings.createTexture].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createTexture].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createSampler(descriptor: GPUSamplerDescriptor? = nil) -> GPUSampler {
         let this = jsObject
-        return this[Strings.createSampler].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createSampler].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func importExternalTexture(descriptor: GPUExternalTextureDescriptor) -> GPUExternalTexture {
         let this = jsObject
-        return this[Strings.importExternalTexture].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.importExternalTexture].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createBindGroupLayout(descriptor: GPUBindGroupLayoutDescriptor) -> GPUBindGroupLayout {
         let this = jsObject
-        return this[Strings.createBindGroupLayout].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createBindGroupLayout].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createPipelineLayout(descriptor: GPUPipelineLayoutDescriptor) -> GPUPipelineLayout {
         let this = jsObject
-        return this[Strings.createPipelineLayout].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createPipelineLayout].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createBindGroup(descriptor: GPUBindGroupDescriptor) -> GPUBindGroup {
         let this = jsObject
-        return this[Strings.createBindGroup].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createBindGroup].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createShaderModule(descriptor: GPUShaderModuleDescriptor) -> GPUShaderModule {
         let this = jsObject
-        return this[Strings.createShaderModule].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createShaderModule].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createComputePipeline(descriptor: GPUComputePipelineDescriptor) -> GPUComputePipeline {
         let this = jsObject
-        return this[Strings.createComputePipeline].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createComputePipeline].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createRenderPipeline(descriptor: GPURenderPipelineDescriptor) -> GPURenderPipeline {
         let this = jsObject
-        return this[Strings.createRenderPipeline].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createRenderPipeline].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createComputePipelineAsync(descriptor: GPUComputePipelineDescriptor) -> JSPromise {
         let this = jsObject
-        return this[Strings.createComputePipelineAsync].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createComputePipelineAsync].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func createComputePipelineAsync(descriptor: GPUComputePipelineDescriptor) async throws -> GPUComputePipeline {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.createComputePipelineAsync].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.createComputePipelineAsync].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func createRenderPipelineAsync(descriptor: GPURenderPipelineDescriptor) -> JSPromise {
         let this = jsObject
-        return this[Strings.createRenderPipelineAsync].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createRenderPipelineAsync].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func createRenderPipelineAsync(descriptor: GPURenderPipelineDescriptor) async throws -> GPURenderPipeline {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.createRenderPipelineAsync].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.createRenderPipelineAsync].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func createCommandEncoder(descriptor: GPUCommandEncoderDescriptor? = nil) -> GPUCommandEncoder {
         let this = jsObject
-        return this[Strings.createCommandEncoder].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createCommandEncoder].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createRenderBundleEncoder(descriptor: GPURenderBundleEncoderDescriptor) -> GPURenderBundleEncoder {
         let this = jsObject
-        return this[Strings.createRenderBundleEncoder].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createRenderBundleEncoder].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createQuerySet(descriptor: GPUQuerySetDescriptor) -> GPUQuerySet {
         let this = jsObject
-        return this[Strings.createQuerySet].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.createQuerySet].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -123,7 +123,7 @@ public class GPUDevice: EventTarget, GPUObjectBase {
 
     @inlinable public func pushErrorScope(filter: GPUErrorFilter) {
         let this = jsObject
-        _ = this[Strings.pushErrorScope].function!(this: this, arguments: [filter.jsValue()])
+        _ = this[Strings.pushErrorScope].function!(this: this, arguments: [filter.jsValue])
     }
 
     @inlinable public func popErrorScope() -> JSPromise {
@@ -135,7 +135,7 @@ public class GPUDevice: EventTarget, GPUObjectBase {
     @inlinable public func popErrorScope() async throws -> GPUError? {
         let this = jsObject
         let _promise: JSPromise = this[Strings.popErrorScope].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ClosureAttribute1Optional

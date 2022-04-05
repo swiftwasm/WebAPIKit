@@ -6,9 +6,9 @@ import JavaScriptKit
 public class ModuleImportDescriptor: BridgedDictionary {
     public convenience init(module: String, name: String, kind: ImportExportKind) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.module] = module.jsValue()
-        object[Strings.name] = name.jsValue()
-        object[Strings.kind] = kind.jsValue()
+        object[Strings.module] = module.jsValue
+        object[Strings.name] = name.jsValue
+        object[Strings.kind] = kind.jsValue
         self.init(unsafelyWrapping: object)
     }
 

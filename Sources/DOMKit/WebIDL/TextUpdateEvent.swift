@@ -18,7 +18,7 @@ public class TextUpdateEvent: Event {
     }
 
     @inlinable public convenience init(options: TextUpdateEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

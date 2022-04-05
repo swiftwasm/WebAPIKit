@@ -6,7 +6,7 @@ import JavaScriptKit
 public class AesCbcParams: BridgedDictionary {
     public convenience init(iv: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.iv] = iv.jsValue()
+        object[Strings.iv] = iv.jsValue
         self.init(unsafelyWrapping: object)
     }
 

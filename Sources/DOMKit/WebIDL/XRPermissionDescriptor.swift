@@ -6,9 +6,9 @@ import JavaScriptKit
 public class XRPermissionDescriptor: BridgedDictionary {
     public convenience init(mode: XRSessionMode, requiredFeatures: [JSValue], optionalFeatures: [JSValue]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mode] = mode.jsValue()
-        object[Strings.requiredFeatures] = requiredFeatures.jsValue()
-        object[Strings.optionalFeatures] = optionalFeatures.jsValue()
+        object[Strings.mode] = mode.jsValue
+        object[Strings.requiredFeatures] = requiredFeatures.jsValue
+        object[Strings.optionalFeatures] = optionalFeatures.jsValue
         self.init(unsafelyWrapping: object)
     }
 

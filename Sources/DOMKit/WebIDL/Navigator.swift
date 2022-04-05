@@ -37,29 +37,29 @@ public class Navigator: JSBridgedClass, NavigatorBadge, NavigatorDeviceMemory, N
 
     @inlinable public func getAutoplayPolicy(type: AutoplayPolicyMediaType) -> AutoplayPolicy {
         let this = jsObject
-        return this[Strings.getAutoplayPolicy].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.getAutoplayPolicy].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getAutoplayPolicy(element: HTMLMediaElement) -> AutoplayPolicy {
         let this = jsObject
-        return this[Strings.getAutoplayPolicy].function!(this: this, arguments: [element.jsValue()]).fromJSValue()!
+        return this[Strings.getAutoplayPolicy].function!(this: this, arguments: [element.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getAutoplayPolicy(context: AudioContext) -> AutoplayPolicy {
         let this = jsObject
-        return this[Strings.getAutoplayPolicy].function!(this: this, arguments: [context.jsValue()]).fromJSValue()!
+        return this[Strings.getAutoplayPolicy].function!(this: this, arguments: [context.jsValue]).fromJSValue()!
     }
 
     @inlinable public func setClientBadge(contents: UInt64? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.setClientBadge].function!(this: this, arguments: [contents?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.setClientBadge].function!(this: this, arguments: [contents?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func setClientBadge(contents: UInt64? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.setClientBadge].function!(this: this, arguments: [contents?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.setClientBadge].function!(this: this, arguments: [contents?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func clearClientBadge() -> JSPromise {
@@ -71,7 +71,7 @@ public class Navigator: JSBridgedClass, NavigatorBadge, NavigatorDeviceMemory, N
     @inlinable public func clearClientBadge() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.clearClientBadge].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func getBattery() -> JSPromise {
@@ -83,12 +83,12 @@ public class Navigator: JSBridgedClass, NavigatorBadge, NavigatorDeviceMemory, N
     @inlinable public func getBattery() async throws -> BatteryManager {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getBattery].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func sendBeacon(url: String, data: BodyInit? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.sendBeacon].function!(this: this, arguments: [url.jsValue(), data?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.sendBeacon].function!(this: this, arguments: [url.jsValue, data?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -105,14 +105,14 @@ public class Navigator: JSBridgedClass, NavigatorBadge, NavigatorDeviceMemory, N
 
     @inlinable public func requestMediaKeySystemAccess(keySystem: String, supportedConfigurations: [MediaKeySystemConfiguration]) -> JSPromise {
         let this = jsObject
-        return this[Strings.requestMediaKeySystemAccess].function!(this: this, arguments: [keySystem.jsValue(), supportedConfigurations.jsValue()]).fromJSValue()!
+        return this[Strings.requestMediaKeySystemAccess].function!(this: this, arguments: [keySystem.jsValue, supportedConfigurations.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func requestMediaKeySystemAccess(keySystem: String, supportedConfigurations: [MediaKeySystemConfiguration]) async throws -> MediaKeySystemAccess {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.requestMediaKeySystemAccess].function!(this: this, arguments: [keySystem.jsValue(), supportedConfigurations.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.requestMediaKeySystemAccess].function!(this: this, arguments: [keySystem.jsValue, supportedConfigurations.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getGamepads() -> [Gamepad?] {
@@ -132,7 +132,7 @@ public class Navigator: JSBridgedClass, NavigatorBadge, NavigatorDeviceMemory, N
     @inlinable public func getInstalledRelatedApps() async throws -> [RelatedApplication] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getInstalledRelatedApps].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -175,7 +175,7 @@ public class Navigator: JSBridgedClass, NavigatorBadge, NavigatorDeviceMemory, N
 
     @inlinable public func vibrate(pattern: VibratePattern) -> Bool {
         let this = jsObject
-        return this[Strings.vibrate].function!(this: this, arguments: [pattern.jsValue()]).fromJSValue()!
+        return this[Strings.vibrate].function!(this: this, arguments: [pattern.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -186,19 +186,19 @@ public class Navigator: JSBridgedClass, NavigatorBadge, NavigatorDeviceMemory, N
 
     @inlinable public func share(data: ShareData? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.share].function!(this: this, arguments: [data?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.share].function!(this: this, arguments: [data?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func share(data: ShareData? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.share].function!(this: this, arguments: [data?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.share].function!(this: this, arguments: [data?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func canShare(data: ShareData? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.canShare].function!(this: this, arguments: [data?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.canShare].function!(this: this, arguments: [data?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -206,14 +206,14 @@ public class Navigator: JSBridgedClass, NavigatorBadge, NavigatorDeviceMemory, N
 
     @inlinable public func requestMIDIAccess(options: MIDIOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.requestMIDIAccess].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.requestMIDIAccess].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func requestMIDIAccess(options: MIDIOptions? = nil) async throws -> MIDIAccess {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.requestMIDIAccess].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.requestMIDIAccess].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute

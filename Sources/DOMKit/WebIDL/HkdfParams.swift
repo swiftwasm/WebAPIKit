@@ -6,9 +6,9 @@ import JavaScriptKit
 public class HkdfParams: BridgedDictionary {
     public convenience init(hash: HashAlgorithmIdentifier, salt: BufferSource, info: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.hash] = hash.jsValue()
-        object[Strings.salt] = salt.jsValue()
-        object[Strings.info] = info.jsValue()
+        object[Strings.hash] = hash.jsValue
+        object[Strings.salt] = salt.jsValue
+        object[Strings.info] = info.jsValue
         self.init(unsafelyWrapping: object)
     }
 

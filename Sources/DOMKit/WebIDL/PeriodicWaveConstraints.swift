@@ -6,7 +6,7 @@ import JavaScriptKit
 public class PeriodicWaveConstraints: BridgedDictionary {
     public convenience init(disableNormalization: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.disableNormalization] = disableNormalization.jsValue()
+        object[Strings.disableNormalization] = disableNormalization.jsValue
         self.init(unsafelyWrapping: object)
     }
 

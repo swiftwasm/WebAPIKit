@@ -21,12 +21,12 @@ public enum MediaList_or_String: JSValueCompatible, Any_MediaList_or_String {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .mediaList(mediaList):
-            return mediaList.jsValue()
+            return mediaList.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

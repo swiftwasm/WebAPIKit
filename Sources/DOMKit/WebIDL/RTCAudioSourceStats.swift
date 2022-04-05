@@ -6,11 +6,11 @@ import JavaScriptKit
 public class RTCAudioSourceStats: BridgedDictionary {
     public convenience init(audioLevel: Double, totalAudioEnergy: Double, totalSamplesDuration: Double, echoReturnLoss: Double, echoReturnLossEnhancement: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.audioLevel] = audioLevel.jsValue()
-        object[Strings.totalAudioEnergy] = totalAudioEnergy.jsValue()
-        object[Strings.totalSamplesDuration] = totalSamplesDuration.jsValue()
-        object[Strings.echoReturnLoss] = echoReturnLoss.jsValue()
-        object[Strings.echoReturnLossEnhancement] = echoReturnLossEnhancement.jsValue()
+        object[Strings.audioLevel] = audioLevel.jsValue
+        object[Strings.totalAudioEnergy] = totalAudioEnergy.jsValue
+        object[Strings.totalSamplesDuration] = totalSamplesDuration.jsValue
+        object[Strings.echoReturnLoss] = echoReturnLoss.jsValue
+        object[Strings.echoReturnLossEnhancement] = echoReturnLossEnhancement.jsValue
         self.init(unsafelyWrapping: object)
     }
 

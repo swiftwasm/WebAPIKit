@@ -6,7 +6,7 @@ import JavaScriptKit
 public class XRDOMOverlayState: BridgedDictionary {
     public convenience init(type: XRDOMOverlayType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
+        object[Strings.type] = type.jsValue
         self.init(unsafelyWrapping: object)
     }
 

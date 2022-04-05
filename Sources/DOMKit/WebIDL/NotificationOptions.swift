@@ -6,20 +6,20 @@ import JavaScriptKit
 public class NotificationOptions: BridgedDictionary {
     public convenience init(dir: NotificationDirection, lang: String, body: String, tag: String, image: String, icon: String, badge: String, vibrate: VibratePattern, timestamp: EpochTimeStamp, renotify: Bool, silent: Bool, requireInteraction: Bool, data: JSValue, actions: [NotificationAction]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.dir] = dir.jsValue()
-        object[Strings.lang] = lang.jsValue()
-        object[Strings.body] = body.jsValue()
-        object[Strings.tag] = tag.jsValue()
-        object[Strings.image] = image.jsValue()
-        object[Strings.icon] = icon.jsValue()
-        object[Strings.badge] = badge.jsValue()
-        object[Strings.vibrate] = vibrate.jsValue()
-        object[Strings.timestamp] = timestamp.jsValue()
-        object[Strings.renotify] = renotify.jsValue()
-        object[Strings.silent] = silent.jsValue()
-        object[Strings.requireInteraction] = requireInteraction.jsValue()
-        object[Strings.data] = data.jsValue()
-        object[Strings.actions] = actions.jsValue()
+        object[Strings.dir] = dir.jsValue
+        object[Strings.lang] = lang.jsValue
+        object[Strings.body] = body.jsValue
+        object[Strings.tag] = tag.jsValue
+        object[Strings.image] = image.jsValue
+        object[Strings.icon] = icon.jsValue
+        object[Strings.badge] = badge.jsValue
+        object[Strings.vibrate] = vibrate.jsValue
+        object[Strings.timestamp] = timestamp.jsValue
+        object[Strings.renotify] = renotify.jsValue
+        object[Strings.silent] = silent.jsValue
+        object[Strings.requireInteraction] = requireInteraction.jsValue
+        object[Strings.data] = data.jsValue
+        object[Strings.actions] = actions.jsValue
         self.init(unsafelyWrapping: object)
     }
 

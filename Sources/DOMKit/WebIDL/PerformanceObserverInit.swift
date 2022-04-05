@@ -6,10 +6,10 @@ import JavaScriptKit
 public class PerformanceObserverInit: BridgedDictionary {
     public convenience init(durationThreshold: DOMHighResTimeStamp, entryTypes: [String], type: String, buffered: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.durationThreshold] = durationThreshold.jsValue()
-        object[Strings.entryTypes] = entryTypes.jsValue()
-        object[Strings.type] = type.jsValue()
-        object[Strings.buffered] = buffered.jsValue()
+        object[Strings.durationThreshold] = durationThreshold.jsValue
+        object[Strings.entryTypes] = entryTypes.jsValue
+        object[Strings.type] = type.jsValue
+        object[Strings.buffered] = buffered.jsValue
         self.init(unsafelyWrapping: object)
     }
 

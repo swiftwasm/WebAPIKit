@@ -6,9 +6,9 @@ import JavaScriptKit
 public class MLBufferResourceView: BridgedDictionary {
     public convenience init(resource: GPUBuffer_or_WebGLBuffer, offset: UInt64, size: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.resource] = resource.jsValue()
-        object[Strings.offset] = offset.jsValue()
-        object[Strings.size] = size.jsValue()
+        object[Strings.resource] = resource.jsValue
+        object[Strings.offset] = offset.jsValue
+        object[Strings.size] = size.jsValue
         self.init(unsafelyWrapping: object)
     }
 

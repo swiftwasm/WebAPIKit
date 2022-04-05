@@ -12,7 +12,7 @@ public class SharedWorker: EventTarget, AbstractWorker {
     }
 
     @inlinable public convenience init(scriptURL: String, options: String_or_WorkerOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [scriptURL.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

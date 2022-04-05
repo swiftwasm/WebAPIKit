@@ -21,12 +21,12 @@ public enum GPUBuffer_or_WebGLBuffer: JSValueCompatible, Any_GPUBuffer_or_WebGLB
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .gPUBuffer(gPUBuffer):
-            return gPUBuffer.jsValue()
+            return gPUBuffer.jsValue
         case let .webGLBuffer(webGLBuffer):
-            return webGLBuffer.jsValue()
+            return webGLBuffer.jsValue
         }
     }
 }

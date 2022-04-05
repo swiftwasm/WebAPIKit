@@ -6,7 +6,7 @@ import JavaScriptKit
 public class SvcOutputMetadata: BridgedDictionary {
     public convenience init(temporalLayerId: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.temporalLayerId] = temporalLayerId.jsValue()
+        object[Strings.temporalLayerId] = temporalLayerId.jsValue
         self.init(unsafelyWrapping: object)
     }
 

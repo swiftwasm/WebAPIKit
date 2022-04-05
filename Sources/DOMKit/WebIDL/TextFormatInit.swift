@@ -6,13 +6,13 @@ import JavaScriptKit
 public class TextFormatInit: BridgedDictionary {
     public convenience init(rangeStart: UInt32, rangeEnd: UInt32, textColor: String, backgroundColor: String, underlineStyle: String, underlineThickness: String, underlineColor: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.rangeStart] = rangeStart.jsValue()
-        object[Strings.rangeEnd] = rangeEnd.jsValue()
-        object[Strings.textColor] = textColor.jsValue()
-        object[Strings.backgroundColor] = backgroundColor.jsValue()
-        object[Strings.underlineStyle] = underlineStyle.jsValue()
-        object[Strings.underlineThickness] = underlineThickness.jsValue()
-        object[Strings.underlineColor] = underlineColor.jsValue()
+        object[Strings.rangeStart] = rangeStart.jsValue
+        object[Strings.rangeEnd] = rangeEnd.jsValue
+        object[Strings.textColor] = textColor.jsValue
+        object[Strings.backgroundColor] = backgroundColor.jsValue
+        object[Strings.underlineStyle] = underlineStyle.jsValue
+        object[Strings.underlineThickness] = underlineThickness.jsValue
+        object[Strings.underlineColor] = underlineColor.jsValue
         self.init(unsafelyWrapping: object)
     }
 

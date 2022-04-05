@@ -6,9 +6,9 @@ import JavaScriptKit
 public class MediaImage: BridgedDictionary {
     public convenience init(src: String, sizes: String, type: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.src] = src.jsValue()
-        object[Strings.sizes] = sizes.jsValue()
-        object[Strings.type] = type.jsValue()
+        object[Strings.src] = src.jsValue
+        object[Strings.sizes] = sizes.jsValue
+        object[Strings.type] = type.jsValue
         self.init(unsafelyWrapping: object)
     }
 

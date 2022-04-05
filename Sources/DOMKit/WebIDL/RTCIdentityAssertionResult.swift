@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RTCIdentityAssertionResult: BridgedDictionary {
     public convenience init(idp: RTCIdentityProviderDetails, assertion: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.idp] = idp.jsValue()
-        object[Strings.assertion] = assertion.jsValue()
+        object[Strings.idp] = idp.jsValue
+        object[Strings.assertion] = assertion.jsValue
         self.init(unsafelyWrapping: object)
     }
 

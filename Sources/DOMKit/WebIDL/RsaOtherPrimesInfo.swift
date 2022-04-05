@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RsaOtherPrimesInfo: BridgedDictionary {
     public convenience init(r: String, d: String, t: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.r] = r.jsValue()
-        object[Strings.d] = d.jsValue()
-        object[Strings.t] = t.jsValue()
+        object[Strings.r] = r.jsValue
+        object[Strings.d] = d.jsValue
+        object[Strings.t] = t.jsValue
         self.init(unsafelyWrapping: object)
     }
 

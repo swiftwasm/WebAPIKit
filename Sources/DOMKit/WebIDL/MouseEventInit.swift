@@ -6,15 +6,15 @@ import JavaScriptKit
 public class MouseEventInit: BridgedDictionary {
     public convenience init(movementX: Double, movementY: Double, screenX: Int32, screenY: Int32, clientX: Int32, clientY: Int32, button: Int16, buttons: UInt16, relatedTarget: EventTarget?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.movementX] = movementX.jsValue()
-        object[Strings.movementY] = movementY.jsValue()
-        object[Strings.screenX] = screenX.jsValue()
-        object[Strings.screenY] = screenY.jsValue()
-        object[Strings.clientX] = clientX.jsValue()
-        object[Strings.clientY] = clientY.jsValue()
-        object[Strings.button] = button.jsValue()
-        object[Strings.buttons] = buttons.jsValue()
-        object[Strings.relatedTarget] = relatedTarget.jsValue()
+        object[Strings.movementX] = movementX.jsValue
+        object[Strings.movementY] = movementY.jsValue
+        object[Strings.screenX] = screenX.jsValue
+        object[Strings.screenY] = screenY.jsValue
+        object[Strings.clientX] = clientX.jsValue
+        object[Strings.clientY] = clientY.jsValue
+        object[Strings.button] = button.jsValue
+        object[Strings.buttons] = buttons.jsValue
+        object[Strings.relatedTarget] = relatedTarget.jsValue
         self.init(unsafelyWrapping: object)
     }
 

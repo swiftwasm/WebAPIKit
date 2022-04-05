@@ -6,10 +6,10 @@ import JavaScriptKit
 public class PhotoCapabilities: BridgedDictionary {
     public convenience init(redEyeReduction: RedEyeReduction, imageHeight: MediaSettingsRange, imageWidth: MediaSettingsRange, fillLightMode: [FillLightMode]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.redEyeReduction] = redEyeReduction.jsValue()
-        object[Strings.imageHeight] = imageHeight.jsValue()
-        object[Strings.imageWidth] = imageWidth.jsValue()
-        object[Strings.fillLightMode] = fillLightMode.jsValue()
+        object[Strings.redEyeReduction] = redEyeReduction.jsValue
+        object[Strings.imageHeight] = imageHeight.jsValue
+        object[Strings.imageWidth] = imageWidth.jsValue
+        object[Strings.fillLightMode] = fillLightMode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

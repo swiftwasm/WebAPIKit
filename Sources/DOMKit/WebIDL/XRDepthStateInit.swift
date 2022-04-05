@@ -6,8 +6,8 @@ import JavaScriptKit
 public class XRDepthStateInit: BridgedDictionary {
     public convenience init(usagePreference: [XRDepthUsage], dataFormatPreference: [XRDepthDataFormat]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.usagePreference] = usagePreference.jsValue()
-        object[Strings.dataFormatPreference] = dataFormatPreference.jsValue()
+        object[Strings.usagePreference] = usagePreference.jsValue
+        object[Strings.dataFormatPreference] = dataFormatPreference.jsValue
         self.init(unsafelyWrapping: object)
     }
 

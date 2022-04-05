@@ -13,7 +13,7 @@ public class CSSParserFunction: CSSParserValue {
     }
 
     @inlinable public convenience init(name: String, args: [[CSSParserValue]]) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue(), args.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue, args.jsValue]))
     }
 
     @ReadonlyAttribute

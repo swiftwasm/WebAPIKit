@@ -18,12 +18,12 @@ public class AudioNode: EventTarget {
 
     @inlinable public func connect(destinationNode: AudioNode, output: UInt32? = nil, input: UInt32? = nil) -> Self {
         let this = jsObject
-        return this[Strings.connect].function!(this: this, arguments: [destinationNode.jsValue(), output?.jsValue() ?? .undefined, input?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.connect].function!(this: this, arguments: [destinationNode.jsValue, output?.jsValue ?? .undefined, input?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func connect(destinationParam: AudioParam, output: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.connect].function!(this: this, arguments: [destinationParam.jsValue(), output?.jsValue() ?? .undefined])
+        _ = this[Strings.connect].function!(this: this, arguments: [destinationParam.jsValue, output?.jsValue ?? .undefined])
     }
 
     @inlinable public func disconnect() {
@@ -33,32 +33,32 @@ public class AudioNode: EventTarget {
 
     @inlinable public func disconnect(output: UInt32) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [output.jsValue()])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [output.jsValue])
     }
 
     @inlinable public func disconnect(destinationNode: AudioNode) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue()])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue])
     }
 
     @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue(), output.jsValue()])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue, output.jsValue])
     }
 
     @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32, input: UInt32) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue(), output.jsValue(), input.jsValue()])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue, output.jsValue, input.jsValue])
     }
 
     @inlinable public func disconnect(destinationParam: AudioParam) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue()])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue])
     }
 
     @inlinable public func disconnect(destinationParam: AudioParam, output: UInt32) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue(), output.jsValue()])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue, output.jsValue])
     }
 
     @ReadonlyAttribute

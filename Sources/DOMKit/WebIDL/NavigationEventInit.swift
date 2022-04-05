@@ -6,8 +6,8 @@ import JavaScriptKit
 public class NavigationEventInit: BridgedDictionary {
     public convenience init(dir: SpatialNavigationDirection, relatedTarget: EventTarget?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.dir] = dir.jsValue()
-        object[Strings.relatedTarget] = relatedTarget.jsValue()
+        object[Strings.dir] = dir.jsValue
+        object[Strings.relatedTarget] = relatedTarget.jsValue
         self.init(unsafelyWrapping: object)
     }
 

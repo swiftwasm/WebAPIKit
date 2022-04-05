@@ -6,8 +6,8 @@ import JavaScriptKit
 public class WindowControlsOverlayGeometryChangeEventInit: BridgedDictionary {
     public convenience init(titlebarAreaRect: DOMRect, visible: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.titlebarAreaRect] = titlebarAreaRect.jsValue()
-        object[Strings.visible] = visible.jsValue()
+        object[Strings.titlebarAreaRect] = titlebarAreaRect.jsValue
+        object[Strings.visible] = visible.jsValue
         self.init(unsafelyWrapping: object)
     }
 

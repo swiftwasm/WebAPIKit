@@ -21,11 +21,11 @@ public class XRHitTestResult: JSBridgedClass {
     @inlinable public func createAnchor() async throws -> XRAnchor {
         let this = jsObject
         let _promise: JSPromise = this[Strings.createAnchor].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getPose(baseSpace: XRSpace) -> XRPose? {
         let this = jsObject
-        return this[Strings.getPose].function!(this: this, arguments: [baseSpace.jsValue()]).fromJSValue()!
+        return this[Strings.getPose].function!(this: this, arguments: [baseSpace.jsValue]).fromJSValue()!
     }
 }

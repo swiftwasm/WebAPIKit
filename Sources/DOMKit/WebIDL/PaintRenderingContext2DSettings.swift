@@ -6,7 +6,7 @@ import JavaScriptKit
 public class PaintRenderingContext2DSettings: BridgedDictionary {
     public convenience init(alpha: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.alpha] = alpha.jsValue()
+        object[Strings.alpha] = alpha.jsValue
         self.init(unsafelyWrapping: object)
     }
 

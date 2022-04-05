@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MediaCapabilitiesDecodingInfo: BridgedDictionary {
     public convenience init(keySystemAccess: MediaKeySystemAccess, configuration: MediaDecodingConfiguration) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.keySystemAccess] = keySystemAccess.jsValue()
-        object[Strings.configuration] = configuration.jsValue()
+        object[Strings.keySystemAccess] = keySystemAccess.jsValue
+        object[Strings.configuration] = configuration.jsValue
         self.init(unsafelyWrapping: object)
     }
 

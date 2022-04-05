@@ -6,15 +6,15 @@ import JavaScriptKit
 public class VideoDecoderConfig: BridgedDictionary {
     public convenience init(codec: String, description: BufferSource, codedWidth: UInt32, codedHeight: UInt32, displayAspectWidth: UInt32, displayAspectHeight: UInt32, colorSpace: VideoColorSpaceInit, hardwareAcceleration: HardwareAcceleration, optimizeForLatency: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.codec] = codec.jsValue()
-        object[Strings.description] = description.jsValue()
-        object[Strings.codedWidth] = codedWidth.jsValue()
-        object[Strings.codedHeight] = codedHeight.jsValue()
-        object[Strings.displayAspectWidth] = displayAspectWidth.jsValue()
-        object[Strings.displayAspectHeight] = displayAspectHeight.jsValue()
-        object[Strings.colorSpace] = colorSpace.jsValue()
-        object[Strings.hardwareAcceleration] = hardwareAcceleration.jsValue()
-        object[Strings.optimizeForLatency] = optimizeForLatency.jsValue()
+        object[Strings.codec] = codec.jsValue
+        object[Strings.description] = description.jsValue
+        object[Strings.codedWidth] = codedWidth.jsValue
+        object[Strings.codedHeight] = codedHeight.jsValue
+        object[Strings.displayAspectWidth] = displayAspectWidth.jsValue
+        object[Strings.displayAspectHeight] = displayAspectHeight.jsValue
+        object[Strings.colorSpace] = colorSpace.jsValue
+        object[Strings.hardwareAcceleration] = hardwareAcceleration.jsValue
+        object[Strings.optimizeForLatency] = optimizeForLatency.jsValue
         self.init(unsafelyWrapping: object)
     }
 

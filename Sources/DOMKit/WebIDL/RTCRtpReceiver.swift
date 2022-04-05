@@ -26,7 +26,7 @@ public class RTCRtpReceiver: JSBridgedClass {
 
     @inlinable public static func getCapabilities(kind: String) -> RTCRtpCapabilities? {
         let this = constructor
-        return this[Strings.getCapabilities].function!(this: this, arguments: [kind.jsValue()]).fromJSValue()!
+        return this[Strings.getCapabilities].function!(this: this, arguments: [kind.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getParameters() -> RTCRtpReceiveParameters {
@@ -53,6 +53,6 @@ public class RTCRtpReceiver: JSBridgedClass {
     @inlinable public func getStats() async throws -> RTCStatsReport {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

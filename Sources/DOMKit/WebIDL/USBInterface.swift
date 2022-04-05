@@ -17,7 +17,7 @@ public class USBInterface: JSBridgedClass {
     }
 
     @inlinable public convenience init(configuration: USBConfiguration, interfaceNumber: UInt8) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [configuration.jsValue(), interfaceNumber.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [configuration.jsValue, interfaceNumber.jsValue]))
     }
 
     @ReadonlyAttribute

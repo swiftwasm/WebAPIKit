@@ -13,14 +13,14 @@ public class Keyboard: EventTarget {
 
     @inlinable public func lock(keyCodes: [String]? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.lock].function!(this: this, arguments: [keyCodes?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.lock].function!(this: this, arguments: [keyCodes?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func lock(keyCodes: [String]? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.lock].function!(this: this, arguments: [keyCodes?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.lock].function!(this: this, arguments: [keyCodes?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func unlock() {
@@ -37,7 +37,7 @@ public class Keyboard: EventTarget {
     @inlinable public func getLayoutMap() async throws -> KeyboardLayoutMap {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getLayoutMap].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ClosureAttribute1Optional

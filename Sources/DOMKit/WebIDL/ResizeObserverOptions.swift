@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ResizeObserverOptions: BridgedDictionary {
     public convenience init(box: ResizeObserverBoxOptions) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.box] = box.jsValue()
+        object[Strings.box] = box.jsValue
         self.init(unsafelyWrapping: object)
     }
 

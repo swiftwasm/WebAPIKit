@@ -21,12 +21,12 @@ public class ServiceWorker: EventTarget, AbstractWorker {
 
     @inlinable public func postMessage(message: JSValue, transfer: [JSObject]) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), transfer.jsValue()])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, transfer.jsValue])
     }
 
     @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined])
     }
 
     @ClosureAttribute1Optional

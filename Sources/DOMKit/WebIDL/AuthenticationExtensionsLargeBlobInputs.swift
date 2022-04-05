@@ -6,9 +6,9 @@ import JavaScriptKit
 public class AuthenticationExtensionsLargeBlobInputs: BridgedDictionary {
     public convenience init(support: String, read: Bool, write: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.support] = support.jsValue()
-        object[Strings.read] = read.jsValue()
-        object[Strings.write] = write.jsValue()
+        object[Strings.support] = support.jsValue
+        object[Strings.read] = read.jsValue
+        object[Strings.write] = write.jsValue
         self.init(unsafelyWrapping: object)
     }
 

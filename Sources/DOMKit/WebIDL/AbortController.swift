@@ -22,6 +22,6 @@ public class AbortController: JSBridgedClass {
 
     @inlinable public func abort(reason: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined])
+        _ = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined])
     }
 }

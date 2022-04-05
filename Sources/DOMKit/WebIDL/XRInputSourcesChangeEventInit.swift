@@ -6,9 +6,9 @@ import JavaScriptKit
 public class XRInputSourcesChangeEventInit: BridgedDictionary {
     public convenience init(session: XRSession, added: [XRInputSource], removed: [XRInputSource]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.session] = session.jsValue()
-        object[Strings.added] = added.jsValue()
-        object[Strings.removed] = removed.jsValue()
+        object[Strings.session] = session.jsValue
+        object[Strings.added] = added.jsValue
+        object[Strings.removed] = removed.jsValue
         self.init(unsafelyWrapping: object)
     }
 

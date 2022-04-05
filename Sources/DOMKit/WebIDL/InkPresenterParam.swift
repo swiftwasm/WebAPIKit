@@ -6,7 +6,7 @@ import JavaScriptKit
 public class InkPresenterParam: BridgedDictionary {
     public convenience init(presentationArea: Element?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.presentationArea] = presentationArea.jsValue()
+        object[Strings.presentationArea] = presentationArea.jsValue
         self.init(unsafelyWrapping: object)
     }
 

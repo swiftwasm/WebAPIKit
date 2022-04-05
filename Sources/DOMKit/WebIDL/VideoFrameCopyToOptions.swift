@@ -6,8 +6,8 @@ import JavaScriptKit
 public class VideoFrameCopyToOptions: BridgedDictionary {
     public convenience init(rect: DOMRectInit, layout: [PlaneLayout]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.rect] = rect.jsValue()
-        object[Strings.layout] = layout.jsValue()
+        object[Strings.rect] = rect.jsValue
+        object[Strings.layout] = layout.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -17,7 +17,7 @@ public class PerformanceObserver: JSBridgedClass {
 
     @inlinable public func observe(options: PerformanceObserverInit? = nil) {
         let this = jsObject
-        _ = this[Strings.observe].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
+        _ = this[Strings.observe].function!(this: this, arguments: [options?.jsValue ?? .undefined])
     }
 
     @inlinable public func disconnect() {

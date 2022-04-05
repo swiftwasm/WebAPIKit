@@ -18,7 +18,7 @@ public class UIEvent: Event {
     public var sourceCapabilities: InputDeviceCapabilities?
 
     @inlinable public convenience init(type: String, eventInitDict: UIEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -29,7 +29,7 @@ public class UIEvent: Event {
 
     @inlinable public func initUIEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.initUIEvent].function!(this: this, arguments: [typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, detailArg?.jsValue() ?? .undefined])
+        _ = this[Strings.initUIEvent].function!(this: this, arguments: [typeArg.jsValue, bubblesArg?.jsValue ?? .undefined, cancelableArg?.jsValue ?? .undefined, viewArg?.jsValue ?? .undefined, detailArg?.jsValue ?? .undefined])
     }
 
     @ReadonlyAttribute

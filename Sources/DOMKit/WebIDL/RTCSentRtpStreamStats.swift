@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RTCSentRtpStreamStats: BridgedDictionary {
     public convenience init(packetsSent: UInt32, bytesSent: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.packetsSent] = packetsSent.jsValue()
-        object[Strings.bytesSent] = bytesSent.jsValue()
+        object[Strings.packetsSent] = packetsSent.jsValue
+        object[Strings.bytesSent] = bytesSent.jsValue
         self.init(unsafelyWrapping: object)
     }
 

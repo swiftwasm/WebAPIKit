@@ -21,12 +21,12 @@ public enum ReadableStreamReader: JSValueCompatible, Any_ReadableStreamReader {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .readableStreamBYOBReader(readableStreamBYOBReader):
-            return readableStreamBYOBReader.jsValue()
+            return readableStreamBYOBReader.jsValue
         case let .readableStreamDefaultReader(readableStreamDefaultReader):
-            return readableStreamDefaultReader.jsValue()
+            return readableStreamDefaultReader.jsValue
         }
     }
 }

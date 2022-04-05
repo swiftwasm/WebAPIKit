@@ -16,7 +16,7 @@ public class GroupEffect: JSBridgedClass {
     }
 
     @inlinable public convenience init(children: [AnimationEffect]?, timing: Double_or_EffectTiming? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [children.jsValue(), timing?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [children.jsValue, timing?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -35,11 +35,11 @@ public class GroupEffect: JSBridgedClass {
 
     @inlinable public func prepend(effects: AnimationEffect...) {
         let this = jsObject
-        _ = this[Strings.prepend].function!(this: this, arguments: effects.map { $0.jsValue() })
+        _ = this[Strings.prepend].function!(this: this, arguments: effects.map(\.jsValue))
     }
 
     @inlinable public func append(effects: AnimationEffect...) {
         let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: effects.map { $0.jsValue() })
+        _ = this[Strings.append].function!(this: this, arguments: effects.map(\.jsValue))
     }
 }

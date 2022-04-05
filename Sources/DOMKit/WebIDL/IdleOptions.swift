@@ -6,8 +6,8 @@ import JavaScriptKit
 public class IdleOptions: BridgedDictionary {
     public convenience init(threshold: UInt64, signal: AbortSignal) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.threshold] = threshold.jsValue()
-        object[Strings.signal] = signal.jsValue()
+        object[Strings.threshold] = threshold.jsValue
+        object[Strings.signal] = signal.jsValue
         self.init(unsafelyWrapping: object)
     }
 

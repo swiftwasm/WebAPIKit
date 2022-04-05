@@ -6,8 +6,8 @@ import JavaScriptKit
 public class NavigationResult: BridgedDictionary {
     public convenience init(committed: JSPromise, finished: JSPromise) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.committed] = committed.jsValue()
-        object[Strings.finished] = finished.jsValue()
+        object[Strings.committed] = committed.jsValue
+        object[Strings.finished] = finished.jsValue
         self.init(unsafelyWrapping: object)
     }
 

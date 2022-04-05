@@ -13,7 +13,7 @@ public class NDEFReadingEvent: Event {
     }
 
     @inlinable public convenience init(type: String, readingEventInitDict: NDEFReadingEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), readingEventInitDict.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, readingEventInitDict.jsValue]))
     }
 
     @ReadonlyAttribute

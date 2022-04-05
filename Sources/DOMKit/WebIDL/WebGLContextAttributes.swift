@@ -6,16 +6,16 @@ import JavaScriptKit
 public class WebGLContextAttributes: BridgedDictionary {
     public convenience init(alpha: Bool, depth: Bool, stencil: Bool, antialias: Bool, premultipliedAlpha: Bool, preserveDrawingBuffer: Bool, powerPreference: WebGLPowerPreference, failIfMajorPerformanceCaveat: Bool, desynchronized: Bool, xrCompatible: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.alpha] = alpha.jsValue()
-        object[Strings.depth] = depth.jsValue()
-        object[Strings.stencil] = stencil.jsValue()
-        object[Strings.antialias] = antialias.jsValue()
-        object[Strings.premultipliedAlpha] = premultipliedAlpha.jsValue()
-        object[Strings.preserveDrawingBuffer] = preserveDrawingBuffer.jsValue()
-        object[Strings.powerPreference] = powerPreference.jsValue()
-        object[Strings.failIfMajorPerformanceCaveat] = failIfMajorPerformanceCaveat.jsValue()
-        object[Strings.desynchronized] = desynchronized.jsValue()
-        object[Strings.xrCompatible] = xrCompatible.jsValue()
+        object[Strings.alpha] = alpha.jsValue
+        object[Strings.depth] = depth.jsValue
+        object[Strings.stencil] = stencil.jsValue
+        object[Strings.antialias] = antialias.jsValue
+        object[Strings.premultipliedAlpha] = premultipliedAlpha.jsValue
+        object[Strings.preserveDrawingBuffer] = preserveDrawingBuffer.jsValue
+        object[Strings.powerPreference] = powerPreference.jsValue
+        object[Strings.failIfMajorPerformanceCaveat] = failIfMajorPerformanceCaveat.jsValue
+        object[Strings.desynchronized] = desynchronized.jsValue
+        object[Strings.xrCompatible] = xrCompatible.jsValue
         self.init(unsafelyWrapping: object)
     }
 

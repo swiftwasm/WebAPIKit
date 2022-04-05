@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MediaStreamAudioSourceOptions: BridgedDictionary {
     public convenience init(mediaStream: MediaStream) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mediaStream] = mediaStream.jsValue()
+        object[Strings.mediaStream] = mediaStream.jsValue
         self.init(unsafelyWrapping: object)
     }
 

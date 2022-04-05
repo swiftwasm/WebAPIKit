@@ -21,12 +21,12 @@ public enum nullable_Double_or_seq_of_nullable_Double: JSValueCompatible, Any_nu
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .nullable_Double(nullable_Double):
-            return nullable_Double.jsValue()
+            return nullable_Double.jsValue
         case let .seq_of_nullable_Double(seq_of_nullable_Double):
-            return seq_of_nullable_Double.jsValue()
+            return seq_of_nullable_Double.jsValue
         }
     }
 }

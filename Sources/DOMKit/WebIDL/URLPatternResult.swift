@@ -6,15 +6,15 @@ import JavaScriptKit
 public class URLPatternResult: BridgedDictionary {
     public convenience init(inputs: [URLPatternInput], protocol: URLPatternComponentResult, username: URLPatternComponentResult, password: URLPatternComponentResult, hostname: URLPatternComponentResult, port: URLPatternComponentResult, pathname: URLPatternComponentResult, search: URLPatternComponentResult, hash: URLPatternComponentResult) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.inputs] = inputs.jsValue()
-        object[Strings.protocol] = `protocol`.jsValue()
-        object[Strings.username] = username.jsValue()
-        object[Strings.password] = password.jsValue()
-        object[Strings.hostname] = hostname.jsValue()
-        object[Strings.port] = port.jsValue()
-        object[Strings.pathname] = pathname.jsValue()
-        object[Strings.search] = search.jsValue()
-        object[Strings.hash] = hash.jsValue()
+        object[Strings.inputs] = inputs.jsValue
+        object[Strings.protocol] = `protocol`.jsValue
+        object[Strings.username] = username.jsValue
+        object[Strings.password] = password.jsValue
+        object[Strings.hostname] = hostname.jsValue
+        object[Strings.port] = port.jsValue
+        object[Strings.pathname] = pathname.jsValue
+        object[Strings.search] = search.jsValue
+        object[Strings.hash] = hash.jsValue
         self.init(unsafelyWrapping: object)
     }
 

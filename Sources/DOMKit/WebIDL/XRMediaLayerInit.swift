@@ -6,9 +6,9 @@ import JavaScriptKit
 public class XRMediaLayerInit: BridgedDictionary {
     public convenience init(space: XRSpace, layout: XRLayerLayout, invertStereo: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.space] = space.jsValue()
-        object[Strings.layout] = layout.jsValue()
-        object[Strings.invertStereo] = invertStereo.jsValue()
+        object[Strings.space] = space.jsValue
+        object[Strings.layout] = layout.jsValue
+        object[Strings.invertStereo] = invertStereo.jsValue
         self.init(unsafelyWrapping: object)
     }
 

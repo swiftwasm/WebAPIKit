@@ -11,11 +11,11 @@ public class TaskController: AbortController {
     }
 
     @inlinable public convenience init(init: TaskControllerInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue ?? .undefined]))
     }
 
     @inlinable public func setPriority(priority: TaskPriority) {
         let this = jsObject
-        _ = this[Strings.setPriority].function!(this: this, arguments: [priority.jsValue()])
+        _ = this[Strings.setPriority].function!(this: this, arguments: [priority.jsValue])
     }
 }

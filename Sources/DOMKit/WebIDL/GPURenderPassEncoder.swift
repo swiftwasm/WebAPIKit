@@ -13,34 +13,34 @@ public class GPURenderPassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMix
     }
 
     @inlinable public func setViewport(x: Float, y: Float, width: Float, height: Float, minDepth: Float, maxDepth: Float) {
-        let _arg0 = x.jsValue()
-        let _arg1 = y.jsValue()
-        let _arg2 = width.jsValue()
-        let _arg3 = height.jsValue()
-        let _arg4 = minDepth.jsValue()
-        let _arg5 = maxDepth.jsValue()
+        let _arg0 = x.jsValue
+        let _arg1 = y.jsValue
+        let _arg2 = width.jsValue
+        let _arg3 = height.jsValue
+        let _arg4 = minDepth.jsValue
+        let _arg5 = maxDepth.jsValue
         let this = jsObject
         _ = this[Strings.setViewport].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 
     @inlinable public func setScissorRect(x: GPUIntegerCoordinate, y: GPUIntegerCoordinate, width: GPUIntegerCoordinate, height: GPUIntegerCoordinate) {
         let this = jsObject
-        _ = this[Strings.setScissorRect].function!(this: this, arguments: [x.jsValue(), y.jsValue(), width.jsValue(), height.jsValue()])
+        _ = this[Strings.setScissorRect].function!(this: this, arguments: [x.jsValue, y.jsValue, width.jsValue, height.jsValue])
     }
 
     @inlinable public func setBlendConstant(color: GPUColor) {
         let this = jsObject
-        _ = this[Strings.setBlendConstant].function!(this: this, arguments: [color.jsValue()])
+        _ = this[Strings.setBlendConstant].function!(this: this, arguments: [color.jsValue])
     }
 
     @inlinable public func setStencilReference(reference: GPUStencilValue) {
         let this = jsObject
-        _ = this[Strings.setStencilReference].function!(this: this, arguments: [reference.jsValue()])
+        _ = this[Strings.setStencilReference].function!(this: this, arguments: [reference.jsValue])
     }
 
     @inlinable public func beginOcclusionQuery(queryIndex: GPUSize32) {
         let this = jsObject
-        _ = this[Strings.beginOcclusionQuery].function!(this: this, arguments: [queryIndex.jsValue()])
+        _ = this[Strings.beginOcclusionQuery].function!(this: this, arguments: [queryIndex.jsValue])
     }
 
     @inlinable public func endOcclusionQuery() {
@@ -50,7 +50,7 @@ public class GPURenderPassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMix
 
     @inlinable public func executeBundles(bundles: [GPURenderBundle]) {
         let this = jsObject
-        _ = this[Strings.executeBundles].function!(this: this, arguments: [bundles.jsValue()])
+        _ = this[Strings.executeBundles].function!(this: this, arguments: [bundles.jsValue])
     }
 
     @inlinable public func end() {

@@ -6,15 +6,15 @@ import JavaScriptKit
 public class GPURenderPassDepthStencilAttachment: BridgedDictionary {
     public convenience init(view: GPUTextureView, depthClearValue: Float, depthLoadOp: GPULoadOp, depthStoreOp: GPUStoreOp, depthReadOnly: Bool, stencilClearValue: GPUStencilValue, stencilLoadOp: GPULoadOp, stencilStoreOp: GPUStoreOp, stencilReadOnly: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.view] = view.jsValue()
-        object[Strings.depthClearValue] = depthClearValue.jsValue()
-        object[Strings.depthLoadOp] = depthLoadOp.jsValue()
-        object[Strings.depthStoreOp] = depthStoreOp.jsValue()
-        object[Strings.depthReadOnly] = depthReadOnly.jsValue()
-        object[Strings.stencilClearValue] = stencilClearValue.jsValue()
-        object[Strings.stencilLoadOp] = stencilLoadOp.jsValue()
-        object[Strings.stencilStoreOp] = stencilStoreOp.jsValue()
-        object[Strings.stencilReadOnly] = stencilReadOnly.jsValue()
+        object[Strings.view] = view.jsValue
+        object[Strings.depthClearValue] = depthClearValue.jsValue
+        object[Strings.depthLoadOp] = depthLoadOp.jsValue
+        object[Strings.depthStoreOp] = depthStoreOp.jsValue
+        object[Strings.depthReadOnly] = depthReadOnly.jsValue
+        object[Strings.stencilClearValue] = stencilClearValue.jsValue
+        object[Strings.stencilLoadOp] = stencilLoadOp.jsValue
+        object[Strings.stencilStoreOp] = stencilStoreOp.jsValue
+        object[Strings.stencilReadOnly] = stencilReadOnly.jsValue
         self.init(unsafelyWrapping: object)
     }
 

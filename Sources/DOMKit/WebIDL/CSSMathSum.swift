@@ -12,7 +12,7 @@ public class CSSMathSum: CSSMathValue {
     }
 
     @inlinable public convenience init(args: CSSNumberish...) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: args.map { $0.jsValue() }))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: args.map(\.jsValue)))
     }
 
     @ReadonlyAttribute

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class TaskControllerInit: BridgedDictionary {
     public convenience init(priority: TaskPriority) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.priority] = priority.jsValue()
+        object[Strings.priority] = priority.jsValue
         self.init(unsafelyWrapping: object)
     }
 

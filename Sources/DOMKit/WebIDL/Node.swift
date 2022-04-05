@@ -65,7 +65,7 @@ public class Node: EventTarget {
 
     @inlinable public func getRootNode(options: GetRootNodeOptions? = nil) -> Self {
         let this = jsObject
-        return this[Strings.getRootNode].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getRootNode].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -107,17 +107,17 @@ public class Node: EventTarget {
 
     @inlinable public func cloneNode(deep: Bool? = nil) -> Self {
         let this = jsObject
-        return this[Strings.cloneNode].function!(this: this, arguments: [deep?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.cloneNode].function!(this: this, arguments: [deep?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func isEqualNode(otherNode: Node?) -> Bool {
         let this = jsObject
-        return this[Strings.isEqualNode].function!(this: this, arguments: [otherNode.jsValue()]).fromJSValue()!
+        return this[Strings.isEqualNode].function!(this: this, arguments: [otherNode.jsValue]).fromJSValue()!
     }
 
     @inlinable public func isSameNode(otherNode: Node?) -> Bool {
         let this = jsObject
-        return this[Strings.isSameNode].function!(this: this, arguments: [otherNode.jsValue()]).fromJSValue()!
+        return this[Strings.isSameNode].function!(this: this, arguments: [otherNode.jsValue]).fromJSValue()!
     }
 
     public static let DOCUMENT_POSITION_DISCONNECTED: UInt16 = 0x01
@@ -134,46 +134,46 @@ public class Node: EventTarget {
 
     @inlinable public func compareDocumentPosition(other: Node) -> UInt16 {
         let this = jsObject
-        return this[Strings.compareDocumentPosition].function!(this: this, arguments: [other.jsValue()]).fromJSValue()!
+        return this[Strings.compareDocumentPosition].function!(this: this, arguments: [other.jsValue]).fromJSValue()!
     }
 
     @inlinable public func contains(other: Node?) -> Bool {
         let this = jsObject
-        return this[Strings.contains].function!(this: this, arguments: [other.jsValue()]).fromJSValue()!
+        return this[Strings.contains].function!(this: this, arguments: [other.jsValue]).fromJSValue()!
     }
 
     @inlinable public func lookupPrefix(namespace: String?) -> String? {
         let this = jsObject
-        return this[Strings.lookupPrefix].function!(this: this, arguments: [namespace.jsValue()]).fromJSValue()!
+        return this[Strings.lookupPrefix].function!(this: this, arguments: [namespace.jsValue]).fromJSValue()!
     }
 
     @inlinable public func lookupNamespaceURI(prefix: String?) -> String? {
         let this = jsObject
-        return this[Strings.lookupNamespaceURI].function!(this: this, arguments: [prefix.jsValue()]).fromJSValue()!
+        return this[Strings.lookupNamespaceURI].function!(this: this, arguments: [prefix.jsValue]).fromJSValue()!
     }
 
     @inlinable public func isDefaultNamespace(namespace: String?) -> Bool {
         let this = jsObject
-        return this[Strings.isDefaultNamespace].function!(this: this, arguments: [namespace.jsValue()]).fromJSValue()!
+        return this[Strings.isDefaultNamespace].function!(this: this, arguments: [namespace.jsValue]).fromJSValue()!
     }
 
     @inlinable public func insertBefore(node: Node, child: Node?) -> Self {
         let this = jsObject
-        return this[Strings.insertBefore].function!(this: this, arguments: [node.jsValue(), child.jsValue()]).fromJSValue()!
+        return this[Strings.insertBefore].function!(this: this, arguments: [node.jsValue, child.jsValue]).fromJSValue()!
     }
 
     @inlinable public func appendChild(node: Node) -> Self {
         let this = jsObject
-        return this[Strings.appendChild].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
+        return this[Strings.appendChild].function!(this: this, arguments: [node.jsValue]).fromJSValue()!
     }
 
     @inlinable public func replaceChild(node: Node, child: Node) -> Self {
         let this = jsObject
-        return this[Strings.replaceChild].function!(this: this, arguments: [node.jsValue(), child.jsValue()]).fromJSValue()!
+        return this[Strings.replaceChild].function!(this: this, arguments: [node.jsValue, child.jsValue]).fromJSValue()!
     }
 
     @inlinable public func removeChild(child: Node) -> Self {
         let this = jsObject
-        return this[Strings.removeChild].function!(this: this, arguments: [child.jsValue()]).fromJSValue()!
+        return this[Strings.removeChild].function!(this: this, arguments: [child.jsValue]).fromJSValue()!
     }
 }

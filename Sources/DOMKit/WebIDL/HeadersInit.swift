@@ -21,12 +21,12 @@ public enum HeadersInit: JSValueCompatible, Any_HeadersInit {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .record_String_to_String(record_String_to_String):
-            return record_String_to_String.jsValue()
+            return record_String_to_String.jsValue
         case let .seq_of_seq_of_String(seq_of_seq_of_String):
-            return seq_of_seq_of_String.jsValue()
+            return seq_of_seq_of_String.jsValue
         }
     }
 }

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MLContextOptions: BridgedDictionary {
     public convenience init(devicePreference: MLDevicePreference, powerPreference: MLPowerPreference) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.devicePreference] = devicePreference.jsValue()
-        object[Strings.powerPreference] = powerPreference.jsValue()
+        object[Strings.devicePreference] = devicePreference.jsValue
+        object[Strings.powerPreference] = powerPreference.jsValue
         self.init(unsafelyWrapping: object)
     }
 

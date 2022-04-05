@@ -14,6 +14,6 @@ public class GPURenderBundleEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsM
 
     @inlinable public func finish(descriptor: GPURenderBundleDescriptor? = nil) -> GPURenderBundle {
         let this = jsObject
-        return this[Strings.finish].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.finish].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

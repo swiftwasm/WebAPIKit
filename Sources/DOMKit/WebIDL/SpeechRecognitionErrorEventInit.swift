@@ -6,8 +6,8 @@ import JavaScriptKit
 public class SpeechRecognitionErrorEventInit: BridgedDictionary {
     public convenience init(error: SpeechRecognitionErrorCode, message: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.error] = error.jsValue()
-        object[Strings.message] = message.jsValue()
+        object[Strings.error] = error.jsValue
+        object[Strings.message] = message.jsValue
         self.init(unsafelyWrapping: object)
     }
 

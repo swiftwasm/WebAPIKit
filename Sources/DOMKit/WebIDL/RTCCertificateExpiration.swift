@@ -6,7 +6,7 @@ import JavaScriptKit
 public class RTCCertificateExpiration: BridgedDictionary {
     public convenience init(expires: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.expires] = expires.jsValue()
+        object[Strings.expires] = expires.jsValue
         self.init(unsafelyWrapping: object)
     }
 

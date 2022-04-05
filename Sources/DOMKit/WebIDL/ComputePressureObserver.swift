@@ -17,12 +17,12 @@ public class ComputePressureObserver: JSBridgedClass {
 
     @inlinable public func observe(source: ComputePressureSource) {
         let this = jsObject
-        _ = this[Strings.observe].function!(this: this, arguments: [source.jsValue()])
+        _ = this[Strings.observe].function!(this: this, arguments: [source.jsValue])
     }
 
     @inlinable public func unobserve(source: ComputePressureSource) {
         let this = jsObject
-        _ = this[Strings.unobserve].function!(this: this, arguments: [source.jsValue()])
+        _ = this[Strings.unobserve].function!(this: this, arguments: [source.jsValue])
     }
 
     @inlinable public func disconnect() {
@@ -47,6 +47,6 @@ public class ComputePressureObserver: JSBridgedClass {
     @inlinable public static func requestPermission() async throws -> PermissionState {
         let this = constructor
         let _promise: JSPromise = this[Strings.requestPermission].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

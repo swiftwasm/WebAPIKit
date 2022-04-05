@@ -15,7 +15,7 @@ public class TransformStream: JSBridgedClass {
     }
 
     @inlinable public convenience init(transformer: JSObject? = nil, writableStrategy: QueuingStrategy? = nil, readableStrategy: QueuingStrategy? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [transformer?.jsValue() ?? .undefined, writableStrategy?.jsValue() ?? .undefined, readableStrategy?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [transformer?.jsValue ?? .undefined, writableStrategy?.jsValue ?? .undefined, readableStrategy?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

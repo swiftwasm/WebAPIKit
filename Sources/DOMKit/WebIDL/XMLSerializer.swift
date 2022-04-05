@@ -18,6 +18,6 @@ public class XMLSerializer: JSBridgedClass {
 
     @inlinable public func serializeToString(root: Node) -> String {
         let this = jsObject
-        return this[Strings.serializeToString].function!(this: this, arguments: [root.jsValue()]).fromJSValue()!
+        return this[Strings.serializeToString].function!(this: this, arguments: [root.jsValue]).fromJSValue()!
     }
 }

@@ -27,18 +27,18 @@ public class HID: EventTarget {
     @inlinable public func getDevices() async throws -> [HIDDevice] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getDevices].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func requestDevice(options: HIDDeviceRequestOptions) -> JSPromise {
         let this = jsObject
-        return this[Strings.requestDevice].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
+        return this[Strings.requestDevice].function!(this: this, arguments: [options.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func requestDevice(options: HIDDeviceRequestOptions) async throws -> [HIDDevice] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.requestDevice].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.requestDevice].function!(this: this, arguments: [options.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

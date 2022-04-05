@@ -14,7 +14,7 @@ public class ScrollTimeline: AnimationTimeline {
     }
 
     @inlinable public convenience init(options: ScrollTimelineOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

@@ -29,7 +29,7 @@ extension UnionType: SwiftRepresentable {
                 return nil
             }
 
-            public func jsValue() -> JSValue {
+            public var jsValue: JSValue {
                 switch self {
                     \(lines: exporters)
                 }
@@ -64,7 +64,7 @@ extension UnionType: SwiftRepresentable {
         sortedNames.map { name in
             """
             case let .\(name)(\(name)):
-                return \(name).jsValue()
+                return \(name).jsValue
             """
         }
     }

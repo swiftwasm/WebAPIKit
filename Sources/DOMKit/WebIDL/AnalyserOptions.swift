@@ -6,10 +6,10 @@ import JavaScriptKit
 public class AnalyserOptions: BridgedDictionary {
     public convenience init(fftSize: UInt32, maxDecibels: Double, minDecibels: Double, smoothingTimeConstant: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.fftSize] = fftSize.jsValue()
-        object[Strings.maxDecibels] = maxDecibels.jsValue()
-        object[Strings.minDecibels] = minDecibels.jsValue()
-        object[Strings.smoothingTimeConstant] = smoothingTimeConstant.jsValue()
+        object[Strings.fftSize] = fftSize.jsValue
+        object[Strings.maxDecibels] = maxDecibels.jsValue
+        object[Strings.minDecibels] = minDecibels.jsValue
+        object[Strings.smoothingTimeConstant] = smoothingTimeConstant.jsValue
         self.init(unsafelyWrapping: object)
     }
 

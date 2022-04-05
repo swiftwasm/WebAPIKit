@@ -22,6 +22,6 @@ public class TextTrackCueList: JSBridgedClass {
 
     @inlinable public func getCueById(id: String) -> TextTrackCue? {
         let this = jsObject
-        return this[Strings.getCueById].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
+        return this[Strings.getCueById].function!(this: this, arguments: [id.jsValue]).fromJSValue()!
     }
 }

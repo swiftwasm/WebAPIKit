@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ColorSelectionResult: BridgedDictionary {
     public convenience init(sRGBHex: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.sRGBHex] = sRGBHex.jsValue()
+        object[Strings.sRGBHex] = sRGBHex.jsValue
         self.init(unsafelyWrapping: object)
     }
 

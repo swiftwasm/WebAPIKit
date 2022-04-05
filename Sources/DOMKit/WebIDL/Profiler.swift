@@ -19,7 +19,7 @@ public class Profiler: EventTarget {
     public var stopped: Bool
 
     @inlinable public convenience init(options: ProfilerInitOptions) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options.jsValue]))
     }
 
     @inlinable public func stop() -> JSPromise {
@@ -31,6 +31,6 @@ public class Profiler: EventTarget {
     @inlinable public func stop() async throws -> ProfilerTrace {
         let this = jsObject
         let _promise: JSPromise = this[Strings.stop].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

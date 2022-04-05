@@ -34,6 +34,6 @@ public class HTMLDialogElement: HTMLElement {
 
     @inlinable public func close(returnValue: String? = nil) {
         let this = jsObject
-        _ = this[Strings.close].function!(this: this, arguments: [returnValue?.jsValue() ?? .undefined])
+        _ = this[Strings.close].function!(this: this, arguments: [returnValue?.jsValue ?? .undefined])
     }
 }

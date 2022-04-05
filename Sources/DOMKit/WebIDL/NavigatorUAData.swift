@@ -26,14 +26,14 @@ public class NavigatorUAData: JSBridgedClass {
 
     @inlinable public func getHighEntropyValues(hints: [String]) -> JSPromise {
         let this = jsObject
-        return this[Strings.getHighEntropyValues].function!(this: this, arguments: [hints.jsValue()]).fromJSValue()!
+        return this[Strings.getHighEntropyValues].function!(this: this, arguments: [hints.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getHighEntropyValues(hints: [String]) async throws -> UADataValues {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getHighEntropyValues].function!(this: this, arguments: [hints.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getHighEntropyValues].function!(this: this, arguments: [hints.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func toJSON() -> UALowEntropyJSON {

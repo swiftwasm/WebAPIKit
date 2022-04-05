@@ -16,11 +16,11 @@ public class CSSGroupingRule: CSSRule {
 
     @inlinable public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
         let this = jsObject
-        return this[Strings.insertRule].function!(this: this, arguments: [rule.jsValue(), index?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.insertRule].function!(this: this, arguments: [rule.jsValue, index?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func deleteRule(index: UInt32) {
         let this = jsObject
-        _ = this[Strings.deleteRule].function!(this: this, arguments: [index.jsValue()])
+        _ = this[Strings.deleteRule].function!(this: this, arguments: [index.jsValue])
     }
 }

@@ -20,16 +20,16 @@ public class CSSKeyframesRule: CSSRule {
 
     @inlinable public func appendRule(rule: String) {
         let this = jsObject
-        _ = this[Strings.appendRule].function!(this: this, arguments: [rule.jsValue()])
+        _ = this[Strings.appendRule].function!(this: this, arguments: [rule.jsValue])
     }
 
     @inlinable public func deleteRule(select: String) {
         let this = jsObject
-        _ = this[Strings.deleteRule].function!(this: this, arguments: [select.jsValue()])
+        _ = this[Strings.deleteRule].function!(this: this, arguments: [select.jsValue])
     }
 
     @inlinable public func findRule(select: String) -> CSSKeyframeRule? {
         let this = jsObject
-        return this[Strings.findRule].function!(this: this, arguments: [select.jsValue()]).fromJSValue()!
+        return this[Strings.findRule].function!(this: this, arguments: [select.jsValue]).fromJSValue()!
     }
 }

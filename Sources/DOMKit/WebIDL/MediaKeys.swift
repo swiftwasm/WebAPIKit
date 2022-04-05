@@ -14,18 +14,18 @@ public class MediaKeys: JSBridgedClass {
 
     @inlinable public func createSession(sessionType: MediaKeySessionType? = nil) -> MediaKeySession {
         let this = jsObject
-        return this[Strings.createSession].function!(this: this, arguments: [sessionType?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createSession].function!(this: this, arguments: [sessionType?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func setServerCertificate(serverCertificate: BufferSource) -> JSPromise {
         let this = jsObject
-        return this[Strings.setServerCertificate].function!(this: this, arguments: [serverCertificate.jsValue()]).fromJSValue()!
+        return this[Strings.setServerCertificate].function!(this: this, arguments: [serverCertificate.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func setServerCertificate(serverCertificate: BufferSource) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.setServerCertificate].function!(this: this, arguments: [serverCertificate.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.setServerCertificate].function!(this: this, arguments: [serverCertificate.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

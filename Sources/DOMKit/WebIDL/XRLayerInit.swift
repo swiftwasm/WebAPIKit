@@ -6,14 +6,14 @@ import JavaScriptKit
 public class XRLayerInit: BridgedDictionary {
     public convenience init(space: XRSpace, colorFormat: GLenum, depthFormat: GLenum?, mipLevels: UInt32, viewPixelWidth: UInt32, viewPixelHeight: UInt32, layout: XRLayerLayout, isStatic: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.space] = space.jsValue()
-        object[Strings.colorFormat] = colorFormat.jsValue()
-        object[Strings.depthFormat] = depthFormat.jsValue()
-        object[Strings.mipLevels] = mipLevels.jsValue()
-        object[Strings.viewPixelWidth] = viewPixelWidth.jsValue()
-        object[Strings.viewPixelHeight] = viewPixelHeight.jsValue()
-        object[Strings.layout] = layout.jsValue()
-        object[Strings.isStatic] = isStatic.jsValue()
+        object[Strings.space] = space.jsValue
+        object[Strings.colorFormat] = colorFormat.jsValue
+        object[Strings.depthFormat] = depthFormat.jsValue
+        object[Strings.mipLevels] = mipLevels.jsValue
+        object[Strings.viewPixelWidth] = viewPixelWidth.jsValue
+        object[Strings.viewPixelHeight] = viewPixelHeight.jsValue
+        object[Strings.layout] = layout.jsValue
+        object[Strings.isStatic] = isStatic.jsValue
         self.init(unsafelyWrapping: object)
     }
 

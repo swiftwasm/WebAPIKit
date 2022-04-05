@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MultiCacheQueryOptions: BridgedDictionary {
     public convenience init(cacheName: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.cacheName] = cacheName.jsValue()
+        object[Strings.cacheName] = cacheName.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class BackgroundFetchUIOptions: BridgedDictionary {
     public convenience init(icons: [ImageResource], title: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.icons] = icons.jsValue()
-        object[Strings.title] = title.jsValue()
+        object[Strings.icons] = icons.jsValue
+        object[Strings.title] = title.jsValue
         self.init(unsafelyWrapping: object)
     }
 

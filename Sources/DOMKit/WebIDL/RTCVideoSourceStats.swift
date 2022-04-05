@@ -6,11 +6,11 @@ import JavaScriptKit
 public class RTCVideoSourceStats: BridgedDictionary {
     public convenience init(width: UInt32, height: UInt32, bitDepth: UInt32, frames: UInt32, framesPerSecond: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.width] = width.jsValue()
-        object[Strings.height] = height.jsValue()
-        object[Strings.bitDepth] = bitDepth.jsValue()
-        object[Strings.frames] = frames.jsValue()
-        object[Strings.framesPerSecond] = framesPerSecond.jsValue()
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.bitDepth] = bitDepth.jsValue
+        object[Strings.frames] = frames.jsValue
+        object[Strings.framesPerSecond] = framesPerSecond.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RTCIdentityProviderDetails: BridgedDictionary {
     public convenience init(domain: String, protocol: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.domain] = domain.jsValue()
-        object[Strings.protocol] = `protocol`.jsValue()
+        object[Strings.domain] = domain.jsValue
+        object[Strings.protocol] = `protocol`.jsValue
         self.init(unsafelyWrapping: object)
     }
 

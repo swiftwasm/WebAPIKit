@@ -16,12 +16,12 @@ public class SVGGeometryElement: SVGGraphicsElement {
 
     @inlinable public func isPointInFill(point: DOMPointInit? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.isPointInFill].function!(this: this, arguments: [point?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.isPointInFill].function!(this: this, arguments: [point?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func isPointInStroke(point: DOMPointInit? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.isPointInStroke].function!(this: this, arguments: [point?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.isPointInStroke].function!(this: this, arguments: [point?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func getTotalLength() -> Float {
@@ -31,6 +31,6 @@ public class SVGGeometryElement: SVGGraphicsElement {
 
     @inlinable public func getPointAtLength(distance: Float) -> DOMPoint {
         let this = jsObject
-        return this[Strings.getPointAtLength].function!(this: this, arguments: [distance.jsValue()]).fromJSValue()!
+        return this[Strings.getPointAtLength].function!(this: this, arguments: [distance.jsValue]).fromJSValue()!
     }
 }

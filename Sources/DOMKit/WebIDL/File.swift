@@ -14,7 +14,7 @@ public class File: Blob {
     }
 
     @inlinable public convenience init(fileBits: [BlobPart], fileName: String, options: FilePropertyBag? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [fileBits.jsValue(), fileName.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [fileBits.jsValue, fileName.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

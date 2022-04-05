@@ -6,13 +6,13 @@ import JavaScriptKit
 public class GPUTextureDescriptor: BridgedDictionary {
     public convenience init(size: GPUExtent3D, mipLevelCount: GPUIntegerCoordinate, sampleCount: GPUSize32, dimension: GPUTextureDimension, format: GPUTextureFormat, usage: GPUTextureUsageFlags, viewFormats: [GPUTextureFormat]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.size] = size.jsValue()
-        object[Strings.mipLevelCount] = mipLevelCount.jsValue()
-        object[Strings.sampleCount] = sampleCount.jsValue()
-        object[Strings.dimension] = dimension.jsValue()
-        object[Strings.format] = format.jsValue()
-        object[Strings.usage] = usage.jsValue()
-        object[Strings.viewFormats] = viewFormats.jsValue()
+        object[Strings.size] = size.jsValue
+        object[Strings.mipLevelCount] = mipLevelCount.jsValue
+        object[Strings.sampleCount] = sampleCount.jsValue
+        object[Strings.dimension] = dimension.jsValue
+        object[Strings.format] = format.jsValue
+        object[Strings.usage] = usage.jsValue
+        object[Strings.viewFormats] = viewFormats.jsValue
         self.init(unsafelyWrapping: object)
     }
 

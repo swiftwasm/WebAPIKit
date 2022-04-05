@@ -6,17 +6,17 @@ import JavaScriptKit
 public class MLConvTranspose2dOptions: BridgedDictionary {
     public convenience init(padding: [Int32], strides: [Int32], dilations: [Int32], outputPadding: [Int32], outputSizes: [Int32], autoPad: MLAutoPad, groups: Int32, inputLayout: MLInputOperandLayout, filterLayout: MLConvTranspose2dFilterOperandLayout, bias: MLOperand, activation: MLOperator) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.padding] = padding.jsValue()
-        object[Strings.strides] = strides.jsValue()
-        object[Strings.dilations] = dilations.jsValue()
-        object[Strings.outputPadding] = outputPadding.jsValue()
-        object[Strings.outputSizes] = outputSizes.jsValue()
-        object[Strings.autoPad] = autoPad.jsValue()
-        object[Strings.groups] = groups.jsValue()
-        object[Strings.inputLayout] = inputLayout.jsValue()
-        object[Strings.filterLayout] = filterLayout.jsValue()
-        object[Strings.bias] = bias.jsValue()
-        object[Strings.activation] = activation.jsValue()
+        object[Strings.padding] = padding.jsValue
+        object[Strings.strides] = strides.jsValue
+        object[Strings.dilations] = dilations.jsValue
+        object[Strings.outputPadding] = outputPadding.jsValue
+        object[Strings.outputSizes] = outputSizes.jsValue
+        object[Strings.autoPad] = autoPad.jsValue
+        object[Strings.groups] = groups.jsValue
+        object[Strings.inputLayout] = inputLayout.jsValue
+        object[Strings.filterLayout] = filterLayout.jsValue
+        object[Strings.bias] = bias.jsValue
+        object[Strings.activation] = activation.jsValue
         self.init(unsafelyWrapping: object)
     }
 

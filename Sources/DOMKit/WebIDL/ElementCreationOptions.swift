@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ElementCreationOptions: BridgedDictionary {
     public convenience init(is: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.is] = `is`.jsValue()
+        object[Strings.is] = `is`.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PurchaseDetails: BridgedDictionary {
     public convenience init(itemId: String, purchaseToken: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.itemId] = itemId.jsValue()
-        object[Strings.purchaseToken] = purchaseToken.jsValue()
+        object[Strings.itemId] = itemId.jsValue
+        object[Strings.purchaseToken] = purchaseToken.jsValue
         self.init(unsafelyWrapping: object)
     }
 

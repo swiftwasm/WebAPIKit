@@ -25,32 +25,32 @@ public class EditContext: EventTarget {
     }
 
     @inlinable public convenience init(options: EditContextInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue ?? .undefined]))
     }
 
     @inlinable public func updateText(rangeStart: UInt32, rangeEnd: UInt32, text: String) {
         let this = jsObject
-        _ = this[Strings.updateText].function!(this: this, arguments: [rangeStart.jsValue(), rangeEnd.jsValue(), text.jsValue()])
+        _ = this[Strings.updateText].function!(this: this, arguments: [rangeStart.jsValue, rangeEnd.jsValue, text.jsValue])
     }
 
     @inlinable public func updateSelection(start: UInt32, end: UInt32) {
         let this = jsObject
-        _ = this[Strings.updateSelection].function!(this: this, arguments: [start.jsValue(), end.jsValue()])
+        _ = this[Strings.updateSelection].function!(this: this, arguments: [start.jsValue, end.jsValue])
     }
 
     @inlinable public func updateControlBound(controlBound: DOMRect) {
         let this = jsObject
-        _ = this[Strings.updateControlBound].function!(this: this, arguments: [controlBound.jsValue()])
+        _ = this[Strings.updateControlBound].function!(this: this, arguments: [controlBound.jsValue])
     }
 
     @inlinable public func updateSelectionBound(selectionBound: DOMRect) {
         let this = jsObject
-        _ = this[Strings.updateSelectionBound].function!(this: this, arguments: [selectionBound.jsValue()])
+        _ = this[Strings.updateSelectionBound].function!(this: this, arguments: [selectionBound.jsValue])
     }
 
     @inlinable public func updateCharacterBounds(rangeStart: UInt32, characterBounds: [DOMRect]) {
         let this = jsObject
-        _ = this[Strings.updateCharacterBounds].function!(this: this, arguments: [rangeStart.jsValue(), characterBounds.jsValue()])
+        _ = this[Strings.updateCharacterBounds].function!(this: this, arguments: [rangeStart.jsValue, characterBounds.jsValue])
     }
 
     @inlinable public func attachedElements() -> [Element] {

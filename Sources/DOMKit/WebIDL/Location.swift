@@ -51,12 +51,12 @@ public class Location: JSBridgedClass {
 
     @inlinable public func assign(url: String) {
         let this = jsObject
-        _ = this[Strings.assign].function!(this: this, arguments: [url.jsValue()])
+        _ = this[Strings.assign].function!(this: this, arguments: [url.jsValue])
     }
 
     @inlinable public func replace(url: String) {
         let this = jsObject
-        _ = this[Strings.replace].function!(this: this, arguments: [url.jsValue()])
+        _ = this[Strings.replace].function!(this: this, arguments: [url.jsValue])
     }
 
     @inlinable public func reload() {

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class SerialPortInfo: BridgedDictionary {
     public convenience init(usbVendorId: UInt16, usbProductId: UInt16) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.usbVendorId] = usbVendorId.jsValue()
-        object[Strings.usbProductId] = usbProductId.jsValue()
+        object[Strings.usbVendorId] = usbVendorId.jsValue
+        object[Strings.usbProductId] = usbProductId.jsValue
         self.init(unsafelyWrapping: object)
     }
 

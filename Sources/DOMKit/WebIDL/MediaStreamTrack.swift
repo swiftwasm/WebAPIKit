@@ -76,14 +76,14 @@ public class MediaStreamTrack: EventTarget {
 
     @inlinable public func applyConstraints(constraints: MediaTrackConstraints? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func applyConstraints(constraints: MediaTrackConstraints? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @ReadWriteAttribute

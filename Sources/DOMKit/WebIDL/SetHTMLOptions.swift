@@ -6,7 +6,7 @@ import JavaScriptKit
 public class SetHTMLOptions: BridgedDictionary {
     public convenience init(sanitizer: Sanitizer) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.sanitizer] = sanitizer.jsValue()
+        object[Strings.sanitizer] = sanitizer.jsValue
         self.init(unsafelyWrapping: object)
     }
 

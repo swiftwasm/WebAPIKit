@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ExtendableCookieChangeEventInit: BridgedDictionary {
     public convenience init(changed: CookieList, deleted: CookieList) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.changed] = changed.jsValue()
-        object[Strings.deleted] = deleted.jsValue()
+        object[Strings.changed] = changed.jsValue
+        object[Strings.deleted] = deleted.jsValue
         self.init(unsafelyWrapping: object)
     }
 

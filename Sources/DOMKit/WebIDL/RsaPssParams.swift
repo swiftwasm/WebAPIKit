@@ -6,7 +6,7 @@ import JavaScriptKit
 public class RsaPssParams: BridgedDictionary {
     public convenience init(saltLength: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.saltLength] = saltLength.jsValue()
+        object[Strings.saltLength] = saltLength.jsValue
         self.init(unsafelyWrapping: object)
     }
 

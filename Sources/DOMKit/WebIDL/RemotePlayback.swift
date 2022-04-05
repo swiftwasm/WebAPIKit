@@ -20,14 +20,14 @@ public class RemotePlayback: EventTarget {
 
     @inlinable public func cancelWatchAvailability(id: Int32? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.cancelWatchAvailability].function!(this: this, arguments: [id?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.cancelWatchAvailability].function!(this: this, arguments: [id?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func cancelWatchAvailability(id: Int32? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.cancelWatchAvailability].function!(this: this, arguments: [id?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.cancelWatchAvailability].function!(this: this, arguments: [id?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @ReadonlyAttribute
@@ -51,6 +51,6 @@ public class RemotePlayback: EventTarget {
     @inlinable public func prompt() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 }

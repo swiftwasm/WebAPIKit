@@ -6,10 +6,10 @@ import JavaScriptKit
 public class SVGBoundingBoxOptions: BridgedDictionary {
     public convenience init(fill: Bool, stroke: Bool, markers: Bool, clipped: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.fill] = fill.jsValue()
-        object[Strings.stroke] = stroke.jsValue()
-        object[Strings.markers] = markers.jsValue()
-        object[Strings.clipped] = clipped.jsValue()
+        object[Strings.fill] = fill.jsValue
+        object[Strings.stroke] = stroke.jsValue
+        object[Strings.markers] = markers.jsValue
+        object[Strings.clipped] = clipped.jsValue
         self.init(unsafelyWrapping: object)
     }
 

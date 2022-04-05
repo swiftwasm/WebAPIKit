@@ -16,27 +16,27 @@ public class AnalyserNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: AnalyserOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @inlinable public func getFloatFrequencyData(array: Float32Array) {
         let this = jsObject
-        _ = this[Strings.getFloatFrequencyData].function!(this: this, arguments: [array.jsValue()])
+        _ = this[Strings.getFloatFrequencyData].function!(this: this, arguments: [array.jsValue])
     }
 
     @inlinable public func getByteFrequencyData(array: Uint8Array) {
         let this = jsObject
-        _ = this[Strings.getByteFrequencyData].function!(this: this, arguments: [array.jsValue()])
+        _ = this[Strings.getByteFrequencyData].function!(this: this, arguments: [array.jsValue])
     }
 
     @inlinable public func getFloatTimeDomainData(array: Float32Array) {
         let this = jsObject
-        _ = this[Strings.getFloatTimeDomainData].function!(this: this, arguments: [array.jsValue()])
+        _ = this[Strings.getFloatTimeDomainData].function!(this: this, arguments: [array.jsValue])
     }
 
     @inlinable public func getByteTimeDomainData(array: Uint8Array) {
         let this = jsObject
-        _ = this[Strings.getByteTimeDomainData].function!(this: this, arguments: [array.jsValue()])
+        _ = this[Strings.getByteTimeDomainData].function!(this: this, arguments: [array.jsValue])
     }
 
     @ReadWriteAttribute

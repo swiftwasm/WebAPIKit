@@ -89,7 +89,7 @@ public class USBDevice: JSBridgedClass {
     @inlinable public func open() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func close() -> JSPromise {
@@ -101,7 +101,7 @@ public class USBDevice: JSBridgedClass {
     @inlinable public func close() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func forget() -> JSPromise {
@@ -113,139 +113,139 @@ public class USBDevice: JSBridgedClass {
     @inlinable public func forget() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.forget].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func selectConfiguration(configurationValue: UInt8) -> JSPromise {
         let this = jsObject
-        return this[Strings.selectConfiguration].function!(this: this, arguments: [configurationValue.jsValue()]).fromJSValue()!
+        return this[Strings.selectConfiguration].function!(this: this, arguments: [configurationValue.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func selectConfiguration(configurationValue: UInt8) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.selectConfiguration].function!(this: this, arguments: [configurationValue.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.selectConfiguration].function!(this: this, arguments: [configurationValue.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func claimInterface(interfaceNumber: UInt8) -> JSPromise {
         let this = jsObject
-        return this[Strings.claimInterface].function!(this: this, arguments: [interfaceNumber.jsValue()]).fromJSValue()!
+        return this[Strings.claimInterface].function!(this: this, arguments: [interfaceNumber.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func claimInterface(interfaceNumber: UInt8) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.claimInterface].function!(this: this, arguments: [interfaceNumber.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.claimInterface].function!(this: this, arguments: [interfaceNumber.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func releaseInterface(interfaceNumber: UInt8) -> JSPromise {
         let this = jsObject
-        return this[Strings.releaseInterface].function!(this: this, arguments: [interfaceNumber.jsValue()]).fromJSValue()!
+        return this[Strings.releaseInterface].function!(this: this, arguments: [interfaceNumber.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func releaseInterface(interfaceNumber: UInt8) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.releaseInterface].function!(this: this, arguments: [interfaceNumber.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.releaseInterface].function!(this: this, arguments: [interfaceNumber.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func selectAlternateInterface(interfaceNumber: UInt8, alternateSetting: UInt8) -> JSPromise {
         let this = jsObject
-        return this[Strings.selectAlternateInterface].function!(this: this, arguments: [interfaceNumber.jsValue(), alternateSetting.jsValue()]).fromJSValue()!
+        return this[Strings.selectAlternateInterface].function!(this: this, arguments: [interfaceNumber.jsValue, alternateSetting.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func selectAlternateInterface(interfaceNumber: UInt8, alternateSetting: UInt8) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.selectAlternateInterface].function!(this: this, arguments: [interfaceNumber.jsValue(), alternateSetting.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.selectAlternateInterface].function!(this: this, arguments: [interfaceNumber.jsValue, alternateSetting.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func controlTransferIn(setup: USBControlTransferParameters, length: UInt16) -> JSPromise {
         let this = jsObject
-        return this[Strings.controlTransferIn].function!(this: this, arguments: [setup.jsValue(), length.jsValue()]).fromJSValue()!
+        return this[Strings.controlTransferIn].function!(this: this, arguments: [setup.jsValue, length.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func controlTransferIn(setup: USBControlTransferParameters, length: UInt16) async throws -> USBInTransferResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.controlTransferIn].function!(this: this, arguments: [setup.jsValue(), length.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.controlTransferIn].function!(this: this, arguments: [setup.jsValue, length.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func controlTransferOut(setup: USBControlTransferParameters, data: BufferSource? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.controlTransferOut].function!(this: this, arguments: [setup.jsValue(), data?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.controlTransferOut].function!(this: this, arguments: [setup.jsValue, data?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func controlTransferOut(setup: USBControlTransferParameters, data: BufferSource? = nil) async throws -> USBOutTransferResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.controlTransferOut].function!(this: this, arguments: [setup.jsValue(), data?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.controlTransferOut].function!(this: this, arguments: [setup.jsValue, data?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func clearHalt(direction: USBDirection, endpointNumber: UInt8) -> JSPromise {
         let this = jsObject
-        return this[Strings.clearHalt].function!(this: this, arguments: [direction.jsValue(), endpointNumber.jsValue()]).fromJSValue()!
+        return this[Strings.clearHalt].function!(this: this, arguments: [direction.jsValue, endpointNumber.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func clearHalt(direction: USBDirection, endpointNumber: UInt8) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.clearHalt].function!(this: this, arguments: [direction.jsValue(), endpointNumber.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.clearHalt].function!(this: this, arguments: [direction.jsValue, endpointNumber.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func transferIn(endpointNumber: UInt8, length: UInt32) -> JSPromise {
         let this = jsObject
-        return this[Strings.transferIn].function!(this: this, arguments: [endpointNumber.jsValue(), length.jsValue()]).fromJSValue()!
+        return this[Strings.transferIn].function!(this: this, arguments: [endpointNumber.jsValue, length.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func transferIn(endpointNumber: UInt8, length: UInt32) async throws -> USBInTransferResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.transferIn].function!(this: this, arguments: [endpointNumber.jsValue(), length.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.transferIn].function!(this: this, arguments: [endpointNumber.jsValue, length.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func transferOut(endpointNumber: UInt8, data: BufferSource) -> JSPromise {
         let this = jsObject
-        return this[Strings.transferOut].function!(this: this, arguments: [endpointNumber.jsValue(), data.jsValue()]).fromJSValue()!
+        return this[Strings.transferOut].function!(this: this, arguments: [endpointNumber.jsValue, data.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func transferOut(endpointNumber: UInt8, data: BufferSource) async throws -> USBOutTransferResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.transferOut].function!(this: this, arguments: [endpointNumber.jsValue(), data.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.transferOut].function!(this: this, arguments: [endpointNumber.jsValue, data.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func isochronousTransferIn(endpointNumber: UInt8, packetLengths: [UInt32]) -> JSPromise {
         let this = jsObject
-        return this[Strings.isochronousTransferIn].function!(this: this, arguments: [endpointNumber.jsValue(), packetLengths.jsValue()]).fromJSValue()!
+        return this[Strings.isochronousTransferIn].function!(this: this, arguments: [endpointNumber.jsValue, packetLengths.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func isochronousTransferIn(endpointNumber: UInt8, packetLengths: [UInt32]) async throws -> USBIsochronousInTransferResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.isochronousTransferIn].function!(this: this, arguments: [endpointNumber.jsValue(), packetLengths.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.isochronousTransferIn].function!(this: this, arguments: [endpointNumber.jsValue, packetLengths.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func isochronousTransferOut(endpointNumber: UInt8, data: BufferSource, packetLengths: [UInt32]) -> JSPromise {
         let this = jsObject
-        return this[Strings.isochronousTransferOut].function!(this: this, arguments: [endpointNumber.jsValue(), data.jsValue(), packetLengths.jsValue()]).fromJSValue()!
+        return this[Strings.isochronousTransferOut].function!(this: this, arguments: [endpointNumber.jsValue, data.jsValue, packetLengths.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func isochronousTransferOut(endpointNumber: UInt8, data: BufferSource, packetLengths: [UInt32]) async throws -> USBIsochronousOutTransferResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.isochronousTransferOut].function!(this: this, arguments: [endpointNumber.jsValue(), data.jsValue(), packetLengths.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.isochronousTransferOut].function!(this: this, arguments: [endpointNumber.jsValue, data.jsValue, packetLengths.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func reset() -> JSPromise {
@@ -257,6 +257,6 @@ public class USBDevice: JSBridgedClass {
     @inlinable public func reset() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.reset].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 }

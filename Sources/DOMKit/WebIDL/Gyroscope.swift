@@ -14,7 +14,7 @@ public class Gyroscope: Sensor {
     }
 
     @inlinable public convenience init(sensorOptions: GyroscopeSensorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

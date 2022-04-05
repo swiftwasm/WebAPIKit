@@ -6,9 +6,9 @@ import JavaScriptKit
 public class CloseEventInit: BridgedDictionary {
     public convenience init(wasClean: Bool, code: UInt16, reason: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.wasClean] = wasClean.jsValue()
-        object[Strings.code] = code.jsValue()
-        object[Strings.reason] = reason.jsValue()
+        object[Strings.wasClean] = wasClean.jsValue
+        object[Strings.code] = code.jsValue
+        object[Strings.reason] = reason.jsValue
         self.init(unsafelyWrapping: object)
     }
 

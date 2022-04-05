@@ -6,9 +6,9 @@ import JavaScriptKit
 public class SFrameTransformErrorEventInit: BridgedDictionary {
     public convenience init(errorType: SFrameTransformErrorEventType, frame: JSValue, keyID: CryptoKeyID?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.errorType] = errorType.jsValue()
-        object[Strings.frame] = frame.jsValue()
-        object[Strings.keyID] = keyID.jsValue()
+        object[Strings.errorType] = errorType.jsValue
+        object[Strings.frame] = frame.jsValue
+        object[Strings.keyID] = keyID.jsValue
         self.init(unsafelyWrapping: object)
     }
 

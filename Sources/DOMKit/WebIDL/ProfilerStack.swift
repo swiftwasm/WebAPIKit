@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ProfilerStack: BridgedDictionary {
     public convenience init(parentId: UInt64, frameId: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.parentId] = parentId.jsValue()
-        object[Strings.frameId] = frameId.jsValue()
+        object[Strings.parentId] = parentId.jsValue
+        object[Strings.frameId] = frameId.jsValue
         self.init(unsafelyWrapping: object)
     }
 

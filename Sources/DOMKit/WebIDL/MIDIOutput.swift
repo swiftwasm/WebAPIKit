@@ -12,7 +12,7 @@ public class MIDIOutput: MIDIPort {
 
     @inlinable public func send(data: [UInt8], timestamp: DOMHighResTimeStamp? = nil) {
         let this = jsObject
-        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue(), timestamp?.jsValue() ?? .undefined])
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue, timestamp?.jsValue ?? .undefined])
     }
 
     @inlinable public func clear() {

@@ -17,7 +17,7 @@ public class XRWebGLLayer: XRLayer {
     }
 
     @inlinable public convenience init(session: XRSession, context: XRWebGLRenderingContext, layerInit: XRWebGLLayerInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue(), context.jsValue(), layerInit?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue, context.jsValue, layerInit?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -40,11 +40,11 @@ public class XRWebGLLayer: XRLayer {
 
     @inlinable public func getViewport(view: XRView) -> XRViewport? {
         let this = jsObject
-        return this[Strings.getViewport].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
+        return this[Strings.getViewport].function!(this: this, arguments: [view.jsValue]).fromJSValue()!
     }
 
     @inlinable public static func getNativeFramebufferScaleFactor(session: XRSession) -> Double {
         let this = constructor
-        return this[Strings.getNativeFramebufferScaleFactor].function!(this: this, arguments: [session.jsValue()]).fromJSValue()!
+        return this[Strings.getNativeFramebufferScaleFactor].function!(this: this, arguments: [session.jsValue]).fromJSValue()!
     }
 }

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ConvolverOptions: BridgedDictionary {
     public convenience init(buffer: AudioBuffer?, disableNormalization: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.buffer] = buffer.jsValue()
-        object[Strings.disableNormalization] = disableNormalization.jsValue()
+        object[Strings.buffer] = buffer.jsValue
+        object[Strings.disableNormalization] = disableNormalization.jsValue
         self.init(unsafelyWrapping: object)
     }
 

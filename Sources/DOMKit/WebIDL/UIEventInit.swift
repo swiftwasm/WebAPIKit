@@ -6,10 +6,10 @@ import JavaScriptKit
 public class UIEventInit: BridgedDictionary {
     public convenience init(sourceCapabilities: InputDeviceCapabilities?, view: Window?, detail: Int32, which: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.sourceCapabilities] = sourceCapabilities.jsValue()
-        object[Strings.view] = view.jsValue()
-        object[Strings.detail] = detail.jsValue()
-        object[Strings.which] = which.jsValue()
+        object[Strings.sourceCapabilities] = sourceCapabilities.jsValue
+        object[Strings.view] = view.jsValue
+        object[Strings.detail] = detail.jsValue
+        object[Strings.which] = which.jsValue
         self.init(unsafelyWrapping: object)
     }
 

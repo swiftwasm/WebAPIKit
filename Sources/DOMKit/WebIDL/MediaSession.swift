@@ -24,16 +24,16 @@ public class MediaSession: JSBridgedClass {
 
     @inlinable public func setPositionState(state: MediaPositionState? = nil) {
         let this = jsObject
-        _ = this[Strings.setPositionState].function!(this: this, arguments: [state?.jsValue() ?? .undefined])
+        _ = this[Strings.setPositionState].function!(this: this, arguments: [state?.jsValue ?? .undefined])
     }
 
     @inlinable public func setMicrophoneActive(active: Bool) {
         let this = jsObject
-        _ = this[Strings.setMicrophoneActive].function!(this: this, arguments: [active.jsValue()])
+        _ = this[Strings.setMicrophoneActive].function!(this: this, arguments: [active.jsValue])
     }
 
     @inlinable public func setCameraActive(active: Bool) {
         let this = jsObject
-        _ = this[Strings.setCameraActive].function!(this: this, arguments: [active.jsValue()])
+        _ = this[Strings.setCameraActive].function!(this: this, arguments: [active.jsValue])
     }
 }

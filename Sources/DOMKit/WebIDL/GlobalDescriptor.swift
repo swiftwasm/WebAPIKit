@@ -6,8 +6,8 @@ import JavaScriptKit
 public class GlobalDescriptor: BridgedDictionary {
     public convenience init(value: ValueType, mutable: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.value] = value.jsValue()
-        object[Strings.mutable] = mutable.jsValue()
+        object[Strings.value] = value.jsValue
+        object[Strings.mutable] = mutable.jsValue
         self.init(unsafelyWrapping: object)
     }
 

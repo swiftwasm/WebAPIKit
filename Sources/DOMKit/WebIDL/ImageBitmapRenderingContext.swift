@@ -18,6 +18,6 @@ public class ImageBitmapRenderingContext: JSBridgedClass {
 
     @inlinable public func transferFromImageBitmap(bitmap: ImageBitmap?) {
         let this = jsObject
-        _ = this[Strings.transferFromImageBitmap].function!(this: this, arguments: [bitmap.jsValue()])
+        _ = this[Strings.transferFromImageBitmap].function!(this: this, arguments: [bitmap.jsValue])
     }
 }

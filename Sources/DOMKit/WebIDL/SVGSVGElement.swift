@@ -36,22 +36,22 @@ public class SVGSVGElement: SVGGraphicsElement, SVGFitToViewBox, WindowEventHand
 
     @inlinable public func getIntersectionList(rect: DOMRectReadOnly, referenceElement: SVGElement?) -> NodeList {
         let this = jsObject
-        return this[Strings.getIntersectionList].function!(this: this, arguments: [rect.jsValue(), referenceElement.jsValue()]).fromJSValue()!
+        return this[Strings.getIntersectionList].function!(this: this, arguments: [rect.jsValue, referenceElement.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getEnclosureList(rect: DOMRectReadOnly, referenceElement: SVGElement?) -> NodeList {
         let this = jsObject
-        return this[Strings.getEnclosureList].function!(this: this, arguments: [rect.jsValue(), referenceElement.jsValue()]).fromJSValue()!
+        return this[Strings.getEnclosureList].function!(this: this, arguments: [rect.jsValue, referenceElement.jsValue]).fromJSValue()!
     }
 
     @inlinable public func checkIntersection(element: SVGElement, rect: DOMRectReadOnly) -> Bool {
         let this = jsObject
-        return this[Strings.checkIntersection].function!(this: this, arguments: [element.jsValue(), rect.jsValue()]).fromJSValue()!
+        return this[Strings.checkIntersection].function!(this: this, arguments: [element.jsValue, rect.jsValue]).fromJSValue()!
     }
 
     @inlinable public func checkEnclosure(element: SVGElement, rect: DOMRectReadOnly) -> Bool {
         let this = jsObject
-        return this[Strings.checkEnclosure].function!(this: this, arguments: [element.jsValue(), rect.jsValue()]).fromJSValue()!
+        return this[Strings.checkEnclosure].function!(this: this, arguments: [element.jsValue, rect.jsValue]).fromJSValue()!
     }
 
     @inlinable public func deselectAll() {
@@ -96,22 +96,22 @@ public class SVGSVGElement: SVGGraphicsElement, SVGFitToViewBox, WindowEventHand
 
     @inlinable public func createSVGTransformFromMatrix(matrix: DOMMatrix2DInit? = nil) -> SVGTransform {
         let this = jsObject
-        return this[Strings.createSVGTransformFromMatrix].function!(this: this, arguments: [matrix?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createSVGTransformFromMatrix].function!(this: this, arguments: [matrix?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func getElementById(elementId: String) -> Element {
         let this = jsObject
-        return this[Strings.getElementById].function!(this: this, arguments: [elementId.jsValue()]).fromJSValue()!
+        return this[Strings.getElementById].function!(this: this, arguments: [elementId.jsValue]).fromJSValue()!
     }
 
     @inlinable public func suspendRedraw(maxWaitMilliseconds: UInt32) -> UInt32 {
         let this = jsObject
-        return this[Strings.suspendRedraw].function!(this: this, arguments: [maxWaitMilliseconds.jsValue()]).fromJSValue()!
+        return this[Strings.suspendRedraw].function!(this: this, arguments: [maxWaitMilliseconds.jsValue]).fromJSValue()!
     }
 
     @inlinable public func unsuspendRedraw(suspendHandleID: UInt32) {
         let this = jsObject
-        _ = this[Strings.unsuspendRedraw].function!(this: this, arguments: [suspendHandleID.jsValue()])
+        _ = this[Strings.unsuspendRedraw].function!(this: this, arguments: [suspendHandleID.jsValue])
     }
 
     @inlinable public func unsuspendRedrawAll() {
@@ -146,6 +146,6 @@ public class SVGSVGElement: SVGGraphicsElement, SVGFitToViewBox, WindowEventHand
 
     @inlinable public func setCurrentTime(seconds: Float) {
         let this = jsObject
-        _ = this[Strings.setCurrentTime].function!(this: this, arguments: [seconds.jsValue()])
+        _ = this[Strings.setCurrentTime].function!(this: this, arguments: [seconds.jsValue])
     }
 }

@@ -14,13 +14,13 @@ public class Ink: JSBridgedClass {
 
     @inlinable public func requestPresenter(param: InkPresenterParam? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.requestPresenter].function!(this: this, arguments: [param?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.requestPresenter].function!(this: this, arguments: [param?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func requestPresenter(param: InkPresenterParam? = nil) async throws -> InkPresenter {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.requestPresenter].function!(this: this, arguments: [param?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.requestPresenter].function!(this: this, arguments: [param?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

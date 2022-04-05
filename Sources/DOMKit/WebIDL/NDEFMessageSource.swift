@@ -26,14 +26,14 @@ public enum NDEFMessageSource: JSValueCompatible, Any_NDEFMessageSource {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .bufferSource(bufferSource):
-            return bufferSource.jsValue()
+            return bufferSource.jsValue
         case let .nDEFMessageInit(nDEFMessageInit):
-            return nDEFMessageInit.jsValue()
+            return nDEFMessageInit.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

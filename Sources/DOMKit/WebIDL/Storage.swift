@@ -18,7 +18,7 @@ public class Storage: JSBridgedClass {
 
     @inlinable public func key(index: UInt32) -> String? {
         let this = jsObject
-        return this[Strings.key].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
+        return this[Strings.key].function!(this: this, arguments: [index.jsValue]).fromJSValue()!
     }
 
     @inlinable public subscript(key: String) -> String? {

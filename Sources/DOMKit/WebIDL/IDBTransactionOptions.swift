@@ -6,7 +6,7 @@ import JavaScriptKit
 public class IDBTransactionOptions: BridgedDictionary {
     public convenience init(durability: IDBTransactionDurability) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.durability] = durability.jsValue()
+        object[Strings.durability] = durability.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class InkTrailStyle: BridgedDictionary {
     public convenience init(color: String, diameter: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.color] = color.jsValue()
-        object[Strings.diameter] = diameter.jsValue()
+        object[Strings.color] = color.jsValue
+        object[Strings.diameter] = diameter.jsValue
         self.init(unsafelyWrapping: object)
     }
 

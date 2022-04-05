@@ -6,7 +6,7 @@ import JavaScriptKit
 public class FileSystemRemoveOptions: BridgedDictionary {
     public convenience init(recursive: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.recursive] = recursive.jsValue()
+        object[Strings.recursive] = recursive.jsValue
         self.init(unsafelyWrapping: object)
     }
 

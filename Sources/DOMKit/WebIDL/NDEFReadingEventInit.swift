@@ -6,8 +6,8 @@ import JavaScriptKit
 public class NDEFReadingEventInit: BridgedDictionary {
     public convenience init(serialNumber: String?, message: NDEFMessageInit) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.serialNumber] = serialNumber.jsValue()
-        object[Strings.message] = message.jsValue()
+        object[Strings.serialNumber] = serialNumber.jsValue
+        object[Strings.message] = message.jsValue
         self.init(unsafelyWrapping: object)
     }
 

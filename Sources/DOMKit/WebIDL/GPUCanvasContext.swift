@@ -18,7 +18,7 @@ public class GPUCanvasContext: JSBridgedClass {
 
     @inlinable public func configure(configuration: GPUCanvasConfiguration) {
         let this = jsObject
-        _ = this[Strings.configure].function!(this: this, arguments: [configuration.jsValue()])
+        _ = this[Strings.configure].function!(this: this, arguments: [configuration.jsValue])
     }
 
     @inlinable public func unconfigure() {
@@ -28,7 +28,7 @@ public class GPUCanvasContext: JSBridgedClass {
 
     @inlinable public func getPreferredFormat(adapter: GPUAdapter) -> GPUTextureFormat {
         let this = jsObject
-        return this[Strings.getPreferredFormat].function!(this: this, arguments: [adapter.jsValue()]).fromJSValue()!
+        return this[Strings.getPreferredFormat].function!(this: this, arguments: [adapter.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getCurrentTexture() -> GPUTexture {

@@ -14,7 +14,7 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
     }
 
     @inlinable public convenience init(underlyingSource: JSObject? = nil, strategy: QueuingStrategy? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [underlyingSource?.jsValue() ?? .undefined, strategy?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [underlyingSource?.jsValue ?? .undefined, strategy?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -22,36 +22,36 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
 
     @inlinable public func cancel(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func cancel(reason: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func getReader(options: ReadableStreamGetReaderOptions? = nil) -> ReadableStreamReader {
         let this = jsObject
-        return this[Strings.getReader].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getReader].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func pipeThrough(transform: ReadableWritablePair, options: StreamPipeOptions? = nil) -> Self {
         let this = jsObject
-        return this[Strings.pipeThrough].function!(this: this, arguments: [transform.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.pipeThrough].function!(this: this, arguments: [transform.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func pipeTo(destination: WritableStream, options: StreamPipeOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.pipeTo].function!(this: this, arguments: [destination.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.pipeTo].function!(this: this, arguments: [destination.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func pipeTo(destination: WritableStream, options: StreamPipeOptions? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.pipeTo].function!(this: this, arguments: [destination.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.pipeTo].function!(this: this, arguments: [destination.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func tee() -> [ReadableStream] {

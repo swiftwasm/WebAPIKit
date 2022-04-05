@@ -6,15 +6,15 @@ import JavaScriptKit
 public class LayoutConstraintsOptions: BridgedDictionary {
     public convenience init(availableInlineSize: Double, availableBlockSize: Double, fixedInlineSize: Double, fixedBlockSize: Double, percentageInlineSize: Double, percentageBlockSize: Double, blockFragmentationOffset: Double, blockFragmentationType: BlockFragmentationType, data: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.availableInlineSize] = availableInlineSize.jsValue()
-        object[Strings.availableBlockSize] = availableBlockSize.jsValue()
-        object[Strings.fixedInlineSize] = fixedInlineSize.jsValue()
-        object[Strings.fixedBlockSize] = fixedBlockSize.jsValue()
-        object[Strings.percentageInlineSize] = percentageInlineSize.jsValue()
-        object[Strings.percentageBlockSize] = percentageBlockSize.jsValue()
-        object[Strings.blockFragmentationOffset] = blockFragmentationOffset.jsValue()
-        object[Strings.blockFragmentationType] = blockFragmentationType.jsValue()
-        object[Strings.data] = data.jsValue()
+        object[Strings.availableInlineSize] = availableInlineSize.jsValue
+        object[Strings.availableBlockSize] = availableBlockSize.jsValue
+        object[Strings.fixedInlineSize] = fixedInlineSize.jsValue
+        object[Strings.fixedBlockSize] = fixedBlockSize.jsValue
+        object[Strings.percentageInlineSize] = percentageInlineSize.jsValue
+        object[Strings.percentageBlockSize] = percentageBlockSize.jsValue
+        object[Strings.blockFragmentationOffset] = blockFragmentationOffset.jsValue
+        object[Strings.blockFragmentationType] = blockFragmentationType.jsValue
+        object[Strings.data] = data.jsValue
         self.init(unsafelyWrapping: object)
     }
 

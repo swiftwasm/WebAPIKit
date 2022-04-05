@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUImageCopyExternalImage: BridgedDictionary {
     public convenience init(source: HTMLCanvasElement_or_ImageBitmap_or_OffscreenCanvas, origin: GPUOrigin2D, flipY: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.source] = source.jsValue()
-        object[Strings.origin] = origin.jsValue()
-        object[Strings.flipY] = flipY.jsValue()
+        object[Strings.source] = source.jsValue
+        object[Strings.origin] = origin.jsValue
+        object[Strings.flipY] = flipY.jsValue
         self.init(unsafelyWrapping: object)
     }
 

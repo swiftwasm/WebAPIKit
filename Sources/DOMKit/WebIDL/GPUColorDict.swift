@@ -6,10 +6,10 @@ import JavaScriptKit
 public class GPUColorDict: BridgedDictionary {
     public convenience init(r: Double, g: Double, b: Double, a: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.r] = r.jsValue()
-        object[Strings.g] = g.jsValue()
-        object[Strings.b] = b.jsValue()
-        object[Strings.a] = a.jsValue()
+        object[Strings.r] = r.jsValue
+        object[Strings.g] = g.jsValue
+        object[Strings.b] = b.jsValue
+        object[Strings.a] = a.jsValue
         self.init(unsafelyWrapping: object)
     }
 

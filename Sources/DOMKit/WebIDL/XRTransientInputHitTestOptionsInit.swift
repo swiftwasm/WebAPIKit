@@ -6,9 +6,9 @@ import JavaScriptKit
 public class XRTransientInputHitTestOptionsInit: BridgedDictionary {
     public convenience init(profile: String, entityTypes: [XRHitTestTrackableType], offsetRay: XRRay) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.profile] = profile.jsValue()
-        object[Strings.entityTypes] = entityTypes.jsValue()
-        object[Strings.offsetRay] = offsetRay.jsValue()
+        object[Strings.profile] = profile.jsValue
+        object[Strings.entityTypes] = entityTypes.jsValue
+        object[Strings.offsetRay] = offsetRay.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,24 +6,24 @@ import JavaScriptKit
 public class JsonWebKey: BridgedDictionary {
     public convenience init(kty: String, use: String, key_ops: [String], alg: String, ext: Bool, crv: String, x: String, y: String, d: String, n: String, e: String, p: String, q: String, dp: String, dq: String, qi: String, oth: [RsaOtherPrimesInfo], k: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.kty] = kty.jsValue()
-        object[Strings.use] = use.jsValue()
-        object[Strings.key_ops] = key_ops.jsValue()
-        object[Strings.alg] = alg.jsValue()
-        object[Strings.ext] = ext.jsValue()
-        object[Strings.crv] = crv.jsValue()
-        object[Strings.x] = x.jsValue()
-        object[Strings.y] = y.jsValue()
-        object[Strings.d] = d.jsValue()
-        object[Strings.n] = n.jsValue()
-        object[Strings.e] = e.jsValue()
-        object[Strings.p] = p.jsValue()
-        object[Strings.q] = q.jsValue()
-        object[Strings.dp] = dp.jsValue()
-        object[Strings.dq] = dq.jsValue()
-        object[Strings.qi] = qi.jsValue()
-        object[Strings.oth] = oth.jsValue()
-        object[Strings.k] = k.jsValue()
+        object[Strings.kty] = kty.jsValue
+        object[Strings.use] = use.jsValue
+        object[Strings.key_ops] = key_ops.jsValue
+        object[Strings.alg] = alg.jsValue
+        object[Strings.ext] = ext.jsValue
+        object[Strings.crv] = crv.jsValue
+        object[Strings.x] = x.jsValue
+        object[Strings.y] = y.jsValue
+        object[Strings.d] = d.jsValue
+        object[Strings.n] = n.jsValue
+        object[Strings.e] = e.jsValue
+        object[Strings.p] = p.jsValue
+        object[Strings.q] = q.jsValue
+        object[Strings.dp] = dp.jsValue
+        object[Strings.dq] = dq.jsValue
+        object[Strings.qi] = qi.jsValue
+        object[Strings.oth] = oth.jsValue
+        object[Strings.k] = k.jsValue
         self.init(unsafelyWrapping: object)
     }
 

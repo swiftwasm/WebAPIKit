@@ -23,11 +23,11 @@ public class MediaKeyStatusMap: JSBridgedClass, Sequence {
 
     @inlinable public func has(keyId: BufferSource) -> Bool {
         let this = jsObject
-        return this[Strings.has].function!(this: this, arguments: [keyId.jsValue()]).fromJSValue()!
+        return this[Strings.has].function!(this: this, arguments: [keyId.jsValue]).fromJSValue()!
     }
 
     @inlinable public func get(keyId: BufferSource) -> MediaKeyStatus? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [keyId.jsValue()]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [keyId.jsValue]).fromJSValue()!
     }
 }

@@ -15,7 +15,7 @@ public class OffscreenCanvas: EventTarget {
     }
 
     @inlinable public convenience init(width: UInt64, height: UInt64) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [width.jsValue(), height.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [width.jsValue, height.jsValue]))
     }
 
     @ReadWriteAttribute
@@ -26,7 +26,7 @@ public class OffscreenCanvas: EventTarget {
 
     @inlinable public func getContext(contextId: OffscreenRenderingContextId, options: JSValue? = nil) -> OffscreenRenderingContext? {
         let this = jsObject
-        return this[Strings.getContext].function!(this: this, arguments: [contextId.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getContext].function!(this: this, arguments: [contextId.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func transferToImageBitmap() -> ImageBitmap {
@@ -36,14 +36,14 @@ public class OffscreenCanvas: EventTarget {
 
     @inlinable public func convertToBlob(options: ImageEncodeOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func convertToBlob(options: ImageEncodeOptions? = nil) async throws -> Blob {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ClosureAttribute1Optional

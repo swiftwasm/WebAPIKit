@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MemoryMeasurement: BridgedDictionary {
     public convenience init(bytes: UInt64, breakdown: [MemoryBreakdownEntry]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.bytes] = bytes.jsValue()
-        object[Strings.breakdown] = breakdown.jsValue()
+        object[Strings.bytes] = bytes.jsValue
+        object[Strings.breakdown] = breakdown.jsValue
         self.init(unsafelyWrapping: object)
     }
 

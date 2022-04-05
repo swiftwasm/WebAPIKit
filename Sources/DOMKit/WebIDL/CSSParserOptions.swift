@@ -6,7 +6,7 @@ import JavaScriptKit
 public class CSSParserOptions: BridgedDictionary {
     public convenience init(atRules: JSObject) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.atRules] = atRules.jsValue()
+        object[Strings.atRules] = atRules.jsValue
         self.init(unsafelyWrapping: object)
     }
 

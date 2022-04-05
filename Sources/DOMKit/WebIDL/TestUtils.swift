@@ -17,6 +17,6 @@ public enum TestUtils {
     @inlinable public static func gc() async throws {
         let this = JSObject.global[Strings.TestUtils].object!
         let _promise: JSPromise = this[Strings.gc].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 }

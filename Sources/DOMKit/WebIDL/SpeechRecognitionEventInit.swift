@@ -6,8 +6,8 @@ import JavaScriptKit
 public class SpeechRecognitionEventInit: BridgedDictionary {
     public convenience init(resultIndex: UInt32, results: SpeechRecognitionResultList) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.resultIndex] = resultIndex.jsValue()
-        object[Strings.results] = results.jsValue()
+        object[Strings.resultIndex] = resultIndex.jsValue
+        object[Strings.results] = results.jsValue
         self.init(unsafelyWrapping: object)
     }
 

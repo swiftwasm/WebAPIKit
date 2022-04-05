@@ -6,9 +6,9 @@ import JavaScriptKit
 public class MediaKeySystemMediaCapability: BridgedDictionary {
     public convenience init(contentType: String, encryptionScheme: String?, robustness: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.contentType] = contentType.jsValue()
-        object[Strings.encryptionScheme] = encryptionScheme.jsValue()
-        object[Strings.robustness] = robustness.jsValue()
+        object[Strings.contentType] = contentType.jsValue
+        object[Strings.encryptionScheme] = encryptionScheme.jsValue
+        object[Strings.robustness] = robustness.jsValue
         self.init(unsafelyWrapping: object)
     }
 

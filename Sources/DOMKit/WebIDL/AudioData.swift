@@ -19,7 +19,7 @@ public class AudioData: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: AudioDataInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue]))
     }
 
     @ReadonlyAttribute
@@ -42,12 +42,12 @@ public class AudioData: JSBridgedClass {
 
     @inlinable public func allocationSize(options: AudioDataCopyToOptions) -> UInt32 {
         let this = jsObject
-        return this[Strings.allocationSize].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
+        return this[Strings.allocationSize].function!(this: this, arguments: [options.jsValue]).fromJSValue()!
     }
 
     @inlinable public func copyTo(destination: BufferSource, options: AudioDataCopyToOptions) {
         let this = jsObject
-        _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue(), options.jsValue()])
+        _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue, options.jsValue])
     }
 
     @inlinable public func clone() -> Self {

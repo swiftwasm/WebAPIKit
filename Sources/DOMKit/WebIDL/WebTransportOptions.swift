@@ -6,8 +6,8 @@ import JavaScriptKit
 public class WebTransportOptions: BridgedDictionary {
     public convenience init(allowPooling: Bool, serverCertificateHashes: [WebTransportHash]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.allowPooling] = allowPooling.jsValue()
-        object[Strings.serverCertificateHashes] = serverCertificateHashes.jsValue()
+        object[Strings.allowPooling] = allowPooling.jsValue
+        object[Strings.serverCertificateHashes] = serverCertificateHashes.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,10 +6,10 @@ import JavaScriptKit
 public class ImageResource: BridgedDictionary {
     public convenience init(src: String, sizes: String, type: String, label: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.src] = src.jsValue()
-        object[Strings.sizes] = sizes.jsValue()
-        object[Strings.type] = type.jsValue()
-        object[Strings.label] = label.jsValue()
+        object[Strings.src] = src.jsValue
+        object[Strings.sizes] = sizes.jsValue
+        object[Strings.type] = type.jsValue
+        object[Strings.label] = label.jsValue
         self.init(unsafelyWrapping: object)
     }
 

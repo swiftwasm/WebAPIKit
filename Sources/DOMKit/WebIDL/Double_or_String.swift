@@ -21,12 +21,12 @@ public enum Double_or_String: JSValueCompatible, Any_Double_or_String {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .double(double):
-            return double.jsValue()
+            return double.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

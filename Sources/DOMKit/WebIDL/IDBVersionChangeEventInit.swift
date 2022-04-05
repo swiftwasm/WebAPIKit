@@ -6,8 +6,8 @@ import JavaScriptKit
 public class IDBVersionChangeEventInit: BridgedDictionary {
     public convenience init(oldVersion: UInt64, newVersion: UInt64?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.oldVersion] = oldVersion.jsValue()
-        object[Strings.newVersion] = newVersion.jsValue()
+        object[Strings.oldVersion] = oldVersion.jsValue
+        object[Strings.newVersion] = newVersion.jsValue
         self.init(unsafelyWrapping: object)
     }
 

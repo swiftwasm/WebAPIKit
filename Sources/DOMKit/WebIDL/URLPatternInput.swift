@@ -21,12 +21,12 @@ public enum URLPatternInput: JSValueCompatible, Any_URLPatternInput {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         case let .uRLPatternInit(uRLPatternInit):
-            return uRLPatternInit.jsValue()
+            return uRLPatternInit.jsValue
         }
     }
 }

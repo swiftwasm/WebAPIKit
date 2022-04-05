@@ -6,16 +6,16 @@ import JavaScriptKit
 public class UADataValues: BridgedDictionary {
     public convenience init(brands: [NavigatorUABrandVersion], mobile: Bool, architecture: String, bitness: String, model: String, platform: String, platformVersion: String, uaFullVersion: String, wow64: Bool, fullVersionList: [NavigatorUABrandVersion]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.brands] = brands.jsValue()
-        object[Strings.mobile] = mobile.jsValue()
-        object[Strings.architecture] = architecture.jsValue()
-        object[Strings.bitness] = bitness.jsValue()
-        object[Strings.model] = model.jsValue()
-        object[Strings.platform] = platform.jsValue()
-        object[Strings.platformVersion] = platformVersion.jsValue()
-        object[Strings.uaFullVersion] = uaFullVersion.jsValue()
-        object[Strings.wow64] = wow64.jsValue()
-        object[Strings.fullVersionList] = fullVersionList.jsValue()
+        object[Strings.brands] = brands.jsValue
+        object[Strings.mobile] = mobile.jsValue
+        object[Strings.architecture] = architecture.jsValue
+        object[Strings.bitness] = bitness.jsValue
+        object[Strings.model] = model.jsValue
+        object[Strings.platform] = platform.jsValue
+        object[Strings.platformVersion] = platformVersion.jsValue
+        object[Strings.uaFullVersion] = uaFullVersion.jsValue
+        object[Strings.wow64] = wow64.jsValue
+        object[Strings.fullVersionList] = fullVersionList.jsValue
         self.init(unsafelyWrapping: object)
     }
 

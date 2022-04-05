@@ -36,6 +36,6 @@ public class PublicKeyCredential: Credential {
     @inlinable public static func isUserVerifyingPlatformAuthenticatorAvailable() async throws -> Bool {
         let this = constructor
         let _promise: JSPromise = this[Strings.isUserVerifyingPlatformAuthenticatorAvailable].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

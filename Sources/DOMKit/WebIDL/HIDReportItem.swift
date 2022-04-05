@@ -6,34 +6,34 @@ import JavaScriptKit
 public class HIDReportItem: BridgedDictionary {
     public convenience init(isAbsolute: Bool, isArray: Bool, isBufferedBytes: Bool, isConstant: Bool, isLinear: Bool, isRange: Bool, isVolatile: Bool, hasNull: Bool, hasPreferredState: Bool, wrap: Bool, usages: [UInt32], usageMinimum: UInt32, usageMaximum: UInt32, reportSize: UInt16, reportCount: UInt16, unitExponent: Int8, unitSystem: HIDUnitSystem, unitFactorLengthExponent: Int8, unitFactorMassExponent: Int8, unitFactorTimeExponent: Int8, unitFactorTemperatureExponent: Int8, unitFactorCurrentExponent: Int8, unitFactorLuminousIntensityExponent: Int8, logicalMinimum: Int32, logicalMaximum: Int32, physicalMinimum: Int32, physicalMaximum: Int32, strings: [String]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.isAbsolute] = isAbsolute.jsValue()
-        object[Strings.isArray] = isArray.jsValue()
-        object[Strings.isBufferedBytes] = isBufferedBytes.jsValue()
-        object[Strings.isConstant] = isConstant.jsValue()
-        object[Strings.isLinear] = isLinear.jsValue()
-        object[Strings.isRange] = isRange.jsValue()
-        object[Strings.isVolatile] = isVolatile.jsValue()
-        object[Strings.hasNull] = hasNull.jsValue()
-        object[Strings.hasPreferredState] = hasPreferredState.jsValue()
-        object[Strings.wrap] = wrap.jsValue()
-        object[Strings.usages] = usages.jsValue()
-        object[Strings.usageMinimum] = usageMinimum.jsValue()
-        object[Strings.usageMaximum] = usageMaximum.jsValue()
-        object[Strings.reportSize] = reportSize.jsValue()
-        object[Strings.reportCount] = reportCount.jsValue()
-        object[Strings.unitExponent] = unitExponent.jsValue()
-        object[Strings.unitSystem] = unitSystem.jsValue()
-        object[Strings.unitFactorLengthExponent] = unitFactorLengthExponent.jsValue()
-        object[Strings.unitFactorMassExponent] = unitFactorMassExponent.jsValue()
-        object[Strings.unitFactorTimeExponent] = unitFactorTimeExponent.jsValue()
-        object[Strings.unitFactorTemperatureExponent] = unitFactorTemperatureExponent.jsValue()
-        object[Strings.unitFactorCurrentExponent] = unitFactorCurrentExponent.jsValue()
-        object[Strings.unitFactorLuminousIntensityExponent] = unitFactorLuminousIntensityExponent.jsValue()
-        object[Strings.logicalMinimum] = logicalMinimum.jsValue()
-        object[Strings.logicalMaximum] = logicalMaximum.jsValue()
-        object[Strings.physicalMinimum] = physicalMinimum.jsValue()
-        object[Strings.physicalMaximum] = physicalMaximum.jsValue()
-        object[Strings.strings] = strings.jsValue()
+        object[Strings.isAbsolute] = isAbsolute.jsValue
+        object[Strings.isArray] = isArray.jsValue
+        object[Strings.isBufferedBytes] = isBufferedBytes.jsValue
+        object[Strings.isConstant] = isConstant.jsValue
+        object[Strings.isLinear] = isLinear.jsValue
+        object[Strings.isRange] = isRange.jsValue
+        object[Strings.isVolatile] = isVolatile.jsValue
+        object[Strings.hasNull] = hasNull.jsValue
+        object[Strings.hasPreferredState] = hasPreferredState.jsValue
+        object[Strings.wrap] = wrap.jsValue
+        object[Strings.usages] = usages.jsValue
+        object[Strings.usageMinimum] = usageMinimum.jsValue
+        object[Strings.usageMaximum] = usageMaximum.jsValue
+        object[Strings.reportSize] = reportSize.jsValue
+        object[Strings.reportCount] = reportCount.jsValue
+        object[Strings.unitExponent] = unitExponent.jsValue
+        object[Strings.unitSystem] = unitSystem.jsValue
+        object[Strings.unitFactorLengthExponent] = unitFactorLengthExponent.jsValue
+        object[Strings.unitFactorMassExponent] = unitFactorMassExponent.jsValue
+        object[Strings.unitFactorTimeExponent] = unitFactorTimeExponent.jsValue
+        object[Strings.unitFactorTemperatureExponent] = unitFactorTemperatureExponent.jsValue
+        object[Strings.unitFactorCurrentExponent] = unitFactorCurrentExponent.jsValue
+        object[Strings.unitFactorLuminousIntensityExponent] = unitFactorLuminousIntensityExponent.jsValue
+        object[Strings.logicalMinimum] = logicalMinimum.jsValue
+        object[Strings.logicalMaximum] = logicalMaximum.jsValue
+        object[Strings.physicalMinimum] = physicalMinimum.jsValue
+        object[Strings.physicalMaximum] = physicalMaximum.jsValue
+        object[Strings.strings] = strings.jsValue
         self.init(unsafelyWrapping: object)
     }
 

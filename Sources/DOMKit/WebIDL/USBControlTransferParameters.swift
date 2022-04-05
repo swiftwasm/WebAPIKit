@@ -6,11 +6,11 @@ import JavaScriptKit
 public class USBControlTransferParameters: BridgedDictionary {
     public convenience init(requestType: USBRequestType, recipient: USBRecipient, request: UInt8, value: UInt16, index: UInt16) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.requestType] = requestType.jsValue()
-        object[Strings.recipient] = recipient.jsValue()
-        object[Strings.request] = request.jsValue()
-        object[Strings.value] = value.jsValue()
-        object[Strings.index] = index.jsValue()
+        object[Strings.requestType] = requestType.jsValue
+        object[Strings.recipient] = recipient.jsValue
+        object[Strings.request] = request.jsValue
+        object[Strings.value] = value.jsValue
+        object[Strings.index] = index.jsValue
         self.init(unsafelyWrapping: object)
     }
 

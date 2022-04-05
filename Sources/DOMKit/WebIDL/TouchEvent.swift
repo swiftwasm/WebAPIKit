@@ -18,7 +18,7 @@ public class TouchEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: TouchEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

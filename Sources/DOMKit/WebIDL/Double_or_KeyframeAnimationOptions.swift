@@ -21,12 +21,12 @@ public enum Double_or_KeyframeAnimationOptions: JSValueCompatible, Any_Double_or
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .double(double):
-            return double.jsValue()
+            return double.jsValue
         case let .keyframeAnimationOptions(keyframeAnimationOptions):
-            return keyframeAnimationOptions.jsValue()
+            return keyframeAnimationOptions.jsValue
         }
     }
 }

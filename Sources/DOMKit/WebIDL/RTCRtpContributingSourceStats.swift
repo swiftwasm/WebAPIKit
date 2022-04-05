@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RTCRtpContributingSourceStats: BridgedDictionary {
     public convenience init(contributorSsrc: UInt32, inboundRtpStreamId: String, packetsContributedTo: UInt32, audioLevel: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.contributorSsrc] = contributorSsrc.jsValue()
-        object[Strings.inboundRtpStreamId] = inboundRtpStreamId.jsValue()
-        object[Strings.packetsContributedTo] = packetsContributedTo.jsValue()
-        object[Strings.audioLevel] = audioLevel.jsValue()
+        object[Strings.contributorSsrc] = contributorSsrc.jsValue
+        object[Strings.inboundRtpStreamId] = inboundRtpStreamId.jsValue
+        object[Strings.packetsContributedTo] = packetsContributedTo.jsValue
+        object[Strings.audioLevel] = audioLevel.jsValue
         self.init(unsafelyWrapping: object)
     }
 

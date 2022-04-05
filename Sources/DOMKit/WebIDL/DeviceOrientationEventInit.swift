@@ -6,10 +6,10 @@ import JavaScriptKit
 public class DeviceOrientationEventInit: BridgedDictionary {
     public convenience init(alpha: Double?, beta: Double?, gamma: Double?, absolute: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.alpha] = alpha.jsValue()
-        object[Strings.beta] = beta.jsValue()
-        object[Strings.gamma] = gamma.jsValue()
-        object[Strings.absolute] = absolute.jsValue()
+        object[Strings.alpha] = alpha.jsValue
+        object[Strings.beta] = beta.jsValue
+        object[Strings.gamma] = gamma.jsValue
+        object[Strings.absolute] = absolute.jsValue
         self.init(unsafelyWrapping: object)
     }
 

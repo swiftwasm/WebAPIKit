@@ -36,7 +36,7 @@ public class RTCPeerConnection: EventTarget {
 
     @inlinable public func setIdentityProvider(provider: String, options: RTCIdentityProviderOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.setIdentityProvider].function!(this: this, arguments: [provider.jsValue(), options?.jsValue() ?? .undefined])
+        _ = this[Strings.setIdentityProvider].function!(this: this, arguments: [provider.jsValue, options?.jsValue ?? .undefined])
     }
 
     @inlinable public func getIdentityAssertion() -> JSPromise {
@@ -48,7 +48,7 @@ public class RTCPeerConnection: EventTarget {
     @inlinable public func getIdentityAssertion() async throws -> String {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getIdentityAssertion].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -61,7 +61,7 @@ public class RTCPeerConnection: EventTarget {
     public var idpErrorInfo: String?
 
     @inlinable public convenience init(configuration: RTCConfiguration? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [configuration?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [configuration?.jsValue ?? .undefined]))
     }
 
     // XXX: member 'createOffer' is ignored
@@ -129,7 +129,7 @@ public class RTCPeerConnection: EventTarget {
 
     @inlinable public func setConfiguration(configuration: RTCConfiguration? = nil) {
         let this = jsObject
-        _ = this[Strings.setConfiguration].function!(this: this, arguments: [configuration?.jsValue() ?? .undefined])
+        _ = this[Strings.setConfiguration].function!(this: this, arguments: [configuration?.jsValue ?? .undefined])
     }
 
     @inlinable public func close() {
@@ -180,14 +180,14 @@ public class RTCPeerConnection: EventTarget {
 
     @inlinable public static func generateCertificate(keygenAlgorithm: AlgorithmIdentifier) -> JSPromise {
         let this = constructor
-        return this[Strings.generateCertificate].function!(this: this, arguments: [keygenAlgorithm.jsValue()]).fromJSValue()!
+        return this[Strings.generateCertificate].function!(this: this, arguments: [keygenAlgorithm.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public static func generateCertificate(keygenAlgorithm: AlgorithmIdentifier) async throws -> RTCCertificate {
         let this = constructor
-        let _promise: JSPromise = this[Strings.generateCertificate].function!(this: this, arguments: [keygenAlgorithm.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.generateCertificate].function!(this: this, arguments: [keygenAlgorithm.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getSenders() -> [RTCRtpSender] {
@@ -207,17 +207,17 @@ public class RTCPeerConnection: EventTarget {
 
     @inlinable public func addTrack(track: MediaStreamTrack, streams: MediaStream...) -> RTCRtpSender {
         let this = jsObject
-        return this[Strings.addTrack].function!(this: this, arguments: [track.jsValue()] + streams.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.addTrack].function!(this: this, arguments: [track.jsValue] + streams.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func removeTrack(sender: RTCRtpSender) {
         let this = jsObject
-        _ = this[Strings.removeTrack].function!(this: this, arguments: [sender.jsValue()])
+        _ = this[Strings.removeTrack].function!(this: this, arguments: [sender.jsValue])
     }
 
     @inlinable public func addTransceiver(trackOrKind: MediaStreamTrack_or_String, init: RTCRtpTransceiverInit? = nil) -> RTCRtpTransceiver {
         let this = jsObject
-        return this[Strings.addTransceiver].function!(this: this, arguments: [trackOrKind.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.addTransceiver].function!(this: this, arguments: [trackOrKind.jsValue, `init`?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ClosureAttribute1Optional
@@ -228,7 +228,7 @@ public class RTCPeerConnection: EventTarget {
 
     @inlinable public func createDataChannel(label: String, dataChannelDict: RTCDataChannelInit? = nil) -> RTCDataChannel {
         let this = jsObject
-        return this[Strings.createDataChannel].function!(this: this, arguments: [label.jsValue(), dataChannelDict?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createDataChannel].function!(this: this, arguments: [label.jsValue, dataChannelDict?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ClosureAttribute1Optional
@@ -236,13 +236,13 @@ public class RTCPeerConnection: EventTarget {
 
     @inlinable public func getStats(selector: MediaStreamTrack? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.getStats].function!(this: this, arguments: [selector?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getStats].function!(this: this, arguments: [selector?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getStats(selector: MediaStreamTrack? = nil) async throws -> RTCStatsReport {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: [selector?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: [selector?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

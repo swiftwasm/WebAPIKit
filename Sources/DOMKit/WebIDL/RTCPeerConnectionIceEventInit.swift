@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RTCPeerConnectionIceEventInit: BridgedDictionary {
     public convenience init(candidate: RTCIceCandidate?, url: String?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.candidate] = candidate.jsValue()
-        object[Strings.url] = url.jsValue()
+        object[Strings.candidate] = candidate.jsValue
+        object[Strings.url] = url.jsValue
         self.init(unsafelyWrapping: object)
     }
 

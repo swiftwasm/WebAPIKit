@@ -18,7 +18,7 @@ public class WebTransport: JSBridgedClass {
     }
 
     @inlinable public convenience init(url: String, options: WebTransportOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @inlinable public func getStats() -> JSPromise {
@@ -30,7 +30,7 @@ public class WebTransport: JSBridgedClass {
     @inlinable public func getStats() async throws -> WebTransportStats {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -41,7 +41,7 @@ public class WebTransport: JSBridgedClass {
 
     @inlinable public func close(closeInfo: WebTransportCloseInfo? = nil) {
         let this = jsObject
-        _ = this[Strings.close].function!(this: this, arguments: [closeInfo?.jsValue() ?? .undefined])
+        _ = this[Strings.close].function!(this: this, arguments: [closeInfo?.jsValue ?? .undefined])
     }
 
     @ReadonlyAttribute
@@ -56,7 +56,7 @@ public class WebTransport: JSBridgedClass {
     @inlinable public func createBidirectionalStream() async throws -> WebTransportBidirectionalStream {
         let this = jsObject
         let _promise: JSPromise = this[Strings.createBidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -71,7 +71,7 @@ public class WebTransport: JSBridgedClass {
     @inlinable public func createUnidirectionalStream() async throws -> WritableStream {
         let this = jsObject
         let _promise: JSPromise = this[Strings.createUnidirectionalStream].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute

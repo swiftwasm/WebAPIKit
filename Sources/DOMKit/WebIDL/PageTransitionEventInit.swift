@@ -6,7 +6,7 @@ import JavaScriptKit
 public class PageTransitionEventInit: BridgedDictionary {
     public convenience init(persisted: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.persisted] = persisted.jsValue()
+        object[Strings.persisted] = persisted.jsValue
         self.init(unsafelyWrapping: object)
     }
 

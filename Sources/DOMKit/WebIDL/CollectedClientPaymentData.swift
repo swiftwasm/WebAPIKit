@@ -6,7 +6,7 @@ import JavaScriptKit
 public class CollectedClientPaymentData: BridgedDictionary {
     public convenience init(payment: CollectedClientAdditionalPaymentData) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.payment] = payment.jsValue()
+        object[Strings.payment] = payment.jsValue
         self.init(unsafelyWrapping: object)
     }
 

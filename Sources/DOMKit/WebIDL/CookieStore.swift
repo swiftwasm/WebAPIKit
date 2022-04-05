@@ -13,98 +13,98 @@ public class CookieStore: EventTarget {
 
     @inlinable public func get(name: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func get(name: String) async throws -> CookieListItem? {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func get(options: CookieStoreGetOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func get(options: CookieStoreGetOptions? = nil) async throws -> CookieListItem? {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getAll(name: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.getAll].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.getAll].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getAll(name: String) async throws -> CookieList {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getAll].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getAll].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getAll(options: CookieStoreGetOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.getAll].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getAll].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getAll(options: CookieStoreGetOptions? = nil) async throws -> CookieList {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getAll].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getAll].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func set(name: String, value: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.set].function!(this: this, arguments: [name.jsValue(), value.jsValue()]).fromJSValue()!
+        return this[Strings.set].function!(this: this, arguments: [name.jsValue, value.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func set(name: String, value: String) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.set].function!(this: this, arguments: [name.jsValue(), value.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.set].function!(this: this, arguments: [name.jsValue, value.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func set(options: CookieInit) -> JSPromise {
         let this = jsObject
-        return this[Strings.set].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
+        return this[Strings.set].function!(this: this, arguments: [options.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func set(options: CookieInit) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.set].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.set].function!(this: this, arguments: [options.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func delete(name: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.delete].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.delete].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func delete(name: String) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func delete(options: CookieStoreDeleteOptions) -> JSPromise {
         let this = jsObject
-        return this[Strings.delete].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
+        return this[Strings.delete].function!(this: this, arguments: [options.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func delete(options: CookieStoreDeleteOptions) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [options.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [options.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @ClosureAttribute1Optional

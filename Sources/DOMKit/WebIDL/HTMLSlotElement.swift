@@ -20,16 +20,16 @@ public class HTMLSlotElement: HTMLElement {
 
     @inlinable public func assignedNodes(options: AssignedNodesOptions? = nil) -> [Node] {
         let this = jsObject
-        return this[Strings.assignedNodes].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.assignedNodes].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func assignedElements(options: AssignedNodesOptions? = nil) -> [Element] {
         let this = jsObject
-        return this[Strings.assignedElements].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.assignedElements].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func assign(nodes: Element_or_Text...) {
         let this = jsObject
-        _ = this[Strings.assign].function!(this: this, arguments: nodes.map { $0.jsValue() })
+        _ = this[Strings.assign].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 }

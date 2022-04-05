@@ -24,7 +24,7 @@ public extension HTMLOrSVGElement {
 
     @inlinable func focus(options: FocusOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.focus].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
+        _ = this[Strings.focus].function!(this: this, arguments: [options?.jsValue ?? .undefined])
     }
 
     @inlinable func blur() {

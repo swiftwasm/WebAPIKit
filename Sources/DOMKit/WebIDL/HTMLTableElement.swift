@@ -80,12 +80,12 @@ public class HTMLTableElement: HTMLElement {
 
     @inlinable public func insertRow(index: Int32? = nil) -> HTMLTableRowElement {
         let this = jsObject
-        return this[Strings.insertRow].function!(this: this, arguments: [index?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.insertRow].function!(this: this, arguments: [index?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func deleteRow(index: Int32) {
         let this = jsObject
-        _ = this[Strings.deleteRow].function!(this: this, arguments: [index.jsValue()])
+        _ = this[Strings.deleteRow].function!(this: this, arguments: [index.jsValue])
     }
 
     @ReadWriteAttribute

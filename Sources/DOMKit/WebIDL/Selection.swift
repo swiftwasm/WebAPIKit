@@ -42,17 +42,17 @@ public class Selection: JSBridgedClass {
 
     @inlinable public func getRangeAt(index: UInt32) -> Range {
         let this = jsObject
-        return this[Strings.getRangeAt].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
+        return this[Strings.getRangeAt].function!(this: this, arguments: [index.jsValue]).fromJSValue()!
     }
 
     @inlinable public func addRange(range: Range) {
         let this = jsObject
-        _ = this[Strings.addRange].function!(this: this, arguments: [range.jsValue()])
+        _ = this[Strings.addRange].function!(this: this, arguments: [range.jsValue])
     }
 
     @inlinable public func removeRange(range: Range) {
         let this = jsObject
-        _ = this[Strings.removeRange].function!(this: this, arguments: [range.jsValue()])
+        _ = this[Strings.removeRange].function!(this: this, arguments: [range.jsValue])
     }
 
     @inlinable public func removeAllRanges() {
@@ -67,12 +67,12 @@ public class Selection: JSBridgedClass {
 
     @inlinable public func collapse(node: Node?, offset: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.collapse].function!(this: this, arguments: [node.jsValue(), offset?.jsValue() ?? .undefined])
+        _ = this[Strings.collapse].function!(this: this, arguments: [node.jsValue, offset?.jsValue ?? .undefined])
     }
 
     @inlinable public func setPosition(node: Node?, offset: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.setPosition].function!(this: this, arguments: [node.jsValue(), offset?.jsValue() ?? .undefined])
+        _ = this[Strings.setPosition].function!(this: this, arguments: [node.jsValue, offset?.jsValue ?? .undefined])
     }
 
     @inlinable public func collapseToStart() {
@@ -87,17 +87,17 @@ public class Selection: JSBridgedClass {
 
     @inlinable public func extend(node: Node, offset: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.extend].function!(this: this, arguments: [node.jsValue(), offset?.jsValue() ?? .undefined])
+        _ = this[Strings.extend].function!(this: this, arguments: [node.jsValue, offset?.jsValue ?? .undefined])
     }
 
     @inlinable public func setBaseAndExtent(anchorNode: Node, anchorOffset: UInt32, focusNode: Node, focusOffset: UInt32) {
         let this = jsObject
-        _ = this[Strings.setBaseAndExtent].function!(this: this, arguments: [anchorNode.jsValue(), anchorOffset.jsValue(), focusNode.jsValue(), focusOffset.jsValue()])
+        _ = this[Strings.setBaseAndExtent].function!(this: this, arguments: [anchorNode.jsValue, anchorOffset.jsValue, focusNode.jsValue, focusOffset.jsValue])
     }
 
     @inlinable public func selectAllChildren(node: Node) {
         let this = jsObject
-        _ = this[Strings.selectAllChildren].function!(this: this, arguments: [node.jsValue()])
+        _ = this[Strings.selectAllChildren].function!(this: this, arguments: [node.jsValue])
     }
 
     @inlinable public func deleteFromDocument() {
@@ -107,7 +107,7 @@ public class Selection: JSBridgedClass {
 
     @inlinable public func containsNode(node: Node, allowPartialContainment: Bool? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.containsNode].function!(this: this, arguments: [node.jsValue(), allowPartialContainment?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.containsNode].function!(this: this, arguments: [node.jsValue, allowPartialContainment?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public var description: String {

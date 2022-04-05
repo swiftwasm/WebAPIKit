@@ -21,12 +21,12 @@ public enum GPUExtent3D: JSValueCompatible, Any_GPUExtent3D {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .gPUExtent3DDict(gPUExtent3DDict):
-            return gPUExtent3DDict.jsValue()
+            return gPUExtent3DDict.jsValue
         case let .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate):
-            return seq_of_GPUIntegerCoordinate.jsValue()
+            return seq_of_GPUIntegerCoordinate.jsValue
         }
     }
 }

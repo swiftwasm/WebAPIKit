@@ -6,12 +6,12 @@ import JavaScriptKit
 public class ContentDescription: BridgedDictionary {
     public convenience init(id: String, title: String, description: String, category: ContentCategory, icons: [ImageResource], url: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.id] = id.jsValue()
-        object[Strings.title] = title.jsValue()
-        object[Strings.description] = description.jsValue()
-        object[Strings.category] = category.jsValue()
-        object[Strings.icons] = icons.jsValue()
-        object[Strings.url] = url.jsValue()
+        object[Strings.id] = id.jsValue
+        object[Strings.title] = title.jsValue
+        object[Strings.description] = description.jsValue
+        object[Strings.category] = category.jsValue
+        object[Strings.icons] = icons.jsValue
+        object[Strings.url] = url.jsValue
         self.init(unsafelyWrapping: object)
     }
 

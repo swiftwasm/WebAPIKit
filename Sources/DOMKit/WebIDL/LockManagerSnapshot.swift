@@ -6,8 +6,8 @@ import JavaScriptKit
 public class LockManagerSnapshot: BridgedDictionary {
     public convenience init(held: [LockInfo], pending: [LockInfo]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.held] = held.jsValue()
-        object[Strings.pending] = pending.jsValue()
+        object[Strings.held] = held.jsValue
+        object[Strings.pending] = pending.jsValue
         self.init(unsafelyWrapping: object)
     }
 

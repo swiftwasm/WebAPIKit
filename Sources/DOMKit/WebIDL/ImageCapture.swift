@@ -14,19 +14,19 @@ public class ImageCapture: JSBridgedClass {
     }
 
     @inlinable public convenience init(videoTrack: MediaStreamTrack) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [videoTrack.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [videoTrack.jsValue]))
     }
 
     @inlinable public func takePhoto(photoSettings: PhotoSettings? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.takePhoto].function!(this: this, arguments: [photoSettings?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.takePhoto].function!(this: this, arguments: [photoSettings?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func takePhoto(photoSettings: PhotoSettings? = nil) async throws -> Blob {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.takePhoto].function!(this: this, arguments: [photoSettings?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.takePhoto].function!(this: this, arguments: [photoSettings?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getPhotoCapabilities() -> JSPromise {
@@ -38,7 +38,7 @@ public class ImageCapture: JSBridgedClass {
     @inlinable public func getPhotoCapabilities() async throws -> PhotoCapabilities {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getPhotoCapabilities].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getPhotoSettings() -> JSPromise {
@@ -50,7 +50,7 @@ public class ImageCapture: JSBridgedClass {
     @inlinable public func getPhotoSettings() async throws -> PhotoSettings {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getPhotoSettings].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func grabFrame() -> JSPromise {
@@ -62,7 +62,7 @@ public class ImageCapture: JSBridgedClass {
     @inlinable public func grabFrame() async throws -> ImageBitmap {
         let this = jsObject
         let _promise: JSPromise = this[Strings.grabFrame].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute

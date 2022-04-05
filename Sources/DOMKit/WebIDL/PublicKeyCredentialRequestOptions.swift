@@ -6,12 +6,12 @@ import JavaScriptKit
 public class PublicKeyCredentialRequestOptions: BridgedDictionary {
     public convenience init(challenge: BufferSource, timeout: UInt32, rpId: String, allowCredentials: [PublicKeyCredentialDescriptor], userVerification: String, extensions: AuthenticationExtensionsClientInputs) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.challenge] = challenge.jsValue()
-        object[Strings.timeout] = timeout.jsValue()
-        object[Strings.rpId] = rpId.jsValue()
-        object[Strings.allowCredentials] = allowCredentials.jsValue()
-        object[Strings.userVerification] = userVerification.jsValue()
-        object[Strings.extensions] = extensions.jsValue()
+        object[Strings.challenge] = challenge.jsValue
+        object[Strings.timeout] = timeout.jsValue
+        object[Strings.rpId] = rpId.jsValue
+        object[Strings.allowCredentials] = allowCredentials.jsValue
+        object[Strings.userVerification] = userVerification.jsValue
+        object[Strings.extensions] = extensions.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class EventListenerOptions: BridgedDictionary {
     public convenience init(capture: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.capture] = capture.jsValue()
+        object[Strings.capture] = capture.jsValue
         self.init(unsafelyWrapping: object)
     }
 

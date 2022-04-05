@@ -6,8 +6,8 @@ import JavaScriptKit
 public class TextDecoderOptions: BridgedDictionary {
     public convenience init(fatal: Bool, ignoreBOM: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.fatal] = fatal.jsValue()
-        object[Strings.ignoreBOM] = ignoreBOM.jsValue()
+        object[Strings.fatal] = fatal.jsValue
+        object[Strings.ignoreBOM] = ignoreBOM.jsValue
         self.init(unsafelyWrapping: object)
     }
 

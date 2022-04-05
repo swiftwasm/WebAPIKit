@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GPUPipelineLayoutDescriptor: BridgedDictionary {
     public convenience init(bindGroupLayouts: [GPUBindGroupLayout]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.bindGroupLayouts] = bindGroupLayouts.jsValue()
+        object[Strings.bindGroupLayouts] = bindGroupLayouts.jsValue
         self.init(unsafelyWrapping: object)
     }
 

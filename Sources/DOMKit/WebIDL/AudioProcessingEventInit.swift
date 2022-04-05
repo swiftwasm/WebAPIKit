@@ -6,9 +6,9 @@ import JavaScriptKit
 public class AudioProcessingEventInit: BridgedDictionary {
     public convenience init(playbackTime: Double, inputBuffer: AudioBuffer, outputBuffer: AudioBuffer) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.playbackTime] = playbackTime.jsValue()
-        object[Strings.inputBuffer] = inputBuffer.jsValue()
-        object[Strings.outputBuffer] = outputBuffer.jsValue()
+        object[Strings.playbackTime] = playbackTime.jsValue
+        object[Strings.inputBuffer] = inputBuffer.jsValue
+        object[Strings.outputBuffer] = outputBuffer.jsValue
         self.init(unsafelyWrapping: object)
     }
 

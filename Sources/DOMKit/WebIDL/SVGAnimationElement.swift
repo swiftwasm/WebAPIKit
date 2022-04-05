@@ -48,7 +48,7 @@ public class SVGAnimationElement: SVGElement, SVGTests {
 
     @inlinable public func beginElementAt(offset: Float) {
         let this = jsObject
-        _ = this[Strings.beginElementAt].function!(this: this, arguments: [offset.jsValue()])
+        _ = this[Strings.beginElementAt].function!(this: this, arguments: [offset.jsValue])
     }
 
     @inlinable public func endElement() {
@@ -58,6 +58,6 @@ public class SVGAnimationElement: SVGElement, SVGTests {
 
     @inlinable public func endElementAt(offset: Float) {
         let this = jsObject
-        _ = this[Strings.endElementAt].function!(this: this, arguments: [offset.jsValue()])
+        _ = this[Strings.endElementAt].function!(this: this, arguments: [offset.jsValue])
     }
 }

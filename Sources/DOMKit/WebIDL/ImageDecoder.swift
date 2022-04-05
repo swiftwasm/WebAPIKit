@@ -17,7 +17,7 @@ public class ImageDecoder: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: ImageDecoderInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue]))
     }
 
     @ReadonlyAttribute
@@ -34,14 +34,14 @@ public class ImageDecoder: JSBridgedClass {
 
     @inlinable public func decode(options: ImageDecodeOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.decode].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.decode].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func decode(options: ImageDecodeOptions? = nil) async throws -> ImageDecodeResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.decode].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.decode].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func reset() {
@@ -56,13 +56,13 @@ public class ImageDecoder: JSBridgedClass {
 
     @inlinable public static func isTypeSupported(type: String) -> JSPromise {
         let this = constructor
-        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public static func isTypeSupported(type: String) async throws -> Bool {
         let this = constructor
-        let _promise: JSPromise = this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

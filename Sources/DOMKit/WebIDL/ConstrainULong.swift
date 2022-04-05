@@ -21,12 +21,12 @@ public enum ConstrainULong: JSValueCompatible, Any_ConstrainULong {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .constrainULongRange(constrainULongRange):
-            return constrainULongRange.jsValue()
+            return constrainULongRange.jsValue
         case let .uInt32(uInt32):
-            return uInt32.jsValue()
+            return uInt32.jsValue
         }
     }
 }

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PaymentValidationErrors: BridgedDictionary {
     public convenience init(error: String, paymentMethod: JSObject) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.error] = error.jsValue()
-        object[Strings.paymentMethod] = paymentMethod.jsValue()
+        object[Strings.error] = error.jsValue
+        object[Strings.paymentMethod] = paymentMethod.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class HIDInputReportEventInit: BridgedDictionary {
     public convenience init(device: HIDDevice, reportId: UInt8, data: DataView) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.device] = device.jsValue()
-        object[Strings.reportId] = reportId.jsValue()
-        object[Strings.data] = data.jsValue()
+        object[Strings.device] = device.jsValue
+        object[Strings.reportId] = reportId.jsValue
+        object[Strings.data] = data.jsValue
         self.init(unsafelyWrapping: object)
     }
 

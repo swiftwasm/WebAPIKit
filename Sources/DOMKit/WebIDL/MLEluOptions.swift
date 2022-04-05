@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MLEluOptions: BridgedDictionary {
     public convenience init(alpha: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.alpha] = alpha.jsValue()
+        object[Strings.alpha] = alpha.jsValue
         self.init(unsafelyWrapping: object)
     }
 

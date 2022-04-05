@@ -21,12 +21,12 @@ public enum DOMPointInit_or_Double: JSValueCompatible, Any_DOMPointInit_or_Doubl
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .dOMPointInit(dOMPointInit):
-            return dOMPointInit.jsValue()
+            return dOMPointInit.jsValue
         case let .double(double):
-            return double.jsValue()
+            return double.jsValue
         }
     }
 }

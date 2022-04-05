@@ -26,14 +26,14 @@ public enum MLResource: JSValueCompatible, Any_MLResource {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .gPUTexture(gPUTexture):
-            return gPUTexture.jsValue()
+            return gPUTexture.jsValue
         case let .mLBufferView(mLBufferView):
-            return mLBufferView.jsValue()
+            return mLBufferView.jsValue
         case let .webGLTexture(webGLTexture):
-            return webGLTexture.jsValue()
+            return webGLTexture.jsValue
         }
     }
 }

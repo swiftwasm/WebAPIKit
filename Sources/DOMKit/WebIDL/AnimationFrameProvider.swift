@@ -9,6 +9,6 @@ public extension AnimationFrameProvider {
 
     @inlinable func cancelAnimationFrame(handle: UInt32) {
         let this = jsObject
-        _ = this[Strings.cancelAnimationFrame].function!(this: this, arguments: [handle.jsValue()])
+        _ = this[Strings.cancelAnimationFrame].function!(this: this, arguments: [handle.jsValue])
     }
 }

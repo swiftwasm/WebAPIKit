@@ -21,12 +21,12 @@ public class OVR_multiview2: JSBridgedClass {
     public static let FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR: GLenum = 0x9633
 
     @inlinable public func framebufferTextureMultiviewOVR(target: GLenum, attachment: GLenum, texture: WebGLTexture?, level: GLint, baseViewIndex: GLint, numViews: GLsizei) {
-        let _arg0 = target.jsValue()
-        let _arg1 = attachment.jsValue()
-        let _arg2 = texture.jsValue()
-        let _arg3 = level.jsValue()
-        let _arg4 = baseViewIndex.jsValue()
-        let _arg5 = numViews.jsValue()
+        let _arg0 = target.jsValue
+        let _arg1 = attachment.jsValue
+        let _arg2 = texture.jsValue
+        let _arg3 = level.jsValue
+        let _arg4 = baseViewIndex.jsValue
+        let _arg5 = numViews.jsValue
         let this = jsObject
         _ = this[Strings.framebufferTextureMultiviewOVR].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }

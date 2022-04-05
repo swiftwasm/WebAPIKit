@@ -18,11 +18,11 @@ public class ReadableStreamBYOBRequest: JSBridgedClass {
 
     @inlinable public func respond(bytesWritten: UInt64) {
         let this = jsObject
-        _ = this[Strings.respond].function!(this: this, arguments: [bytesWritten.jsValue()])
+        _ = this[Strings.respond].function!(this: this, arguments: [bytesWritten.jsValue])
     }
 
     @inlinable public func respondWithNewView(view: ArrayBufferView) {
         let this = jsObject
-        _ = this[Strings.respondWithNewView].function!(this: this, arguments: [view.jsValue()])
+        _ = this[Strings.respondWithNewView].function!(this: this, arguments: [view.jsValue])
     }
 }

@@ -21,12 +21,12 @@ public enum TimerHandler: JSValueCompatible, Any_TimerHandler {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .jSFunction(jSFunction):
-            return jSFunction.jsValue()
+            return jSFunction.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

@@ -21,12 +21,12 @@ public enum CSSStringSource: JSValueCompatible, Any_CSSStringSource {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .readableStream(readableStream):
-            return readableStream.jsValue()
+            return readableStream.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

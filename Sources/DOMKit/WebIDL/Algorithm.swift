@@ -6,7 +6,7 @@ import JavaScriptKit
 public class Algorithm: BridgedDictionary {
     public convenience init(name: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue()
+        object[Strings.name] = name.jsValue
         self.init(unsafelyWrapping: object)
     }
 

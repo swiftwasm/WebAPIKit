@@ -14,28 +14,28 @@ public class CustomElementRegistry: JSBridgedClass {
 
     @inlinable public func define(name: String, constructor: CustomElementConstructor, options: ElementDefinitionOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.define].function!(this: this, arguments: [name.jsValue(), constructor.jsValue(), options?.jsValue() ?? .undefined])
+        _ = this[Strings.define].function!(this: this, arguments: [name.jsValue, constructor.jsValue, options?.jsValue ?? .undefined])
     }
 
     @inlinable public func get(name: String) -> CustomElementConstructor? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @inlinable public func whenDefined(name: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.whenDefined].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.whenDefined].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func whenDefined(name: String) async throws -> CustomElementConstructor {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.whenDefined].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.whenDefined].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func upgrade(root: Node) {
         let this = jsObject
-        _ = this[Strings.upgrade].function!(this: this, arguments: [root.jsValue()])
+        _ = this[Strings.upgrade].function!(this: this, arguments: [root.jsValue])
     }
 }

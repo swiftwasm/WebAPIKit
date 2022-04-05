@@ -6,12 +6,12 @@ import JavaScriptKit
 public class RTCErrorInit: BridgedDictionary {
     public convenience init(httpRequestStatusCode: Int32, errorDetail: RTCErrorDetailType, sdpLineNumber: Int32, sctpCauseCode: Int32, receivedAlert: UInt32, sentAlert: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.httpRequestStatusCode] = httpRequestStatusCode.jsValue()
-        object[Strings.errorDetail] = errorDetail.jsValue()
-        object[Strings.sdpLineNumber] = sdpLineNumber.jsValue()
-        object[Strings.sctpCauseCode] = sctpCauseCode.jsValue()
-        object[Strings.receivedAlert] = receivedAlert.jsValue()
-        object[Strings.sentAlert] = sentAlert.jsValue()
+        object[Strings.httpRequestStatusCode] = httpRequestStatusCode.jsValue
+        object[Strings.errorDetail] = errorDetail.jsValue
+        object[Strings.sdpLineNumber] = sdpLineNumber.jsValue
+        object[Strings.sctpCauseCode] = sctpCauseCode.jsValue
+        object[Strings.receivedAlert] = receivedAlert.jsValue
+        object[Strings.sentAlert] = sentAlert.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,22 +6,22 @@ import JavaScriptKit
 public class RTCReceivedRtpStreamStats: BridgedDictionary {
     public convenience init(packetsReceived: UInt64, packetsLost: Int64, jitter: Double, packetsDiscarded: UInt64, packetsRepaired: UInt64, burstPacketsLost: UInt64, burstPacketsDiscarded: UInt64, burstLossCount: UInt32, burstDiscardCount: UInt32, burstLossRate: Double, burstDiscardRate: Double, gapLossRate: Double, gapDiscardRate: Double, framesDropped: UInt32, partialFramesLost: UInt32, fullFramesLost: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.packetsReceived] = packetsReceived.jsValue()
-        object[Strings.packetsLost] = packetsLost.jsValue()
-        object[Strings.jitter] = jitter.jsValue()
-        object[Strings.packetsDiscarded] = packetsDiscarded.jsValue()
-        object[Strings.packetsRepaired] = packetsRepaired.jsValue()
-        object[Strings.burstPacketsLost] = burstPacketsLost.jsValue()
-        object[Strings.burstPacketsDiscarded] = burstPacketsDiscarded.jsValue()
-        object[Strings.burstLossCount] = burstLossCount.jsValue()
-        object[Strings.burstDiscardCount] = burstDiscardCount.jsValue()
-        object[Strings.burstLossRate] = burstLossRate.jsValue()
-        object[Strings.burstDiscardRate] = burstDiscardRate.jsValue()
-        object[Strings.gapLossRate] = gapLossRate.jsValue()
-        object[Strings.gapDiscardRate] = gapDiscardRate.jsValue()
-        object[Strings.framesDropped] = framesDropped.jsValue()
-        object[Strings.partialFramesLost] = partialFramesLost.jsValue()
-        object[Strings.fullFramesLost] = fullFramesLost.jsValue()
+        object[Strings.packetsReceived] = packetsReceived.jsValue
+        object[Strings.packetsLost] = packetsLost.jsValue
+        object[Strings.jitter] = jitter.jsValue
+        object[Strings.packetsDiscarded] = packetsDiscarded.jsValue
+        object[Strings.packetsRepaired] = packetsRepaired.jsValue
+        object[Strings.burstPacketsLost] = burstPacketsLost.jsValue
+        object[Strings.burstPacketsDiscarded] = burstPacketsDiscarded.jsValue
+        object[Strings.burstLossCount] = burstLossCount.jsValue
+        object[Strings.burstDiscardCount] = burstDiscardCount.jsValue
+        object[Strings.burstLossRate] = burstLossRate.jsValue
+        object[Strings.burstDiscardRate] = burstDiscardRate.jsValue
+        object[Strings.gapLossRate] = gapLossRate.jsValue
+        object[Strings.gapDiscardRate] = gapDiscardRate.jsValue
+        object[Strings.framesDropped] = framesDropped.jsValue
+        object[Strings.partialFramesLost] = partialFramesLost.jsValue
+        object[Strings.fullFramesLost] = fullFramesLost.jsValue
         self.init(unsafelyWrapping: object)
     }
 

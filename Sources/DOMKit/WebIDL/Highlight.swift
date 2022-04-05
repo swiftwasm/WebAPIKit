@@ -15,7 +15,7 @@ public class Highlight: JSBridgedClass {
     }
 
     @inlinable public convenience init(initialRanges: AbstractRange...) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: initialRanges.map { $0.jsValue() }))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: initialRanges.map(\.jsValue)))
     }
 
     // XXX: make me Set-like!

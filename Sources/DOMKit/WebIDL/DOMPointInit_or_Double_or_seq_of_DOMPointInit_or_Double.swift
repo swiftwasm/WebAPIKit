@@ -26,14 +26,14 @@ public enum DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double: JSValueComp
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .dOMPointInit(dOMPointInit):
-            return dOMPointInit.jsValue()
+            return dOMPointInit.jsValue
         case let .double(double):
-            return double.jsValue()
+            return double.jsValue
         case let .seq_of_DOMPointInit_or_Double(seq_of_DOMPointInit_or_Double):
-            return seq_of_DOMPointInit_or_Double.jsValue()
+            return seq_of_DOMPointInit_or_Double.jsValue
         }
     }
 }

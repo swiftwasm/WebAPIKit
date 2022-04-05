@@ -56,7 +56,7 @@ public class HTMLVideoElement: HTMLMediaElement {
     @inlinable public func requestPictureInPicture() async throws -> PictureInPictureWindow {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestPictureInPicture].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ClosureAttribute1Optional
@@ -75,6 +75,6 @@ public class HTMLVideoElement: HTMLMediaElement {
 
     @inlinable public func cancelVideoFrameCallback(handle: UInt32) {
         let this = jsObject
-        _ = this[Strings.cancelVideoFrameCallback].function!(this: this, arguments: [handle.jsValue()])
+        _ = this[Strings.cancelVideoFrameCallback].function!(this: this, arguments: [handle.jsValue])
     }
 }

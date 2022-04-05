@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RTCIceCandidateInit: BridgedDictionary {
     public convenience init(candidate: String, sdpMid: String?, sdpMLineIndex: UInt16?, usernameFragment: String?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.candidate] = candidate.jsValue()
-        object[Strings.sdpMid] = sdpMid.jsValue()
-        object[Strings.sdpMLineIndex] = sdpMLineIndex.jsValue()
-        object[Strings.usernameFragment] = usernameFragment.jsValue()
+        object[Strings.candidate] = candidate.jsValue
+        object[Strings.sdpMid] = sdpMid.jsValue
+        object[Strings.sdpMLineIndex] = sdpMLineIndex.jsValue
+        object[Strings.usernameFragment] = usernameFragment.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class TableDescriptor: BridgedDictionary {
     public convenience init(element: TableKind, initial: UInt32, maximum: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.element] = element.jsValue()
-        object[Strings.initial] = initial.jsValue()
-        object[Strings.maximum] = maximum.jsValue()
+        object[Strings.element] = element.jsValue
+        object[Strings.initial] = initial.jsValue
+        object[Strings.maximum] = maximum.jsValue
         self.init(unsafelyWrapping: object)
     }
 

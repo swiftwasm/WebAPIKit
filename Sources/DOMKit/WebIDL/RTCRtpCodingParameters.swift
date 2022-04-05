@@ -6,7 +6,7 @@ import JavaScriptKit
 public class RTCRtpCodingParameters: BridgedDictionary {
     public convenience init(rid: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.rid] = rid.jsValue()
+        object[Strings.rid] = rid.jsValue
         self.init(unsafelyWrapping: object)
     }
 

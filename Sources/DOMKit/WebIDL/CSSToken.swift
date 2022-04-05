@@ -26,14 +26,14 @@ public enum CSSToken: JSValueCompatible, Any_CSSToken {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .cSSParserValue(cSSParserValue):
-            return cSSParserValue.jsValue()
+            return cSSParserValue.jsValue
         case let .cSSStyleValue(cSSStyleValue):
-            return cSSStyleValue.jsValue()
+            return cSSStyleValue.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

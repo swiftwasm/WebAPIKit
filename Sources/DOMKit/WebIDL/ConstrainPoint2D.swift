@@ -21,12 +21,12 @@ public enum ConstrainPoint2D: JSValueCompatible, Any_ConstrainPoint2D {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .constrainPoint2DParameters(constrainPoint2DParameters):
-            return constrainPoint2DParameters.jsValue()
+            return constrainPoint2DParameters.jsValue
         case let .seq_of_Point2D(seq_of_Point2D):
-            return seq_of_Point2D.jsValue()
+            return seq_of_Point2D.jsValue
         }
     }
 }

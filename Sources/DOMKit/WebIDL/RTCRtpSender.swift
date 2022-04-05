@@ -21,14 +21,14 @@ public class RTCRtpSender: JSBridgedClass {
 
     @inlinable public func generateKeyFrame(rids: [String]? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.generateKeyFrame].function!(this: this, arguments: [rids?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.generateKeyFrame].function!(this: this, arguments: [rids?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func generateKeyFrame(rids: [String]? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.generateKeyFrame].function!(this: this, arguments: [rids?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.generateKeyFrame].function!(this: this, arguments: [rids?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @ReadonlyAttribute
@@ -39,19 +39,19 @@ public class RTCRtpSender: JSBridgedClass {
 
     @inlinable public static func getCapabilities(kind: String) -> RTCRtpCapabilities? {
         let this = constructor
-        return this[Strings.getCapabilities].function!(this: this, arguments: [kind.jsValue()]).fromJSValue()!
+        return this[Strings.getCapabilities].function!(this: this, arguments: [kind.jsValue]).fromJSValue()!
     }
 
     @inlinable public func setParameters(parameters: RTCRtpSendParameters) -> JSPromise {
         let this = jsObject
-        return this[Strings.setParameters].function!(this: this, arguments: [parameters.jsValue()]).fromJSValue()!
+        return this[Strings.setParameters].function!(this: this, arguments: [parameters.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func setParameters(parameters: RTCRtpSendParameters) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.setParameters].function!(this: this, arguments: [parameters.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.setParameters].function!(this: this, arguments: [parameters.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func getParameters() -> RTCRtpSendParameters {
@@ -61,19 +61,19 @@ public class RTCRtpSender: JSBridgedClass {
 
     @inlinable public func replaceTrack(withTrack: MediaStreamTrack?) -> JSPromise {
         let this = jsObject
-        return this[Strings.replaceTrack].function!(this: this, arguments: [withTrack.jsValue()]).fromJSValue()!
+        return this[Strings.replaceTrack].function!(this: this, arguments: [withTrack.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func replaceTrack(withTrack: MediaStreamTrack?) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.replaceTrack].function!(this: this, arguments: [withTrack.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.replaceTrack].function!(this: this, arguments: [withTrack.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func setStreams(streams: MediaStream...) {
         let this = jsObject
-        _ = this[Strings.setStreams].function!(this: this, arguments: streams.map { $0.jsValue() })
+        _ = this[Strings.setStreams].function!(this: this, arguments: streams.map(\.jsValue))
     }
 
     @inlinable public func getStats() -> JSPromise {
@@ -85,7 +85,7 @@ public class RTCRtpSender: JSBridgedClass {
     @inlinable public func getStats() async throws -> RTCStatsReport {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getStats].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute

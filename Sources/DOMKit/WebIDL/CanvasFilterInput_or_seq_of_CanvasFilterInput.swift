@@ -21,12 +21,12 @@ public enum CanvasFilterInput_or_seq_of_CanvasFilterInput: JSValueCompatible, An
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .canvasFilterInput(canvasFilterInput):
-            return canvasFilterInput.jsValue()
+            return canvasFilterInput.jsValue
         case let .seq_of_CanvasFilterInput(seq_of_CanvasFilterInput):
-            return seq_of_CanvasFilterInput.jsValue()
+            return seq_of_CanvasFilterInput.jsValue
         }
     }
 }

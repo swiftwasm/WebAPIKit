@@ -21,12 +21,12 @@ public enum Float32List: JSValueCompatible, Any_Float32List {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .float32Array(float32Array):
-            return float32Array.jsValue()
+            return float32Array.jsValue
         case let .seq_of_GLfloat(seq_of_GLfloat):
-            return seq_of_GLfloat.jsValue()
+            return seq_of_GLfloat.jsValue
         }
     }
 }

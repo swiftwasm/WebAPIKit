@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MLTransposeOptions: BridgedDictionary {
     public convenience init(permutation: [Int32]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.permutation] = permutation.jsValue()
+        object[Strings.permutation] = permutation.jsValue
         self.init(unsafelyWrapping: object)
     }
 

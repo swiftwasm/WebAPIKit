@@ -23,7 +23,7 @@ public class SecurityPolicyViolationEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: SecurityPolicyViolationEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

@@ -14,25 +14,25 @@ public class MediaCapabilities: JSBridgedClass {
 
     @inlinable public func decodingInfo(configuration: MediaDecodingConfiguration) -> JSPromise {
         let this = jsObject
-        return this[Strings.decodingInfo].function!(this: this, arguments: [configuration.jsValue()]).fromJSValue()!
+        return this[Strings.decodingInfo].function!(this: this, arguments: [configuration.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func decodingInfo(configuration: MediaDecodingConfiguration) async throws -> MediaCapabilitiesDecodingInfo {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.decodingInfo].function!(this: this, arguments: [configuration.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.decodingInfo].function!(this: this, arguments: [configuration.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func encodingInfo(configuration: MediaEncodingConfiguration) -> JSPromise {
         let this = jsObject
-        return this[Strings.encodingInfo].function!(this: this, arguments: [configuration.jsValue()]).fromJSValue()!
+        return this[Strings.encodingInfo].function!(this: this, arguments: [configuration.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func encodingInfo(configuration: MediaEncodingConfiguration) async throws -> MediaCapabilitiesEncodingInfo {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.encodingInfo].function!(this: this, arguments: [configuration.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.encodingInfo].function!(this: this, arguments: [configuration.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

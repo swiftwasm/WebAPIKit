@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ScrollToOptions: BridgedDictionary {
     public convenience init(left: Double, top: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.left] = left.jsValue()
-        object[Strings.top] = top.jsValue()
+        object[Strings.left] = left.jsValue
+        object[Strings.top] = top.jsValue
         self.init(unsafelyWrapping: object)
     }
 

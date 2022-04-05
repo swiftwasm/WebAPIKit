@@ -6,8 +6,8 @@ import JavaScriptKit
 public class XRInputSourceEventInit: BridgedDictionary {
     public convenience init(frame: XRFrame, inputSource: XRInputSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.frame] = frame.jsValue()
-        object[Strings.inputSource] = inputSource.jsValue()
+        object[Strings.frame] = frame.jsValue
+        object[Strings.inputSource] = inputSource.jsValue
         self.init(unsafelyWrapping: object)
     }
 

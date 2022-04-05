@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUBufferBindingLayout: BridgedDictionary {
     public convenience init(type: GPUBufferBindingType, hasDynamicOffset: Bool, minBindingSize: GPUSize64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.hasDynamicOffset] = hasDynamicOffset.jsValue()
-        object[Strings.minBindingSize] = minBindingSize.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.hasDynamicOffset] = hasDynamicOffset.jsValue
+        object[Strings.minBindingSize] = minBindingSize.jsValue
         self.init(unsafelyWrapping: object)
     }
 

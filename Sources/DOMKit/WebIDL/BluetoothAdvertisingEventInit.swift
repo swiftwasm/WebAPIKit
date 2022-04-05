@@ -6,14 +6,14 @@ import JavaScriptKit
 public class BluetoothAdvertisingEventInit: BridgedDictionary {
     public convenience init(device: BluetoothDevice, uuids: [String_or_UInt32], name: String, appearance: UInt16, txPower: Int8, rssi: Int8, manufacturerData: BluetoothManufacturerDataMap, serviceData: BluetoothServiceDataMap) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.device] = device.jsValue()
-        object[Strings.uuids] = uuids.jsValue()
-        object[Strings.name] = name.jsValue()
-        object[Strings.appearance] = appearance.jsValue()
-        object[Strings.txPower] = txPower.jsValue()
-        object[Strings.rssi] = rssi.jsValue()
-        object[Strings.manufacturerData] = manufacturerData.jsValue()
-        object[Strings.serviceData] = serviceData.jsValue()
+        object[Strings.device] = device.jsValue
+        object[Strings.uuids] = uuids.jsValue
+        object[Strings.name] = name.jsValue
+        object[Strings.appearance] = appearance.jsValue
+        object[Strings.txPower] = txPower.jsValue
+        object[Strings.rssi] = rssi.jsValue
+        object[Strings.manufacturerData] = manufacturerData.jsValue
+        object[Strings.serviceData] = serviceData.jsValue
         self.init(unsafelyWrapping: object)
     }
 

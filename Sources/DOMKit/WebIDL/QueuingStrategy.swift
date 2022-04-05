@@ -6,7 +6,7 @@ import JavaScriptKit
 public class QueuingStrategy: BridgedDictionary {
     public convenience init(highWaterMark: Double, size: @escaping QueuingStrategySize) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.highWaterMark] = highWaterMark.jsValue()
+        object[Strings.highWaterMark] = highWaterMark.jsValue
         ClosureAttribute1[Strings.size, in: object] = size
         self.init(unsafelyWrapping: object)
     }

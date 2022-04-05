@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PlaneLayout: BridgedDictionary {
     public convenience init(offset: UInt32, stride: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = offset.jsValue()
-        object[Strings.stride] = stride.jsValue()
+        object[Strings.offset] = offset.jsValue
+        object[Strings.stride] = stride.jsValue
         self.init(unsafelyWrapping: object)
     }
 

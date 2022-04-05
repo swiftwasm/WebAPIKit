@@ -6,10 +6,10 @@ import JavaScriptKit
 public class LockOptions: BridgedDictionary {
     public convenience init(mode: LockMode, ifAvailable: Bool, steal: Bool, signal: AbortSignal) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mode] = mode.jsValue()
-        object[Strings.ifAvailable] = ifAvailable.jsValue()
-        object[Strings.steal] = steal.jsValue()
-        object[Strings.signal] = signal.jsValue()
+        object[Strings.mode] = mode.jsValue
+        object[Strings.ifAvailable] = ifAvailable.jsValue
+        object[Strings.steal] = steal.jsValue
+        object[Strings.signal] = signal.jsValue
         self.init(unsafelyWrapping: object)
     }
 

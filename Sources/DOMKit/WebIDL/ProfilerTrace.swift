@@ -6,10 +6,10 @@ import JavaScriptKit
 public class ProfilerTrace: BridgedDictionary {
     public convenience init(resources: [ProfilerResource], frames: [ProfilerFrame], stacks: [ProfilerStack], samples: [ProfilerSample]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.resources] = resources.jsValue()
-        object[Strings.frames] = frames.jsValue()
-        object[Strings.stacks] = stacks.jsValue()
-        object[Strings.samples] = samples.jsValue()
+        object[Strings.resources] = resources.jsValue
+        object[Strings.frames] = frames.jsValue
+        object[Strings.stacks] = stacks.jsValue
+        object[Strings.samples] = samples.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class FullscreenOptions: BridgedDictionary {
     public convenience init(navigationUI: FullscreenNavigationUI) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.navigationUI] = navigationUI.jsValue()
+        object[Strings.navigationUI] = navigationUI.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -15,7 +15,7 @@ public class USBIsochronousOutTransferPacket: JSBridgedClass {
     }
 
     @inlinable public convenience init(status: USBTransferStatus, bytesWritten: UInt32? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [status.jsValue(), bytesWritten?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [status.jsValue, bytesWritten?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

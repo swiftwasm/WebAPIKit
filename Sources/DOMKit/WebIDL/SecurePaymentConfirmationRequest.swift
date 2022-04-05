@@ -6,13 +6,13 @@ import JavaScriptKit
 public class SecurePaymentConfirmationRequest: BridgedDictionary {
     public convenience init(challenge: BufferSource, rpId: String, credentialIds: [BufferSource], instrument: PaymentCredentialInstrument, timeout: UInt32, payeeOrigin: String, extensions: AuthenticationExtensionsClientInputs) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.challenge] = challenge.jsValue()
-        object[Strings.rpId] = rpId.jsValue()
-        object[Strings.credentialIds] = credentialIds.jsValue()
-        object[Strings.instrument] = instrument.jsValue()
-        object[Strings.timeout] = timeout.jsValue()
-        object[Strings.payeeOrigin] = payeeOrigin.jsValue()
-        object[Strings.extensions] = extensions.jsValue()
+        object[Strings.challenge] = challenge.jsValue
+        object[Strings.rpId] = rpId.jsValue
+        object[Strings.credentialIds] = credentialIds.jsValue
+        object[Strings.instrument] = instrument.jsValue
+        object[Strings.timeout] = timeout.jsValue
+        object[Strings.payeeOrigin] = payeeOrigin.jsValue
+        object[Strings.extensions] = extensions.jsValue
         self.init(unsafelyWrapping: object)
     }
 

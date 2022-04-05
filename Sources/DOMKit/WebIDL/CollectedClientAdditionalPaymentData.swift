@@ -6,11 +6,11 @@ import JavaScriptKit
 public class CollectedClientAdditionalPaymentData: BridgedDictionary {
     public convenience init(rp: String, topOrigin: String, payeeOrigin: String, total: PaymentCurrencyAmount, instrument: PaymentCredentialInstrument) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.rp] = rp.jsValue()
-        object[Strings.topOrigin] = topOrigin.jsValue()
-        object[Strings.payeeOrigin] = payeeOrigin.jsValue()
-        object[Strings.total] = total.jsValue()
-        object[Strings.instrument] = instrument.jsValue()
+        object[Strings.rp] = rp.jsValue
+        object[Strings.topOrigin] = topOrigin.jsValue
+        object[Strings.payeeOrigin] = payeeOrigin.jsValue
+        object[Strings.total] = total.jsValue
+        object[Strings.instrument] = instrument.jsValue
         self.init(unsafelyWrapping: object)
     }
 

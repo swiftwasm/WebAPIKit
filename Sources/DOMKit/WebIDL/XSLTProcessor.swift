@@ -18,32 +18,32 @@ public class XSLTProcessor: JSBridgedClass {
 
     @inlinable public func importStylesheet(style: Node) {
         let this = jsObject
-        _ = this[Strings.importStylesheet].function!(this: this, arguments: [style.jsValue()])
+        _ = this[Strings.importStylesheet].function!(this: this, arguments: [style.jsValue])
     }
 
     @inlinable public func transformToFragment(source: Node, output: Document) -> DocumentFragment {
         let this = jsObject
-        return this[Strings.transformToFragment].function!(this: this, arguments: [source.jsValue(), output.jsValue()]).fromJSValue()!
+        return this[Strings.transformToFragment].function!(this: this, arguments: [source.jsValue, output.jsValue]).fromJSValue()!
     }
 
     @inlinable public func transformToDocument(source: Node) -> Document {
         let this = jsObject
-        return this[Strings.transformToDocument].function!(this: this, arguments: [source.jsValue()]).fromJSValue()!
+        return this[Strings.transformToDocument].function!(this: this, arguments: [source.jsValue]).fromJSValue()!
     }
 
     @inlinable public func setParameter(namespaceURI: String, localName: String, value: JSValue) {
         let this = jsObject
-        _ = this[Strings.setParameter].function!(this: this, arguments: [namespaceURI.jsValue(), localName.jsValue(), value.jsValue()])
+        _ = this[Strings.setParameter].function!(this: this, arguments: [namespaceURI.jsValue, localName.jsValue, value.jsValue])
     }
 
     @inlinable public func getParameter(namespaceURI: String, localName: String) -> JSValue {
         let this = jsObject
-        return this[Strings.getParameter].function!(this: this, arguments: [namespaceURI.jsValue(), localName.jsValue()]).fromJSValue()!
+        return this[Strings.getParameter].function!(this: this, arguments: [namespaceURI.jsValue, localName.jsValue]).fromJSValue()!
     }
 
     @inlinable public func removeParameter(namespaceURI: String, localName: String) {
         let this = jsObject
-        _ = this[Strings.removeParameter].function!(this: this, arguments: [namespaceURI.jsValue(), localName.jsValue()])
+        _ = this[Strings.removeParameter].function!(this: this, arguments: [namespaceURI.jsValue, localName.jsValue])
     }
 
     @inlinable public func clearParameters() {

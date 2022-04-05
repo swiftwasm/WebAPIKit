@@ -26,14 +26,14 @@ public enum IDBCursor_or_IDBIndex_or_IDBObjectStore: JSValueCompatible, Any_IDBC
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .iDBCursor(iDBCursor):
-            return iDBCursor.jsValue()
+            return iDBCursor.jsValue
         case let .iDBIndex(iDBIndex):
-            return iDBIndex.jsValue()
+            return iDBIndex.jsValue
         case let .iDBObjectStore(iDBObjectStore):
-            return iDBObjectStore.jsValue()
+            return iDBObjectStore.jsValue
         }
     }
 }

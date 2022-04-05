@@ -6,10 +6,10 @@ import JavaScriptKit
 public class XRQuadLayerInit: BridgedDictionary {
     public convenience init(textureType: XRTextureType, transform: XRRigidTransform?, width: Float, height: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.textureType] = textureType.jsValue()
-        object[Strings.transform] = transform.jsValue()
-        object[Strings.width] = width.jsValue()
-        object[Strings.height] = height.jsValue()
+        object[Strings.textureType] = textureType.jsValue
+        object[Strings.transform] = transform.jsValue
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
         self.init(unsafelyWrapping: object)
     }
 

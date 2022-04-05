@@ -48,22 +48,22 @@ public class MediaSource: EventTarget {
 
     @inlinable public func addSourceBuffer(type: String) -> SourceBuffer {
         let this = jsObject
-        return this[Strings.addSourceBuffer].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.addSourceBuffer].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 
     @inlinable public func removeSourceBuffer(sourceBuffer: SourceBuffer) {
         let this = jsObject
-        _ = this[Strings.removeSourceBuffer].function!(this: this, arguments: [sourceBuffer.jsValue()])
+        _ = this[Strings.removeSourceBuffer].function!(this: this, arguments: [sourceBuffer.jsValue])
     }
 
     @inlinable public func endOfStream(error: EndOfStreamError? = nil) {
         let this = jsObject
-        _ = this[Strings.endOfStream].function!(this: this, arguments: [error?.jsValue() ?? .undefined])
+        _ = this[Strings.endOfStream].function!(this: this, arguments: [error?.jsValue ?? .undefined])
     }
 
     @inlinable public func setLiveSeekableRange(start: Double, end: Double) {
         let this = jsObject
-        _ = this[Strings.setLiveSeekableRange].function!(this: this, arguments: [start.jsValue(), end.jsValue()])
+        _ = this[Strings.setLiveSeekableRange].function!(this: this, arguments: [start.jsValue, end.jsValue])
     }
 
     @inlinable public func clearLiveSeekableRange() {
@@ -73,6 +73,6 @@ public class MediaSource: EventTarget {
 
     @inlinable public static func isTypeSupported(type: String) -> Bool {
         let this = constructor
-        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 }

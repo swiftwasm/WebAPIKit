@@ -21,12 +21,12 @@ public enum MLInput_or_MLResource: JSValueCompatible, Any_MLInput_or_MLResource 
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .mLInput(mLInput):
-            return mLInput.jsValue()
+            return mLInput.jsValue
         case let .mLResource(mLResource):
-            return mLResource.jsValue()
+            return mLResource.jsValue
         }
     }
 }

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class IdleRequestOptions: BridgedDictionary {
     public convenience init(timeout: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.timeout] = timeout.jsValue()
+        object[Strings.timeout] = timeout.jsValue
         self.init(unsafelyWrapping: object)
     }
 

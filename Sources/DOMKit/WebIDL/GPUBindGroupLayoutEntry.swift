@@ -6,13 +6,13 @@ import JavaScriptKit
 public class GPUBindGroupLayoutEntry: BridgedDictionary {
     public convenience init(binding: GPUIndex32, visibility: GPUShaderStageFlags, buffer: GPUBufferBindingLayout, sampler: GPUSamplerBindingLayout, texture: GPUTextureBindingLayout, storageTexture: GPUStorageTextureBindingLayout, externalTexture: GPUExternalTextureBindingLayout) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.binding] = binding.jsValue()
-        object[Strings.visibility] = visibility.jsValue()
-        object[Strings.buffer] = buffer.jsValue()
-        object[Strings.sampler] = sampler.jsValue()
-        object[Strings.texture] = texture.jsValue()
-        object[Strings.storageTexture] = storageTexture.jsValue()
-        object[Strings.externalTexture] = externalTexture.jsValue()
+        object[Strings.binding] = binding.jsValue
+        object[Strings.visibility] = visibility.jsValue
+        object[Strings.buffer] = buffer.jsValue
+        object[Strings.sampler] = sampler.jsValue
+        object[Strings.texture] = texture.jsValue
+        object[Strings.storageTexture] = storageTexture.jsValue
+        object[Strings.externalTexture] = externalTexture.jsValue
         self.init(unsafelyWrapping: object)
     }
 

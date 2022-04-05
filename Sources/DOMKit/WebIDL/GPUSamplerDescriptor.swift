@@ -6,16 +6,16 @@ import JavaScriptKit
 public class GPUSamplerDescriptor: BridgedDictionary {
     public convenience init(addressModeU: GPUAddressMode, addressModeV: GPUAddressMode, addressModeW: GPUAddressMode, magFilter: GPUFilterMode, minFilter: GPUFilterMode, mipmapFilter: GPUMipmapFilterMode, lodMinClamp: Float, lodMaxClamp: Float, compare: GPUCompareFunction, maxAnisotropy: UInt16) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.addressModeU] = addressModeU.jsValue()
-        object[Strings.addressModeV] = addressModeV.jsValue()
-        object[Strings.addressModeW] = addressModeW.jsValue()
-        object[Strings.magFilter] = magFilter.jsValue()
-        object[Strings.minFilter] = minFilter.jsValue()
-        object[Strings.mipmapFilter] = mipmapFilter.jsValue()
-        object[Strings.lodMinClamp] = lodMinClamp.jsValue()
-        object[Strings.lodMaxClamp] = lodMaxClamp.jsValue()
-        object[Strings.compare] = compare.jsValue()
-        object[Strings.maxAnisotropy] = maxAnisotropy.jsValue()
+        object[Strings.addressModeU] = addressModeU.jsValue
+        object[Strings.addressModeV] = addressModeV.jsValue
+        object[Strings.addressModeW] = addressModeW.jsValue
+        object[Strings.magFilter] = magFilter.jsValue
+        object[Strings.minFilter] = minFilter.jsValue
+        object[Strings.mipmapFilter] = mipmapFilter.jsValue
+        object[Strings.lodMinClamp] = lodMinClamp.jsValue
+        object[Strings.lodMaxClamp] = lodMaxClamp.jsValue
+        object[Strings.compare] = compare.jsValue
+        object[Strings.maxAnisotropy] = maxAnisotropy.jsValue
         self.init(unsafelyWrapping: object)
     }
 

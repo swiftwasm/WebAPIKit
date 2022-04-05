@@ -21,12 +21,12 @@ public enum Element_or_RadioNodeList: JSValueCompatible, Any_Element_or_RadioNod
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .element(element):
-            return element.jsValue()
+            return element.jsValue
         case let .radioNodeList(radioNodeList):
-            return radioNodeList.jsValue()
+            return radioNodeList.jsValue
         }
     }
 }

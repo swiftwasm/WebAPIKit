@@ -6,11 +6,11 @@ import JavaScriptKit
 public class XRRenderStateInit: BridgedDictionary {
     public convenience init(depthNear: Double, depthFar: Double, inlineVerticalFieldOfView: Double, baseLayer: XRWebGLLayer?, layers: [XRLayer]?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.depthNear] = depthNear.jsValue()
-        object[Strings.depthFar] = depthFar.jsValue()
-        object[Strings.inlineVerticalFieldOfView] = inlineVerticalFieldOfView.jsValue()
-        object[Strings.baseLayer] = baseLayer.jsValue()
-        object[Strings.layers] = layers.jsValue()
+        object[Strings.depthNear] = depthNear.jsValue
+        object[Strings.depthFar] = depthFar.jsValue
+        object[Strings.inlineVerticalFieldOfView] = inlineVerticalFieldOfView.jsValue
+        object[Strings.baseLayer] = baseLayer.jsValue
+        object[Strings.layers] = layers.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MLOperandDescriptor: BridgedDictionary {
     public convenience init(type: MLOperandType, dimensions: [Int32]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.dimensions] = dimensions.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.dimensions] = dimensions.jsValue
         self.init(unsafelyWrapping: object)
     }
 

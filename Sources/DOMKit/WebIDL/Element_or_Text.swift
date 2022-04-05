@@ -21,12 +21,12 @@ public enum Element_or_Text: JSValueCompatible, Any_Element_or_Text {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .element(element):
-            return element.jsValue()
+            return element.jsValue
         case let .text(text):
-            return text.jsValue()
+            return text.jsValue
         }
     }
 }

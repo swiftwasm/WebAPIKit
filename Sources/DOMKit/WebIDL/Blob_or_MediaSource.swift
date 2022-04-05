@@ -21,12 +21,12 @@ public enum Blob_or_MediaSource: JSValueCompatible, Any_Blob_or_MediaSource {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .blob(blob):
-            return blob.jsValue()
+            return blob.jsValue
         case let .mediaSource(mediaSource):
-            return mediaSource.jsValue()
+            return mediaSource.jsValue
         }
     }
 }

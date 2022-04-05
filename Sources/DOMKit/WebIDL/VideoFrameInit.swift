@@ -6,12 +6,12 @@ import JavaScriptKit
 public class VideoFrameInit: BridgedDictionary {
     public convenience init(duration: UInt64, timestamp: Int64, alpha: AlphaOption, visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.duration] = duration.jsValue()
-        object[Strings.timestamp] = timestamp.jsValue()
-        object[Strings.alpha] = alpha.jsValue()
-        object[Strings.visibleRect] = visibleRect.jsValue()
-        object[Strings.displayWidth] = displayWidth.jsValue()
-        object[Strings.displayHeight] = displayHeight.jsValue()
+        object[Strings.duration] = duration.jsValue
+        object[Strings.timestamp] = timestamp.jsValue
+        object[Strings.alpha] = alpha.jsValue
+        object[Strings.visibleRect] = visibleRect.jsValue
+        object[Strings.displayWidth] = displayWidth.jsValue
+        object[Strings.displayHeight] = displayHeight.jsValue
         self.init(unsafelyWrapping: object)
     }
 

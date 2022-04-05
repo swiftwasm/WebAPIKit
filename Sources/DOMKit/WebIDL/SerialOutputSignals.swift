@@ -6,9 +6,9 @@ import JavaScriptKit
 public class SerialOutputSignals: BridgedDictionary {
     public convenience init(dataTerminalReady: Bool, requestToSend: Bool, break: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.dataTerminalReady] = dataTerminalReady.jsValue()
-        object[Strings.requestToSend] = requestToSend.jsValue()
-        object[Strings.break] = `break`.jsValue()
+        object[Strings.dataTerminalReady] = dataTerminalReady.jsValue
+        object[Strings.requestToSend] = requestToSend.jsValue
+        object[Strings.break] = `break`.jsValue
         self.init(unsafelyWrapping: object)
     }
 

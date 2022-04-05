@@ -6,7 +6,7 @@ import JavaScriptKit
 public class FileSystemCreateWritableOptions: BridgedDictionary {
     public convenience init(keepExistingData: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.keepExistingData] = keepExistingData.jsValue()
+        object[Strings.keepExistingData] = keepExistingData.jsValue
         self.init(unsafelyWrapping: object)
     }
 

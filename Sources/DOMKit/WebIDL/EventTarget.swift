@@ -22,6 +22,6 @@ public class EventTarget: JSBridgedClass {
 
     @inlinable public func dispatchEvent(event: Event) -> Bool {
         let this = jsObject
-        return this[Strings.dispatchEvent].function!(this: this, arguments: [event.jsValue()]).fromJSValue()!
+        return this[Strings.dispatchEvent].function!(this: this, arguments: [event.jsValue]).fromJSValue()!
     }
 }

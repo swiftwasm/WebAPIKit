@@ -39,6 +39,6 @@ public class RTCRtpTransceiver: JSBridgedClass {
 
     @inlinable public func setCodecPreferences(codecs: [RTCRtpCodecCapability]) {
         let this = jsObject
-        _ = this[Strings.setCodecPreferences].function!(this: this, arguments: [codecs.jsValue()])
+        _ = this[Strings.setCodecPreferences].function!(this: this, arguments: [codecs.jsValue])
     }
 }

@@ -11,7 +11,7 @@ public class BeforeInstallPromptEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: EventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @inlinable public func prompt() -> JSPromise {
@@ -23,6 +23,6 @@ public class BeforeInstallPromptEvent: Event {
     @inlinable public func prompt() async throws -> PromptResponseObject {
         let this = jsObject
         let _promise: JSPromise = this[Strings.prompt].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

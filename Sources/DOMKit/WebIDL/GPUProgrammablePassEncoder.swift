@@ -7,11 +7,11 @@ public protocol GPUProgrammablePassEncoder: JSBridgedClass {}
 public extension GPUProgrammablePassEncoder {
     @inlinable func setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup, dynamicOffsets: [GPUBufferDynamicOffset]? = nil) {
         let this = jsObject
-        _ = this[Strings.setBindGroup].function!(this: this, arguments: [index.jsValue(), bindGroup.jsValue(), dynamicOffsets?.jsValue() ?? .undefined])
+        _ = this[Strings.setBindGroup].function!(this: this, arguments: [index.jsValue, bindGroup.jsValue, dynamicOffsets?.jsValue ?? .undefined])
     }
 
     @inlinable func setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup, dynamicOffsetsData: Uint32Array, dynamicOffsetsDataStart: GPUSize64, dynamicOffsetsDataLength: GPUSize32) {
         let this = jsObject
-        _ = this[Strings.setBindGroup].function!(this: this, arguments: [index.jsValue(), bindGroup.jsValue(), dynamicOffsetsData.jsValue(), dynamicOffsetsDataStart.jsValue(), dynamicOffsetsDataLength.jsValue()])
+        _ = this[Strings.setBindGroup].function!(this: this, arguments: [index.jsValue, bindGroup.jsValue, dynamicOffsetsData.jsValue, dynamicOffsetsDataStart.jsValue, dynamicOffsetsDataLength.jsValue])
     }
 }

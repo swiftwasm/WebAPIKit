@@ -6,8 +6,8 @@ import JavaScriptKit
 public class TextEncoderEncodeIntoResult: BridgedDictionary {
     public convenience init(read: UInt64, written: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.read] = read.jsValue()
-        object[Strings.written] = written.jsValue()
+        object[Strings.read] = read.jsValue
+        object[Strings.written] = written.jsValue
         self.init(unsafelyWrapping: object)
     }
 

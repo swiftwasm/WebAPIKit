@@ -14,7 +14,7 @@ public class XRInputSourcesChangeEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: XRInputSourcesChangeEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
     }
 
     @ReadonlyAttribute

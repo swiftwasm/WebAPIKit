@@ -6,8 +6,8 @@ import JavaScriptKit
 public class IntrinsicSizesResultOptions: BridgedDictionary {
     public convenience init(maxContentSize: Double, minContentSize: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.maxContentSize] = maxContentSize.jsValue()
-        object[Strings.minContentSize] = minContentSize.jsValue()
+        object[Strings.maxContentSize] = maxContentSize.jsValue
+        object[Strings.minContentSize] = minContentSize.jsValue
         self.init(unsafelyWrapping: object)
     }
 

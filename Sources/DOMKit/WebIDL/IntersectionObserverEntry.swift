@@ -20,7 +20,7 @@ public class IntersectionObserverEntry: JSBridgedClass {
     }
 
     @inlinable public convenience init(intersectionObserverEntryInit: IntersectionObserverEntryInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [intersectionObserverEntryInit.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [intersectionObserverEntryInit.jsValue]))
     }
 
     @ReadonlyAttribute

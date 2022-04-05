@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MidiPermissionDescriptor: BridgedDictionary {
     public convenience init(sysex: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.sysex] = sysex.jsValue()
+        object[Strings.sysex] = sysex.jsValue
         self.init(unsafelyWrapping: object)
     }
 

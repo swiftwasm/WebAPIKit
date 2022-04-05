@@ -36,18 +36,18 @@ public enum OffscreenRenderingContext: JSValueCompatible, Any_OffscreenRendering
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .gPUCanvasContext(gPUCanvasContext):
-            return gPUCanvasContext.jsValue()
+            return gPUCanvasContext.jsValue
         case let .imageBitmapRenderingContext(imageBitmapRenderingContext):
-            return imageBitmapRenderingContext.jsValue()
+            return imageBitmapRenderingContext.jsValue
         case let .offscreenCanvasRenderingContext2D(offscreenCanvasRenderingContext2D):
-            return offscreenCanvasRenderingContext2D.jsValue()
+            return offscreenCanvasRenderingContext2D.jsValue
         case let .webGL2RenderingContext(webGL2RenderingContext):
-            return webGL2RenderingContext.jsValue()
+            return webGL2RenderingContext.jsValue
         case let .webGLRenderingContext(webGLRenderingContext):
-            return webGLRenderingContext.jsValue()
+            return webGLRenderingContext.jsValue
         }
     }
 }

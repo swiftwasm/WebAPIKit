@@ -21,12 +21,12 @@ public enum Element_or_HTMLCollection: JSValueCompatible, Any_Element_or_HTMLCol
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .element(element):
-            return element.jsValue()
+            return element.jsValue
         case let .hTMLCollection(hTMLCollection):
-            return hTMLCollection.jsValue()
+            return hTMLCollection.jsValue
         }
     }
 }

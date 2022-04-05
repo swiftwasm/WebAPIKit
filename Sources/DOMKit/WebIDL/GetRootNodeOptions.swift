@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GetRootNodeOptions: BridgedDictionary {
     public convenience init(composed: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.composed] = composed.jsValue()
+        object[Strings.composed] = composed.jsValue
         self.init(unsafelyWrapping: object)
     }
 

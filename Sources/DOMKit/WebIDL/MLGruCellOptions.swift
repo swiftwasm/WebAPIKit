@@ -6,11 +6,11 @@ import JavaScriptKit
 public class MLGruCellOptions: BridgedDictionary {
     public convenience init(bias: MLOperand, recurrentBias: MLOperand, resetAfter: Bool, layout: MLRecurrentNetworkWeightLayout, activations: [MLOperator]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.bias] = bias.jsValue()
-        object[Strings.recurrentBias] = recurrentBias.jsValue()
-        object[Strings.resetAfter] = resetAfter.jsValue()
-        object[Strings.layout] = layout.jsValue()
-        object[Strings.activations] = activations.jsValue()
+        object[Strings.bias] = bias.jsValue
+        object[Strings.recurrentBias] = recurrentBias.jsValue
+        object[Strings.resetAfter] = resetAfter.jsValue
+        object[Strings.layout] = layout.jsValue
+        object[Strings.activations] = activations.jsValue
         self.init(unsafelyWrapping: object)
     }
 

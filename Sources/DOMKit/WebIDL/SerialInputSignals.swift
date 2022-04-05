@@ -6,10 +6,10 @@ import JavaScriptKit
 public class SerialInputSignals: BridgedDictionary {
     public convenience init(dataCarrierDetect: Bool, clearToSend: Bool, ringIndicator: Bool, dataSetReady: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.dataCarrierDetect] = dataCarrierDetect.jsValue()
-        object[Strings.clearToSend] = clearToSend.jsValue()
-        object[Strings.ringIndicator] = ringIndicator.jsValue()
-        object[Strings.dataSetReady] = dataSetReady.jsValue()
+        object[Strings.dataCarrierDetect] = dataCarrierDetect.jsValue
+        object[Strings.clearToSend] = clearToSend.jsValue
+        object[Strings.ringIndicator] = ringIndicator.jsValue
+        object[Strings.dataSetReady] = dataSetReady.jsValue
         self.init(unsafelyWrapping: object)
     }
 

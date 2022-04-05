@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUVertexBufferLayout: BridgedDictionary {
     public convenience init(arrayStride: GPUSize64, stepMode: GPUVertexStepMode, attributes: [GPUVertexAttribute]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.arrayStride] = arrayStride.jsValue()
-        object[Strings.stepMode] = stepMode.jsValue()
-        object[Strings.attributes] = attributes.jsValue()
+        object[Strings.arrayStride] = arrayStride.jsValue
+        object[Strings.stepMode] = stepMode.jsValue
+        object[Strings.attributes] = attributes.jsValue
         self.init(unsafelyWrapping: object)
     }
 

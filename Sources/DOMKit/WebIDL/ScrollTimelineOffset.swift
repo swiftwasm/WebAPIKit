@@ -21,12 +21,12 @@ public enum ScrollTimelineOffset: JSValueCompatible, Any_ScrollTimelineOffset {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .containerBasedOffset(containerBasedOffset):
-            return containerBasedOffset.jsValue()
+            return containerBasedOffset.jsValue
         case let .elementBasedOffset(elementBasedOffset):
-            return elementBasedOffset.jsValue()
+            return elementBasedOffset.jsValue
         }
     }
 }

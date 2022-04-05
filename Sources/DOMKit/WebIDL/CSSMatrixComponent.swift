@@ -12,7 +12,7 @@ public class CSSMatrixComponent: CSSTransformComponent {
     }
 
     @inlinable public convenience init(matrix: DOMMatrixReadOnly, options: CSSMatrixComponentOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [matrix.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [matrix.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute

@@ -21,12 +21,12 @@ public enum VibratePattern: JSValueCompatible, Any_VibratePattern {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .uInt32(uInt32):
-            return uInt32.jsValue()
+            return uInt32.jsValue
         case let .seq_of_UInt32(seq_of_UInt32):
-            return seq_of_UInt32.jsValue()
+            return seq_of_UInt32.jsValue
         }
     }
 }

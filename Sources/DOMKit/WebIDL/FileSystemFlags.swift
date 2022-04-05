@@ -6,8 +6,8 @@ import JavaScriptKit
 public class FileSystemFlags: BridgedDictionary {
     public convenience init(create: Bool, exclusive: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.create] = create.jsValue()
-        object[Strings.exclusive] = exclusive.jsValue()
+        object[Strings.create] = create.jsValue
+        object[Strings.exclusive] = exclusive.jsValue
         self.init(unsafelyWrapping: object)
     }
 

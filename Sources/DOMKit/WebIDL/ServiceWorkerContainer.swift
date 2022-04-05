@@ -23,26 +23,26 @@ public class ServiceWorkerContainer: EventTarget {
 
     @inlinable public func register(scriptURL: String, options: RegistrationOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func register(scriptURL: String, options: RegistrationOptions? = nil) async throws -> ServiceWorkerRegistration {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getRegistration(clientURL: String? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getRegistration(clientURL: String? = nil) async throws -> ServiceWorkerRegistration? {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getRegistrations() -> JSPromise {
@@ -54,7 +54,7 @@ public class ServiceWorkerContainer: EventTarget {
     @inlinable public func getRegistrations() async throws -> [ServiceWorkerRegistration] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getRegistrations].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func startMessages() {

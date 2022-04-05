@@ -28,7 +28,7 @@ public class WakeLockSentinel: EventTarget {
     @inlinable public func release() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.release].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @ClosureAttribute1Optional

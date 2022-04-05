@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MagnetometerSensorOptions: BridgedDictionary {
     public convenience init(referenceFrame: MagnetometerLocalCoordinateSystem) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.referenceFrame] = referenceFrame.jsValue()
+        object[Strings.referenceFrame] = referenceFrame.jsValue
         self.init(unsafelyWrapping: object)
     }
 

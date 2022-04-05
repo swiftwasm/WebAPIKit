@@ -6,11 +6,11 @@ import JavaScriptKit
 public class AudioConfiguration: BridgedDictionary {
     public convenience init(contentType: String, channels: String, bitrate: UInt64, samplerate: UInt32, spatialRendering: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.contentType] = contentType.jsValue()
-        object[Strings.channels] = channels.jsValue()
-        object[Strings.bitrate] = bitrate.jsValue()
-        object[Strings.samplerate] = samplerate.jsValue()
-        object[Strings.spatialRendering] = spatialRendering.jsValue()
+        object[Strings.contentType] = contentType.jsValue
+        object[Strings.channels] = channels.jsValue
+        object[Strings.bitrate] = bitrate.jsValue
+        object[Strings.samplerate] = samplerate.jsValue
+        object[Strings.spatialRendering] = spatialRendering.jsValue
         self.init(unsafelyWrapping: object)
     }
 

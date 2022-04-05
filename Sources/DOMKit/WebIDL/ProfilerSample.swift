@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ProfilerSample: BridgedDictionary {
     public convenience init(timestamp: DOMHighResTimeStamp, stackId: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.timestamp] = timestamp.jsValue()
-        object[Strings.stackId] = stackId.jsValue()
+        object[Strings.timestamp] = timestamp.jsValue
+        object[Strings.stackId] = stackId.jsValue
         self.init(unsafelyWrapping: object)
     }
 

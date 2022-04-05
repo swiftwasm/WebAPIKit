@@ -18,11 +18,11 @@ public class CSSStyleValue: JSBridgedClass {
 
     @inlinable public static func parse(property: String, cssText: String) -> Self {
         let this = constructor
-        return this[Strings.parse].function!(this: this, arguments: [property.jsValue(), cssText.jsValue()]).fromJSValue()!
+        return this[Strings.parse].function!(this: this, arguments: [property.jsValue, cssText.jsValue]).fromJSValue()!
     }
 
     @inlinable public static func parseAll(property: String, cssText: String) -> [CSSStyleValue] {
         let this = constructor
-        return this[Strings.parseAll].function!(this: this, arguments: [property.jsValue(), cssText.jsValue()]).fromJSValue()!
+        return this[Strings.parseAll].function!(this: this, arguments: [property.jsValue, cssText.jsValue]).fromJSValue()!
     }
 }

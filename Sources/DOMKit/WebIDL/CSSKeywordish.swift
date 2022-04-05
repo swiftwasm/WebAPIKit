@@ -21,12 +21,12 @@ public enum CSSKeywordish: JSValueCompatible, Any_CSSKeywordish {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .cSSKeywordValue(cSSKeywordValue):
-            return cSSKeywordValue.jsValue()
+            return cSSKeywordValue.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

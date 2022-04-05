@@ -14,26 +14,26 @@ public class ContentIndex: JSBridgedClass {
 
     @inlinable public func add(description: ContentDescription) -> JSPromise {
         let this = jsObject
-        return this[Strings.add].function!(this: this, arguments: [description.jsValue()]).fromJSValue()!
+        return this[Strings.add].function!(this: this, arguments: [description.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func add(description: ContentDescription) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.add].function!(this: this, arguments: [description.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.add].function!(this: this, arguments: [description.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func delete(id: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.delete].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
+        return this[Strings.delete].function!(this: this, arguments: [id.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func delete(id: String) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [id.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [id.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func getAll() -> JSPromise {
@@ -45,6 +45,6 @@ public class ContentIndex: JSBridgedClass {
     @inlinable public func getAll() async throws -> [ContentDescription] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getAll].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

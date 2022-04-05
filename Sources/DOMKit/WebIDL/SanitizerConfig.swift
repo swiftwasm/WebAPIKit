@@ -6,13 +6,13 @@ import JavaScriptKit
 public class SanitizerConfig: BridgedDictionary {
     public convenience init(allowElements: [String], blockElements: [String], dropElements: [String], allowAttributes: AttributeMatchList, dropAttributes: AttributeMatchList, allowCustomElements: Bool, allowComments: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.allowElements] = allowElements.jsValue()
-        object[Strings.blockElements] = blockElements.jsValue()
-        object[Strings.dropElements] = dropElements.jsValue()
-        object[Strings.allowAttributes] = allowAttributes.jsValue()
-        object[Strings.dropAttributes] = dropAttributes.jsValue()
-        object[Strings.allowCustomElements] = allowCustomElements.jsValue()
-        object[Strings.allowComments] = allowComments.jsValue()
+        object[Strings.allowElements] = allowElements.jsValue
+        object[Strings.blockElements] = blockElements.jsValue
+        object[Strings.dropElements] = dropElements.jsValue
+        object[Strings.allowAttributes] = allowAttributes.jsValue
+        object[Strings.dropAttributes] = dropAttributes.jsValue
+        object[Strings.allowCustomElements] = allowCustomElements.jsValue
+        object[Strings.allowComments] = allowComments.jsValue
         self.init(unsafelyWrapping: object)
     }
 

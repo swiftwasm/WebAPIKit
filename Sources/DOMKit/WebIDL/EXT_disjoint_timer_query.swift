@@ -33,36 +33,36 @@ public class EXT_disjoint_timer_query: JSBridgedClass {
 
     @inlinable public func deleteQueryEXT(query: WebGLTimerQueryEXT?) {
         let this = jsObject
-        _ = this[Strings.deleteQueryEXT].function!(this: this, arguments: [query.jsValue()])
+        _ = this[Strings.deleteQueryEXT].function!(this: this, arguments: [query.jsValue])
     }
 
     @inlinable public func isQueryEXT(query: WebGLTimerQueryEXT?) -> Bool {
         let this = jsObject
-        return this[Strings.isQueryEXT].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
+        return this[Strings.isQueryEXT].function!(this: this, arguments: [query.jsValue]).fromJSValue()!
     }
 
     @inlinable public func beginQueryEXT(target: GLenum, query: WebGLTimerQueryEXT) {
         let this = jsObject
-        _ = this[Strings.beginQueryEXT].function!(this: this, arguments: [target.jsValue(), query.jsValue()])
+        _ = this[Strings.beginQueryEXT].function!(this: this, arguments: [target.jsValue, query.jsValue])
     }
 
     @inlinable public func endQueryEXT(target: GLenum) {
         let this = jsObject
-        _ = this[Strings.endQueryEXT].function!(this: this, arguments: [target.jsValue()])
+        _ = this[Strings.endQueryEXT].function!(this: this, arguments: [target.jsValue])
     }
 
     @inlinable public func queryCounterEXT(query: WebGLTimerQueryEXT, target: GLenum) {
         let this = jsObject
-        _ = this[Strings.queryCounterEXT].function!(this: this, arguments: [query.jsValue(), target.jsValue()])
+        _ = this[Strings.queryCounterEXT].function!(this: this, arguments: [query.jsValue, target.jsValue])
     }
 
     @inlinable public func getQueryEXT(target: GLenum, pname: GLenum) -> JSValue {
         let this = jsObject
-        return this[Strings.getQueryEXT].function!(this: this, arguments: [target.jsValue(), pname.jsValue()]).fromJSValue()!
+        return this[Strings.getQueryEXT].function!(this: this, arguments: [target.jsValue, pname.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getQueryObjectEXT(query: WebGLTimerQueryEXT, pname: GLenum) -> JSValue {
         let this = jsObject
-        return this[Strings.getQueryObjectEXT].function!(this: this, arguments: [query.jsValue(), pname.jsValue()]).fromJSValue()!
+        return this[Strings.getQueryObjectEXT].function!(this: this, arguments: [query.jsValue, pname.jsValue]).fromJSValue()!
     }
 }

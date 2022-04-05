@@ -14,12 +14,12 @@ public class MessagePort: EventTarget {
 
     @inlinable public func postMessage(message: JSValue, transfer: [JSObject]) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), transfer.jsValue()])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, transfer.jsValue])
     }
 
     @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined])
     }
 
     @inlinable public func start() {

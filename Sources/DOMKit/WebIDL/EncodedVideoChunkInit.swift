@@ -6,10 +6,10 @@ import JavaScriptKit
 public class EncodedVideoChunkInit: BridgedDictionary {
     public convenience init(type: EncodedVideoChunkType, timestamp: Int64, duration: UInt64, data: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.timestamp] = timestamp.jsValue()
-        object[Strings.duration] = duration.jsValue()
-        object[Strings.data] = data.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.timestamp] = timestamp.jsValue
+        object[Strings.duration] = duration.jsValue
+        object[Strings.data] = data.jsValue
         self.init(unsafelyWrapping: object)
     }
 

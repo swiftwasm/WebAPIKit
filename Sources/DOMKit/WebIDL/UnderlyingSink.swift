@@ -10,7 +10,7 @@ public class UnderlyingSink: BridgedDictionary {
         ClosureAttribute2[Strings.write, in: object] = write
         ClosureAttribute0[Strings.close, in: object] = close
         ClosureAttribute1[Strings.abort, in: object] = abort
-        object[Strings.type] = type.jsValue()
+        object[Strings.type] = type.jsValue
         self.init(unsafelyWrapping: object)
     }
 

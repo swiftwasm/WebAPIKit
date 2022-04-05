@@ -36,18 +36,18 @@ public enum XMLHttpRequestBodyInit: JSValueCompatible, Any_XMLHttpRequestBodyIni
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .blob(blob):
-            return blob.jsValue()
+            return blob.jsValue
         case let .bufferSource(bufferSource):
-            return bufferSource.jsValue()
+            return bufferSource.jsValue
         case let .formData(formData):
-            return formData.jsValue()
+            return formData.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         case let .uRLSearchParams(uRLSearchParams):
-            return uRLSearchParams.jsValue()
+            return uRLSearchParams.jsValue
         }
     }
 }

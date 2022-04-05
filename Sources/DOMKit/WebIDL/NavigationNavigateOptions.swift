@@ -6,8 +6,8 @@ import JavaScriptKit
 public class NavigationNavigateOptions: BridgedDictionary {
     public convenience init(state: JSValue, replace: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.state] = state.jsValue()
-        object[Strings.replace] = replace.jsValue()
+        object[Strings.state] = state.jsValue
+        object[Strings.replace] = replace.jsValue
         self.init(unsafelyWrapping: object)
     }
 

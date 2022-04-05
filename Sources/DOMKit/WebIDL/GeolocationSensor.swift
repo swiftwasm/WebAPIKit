@@ -18,19 +18,19 @@ public class GeolocationSensor: Sensor {
     }
 
     @inlinable public convenience init(options: GeolocationSensorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue ?? .undefined]))
     }
 
     @inlinable public static func read(readOptions: ReadOptions? = nil) -> JSPromise {
         let this = constructor
-        return this[Strings.read].function!(this: this, arguments: [readOptions?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.read].function!(this: this, arguments: [readOptions?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public static func read(readOptions: ReadOptions? = nil) async throws -> GeolocationSensorReading {
         let this = constructor
-        let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: [readOptions?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: [readOptions?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute

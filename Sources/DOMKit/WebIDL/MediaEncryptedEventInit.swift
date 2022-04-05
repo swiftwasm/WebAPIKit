@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MediaEncryptedEventInit: BridgedDictionary {
     public convenience init(initDataType: String, initData: ArrayBuffer?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.initDataType] = initDataType.jsValue()
-        object[Strings.initData] = initData.jsValue()
+        object[Strings.initDataType] = initDataType.jsValue
+        object[Strings.initData] = initData.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -16,6 +16,6 @@ public class CSSFontFeatureValuesMap: JSBridgedClass {
 
     @inlinable public func set(featureValueName: String, values: UInt32_or_seq_of_UInt32) {
         let this = jsObject
-        _ = this[Strings.set].function!(this: this, arguments: [featureValueName.jsValue(), values.jsValue()])
+        _ = this[Strings.set].function!(this: this, arguments: [featureValueName.jsValue, values.jsValue])
     }
 }

@@ -30,6 +30,6 @@ public class MediaKeySystemAccess: JSBridgedClass {
     @inlinable public func createMediaKeys() async throws -> MediaKeys {
         let this = jsObject
         let _promise: JSPromise = this[Strings.createMediaKeys].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

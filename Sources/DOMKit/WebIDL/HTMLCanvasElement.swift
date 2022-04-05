@@ -24,12 +24,12 @@ public class HTMLCanvasElement: HTMLElement {
 
     @inlinable public func getContext(contextId: String, options: JSValue? = nil) -> RenderingContext? {
         let this = jsObject
-        return this[Strings.getContext].function!(this: this, arguments: [contextId.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getContext].function!(this: this, arguments: [contextId.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func toDataURL(type: String? = nil, quality: JSValue? = nil) -> String {
         let this = jsObject
-        return this[Strings.toDataURL].function!(this: this, arguments: [type?.jsValue() ?? .undefined, quality?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.toDataURL].function!(this: this, arguments: [type?.jsValue ?? .undefined, quality?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     // XXX: member 'toBlob' is ignored
@@ -41,6 +41,6 @@ public class HTMLCanvasElement: HTMLElement {
 
     @inlinable public func captureStream(frameRequestRate: Double? = nil) -> MediaStream {
         let this = jsObject
-        return this[Strings.captureStream].function!(this: this, arguments: [frameRequestRate?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.captureStream].function!(this: this, arguments: [frameRequestRate?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

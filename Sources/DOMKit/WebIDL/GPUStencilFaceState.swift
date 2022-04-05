@@ -6,10 +6,10 @@ import JavaScriptKit
 public class GPUStencilFaceState: BridgedDictionary {
     public convenience init(compare: GPUCompareFunction, failOp: GPUStencilOperation, depthFailOp: GPUStencilOperation, passOp: GPUStencilOperation) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.compare] = compare.jsValue()
-        object[Strings.failOp] = failOp.jsValue()
-        object[Strings.depthFailOp] = depthFailOp.jsValue()
-        object[Strings.passOp] = passOp.jsValue()
+        object[Strings.compare] = compare.jsValue
+        object[Strings.failOp] = failOp.jsValue
+        object[Strings.depthFailOp] = depthFailOp.jsValue
+        object[Strings.passOp] = passOp.jsValue
         self.init(unsafelyWrapping: object)
     }
 

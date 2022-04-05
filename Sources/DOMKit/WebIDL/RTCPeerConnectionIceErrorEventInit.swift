@@ -6,11 +6,11 @@ import JavaScriptKit
 public class RTCPeerConnectionIceErrorEventInit: BridgedDictionary {
     public convenience init(address: String?, port: UInt16?, url: String, errorCode: UInt16, errorText: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.address] = address.jsValue()
-        object[Strings.port] = port.jsValue()
-        object[Strings.url] = url.jsValue()
-        object[Strings.errorCode] = errorCode.jsValue()
-        object[Strings.errorText] = errorText.jsValue()
+        object[Strings.address] = address.jsValue
+        object[Strings.port] = port.jsValue
+        object[Strings.url] = url.jsValue
+        object[Strings.errorCode] = errorCode.jsValue
+        object[Strings.errorText] = errorText.jsValue
         self.init(unsafelyWrapping: object)
     }
 

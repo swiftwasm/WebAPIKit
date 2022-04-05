@@ -6,8 +6,8 @@ import JavaScriptKit
 public class BlobEventInit: BridgedDictionary {
     public convenience init(data: Blob, timecode: DOMHighResTimeStamp) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.data] = data.jsValue()
-        object[Strings.timecode] = timecode.jsValue()
+        object[Strings.data] = data.jsValue
+        object[Strings.timecode] = timecode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

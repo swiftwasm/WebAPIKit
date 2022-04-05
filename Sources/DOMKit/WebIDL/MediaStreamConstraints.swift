@@ -6,10 +6,10 @@ import JavaScriptKit
 public class MediaStreamConstraints: BridgedDictionary {
     public convenience init(video: Bool_or_MediaTrackConstraints, audio: Bool_or_MediaTrackConstraints, preferCurrentTab: Bool, peerIdentity: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.video] = video.jsValue()
-        object[Strings.audio] = audio.jsValue()
-        object[Strings.preferCurrentTab] = preferCurrentTab.jsValue()
-        object[Strings.peerIdentity] = peerIdentity.jsValue()
+        object[Strings.video] = video.jsValue
+        object[Strings.audio] = audio.jsValue
+        object[Strings.preferCurrentTab] = preferCurrentTab.jsValue
+        object[Strings.peerIdentity] = peerIdentity.jsValue
         self.init(unsafelyWrapping: object)
     }
 

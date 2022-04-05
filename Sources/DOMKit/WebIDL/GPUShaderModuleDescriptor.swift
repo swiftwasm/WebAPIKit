@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUShaderModuleDescriptor: BridgedDictionary {
     public convenience init(code: String, sourceMap: JSObject, hints: [String: GPUShaderModuleCompilationHint]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.code] = code.jsValue()
-        object[Strings.sourceMap] = sourceMap.jsValue()
-        object[Strings.hints] = hints.jsValue()
+        object[Strings.code] = code.jsValue
+        object[Strings.sourceMap] = sourceMap.jsValue
+        object[Strings.hints] = hints.jsValue
         self.init(unsafelyWrapping: object)
     }
 

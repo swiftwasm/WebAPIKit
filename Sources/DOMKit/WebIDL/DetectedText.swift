@@ -6,9 +6,9 @@ import JavaScriptKit
 public class DetectedText: BridgedDictionary {
     public convenience init(boundingBox: DOMRectReadOnly, rawValue: String, cornerPoints: [Point2D]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.boundingBox] = boundingBox.jsValue()
-        object[Strings.rawValue] = rawValue.jsValue()
-        object[Strings.cornerPoints] = cornerPoints.jsValue()
+        object[Strings.boundingBox] = boundingBox.jsValue
+        object[Strings.rawValue] = rawValue.jsValue
+        object[Strings.cornerPoints] = cornerPoints.jsValue
         self.init(unsafelyWrapping: object)
     }
 

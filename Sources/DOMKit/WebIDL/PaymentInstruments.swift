@@ -14,26 +14,26 @@ public class PaymentInstruments: JSBridgedClass {
 
     @inlinable public func delete(instrumentKey: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.delete].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
+        return this[Strings.delete].function!(this: this, arguments: [instrumentKey.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func delete(instrumentKey: String) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [instrumentKey.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func get(instrumentKey: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [instrumentKey.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func get(instrumentKey: String) async throws -> JSValue {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.get].function!(this: this, arguments: [instrumentKey.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func keys() -> JSPromise {
@@ -45,31 +45,31 @@ public class PaymentInstruments: JSBridgedClass {
     @inlinable public func keys() async throws -> [String] {
         let this = jsObject
         let _promise: JSPromise = this[Strings.keys].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func has(instrumentKey: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.has].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
+        return this[Strings.has].function!(this: this, arguments: [instrumentKey.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func has(instrumentKey: String) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.has].function!(this: this, arguments: [instrumentKey.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.has].function!(this: this, arguments: [instrumentKey.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func set(instrumentKey: String, details: PaymentInstrument) -> JSPromise {
         let this = jsObject
-        return this[Strings.set].function!(this: this, arguments: [instrumentKey.jsValue(), details.jsValue()]).fromJSValue()!
+        return this[Strings.set].function!(this: this, arguments: [instrumentKey.jsValue, details.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func set(instrumentKey: String, details: PaymentInstrument) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.set].function!(this: this, arguments: [instrumentKey.jsValue(), details.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.set].function!(this: this, arguments: [instrumentKey.jsValue, details.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func clear() -> JSPromise {
@@ -81,6 +81,6 @@ public class PaymentInstruments: JSBridgedClass {
     @inlinable public func clear() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.clear].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 }

@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RequestDeviceOptions: BridgedDictionary {
     public convenience init(filters: [BluetoothLEScanFilterInit], optionalServices: [BluetoothServiceUUID], optionalManufacturerData: [UInt16], acceptAllDevices: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.filters] = filters.jsValue()
-        object[Strings.optionalServices] = optionalServices.jsValue()
-        object[Strings.optionalManufacturerData] = optionalManufacturerData.jsValue()
-        object[Strings.acceptAllDevices] = acceptAllDevices.jsValue()
+        object[Strings.filters] = filters.jsValue
+        object[Strings.optionalServices] = optionalServices.jsValue
+        object[Strings.optionalManufacturerData] = optionalManufacturerData.jsValue
+        object[Strings.acceptAllDevices] = acceptAllDevices.jsValue
         self.init(unsafelyWrapping: object)
     }
 

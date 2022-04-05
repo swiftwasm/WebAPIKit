@@ -21,12 +21,12 @@ public enum GPUColor: JSValueCompatible, Any_GPUColor {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .gPUColorDict(gPUColorDict):
-            return gPUColorDict.jsValue()
+            return gPUColorDict.jsValue
         case let .seq_of_Double(seq_of_Double):
-            return seq_of_Double.jsValue()
+            return seq_of_Double.jsValue
         }
     }
 }

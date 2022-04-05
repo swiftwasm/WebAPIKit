@@ -6,7 +6,7 @@ import JavaScriptKit
 public class SFrameTransformOptions: BridgedDictionary {
     public convenience init(role: SFrameTransformRole) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.role] = role.jsValue()
+        object[Strings.role] = role.jsValue
         self.init(unsafelyWrapping: object)
     }
 

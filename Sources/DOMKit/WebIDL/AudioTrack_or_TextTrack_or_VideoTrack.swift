@@ -26,14 +26,14 @@ public enum AudioTrack_or_TextTrack_or_VideoTrack: JSValueCompatible, Any_AudioT
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .audioTrack(audioTrack):
-            return audioTrack.jsValue()
+            return audioTrack.jsValue
         case let .textTrack(textTrack):
-            return textTrack.jsValue()
+            return textTrack.jsValue
         case let .videoTrack(videoTrack):
-            return videoTrack.jsValue()
+            return videoTrack.jsValue
         }
     }
 }

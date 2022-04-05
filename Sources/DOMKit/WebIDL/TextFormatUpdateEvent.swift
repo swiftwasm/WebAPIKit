@@ -11,7 +11,7 @@ public class TextFormatUpdateEvent: Event {
     }
 
     @inlinable public convenience init(options: TextFormatUpdateEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue ?? .undefined]))
     }
 
     @inlinable public func getTextFormats() -> [TextFormat] {

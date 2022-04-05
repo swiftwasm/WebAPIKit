@@ -51,7 +51,7 @@ public class MIDIPort: EventTarget {
     @inlinable public func open() async throws -> MIDIPort {
         let this = jsObject
         let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func close() -> JSPromise {
@@ -63,6 +63,6 @@ public class MIDIPort: EventTarget {
     @inlinable public func close() async throws -> MIDIPort {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

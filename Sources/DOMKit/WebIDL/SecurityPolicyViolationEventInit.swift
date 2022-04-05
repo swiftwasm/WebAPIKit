@@ -6,18 +6,18 @@ import JavaScriptKit
 public class SecurityPolicyViolationEventInit: BridgedDictionary {
     public convenience init(documentURI: String, referrer: String, blockedURI: String, violatedDirective: String, effectiveDirective: String, originalPolicy: String, sourceFile: String, sample: String, disposition: SecurityPolicyViolationEventDisposition, statusCode: UInt16, lineNumber: UInt32, columnNumber: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.documentURI] = documentURI.jsValue()
-        object[Strings.referrer] = referrer.jsValue()
-        object[Strings.blockedURI] = blockedURI.jsValue()
-        object[Strings.violatedDirective] = violatedDirective.jsValue()
-        object[Strings.effectiveDirective] = effectiveDirective.jsValue()
-        object[Strings.originalPolicy] = originalPolicy.jsValue()
-        object[Strings.sourceFile] = sourceFile.jsValue()
-        object[Strings.sample] = sample.jsValue()
-        object[Strings.disposition] = disposition.jsValue()
-        object[Strings.statusCode] = statusCode.jsValue()
-        object[Strings.lineNumber] = lineNumber.jsValue()
-        object[Strings.columnNumber] = columnNumber.jsValue()
+        object[Strings.documentURI] = documentURI.jsValue
+        object[Strings.referrer] = referrer.jsValue
+        object[Strings.blockedURI] = blockedURI.jsValue
+        object[Strings.violatedDirective] = violatedDirective.jsValue
+        object[Strings.effectiveDirective] = effectiveDirective.jsValue
+        object[Strings.originalPolicy] = originalPolicy.jsValue
+        object[Strings.sourceFile] = sourceFile.jsValue
+        object[Strings.sample] = sample.jsValue
+        object[Strings.disposition] = disposition.jsValue
+        object[Strings.statusCode] = statusCode.jsValue
+        object[Strings.lineNumber] = lineNumber.jsValue
+        object[Strings.columnNumber] = columnNumber.jsValue
         self.init(unsafelyWrapping: object)
     }
 

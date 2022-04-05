@@ -6,8 +6,8 @@ import JavaScriptKit
 public class NDEFWriteOptions: BridgedDictionary {
     public convenience init(overwrite: Bool, signal: AbortSignal?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.overwrite] = overwrite.jsValue()
-        object[Strings.signal] = signal.jsValue()
+        object[Strings.overwrite] = overwrite.jsValue
+        object[Strings.signal] = signal.jsValue
         self.init(unsafelyWrapping: object)
     }
 

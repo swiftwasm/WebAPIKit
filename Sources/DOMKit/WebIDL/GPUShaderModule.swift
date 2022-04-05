@@ -21,6 +21,6 @@ public class GPUShaderModule: JSBridgedClass, GPUObjectBase {
     @inlinable public func compilationInfo() async throws -> GPUCompilationInfo {
         let this = jsObject
         let _promise: JSPromise = this[Strings.compilationInfo].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

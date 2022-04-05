@@ -6,11 +6,11 @@ import JavaScriptKit
 public class GPURenderPassColorAttachment: BridgedDictionary {
     public convenience init(view: GPUTextureView, resolveTarget: GPUTextureView, clearValue: GPUColor, loadOp: GPULoadOp, storeOp: GPUStoreOp) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.view] = view.jsValue()
-        object[Strings.resolveTarget] = resolveTarget.jsValue()
-        object[Strings.clearValue] = clearValue.jsValue()
-        object[Strings.loadOp] = loadOp.jsValue()
-        object[Strings.storeOp] = storeOp.jsValue()
+        object[Strings.view] = view.jsValue
+        object[Strings.resolveTarget] = resolveTarget.jsValue
+        object[Strings.clearValue] = clearValue.jsValue
+        object[Strings.loadOp] = loadOp.jsValue
+        object[Strings.storeOp] = storeOp.jsValue
         self.init(unsafelyWrapping: object)
     }
 

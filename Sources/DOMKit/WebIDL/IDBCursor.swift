@@ -34,22 +34,22 @@ public class IDBCursor: JSBridgedClass {
 
     @inlinable public func advance(count: UInt32) {
         let this = jsObject
-        _ = this[Strings.advance].function!(this: this, arguments: [count.jsValue()])
+        _ = this[Strings.advance].function!(this: this, arguments: [count.jsValue])
     }
 
     @inlinable public func `continue`(key: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.continue].function!(this: this, arguments: [key?.jsValue() ?? .undefined])
+        _ = this[Strings.continue].function!(this: this, arguments: [key?.jsValue ?? .undefined])
     }
 
     @inlinable public func continuePrimaryKey(key: JSValue, primaryKey: JSValue) {
         let this = jsObject
-        _ = this[Strings.continuePrimaryKey].function!(this: this, arguments: [key.jsValue(), primaryKey.jsValue()])
+        _ = this[Strings.continuePrimaryKey].function!(this: this, arguments: [key.jsValue, primaryKey.jsValue])
     }
 
     @inlinable public func update(value: JSValue) -> IDBRequest {
         let this = jsObject
-        return this[Strings.update].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
+        return this[Strings.update].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
     }
 
     @inlinable public func delete() -> IDBRequest {

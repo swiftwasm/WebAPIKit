@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ContactsSelectOptions: BridgedDictionary {
     public convenience init(multiple: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.multiple] = multiple.jsValue()
+        object[Strings.multiple] = multiple.jsValue
         self.init(unsafelyWrapping: object)
     }
 

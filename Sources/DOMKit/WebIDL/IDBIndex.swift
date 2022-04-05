@@ -34,36 +34,36 @@ public class IDBIndex: JSBridgedClass {
 
     @inlinable public func get(query: JSValue) -> IDBRequest {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [query.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getKey(query: JSValue) -> IDBRequest {
         let this = jsObject
-        return this[Strings.getKey].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
+        return this[Strings.getKey].function!(this: this, arguments: [query.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getAll(query: JSValue? = nil, count: UInt32? = nil) -> IDBRequest {
         let this = jsObject
-        return this[Strings.getAll].function!(this: this, arguments: [query?.jsValue() ?? .undefined, count?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getAll].function!(this: this, arguments: [query?.jsValue ?? .undefined, count?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func getAllKeys(query: JSValue? = nil, count: UInt32? = nil) -> IDBRequest {
         let this = jsObject
-        return this[Strings.getAllKeys].function!(this: this, arguments: [query?.jsValue() ?? .undefined, count?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getAllKeys].function!(this: this, arguments: [query?.jsValue ?? .undefined, count?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func count(query: JSValue? = nil) -> IDBRequest {
         let this = jsObject
-        return this[Strings.count].function!(this: this, arguments: [query?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.count].function!(this: this, arguments: [query?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func openCursor(query: JSValue? = nil, direction: IDBCursorDirection? = nil) -> IDBRequest {
         let this = jsObject
-        return this[Strings.openCursor].function!(this: this, arguments: [query?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.openCursor].function!(this: this, arguments: [query?.jsValue ?? .undefined, direction?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func openKeyCursor(query: JSValue? = nil, direction: IDBCursorDirection? = nil) -> IDBRequest {
         let this = jsObject
-        return this[Strings.openKeyCursor].function!(this: this, arguments: [query?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.openKeyCursor].function!(this: this, arguments: [query?.jsValue ?? .undefined, direction?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

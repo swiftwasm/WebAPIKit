@@ -25,22 +25,22 @@ public class FileReader: EventTarget {
 
     @inlinable public func readAsArrayBuffer(blob: Blob) {
         let this = jsObject
-        _ = this[Strings.readAsArrayBuffer].function!(this: this, arguments: [blob.jsValue()])
+        _ = this[Strings.readAsArrayBuffer].function!(this: this, arguments: [blob.jsValue])
     }
 
     @inlinable public func readAsBinaryString(blob: Blob) {
         let this = jsObject
-        _ = this[Strings.readAsBinaryString].function!(this: this, arguments: [blob.jsValue()])
+        _ = this[Strings.readAsBinaryString].function!(this: this, arguments: [blob.jsValue])
     }
 
     @inlinable public func readAsText(blob: Blob, encoding: String? = nil) {
         let this = jsObject
-        _ = this[Strings.readAsText].function!(this: this, arguments: [blob.jsValue(), encoding?.jsValue() ?? .undefined])
+        _ = this[Strings.readAsText].function!(this: this, arguments: [blob.jsValue, encoding?.jsValue ?? .undefined])
     }
 
     @inlinable public func readAsDataURL(blob: Blob) {
         let this = jsObject
-        _ = this[Strings.readAsDataURL].function!(this: this, arguments: [blob.jsValue()])
+        _ = this[Strings.readAsDataURL].function!(this: this, arguments: [blob.jsValue])
     }
 
     @inlinable public func abort() {

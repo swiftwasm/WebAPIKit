@@ -6,7 +6,7 @@ import JavaScriptKit
 public class AssignedNodesOptions: BridgedDictionary {
     public convenience init(flatten: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.flatten] = flatten.jsValue()
+        object[Strings.flatten] = flatten.jsValue
         self.init(unsafelyWrapping: object)
     }
 

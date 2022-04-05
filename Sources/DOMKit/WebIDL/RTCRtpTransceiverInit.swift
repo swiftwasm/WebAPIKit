@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RTCRtpTransceiverInit: BridgedDictionary {
     public convenience init(direction: RTCRtpTransceiverDirection, streams: [MediaStream], sendEncodings: [RTCRtpEncodingParameters]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.direction] = direction.jsValue()
-        object[Strings.streams] = streams.jsValue()
-        object[Strings.sendEncodings] = sendEncodings.jsValue()
+        object[Strings.direction] = direction.jsValue
+        object[Strings.streams] = streams.jsValue
+        object[Strings.sendEncodings] = sendEncodings.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class EncodedVideoChunkMetadata: BridgedDictionary {
     public convenience init(decoderConfig: VideoDecoderConfig, svc: SvcOutputMetadata, alphaSideData: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.decoderConfig] = decoderConfig.jsValue()
-        object[Strings.svc] = svc.jsValue()
-        object[Strings.alphaSideData] = alphaSideData.jsValue()
+        object[Strings.decoderConfig] = decoderConfig.jsValue
+        object[Strings.svc] = svc.jsValue
+        object[Strings.alphaSideData] = alphaSideData.jsValue
         self.init(unsafelyWrapping: object)
     }
 

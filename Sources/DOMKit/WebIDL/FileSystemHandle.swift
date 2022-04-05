@@ -22,37 +22,37 @@ public class FileSystemHandle: JSBridgedClass {
 
     @inlinable public func isSameEntry(other: FileSystemHandle) -> JSPromise {
         let this = jsObject
-        return this[Strings.isSameEntry].function!(this: this, arguments: [other.jsValue()]).fromJSValue()!
+        return this[Strings.isSameEntry].function!(this: this, arguments: [other.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func isSameEntry(other: FileSystemHandle) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.isSameEntry].function!(this: this, arguments: [other.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.isSameEntry].function!(this: this, arguments: [other.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func queryPermission(descriptor: FileSystemHandlePermissionDescriptor? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.queryPermission].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.queryPermission].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func queryPermission(descriptor: FileSystemHandlePermissionDescriptor? = nil) async throws -> PermissionState {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.queryPermission].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.queryPermission].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func requestPermission(descriptor: FileSystemHandlePermissionDescriptor? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.requestPermission].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.requestPermission].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func requestPermission(descriptor: FileSystemHandlePermissionDescriptor? = nil) async throws -> PermissionState {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.requestPermission].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.requestPermission].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

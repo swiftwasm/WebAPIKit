@@ -6,8 +6,8 @@ import JavaScriptKit
 public class FaceDetectorOptions: BridgedDictionary {
     public convenience init(maxDetectedFaces: UInt16, fastMode: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.maxDetectedFaces] = maxDetectedFaces.jsValue()
-        object[Strings.fastMode] = fastMode.jsValue()
+        object[Strings.maxDetectedFaces] = maxDetectedFaces.jsValue
+        object[Strings.fastMode] = fastMode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

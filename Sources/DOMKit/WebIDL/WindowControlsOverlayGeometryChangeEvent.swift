@@ -13,7 +13,7 @@ public class WindowControlsOverlayGeometryChangeEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: WindowControlsOverlayGeometryChangeEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
     }
 
     @ReadonlyAttribute

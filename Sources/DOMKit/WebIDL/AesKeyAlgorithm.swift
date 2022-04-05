@@ -6,7 +6,7 @@ import JavaScriptKit
 public class AesKeyAlgorithm: BridgedDictionary {
     public convenience init(length: UInt16) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.length] = length.jsValue()
+        object[Strings.length] = length.jsValue
         self.init(unsafelyWrapping: object)
     }
 

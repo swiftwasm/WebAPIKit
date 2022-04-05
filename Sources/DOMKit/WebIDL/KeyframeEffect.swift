@@ -18,11 +18,11 @@ public class KeyframeEffect: AnimationEffect {
     public var iterationComposite: IterationCompositeOperation
 
     @inlinable public convenience init(target: Element?, keyframes: JSObject?, options: Double_or_KeyframeEffectOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [target.jsValue(), keyframes.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [target.jsValue, keyframes.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @inlinable public convenience init(source: KeyframeEffect) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [source.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [source.jsValue]))
     }
 
     @ReadWriteAttribute
@@ -41,6 +41,6 @@ public class KeyframeEffect: AnimationEffect {
 
     @inlinable public func setKeyframes(keyframes: JSObject?) {
         let this = jsObject
-        _ = this[Strings.setKeyframes].function!(this: this, arguments: [keyframes.jsValue()])
+        _ = this[Strings.setKeyframes].function!(this: this, arguments: [keyframes.jsValue])
     }
 }

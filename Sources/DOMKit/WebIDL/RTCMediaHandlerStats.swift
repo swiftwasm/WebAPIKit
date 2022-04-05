@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RTCMediaHandlerStats: BridgedDictionary {
     public convenience init(trackIdentifier: String, ended: Bool, kind: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.trackIdentifier] = trackIdentifier.jsValue()
-        object[Strings.ended] = ended.jsValue()
-        object[Strings.kind] = kind.jsValue()
+        object[Strings.trackIdentifier] = trackIdentifier.jsValue
+        object[Strings.ended] = ended.jsValue
+        object[Strings.kind] = kind.jsValue
         self.init(unsafelyWrapping: object)
     }
 

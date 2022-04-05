@@ -18,6 +18,6 @@ public class Geolocation: JSBridgedClass {
 
     @inlinable public func clearWatch(watchId: Int32) {
         let this = jsObject
-        _ = this[Strings.clearWatch].function!(this: this, arguments: [watchId.jsValue()])
+        _ = this[Strings.clearWatch].function!(this: this, arguments: [watchId.jsValue])
     }
 }

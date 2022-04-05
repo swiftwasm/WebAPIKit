@@ -24,37 +24,37 @@ public class NDEFReader: EventTarget {
 
     @inlinable public func scan(options: NDEFScanOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.scan].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.scan].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func scan(options: NDEFScanOptions? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.scan].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.scan].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func write(message: NDEFMessageSource, options: NDEFWriteOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.write].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.write].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func write(message: NDEFMessageSource, options: NDEFWriteOptions? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func makeReadOnly(options: NDEFMakeReadOnlyOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.makeReadOnly].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.makeReadOnly].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func makeReadOnly(options: NDEFMakeReadOnlyOptions? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.makeReadOnly].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.makeReadOnly].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 }

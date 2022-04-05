@@ -6,7 +6,7 @@ import JavaScriptKit
 public class WebGLContextEventInit: BridgedDictionary {
     public convenience init(statusMessage: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.statusMessage] = statusMessage.jsValue()
+        object[Strings.statusMessage] = statusMessage.jsValue
         self.init(unsafelyWrapping: object)
     }
 

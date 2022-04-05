@@ -22,6 +22,6 @@ public class InkPresenter: JSBridgedClass {
 
     @inlinable public func updateInkTrailStartPoint(event: PointerEvent, style: InkTrailStyle) {
         let this = jsObject
-        _ = this[Strings.updateInkTrailStartPoint].function!(this: this, arguments: [event.jsValue(), style.jsValue()])
+        _ = this[Strings.updateInkTrailStartPoint].function!(this: this, arguments: [event.jsValue, style.jsValue])
     }
 }

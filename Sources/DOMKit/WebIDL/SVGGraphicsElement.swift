@@ -16,7 +16,7 @@ public class SVGGraphicsElement: SVGElement, SVGTests {
 
     @inlinable public func getBBox(options: SVGBoundingBoxOptions? = nil) -> DOMRect {
         let this = jsObject
-        return this[Strings.getBBox].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getBBox].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func getCTM() -> DOMMatrix? {

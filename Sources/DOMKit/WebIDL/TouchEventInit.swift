@@ -6,9 +6,9 @@ import JavaScriptKit
 public class TouchEventInit: BridgedDictionary {
     public convenience init(touches: [Touch], targetTouches: [Touch], changedTouches: [Touch]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.touches] = touches.jsValue()
-        object[Strings.targetTouches] = targetTouches.jsValue()
-        object[Strings.changedTouches] = changedTouches.jsValue()
+        object[Strings.touches] = touches.jsValue
+        object[Strings.targetTouches] = targetTouches.jsValue
+        object[Strings.changedTouches] = changedTouches.jsValue
         self.init(unsafelyWrapping: object)
     }
 

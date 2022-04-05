@@ -19,7 +19,7 @@ public class BluetoothAdvertisingEvent: Event {
     }
 
     @inlinable public convenience init(type: String, init: BluetoothAdvertisingEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), `init`.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, `init`.jsValue]))
     }
 
     @ReadonlyAttribute

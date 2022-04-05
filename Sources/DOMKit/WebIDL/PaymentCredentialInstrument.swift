@@ -6,9 +6,9 @@ import JavaScriptKit
 public class PaymentCredentialInstrument: BridgedDictionary {
     public convenience init(displayName: String, icon: String, iconMustBeShown: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.displayName] = displayName.jsValue()
-        object[Strings.icon] = icon.jsValue()
-        object[Strings.iconMustBeShown] = iconMustBeShown.jsValue()
+        object[Strings.displayName] = displayName.jsValue
+        object[Strings.icon] = icon.jsValue
+        object[Strings.iconMustBeShown] = iconMustBeShown.jsValue
         self.init(unsafelyWrapping: object)
     }
 

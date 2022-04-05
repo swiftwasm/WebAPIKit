@@ -79,7 +79,7 @@ public class HTMLButtonElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
     }
 
     @ReadonlyAttribute

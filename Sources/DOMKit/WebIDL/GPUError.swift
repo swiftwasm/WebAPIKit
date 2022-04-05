@@ -21,12 +21,12 @@ public enum GPUError: JSValueCompatible, Any_GPUError {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .gPUOutOfMemoryError(gPUOutOfMemoryError):
-            return gPUOutOfMemoryError.jsValue()
+            return gPUOutOfMemoryError.jsValue
         case let .gPUValidationError(gPUValidationError):
-            return gPUValidationError.jsValue()
+            return gPUValidationError.jsValue
         }
     }
 }

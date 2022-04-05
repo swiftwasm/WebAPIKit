@@ -12,7 +12,7 @@ public class ShadowAnimation: Animation {
     }
 
     @inlinable public convenience init(source: Animation, newTarget: CSSPseudoElement_or_Element) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [source.jsValue(), newTarget.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [source.jsValue, newTarget.jsValue]))
     }
 
     @ReadonlyAttribute

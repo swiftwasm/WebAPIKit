@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PushSubscriptionOptionsInit: BridgedDictionary {
     public convenience init(userVisibleOnly: Bool, applicationServerKey: BufferSource_or_String?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.userVisibleOnly] = userVisibleOnly.jsValue()
-        object[Strings.applicationServerKey] = applicationServerKey.jsValue()
+        object[Strings.userVisibleOnly] = userVisibleOnly.jsValue
+        object[Strings.applicationServerKey] = applicationServerKey.jsValue
         self.init(unsafelyWrapping: object)
     }
 

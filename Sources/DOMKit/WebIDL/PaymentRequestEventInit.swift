@@ -6,12 +6,12 @@ import JavaScriptKit
 public class PaymentRequestEventInit: BridgedDictionary {
     public convenience init(topOrigin: String, paymentRequestOrigin: String, paymentRequestId: String, methodData: [PaymentMethodData], total: PaymentCurrencyAmount, modifiers: [PaymentDetailsModifier]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.topOrigin] = topOrigin.jsValue()
-        object[Strings.paymentRequestOrigin] = paymentRequestOrigin.jsValue()
-        object[Strings.paymentRequestId] = paymentRequestId.jsValue()
-        object[Strings.methodData] = methodData.jsValue()
-        object[Strings.total] = total.jsValue()
-        object[Strings.modifiers] = modifiers.jsValue()
+        object[Strings.topOrigin] = topOrigin.jsValue
+        object[Strings.paymentRequestOrigin] = paymentRequestOrigin.jsValue
+        object[Strings.paymentRequestId] = paymentRequestId.jsValue
+        object[Strings.methodData] = methodData.jsValue
+        object[Strings.total] = total.jsValue
+        object[Strings.modifiers] = modifiers.jsValue
         self.init(unsafelyWrapping: object)
     }
 

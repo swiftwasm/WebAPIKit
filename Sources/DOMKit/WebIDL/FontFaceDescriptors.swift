@@ -6,17 +6,17 @@ import JavaScriptKit
 public class FontFaceDescriptors: BridgedDictionary {
     public convenience init(style: String, weight: String, stretch: String, unicodeRange: String, variant: String, featureSettings: String, variationSettings: String, display: String, ascentOverride: String, descentOverride: String, lineGapOverride: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.style] = style.jsValue()
-        object[Strings.weight] = weight.jsValue()
-        object[Strings.stretch] = stretch.jsValue()
-        object[Strings.unicodeRange] = unicodeRange.jsValue()
-        object[Strings.variant] = variant.jsValue()
-        object[Strings.featureSettings] = featureSettings.jsValue()
-        object[Strings.variationSettings] = variationSettings.jsValue()
-        object[Strings.display] = display.jsValue()
-        object[Strings.ascentOverride] = ascentOverride.jsValue()
-        object[Strings.descentOverride] = descentOverride.jsValue()
-        object[Strings.lineGapOverride] = lineGapOverride.jsValue()
+        object[Strings.style] = style.jsValue
+        object[Strings.weight] = weight.jsValue
+        object[Strings.stretch] = stretch.jsValue
+        object[Strings.unicodeRange] = unicodeRange.jsValue
+        object[Strings.variant] = variant.jsValue
+        object[Strings.featureSettings] = featureSettings.jsValue
+        object[Strings.variationSettings] = variationSettings.jsValue
+        object[Strings.display] = display.jsValue
+        object[Strings.ascentOverride] = ascentOverride.jsValue
+        object[Strings.descentOverride] = descentOverride.jsValue
+        object[Strings.lineGapOverride] = lineGapOverride.jsValue
         self.init(unsafelyWrapping: object)
     }
 

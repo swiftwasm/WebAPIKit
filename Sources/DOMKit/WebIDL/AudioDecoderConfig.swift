@@ -6,10 +6,10 @@ import JavaScriptKit
 public class AudioDecoderConfig: BridgedDictionary {
     public convenience init(codec: String, sampleRate: UInt32, numberOfChannels: UInt32, description: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.codec] = codec.jsValue()
-        object[Strings.sampleRate] = sampleRate.jsValue()
-        object[Strings.numberOfChannels] = numberOfChannels.jsValue()
-        object[Strings.description] = description.jsValue()
+        object[Strings.codec] = codec.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.numberOfChannels] = numberOfChannels.jsValue
+        object[Strings.description] = description.jsValue
         self.init(unsafelyWrapping: object)
     }
 

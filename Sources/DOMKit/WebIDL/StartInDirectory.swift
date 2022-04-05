@@ -21,12 +21,12 @@ public enum StartInDirectory: JSValueCompatible, Any_StartInDirectory {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .fileSystemHandle(fileSystemHandle):
-            return fileSystemHandle.jsValue()
+            return fileSystemHandle.jsValue
         case let .wellKnownDirectory(wellKnownDirectory):
-            return wellKnownDirectory.jsValue()
+            return wellKnownDirectory.jsValue
         }
     }
 }

@@ -14,7 +14,7 @@ public class Global: JSBridgedClass {
     }
 
     @inlinable public convenience init(descriptor: GlobalDescriptor, v: JSValue? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptor.jsValue(), v?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptor.jsValue, v?.jsValue ?? .undefined]))
     }
 
     @inlinable public func valueOf() -> JSValue {

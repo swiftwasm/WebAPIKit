@@ -6,8 +6,8 @@ import JavaScriptKit
 public class AudioEncoderSupport: BridgedDictionary {
     public convenience init(supported: Bool, config: AudioEncoderConfig) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.supported] = supported.jsValue()
-        object[Strings.config] = config.jsValue()
+        object[Strings.supported] = supported.jsValue
+        object[Strings.config] = config.jsValue
         self.init(unsafelyWrapping: object)
     }
 

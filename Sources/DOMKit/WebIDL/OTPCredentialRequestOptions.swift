@@ -6,7 +6,7 @@ import JavaScriptKit
 public class OTPCredentialRequestOptions: BridgedDictionary {
     public convenience init(transport: [OTPCredentialTransportType]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.transport] = transport.jsValue()
+        object[Strings.transport] = transport.jsValue
         self.init(unsafelyWrapping: object)
     }
 

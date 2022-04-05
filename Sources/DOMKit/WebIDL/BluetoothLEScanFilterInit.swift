@@ -6,11 +6,11 @@ import JavaScriptKit
 public class BluetoothLEScanFilterInit: BridgedDictionary {
     public convenience init(services: [BluetoothServiceUUID], name: String, namePrefix: String, manufacturerData: [BluetoothManufacturerDataFilterInit], serviceData: [BluetoothServiceDataFilterInit]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.services] = services.jsValue()
-        object[Strings.name] = name.jsValue()
-        object[Strings.namePrefix] = namePrefix.jsValue()
-        object[Strings.manufacturerData] = manufacturerData.jsValue()
-        object[Strings.serviceData] = serviceData.jsValue()
+        object[Strings.services] = services.jsValue
+        object[Strings.name] = name.jsValue
+        object[Strings.namePrefix] = namePrefix.jsValue
+        object[Strings.manufacturerData] = manufacturerData.jsValue
+        object[Strings.serviceData] = serviceData.jsValue
         self.init(unsafelyWrapping: object)
     }
 

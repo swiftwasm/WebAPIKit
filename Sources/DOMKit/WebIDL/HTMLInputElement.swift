@@ -181,12 +181,12 @@ public class HTMLInputElement: HTMLElement {
 
     @inlinable public func stepUp(n: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.stepUp].function!(this: this, arguments: [n?.jsValue() ?? .undefined])
+        _ = this[Strings.stepUp].function!(this: this, arguments: [n?.jsValue ?? .undefined])
     }
 
     @inlinable public func stepDown(n: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.stepDown].function!(this: this, arguments: [n?.jsValue() ?? .undefined])
+        _ = this[Strings.stepDown].function!(this: this, arguments: [n?.jsValue ?? .undefined])
     }
 
     @ReadonlyAttribute
@@ -210,7 +210,7 @@ public class HTMLInputElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue()])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
     }
 
     @ReadonlyAttribute
@@ -232,17 +232,17 @@ public class HTMLInputElement: HTMLElement {
 
     @inlinable public func setRangeText(replacement: String) {
         let this = jsObject
-        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue()])
+        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue])
     }
 
     @inlinable public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
         let this = jsObject
-        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue(), start.jsValue(), end.jsValue(), selectionMode?.jsValue() ?? .undefined])
+        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue, start.jsValue, end.jsValue, selectionMode?.jsValue ?? .undefined])
     }
 
     @inlinable public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
         let this = jsObject
-        _ = this[Strings.setSelectionRange].function!(this: this, arguments: [start.jsValue(), end.jsValue(), direction?.jsValue() ?? .undefined])
+        _ = this[Strings.setSelectionRange].function!(this: this, arguments: [start.jsValue, end.jsValue, direction?.jsValue ?? .undefined])
     }
 
     @inlinable public func showPicker() {

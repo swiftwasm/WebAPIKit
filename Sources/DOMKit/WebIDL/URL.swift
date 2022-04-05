@@ -26,16 +26,16 @@ public class URL: JSBridgedClass {
 
     @inlinable public static func createObjectURL(obj: Blob_or_MediaSource) -> String {
         let this = constructor
-        return this[Strings.createObjectURL].function!(this: this, arguments: [obj.jsValue()]).fromJSValue()!
+        return this[Strings.createObjectURL].function!(this: this, arguments: [obj.jsValue]).fromJSValue()!
     }
 
     @inlinable public static func revokeObjectURL(url: String) {
         let this = constructor
-        _ = this[Strings.revokeObjectURL].function!(this: this, arguments: [url.jsValue()])
+        _ = this[Strings.revokeObjectURL].function!(this: this, arguments: [url.jsValue])
     }
 
     @inlinable public convenience init(url: String, base: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), base?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue, base?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute

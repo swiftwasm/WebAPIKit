@@ -6,9 +6,9 @@ import JavaScriptKit
 public class TransitionEventInit: BridgedDictionary {
     public convenience init(propertyName: String, elapsedTime: Double, pseudoElement: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.propertyName] = propertyName.jsValue()
-        object[Strings.elapsedTime] = elapsedTime.jsValue()
-        object[Strings.pseudoElement] = pseudoElement.jsValue()
+        object[Strings.propertyName] = propertyName.jsValue
+        object[Strings.elapsedTime] = elapsedTime.jsValue
+        object[Strings.pseudoElement] = pseudoElement.jsValue
         self.init(unsafelyWrapping: object)
     }
 

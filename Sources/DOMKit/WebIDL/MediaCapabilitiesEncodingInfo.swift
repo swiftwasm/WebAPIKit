@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MediaCapabilitiesEncodingInfo: BridgedDictionary {
     public convenience init(configuration: MediaEncodingConfiguration) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.configuration] = configuration.jsValue()
+        object[Strings.configuration] = configuration.jsValue
         self.init(unsafelyWrapping: object)
     }
 

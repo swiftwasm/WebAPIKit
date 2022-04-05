@@ -21,12 +21,12 @@ public enum PasswordCredentialInit: JSValueCompatible, Any_PasswordCredentialIni
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .hTMLFormElement(hTMLFormElement):
-            return hTMLFormElement.jsValue()
+            return hTMLFormElement.jsValue
         case let .passwordCredentialData(passwordCredentialData):
-            return passwordCredentialData.jsValue()
+            return passwordCredentialData.jsValue
         }
     }
 }

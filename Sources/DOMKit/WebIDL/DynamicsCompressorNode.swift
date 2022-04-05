@@ -17,7 +17,7 @@ public class DynamicsCompressorNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: DynamicsCompressorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

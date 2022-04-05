@@ -6,11 +6,11 @@ import JavaScriptKit
 public class RTCRtpCodecParameters: BridgedDictionary {
     public convenience init(payloadType: UInt8, mimeType: String, clockRate: UInt32, channels: UInt16, sdpFmtpLine: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.payloadType] = payloadType.jsValue()
-        object[Strings.mimeType] = mimeType.jsValue()
-        object[Strings.clockRate] = clockRate.jsValue()
-        object[Strings.channels] = channels.jsValue()
-        object[Strings.sdpFmtpLine] = sdpFmtpLine.jsValue()
+        object[Strings.payloadType] = payloadType.jsValue
+        object[Strings.mimeType] = mimeType.jsValue
+        object[Strings.clockRate] = clockRate.jsValue
+        object[Strings.channels] = channels.jsValue
+        object[Strings.sdpFmtpLine] = sdpFmtpLine.jsValue
         self.init(unsafelyWrapping: object)
     }
 

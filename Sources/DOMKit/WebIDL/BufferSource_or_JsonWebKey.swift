@@ -21,12 +21,12 @@ public enum BufferSource_or_JsonWebKey: JSValueCompatible, Any_BufferSource_or_J
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .bufferSource(bufferSource):
-            return bufferSource.jsValue()
+            return bufferSource.jsValue
         case let .jsonWebKey(jsonWebKey):
-            return jsonWebKey.jsValue()
+            return jsonWebKey.jsValue
         }
     }
 }

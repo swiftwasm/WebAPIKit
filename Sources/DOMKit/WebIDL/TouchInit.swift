@@ -6,21 +6,21 @@ import JavaScriptKit
 public class TouchInit: BridgedDictionary {
     public convenience init(identifier: Int32, target: EventTarget, clientX: Double, clientY: Double, screenX: Double, screenY: Double, pageX: Double, pageY: Double, radiusX: Float, radiusY: Float, rotationAngle: Float, force: Float, altitudeAngle: Double, azimuthAngle: Double, touchType: TouchType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.identifier] = identifier.jsValue()
-        object[Strings.target] = target.jsValue()
-        object[Strings.clientX] = clientX.jsValue()
-        object[Strings.clientY] = clientY.jsValue()
-        object[Strings.screenX] = screenX.jsValue()
-        object[Strings.screenY] = screenY.jsValue()
-        object[Strings.pageX] = pageX.jsValue()
-        object[Strings.pageY] = pageY.jsValue()
-        object[Strings.radiusX] = radiusX.jsValue()
-        object[Strings.radiusY] = radiusY.jsValue()
-        object[Strings.rotationAngle] = rotationAngle.jsValue()
-        object[Strings.force] = force.jsValue()
-        object[Strings.altitudeAngle] = altitudeAngle.jsValue()
-        object[Strings.azimuthAngle] = azimuthAngle.jsValue()
-        object[Strings.touchType] = touchType.jsValue()
+        object[Strings.identifier] = identifier.jsValue
+        object[Strings.target] = target.jsValue
+        object[Strings.clientX] = clientX.jsValue
+        object[Strings.clientY] = clientY.jsValue
+        object[Strings.screenX] = screenX.jsValue
+        object[Strings.screenY] = screenY.jsValue
+        object[Strings.pageX] = pageX.jsValue
+        object[Strings.pageY] = pageY.jsValue
+        object[Strings.radiusX] = radiusX.jsValue
+        object[Strings.radiusY] = radiusY.jsValue
+        object[Strings.rotationAngle] = rotationAngle.jsValue
+        object[Strings.force] = force.jsValue
+        object[Strings.altitudeAngle] = altitudeAngle.jsValue
+        object[Strings.azimuthAngle] = azimuthAngle.jsValue
+        object[Strings.touchType] = touchType.jsValue
         self.init(unsafelyWrapping: object)
     }
 

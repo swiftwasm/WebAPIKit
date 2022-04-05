@@ -6,11 +6,11 @@ import JavaScriptKit
 public class MediaRecorderOptions: BridgedDictionary {
     public convenience init(mimeType: String, audioBitsPerSecond: UInt32, videoBitsPerSecond: UInt32, bitsPerSecond: UInt32, audioBitrateMode: BitrateMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mimeType] = mimeType.jsValue()
-        object[Strings.audioBitsPerSecond] = audioBitsPerSecond.jsValue()
-        object[Strings.videoBitsPerSecond] = videoBitsPerSecond.jsValue()
-        object[Strings.bitsPerSecond] = bitsPerSecond.jsValue()
-        object[Strings.audioBitrateMode] = audioBitrateMode.jsValue()
+        object[Strings.mimeType] = mimeType.jsValue
+        object[Strings.audioBitsPerSecond] = audioBitsPerSecond.jsValue
+        object[Strings.videoBitsPerSecond] = videoBitsPerSecond.jsValue
+        object[Strings.bitsPerSecond] = bitsPerSecond.jsValue
+        object[Strings.audioBitrateMode] = audioBitrateMode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

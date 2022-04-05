@@ -6,12 +6,12 @@ import JavaScriptKit
 public class RTCRtpEncodingParameters: BridgedDictionary {
     public convenience init(priority: RTCPriorityType, networkPriority: RTCPriorityType, scalabilityMode: String, active: Bool, maxBitrate: UInt32, scaleResolutionDownBy: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.priority] = priority.jsValue()
-        object[Strings.networkPriority] = networkPriority.jsValue()
-        object[Strings.scalabilityMode] = scalabilityMode.jsValue()
-        object[Strings.active] = active.jsValue()
-        object[Strings.maxBitrate] = maxBitrate.jsValue()
-        object[Strings.scaleResolutionDownBy] = scaleResolutionDownBy.jsValue()
+        object[Strings.priority] = priority.jsValue
+        object[Strings.networkPriority] = networkPriority.jsValue
+        object[Strings.scalabilityMode] = scalabilityMode.jsValue
+        object[Strings.active] = active.jsValue
+        object[Strings.maxBitrate] = maxBitrate.jsValue
+        object[Strings.scaleResolutionDownBy] = scaleResolutionDownBy.jsValue
         self.init(unsafelyWrapping: object)
     }
 

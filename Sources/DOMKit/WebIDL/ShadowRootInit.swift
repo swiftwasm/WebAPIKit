@@ -6,9 +6,9 @@ import JavaScriptKit
 public class ShadowRootInit: BridgedDictionary {
     public convenience init(mode: ShadowRootMode, delegatesFocus: Bool, slotAssignment: SlotAssignmentMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mode] = mode.jsValue()
-        object[Strings.delegatesFocus] = delegatesFocus.jsValue()
-        object[Strings.slotAssignment] = slotAssignment.jsValue()
+        object[Strings.mode] = mode.jsValue
+        object[Strings.delegatesFocus] = delegatesFocus.jsValue
+        object[Strings.slotAssignment] = slotAssignment.jsValue
         self.init(unsafelyWrapping: object)
     }
 

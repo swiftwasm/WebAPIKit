@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUTextureBindingLayout: BridgedDictionary {
     public convenience init(sampleType: GPUTextureSampleType, viewDimension: GPUTextureViewDimension, multisampled: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.sampleType] = sampleType.jsValue()
-        object[Strings.viewDimension] = viewDimension.jsValue()
-        object[Strings.multisampled] = multisampled.jsValue()
+        object[Strings.sampleType] = sampleType.jsValue
+        object[Strings.viewDimension] = viewDimension.jsValue
+        object[Strings.multisampled] = multisampled.jsValue
         self.init(unsafelyWrapping: object)
     }
 

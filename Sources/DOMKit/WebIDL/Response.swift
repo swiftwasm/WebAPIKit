@@ -20,7 +20,7 @@ public class Response: JSBridgedClass, Body {
     }
 
     @inlinable public convenience init(body: BodyInit? = nil, init: ResponseInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [body?.jsValue() ?? .undefined, `init`?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [body?.jsValue ?? .undefined, `init`?.jsValue ?? .undefined]))
     }
 
     @inlinable public static func error() -> Self {
@@ -30,7 +30,7 @@ public class Response: JSBridgedClass, Body {
 
     @inlinable public static func redirect(url: String, status: UInt16? = nil) -> Self {
         let this = constructor
-        return this[Strings.redirect].function!(this: this, arguments: [url.jsValue(), status?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.redirect].function!(this: this, arguments: [url.jsValue, status?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

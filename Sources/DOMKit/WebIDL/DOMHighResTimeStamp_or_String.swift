@@ -21,12 +21,12 @@ public enum DOMHighResTimeStamp_or_String: JSValueCompatible, Any_DOMHighResTime
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .dOMHighResTimeStamp(dOMHighResTimeStamp):
-            return dOMHighResTimeStamp.jsValue()
+            return dOMHighResTimeStamp.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

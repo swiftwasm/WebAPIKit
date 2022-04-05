@@ -21,12 +21,12 @@ public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCan
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .hTMLCanvasElement(hTMLCanvasElement):
-            return hTMLCanvasElement.jsValue()
+            return hTMLCanvasElement.jsValue
         case let .offscreenCanvas(offscreenCanvas):
-            return offscreenCanvas.jsValue()
+            return offscreenCanvas.jsValue
         }
     }
 }

@@ -13,11 +13,11 @@ public class Path2D: JSBridgedClass, CanvasPath {
     }
 
     @inlinable public convenience init(path: Path2D_or_String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [path?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [path?.jsValue ?? .undefined]))
     }
 
     @inlinable public func addPath(path: Path2D, transform: DOMMatrix2DInit? = nil) {
         let this = jsObject
-        _ = this[Strings.addPath].function!(this: this, arguments: [path.jsValue(), transform?.jsValue() ?? .undefined])
+        _ = this[Strings.addPath].function!(this: this, arguments: [path.jsValue, transform?.jsValue ?? .undefined])
     }
 }

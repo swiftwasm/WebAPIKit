@@ -6,7 +6,7 @@ import JavaScriptKit
 public class HIDConnectionEventInit: BridgedDictionary {
     public convenience init(device: HIDDevice) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.device] = device.jsValue()
+        object[Strings.device] = device.jsValue
         self.init(unsafelyWrapping: object)
     }
 

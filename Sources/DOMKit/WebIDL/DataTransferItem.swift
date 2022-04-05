@@ -28,7 +28,7 @@ public class DataTransferItem: JSBridgedClass {
     @inlinable public func getAsFileSystemHandle() async throws -> FileSystemHandle? {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getAsFileSystemHandle].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute

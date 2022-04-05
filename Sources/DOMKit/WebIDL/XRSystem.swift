@@ -13,26 +13,26 @@ public class XRSystem: EventTarget {
 
     @inlinable public func isSessionSupported(mode: XRSessionMode) -> JSPromise {
         let this = jsObject
-        return this[Strings.isSessionSupported].function!(this: this, arguments: [mode.jsValue()]).fromJSValue()!
+        return this[Strings.isSessionSupported].function!(this: this, arguments: [mode.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func isSessionSupported(mode: XRSessionMode) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.isSessionSupported].function!(this: this, arguments: [mode.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.isSessionSupported].function!(this: this, arguments: [mode.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func requestSession(mode: XRSessionMode, options: XRSessionInit? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.requestSession].function!(this: this, arguments: [mode.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.requestSession].function!(this: this, arguments: [mode.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func requestSession(mode: XRSessionMode, options: XRSessionInit? = nil) async throws -> XRSession {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.requestSession].function!(this: this, arguments: [mode.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.requestSession].function!(this: this, arguments: [mode.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ClosureAttribute1Optional

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class GPURequestAdapterOptions: BridgedDictionary {
     public convenience init(powerPreference: GPUPowerPreference, forceFallbackAdapter: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.powerPreference] = powerPreference.jsValue()
-        object[Strings.forceFallbackAdapter] = forceFallbackAdapter.jsValue()
+        object[Strings.powerPreference] = powerPreference.jsValue
+        object[Strings.forceFallbackAdapter] = forceFallbackAdapter.jsValue
         self.init(unsafelyWrapping: object)
     }
 

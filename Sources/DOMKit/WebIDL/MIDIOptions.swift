@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MIDIOptions: BridgedDictionary {
     public convenience init(sysex: Bool, software: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.sysex] = sysex.jsValue()
-        object[Strings.software] = software.jsValue()
+        object[Strings.sysex] = sysex.jsValue
+        object[Strings.software] = software.jsValue
         self.init(unsafelyWrapping: object)
     }
 

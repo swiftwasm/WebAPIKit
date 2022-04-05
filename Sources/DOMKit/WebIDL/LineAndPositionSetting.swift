@@ -21,12 +21,12 @@ public enum LineAndPositionSetting: JSValueCompatible, Any_LineAndPositionSettin
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .autoKeyword(autoKeyword):
-            return autoKeyword.jsValue()
+            return autoKeyword.jsValue
         case let .double(double):
-            return double.jsValue()
+            return double.jsValue
         }
     }
 }

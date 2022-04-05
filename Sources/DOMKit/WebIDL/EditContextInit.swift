@@ -6,9 +6,9 @@ import JavaScriptKit
 public class EditContextInit: BridgedDictionary {
     public convenience init(text: String, selectionStart: UInt32, selectionEnd: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.text] = text.jsValue()
-        object[Strings.selectionStart] = selectionStart.jsValue()
-        object[Strings.selectionEnd] = selectionEnd.jsValue()
+        object[Strings.text] = text.jsValue
+        object[Strings.selectionStart] = selectionStart.jsValue
+        object[Strings.selectionEnd] = selectionEnd.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MLSplitOptions: BridgedDictionary {
     public convenience init(axis: Int32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.axis] = axis.jsValue()
+        object[Strings.axis] = axis.jsValue
         self.init(unsafelyWrapping: object)
     }
 

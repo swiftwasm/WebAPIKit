@@ -11,11 +11,11 @@ public class PaymentRequestUpdateEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: PaymentRequestUpdateEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @inlinable public func updateWith(detailsPromise: JSPromise) {
         let this = jsObject
-        _ = this[Strings.updateWith].function!(this: this, arguments: [detailsPromise.jsValue()])
+        _ = this[Strings.updateWith].function!(this: this, arguments: [detailsPromise.jsValue])
     }
 }

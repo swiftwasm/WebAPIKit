@@ -6,9 +6,9 @@ import JavaScriptKit
 public class MediaSettingsRange: BridgedDictionary {
     public convenience init(max: Double, min: Double, step: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.max] = max.jsValue()
-        object[Strings.min] = min.jsValue()
-        object[Strings.step] = step.jsValue()
+        object[Strings.max] = max.jsValue
+        object[Strings.min] = min.jsValue
+        object[Strings.step] = step.jsValue
         self.init(unsafelyWrapping: object)
     }
 

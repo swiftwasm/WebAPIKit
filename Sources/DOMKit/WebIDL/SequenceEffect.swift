@@ -11,7 +11,7 @@ public class SequenceEffect: GroupEffect {
     }
 
     @inlinable public convenience init(children: [AnimationEffect]?, timing: Double_or_EffectTiming? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [children.jsValue(), timing?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [children.jsValue, timing?.jsValue ?? .undefined]))
     }
 
     @inlinable override public func clone() -> Self {

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class ProgressEventInit: BridgedDictionary {
     public convenience init(lengthComputable: Bool, loaded: UInt64, total: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.lengthComputable] = lengthComputable.jsValue()
-        object[Strings.loaded] = loaded.jsValue()
-        object[Strings.total] = total.jsValue()
+        object[Strings.lengthComputable] = lengthComputable.jsValue
+        object[Strings.loaded] = loaded.jsValue
+        object[Strings.total] = total.jsValue
         self.init(unsafelyWrapping: object)
     }
 

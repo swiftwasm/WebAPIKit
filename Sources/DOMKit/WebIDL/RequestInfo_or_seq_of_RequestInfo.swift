@@ -21,12 +21,12 @@ public enum RequestInfo_or_seq_of_RequestInfo: JSValueCompatible, Any_RequestInf
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .requestInfo(requestInfo):
-            return requestInfo.jsValue()
+            return requestInfo.jsValue
         case let .seq_of_RequestInfo(seq_of_RequestInfo):
-            return seq_of_RequestInfo.jsValue()
+            return seq_of_RequestInfo.jsValue
         }
     }
 }

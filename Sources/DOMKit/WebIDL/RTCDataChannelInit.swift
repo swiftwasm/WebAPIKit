@@ -6,13 +6,13 @@ import JavaScriptKit
 public class RTCDataChannelInit: BridgedDictionary {
     public convenience init(priority: RTCPriorityType, ordered: Bool, maxPacketLifeTime: UInt16, maxRetransmits: UInt16, protocol: String, negotiated: Bool, id: UInt16) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.priority] = priority.jsValue()
-        object[Strings.ordered] = ordered.jsValue()
-        object[Strings.maxPacketLifeTime] = maxPacketLifeTime.jsValue()
-        object[Strings.maxRetransmits] = maxRetransmits.jsValue()
-        object[Strings.protocol] = `protocol`.jsValue()
-        object[Strings.negotiated] = negotiated.jsValue()
-        object[Strings.id] = id.jsValue()
+        object[Strings.priority] = priority.jsValue
+        object[Strings.ordered] = ordered.jsValue
+        object[Strings.maxPacketLifeTime] = maxPacketLifeTime.jsValue
+        object[Strings.maxRetransmits] = maxRetransmits.jsValue
+        object[Strings.protocol] = `protocol`.jsValue
+        object[Strings.negotiated] = negotiated.jsValue
+        object[Strings.id] = id.jsValue
         self.init(unsafelyWrapping: object)
     }
 

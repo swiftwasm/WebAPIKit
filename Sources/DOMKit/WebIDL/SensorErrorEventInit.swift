@@ -6,7 +6,7 @@ import JavaScriptKit
 public class SensorErrorEventInit: BridgedDictionary {
     public convenience init(error: DOMException) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.error] = error.jsValue()
+        object[Strings.error] = error.jsValue
         self.init(unsafelyWrapping: object)
     }
 

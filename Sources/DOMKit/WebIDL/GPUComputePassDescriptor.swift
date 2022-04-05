@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GPUComputePassDescriptor: BridgedDictionary {
     public convenience init(timestampWrites: GPUComputePassTimestampWrites) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.timestampWrites] = timestampWrites.jsValue()
+        object[Strings.timestampWrites] = timestampWrites.jsValue
         self.init(unsafelyWrapping: object)
     }
 

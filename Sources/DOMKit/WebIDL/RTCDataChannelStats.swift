@@ -6,14 +6,14 @@ import JavaScriptKit
 public class RTCDataChannelStats: BridgedDictionary {
     public convenience init(label: String, protocol: String, dataChannelIdentifier: UInt16, state: RTCDataChannelState, messagesSent: UInt32, bytesSent: UInt64, messagesReceived: UInt32, bytesReceived: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.label] = label.jsValue()
-        object[Strings.protocol] = `protocol`.jsValue()
-        object[Strings.dataChannelIdentifier] = dataChannelIdentifier.jsValue()
-        object[Strings.state] = state.jsValue()
-        object[Strings.messagesSent] = messagesSent.jsValue()
-        object[Strings.bytesSent] = bytesSent.jsValue()
-        object[Strings.messagesReceived] = messagesReceived.jsValue()
-        object[Strings.bytesReceived] = bytesReceived.jsValue()
+        object[Strings.label] = label.jsValue
+        object[Strings.protocol] = `protocol`.jsValue
+        object[Strings.dataChannelIdentifier] = dataChannelIdentifier.jsValue
+        object[Strings.state] = state.jsValue
+        object[Strings.messagesSent] = messagesSent.jsValue
+        object[Strings.bytesSent] = bytesSent.jsValue
+        object[Strings.messagesReceived] = messagesReceived.jsValue
+        object[Strings.bytesReceived] = bytesReceived.jsValue
         self.init(unsafelyWrapping: object)
     }
 

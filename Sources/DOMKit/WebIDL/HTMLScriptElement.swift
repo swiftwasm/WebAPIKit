@@ -60,7 +60,7 @@ public class HTMLScriptElement: HTMLElement {
 
     @inlinable public static func supports(type: String) -> Bool {
         let this = constructor
-        return this[Strings.supports].function!(this: this, arguments: [type.jsValue()]).fromJSValue()!
+        return this[Strings.supports].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 
     @ReadWriteAttribute

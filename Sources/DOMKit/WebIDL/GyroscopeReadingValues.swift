@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GyroscopeReadingValues: BridgedDictionary {
     public convenience init(x: Double?, y: Double?, z: Double?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.x] = x.jsValue()
-        object[Strings.y] = y.jsValue()
-        object[Strings.z] = z.jsValue()
+        object[Strings.x] = x.jsValue
+        object[Strings.y] = y.jsValue
+        object[Strings.z] = z.jsValue
         self.init(unsafelyWrapping: object)
     }
 

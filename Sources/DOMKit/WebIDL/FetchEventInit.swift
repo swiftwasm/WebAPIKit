@@ -6,12 +6,12 @@ import JavaScriptKit
 public class FetchEventInit: BridgedDictionary {
     public convenience init(request: Request, preloadResponse: JSPromise, clientId: String, resultingClientId: String, replacesClientId: String, handled: JSPromise) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.request] = request.jsValue()
-        object[Strings.preloadResponse] = preloadResponse.jsValue()
-        object[Strings.clientId] = clientId.jsValue()
-        object[Strings.resultingClientId] = resultingClientId.jsValue()
-        object[Strings.replacesClientId] = replacesClientId.jsValue()
-        object[Strings.handled] = handled.jsValue()
+        object[Strings.request] = request.jsValue
+        object[Strings.preloadResponse] = preloadResponse.jsValue
+        object[Strings.clientId] = clientId.jsValue
+        object[Strings.resultingClientId] = resultingClientId.jsValue
+        object[Strings.replacesClientId] = replacesClientId.jsValue
+        object[Strings.handled] = handled.jsValue
         self.init(unsafelyWrapping: object)
     }
 

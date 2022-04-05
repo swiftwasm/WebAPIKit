@@ -40,11 +40,11 @@ public class SVGAngle: JSBridgedClass {
 
     @inlinable public func newValueSpecifiedUnits(unitType: UInt16, valueInSpecifiedUnits: Float) {
         let this = jsObject
-        _ = this[Strings.newValueSpecifiedUnits].function!(this: this, arguments: [unitType.jsValue(), valueInSpecifiedUnits.jsValue()])
+        _ = this[Strings.newValueSpecifiedUnits].function!(this: this, arguments: [unitType.jsValue, valueInSpecifiedUnits.jsValue])
     }
 
     @inlinable public func convertToSpecifiedUnits(unitType: UInt16) {
         let this = jsObject
-        _ = this[Strings.convertToSpecifiedUnits].function!(this: this, arguments: [unitType.jsValue()])
+        _ = this[Strings.convertToSpecifiedUnits].function!(this: this, arguments: [unitType.jsValue])
     }
 }

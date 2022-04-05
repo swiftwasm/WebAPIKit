@@ -6,8 +6,8 @@ import JavaScriptKit
 public class HmacKeyAlgorithm: BridgedDictionary {
     public convenience init(hash: KeyAlgorithm, length: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.hash] = hash.jsValue()
-        object[Strings.length] = length.jsValue()
+        object[Strings.hash] = hash.jsValue
+        object[Strings.length] = length.jsValue
         self.init(unsafelyWrapping: object)
     }
 

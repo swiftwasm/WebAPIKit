@@ -18,7 +18,7 @@ public class Crypto: JSBridgedClass {
 
     @inlinable public func getRandomValues(array: ArrayBufferView) -> ArrayBufferView {
         let this = jsObject
-        return this[Strings.getRandomValues].function!(this: this, arguments: [array.jsValue()]).fromJSValue()!
+        return this[Strings.getRandomValues].function!(this: this, arguments: [array.jsValue]).fromJSValue()!
     }
 
     @inlinable public func randomUUID() -> String {

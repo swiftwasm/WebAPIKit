@@ -21,12 +21,12 @@ public enum FormDataEntryValue: JSValueCompatible, Any_FormDataEntryValue {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .file(file):
-            return file.jsValue()
+            return file.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

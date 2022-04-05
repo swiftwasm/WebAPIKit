@@ -81,7 +81,7 @@ public class HTMLFormElement: HTMLElement {
 
     @inlinable public func requestSubmit(submitter: HTMLElement? = nil) {
         let this = jsObject
-        _ = this[Strings.requestSubmit].function!(this: this, arguments: [submitter?.jsValue() ?? .undefined])
+        _ = this[Strings.requestSubmit].function!(this: this, arguments: [submitter?.jsValue ?? .undefined])
     }
 
     @inlinable public func reset() {

@@ -21,12 +21,12 @@ public enum GPUOrigin3D: JSValueCompatible, Any_GPUOrigin3D {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .gPUOrigin3DDict(gPUOrigin3DDict):
-            return gPUOrigin3DDict.jsValue()
+            return gPUOrigin3DDict.jsValue
         case let .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate):
-            return seq_of_GPUIntegerCoordinate.jsValue()
+            return seq_of_GPUIntegerCoordinate.jsValue
         }
     }
 }

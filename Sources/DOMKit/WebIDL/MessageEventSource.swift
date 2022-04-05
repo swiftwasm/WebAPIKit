@@ -26,14 +26,14 @@ public enum MessageEventSource: JSValueCompatible, Any_MessageEventSource {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .messagePort(messagePort):
-            return messagePort.jsValue()
+            return messagePort.jsValue
         case let .serviceWorker(serviceWorker):
-            return serviceWorker.jsValue()
+            return serviceWorker.jsValue
         case let .windowProxy(windowProxy):
-            return windowProxy.jsValue()
+            return windowProxy.jsValue
         }
     }
 }

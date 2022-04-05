@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUDeviceDescriptor: BridgedDictionary {
     public convenience init(requiredFeatures: [GPUFeatureName], requiredLimits: [String: GPUSize64], defaultQueue: GPUQueueDescriptor) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.requiredFeatures] = requiredFeatures.jsValue()
-        object[Strings.requiredLimits] = requiredLimits.jsValue()
-        object[Strings.defaultQueue] = defaultQueue.jsValue()
+        object[Strings.requiredFeatures] = requiredFeatures.jsValue
+        object[Strings.requiredLimits] = requiredLimits.jsValue
+        object[Strings.defaultQueue] = defaultQueue.jsValue
         self.init(unsafelyWrapping: object)
     }
 

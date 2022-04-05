@@ -6,14 +6,14 @@ import JavaScriptKit
 public class RTCIceCandidateStats: BridgedDictionary {
     public convenience init(transportId: String, address: String?, port: Int32, protocol: String, candidateType: RTCIceCandidateType, priority: Int32, url: String, relayProtocol: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.transportId] = transportId.jsValue()
-        object[Strings.address] = address.jsValue()
-        object[Strings.port] = port.jsValue()
-        object[Strings.protocol] = `protocol`.jsValue()
-        object[Strings.candidateType] = candidateType.jsValue()
-        object[Strings.priority] = priority.jsValue()
-        object[Strings.url] = url.jsValue()
-        object[Strings.relayProtocol] = relayProtocol.jsValue()
+        object[Strings.transportId] = transportId.jsValue
+        object[Strings.address] = address.jsValue
+        object[Strings.port] = port.jsValue
+        object[Strings.protocol] = `protocol`.jsValue
+        object[Strings.candidateType] = candidateType.jsValue
+        object[Strings.priority] = priority.jsValue
+        object[Strings.url] = url.jsValue
+        object[Strings.relayProtocol] = relayProtocol.jsValue
         self.init(unsafelyWrapping: object)
     }
 

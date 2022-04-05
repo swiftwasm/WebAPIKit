@@ -26,6 +26,6 @@ public class HTMLAllCollection: JSBridgedClass {
 
     @inlinable public func item(nameOrIndex: String? = nil) -> Element_or_HTMLCollection? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [nameOrIndex?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [nameOrIndex?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

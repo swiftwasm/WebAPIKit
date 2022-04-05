@@ -21,12 +21,12 @@ public enum Document_or_DocumentFragment: JSValueCompatible, Any_Document_or_Doc
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .document(document):
-            return document.jsValue()
+            return document.jsValue
         case let .documentFragment(documentFragment):
-            return documentFragment.jsValue()
+            return documentFragment.jsValue
         }
     }
 }

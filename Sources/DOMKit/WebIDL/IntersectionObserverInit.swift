@@ -6,9 +6,9 @@ import JavaScriptKit
 public class IntersectionObserverInit: BridgedDictionary {
     public convenience init(root: Document_or_Element?, rootMargin: String, threshold: Double_or_seq_of_Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.root] = root.jsValue()
-        object[Strings.rootMargin] = rootMargin.jsValue()
-        object[Strings.threshold] = threshold.jsValue()
+        object[Strings.root] = root.jsValue
+        object[Strings.rootMargin] = rootMargin.jsValue
+        object[Strings.threshold] = threshold.jsValue
         self.init(unsafelyWrapping: object)
     }
 

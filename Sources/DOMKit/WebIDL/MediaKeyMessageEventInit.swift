@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MediaKeyMessageEventInit: BridgedDictionary {
     public convenience init(messageType: MediaKeyMessageType, message: ArrayBuffer) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.messageType] = messageType.jsValue()
-        object[Strings.message] = message.jsValue()
+        object[Strings.messageType] = messageType.jsValue
+        object[Strings.message] = message.jsValue
         self.init(unsafelyWrapping: object)
     }
 

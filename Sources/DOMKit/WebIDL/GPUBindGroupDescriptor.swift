@@ -6,8 +6,8 @@ import JavaScriptKit
 public class GPUBindGroupDescriptor: BridgedDictionary {
     public convenience init(layout: GPUBindGroupLayout, entries: [GPUBindGroupEntry]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.layout] = layout.jsValue()
-        object[Strings.entries] = entries.jsValue()
+        object[Strings.layout] = layout.jsValue
+        object[Strings.entries] = entries.jsValue
         self.init(unsafelyWrapping: object)
     }
 

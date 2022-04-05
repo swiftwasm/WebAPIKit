@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MediaQueryListEventInit: BridgedDictionary {
     public convenience init(media: String, matches: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.media] = media.jsValue()
-        object[Strings.matches] = matches.jsValue()
+        object[Strings.media] = media.jsValue
+        object[Strings.matches] = matches.jsValue
         self.init(unsafelyWrapping: object)
     }
 

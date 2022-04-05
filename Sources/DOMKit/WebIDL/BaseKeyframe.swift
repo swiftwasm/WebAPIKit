@@ -6,9 +6,9 @@ import JavaScriptKit
 public class BaseKeyframe: BridgedDictionary {
     public convenience init(offset: Double?, easing: String, composite: CompositeOperationOrAuto) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = offset.jsValue()
-        object[Strings.easing] = easing.jsValue()
-        object[Strings.composite] = composite.jsValue()
+        object[Strings.offset] = offset.jsValue
+        object[Strings.easing] = easing.jsValue
+        object[Strings.composite] = composite.jsValue
         self.init(unsafelyWrapping: object)
     }
 

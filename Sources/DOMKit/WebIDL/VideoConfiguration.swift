@@ -6,16 +6,16 @@ import JavaScriptKit
 public class VideoConfiguration: BridgedDictionary {
     public convenience init(contentType: String, width: UInt32, height: UInt32, bitrate: UInt64, framerate: Double, hasAlphaChannel: Bool, hdrMetadataType: HdrMetadataType, colorGamut: ColorGamut, transferFunction: TransferFunction, scalabilityMode: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.contentType] = contentType.jsValue()
-        object[Strings.width] = width.jsValue()
-        object[Strings.height] = height.jsValue()
-        object[Strings.bitrate] = bitrate.jsValue()
-        object[Strings.framerate] = framerate.jsValue()
-        object[Strings.hasAlphaChannel] = hasAlphaChannel.jsValue()
-        object[Strings.hdrMetadataType] = hdrMetadataType.jsValue()
-        object[Strings.colorGamut] = colorGamut.jsValue()
-        object[Strings.transferFunction] = transferFunction.jsValue()
-        object[Strings.scalabilityMode] = scalabilityMode.jsValue()
+        object[Strings.contentType] = contentType.jsValue
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.bitrate] = bitrate.jsValue
+        object[Strings.framerate] = framerate.jsValue
+        object[Strings.hasAlphaChannel] = hasAlphaChannel.jsValue
+        object[Strings.hdrMetadataType] = hdrMetadataType.jsValue
+        object[Strings.colorGamut] = colorGamut.jsValue
+        object[Strings.transferFunction] = transferFunction.jsValue
+        object[Strings.scalabilityMode] = scalabilityMode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

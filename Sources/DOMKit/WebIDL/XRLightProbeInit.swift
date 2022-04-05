@@ -6,7 +6,7 @@ import JavaScriptKit
 public class XRLightProbeInit: BridgedDictionary {
     public convenience init(reflectionFormat: XRReflectionFormat) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.reflectionFormat] = reflectionFormat.jsValue()
+        object[Strings.reflectionFormat] = reflectionFormat.jsValue
         self.init(unsafelyWrapping: object)
     }
 

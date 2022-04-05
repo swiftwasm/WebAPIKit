@@ -6,8 +6,8 @@ import JavaScriptKit
 public class DelayOptions: BridgedDictionary {
     public convenience init(maxDelayTime: Double, delayTime: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.maxDelayTime] = maxDelayTime.jsValue()
-        object[Strings.delayTime] = delayTime.jsValue()
+        object[Strings.maxDelayTime] = maxDelayTime.jsValue
+        object[Strings.delayTime] = delayTime.jsValue
         self.init(unsafelyWrapping: object)
     }
 

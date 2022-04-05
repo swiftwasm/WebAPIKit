@@ -28,12 +28,12 @@ public class IntersectionObserver: JSBridgedClass {
 
     @inlinable public func observe(target: Element) {
         let this = jsObject
-        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue()])
+        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue])
     }
 
     @inlinable public func unobserve(target: Element) {
         let this = jsObject
-        _ = this[Strings.unobserve].function!(this: this, arguments: [target.jsValue()])
+        _ = this[Strings.unobserve].function!(this: this, arguments: [target.jsValue])
     }
 
     @inlinable public func disconnect() {

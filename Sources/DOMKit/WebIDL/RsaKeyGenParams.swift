@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RsaKeyGenParams: BridgedDictionary {
     public convenience init(modulusLength: UInt32, publicExponent: BigInteger) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.modulusLength] = modulusLength.jsValue()
-        object[Strings.publicExponent] = publicExponent.jsValue()
+        object[Strings.modulusLength] = modulusLength.jsValue
+        object[Strings.publicExponent] = publicExponent.jsValue
         self.init(unsafelyWrapping: object)
     }
 

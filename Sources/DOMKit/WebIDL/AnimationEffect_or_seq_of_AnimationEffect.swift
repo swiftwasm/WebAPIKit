@@ -21,12 +21,12 @@ public enum AnimationEffect_or_seq_of_AnimationEffect: JSValueCompatible, Any_An
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .animationEffect(animationEffect):
-            return animationEffect.jsValue()
+            return animationEffect.jsValue
         case let .seq_of_AnimationEffect(seq_of_AnimationEffect):
-            return seq_of_AnimationEffect.jsValue()
+            return seq_of_AnimationEffect.jsValue
         }
     }
 }

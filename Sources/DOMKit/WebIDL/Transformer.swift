@@ -9,8 +9,8 @@ public class Transformer: BridgedDictionary {
         ClosureAttribute1[Strings.start, in: object] = start
         ClosureAttribute2[Strings.transform, in: object] = transform
         ClosureAttribute1[Strings.flush, in: object] = flush
-        object[Strings.readableType] = readableType.jsValue()
-        object[Strings.writableType] = writableType.jsValue()
+        object[Strings.readableType] = readableType.jsValue
+        object[Strings.writableType] = writableType.jsValue
         self.init(unsafelyWrapping: object)
     }
 

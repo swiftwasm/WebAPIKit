@@ -6,11 +6,11 @@ import JavaScriptKit
 public class SpeechSynthesisEventInit: BridgedDictionary {
     public convenience init(utterance: SpeechSynthesisUtterance, charIndex: UInt32, charLength: UInt32, elapsedTime: Float, name: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.utterance] = utterance.jsValue()
-        object[Strings.charIndex] = charIndex.jsValue()
-        object[Strings.charLength] = charLength.jsValue()
-        object[Strings.elapsedTime] = elapsedTime.jsValue()
-        object[Strings.name] = name.jsValue()
+        object[Strings.utterance] = utterance.jsValue
+        object[Strings.charIndex] = charIndex.jsValue
+        object[Strings.charLength] = charLength.jsValue
+        object[Strings.elapsedTime] = elapsedTime.jsValue
+        object[Strings.name] = name.jsValue
         self.init(unsafelyWrapping: object)
     }
 

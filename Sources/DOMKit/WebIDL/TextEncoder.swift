@@ -18,11 +18,11 @@ public class TextEncoder: JSBridgedClass, TextEncoderCommon {
 
     @inlinable public func encode(input: String? = nil) -> Uint8Array {
         let this = jsObject
-        return this[Strings.encode].function!(this: this, arguments: [input?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.encode].function!(this: this, arguments: [input?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func encodeInto(source: String, destination: Uint8Array) -> TextEncoderEncodeIntoResult {
         let this = jsObject
-        return this[Strings.encodeInto].function!(this: this, arguments: [source.jsValue(), destination.jsValue()]).fromJSValue()!
+        return this[Strings.encodeInto].function!(this: this, arguments: [source.jsValue, destination.jsValue]).fromJSValue()!
     }
 }

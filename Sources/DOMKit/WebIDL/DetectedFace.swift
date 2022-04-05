@@ -6,8 +6,8 @@ import JavaScriptKit
 public class DetectedFace: BridgedDictionary {
     public convenience init(boundingBox: DOMRectReadOnly, landmarks: [Landmark]?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.boundingBox] = boundingBox.jsValue()
-        object[Strings.landmarks] = landmarks.jsValue()
+        object[Strings.boundingBox] = boundingBox.jsValue
+        object[Strings.landmarks] = landmarks.jsValue
         self.init(unsafelyWrapping: object)
     }
 

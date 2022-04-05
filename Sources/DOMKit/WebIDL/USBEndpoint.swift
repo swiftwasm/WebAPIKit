@@ -17,7 +17,7 @@ public class USBEndpoint: JSBridgedClass {
     }
 
     @inlinable public convenience init(alternate: USBAlternateInterface, endpointNumber: UInt8, direction: USBDirection) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [alternate.jsValue(), endpointNumber.jsValue(), direction.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [alternate.jsValue, endpointNumber.jsValue, direction.jsValue]))
     }
 
     @ReadonlyAttribute

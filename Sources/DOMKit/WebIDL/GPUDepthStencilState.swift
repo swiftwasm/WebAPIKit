@@ -6,16 +6,16 @@ import JavaScriptKit
 public class GPUDepthStencilState: BridgedDictionary {
     public convenience init(format: GPUTextureFormat, depthWriteEnabled: Bool, depthCompare: GPUCompareFunction, stencilFront: GPUStencilFaceState, stencilBack: GPUStencilFaceState, stencilReadMask: GPUStencilValue, stencilWriteMask: GPUStencilValue, depthBias: GPUDepthBias, depthBiasSlopeScale: Float, depthBiasClamp: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.format] = format.jsValue()
-        object[Strings.depthWriteEnabled] = depthWriteEnabled.jsValue()
-        object[Strings.depthCompare] = depthCompare.jsValue()
-        object[Strings.stencilFront] = stencilFront.jsValue()
-        object[Strings.stencilBack] = stencilBack.jsValue()
-        object[Strings.stencilReadMask] = stencilReadMask.jsValue()
-        object[Strings.stencilWriteMask] = stencilWriteMask.jsValue()
-        object[Strings.depthBias] = depthBias.jsValue()
-        object[Strings.depthBiasSlopeScale] = depthBiasSlopeScale.jsValue()
-        object[Strings.depthBiasClamp] = depthBiasClamp.jsValue()
+        object[Strings.format] = format.jsValue
+        object[Strings.depthWriteEnabled] = depthWriteEnabled.jsValue
+        object[Strings.depthCompare] = depthCompare.jsValue
+        object[Strings.stencilFront] = stencilFront.jsValue
+        object[Strings.stencilBack] = stencilBack.jsValue
+        object[Strings.stencilReadMask] = stencilReadMask.jsValue
+        object[Strings.stencilWriteMask] = stencilWriteMask.jsValue
+        object[Strings.depthBias] = depthBias.jsValue
+        object[Strings.depthBiasSlopeScale] = depthBiasSlopeScale.jsValue
+        object[Strings.depthBiasClamp] = depthBiasClamp.jsValue
         self.init(unsafelyWrapping: object)
     }
 

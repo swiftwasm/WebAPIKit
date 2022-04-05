@@ -13,37 +13,37 @@ public class URLSearchParams: JSBridgedClass, Sequence {
     }
 
     @inlinable public convenience init(init: String_or_record_String_to_String_or_seq_of_seq_of_String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue ?? .undefined]))
     }
 
     @inlinable public func append(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
+        _ = this[Strings.append].function!(this: this, arguments: [name.jsValue, value.jsValue])
     }
 
     @inlinable public func delete(name: String) {
         let this = jsObject
-        _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue()])
+        _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue])
     }
 
     @inlinable public func get(name: String) -> String? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getAll(name: String) -> [String] {
         let this = jsObject
-        return this[Strings.getAll].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.getAll].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @inlinable public func has(name: String) -> Bool {
         let this = jsObject
-        return this[Strings.has].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.has].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @inlinable public func set(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.set].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
+        _ = this[Strings.set].function!(this: this, arguments: [name.jsValue, value.jsValue])
     }
 
     @inlinable public func sort() {

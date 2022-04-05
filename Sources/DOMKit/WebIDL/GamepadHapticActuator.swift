@@ -18,13 +18,13 @@ public class GamepadHapticActuator: JSBridgedClass {
 
     @inlinable public func pulse(value: Double, duration: Double) -> JSPromise {
         let this = jsObject
-        return this[Strings.pulse].function!(this: this, arguments: [value.jsValue(), duration.jsValue()]).fromJSValue()!
+        return this[Strings.pulse].function!(this: this, arguments: [value.jsValue, duration.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func pulse(value: Double, duration: Double) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.pulse].function!(this: this, arguments: [value.jsValue(), duration.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.pulse].function!(this: this, arguments: [value.jsValue, duration.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

@@ -26,17 +26,17 @@ public class AnimationEffect: JSBridgedClass {
 
     @inlinable public func before(effects: AnimationEffect...) {
         let this = jsObject
-        _ = this[Strings.before].function!(this: this, arguments: effects.map { $0.jsValue() })
+        _ = this[Strings.before].function!(this: this, arguments: effects.map(\.jsValue))
     }
 
     @inlinable public func after(effects: AnimationEffect...) {
         let this = jsObject
-        _ = this[Strings.after].function!(this: this, arguments: effects.map { $0.jsValue() })
+        _ = this[Strings.after].function!(this: this, arguments: effects.map(\.jsValue))
     }
 
     @inlinable public func replace(effects: AnimationEffect...) {
         let this = jsObject
-        _ = this[Strings.replace].function!(this: this, arguments: effects.map { $0.jsValue() })
+        _ = this[Strings.replace].function!(this: this, arguments: effects.map(\.jsValue))
     }
 
     @inlinable public func remove() {
@@ -56,6 +56,6 @@ public class AnimationEffect: JSBridgedClass {
 
     @inlinable public func updateTiming(timing: OptionalEffectTiming? = nil) {
         let this = jsObject
-        _ = this[Strings.updateTiming].function!(this: this, arguments: [timing?.jsValue() ?? .undefined])
+        _ = this[Strings.updateTiming].function!(this: this, arguments: [timing?.jsValue ?? .undefined])
     }
 }

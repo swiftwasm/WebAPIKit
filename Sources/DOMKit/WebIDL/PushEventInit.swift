@@ -6,7 +6,7 @@ import JavaScriptKit
 public class PushEventInit: BridgedDictionary {
     public convenience init(data: PushMessageDataInit) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.data] = data.jsValue()
+        object[Strings.data] = data.jsValue
         self.init(unsafelyWrapping: object)
     }
 

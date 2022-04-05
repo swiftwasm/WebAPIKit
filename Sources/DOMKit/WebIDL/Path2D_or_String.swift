@@ -21,12 +21,12 @@ public enum Path2D_or_String: JSValueCompatible, Any_Path2D_or_String {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .path2D(path2D):
-            return path2D.jsValue()
+            return path2D.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

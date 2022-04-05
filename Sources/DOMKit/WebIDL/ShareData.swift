@@ -6,10 +6,10 @@ import JavaScriptKit
 public class ShareData: BridgedDictionary {
     public convenience init(files: [File], title: String, text: String, url: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.files] = files.jsValue()
-        object[Strings.title] = title.jsValue()
-        object[Strings.text] = text.jsValue()
-        object[Strings.url] = url.jsValue()
+        object[Strings.files] = files.jsValue
+        object[Strings.title] = title.jsValue
+        object[Strings.text] = text.jsValue
+        object[Strings.url] = url.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class DoubleRange: BridgedDictionary {
     public convenience init(max: Double, min: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.max] = max.jsValue()
-        object[Strings.min] = min.jsValue()
+        object[Strings.max] = max.jsValue
+        object[Strings.min] = min.jsValue
         self.init(unsafelyWrapping: object)
     }
 

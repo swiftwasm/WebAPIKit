@@ -29,7 +29,7 @@ public class BluetoothRemoteGATTServer: JSBridgedClass {
     @inlinable public func connect() async throws -> BluetoothRemoteGATTServer {
         let this = jsObject
         let _promise: JSPromise = this[Strings.connect].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func disconnect() {
@@ -39,25 +39,25 @@ public class BluetoothRemoteGATTServer: JSBridgedClass {
 
     @inlinable public func getPrimaryService(service: BluetoothServiceUUID) -> JSPromise {
         let this = jsObject
-        return this[Strings.getPrimaryService].function!(this: this, arguments: [service.jsValue()]).fromJSValue()!
+        return this[Strings.getPrimaryService].function!(this: this, arguments: [service.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getPrimaryService(service: BluetoothServiceUUID) async throws -> BluetoothRemoteGATTService {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getPrimaryService].function!(this: this, arguments: [service.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getPrimaryService].function!(this: this, arguments: [service.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getPrimaryServices(service: BluetoothServiceUUID? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.getPrimaryServices].function!(this: this, arguments: [service?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getPrimaryServices].function!(this: this, arguments: [service?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getPrimaryServices(service: BluetoothServiceUUID? = nil) async throws -> [BluetoothRemoteGATTService] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getPrimaryServices].function!(this: this, arguments: [service?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getPrimaryServices].function!(this: this, arguments: [service?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

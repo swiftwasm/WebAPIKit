@@ -6,14 +6,14 @@ import JavaScriptKit
 public class MLGruOptions: BridgedDictionary {
     public convenience init(bias: MLOperand, recurrentBias: MLOperand, initialHiddenState: MLOperand, resetAfter: Bool, returnSequence: Bool, direction: MLRecurrentNetworkDirection, layout: MLRecurrentNetworkWeightLayout, activations: [MLOperator]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.bias] = bias.jsValue()
-        object[Strings.recurrentBias] = recurrentBias.jsValue()
-        object[Strings.initialHiddenState] = initialHiddenState.jsValue()
-        object[Strings.resetAfter] = resetAfter.jsValue()
-        object[Strings.returnSequence] = returnSequence.jsValue()
-        object[Strings.direction] = direction.jsValue()
-        object[Strings.layout] = layout.jsValue()
-        object[Strings.activations] = activations.jsValue()
+        object[Strings.bias] = bias.jsValue
+        object[Strings.recurrentBias] = recurrentBias.jsValue
+        object[Strings.initialHiddenState] = initialHiddenState.jsValue
+        object[Strings.resetAfter] = resetAfter.jsValue
+        object[Strings.returnSequence] = returnSequence.jsValue
+        object[Strings.direction] = direction.jsValue
+        object[Strings.layout] = layout.jsValue
+        object[Strings.activations] = activations.jsValue
         self.init(unsafelyWrapping: object)
     }
 

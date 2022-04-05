@@ -21,12 +21,12 @@ public enum ConstrainBoolean: JSValueCompatible, Any_ConstrainBoolean {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .bool(bool):
-            return bool.jsValue()
+            return bool.jsValue
         case let .constrainBooleanParameters(constrainBooleanParameters):
-            return constrainBooleanParameters.jsValue()
+            return constrainBooleanParameters.jsValue
         }
     }
 }

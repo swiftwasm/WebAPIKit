@@ -14,7 +14,7 @@ public class WritableStream: JSBridgedClass {
     }
 
     @inlinable public convenience init(underlyingSink: JSObject? = nil, strategy: QueuingStrategy? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [underlyingSink?.jsValue() ?? .undefined, strategy?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [underlyingSink?.jsValue ?? .undefined, strategy?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -22,14 +22,14 @@ public class WritableStream: JSBridgedClass {
 
     @inlinable public func abort(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func abort(reason: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func close() -> JSPromise {
@@ -41,7 +41,7 @@ public class WritableStream: JSBridgedClass {
     @inlinable public func close() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func getWriter() -> WritableStreamDefaultWriter {

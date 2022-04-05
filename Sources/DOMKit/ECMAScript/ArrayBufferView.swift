@@ -62,32 +62,32 @@ public enum ArrayBufferView: JSValueCompatible, AnyArrayBufferView {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
 //        case let .bigInt64Array(bigInt64Array):
-//            return bigInt64Array.jsValue()
+//            return bigInt64Array.jsValue
 //        case let .bigUint64Array(bigUint64Array):
-//            return bigUint64Array.jsValue()
+//            return bigUint64Array.jsValue
         case let .dataView(dataView):
-            return dataView.jsValue()
+            return dataView.jsValue
         case let .float32Array(float32Array):
-            return float32Array.jsValue()
+            return float32Array.jsValue
         case let .float64Array(float64Array):
-            return float64Array.jsValue()
+            return float64Array.jsValue
         case let .int16Array(int16Array):
-            return int16Array.jsValue()
+            return int16Array.jsValue
         case let .int32Array(int32Array):
-            return int32Array.jsValue()
+            return int32Array.jsValue
         case let .int8Array(int8Array):
-            return int8Array.jsValue()
+            return int8Array.jsValue
         case let .uint16Array(uint16Array):
-            return uint16Array.jsValue()
+            return uint16Array.jsValue
         case let .uint32Array(uint32Array):
-            return uint32Array.jsValue()
+            return uint32Array.jsValue
         case let .uint8Array(uint8Array):
-            return uint8Array.jsValue()
+            return uint8Array.jsValue
         case let .uint8ClampedArray(uint8ClampedArray):
-            return uint8ClampedArray.jsValue()
+            return uint8ClampedArray.jsValue
         }
     }
 }

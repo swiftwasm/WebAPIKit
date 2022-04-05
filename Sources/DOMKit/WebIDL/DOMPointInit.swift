@@ -6,10 +6,10 @@ import JavaScriptKit
 public class DOMPointInit: BridgedDictionary {
     public convenience init(x: Double, y: Double, z: Double, w: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.x] = x.jsValue()
-        object[Strings.y] = y.jsValue()
-        object[Strings.z] = z.jsValue()
-        object[Strings.w] = w.jsValue()
+        object[Strings.x] = x.jsValue
+        object[Strings.y] = y.jsValue
+        object[Strings.z] = z.jsValue
+        object[Strings.w] = w.jsValue
         self.init(unsafelyWrapping: object)
     }
 

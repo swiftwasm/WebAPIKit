@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RTCPeerConnectionStats: BridgedDictionary {
     public convenience init(dataChannelsOpened: UInt32, dataChannelsClosed: UInt32, dataChannelsRequested: UInt32, dataChannelsAccepted: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.dataChannelsOpened] = dataChannelsOpened.jsValue()
-        object[Strings.dataChannelsClosed] = dataChannelsClosed.jsValue()
-        object[Strings.dataChannelsRequested] = dataChannelsRequested.jsValue()
-        object[Strings.dataChannelsAccepted] = dataChannelsAccepted.jsValue()
+        object[Strings.dataChannelsOpened] = dataChannelsOpened.jsValue
+        object[Strings.dataChannelsClosed] = dataChannelsClosed.jsValue
+        object[Strings.dataChannelsRequested] = dataChannelsRequested.jsValue
+        object[Strings.dataChannelsAccepted] = dataChannelsAccepted.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -21,12 +21,12 @@ public class DOMRectReadOnly: JSBridgedClass {
     }
 
     @inlinable public convenience init(x: Double? = nil, y: Double? = nil, width: Double? = nil, height: Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, width?.jsValue() ?? .undefined, height?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, width?.jsValue ?? .undefined, height?.jsValue ?? .undefined]))
     }
 
     @inlinable public static func fromRect(other: DOMRectInit? = nil) -> Self {
         let this = constructor
-        return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

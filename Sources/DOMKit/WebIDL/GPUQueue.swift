@@ -14,7 +14,7 @@ public class GPUQueue: JSBridgedClass, GPUObjectBase {
 
     @inlinable public func submit(commandBuffers: [GPUCommandBuffer]) {
         let this = jsObject
-        _ = this[Strings.submit].function!(this: this, arguments: [commandBuffers.jsValue()])
+        _ = this[Strings.submit].function!(this: this, arguments: [commandBuffers.jsValue])
     }
 
     @inlinable public func onSubmittedWorkDone() -> JSPromise {
@@ -26,21 +26,21 @@ public class GPUQueue: JSBridgedClass, GPUObjectBase {
     @inlinable public func onSubmittedWorkDone() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.onSubmittedWorkDone].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func writeBuffer(buffer: GPUBuffer, bufferOffset: GPUSize64, data: BufferSource, dataOffset: GPUSize64? = nil, size: GPUSize64? = nil) {
         let this = jsObject
-        _ = this[Strings.writeBuffer].function!(this: this, arguments: [buffer.jsValue(), bufferOffset.jsValue(), data.jsValue(), dataOffset?.jsValue() ?? .undefined, size?.jsValue() ?? .undefined])
+        _ = this[Strings.writeBuffer].function!(this: this, arguments: [buffer.jsValue, bufferOffset.jsValue, data.jsValue, dataOffset?.jsValue ?? .undefined, size?.jsValue ?? .undefined])
     }
 
     @inlinable public func writeTexture(destination: GPUImageCopyTexture, data: BufferSource, dataLayout: GPUImageDataLayout, size: GPUExtent3D) {
         let this = jsObject
-        _ = this[Strings.writeTexture].function!(this: this, arguments: [destination.jsValue(), data.jsValue(), dataLayout.jsValue(), size.jsValue()])
+        _ = this[Strings.writeTexture].function!(this: this, arguments: [destination.jsValue, data.jsValue, dataLayout.jsValue, size.jsValue])
     }
 
     @inlinable public func copyExternalImageToTexture(source: GPUImageCopyExternalImage, destination: GPUImageCopyTextureTagged, copySize: GPUExtent3D) {
         let this = jsObject
-        _ = this[Strings.copyExternalImageToTexture].function!(this: this, arguments: [source.jsValue(), destination.jsValue(), copySize.jsValue()])
+        _ = this[Strings.copyExternalImageToTexture].function!(this: this, arguments: [source.jsValue, destination.jsValue, copySize.jsValue])
     }
 }

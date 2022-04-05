@@ -18,13 +18,13 @@ public class EyeDropper: JSBridgedClass {
 
     @inlinable public func open(options: ColorSelectionOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.open].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.open].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func open(options: ColorSelectionOptions? = nil) async throws -> ColorSelectionResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

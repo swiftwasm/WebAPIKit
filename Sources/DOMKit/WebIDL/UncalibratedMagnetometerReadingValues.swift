@@ -6,12 +6,12 @@ import JavaScriptKit
 public class UncalibratedMagnetometerReadingValues: BridgedDictionary {
     public convenience init(x: Double?, y: Double?, z: Double?, xBias: Double?, yBias: Double?, zBias: Double?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.x] = x.jsValue()
-        object[Strings.y] = y.jsValue()
-        object[Strings.z] = z.jsValue()
-        object[Strings.xBias] = xBias.jsValue()
-        object[Strings.yBias] = yBias.jsValue()
-        object[Strings.zBias] = zBias.jsValue()
+        object[Strings.x] = x.jsValue
+        object[Strings.y] = y.jsValue
+        object[Strings.z] = z.jsValue
+        object[Strings.xBias] = xBias.jsValue
+        object[Strings.yBias] = yBias.jsValue
+        object[Strings.zBias] = zBias.jsValue
         self.init(unsafelyWrapping: object)
     }
 

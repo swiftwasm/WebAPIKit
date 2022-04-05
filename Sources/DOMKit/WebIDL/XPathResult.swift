@@ -67,6 +67,6 @@ public class XPathResult: JSBridgedClass {
 
     @inlinable public func snapshotItem(index: UInt32) -> Node? {
         let this = jsObject
-        return this[Strings.snapshotItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
+        return this[Strings.snapshotItem].function!(this: this, arguments: [index.jsValue]).fromJSValue()!
     }
 }

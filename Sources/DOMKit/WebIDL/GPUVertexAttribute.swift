@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUVertexAttribute: BridgedDictionary {
     public convenience init(format: GPUVertexFormat, offset: GPUSize64, shaderLocation: GPUIndex32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.format] = format.jsValue()
-        object[Strings.offset] = offset.jsValue()
-        object[Strings.shaderLocation] = shaderLocation.jsValue()
+        object[Strings.format] = format.jsValue
+        object[Strings.offset] = offset.jsValue
+        object[Strings.shaderLocation] = shaderLocation.jsValue
         self.init(unsafelyWrapping: object)
     }
 

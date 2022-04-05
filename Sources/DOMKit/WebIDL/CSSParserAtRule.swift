@@ -14,7 +14,7 @@ public class CSSParserAtRule: CSSParserRule {
     }
 
     @inlinable public convenience init(name: String, prelude: [CSSToken], body: [CSSParserRule]? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue(), prelude.jsValue(), body?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue, prelude.jsValue, body?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

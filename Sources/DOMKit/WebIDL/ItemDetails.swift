@@ -6,17 +6,17 @@ import JavaScriptKit
 public class ItemDetails: BridgedDictionary {
     public convenience init(itemId: String, title: String, price: PaymentCurrencyAmount, type: ItemType, description: String, iconURLs: [String], subscriptionPeriod: String, freeTrialPeriod: String, introductoryPrice: PaymentCurrencyAmount, introductoryPricePeriod: String, introductoryPriceCycles: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.itemId] = itemId.jsValue()
-        object[Strings.title] = title.jsValue()
-        object[Strings.price] = price.jsValue()
-        object[Strings.type] = type.jsValue()
-        object[Strings.description] = description.jsValue()
-        object[Strings.iconURLs] = iconURLs.jsValue()
-        object[Strings.subscriptionPeriod] = subscriptionPeriod.jsValue()
-        object[Strings.freeTrialPeriod] = freeTrialPeriod.jsValue()
-        object[Strings.introductoryPrice] = introductoryPrice.jsValue()
-        object[Strings.introductoryPricePeriod] = introductoryPricePeriod.jsValue()
-        object[Strings.introductoryPriceCycles] = introductoryPriceCycles.jsValue()
+        object[Strings.itemId] = itemId.jsValue
+        object[Strings.title] = title.jsValue
+        object[Strings.price] = price.jsValue
+        object[Strings.type] = type.jsValue
+        object[Strings.description] = description.jsValue
+        object[Strings.iconURLs] = iconURLs.jsValue
+        object[Strings.subscriptionPeriod] = subscriptionPeriod.jsValue
+        object[Strings.freeTrialPeriod] = freeTrialPeriod.jsValue
+        object[Strings.introductoryPrice] = introductoryPrice.jsValue
+        object[Strings.introductoryPricePeriod] = introductoryPricePeriod.jsValue
+        object[Strings.introductoryPriceCycles] = introductoryPriceCycles.jsValue
         self.init(unsafelyWrapping: object)
     }
 

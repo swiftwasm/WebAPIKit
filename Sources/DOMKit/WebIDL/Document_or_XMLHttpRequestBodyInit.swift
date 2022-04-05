@@ -21,12 +21,12 @@ public enum Document_or_XMLHttpRequestBodyInit: JSValueCompatible, Any_Document_
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .document(document):
-            return document.jsValue()
+            return document.jsValue
         case let .xMLHttpRequestBodyInit(xMLHttpRequestBodyInit):
-            return xMLHttpRequestBodyInit.jsValue()
+            return xMLHttpRequestBodyInit.jsValue
         }
     }
 }

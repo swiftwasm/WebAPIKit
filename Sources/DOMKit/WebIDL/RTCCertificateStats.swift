@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RTCCertificateStats: BridgedDictionary {
     public convenience init(fingerprint: String, fingerprintAlgorithm: String, base64Certificate: String, issuerCertificateId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.fingerprint] = fingerprint.jsValue()
-        object[Strings.fingerprintAlgorithm] = fingerprintAlgorithm.jsValue()
-        object[Strings.base64Certificate] = base64Certificate.jsValue()
-        object[Strings.issuerCertificateId] = issuerCertificateId.jsValue()
+        object[Strings.fingerprint] = fingerprint.jsValue
+        object[Strings.fingerprintAlgorithm] = fingerprintAlgorithm.jsValue
+        object[Strings.base64Certificate] = base64Certificate.jsValue
+        object[Strings.issuerCertificateId] = issuerCertificateId.jsValue
         self.init(unsafelyWrapping: object)
     }
 

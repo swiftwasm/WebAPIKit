@@ -6,12 +6,12 @@ import JavaScriptKit
 public class NDEFRecordInit: BridgedDictionary {
     public convenience init(recordType: String, mediaType: String, id: String, encoding: String, lang: String, data: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.recordType] = recordType.jsValue()
-        object[Strings.mediaType] = mediaType.jsValue()
-        object[Strings.id] = id.jsValue()
-        object[Strings.encoding] = encoding.jsValue()
-        object[Strings.lang] = lang.jsValue()
-        object[Strings.data] = data.jsValue()
+        object[Strings.recordType] = recordType.jsValue
+        object[Strings.mediaType] = mediaType.jsValue
+        object[Strings.id] = id.jsValue
+        object[Strings.encoding] = encoding.jsValue
+        object[Strings.lang] = lang.jsValue
+        object[Strings.data] = data.jsValue
         self.init(unsafelyWrapping: object)
     }
 

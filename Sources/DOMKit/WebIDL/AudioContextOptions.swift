@@ -6,8 +6,8 @@ import JavaScriptKit
 public class AudioContextOptions: BridgedDictionary {
     public convenience init(latencyHint: AudioContextLatencyCategory_or_Double, sampleRate: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.latencyHint] = latencyHint.jsValue()
-        object[Strings.sampleRate] = sampleRate.jsValue()
+        object[Strings.latencyHint] = latencyHint.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -26,6 +26,6 @@ public class NavigationTransition: JSBridgedClass {
 
     @inlinable public func rollback(options: NavigationOptions? = nil) -> NavigationResult {
         let this = jsObject
-        return this[Strings.rollback].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.rollback].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

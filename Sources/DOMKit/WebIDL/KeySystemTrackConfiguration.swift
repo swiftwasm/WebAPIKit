@@ -6,8 +6,8 @@ import JavaScriptKit
 public class KeySystemTrackConfiguration: BridgedDictionary {
     public convenience init(robustness: String, encryptionScheme: String?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.robustness] = robustness.jsValue()
-        object[Strings.encryptionScheme] = encryptionScheme.jsValue()
+        object[Strings.robustness] = robustness.jsValue
+        object[Strings.encryptionScheme] = encryptionScheme.jsValue
         self.init(unsafelyWrapping: object)
     }
 

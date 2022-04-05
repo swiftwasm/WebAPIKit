@@ -27,7 +27,7 @@ public extension CanvasPathDrawingStyles {
 
     @inlinable func setLineDash(segments: [Double]) {
         let this = jsObject
-        _ = this[Strings.setLineDash].function!(this: this, arguments: [segments.jsValue()])
+        _ = this[Strings.setLineDash].function!(this: this, arguments: [segments.jsValue])
     }
 
     @inlinable func getLineDash() -> [Double] {

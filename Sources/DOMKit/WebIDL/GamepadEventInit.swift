@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GamepadEventInit: BridgedDictionary {
     public convenience init(gamepad: Gamepad) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.gamepad] = gamepad.jsValue()
+        object[Strings.gamepad] = gamepad.jsValue
         self.init(unsafelyWrapping: object)
     }
 

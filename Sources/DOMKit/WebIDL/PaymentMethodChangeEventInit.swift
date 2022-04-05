@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PaymentMethodChangeEventInit: BridgedDictionary {
     public convenience init(methodName: String, methodDetails: JSObject?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.methodName] = methodName.jsValue()
-        object[Strings.methodDetails] = methodDetails.jsValue()
+        object[Strings.methodName] = methodName.jsValue
+        object[Strings.methodDetails] = methodDetails.jsValue
         self.init(unsafelyWrapping: object)
     }
 

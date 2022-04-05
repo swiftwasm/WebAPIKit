@@ -7,6 +7,6 @@ public protocol NonElementParentNode: JSBridgedClass {}
 public extension NonElementParentNode {
     @inlinable func getElementById(elementId: String) -> Element? {
         let this = jsObject
-        return this[Strings.getElementById].function!(this: this, arguments: [elementId.jsValue()]).fromJSValue()!
+        return this[Strings.getElementById].function!(this: this, arguments: [elementId.jsValue]).fromJSValue()!
     }
 }

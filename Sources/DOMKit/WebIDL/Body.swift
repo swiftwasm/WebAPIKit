@@ -18,7 +18,7 @@ public extension Body {
     @inlinable func arrayBuffer() async throws -> ArrayBuffer {
         let this = jsObject
         let _promise: JSPromise = this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable func blob() -> JSPromise {
@@ -30,7 +30,7 @@ public extension Body {
     @inlinable func blob() async throws -> Blob {
         let this = jsObject
         let _promise: JSPromise = this[Strings.blob].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable func formData() -> JSPromise {
@@ -42,7 +42,7 @@ public extension Body {
     @inlinable func formData() async throws -> FormData {
         let this = jsObject
         let _promise: JSPromise = this[Strings.formData].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable func json() -> JSPromise {
@@ -54,7 +54,7 @@ public extension Body {
     @inlinable func json() async throws -> JSValue {
         let this = jsObject
         let _promise: JSPromise = this[Strings.json].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable func text() -> JSPromise {
@@ -66,6 +66,6 @@ public extension Body {
     @inlinable func text() async throws -> String {
         let this = jsObject
         let _promise: JSPromise = this[Strings.text].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

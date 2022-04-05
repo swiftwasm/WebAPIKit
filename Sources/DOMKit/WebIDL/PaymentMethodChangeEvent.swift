@@ -13,7 +13,7 @@ public class PaymentMethodChangeEvent: PaymentRequestUpdateEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: PaymentMethodChangeEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

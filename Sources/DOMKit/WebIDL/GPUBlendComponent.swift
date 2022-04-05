@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUBlendComponent: BridgedDictionary {
     public convenience init(operation: GPUBlendOperation, srcFactor: GPUBlendFactor, dstFactor: GPUBlendFactor) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.operation] = operation.jsValue()
-        object[Strings.srcFactor] = srcFactor.jsValue()
-        object[Strings.dstFactor] = dstFactor.jsValue()
+        object[Strings.operation] = operation.jsValue
+        object[Strings.srcFactor] = srcFactor.jsValue
+        object[Strings.dstFactor] = dstFactor.jsValue
         self.init(unsafelyWrapping: object)
     }
 

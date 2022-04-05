@@ -6,10 +6,10 @@ import JavaScriptKit
 public class MediaSessionActionDetails: BridgedDictionary {
     public convenience init(action: MediaSessionAction, seekOffset: Double?, seekTime: Double?, fastSeek: Bool?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.action] = action.jsValue()
-        object[Strings.seekOffset] = seekOffset.jsValue()
-        object[Strings.seekTime] = seekTime.jsValue()
-        object[Strings.fastSeek] = fastSeek.jsValue()
+        object[Strings.action] = action.jsValue
+        object[Strings.seekOffset] = seekOffset.jsValue
+        object[Strings.seekTime] = seekTime.jsValue
+        object[Strings.fastSeek] = fastSeek.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RTCIceParameters: BridgedDictionary {
     public convenience init(iceLite: Bool, usernameFragment: String, password: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.iceLite] = iceLite.jsValue()
-        object[Strings.usernameFragment] = usernameFragment.jsValue()
-        object[Strings.password] = password.jsValue()
+        object[Strings.iceLite] = iceLite.jsValue
+        object[Strings.usernameFragment] = usernameFragment.jsValue
+        object[Strings.password] = password.jsValue
         self.init(unsafelyWrapping: object)
     }
 

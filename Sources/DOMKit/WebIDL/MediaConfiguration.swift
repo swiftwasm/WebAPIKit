@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MediaConfiguration: BridgedDictionary {
     public convenience init(video: VideoConfiguration, audio: AudioConfiguration) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.video] = video.jsValue()
-        object[Strings.audio] = audio.jsValue()
+        object[Strings.video] = video.jsValue
+        object[Strings.audio] = audio.jsValue
         self.init(unsafelyWrapping: object)
     }
 

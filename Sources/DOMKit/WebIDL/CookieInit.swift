@@ -6,12 +6,12 @@ import JavaScriptKit
 public class CookieInit: BridgedDictionary {
     public convenience init(name: String, value: String, expires: DOMTimeStamp?, domain: String?, path: String, sameSite: CookieSameSite) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue()
-        object[Strings.value] = value.jsValue()
-        object[Strings.expires] = expires.jsValue()
-        object[Strings.domain] = domain.jsValue()
-        object[Strings.path] = path.jsValue()
-        object[Strings.sameSite] = sameSite.jsValue()
+        object[Strings.name] = name.jsValue
+        object[Strings.value] = value.jsValue
+        object[Strings.expires] = expires.jsValue
+        object[Strings.domain] = domain.jsValue
+        object[Strings.path] = path.jsValue
+        object[Strings.sameSite] = sameSite.jsValue
         self.init(unsafelyWrapping: object)
     }
 

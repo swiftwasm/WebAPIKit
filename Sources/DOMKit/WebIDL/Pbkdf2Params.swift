@@ -6,9 +6,9 @@ import JavaScriptKit
 public class Pbkdf2Params: BridgedDictionary {
     public convenience init(salt: BufferSource, iterations: UInt32, hash: HashAlgorithmIdentifier) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.salt] = salt.jsValue()
-        object[Strings.iterations] = iterations.jsValue()
-        object[Strings.hash] = hash.jsValue()
+        object[Strings.salt] = salt.jsValue
+        object[Strings.iterations] = iterations.jsValue
+        object[Strings.hash] = hash.jsValue
         self.init(unsafelyWrapping: object)
     }
 

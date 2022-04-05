@@ -50,7 +50,7 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createBuffer(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) -> AudioBuffer {
         let this = jsObject
-        return this[Strings.createBuffer].function!(this: this, arguments: [numberOfChannels.jsValue(), length.jsValue(), sampleRate.jsValue()]).fromJSValue()!
+        return this[Strings.createBuffer].function!(this: this, arguments: [numberOfChannels.jsValue, length.jsValue, sampleRate.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createBufferSource() -> AudioBufferSourceNode {
@@ -60,12 +60,12 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createChannelMerger(numberOfInputs: UInt32? = nil) -> ChannelMergerNode {
         let this = jsObject
-        return this[Strings.createChannelMerger].function!(this: this, arguments: [numberOfInputs?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createChannelMerger].function!(this: this, arguments: [numberOfInputs?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createChannelSplitter(numberOfOutputs: UInt32? = nil) -> ChannelSplitterNode {
         let this = jsObject
-        return this[Strings.createChannelSplitter].function!(this: this, arguments: [numberOfOutputs?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createChannelSplitter].function!(this: this, arguments: [numberOfOutputs?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createConstantSource() -> ConstantSourceNode {
@@ -80,7 +80,7 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createDelay(maxDelayTime: Double? = nil) -> DelayNode {
         let this = jsObject
-        return this[Strings.createDelay].function!(this: this, arguments: [maxDelayTime?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createDelay].function!(this: this, arguments: [maxDelayTime?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createDynamicsCompressor() -> DynamicsCompressorNode {
@@ -95,7 +95,7 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createIIRFilter(feedforward: [Double], feedback: [Double]) -> IIRFilterNode {
         let this = jsObject
-        return this[Strings.createIIRFilter].function!(this: this, arguments: [feedforward.jsValue(), feedback.jsValue()]).fromJSValue()!
+        return this[Strings.createIIRFilter].function!(this: this, arguments: [feedforward.jsValue, feedback.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createOscillator() -> OscillatorNode {
@@ -110,12 +110,12 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createPeriodicWave(real: [Float], imag: [Float], constraints: PeriodicWaveConstraints? = nil) -> PeriodicWave {
         let this = jsObject
-        return this[Strings.createPeriodicWave].function!(this: this, arguments: [real.jsValue(), imag.jsValue(), constraints?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createPeriodicWave].function!(this: this, arguments: [real.jsValue, imag.jsValue, constraints?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createScriptProcessor(bufferSize: UInt32? = nil, numberOfInputChannels: UInt32? = nil, numberOfOutputChannels: UInt32? = nil) -> ScriptProcessorNode {
         let this = jsObject
-        return this[Strings.createScriptProcessor].function!(this: this, arguments: [bufferSize?.jsValue() ?? .undefined, numberOfInputChannels?.jsValue() ?? .undefined, numberOfOutputChannels?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createScriptProcessor].function!(this: this, arguments: [bufferSize?.jsValue ?? .undefined, numberOfInputChannels?.jsValue ?? .undefined, numberOfOutputChannels?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createStereoPanner() -> StereoPannerNode {

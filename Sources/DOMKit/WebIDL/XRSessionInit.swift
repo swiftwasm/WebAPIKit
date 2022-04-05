@@ -6,10 +6,10 @@ import JavaScriptKit
 public class XRSessionInit: BridgedDictionary {
     public convenience init(depthSensing: XRDepthStateInit, domOverlay: XRDOMOverlayInit?, requiredFeatures: [JSValue], optionalFeatures: [JSValue]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.depthSensing] = depthSensing.jsValue()
-        object[Strings.domOverlay] = domOverlay.jsValue()
-        object[Strings.requiredFeatures] = requiredFeatures.jsValue()
-        object[Strings.optionalFeatures] = optionalFeatures.jsValue()
+        object[Strings.depthSensing] = depthSensing.jsValue
+        object[Strings.domOverlay] = domOverlay.jsValue
+        object[Strings.requiredFeatures] = requiredFeatures.jsValue
+        object[Strings.optionalFeatures] = optionalFeatures.jsValue
         self.init(unsafelyWrapping: object)
     }
 

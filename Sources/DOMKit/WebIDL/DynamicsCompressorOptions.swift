@@ -6,11 +6,11 @@ import JavaScriptKit
 public class DynamicsCompressorOptions: BridgedDictionary {
     public convenience init(attack: Float, knee: Float, ratio: Float, release: Float, threshold: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.attack] = attack.jsValue()
-        object[Strings.knee] = knee.jsValue()
-        object[Strings.ratio] = ratio.jsValue()
-        object[Strings.release] = release.jsValue()
-        object[Strings.threshold] = threshold.jsValue()
+        object[Strings.attack] = attack.jsValue
+        object[Strings.knee] = knee.jsValue
+        object[Strings.ratio] = ratio.jsValue
+        object[Strings.release] = release.jsValue
+        object[Strings.threshold] = threshold.jsValue
         self.init(unsafelyWrapping: object)
     }
 

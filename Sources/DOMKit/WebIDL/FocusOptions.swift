@@ -6,7 +6,7 @@ import JavaScriptKit
 public class FocusOptions: BridgedDictionary {
     public convenience init(preventScroll: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.preventScroll] = preventScroll.jsValue()
+        object[Strings.preventScroll] = preventScroll.jsValue
         self.init(unsafelyWrapping: object)
     }
 

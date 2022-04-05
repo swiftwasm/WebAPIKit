@@ -13,6 +13,6 @@ public class CanvasFilter: JSBridgedClass {
     }
 
     @inlinable public convenience init(filters: CanvasFilterInput_or_seq_of_CanvasFilterInput? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [filters?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [filters?.jsValue ?? .undefined]))
     }
 }

@@ -44,17 +44,17 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
 
     @inlinable public func open(method: String, url: String) {
         let this = jsObject
-        _ = this[Strings.open].function!(this: this, arguments: [method.jsValue(), url.jsValue()])
+        _ = this[Strings.open].function!(this: this, arguments: [method.jsValue, url.jsValue])
     }
 
     @inlinable public func open(method: String, url: String, async: Bool, username: String? = nil, password: String? = nil) {
         let this = jsObject
-        _ = this[Strings.open].function!(this: this, arguments: [method.jsValue(), url.jsValue(), async.jsValue(), username?.jsValue() ?? .undefined, password?.jsValue() ?? .undefined])
+        _ = this[Strings.open].function!(this: this, arguments: [method.jsValue, url.jsValue, async.jsValue, username?.jsValue ?? .undefined, password?.jsValue ?? .undefined])
     }
 
     @inlinable public func setRequestHeader(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.setRequestHeader].function!(this: this, arguments: [name.jsValue(), value.jsValue()])
+        _ = this[Strings.setRequestHeader].function!(this: this, arguments: [name.jsValue, value.jsValue])
     }
 
     @ReadWriteAttribute
@@ -68,7 +68,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
 
     @inlinable public func send(body: Document_or_XMLHttpRequestBodyInit? = nil) {
         let this = jsObject
-        _ = this[Strings.send].function!(this: this, arguments: [body?.jsValue() ?? .undefined])
+        _ = this[Strings.send].function!(this: this, arguments: [body?.jsValue ?? .undefined])
     }
 
     @inlinable public func abort() {
@@ -87,7 +87,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
 
     @inlinable public func getResponseHeader(name: String) -> String? {
         let this = jsObject
-        return this[Strings.getResponseHeader].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.getResponseHeader].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getAllResponseHeaders() -> String {
@@ -97,7 +97,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
 
     @inlinable public func overrideMimeType(mime: String) {
         let this = jsObject
-        _ = this[Strings.overrideMimeType].function!(this: this, arguments: [mime.jsValue()])
+        _ = this[Strings.overrideMimeType].function!(this: this, arguments: [mime.jsValue])
     }
 
     @ReadWriteAttribute

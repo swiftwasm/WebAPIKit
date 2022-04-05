@@ -15,7 +15,7 @@ public class AudioDecoder: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: AudioDecoderInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue]))
     }
 
     @ReadonlyAttribute
@@ -26,12 +26,12 @@ public class AudioDecoder: JSBridgedClass {
 
     @inlinable public func configure(config: AudioDecoderConfig) {
         let this = jsObject
-        _ = this[Strings.configure].function!(this: this, arguments: [config.jsValue()])
+        _ = this[Strings.configure].function!(this: this, arguments: [config.jsValue])
     }
 
     @inlinable public func decode(chunk: EncodedAudioChunk) {
         let this = jsObject
-        _ = this[Strings.decode].function!(this: this, arguments: [chunk.jsValue()])
+        _ = this[Strings.decode].function!(this: this, arguments: [chunk.jsValue])
     }
 
     @inlinable public func flush() -> JSPromise {
@@ -43,7 +43,7 @@ public class AudioDecoder: JSBridgedClass {
     @inlinable public func flush() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.flush].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func reset() {
@@ -58,13 +58,13 @@ public class AudioDecoder: JSBridgedClass {
 
     @inlinable public static func isConfigSupported(config: AudioDecoderConfig) -> JSPromise {
         let this = constructor
-        return this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue()]).fromJSValue()!
+        return this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public static func isConfigSupported(config: AudioDecoderConfig) async throws -> AudioDecoderSupport {
         let this = constructor
-        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

@@ -32,7 +32,7 @@ public class ValueIterableAsyncIterator<SequenceType: JSBridgedClass & AsyncSequ
 
     public func next() async throws -> SequenceType.Element? {
         let promise = JSPromise(from: iterator.next!())!
-        let result = try await promise.get()
+        let result = try await promise.value
         let done = result.done.boolean!
         guard !done else { return nil }
 

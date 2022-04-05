@@ -6,14 +6,14 @@ import JavaScriptKit
 public class CSSNumericType: BridgedDictionary {
     public convenience init(length: Int32, angle: Int32, time: Int32, frequency: Int32, resolution: Int32, flex: Int32, percent: Int32, percentHint: CSSNumericBaseType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.length] = length.jsValue()
-        object[Strings.angle] = angle.jsValue()
-        object[Strings.time] = time.jsValue()
-        object[Strings.frequency] = frequency.jsValue()
-        object[Strings.resolution] = resolution.jsValue()
-        object[Strings.flex] = flex.jsValue()
-        object[Strings.percent] = percent.jsValue()
-        object[Strings.percentHint] = percentHint.jsValue()
+        object[Strings.length] = length.jsValue
+        object[Strings.angle] = angle.jsValue
+        object[Strings.time] = time.jsValue
+        object[Strings.frequency] = frequency.jsValue
+        object[Strings.resolution] = resolution.jsValue
+        object[Strings.flex] = flex.jsValue
+        object[Strings.percent] = percent.jsValue
+        object[Strings.percentHint] = percentHint.jsValue
         self.init(unsafelyWrapping: object)
     }
 

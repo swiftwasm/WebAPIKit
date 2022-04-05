@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MemoryDescriptor: BridgedDictionary {
     public convenience init(initial: UInt32, maximum: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.initial] = initial.jsValue()
-        object[Strings.maximum] = maximum.jsValue()
+        object[Strings.initial] = initial.jsValue
+        object[Strings.maximum] = maximum.jsValue
         self.init(unsafelyWrapping: object)
     }
 

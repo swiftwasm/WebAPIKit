@@ -6,14 +6,14 @@ import JavaScriptKit
 public class GeolocationSensorReading: BridgedDictionary {
     public convenience init(timestamp: DOMHighResTimeStamp?, latitude: Double?, longitude: Double?, altitude: Double?, accuracy: Double?, altitudeAccuracy: Double?, heading: Double?, speed: Double?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.timestamp] = timestamp.jsValue()
-        object[Strings.latitude] = latitude.jsValue()
-        object[Strings.longitude] = longitude.jsValue()
-        object[Strings.altitude] = altitude.jsValue()
-        object[Strings.accuracy] = accuracy.jsValue()
-        object[Strings.altitudeAccuracy] = altitudeAccuracy.jsValue()
-        object[Strings.heading] = heading.jsValue()
-        object[Strings.speed] = speed.jsValue()
+        object[Strings.timestamp] = timestamp.jsValue
+        object[Strings.latitude] = latitude.jsValue
+        object[Strings.longitude] = longitude.jsValue
+        object[Strings.altitude] = altitude.jsValue
+        object[Strings.accuracy] = accuracy.jsValue
+        object[Strings.altitudeAccuracy] = altitudeAccuracy.jsValue
+        object[Strings.heading] = heading.jsValue
+        object[Strings.speed] = speed.jsValue
         self.init(unsafelyWrapping: object)
     }
 

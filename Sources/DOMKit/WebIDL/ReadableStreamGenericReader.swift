@@ -9,13 +9,13 @@ public extension ReadableStreamGenericReader {
 
     @inlinable func cancel(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable func cancel(reason: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 }

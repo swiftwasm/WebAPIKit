@@ -14,12 +14,12 @@ public class Memory: JSBridgedClass {
     }
 
     @inlinable public convenience init(descriptor: MemoryDescriptor) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptor.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [descriptor.jsValue]))
     }
 
     @inlinable public func grow(delta: UInt32) -> UInt32 {
         let this = jsObject
-        return this[Strings.grow].function!(this: this, arguments: [delta.jsValue()]).fromJSValue()!
+        return this[Strings.grow].function!(this: this, arguments: [delta.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute

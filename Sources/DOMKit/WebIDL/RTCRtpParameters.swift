@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RTCRtpParameters: BridgedDictionary {
     public convenience init(headerExtensions: [RTCRtpHeaderExtensionParameters], rtcp: RTCRtcpParameters, codecs: [RTCRtpCodecParameters]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.headerExtensions] = headerExtensions.jsValue()
-        object[Strings.rtcp] = rtcp.jsValue()
-        object[Strings.codecs] = codecs.jsValue()
+        object[Strings.headerExtensions] = headerExtensions.jsValue
+        object[Strings.rtcp] = rtcp.jsValue
+        object[Strings.codecs] = codecs.jsValue
         self.init(unsafelyWrapping: object)
     }
 

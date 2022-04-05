@@ -18,16 +18,16 @@ public class TrustedTypePolicy: JSBridgedClass {
 
     @inlinable public func createHTML(input: String, arguments: JSValue...) -> TrustedHTML {
         let this = jsObject
-        return this[Strings.createHTML].function!(this: this, arguments: [input.jsValue()] + arguments.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.createHTML].function!(this: this, arguments: [input.jsValue] + arguments.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func createScript(input: String, arguments: JSValue...) -> TrustedScript {
         let this = jsObject
-        return this[Strings.createScript].function!(this: this, arguments: [input.jsValue()] + arguments.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.createScript].function!(this: this, arguments: [input.jsValue] + arguments.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func createScriptURL(input: String, arguments: JSValue...) -> TrustedScriptURL {
         let this = jsObject
-        return this[Strings.createScriptURL].function!(this: this, arguments: [input.jsValue()] + arguments.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.createScriptURL].function!(this: this, arguments: [input.jsValue] + arguments.map(\.jsValue)).fromJSValue()!
     }
 }

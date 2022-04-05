@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PromiseRejectionEventInit: BridgedDictionary {
     public convenience init(promise: JSPromise, reason: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.promise] = promise.jsValue()
-        object[Strings.reason] = reason.jsValue()
+        object[Strings.promise] = promise.jsValue
+        object[Strings.reason] = reason.jsValue
         self.init(unsafelyWrapping: object)
     }
 

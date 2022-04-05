@@ -16,6 +16,6 @@ public class OrientationSensor: Sensor {
 
     @inlinable public func populateMatrix(targetMatrix: RotationMatrixType) {
         let this = jsObject
-        _ = this[Strings.populateMatrix].function!(this: this, arguments: [targetMatrix.jsValue()])
+        _ = this[Strings.populateMatrix].function!(this: this, arguments: [targetMatrix.jsValue])
     }
 }

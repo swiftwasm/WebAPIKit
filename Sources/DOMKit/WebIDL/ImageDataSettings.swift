@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ImageDataSettings: BridgedDictionary {
     public convenience init(colorSpace: PredefinedColorSpace) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.colorSpace] = colorSpace.jsValue()
+        object[Strings.colorSpace] = colorSpace.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -16,12 +16,12 @@ public class ResizeObserver: JSBridgedClass {
 
     @inlinable public func observe(target: Element, options: ResizeObserverOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue(), options?.jsValue() ?? .undefined])
+        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue, options?.jsValue ?? .undefined])
     }
 
     @inlinable public func unobserve(target: Element) {
         let this = jsObject
-        _ = this[Strings.unobserve].function!(this: this, arguments: [target.jsValue()])
+        _ = this[Strings.unobserve].function!(this: this, arguments: [target.jsValue])
     }
 
     @inlinable public func disconnect() {

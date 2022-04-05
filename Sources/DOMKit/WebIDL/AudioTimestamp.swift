@@ -6,8 +6,8 @@ import JavaScriptKit
 public class AudioTimestamp: BridgedDictionary {
     public convenience init(contextTime: Double, performanceTime: DOMHighResTimeStamp) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.contextTime] = contextTime.jsValue()
-        object[Strings.performanceTime] = performanceTime.jsValue()
+        object[Strings.contextTime] = contextTime.jsValue
+        object[Strings.performanceTime] = performanceTime.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -16,16 +16,16 @@ public class ANGLE_instanced_arrays: JSBridgedClass {
 
     @inlinable public func drawArraysInstancedANGLE(mode: GLenum, first: GLint, count: GLsizei, primcount: GLsizei) {
         let this = jsObject
-        _ = this[Strings.drawArraysInstancedANGLE].function!(this: this, arguments: [mode.jsValue(), first.jsValue(), count.jsValue(), primcount.jsValue()])
+        _ = this[Strings.drawArraysInstancedANGLE].function!(this: this, arguments: [mode.jsValue, first.jsValue, count.jsValue, primcount.jsValue])
     }
 
     @inlinable public func drawElementsInstancedANGLE(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr, primcount: GLsizei) {
         let this = jsObject
-        _ = this[Strings.drawElementsInstancedANGLE].function!(this: this, arguments: [mode.jsValue(), count.jsValue(), type.jsValue(), offset.jsValue(), primcount.jsValue()])
+        _ = this[Strings.drawElementsInstancedANGLE].function!(this: this, arguments: [mode.jsValue, count.jsValue, type.jsValue, offset.jsValue, primcount.jsValue])
     }
 
     @inlinable public func vertexAttribDivisorANGLE(index: GLuint, divisor: GLuint) {
         let this = jsObject
-        _ = this[Strings.vertexAttribDivisorANGLE].function!(this: this, arguments: [index.jsValue(), divisor.jsValue()])
+        _ = this[Strings.vertexAttribDivisorANGLE].function!(this: this, arguments: [index.jsValue, divisor.jsValue])
     }
 }

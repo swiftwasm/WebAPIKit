@@ -6,9 +6,9 @@ import JavaScriptKit
 public class MemoryBreakdownEntry: BridgedDictionary {
     public convenience init(bytes: UInt64, attribution: [MemoryAttribution], types: [String]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.bytes] = bytes.jsValue()
-        object[Strings.attribution] = attribution.jsValue()
-        object[Strings.types] = types.jsValue()
+        object[Strings.bytes] = bytes.jsValue
+        object[Strings.attribution] = attribution.jsValue
+        object[Strings.types] = types.jsValue
         self.init(unsafelyWrapping: object)
     }
 

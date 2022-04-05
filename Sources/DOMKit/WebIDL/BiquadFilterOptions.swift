@@ -6,11 +6,11 @@ import JavaScriptKit
 public class BiquadFilterOptions: BridgedDictionary {
     public convenience init(type: BiquadFilterType, Q: Float, detune: Float, frequency: Float, gain: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.Q] = Q.jsValue()
-        object[Strings.detune] = detune.jsValue()
-        object[Strings.frequency] = frequency.jsValue()
-        object[Strings.gain] = gain.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.Q] = Q.jsValue
+        object[Strings.detune] = detune.jsValue
+        object[Strings.frequency] = frequency.jsValue
+        object[Strings.gain] = gain.jsValue
         self.init(unsafelyWrapping: object)
     }
 

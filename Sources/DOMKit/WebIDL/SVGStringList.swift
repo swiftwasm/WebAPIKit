@@ -27,7 +27,7 @@ public class SVGStringList: JSBridgedClass {
 
     @inlinable public func initialize(newItem: String) -> String {
         let this = jsObject
-        return this[Strings.initialize].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
+        return this[Strings.initialize].function!(this: this, arguments: [newItem.jsValue]).fromJSValue()!
     }
 
     @inlinable public subscript(key: Int) -> String {
@@ -36,22 +36,22 @@ public class SVGStringList: JSBridgedClass {
 
     @inlinable public func insertItemBefore(newItem: String, index: UInt32) -> String {
         let this = jsObject
-        return this[Strings.insertItemBefore].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
+        return this[Strings.insertItemBefore].function!(this: this, arguments: [newItem.jsValue, index.jsValue]).fromJSValue()!
     }
 
     @inlinable public func replaceItem(newItem: String, index: UInt32) -> String {
         let this = jsObject
-        return this[Strings.replaceItem].function!(this: this, arguments: [newItem.jsValue(), index.jsValue()]).fromJSValue()!
+        return this[Strings.replaceItem].function!(this: this, arguments: [newItem.jsValue, index.jsValue]).fromJSValue()!
     }
 
     @inlinable public func removeItem(index: UInt32) -> String {
         let this = jsObject
-        return this[Strings.removeItem].function!(this: this, arguments: [index.jsValue()]).fromJSValue()!
+        return this[Strings.removeItem].function!(this: this, arguments: [index.jsValue]).fromJSValue()!
     }
 
     @inlinable public func appendItem(newItem: String) -> String {
         let this = jsObject
-        return this[Strings.appendItem].function!(this: this, arguments: [newItem.jsValue()]).fromJSValue()!
+        return this[Strings.appendItem].function!(this: this, arguments: [newItem.jsValue]).fromJSValue()!
     }
 
     // XXX: unsupported setter for keys of type UInt32

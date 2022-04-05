@@ -17,7 +17,7 @@ public class EncodedVideoChunk: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: EncodedVideoChunkInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`.jsValue]))
     }
 
     @ReadonlyAttribute
@@ -34,6 +34,6 @@ public class EncodedVideoChunk: JSBridgedClass {
 
     @inlinable public func copyTo(destination: BufferSource) {
         let this = jsObject
-        _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue()])
+        _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue])
     }
 }

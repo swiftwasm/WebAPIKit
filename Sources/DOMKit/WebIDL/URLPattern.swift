@@ -21,17 +21,17 @@ public class URLPattern: JSBridgedClass {
     }
 
     @inlinable public convenience init(input: URLPatternInput? = nil, baseURL: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [input?.jsValue ?? .undefined, baseURL?.jsValue ?? .undefined]))
     }
 
     @inlinable public func test(input: URLPatternInput? = nil, baseURL: String? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.test].function!(this: this, arguments: [input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.test].function!(this: this, arguments: [input?.jsValue ?? .undefined, baseURL?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func exec(input: URLPatternInput? = nil, baseURL: String? = nil) -> URLPatternResult? {
         let this = jsObject
-        return this[Strings.exec].function!(this: this, arguments: [input?.jsValue() ?? .undefined, baseURL?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.exec].function!(this: this, arguments: [input?.jsValue ?? .undefined, baseURL?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

@@ -26,7 +26,7 @@ public class PushSubscription: JSBridgedClass {
 
     @inlinable public func getKey(name: PushEncryptionKeyName) -> ArrayBuffer? {
         let this = jsObject
-        return this[Strings.getKey].function!(this: this, arguments: [name.jsValue()]).fromJSValue()!
+        return this[Strings.getKey].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
     @inlinable public func unsubscribe() -> JSPromise {
@@ -38,7 +38,7 @@ public class PushSubscription: JSBridgedClass {
     @inlinable public func unsubscribe() async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.unsubscribe].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func toJSON() -> PushSubscriptionJSON {

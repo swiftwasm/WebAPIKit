@@ -54,7 +54,7 @@ public class MouseEvent: UIEvent {
     public var movementY: Double
 
     @inlinable public convenience init(type: String, eventInitDict: MouseEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -92,25 +92,25 @@ public class MouseEvent: UIEvent {
 
     @inlinable public func getModifierState(keyArg: String) -> Bool {
         let this = jsObject
-        return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue()]).fromJSValue()!
+        return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue]).fromJSValue()!
     }
 
     @inlinable public func initMouseEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil, screenXArg: Int32? = nil, screenYArg: Int32? = nil, clientXArg: Int32? = nil, clientYArg: Int32? = nil, ctrlKeyArg: Bool? = nil, altKeyArg: Bool? = nil, shiftKeyArg: Bool? = nil, metaKeyArg: Bool? = nil, buttonArg: Int16? = nil, relatedTargetArg: EventTarget? = nil) {
-        let _arg0 = typeArg.jsValue()
-        let _arg1 = bubblesArg?.jsValue() ?? .undefined
-        let _arg2 = cancelableArg?.jsValue() ?? .undefined
-        let _arg3 = viewArg?.jsValue() ?? .undefined
-        let _arg4 = detailArg?.jsValue() ?? .undefined
-        let _arg5 = screenXArg?.jsValue() ?? .undefined
-        let _arg6 = screenYArg?.jsValue() ?? .undefined
-        let _arg7 = clientXArg?.jsValue() ?? .undefined
-        let _arg8 = clientYArg?.jsValue() ?? .undefined
-        let _arg9 = ctrlKeyArg?.jsValue() ?? .undefined
-        let _arg10 = altKeyArg?.jsValue() ?? .undefined
-        let _arg11 = shiftKeyArg?.jsValue() ?? .undefined
-        let _arg12 = metaKeyArg?.jsValue() ?? .undefined
-        let _arg13 = buttonArg?.jsValue() ?? .undefined
-        let _arg14 = relatedTargetArg?.jsValue() ?? .undefined
+        let _arg0 = typeArg.jsValue
+        let _arg1 = bubblesArg?.jsValue ?? .undefined
+        let _arg2 = cancelableArg?.jsValue ?? .undefined
+        let _arg3 = viewArg?.jsValue ?? .undefined
+        let _arg4 = detailArg?.jsValue ?? .undefined
+        let _arg5 = screenXArg?.jsValue ?? .undefined
+        let _arg6 = screenYArg?.jsValue ?? .undefined
+        let _arg7 = clientXArg?.jsValue ?? .undefined
+        let _arg8 = clientYArg?.jsValue ?? .undefined
+        let _arg9 = ctrlKeyArg?.jsValue ?? .undefined
+        let _arg10 = altKeyArg?.jsValue ?? .undefined
+        let _arg11 = shiftKeyArg?.jsValue ?? .undefined
+        let _arg12 = metaKeyArg?.jsValue ?? .undefined
+        let _arg13 = buttonArg?.jsValue ?? .undefined
+        let _arg14 = relatedTargetArg?.jsValue ?? .undefined
         let this = jsObject
         _ = this[Strings.initMouseEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14])
     }

@@ -16,11 +16,11 @@ public class XRRay: JSBridgedClass {
     }
 
     @inlinable public convenience init(origin: DOMPointInit? = nil, direction: XRRayDirectionInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [origin?.jsValue() ?? .undefined, direction?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [origin?.jsValue ?? .undefined, direction?.jsValue ?? .undefined]))
     }
 
     @inlinable public convenience init(transform: XRRigidTransform) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [transform.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [transform.jsValue]))
     }
 
     @ReadonlyAttribute

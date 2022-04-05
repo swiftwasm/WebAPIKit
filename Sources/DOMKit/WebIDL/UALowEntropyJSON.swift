@@ -6,9 +6,9 @@ import JavaScriptKit
 public class UALowEntropyJSON: BridgedDictionary {
     public convenience init(brands: [NavigatorUABrandVersion], mobile: Bool, platform: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.brands] = brands.jsValue()
-        object[Strings.mobile] = mobile.jsValue()
-        object[Strings.platform] = platform.jsValue()
+        object[Strings.brands] = brands.jsValue
+        object[Strings.mobile] = mobile.jsValue
+        object[Strings.platform] = platform.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -12,17 +12,17 @@ public class StylePropertyMap: StylePropertyMapReadOnly {
 
     @inlinable public func set(property: String, values: CSSStyleValue_or_String...) {
         let this = jsObject
-        _ = this[Strings.set].function!(this: this, arguments: [property.jsValue()] + values.map { $0.jsValue() })
+        _ = this[Strings.set].function!(this: this, arguments: [property.jsValue] + values.map(\.jsValue))
     }
 
     @inlinable public func append(property: String, values: CSSStyleValue_or_String...) {
         let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: [property.jsValue()] + values.map { $0.jsValue() })
+        _ = this[Strings.append].function!(this: this, arguments: [property.jsValue] + values.map(\.jsValue))
     }
 
     @inlinable public func delete(property: String) {
         let this = jsObject
-        _ = this[Strings.delete].function!(this: this, arguments: [property.jsValue()])
+        _ = this[Strings.delete].function!(this: this, arguments: [property.jsValue])
     }
 
     @inlinable public func clear() {

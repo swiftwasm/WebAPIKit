@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MLPadOptions: BridgedDictionary {
     public convenience init(mode: MLPaddingMode, value: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mode] = mode.jsValue()
-        object[Strings.value] = value.jsValue()
+        object[Strings.mode] = mode.jsValue
+        object[Strings.value] = value.jsValue
         self.init(unsafelyWrapping: object)
     }
 

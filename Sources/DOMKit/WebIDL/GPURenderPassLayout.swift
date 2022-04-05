@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPURenderPassLayout: BridgedDictionary {
     public convenience init(colorFormats: [GPUTextureFormat?], depthStencilFormat: GPUTextureFormat, sampleCount: GPUSize32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.colorFormats] = colorFormats.jsValue()
-        object[Strings.depthStencilFormat] = depthStencilFormat.jsValue()
-        object[Strings.sampleCount] = sampleCount.jsValue()
+        object[Strings.colorFormats] = colorFormats.jsValue
+        object[Strings.depthStencilFormat] = depthStencilFormat.jsValue
+        object[Strings.sampleCount] = sampleCount.jsValue
         self.init(unsafelyWrapping: object)
     }
 

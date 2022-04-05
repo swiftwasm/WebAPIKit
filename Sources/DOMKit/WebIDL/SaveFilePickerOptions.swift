@@ -6,7 +6,7 @@ import JavaScriptKit
 public class SaveFilePickerOptions: BridgedDictionary {
     public convenience init(suggestedName: String?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.suggestedName] = suggestedName.jsValue()
+        object[Strings.suggestedName] = suggestedName.jsValue
         self.init(unsafelyWrapping: object)
     }
 

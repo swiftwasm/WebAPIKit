@@ -12,7 +12,7 @@ public class WebGLContextEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInit: WebGLContextEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInit?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInit?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

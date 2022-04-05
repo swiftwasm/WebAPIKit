@@ -6,10 +6,10 @@ import JavaScriptKit
 public class XRProjectionLayerInit: BridgedDictionary {
     public convenience init(textureType: XRTextureType, colorFormat: GLenum, depthFormat: GLenum, scaleFactor: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.textureType] = textureType.jsValue()
-        object[Strings.colorFormat] = colorFormat.jsValue()
-        object[Strings.depthFormat] = depthFormat.jsValue()
-        object[Strings.scaleFactor] = scaleFactor.jsValue()
+        object[Strings.textureType] = textureType.jsValue
+        object[Strings.colorFormat] = colorFormat.jsValue
+        object[Strings.depthFormat] = depthFormat.jsValue
+        object[Strings.scaleFactor] = scaleFactor.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -12,7 +12,7 @@ public class USBConnectionEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: USBConnectionEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
     }
 
     @ReadonlyAttribute

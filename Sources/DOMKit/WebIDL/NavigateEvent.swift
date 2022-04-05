@@ -19,7 +19,7 @@ public class NavigateEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInit: NavigateEventInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInit.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInit.jsValue]))
     }
 
     @ReadonlyAttribute
@@ -48,6 +48,6 @@ public class NavigateEvent: Event {
 
     @inlinable public func transitionWhile(newNavigationAction: JSPromise) {
         let this = jsObject
-        _ = this[Strings.transitionWhile].function!(this: this, arguments: [newNavigationAction.jsValue()])
+        _ = this[Strings.transitionWhile].function!(this: this, arguments: [newNavigationAction.jsValue])
     }
 }

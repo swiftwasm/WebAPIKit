@@ -14,6 +14,6 @@ public class MLGraph: JSBridgedClass {
 
     @inlinable public func compute(inputs: MLNamedInputs, outputs: MLNamedOutputs) {
         let this = jsObject
-        _ = this[Strings.compute].function!(this: this, arguments: [inputs.jsValue(), outputs.jsValue()])
+        _ = this[Strings.compute].function!(this: this, arguments: [inputs.jsValue, outputs.jsValue])
     }
 }

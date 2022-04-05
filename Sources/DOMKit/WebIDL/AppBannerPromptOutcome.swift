@@ -18,5 +18,5 @@ public enum AppBannerPromptOutcome: JSString, JSValueCompatible {
         self.init(rawValue: JSString(string))
     }
 
-    @inlinable public func jsValue() -> JSValue { rawValue.jsValue() }
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }

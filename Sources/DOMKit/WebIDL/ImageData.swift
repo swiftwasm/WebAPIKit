@@ -17,11 +17,11 @@ public class ImageData: JSBridgedClass {
     }
 
     @inlinable public convenience init(sw: UInt32, sh: UInt32, settings: ImageDataSettings? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [sw.jsValue(), sh.jsValue(), settings?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [sw.jsValue, sh.jsValue, settings?.jsValue ?? .undefined]))
     }
 
     @inlinable public convenience init(data: Uint8ClampedArray, sw: UInt32, sh: UInt32? = nil, settings: ImageDataSettings? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data.jsValue(), sw.jsValue(), sh?.jsValue() ?? .undefined, settings?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data.jsValue, sw.jsValue, sh?.jsValue ?? .undefined, settings?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

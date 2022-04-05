@@ -6,8 +6,8 @@ import JavaScriptKit
 public class IDBDatabaseInfo: BridgedDictionary {
     public convenience init(name: String, version: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue()
-        object[Strings.version] = version.jsValue()
+        object[Strings.name] = name.jsValue
+        object[Strings.version] = version.jsValue
         self.init(unsafelyWrapping: object)
     }
 

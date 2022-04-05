@@ -23,7 +23,7 @@ public class PointerEvent: MouseEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: PointerEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

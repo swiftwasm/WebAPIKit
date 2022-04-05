@@ -16,16 +16,16 @@ public class XRWebGLBinding: JSBridgedClass {
 
     @inlinable public func getDepthInformation(view: XRView) -> XRWebGLDepthInformation? {
         let this = jsObject
-        return this[Strings.getDepthInformation].function!(this: this, arguments: [view.jsValue()]).fromJSValue()!
+        return this[Strings.getDepthInformation].function!(this: this, arguments: [view.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getReflectionCubeMap(lightProbe: XRLightProbe) -> WebGLTexture? {
         let this = jsObject
-        return this[Strings.getReflectionCubeMap].function!(this: this, arguments: [lightProbe.jsValue()]).fromJSValue()!
+        return this[Strings.getReflectionCubeMap].function!(this: this, arguments: [lightProbe.jsValue]).fromJSValue()!
     }
 
     @inlinable public convenience init(session: XRSession, context: XRWebGLRenderingContext) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue(), context.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue, context.jsValue]))
     }
 
     @ReadonlyAttribute
@@ -36,36 +36,36 @@ public class XRWebGLBinding: JSBridgedClass {
 
     @inlinable public func createProjectionLayer(init: XRProjectionLayerInit? = nil) -> XRProjectionLayer {
         let this = jsObject
-        return this[Strings.createProjectionLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createProjectionLayer].function!(this: this, arguments: [`init`?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createQuadLayer(init: XRQuadLayerInit? = nil) -> XRQuadLayer {
         let this = jsObject
-        return this[Strings.createQuadLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createQuadLayer].function!(this: this, arguments: [`init`?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createCylinderLayer(init: XRCylinderLayerInit? = nil) -> XRCylinderLayer {
         let this = jsObject
-        return this[Strings.createCylinderLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createCylinderLayer].function!(this: this, arguments: [`init`?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createEquirectLayer(init: XREquirectLayerInit? = nil) -> XREquirectLayer {
         let this = jsObject
-        return this[Strings.createEquirectLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createEquirectLayer].function!(this: this, arguments: [`init`?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createCubeLayer(init: XRCubeLayerInit? = nil) -> XRCubeLayer {
         let this = jsObject
-        return this[Strings.createCubeLayer].function!(this: this, arguments: [`init`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createCubeLayer].function!(this: this, arguments: [`init`?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func getSubImage(layer: XRCompositionLayer, frame: XRFrame, eye: XREye? = nil) -> XRWebGLSubImage {
         let this = jsObject
-        return this[Strings.getSubImage].function!(this: this, arguments: [layer.jsValue(), frame.jsValue(), eye?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getSubImage].function!(this: this, arguments: [layer.jsValue, frame.jsValue, eye?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func getViewSubImage(layer: XRProjectionLayer, view: XRView) -> XRWebGLSubImage {
         let this = jsObject
-        return this[Strings.getViewSubImage].function!(this: this, arguments: [layer.jsValue(), view.jsValue()]).fromJSValue()!
+        return this[Strings.getViewSubImage].function!(this: this, arguments: [layer.jsValue, view.jsValue]).fromJSValue()!
     }
 }

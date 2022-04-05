@@ -6,20 +6,20 @@ import JavaScriptKit
 public class PannerOptions: BridgedDictionary {
     public convenience init(panningModel: PanningModelType, distanceModel: DistanceModelType, positionX: Float, positionY: Float, positionZ: Float, orientationX: Float, orientationY: Float, orientationZ: Float, refDistance: Double, maxDistance: Double, rolloffFactor: Double, coneInnerAngle: Double, coneOuterAngle: Double, coneOuterGain: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.panningModel] = panningModel.jsValue()
-        object[Strings.distanceModel] = distanceModel.jsValue()
-        object[Strings.positionX] = positionX.jsValue()
-        object[Strings.positionY] = positionY.jsValue()
-        object[Strings.positionZ] = positionZ.jsValue()
-        object[Strings.orientationX] = orientationX.jsValue()
-        object[Strings.orientationY] = orientationY.jsValue()
-        object[Strings.orientationZ] = orientationZ.jsValue()
-        object[Strings.refDistance] = refDistance.jsValue()
-        object[Strings.maxDistance] = maxDistance.jsValue()
-        object[Strings.rolloffFactor] = rolloffFactor.jsValue()
-        object[Strings.coneInnerAngle] = coneInnerAngle.jsValue()
-        object[Strings.coneOuterAngle] = coneOuterAngle.jsValue()
-        object[Strings.coneOuterGain] = coneOuterGain.jsValue()
+        object[Strings.panningModel] = panningModel.jsValue
+        object[Strings.distanceModel] = distanceModel.jsValue
+        object[Strings.positionX] = positionX.jsValue
+        object[Strings.positionY] = positionY.jsValue
+        object[Strings.positionZ] = positionZ.jsValue
+        object[Strings.orientationX] = orientationX.jsValue
+        object[Strings.orientationY] = orientationY.jsValue
+        object[Strings.orientationZ] = orientationZ.jsValue
+        object[Strings.refDistance] = refDistance.jsValue
+        object[Strings.maxDistance] = maxDistance.jsValue
+        object[Strings.rolloffFactor] = rolloffFactor.jsValue
+        object[Strings.coneInnerAngle] = coneInnerAngle.jsValue
+        object[Strings.coneOuterAngle] = coneOuterAngle.jsValue
+        object[Strings.coneOuterGain] = coneOuterGain.jsValue
         self.init(unsafelyWrapping: object)
     }
 

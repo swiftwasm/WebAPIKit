@@ -12,12 +12,12 @@ public class Text: CharacterData, GeometryUtils, Slottable {
     }
 
     @inlinable public convenience init(data: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [data?.jsValue ?? .undefined]))
     }
 
     @inlinable public func splitText(offset: UInt32) -> Self {
         let this = jsObject
-        return this[Strings.splitText].function!(this: this, arguments: [offset.jsValue()]).fromJSValue()!
+        return this[Strings.splitText].function!(this: this, arguments: [offset.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUStorageTextureBindingLayout: BridgedDictionary {
     public convenience init(access: GPUStorageTextureAccess, format: GPUTextureFormat, viewDimension: GPUTextureViewDimension) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.access] = access.jsValue()
-        object[Strings.format] = format.jsValue()
-        object[Strings.viewDimension] = viewDimension.jsValue()
+        object[Strings.access] = access.jsValue
+        object[Strings.format] = format.jsValue
+        object[Strings.viewDimension] = viewDimension.jsValue
         self.init(unsafelyWrapping: object)
     }
 

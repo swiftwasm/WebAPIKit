@@ -9,8 +9,8 @@ public class UnderlyingSource: BridgedDictionary {
         ClosureAttribute1[Strings.start, in: object] = start
         ClosureAttribute1[Strings.pull, in: object] = pull
         ClosureAttribute1[Strings.cancel, in: object] = cancel
-        object[Strings.type] = type.jsValue()
-        object[Strings.autoAllocateChunkSize] = autoAllocateChunkSize.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.autoAllocateChunkSize] = autoAllocateChunkSize.jsValue
         self.init(unsafelyWrapping: object)
     }
 

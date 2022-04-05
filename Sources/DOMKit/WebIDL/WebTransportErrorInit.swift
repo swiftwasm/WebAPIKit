@@ -6,8 +6,8 @@ import JavaScriptKit
 public class WebTransportErrorInit: BridgedDictionary {
     public convenience init(streamErrorCode: UInt8, message: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.streamErrorCode] = streamErrorCode.jsValue()
-        object[Strings.message] = message.jsValue()
+        object[Strings.streamErrorCode] = streamErrorCode.jsValue
+        object[Strings.message] = message.jsValue
         self.init(unsafelyWrapping: object)
     }
 

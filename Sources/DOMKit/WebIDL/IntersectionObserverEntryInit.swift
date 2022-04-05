@@ -6,13 +6,13 @@ import JavaScriptKit
 public class IntersectionObserverEntryInit: BridgedDictionary {
     public convenience init(time: DOMHighResTimeStamp, rootBounds: DOMRectInit?, boundingClientRect: DOMRectInit, intersectionRect: DOMRectInit, isIntersecting: Bool, intersectionRatio: Double, target: Element) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.time] = time.jsValue()
-        object[Strings.rootBounds] = rootBounds.jsValue()
-        object[Strings.boundingClientRect] = boundingClientRect.jsValue()
-        object[Strings.intersectionRect] = intersectionRect.jsValue()
-        object[Strings.isIntersecting] = isIntersecting.jsValue()
-        object[Strings.intersectionRatio] = intersectionRatio.jsValue()
-        object[Strings.target] = target.jsValue()
+        object[Strings.time] = time.jsValue
+        object[Strings.rootBounds] = rootBounds.jsValue
+        object[Strings.boundingClientRect] = boundingClientRect.jsValue
+        object[Strings.intersectionRect] = intersectionRect.jsValue
+        object[Strings.isIntersecting] = isIntersecting.jsValue
+        object[Strings.intersectionRatio] = intersectionRatio.jsValue
+        object[Strings.target] = target.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -26,19 +26,19 @@ public class HTMLPortalElement: HTMLElement {
 
     @inlinable public func activate(options: PortalActivateOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.activate].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.activate].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func activate(options: PortalActivateOptions? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.activate].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.activate].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined])
     }
 
     @ClosureAttribute1Optional

@@ -16,6 +16,6 @@ public class XRCPUDepthInformation: XRDepthInformation {
 
     @inlinable public func getDepthInMeters(x: Float, y: Float) -> Float {
         let this = jsObject
-        return this[Strings.getDepthInMeters].function!(this: this, arguments: [x.jsValue(), y.jsValue()]).fromJSValue()!
+        return this[Strings.getDepthInMeters].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
     }
 }

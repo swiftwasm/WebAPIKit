@@ -13,7 +13,7 @@ public class Range: AbstractRange {
 
     @inlinable public func createContextualFragment(fragment: String) -> DocumentFragment {
         let this = jsObject
-        return this[Strings.createContextualFragment].function!(this: this, arguments: [fragment.jsValue()]).fromJSValue()!
+        return this[Strings.createContextualFragment].function!(this: this, arguments: [fragment.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getClientRects() -> DOMRectList {
@@ -35,47 +35,47 @@ public class Range: AbstractRange {
 
     @inlinable public func setStart(node: Node, offset: UInt32) {
         let this = jsObject
-        _ = this[Strings.setStart].function!(this: this, arguments: [node.jsValue(), offset.jsValue()])
+        _ = this[Strings.setStart].function!(this: this, arguments: [node.jsValue, offset.jsValue])
     }
 
     @inlinable public func setEnd(node: Node, offset: UInt32) {
         let this = jsObject
-        _ = this[Strings.setEnd].function!(this: this, arguments: [node.jsValue(), offset.jsValue()])
+        _ = this[Strings.setEnd].function!(this: this, arguments: [node.jsValue, offset.jsValue])
     }
 
     @inlinable public func setStartBefore(node: Node) {
         let this = jsObject
-        _ = this[Strings.setStartBefore].function!(this: this, arguments: [node.jsValue()])
+        _ = this[Strings.setStartBefore].function!(this: this, arguments: [node.jsValue])
     }
 
     @inlinable public func setStartAfter(node: Node) {
         let this = jsObject
-        _ = this[Strings.setStartAfter].function!(this: this, arguments: [node.jsValue()])
+        _ = this[Strings.setStartAfter].function!(this: this, arguments: [node.jsValue])
     }
 
     @inlinable public func setEndBefore(node: Node) {
         let this = jsObject
-        _ = this[Strings.setEndBefore].function!(this: this, arguments: [node.jsValue()])
+        _ = this[Strings.setEndBefore].function!(this: this, arguments: [node.jsValue])
     }
 
     @inlinable public func setEndAfter(node: Node) {
         let this = jsObject
-        _ = this[Strings.setEndAfter].function!(this: this, arguments: [node.jsValue()])
+        _ = this[Strings.setEndAfter].function!(this: this, arguments: [node.jsValue])
     }
 
     @inlinable public func collapse(toStart: Bool? = nil) {
         let this = jsObject
-        _ = this[Strings.collapse].function!(this: this, arguments: [toStart?.jsValue() ?? .undefined])
+        _ = this[Strings.collapse].function!(this: this, arguments: [toStart?.jsValue ?? .undefined])
     }
 
     @inlinable public func selectNode(node: Node) {
         let this = jsObject
-        _ = this[Strings.selectNode].function!(this: this, arguments: [node.jsValue()])
+        _ = this[Strings.selectNode].function!(this: this, arguments: [node.jsValue])
     }
 
     @inlinable public func selectNodeContents(node: Node) {
         let this = jsObject
-        _ = this[Strings.selectNodeContents].function!(this: this, arguments: [node.jsValue()])
+        _ = this[Strings.selectNodeContents].function!(this: this, arguments: [node.jsValue])
     }
 
     public static let START_TO_START: UInt16 = 0
@@ -88,7 +88,7 @@ public class Range: AbstractRange {
 
     @inlinable public func compareBoundaryPoints(how: UInt16, sourceRange: Range) -> Int16 {
         let this = jsObject
-        return this[Strings.compareBoundaryPoints].function!(this: this, arguments: [how.jsValue(), sourceRange.jsValue()]).fromJSValue()!
+        return this[Strings.compareBoundaryPoints].function!(this: this, arguments: [how.jsValue, sourceRange.jsValue]).fromJSValue()!
     }
 
     @inlinable public func deleteContents() {
@@ -108,12 +108,12 @@ public class Range: AbstractRange {
 
     @inlinable public func insertNode(node: Node) {
         let this = jsObject
-        _ = this[Strings.insertNode].function!(this: this, arguments: [node.jsValue()])
+        _ = this[Strings.insertNode].function!(this: this, arguments: [node.jsValue])
     }
 
     @inlinable public func surroundContents(newParent: Node) {
         let this = jsObject
-        _ = this[Strings.surroundContents].function!(this: this, arguments: [newParent.jsValue()])
+        _ = this[Strings.surroundContents].function!(this: this, arguments: [newParent.jsValue])
     }
 
     @inlinable public func cloneRange() -> Self {
@@ -128,17 +128,17 @@ public class Range: AbstractRange {
 
     @inlinable public func isPointInRange(node: Node, offset: UInt32) -> Bool {
         let this = jsObject
-        return this[Strings.isPointInRange].function!(this: this, arguments: [node.jsValue(), offset.jsValue()]).fromJSValue()!
+        return this[Strings.isPointInRange].function!(this: this, arguments: [node.jsValue, offset.jsValue]).fromJSValue()!
     }
 
     @inlinable public func comparePoint(node: Node, offset: UInt32) -> Int16 {
         let this = jsObject
-        return this[Strings.comparePoint].function!(this: this, arguments: [node.jsValue(), offset.jsValue()]).fromJSValue()!
+        return this[Strings.comparePoint].function!(this: this, arguments: [node.jsValue, offset.jsValue]).fromJSValue()!
     }
 
     @inlinable public func intersectsNode(node: Node) -> Bool {
         let this = jsObject
-        return this[Strings.intersectsNode].function!(this: this, arguments: [node.jsValue()]).fromJSValue()!
+        return this[Strings.intersectsNode].function!(this: this, arguments: [node.jsValue]).fromJSValue()!
     }
 
     @inlinable public var description: String {

@@ -17,12 +17,12 @@ public class DOMPointReadOnly: JSBridgedClass {
     }
 
     @inlinable public convenience init(x: Double? = nil, y: Double? = nil, z: Double? = nil, w: Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, w?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, z?.jsValue ?? .undefined, w?.jsValue ?? .undefined]))
     }
 
     @inlinable public static func fromPoint(other: DOMPointInit? = nil) -> Self {
         let this = constructor
-        return this[Strings.fromPoint].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.fromPoint].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -39,7 +39,7 @@ public class DOMPointReadOnly: JSBridgedClass {
 
     @inlinable public func matrixTransform(matrix: DOMMatrixInit? = nil) -> DOMPoint {
         let this = jsObject
-        return this[Strings.matrixTransform].function!(this: this, arguments: [matrix?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.matrixTransform].function!(this: this, arguments: [matrix?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func toJSON() -> JSObject {

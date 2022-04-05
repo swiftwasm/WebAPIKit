@@ -6,7 +6,7 @@ import JavaScriptKit
 public class QueryOptions: BridgedDictionary {
     public convenience init(select: [String]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.select] = select.jsValue()
+        object[Strings.select] = select.jsValue
         self.init(unsafelyWrapping: object)
     }
 

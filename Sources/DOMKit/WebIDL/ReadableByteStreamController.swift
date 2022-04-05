@@ -27,11 +27,11 @@ public class ReadableByteStreamController: JSBridgedClass {
 
     @inlinable public func enqueue(chunk: ArrayBufferView) {
         let this = jsObject
-        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk.jsValue()])
+        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk.jsValue])
     }
 
     @inlinable public func error(e: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue() ?? .undefined])
+        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue ?? .undefined])
     }
 }

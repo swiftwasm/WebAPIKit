@@ -6,10 +6,10 @@ import JavaScriptKit
 public class MockSensorConfiguration: BridgedDictionary {
     public convenience init(mockSensorType: MockSensorType, connected: Bool, maxSamplingFrequency: Double?, minSamplingFrequency: Double?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mockSensorType] = mockSensorType.jsValue()
-        object[Strings.connected] = connected.jsValue()
-        object[Strings.maxSamplingFrequency] = maxSamplingFrequency.jsValue()
-        object[Strings.minSamplingFrequency] = minSamplingFrequency.jsValue()
+        object[Strings.mockSensorType] = mockSensorType.jsValue
+        object[Strings.connected] = connected.jsValue
+        object[Strings.maxSamplingFrequency] = maxSamplingFrequency.jsValue
+        object[Strings.minSamplingFrequency] = minSamplingFrequency.jsValue
         self.init(unsafelyWrapping: object)
     }
 

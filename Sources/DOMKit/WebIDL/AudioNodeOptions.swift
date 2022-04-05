@@ -6,9 +6,9 @@ import JavaScriptKit
 public class AudioNodeOptions: BridgedDictionary {
     public convenience init(channelCount: UInt32, channelCountMode: ChannelCountMode, channelInterpretation: ChannelInterpretation) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.channelCount] = channelCount.jsValue()
-        object[Strings.channelCountMode] = channelCountMode.jsValue()
-        object[Strings.channelInterpretation] = channelInterpretation.jsValue()
+        object[Strings.channelCount] = channelCount.jsValue
+        object[Strings.channelCountMode] = channelCountMode.jsValue
+        object[Strings.channelInterpretation] = channelInterpretation.jsValue
         self.init(unsafelyWrapping: object)
     }
 

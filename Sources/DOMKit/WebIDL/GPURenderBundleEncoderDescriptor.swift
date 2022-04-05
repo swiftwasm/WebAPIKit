@@ -6,8 +6,8 @@ import JavaScriptKit
 public class GPURenderBundleEncoderDescriptor: BridgedDictionary {
     public convenience init(depthReadOnly: Bool, stencilReadOnly: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.depthReadOnly] = depthReadOnly.jsValue()
-        object[Strings.stencilReadOnly] = stencilReadOnly.jsValue()
+        object[Strings.depthReadOnly] = depthReadOnly.jsValue
+        object[Strings.stencilReadOnly] = stencilReadOnly.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -21,7 +21,7 @@ public class StorageManager: JSBridgedClass {
     @inlinable public func getDirectory() async throws -> FileSystemDirectoryHandle {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getDirectory].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func persisted() -> JSPromise {
@@ -33,7 +33,7 @@ public class StorageManager: JSBridgedClass {
     @inlinable public func persisted() async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.persisted].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func persist() -> JSPromise {
@@ -45,7 +45,7 @@ public class StorageManager: JSBridgedClass {
     @inlinable public func persist() async throws -> Bool {
         let this = jsObject
         let _promise: JSPromise = this[Strings.persist].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func estimate() -> JSPromise {
@@ -57,6 +57,6 @@ public class StorageManager: JSBridgedClass {
     @inlinable public func estimate() async throws -> StorageEstimate {
         let this = jsObject
         let _promise: JSPromise = this[Strings.estimate].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

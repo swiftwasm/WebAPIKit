@@ -6,7 +6,7 @@ import JavaScriptKit
 public class PeriodicSyncEventInit: BridgedDictionary {
     public convenience init(tag: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.tag] = tag.jsValue()
+        object[Strings.tag] = tag.jsValue
         self.init(unsafelyWrapping: object)
     }
 

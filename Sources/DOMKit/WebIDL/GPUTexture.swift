@@ -14,7 +14,7 @@ public class GPUTexture: JSBridgedClass, GPUObjectBase {
 
     @inlinable public func createView(descriptor: GPUTextureViewDescriptor? = nil) -> GPUTextureView {
         let this = jsObject
-        return this[Strings.createView].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createView].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func destroy() {

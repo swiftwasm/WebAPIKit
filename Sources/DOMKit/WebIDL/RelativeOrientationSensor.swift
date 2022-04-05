@@ -11,6 +11,6 @@ public class RelativeOrientationSensor: OrientationSensor {
     }
 
     @inlinable public convenience init(sensorOptions: OrientationSensorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [sensorOptions?.jsValue ?? .undefined]))
     }
 }

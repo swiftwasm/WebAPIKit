@@ -6,12 +6,12 @@ import JavaScriptKit
 public class AudioDataInit: BridgedDictionary {
     public convenience init(format: AudioSampleFormat, sampleRate: Float, numberOfFrames: UInt32, numberOfChannels: UInt32, timestamp: Int64, data: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.format] = format.jsValue()
-        object[Strings.sampleRate] = sampleRate.jsValue()
-        object[Strings.numberOfFrames] = numberOfFrames.jsValue()
-        object[Strings.numberOfChannels] = numberOfChannels.jsValue()
-        object[Strings.timestamp] = timestamp.jsValue()
-        object[Strings.data] = data.jsValue()
+        object[Strings.format] = format.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.numberOfFrames] = numberOfFrames.jsValue
+        object[Strings.numberOfChannels] = numberOfChannels.jsValue
+        object[Strings.timestamp] = timestamp.jsValue
+        object[Strings.data] = data.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class XRLayerEventInit: BridgedDictionary {
     public convenience init(layer: XRLayer) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.layer] = layer.jsValue()
+        object[Strings.layer] = layer.jsValue
         self.init(unsafelyWrapping: object)
     }
 

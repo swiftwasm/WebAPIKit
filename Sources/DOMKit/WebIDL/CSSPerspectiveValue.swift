@@ -21,12 +21,12 @@ public enum CSSPerspectiveValue: JSValueCompatible, Any_CSSPerspectiveValue {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .cSSKeywordish(cSSKeywordish):
-            return cSSKeywordish.jsValue()
+            return cSSKeywordish.jsValue
         case let .cSSNumericValue(cSSNumericValue):
-            return cSSNumericValue.jsValue()
+            return cSSNumericValue.jsValue
         }
     }
 }

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class PositionOptions: BridgedDictionary {
     public convenience init(enableHighAccuracy: Bool, timeout: UInt32, maximumAge: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.enableHighAccuracy] = enableHighAccuracy.jsValue()
-        object[Strings.timeout] = timeout.jsValue()
-        object[Strings.maximumAge] = maximumAge.jsValue()
+        object[Strings.enableHighAccuracy] = enableHighAccuracy.jsValue
+        object[Strings.timeout] = timeout.jsValue
+        object[Strings.maximumAge] = maximumAge.jsValue
         self.init(unsafelyWrapping: object)
     }
 

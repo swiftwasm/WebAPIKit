@@ -6,7 +6,7 @@ import JavaScriptKit
 public class EncodedAudioChunkMetadata: BridgedDictionary {
     public convenience init(decoderConfig: AudioDecoderConfig) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.decoderConfig] = decoderConfig.jsValue()
+        object[Strings.decoderConfig] = decoderConfig.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,10 +6,10 @@ import JavaScriptKit
 public class AudioDataCopyToOptions: BridgedDictionary {
     public convenience init(planeIndex: UInt32, frameOffset: UInt32, frameCount: UInt32, format: AudioSampleFormat) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.planeIndex] = planeIndex.jsValue()
-        object[Strings.frameOffset] = frameOffset.jsValue()
-        object[Strings.frameCount] = frameCount.jsValue()
-        object[Strings.format] = format.jsValue()
+        object[Strings.planeIndex] = planeIndex.jsValue
+        object[Strings.frameOffset] = frameOffset.jsValue
+        object[Strings.frameCount] = frameCount.jsValue
+        object[Strings.format] = format.jsValue
         self.init(unsafelyWrapping: object)
     }
 

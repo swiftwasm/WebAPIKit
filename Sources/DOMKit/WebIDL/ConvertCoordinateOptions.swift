@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ConvertCoordinateOptions: BridgedDictionary {
     public convenience init(fromBox: CSSBoxType, toBox: CSSBoxType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.fromBox] = fromBox.jsValue()
-        object[Strings.toBox] = toBox.jsValue()
+        object[Strings.fromBox] = fromBox.jsValue
+        object[Strings.toBox] = toBox.jsValue
         self.init(unsafelyWrapping: object)
     }
 

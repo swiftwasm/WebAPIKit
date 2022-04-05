@@ -33,7 +33,7 @@ public class DOMMatrix: DOMMatrixReadOnly {
     }
 
     @inlinable public convenience init(init: String_or_seq_of_Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue ?? .undefined]))
     }
 
     // XXX: illegal static override
@@ -179,58 +179,58 @@ public class DOMMatrix: DOMMatrixReadOnly {
 
     @inlinable public func multiplySelf(other: DOMMatrixInit? = nil) -> Self {
         let this = jsObject
-        return this[Strings.multiplySelf].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.multiplySelf].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func preMultiplySelf(other: DOMMatrixInit? = nil) -> Self {
         let this = jsObject
-        return this[Strings.preMultiplySelf].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.preMultiplySelf].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func translateSelf(tx: Double? = nil, ty: Double? = nil, tz: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.translateSelf].function!(this: this, arguments: [tx?.jsValue() ?? .undefined, ty?.jsValue() ?? .undefined, tz?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.translateSelf].function!(this: this, arguments: [tx?.jsValue ?? .undefined, ty?.jsValue ?? .undefined, tz?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func scaleSelf(scaleX: Double? = nil, scaleY: Double? = nil, scaleZ: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> Self {
-        let _arg0 = scaleX?.jsValue() ?? .undefined
-        let _arg1 = scaleY?.jsValue() ?? .undefined
-        let _arg2 = scaleZ?.jsValue() ?? .undefined
-        let _arg3 = originX?.jsValue() ?? .undefined
-        let _arg4 = originY?.jsValue() ?? .undefined
-        let _arg5 = originZ?.jsValue() ?? .undefined
+        let _arg0 = scaleX?.jsValue ?? .undefined
+        let _arg1 = scaleY?.jsValue ?? .undefined
+        let _arg2 = scaleZ?.jsValue ?? .undefined
+        let _arg3 = originX?.jsValue ?? .undefined
+        let _arg4 = originY?.jsValue ?? .undefined
+        let _arg5 = originZ?.jsValue ?? .undefined
         let this = jsObject
         return this[Strings.scaleSelf].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
     }
 
     @inlinable public func scale3dSelf(scale: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.scale3dSelf].function!(this: this, arguments: [scale?.jsValue() ?? .undefined, originX?.jsValue() ?? .undefined, originY?.jsValue() ?? .undefined, originZ?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.scale3dSelf].function!(this: this, arguments: [scale?.jsValue ?? .undefined, originX?.jsValue ?? .undefined, originY?.jsValue ?? .undefined, originZ?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func rotateSelf(rotX: Double? = nil, rotY: Double? = nil, rotZ: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.rotateSelf].function!(this: this, arguments: [rotX?.jsValue() ?? .undefined, rotY?.jsValue() ?? .undefined, rotZ?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateSelf].function!(this: this, arguments: [rotX?.jsValue ?? .undefined, rotY?.jsValue ?? .undefined, rotZ?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func rotateFromVectorSelf(x: Double? = nil, y: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.rotateFromVectorSelf].function!(this: this, arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateFromVectorSelf].function!(this: this, arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func rotateAxisAngleSelf(x: Double? = nil, y: Double? = nil, z: Double? = nil, angle: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.rotateAxisAngleSelf].function!(this: this, arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, angle?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateAxisAngleSelf].function!(this: this, arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, z?.jsValue ?? .undefined, angle?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func skewXSelf(sx: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.skewXSelf].function!(this: this, arguments: [sx?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.skewXSelf].function!(this: this, arguments: [sx?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func skewYSelf(sy: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.skewYSelf].function!(this: this, arguments: [sy?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.skewYSelf].function!(this: this, arguments: [sy?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func invertSelf() -> Self {
@@ -240,6 +240,6 @@ public class DOMMatrix: DOMMatrixReadOnly {
 
     @inlinable public func setMatrixValue(transformList: String) -> Self {
         let this = jsObject
-        return this[Strings.setMatrixValue].function!(this: this, arguments: [transformList.jsValue()]).fromJSValue()!
+        return this[Strings.setMatrixValue].function!(this: this, arguments: [transformList.jsValue]).fromJSValue()!
     }
 }

@@ -21,12 +21,12 @@ public enum String_or_WorkerOptions: JSValueCompatible, Any_String_or_WorkerOpti
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         case let .workerOptions(workerOptions):
-            return workerOptions.jsValue()
+            return workerOptions.jsValue
         }
     }
 }

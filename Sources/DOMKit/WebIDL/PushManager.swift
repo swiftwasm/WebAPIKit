@@ -18,14 +18,14 @@ public class PushManager: JSBridgedClass {
 
     @inlinable public func subscribe(options: PushSubscriptionOptionsInit? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.subscribe].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.subscribe].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func subscribe(options: PushSubscriptionOptionsInit? = nil) async throws -> PushSubscription {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.subscribe].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.subscribe].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getSubscription() -> JSPromise {
@@ -37,18 +37,18 @@ public class PushManager: JSBridgedClass {
     @inlinable public func getSubscription() async throws -> PushSubscription? {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getSubscription].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func permissionState(options: PushSubscriptionOptionsInit? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.permissionState].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.permissionState].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func permissionState(options: PushSubscriptionOptionsInit? = nil) async throws -> PermissionState {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.permissionState].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.permissionState].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

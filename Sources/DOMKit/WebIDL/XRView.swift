@@ -34,6 +34,6 @@ public class XRView: JSBridgedClass {
 
     @inlinable public func requestViewportScale(scale: Double?) {
         let this = jsObject
-        _ = this[Strings.requestViewportScale].function!(this: this, arguments: [scale.jsValue()])
+        _ = this[Strings.requestViewportScale].function!(this: this, arguments: [scale.jsValue])
     }
 }

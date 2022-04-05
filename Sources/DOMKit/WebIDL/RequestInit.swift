@@ -6,20 +6,20 @@ import JavaScriptKit
 public class RequestInit: BridgedDictionary {
     public convenience init(method: String, headers: HeadersInit, body: BodyInit?, referrer: String, referrerPolicy: ReferrerPolicy, mode: RequestMode, credentials: RequestCredentials, cache: RequestCache, redirect: RequestRedirect, integrity: String, keepalive: Bool, signal: AbortSignal?, window: JSValue, priority: FetchPriority) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.method] = method.jsValue()
-        object[Strings.headers] = headers.jsValue()
-        object[Strings.body] = body.jsValue()
-        object[Strings.referrer] = referrer.jsValue()
-        object[Strings.referrerPolicy] = referrerPolicy.jsValue()
-        object[Strings.mode] = mode.jsValue()
-        object[Strings.credentials] = credentials.jsValue()
-        object[Strings.cache] = cache.jsValue()
-        object[Strings.redirect] = redirect.jsValue()
-        object[Strings.integrity] = integrity.jsValue()
-        object[Strings.keepalive] = keepalive.jsValue()
-        object[Strings.signal] = signal.jsValue()
-        object[Strings.window] = window.jsValue()
-        object[Strings.priority] = priority.jsValue()
+        object[Strings.method] = method.jsValue
+        object[Strings.headers] = headers.jsValue
+        object[Strings.body] = body.jsValue
+        object[Strings.referrer] = referrer.jsValue
+        object[Strings.referrerPolicy] = referrerPolicy.jsValue
+        object[Strings.mode] = mode.jsValue
+        object[Strings.credentials] = credentials.jsValue
+        object[Strings.cache] = cache.jsValue
+        object[Strings.redirect] = redirect.jsValue
+        object[Strings.integrity] = integrity.jsValue
+        object[Strings.keepalive] = keepalive.jsValue
+        object[Strings.signal] = signal.jsValue
+        object[Strings.window] = window.jsValue
+        object[Strings.priority] = priority.jsValue
         self.init(unsafelyWrapping: object)
     }
 

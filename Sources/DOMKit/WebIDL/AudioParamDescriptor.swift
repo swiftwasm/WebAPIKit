@@ -6,11 +6,11 @@ import JavaScriptKit
 public class AudioParamDescriptor: BridgedDictionary {
     public convenience init(name: String, defaultValue: Float, minValue: Float, maxValue: Float, automationRate: AutomationRate) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue()
-        object[Strings.defaultValue] = defaultValue.jsValue()
-        object[Strings.minValue] = minValue.jsValue()
-        object[Strings.maxValue] = maxValue.jsValue()
-        object[Strings.automationRate] = automationRate.jsValue()
+        object[Strings.name] = name.jsValue
+        object[Strings.defaultValue] = defaultValue.jsValue
+        object[Strings.minValue] = minValue.jsValue
+        object[Strings.maxValue] = maxValue.jsValue
+        object[Strings.automationRate] = automationRate.jsValue
         self.init(unsafelyWrapping: object)
     }
 

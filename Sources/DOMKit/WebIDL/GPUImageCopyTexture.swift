@@ -6,10 +6,10 @@ import JavaScriptKit
 public class GPUImageCopyTexture: BridgedDictionary {
     public convenience init(texture: GPUTexture, mipLevel: GPUIntegerCoordinate, origin: GPUOrigin3D, aspect: GPUTextureAspect) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.texture] = texture.jsValue()
-        object[Strings.mipLevel] = mipLevel.jsValue()
-        object[Strings.origin] = origin.jsValue()
-        object[Strings.aspect] = aspect.jsValue()
+        object[Strings.texture] = texture.jsValue
+        object[Strings.mipLevel] = mipLevel.jsValue
+        object[Strings.origin] = origin.jsValue
+        object[Strings.aspect] = aspect.jsValue
         self.init(unsafelyWrapping: object)
     }
 

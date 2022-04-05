@@ -13,7 +13,7 @@ public class AudioContext: BaseAudioContext {
     }
 
     @inlinable public convenience init(contextOptions: AudioContextOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -36,7 +36,7 @@ public class AudioContext: BaseAudioContext {
     @inlinable public func resume() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func suspend() -> JSPromise {
@@ -48,7 +48,7 @@ public class AudioContext: BaseAudioContext {
     @inlinable public func suspend() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func close() -> JSPromise {
@@ -60,22 +60,22 @@ public class AudioContext: BaseAudioContext {
     @inlinable public func close() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func createMediaElementSource(mediaElement: HTMLMediaElement) -> MediaElementAudioSourceNode {
         let this = jsObject
-        return this[Strings.createMediaElementSource].function!(this: this, arguments: [mediaElement.jsValue()]).fromJSValue()!
+        return this[Strings.createMediaElementSource].function!(this: this, arguments: [mediaElement.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createMediaStreamSource(mediaStream: MediaStream) -> MediaStreamAudioSourceNode {
         let this = jsObject
-        return this[Strings.createMediaStreamSource].function!(this: this, arguments: [mediaStream.jsValue()]).fromJSValue()!
+        return this[Strings.createMediaStreamSource].function!(this: this, arguments: [mediaStream.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createMediaStreamTrackSource(mediaStreamTrack: MediaStreamTrack) -> MediaStreamTrackAudioSourceNode {
         let this = jsObject
-        return this[Strings.createMediaStreamTrackSource].function!(this: this, arguments: [mediaStreamTrack.jsValue()]).fromJSValue()!
+        return this[Strings.createMediaStreamTrackSource].function!(this: this, arguments: [mediaStreamTrack.jsValue]).fromJSValue()!
     }
 
     @inlinable public func createMediaStreamDestination() -> MediaStreamAudioDestinationNode {

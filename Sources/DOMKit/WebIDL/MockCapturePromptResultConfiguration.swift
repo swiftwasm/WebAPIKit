@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MockCapturePromptResultConfiguration: BridgedDictionary {
     public convenience init(getUserMedia: MockCapturePromptResult, getDisplayMedia: MockCapturePromptResult) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.getUserMedia] = getUserMedia.jsValue()
-        object[Strings.getDisplayMedia] = getDisplayMedia.jsValue()
+        object[Strings.getUserMedia] = getUserMedia.jsValue
+        object[Strings.getDisplayMedia] = getDisplayMedia.jsValue
         self.init(unsafelyWrapping: object)
     }
 

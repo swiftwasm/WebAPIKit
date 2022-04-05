@@ -15,7 +15,7 @@ public class CSSVariableReferenceValue: JSBridgedClass {
     }
 
     @inlinable public convenience init(variable: String, fallback: CSSUnparsedValue? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [variable.jsValue(), fallback?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [variable.jsValue, fallback?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute

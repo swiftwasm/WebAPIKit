@@ -21,12 +21,12 @@ public enum XRWebGLRenderingContext: JSValueCompatible, Any_XRWebGLRenderingCont
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .webGL2RenderingContext(webGL2RenderingContext):
-            return webGL2RenderingContext.jsValue()
+            return webGL2RenderingContext.jsValue
         case let .webGLRenderingContext(webGLRenderingContext):
-            return webGLRenderingContext.jsValue()
+            return webGLRenderingContext.jsValue
         }
     }
 }

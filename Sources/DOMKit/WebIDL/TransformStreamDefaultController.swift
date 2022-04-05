@@ -18,12 +18,12 @@ public class TransformStreamDefaultController: JSBridgedClass {
 
     @inlinable public func enqueue(chunk: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk?.jsValue() ?? .undefined])
+        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk?.jsValue ?? .undefined])
     }
 
     @inlinable public func error(reason: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.error].function!(this: this, arguments: [reason?.jsValue() ?? .undefined])
+        _ = this[Strings.error].function!(this: this, arguments: [reason?.jsValue ?? .undefined])
     }
 
     @inlinable public func terminate() {

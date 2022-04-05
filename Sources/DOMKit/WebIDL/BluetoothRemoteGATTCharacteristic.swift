@@ -28,26 +28,26 @@ public class BluetoothRemoteGATTCharacteristic: EventTarget, CharacteristicEvent
 
     @inlinable public func getDescriptor(descriptor: BluetoothDescriptorUUID) -> JSPromise {
         let this = jsObject
-        return this[Strings.getDescriptor].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
+        return this[Strings.getDescriptor].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getDescriptor(descriptor: BluetoothDescriptorUUID) async throws -> BluetoothRemoteGATTDescriptor {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getDescriptor].function!(this: this, arguments: [descriptor.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getDescriptor].function!(this: this, arguments: [descriptor.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getDescriptors(descriptor: BluetoothDescriptorUUID? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.getDescriptors].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getDescriptors].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getDescriptors(descriptor: BluetoothDescriptorUUID? = nil) async throws -> [BluetoothRemoteGATTDescriptor] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getDescriptors].function!(this: this, arguments: [descriptor?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getDescriptors].function!(this: this, arguments: [descriptor?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func readValue() -> JSPromise {
@@ -59,43 +59,43 @@ public class BluetoothRemoteGATTCharacteristic: EventTarget, CharacteristicEvent
     @inlinable public func readValue() async throws -> DataView {
         let this = jsObject
         let _promise: JSPromise = this[Strings.readValue].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func writeValue(value: BufferSource) -> JSPromise {
         let this = jsObject
-        return this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
+        return this[Strings.writeValue].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func writeValue(value: BufferSource) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.writeValue].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.writeValue].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func writeValueWithResponse(value: BufferSource) -> JSPromise {
         let this = jsObject
-        return this[Strings.writeValueWithResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
+        return this[Strings.writeValueWithResponse].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func writeValueWithResponse(value: BufferSource) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.writeValueWithResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.writeValueWithResponse].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func writeValueWithoutResponse(value: BufferSource) -> JSPromise {
         let this = jsObject
-        return this[Strings.writeValueWithoutResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
+        return this[Strings.writeValueWithoutResponse].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func writeValueWithoutResponse(value: BufferSource) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.writeValueWithoutResponse].function!(this: this, arguments: [value.jsValue()]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.writeValueWithoutResponse].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func startNotifications() -> JSPromise {
@@ -107,7 +107,7 @@ public class BluetoothRemoteGATTCharacteristic: EventTarget, CharacteristicEvent
     @inlinable public func startNotifications() async throws -> BluetoothRemoteGATTCharacteristic {
         let this = jsObject
         let _promise: JSPromise = this[Strings.startNotifications].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func stopNotifications() -> JSPromise {
@@ -119,6 +119,6 @@ public class BluetoothRemoteGATTCharacteristic: EventTarget, CharacteristicEvent
     @inlinable public func stopNotifications() async throws -> BluetoothRemoteGATTCharacteristic {
         let this = jsObject
         let _promise: JSPromise = this[Strings.stopNotifications].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 }

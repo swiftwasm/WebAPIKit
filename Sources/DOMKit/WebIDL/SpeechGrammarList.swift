@@ -26,11 +26,11 @@ public class SpeechGrammarList: JSBridgedClass {
 
     @inlinable public func addFromURI(src: String, weight: Float? = nil) {
         let this = jsObject
-        _ = this[Strings.addFromURI].function!(this: this, arguments: [src.jsValue(), weight?.jsValue() ?? .undefined])
+        _ = this[Strings.addFromURI].function!(this: this, arguments: [src.jsValue, weight?.jsValue ?? .undefined])
     }
 
     @inlinable public func addFromString(string: String, weight: Float? = nil) {
         let this = jsObject
-        _ = this[Strings.addFromString].function!(this: this, arguments: [string.jsValue(), weight?.jsValue() ?? .undefined])
+        _ = this[Strings.addFromString].function!(this: this, arguments: [string.jsValue, weight?.jsValue ?? .undefined])
     }
 }

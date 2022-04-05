@@ -6,10 +6,10 @@ import JavaScriptKit
 public class FilePickerOptions: BridgedDictionary {
     public convenience init(types: [FilePickerAcceptType], excludeAcceptAllOption: Bool, id: String, startIn: StartInDirectory) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.types] = types.jsValue()
-        object[Strings.excludeAcceptAllOption] = excludeAcceptAllOption.jsValue()
-        object[Strings.id] = id.jsValue()
-        object[Strings.startIn] = startIn.jsValue()
+        object[Strings.types] = types.jsValue
+        object[Strings.excludeAcceptAllOption] = excludeAcceptAllOption.jsValue
+        object[Strings.id] = id.jsValue
+        object[Strings.startIn] = startIn.jsValue
         self.init(unsafelyWrapping: object)
     }
 

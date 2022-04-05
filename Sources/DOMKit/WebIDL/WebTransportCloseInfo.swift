@@ -6,8 +6,8 @@ import JavaScriptKit
 public class WebTransportCloseInfo: BridgedDictionary {
     public convenience init(closeCode: UInt32, reason: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.closeCode] = closeCode.jsValue()
-        object[Strings.reason] = reason.jsValue()
+        object[Strings.closeCode] = closeCode.jsValue
+        object[Strings.reason] = reason.jsValue
         self.init(unsafelyWrapping: object)
     }
 

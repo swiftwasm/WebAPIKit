@@ -6,7 +6,7 @@ import JavaScriptKit
 public class RsaHashedImportParams: BridgedDictionary {
     public convenience init(hash: HashAlgorithmIdentifier) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.hash] = hash.jsValue()
+        object[Strings.hash] = hash.jsValue
         self.init(unsafelyWrapping: object)
     }
 

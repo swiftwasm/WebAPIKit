@@ -26,14 +26,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         case let .record_String_to_String(record_String_to_String):
-            return record_String_to_String.jsValue()
+            return record_String_to_String.jsValue
         case let .seq_of_seq_of_String(seq_of_seq_of_String):
-            return seq_of_seq_of_String.jsValue()
+            return seq_of_seq_of_String.jsValue
         }
     }
 }

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class GPUImageCopyTextureTagged: BridgedDictionary {
     public convenience init(colorSpace: GPUPredefinedColorSpace, premultipliedAlpha: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.colorSpace] = colorSpace.jsValue()
-        object[Strings.premultipliedAlpha] = premultipliedAlpha.jsValue()
+        object[Strings.colorSpace] = colorSpace.jsValue
+        object[Strings.premultipliedAlpha] = premultipliedAlpha.jsValue
         self.init(unsafelyWrapping: object)
     }
 

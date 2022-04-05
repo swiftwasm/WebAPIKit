@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ReadableWritablePair: BridgedDictionary {
     public convenience init(readable: ReadableStream, writable: WritableStream) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.readable] = readable.jsValue()
-        object[Strings.writable] = writable.jsValue()
+        object[Strings.readable] = readable.jsValue
+        object[Strings.writable] = writable.jsValue
         self.init(unsafelyWrapping: object)
     }
 

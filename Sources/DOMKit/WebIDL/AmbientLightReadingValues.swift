@@ -6,7 +6,7 @@ import JavaScriptKit
 public class AmbientLightReadingValues: BridgedDictionary {
     public convenience init(illuminance: Double?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.illuminance] = illuminance.jsValue()
+        object[Strings.illuminance] = illuminance.jsValue
         self.init(unsafelyWrapping: object)
     }
 

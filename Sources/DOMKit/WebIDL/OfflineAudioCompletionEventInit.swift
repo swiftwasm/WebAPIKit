@@ -6,7 +6,7 @@ import JavaScriptKit
 public class OfflineAudioCompletionEventInit: BridgedDictionary {
     public convenience init(renderedBuffer: AudioBuffer) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.renderedBuffer] = renderedBuffer.jsValue()
+        object[Strings.renderedBuffer] = renderedBuffer.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class EcKeyGenParams: BridgedDictionary {
     public convenience init(namedCurve: NamedCurve) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.namedCurve] = namedCurve.jsValue()
+        object[Strings.namedCurve] = namedCurve.jsValue
         self.init(unsafelyWrapping: object)
     }
 

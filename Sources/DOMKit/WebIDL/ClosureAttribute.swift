@@ -27,8 +27,8 @@ import JavaScriptKit
         }
         set {
             jsObject[name] = JSClosure { _ in
-                newValue().jsValue()
-            }.jsValue()
+                newValue().jsValue
+            }.jsValue
         }
     }
 }
@@ -59,8 +59,8 @@ import JavaScriptKit
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure { _ in
-                    newValue().jsValue()
-                }.jsValue()
+                    newValue().jsValue
+                }.jsValue
             } else {
                 jsObject[name] = .null
             }
@@ -94,7 +94,7 @@ import JavaScriptKit
                 jsObject[name] = JSClosure { _ in
                     newValue()
                     return .undefined
-                }.jsValue()
+                }.jsValue
             } else {
                 jsObject[name] = .null
             }
@@ -125,7 +125,7 @@ import JavaScriptKit
             jsObject[name] = JSClosure { _ in
                 newValue()
                 return .undefined
-            }.jsValue()
+            }.jsValue
         }
     }
 }
@@ -149,12 +149,12 @@ import JavaScriptKit
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0) -> ReturnType {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue()).fromJSValue()! }
+            return { function($0.jsValue).fromJSValue()! }
         }
         set {
             jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!).jsValue()
-            }.jsValue()
+                newValue($0[0].fromJSValue()!).jsValue
+            }.jsValue
         }
     }
 }
@@ -180,13 +180,13 @@ import JavaScriptKit
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue()).fromJSValue()! }
+            return { function($0.jsValue).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!).jsValue()
-                }.jsValue()
+                    newValue($0[0].fromJSValue()!).jsValue
+                }.jsValue
             } else {
                 jsObject[name] = .null
             }
@@ -215,14 +215,14 @@ import JavaScriptKit
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue()) }
+            return { function($0.jsValue) }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
                     newValue($0[0].fromJSValue()!)
                     return .undefined
-                }.jsValue()
+                }.jsValue
             } else {
                 jsObject[name] = .null
             }
@@ -249,13 +249,13 @@ import JavaScriptKit
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0) -> Void {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue()) }
+            return { function($0.jsValue) }
         }
         set {
             jsObject[name] = JSClosure {
                 newValue($0[0].fromJSValue()!)
                 return .undefined
-            }.jsValue()
+            }.jsValue
         }
     }
 }
@@ -279,12 +279,12 @@ import JavaScriptKit
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1) -> ReturnType {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue(), $1.jsValue()).fromJSValue()! }
+            return { function($0.jsValue, $1.jsValue).fromJSValue()! }
         }
         set {
             jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!).jsValue()
-            }.jsValue()
+                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!).jsValue
+            }.jsValue
         }
     }
 }
@@ -310,13 +310,13 @@ import JavaScriptKit
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue(), $1.jsValue()).fromJSValue()! }
+            return { function($0.jsValue, $1.jsValue).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!).jsValue()
-                }.jsValue()
+                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!).jsValue
+                }.jsValue
             } else {
                 jsObject[name] = .null
             }
@@ -345,14 +345,14 @@ import JavaScriptKit
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue(), $1.jsValue()) }
+            return { function($0.jsValue, $1.jsValue) }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
                     newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!)
                     return .undefined
-                }.jsValue()
+                }.jsValue
             } else {
                 jsObject[name] = .null
             }
@@ -379,13 +379,13 @@ import JavaScriptKit
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1) -> Void {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue(), $1.jsValue()) }
+            return { function($0.jsValue, $1.jsValue) }
         }
         set {
             jsObject[name] = JSClosure {
                 newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!)
                 return .undefined
-            }.jsValue()
+            }.jsValue
         }
     }
 }
@@ -409,12 +409,12 @@ import JavaScriptKit
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2) -> ReturnType {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue(), $1.jsValue(), $2.jsValue()).fromJSValue()! }
+            return { function($0.jsValue, $1.jsValue, $2.jsValue).fromJSValue()! }
         }
         set {
             jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue()
-            }.jsValue()
+                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue
+            }.jsValue
         }
     }
 }
@@ -440,13 +440,13 @@ import JavaScriptKit
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue(), $1.jsValue(), $2.jsValue()).fromJSValue()! }
+            return { function($0.jsValue, $1.jsValue, $2.jsValue).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue()
-                }.jsValue()
+                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue
+                }.jsValue
             } else {
                 jsObject[name] = .null
             }
@@ -475,14 +475,14 @@ import JavaScriptKit
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue(), $1.jsValue(), $2.jsValue()) }
+            return { function($0.jsValue, $1.jsValue, $2.jsValue) }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
                     newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!)
                     return .undefined
-                }.jsValue()
+                }.jsValue
             } else {
                 jsObject[name] = .null
             }
@@ -509,13 +509,13 @@ import JavaScriptKit
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2) -> Void {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue(), $1.jsValue(), $2.jsValue()) }
+            return { function($0.jsValue, $1.jsValue, $2.jsValue) }
         }
         set {
             jsObject[name] = JSClosure {
                 newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!)
                 return .undefined
-            }.jsValue()
+            }.jsValue
         }
     }
 }
@@ -539,12 +539,12 @@ import JavaScriptKit
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2, A3, A4) -> ReturnType {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue(), $1.jsValue(), $2.jsValue(), $3.jsValue(), $4.jsValue()).fromJSValue()! }
+            return { function($0.jsValue, $1.jsValue, $2.jsValue, $3.jsValue, $4.jsValue).fromJSValue()! }
         }
         set {
             jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!).jsValue()
-            }.jsValue()
+                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!).jsValue
+            }.jsValue
         }
     }
 }
@@ -570,13 +570,13 @@ import JavaScriptKit
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue(), $1.jsValue(), $2.jsValue(), $3.jsValue(), $4.jsValue()).fromJSValue()! }
+            return { function($0.jsValue, $1.jsValue, $2.jsValue, $3.jsValue, $4.jsValue).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!).jsValue()
-                }.jsValue()
+                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!).jsValue
+                }.jsValue
             } else {
                 jsObject[name] = .null
             }

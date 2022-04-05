@@ -6,8 +6,8 @@ import JavaScriptKit
 public class IIRFilterOptions: BridgedDictionary {
     public convenience init(feedforward: [Double], feedback: [Double]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.feedforward] = feedforward.jsValue()
-        object[Strings.feedback] = feedback.jsValue()
+        object[Strings.feedforward] = feedforward.jsValue
+        object[Strings.feedback] = feedback.jsValue
         self.init(unsafelyWrapping: object)
     }
 

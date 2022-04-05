@@ -6,8 +6,8 @@ import JavaScriptKit
 public class FileSystemPermissionDescriptor: BridgedDictionary {
     public convenience init(handle: FileSystemHandle, mode: FileSystemPermissionMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.handle] = handle.jsValue()
-        object[Strings.mode] = mode.jsValue()
+        object[Strings.handle] = handle.jsValue
+        object[Strings.mode] = mode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

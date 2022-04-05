@@ -21,12 +21,12 @@ public enum CryptoKeyID: JSValueCompatible, Any_CryptoKeyID {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .smallCryptoKeyID(smallCryptoKeyID):
-            return smallCryptoKeyID.jsValue()
+            return smallCryptoKeyID.jsValue
         case let .__UNSUPPORTED_BIGINT__(__UNSUPPORTED_BIGINT__):
-            return __UNSUPPORTED_BIGINT__.jsValue()
+            return __UNSUPPORTED_BIGINT__.jsValue
         }
     }
 }

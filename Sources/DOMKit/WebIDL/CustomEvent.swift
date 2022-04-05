@@ -12,7 +12,7 @@ public class CustomEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: CustomEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -20,6 +20,6 @@ public class CustomEvent: Event {
 
     @inlinable public func initCustomEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, detail: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.initCustomEvent].function!(this: this, arguments: [type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined, detail?.jsValue() ?? .undefined])
+        _ = this[Strings.initCustomEvent].function!(this: this, arguments: [type.jsValue, bubbles?.jsValue ?? .undefined, cancelable?.jsValue ?? .undefined, detail?.jsValue ?? .undefined])
     }
 }

@@ -12,47 +12,47 @@ public class CSSNumericValue: CSSStyleValue {
 
     @inlinable public func add(values: CSSNumberish...) -> Self {
         let this = jsObject
-        return this[Strings.add].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.add].function!(this: this, arguments: values.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func sub(values: CSSNumberish...) -> Self {
         let this = jsObject
-        return this[Strings.sub].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.sub].function!(this: this, arguments: values.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func mul(values: CSSNumberish...) -> Self {
         let this = jsObject
-        return this[Strings.mul].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.mul].function!(this: this, arguments: values.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func div(values: CSSNumberish...) -> Self {
         let this = jsObject
-        return this[Strings.div].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.div].function!(this: this, arguments: values.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func min(values: CSSNumberish...) -> Self {
         let this = jsObject
-        return this[Strings.min].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.min].function!(this: this, arguments: values.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func max(values: CSSNumberish...) -> Self {
         let this = jsObject
-        return this[Strings.max].function!(this: this, arguments: values.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.max].function!(this: this, arguments: values.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func equals(value: CSSNumberish...) -> Bool {
         let this = jsObject
-        return this[Strings.equals].function!(this: this, arguments: value.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.equals].function!(this: this, arguments: value.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func to(unit: String) -> CSSUnitValue {
         let this = jsObject
-        return this[Strings.to].function!(this: this, arguments: [unit.jsValue()]).fromJSValue()!
+        return this[Strings.to].function!(this: this, arguments: [unit.jsValue]).fromJSValue()!
     }
 
     @inlinable public func toSum(units: String...) -> CSSMathSum {
         let this = jsObject
-        return this[Strings.toSum].function!(this: this, arguments: units.map { $0.jsValue() }).fromJSValue()!
+        return this[Strings.toSum].function!(this: this, arguments: units.map(\.jsValue)).fromJSValue()!
     }
 
     @inlinable public func type() -> CSSNumericType {

@@ -25,7 +25,7 @@ public class FontMetadata: JSBridgedClass {
     @inlinable public func blob() async throws -> Blob {
         let this = jsObject
         let _promise: JSPromise = this[Strings.blob].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute

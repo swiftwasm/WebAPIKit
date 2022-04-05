@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MLClampOptions: BridgedDictionary {
     public convenience init(minValue: Float, maxValue: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.minValue] = minValue.jsValue()
-        object[Strings.maxValue] = maxValue.jsValue()
+        object[Strings.minValue] = minValue.jsValue
+        object[Strings.maxValue] = maxValue.jsValue
         self.init(unsafelyWrapping: object)
     }
 

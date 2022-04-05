@@ -11,11 +11,11 @@ public class IIRFilterNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: IIRFilterOptions) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options.jsValue]))
     }
 
     @inlinable public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
         let this = jsObject
-        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue(), magResponse.jsValue(), phaseResponse.jsValue()])
+        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue, magResponse.jsValue, phaseResponse.jsValue])
     }
 }

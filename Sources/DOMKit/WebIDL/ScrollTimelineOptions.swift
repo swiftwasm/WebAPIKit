@@ -6,9 +6,9 @@ import JavaScriptKit
 public class ScrollTimelineOptions: BridgedDictionary {
     public convenience init(source: Element?, orientation: ScrollDirection, scrollOffsets: [ScrollTimelineOffset]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.source] = source.jsValue()
-        object[Strings.orientation] = orientation.jsValue()
-        object[Strings.scrollOffsets] = scrollOffsets.jsValue()
+        object[Strings.source] = source.jsValue
+        object[Strings.orientation] = orientation.jsValue
+        object[Strings.scrollOffsets] = scrollOffsets.jsValue
         self.init(unsafelyWrapping: object)
     }
 

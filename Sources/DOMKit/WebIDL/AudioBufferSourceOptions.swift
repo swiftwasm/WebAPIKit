@@ -6,12 +6,12 @@ import JavaScriptKit
 public class AudioBufferSourceOptions: BridgedDictionary {
     public convenience init(buffer: AudioBuffer?, detune: Float, loop: Bool, loopEnd: Double, loopStart: Double, playbackRate: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.buffer] = buffer.jsValue()
-        object[Strings.detune] = detune.jsValue()
-        object[Strings.loop] = loop.jsValue()
-        object[Strings.loopEnd] = loopEnd.jsValue()
-        object[Strings.loopStart] = loopStart.jsValue()
-        object[Strings.playbackRate] = playbackRate.jsValue()
+        object[Strings.buffer] = buffer.jsValue
+        object[Strings.detune] = detune.jsValue
+        object[Strings.loop] = loop.jsValue
+        object[Strings.loopEnd] = loopEnd.jsValue
+        object[Strings.loopStart] = loopStart.jsValue
+        object[Strings.playbackRate] = playbackRate.jsValue
         self.init(unsafelyWrapping: object)
     }
 

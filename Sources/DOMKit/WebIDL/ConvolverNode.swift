@@ -13,7 +13,7 @@ public class ConvolverNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: ConvolverOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ComputePressureObserverOptions: BridgedDictionary {
     public convenience init(frequency: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.frequency] = frequency.jsValue()
+        object[Strings.frequency] = frequency.jsValue
         self.init(unsafelyWrapping: object)
     }
 

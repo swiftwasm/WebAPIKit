@@ -13,7 +13,7 @@ public class NavigationEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: NavigationEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

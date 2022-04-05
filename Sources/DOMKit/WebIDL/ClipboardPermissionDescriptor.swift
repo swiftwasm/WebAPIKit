@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ClipboardPermissionDescriptor: BridgedDictionary {
     public convenience init(allowWithoutGesture: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.allowWithoutGesture] = allowWithoutGesture.jsValue()
+        object[Strings.allowWithoutGesture] = allowWithoutGesture.jsValue
         self.init(unsafelyWrapping: object)
     }
 

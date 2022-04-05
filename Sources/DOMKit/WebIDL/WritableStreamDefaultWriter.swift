@@ -16,7 +16,7 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     }
 
     @inlinable public convenience init(stream: WritableStream) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue]))
     }
 
     @ReadonlyAttribute
@@ -30,14 +30,14 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
 
     @inlinable public func abort(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func abort(reason: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 
     @inlinable public func close() -> JSPromise {
@@ -49,7 +49,7 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     @inlinable public func close() async throws {
         let this = jsObject
         let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
-        _ = try await _promise.get()
+        _ = try await _promise.value
     }
 
     @inlinable public func releaseLock() {
@@ -59,13 +59,13 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
 
     @inlinable public func write(chunk: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.write].function!(this: this, arguments: [chunk?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.write].function!(this: this, arguments: [chunk?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func write(chunk: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [chunk?.jsValue() ?? .undefined]).fromJSValue()!
-        _ = try await _promise.get()
+        let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [chunk?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
     }
 }

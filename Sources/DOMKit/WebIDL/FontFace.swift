@@ -30,7 +30,7 @@ public class FontFace: JSBridgedClass {
     }
 
     @inlinable public convenience init(family: String, source: BinaryData_or_String, descriptors: FontFaceDescriptors? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [family.jsValue(), source.jsValue(), descriptors?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [family.jsValue, source.jsValue, descriptors?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute
@@ -81,7 +81,7 @@ public class FontFace: JSBridgedClass {
     @inlinable public func load() async throws -> FontFace {
         let this = jsObject
         let _promise: JSPromise = this[Strings.load].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute

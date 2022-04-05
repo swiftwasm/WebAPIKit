@@ -6,15 +6,15 @@ import JavaScriptKit
 public class EffectTiming: BridgedDictionary {
     public convenience init(playbackRate: Double, duration: CSSNumericValue_or_Double_or_String, delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, direction: PlaybackDirection, easing: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.playbackRate] = playbackRate.jsValue()
-        object[Strings.duration] = duration.jsValue()
-        object[Strings.delay] = delay.jsValue()
-        object[Strings.endDelay] = endDelay.jsValue()
-        object[Strings.fill] = fill.jsValue()
-        object[Strings.iterationStart] = iterationStart.jsValue()
-        object[Strings.iterations] = iterations.jsValue()
-        object[Strings.direction] = direction.jsValue()
-        object[Strings.easing] = easing.jsValue()
+        object[Strings.playbackRate] = playbackRate.jsValue
+        object[Strings.duration] = duration.jsValue
+        object[Strings.delay] = delay.jsValue
+        object[Strings.endDelay] = endDelay.jsValue
+        object[Strings.fill] = fill.jsValue
+        object[Strings.iterationStart] = iterationStart.jsValue
+        object[Strings.iterations] = iterations.jsValue
+        object[Strings.direction] = direction.jsValue
+        object[Strings.easing] = easing.jsValue
         self.init(unsafelyWrapping: object)
     }
 

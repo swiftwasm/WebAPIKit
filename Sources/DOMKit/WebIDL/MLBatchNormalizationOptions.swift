@@ -6,11 +6,11 @@ import JavaScriptKit
 public class MLBatchNormalizationOptions: BridgedDictionary {
     public convenience init(scale: MLOperand, bias: MLOperand, axis: Int32, epsilon: Float, activation: MLOperator) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.scale] = scale.jsValue()
-        object[Strings.bias] = bias.jsValue()
-        object[Strings.axis] = axis.jsValue()
-        object[Strings.epsilon] = epsilon.jsValue()
-        object[Strings.activation] = activation.jsValue()
+        object[Strings.scale] = scale.jsValue
+        object[Strings.bias] = bias.jsValue
+        object[Strings.axis] = axis.jsValue
+        object[Strings.epsilon] = epsilon.jsValue
+        object[Strings.activation] = activation.jsValue
         self.init(unsafelyWrapping: object)
     }
 

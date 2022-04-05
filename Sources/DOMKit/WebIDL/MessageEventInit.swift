@@ -6,11 +6,11 @@ import JavaScriptKit
 public class MessageEventInit: BridgedDictionary {
     public convenience init(data: JSValue, origin: String, lastEventId: String, source: MessageEventSource?, ports: [MessagePort]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.data] = data.jsValue()
-        object[Strings.origin] = origin.jsValue()
-        object[Strings.lastEventId] = lastEventId.jsValue()
-        object[Strings.source] = source.jsValue()
-        object[Strings.ports] = ports.jsValue()
+        object[Strings.data] = data.jsValue
+        object[Strings.origin] = origin.jsValue
+        object[Strings.lastEventId] = lastEventId.jsValue
+        object[Strings.source] = source.jsValue
+        object[Strings.ports] = ports.jsValue
         self.init(unsafelyWrapping: object)
     }
 

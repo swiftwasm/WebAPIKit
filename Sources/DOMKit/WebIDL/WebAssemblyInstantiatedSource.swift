@@ -6,8 +6,8 @@ import JavaScriptKit
 public class WebAssemblyInstantiatedSource: BridgedDictionary {
     public convenience init(module: Module, instance: Instance) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.module] = module.jsValue()
-        object[Strings.instance] = instance.jsValue()
+        object[Strings.module] = module.jsValue
+        object[Strings.instance] = instance.jsValue
         self.init(unsafelyWrapping: object)
     }
 

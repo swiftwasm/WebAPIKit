@@ -6,7 +6,7 @@ import JavaScriptKit
 public class TaskPriorityChangeEventInit: BridgedDictionary {
     public convenience init(previousPriority: TaskPriority) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.previousPriority] = previousPriority.jsValue()
+        object[Strings.previousPriority] = previousPriority.jsValue
         self.init(unsafelyWrapping: object)
     }
 

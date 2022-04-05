@@ -28,22 +28,22 @@ public class CSSStyleDeclaration: JSBridgedClass {
 
     @inlinable public func getPropertyValue(property: String) -> String {
         let this = jsObject
-        return this[Strings.getPropertyValue].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
+        return this[Strings.getPropertyValue].function!(this: this, arguments: [property.jsValue]).fromJSValue()!
     }
 
     @inlinable public func getPropertyPriority(property: String) -> String {
         let this = jsObject
-        return this[Strings.getPropertyPriority].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
+        return this[Strings.getPropertyPriority].function!(this: this, arguments: [property.jsValue]).fromJSValue()!
     }
 
     @inlinable public func setProperty(property: String, value: String, priority: String? = nil) {
         let this = jsObject
-        _ = this[Strings.setProperty].function!(this: this, arguments: [property.jsValue(), value.jsValue(), priority?.jsValue() ?? .undefined])
+        _ = this[Strings.setProperty].function!(this: this, arguments: [property.jsValue, value.jsValue, priority?.jsValue ?? .undefined])
     }
 
     @inlinable public func removeProperty(property: String) -> String {
         let this = jsObject
-        return this[Strings.removeProperty].function!(this: this, arguments: [property.jsValue()]).fromJSValue()!
+        return this[Strings.removeProperty].function!(this: this, arguments: [property.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute

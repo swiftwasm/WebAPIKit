@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RTCRtpHeaderExtensionParameters: BridgedDictionary {
     public convenience init(uri: String, id: UInt16, encrypted: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.uri] = uri.jsValue()
-        object[Strings.id] = id.jsValue()
-        object[Strings.encrypted] = encrypted.jsValue()
+        object[Strings.uri] = uri.jsValue
+        object[Strings.id] = id.jsValue
+        object[Strings.encrypted] = encrypted.jsValue
         self.init(unsafelyWrapping: object)
     }
 

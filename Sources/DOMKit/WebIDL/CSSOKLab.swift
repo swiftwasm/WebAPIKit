@@ -15,7 +15,7 @@ public class CSSOKLab: CSSColorValue {
     }
 
     @inlinable public convenience init(l: CSSColorPercent, a: CSSColorNumber, b: CSSColorNumber, alpha: CSSColorPercent? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [l.jsValue(), a.jsValue(), b.jsValue(), alpha?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [l.jsValue, a.jsValue, b.jsValue, alpha?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute

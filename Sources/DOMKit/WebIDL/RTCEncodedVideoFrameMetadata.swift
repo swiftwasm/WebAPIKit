@@ -6,15 +6,15 @@ import JavaScriptKit
 public class RTCEncodedVideoFrameMetadata: BridgedDictionary {
     public convenience init(frameId: Int64, dependencies: [Int64], width: UInt16, height: UInt16, spatialIndex: Int32, temporalIndex: Int32, synchronizationSource: Int32, payloadType: UInt8, contributingSources: [Int32]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.frameId] = frameId.jsValue()
-        object[Strings.dependencies] = dependencies.jsValue()
-        object[Strings.width] = width.jsValue()
-        object[Strings.height] = height.jsValue()
-        object[Strings.spatialIndex] = spatialIndex.jsValue()
-        object[Strings.temporalIndex] = temporalIndex.jsValue()
-        object[Strings.synchronizationSource] = synchronizationSource.jsValue()
-        object[Strings.payloadType] = payloadType.jsValue()
-        object[Strings.contributingSources] = contributingSources.jsValue()
+        object[Strings.frameId] = frameId.jsValue
+        object[Strings.dependencies] = dependencies.jsValue
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.spatialIndex] = spatialIndex.jsValue
+        object[Strings.temporalIndex] = temporalIndex.jsValue
+        object[Strings.synchronizationSource] = synchronizationSource.jsValue
+        object[Strings.payloadType] = payloadType.jsValue
+        object[Strings.contributingSources] = contributingSources.jsValue
         self.init(unsafelyWrapping: object)
     }
 

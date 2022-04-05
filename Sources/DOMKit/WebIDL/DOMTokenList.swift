@@ -23,32 +23,32 @@ public class DOMTokenList: JSBridgedClass, Sequence {
 
     @inlinable public func contains(token: String) -> Bool {
         let this = jsObject
-        return this[Strings.contains].function!(this: this, arguments: [token.jsValue()]).fromJSValue()!
+        return this[Strings.contains].function!(this: this, arguments: [token.jsValue]).fromJSValue()!
     }
 
     @inlinable public func add(tokens: String...) {
         let this = jsObject
-        _ = this[Strings.add].function!(this: this, arguments: tokens.map { $0.jsValue() })
+        _ = this[Strings.add].function!(this: this, arguments: tokens.map(\.jsValue))
     }
 
     @inlinable public func remove(tokens: String...) {
         let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: tokens.map { $0.jsValue() })
+        _ = this[Strings.remove].function!(this: this, arguments: tokens.map(\.jsValue))
     }
 
     @inlinable public func toggle(token: String, force: Bool? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.toggle].function!(this: this, arguments: [token.jsValue(), force?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.toggle].function!(this: this, arguments: [token.jsValue, force?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func replace(token: String, newToken: String) -> Bool {
         let this = jsObject
-        return this[Strings.replace].function!(this: this, arguments: [token.jsValue(), newToken.jsValue()]).fromJSValue()!
+        return this[Strings.replace].function!(this: this, arguments: [token.jsValue, newToken.jsValue]).fromJSValue()!
     }
 
     @inlinable public func supports(token: String) -> Bool {
         let this = jsObject
-        return this[Strings.supports].function!(this: this, arguments: [token.jsValue()]).fromJSValue()!
+        return this[Strings.supports].function!(this: this, arguments: [token.jsValue]).fromJSValue()!
     }
 
     @ReadWriteAttribute

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PublicKeyCredentialParameters: BridgedDictionary {
     public convenience init(type: String, alg: COSEAlgorithmIdentifier) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.alg] = alg.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.alg] = alg.jsValue
         self.init(unsafelyWrapping: object)
     }
 

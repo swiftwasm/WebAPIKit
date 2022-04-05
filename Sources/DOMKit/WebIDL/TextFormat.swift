@@ -20,7 +20,7 @@ public class TextFormat: JSBridgedClass {
     }
 
     @inlinable public convenience init(options: TextFormatInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute

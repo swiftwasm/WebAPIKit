@@ -6,11 +6,11 @@ import JavaScriptKit
 public class AttributionSourceParams: BridgedDictionary {
     public convenience init(attributionDestination: String, attributionSourceEventId: String, attributionReportTo: String, attributionExpiry: Int64, attributionSourcePriority: Int64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.attributionDestination] = attributionDestination.jsValue()
-        object[Strings.attributionSourceEventId] = attributionSourceEventId.jsValue()
-        object[Strings.attributionReportTo] = attributionReportTo.jsValue()
-        object[Strings.attributionExpiry] = attributionExpiry.jsValue()
-        object[Strings.attributionSourcePriority] = attributionSourcePriority.jsValue()
+        object[Strings.attributionDestination] = attributionDestination.jsValue
+        object[Strings.attributionSourceEventId] = attributionSourceEventId.jsValue
+        object[Strings.attributionReportTo] = attributionReportTo.jsValue
+        object[Strings.attributionExpiry] = attributionExpiry.jsValue
+        object[Strings.attributionSourcePriority] = attributionSourcePriority.jsValue
         self.init(unsafelyWrapping: object)
     }
 

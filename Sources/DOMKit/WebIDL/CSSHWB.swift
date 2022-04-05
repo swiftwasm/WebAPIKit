@@ -15,7 +15,7 @@ public class CSSHWB: CSSColorValue {
     }
 
     @inlinable public convenience init(h: CSSNumericValue, w: CSSNumberish, b: CSSNumberish, alpha: CSSNumberish? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [h.jsValue(), w.jsValue(), b.jsValue(), alpha?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [h.jsValue, w.jsValue, b.jsValue, alpha?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute

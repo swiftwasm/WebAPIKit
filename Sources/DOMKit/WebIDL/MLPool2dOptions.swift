@@ -6,14 +6,14 @@ import JavaScriptKit
 public class MLPool2dOptions: BridgedDictionary {
     public convenience init(windowDimensions: [Int32], padding: [Int32], strides: [Int32], dilations: [Int32], autoPad: MLAutoPad, layout: MLInputOperandLayout, roundingType: MLRoundingType, outputSizes: [Int32]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.windowDimensions] = windowDimensions.jsValue()
-        object[Strings.padding] = padding.jsValue()
-        object[Strings.strides] = strides.jsValue()
-        object[Strings.dilations] = dilations.jsValue()
-        object[Strings.autoPad] = autoPad.jsValue()
-        object[Strings.layout] = layout.jsValue()
-        object[Strings.roundingType] = roundingType.jsValue()
-        object[Strings.outputSizes] = outputSizes.jsValue()
+        object[Strings.windowDimensions] = windowDimensions.jsValue
+        object[Strings.padding] = padding.jsValue
+        object[Strings.strides] = strides.jsValue
+        object[Strings.dilations] = dilations.jsValue
+        object[Strings.autoPad] = autoPad.jsValue
+        object[Strings.layout] = layout.jsValue
+        object[Strings.roundingType] = roundingType.jsValue
+        object[Strings.outputSizes] = outputSizes.jsValue
         self.init(unsafelyWrapping: object)
     }
 

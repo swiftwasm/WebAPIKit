@@ -6,10 +6,10 @@ import JavaScriptKit
 public class MLResample2dOptions: BridgedDictionary {
     public convenience init(mode: MLInterpolationMode, scales: [Float], sizes: [Int32], axes: [Int32]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mode] = mode.jsValue()
-        object[Strings.scales] = scales.jsValue()
-        object[Strings.sizes] = sizes.jsValue()
-        object[Strings.axes] = axes.jsValue()
+        object[Strings.mode] = mode.jsValue
+        object[Strings.scales] = scales.jsValue
+        object[Strings.sizes] = sizes.jsValue
+        object[Strings.axes] = axes.jsValue
         self.init(unsafelyWrapping: object)
     }
 

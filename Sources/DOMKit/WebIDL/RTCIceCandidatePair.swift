@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RTCIceCandidatePair: BridgedDictionary {
     public convenience init(local: RTCIceCandidate, remote: RTCIceCandidate) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.local] = local.jsValue()
-        object[Strings.remote] = remote.jsValue()
+        object[Strings.local] = local.jsValue
+        object[Strings.remote] = remote.jsValue
         self.init(unsafelyWrapping: object)
     }
 

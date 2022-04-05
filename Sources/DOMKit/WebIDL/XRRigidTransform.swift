@@ -17,7 +17,7 @@ public class XRRigidTransform: JSBridgedClass {
     }
 
     @inlinable public convenience init(position: DOMPointInit? = nil, orientation: DOMPointInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [position?.jsValue() ?? .undefined, orientation?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [position?.jsValue ?? .undefined, orientation?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

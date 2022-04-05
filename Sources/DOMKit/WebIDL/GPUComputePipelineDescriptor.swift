@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GPUComputePipelineDescriptor: BridgedDictionary {
     public convenience init(compute: GPUProgrammableStage) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.compute] = compute.jsValue()
+        object[Strings.compute] = compute.jsValue
         self.init(unsafelyWrapping: object)
     }
 

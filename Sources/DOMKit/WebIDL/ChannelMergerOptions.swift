@@ -6,7 +6,7 @@ import JavaScriptKit
 public class ChannelMergerOptions: BridgedDictionary {
     public convenience init(numberOfInputs: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.numberOfInputs] = numberOfInputs.jsValue()
+        object[Strings.numberOfInputs] = numberOfInputs.jsValue
         self.init(unsafelyWrapping: object)
     }
 

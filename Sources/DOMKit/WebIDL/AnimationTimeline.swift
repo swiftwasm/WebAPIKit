@@ -20,7 +20,7 @@ public class AnimationTimeline: JSBridgedClass {
 
     @inlinable public func play(effect: AnimationEffect? = nil) -> Animation {
         let this = jsObject
-        return this[Strings.play].function!(this: this, arguments: [effect?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.play].function!(this: this, arguments: [effect?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

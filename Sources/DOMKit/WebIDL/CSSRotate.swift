@@ -15,11 +15,11 @@ public class CSSRotate: CSSTransformComponent {
     }
 
     @inlinable public convenience init(angle: CSSNumericValue) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [angle.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [angle.jsValue]))
     }
 
     @inlinable public convenience init(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish, angle: CSSNumericValue) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x.jsValue(), y.jsValue(), z.jsValue(), angle.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x.jsValue, y.jsValue, z.jsValue, angle.jsValue]))
     }
 
     @ReadWriteAttribute

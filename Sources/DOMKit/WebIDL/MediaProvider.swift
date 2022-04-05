@@ -26,14 +26,14 @@ public enum MediaProvider: JSValueCompatible, Any_MediaProvider {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .blob(blob):
-            return blob.jsValue()
+            return blob.jsValue
         case let .mediaSource(mediaSource):
-            return mediaSource.jsValue()
+            return mediaSource.jsValue
         case let .mediaStream(mediaStream):
-            return mediaStream.jsValue()
+            return mediaStream.jsValue
         }
     }
 }

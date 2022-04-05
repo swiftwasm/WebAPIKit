@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUProgrammableStage: BridgedDictionary {
     public convenience init(module: GPUShaderModule, entryPoint: String, constants: [String: GPUPipelineConstantValue]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.module] = module.jsValue()
-        object[Strings.entryPoint] = entryPoint.jsValue()
-        object[Strings.constants] = constants.jsValue()
+        object[Strings.module] = module.jsValue
+        object[Strings.entryPoint] = entryPoint.jsValue
+        object[Strings.constants] = constants.jsValue
         self.init(unsafelyWrapping: object)
     }
 

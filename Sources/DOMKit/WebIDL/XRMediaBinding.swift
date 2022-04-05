@@ -13,21 +13,21 @@ public class XRMediaBinding: JSBridgedClass {
     }
 
     @inlinable public convenience init(session: XRSession) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [session.jsValue]))
     }
 
     @inlinable public func createQuadLayer(video: HTMLVideoElement, init: XRMediaQuadLayerInit? = nil) -> XRQuadLayer {
         let this = jsObject
-        return this[Strings.createQuadLayer].function!(this: this, arguments: [video.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createQuadLayer].function!(this: this, arguments: [video.jsValue, `init`?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createCylinderLayer(video: HTMLVideoElement, init: XRMediaCylinderLayerInit? = nil) -> XRCylinderLayer {
         let this = jsObject
-        return this[Strings.createCylinderLayer].function!(this: this, arguments: [video.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createCylinderLayer].function!(this: this, arguments: [video.jsValue, `init`?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func createEquirectLayer(video: HTMLVideoElement, init: XRMediaEquirectLayerInit? = nil) -> XREquirectLayer {
         let this = jsObject
-        return this[Strings.createEquirectLayer].function!(this: this, arguments: [video.jsValue(), `init`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.createEquirectLayer].function!(this: this, arguments: [video.jsValue, `init`?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

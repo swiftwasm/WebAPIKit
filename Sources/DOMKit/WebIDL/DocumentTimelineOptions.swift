@@ -6,7 +6,7 @@ import JavaScriptKit
 public class DocumentTimelineOptions: BridgedDictionary {
     public convenience init(originTime: DOMHighResTimeStamp) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.originTime] = originTime.jsValue()
+        object[Strings.originTime] = originTime.jsValue
         self.init(unsafelyWrapping: object)
     }
 

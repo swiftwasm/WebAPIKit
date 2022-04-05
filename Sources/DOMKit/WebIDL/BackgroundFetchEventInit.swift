@@ -6,7 +6,7 @@ import JavaScriptKit
 public class BackgroundFetchEventInit: BridgedDictionary {
     public convenience init(registration: BackgroundFetchRegistration) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.registration] = registration.jsValue()
+        object[Strings.registration] = registration.jsValue
         self.init(unsafelyWrapping: object)
     }
 

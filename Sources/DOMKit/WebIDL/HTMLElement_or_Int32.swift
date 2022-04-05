@@ -21,12 +21,12 @@ public enum HTMLElement_or_Int32: JSValueCompatible, Any_HTMLElement_or_Int32 {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .hTMLElement(hTMLElement):
-            return hTMLElement.jsValue()
+            return hTMLElement.jsValue
         case let .int32(int32):
-            return int32.jsValue()
+            return int32.jsValue
         }
     }
 }

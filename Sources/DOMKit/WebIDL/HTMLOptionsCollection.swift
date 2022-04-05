@@ -22,12 +22,12 @@ public class HTMLOptionsCollection: HTMLCollection {
 
     @inlinable public func add(element: HTMLOptGroupElement_or_HTMLOptionElement, before: HTMLElement_or_Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.add].function!(this: this, arguments: [element.jsValue(), before?.jsValue() ?? .undefined])
+        _ = this[Strings.add].function!(this: this, arguments: [element.jsValue, before?.jsValue ?? .undefined])
     }
 
     @inlinable public func remove(index: Int32) {
         let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue()])
+        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue])
     }
 
     @ReadWriteAttribute

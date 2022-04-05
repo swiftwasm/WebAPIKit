@@ -13,7 +13,7 @@ public class CSSColor: CSSColorValue {
     }
 
     @inlinable public convenience init(colorSpace: CSSKeywordish, channels: [CSSColorPercent], alpha: CSSNumberish? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [colorSpace.jsValue(), channels.jsValue(), alpha?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [colorSpace.jsValue, channels.jsValue, alpha?.jsValue ?? .undefined]))
     }
 
     // XXX: member 'colorSpace' is ignored

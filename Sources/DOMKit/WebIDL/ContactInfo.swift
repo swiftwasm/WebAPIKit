@@ -6,11 +6,11 @@ import JavaScriptKit
 public class ContactInfo: BridgedDictionary {
     public convenience init(address: [ContactAddress], email: [String], icon: [Blob], name: [String], tel: [String]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.address] = address.jsValue()
-        object[Strings.email] = email.jsValue()
-        object[Strings.icon] = icon.jsValue()
-        object[Strings.name] = name.jsValue()
-        object[Strings.tel] = tel.jsValue()
+        object[Strings.address] = address.jsValue
+        object[Strings.email] = email.jsValue
+        object[Strings.icon] = icon.jsValue
+        object[Strings.name] = name.jsValue
+        object[Strings.tel] = tel.jsValue
         self.init(unsafelyWrapping: object)
     }
 

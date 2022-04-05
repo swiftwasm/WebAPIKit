@@ -6,7 +6,7 @@ import JavaScriptKit
 public class SerialPortRequestOptions: BridgedDictionary {
     public convenience init(filters: [SerialPortFilter]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.filters] = filters.jsValue()
+        object[Strings.filters] = filters.jsValue
         self.init(unsafelyWrapping: object)
     }
 

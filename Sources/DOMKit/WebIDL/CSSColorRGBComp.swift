@@ -21,12 +21,12 @@ public enum CSSColorRGBComp: JSValueCompatible, Any_CSSColorRGBComp {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .cSSKeywordish(cSSKeywordish):
-            return cSSKeywordish.jsValue()
+            return cSSKeywordish.jsValue
         case let .cSSNumberish(cSSNumberish):
-            return cSSNumberish.jsValue()
+            return cSSNumberish.jsValue
         }
     }
 }

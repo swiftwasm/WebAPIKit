@@ -21,7 +21,7 @@ public class WebSocket: EventTarget {
     }
 
     @inlinable public convenience init(url: String, protocols: String_or_seq_of_String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue(), protocols?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue, protocols?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -58,7 +58,7 @@ public class WebSocket: EventTarget {
 
     @inlinable public func close(code: UInt16? = nil, reason: String? = nil) {
         let this = jsObject
-        _ = this[Strings.close].function!(this: this, arguments: [code?.jsValue() ?? .undefined, reason?.jsValue() ?? .undefined])
+        _ = this[Strings.close].function!(this: this, arguments: [code?.jsValue ?? .undefined, reason?.jsValue ?? .undefined])
     }
 
     @ClosureAttribute1Optional
@@ -69,6 +69,6 @@ public class WebSocket: EventTarget {
 
     @inlinable public func send(data: Blob_or_BufferSource_or_String) {
         let this = jsObject
-        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue()])
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue])
     }
 }

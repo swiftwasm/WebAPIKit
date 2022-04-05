@@ -36,18 +36,18 @@ public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .canvasRenderingContext2D(canvasRenderingContext2D):
-            return canvasRenderingContext2D.jsValue()
+            return canvasRenderingContext2D.jsValue
         case let .gPUCanvasContext(gPUCanvasContext):
-            return gPUCanvasContext.jsValue()
+            return gPUCanvasContext.jsValue
         case let .imageBitmapRenderingContext(imageBitmapRenderingContext):
-            return imageBitmapRenderingContext.jsValue()
+            return imageBitmapRenderingContext.jsValue
         case let .webGL2RenderingContext(webGL2RenderingContext):
-            return webGL2RenderingContext.jsValue()
+            return webGL2RenderingContext.jsValue
         case let .webGLRenderingContext(webGLRenderingContext):
-            return webGLRenderingContext.jsValue()
+            return webGLRenderingContext.jsValue
         }
     }
 }

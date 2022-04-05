@@ -23,6 +23,6 @@ public class TrustedScript: JSBridgedClass {
 
     @inlinable public static func fromLiteral(templateStringsArray: JSObject) -> Self {
         let this = constructor
-        return this[Strings.fromLiteral].function!(this: this, arguments: [templateStringsArray.jsValue()]).fromJSValue()!
+        return this[Strings.fromLiteral].function!(this: this, arguments: [templateStringsArray.jsValue]).fromJSValue()!
     }
 }

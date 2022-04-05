@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GPUObjectDescriptorBase: BridgedDictionary {
     public convenience init(label: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.label] = label.jsValue()
+        object[Strings.label] = label.jsValue
         self.init(unsafelyWrapping: object)
     }
 

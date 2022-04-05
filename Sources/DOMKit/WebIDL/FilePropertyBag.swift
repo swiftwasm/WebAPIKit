@@ -6,7 +6,7 @@ import JavaScriptKit
 public class FilePropertyBag: BridgedDictionary {
     public convenience init(lastModified: Int64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.lastModified] = lastModified.jsValue()
+        object[Strings.lastModified] = lastModified.jsValue
         self.init(unsafelyWrapping: object)
     }
 

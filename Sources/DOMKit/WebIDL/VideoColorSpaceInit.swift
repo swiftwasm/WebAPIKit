@@ -6,10 +6,10 @@ import JavaScriptKit
 public class VideoColorSpaceInit: BridgedDictionary {
     public convenience init(primaries: VideoColorPrimaries, transfer: VideoTransferCharacteristics, matrix: VideoMatrixCoefficients, fullRange: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.primaries] = primaries.jsValue()
-        object[Strings.transfer] = transfer.jsValue()
-        object[Strings.matrix] = matrix.jsValue()
-        object[Strings.fullRange] = fullRange.jsValue()
+        object[Strings.primaries] = primaries.jsValue
+        object[Strings.transfer] = transfer.jsValue
+        object[Strings.matrix] = matrix.jsValue
+        object[Strings.fullRange] = fullRange.jsValue
         self.init(unsafelyWrapping: object)
     }
 

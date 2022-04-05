@@ -25,7 +25,7 @@ public class PannerNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: PannerOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute
@@ -72,11 +72,11 @@ public class PannerNode: AudioNode {
 
     @inlinable public func setPosition(x: Float, y: Float, z: Float) {
         let this = jsObject
-        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue(), y.jsValue(), z.jsValue()])
+        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
     }
 
     @inlinable public func setOrientation(x: Float, y: Float, z: Float) {
         let this = jsObject
-        _ = this[Strings.setOrientation].function!(this: this, arguments: [x.jsValue(), y.jsValue(), z.jsValue()])
+        _ = this[Strings.setOrientation].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
     }
 }

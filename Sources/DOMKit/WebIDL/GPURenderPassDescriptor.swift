@@ -6,10 +6,10 @@ import JavaScriptKit
 public class GPURenderPassDescriptor: BridgedDictionary {
     public convenience init(colorAttachments: [GPURenderPassColorAttachment?], depthStencilAttachment: GPURenderPassDepthStencilAttachment, occlusionQuerySet: GPUQuerySet, timestampWrites: GPURenderPassTimestampWrites) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.colorAttachments] = colorAttachments.jsValue()
-        object[Strings.depthStencilAttachment] = depthStencilAttachment.jsValue()
-        object[Strings.occlusionQuerySet] = occlusionQuerySet.jsValue()
-        object[Strings.timestampWrites] = timestampWrites.jsValue()
+        object[Strings.colorAttachments] = colorAttachments.jsValue
+        object[Strings.depthStencilAttachment] = depthStencilAttachment.jsValue
+        object[Strings.occlusionQuerySet] = occlusionQuerySet.jsValue
+        object[Strings.timestampWrites] = timestampWrites.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,12 +6,12 @@ import JavaScriptKit
 public class XRWebGLLayerInit: BridgedDictionary {
     public convenience init(antialias: Bool, depth: Bool, stencil: Bool, alpha: Bool, ignoreDepthValues: Bool, framebufferScaleFactor: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.antialias] = antialias.jsValue()
-        object[Strings.depth] = depth.jsValue()
-        object[Strings.stencil] = stencil.jsValue()
-        object[Strings.alpha] = alpha.jsValue()
-        object[Strings.ignoreDepthValues] = ignoreDepthValues.jsValue()
-        object[Strings.framebufferScaleFactor] = framebufferScaleFactor.jsValue()
+        object[Strings.antialias] = antialias.jsValue
+        object[Strings.depth] = depth.jsValue
+        object[Strings.stencil] = stencil.jsValue
+        object[Strings.alpha] = alpha.jsValue
+        object[Strings.ignoreDepthValues] = ignoreDepthValues.jsValue
+        object[Strings.framebufferScaleFactor] = framebufferScaleFactor.jsValue
         self.init(unsafelyWrapping: object)
     }
 

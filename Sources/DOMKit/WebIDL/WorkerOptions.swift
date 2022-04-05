@@ -6,9 +6,9 @@ import JavaScriptKit
 public class WorkerOptions: BridgedDictionary {
     public convenience init(type: WorkerType, credentials: RequestCredentials, name: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.credentials] = credentials.jsValue()
-        object[Strings.name] = name.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.credentials] = credentials.jsValue
+        object[Strings.name] = name.jsValue
         self.init(unsafelyWrapping: object)
     }
 

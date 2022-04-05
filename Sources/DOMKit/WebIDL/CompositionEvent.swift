@@ -12,7 +12,7 @@ public class CompositionEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: CompositionEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -20,6 +20,6 @@ public class CompositionEvent: UIEvent {
 
     @inlinable public func initCompositionEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: WindowProxy? = nil, dataArg: String? = nil) {
         let this = jsObject
-        _ = this[Strings.initCompositionEvent].function!(this: this, arguments: [typeArg.jsValue(), bubblesArg?.jsValue() ?? .undefined, cancelableArg?.jsValue() ?? .undefined, viewArg?.jsValue() ?? .undefined, dataArg?.jsValue() ?? .undefined])
+        _ = this[Strings.initCompositionEvent].function!(this: this, arguments: [typeArg.jsValue, bubblesArg?.jsValue ?? .undefined, cancelableArg?.jsValue ?? .undefined, viewArg?.jsValue ?? .undefined, dataArg?.jsValue ?? .undefined])
     }
 }

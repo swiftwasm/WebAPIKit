@@ -28,7 +28,7 @@ public class Touch: JSBridgedClass {
     }
 
     @inlinable public convenience init(touchInitDict: TouchInit) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [touchInitDict.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [touchInitDict.jsValue]))
     }
 
     @ReadonlyAttribute

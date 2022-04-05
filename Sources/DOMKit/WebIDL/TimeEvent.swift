@@ -20,6 +20,6 @@ public class TimeEvent: Event {
 
     @inlinable public func initTimeEvent(typeArg: String, viewArg: Window?, detailArg: Int32) {
         let this = jsObject
-        _ = this[Strings.initTimeEvent].function!(this: this, arguments: [typeArg.jsValue(), viewArg.jsValue(), detailArg.jsValue()])
+        _ = this[Strings.initTimeEvent].function!(this: this, arguments: [typeArg.jsValue, viewArg.jsValue, detailArg.jsValue])
     }
 }

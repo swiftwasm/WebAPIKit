@@ -14,7 +14,7 @@ public class CSSStyleSheet: StyleSheet {
     }
 
     @inlinable public convenience init(options: CSSStyleSheetInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -25,29 +25,29 @@ public class CSSStyleSheet: StyleSheet {
 
     @inlinable public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
         let this = jsObject
-        return this[Strings.insertRule].function!(this: this, arguments: [rule.jsValue(), index?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.insertRule].function!(this: this, arguments: [rule.jsValue, index?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func deleteRule(index: UInt32) {
         let this = jsObject
-        _ = this[Strings.deleteRule].function!(this: this, arguments: [index.jsValue()])
+        _ = this[Strings.deleteRule].function!(this: this, arguments: [index.jsValue])
     }
 
     @inlinable public func replace(text: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.replace].function!(this: this, arguments: [text.jsValue()]).fromJSValue()!
+        return this[Strings.replace].function!(this: this, arguments: [text.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func replace(text: String) async throws -> CSSStyleSheet {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.replace].function!(this: this, arguments: [text.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.replace].function!(this: this, arguments: [text.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func replaceSync(text: String) {
         let this = jsObject
-        _ = this[Strings.replaceSync].function!(this: this, arguments: [text.jsValue()])
+        _ = this[Strings.replaceSync].function!(this: this, arguments: [text.jsValue])
     }
 
     @ReadonlyAttribute
@@ -55,11 +55,11 @@ public class CSSStyleSheet: StyleSheet {
 
     @inlinable public func addRule(selector: String? = nil, style: String? = nil, index: UInt32? = nil) -> Int32 {
         let this = jsObject
-        return this[Strings.addRule].function!(this: this, arguments: [selector?.jsValue() ?? .undefined, style?.jsValue() ?? .undefined, index?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.addRule].function!(this: this, arguments: [selector?.jsValue ?? .undefined, style?.jsValue ?? .undefined, index?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func removeRule(index: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.removeRule].function!(this: this, arguments: [index?.jsValue() ?? .undefined])
+        _ = this[Strings.removeRule].function!(this: this, arguments: [index?.jsValue ?? .undefined])
     }
 }

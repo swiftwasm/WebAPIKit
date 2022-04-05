@@ -6,8 +6,8 @@ import JavaScriptKit
 public class LayoutOptions: BridgedDictionary {
     public convenience init(childDisplay: ChildDisplayType, sizing: LayoutSizingMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.childDisplay] = childDisplay.jsValue()
-        object[Strings.sizing] = sizing.jsValue()
+        object[Strings.childDisplay] = childDisplay.jsValue
+        object[Strings.sizing] = sizing.jsValue
         self.init(unsafelyWrapping: object)
     }
 

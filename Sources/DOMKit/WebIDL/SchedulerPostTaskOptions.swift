@@ -6,9 +6,9 @@ import JavaScriptKit
 public class SchedulerPostTaskOptions: BridgedDictionary {
     public convenience init(signal: AbortSignal, priority: TaskPriority, delay: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.signal] = signal.jsValue()
-        object[Strings.priority] = priority.jsValue()
-        object[Strings.delay] = delay.jsValue()
+        object[Strings.signal] = signal.jsValue
+        object[Strings.priority] = priority.jsValue
+        object[Strings.delay] = delay.jsValue
         self.init(unsafelyWrapping: object)
     }
 

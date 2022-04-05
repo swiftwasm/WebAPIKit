@@ -41,20 +41,20 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .hTMLCanvasElement(hTMLCanvasElement):
-            return hTMLCanvasElement.jsValue()
+            return hTMLCanvasElement.jsValue
         case let .hTMLOrSVGImageElement(hTMLOrSVGImageElement):
-            return hTMLOrSVGImageElement.jsValue()
+            return hTMLOrSVGImageElement.jsValue
         case let .hTMLVideoElement(hTMLVideoElement):
-            return hTMLVideoElement.jsValue()
+            return hTMLVideoElement.jsValue
         case let .imageBitmap(imageBitmap):
-            return imageBitmap.jsValue()
+            return imageBitmap.jsValue
         case let .offscreenCanvas(offscreenCanvas):
-            return offscreenCanvas.jsValue()
+            return offscreenCanvas.jsValue
         case let .videoFrame(videoFrame):
-            return videoFrame.jsValue()
+            return videoFrame.jsValue
         }
     }
 }

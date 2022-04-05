@@ -7,26 +7,26 @@ public protocol CanvasTransform: JSBridgedClass {}
 public extension CanvasTransform {
     @inlinable func scale(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scale].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
+        _ = this[Strings.scale].function!(this: this, arguments: [x.jsValue, y.jsValue])
     }
 
     @inlinable func rotate(angle: Double) {
         let this = jsObject
-        _ = this[Strings.rotate].function!(this: this, arguments: [angle.jsValue()])
+        _ = this[Strings.rotate].function!(this: this, arguments: [angle.jsValue])
     }
 
     @inlinable func translate(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.translate].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
+        _ = this[Strings.translate].function!(this: this, arguments: [x.jsValue, y.jsValue])
     }
 
     @inlinable func transform(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double) {
-        let _arg0 = a.jsValue()
-        let _arg1 = b.jsValue()
-        let _arg2 = c.jsValue()
-        let _arg3 = d.jsValue()
-        let _arg4 = e.jsValue()
-        let _arg5 = f.jsValue()
+        let _arg0 = a.jsValue
+        let _arg1 = b.jsValue
+        let _arg2 = c.jsValue
+        let _arg3 = d.jsValue
+        let _arg4 = e.jsValue
+        let _arg5 = f.jsValue
         let this = jsObject
         _ = this[Strings.transform].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
@@ -37,19 +37,19 @@ public extension CanvasTransform {
     }
 
     @inlinable func setTransform(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double) {
-        let _arg0 = a.jsValue()
-        let _arg1 = b.jsValue()
-        let _arg2 = c.jsValue()
-        let _arg3 = d.jsValue()
-        let _arg4 = e.jsValue()
-        let _arg5 = f.jsValue()
+        let _arg0 = a.jsValue
+        let _arg1 = b.jsValue
+        let _arg2 = c.jsValue
+        let _arg3 = d.jsValue
+        let _arg4 = e.jsValue
+        let _arg5 = f.jsValue
         let this = jsObject
         _ = this[Strings.setTransform].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
     }
 
     @inlinable func setTransform(transform: DOMMatrix2DInit? = nil) {
         let this = jsObject
-        _ = this[Strings.setTransform].function!(this: this, arguments: [transform?.jsValue() ?? .undefined])
+        _ = this[Strings.setTransform].function!(this: this, arguments: [transform?.jsValue ?? .undefined])
     }
 
     @inlinable func resetTransform() {

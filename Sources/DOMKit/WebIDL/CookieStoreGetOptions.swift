@@ -6,8 +6,8 @@ import JavaScriptKit
 public class CookieStoreGetOptions: BridgedDictionary {
     public convenience init(name: String, url: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue()
-        object[Strings.url] = url.jsValue()
+        object[Strings.name] = name.jsValue
+        object[Strings.url] = url.jsValue
         self.init(unsafelyWrapping: object)
     }
 

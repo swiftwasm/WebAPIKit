@@ -6,15 +6,15 @@ import JavaScriptKit
 public class PublicKeyCredentialCreationOptions: BridgedDictionary {
     public convenience init(rp: PublicKeyCredentialRpEntity, user: PublicKeyCredentialUserEntity, challenge: BufferSource, pubKeyCredParams: [PublicKeyCredentialParameters], timeout: UInt32, excludeCredentials: [PublicKeyCredentialDescriptor], authenticatorSelection: AuthenticatorSelectionCriteria, attestation: String, extensions: AuthenticationExtensionsClientInputs) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.rp] = rp.jsValue()
-        object[Strings.user] = user.jsValue()
-        object[Strings.challenge] = challenge.jsValue()
-        object[Strings.pubKeyCredParams] = pubKeyCredParams.jsValue()
-        object[Strings.timeout] = timeout.jsValue()
-        object[Strings.excludeCredentials] = excludeCredentials.jsValue()
-        object[Strings.authenticatorSelection] = authenticatorSelection.jsValue()
-        object[Strings.attestation] = attestation.jsValue()
-        object[Strings.extensions] = extensions.jsValue()
+        object[Strings.rp] = rp.jsValue
+        object[Strings.user] = user.jsValue
+        object[Strings.challenge] = challenge.jsValue
+        object[Strings.pubKeyCredParams] = pubKeyCredParams.jsValue
+        object[Strings.timeout] = timeout.jsValue
+        object[Strings.excludeCredentials] = excludeCredentials.jsValue
+        object[Strings.authenticatorSelection] = authenticatorSelection.jsValue
+        object[Strings.attestation] = attestation.jsValue
+        object[Strings.extensions] = extensions.jsValue
         self.init(unsafelyWrapping: object)
     }
 

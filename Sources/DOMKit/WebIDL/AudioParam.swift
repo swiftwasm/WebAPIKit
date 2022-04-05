@@ -34,36 +34,36 @@ public class AudioParam: JSBridgedClass {
 
     @inlinable public func setValueAtTime(value: Float, startTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.setValueAtTime].function!(this: this, arguments: [value.jsValue(), startTime.jsValue()]).fromJSValue()!
+        return this[Strings.setValueAtTime].function!(this: this, arguments: [value.jsValue, startTime.jsValue]).fromJSValue()!
     }
 
     @inlinable public func linearRampToValueAtTime(value: Float, endTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.linearRampToValueAtTime].function!(this: this, arguments: [value.jsValue(), endTime.jsValue()]).fromJSValue()!
+        return this[Strings.linearRampToValueAtTime].function!(this: this, arguments: [value.jsValue, endTime.jsValue]).fromJSValue()!
     }
 
     @inlinable public func exponentialRampToValueAtTime(value: Float, endTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.exponentialRampToValueAtTime].function!(this: this, arguments: [value.jsValue(), endTime.jsValue()]).fromJSValue()!
+        return this[Strings.exponentialRampToValueAtTime].function!(this: this, arguments: [value.jsValue, endTime.jsValue]).fromJSValue()!
     }
 
     @inlinable public func setTargetAtTime(target: Float, startTime: Double, timeConstant: Float) -> Self {
         let this = jsObject
-        return this[Strings.setTargetAtTime].function!(this: this, arguments: [target.jsValue(), startTime.jsValue(), timeConstant.jsValue()]).fromJSValue()!
+        return this[Strings.setTargetAtTime].function!(this: this, arguments: [target.jsValue, startTime.jsValue, timeConstant.jsValue]).fromJSValue()!
     }
 
     @inlinable public func setValueCurveAtTime(values: [Float], startTime: Double, duration: Double) -> Self {
         let this = jsObject
-        return this[Strings.setValueCurveAtTime].function!(this: this, arguments: [values.jsValue(), startTime.jsValue(), duration.jsValue()]).fromJSValue()!
+        return this[Strings.setValueCurveAtTime].function!(this: this, arguments: [values.jsValue, startTime.jsValue, duration.jsValue]).fromJSValue()!
     }
 
     @inlinable public func cancelScheduledValues(cancelTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.cancelScheduledValues].function!(this: this, arguments: [cancelTime.jsValue()]).fromJSValue()!
+        return this[Strings.cancelScheduledValues].function!(this: this, arguments: [cancelTime.jsValue]).fromJSValue()!
     }
 
     @inlinable public func cancelAndHoldAtTime(cancelTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.cancelAndHoldAtTime].function!(this: this, arguments: [cancelTime.jsValue()]).fromJSValue()!
+        return this[Strings.cancelAndHoldAtTime].function!(this: this, arguments: [cancelTime.jsValue]).fromJSValue()!
     }
 }

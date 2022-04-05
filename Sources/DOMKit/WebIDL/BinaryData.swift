@@ -21,12 +21,12 @@ public enum BinaryData: JSValueCompatible, Any_BinaryData {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .arrayBuffer(arrayBuffer):
-            return arrayBuffer.jsValue()
+            return arrayBuffer.jsValue
         case let .arrayBufferView(arrayBufferView):
-            return arrayBufferView.jsValue()
+            return arrayBufferView.jsValue
         }
     }
 }

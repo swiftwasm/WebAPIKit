@@ -6,20 +6,20 @@ import JavaScriptKit
 public class PointerEventInit: BridgedDictionary {
     public convenience init(pointerId: Int32, width: Double, height: Double, pressure: Float, tangentialPressure: Float, tiltX: Int32, tiltY: Int32, twist: Int32, altitudeAngle: Double, azimuthAngle: Double, pointerType: String, isPrimary: Bool, coalescedEvents: [PointerEvent], predictedEvents: [PointerEvent]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.pointerId] = pointerId.jsValue()
-        object[Strings.width] = width.jsValue()
-        object[Strings.height] = height.jsValue()
-        object[Strings.pressure] = pressure.jsValue()
-        object[Strings.tangentialPressure] = tangentialPressure.jsValue()
-        object[Strings.tiltX] = tiltX.jsValue()
-        object[Strings.tiltY] = tiltY.jsValue()
-        object[Strings.twist] = twist.jsValue()
-        object[Strings.altitudeAngle] = altitudeAngle.jsValue()
-        object[Strings.azimuthAngle] = azimuthAngle.jsValue()
-        object[Strings.pointerType] = pointerType.jsValue()
-        object[Strings.isPrimary] = isPrimary.jsValue()
-        object[Strings.coalescedEvents] = coalescedEvents.jsValue()
-        object[Strings.predictedEvents] = predictedEvents.jsValue()
+        object[Strings.pointerId] = pointerId.jsValue
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.pressure] = pressure.jsValue
+        object[Strings.tangentialPressure] = tangentialPressure.jsValue
+        object[Strings.tiltX] = tiltX.jsValue
+        object[Strings.tiltY] = tiltY.jsValue
+        object[Strings.twist] = twist.jsValue
+        object[Strings.altitudeAngle] = altitudeAngle.jsValue
+        object[Strings.azimuthAngle] = azimuthAngle.jsValue
+        object[Strings.pointerType] = pointerType.jsValue
+        object[Strings.isPrimary] = isPrimary.jsValue
+        object[Strings.coalescedEvents] = coalescedEvents.jsValue
+        object[Strings.predictedEvents] = predictedEvents.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class PerformanceMarkOptions: BridgedDictionary {
     public convenience init(detail: JSValue, startTime: DOMHighResTimeStamp) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.detail] = detail.jsValue()
-        object[Strings.startTime] = startTime.jsValue()
+        object[Strings.detail] = detail.jsValue
+        object[Strings.startTime] = startTime.jsValue
         self.init(unsafelyWrapping: object)
     }
 

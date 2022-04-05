@@ -26,14 +26,14 @@ public enum BlobPart: JSValueCompatible, Any_BlobPart {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .blob(blob):
-            return blob.jsValue()
+            return blob.jsValue
         case let .bufferSource(bufferSource):
-            return bufferSource.jsValue()
+            return bufferSource.jsValue
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         }
     }
 }

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class XRSessionEventInit: BridgedDictionary {
     public convenience init(session: XRSession) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.session] = session.jsValue()
+        object[Strings.session] = session.jsValue
         self.init(unsafelyWrapping: object)
     }
 

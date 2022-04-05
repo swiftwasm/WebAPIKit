@@ -21,12 +21,12 @@ public enum ConstrainDouble: JSValueCompatible, Any_ConstrainDouble {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .constrainDoubleRange(constrainDoubleRange):
-            return constrainDoubleRange.jsValue()
+            return constrainDoubleRange.jsValue
         case let .double(double):
-            return double.jsValue()
+            return double.jsValue
         }
     }
 }

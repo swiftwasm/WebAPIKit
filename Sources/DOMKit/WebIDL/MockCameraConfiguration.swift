@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MockCameraConfiguration: BridgedDictionary {
     public convenience init(defaultFrameRate: Double, facingMode: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.defaultFrameRate] = defaultFrameRate.jsValue()
-        object[Strings.facingMode] = facingMode.jsValue()
+        object[Strings.defaultFrameRate] = defaultFrameRate.jsValue
+        object[Strings.facingMode] = facingMode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

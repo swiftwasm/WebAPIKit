@@ -6,8 +6,8 @@ import JavaScriptKit
 public class ReportingObserverOptions: BridgedDictionary {
     public convenience init(types: [String], buffered: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.types] = types.jsValue()
-        object[Strings.buffered] = buffered.jsValue()
+        object[Strings.types] = types.jsValue
+        object[Strings.buffered] = buffered.jsValue
         self.init(unsafelyWrapping: object)
     }
 

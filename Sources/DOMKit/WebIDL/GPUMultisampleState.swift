@@ -6,9 +6,9 @@ import JavaScriptKit
 public class GPUMultisampleState: BridgedDictionary {
     public convenience init(count: GPUSize32, mask: GPUSampleMask, alphaToCoverageEnabled: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.count] = count.jsValue()
-        object[Strings.mask] = mask.jsValue()
-        object[Strings.alphaToCoverageEnabled] = alphaToCoverageEnabled.jsValue()
+        object[Strings.count] = count.jsValue
+        object[Strings.mask] = mask.jsValue
+        object[Strings.alphaToCoverageEnabled] = alphaToCoverageEnabled.jsValue
         self.init(unsafelyWrapping: object)
     }
 

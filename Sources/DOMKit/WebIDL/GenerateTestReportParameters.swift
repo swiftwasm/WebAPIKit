@@ -6,8 +6,8 @@ import JavaScriptKit
 public class GenerateTestReportParameters: BridgedDictionary {
     public convenience init(message: String, group: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.message] = message.jsValue()
-        object[Strings.group] = group.jsValue()
+        object[Strings.message] = message.jsValue
+        object[Strings.group] = group.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,16 +6,16 @@ import JavaScriptKit
 public class ValidityStateFlags: BridgedDictionary {
     public convenience init(valueMissing: Bool, typeMismatch: Bool, patternMismatch: Bool, tooLong: Bool, tooShort: Bool, rangeUnderflow: Bool, rangeOverflow: Bool, stepMismatch: Bool, badInput: Bool, customError: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.valueMissing] = valueMissing.jsValue()
-        object[Strings.typeMismatch] = typeMismatch.jsValue()
-        object[Strings.patternMismatch] = patternMismatch.jsValue()
-        object[Strings.tooLong] = tooLong.jsValue()
-        object[Strings.tooShort] = tooShort.jsValue()
-        object[Strings.rangeUnderflow] = rangeUnderflow.jsValue()
-        object[Strings.rangeOverflow] = rangeOverflow.jsValue()
-        object[Strings.stepMismatch] = stepMismatch.jsValue()
-        object[Strings.badInput] = badInput.jsValue()
-        object[Strings.customError] = customError.jsValue()
+        object[Strings.valueMissing] = valueMissing.jsValue
+        object[Strings.typeMismatch] = typeMismatch.jsValue
+        object[Strings.patternMismatch] = patternMismatch.jsValue
+        object[Strings.tooLong] = tooLong.jsValue
+        object[Strings.tooShort] = tooShort.jsValue
+        object[Strings.rangeUnderflow] = rangeUnderflow.jsValue
+        object[Strings.rangeOverflow] = rangeOverflow.jsValue
+        object[Strings.stepMismatch] = stepMismatch.jsValue
+        object[Strings.badInput] = badInput.jsValue
+        object[Strings.customError] = customError.jsValue
         self.init(unsafelyWrapping: object)
     }
 

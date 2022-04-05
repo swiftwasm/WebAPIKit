@@ -26,14 +26,14 @@ public enum TrustedType: JSValueCompatible, Any_TrustedType {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .trustedHTML(trustedHTML):
-            return trustedHTML.jsValue()
+            return trustedHTML.jsValue
         case let .trustedScript(trustedScript):
-            return trustedScript.jsValue()
+            return trustedScript.jsValue
         case let .trustedScriptURL(trustedScriptURL):
-            return trustedScriptURL.jsValue()
+            return trustedScriptURL.jsValue
         }
     }
 }

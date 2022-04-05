@@ -12,7 +12,7 @@ public class CSSSkewX: CSSTransformComponent {
     }
 
     @inlinable public convenience init(ax: CSSNumericValue) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [ax.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [ax.jsValue]))
     }
 
     @ReadWriteAttribute

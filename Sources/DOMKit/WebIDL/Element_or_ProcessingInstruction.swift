@@ -21,12 +21,12 @@ public enum Element_or_ProcessingInstruction: JSValueCompatible, Any_Element_or_
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .element(element):
-            return element.jsValue()
+            return element.jsValue
         case let .processingInstruction(processingInstruction):
-            return processingInstruction.jsValue()
+            return processingInstruction.jsValue
         }
     }
 }

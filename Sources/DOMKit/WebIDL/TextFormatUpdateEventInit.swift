@@ -6,7 +6,7 @@ import JavaScriptKit
 public class TextFormatUpdateEventInit: BridgedDictionary {
     public convenience init(textFormats: [TextFormat]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.textFormats] = textFormats.jsValue()
+        object[Strings.textFormats] = textFormats.jsValue
         self.init(unsafelyWrapping: object)
     }
 

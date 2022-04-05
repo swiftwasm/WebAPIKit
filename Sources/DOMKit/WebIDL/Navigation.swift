@@ -28,7 +28,7 @@ public class Navigation: EventTarget {
 
     @inlinable public func updateCurrentEntry(options: NavigationUpdateCurrentEntryOptions) {
         let this = jsObject
-        _ = this[Strings.updateCurrentEntry].function!(this: this, arguments: [options.jsValue()])
+        _ = this[Strings.updateCurrentEntry].function!(this: this, arguments: [options.jsValue])
     }
 
     @ReadonlyAttribute
@@ -42,27 +42,27 @@ public class Navigation: EventTarget {
 
     @inlinable public func navigate(url: String, options: NavigationNavigateOptions? = nil) -> NavigationResult {
         let this = jsObject
-        return this[Strings.navigate].function!(this: this, arguments: [url.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.navigate].function!(this: this, arguments: [url.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func reload(options: NavigationReloadOptions? = nil) -> NavigationResult {
         let this = jsObject
-        return this[Strings.reload].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.reload].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func traverseTo(key: String, options: NavigationOptions? = nil) -> NavigationResult {
         let this = jsObject
-        return this[Strings.traverseTo].function!(this: this, arguments: [key.jsValue(), options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.traverseTo].function!(this: this, arguments: [key.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func back(options: NavigationOptions? = nil) -> NavigationResult {
         let this = jsObject
-        return this[Strings.back].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.back].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func forward(options: NavigationOptions? = nil) -> NavigationResult {
         let this = jsObject
-        return this[Strings.forward].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.forward].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ClosureAttribute1Optional

@@ -6,9 +6,9 @@ import JavaScriptKit
 public class NotificationAction: BridgedDictionary {
     public convenience init(action: String, title: String, icon: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.action] = action.jsValue()
-        object[Strings.title] = title.jsValue()
-        object[Strings.icon] = icon.jsValue()
+        object[Strings.action] = action.jsValue
+        object[Strings.title] = title.jsValue
+        object[Strings.icon] = icon.jsValue
         self.init(unsafelyWrapping: object)
     }
 

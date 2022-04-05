@@ -6,8 +6,8 @@ import JavaScriptKit
 public class DisplayMediaStreamConstraints: BridgedDictionary {
     public convenience init(video: Bool_or_MediaTrackConstraints, audio: Bool_or_MediaTrackConstraints) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.video] = video.jsValue()
-        object[Strings.audio] = audio.jsValue()
+        object[Strings.video] = video.jsValue
+        object[Strings.audio] = audio.jsValue
         self.init(unsafelyWrapping: object)
     }
 

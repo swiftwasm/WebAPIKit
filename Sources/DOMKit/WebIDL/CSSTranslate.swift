@@ -14,7 +14,7 @@ public class CSSTranslate: CSSTransformComponent {
     }
 
     @inlinable public convenience init(x: CSSNumericValue, y: CSSNumericValue, z: CSSNumericValue? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x.jsValue(), y.jsValue(), z?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [x.jsValue, y.jsValue, z?.jsValue ?? .undefined]))
     }
 
     @ReadWriteAttribute

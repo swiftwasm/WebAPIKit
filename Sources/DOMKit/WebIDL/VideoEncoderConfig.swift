@@ -6,18 +6,18 @@ import JavaScriptKit
 public class VideoEncoderConfig: BridgedDictionary {
     public convenience init(codec: String, width: UInt32, height: UInt32, displayWidth: UInt32, displayHeight: UInt32, bitrate: UInt64, framerate: Double, hardwareAcceleration: HardwareAcceleration, alpha: AlphaOption, scalabilityMode: String, bitrateMode: BitrateMode, latencyMode: LatencyMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.codec] = codec.jsValue()
-        object[Strings.width] = width.jsValue()
-        object[Strings.height] = height.jsValue()
-        object[Strings.displayWidth] = displayWidth.jsValue()
-        object[Strings.displayHeight] = displayHeight.jsValue()
-        object[Strings.bitrate] = bitrate.jsValue()
-        object[Strings.framerate] = framerate.jsValue()
-        object[Strings.hardwareAcceleration] = hardwareAcceleration.jsValue()
-        object[Strings.alpha] = alpha.jsValue()
-        object[Strings.scalabilityMode] = scalabilityMode.jsValue()
-        object[Strings.bitrateMode] = bitrateMode.jsValue()
-        object[Strings.latencyMode] = latencyMode.jsValue()
+        object[Strings.codec] = codec.jsValue
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.displayWidth] = displayWidth.jsValue
+        object[Strings.displayHeight] = displayHeight.jsValue
+        object[Strings.bitrate] = bitrate.jsValue
+        object[Strings.framerate] = framerate.jsValue
+        object[Strings.hardwareAcceleration] = hardwareAcceleration.jsValue
+        object[Strings.alpha] = alpha.jsValue
+        object[Strings.scalabilityMode] = scalabilityMode.jsValue
+        object[Strings.bitrateMode] = bitrateMode.jsValue
+        object[Strings.latencyMode] = latencyMode.jsValue
         self.init(unsafelyWrapping: object)
     }
 

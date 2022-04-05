@@ -21,12 +21,12 @@ public enum CSSNumberish: JSValueCompatible, Any_CSSNumberish {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .cSSNumericValue(cSSNumericValue):
-            return cSSNumericValue.jsValue()
+            return cSSNumericValue.jsValue
         case let .double(double):
-            return double.jsValue()
+            return double.jsValue
         }
     }
 }

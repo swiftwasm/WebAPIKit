@@ -21,12 +21,12 @@ public enum BluetoothServiceUUID: JSValueCompatible, Any_BluetoothServiceUUID {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .string(string):
-            return string.jsValue()
+            return string.jsValue
         case let .uInt32(uInt32):
-            return uInt32.jsValue()
+            return uInt32.jsValue
         }
     }
 }

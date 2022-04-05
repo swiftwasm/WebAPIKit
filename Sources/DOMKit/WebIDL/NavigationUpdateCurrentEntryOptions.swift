@@ -6,7 +6,7 @@ import JavaScriptKit
 public class NavigationUpdateCurrentEntryOptions: BridgedDictionary {
     public convenience init(state: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.state] = state.jsValue()
+        object[Strings.state] = state.jsValue
         self.init(unsafelyWrapping: object)
     }
 

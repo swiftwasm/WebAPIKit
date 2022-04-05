@@ -6,9 +6,9 @@ import JavaScriptKit
 public class CanMakePaymentEventInit: BridgedDictionary {
     public convenience init(topOrigin: String, paymentRequestOrigin: String, methodData: [PaymentMethodData]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.topOrigin] = topOrigin.jsValue()
-        object[Strings.paymentRequestOrigin] = paymentRequestOrigin.jsValue()
-        object[Strings.methodData] = methodData.jsValue()
+        object[Strings.topOrigin] = topOrigin.jsValue
+        object[Strings.paymentRequestOrigin] = paymentRequestOrigin.jsValue
+        object[Strings.methodData] = methodData.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,12 +6,12 @@ import JavaScriptKit
 public class USBDeviceFilter: BridgedDictionary {
     public convenience init(vendorId: UInt16, productId: UInt16, classCode: UInt8, subclassCode: UInt8, protocolCode: UInt8, serialNumber: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.vendorId] = vendorId.jsValue()
-        object[Strings.productId] = productId.jsValue()
-        object[Strings.classCode] = classCode.jsValue()
-        object[Strings.subclassCode] = subclassCode.jsValue()
-        object[Strings.protocolCode] = protocolCode.jsValue()
-        object[Strings.serialNumber] = serialNumber.jsValue()
+        object[Strings.vendorId] = vendorId.jsValue
+        object[Strings.productId] = productId.jsValue
+        object[Strings.classCode] = classCode.jsValue
+        object[Strings.subclassCode] = subclassCode.jsValue
+        object[Strings.protocolCode] = protocolCode.jsValue
+        object[Strings.serialNumber] = serialNumber.jsValue
         self.init(unsafelyWrapping: object)
     }
 

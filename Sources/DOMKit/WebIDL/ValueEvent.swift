@@ -12,7 +12,7 @@ public class ValueEvent: Event {
     }
 
     @inlinable public convenience init(type: String, initDict: ValueEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), initDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, initDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

@@ -6,8 +6,8 @@ import JavaScriptKit
 public class NavigatorUABrandVersion: BridgedDictionary {
     public convenience init(brand: String, version: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.brand] = brand.jsValue()
-        object[Strings.version] = version.jsValue()
+        object[Strings.brand] = brand.jsValue
+        object[Strings.version] = version.jsValue
         self.init(unsafelyWrapping: object)
     }
 

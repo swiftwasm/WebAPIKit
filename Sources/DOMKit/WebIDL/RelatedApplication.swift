@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RelatedApplication: BridgedDictionary {
     public convenience init(platform: String, url: String, id: String, version: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.platform] = platform.jsValue()
-        object[Strings.url] = url.jsValue()
-        object[Strings.id] = id.jsValue()
-        object[Strings.version] = version.jsValue()
+        object[Strings.platform] = platform.jsValue
+        object[Strings.url] = url.jsValue
+        object[Strings.id] = id.jsValue
+        object[Strings.version] = version.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -12,7 +12,7 @@ public class ConstantSourceNode: AudioScheduledSourceNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: ConstantSourceOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue(), options?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

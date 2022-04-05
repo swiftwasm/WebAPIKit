@@ -6,8 +6,8 @@ import JavaScriptKit
 public class BluetoothDataFilterInit: BridgedDictionary {
     public convenience init(dataPrefix: BufferSource, mask: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.dataPrefix] = dataPrefix.jsValue()
-        object[Strings.mask] = mask.jsValue()
+        object[Strings.dataPrefix] = dataPrefix.jsValue
+        object[Strings.mask] = mask.jsValue
         self.init(unsafelyWrapping: object)
     }
 

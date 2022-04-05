@@ -6,8 +6,8 @@ import JavaScriptKit
 public class NavigationPreloadState: BridgedDictionary {
     public convenience init(enabled: Bool, headerValue: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.enabled] = enabled.jsValue()
-        object[Strings.headerValue] = headerValue.jsValue()
+        object[Strings.enabled] = enabled.jsValue
+        object[Strings.headerValue] = headerValue.jsValue
         self.init(unsafelyWrapping: object)
     }
 

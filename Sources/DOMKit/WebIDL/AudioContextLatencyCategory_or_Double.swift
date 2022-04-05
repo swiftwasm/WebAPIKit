@@ -21,12 +21,12 @@ public enum AudioContextLatencyCategory_or_Double: JSValueCompatible, Any_AudioC
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .audioContextLatencyCategory(audioContextLatencyCategory):
-            return audioContextLatencyCategory.jsValue()
+            return audioContextLatencyCategory.jsValue
         case let .double(double):
-            return double.jsValue()
+            return double.jsValue
         }
     }
 }

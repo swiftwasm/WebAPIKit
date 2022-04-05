@@ -6,9 +6,9 @@ import JavaScriptKit
 public class CookieStoreDeleteOptions: BridgedDictionary {
     public convenience init(name: String, domain: String?, path: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue()
-        object[Strings.domain] = domain.jsValue()
-        object[Strings.path] = path.jsValue()
+        object[Strings.name] = name.jsValue
+        object[Strings.domain] = domain.jsValue
+        object[Strings.path] = path.jsValue
         self.init(unsafelyWrapping: object)
     }
 

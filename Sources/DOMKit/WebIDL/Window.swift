@@ -78,12 +78,12 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func navigate(dir: SpatialNavigationDirection) {
         let this = jsObject
-        _ = this[Strings.navigate].function!(this: this, arguments: [dir.jsValue()])
+        _ = this[Strings.navigate].function!(this: this, arguments: [dir.jsValue])
     }
 
     @inlinable public func matchMedia(query: String) -> MediaQueryList {
         let this = jsObject
-        return this[Strings.matchMedia].function!(this: this, arguments: [query.jsValue()]).fromJSValue()!
+        return this[Strings.matchMedia].function!(this: this, arguments: [query.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -91,22 +91,22 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func moveTo(x: Int32, y: Int32) {
         let this = jsObject
-        _ = this[Strings.moveTo].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
+        _ = this[Strings.moveTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
     }
 
     @inlinable public func moveBy(x: Int32, y: Int32) {
         let this = jsObject
-        _ = this[Strings.moveBy].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
+        _ = this[Strings.moveBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
     }
 
     @inlinable public func resizeTo(width: Int32, height: Int32) {
         let this = jsObject
-        _ = this[Strings.resizeTo].function!(this: this, arguments: [width.jsValue(), height.jsValue()])
+        _ = this[Strings.resizeTo].function!(this: this, arguments: [width.jsValue, height.jsValue])
     }
 
     @inlinable public func resizeBy(x: Int32, y: Int32) {
         let this = jsObject
-        _ = this[Strings.resizeBy].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
+        _ = this[Strings.resizeBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
     }
 
     @ReadonlyAttribute
@@ -129,32 +129,32 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func scroll(options: ScrollToOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
+        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue ?? .undefined])
     }
 
     @inlinable public func scroll(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
+        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue, y.jsValue])
     }
 
     @inlinable public func scrollTo(options: ScrollToOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue ?? .undefined])
     }
 
     @inlinable public func scrollTo(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
     }
 
     @inlinable public func scrollBy(options: ScrollToOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue() ?? .undefined])
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue ?? .undefined])
     }
 
     @inlinable public func scrollBy(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue(), y.jsValue()])
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
     }
 
     @ReadonlyAttribute
@@ -180,19 +180,19 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func getComputedStyle(elt: Element, pseudoElt: String? = nil) -> CSSStyleDeclaration {
         let this = jsObject
-        return this[Strings.getComputedStyle].function!(this: this, arguments: [elt.jsValue(), pseudoElt?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.getComputedStyle].function!(this: this, arguments: [elt.jsValue, pseudoElt?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func getDigitalGoodsService(serviceProvider: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.getDigitalGoodsService].function!(this: this, arguments: [serviceProvider.jsValue()]).fromJSValue()!
+        return this[Strings.getDigitalGoodsService].function!(this: this, arguments: [serviceProvider.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getDigitalGoodsService(serviceProvider: String) async throws -> DigitalGoodsService {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getDigitalGoodsService].function!(this: this, arguments: [serviceProvider.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.getDigitalGoodsService].function!(this: this, arguments: [serviceProvider.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -200,38 +200,38 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.showOpenFilePicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.showOpenFilePicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) async throws -> [FileSystemFileHandle] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.showOpenFilePicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.showOpenFilePicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.showSaveFilePicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.showSaveFilePicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) async throws -> FileSystemFileHandle {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.showSaveFilePicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.showSaveFilePicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.showDirectoryPicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.showDirectoryPicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) async throws -> FileSystemDirectoryHandle {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.showDirectoryPicker].function!(this: this, arguments: [options?.jsValue() ?? .undefined]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.showDirectoryPicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -319,7 +319,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func open(url: String? = nil, target: String? = nil, features: String? = nil) -> WindowProxy? {
         let this = jsObject
-        return this[Strings.open].function!(this: this, arguments: [url?.jsValue() ?? .undefined, target?.jsValue() ?? .undefined, features?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.open].function!(this: this, arguments: [url?.jsValue ?? .undefined, target?.jsValue ?? .undefined, features?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public subscript(key: String) -> JSObject {
@@ -342,17 +342,17 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func alert(message: String) {
         let this = jsObject
-        _ = this[Strings.alert].function!(this: this, arguments: [message.jsValue()])
+        _ = this[Strings.alert].function!(this: this, arguments: [message.jsValue])
     }
 
     @inlinable public func confirm(message: String? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.confirm].function!(this: this, arguments: [message?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.confirm].function!(this: this, arguments: [message?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func prompt(message: String? = nil, default: String? = nil) -> String? {
         let this = jsObject
-        return this[Strings.prompt].function!(this: this, arguments: [message?.jsValue() ?? .undefined, `default`?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.prompt].function!(this: this, arguments: [message?.jsValue ?? .undefined, `default`?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func print() {
@@ -362,12 +362,12 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func postMessage(message: JSValue, targetOrigin: String, transfer: [JSObject]? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), targetOrigin.jsValue(), transfer?.jsValue() ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, targetOrigin.jsValue, transfer?.jsValue ?? .undefined])
     }
 
     @inlinable public func postMessage(message: JSValue, options: WindowPostMessageOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue(), options?.jsValue() ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined])
     }
 
     @inlinable public func captureEvents() {
@@ -411,7 +411,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func cancelIdleCallback(handle: UInt32) {
         let this = jsObject
-        _ = this[Strings.cancelIdleCallback].function!(this: this, arguments: [handle.jsValue()])
+        _ = this[Strings.cancelIdleCallback].function!(this: this, arguments: [handle.jsValue])
     }
 
     @inlinable public func getSelection() -> Selection? {

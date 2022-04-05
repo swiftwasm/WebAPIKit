@@ -6,10 +6,10 @@ import JavaScriptKit
 public class CollectedClientData: BridgedDictionary {
     public convenience init(type: String, challenge: String, origin: String, crossOrigin: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue()
-        object[Strings.challenge] = challenge.jsValue()
-        object[Strings.origin] = origin.jsValue()
-        object[Strings.crossOrigin] = crossOrigin.jsValue()
+        object[Strings.type] = type.jsValue
+        object[Strings.challenge] = challenge.jsValue
+        object[Strings.origin] = origin.jsValue
+        object[Strings.crossOrigin] = crossOrigin.jsValue
         self.init(unsafelyWrapping: object)
     }
 

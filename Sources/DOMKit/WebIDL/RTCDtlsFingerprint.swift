@@ -6,8 +6,8 @@ import JavaScriptKit
 public class RTCDtlsFingerprint: BridgedDictionary {
     public convenience init(algorithm: String, value: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.algorithm] = algorithm.jsValue()
-        object[Strings.value] = value.jsValue()
+        object[Strings.algorithm] = algorithm.jsValue
+        object[Strings.value] = value.jsValue
         self.init(unsafelyWrapping: object)
     }
 

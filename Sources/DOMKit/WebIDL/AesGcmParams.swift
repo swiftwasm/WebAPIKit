@@ -6,9 +6,9 @@ import JavaScriptKit
 public class AesGcmParams: BridgedDictionary {
     public convenience init(iv: BufferSource, additionalData: BufferSource, tagLength: UInt8) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.iv] = iv.jsValue()
-        object[Strings.additionalData] = additionalData.jsValue()
-        object[Strings.tagLength] = tagLength.jsValue()
+        object[Strings.iv] = iv.jsValue
+        object[Strings.additionalData] = additionalData.jsValue
+        object[Strings.tagLength] = tagLength.jsValue
         self.init(unsafelyWrapping: object)
     }
 

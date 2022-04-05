@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RTCRtpContributingSource: BridgedDictionary {
     public convenience init(timestamp: DOMHighResTimeStamp, source: UInt32, audioLevel: Double, rtpTimestamp: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.timestamp] = timestamp.jsValue()
-        object[Strings.source] = source.jsValue()
-        object[Strings.audioLevel] = audioLevel.jsValue()
-        object[Strings.rtpTimestamp] = rtpTimestamp.jsValue()
+        object[Strings.timestamp] = timestamp.jsValue
+        object[Strings.source] = source.jsValue
+        object[Strings.audioLevel] = audioLevel.jsValue
+        object[Strings.rtpTimestamp] = rtpTimestamp.jsValue
         self.init(unsafelyWrapping: object)
     }
 

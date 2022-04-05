@@ -12,11 +12,11 @@ public class PresentationRequest: EventTarget {
     }
 
     @inlinable public convenience init(url: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue]))
     }
 
     @inlinable public convenience init(urls: [String]) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [urls.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [urls.jsValue]))
     }
 
     @inlinable public func start() -> JSPromise {
@@ -28,19 +28,19 @@ public class PresentationRequest: EventTarget {
     @inlinable public func start() async throws -> PresentationConnection {
         let this = jsObject
         let _promise: JSPromise = this[Strings.start].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func reconnect(presentationId: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.reconnect].function!(this: this, arguments: [presentationId.jsValue()]).fromJSValue()!
+        return this[Strings.reconnect].function!(this: this, arguments: [presentationId.jsValue]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func reconnect(presentationId: String) async throws -> PresentationConnection {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.reconnect].function!(this: this, arguments: [presentationId.jsValue()]).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        let _promise: JSPromise = this[Strings.reconnect].function!(this: this, arguments: [presentationId.jsValue]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getAvailability() -> JSPromise {
@@ -52,7 +52,7 @@ public class PresentationRequest: EventTarget {
     @inlinable public func getAvailability() async throws -> PresentationAvailability {
         let this = jsObject
         let _promise: JSPromise = this[Strings.getAvailability].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.get().fromJSValue()!
+        return try await _promise.value.fromJSValue()!
     }
 
     @ClosureAttribute1Optional

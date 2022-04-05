@@ -6,10 +6,10 @@ import JavaScriptKit
 public class XRMediaCylinderLayerInit: BridgedDictionary {
     public convenience init(transform: XRRigidTransform?, radius: Float, centralAngle: Float, aspectRatio: Float?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.transform] = transform.jsValue()
-        object[Strings.radius] = radius.jsValue()
-        object[Strings.centralAngle] = centralAngle.jsValue()
-        object[Strings.aspectRatio] = aspectRatio.jsValue()
+        object[Strings.transform] = transform.jsValue
+        object[Strings.radius] = radius.jsValue
+        object[Strings.centralAngle] = centralAngle.jsValue
+        object[Strings.aspectRatio] = aspectRatio.jsValue
         self.init(unsafelyWrapping: object)
     }
 

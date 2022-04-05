@@ -14,6 +14,6 @@ public class XPathExpression: JSBridgedClass {
 
     @inlinable public func evaluate(contextNode: Node, type: UInt16? = nil, result: XPathResult? = nil) -> XPathResult {
         let this = jsObject
-        return this[Strings.evaluate].function!(this: this, arguments: [contextNode.jsValue(), type?.jsValue() ?? .undefined, result?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.evaluate].function!(this: this, arguments: [contextNode.jsValue, type?.jsValue ?? .undefined, result?.jsValue ?? .undefined]).fromJSValue()!
     }
 }

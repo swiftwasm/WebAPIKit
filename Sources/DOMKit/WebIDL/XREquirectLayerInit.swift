@@ -6,12 +6,12 @@ import JavaScriptKit
 public class XREquirectLayerInit: BridgedDictionary {
     public convenience init(textureType: XRTextureType, transform: XRRigidTransform?, radius: Float, centralHorizontalAngle: Float, upperVerticalAngle: Float, lowerVerticalAngle: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.textureType] = textureType.jsValue()
-        object[Strings.transform] = transform.jsValue()
-        object[Strings.radius] = radius.jsValue()
-        object[Strings.centralHorizontalAngle] = centralHorizontalAngle.jsValue()
-        object[Strings.upperVerticalAngle] = upperVerticalAngle.jsValue()
-        object[Strings.lowerVerticalAngle] = lowerVerticalAngle.jsValue()
+        object[Strings.textureType] = textureType.jsValue
+        object[Strings.transform] = transform.jsValue
+        object[Strings.radius] = radius.jsValue
+        object[Strings.centralHorizontalAngle] = centralHorizontalAngle.jsValue
+        object[Strings.upperVerticalAngle] = upperVerticalAngle.jsValue
+        object[Strings.lowerVerticalAngle] = lowerVerticalAngle.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class MLSoftplusOptions: BridgedDictionary {
     public convenience init(steepness: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.steepness] = steepness.jsValue()
+        object[Strings.steepness] = steepness.jsValue
         self.init(unsafelyWrapping: object)
     }
 

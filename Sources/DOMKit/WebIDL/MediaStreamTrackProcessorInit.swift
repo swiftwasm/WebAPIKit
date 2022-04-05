@@ -6,8 +6,8 @@ import JavaScriptKit
 public class MediaStreamTrackProcessorInit: BridgedDictionary {
     public convenience init(track: MediaStreamTrack, maxBufferSize: UInt16) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.track] = track.jsValue()
-        object[Strings.maxBufferSize] = maxBufferSize.jsValue()
+        object[Strings.track] = track.jsValue
+        object[Strings.maxBufferSize] = maxBufferSize.jsValue
         self.init(unsafelyWrapping: object)
     }
 

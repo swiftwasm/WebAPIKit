@@ -31,16 +31,16 @@ public enum GeometryNode: JSValueCompatible, Any_GeometryNode {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .cSSPseudoElement(cSSPseudoElement):
-            return cSSPseudoElement.jsValue()
+            return cSSPseudoElement.jsValue
         case let .document(document):
-            return document.jsValue()
+            return document.jsValue
         case let .element(element):
-            return element.jsValue()
+            return element.jsValue
         case let .text(text):
-            return text.jsValue()
+            return text.jsValue
         }
     }
 }

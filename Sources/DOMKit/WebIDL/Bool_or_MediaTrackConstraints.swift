@@ -21,12 +21,12 @@ public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaT
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .bool(bool):
-            return bool.jsValue()
+            return bool.jsValue
         case let .mediaTrackConstraints(mediaTrackConstraints):
-            return mediaTrackConstraints.jsValue()
+            return mediaTrackConstraints.jsValue
         }
     }
 }

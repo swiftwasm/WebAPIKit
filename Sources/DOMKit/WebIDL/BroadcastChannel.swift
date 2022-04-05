@@ -14,7 +14,7 @@ public class BroadcastChannel: EventTarget {
     }
 
     @inlinable public convenience init(name: String) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue()]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [name.jsValue]))
     }
 
     @ReadonlyAttribute
@@ -22,7 +22,7 @@ public class BroadcastChannel: EventTarget {
 
     @inlinable public func postMessage(message: JSValue) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue()])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue])
     }
 
     @inlinable public func close() {

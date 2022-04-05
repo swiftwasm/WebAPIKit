@@ -6,10 +6,10 @@ import JavaScriptKit
 public class CredentialCreationOptions: BridgedDictionary {
     public convenience init(signal: AbortSignal, password: PasswordCredentialInit, federated: FederatedCredentialInit, publicKey: PublicKeyCredentialCreationOptions) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.signal] = signal.jsValue()
-        object[Strings.password] = password.jsValue()
-        object[Strings.federated] = federated.jsValue()
-        object[Strings.publicKey] = publicKey.jsValue()
+        object[Strings.signal] = signal.jsValue
+        object[Strings.password] = password.jsValue
+        object[Strings.federated] = federated.jsValue
+        object[Strings.publicKey] = publicKey.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,10 +6,10 @@ import JavaScriptKit
 public class RTCIceServer: BridgedDictionary {
     public convenience init(urls: String_or_seq_of_String, username: String, credential: String, credentialType: RTCIceCredentialType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.urls] = urls.jsValue()
-        object[Strings.username] = username.jsValue()
-        object[Strings.credential] = credential.jsValue()
-        object[Strings.credentialType] = credentialType.jsValue()
+        object[Strings.urls] = urls.jsValue
+        object[Strings.username] = username.jsValue
+        object[Strings.credential] = credential.jsValue
+        object[Strings.credentialType] = credentialType.jsValue
         self.init(unsafelyWrapping: object)
     }
 

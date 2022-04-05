@@ -21,12 +21,12 @@ public enum Int32List: JSValueCompatible, Any_Int32List {
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .int32Array(int32Array):
-            return int32Array.jsValue()
+            return int32Array.jsValue
         case let .seq_of_GLint(seq_of_GLint):
-            return seq_of_GLint.jsValue()
+            return seq_of_GLint.jsValue
         }
     }
 }

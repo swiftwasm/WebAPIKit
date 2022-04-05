@@ -6,12 +6,12 @@ import JavaScriptKit
 public class RTCSctpTransportStats: BridgedDictionary {
     public convenience init(transportId: String, smoothedRoundTripTime: Double, congestionWindow: UInt32, receiverWindow: UInt32, mtu: UInt32, unackData: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.transportId] = transportId.jsValue()
-        object[Strings.smoothedRoundTripTime] = smoothedRoundTripTime.jsValue()
-        object[Strings.congestionWindow] = congestionWindow.jsValue()
-        object[Strings.receiverWindow] = receiverWindow.jsValue()
-        object[Strings.mtu] = mtu.jsValue()
-        object[Strings.unackData] = unackData.jsValue()
+        object[Strings.transportId] = transportId.jsValue
+        object[Strings.smoothedRoundTripTime] = smoothedRoundTripTime.jsValue
+        object[Strings.congestionWindow] = congestionWindow.jsValue
+        object[Strings.receiverWindow] = receiverWindow.jsValue
+        object[Strings.mtu] = mtu.jsValue
+        object[Strings.unackData] = unackData.jsValue
         self.init(unsafelyWrapping: object)
     }
 

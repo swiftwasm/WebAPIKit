@@ -16,7 +16,7 @@ public class MutationObserver: JSBridgedClass {
 
     @inlinable public func observe(target: Node, options: MutationObserverInit? = nil) {
         let this = jsObject
-        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue(), options?.jsValue() ?? .undefined])
+        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue, options?.jsValue ?? .undefined])
     }
 
     @inlinable public func disconnect() {

@@ -6,13 +6,13 @@ import JavaScriptKit
 public class RTCCodecStats: BridgedDictionary {
     public convenience init(payloadType: UInt32, codecType: RTCCodecType, transportId: String, mimeType: String, clockRate: UInt32, channels: UInt32, sdpFmtpLine: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.payloadType] = payloadType.jsValue()
-        object[Strings.codecType] = codecType.jsValue()
-        object[Strings.transportId] = transportId.jsValue()
-        object[Strings.mimeType] = mimeType.jsValue()
-        object[Strings.clockRate] = clockRate.jsValue()
-        object[Strings.channels] = channels.jsValue()
-        object[Strings.sdpFmtpLine] = sdpFmtpLine.jsValue()
+        object[Strings.payloadType] = payloadType.jsValue
+        object[Strings.codecType] = codecType.jsValue
+        object[Strings.transportId] = transportId.jsValue
+        object[Strings.mimeType] = mimeType.jsValue
+        object[Strings.clockRate] = clockRate.jsValue
+        object[Strings.channels] = channels.jsValue
+        object[Strings.sdpFmtpLine] = sdpFmtpLine.jsValue
         self.init(unsafelyWrapping: object)
     }
 

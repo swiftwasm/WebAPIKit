@@ -46,12 +46,12 @@ public class TextTrack: EventTarget {
 
     @inlinable public func addCue(cue: TextTrackCue) {
         let this = jsObject
-        _ = this[Strings.addCue].function!(this: this, arguments: [cue.jsValue()])
+        _ = this[Strings.addCue].function!(this: this, arguments: [cue.jsValue])
     }
 
     @inlinable public func removeCue(cue: TextTrackCue) {
         let this = jsObject
-        _ = this[Strings.removeCue].function!(this: this, arguments: [cue.jsValue()])
+        _ = this[Strings.removeCue].function!(this: this, arguments: [cue.jsValue])
     }
 
     @ClosureAttribute1Optional

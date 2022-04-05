@@ -22,7 +22,7 @@ public class KeyboardEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: KeyboardEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     public static let DOM_KEY_LOCATION_STANDARD: UInt32 = 0x00
@@ -62,20 +62,20 @@ public class KeyboardEvent: UIEvent {
 
     @inlinable public func getModifierState(keyArg: String) -> Bool {
         let this = jsObject
-        return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue()]).fromJSValue()!
+        return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue]).fromJSValue()!
     }
 
     @inlinable public func initKeyboardEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, keyArg: String? = nil, locationArg: UInt32? = nil, ctrlKey: Bool? = nil, altKey: Bool? = nil, shiftKey: Bool? = nil, metaKey: Bool? = nil) {
-        let _arg0 = typeArg.jsValue()
-        let _arg1 = bubblesArg?.jsValue() ?? .undefined
-        let _arg2 = cancelableArg?.jsValue() ?? .undefined
-        let _arg3 = viewArg?.jsValue() ?? .undefined
-        let _arg4 = keyArg?.jsValue() ?? .undefined
-        let _arg5 = locationArg?.jsValue() ?? .undefined
-        let _arg6 = ctrlKey?.jsValue() ?? .undefined
-        let _arg7 = altKey?.jsValue() ?? .undefined
-        let _arg8 = shiftKey?.jsValue() ?? .undefined
-        let _arg9 = metaKey?.jsValue() ?? .undefined
+        let _arg0 = typeArg.jsValue
+        let _arg1 = bubblesArg?.jsValue ?? .undefined
+        let _arg2 = cancelableArg?.jsValue ?? .undefined
+        let _arg3 = viewArg?.jsValue ?? .undefined
+        let _arg4 = keyArg?.jsValue ?? .undefined
+        let _arg5 = locationArg?.jsValue ?? .undefined
+        let _arg6 = ctrlKey?.jsValue ?? .undefined
+        let _arg7 = altKey?.jsValue ?? .undefined
+        let _arg8 = shiftKey?.jsValue ?? .undefined
+        let _arg9 = metaKey?.jsValue ?? .undefined
         let this = jsObject
         _ = this[Strings.initKeyboardEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
     }

@@ -6,10 +6,10 @@ import JavaScriptKit
 public class HIDDeviceFilter: BridgedDictionary {
     public convenience init(vendorId: UInt32, productId: UInt16, usagePage: UInt16, usage: UInt16) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.vendorId] = vendorId.jsValue()
-        object[Strings.productId] = productId.jsValue()
-        object[Strings.usagePage] = usagePage.jsValue()
-        object[Strings.usage] = usage.jsValue()
+        object[Strings.vendorId] = vendorId.jsValue
+        object[Strings.productId] = productId.jsValue
+        object[Strings.usagePage] = usagePage.jsValue
+        object[Strings.usage] = usage.jsValue
         self.init(unsafelyWrapping: object)
     }
 

@@ -6,10 +6,10 @@ import JavaScriptKit
 public class ComputePressureRecord: BridgedDictionary {
     public convenience init(source: ComputePressureSource, state: ComputePressureState, factors: [ComputePressureFactor], time: DOMHighResTimeStamp) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.source] = source.jsValue()
-        object[Strings.state] = state.jsValue()
-        object[Strings.factors] = factors.jsValue()
-        object[Strings.time] = time.jsValue()
+        object[Strings.source] = source.jsValue
+        object[Strings.state] = state.jsValue
+        object[Strings.factors] = factors.jsValue
+        object[Strings.time] = time.jsValue
         self.init(unsafelyWrapping: object)
     }
 

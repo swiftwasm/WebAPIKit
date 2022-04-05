@@ -17,7 +17,7 @@ public class VideoColorSpace: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: VideoColorSpaceInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

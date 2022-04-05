@@ -21,12 +21,12 @@ public enum CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto: JSValue
         return nil
     }
 
-    public func jsValue() -> JSValue {
+    public var jsValue: JSValue {
         switch self {
         case let .compositeOperationOrAuto(compositeOperationOrAuto):
-            return compositeOperationOrAuto.jsValue()
+            return compositeOperationOrAuto.jsValue
         case let .seq_of_CompositeOperationOrAuto(seq_of_CompositeOperationOrAuto):
-            return seq_of_CompositeOperationOrAuto.jsValue()
+            return seq_of_CompositeOperationOrAuto.jsValue
         }
     }
 }

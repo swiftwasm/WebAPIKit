@@ -14,17 +14,17 @@ public class GPUComputePassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMi
 
     @inlinable public func setPipeline(pipeline: GPUComputePipeline) {
         let this = jsObject
-        _ = this[Strings.setPipeline].function!(this: this, arguments: [pipeline.jsValue()])
+        _ = this[Strings.setPipeline].function!(this: this, arguments: [pipeline.jsValue])
     }
 
     @inlinable public func dispatch(workgroupCountX: GPUSize32, workgroupCountY: GPUSize32? = nil, workgroupCountZ: GPUSize32? = nil) {
         let this = jsObject
-        _ = this[Strings.dispatch].function!(this: this, arguments: [workgroupCountX.jsValue(), workgroupCountY?.jsValue() ?? .undefined, workgroupCountZ?.jsValue() ?? .undefined])
+        _ = this[Strings.dispatch].function!(this: this, arguments: [workgroupCountX.jsValue, workgroupCountY?.jsValue ?? .undefined, workgroupCountZ?.jsValue ?? .undefined])
     }
 
     @inlinable public func dispatchIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64) {
         let this = jsObject
-        _ = this[Strings.dispatchIndirect].function!(this: this, arguments: [indirectBuffer.jsValue(), indirectOffset.jsValue()])
+        _ = this[Strings.dispatchIndirect].function!(this: this, arguments: [indirectBuffer.jsValue, indirectOffset.jsValue])
     }
 
     @inlinable public func end() {

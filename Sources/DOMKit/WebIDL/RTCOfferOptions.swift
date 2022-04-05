@@ -6,9 +6,9 @@ import JavaScriptKit
 public class RTCOfferOptions: BridgedDictionary {
     public convenience init(iceRestart: Bool, offerToReceiveAudio: Bool, offerToReceiveVideo: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.iceRestart] = iceRestart.jsValue()
-        object[Strings.offerToReceiveAudio] = offerToReceiveAudio.jsValue()
-        object[Strings.offerToReceiveVideo] = offerToReceiveVideo.jsValue()
+        object[Strings.iceRestart] = iceRestart.jsValue
+        object[Strings.offerToReceiveAudio] = offerToReceiveAudio.jsValue
+        object[Strings.offerToReceiveVideo] = offerToReceiveVideo.jsValue
         self.init(unsafelyWrapping: object)
     }
 

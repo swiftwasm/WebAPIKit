@@ -16,7 +16,7 @@ public class DOMException: JSBridgedClass {
     }
 
     @inlinable public convenience init(message: String? = nil, name: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [message?.jsValue() ?? .undefined, name?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [message?.jsValue ?? .undefined, name?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute

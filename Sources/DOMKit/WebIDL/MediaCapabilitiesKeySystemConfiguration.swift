@@ -6,13 +6,13 @@ import JavaScriptKit
 public class MediaCapabilitiesKeySystemConfiguration: BridgedDictionary {
     public convenience init(keySystem: String, initDataType: String, distinctiveIdentifier: MediaKeysRequirement, persistentState: MediaKeysRequirement, sessionTypes: [String], audio: KeySystemTrackConfiguration, video: KeySystemTrackConfiguration) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.keySystem] = keySystem.jsValue()
-        object[Strings.initDataType] = initDataType.jsValue()
-        object[Strings.distinctiveIdentifier] = distinctiveIdentifier.jsValue()
-        object[Strings.persistentState] = persistentState.jsValue()
-        object[Strings.sessionTypes] = sessionTypes.jsValue()
-        object[Strings.audio] = audio.jsValue()
-        object[Strings.video] = video.jsValue()
+        object[Strings.keySystem] = keySystem.jsValue
+        object[Strings.initDataType] = initDataType.jsValue
+        object[Strings.distinctiveIdentifier] = distinctiveIdentifier.jsValue
+        object[Strings.persistentState] = persistentState.jsValue
+        object[Strings.sessionTypes] = sessionTypes.jsValue
+        object[Strings.audio] = audio.jsValue
+        object[Strings.video] = video.jsValue
         self.init(unsafelyWrapping: object)
     }
 

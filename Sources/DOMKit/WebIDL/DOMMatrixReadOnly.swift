@@ -37,22 +37,22 @@ public class DOMMatrixReadOnly: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: String_or_seq_of_Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue ?? .undefined]))
     }
 
     @inlinable public static func fromMatrix(other: DOMMatrixInit? = nil) -> Self {
         let this = constructor
-        return this[Strings.fromMatrix].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.fromMatrix].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public static func fromFloat32Array(array32: Float32Array) -> Self {
         let this = constructor
-        return this[Strings.fromFloat32Array].function!(this: this, arguments: [array32.jsValue()]).fromJSValue()!
+        return this[Strings.fromFloat32Array].function!(this: this, arguments: [array32.jsValue]).fromJSValue()!
     }
 
     @inlinable public static func fromFloat64Array(array64: Float64Array) -> Self {
         let this = constructor
-        return this[Strings.fromFloat64Array].function!(this: this, arguments: [array64.jsValue()]).fromJSValue()!
+        return this[Strings.fromFloat64Array].function!(this: this, arguments: [array64.jsValue]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -129,58 +129,58 @@ public class DOMMatrixReadOnly: JSBridgedClass {
 
     @inlinable public func translate(tx: Double? = nil, ty: Double? = nil, tz: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.translate].function!(this: this, arguments: [tx?.jsValue() ?? .undefined, ty?.jsValue() ?? .undefined, tz?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.translate].function!(this: this, arguments: [tx?.jsValue ?? .undefined, ty?.jsValue ?? .undefined, tz?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func scale(scaleX: Double? = nil, scaleY: Double? = nil, scaleZ: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> DOMMatrix {
-        let _arg0 = scaleX?.jsValue() ?? .undefined
-        let _arg1 = scaleY?.jsValue() ?? .undefined
-        let _arg2 = scaleZ?.jsValue() ?? .undefined
-        let _arg3 = originX?.jsValue() ?? .undefined
-        let _arg4 = originY?.jsValue() ?? .undefined
-        let _arg5 = originZ?.jsValue() ?? .undefined
+        let _arg0 = scaleX?.jsValue ?? .undefined
+        let _arg1 = scaleY?.jsValue ?? .undefined
+        let _arg2 = scaleZ?.jsValue ?? .undefined
+        let _arg3 = originX?.jsValue ?? .undefined
+        let _arg4 = originY?.jsValue ?? .undefined
+        let _arg5 = originZ?.jsValue ?? .undefined
         let this = jsObject
         return this[Strings.scale].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
     }
 
     @inlinable public func scaleNonUniform(scaleX: Double? = nil, scaleY: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.scaleNonUniform].function!(this: this, arguments: [scaleX?.jsValue() ?? .undefined, scaleY?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.scaleNonUniform].function!(this: this, arguments: [scaleX?.jsValue ?? .undefined, scaleY?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func scale3d(scale: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.scale3d].function!(this: this, arguments: [scale?.jsValue() ?? .undefined, originX?.jsValue() ?? .undefined, originY?.jsValue() ?? .undefined, originZ?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.scale3d].function!(this: this, arguments: [scale?.jsValue ?? .undefined, originX?.jsValue ?? .undefined, originY?.jsValue ?? .undefined, originZ?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func rotate(rotX: Double? = nil, rotY: Double? = nil, rotZ: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.rotate].function!(this: this, arguments: [rotX?.jsValue() ?? .undefined, rotY?.jsValue() ?? .undefined, rotZ?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.rotate].function!(this: this, arguments: [rotX?.jsValue ?? .undefined, rotY?.jsValue ?? .undefined, rotZ?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func rotateFromVector(x: Double? = nil, y: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.rotateFromVector].function!(this: this, arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateFromVector].function!(this: this, arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func rotateAxisAngle(x: Double? = nil, y: Double? = nil, z: Double? = nil, angle: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.rotateAxisAngle].function!(this: this, arguments: [x?.jsValue() ?? .undefined, y?.jsValue() ?? .undefined, z?.jsValue() ?? .undefined, angle?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateAxisAngle].function!(this: this, arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, z?.jsValue ?? .undefined, angle?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func skewX(sx: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.skewX].function!(this: this, arguments: [sx?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.skewX].function!(this: this, arguments: [sx?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func skewY(sy: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.skewY].function!(this: this, arguments: [sy?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.skewY].function!(this: this, arguments: [sy?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func multiply(other: DOMMatrixInit? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.multiply].function!(this: this, arguments: [other?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.multiply].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func flipX() -> DOMMatrix {
@@ -200,7 +200,7 @@ public class DOMMatrixReadOnly: JSBridgedClass {
 
     @inlinable public func transformPoint(point: DOMPointInit? = nil) -> DOMPoint {
         let this = jsObject
-        return this[Strings.transformPoint].function!(this: this, arguments: [point?.jsValue() ?? .undefined]).fromJSValue()!
+        return this[Strings.transformPoint].function!(this: this, arguments: [point?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @inlinable public func toFloat32Array() -> Float32Array {

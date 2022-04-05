@@ -6,13 +6,13 @@ import JavaScriptKit
 public class HIDCollectionInfo: BridgedDictionary {
     public convenience init(usagePage: UInt16, usage: UInt16, type: UInt8, children: [HIDCollectionInfo], inputReports: [HIDReportInfo], outputReports: [HIDReportInfo], featureReports: [HIDReportInfo]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.usagePage] = usagePage.jsValue()
-        object[Strings.usage] = usage.jsValue()
-        object[Strings.type] = type.jsValue()
-        object[Strings.children] = children.jsValue()
-        object[Strings.inputReports] = inputReports.jsValue()
-        object[Strings.outputReports] = outputReports.jsValue()
-        object[Strings.featureReports] = featureReports.jsValue()
+        object[Strings.usagePage] = usagePage.jsValue
+        object[Strings.usage] = usage.jsValue
+        object[Strings.type] = type.jsValue
+        object[Strings.children] = children.jsValue
+        object[Strings.inputReports] = inputReports.jsValue
+        object[Strings.outputReports] = outputReports.jsValue
+        object[Strings.featureReports] = featureReports.jsValue
         self.init(unsafelyWrapping: object)
     }
 

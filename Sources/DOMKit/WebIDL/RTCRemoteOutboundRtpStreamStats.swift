@@ -6,12 +6,12 @@ import JavaScriptKit
 public class RTCRemoteOutboundRtpStreamStats: BridgedDictionary {
     public convenience init(localId: String, remoteTimestamp: DOMHighResTimeStamp, reportsSent: UInt64, roundTripTime: Double, totalRoundTripTime: Double, roundTripTimeMeasurements: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.localId] = localId.jsValue()
-        object[Strings.remoteTimestamp] = remoteTimestamp.jsValue()
-        object[Strings.reportsSent] = reportsSent.jsValue()
-        object[Strings.roundTripTime] = roundTripTime.jsValue()
-        object[Strings.totalRoundTripTime] = totalRoundTripTime.jsValue()
-        object[Strings.roundTripTimeMeasurements] = roundTripTimeMeasurements.jsValue()
+        object[Strings.localId] = localId.jsValue
+        object[Strings.remoteTimestamp] = remoteTimestamp.jsValue
+        object[Strings.reportsSent] = reportsSent.jsValue
+        object[Strings.roundTripTime] = roundTripTime.jsValue
+        object[Strings.totalRoundTripTime] = totalRoundTripTime.jsValue
+        object[Strings.roundTripTimeMeasurements] = roundTripTimeMeasurements.jsValue
         self.init(unsafelyWrapping: object)
     }
 

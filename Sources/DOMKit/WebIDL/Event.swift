@@ -26,7 +26,7 @@ public class Event: JSBridgedClass {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: EventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue(), eventInitDict?.jsValue() ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
     }
 
     @ReadonlyAttribute
@@ -98,6 +98,6 @@ public class Event: JSBridgedClass {
 
     @inlinable public func initEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil) {
         let this = jsObject
-        _ = this[Strings.initEvent].function!(this: this, arguments: [type.jsValue(), bubbles?.jsValue() ?? .undefined, cancelable?.jsValue() ?? .undefined])
+        _ = this[Strings.initEvent].function!(this: this, arguments: [type.jsValue, bubbles?.jsValue ?? .undefined, cancelable?.jsValue ?? .undefined])
     }
 }

@@ -6,7 +6,7 @@ import JavaScriptKit
 public class GainOptions: BridgedDictionary {
     public convenience init(gain: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.gain] = gain.jsValue()
+        object[Strings.gain] = gain.jsValue
         self.init(unsafelyWrapping: object)
     }
 
