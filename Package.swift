@@ -18,7 +18,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/swiftwasm/JavaScriptKit.git",
-            .branch("jed/open-object")),
+            .branch("main")),
     ],
     targets: [
         .target(
