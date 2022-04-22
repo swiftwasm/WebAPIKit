@@ -8,12 +8,12 @@ extension JSFunction: Any_TimerHandler {}
 extension String: Any_TimerHandler {}
 
 public enum TimerHandler: JSValueCompatible, Any_TimerHandler {
-    case jSFunction(JSFunction)
+    case jsFunction(JSFunction)
     case string(String)
 
     public static func construct(from value: JSValue) -> Self? {
-        if let jSFunction: JSFunction = value.fromJSValue() {
-            return .jSFunction(jSFunction)
+        if let jsFunction: JSFunction = value.fromJSValue() {
+            return .jsFunction(jsFunction)
         }
         if let string: String = value.fromJSValue() {
             return .string(string)
@@ -23,8 +23,8 @@ public enum TimerHandler: JSValueCompatible, Any_TimerHandler {
 
     public var jsValue: JSValue {
         switch self {
-        case let .jSFunction(jSFunction):
-            return jSFunction.jsValue
+        case let .jsFunction(jsFunction):
+            return jsFunction.jsValue
         case let .string(string):
             return string.jsValue
         }

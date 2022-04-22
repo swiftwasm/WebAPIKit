@@ -123,29 +123,4 @@ public class SVGSVGElement: SVGGraphicsElement, SVGFitToViewBox, WindowEventHand
         let this = jsObject
         _ = this[Strings.forceRedraw].function!(this: this, arguments: [])
     }
-
-    @inlinable public func pauseAnimations() {
-        let this = jsObject
-        _ = this[Strings.pauseAnimations].function!(this: this, arguments: [])
-    }
-
-    @inlinable public func unpauseAnimations() {
-        let this = jsObject
-        _ = this[Strings.unpauseAnimations].function!(this: this, arguments: [])
-    }
-
-    @inlinable public func animationsPaused() -> Bool {
-        let this = jsObject
-        return this[Strings.animationsPaused].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @inlinable public func getCurrentTime() -> Float {
-        let this = jsObject
-        return this[Strings.getCurrentTime].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @inlinable public func setCurrentTime(seconds: Float) {
-        let this = jsObject
-        _ = this[Strings.setCurrentTime].function!(this: this, arguments: [seconds.jsValue])
-    }
 }

@@ -38,9 +38,4 @@ public class HTMLCanvasElement: HTMLElement {
         let this = jsObject
         return this[Strings.transferControlToOffscreen].function!(this: this, arguments: []).fromJSValue()!
     }
-
-    @inlinable public func captureStream(frameRequestRate: Double? = nil) -> MediaStream {
-        let this = jsObject
-        return this[Strings.captureStream].function!(this: this, arguments: [frameRequestRate?.jsValue ?? .undefined]).fromJSValue()!
-    }
 }

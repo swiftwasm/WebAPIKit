@@ -13,10 +13,6 @@ public class HTMLVideoElement: HTMLMediaElement {
         _videoHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoHeight)
         _poster = ReadWriteAttribute(jsObject: jsObject, name: Strings.poster)
         _playsInline = ReadWriteAttribute(jsObject: jsObject, name: Strings.playsInline)
-        _onenterpictureinpicture = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onenterpictureinpicture)
-        _onleavepictureinpicture = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onleavepictureinpicture)
-        _autoPictureInPicture = ReadWriteAttribute(jsObject: jsObject, name: Strings.autoPictureInPicture)
-        _disablePictureInPicture = ReadWriteAttribute(jsObject: jsObject, name: Strings.disablePictureInPicture)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -41,40 +37,4 @@ public class HTMLVideoElement: HTMLMediaElement {
 
     @ReadWriteAttribute
     public var playsInline: Bool
-
-    @inlinable public func getVideoPlaybackQuality() -> VideoPlaybackQuality {
-        let this = jsObject
-        return this[Strings.getVideoPlaybackQuality].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @inlinable public func requestPictureInPicture() -> JSPromise {
-        let this = jsObject
-        return this[Strings.requestPictureInPicture].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func requestPictureInPicture() async throws -> PictureInPictureWindow {
-        let this = jsObject
-        let _promise: JSPromise = this[Strings.requestPictureInPicture].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.value.fromJSValue()!
-    }
-
-    @ClosureAttribute1Optional
-    public var onenterpictureinpicture: EventHandler
-
-    @ClosureAttribute1Optional
-    public var onleavepictureinpicture: EventHandler
-
-    @ReadWriteAttribute
-    public var autoPictureInPicture: Bool
-
-    @ReadWriteAttribute
-    public var disablePictureInPicture: Bool
-
-    // XXX: member 'requestVideoFrameCallback' is ignored
-
-    @inlinable public func cancelVideoFrameCallback(handle: UInt32) {
-        let this = jsObject
-        _ = this[Strings.cancelVideoFrameCallback].function!(this: this, arguments: [handle.jsValue])
-    }
 }

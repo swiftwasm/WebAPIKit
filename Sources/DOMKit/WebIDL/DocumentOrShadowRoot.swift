@@ -12,13 +12,7 @@ public extension DocumentOrShadowRoot {
         nonmutating set { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] = newValue }
     }
 
-    @inlinable var fullscreenElement: Element? { ReadonlyAttribute[Strings.fullscreenElement, in: jsObject] }
-
     @inlinable var activeElement: Element? { ReadonlyAttribute[Strings.activeElement, in: jsObject] }
-
-    @inlinable var pictureInPictureElement: Element? { ReadonlyAttribute[Strings.pictureInPictureElement, in: jsObject] }
-
-    @inlinable var pointerLockElement: Element? { ReadonlyAttribute[Strings.pointerLockElement, in: jsObject] }
 
     @inlinable func getAnimations() -> [Animation] {
         let this = jsObject

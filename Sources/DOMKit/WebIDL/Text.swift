@@ -3,7 +3,7 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class Text: CharacterData, GeometryUtils, Slottable {
+public class Text: CharacterData, Slottable {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Text].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

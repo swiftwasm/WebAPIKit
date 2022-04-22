@@ -9,14 +9,14 @@ extension XMLHttpRequestBodyInit: Any_BodyInit {}
 
 public enum BodyInit: JSValueCompatible, Any_BodyInit {
     case readableStream(ReadableStream)
-    case xMLHttpRequestBodyInit(XMLHttpRequestBodyInit)
+    case xmlHttpRequestBodyInit(XMLHttpRequestBodyInit)
 
     public static func construct(from value: JSValue) -> Self? {
         if let readableStream: ReadableStream = value.fromJSValue() {
             return .readableStream(readableStream)
         }
-        if let xMLHttpRequestBodyInit: XMLHttpRequestBodyInit = value.fromJSValue() {
-            return .xMLHttpRequestBodyInit(xMLHttpRequestBodyInit)
+        if let xmlHttpRequestBodyInit: XMLHttpRequestBodyInit = value.fromJSValue() {
+            return .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit)
         }
         return nil
     }
@@ -25,8 +25,8 @@ public enum BodyInit: JSValueCompatible, Any_BodyInit {
         switch self {
         case let .readableStream(readableStream):
             return readableStream.jsValue
-        case let .xMLHttpRequestBodyInit(xMLHttpRequestBodyInit):
-            return xMLHttpRequestBodyInit.jsValue
+        case let .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit):
+            return xmlHttpRequestBodyInit.jsValue
         }
     }
 }

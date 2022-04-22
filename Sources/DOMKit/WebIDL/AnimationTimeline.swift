@@ -9,18 +9,9 @@ public class AnimationTimeline: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _duration = ReadonlyAttribute(jsObject: jsObject, name: Strings.duration)
         _currentTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentTime)
         _phase = ReadonlyAttribute(jsObject: jsObject, name: Strings.phase)
         self.jsObject = jsObject
-    }
-
-    @ReadonlyAttribute
-    public var duration: CSSNumberish?
-
-    @inlinable public func play(effect: AnimationEffect? = nil) -> Animation {
-        let this = jsObject
-        return this[Strings.play].function!(this: this, arguments: [effect?.jsValue ?? .undefined]).fromJSValue()!
     }
 
     @ReadonlyAttribute

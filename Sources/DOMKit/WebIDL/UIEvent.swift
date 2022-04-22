@@ -7,15 +7,11 @@ public class UIEvent: Event {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.UIEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _sourceCapabilities = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceCapabilities)
         _view = ReadonlyAttribute(jsObject: jsObject, name: Strings.view)
         _detail = ReadonlyAttribute(jsObject: jsObject, name: Strings.detail)
         _which = ReadonlyAttribute(jsObject: jsObject, name: Strings.which)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadonlyAttribute
-    public var sourceCapabilities: InputDeviceCapabilities?
 
     @inlinable public convenience init(type: String, eventInitDict: UIEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))

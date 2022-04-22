@@ -11,15 +11,15 @@ extension WebGL2RenderingContext: Any_OffscreenRenderingContext {}
 extension WebGLRenderingContext: Any_OffscreenRenderingContext {}
 
 public enum OffscreenRenderingContext: JSValueCompatible, Any_OffscreenRenderingContext {
-    case gPUCanvasContext(GPUCanvasContext)
+    case gpuCanvasContext(GPUCanvasContext)
     case imageBitmapRenderingContext(ImageBitmapRenderingContext)
     case offscreenCanvasRenderingContext2D(OffscreenCanvasRenderingContext2D)
     case webGL2RenderingContext(WebGL2RenderingContext)
     case webGLRenderingContext(WebGLRenderingContext)
 
     public static func construct(from value: JSValue) -> Self? {
-        if let gPUCanvasContext: GPUCanvasContext = value.fromJSValue() {
-            return .gPUCanvasContext(gPUCanvasContext)
+        if let gpuCanvasContext: GPUCanvasContext = value.fromJSValue() {
+            return .gpuCanvasContext(gpuCanvasContext)
         }
         if let imageBitmapRenderingContext: ImageBitmapRenderingContext = value.fromJSValue() {
             return .imageBitmapRenderingContext(imageBitmapRenderingContext)
@@ -38,8 +38,8 @@ public enum OffscreenRenderingContext: JSValueCompatible, Any_OffscreenRendering
 
     public var jsValue: JSValue {
         switch self {
-        case let .gPUCanvasContext(gPUCanvasContext):
-            return gPUCanvasContext.jsValue
+        case let .gpuCanvasContext(gpuCanvasContext):
+            return gpuCanvasContext.jsValue
         case let .imageBitmapRenderingContext(imageBitmapRenderingContext):
             return imageBitmapRenderingContext.jsValue
         case let .offscreenCanvasRenderingContext2D(offscreenCanvasRenderingContext2D):

@@ -7,14 +7,6 @@ public class MouseEvent: UIEvent {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MouseEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _pageX = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageX)
-        _pageY = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageY)
-        _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
-        _y = ReadonlyAttribute(jsObject: jsObject, name: Strings.y)
-        _offsetX = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetX)
-        _offsetY = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetY)
-        _movementX = ReadonlyAttribute(jsObject: jsObject, name: Strings.movementX)
-        _movementY = ReadonlyAttribute(jsObject: jsObject, name: Strings.movementY)
         _screenX = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenX)
         _screenY = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenY)
         _clientX = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientX)
@@ -28,30 +20,6 @@ public class MouseEvent: UIEvent {
         _relatedTarget = ReadonlyAttribute(jsObject: jsObject, name: Strings.relatedTarget)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadonlyAttribute
-    public var pageX: Double
-
-    @ReadonlyAttribute
-    public var pageY: Double
-
-    @ReadonlyAttribute
-    public var x: Double
-
-    @ReadonlyAttribute
-    public var y: Double
-
-    @ReadonlyAttribute
-    public var offsetX: Double
-
-    @ReadonlyAttribute
-    public var offsetY: Double
-
-    @ReadonlyAttribute
-    public var movementX: Double
-
-    @ReadonlyAttribute
-    public var movementY: Double
 
     @inlinable public convenience init(type: String, eventInitDict: MouseEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))

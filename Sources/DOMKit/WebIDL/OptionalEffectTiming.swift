@@ -4,9 +4,8 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class OptionalEffectTiming: BridgedDictionary {
-    public convenience init(playbackRate: Double, delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, duration: Double_or_String, direction: PlaybackDirection, easing: String) {
+    public convenience init(delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, duration: Double_or_String, direction: PlaybackDirection, easing: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.playbackRate] = playbackRate.jsValue
         object[Strings.delay] = delay.jsValue
         object[Strings.endDelay] = endDelay.jsValue
         object[Strings.fill] = fill.jsValue
@@ -19,7 +18,6 @@ public class OptionalEffectTiming: BridgedDictionary {
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _playbackRate = ReadWriteAttribute(jsObject: object, name: Strings.playbackRate)
         _delay = ReadWriteAttribute(jsObject: object, name: Strings.delay)
         _endDelay = ReadWriteAttribute(jsObject: object, name: Strings.endDelay)
         _fill = ReadWriteAttribute(jsObject: object, name: Strings.fill)
@@ -30,9 +28,6 @@ public class OptionalEffectTiming: BridgedDictionary {
         _easing = ReadWriteAttribute(jsObject: object, name: Strings.easing)
         super.init(unsafelyWrapping: object)
     }
-
-    @ReadWriteAttribute
-    public var playbackRate: Double
 
     @ReadWriteAttribute
     public var delay: Double

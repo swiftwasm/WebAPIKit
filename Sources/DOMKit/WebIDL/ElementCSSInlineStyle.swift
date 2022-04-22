@@ -5,7 +5,5 @@ import JavaScriptKit
 
 public protocol ElementCSSInlineStyle: JSBridgedClass {}
 public extension ElementCSSInlineStyle {
-    @inlinable var attributeStyleMap: StylePropertyMap { ReadonlyAttribute[Strings.attributeStyleMap, in: jsObject] }
-
     @inlinable var style: CSSStyleDeclaration { ReadonlyAttribute[Strings.style, in: jsObject] }
 }

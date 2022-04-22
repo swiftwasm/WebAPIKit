@@ -12,22 +12,22 @@ extension OffscreenCanvas: Any_CanvasImageSource {}
 extension VideoFrame: Any_CanvasImageSource {}
 
 public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
-    case hTMLCanvasElement(HTMLCanvasElement)
-    case hTMLOrSVGImageElement(HTMLOrSVGImageElement)
-    case hTMLVideoElement(HTMLVideoElement)
+    case htmlCanvasElement(HTMLCanvasElement)
+    case htmlOrSVGImageElement(HTMLOrSVGImageElement)
+    case htmlVideoElement(HTMLVideoElement)
     case imageBitmap(ImageBitmap)
     case offscreenCanvas(OffscreenCanvas)
     case videoFrame(VideoFrame)
 
     public static func construct(from value: JSValue) -> Self? {
-        if let hTMLCanvasElement: HTMLCanvasElement = value.fromJSValue() {
-            return .hTMLCanvasElement(hTMLCanvasElement)
+        if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
+            return .htmlCanvasElement(htmlCanvasElement)
         }
-        if let hTMLOrSVGImageElement: HTMLOrSVGImageElement = value.fromJSValue() {
-            return .hTMLOrSVGImageElement(hTMLOrSVGImageElement)
+        if let htmlOrSVGImageElement: HTMLOrSVGImageElement = value.fromJSValue() {
+            return .htmlOrSVGImageElement(htmlOrSVGImageElement)
         }
-        if let hTMLVideoElement: HTMLVideoElement = value.fromJSValue() {
-            return .hTMLVideoElement(hTMLVideoElement)
+        if let htmlVideoElement: HTMLVideoElement = value.fromJSValue() {
+            return .htmlVideoElement(htmlVideoElement)
         }
         if let imageBitmap: ImageBitmap = value.fromJSValue() {
             return .imageBitmap(imageBitmap)
@@ -43,12 +43,12 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
 
     public var jsValue: JSValue {
         switch self {
-        case let .hTMLCanvasElement(hTMLCanvasElement):
-            return hTMLCanvasElement.jsValue
-        case let .hTMLOrSVGImageElement(hTMLOrSVGImageElement):
-            return hTMLOrSVGImageElement.jsValue
-        case let .hTMLVideoElement(hTMLVideoElement):
-            return hTMLVideoElement.jsValue
+        case let .htmlCanvasElement(htmlCanvasElement):
+            return htmlCanvasElement.jsValue
+        case let .htmlOrSVGImageElement(htmlOrSVGImageElement):
+            return htmlOrSVGImageElement.jsValue
+        case let .htmlVideoElement(htmlVideoElement):
+            return htmlVideoElement.jsValue
         case let .imageBitmap(imageBitmap):
             return imageBitmap.jsValue
         case let .offscreenCanvas(offscreenCanvas):

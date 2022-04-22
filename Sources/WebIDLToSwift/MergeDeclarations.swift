@@ -47,7 +47,7 @@ enum DeclarationMerger {
         // print(byName.filter { $0.value.count > 1 }.map { "\($0.key ?? "<nil>"): \($0.value.map { type(of: $0).type }))" }.joined(separator: "\n"))
 
         func all<T: IDLNode>(_: T.Type) -> [T] {
-            byType[T.type]!.map { $0 as! T }
+            byType[T.type]?.map { $0 as! T } ?? []
         }
 
         let mixins = Dictionary(

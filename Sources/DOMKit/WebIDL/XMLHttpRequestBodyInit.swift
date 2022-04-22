@@ -15,7 +15,7 @@ public enum XMLHttpRequestBodyInit: JSValueCompatible, Any_XMLHttpRequestBodyIni
     case bufferSource(BufferSource)
     case formData(FormData)
     case string(String)
-    case uRLSearchParams(URLSearchParams)
+    case urlSearchParams(URLSearchParams)
 
     public static func construct(from value: JSValue) -> Self? {
         if let blob: Blob = value.fromJSValue() {
@@ -30,8 +30,8 @@ public enum XMLHttpRequestBodyInit: JSValueCompatible, Any_XMLHttpRequestBodyIni
         if let string: String = value.fromJSValue() {
             return .string(string)
         }
-        if let uRLSearchParams: URLSearchParams = value.fromJSValue() {
-            return .uRLSearchParams(uRLSearchParams)
+        if let urlSearchParams: URLSearchParams = value.fromJSValue() {
+            return .urlSearchParams(urlSearchParams)
         }
         return nil
     }
@@ -46,8 +46,8 @@ public enum XMLHttpRequestBodyInit: JSValueCompatible, Any_XMLHttpRequestBodyIni
             return formData.jsValue
         case let .string(string):
             return string.jsValue
-        case let .uRLSearchParams(uRLSearchParams):
-            return uRLSearchParams.jsValue
+        case let .urlSearchParams(urlSearchParams):
+            return urlSearchParams.jsValue
         }
     }
 }

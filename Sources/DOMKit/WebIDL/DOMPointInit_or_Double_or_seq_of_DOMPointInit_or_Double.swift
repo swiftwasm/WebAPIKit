@@ -9,13 +9,13 @@ extension Double: Any_DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double {}
 extension Array: Any_DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double where Element == DOMPointInit_or_Double {}
 
 public enum DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double: JSValueCompatible, Any_DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double {
-    case dOMPointInit(DOMPointInit)
+    case domPointInit(DOMPointInit)
     case double(Double)
     case seq_of_DOMPointInit_or_Double([DOMPointInit_or_Double])
 
     public static func construct(from value: JSValue) -> Self? {
-        if let dOMPointInit: DOMPointInit = value.fromJSValue() {
-            return .dOMPointInit(dOMPointInit)
+        if let domPointInit: DOMPointInit = value.fromJSValue() {
+            return .domPointInit(domPointInit)
         }
         if let double: Double = value.fromJSValue() {
             return .double(double)
@@ -28,8 +28,8 @@ public enum DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double: JSValueComp
 
     public var jsValue: JSValue {
         switch self {
-        case let .dOMPointInit(dOMPointInit):
-            return dOMPointInit.jsValue
+        case let .domPointInit(domPointInit):
+            return domPointInit.jsValue
         case let .double(double):
             return double.jsValue
         case let .seq_of_DOMPointInit_or_Double(seq_of_DOMPointInit_or_Double):

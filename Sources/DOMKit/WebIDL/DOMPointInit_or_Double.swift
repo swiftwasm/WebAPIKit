@@ -8,12 +8,12 @@ extension DOMPointInit: Any_DOMPointInit_or_Double {}
 extension Double: Any_DOMPointInit_or_Double {}
 
 public enum DOMPointInit_or_Double: JSValueCompatible, Any_DOMPointInit_or_Double {
-    case dOMPointInit(DOMPointInit)
+    case domPointInit(DOMPointInit)
     case double(Double)
 
     public static func construct(from value: JSValue) -> Self? {
-        if let dOMPointInit: DOMPointInit = value.fromJSValue() {
-            return .dOMPointInit(dOMPointInit)
+        if let domPointInit: DOMPointInit = value.fromJSValue() {
+            return .domPointInit(domPointInit)
         }
         if let double: Double = value.fromJSValue() {
             return .double(double)
@@ -23,8 +23,8 @@ public enum DOMPointInit_or_Double: JSValueCompatible, Any_DOMPointInit_or_Doubl
 
     public var jsValue: JSValue {
         switch self {
-        case let .dOMPointInit(dOMPointInit):
-            return dOMPointInit.jsValue
+        case let .domPointInit(domPointInit):
+            return domPointInit.jsValue
         case let .double(double):
             return double.jsValue
         }

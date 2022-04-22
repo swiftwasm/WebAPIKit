@@ -9,14 +9,14 @@ extension XMLHttpRequestBodyInit: Any_Document_or_XMLHttpRequestBodyInit {}
 
 public enum Document_or_XMLHttpRequestBodyInit: JSValueCompatible, Any_Document_or_XMLHttpRequestBodyInit {
     case document(Document)
-    case xMLHttpRequestBodyInit(XMLHttpRequestBodyInit)
+    case xmlHttpRequestBodyInit(XMLHttpRequestBodyInit)
 
     public static func construct(from value: JSValue) -> Self? {
         if let document: Document = value.fromJSValue() {
             return .document(document)
         }
-        if let xMLHttpRequestBodyInit: XMLHttpRequestBodyInit = value.fromJSValue() {
-            return .xMLHttpRequestBodyInit(xMLHttpRequestBodyInit)
+        if let xmlHttpRequestBodyInit: XMLHttpRequestBodyInit = value.fromJSValue() {
+            return .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit)
         }
         return nil
     }
@@ -25,8 +25,8 @@ public enum Document_or_XMLHttpRequestBodyInit: JSValueCompatible, Any_Document_
         switch self {
         case let .document(document):
             return document.jsValue
-        case let .xMLHttpRequestBodyInit(xMLHttpRequestBodyInit):
-            return xMLHttpRequestBodyInit.jsValue
+        case let .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit):
+            return xmlHttpRequestBodyInit.jsValue
         }
     }
 }

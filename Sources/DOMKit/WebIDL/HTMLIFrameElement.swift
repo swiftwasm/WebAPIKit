@@ -7,7 +7,6 @@ public class HTMLIFrameElement: HTMLElement {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLIFrameElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _csp = ReadWriteAttribute(jsObject: jsObject, name: Strings.csp)
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
         _srcdoc = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcdoc)
         _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
@@ -26,13 +25,8 @@ public class HTMLIFrameElement: HTMLElement {
         _longDesc = ReadWriteAttribute(jsObject: jsObject, name: Strings.longDesc)
         _marginHeight = ReadWriteAttribute(jsObject: jsObject, name: Strings.marginHeight)
         _marginWidth = ReadWriteAttribute(jsObject: jsObject, name: Strings.marginWidth)
-        _permissionsPolicy = ReadonlyAttribute(jsObject: jsObject, name: Strings.permissionsPolicy)
-        _fetchpriority = ReadWriteAttribute(jsObject: jsObject, name: Strings.fetchpriority)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadWriteAttribute
-    public var csp: String
 
     @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
@@ -96,10 +90,4 @@ public class HTMLIFrameElement: HTMLElement {
 
     @ReadWriteAttribute
     public var marginWidth: String
-
-    @ReadonlyAttribute
-    public var permissionsPolicy: PermissionsPolicy
-
-    @ReadWriteAttribute
-    public var fetchpriority: String
 }

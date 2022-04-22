@@ -8,25 +8,25 @@ extension HTMLOptGroupElement: Any_HTMLOptGroupElement_or_HTMLOptionElement {}
 extension HTMLOptionElement: Any_HTMLOptGroupElement_or_HTMLOptionElement {}
 
 public enum HTMLOptGroupElement_or_HTMLOptionElement: JSValueCompatible, Any_HTMLOptGroupElement_or_HTMLOptionElement {
-    case hTMLOptGroupElement(HTMLOptGroupElement)
-    case hTMLOptionElement(HTMLOptionElement)
+    case htmlOptGroupElement(HTMLOptGroupElement)
+    case htmlOptionElement(HTMLOptionElement)
 
     public static func construct(from value: JSValue) -> Self? {
-        if let hTMLOptGroupElement: HTMLOptGroupElement = value.fromJSValue() {
-            return .hTMLOptGroupElement(hTMLOptGroupElement)
+        if let htmlOptGroupElement: HTMLOptGroupElement = value.fromJSValue() {
+            return .htmlOptGroupElement(htmlOptGroupElement)
         }
-        if let hTMLOptionElement: HTMLOptionElement = value.fromJSValue() {
-            return .hTMLOptionElement(hTMLOptionElement)
+        if let htmlOptionElement: HTMLOptionElement = value.fromJSValue() {
+            return .htmlOptionElement(htmlOptionElement)
         }
         return nil
     }
 
     public var jsValue: JSValue {
         switch self {
-        case let .hTMLOptGroupElement(hTMLOptGroupElement):
-            return hTMLOptGroupElement.jsValue
-        case let .hTMLOptionElement(hTMLOptionElement):
-            return hTMLOptionElement.jsValue
+        case let .htmlOptGroupElement(htmlOptGroupElement):
+            return htmlOptGroupElement.jsValue
+        case let .htmlOptionElement(htmlOptionElement):
+            return htmlOptionElement.jsValue
         }
     }
 }

@@ -7,8 +7,6 @@ public class Animation: EventTarget {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Animation].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _startTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.startTime)
-        _currentTime = ReadWriteAttribute(jsObject: jsObject, name: Strings.currentTime)
         _id = ReadWriteAttribute(jsObject: jsObject, name: Strings.id)
         _effect = ReadWriteAttribute(jsObject: jsObject, name: Strings.effect)
         _timeline = ReadWriteAttribute(jsObject: jsObject, name: Strings.timeline)
@@ -23,12 +21,6 @@ public class Animation: EventTarget {
         _onremove = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onremove)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadWriteAttribute
-    public var startTime: CSSNumberish?
-
-    @ReadWriteAttribute
-    public var currentTime: CSSNumberish?
 
     @inlinable public convenience init(effect: AnimationEffect? = nil, timeline: AnimationTimeline? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [effect?.jsValue ?? .undefined, timeline?.jsValue ?? .undefined]))

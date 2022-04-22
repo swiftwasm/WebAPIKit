@@ -4,10 +4,8 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MouseEventInit: BridgedDictionary {
-    public convenience init(movementX: Double, movementY: Double, screenX: Int32, screenY: Int32, clientX: Int32, clientY: Int32, button: Int16, buttons: UInt16, relatedTarget: EventTarget?) {
+    public convenience init(screenX: Int32, screenY: Int32, clientX: Int32, clientY: Int32, button: Int16, buttons: UInt16, relatedTarget: EventTarget?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.movementX] = movementX.jsValue
-        object[Strings.movementY] = movementY.jsValue
         object[Strings.screenX] = screenX.jsValue
         object[Strings.screenY] = screenY.jsValue
         object[Strings.clientX] = clientX.jsValue
@@ -19,8 +17,6 @@ public class MouseEventInit: BridgedDictionary {
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _movementX = ReadWriteAttribute(jsObject: object, name: Strings.movementX)
-        _movementY = ReadWriteAttribute(jsObject: object, name: Strings.movementY)
         _screenX = ReadWriteAttribute(jsObject: object, name: Strings.screenX)
         _screenY = ReadWriteAttribute(jsObject: object, name: Strings.screenY)
         _clientX = ReadWriteAttribute(jsObject: object, name: Strings.clientX)
@@ -30,12 +26,6 @@ public class MouseEventInit: BridgedDictionary {
         _relatedTarget = ReadWriteAttribute(jsObject: object, name: Strings.relatedTarget)
         super.init(unsafelyWrapping: object)
     }
-
-    @ReadWriteAttribute
-    public var movementX: Double
-
-    @ReadWriteAttribute
-    public var movementY: Double
 
     @ReadWriteAttribute
     public var screenX: Int32

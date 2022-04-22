@@ -14,23 +14,6 @@ public class DataTransferItem: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public func webkitGetAsEntry() -> FileSystemEntry? {
-        let this = jsObject
-        return this[Strings.webkitGetAsEntry].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @inlinable public func getAsFileSystemHandle() -> JSPromise {
-        let this = jsObject
-        return this[Strings.getAsFileSystemHandle].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func getAsFileSystemHandle() async throws -> FileSystemHandle? {
-        let this = jsObject
-        let _promise: JSPromise = this[Strings.getAsFileSystemHandle].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.value.fromJSValue()!
-    }
-
     @ReadonlyAttribute
     public var kind: String
 

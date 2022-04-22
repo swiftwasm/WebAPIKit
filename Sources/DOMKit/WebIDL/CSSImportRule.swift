@@ -7,15 +7,11 @@ public class CSSImportRule: CSSRule {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSImportRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _layerName = ReadonlyAttribute(jsObject: jsObject, name: Strings.layerName)
         _href = ReadonlyAttribute(jsObject: jsObject, name: Strings.href)
         _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
         _styleSheet = ReadonlyAttribute(jsObject: jsObject, name: Strings.styleSheet)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadonlyAttribute
-    public var layerName: String?
 
     @ReadonlyAttribute
     public var href: String

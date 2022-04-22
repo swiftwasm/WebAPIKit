@@ -9,39 +9,7 @@ public class AnimationEffect: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _parent = ReadonlyAttribute(jsObject: jsObject, name: Strings.parent)
-        _previousSibling = ReadonlyAttribute(jsObject: jsObject, name: Strings.previousSibling)
-        _nextSibling = ReadonlyAttribute(jsObject: jsObject, name: Strings.nextSibling)
         self.jsObject = jsObject
-    }
-
-    @ReadonlyAttribute
-    public var parent: GroupEffect?
-
-    @ReadonlyAttribute
-    public var previousSibling: AnimationEffect?
-
-    @ReadonlyAttribute
-    public var nextSibling: AnimationEffect?
-
-    @inlinable public func before(effects: AnimationEffect...) {
-        let this = jsObject
-        _ = this[Strings.before].function!(this: this, arguments: effects.map(\.jsValue))
-    }
-
-    @inlinable public func after(effects: AnimationEffect...) {
-        let this = jsObject
-        _ = this[Strings.after].function!(this: this, arguments: effects.map(\.jsValue))
-    }
-
-    @inlinable public func replace(effects: AnimationEffect...) {
-        let this = jsObject
-        _ = this[Strings.replace].function!(this: this, arguments: effects.map(\.jsValue))
-    }
-
-    @inlinable public func remove() {
-        let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: [])
     }
 
     @inlinable public func getTiming() -> EffectTiming {

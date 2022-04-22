@@ -8,12 +8,12 @@ extension HTMLCanvasElement: Any_HTMLCanvasElement_or_OffscreenCanvas {}
 extension OffscreenCanvas: Any_HTMLCanvasElement_or_OffscreenCanvas {}
 
 public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCanvasElement_or_OffscreenCanvas {
-    case hTMLCanvasElement(HTMLCanvasElement)
+    case htmlCanvasElement(HTMLCanvasElement)
     case offscreenCanvas(OffscreenCanvas)
 
     public static func construct(from value: JSValue) -> Self? {
-        if let hTMLCanvasElement: HTMLCanvasElement = value.fromJSValue() {
-            return .hTMLCanvasElement(hTMLCanvasElement)
+        if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
+            return .htmlCanvasElement(htmlCanvasElement)
         }
         if let offscreenCanvas: OffscreenCanvas = value.fromJSValue() {
             return .offscreenCanvas(offscreenCanvas)
@@ -23,8 +23,8 @@ public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCan
 
     public var jsValue: JSValue {
         switch self {
-        case let .hTMLCanvasElement(hTMLCanvasElement):
-            return hTMLCanvasElement.jsValue
+        case let .htmlCanvasElement(htmlCanvasElement):
+            return htmlCanvasElement.jsValue
         case let .offscreenCanvas(offscreenCanvas):
             return offscreenCanvas.jsValue
         }

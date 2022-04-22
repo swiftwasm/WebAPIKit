@@ -7,24 +7,6 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Window].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _orientation = ReadonlyAttribute(jsObject: jsObject, name: Strings.orientation)
-        _onorientationchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onorientationchange)
-        _attributionReporting = ReadonlyAttribute(jsObject: jsObject, name: Strings.attributionReporting)
-        _cookieStore = ReadonlyAttribute(jsObject: jsObject, name: Strings.cookieStore)
-        _screen = ReadonlyAttribute(jsObject: jsObject, name: Strings.screen)
-        _innerWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.innerWidth)
-        _innerHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.innerHeight)
-        _scrollX = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollX)
-        _pageXOffset = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageXOffset)
-        _scrollY = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollY)
-        _pageYOffset = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageYOffset)
-        _screenX = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenX)
-        _screenLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenLeft)
-        _screenY = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenY)
-        _screenTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenTop)
-        _outerWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.outerWidth)
-        _outerHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.outerHeight)
-        _devicePixelRatio = ReadonlyAttribute(jsObject: jsObject, name: Strings.devicePixelRatio)
         _event = ReadonlyAttribute(jsObject: jsObject, name: Strings.event)
         _window = ReadonlyAttribute(jsObject: jsObject, name: Strings.window)
         _self = ReadonlyAttribute(jsObject: jsObject, name: Strings._self)
@@ -51,188 +33,16 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
         _clientInformation = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientInformation)
         _originAgentCluster = ReadonlyAttribute(jsObject: jsObject, name: Strings.originAgentCluster)
         _external = ReadonlyAttribute(jsObject: jsObject, name: Strings.external)
-        _onappinstalled = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onappinstalled)
-        _onbeforeinstallprompt = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onbeforeinstallprompt)
-        _navigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.navigation)
-        _ondeviceorientation = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondeviceorientation)
-        _ondeviceorientationabsolute = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondeviceorientationabsolute)
-        _oncompassneedscalibration = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncompassneedscalibration)
-        _ondevicemotion = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondevicemotion)
-        _portalHost = ReadonlyAttribute(jsObject: jsObject, name: Strings.portalHost)
-        _speechSynthesis = ReadonlyAttribute(jsObject: jsObject, name: Strings.speechSynthesis)
-        _visualViewport = ReadonlyAttribute(jsObject: jsObject, name: Strings.visualViewport)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadonlyAttribute
-    public var orientation: Int16
-
-    @ClosureAttribute1Optional
-    public var onorientationchange: EventHandler
-
-    @ReadonlyAttribute
-    public var attributionReporting: AttributionReporting
-
-    @ReadonlyAttribute
-    public var cookieStore: CookieStore
-
-    @inlinable public func navigate(dir: SpatialNavigationDirection) {
-        let this = jsObject
-        _ = this[Strings.navigate].function!(this: this, arguments: [dir.jsValue])
-    }
-
-    @inlinable public func matchMedia(query: String) -> MediaQueryList {
-        let this = jsObject
-        return this[Strings.matchMedia].function!(this: this, arguments: [query.jsValue]).fromJSValue()!
-    }
-
-    @ReadonlyAttribute
-    public var screen: Screen
-
-    @inlinable public func moveTo(x: Int32, y: Int32) {
-        let this = jsObject
-        _ = this[Strings.moveTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
-    }
-
-    @inlinable public func moveBy(x: Int32, y: Int32) {
-        let this = jsObject
-        _ = this[Strings.moveBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
-    }
-
-    @inlinable public func resizeTo(width: Int32, height: Int32) {
-        let this = jsObject
-        _ = this[Strings.resizeTo].function!(this: this, arguments: [width.jsValue, height.jsValue])
-    }
-
-    @inlinable public func resizeBy(x: Int32, y: Int32) {
-        let this = jsObject
-        _ = this[Strings.resizeBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
-    }
-
-    @ReadonlyAttribute
-    public var innerWidth: Int32
-
-    @ReadonlyAttribute
-    public var innerHeight: Int32
-
-    @ReadonlyAttribute
-    public var scrollX: Double
-
-    @ReadonlyAttribute
-    public var pageXOffset: Double
-
-    @ReadonlyAttribute
-    public var scrollY: Double
-
-    @ReadonlyAttribute
-    public var pageYOffset: Double
-
-    @inlinable public func scroll(options: ScrollToOptions? = nil) {
-        let this = jsObject
-        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue ?? .undefined])
-    }
-
-    @inlinable public func scroll(x: Double, y: Double) {
-        let this = jsObject
-        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue, y.jsValue])
-    }
-
-    @inlinable public func scrollTo(options: ScrollToOptions? = nil) {
-        let this = jsObject
-        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue ?? .undefined])
-    }
-
-    @inlinable public func scrollTo(x: Double, y: Double) {
-        let this = jsObject
-        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
-    }
-
-    @inlinable public func scrollBy(options: ScrollToOptions? = nil) {
-        let this = jsObject
-        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue ?? .undefined])
-    }
-
-    @inlinable public func scrollBy(x: Double, y: Double) {
-        let this = jsObject
-        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
-    }
-
-    @ReadonlyAttribute
-    public var screenX: Int32
-
-    @ReadonlyAttribute
-    public var screenLeft: Int32
-
-    @ReadonlyAttribute
-    public var screenY: Int32
-
-    @ReadonlyAttribute
-    public var screenTop: Int32
-
-    @ReadonlyAttribute
-    public var outerWidth: Int32
-
-    @ReadonlyAttribute
-    public var outerHeight: Int32
-
-    @ReadonlyAttribute
-    public var devicePixelRatio: Double
 
     @inlinable public func getComputedStyle(elt: Element, pseudoElt: String? = nil) -> CSSStyleDeclaration {
         let this = jsObject
         return this[Strings.getComputedStyle].function!(this: this, arguments: [elt.jsValue, pseudoElt?.jsValue ?? .undefined]).fromJSValue()!
     }
 
-    @inlinable public func getDigitalGoodsService(serviceProvider: String) -> JSPromise {
-        let this = jsObject
-        return this[Strings.getDigitalGoodsService].function!(this: this, arguments: [serviceProvider.jsValue]).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func getDigitalGoodsService(serviceProvider: String) async throws -> DigitalGoodsService {
-        let this = jsObject
-        let _promise: JSPromise = this[Strings.getDigitalGoodsService].function!(this: this, arguments: [serviceProvider.jsValue]).fromJSValue()!
-        return try await _promise.value.fromJSValue()!
-    }
-
     @ReadonlyAttribute
     public var event: Event?
-
-    @inlinable public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) -> JSPromise {
-        let this = jsObject
-        return this[Strings.showOpenFilePicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func showOpenFilePicker(options: OpenFilePickerOptions? = nil) async throws -> [FileSystemFileHandle] {
-        let this = jsObject
-        let _promise: JSPromise = this[Strings.showOpenFilePicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
-        return try await _promise.value.fromJSValue()!
-    }
-
-    @inlinable public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) -> JSPromise {
-        let this = jsObject
-        return this[Strings.showSaveFilePicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func showSaveFilePicker(options: SaveFilePickerOptions? = nil) async throws -> FileSystemFileHandle {
-        let this = jsObject
-        let _promise: JSPromise = this[Strings.showSaveFilePicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
-        return try await _promise.value.fromJSValue()!
-    }
-
-    @inlinable public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) -> JSPromise {
-        let this = jsObject
-        return this[Strings.showDirectoryPicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func showDirectoryPicker(options: DirectoryPickerOptions? = nil) async throws -> FileSystemDirectoryHandle {
-        let this = jsObject
-        let _promise: JSPromise = this[Strings.showDirectoryPicker].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
-        return try await _promise.value.fromJSValue()!
-    }
 
     @ReadonlyAttribute
     public var window: WindowProxy
@@ -382,46 +192,4 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @ReadonlyAttribute
     public var external: External
-
-    @ClosureAttribute1Optional
-    public var onappinstalled: EventHandler
-
-    @ClosureAttribute1Optional
-    public var onbeforeinstallprompt: EventHandler
-
-    @ReadonlyAttribute
-    public var navigation: Navigation
-
-    @ClosureAttribute1Optional
-    public var ondeviceorientation: EventHandler
-
-    @ClosureAttribute1Optional
-    public var ondeviceorientationabsolute: EventHandler
-
-    @ClosureAttribute1Optional
-    public var oncompassneedscalibration: EventHandler
-
-    @ClosureAttribute1Optional
-    public var ondevicemotion: EventHandler
-
-    @ReadonlyAttribute
-    public var portalHost: PortalHost?
-
-    // XXX: member 'requestIdleCallback' is ignored
-
-    @inlinable public func cancelIdleCallback(handle: UInt32) {
-        let this = jsObject
-        _ = this[Strings.cancelIdleCallback].function!(this: this, arguments: [handle.jsValue])
-    }
-
-    @inlinable public func getSelection() -> Selection? {
-        let this = jsObject
-        return this[Strings.getSelection].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @ReadonlyAttribute
-    public var speechSynthesis: SpeechSynthesis
-
-    @ReadonlyAttribute
-    public var visualViewport: VisualViewport
 }

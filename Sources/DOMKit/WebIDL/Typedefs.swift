@@ -3,125 +3,26 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public typealias GLuint64EXT = UInt64
-
-public typealias HashAlgorithmIdentifier = AlgorithmIdentifier
-public typealias BigInteger = Uint8Array
-public typealias NamedCurve = String
-public typealias ClipboardItemData = JSPromise
-public typealias ClipboardItems = [ClipboardItem]
-public typealias CookieList = [CookieListItem]
-
-public typealias CSSColorPercent = CSSColorRGBComp
-public typealias CSSColorNumber = CSSColorRGBComp
-public typealias CSSColorAngle = CSSColorRGBComp
-
-public typealias DOMHighResTimeStamp = Double
-public typealias EpochTimeStamp = UInt64
-
 public typealias CanvasFilterInput = [String: JSValue]
 
 public typealias EventHandler = EventHandlerNonNull?
 public typealias OnErrorEventHandler = OnErrorEventHandlerNonNull?
 public typealias OnBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull?
 
-public typealias ProfilerResource = String
+public typealias DOMHighResTimeStamp = Double
+public typealias EpochTimeStamp = UInt64
 
-public typealias Megabit = Double
-public typealias Millisecond = UInt64
-public typealias PerformanceEntryList = [PerformanceEntry]
-
-public typealias ReportList = [Report]
-public typealias AttributeMatchList = [String: [String]]
-public typealias ContainerBasedOffset = CSSPerspectiveValue
-
-public typealias HTMLString = String
-public typealias ScriptString = String
-public typealias ScriptURLString = String
-
-public typealias UUID = String
-
-public typealias BluetoothCharacteristicUUID = BluetoothServiceUUID
-public typealias BluetoothDescriptorUUID = BluetoothServiceUUID
-
-public typealias COSEAlgorithmIdentifier = Int32
-public typealias UvmEntry = [UInt32]
-public typealias UvmEntries = [UvmEntry]
-
-public typealias GLenum = UInt32
-public typealias GLboolean = Bool
-public typealias GLbitfield = UInt32
-public typealias GLbyte = Int8
-public typealias GLshort = Int16
-public typealias GLint = Int32
-public typealias GLsizei = Int32
-public typealias GLintptr = Int64
-public typealias GLsizeiptr = Int64
-public typealias GLubyte = UInt8
-public typealias GLushort = UInt16
-public typealias GLuint = UInt32
-public typealias GLfloat = Float
-public typealias GLclampf = Float
-
-public typealias GLint64 = Int64
-public typealias GLuint64 = UInt64
-
-public typealias GPUBufferUsageFlags = UInt32
-public typealias GPUMapModeFlags = UInt32
-public typealias GPUTextureUsageFlags = UInt32
-public typealias GPUShaderStageFlags = UInt32
-
-public typealias GPUPipelineConstantValue = Double
-public typealias GPUColorWriteFlags = UInt32
-public typealias GPUComputePassTimestampWrites = [GPUComputePassTimestampWrite]
-public typealias GPURenderPassTimestampWrites = [GPURenderPassTimestampWrite]
-
-public typealias GPUBufferDynamicOffset = UInt32
-public typealias GPUStencilValue = UInt32
-public typealias GPUSampleMask = UInt32
-public typealias GPUDepthBias = Int32
-public typealias GPUSize64 = UInt64
-public typealias GPUIntegerCoordinate = UInt32
-public typealias GPUIndex32 = UInt32
-public typealias GPUSize32 = UInt32
-public typealias GPUSignedOffset32 = Int32
-public typealias GPUFlagsConstant = UInt32
-
-public typealias BufferSource = BinaryData
 public typealias DOMTimeStamp = UInt64
-public typealias MLNamedOperands = [String: MLOperand]
 
-public typealias MLNamedInputs = [String: MLInput_or_MLResource]
-public typealias MLNamedOutputs = [String: MLResource]
-
-public typealias SmallCryptoKeyID = UInt64
-
-public typealias ComputePressureUpdateCallback = ([ComputePressureRecord], ComputePressureObserver) -> Void
-public typealias AnimatorInstanceConstructor = (JSValue, JSValue) -> JSValue
 public typealias MutationCallback = ([MutationRecord], MutationObserver) -> Void
-public typealias ErrorCallback = (DOMException) -> Void
-public typealias FileSystemEntryCallback = (FileSystemEntry) -> Void
-public typealias FileSystemEntriesCallback = ([FileSystemEntry]) -> Void
-public typealias FileCallback = (File) -> Void
-public typealias PositionCallback = (GeolocationPosition) -> Void
-public typealias PositionErrorCallback = (GeolocationPositionError) -> Void
 public typealias BlobCallback = (Blob?) -> Void
 public typealias FunctionStringCallback = (String) -> Void
 public typealias EventHandlerNonNull = (Event) -> JSValue
 public typealias OnErrorEventHandlerNonNull = (Event_or_String, String, UInt32, UInt32, JSValue) -> JSValue
 public typealias OnBeforeUnloadEventHandlerNonNull = (Event) -> String?
 public typealias FrameRequestCallback = (DOMHighResTimeStamp) -> Void
-public typealias IntersectionObserverCallback = ([IntersectionObserverEntry], IntersectionObserver) -> Void
 public typealias NavigatorUserMediaSuccessCallback = (MediaStream) -> Void
 public typealias NavigatorUserMediaErrorCallback = (DOMException) -> Void
-public typealias MediaSessionActionHandler = (MediaSessionActionDetails) -> Void
-public typealias NotificationPermissionCallback = (NotificationPermission) -> Void
-public typealias PerformanceObserverCallback = (PerformanceObserverEntryList, PerformanceObserver, PerformanceObserverCallbackOptions) -> Void
-public typealias RemotePlaybackAvailabilityCallback = (Bool) -> Void
-public typealias ReportingObserverCallback = ([Report], ReportingObserver) -> Void
-public typealias IdleRequestCallback = (IdleDeadline) -> Void
-public typealias ResizeObserverCallback = ([ResizeObserverEntry], ResizeObserver) -> Void
-public typealias SchedulerPostTaskCallback = () -> JSValue
 public typealias UnderlyingSourceStartCallback = (ReadableStreamController) -> JSValue
 public typealias UnderlyingSourcePullCallback = (ReadableStreamController) -> JSPromise
 public typealias UnderlyingSourceCancelCallback = (JSValue) -> JSPromise
@@ -133,23 +34,9 @@ public typealias TransformerStartCallback = (TransformStreamDefaultController) -
 public typealias TransformerFlushCallback = (TransformStreamDefaultController) -> JSPromise
 public typealias TransformerTransformCallback = (JSValue, TransformStreamDefaultController) -> JSPromise
 public typealias QueuingStrategySize = (JSValue) -> Double
-public typealias CreateHTMLCallback = (String, JSValue...) -> String
-public typealias CreateScriptCallback = (String, JSValue...) -> String
-public typealias CreateScriptURLCallback = (String, JSValue...) -> String
-public typealias VideoFrameRequestCallback = (DOMHighResTimeStamp, VideoFrameMetadata) -> Void
-public typealias EffectCallback = (Double?, CSSPseudoElement_or_Element, Animation) -> Void
-public typealias LockGrantedCallback = (Lock?) -> JSPromise
-public typealias DecodeErrorCallback = (DOMException) -> Void
-public typealias DecodeSuccessCallback = (AudioBuffer) -> Void
-public typealias AudioWorkletProcessCallback = ([[Float32Array]], [[Float32Array]], JSObject) -> Bool
 public typealias AudioDataOutputCallback = (AudioData) -> Void
 public typealias VideoFrameOutputCallback = (VideoFrame) -> Void
 public typealias EncodedAudioChunkOutputCallback = (EncodedAudioChunk, EncodedAudioChunkMetadata) -> Void
 public typealias EncodedVideoChunkOutputCallback = (EncodedVideoChunk, EncodedVideoChunkMetadata) -> Void
 public typealias WebCodecsErrorCallback = (DOMException) -> Void
 public typealias VoidFunction = () -> Void
-public typealias GenerateAssertionCallback = (String, String, RTCIdentityProviderOptions) -> JSPromise
-public typealias ValidateAssertionCallback = (String, String) -> JSPromise
-public typealias RTCPeerConnectionErrorCallback = (DOMException) -> Void
-public typealias RTCSessionDescriptionCallback = (RTCSessionDescriptionInit) -> Void
-public typealias XRFrameRequestCallback = (DOMHighResTimeStamp, XRFrame) -> Void

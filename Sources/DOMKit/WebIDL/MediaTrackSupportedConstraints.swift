@@ -4,25 +4,8 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaTrackSupportedConstraints: BridgedDictionary {
-    public convenience init(whiteBalanceMode: Bool, exposureMode: Bool, focusMode: Bool, pointsOfInterest: Bool, exposureCompensation: Bool, exposureTime: Bool, colorTemperature: Bool, iso: Bool, brightness: Bool, contrast: Bool, pan: Bool, saturation: Bool, sharpness: Bool, focusDistance: Bool, tilt: Bool, zoom: Bool, torch: Bool, width: Bool, height: Bool, aspectRatio: Bool, frameRate: Bool, facingMode: Bool, resizeMode: Bool, sampleRate: Bool, sampleSize: Bool, echoCancellation: Bool, autoGainControl: Bool, noiseSuppression: Bool, latency: Bool, channelCount: Bool, deviceId: Bool, groupId: Bool, displaySurface: Bool, logicalSurface: Bool, cursor: Bool, restrictOwnAudio: Bool, suppressLocalAudioPlayback: Bool) {
+    public convenience init(width: Bool, height: Bool, aspectRatio: Bool, frameRate: Bool, facingMode: Bool, resizeMode: Bool, sampleRate: Bool, sampleSize: Bool, echoCancellation: Bool, autoGainControl: Bool, noiseSuppression: Bool, latency: Bool, channelCount: Bool, deviceId: Bool, groupId: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.whiteBalanceMode] = whiteBalanceMode.jsValue
-        object[Strings.exposureMode] = exposureMode.jsValue
-        object[Strings.focusMode] = focusMode.jsValue
-        object[Strings.pointsOfInterest] = pointsOfInterest.jsValue
-        object[Strings.exposureCompensation] = exposureCompensation.jsValue
-        object[Strings.exposureTime] = exposureTime.jsValue
-        object[Strings.colorTemperature] = colorTemperature.jsValue
-        object[Strings.iso] = iso.jsValue
-        object[Strings.brightness] = brightness.jsValue
-        object[Strings.contrast] = contrast.jsValue
-        object[Strings.pan] = pan.jsValue
-        object[Strings.saturation] = saturation.jsValue
-        object[Strings.sharpness] = sharpness.jsValue
-        object[Strings.focusDistance] = focusDistance.jsValue
-        object[Strings.tilt] = tilt.jsValue
-        object[Strings.zoom] = zoom.jsValue
-        object[Strings.torch] = torch.jsValue
         object[Strings.width] = width.jsValue
         object[Strings.height] = height.jsValue
         object[Strings.aspectRatio] = aspectRatio.jsValue
@@ -38,32 +21,10 @@ public class MediaTrackSupportedConstraints: BridgedDictionary {
         object[Strings.channelCount] = channelCount.jsValue
         object[Strings.deviceId] = deviceId.jsValue
         object[Strings.groupId] = groupId.jsValue
-        object[Strings.displaySurface] = displaySurface.jsValue
-        object[Strings.logicalSurface] = logicalSurface.jsValue
-        object[Strings.cursor] = cursor.jsValue
-        object[Strings.restrictOwnAudio] = restrictOwnAudio.jsValue
-        object[Strings.suppressLocalAudioPlayback] = suppressLocalAudioPlayback.jsValue
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _whiteBalanceMode = ReadWriteAttribute(jsObject: object, name: Strings.whiteBalanceMode)
-        _exposureMode = ReadWriteAttribute(jsObject: object, name: Strings.exposureMode)
-        _focusMode = ReadWriteAttribute(jsObject: object, name: Strings.focusMode)
-        _pointsOfInterest = ReadWriteAttribute(jsObject: object, name: Strings.pointsOfInterest)
-        _exposureCompensation = ReadWriteAttribute(jsObject: object, name: Strings.exposureCompensation)
-        _exposureTime = ReadWriteAttribute(jsObject: object, name: Strings.exposureTime)
-        _colorTemperature = ReadWriteAttribute(jsObject: object, name: Strings.colorTemperature)
-        _iso = ReadWriteAttribute(jsObject: object, name: Strings.iso)
-        _brightness = ReadWriteAttribute(jsObject: object, name: Strings.brightness)
-        _contrast = ReadWriteAttribute(jsObject: object, name: Strings.contrast)
-        _pan = ReadWriteAttribute(jsObject: object, name: Strings.pan)
-        _saturation = ReadWriteAttribute(jsObject: object, name: Strings.saturation)
-        _sharpness = ReadWriteAttribute(jsObject: object, name: Strings.sharpness)
-        _focusDistance = ReadWriteAttribute(jsObject: object, name: Strings.focusDistance)
-        _tilt = ReadWriteAttribute(jsObject: object, name: Strings.tilt)
-        _zoom = ReadWriteAttribute(jsObject: object, name: Strings.zoom)
-        _torch = ReadWriteAttribute(jsObject: object, name: Strings.torch)
         _width = ReadWriteAttribute(jsObject: object, name: Strings.width)
         _height = ReadWriteAttribute(jsObject: object, name: Strings.height)
         _aspectRatio = ReadWriteAttribute(jsObject: object, name: Strings.aspectRatio)
@@ -79,64 +40,8 @@ public class MediaTrackSupportedConstraints: BridgedDictionary {
         _channelCount = ReadWriteAttribute(jsObject: object, name: Strings.channelCount)
         _deviceId = ReadWriteAttribute(jsObject: object, name: Strings.deviceId)
         _groupId = ReadWriteAttribute(jsObject: object, name: Strings.groupId)
-        _displaySurface = ReadWriteAttribute(jsObject: object, name: Strings.displaySurface)
-        _logicalSurface = ReadWriteAttribute(jsObject: object, name: Strings.logicalSurface)
-        _cursor = ReadWriteAttribute(jsObject: object, name: Strings.cursor)
-        _restrictOwnAudio = ReadWriteAttribute(jsObject: object, name: Strings.restrictOwnAudio)
-        _suppressLocalAudioPlayback = ReadWriteAttribute(jsObject: object, name: Strings.suppressLocalAudioPlayback)
         super.init(unsafelyWrapping: object)
     }
-
-    @ReadWriteAttribute
-    public var whiteBalanceMode: Bool
-
-    @ReadWriteAttribute
-    public var exposureMode: Bool
-
-    @ReadWriteAttribute
-    public var focusMode: Bool
-
-    @ReadWriteAttribute
-    public var pointsOfInterest: Bool
-
-    @ReadWriteAttribute
-    public var exposureCompensation: Bool
-
-    @ReadWriteAttribute
-    public var exposureTime: Bool
-
-    @ReadWriteAttribute
-    public var colorTemperature: Bool
-
-    @ReadWriteAttribute
-    public var iso: Bool
-
-    @ReadWriteAttribute
-    public var brightness: Bool
-
-    @ReadWriteAttribute
-    public var contrast: Bool
-
-    @ReadWriteAttribute
-    public var pan: Bool
-
-    @ReadWriteAttribute
-    public var saturation: Bool
-
-    @ReadWriteAttribute
-    public var sharpness: Bool
-
-    @ReadWriteAttribute
-    public var focusDistance: Bool
-
-    @ReadWriteAttribute
-    public var tilt: Bool
-
-    @ReadWriteAttribute
-    public var zoom: Bool
-
-    @ReadWriteAttribute
-    public var torch: Bool
 
     @ReadWriteAttribute
     public var width: Bool
@@ -182,19 +87,4 @@ public class MediaTrackSupportedConstraints: BridgedDictionary {
 
     @ReadWriteAttribute
     public var groupId: Bool
-
-    @ReadWriteAttribute
-    public var displaySurface: Bool
-
-    @ReadWriteAttribute
-    public var logicalSurface: Bool
-
-    @ReadWriteAttribute
-    public var cursor: Bool
-
-    @ReadWriteAttribute
-    public var restrictOwnAudio: Bool
-
-    @ReadWriteAttribute
-    public var suppressLocalAudioPlayback: Bool
 }

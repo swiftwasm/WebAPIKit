@@ -4,23 +4,18 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class KeyframeEffectOptions: BridgedDictionary {
-    public convenience init(iterationComposite: IterationCompositeOperation, composite: CompositeOperation, pseudoElement: String?) {
+    public convenience init(composite: CompositeOperation, pseudoElement: String?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.iterationComposite] = iterationComposite.jsValue
         object[Strings.composite] = composite.jsValue
         object[Strings.pseudoElement] = pseudoElement.jsValue
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _iterationComposite = ReadWriteAttribute(jsObject: object, name: Strings.iterationComposite)
         _composite = ReadWriteAttribute(jsObject: object, name: Strings.composite)
         _pseudoElement = ReadWriteAttribute(jsObject: object, name: Strings.pseudoElement)
         super.init(unsafelyWrapping: object)
     }
-
-    @ReadWriteAttribute
-    public var iterationComposite: IterationCompositeOperation
 
     @ReadWriteAttribute
     public var composite: CompositeOperation

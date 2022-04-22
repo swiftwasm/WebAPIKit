@@ -5,16 +5,6 @@ import JavaScriptKit
 
 public protocol WindowEventHandlers: JSBridgedClass {}
 public extension WindowEventHandlers {
-    @inlinable var ongamepadconnected: EventHandler {
-        get { ClosureAttribute1Optional[Strings.ongamepadconnected, in: jsObject] }
-        nonmutating set { ClosureAttribute1Optional[Strings.ongamepadconnected, in: jsObject] = newValue }
-    }
-
-    @inlinable var ongamepaddisconnected: EventHandler {
-        get { ClosureAttribute1Optional[Strings.ongamepaddisconnected, in: jsObject] }
-        nonmutating set { ClosureAttribute1Optional[Strings.ongamepaddisconnected, in: jsObject] = newValue }
-    }
-
     @inlinable var onafterprint: EventHandler {
         get { ClosureAttribute1Optional[Strings.onafterprint, in: jsObject] }
         nonmutating set { ClosureAttribute1Optional[Strings.onafterprint, in: jsObject] = newValue }
@@ -93,10 +83,5 @@ public extension WindowEventHandlers {
     @inlinable var onunload: EventHandler {
         get { ClosureAttribute1Optional[Strings.onunload, in: jsObject] }
         nonmutating set { ClosureAttribute1Optional[Strings.onunload, in: jsObject] = newValue }
-    }
-
-    @inlinable var onportalactivate: EventHandler {
-        get { ClosureAttribute1Optional[Strings.onportalactivate, in: jsObject] }
-        nonmutating set { ClosureAttribute1Optional[Strings.onportalactivate, in: jsObject] = newValue }
     }
 }

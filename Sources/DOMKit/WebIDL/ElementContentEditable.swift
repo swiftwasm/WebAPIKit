@@ -21,9 +21,4 @@ public extension ElementContentEditable {
         get { ReadWriteAttribute[Strings.inputMode, in: jsObject] }
         nonmutating set { ReadWriteAttribute[Strings.inputMode, in: jsObject] = newValue }
     }
-
-    @inlinable var virtualKeyboardPolicy: String {
-        get { ReadWriteAttribute[Strings.virtualKeyboardPolicy, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.virtualKeyboardPolicy, in: jsObject] = newValue }
-    }
 }

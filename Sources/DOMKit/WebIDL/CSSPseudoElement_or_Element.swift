@@ -8,12 +8,12 @@ extension CSSPseudoElement: Any_CSSPseudoElement_or_Element {}
 extension Element: Any_CSSPseudoElement_or_Element {}
 
 public enum CSSPseudoElement_or_Element: JSValueCompatible, Any_CSSPseudoElement_or_Element {
-    case cSSPseudoElement(CSSPseudoElement)
+    case cssPseudoElement(CSSPseudoElement)
     case element(Element)
 
     public static func construct(from value: JSValue) -> Self? {
-        if let cSSPseudoElement: CSSPseudoElement = value.fromJSValue() {
-            return .cSSPseudoElement(cSSPseudoElement)
+        if let cssPseudoElement: CSSPseudoElement = value.fromJSValue() {
+            return .cssPseudoElement(cssPseudoElement)
         }
         if let element: Element = value.fromJSValue() {
             return .element(element)
@@ -23,8 +23,8 @@ public enum CSSPseudoElement_or_Element: JSValueCompatible, Any_CSSPseudoElement
 
     public var jsValue: JSValue {
         switch self {
-        case let .cSSPseudoElement(cSSPseudoElement):
-            return cSSPseudoElement.jsValue
+        case let .cssPseudoElement(cssPseudoElement):
+            return cssPseudoElement.jsValue
         case let .element(element):
             return element.jsValue
         }

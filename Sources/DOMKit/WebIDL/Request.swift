@@ -24,7 +24,6 @@ public class Request: JSBridgedClass, Body {
         _isReloadNavigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.isReloadNavigation)
         _isHistoryNavigation = ReadonlyAttribute(jsObject: jsObject, name: Strings.isHistoryNavigation)
         _signal = ReadonlyAttribute(jsObject: jsObject, name: Strings.signal)
-        _priority = ReadonlyAttribute(jsObject: jsObject, name: Strings.priority)
         self.jsObject = jsObject
     }
 
@@ -81,7 +80,4 @@ public class Request: JSBridgedClass, Body {
         let this = jsObject
         return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
     }
-
-    @ReadonlyAttribute
-    public var priority: FetchPriority
 }

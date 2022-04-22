@@ -4,7 +4,7 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class RequestInit: BridgedDictionary {
-    public convenience init(method: String, headers: HeadersInit, body: BodyInit?, referrer: String, referrerPolicy: ReferrerPolicy, mode: RequestMode, credentials: RequestCredentials, cache: RequestCache, redirect: RequestRedirect, integrity: String, keepalive: Bool, signal: AbortSignal?, window: JSValue, priority: FetchPriority) {
+    public convenience init(method: String, headers: HeadersInit, body: BodyInit?, referrer: String, referrerPolicy: ReferrerPolicy, mode: RequestMode, credentials: RequestCredentials, cache: RequestCache, redirect: RequestRedirect, integrity: String, keepalive: Bool, signal: AbortSignal?, window: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.method] = method.jsValue
         object[Strings.headers] = headers.jsValue
@@ -19,7 +19,6 @@ public class RequestInit: BridgedDictionary {
         object[Strings.keepalive] = keepalive.jsValue
         object[Strings.signal] = signal.jsValue
         object[Strings.window] = window.jsValue
-        object[Strings.priority] = priority.jsValue
         self.init(unsafelyWrapping: object)
     }
 
@@ -37,7 +36,6 @@ public class RequestInit: BridgedDictionary {
         _keepalive = ReadWriteAttribute(jsObject: object, name: Strings.keepalive)
         _signal = ReadWriteAttribute(jsObject: object, name: Strings.signal)
         _window = ReadWriteAttribute(jsObject: object, name: Strings.window)
-        _priority = ReadWriteAttribute(jsObject: object, name: Strings.priority)
         super.init(unsafelyWrapping: object)
     }
 
@@ -79,7 +77,4 @@ public class RequestInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var window: JSValue
-
-    @ReadWriteAttribute
-    public var priority: FetchPriority
 }

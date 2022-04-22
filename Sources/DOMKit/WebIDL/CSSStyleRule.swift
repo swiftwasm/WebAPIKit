@@ -7,28 +7,10 @@ public class CSSStyleRule: CSSRule {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSStyleRule].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _cssRules = ReadonlyAttribute(jsObject: jsObject, name: Strings.cssRules)
-        _styleMap = ReadonlyAttribute(jsObject: jsObject, name: Strings.styleMap)
         _selectorText = ReadWriteAttribute(jsObject: jsObject, name: Strings.selectorText)
         _style = ReadonlyAttribute(jsObject: jsObject, name: Strings.style)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadonlyAttribute
-    public var cssRules: CSSRuleList
-
-    @inlinable public func insertRule(rule: String, index: UInt32? = nil) -> UInt32 {
-        let this = jsObject
-        return this[Strings.insertRule].function!(this: this, arguments: [rule.jsValue, index?.jsValue ?? .undefined]).fromJSValue()!
-    }
-
-    @inlinable public func deleteRule(index: UInt32) {
-        let this = jsObject
-        _ = this[Strings.deleteRule].function!(this: this, arguments: [index.jsValue])
-    }
-
-    @ReadonlyAttribute
-    public var styleMap: StylePropertyMap
 
     @ReadWriteAttribute
     public var selectorText: String

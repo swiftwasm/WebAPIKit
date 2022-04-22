@@ -9,14 +9,14 @@ extension HTMLCollection: Any_Element_or_HTMLCollection {}
 
 public enum Element_or_HTMLCollection: JSValueCompatible, Any_Element_or_HTMLCollection {
     case element(Element)
-    case hTMLCollection(HTMLCollection)
+    case htmlCollection(HTMLCollection)
 
     public static func construct(from value: JSValue) -> Self? {
         if let element: Element = value.fromJSValue() {
             return .element(element)
         }
-        if let hTMLCollection: HTMLCollection = value.fromJSValue() {
-            return .hTMLCollection(hTMLCollection)
+        if let htmlCollection: HTMLCollection = value.fromJSValue() {
+            return .htmlCollection(htmlCollection)
         }
         return nil
     }
@@ -25,8 +25,8 @@ public enum Element_or_HTMLCollection: JSValueCompatible, Any_Element_or_HTMLCol
         switch self {
         case let .element(element):
             return element.jsValue
-        case let .hTMLCollection(hTMLCollection):
-            return hTMLCollection.jsValue
+        case let .htmlCollection(htmlCollection):
+            return htmlCollection.jsValue
         }
     }
 }

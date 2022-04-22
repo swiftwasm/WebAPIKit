@@ -5,10 +5,6 @@ import JavaScriptKit
 
 public protocol WindowOrWorkerGlobalScope: JSBridgedClass {}
 public extension WindowOrWorkerGlobalScope {
-    @inlinable var indexedDB: IDBFactory { ReadonlyAttribute[Strings.indexedDB, in: jsObject] }
-
-    @inlinable var crypto: Crypto { ReadonlyAttribute[Strings.crypto, in: jsObject] }
-
     @inlinable func fetch(input: RequestInfo, init: RequestInit? = nil) -> JSPromise {
         let this = jsObject
         return this[Strings.fetch].function!(this: this, arguments: [input.jsValue, `init`?.jsValue ?? .undefined]).fromJSValue()!
@@ -20,8 +16,6 @@ public extension WindowOrWorkerGlobalScope {
         let _promise: JSPromise = this[Strings.fetch].function!(this: this, arguments: [input.jsValue, `init`?.jsValue ?? .undefined]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
-
-    @inlinable var performance: Performance { ReadonlyAttribute[Strings.performance, in: jsObject] }
 
     @inlinable var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
 
@@ -107,11 +101,7 @@ public extension WindowOrWorkerGlobalScope {
         return this[Strings.structuredClone].function!(this: this, arguments: [value.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
-    @inlinable var originPolicyIds: [String] { ReadonlyAttribute[Strings.originPolicyIds, in: jsObject] }
-
-    @inlinable var scheduler: Scheduler { ReadonlyAttribute[Strings.scheduler, in: jsObject] }
+    @inlinable var performance: Performance { ReadonlyAttribute[Strings.performance, in: jsObject] }
 
     @inlinable var caches: CacheStorage { ReadonlyAttribute[Strings.caches, in: jsObject] }
-
-    @inlinable var trustedTypes: TrustedTypePolicyFactory { ReadonlyAttribute[Strings.trustedTypes, in: jsObject] }
 }

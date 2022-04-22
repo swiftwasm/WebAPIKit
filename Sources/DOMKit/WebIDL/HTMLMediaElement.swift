@@ -7,10 +7,6 @@ public class HTMLMediaElement: HTMLElement {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMediaElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _sinkId = ReadonlyAttribute(jsObject: jsObject, name: Strings.sinkId)
-        _mediaKeys = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaKeys)
-        _onencrypted = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onencrypted)
-        _onwaitingforkey = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onwaitingforkey)
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
         _srcObject = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcObject)
@@ -39,45 +35,7 @@ public class HTMLMediaElement: HTMLElement {
         _audioTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioTracks)
         _videoTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoTracks)
         _textTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.textTracks)
-        _remote = ReadonlyAttribute(jsObject: jsObject, name: Strings.remote)
-        _disableRemotePlayback = ReadWriteAttribute(jsObject: jsObject, name: Strings.disableRemotePlayback)
         super.init(unsafelyWrapping: jsObject)
-    }
-
-    @ReadonlyAttribute
-    public var sinkId: String
-
-    @inlinable public func setSinkId(sinkId: String) -> JSPromise {
-        let this = jsObject
-        return this[Strings.setSinkId].function!(this: this, arguments: [sinkId.jsValue]).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func setSinkId(sinkId: String) async throws {
-        let this = jsObject
-        let _promise: JSPromise = this[Strings.setSinkId].function!(this: this, arguments: [sinkId.jsValue]).fromJSValue()!
-        _ = try await _promise.value
-    }
-
-    @ReadonlyAttribute
-    public var mediaKeys: MediaKeys?
-
-    @ClosureAttribute1Optional
-    public var onencrypted: EventHandler
-
-    @ClosureAttribute1Optional
-    public var onwaitingforkey: EventHandler
-
-    @inlinable public func setMediaKeys(mediaKeys: MediaKeys?) -> JSPromise {
-        let this = jsObject
-        return this[Strings.setMediaKeys].function!(this: this, arguments: [mediaKeys.jsValue]).fromJSValue()!
-    }
-
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func setMediaKeys(mediaKeys: MediaKeys?) async throws {
-        let this = jsObject
-        let _promise: JSPromise = this[Strings.setMediaKeys].function!(this: this, arguments: [mediaKeys.jsValue]).fromJSValue()!
-        _ = try await _promise.value
     }
 
     @ReadonlyAttribute
@@ -223,15 +181,4 @@ public class HTMLMediaElement: HTMLElement {
         let this = jsObject
         return this[Strings.addTextTrack].function!(this: this, arguments: [kind.jsValue, label?.jsValue ?? .undefined, language?.jsValue ?? .undefined]).fromJSValue()!
     }
-
-    @inlinable public func captureStream() -> MediaStream {
-        let this = jsObject
-        return this[Strings.captureStream].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @ReadonlyAttribute
-    public var remote: RemotePlayback
-
-    @ReadWriteAttribute
-    public var disableRemotePlayback: Bool
 }

@@ -12,7 +12,7 @@ extension WebGLRenderingContext: Any_RenderingContext {}
 
 public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
     case canvasRenderingContext2D(CanvasRenderingContext2D)
-    case gPUCanvasContext(GPUCanvasContext)
+    case gpuCanvasContext(GPUCanvasContext)
     case imageBitmapRenderingContext(ImageBitmapRenderingContext)
     case webGL2RenderingContext(WebGL2RenderingContext)
     case webGLRenderingContext(WebGLRenderingContext)
@@ -21,8 +21,8 @@ public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
         if let canvasRenderingContext2D: CanvasRenderingContext2D = value.fromJSValue() {
             return .canvasRenderingContext2D(canvasRenderingContext2D)
         }
-        if let gPUCanvasContext: GPUCanvasContext = value.fromJSValue() {
-            return .gPUCanvasContext(gPUCanvasContext)
+        if let gpuCanvasContext: GPUCanvasContext = value.fromJSValue() {
+            return .gpuCanvasContext(gpuCanvasContext)
         }
         if let imageBitmapRenderingContext: ImageBitmapRenderingContext = value.fromJSValue() {
             return .imageBitmapRenderingContext(imageBitmapRenderingContext)
@@ -40,8 +40,8 @@ public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
         switch self {
         case let .canvasRenderingContext2D(canvasRenderingContext2D):
             return canvasRenderingContext2D.jsValue
-        case let .gPUCanvasContext(gPUCanvasContext):
-            return gPUCanvasContext.jsValue
+        case let .gpuCanvasContext(gpuCanvasContext):
+            return gpuCanvasContext.jsValue
         case let .imageBitmapRenderingContext(imageBitmapRenderingContext):
             return imageBitmapRenderingContext.jsValue
         case let .webGL2RenderingContext(webGL2RenderingContext):

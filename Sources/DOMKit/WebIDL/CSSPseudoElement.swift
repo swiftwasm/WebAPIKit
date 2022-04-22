@@ -3,7 +3,7 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class CSSPseudoElement: EventTarget, GeometryUtils {
+public class CSSPseudoElement: EventTarget {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSPseudoElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

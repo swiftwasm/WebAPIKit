@@ -4,20 +4,16 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class MediaStreamConstraints: BridgedDictionary {
-    public convenience init(video: Bool_or_MediaTrackConstraints, audio: Bool_or_MediaTrackConstraints, preferCurrentTab: Bool, peerIdentity: String) {
+    public convenience init(video: Bool_or_MediaTrackConstraints, audio: Bool_or_MediaTrackConstraints) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.video] = video.jsValue
         object[Strings.audio] = audio.jsValue
-        object[Strings.preferCurrentTab] = preferCurrentTab.jsValue
-        object[Strings.peerIdentity] = peerIdentity.jsValue
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
         _video = ReadWriteAttribute(jsObject: object, name: Strings.video)
         _audio = ReadWriteAttribute(jsObject: object, name: Strings.audio)
-        _preferCurrentTab = ReadWriteAttribute(jsObject: object, name: Strings.preferCurrentTab)
-        _peerIdentity = ReadWriteAttribute(jsObject: object, name: Strings.peerIdentity)
         super.init(unsafelyWrapping: object)
     }
 
@@ -26,10 +22,4 @@ public class MediaStreamConstraints: BridgedDictionary {
 
     @ReadWriteAttribute
     public var audio: Bool_or_MediaTrackConstraints
-
-    @ReadWriteAttribute
-    public var preferCurrentTab: Bool
-
-    @ReadWriteAttribute
-    public var peerIdentity: String
 }

@@ -7,11 +7,6 @@ public class HTMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, D
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _offsetParent = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetParent)
-        _offsetTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetTop)
-        _offsetLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetLeft)
-        _offsetWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetWidth)
-        _offsetHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetHeight)
         _title = ReadWriteAttribute(jsObject: jsObject, name: Strings.title)
         _lang = ReadWriteAttribute(jsObject: jsObject, name: Strings.lang)
         _translate = ReadWriteAttribute(jsObject: jsObject, name: Strings.translate)
@@ -27,21 +22,6 @@ public class HTMLElement: Element, ElementCSSInlineStyle, GlobalEventHandlers, D
         _outerText = ReadWriteAttribute(jsObject: jsObject, name: Strings.outerText)
         super.init(unsafelyWrapping: jsObject)
     }
-
-    @ReadonlyAttribute
-    public var offsetParent: Element?
-
-    @ReadonlyAttribute
-    public var offsetTop: Int32
-
-    @ReadonlyAttribute
-    public var offsetLeft: Int32
-
-    @ReadonlyAttribute
-    public var offsetWidth: Int32
-
-    @ReadonlyAttribute
-    public var offsetHeight: Int32
 
     @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))

@@ -16,9 +16,6 @@ public class MediaStreamTrack: EventTarget {
         _onunmute = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onunmute)
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
         _onended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onended)
-        _contentHint = ReadWriteAttribute(jsObject: jsObject, name: Strings.contentHint)
-        _isolated = ReadonlyAttribute(jsObject: jsObject, name: Strings.isolated)
-        _onisolationchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onisolationchange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -85,13 +82,4 @@ public class MediaStreamTrack: EventTarget {
         let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
         _ = try await _promise.value
     }
-
-    @ReadWriteAttribute
-    public var contentHint: String
-
-    @ReadonlyAttribute
-    public var isolated: Bool
-
-    @ClosureAttribute1Optional
-    public var onisolationchange: EventHandler
 }

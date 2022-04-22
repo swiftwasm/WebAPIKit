@@ -8,25 +8,25 @@ extension HTMLImageElement: Any_HTMLOrSVGImageElement {}
 extension SVGImageElement: Any_HTMLOrSVGImageElement {}
 
 public enum HTMLOrSVGImageElement: JSValueCompatible, Any_HTMLOrSVGImageElement {
-    case hTMLImageElement(HTMLImageElement)
-    case sVGImageElement(SVGImageElement)
+    case htmlImageElement(HTMLImageElement)
+    case svgImageElement(SVGImageElement)
 
     public static func construct(from value: JSValue) -> Self? {
-        if let hTMLImageElement: HTMLImageElement = value.fromJSValue() {
-            return .hTMLImageElement(hTMLImageElement)
+        if let htmlImageElement: HTMLImageElement = value.fromJSValue() {
+            return .htmlImageElement(htmlImageElement)
         }
-        if let sVGImageElement: SVGImageElement = value.fromJSValue() {
-            return .sVGImageElement(sVGImageElement)
+        if let svgImageElement: SVGImageElement = value.fromJSValue() {
+            return .svgImageElement(svgImageElement)
         }
         return nil
     }
 
     public var jsValue: JSValue {
         switch self {
-        case let .hTMLImageElement(hTMLImageElement):
-            return hTMLImageElement.jsValue
-        case let .sVGImageElement(sVGImageElement):
-            return sVGImageElement.jsValue
+        case let .htmlImageElement(htmlImageElement):
+            return htmlImageElement.jsValue
+        case let .svgImageElement(svgImageElement):
+            return svgImageElement.jsValue
         }
     }
 }

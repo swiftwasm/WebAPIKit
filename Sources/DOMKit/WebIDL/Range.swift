@@ -11,21 +11,6 @@ public class Range: AbstractRange {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public func createContextualFragment(fragment: String) -> DocumentFragment {
-        let this = jsObject
-        return this[Strings.createContextualFragment].function!(this: this, arguments: [fragment.jsValue]).fromJSValue()!
-    }
-
-    @inlinable public func getClientRects() -> DOMRectList {
-        let this = jsObject
-        return this[Strings.getClientRects].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @inlinable public func getBoundingClientRect() -> DOMRect {
-        let this = jsObject
-        return this[Strings.getBoundingClientRect].function!(this: this, arguments: []).fromJSValue()!
-    }
-
     @inlinable public convenience init() {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
     }

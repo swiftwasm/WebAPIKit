@@ -20,7 +20,6 @@ public class HTMLScriptElement: HTMLElement {
         _charset = ReadWriteAttribute(jsObject: jsObject, name: Strings.charset)
         _event = ReadWriteAttribute(jsObject: jsObject, name: Strings.event)
         _htmlFor = ReadWriteAttribute(jsObject: jsObject, name: Strings.htmlFor)
-        _fetchpriority = ReadWriteAttribute(jsObject: jsObject, name: Strings.fetchpriority)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -71,7 +70,4 @@ public class HTMLScriptElement: HTMLElement {
 
     @ReadWriteAttribute
     public var htmlFor: String
-
-    @ReadWriteAttribute
-    public var fetchpriority: String
 }
