@@ -16,7 +16,6 @@ public class TextTrack: EventTarget {
         _cues = ReadonlyAttribute(jsObject: jsObject, name: Strings.cues)
         _activeCues = ReadonlyAttribute(jsObject: jsObject, name: Strings.activeCues)
         _oncuechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncuechange)
-        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -56,7 +55,4 @@ public class TextTrack: EventTarget {
 
     @ClosureAttribute1Optional
     public var oncuechange: EventHandler
-
-    @ReadonlyAttribute
-    public var sourceBuffer: SourceBuffer?
 }

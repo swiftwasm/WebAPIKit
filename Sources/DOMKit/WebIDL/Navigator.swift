@@ -9,15 +9,9 @@ public class Navigator: JSBridgedClass, NavigatorID, NavigatorLanguage, Navigato
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _mediaDevices = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaDevices)
         _serviceWorker = ReadonlyAttribute(jsObject: jsObject, name: Strings.serviceWorker)
         self.jsObject = jsObject
     }
-
-    @ReadonlyAttribute
-    public var mediaDevices: MediaDevices
-
-    // XXX: member 'getUserMedia' is ignored
 
     @ReadonlyAttribute
     public var serviceWorker: ServiceWorkerContainer

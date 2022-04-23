@@ -14,7 +14,6 @@ public class VideoTrack: JSBridgedClass {
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
         _language = ReadonlyAttribute(jsObject: jsObject, name: Strings.language)
         _selected = ReadWriteAttribute(jsObject: jsObject, name: Strings.selected)
-        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         self.jsObject = jsObject
     }
 
@@ -32,7 +31,4 @@ public class VideoTrack: JSBridgedClass {
 
     @ReadWriteAttribute
     public var selected: Bool
-
-    @ReadonlyAttribute
-    public var sourceBuffer: SourceBuffer?
 }

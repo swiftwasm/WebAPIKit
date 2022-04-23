@@ -48,7 +48,6 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
         _anchors = ReadonlyAttribute(jsObject: jsObject, name: Strings.anchors)
         _applets = ReadonlyAttribute(jsObject: jsObject, name: Strings.applets)
         _all = ReadonlyAttribute(jsObject: jsObject, name: Strings.all)
-        _rootElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.rootElement)
         _timeline = ReadonlyAttribute(jsObject: jsObject, name: Strings.timeline)
         super.init(unsafelyWrapping: jsObject)
     }
@@ -347,9 +346,6 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @ReadonlyAttribute
     public var all: HTMLAllCollection
-
-    @ReadonlyAttribute
-    public var rootElement: SVGSVGElement?
 
     @ReadonlyAttribute
     public var timeline: DocumentTimeline

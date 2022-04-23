@@ -9,7 +9,7 @@ extension HTMLOrSVGImageElement: Any_CanvasImageSource {}
 extension HTMLVideoElement: Any_CanvasImageSource {}
 extension ImageBitmap: Any_CanvasImageSource {}
 extension OffscreenCanvas: Any_CanvasImageSource {}
-extension VideoFrame: Any_CanvasImageSource {}
+//extension VideoFrame: Any_CanvasImageSource {}
 
 public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
     case htmlCanvasElement(HTMLCanvasElement)
@@ -17,7 +17,7 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
     case htmlVideoElement(HTMLVideoElement)
     case imageBitmap(ImageBitmap)
     case offscreenCanvas(OffscreenCanvas)
-    case videoFrame(VideoFrame)
+//    case videoFrame(VideoFrame)
 
     var htmlCanvasElement: HTMLCanvasElement? {
         switch self {
@@ -54,12 +54,12 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
         }
     }
 
-    var videoFrame: VideoFrame? {
-        switch self {
-        case let .videoFrame(videoFrame): return videoFrame
-        default: return nil
-        }
-    }
+//    var videoFrame: VideoFrame? {
+//        switch self {
+//        case let .videoFrame(videoFrame): return videoFrame
+//        default: return nil
+//        }
+//    }
 
     public static func construct(from value: JSValue) -> Self? {
         if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
@@ -77,9 +77,9 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
         if let offscreenCanvas: OffscreenCanvas = value.fromJSValue() {
             return .offscreenCanvas(offscreenCanvas)
         }
-        if let videoFrame: VideoFrame = value.fromJSValue() {
-            return .videoFrame(videoFrame)
-        }
+//        if let videoFrame: VideoFrame = value.fromJSValue() {
+//            return .videoFrame(videoFrame)
+//        }
         return nil
     }
 
@@ -95,8 +95,8 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
             return imageBitmap.jsValue
         case let .offscreenCanvas(offscreenCanvas):
             return offscreenCanvas.jsValue
-        case let .videoFrame(videoFrame):
-            return videoFrame.jsValue
+//        case let .videoFrame(videoFrame):
+//            return videoFrame.jsValue
         }
     }
 }

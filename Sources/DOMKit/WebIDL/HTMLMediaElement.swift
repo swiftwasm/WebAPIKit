@@ -9,7 +9,6 @@ public class HTMLMediaElement: HTMLElement {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
-        _srcObject = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcObject)
         _currentSrc = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentSrc)
         _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: Strings.crossOrigin)
         _networkState = ReadonlyAttribute(jsObject: jsObject, name: Strings.networkState)
@@ -44,8 +43,7 @@ public class HTMLMediaElement: HTMLElement {
     @ReadWriteAttribute
     public var src: String
 
-    @ReadWriteAttribute
-    public var srcObject: MediaProvider?
+    // XXX: member 'srcObject' is ignored
 
     @ReadonlyAttribute
     public var currentSrc: String

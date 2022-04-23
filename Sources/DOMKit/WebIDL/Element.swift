@@ -20,11 +20,6 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
-        let this = jsObject
-        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
-    }
-
     @ReadonlyAttribute
     public var namespaceURI: String?
 

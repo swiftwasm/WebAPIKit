@@ -16,13 +16,15 @@ enum IDLBuilder {
         "Client_or_MessagePort_or_ServiceWorker", "ExtendableMessageEventInit",
         // redundant unions
         "CSSColorValue_or_CSSStyleValue",
+        // need types from specs not yet included
+        "ShadowAnimation", "MediaProvider", "Blob_or_MediaSource",
+        "OffscreenRenderingContext", "RenderingContext", "CanvasImageSource",
+        "HTMLOrSVGImageElement", "HTMLOrSVGScriptElement",
         // implemented manually
         // ArrayBufferView
         "BigInt64Array_or_BigUint64Array_or_DataView_or_Float32Array_or_Float64Array_or_Int16Array_or_Int32Array_or_Int8Array_or_Uint16Array_or_Uint32Array_or_Uint8Array_or_Uint8ClampedArray",
         // RotationMatrixType
         "DOMMatrix_or_Float32Array_or_Float64Array",
-        "OffscreenRenderingContext",
-        "RenderingContext",
     ]
 
     static let outDir = "Sources/DOMKit/WebIDL/"
@@ -103,6 +105,8 @@ enum IDLBuilder {
                     "AudioBufferSourceNode": ["start"],
                     // XPathNSResolver
                     "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
+                    // disabled pending addition of more specs
+                    "HTMLMediaElement": ["srcObject"],
                 ],
                 types: merged.types
             )) {

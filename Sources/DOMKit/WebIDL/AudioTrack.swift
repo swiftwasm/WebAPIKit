@@ -14,7 +14,6 @@ public class AudioTrack: JSBridgedClass {
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
         _language = ReadonlyAttribute(jsObject: jsObject, name: Strings.language)
         _enabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.enabled)
-        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         self.jsObject = jsObject
     }
 
@@ -32,7 +31,4 @@ public class AudioTrack: JSBridgedClass {
 
     @ReadWriteAttribute
     public var enabled: Bool
-
-    @ReadonlyAttribute
-    public var sourceBuffer: SourceBuffer?
 }
