@@ -5,7 +5,7 @@ import JavaScriptKit
 
 public protocol Body: JSBridgedClass {}
 public extension Body {
-    @inlinable var body: ReadableStream? { ReadonlyAttribute[Strings.body, in: jsObject] }
+    // XXX: attribute 'body' is ignored
 
     @inlinable var bodyUsed: Bool { ReadonlyAttribute[Strings.bodyUsed, in: jsObject] }
 

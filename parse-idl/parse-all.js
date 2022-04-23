@@ -7,7 +7,6 @@ const parsedFiles = await parseAll();
 console.log(
   JSON.stringify(
     [
-      "cssom",
       "dom",
       "fetch",
       "FileAPI",
@@ -15,7 +14,6 @@ console.log(
       "geometry",
       "hr-time",
       "referrer-policy",
-      "streams",
       "uievents",
       "wai-aria",
       "webidl",

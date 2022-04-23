@@ -3,7 +3,7 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class HTMLLinkElement: HTMLElement, LinkStyle {
+public class HTMLLinkElement: HTMLElement {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLLinkElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

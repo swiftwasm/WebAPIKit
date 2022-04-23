@@ -3,7 +3,7 @@
 import JavaScriptEventLoop
 import JavaScriptKit
 
-public class ProcessingInstruction: CharacterData, LinkStyle {
+public class ProcessingInstruction: CharacterData {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ProcessingInstruction].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {

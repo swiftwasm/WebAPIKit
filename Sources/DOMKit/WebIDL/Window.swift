@@ -36,11 +36,6 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public func getComputedStyle(elt: Element, pseudoElt: String? = nil) -> CSSStyleDeclaration {
-        let this = jsObject
-        return this[Strings.getComputedStyle].function!(this: this, arguments: [elt.jsValue, pseudoElt?.jsValue ?? .undefined]).fromJSValue()!
-    }
-
     @ReadonlyAttribute
     public var event: Event?
 

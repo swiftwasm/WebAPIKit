@@ -29,10 +29,7 @@ public class Blob: JSBridgedClass {
         return this[Strings.slice].function!(this: this, arguments: [start?.jsValue ?? .undefined, end?.jsValue ?? .undefined, contentType?.jsValue ?? .undefined]).fromJSValue()!
     }
 
-    @inlinable public func stream() -> ReadableStream {
-        let this = jsObject
-        return this[Strings.stream].function!(this: this, arguments: []).fromJSValue()!
-    }
+    // XXX: member 'stream' is ignored
 
     @inlinable public func text() -> JSPromise {
         let this = jsObject

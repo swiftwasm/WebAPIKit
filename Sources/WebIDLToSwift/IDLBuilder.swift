@@ -19,7 +19,7 @@ enum IDLBuilder {
         // need types from specs not yet included
         "ShadowAnimation", "MediaProvider", "Blob_or_MediaSource",
         "OffscreenRenderingContext", "RenderingContext", "CanvasImageSource",
-        "HTMLOrSVGImageElement", "HTMLOrSVGScriptElement",
+        "HTMLOrSVGImageElement", "HTMLOrSVGScriptElement", "BodyInit",
         // implemented manually
         // ArrayBufferView
         "BigInt64Array_or_BigUint64Array_or_DataView_or_Float32Array_or_Float64Array_or_Int16Array_or_Int32Array_or_Int8Array_or_Uint16Array_or_Uint32Array_or_Uint8Array_or_Uint8ClampedArray",
@@ -107,6 +107,8 @@ enum IDLBuilder {
                     "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
                     // disabled pending addition of more specs
                     "HTMLMediaElement": ["srcObject"],
+                    "Blob": ["stream"],
+                    "Body": ["body"],
                 ],
                 types: merged.types
             )) {

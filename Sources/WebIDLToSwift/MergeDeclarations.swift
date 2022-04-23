@@ -10,6 +10,8 @@ enum DeclarationMerger {
     ]
     static let validExposures: Set<String> = ["Window"]
 
+    static let ignoredParents: Set<String> = ["LinkStyle"]
+
     private static func addAsync(_ members: [IDLNode]) -> [IDLNode] {
         members.flatMap { member -> [IDLNode] in
             if let operation = member as? IDLOperation,
@@ -65,13 +67,15 @@ enum DeclarationMerger {
         }
 
         let includes = Dictionary(grouping: all(IDLIncludes.self)) { $0.target }
-            .mapValues { $0.map(\.includes) }
+            .mapValues { $0.map(\.includes).filter { !Self.ignoredParents.contains($0) } }
 
         let mergedInterfaces = Dictionary(
             grouping: all(IDLInterface.self).map {
                 MergedInterface(
                     name: $0.name,
-                    parentClasses: [$0.inheritance].compactMap { $0 },
+                    parentClasses: [$0.inheritance]
+                        .compactMap { $0 }
+                        .filter { !Self.ignoredParents.contains($0) },
                     members: addAsync($0.members.array) as! [IDLInterfaceMember],
                     exposed: Set(
                         $0.extAttrs
@@ -100,7 +104,9 @@ enum DeclarationMerger {
             grouping: all(IDLDictionary.self).map {
                 MergedDictionary(
                     name: $0.name,
-                    inheritance: [$0.inheritance].compactMap { $0 },
+                    inheritance: [$0.inheritance]
+                        .compactMap { $0 }
+                        .filter { !Self.ignoredParents.contains($0) },
                     members: $0.members
                 )
             },
@@ -134,6 +140,25 @@ enum DeclarationMerger {
         allTypes.removeAll(where: { ignoredTypedefs.contains($0.name) })
         let mergedTypes = Dictionary(uniqueKeysWithValues: allTypes.map { ($0.name, $0) })
 
+        // var unionAliases: [String: String] = [:]
+        // let unions = Set(
+        //     Dictionary(
+        //         all(IDLTypedef.self).compactMap { type -> (Set<SlimIDLType>, UnionType)? in
+        //             if case let .union(types) = type.idlType.value {
+        //                 let typeSet = Set(types.map(SlimIDLType.init))
+        //                 return (typeSet, UnionType(types: typeSet, friendlyName: type.name))
+        //             }
+        //             return nil
+        //         },
+        //         uniquingKeysWith: { old, new in
+        //             unionAliases[new.name] = old.name
+        //             return old
+        //         }
+        //     ).values
+        // )
+
+        // print(unionAliases)
+
         let arrays: [DeclarationFile] =
             Array(mergedInterfaces.values)
                 + Array(mergedDictionaries.values)
@@ -145,6 +170,7 @@ enum DeclarationMerger {
                 + all(IDLEnum.self),
             interfaces: mergedInterfaces,
             types: mergedTypes
+            // unions: unions
         )
     }
 
@@ -152,6 +178,7 @@ enum DeclarationMerger {
         let declarations: [DeclarationFile]
         let interfaces: [String: MergedInterface]
         let types: [String: IDLTypealias]
+        // let unions: Set<UnionType>
     }
 }
 

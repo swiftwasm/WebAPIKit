@@ -21,6 +21,11 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
     }
 
     var swiftRepresentation: SwiftSource {
+        if Context.ignored[Context.className.source]?.contains(name) ?? false {
+            return """
+            // XXX: attribute '\(name)' is ignored
+            """
+        }
         if Context.override {
             assert(!Context.static)
             // can't do property wrappers on override declarations

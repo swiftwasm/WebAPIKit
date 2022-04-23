@@ -5,13 +5,6 @@ import JavaScriptKit
 
 public protocol DocumentOrShadowRoot: JSBridgedClass {}
 public extension DocumentOrShadowRoot {
-    @inlinable var styleSheets: StyleSheetList { ReadonlyAttribute[Strings.styleSheets, in: jsObject] }
-
-    @inlinable var adoptedStyleSheets: [CSSStyleSheet] {
-        get { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.adoptedStyleSheets, in: jsObject] = newValue }
-    }
-
     @inlinable var activeElement: Element? { ReadonlyAttribute[Strings.activeElement, in: jsObject] }
 
     @inlinable func getAnimations() -> [Animation] {
