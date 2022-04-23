@@ -1,6 +1,17 @@
 import Foundation
 import WebIDL
 
+extension String {
+    var lowerCamelCased: String {
+        let prefix = prefix(while: \.isUppercase)
+        if prefix.count <= 1 {
+            return prefix.lowercased() + dropFirst(prefix.count)
+        } else {
+            return prefix.dropLast().lowercased() + dropFirst(prefix.count - 1)
+        }
+    }
+}
+
 extension UnionType: SwiftRepresentable {
     var sortedTypes: [SlimIDLType] {
         types.sorted(by: { $0.inlineTypeName < $1.inlineTypeName })
@@ -11,9 +22,7 @@ extension UnionType: SwiftRepresentable {
     }
 
     var sortedNames: [String] {
-        sortedTypes.map {
-            $0.inlineTypeName.first!.lowercased() + String($0.inlineTypeName.dropFirst())
-        }
+        sortedTypes.map(\.inlineTypeName.lowerCamelCased)
     }
 
     var swiftRepresentation: SwiftSource {
