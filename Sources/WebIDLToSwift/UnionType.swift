@@ -23,6 +23,7 @@ class UnionType: Hashable, Equatable {
 struct SlimIDLType: Hashable, Encodable {
     let value: TypeValue
     let nullable: Bool
+    let inlineTypeName: String
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(inlineTypeName)
@@ -33,16 +34,15 @@ struct SlimIDLType: Hashable, Encodable {
     }
 
     init(_ type: IDLType) {
-        value = .init(type.value)
+        let value = TypeValue(type.value)
+        self.value = value
         nullable = type.nullable
-    }
-
-    var inlineTypeName: String {
-        if nullable {
-            return "nullable_\(value.inlineTypeName)"
+        
+        if type.nullable {
+            inlineTypeName = "nullable_\(value.inlineTypeName)"
+        } else {
+            inlineTypeName = value.inlineTypeName
         }
-
-        return value.inlineTypeName
     }
 
     enum TypeValue: Encodable {
