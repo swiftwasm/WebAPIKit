@@ -11,6 +11,20 @@ public enum HTMLElement_or_Int32: JSValueCompatible, Any_HTMLElement_or_Int32 {
     case htmlElement(HTMLElement)
     case int32(Int32)
 
+    var htmlElement: HTMLElement? {
+        switch self {
+        case let .htmlElement(htmlElement): return htmlElement
+        default: return nil
+        }
+    }
+
+    var int32: Int32? {
+        switch self {
+        case let .int32(int32): return int32
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let htmlElement: HTMLElement = value.fromJSValue() {
             return .htmlElement(htmlElement)

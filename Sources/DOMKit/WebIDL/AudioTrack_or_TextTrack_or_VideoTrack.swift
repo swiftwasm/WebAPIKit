@@ -13,6 +13,27 @@ public enum AudioTrack_or_TextTrack_or_VideoTrack: JSValueCompatible, Any_AudioT
     case textTrack(TextTrack)
     case videoTrack(VideoTrack)
 
+    var audioTrack: AudioTrack? {
+        switch self {
+        case let .audioTrack(audioTrack): return audioTrack
+        default: return nil
+        }
+    }
+
+    var textTrack: TextTrack? {
+        switch self {
+        case let .textTrack(textTrack): return textTrack
+        default: return nil
+        }
+    }
+
+    var videoTrack: VideoTrack? {
+        switch self {
+        case let .videoTrack(videoTrack): return videoTrack
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let audioTrack: AudioTrack = value.fromJSValue() {
             return .audioTrack(audioTrack)

@@ -17,6 +17,41 @@ public enum OffscreenRenderingContext: JSValueCompatible, Any_OffscreenRendering
     case webGL2RenderingContext(WebGL2RenderingContext)
     case webGLRenderingContext(WebGLRenderingContext)
 
+    var gpuCanvasContext: GPUCanvasContext? {
+        switch self {
+        case let .gpuCanvasContext(gpuCanvasContext): return gpuCanvasContext
+        default: return nil
+        }
+    }
+
+    var imageBitmapRenderingContext: ImageBitmapRenderingContext? {
+        switch self {
+        case let .imageBitmapRenderingContext(imageBitmapRenderingContext): return imageBitmapRenderingContext
+        default: return nil
+        }
+    }
+
+    var offscreenCanvasRenderingContext2D: OffscreenCanvasRenderingContext2D? {
+        switch self {
+        case let .offscreenCanvasRenderingContext2D(offscreenCanvasRenderingContext2D): return offscreenCanvasRenderingContext2D
+        default: return nil
+        }
+    }
+
+    var webGL2RenderingContext: WebGL2RenderingContext? {
+        switch self {
+        case let .webGL2RenderingContext(webGL2RenderingContext): return webGL2RenderingContext
+        default: return nil
+        }
+    }
+
+    var webGLRenderingContext: WebGLRenderingContext? {
+        switch self {
+        case let .webGLRenderingContext(webGLRenderingContext): return webGLRenderingContext
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let gpuCanvasContext: GPUCanvasContext = value.fromJSValue() {
             return .gpuCanvasContext(gpuCanvasContext)

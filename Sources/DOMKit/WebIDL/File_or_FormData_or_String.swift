@@ -13,6 +13,27 @@ public enum File_or_FormData_or_String: JSValueCompatible, Any_File_or_FormData_
     case formData(FormData)
     case string(String)
 
+    var file: File? {
+        switch self {
+        case let .file(file): return file
+        default: return nil
+        }
+    }
+
+    var formData: FormData? {
+        switch self {
+        case let .formData(formData): return formData
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let file: File = value.fromJSValue() {
             return .file(file)

@@ -11,6 +11,20 @@ public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaT
     case bool(Bool)
     case mediaTrackConstraints(MediaTrackConstraints)
 
+    var bool: Bool? {
+        switch self {
+        case let .bool(bool): return bool
+        default: return nil
+        }
+    }
+
+    var mediaTrackConstraints: MediaTrackConstraints? {
+        switch self {
+        case let .mediaTrackConstraints(mediaTrackConstraints): return mediaTrackConstraints
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let bool: Bool = value.fromJSValue() {
             return .bool(bool)

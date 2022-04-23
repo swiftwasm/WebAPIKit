@@ -11,6 +11,20 @@ public enum String_or_seq_of_Double: JSValueCompatible, Any_String_or_seq_of_Dou
     case string(String)
     case seq_of_Double([Double])
 
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
+    var seq_of_Double: [Double]? {
+        switch self {
+        case let .seq_of_Double(seq_of_Double): return seq_of_Double
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let string: String = value.fromJSValue() {
             return .string(string)

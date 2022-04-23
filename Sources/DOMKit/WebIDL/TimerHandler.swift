@@ -11,6 +11,20 @@ public enum TimerHandler: JSValueCompatible, Any_TimerHandler {
     case jsFunction(JSFunction)
     case string(String)
 
+    var jsFunction: JSFunction? {
+        switch self {
+        case let .jsFunction(jsFunction): return jsFunction
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let jsFunction: JSFunction = value.fromJSValue() {
             return .jsFunction(jsFunction)

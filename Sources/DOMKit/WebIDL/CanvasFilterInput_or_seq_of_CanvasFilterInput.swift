@@ -11,6 +11,20 @@ public enum CanvasFilterInput_or_seq_of_CanvasFilterInput: JSValueCompatible, An
     case canvasFilterInput(CanvasFilterInput)
     case seq_of_CanvasFilterInput([CanvasFilterInput])
 
+    var canvasFilterInput: CanvasFilterInput? {
+        switch self {
+        case let .canvasFilterInput(canvasFilterInput): return canvasFilterInput
+        default: return nil
+        }
+    }
+
+    var seq_of_CanvasFilterInput: [CanvasFilterInput]? {
+        switch self {
+        case let .seq_of_CanvasFilterInput(seq_of_CanvasFilterInput): return seq_of_CanvasFilterInput
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let canvasFilterInput: CanvasFilterInput = value.fromJSValue() {
             return .canvasFilterInput(canvasFilterInput)

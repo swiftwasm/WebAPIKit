@@ -11,6 +11,20 @@ public enum Element_or_ProcessingInstruction: JSValueCompatible, Any_Element_or_
     case element(Element)
     case processingInstruction(ProcessingInstruction)
 
+    var element: Element? {
+        switch self {
+        case let .element(element): return element
+        default: return nil
+        }
+    }
+
+    var processingInstruction: ProcessingInstruction? {
+        switch self {
+        case let .processingInstruction(processingInstruction): return processingInstruction
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let element: Element = value.fromJSValue() {
             return .element(element)

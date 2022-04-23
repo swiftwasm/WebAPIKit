@@ -11,6 +11,20 @@ public enum ImageBufferSource: JSValueCompatible, Any_ImageBufferSource {
     case bufferSource(BufferSource)
     case readableStream(ReadableStream)
 
+    var bufferSource: BufferSource? {
+        switch self {
+        case let .bufferSource(bufferSource): return bufferSource
+        default: return nil
+        }
+    }
+
+    var readableStream: ReadableStream? {
+        switch self {
+        case let .readableStream(readableStream): return readableStream
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let bufferSource: BufferSource = value.fromJSValue() {
             return .bufferSource(bufferSource)

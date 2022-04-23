@@ -11,6 +11,20 @@ public enum CSSPseudoElement_or_Element: JSValueCompatible, Any_CSSPseudoElement
     case cssPseudoElement(CSSPseudoElement)
     case element(Element)
 
+    var cssPseudoElement: CSSPseudoElement? {
+        switch self {
+        case let .cssPseudoElement(cssPseudoElement): return cssPseudoElement
+        default: return nil
+        }
+    }
+
+    var element: Element? {
+        switch self {
+        case let .element(element): return element
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let cssPseudoElement: CSSPseudoElement = value.fromJSValue() {
             return .cssPseudoElement(cssPseudoElement)

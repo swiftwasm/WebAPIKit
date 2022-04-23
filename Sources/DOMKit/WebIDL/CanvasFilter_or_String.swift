@@ -11,6 +11,20 @@ public enum CanvasFilter_or_String: JSValueCompatible, Any_CanvasFilter_or_Strin
     case canvasFilter(CanvasFilter)
     case string(String)
 
+    var canvasFilter: CanvasFilter? {
+        switch self {
+        case let .canvasFilter(canvasFilter): return canvasFilter
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let canvasFilter: CanvasFilter = value.fromJSValue() {
             return .canvasFilter(canvasFilter)

@@ -11,6 +11,20 @@ public enum CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto: JSValue
     case compositeOperationOrAuto(CompositeOperationOrAuto)
     case seq_of_CompositeOperationOrAuto([CompositeOperationOrAuto])
 
+    var compositeOperationOrAuto: CompositeOperationOrAuto? {
+        switch self {
+        case let .compositeOperationOrAuto(compositeOperationOrAuto): return compositeOperationOrAuto
+        default: return nil
+        }
+    }
+
+    var seq_of_CompositeOperationOrAuto: [CompositeOperationOrAuto]? {
+        switch self {
+        case let .seq_of_CompositeOperationOrAuto(seq_of_CompositeOperationOrAuto): return seq_of_CompositeOperationOrAuto
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let compositeOperationOrAuto: CompositeOperationOrAuto = value.fromJSValue() {
             return .compositeOperationOrAuto(compositeOperationOrAuto)

@@ -11,6 +11,20 @@ public enum ConstrainDouble: JSValueCompatible, Any_ConstrainDouble {
     case constrainDoubleRange(ConstrainDoubleRange)
     case double(Double)
 
+    var constrainDoubleRange: ConstrainDoubleRange? {
+        switch self {
+        case let .constrainDoubleRange(constrainDoubleRange): return constrainDoubleRange
+        default: return nil
+        }
+    }
+
+    var double: Double? {
+        switch self {
+        case let .double(double): return double
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let constrainDoubleRange: ConstrainDoubleRange = value.fromJSValue() {
             return .constrainDoubleRange(constrainDoubleRange)

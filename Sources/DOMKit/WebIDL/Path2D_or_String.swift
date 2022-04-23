@@ -11,6 +11,20 @@ public enum Path2D_or_String: JSValueCompatible, Any_Path2D_or_String {
     case path2D(Path2D)
     case string(String)
 
+    var path2D: Path2D? {
+        switch self {
+        case let .path2D(path2D): return path2D
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let path2D: Path2D = value.fromJSValue() {
             return .path2D(path2D)

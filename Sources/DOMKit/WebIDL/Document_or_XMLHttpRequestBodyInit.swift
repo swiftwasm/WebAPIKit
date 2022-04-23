@@ -11,6 +11,20 @@ public enum Document_or_XMLHttpRequestBodyInit: JSValueCompatible, Any_Document_
     case document(Document)
     case xmlHttpRequestBodyInit(XMLHttpRequestBodyInit)
 
+    var document: Document? {
+        switch self {
+        case let .document(document): return document
+        default: return nil
+        }
+    }
+
+    var xmlHttpRequestBodyInit: XMLHttpRequestBodyInit? {
+        switch self {
+        case let .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit): return xmlHttpRequestBodyInit
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let document: Document = value.fromJSValue() {
             return .document(document)

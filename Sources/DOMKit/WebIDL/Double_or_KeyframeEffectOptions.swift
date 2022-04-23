@@ -11,6 +11,20 @@ public enum Double_or_KeyframeEffectOptions: JSValueCompatible, Any_Double_or_Ke
     case double(Double)
     case keyframeEffectOptions(KeyframeEffectOptions)
 
+    var double: Double? {
+        switch self {
+        case let .double(double): return double
+        default: return nil
+        }
+    }
+
+    var keyframeEffectOptions: KeyframeEffectOptions? {
+        switch self {
+        case let .keyframeEffectOptions(keyframeEffectOptions): return keyframeEffectOptions
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let double: Double = value.fromJSValue() {
             return .double(double)

@@ -11,6 +11,20 @@ public enum HTMLOrSVGScriptElement: JSValueCompatible, Any_HTMLOrSVGScriptElemen
     case htmlScriptElement(HTMLScriptElement)
     case svgScriptElement(SVGScriptElement)
 
+    var htmlScriptElement: HTMLScriptElement? {
+        switch self {
+        case let .htmlScriptElement(htmlScriptElement): return htmlScriptElement
+        default: return nil
+        }
+    }
+
+    var svgScriptElement: SVGScriptElement? {
+        switch self {
+        case let .svgScriptElement(svgScriptElement): return svgScriptElement
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let htmlScriptElement: HTMLScriptElement = value.fromJSValue() {
             return .htmlScriptElement(htmlScriptElement)

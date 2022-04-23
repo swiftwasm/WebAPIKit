@@ -13,6 +13,27 @@ public enum ConstrainDOMString: JSValueCompatible, Any_ConstrainDOMString {
     case string(String)
     case seq_of_String([String])
 
+    var constrainDOMStringParameters: ConstrainDOMStringParameters? {
+        switch self {
+        case let .constrainDOMStringParameters(constrainDOMStringParameters): return constrainDOMStringParameters
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
+    var seq_of_String: [String]? {
+        switch self {
+        case let .seq_of_String(seq_of_String): return seq_of_String
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let constrainDOMStringParameters: ConstrainDOMStringParameters = value.fromJSValue() {
             return .constrainDOMStringParameters(constrainDOMStringParameters)

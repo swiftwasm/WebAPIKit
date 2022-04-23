@@ -11,6 +11,20 @@ public enum ReadableStreamReader: JSValueCompatible, Any_ReadableStreamReader {
     case readableStreamBYOBReader(ReadableStreamBYOBReader)
     case readableStreamDefaultReader(ReadableStreamDefaultReader)
 
+    var readableStreamBYOBReader: ReadableStreamBYOBReader? {
+        switch self {
+        case let .readableStreamBYOBReader(readableStreamBYOBReader): return readableStreamBYOBReader
+        default: return nil
+        }
+    }
+
+    var readableStreamDefaultReader: ReadableStreamDefaultReader? {
+        switch self {
+        case let .readableStreamDefaultReader(readableStreamDefaultReader): return readableStreamDefaultReader
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let readableStreamBYOBReader: ReadableStreamBYOBReader = value.fromJSValue() {
             return .readableStreamBYOBReader(readableStreamBYOBReader)

@@ -11,6 +11,20 @@ public enum Node_or_String: JSValueCompatible, Any_Node_or_String {
     case node(Node)
     case string(String)
 
+    var node: Node? {
+        switch self {
+        case let .node(node): return node
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let node: Node = value.fromJSValue() {
             return .node(node)

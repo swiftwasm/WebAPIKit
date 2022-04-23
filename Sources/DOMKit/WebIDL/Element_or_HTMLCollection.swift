@@ -11,6 +11,20 @@ public enum Element_or_HTMLCollection: JSValueCompatible, Any_Element_or_HTMLCol
     case element(Element)
     case htmlCollection(HTMLCollection)
 
+    var element: Element? {
+        switch self {
+        case let .element(element): return element
+        default: return nil
+        }
+    }
+
+    var htmlCollection: HTMLCollection? {
+        switch self {
+        case let .htmlCollection(htmlCollection): return htmlCollection
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let element: Element = value.fromJSValue() {
             return .element(element)

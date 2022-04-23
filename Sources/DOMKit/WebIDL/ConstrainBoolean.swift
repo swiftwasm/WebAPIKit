@@ -11,6 +11,20 @@ public enum ConstrainBoolean: JSValueCompatible, Any_ConstrainBoolean {
     case bool(Bool)
     case constrainBooleanParameters(ConstrainBooleanParameters)
 
+    var bool: Bool? {
+        switch self {
+        case let .bool(bool): return bool
+        default: return nil
+        }
+    }
+
+    var constrainBooleanParameters: ConstrainBooleanParameters? {
+        switch self {
+        case let .constrainBooleanParameters(constrainBooleanParameters): return constrainBooleanParameters
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let bool: Bool = value.fromJSValue() {
             return .bool(bool)

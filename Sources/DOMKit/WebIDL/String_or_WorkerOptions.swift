@@ -11,6 +11,20 @@ public enum String_or_WorkerOptions: JSValueCompatible, Any_String_or_WorkerOpti
     case string(String)
     case workerOptions(WorkerOptions)
 
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
+    var workerOptions: WorkerOptions? {
+        switch self {
+        case let .workerOptions(workerOptions): return workerOptions
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let string: String = value.fromJSValue() {
             return .string(string)

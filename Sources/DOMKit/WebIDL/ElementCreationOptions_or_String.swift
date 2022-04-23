@@ -11,6 +11,20 @@ public enum ElementCreationOptions_or_String: JSValueCompatible, Any_ElementCrea
     case elementCreationOptions(ElementCreationOptions)
     case string(String)
 
+    var elementCreationOptions: ElementCreationOptions? {
+        switch self {
+        case let .elementCreationOptions(elementCreationOptions): return elementCreationOptions
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let elementCreationOptions: ElementCreationOptions = value.fromJSValue() {
             return .elementCreationOptions(elementCreationOptions)

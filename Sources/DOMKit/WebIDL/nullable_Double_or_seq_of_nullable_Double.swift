@@ -11,6 +11,20 @@ public enum nullable_Double_or_seq_of_nullable_Double: JSValueCompatible, Any_nu
     case nullable_Double(Double?)
     case seq_of_nullable_Double([Double?])
 
+    var nullable_Double: Double?? {
+        switch self {
+        case let .nullable_Double(nullable_Double): return nullable_Double
+        default: return nil
+        }
+    }
+
+    var seq_of_nullable_Double: [Double?]? {
+        switch self {
+        case let .seq_of_nullable_Double(seq_of_nullable_Double): return seq_of_nullable_Double
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let nullable_Double: Double? = value.fromJSValue() {
             return .nullable_Double(nullable_Double)

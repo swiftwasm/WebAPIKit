@@ -11,6 +11,20 @@ public enum Event_or_String: JSValueCompatible, Any_Event_or_String {
     case event(Event)
     case string(String)
 
+    var event: Event? {
+        switch self {
+        case let .event(event): return event
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let event: Event = value.fromJSValue() {
             return .event(event)

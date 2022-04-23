@@ -11,6 +11,20 @@ public enum HeadersInit: JSValueCompatible, Any_HeadersInit {
     case record_String_to_String([String: String])
     case seq_of_seq_of_String([[String]])
 
+    var record_String_to_String: [String: String]? {
+        switch self {
+        case let .record_String_to_String(record_String_to_String): return record_String_to_String
+        default: return nil
+        }
+    }
+
+    var seq_of_seq_of_String: [[String]]? {
+        switch self {
+        case let .seq_of_seq_of_String(seq_of_seq_of_String): return seq_of_seq_of_String
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let record_String_to_String: [String: String] = value.fromJSValue() {
             return .record_String_to_String(record_String_to_String)

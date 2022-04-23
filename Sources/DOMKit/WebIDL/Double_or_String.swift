@@ -11,6 +11,20 @@ public enum Double_or_String: JSValueCompatible, Any_Double_or_String {
     case double(Double)
     case string(String)
 
+    var double: Double? {
+        switch self {
+        case let .double(double): return double
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let double: Double = value.fromJSValue() {
             return .double(double)

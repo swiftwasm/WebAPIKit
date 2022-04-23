@@ -11,6 +11,20 @@ public enum ReadableStreamController: JSValueCompatible, Any_ReadableStreamContr
     case readableByteStreamController(ReadableByteStreamController)
     case readableStreamDefaultController(ReadableStreamDefaultController)
 
+    var readableByteStreamController: ReadableByteStreamController? {
+        switch self {
+        case let .readableByteStreamController(readableByteStreamController): return readableByteStreamController
+        default: return nil
+        }
+    }
+
+    var readableStreamDefaultController: ReadableStreamDefaultController? {
+        switch self {
+        case let .readableStreamDefaultController(readableStreamDefaultController): return readableStreamDefaultController
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let readableByteStreamController: ReadableByteStreamController = value.fromJSValue() {
             return .readableByteStreamController(readableByteStreamController)

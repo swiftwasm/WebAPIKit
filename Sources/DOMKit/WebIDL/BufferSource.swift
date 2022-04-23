@@ -11,6 +11,20 @@ public enum BufferSource: JSValueCompatible, Any_BufferSource {
     case arrayBuffer(ArrayBuffer)
     case arrayBufferView(ArrayBufferView)
 
+    var arrayBuffer: ArrayBuffer? {
+        switch self {
+        case let .arrayBuffer(arrayBuffer): return arrayBuffer
+        default: return nil
+        }
+    }
+
+    var arrayBufferView: ArrayBufferView? {
+        switch self {
+        case let .arrayBufferView(arrayBufferView): return arrayBufferView
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let arrayBuffer: ArrayBuffer = value.fromJSValue() {
             return .arrayBuffer(arrayBuffer)

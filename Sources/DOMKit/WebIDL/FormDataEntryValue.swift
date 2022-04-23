@@ -11,6 +11,20 @@ public enum FormDataEntryValue: JSValueCompatible, Any_FormDataEntryValue {
     case file(File)
     case string(String)
 
+    var file: File? {
+        switch self {
+        case let .file(file): return file
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let file: File = value.fromJSValue() {
             return .file(file)

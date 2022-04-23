@@ -11,6 +11,20 @@ public enum ConstrainULong: JSValueCompatible, Any_ConstrainULong {
     case constrainULongRange(ConstrainULongRange)
     case uInt32(UInt32)
 
+    var constrainULongRange: ConstrainULongRange? {
+        switch self {
+        case let .constrainULongRange(constrainULongRange): return constrainULongRange
+        default: return nil
+        }
+    }
+
+    var uInt32: UInt32? {
+        switch self {
+        case let .uInt32(uInt32): return uInt32
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let constrainULongRange: ConstrainULongRange = value.fromJSValue() {
             return .constrainULongRange(constrainULongRange)

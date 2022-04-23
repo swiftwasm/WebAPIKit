@@ -13,6 +13,27 @@ public enum DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double: JSValueComp
     case double(Double)
     case seq_of_DOMPointInit_or_Double([DOMPointInit_or_Double])
 
+    var domPointInit: DOMPointInit? {
+        switch self {
+        case let .domPointInit(domPointInit): return domPointInit
+        default: return nil
+        }
+    }
+
+    var double: Double? {
+        switch self {
+        case let .double(double): return double
+        default: return nil
+        }
+    }
+
+    var seq_of_DOMPointInit_or_Double: [DOMPointInit_or_Double]? {
+        switch self {
+        case let .seq_of_DOMPointInit_or_Double(seq_of_DOMPointInit_or_Double): return seq_of_DOMPointInit_or_Double
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let domPointInit: DOMPointInit = value.fromJSValue() {
             return .domPointInit(domPointInit)

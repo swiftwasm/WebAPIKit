@@ -11,6 +11,20 @@ public enum BodyInit: JSValueCompatible, Any_BodyInit {
     case readableStream(ReadableStream)
     case xmlHttpRequestBodyInit(XMLHttpRequestBodyInit)
 
+    var readableStream: ReadableStream? {
+        switch self {
+        case let .readableStream(readableStream): return readableStream
+        default: return nil
+        }
+    }
+
+    var xmlHttpRequestBodyInit: XMLHttpRequestBodyInit? {
+        switch self {
+        case let .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit): return xmlHttpRequestBodyInit
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let readableStream: ReadableStream = value.fromJSValue() {
             return .readableStream(readableStream)

@@ -11,6 +11,20 @@ public enum HTMLOptGroupElement_or_HTMLOptionElement: JSValueCompatible, Any_HTM
     case htmlOptGroupElement(HTMLOptGroupElement)
     case htmlOptionElement(HTMLOptionElement)
 
+    var htmlOptGroupElement: HTMLOptGroupElement? {
+        switch self {
+        case let .htmlOptGroupElement(htmlOptGroupElement): return htmlOptGroupElement
+        default: return nil
+        }
+    }
+
+    var htmlOptionElement: HTMLOptionElement? {
+        switch self {
+        case let .htmlOptionElement(htmlOptionElement): return htmlOptionElement
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let htmlOptGroupElement: HTMLOptGroupElement = value.fromJSValue() {
             return .htmlOptGroupElement(htmlOptGroupElement)

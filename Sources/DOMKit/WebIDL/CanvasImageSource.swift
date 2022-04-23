@@ -19,6 +19,48 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
     case offscreenCanvas(OffscreenCanvas)
     case videoFrame(VideoFrame)
 
+    var htmlCanvasElement: HTMLCanvasElement? {
+        switch self {
+        case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement
+        default: return nil
+        }
+    }
+
+    var htmlOrSVGImageElement: HTMLOrSVGImageElement? {
+        switch self {
+        case let .htmlOrSVGImageElement(htmlOrSVGImageElement): return htmlOrSVGImageElement
+        default: return nil
+        }
+    }
+
+    var htmlVideoElement: HTMLVideoElement? {
+        switch self {
+        case let .htmlVideoElement(htmlVideoElement): return htmlVideoElement
+        default: return nil
+        }
+    }
+
+    var imageBitmap: ImageBitmap? {
+        switch self {
+        case let .imageBitmap(imageBitmap): return imageBitmap
+        default: return nil
+        }
+    }
+
+    var offscreenCanvas: OffscreenCanvas? {
+        switch self {
+        case let .offscreenCanvas(offscreenCanvas): return offscreenCanvas
+        default: return nil
+        }
+    }
+
+    var videoFrame: VideoFrame? {
+        switch self {
+        case let .videoFrame(videoFrame): return videoFrame
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
             return .htmlCanvasElement(htmlCanvasElement)

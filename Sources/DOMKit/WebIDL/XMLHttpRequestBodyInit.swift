@@ -17,6 +17,41 @@ public enum XMLHttpRequestBodyInit: JSValueCompatible, Any_XMLHttpRequestBodyIni
     case string(String)
     case urlSearchParams(URLSearchParams)
 
+    var blob: Blob? {
+        switch self {
+        case let .blob(blob): return blob
+        default: return nil
+        }
+    }
+
+    var bufferSource: BufferSource? {
+        switch self {
+        case let .bufferSource(bufferSource): return bufferSource
+        default: return nil
+        }
+    }
+
+    var formData: FormData? {
+        switch self {
+        case let .formData(formData): return formData
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
+    var urlSearchParams: URLSearchParams? {
+        switch self {
+        case let .urlSearchParams(urlSearchParams): return urlSearchParams
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let blob: Blob = value.fromJSValue() {
             return .blob(blob)

@@ -13,6 +13,27 @@ public enum MessageEventSource: JSValueCompatible, Any_MessageEventSource {
     case serviceWorker(ServiceWorker)
     case windowProxy(WindowProxy)
 
+    var messagePort: MessagePort? {
+        switch self {
+        case let .messagePort(messagePort): return messagePort
+        default: return nil
+        }
+    }
+
+    var serviceWorker: ServiceWorker? {
+        switch self {
+        case let .serviceWorker(serviceWorker): return serviceWorker
+        default: return nil
+        }
+    }
+
+    var windowProxy: WindowProxy? {
+        switch self {
+        case let .windowProxy(windowProxy): return windowProxy
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let messagePort: MessagePort = value.fromJSValue() {
             return .messagePort(messagePort)

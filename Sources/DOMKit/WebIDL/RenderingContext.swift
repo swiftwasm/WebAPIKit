@@ -17,6 +17,41 @@ public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
     case webGL2RenderingContext(WebGL2RenderingContext)
     case webGLRenderingContext(WebGLRenderingContext)
 
+    var canvasRenderingContext2D: CanvasRenderingContext2D? {
+        switch self {
+        case let .canvasRenderingContext2D(canvasRenderingContext2D): return canvasRenderingContext2D
+        default: return nil
+        }
+    }
+
+    var gpuCanvasContext: GPUCanvasContext? {
+        switch self {
+        case let .gpuCanvasContext(gpuCanvasContext): return gpuCanvasContext
+        default: return nil
+        }
+    }
+
+    var imageBitmapRenderingContext: ImageBitmapRenderingContext? {
+        switch self {
+        case let .imageBitmapRenderingContext(imageBitmapRenderingContext): return imageBitmapRenderingContext
+        default: return nil
+        }
+    }
+
+    var webGL2RenderingContext: WebGL2RenderingContext? {
+        switch self {
+        case let .webGL2RenderingContext(webGL2RenderingContext): return webGL2RenderingContext
+        default: return nil
+        }
+    }
+
+    var webGLRenderingContext: WebGLRenderingContext? {
+        switch self {
+        case let .webGLRenderingContext(webGLRenderingContext): return webGLRenderingContext
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let canvasRenderingContext2D: CanvasRenderingContext2D = value.fromJSValue() {
             return .canvasRenderingContext2D(canvasRenderingContext2D)

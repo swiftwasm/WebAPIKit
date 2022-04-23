@@ -11,6 +11,20 @@ public enum MediaList_or_String: JSValueCompatible, Any_MediaList_or_String {
     case mediaList(MediaList)
     case string(String)
 
+    var mediaList: MediaList? {
+        switch self {
+        case let .mediaList(mediaList): return mediaList
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let mediaList: MediaList = value.fromJSValue() {
             return .mediaList(mediaList)

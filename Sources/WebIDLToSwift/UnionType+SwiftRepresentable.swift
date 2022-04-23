@@ -33,6 +33,8 @@ extension UnionType: SwiftRepresentable {
         public enum \(name): JSValueCompatible, Any_\(name) {
             \(lines: cases)
 
+            \(lines: accessors)
+
             public static func construct(from value: JSValue) -> Self? {
                 \(lines: constructors)
                 return nil
@@ -56,6 +58,19 @@ extension UnionType: SwiftRepresentable {
     var cases: [SwiftSource] {
         zip(sortedTypes, sortedNames).map { type, name in
             "case \(name)(\(type))"
+        }
+    }
+
+    var accessors: [SwiftSource] {
+        zip(sortedTypes, sortedNames).map { type, name in
+            """
+            var \(name): \(type)? {
+                switch self {
+                case let .\(name)(\(name)): return \(name)
+                default: return nil
+                }
+            }
+            """
         }
     }
 

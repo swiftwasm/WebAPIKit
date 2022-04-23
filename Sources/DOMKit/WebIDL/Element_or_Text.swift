@@ -11,6 +11,20 @@ public enum Element_or_Text: JSValueCompatible, Any_Element_or_Text {
     case element(Element)
     case text(Text)
 
+    var element: Element? {
+        switch self {
+        case let .element(element): return element
+        default: return nil
+        }
+    }
+
+    var text: Text? {
+        switch self {
+        case let .text(text): return text
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let element: Element = value.fromJSValue() {
             return .element(element)

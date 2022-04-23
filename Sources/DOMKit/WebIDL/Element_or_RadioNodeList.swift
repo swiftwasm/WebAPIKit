@@ -11,6 +11,20 @@ public enum Element_or_RadioNodeList: JSValueCompatible, Any_Element_or_RadioNod
     case element(Element)
     case radioNodeList(RadioNodeList)
 
+    var element: Element? {
+        switch self {
+        case let .element(element): return element
+        default: return nil
+        }
+    }
+
+    var radioNodeList: RadioNodeList? {
+        switch self {
+        case let .radioNodeList(radioNodeList): return radioNodeList
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let element: Element = value.fromJSValue() {
             return .element(element)

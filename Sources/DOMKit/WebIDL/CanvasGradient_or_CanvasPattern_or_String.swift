@@ -13,6 +13,27 @@ public enum CanvasGradient_or_CanvasPattern_or_String: JSValueCompatible, Any_Ca
     case canvasPattern(CanvasPattern)
     case string(String)
 
+    var canvasGradient: CanvasGradient? {
+        switch self {
+        case let .canvasGradient(canvasGradient): return canvasGradient
+        default: return nil
+        }
+    }
+
+    var canvasPattern: CanvasPattern? {
+        switch self {
+        case let .canvasPattern(canvasPattern): return canvasPattern
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
     public static func construct(from value: JSValue) -> Self? {
         if let canvasGradient: CanvasGradient = value.fromJSValue() {
             return .canvasGradient(canvasGradient)
