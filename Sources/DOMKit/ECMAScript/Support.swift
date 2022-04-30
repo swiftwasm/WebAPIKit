@@ -19,4 +19,5 @@ public typealias Uint8ClampedArray = JSUInt8ClampedArray
 public typealias Blob_or_MediaSource = Blob
 public typealias HTMLOrSVGImageElement = HTMLImageElement
 public typealias HTMLOrSVGScriptElement = HTMLScriptElement
+public typealias BodyInit = XMLHttpRequestBodyInit
 public typealias CustomElementConstructor = JSFunction
