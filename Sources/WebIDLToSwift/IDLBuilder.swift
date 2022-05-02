@@ -28,19 +28,13 @@ enum IDLBuilder {
     ]
 
     static let outDir = "Sources/DOMKit/WebIDL/"
-    static func writeFile(named name: String, content: String) throws {
+    static func writeFile(named name: String, content: String) throws -> String {
         let path = outDir + name + ".swift"
         if FileManager.default.fileExists(atPath: path) {
-            fatalError("file already exists for \(name)")
-        } else {
-            try (preamble + content).write(toFile: path, atomically: true, encoding: .utf8)
+            try FileManager.default.removeItem(atPath: path)
         }
-    }
-
-    static func cleanOutputFolder() throws {
-        for file in try FileManager.default.contentsOfDirectory(atPath: outDir) {
-            try FileManager.default.removeItem(atPath: outDir + file)
-        }
+        try (preamble + content).write(toFile: path, atomically: true, encoding: .utf8)
+        return path
     }
 
     static func generateIDLBindings(idl: [GenericCollection<IDLNode>]) throws -> SwiftSource {

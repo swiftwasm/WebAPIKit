@@ -7,8 +7,6 @@ func main() {
     do {
         let startTime = Date()
         let idl = try IDLParser.parseIDL()
-        print("Removing old files...")
-        try IDLBuilder.cleanOutputFolder()
         var contents: [SwiftSource] = []
         print("Generating bindings...")
         contents.append(try IDLBuilder.generateIDLBindings(idl: idl))
