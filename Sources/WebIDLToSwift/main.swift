@@ -16,10 +16,11 @@ func main() {
         contents.append(try IDLBuilder.generateStrings())
         print("Generating union protocols...")
         contents.append(try IDLBuilder.generateUnions())
+        let outputPath = try IDLBuilder.writeFile(
+            named: "Generated",
+            content: contents.joined(separator: "\n\n").source)
 
-        try IDLBuilder.writeFile(named: "Generated", content: contents.joined(separator: "\n\n").source)
-
-        SwiftFormatter.run()
+        SwiftFormatter.run(source: outputPath)
         print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
     } catch {
         handleDecodingError(error)
