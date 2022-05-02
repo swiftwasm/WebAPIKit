@@ -23,7 +23,7 @@ enum IDLParser {
         return try JSONDecoder().decode(GenericCollection<IDLNode>.self, from: data)
     }
 
-    static func parseIDL() throws -> [GenericCollection<IDLNode>] {
+    static func defaultIDLs() -> [URL] {
         let enabledIDLs = [
             "dom",
             "fetch",
@@ -42,14 +42,12 @@ enum IDLParser {
             "streams",
             "console",
         ]
-        print("Building IDL struct tree...")
-        return try enabledIDLs.map { idl in
-            let idlPath = packageDir
+        return enabledIDLs.map { idl in
+            packageDir
                 .appendingPathComponent("node_modules")
                 .appendingPathComponent("@webref")
                 .appendingPathComponent("idl")
                 .appendingPathComponent(idl + ".idl")
-            return try parseIDL(path: idlPath)
         }
     }
 }

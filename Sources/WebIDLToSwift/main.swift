@@ -1,31 +1,46 @@
 import Foundation
 import WebIDL
 
+func parseOptions() -> [(outputPath: String, idlPaths: [URL])] {
+    let args = CommandLine.arguments
+    if args.count > 2 {
+        return [(args[1], Array(args[2...].map(URL.init(fileURLWithPath: ))))]
+    } else {
+        return [("Sources/DOMKit/Generated.swift", IDLParser.defaultIDLs())]
+    }
+}
+
 main()
 
 func main() {
     do {
-        let startTime = Date()
-        let idl = try IDLParser.parseIDL()
-        let outputPath = "Sources/DOMKit/Generated.swift"
-        var contents: [SwiftSource] = []
-        print("Generating bindings...")
-        contents.append(try IDLBuilder.generateIDLBindings(idl: idl))
-        print("Generating closure property wrappers...")
-        contents.append(try IDLBuilder.generateClosureTypes())
-        print("Generating JSString constants...")
-        contents.append(try IDLBuilder.generateStrings())
-        print("Generating union protocols...")
-        contents.append(try IDLBuilder.generateUnions())
-        try IDLBuilder.writeFile(
-            path: outputPath,
-            content: contents.joined(separator: "\n\n").source)
-
-        SwiftFormatter.run(source: outputPath)
-        print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
+        let options = parseOptions()
+        for (outputPath, idlPaths) in options {
+            let startTime = Date()
+            print("Generating bindings for \(idlPaths.map(\.path))...")
+            let idls = try idlPaths.map { try IDLParser.parseIDL(path: $0) }
+            try generate(idls: idls, outputPath: outputPath)
+            print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
+        }
     } catch {
         handleDecodingError(error)
     }
+}
+
+private func generate(idls: [GenericCollection<IDLNode>], outputPath: String) throws {
+    var contents: [SwiftSource] = []
+    contents.append(try IDLBuilder.generateIDLBindings(idl: idls))
+    print("Generating closure property wrappers...")
+    contents.append(try IDLBuilder.generateClosureTypes())
+    print("Generating JSString constants...")
+    contents.append(try IDLBuilder.generateStrings())
+    print("Generating union protocols...")
+    contents.append(try IDLBuilder.generateUnions())
+    try IDLBuilder.writeFile(
+        path: outputPath,
+        content: contents.joined(separator: "\n\n").source)
+
+    SwiftFormatter.run(source: outputPath)
 }
 
 private func handleDecodingError(_ error: Error) {
