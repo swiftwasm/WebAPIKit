@@ -23,31 +23,32 @@ enum IDLParser {
         return try JSONDecoder().decode(GenericCollection<IDLNode>.self, from: data)
     }
 
-    static func defaultIDLs() -> [URL] {
-        let enabledIDLs = [
-            "dom",
-            "fetch",
-            "FileAPI",
-            "html",
-            "geometry",
-            "hr-time",
-            "referrer-policy",
-            "uievents",
-            "wai-aria",
-            "webidl",
-            "web-animations",
-            "xhr",
-            "service-workers",
-            "url",
-            "streams",
-            "console",
+    static func defaultIDLs() -> [(path: URL, shouldBeMerged: Bool)] {
+        let enabledIDLs: [(name: String, shouldBeMerged: Bool)] = [
+            ("dom", true),
+            ("fetch", true),
+            ("FileAPI", true),
+            ("html", true),
+            ("geometry", true),
+            ("hr-time", true),
+            ("referrer-policy", true),
+            ("uievents", true),
+            ("wai-aria", true),
+            ("webidl", true),
+            ("web-animations", true),
+            ("xhr", true),
+            ("service-workers", true),
+            ("url", true),
+            ("streams", true),
+            ("console", true),
         ]
         return enabledIDLs.map { idl in
-            packageDir
+            let path = packageDir
                 .appendingPathComponent("node_modules")
                 .appendingPathComponent("@webref")
                 .appendingPathComponent("idl")
-                .appendingPathComponent(idl + ".idl")
+                .appendingPathComponent(idl.name + ".idl")
+            return (path, idl.shouldBeMerged)
         }
     }
 }

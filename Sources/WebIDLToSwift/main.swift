@@ -6,7 +6,18 @@ func parseOptions() -> [(outputPath: String, idlPaths: [URL])] {
     if args.count > 2 {
         return [(args[1], Array(args[2...].map(URL.init(fileURLWithPath: ))))]
     } else {
-        return [("Sources/DOMKit/Generated.swift", IDLParser.defaultIDLs())]
+        var mergedSources: [URL] = []
+        var separateSources: [(String, [URL])] = []
+        for idl in IDLParser.defaultIDLs() {
+            if idl.shouldBeMerged {
+                mergedSources.append(idl.path)
+            } else {
+                let name = idl.path.deletingPathExtension().lastPathComponent
+                let outputPath = "Sources/DOMKit/\(name).swift"
+                separateSources.append((outputPath, [idl.path]))
+            }
+        }
+        return [("Sources/DOMKit/Generated.swift", mergedSources)] + separateSources
     }
 }
 
