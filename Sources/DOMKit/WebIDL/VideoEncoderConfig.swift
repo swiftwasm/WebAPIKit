@@ -4,6 +4,8 @@ import JavaScriptEventLoop
 import JavaScriptKit
 
 public class VideoEncoderConfig: BridgedDictionary {
+    public typealias BitrateMode = String
+
     public convenience init(codec: String, width: UInt32, height: UInt32, displayWidth: UInt32, displayHeight: UInt32, bitrate: UInt64, framerate: Double, hardwareAcceleration: HardwareAcceleration, alpha: AlphaOption, scalabilityMode: String, bitrateMode: BitrateMode, latencyMode: LatencyMode) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.codec] = codec.jsValue
