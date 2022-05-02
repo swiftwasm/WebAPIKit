@@ -52,19 +52,13 @@ enum DeclarationMerger {
             byType[T.type]?.map { $0 as! T } ?? []
         }
 
-        let mixins = Dictionary(
-            grouping: all(IDLInterfaceMixin.self).map {
-                MergedMixin(
-                    name: $0.name,
-                    members: addAsync($0.members.array) as! [IDLInterfaceMixinMember]
-                )
-            },
-            by: \.name
-        ).mapValues {
-            $0.dropFirst().reduce(into: $0.first!) { partialResult, mixin in
-                partialResult.members += mixin.members
+        let mixins = Dictionary(grouping: all(IDLInterfaceMixin.self), by: \.name)
+            .mapValues {
+                return MergedMixin(
+                    name: $0.first!.name,
+                    partial: $0.reduce(true) { $0 && $1.partial },
+                    members: $0.flatMap { addAsync($0.members.array) as! [IDLInterfaceMixinMember] })
             }
-        }
 
         let includes = Dictionary(grouping: all(IDLIncludes.self)) { $0.target }
             .mapValues { $0.map(\.includes).filter { !Self.ignoredParents.contains($0) } }
@@ -209,6 +203,7 @@ struct MergedNamespace: DeclarationFile {
 
 struct MergedMixin: DeclarationFile {
     let name: String
+    let partial: Bool
     var members: [IDLInterfaceMixinMember]
 }
 
