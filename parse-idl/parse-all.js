@@ -27,6 +27,7 @@ console.log(
       "mediastream-recording",
       "webcodecs",
       "webgl1",
+      "webgl2",
     ].map((key) => parsedFiles[key]),
     null,
     2
