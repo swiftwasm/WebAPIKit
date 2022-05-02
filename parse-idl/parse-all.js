@@ -21,6 +21,7 @@ console.log(
       "xhr",
       "service-workers",
       "url",
+      "streams",
     ].map((key) => parsedFiles[key]),
     null,
     2
