@@ -12,21 +12,25 @@ let package = Package(
         .library(
             name: "DOMKit",
             targets: ["DOMKit"]),
+        .library(name: "WebIDL", targets: ["WebIDL"]),
+        .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
     dependencies: [
         .package(
-            name: "JavaScriptKit",
             url: "https://github.com/swiftwasm/JavaScriptKit.git",
-            .upToNextMinor(from: "0.9.0")),
+            .branch("main")),
     ],
     targets: [
         .target(
             name: "DOMKitDemo",
-            dependencies: ["DOMKit"]
-        ),
+            dependencies: ["DOMKit"]),
         .target(
             name: "DOMKit",
-            dependencies: ["JavaScriptKit"]),
+            dependencies: ["JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
+        .target(name: "WebIDL"),
+        .target(
+            name: "WebIDLToSwift",
+            dependencies: ["WebIDL"]),
         .testTarget(
             name: "DOMKitTests",
             dependencies: ["DOMKit"]),

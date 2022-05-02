@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node parse-all.js"
+  },
+  "devDependencies": {
+    "prettier": "2.6.1"
+  },
+  "dependencies": {
+    "@webref/idl": "^3.5.0",
+    "webidl2": "^24.2.1"
+  }
+}

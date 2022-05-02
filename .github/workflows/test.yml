@@ -7,7 +7,7 @@ on:
 
 jobs:
   macos_test:
-    runs-on: macos-11.0
+    runs-on: macos-12
 
     steps:
       - uses: actions/checkout@v2
@@ -15,7 +15,7 @@ jobs:
         shell: bash
         run: |
           set -ex
-          sudo xcode-select --switch /Applications/Xcode_12.3.app/Contents/Developer/
+          sudo xcode-select --switch /Applications/Xcode_13.3.1.app/Contents/Developer/
           
           brew install swiftwasm/tap/carton
 
