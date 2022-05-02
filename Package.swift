@@ -27,6 +27,12 @@ let package = Package(
         .target(
             name: "DOMKit",
             dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
+        .target(
+            name: "DOMKitConsole",
+            dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
+        .target(
+            name: "DOMKitFetch",
+            dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
         // This support library should be moved to JavaScriptKit
         .target(name: "ECMAScript", dependencies: [
             "JavaScriptKit",
