@@ -7,6 +7,7 @@ func main() {
     do {
         let startTime = Date()
         let idl = try IDLParser.parseIDL()
+        let outputPath = "Sources/DOMKit/Generated.swift"
         var contents: [SwiftSource] = []
         print("Generating bindings...")
         contents.append(try IDLBuilder.generateIDLBindings(idl: idl))
@@ -16,8 +17,8 @@ func main() {
         contents.append(try IDLBuilder.generateStrings())
         print("Generating union protocols...")
         contents.append(try IDLBuilder.generateUnions())
-        let outputPath = try IDLBuilder.writeFile(
-            named: "Generated",
+        try IDLBuilder.writeFile(
+            path: outputPath,
             content: contents.joined(separator: "\n\n").source)
 
         SwiftFormatter.run(source: outputPath)

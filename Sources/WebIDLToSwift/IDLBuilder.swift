@@ -27,14 +27,11 @@ enum IDLBuilder {
         "DOMMatrix_or_Float32Array_or_Float64Array",
     ]
 
-    static let outDir = "Sources/DOMKit/"
-    static func writeFile(named name: String, content: String) throws -> String {
-        let path = outDir + name + ".swift"
+    static func writeFile(path: String, content: String) throws {
         if FileManager.default.fileExists(atPath: path) {
             try FileManager.default.removeItem(atPath: path)
         }
         try (preamble + content).write(toFile: path, atomically: true, encoding: .utf8)
-        return path
     }
 
     static func generateIDLBindings(idl: [GenericCollection<IDLNode>]) throws -> SwiftSource {
