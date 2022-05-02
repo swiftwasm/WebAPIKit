@@ -2,6 +2,7 @@
 
 import DOMKitConsole
 import DOMKitFileAPI
+import DOMKitURL
 import DOMKitWebIDL
 import ECMAScript
 import JavaScriptEventLoop
@@ -12986,131 +12987,6 @@ public class UIEventInit: BridgedDictionary {
     public var which: UInt32
 }
 
-public class URL: JSBridgedClass {
-    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.URL].function! }
-
-    public let jsObject: JSObject
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        _href = ReadWriteAttribute(jsObject: jsObject, name: Strings.href)
-        _origin = ReadonlyAttribute(jsObject: jsObject, name: Strings.origin)
-        _protocol = ReadWriteAttribute(jsObject: jsObject, name: Strings.protocol)
-        _username = ReadWriteAttribute(jsObject: jsObject, name: Strings.username)
-        _password = ReadWriteAttribute(jsObject: jsObject, name: Strings.password)
-        _host = ReadWriteAttribute(jsObject: jsObject, name: Strings.host)
-        _hostname = ReadWriteAttribute(jsObject: jsObject, name: Strings.hostname)
-        _port = ReadWriteAttribute(jsObject: jsObject, name: Strings.port)
-        _pathname = ReadWriteAttribute(jsObject: jsObject, name: Strings.pathname)
-        _search = ReadWriteAttribute(jsObject: jsObject, name: Strings.search)
-        _searchParams = ReadonlyAttribute(jsObject: jsObject, name: Strings.searchParams)
-        _hash = ReadWriteAttribute(jsObject: jsObject, name: Strings.hash)
-        self.jsObject = jsObject
-    }
-
-    @inlinable public convenience init(url: String, base: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue, base?.jsValue ?? .undefined]))
-    }
-
-    @ReadWriteAttribute
-    public var href: String
-
-    @ReadonlyAttribute
-    public var origin: String
-
-    @ReadWriteAttribute
-    public var `protocol`: String
-
-    @ReadWriteAttribute
-    public var username: String
-
-    @ReadWriteAttribute
-    public var password: String
-
-    @ReadWriteAttribute
-    public var host: String
-
-    @ReadWriteAttribute
-    public var hostname: String
-
-    @ReadWriteAttribute
-    public var port: String
-
-    @ReadWriteAttribute
-    public var pathname: String
-
-    @ReadWriteAttribute
-    public var search: String
-
-    @ReadonlyAttribute
-    public var searchParams: URLSearchParams
-
-    @ReadWriteAttribute
-    public var hash: String
-
-    @inlinable public func toJSON() -> String {
-        let this = jsObject
-        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
-    }
-}
-
-public class URLSearchParams: JSBridgedClass, Sequence {
-    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.URLSearchParams].function! }
-
-    public let jsObject: JSObject
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        self.jsObject = jsObject
-    }
-
-    @inlinable public convenience init(init: String_or_record_String_to_String_or_seq_of_seq_of_String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue ?? .undefined]))
-    }
-
-    @inlinable public func append(name: String, value: String) {
-        let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: [name.jsValue, value.jsValue])
-    }
-
-    @inlinable public func delete(name: String) {
-        let this = jsObject
-        _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue])
-    }
-
-    @inlinable public func get(name: String) -> String? {
-        let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
-    }
-
-    @inlinable public func getAll(name: String) -> [String] {
-        let this = jsObject
-        return this[Strings.getAll].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
-    }
-
-    @inlinable public func has(name: String) -> Bool {
-        let this = jsObject
-        return this[Strings.has].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
-    }
-
-    @inlinable public func set(name: String, value: String) {
-        let this = jsObject
-        _ = this[Strings.set].function!(this: this, arguments: [name.jsValue, value.jsValue])
-    }
-
-    @inlinable public func sort() {
-        let this = jsObject
-        _ = this[Strings.sort].function!(this: this, arguments: [])
-    }
-
-    public typealias Element = String
-    public func makeIterator() -> ValueIterableIterator<URLSearchParams> {
-        ValueIterableIterator(sequence: self)
-    }
-
-    @inlinable public var description: String {
-        jsObject[Strings.toString]!().fromJSValue()!
-    }
-}
-
 public class UnderlyingSink: BridgedDictionary {
     public convenience init(start: @escaping UnderlyingSinkStartCallback, write: @escaping UnderlyingSinkWriteCallback, close: @escaping UnderlyingSinkCloseCallback, abort: @escaping UnderlyingSinkAbortCallback, type: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -15017,7 +14893,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let TreeWalker: JSString = "TreeWalker"
     @usableFromInline static let UIEvent: JSString = "UIEvent"
     @usableFromInline static let URL: JSString = "URL"
-    @usableFromInline static let URLSearchParams: JSString = "URLSearchParams"
     @usableFromInline static let ValidityState: JSString = "ValidityState"
     @usableFromInline static let VideoTrack: JSString = "VideoTrack"
     @usableFromInline static let VideoTrackList: JSString = "VideoTrackList"
@@ -15994,7 +15869,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let scrollbars: JSString = "scrollbars"
     @usableFromInline static let scrolling: JSString = "scrolling"
     @usableFromInline static let search: JSString = "search"
-    @usableFromInline static let searchParams: JSString = "searchParams"
     @usableFromInline static let sectionRowIndex: JSString = "sectionRowIndex"
     @usableFromInline static let seekable: JSString = "seekable"
     @usableFromInline static let seeking: JSString = "seeking"
@@ -16061,7 +15935,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let slotAssignment: JSString = "slotAssignment"
     @usableFromInline static let snapshotItem: JSString = "snapshotItem"
     @usableFromInline static let snapshotLength: JSString = "snapshotLength"
-    @usableFromInline static let sort: JSString = "sort"
     @usableFromInline static let source: JSString = "source"
     @usableFromInline static let span: JSString = "span"
     @usableFromInline static let specified: JSString = "specified"
@@ -17553,62 +17426,6 @@ public enum String_or_WorkerOptions: JSValueCompatible, Any_String_or_WorkerOpti
             return string.jsValue
         case let .workerOptions(workerOptions):
             return workerOptions.jsValue
-        }
-    }
-}
-
-public protocol Any_String_or_record_String_to_String_or_seq_of_seq_of_String: ConvertibleToJSValue {}
-extension String: Any_String_or_record_String_to_String_or_seq_of_seq_of_String {}
-extension Dictionary: Any_String_or_record_String_to_String_or_seq_of_seq_of_String where Key == String, Value == String {}
-extension Array: Any_String_or_record_String_to_String_or_seq_of_seq_of_String where Element == [String] {}
-
-public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCompatible, Any_String_or_record_String_to_String_or_seq_of_seq_of_String {
-    case string(String)
-    case record_String_to_String([String: String])
-    case seq_of_seq_of_String([[String]])
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    var record_String_to_String: [String: String]? {
-        switch self {
-        case let .record_String_to_String(record_String_to_String): return record_String_to_String
-        default: return nil
-        }
-    }
-
-    var seq_of_seq_of_String: [[String]]? {
-        switch self {
-        case let .seq_of_seq_of_String(seq_of_seq_of_String): return seq_of_seq_of_String
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        if let record_String_to_String: [String: String] = value.fromJSValue() {
-            return .record_String_to_String(record_String_to_String)
-        }
-        if let seq_of_seq_of_String: [[String]] = value.fromJSValue() {
-            return .seq_of_seq_of_String(seq_of_seq_of_String)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .string(string):
-            return string.jsValue
-        case let .record_String_to_String(record_String_to_String):
-            return record_String_to_String.jsValue
-        case let .seq_of_seq_of_String(seq_of_seq_of_String):
-            return seq_of_seq_of_String.jsValue
         }
     }
 }
