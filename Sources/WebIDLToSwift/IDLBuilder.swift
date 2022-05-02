@@ -43,19 +43,16 @@ enum IDLBuilder {
         }
     }
 
-    static func generateIDLBindings(idl: [GenericCollection<IDLNode>]) throws {
+    static func generateIDLBindings(idl: [GenericCollection<IDLNode>]) throws -> SwiftSource {
         let declarations = idl.flatMap(\.array)
         let merged = DeclarationMerger.merge(declarations: declarations)
-        for (i, node) in merged.declarations.enumerated() {
-            guard let nameNode = Mirror(reflecting: node).children.first(where: { $0.label == "name" }),
-                  let name = nameNode.value as? String
-            else {
-                fatalError("Cannot find name for \(node)")
-            }
-            if ignoredNames.contains(name) {
+        var contents: [SwiftSource] = []
+        for node in merged.declarations.sorted(by: { $0.name < $1.name  }) {
+            if ignoredNames.contains(node.name) {
                 continue
             }
-            let content = Context.withState(.root(
+
+            let nodeContent = Context.withState(.root(
                 interfaces: merged.interfaces,
                 ignored: [
                     // functions as parameters are unsupported
@@ -112,37 +109,36 @@ enum IDLBuilder {
                 ],
                 types: merged.types
             )) {
-                toSwift(node).source
+                toSwift(node)
             }
-            try writeFile(named: name, content: content)
+            contents.append(nodeContent)
         }
+        return "\(lines: contents)"
     }
 
-    static func generateClosureTypes() throws {
-        let closureTypesContent: SwiftSource = """
+    static func generateClosureTypes() throws -> SwiftSource {
+        return """
         /* variadic generics please */
         \(lines: Context.closurePatterns.sorted().map(\.swiftRepresentation))
         """
-
-        try writeFile(named: "ClosureAttribute", content: closureTypesContent.source)
     }
 
-    static func generateStrings() throws {
+    static func generateStrings() throws -> SwiftSource {
         let strings = Context.strings.sorted()
-        let stringsContent: SwiftSource = """
+        return """
             @usableFromInline enum Strings {
                 static let _self: JSString = "self"
                 \(lines: strings.map { "@usableFromInline static let `\(raw: $0)`: JSString = \(quoted: $0)" })
             }
         """
-
-        try writeFile(named: "Strings", content: stringsContent.source)
     }
 
-    static func generateUnions() throws {
-        for union in Context.unions {
+    static func generateUnions() throws -> SwiftSource {
+        var contents: [SwiftSource] = []
+        for union in Context.unions.sorted(by: { $0.name < $1.name }) {
             guard !ignoredNames.contains(union.name) else { continue }
-            try writeFile(named: union.name, content: union.swiftRepresentation.source)
+            contents.append(union.swiftRepresentation)
         }
+        return "\(lines: contents)"
     }
 }

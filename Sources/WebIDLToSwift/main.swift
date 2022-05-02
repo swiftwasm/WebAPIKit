@@ -9,14 +9,18 @@ func main() {
         let idl = try IDLParser.parseIDL()
         print("Removing old files...")
         try IDLBuilder.cleanOutputFolder()
+        var contents: [SwiftSource] = []
         print("Generating bindings...")
-        try IDLBuilder.generateIDLBindings(idl: idl)
+        contents.append(try IDLBuilder.generateIDLBindings(idl: idl))
         print("Generating closure property wrappers...")
-        try IDLBuilder.generateClosureTypes()
+        contents.append(try IDLBuilder.generateClosureTypes())
         print("Generating JSString constants...")
-        try IDLBuilder.generateStrings()
+        contents.append(try IDLBuilder.generateStrings())
         print("Generating union protocols...")
-        try IDLBuilder.generateUnions()
+        contents.append(try IDLBuilder.generateUnions())
+
+        try IDLBuilder.writeFile(named: "Generated", content: contents.joined(separator: "\n\n").source)
+
         SwiftFormatter.run()
         print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
     } catch {
