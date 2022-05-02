@@ -14,10 +14,24 @@ final class DOMKitTests: XCTestCase {
         XCTAssertEqual(queriedButton?.textContent, "Hello, world!")
     }
 
-    func testDataBuffer() {
+    func testDataToTypedArray() {
         let array: [UInt8] = [1, 2, 3, 4, 5]
         let data = Data(array)
         let typedArray = JSTypedArray(data)
+
+        typedArray.withUnsafeBytes {
+            XCTAssertEqual($0.count, data.count)
+            for index in $0.indices {
+                XCTAssertEqual(array[index], $0[index])
+            }
+        }
+    }
+
+    func testTypedArrayToData() {
+        let array: [UInt8] = [1, 2, 3, 4, 5]
+        let typedArray = JSTypedArray(array)
+
+        let data = Data(typedArray.buffer)
 
         typedArray.withUnsafeBytes {
             XCTAssertEqual($0.count, data.count)

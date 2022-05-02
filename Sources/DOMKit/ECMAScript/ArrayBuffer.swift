@@ -32,7 +32,7 @@ public class ArrayBuffer: JSBridgedClass {
     }
 }
 
-extension JSTypedArray {
+public extension JSTypedArray {
     convenience init(_ arrayBuffer: ArrayBuffer) {
         self.init(unsafelyWrapping: Self.constructor.new(arrayBuffer))
     }
@@ -45,7 +45,7 @@ extension JSTypedArray {
 #if canImport(Foundation)
 import Foundation
 
-extension Data {
+public extension Data {
     init(_ arrayBuffer: ArrayBuffer) {
         self = JSTypedArray<UInt8>(arrayBuffer).withUnsafeBytes {
             Data(buffer: $0)
