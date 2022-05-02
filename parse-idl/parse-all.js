@@ -22,6 +22,7 @@ console.log(
       "service-workers",
       "url",
       "streams",
+      "console",
     ].map((key) => parsedFiles[key]),
     null,
     2
