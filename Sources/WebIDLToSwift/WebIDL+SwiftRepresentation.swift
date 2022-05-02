@@ -245,8 +245,9 @@ extension IDLSetLikeDeclaration: SwiftRepresentable, Initializable {
 extension MergedMixin: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         Context.withState(.instance(constructor: nil, this: "jsObject", className: "\(name)", inProtocol: true)) {
-            """
-            public protocol \(name): JSBridgedClass {}
+            let decl = "public protocol \(name): JSBridgedClass {}"
+            return """
+            \(partial ? "" : decl)
             public extension \(name) {
                 \(members.map(toSwift).joined(separator: "\n\n"))
             }
