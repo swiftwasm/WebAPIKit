@@ -182,7 +182,9 @@ enum DeclarationMerger {
     }
 }
 
-protocol DeclarationFile {}
+protocol DeclarationFile {
+    var name: String { get }
+}
 
 extension IDLEnum: DeclarationFile {}
 

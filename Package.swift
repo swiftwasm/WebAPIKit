@@ -26,7 +26,11 @@ let package = Package(
             dependencies: ["DOMKit"]),
         .target(
             name: "DOMKit",
-            dependencies: ["JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
+            dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
+        // This support library should be moved to JavaScriptKit
+        .target(name: "ECMAScript", dependencies: [
+            "JavaScriptKit",
+            .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
         .target(name: "WebIDL"),
         .target(
             name: "WebIDLToSwift",

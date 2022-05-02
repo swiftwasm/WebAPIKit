@@ -7,17 +7,21 @@ func main() {
     do {
         let startTime = Date()
         let idl = try IDLParser.parseIDL()
-        print("Removing old files...")
-        try IDLBuilder.cleanOutputFolder()
+        let outputPath = "Sources/DOMKit/Generated.swift"
+        var contents: [SwiftSource] = []
         print("Generating bindings...")
-        try IDLBuilder.generateIDLBindings(idl: idl)
+        contents.append(try IDLBuilder.generateIDLBindings(idl: idl))
         print("Generating closure property wrappers...")
-        try IDLBuilder.generateClosureTypes()
+        contents.append(try IDLBuilder.generateClosureTypes())
         print("Generating JSString constants...")
-        try IDLBuilder.generateStrings()
+        contents.append(try IDLBuilder.generateStrings())
         print("Generating union protocols...")
-        try IDLBuilder.generateUnions()
-        SwiftFormatter.run()
+        contents.append(try IDLBuilder.generateUnions())
+        try IDLBuilder.writeFile(
+            path: outputPath,
+            content: contents.joined(separator: "\n\n").source)
+
+        SwiftFormatter.run(source: outputPath)
         print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
     } catch {
         handleDecodingError(error)
