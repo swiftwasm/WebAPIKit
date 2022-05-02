@@ -19,6 +19,7 @@ jobs:
           
           brew install swiftwasm/tap/carton
 
+          carton bundle --product DOMKitDemo
           carton test --environment defaultBrowser
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
