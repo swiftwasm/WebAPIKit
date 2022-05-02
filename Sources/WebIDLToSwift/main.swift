@@ -1,23 +1,15 @@
 import Foundation
 import WebIDL
 
-func parseOptions() -> [(outputPath: String, idlPaths: [URL])] {
+func parseOptions() -> [(outputPath: String, idlPaths: [URL], imports: [String])] {
     let args = CommandLine.arguments
     if args.count > 2 {
-        return [(args[1], Array(args[2...].map(URL.init(fileURLWithPath: ))))]
+        return [(args[1], Array(args[2...].map(URL.init(fileURLWithPath: ))), [])]
     } else {
-        var mergedSources: [URL] = []
-        var separateSources: [(String, [URL])] = []
-        for idl in IDLParser.defaultIDLs() {
-            if idl.shouldBeMerged {
-                mergedSources.append(idl.path)
-            } else {
-                let name = idl.path.deletingPathExtension().lastPathComponent
-                let outputPath = "Sources/DOMKit/\(name).swift"
-                separateSources.append((outputPath, [idl.path]))
-            }
+        return IDLParser.defaultIDLs().map { idl in
+            let outputPath = "Sources/\(idl.moduleName)/\(idl.moduleName).swift"
+            return (outputPath, idl.paths, idl.imports)
         }
-        return [("Sources/DOMKit/Generated.swift", mergedSources)] + separateSources
     }
 }
 
@@ -26,12 +18,12 @@ main()
 func main() {
     do {
         let options = parseOptions()
-        for (outputPath, idlPaths) in options {
+        for (outputPath, idlPaths, imports) in options {
             Record.reset()
             let startTime = Date()
             print("Generating bindings for \(idlPaths.map(\.path))...")
             let idls = try idlPaths.map { try IDLParser.parseIDL(path: $0) }
-            try generate(idls: idls, outputPath: outputPath)
+            try generate(idls: idls, imports: imports, outputPath: outputPath)
             print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
         }
     } catch {
@@ -39,8 +31,12 @@ func main() {
     }
 }
 
-private func generate(idls: [GenericCollection<IDLNode>], outputPath: String) throws {
+private func generate(idls: [GenericCollection<IDLNode>],
+                      imports: [String],
+                      outputPath: String,
+                      fileManager: FileManager = .default) throws {
     var contents: [SwiftSource] = []
+    contents.append(IDLBuilder.preamble(imports: imports))
     contents.append(try IDLBuilder.generateIDLBindings(idl: idls))
     print("Generating closure property wrappers...")
     contents.append(try IDLBuilder.generateClosureTypes())
@@ -48,6 +44,10 @@ private func generate(idls: [GenericCollection<IDLNode>], outputPath: String) th
     contents.append(try IDLBuilder.generateStrings())
     print("Generating union protocols...")
     contents.append(try IDLBuilder.generateUnions())
+    try fileManager.createDirectory(
+        at: URL(fileURLWithPath: outputPath).deletingLastPathComponent(),
+        withIntermediateDirectories: true
+    )
     try IDLBuilder.writeFile(
         path: outputPath,
         content: contents.joined(separator: "\n\n").source)

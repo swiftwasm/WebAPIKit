@@ -23,32 +23,36 @@ enum IDLParser {
         return try JSONDecoder().decode(GenericCollection<IDLNode>.self, from: data)
     }
 
-    static func defaultIDLs() -> [(path: URL, shouldBeMerged: Bool)] {
-        let enabledIDLs: [(name: String, shouldBeMerged: Bool)] = [
-            ("dom", true),
-            ("fetch", true),
-            ("FileAPI", true),
-            ("html", true),
-            ("geometry", true),
-            ("hr-time", true),
-            ("referrer-policy", true),
-            ("uievents", true),
-            ("wai-aria", true),
-            ("webidl", true),
-            ("web-animations", true),
-            ("xhr", true),
-            ("service-workers", true),
-            ("url", true),
-            ("streams", true),
-            ("console", true),
+    static func defaultIDLs() -> [(moduleName: String, paths: [URL], imports: [String])] {
+        let enabledIDLs: [(moduleName: String, idlNames: [String], imports: [String])] = [
+            ("DOMKit", [
+                "fetch",
+                "geometry",
+                "hr-time",
+                "referrer-policy",
+                "uievents",
+                "wai-aria",
+                "web-animations",
+                "xhr",
+                "service-workers",
+                "url",
+                "streams",
+                "dom",
+                "html",
+            ], ["DOMKitConsole", "DOMKitFileAPI", "DOMKitWebIDL"]),
+            ("DOMKitWebIDL", ["webidl"], []),
+            ("DOMKitConsole", ["console"], []),
+            ("DOMKitFileAPI", ["FileAPI"], ["DOMKitWebIDL"]),
         ]
         return enabledIDLs.map { idl in
-            let path = packageDir
-                .appendingPathComponent("node_modules")
-                .appendingPathComponent("@webref")
-                .appendingPathComponent("idl")
-                .appendingPathComponent(idl.name + ".idl")
-            return (path, idl.shouldBeMerged)
+            let paths = idl.idlNames.map {
+                packageDir
+                    .appendingPathComponent("node_modules")
+                    .appendingPathComponent("@webref")
+                    .appendingPathComponent("idl")
+                    .appendingPathComponent($0 + ".idl")
+            }
+            return (idl.moduleName, paths, idl.imports)
         }
     }
 }

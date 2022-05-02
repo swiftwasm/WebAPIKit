@@ -3,6 +3,8 @@
 
 import PackageDescription
 
+let dependencyOfWebIDLToSwift: [Target.Dependency] = ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]
+
 let package = Package(
     name: "DOMKit",
     products: [
@@ -26,13 +28,14 @@ let package = Package(
             dependencies: ["DOMKit"]),
         .target(
             name: "DOMKit",
-            dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
-        .target(
-            name: "DOMKitConsole",
-            dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
-        .target(
-            name: "DOMKitFetch",
-            dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]),
+            dependencies: dependencyOfWebIDLToSwift + [
+                "DOMKitFileAPI",
+                "DOMKitConsole",
+                "DOMKitWebIDL"
+            ]),
+        .target(name: "DOMKitConsole", dependencies: dependencyOfWebIDLToSwift),
+        .target(name: "DOMKitFileAPI", dependencies: dependencyOfWebIDLToSwift + ["DOMKitWebIDL"]),
+        .target(name: "DOMKitWebIDL", dependencies: dependencyOfWebIDLToSwift),
         // This support library should be moved to JavaScriptKit
         .target(name: "ECMAScript", dependencies: [
             "JavaScriptKit",
