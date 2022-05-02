@@ -1,9 +1,6 @@
 {
   "private": true,
   "type": "module",
-  "scripts": {
-    "start": "node parse-all.js"
-  },
   "devDependencies": {
     "prettier": "2.6.1"
   },
