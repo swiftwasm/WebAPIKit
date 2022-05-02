@@ -27,7 +27,7 @@ enum IDLBuilder {
         "DOMMatrix_or_Float32Array_or_Float64Array",
     ]
 
-    static let outDir = "Sources/DOMKit/WebIDL/"
+    static let outDir = "Sources/DOMKit/"
     static func writeFile(named name: String, content: String) throws -> String {
         let path = outDir + name + ".swift"
         if FileManager.default.fileExists(atPath: path) {
