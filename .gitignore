@@ -4,3 +4,5 @@
 /*.xcodeproj
 xcuserdata/
 node_modules
+.vscode
+.swiftpm
