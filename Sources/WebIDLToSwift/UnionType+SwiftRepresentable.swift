@@ -171,7 +171,7 @@ extension SlimIDLType.TypeValue: SwiftRepresentable {
                 return "\(name)"
             }
         case let .union(types):
-            return "\(unionName(types: types))"
+            return "\(Record.useUnion(types))"
         }
     }
 
@@ -201,13 +201,11 @@ extension SlimIDLType.TypeValue: SwiftRepresentable {
                 return "\(name)"
             }
         case let .union(types):
-            return "\(unionName(types: types))"
+            return "\(Record.useUnion(types))"
         }
     }
 }
 
 func unionName(types: Set<SlimIDLType>) -> String {
-    let union = Context.unions.first(where: { $0.types == types }) ?? UnionType(types: types)
-    Context.unions.insert(union)
-    return union.name
+    Record.useUnion(types)
 }

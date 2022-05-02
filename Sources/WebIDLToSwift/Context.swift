@@ -4,19 +4,6 @@ import WebIDL
 enum Context {
     private(set) static var current = State()
 
-    static var closurePatterns: Set<ClosurePattern> = []
-    private(set) static var strings: Set<String> = ["toString"]
-    static var unions: Set<UnionType> = []
-
-    static func source(for name: String) -> SwiftSource {
-        assert(!name.isEmpty)
-        if name == "self" {
-            return "Strings._self"
-        }
-        strings.insert(name)
-        return "Strings.\(name)"
-    }
-
     private static var stack: [State] = []
     static func withState<T>(_ new: State, body: () throws -> T) rethrows -> T {
         stack.append(current)
@@ -75,7 +62,7 @@ enum Context {
             return newState
         }
 
-        static func root(
+        static func rootForIDLFile(
             interfaces: [String: MergedInterface],
             ignored: [String: Set<String>],
             types: [String: IDLTypealias]
@@ -86,5 +73,39 @@ enum Context {
             newState.types = types
             return newState
         }
+    }
+}
+
+struct Record {
+    private(set) var closurePatterns: Set<ClosurePattern> = []
+    private(set) var strings: Set<String> = ["toString"]
+    private(set) var unions: Set<UnionType> = []
+    private(set) static var current = Record()
+
+    static func reset() {
+        current = Record()
+    }
+    
+    static func useStringLiteral(for name: String) -> SwiftSource {
+        assert(!name.isEmpty)
+        if name == "self" {
+            return "Strings._self"
+        }
+        current.strings.insert(name)
+        return "Strings.\(name)"
+    }
+
+    @discardableResult
+    static func useUnion(_ types: Set<SlimIDLType>) -> String {
+        let union = current.unions.first(where: { $0.types == types }) ?? UnionType(types: types)
+        useUnion(union)
+        return union.name
+    }
+    static func useUnion(_ union: UnionType) {
+        current.unions.insert(union)
+    }
+
+    static func useClosurePattern(_ closurePattern: ClosurePattern) {
+        current.closurePatterns.insert(closurePattern)
     }
 }

@@ -43,7 +43,7 @@ enum IDLBuilder {
                 continue
             }
 
-            let nodeContent = Context.withState(.root(
+            let nodeContent = Context.withState(.rootForIDLFile(
                 interfaces: merged.interfaces,
                 ignored: [
                     // functions as parameters are unsupported
@@ -110,12 +110,12 @@ enum IDLBuilder {
     static func generateClosureTypes() throws -> SwiftSource {
         return """
         /* variadic generics please */
-        \(lines: Context.closurePatterns.sorted().map(\.swiftRepresentation))
+        \(lines: Record.current.closurePatterns.sorted().map(\.swiftRepresentation))
         """
     }
 
     static func generateStrings() throws -> SwiftSource {
-        let strings = Context.strings.sorted()
+        let strings = Record.current.strings.sorted()
         return """
             @usableFromInline enum Strings {
                 static let _self: JSString = "self"
@@ -126,7 +126,7 @@ enum IDLBuilder {
 
     static func generateUnions() throws -> SwiftSource {
         var contents: [SwiftSource] = []
-        for union in Context.unions.sorted(by: { $0.name < $1.name }) {
+        for union in Record.current.unions.sorted(by: { $0.name < $1.name }) {
             guard !ignoredNames.contains(union.name) else { continue }
             contents.append(union.swiftRepresentation)
         }

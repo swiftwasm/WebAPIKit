@@ -27,6 +27,7 @@ func main() {
     do {
         let options = parseOptions()
         for (outputPath, idlPaths) in options {
+            Record.reset()
             let startTime = Date()
             print("Generating bindings for \(idlPaths.map(\.path))...")
             let idls = try idlPaths.map { try IDLParser.parseIDL(path: $0) }

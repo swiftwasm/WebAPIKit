@@ -39,12 +39,12 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
         } else if Context.constructor == nil || Context.static {
             // can't do property wrappers on extensions
             let setter: SwiftSource = """
-            nonmutating set { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] = newValue }
+            nonmutating set { \(idlType.propertyWrapper(readonly: readonly))[\(Record.useStringLiteral(for: name)), in: jsObject] = newValue }
             """
 
             return """
             @inlinable public\(raw: Context.static ? " static" : "") var \(name): \(idlType) {
-                get { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] }
+                get { \(idlType.propertyWrapper(readonly: readonly))[\(Record.useStringLiteral(for: name)), in: jsObject] }
                 \(readonly ? "" : setter)
             }
             """
@@ -59,7 +59,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
     var initializer: SwiftSource? {
         assert(!Context.static)
         return """
-        \(wrapperName) = \(idlType.propertyWrapper(readonly: readonly))(jsObject: jsObject, name: \(Context.source(for: name)))
+        \(wrapperName) = \(idlType.propertyWrapper(readonly: readonly))(jsObject: jsObject, name: \(Record.useStringLiteral(for: name)))
         """
     }
 }
@@ -86,15 +86,15 @@ extension MergedDictionary: SwiftRepresentable {
         }
         return """
         public convenience init(\(sequence: params)) {
-            let object = JSObject.global[\(Context.source(for: "Object"))].function!.new()
+            let object = JSObject.global[\(Record.useStringLiteral(for: "Object"))].function!.new()
             \(lines: membersWithPropertyWrapper.map { member, wrapper in
                 if member.idlType.isFunction {
                     return """
-                    \(wrapper)[\(Context.source(for: member.name)), in: object] = \(member.name)
+                    \(wrapper)[\(Record.useStringLiteral(for: member.name)), in: object] = \(member.name)
                     """
                 } else {
                     return """
-                    object[\(Context.source(for: member.name))] = \(member.name).jsValue
+                    object[\(Record.useStringLiteral(for: member.name))] = \(member.name).jsValue
                     """
                 }
             })
@@ -103,7 +103,7 @@ extension MergedDictionary: SwiftRepresentable {
 
         public required init(unsafelyWrapping object: JSObject) {
             \(lines: membersWithPropertyWrapper.map { member, wrapper in
-                "_\(raw: member.name) = \(wrapper)(jsObject: object, name: \(Context.source(for: member.name)))"
+                "_\(raw: member.name) = \(wrapper)(jsObject: object, name: \(Record.useStringLiteral(for: member.name)))"
             })
             super.init(unsafelyWrapping: object)
         }
@@ -146,8 +146,8 @@ extension IDLEnum: SwiftRepresentable {
 extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         let isVoid = idlType.swiftRepresentation == "Void"
-        Context.closurePatterns.insert(ClosurePattern(nullable: false, void: isVoid, argCount: arguments.count))
-        Context.closurePatterns.insert(ClosurePattern(nullable: true, void: isVoid, argCount: arguments.count))
+        Record.useClosurePattern(ClosurePattern(nullable: false, void: isVoid, argCount: arguments.count))
+        Record.useClosurePattern(ClosurePattern(nullable: true, void: isVoid, argCount: arguments.count))
         return """
         public typealias \(name) = (\(sequence: arguments.map {
             "\($0.idlType)\($0.variadic ? "..." : "")"
@@ -168,7 +168,7 @@ protocol Initializable {
 
 extension MergedInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let constructor: SwiftSource = "JSObject.global[\(Context.source(for: name))].function!"
+        let constructor: SwiftSource = "JSObject.global[\(Record.useStringLiteral(for: name))].function!"
         let body = Context.withState(.instance(constructor: constructor, this: "jsObject", className: "\(name)")) {
             members.map { member in
                 let isOverride: Bool
@@ -330,7 +330,7 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
 
 extension MergedNamespace: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let this: SwiftSource = "JSObject.global[\(Context.source(for: name))].object!"
+        let this: SwiftSource = "JSObject.global[\(Record.useStringLiteral(for: name))].object!"
         let body = Context.withState(.static(this: this, inClass: false, className: "\(name)")) {
             members.map(toSwift).joined(separator: "\n\n")
         }
@@ -425,7 +425,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             argsArray = "[\(sequence: args)]"
         }
 
-        let function: SwiftSource = "this[\(Context.source(for: name))].function!"
+        let function: SwiftSource = "this[\(Record.useStringLiteral(for: name))].function!"
         return (
             prep: """
             \(lines: prep)
@@ -641,7 +641,7 @@ extension IDLTypedef: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         if case let .union(types) = idlType.value {
             let typeSet = Set(types.map(SlimIDLType.init))
-            if let existing = Context.unions.first(where: { $0.types == typeSet }) {
+            if let existing = Record.current.unions.first(where: { $0.types == typeSet }) {
                 if let existingName = existing.friendlyName {
                     return "public typealias \(name) = \(existingName)"
                 } else {
@@ -649,7 +649,7 @@ extension IDLTypedef: SwiftRepresentable {
                     return ""
                 }
             } else {
-                Context.unions.insert(UnionType(types: typeSet, friendlyName: name))
+                Record.useUnion(UnionType(types: typeSet, friendlyName: name))
                 return ""
             }
         }
