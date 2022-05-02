@@ -20,7 +20,7 @@ public enum ArrayBufferView: JSValueCompatible, AnyArrayBufferView {
     case uint16Array(Uint16Array)
     case uint32Array(Uint32Array)
     case uint8Array(Uint8Array)
-    case uint8ClampedArray(Uint8ClampedArray)
+    case uint8ClampedArray(JSUInt8ClampedArray)
 
     public static func construct(from value: JSValue) -> Self? {
         // if let bigInt64Array: BigInt64Array = value.fromJSValue() {
@@ -56,7 +56,7 @@ public enum ArrayBufferView: JSValueCompatible, AnyArrayBufferView {
         if let uint8Array: Uint8Array = value.fromJSValue() {
             return .uint8Array(uint8Array)
         }
-        if let uint8ClampedArray: Uint8ClampedArray = value.fromJSValue() {
+        if let uint8ClampedArray: JSUInt8ClampedArray = value.fromJSValue() {
             return .uint8ClampedArray(uint8ClampedArray)
         }
         return nil

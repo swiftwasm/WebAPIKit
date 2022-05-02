@@ -1,4 +1,5 @@
 import JavaScriptKit
+@_exported import ECMAScript
 
 /* TODO: fix this */
 public typealias __UNSUPPORTED_BIGINT__ = JSValue

@@ -1,6 +1,6 @@
 import JavaScriptKit
 
-public class BridgedDictionary: JSValueCompatible {
+open class BridgedDictionary: JSValueCompatible {
     public let jsObject: JSObject
 
     public var jsValue: JSValue {
