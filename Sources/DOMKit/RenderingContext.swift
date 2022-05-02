@@ -5,17 +5,17 @@ import JavaScriptKit
 
 public protocol Any_RenderingContext: ConvertibleToJSValue {}
 extension CanvasRenderingContext2D: Any_RenderingContext {}
-//extension GPUCanvasContext: Any_RenderingContext {}
+// extension GPUCanvasContext: Any_RenderingContext {}
 extension ImageBitmapRenderingContext: Any_RenderingContext {}
-//extension WebGL2RenderingContext: Any_RenderingContext {}
-//extension WebGLRenderingContext: Any_RenderingContext {}
+// extension WebGL2RenderingContext: Any_RenderingContext {}
+// extension WebGLRenderingContext: Any_RenderingContext {}
 
 public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
     case canvasRenderingContext2D(CanvasRenderingContext2D)
 //    case gpuCanvasContext(GPUCanvasContext)
     case imageBitmapRenderingContext(ImageBitmapRenderingContext)
-//    case webGL2RenderingContext(WebGL2RenderingContext)
-//    case webGLRenderingContext(WebGLRenderingContext)
+    case webGL2RenderingContext(WebGL2RenderingContext)
+    case webGLRenderingContext(WebGLRenderingContext)
 
     var canvasRenderingContext2D: CanvasRenderingContext2D? {
         switch self {
@@ -31,26 +31,26 @@ public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
 //        }
 //    }
 
-    var imageBitmapRenderingContext: ImageBitmapRenderingContext? {
+    public var imageBitmapRenderingContext: ImageBitmapRenderingContext? {
         switch self {
         case let .imageBitmapRenderingContext(imageBitmapRenderingContext): return imageBitmapRenderingContext
         default: return nil
         }
     }
 
-//    var webGL2RenderingContext: WebGL2RenderingContext? {
-//        switch self {
-//        case let .webGL2RenderingContext(webGL2RenderingContext): return webGL2RenderingContext
-//        default: return nil
-//        }
-//    }
-//
-//    var webGLRenderingContext: WebGLRenderingContext? {
-//        switch self {
-//        case let .webGLRenderingContext(webGLRenderingContext): return webGLRenderingContext
-//        default: return nil
-//        }
-//    }
+    public var webGL2RenderingContext: WebGL2RenderingContext? {
+        switch self {
+        case let .webGL2RenderingContext(webGL2RenderingContext): return webGL2RenderingContext
+        default: return nil
+        }
+    }
+
+    public var webGLRenderingContext: WebGLRenderingContext? {
+        switch self {
+        case let .webGLRenderingContext(webGLRenderingContext): return webGLRenderingContext
+        default: return nil
+        }
+    }
 
     public static func construct(from value: JSValue) -> Self? {
         if let canvasRenderingContext2D: CanvasRenderingContext2D = value.fromJSValue() {
@@ -62,12 +62,12 @@ public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
         if let imageBitmapRenderingContext: ImageBitmapRenderingContext = value.fromJSValue() {
             return .imageBitmapRenderingContext(imageBitmapRenderingContext)
         }
-//        if let webGL2RenderingContext: WebGL2RenderingContext = value.fromJSValue() {
-//            return .webGL2RenderingContext(webGL2RenderingContext)
-//        }
-//        if let webGLRenderingContext: WebGLRenderingContext = value.fromJSValue() {
-//            return .webGLRenderingContext(webGLRenderingContext)
-//        }
+        if let webGL2RenderingContext: WebGL2RenderingContext = value.fromJSValue() {
+            return .webGL2RenderingContext(webGL2RenderingContext)
+        }
+        if let webGLRenderingContext: WebGLRenderingContext = value.fromJSValue() {
+            return .webGLRenderingContext(webGLRenderingContext)
+        }
         return nil
     }
 
@@ -79,10 +79,10 @@ public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
 //            return gpuCanvasContext.jsValue
         case let .imageBitmapRenderingContext(imageBitmapRenderingContext):
             return imageBitmapRenderingContext.jsValue
-//        case let .webGL2RenderingContext(webGL2RenderingContext):
-//            return webGL2RenderingContext.jsValue
-//        case let .webGLRenderingContext(webGLRenderingContext):
-//            return webGLRenderingContext.jsValue
+        case let .webGL2RenderingContext(webGL2RenderingContext):
+            return webGL2RenderingContext.jsValue
+        case let .webGLRenderingContext(webGLRenderingContext):
+            return webGLRenderingContext.jsValue
         }
     }
 }

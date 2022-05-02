@@ -1,5 +1,5 @@
-import JavaScriptKit
 import DOMKit
+import JavaScriptKit
 
 let document = globalThis.document
 
@@ -8,3 +8,8 @@ header.innerText = "Hello World!"
 _ = document.body!.appendChild(node: header)
 
 console.log(data: "Hello, world!")
+
+button.onclick = { _ in
+  runWebGLDemo()
+  return .undefined
+}
