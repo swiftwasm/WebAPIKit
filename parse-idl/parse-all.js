@@ -24,6 +24,7 @@ console.log(
       "url",
       "streams",
       "mediacapture-streams",
+      "webaudio",
     ].map((key) => parsedFiles[key]),
     null,
     2
