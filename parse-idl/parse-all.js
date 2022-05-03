@@ -29,6 +29,7 @@ console.log(
       "webaudio",
       "mediacapture-streams",
       "mediastream-recording",
+      "webcodecs",
     ].map((key) => parsedFiles[key]),
     null,
     2
