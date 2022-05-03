@@ -60,6 +60,7 @@ public protocol IDLDeclVisitor {
     mutating func visit(_ operation: IDLOperation)
     mutating func visit(_ constructor: IDLConstructor)
     mutating func visit(_ enum: IDLEnum)
+    mutating func visit(_ argument: IDLArgument)
     mutating func visit(_ rawNode: IDLNode)
 }
 
@@ -71,6 +72,6 @@ public extension IDLDeclVisitor {
 
 public extension IDLNode {
     func accept<V: IDLDeclVisitor>(visitor: inout V) {
-//        visitor.visit(self)
+        visitor.visit(self)
     }
 }

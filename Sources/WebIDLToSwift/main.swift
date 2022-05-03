@@ -1,15 +1,12 @@
 import Foundation
 import WebIDL
 
-func parseOptions() -> [(outputPath: String, idlPaths: [URL], imports: [String])] {
+func parseOptions() -> [(name: String, path: URL)] {
     let args = CommandLine.arguments
     if args.count > 2 {
-        return [(args[1], Array(args[2...].map(URL.init(fileURLWithPath: ))), [])]
+        fatalError()
     } else {
-        return IDLParser.defaultIDLs().map { idl in
-            let outputPath = "Sources/\(idl.moduleName)/\(idl.moduleName).swift"
-            return (outputPath, idl.paths, idl.imports)
-        }
+        return IDLParser.defaultIDLs()
     }
 }
 
@@ -17,15 +14,17 @@ main()
 
 func main() {
     do {
-        let options = parseOptions()
-        for (outputPath, idlPaths, imports) in options {
-            Record.reset()
-            let startTime = Date()
-            print("Generating bindings for \(idlPaths.map(\.path))...")
-            let idls = try idlPaths.map { try IDLParser.parseIDL(path: $0) }
-            try generate(idls: idls, imports: imports, outputPath: outputPath)
-            print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
-        }
+        let idlInputs = parseOptions()
+        Record.reset()
+        let startTime = Date()
+        print("Generating bindings for \(idlInputs.map(\.path))...")
+        let idls = try idlInputs.map { try (name: $0.name, collection: IDLParser.parseIDL(path: $0.path)) }
+        let graph = DeclGraph.build(from: idls.map { ($0, $1.array) })
+        print(graph.render())
+//        let scc = graph.buildSCC()
+
+        try generate(idls: idls.map(\.collection), imports: [], outputPath: "Sources/DOMKit/DOMKit.swift")
+        print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
     } catch {
         handleDecodingError(error)
     }

@@ -7,4 +7,8 @@ public struct IDLArgument: Hashable, IDLNode, IDLNamed {
     public let idlType: IDLType
     public let name: String
     public let extAttrs: [IDLExtendedAttribute]
+
+    public func accept<V>(visitor: inout V) where V : IDLDeclVisitor {
+        visitor.visit(self)
+    }
 }

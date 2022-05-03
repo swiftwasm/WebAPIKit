@@ -8,10 +8,22 @@ class IDLSource {
 }
 
 protocol IDLCodeGenUnit: IDLNode {
-    var name: String { get }
+    var identifier: String? { get }
+}
+extension IDLCodeGenUnit where Self: IDLNamed {
+    var identifier: String? { name }
 }
 extension IDLInterface: IDLCodeGenUnit {}
 extension IDLInterfaceMixin: IDLCodeGenUnit {}
+extension IDLTypedef: IDLCodeGenUnit {}
+extension IDLIncludes: IDLCodeGenUnit {
+    var identifier: String? { nil }
+}
+extension IDLDictionary: IDLCodeGenUnit {}
+extension IDLEnum: IDLCodeGenUnit {}
+extension IDLCallback: IDLCodeGenUnit {}
+extension IDLCallbackInterface: IDLCodeGenUnit {}
+extension IDLNamespace: IDLCodeGenUnit {}
 
 struct DeclGraph {
 
@@ -21,7 +33,7 @@ struct DeclGraph {
 
     typealias NodeId = Array<Node>.Index
 
-    final class Node: Hashable {
+    final class Node: Hashable, CustomStringConvertible {
         let declNode: IDLCodeGenUnit
         let source: IDLSource
 
@@ -37,17 +49,20 @@ struct DeclGraph {
         func hash(into hasher: inout Hasher) {
             hasher.combine(ObjectIdentifier(self))
         }
+        var description: String {
+            "\(source.name).\(declNode.identifier ?? _typeName(type(of: declNode)))"
+        }
     }
 
     private var resolutions: [UnresolvedRef: [NodeId]] = [:]
     private var nodes: [Node] = []
-    private(set) var forwardEdges: [NodeId: [NodeId]] = [:]
+    private(set) var forwardEdges: [NodeId: Set<NodeId>] = [:]
 
     private var nodeByName: [String: NodeId] = [:]
     private var sources: [String: IDLSource] = [:]
 
     mutating func addEdge(from source: NodeId, to destination: NodeId) {
-        self.forwardEdges[source, default: []].append(destination)
+        self.forwardEdges[source, default: []].insert(destination)
     }
 
     private mutating func collect(unitName: String, decls: [IDLNode]) {
@@ -59,7 +74,9 @@ struct DeclGraph {
             let newNodeId = nodes.count
             let newNode = Node(declNode: decl, source: source)
             nodes.append(newNode)
-            nodeByName[decl.name] = newNodeId
+            if let identifier = decl.identifier {
+                nodeByName[identifier] = newNodeId
+            }
 
             IDLDeclWalker.walk(
                 root: decl,
@@ -72,24 +89,39 @@ struct DeclGraph {
 
     private mutating func resolve() {
         for (ref, onResolved) in resolutions {
-            let node = resolve(ref: ref)
-            onResolved.forEach { sourceNode in
-                self.addEdge(from: sourceNode, to: node)
+            let nodes = resolve(ref: ref)
+            for sourceNode in onResolved {
+                for node in nodes {
+                    self.addEdge(from: sourceNode, to: node)
+                }
             }
         }
         resolutions = [:]
     }
 
-    private func resolve(ref: UnresolvedRef) -> NodeId {
+    private func resolve(ref: UnresolvedRef) -> [NodeId] {
         switch ref {
         case .identifier(let id):
-            guard let node = nodeByName[id] else {
-                fatalError("'\(id)' not found")
+            return resolve(id: id).map { [$0] } ?? []
+        case .type(let type):
+            switch type.value {
+            case .single(let id):
+                return resolve(id: id).map { [$0] } ?? []
+            case .union(let types):
+                return types.flatMap { resolve(ref: .type($0)) }
+            default:
+                print("IDLType \(ref) is not handled")
+                return []
             }
-            return node
-        case .type:
-            fatalError("TODO")
         }
+    }
+
+    private func resolve(id: String) -> NodeId? {
+        guard let node = nodeByName[id] else {
+            print("'\(id)' not found")
+            return nil
+        }
+        return node
     }
 
     func transposed() -> DeclGraph {
@@ -144,10 +176,28 @@ struct DeclGraph {
         var graph = DeclGraph()
 
         for idl in idls {
+            print("Building graph from \(idl.unitName)")
             graph.collect(unitName: idl.unitName, decls: idl.collection)
         }
         graph.resolve()
         return graph
+    }
+
+    func render() -> String {
+        var output = "digraph DependenciesGraph {\n"
+        output += "  node [shape = box]\n"
+        func renderNode(node id: NodeId) {
+            let node = self.nodes[id]
+            output += #"  "_\#(id)" [label="\#(node)"]"# + "\n"
+        }
+        for node in nodes.indices {
+            renderNode(node: node)
+            for edge in forwardEdges[node] ?? [] {
+                output += #"  "_\#(node)" -> "_\#(edge)""# + "\n"
+            }
+        }
+        output += "}\n"
+        return output
     }
 }
 
@@ -211,9 +261,13 @@ fileprivate struct IDLDeclWalker: IDLDeclVisitor {
     }
     
     public func visit(_ enum: IDLEnum) {}
+
+    mutating func visit(_ argument: IDLArgument) {
+        process(.type(argument.idlType))
+    }
     
     public func visit(_ rawNode: IDLNode) {
-        fatalError("Unhandled IDLNode in IDLDeclWalker: \(rawNode)")
+        print("Unhandled IDLNode in IDLDeclWalker: \(type(of: rawNode))")
     }
 
     mutating func process(_ node: IDLNode) {

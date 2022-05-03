@@ -6,16 +6,23 @@ public struct IDLInterface: IDLNode, IDLNamed {
     public let members: GenericCollection<IDLInterfaceMember>
     public let inheritance: String?
     public let extAttrs: [IDLExtendedAttribute]
+
+    public func accept<V>(visitor: inout V) where V : IDLDeclVisitor {
+        visitor.visit(self)
+    }
 }
 
 /// https://github.com/w3c/webidl2.js#callback-interfaces
-public struct IDLCallbackInterface: IDLNode {
+public struct IDLCallbackInterface: IDLNode, IDLNamed {
     public static let type = "callback interface"
     public let name: String
     public let partial: Bool
     public let members: GenericCollection<IDLInterfaceMember>
     public let inheritance: String?
     public let extAttrs: [IDLExtendedAttribute]
+    public func accept<V>(visitor: inout V) where V : IDLDeclVisitor {
+        visitor.visit(self)
+    }
 }
 
 public protocol IDLInterfaceMember: IDLNode {}

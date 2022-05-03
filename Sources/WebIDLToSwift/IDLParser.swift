@@ -23,36 +23,36 @@ enum IDLParser {
         return try JSONDecoder().decode(GenericCollection<IDLNode>.self, from: data)
     }
 
-    static func defaultIDLs() -> [(moduleName: String, paths: [URL], imports: [String])] {
+    static func defaultIDLs() -> [(name: String, path: URL)] {
         let enabledIDLs: [(moduleName: String, idlNames: [String], imports: [String])] = [
-            ("DOMKit", [
-                "fetch",
-                "geometry",
-                "hr-time",
-                "referrer-policy",
-                "uievents",
-                "wai-aria",
-                "web-animations",
-                "xhr",
-                "service-workers",
-                "streams",
-                "dom",
-                "html",
-            ], ["DOMKitConsole", "DOMKitFileAPI", "DOMKitWebIDL", "DOMKitURL"]),
+//            ("DOMKit", [
+//                "fetch",
+//                "geometry",
+//                "hr-time",
+//                "referrer-policy",
+//                "uievents",
+//                "wai-aria",
+//                "web-animations",
+//                "xhr",
+//                "service-workers",
+//                "streams",
+//                "dom",
+//                "html",
+//            ], ["DOMKitConsole", "DOMKitFileAPI", "DOMKitWebIDL", "DOMKitURL"]),
             ("DOMKitWebIDL", ["webidl"], []),
             ("DOMKitURL", ["url"], []),
             ("DOMKitConsole", ["console"], []),
             ("DOMKitFileAPI", ["FileAPI"], ["DOMKitWebIDL"]),
         ]
-        return enabledIDLs.map { idl in
-            let paths = idl.idlNames.map {
-                packageDir
+        return enabledIDLs.flatMap { idl in
+            idl.idlNames.map {
+                let path = packageDir
                     .appendingPathComponent("node_modules")
                     .appendingPathComponent("@webref")
                     .appendingPathComponent("idl")
                     .appendingPathComponent($0 + ".idl")
+                return ($0, path)
             }
-            return (idl.moduleName, paths, idl.imports)
         }
     }
 }
