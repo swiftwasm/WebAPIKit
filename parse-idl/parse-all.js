@@ -23,6 +23,8 @@ console.log(
       "url",
       "streams",
       "console",
+      "css-pseudo",
+      "cssom-view",
     ].map((key) => parsedFiles[key]),
     null,
     2
