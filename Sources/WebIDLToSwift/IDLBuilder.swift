@@ -18,7 +18,7 @@ enum IDLBuilder {
         "CSSColorValue_or_CSSStyleValue",
         // need types from specs not yet included
         "ShadowAnimation", "MediaProvider", "Blob_or_MediaSource",
-        "OffscreenRenderingContext", "RenderingContext", "CanvasImageSource",
+        "OffscreenRenderingContext", "RenderingContext",
         "HTMLOrSVGImageElement", "HTMLOrSVGScriptElement", "BodyInit",
         // implemented manually
         // ArrayBufferView
@@ -38,7 +38,7 @@ enum IDLBuilder {
         let declarations = idl.flatMap(\.array)
         let merged = DeclarationMerger.merge(declarations: declarations)
         var contents: [SwiftSource] = []
-        for node in merged.declarations.sorted(by: { $0.name < $1.name  }) {
+        for node in merged.declarations.sorted(by: { $0.name < $1.name }) {
             if ignoredNames.contains(node.name) {
                 continue
             }
