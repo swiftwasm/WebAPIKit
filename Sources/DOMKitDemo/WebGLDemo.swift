@@ -1,4 +1,4 @@
-// Copyright 2021, GFXFundamentals.
+// Copyright 2021-2022, GFXFundamentals and DOMKit contributors.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
