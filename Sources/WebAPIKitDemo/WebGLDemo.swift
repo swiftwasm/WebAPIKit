@@ -1,4 +1,4 @@
-// Copyright 2021-2022, GFXFundamentals and DOMKit contributors.
+// Copyright 2021-2022, GFXFundamentals and WebAPIKit contributors.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import DOMKit
+import WebAPIKit
 
 let vertexShaderSource =
   """

@@ -7,7 +7,7 @@ func main() {
     do {
         let startTime = Date()
         let idl = try IDLParser.parseIDL()
-        let outputPath = "Sources/DOMKit/Generated.swift"
+        let outputPath = "Sources/WebAPIKit/Generated.swift"
         var contents: [SwiftSource] = []
         print("Generating bindings...")
         contents.append(try IDLBuilder.generateIDLBindings(idl: idl))
@@ -19,7 +19,8 @@ func main() {
         contents.append(try IDLBuilder.generateUnions())
         try IDLBuilder.writeFile(
             path: outputPath,
-            content: contents.joined(separator: "\n\n").source)
+            content: contents.joined(separator: "\n\n").source
+        )
 
         SwiftFormatter.run(source: outputPath)
         print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
