@@ -15,7 +15,7 @@ let package = Package(
             name: "DOMKit",
             targets: ["DOMKit"]),
         .library(name: "WebIDL", targets: ["WebIDL"]),
-        .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
+        .executable(name: "idl2swift", targets: ["idl2swift"]),
     ],
     dependencies: [
         .package(
@@ -37,8 +37,13 @@ let package = Package(
         .target(
             name: "WebIDLToSwift",
             dependencies: ["WebIDL"]),
+        .target(
+            name: "idl2swift",
+            dependencies: ["WebIDLToSwift"]),
         .testTarget(
             name: "DOMKitTests",
             dependencies: ["DOMKit"]),
+        .testTarget(
+            name: "WebIDLToSwiftTests", dependencies: ["WebIDLToSwift"]),
     ]
 )

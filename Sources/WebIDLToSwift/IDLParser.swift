@@ -23,25 +23,12 @@ enum IDLParser {
         return try JSONDecoder().decode(GenericCollection<IDLNode>.self, from: data)
     }
 
-    static func defaultIDLs() -> [(name: String, path: URL)] {
-        let enabledIDLs = [
-            "fetch",
-            "geometry",
-            "hr-time",
-            "referrer-policy",
-            "uievents",
-            "wai-aria",
-            "web-animations",
-            "xhr",
-            "service-workers",
-            "streams",
-            "dom",
-            "html",
-            "webidl",
-            "url",
-            "console",
-            "FileAPI"
-        ]
+    static let defaultEnabledIDLs = [
+        "fetch", "geometry", "hr-time", "referrer-policy", "uievents", "wai-aria",
+        "web-animations", "xhr", "service-workers", "streams", "dom", "html",
+        "webidl", "url", "console", "FileAPI"
+    ]
+    static func defaultIDLs(enabledIDLs: [String] = defaultEnabledIDLs) -> [(name: String, path: URL)] {
         return enabledIDLs.map { idl in
             let path = packageDir
                 .appendingPathComponent("node_modules")

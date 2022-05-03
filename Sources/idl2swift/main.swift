@@ -1,0 +1,3 @@
+import WebIDLToSwift
+
+WebIDLToSwift.main()

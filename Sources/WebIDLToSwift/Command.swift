@@ -10,9 +10,7 @@ func parseOptions() -> [(name: String, path: URL)] {
     }
 }
 
-main()
-
-func main() {
+public func main() {
     do {
         let idlInputs = parseOptions()
         Record.reset()

@@ -7,6 +7,10 @@ public struct GenericCollection<Element>: Collection, Decodable {
     public subscript(index: Array.Index) -> Element { array[index] as! Element }
     public func index(after index: Array.Index) -> Array.Index { array.index(after: index) }
 
+    init(_ array: [IDLNode]) {
+        self.array = array
+    }
+    
     public init(from decoder: Decoder) throws {
         let wrappers = try decoder.singleValueContainer().decode([IDLNodeDecoder].self)
         array = wrappers.map(\.node)
