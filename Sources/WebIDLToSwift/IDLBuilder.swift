@@ -18,7 +18,6 @@ enum IDLBuilder {
         "CSSColorValue_or_CSSStyleValue",
         // need types from specs not yet included
         "ShadowAnimation", "MediaProvider", "Blob_or_MediaSource",
-        "OffscreenRenderingContext", "RenderingContext",
         "HTMLOrSVGImageElement", "HTMLOrSVGScriptElement", "BodyInit",
         // implemented manually
         // ArrayBufferView

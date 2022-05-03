@@ -1,5 +1,5 @@
 /// https://github.com/w3c/webidl2.js#iterable-async-iterable-maplike-and-setlike-declarations
-public protocol IDLDeclaration: IDLNode, IDLInterfaceMember {
+public protocol IDLDeclaration: IDLInterfaceMember {
     var idlType: [IDLType] { get }
     var arguments: [IDLArgument] { get }
 }

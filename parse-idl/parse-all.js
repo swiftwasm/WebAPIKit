@@ -32,6 +32,7 @@ console.log(
       "webcodecs",
       "webgl1",
       "webgl2",
+      "webgpu",
     ].map((key) => parsedFiles[key]),
     null,
     2
