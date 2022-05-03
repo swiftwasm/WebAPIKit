@@ -29,8 +29,6 @@ console.log(
       "webaudio",
       "mediacapture-streams",
       "mediastream-recording",
-      "css-pseudo",
-      "cssom-view",
       "webcodecs",
       "webgl1",
       "webgl2",
