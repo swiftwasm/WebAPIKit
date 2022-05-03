@@ -23,6 +23,7 @@ console.log(
       "service-workers",
       "url",
       "streams",
+      "websockets",
       "css-pseudo",
       "cssom-view",
       "mediacapture-streams",

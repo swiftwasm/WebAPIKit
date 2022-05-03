@@ -1732,6 +1732,24 @@ public class BeforeUnloadEvent: Event {
     // XXX: member 'returnValue' is ignored
 }
 
+public enum BinaryType: JSString, JSValueCompatible {
+    case blob = "blob"
+    case arraybuffer = "arraybuffer"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public class BiquadFilterNode: AudioNode {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BiquadFilterNode].function! }
 
@@ -3360,6 +3378,56 @@ public enum ClientType: JSString, JSValueCompatible {
     }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class CloseEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CloseEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _wasClean = ReadonlyAttribute(jsObject: jsObject, name: Strings.wasClean)
+        _code = ReadonlyAttribute(jsObject: jsObject, name: Strings.code)
+        _reason = ReadonlyAttribute(jsObject: jsObject, name: Strings.reason)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: CloseEventInit? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var wasClean: Bool
+
+    @ReadonlyAttribute
+    public var code: UInt16
+
+    @ReadonlyAttribute
+    public var reason: String
+}
+
+public class CloseEventInit: BridgedDictionary {
+    public convenience init(wasClean: Bool, code: UInt16, reason: String) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.wasClean] = wasClean.jsValue
+        object[Strings.code] = code.jsValue
+        object[Strings.reason] = reason.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _wasClean = ReadWriteAttribute(jsObject: object, name: Strings.wasClean)
+        _code = ReadWriteAttribute(jsObject: object, name: Strings.code)
+        _reason = ReadWriteAttribute(jsObject: object, name: Strings.reason)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var wasClean: Bool
+
+    @ReadWriteAttribute
+    public var code: UInt16
+
+    @ReadWriteAttribute
+    public var reason: String
 }
 
 public enum ColorSpaceConversion: JSString, JSValueCompatible {
@@ -17169,6 +17237,76 @@ public class WaveShaperOptions: BridgedDictionary {
     public var oversample: OverSampleType
 }
 
+public class WebSocket: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebSocket].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
+        _bufferedAmount = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferedAmount)
+        _onopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onopen)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
+        _extensions = ReadonlyAttribute(jsObject: jsObject, name: Strings.extensions)
+        _protocol = ReadonlyAttribute(jsObject: jsObject, name: Strings.protocol)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
+        _binaryType = ReadWriteAttribute(jsObject: jsObject, name: Strings.binaryType)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(url: String, protocols: String_or_seq_of_String? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue, protocols?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var url: String
+
+    public static let CONNECTING: UInt16 = 0
+
+    public static let OPEN: UInt16 = 1
+
+    public static let CLOSING: UInt16 = 2
+
+    public static let CLOSED: UInt16 = 3
+
+    @ReadonlyAttribute
+    public var readyState: UInt16
+
+    @ReadonlyAttribute
+    public var bufferedAmount: UInt64
+
+    @ClosureAttribute1Optional
+    public var onopen: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onerror: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onclose: EventHandler
+
+    @ReadonlyAttribute
+    public var extensions: String
+
+    @ReadonlyAttribute
+    public var `protocol`: String
+
+    @inlinable public func close(code: UInt16? = nil, reason: String? = nil) {
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [code?.jsValue ?? .undefined, reason?.jsValue ?? .undefined])
+    }
+
+    @ClosureAttribute1Optional
+    public var onmessage: EventHandler
+
+    @ReadWriteAttribute
+    public var binaryType: BinaryType
+
+    @inlinable public func send(data: BlobPart) {
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue])
+    }
+}
+
 public class WheelEvent: MouseEvent {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WheelEvent].function! }
 
@@ -18997,6 +19135,7 @@ public enum console {
     @usableFromInline static let ChannelMergerNode: JSString = "ChannelMergerNode"
     @usableFromInline static let ChannelSplitterNode: JSString = "ChannelSplitterNode"
     @usableFromInline static let CharacterData: JSString = "CharacterData"
+    @usableFromInline static let CloseEvent: JSString = "CloseEvent"
     @usableFromInline static let Comment: JSString = "Comment"
     @usableFromInline static let CompositionEvent: JSString = "CompositionEvent"
     @usableFromInline static let ConstantSourceNode: JSString = "ConstantSourceNode"
@@ -19216,6 +19355,7 @@ public enum console {
     @usableFromInline static let VideoTrack: JSString = "VideoTrack"
     @usableFromInline static let VideoTrackList: JSString = "VideoTrackList"
     @usableFromInline static let WaveShaperNode: JSString = "WaveShaperNode"
+    @usableFromInline static let WebSocket: JSString = "WebSocket"
     @usableFromInline static let WheelEvent: JSString = "WheelEvent"
     @usableFromInline static let Window: JSString = "Window"
     @usableFromInline static let Worker: JSString = "Worker"
@@ -19369,6 +19509,7 @@ public enum console {
     @usableFromInline static let behavior: JSString = "behavior"
     @usableFromInline static let bezierCurveTo: JSString = "bezierCurveTo"
     @usableFromInline static let bgColor: JSString = "bgColor"
+    @usableFromInline static let binaryType: JSString = "binaryType"
     @usableFromInline static let blob: JSString = "blob"
     @usableFromInline static let block: JSString = "block"
     @usableFromInline static let blocking: JSString = "blocking"
@@ -19384,6 +19525,7 @@ public enum console {
     @usableFromInline static let buffer: JSString = "buffer"
     @usableFromInline static let bufferSize: JSString = "bufferSize"
     @usableFromInline static let buffered: JSString = "buffered"
+    @usableFromInline static let bufferedAmount: JSString = "bufferedAmount"
     @usableFromInline static let button: JSString = "button"
     @usableFromInline static let buttons: JSString = "buttons"
     @usableFromInline static let byobRequest: JSString = "byobRequest"
@@ -19667,6 +19809,7 @@ public enum console {
     @usableFromInline static let execCommand: JSString = "execCommand"
     @usableFromInline static let exponentialRampToValueAtTime: JSString = "exponentialRampToValueAtTime"
     @usableFromInline static let extends: JSString = "extends"
+    @usableFromInline static let extensions: JSString = "extensions"
     @usableFromInline static let external: JSString = "external"
     @usableFromInline static let extractContents: JSString = "extractContents"
     @usableFromInline static let f: JSString = "f"
@@ -20637,6 +20780,7 @@ public enum console {
     @usableFromInline static let w: JSString = "w"
     @usableFromInline static let waiting: JSString = "waiting"
     @usableFromInline static let warn: JSString = "warn"
+    @usableFromInline static let wasClean: JSString = "wasClean"
     @usableFromInline static let webkitMatchesSelector: JSString = "webkitMatchesSelector"
     @usableFromInline static let whatToShow: JSString = "whatToShow"
     @usableFromInline static let whenDefined: JSString = "whenDefined"
