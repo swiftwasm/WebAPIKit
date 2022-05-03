@@ -351,6 +351,89 @@ public enum AlphaOption: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
+public class AnalyserNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AnalyserNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _fftSize = ReadWriteAttribute(jsObject: jsObject, name: Strings.fftSize)
+        _frequencyBinCount = ReadonlyAttribute(jsObject: jsObject, name: Strings.frequencyBinCount)
+        _minDecibels = ReadWriteAttribute(jsObject: jsObject, name: Strings.minDecibels)
+        _maxDecibels = ReadWriteAttribute(jsObject: jsObject, name: Strings.maxDecibels)
+        _smoothingTimeConstant = ReadWriteAttribute(jsObject: jsObject, name: Strings.smoothingTimeConstant)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: AnalyserOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @inlinable public func getFloatFrequencyData(array: Float32Array) {
+        let this = jsObject
+        _ = this[Strings.getFloatFrequencyData].function!(this: this, arguments: [array.jsValue])
+    }
+
+    @inlinable public func getByteFrequencyData(array: Uint8Array) {
+        let this = jsObject
+        _ = this[Strings.getByteFrequencyData].function!(this: this, arguments: [array.jsValue])
+    }
+
+    @inlinable public func getFloatTimeDomainData(array: Float32Array) {
+        let this = jsObject
+        _ = this[Strings.getFloatTimeDomainData].function!(this: this, arguments: [array.jsValue])
+    }
+
+    @inlinable public func getByteTimeDomainData(array: Uint8Array) {
+        let this = jsObject
+        _ = this[Strings.getByteTimeDomainData].function!(this: this, arguments: [array.jsValue])
+    }
+
+    @ReadWriteAttribute
+    public var fftSize: UInt32
+
+    @ReadonlyAttribute
+    public var frequencyBinCount: UInt32
+
+    @ReadWriteAttribute
+    public var minDecibels: Double
+
+    @ReadWriteAttribute
+    public var maxDecibels: Double
+
+    @ReadWriteAttribute
+    public var smoothingTimeConstant: Double
+}
+
+public class AnalyserOptions: BridgedDictionary {
+    public convenience init(fftSize: UInt32, maxDecibels: Double, minDecibels: Double, smoothingTimeConstant: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.fftSize] = fftSize.jsValue
+        object[Strings.maxDecibels] = maxDecibels.jsValue
+        object[Strings.minDecibels] = minDecibels.jsValue
+        object[Strings.smoothingTimeConstant] = smoothingTimeConstant.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _fftSize = ReadWriteAttribute(jsObject: object, name: Strings.fftSize)
+        _maxDecibels = ReadWriteAttribute(jsObject: object, name: Strings.maxDecibels)
+        _minDecibels = ReadWriteAttribute(jsObject: object, name: Strings.minDecibels)
+        _smoothingTimeConstant = ReadWriteAttribute(jsObject: object, name: Strings.smoothingTimeConstant)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var fftSize: UInt32
+
+    @ReadWriteAttribute
+    public var maxDecibels: Double
+
+    @ReadWriteAttribute
+    public var minDecibels: Double
+
+    @ReadWriteAttribute
+    public var smoothingTimeConstant: Double
+}
+
 public protocol Animatable: JSBridgedClass {}
 public extension Animatable {
     @inlinable func animate(keyframes: JSObject?, options: Double_or_KeyframeAnimationOptions? = nil) -> Animation {
@@ -606,6 +689,296 @@ public class Attr: Node {
 
     @ReadonlyAttribute
     public var specified: Bool
+}
+
+public class AudioBuffer: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioBuffer].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _sampleRate = ReadonlyAttribute(jsObject: jsObject, name: Strings.sampleRate)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
+        _duration = ReadonlyAttribute(jsObject: jsObject, name: Strings.duration)
+        _numberOfChannels = ReadonlyAttribute(jsObject: jsObject, name: Strings.numberOfChannels)
+        self.jsObject = jsObject
+    }
+
+    @inlinable public convenience init(options: AudioBufferOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var sampleRate: Float
+
+    @ReadonlyAttribute
+    public var length: UInt32
+
+    @ReadonlyAttribute
+    public var duration: Double
+
+    @ReadonlyAttribute
+    public var numberOfChannels: UInt32
+
+    @inlinable public func getChannelData(channel: UInt32) -> Float32Array {
+        let this = jsObject
+        return this[Strings.getChannelData].function!(this: this, arguments: [channel.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func copyFromChannel(destination: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
+        let this = jsObject
+        _ = this[Strings.copyFromChannel].function!(this: this, arguments: [destination.jsValue, channelNumber.jsValue, bufferOffset?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func copyToChannel(source: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
+        let this = jsObject
+        _ = this[Strings.copyToChannel].function!(this: this, arguments: [source.jsValue, channelNumber.jsValue, bufferOffset?.jsValue ?? .undefined])
+    }
+}
+
+public class AudioBufferOptions: BridgedDictionary {
+    public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfChannels] = numberOfChannels.jsValue
+        object[Strings.length] = length.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfChannels = ReadWriteAttribute(jsObject: object, name: Strings.numberOfChannels)
+        _length = ReadWriteAttribute(jsObject: object, name: Strings.length)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfChannels: UInt32
+
+    @ReadWriteAttribute
+    public var length: UInt32
+
+    @ReadWriteAttribute
+    public var sampleRate: Float
+}
+
+public class AudioBufferSourceNode: AudioScheduledSourceNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioBufferSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _buffer = ReadWriteAttribute(jsObject: jsObject, name: Strings.buffer)
+        _playbackRate = ReadonlyAttribute(jsObject: jsObject, name: Strings.playbackRate)
+        _detune = ReadonlyAttribute(jsObject: jsObject, name: Strings.detune)
+        _loop = ReadWriteAttribute(jsObject: jsObject, name: Strings.loop)
+        _loopStart = ReadWriteAttribute(jsObject: jsObject, name: Strings.loopStart)
+        _loopEnd = ReadWriteAttribute(jsObject: jsObject, name: Strings.loopEnd)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: AudioBufferSourceOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var buffer: AudioBuffer?
+
+    @ReadonlyAttribute
+    public var playbackRate: AudioParam
+
+    @ReadonlyAttribute
+    public var detune: AudioParam
+
+    @ReadWriteAttribute
+    public var loop: Bool
+
+    @ReadWriteAttribute
+    public var loopStart: Double
+
+    @ReadWriteAttribute
+    public var loopEnd: Double
+
+    // XXX: member 'start' is ignored
+}
+
+public class AudioBufferSourceOptions: BridgedDictionary {
+    public convenience init(buffer: AudioBuffer?, detune: Float, loop: Bool, loopEnd: Double, loopStart: Double, playbackRate: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.buffer] = buffer.jsValue
+        object[Strings.detune] = detune.jsValue
+        object[Strings.loop] = loop.jsValue
+        object[Strings.loopEnd] = loopEnd.jsValue
+        object[Strings.loopStart] = loopStart.jsValue
+        object[Strings.playbackRate] = playbackRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _buffer = ReadWriteAttribute(jsObject: object, name: Strings.buffer)
+        _detune = ReadWriteAttribute(jsObject: object, name: Strings.detune)
+        _loop = ReadWriteAttribute(jsObject: object, name: Strings.loop)
+        _loopEnd = ReadWriteAttribute(jsObject: object, name: Strings.loopEnd)
+        _loopStart = ReadWriteAttribute(jsObject: object, name: Strings.loopStart)
+        _playbackRate = ReadWriteAttribute(jsObject: object, name: Strings.playbackRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var buffer: AudioBuffer?
+
+    @ReadWriteAttribute
+    public var detune: Float
+
+    @ReadWriteAttribute
+    public var loop: Bool
+
+    @ReadWriteAttribute
+    public var loopEnd: Double
+
+    @ReadWriteAttribute
+    public var loopStart: Double
+
+    @ReadWriteAttribute
+    public var playbackRate: Float
+}
+
+public class AudioContext: BaseAudioContext {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioContext].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _baseLatency = ReadonlyAttribute(jsObject: jsObject, name: Strings.baseLatency)
+        _outputLatency = ReadonlyAttribute(jsObject: jsObject, name: Strings.outputLatency)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(contextOptions: AudioContextOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var baseLatency: Double
+
+    @ReadonlyAttribute
+    public var outputLatency: Double
+
+    @inlinable public func getOutputTimestamp() -> AudioTimestamp {
+        let this = jsObject
+        return this[Strings.getOutputTimestamp].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func resume() -> JSPromise {
+        let this = jsObject
+        return this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func resume() async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @inlinable public func suspend() -> JSPromise {
+        let this = jsObject
+        return this[Strings.suspend].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func suspend() async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: []).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @inlinable public func close() -> JSPromise {
+        let this = jsObject
+        return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func close() async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @inlinable public func createMediaElementSource(mediaElement: HTMLMediaElement) -> MediaElementAudioSourceNode {
+        let this = jsObject
+        return this[Strings.createMediaElementSource].function!(this: this, arguments: [mediaElement.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createMediaStreamSource(mediaStream: MediaStream) -> MediaStreamAudioSourceNode {
+        let this = jsObject
+        return this[Strings.createMediaStreamSource].function!(this: this, arguments: [mediaStream.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createMediaStreamTrackSource(mediaStreamTrack: MediaStreamTrack) -> MediaStreamTrackAudioSourceNode {
+        let this = jsObject
+        return this[Strings.createMediaStreamTrackSource].function!(this: this, arguments: [mediaStreamTrack.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createMediaStreamDestination() -> MediaStreamAudioDestinationNode {
+        let this = jsObject
+        return this[Strings.createMediaStreamDestination].function!(this: this, arguments: []).fromJSValue()!
+    }
+}
+
+public enum AudioContextLatencyCategory: JSString, JSValueCompatible {
+    case balanced = "balanced"
+    case interactive = "interactive"
+    case playback = "playback"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class AudioContextOptions: BridgedDictionary {
+    public convenience init(latencyHint: AudioContextLatencyCategory_or_Double, sampleRate: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.latencyHint] = latencyHint.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _latencyHint = ReadWriteAttribute(jsObject: object, name: Strings.latencyHint)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var latencyHint: AudioContextLatencyCategory_or_Double
+
+    @ReadWriteAttribute
+    public var sampleRate: Float
+}
+
+public enum AudioContextState: JSString, JSValueCompatible {
+    case suspended = "suspended"
+    case running = "running"
+    case closed = "closed"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
 public class AudioData: JSBridgedClass {
@@ -877,6 +1250,18 @@ public class AudioDecoderSupport: BridgedDictionary {
     public var config: AudioDecoderConfig
 }
 
+public class AudioDestinationNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioDestinationNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _maxChannelCount = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxChannelCount)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var maxChannelCount: UInt32
+}
+
 public class AudioEncoder: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioEncoder].function! }
 
@@ -1016,6 +1401,334 @@ public class AudioEncoderSupport: BridgedDictionary {
     public var config: AudioEncoderConfig
 }
 
+public class AudioListener: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioListener].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _positionX = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionX)
+        _positionY = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionY)
+        _positionZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionZ)
+        _forwardX = ReadonlyAttribute(jsObject: jsObject, name: Strings.forwardX)
+        _forwardY = ReadonlyAttribute(jsObject: jsObject, name: Strings.forwardY)
+        _forwardZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.forwardZ)
+        _upX = ReadonlyAttribute(jsObject: jsObject, name: Strings.upX)
+        _upY = ReadonlyAttribute(jsObject: jsObject, name: Strings.upY)
+        _upZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.upZ)
+        self.jsObject = jsObject
+    }
+
+    @ReadonlyAttribute
+    public var positionX: AudioParam
+
+    @ReadonlyAttribute
+    public var positionY: AudioParam
+
+    @ReadonlyAttribute
+    public var positionZ: AudioParam
+
+    @ReadonlyAttribute
+    public var forwardX: AudioParam
+
+    @ReadonlyAttribute
+    public var forwardY: AudioParam
+
+    @ReadonlyAttribute
+    public var forwardZ: AudioParam
+
+    @ReadonlyAttribute
+    public var upX: AudioParam
+
+    @ReadonlyAttribute
+    public var upY: AudioParam
+
+    @ReadonlyAttribute
+    public var upZ: AudioParam
+
+    @inlinable public func setPosition(x: Float, y: Float, z: Float) {
+        let this = jsObject
+        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
+    }
+
+    @inlinable public func setOrientation(x: Float, y: Float, z: Float, xUp: Float, yUp: Float, zUp: Float) {
+        let _arg0 = x.jsValue
+        let _arg1 = y.jsValue
+        let _arg2 = z.jsValue
+        let _arg3 = xUp.jsValue
+        let _arg4 = yUp.jsValue
+        let _arg5 = zUp.jsValue
+        let this = jsObject
+        _ = this[Strings.setOrientation].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
+    }
+}
+
+public class AudioNode: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _context = ReadonlyAttribute(jsObject: jsObject, name: Strings.context)
+        _numberOfInputs = ReadonlyAttribute(jsObject: jsObject, name: Strings.numberOfInputs)
+        _numberOfOutputs = ReadonlyAttribute(jsObject: jsObject, name: Strings.numberOfOutputs)
+        _channelCount = ReadWriteAttribute(jsObject: jsObject, name: Strings.channelCount)
+        _channelCountMode = ReadWriteAttribute(jsObject: jsObject, name: Strings.channelCountMode)
+        _channelInterpretation = ReadWriteAttribute(jsObject: jsObject, name: Strings.channelInterpretation)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public func connect(destinationNode: AudioNode, output: UInt32? = nil, input: UInt32? = nil) -> Self {
+        let this = jsObject
+        return this[Strings.connect].function!(this: this, arguments: [destinationNode.jsValue, output?.jsValue ?? .undefined, input?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func connect(destinationParam: AudioParam, output: UInt32? = nil) {
+        let this = jsObject
+        _ = this[Strings.connect].function!(this: this, arguments: [destinationParam.jsValue, output?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func disconnect() {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [])
+    }
+
+    @inlinable public func disconnect(output: UInt32) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [output.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationNode: AudioNode) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue, output.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32, input: UInt32) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue, output.jsValue, input.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationParam: AudioParam) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationParam: AudioParam, output: UInt32) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue, output.jsValue])
+    }
+
+    @ReadonlyAttribute
+    public var context: BaseAudioContext
+
+    @ReadonlyAttribute
+    public var numberOfInputs: UInt32
+
+    @ReadonlyAttribute
+    public var numberOfOutputs: UInt32
+
+    @ReadWriteAttribute
+    public var channelCount: UInt32
+
+    @ReadWriteAttribute
+    public var channelCountMode: ChannelCountMode
+
+    @ReadWriteAttribute
+    public var channelInterpretation: ChannelInterpretation
+}
+
+public class AudioNodeOptions: BridgedDictionary {
+    public convenience init(channelCount: UInt32, channelCountMode: ChannelCountMode, channelInterpretation: ChannelInterpretation) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.channelCount] = channelCount.jsValue
+        object[Strings.channelCountMode] = channelCountMode.jsValue
+        object[Strings.channelInterpretation] = channelInterpretation.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _channelCount = ReadWriteAttribute(jsObject: object, name: Strings.channelCount)
+        _channelCountMode = ReadWriteAttribute(jsObject: object, name: Strings.channelCountMode)
+        _channelInterpretation = ReadWriteAttribute(jsObject: object, name: Strings.channelInterpretation)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var channelCount: UInt32
+
+    @ReadWriteAttribute
+    public var channelCountMode: ChannelCountMode
+
+    @ReadWriteAttribute
+    public var channelInterpretation: ChannelInterpretation
+}
+
+public class AudioParam: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioParam].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
+        _automationRate = ReadWriteAttribute(jsObject: jsObject, name: Strings.automationRate)
+        _defaultValue = ReadonlyAttribute(jsObject: jsObject, name: Strings.defaultValue)
+        _minValue = ReadonlyAttribute(jsObject: jsObject, name: Strings.minValue)
+        _maxValue = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxValue)
+        self.jsObject = jsObject
+    }
+
+    @ReadWriteAttribute
+    public var value: Float
+
+    @ReadWriteAttribute
+    public var automationRate: AutomationRate
+
+    @ReadonlyAttribute
+    public var defaultValue: Float
+
+    @ReadonlyAttribute
+    public var minValue: Float
+
+    @ReadonlyAttribute
+    public var maxValue: Float
+
+    @inlinable public func setValueAtTime(value: Float, startTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.setValueAtTime].function!(this: this, arguments: [value.jsValue, startTime.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func linearRampToValueAtTime(value: Float, endTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.linearRampToValueAtTime].function!(this: this, arguments: [value.jsValue, endTime.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func exponentialRampToValueAtTime(value: Float, endTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.exponentialRampToValueAtTime].function!(this: this, arguments: [value.jsValue, endTime.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func setTargetAtTime(target: Float, startTime: Double, timeConstant: Float) -> Self {
+        let this = jsObject
+        return this[Strings.setTargetAtTime].function!(this: this, arguments: [target.jsValue, startTime.jsValue, timeConstant.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func setValueCurveAtTime(values: [Float], startTime: Double, duration: Double) -> Self {
+        let this = jsObject
+        return this[Strings.setValueCurveAtTime].function!(this: this, arguments: [values.jsValue, startTime.jsValue, duration.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func cancelScheduledValues(cancelTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.cancelScheduledValues].function!(this: this, arguments: [cancelTime.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func cancelAndHoldAtTime(cancelTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.cancelAndHoldAtTime].function!(this: this, arguments: [cancelTime.jsValue]).fromJSValue()!
+    }
+}
+
+public class AudioParamDescriptor: BridgedDictionary {
+    public convenience init(name: String, defaultValue: Float, minValue: Float, maxValue: Float, automationRate: AutomationRate) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.name] = name.jsValue
+        object[Strings.defaultValue] = defaultValue.jsValue
+        object[Strings.minValue] = minValue.jsValue
+        object[Strings.maxValue] = maxValue.jsValue
+        object[Strings.automationRate] = automationRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _name = ReadWriteAttribute(jsObject: object, name: Strings.name)
+        _defaultValue = ReadWriteAttribute(jsObject: object, name: Strings.defaultValue)
+        _minValue = ReadWriteAttribute(jsObject: object, name: Strings.minValue)
+        _maxValue = ReadWriteAttribute(jsObject: object, name: Strings.maxValue)
+        _automationRate = ReadWriteAttribute(jsObject: object, name: Strings.automationRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var name: String
+
+    @ReadWriteAttribute
+    public var defaultValue: Float
+
+    @ReadWriteAttribute
+    public var minValue: Float
+
+    @ReadWriteAttribute
+    public var maxValue: Float
+
+    @ReadWriteAttribute
+    public var automationRate: AutomationRate
+}
+
+public class AudioParamMap: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioParamMap].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        self.jsObject = jsObject
+    }
+
+    // XXX: make me Map-like!
+}
+
+public class AudioProcessingEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioProcessingEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _playbackTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.playbackTime)
+        _inputBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.inputBuffer)
+        _outputBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.outputBuffer)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: AudioProcessingEventInit) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var playbackTime: Double
+
+    @ReadonlyAttribute
+    public var inputBuffer: AudioBuffer
+
+    @ReadonlyAttribute
+    public var outputBuffer: AudioBuffer
+}
+
+public class AudioProcessingEventInit: BridgedDictionary {
+    public convenience init(playbackTime: Double, inputBuffer: AudioBuffer, outputBuffer: AudioBuffer) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.playbackTime] = playbackTime.jsValue
+        object[Strings.inputBuffer] = inputBuffer.jsValue
+        object[Strings.outputBuffer] = outputBuffer.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _playbackTime = ReadWriteAttribute(jsObject: object, name: Strings.playbackTime)
+        _inputBuffer = ReadWriteAttribute(jsObject: object, name: Strings.inputBuffer)
+        _outputBuffer = ReadWriteAttribute(jsObject: object, name: Strings.outputBuffer)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var playbackTime: Double
+
+    @ReadWriteAttribute
+    public var inputBuffer: AudioBuffer
+
+    @ReadWriteAttribute
+    public var outputBuffer: AudioBuffer
+}
+
 public enum AudioSampleFormat: JSString, JSValueCompatible {
     case u8 = "u8"
     case s16 = "s16"
@@ -1038,6 +1751,49 @@ public enum AudioSampleFormat: JSString, JSValueCompatible {
     }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class AudioScheduledSourceNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioScheduledSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _onended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onended)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ClosureAttribute1Optional
+    public var onended: EventHandler
+
+    @inlinable public func start(when: Double? = nil) {
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func stop(when: Double? = nil) {
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [when?.jsValue ?? .undefined])
+    }
+}
+
+public class AudioTimestamp: BridgedDictionary {
+    public convenience init(contextTime: Double, performanceTime: DOMHighResTimeStamp) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.contextTime] = contextTime.jsValue
+        object[Strings.performanceTime] = performanceTime.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _contextTime = ReadWriteAttribute(jsObject: object, name: Strings.contextTime)
+        _performanceTime = ReadWriteAttribute(jsObject: object, name: Strings.performanceTime)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var contextTime: Double
+
+    @ReadWriteAttribute
+    public var performanceTime: DOMHighResTimeStamp
 }
 
 public class AudioTrack: JSBridgedClass {
@@ -1103,6 +1859,92 @@ public class AudioTrackList: EventTarget {
     public var onremovetrack: EventHandler
 }
 
+public class AudioWorklet: Worklet {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioWorklet].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+}
+
+public class AudioWorkletNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioWorkletNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _parameters = ReadonlyAttribute(jsObject: jsObject, name: Strings.parameters)
+        _port = ReadonlyAttribute(jsObject: jsObject, name: Strings.port)
+        _onprocessorerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onprocessorerror)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, name: String, options: AudioWorkletNodeOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, name.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var parameters: AudioParamMap
+
+    @ReadonlyAttribute
+    public var port: MessagePort
+
+    @ClosureAttribute1Optional
+    public var onprocessorerror: EventHandler
+}
+
+public class AudioWorkletNodeOptions: BridgedDictionary {
+    public convenience init(numberOfInputs: UInt32, numberOfOutputs: UInt32, outputChannelCount: [UInt32], parameterData: [String: Double], processorOptions: JSObject) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfInputs] = numberOfInputs.jsValue
+        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue
+        object[Strings.outputChannelCount] = outputChannelCount.jsValue
+        object[Strings.parameterData] = parameterData.jsValue
+        object[Strings.processorOptions] = processorOptions.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfInputs = ReadWriteAttribute(jsObject: object, name: Strings.numberOfInputs)
+        _numberOfOutputs = ReadWriteAttribute(jsObject: object, name: Strings.numberOfOutputs)
+        _outputChannelCount = ReadWriteAttribute(jsObject: object, name: Strings.outputChannelCount)
+        _parameterData = ReadWriteAttribute(jsObject: object, name: Strings.parameterData)
+        _processorOptions = ReadWriteAttribute(jsObject: object, name: Strings.processorOptions)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfInputs: UInt32
+
+    @ReadWriteAttribute
+    public var numberOfOutputs: UInt32
+
+    @ReadWriteAttribute
+    public var outputChannelCount: [UInt32]
+
+    @ReadWriteAttribute
+    public var parameterData: [String: Double]
+
+    @ReadWriteAttribute
+    public var processorOptions: JSObject
+}
+
+public enum AutomationRate: JSString, JSValueCompatible {
+    case aRate = "a-rate"
+    case kRate = "k-rate"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public class BarProp: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.BarProp].function! }
 
@@ -1115,6 +1957,136 @@ public class BarProp: JSBridgedClass {
 
     @ReadonlyAttribute
     public var visible: Bool
+}
+
+public class BaseAudioContext: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BaseAudioContext].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _destination = ReadonlyAttribute(jsObject: jsObject, name: Strings.destination)
+        _sampleRate = ReadonlyAttribute(jsObject: jsObject, name: Strings.sampleRate)
+        _currentTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentTime)
+        _listener = ReadonlyAttribute(jsObject: jsObject, name: Strings.listener)
+        _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
+        _audioWorklet = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioWorklet)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var destination: AudioDestinationNode
+
+    @ReadonlyAttribute
+    public var sampleRate: Float
+
+    @ReadonlyAttribute
+    public var currentTime: Double
+
+    @ReadonlyAttribute
+    public var listener: AudioListener
+
+    @ReadonlyAttribute
+    public var state: AudioContextState
+
+    @ReadonlyAttribute
+    public var audioWorklet: AudioWorklet
+
+    @ClosureAttribute1Optional
+    public var onstatechange: EventHandler
+
+    @inlinable public func createAnalyser() -> AnalyserNode {
+        let this = jsObject
+        return this[Strings.createAnalyser].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createBiquadFilter() -> BiquadFilterNode {
+        let this = jsObject
+        return this[Strings.createBiquadFilter].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createBuffer(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) -> AudioBuffer {
+        let this = jsObject
+        return this[Strings.createBuffer].function!(this: this, arguments: [numberOfChannels.jsValue, length.jsValue, sampleRate.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createBufferSource() -> AudioBufferSourceNode {
+        let this = jsObject
+        return this[Strings.createBufferSource].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createChannelMerger(numberOfInputs: UInt32? = nil) -> ChannelMergerNode {
+        let this = jsObject
+        return this[Strings.createChannelMerger].function!(this: this, arguments: [numberOfInputs?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createChannelSplitter(numberOfOutputs: UInt32? = nil) -> ChannelSplitterNode {
+        let this = jsObject
+        return this[Strings.createChannelSplitter].function!(this: this, arguments: [numberOfOutputs?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createConstantSource() -> ConstantSourceNode {
+        let this = jsObject
+        return this[Strings.createConstantSource].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createConvolver() -> ConvolverNode {
+        let this = jsObject
+        return this[Strings.createConvolver].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createDelay(maxDelayTime: Double? = nil) -> DelayNode {
+        let this = jsObject
+        return this[Strings.createDelay].function!(this: this, arguments: [maxDelayTime?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createDynamicsCompressor() -> DynamicsCompressorNode {
+        let this = jsObject
+        return this[Strings.createDynamicsCompressor].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createGain() -> GainNode {
+        let this = jsObject
+        return this[Strings.createGain].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createIIRFilter(feedforward: [Double], feedback: [Double]) -> IIRFilterNode {
+        let this = jsObject
+        return this[Strings.createIIRFilter].function!(this: this, arguments: [feedforward.jsValue, feedback.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createOscillator() -> OscillatorNode {
+        let this = jsObject
+        return this[Strings.createOscillator].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createPanner() -> PannerNode {
+        let this = jsObject
+        return this[Strings.createPanner].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createPeriodicWave(real: [Float], imag: [Float], constraints: PeriodicWaveConstraints? = nil) -> PeriodicWave {
+        let this = jsObject
+        return this[Strings.createPeriodicWave].function!(this: this, arguments: [real.jsValue, imag.jsValue, constraints?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createScriptProcessor(bufferSize: UInt32? = nil, numberOfInputChannels: UInt32? = nil, numberOfOutputChannels: UInt32? = nil) -> ScriptProcessorNode {
+        let this = jsObject
+        return this[Strings.createScriptProcessor].function!(this: this, arguments: [bufferSize?.jsValue ?? .undefined, numberOfInputChannels?.jsValue ?? .undefined, numberOfOutputChannels?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createStereoPanner() -> StereoPannerNode {
+        let this = jsObject
+        return this[Strings.createStereoPanner].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createWaveShaper() -> WaveShaperNode {
+        let this = jsObject
+        return this[Strings.createWaveShaper].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    // XXX: member 'decodeAudioData' is ignored
+
+    // XXX: member 'decodeAudioData' is ignored
 }
 
 public class BaseComputedKeyframe: BridgedDictionary {
@@ -1208,6 +2180,121 @@ public class BeforeUnloadEvent: Event {
     }
 
     // XXX: member 'returnValue' is ignored
+}
+
+public enum BinaryType: JSString, JSValueCompatible {
+    case blob = "blob"
+    case arraybuffer = "arraybuffer"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class BiquadFilterNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BiquadFilterNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _frequency = ReadonlyAttribute(jsObject: jsObject, name: Strings.frequency)
+        _detune = ReadonlyAttribute(jsObject: jsObject, name: Strings.detune)
+        _Q = ReadonlyAttribute(jsObject: jsObject, name: Strings.Q)
+        _gain = ReadonlyAttribute(jsObject: jsObject, name: Strings.gain)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: BiquadFilterOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var type: BiquadFilterType
+
+    @ReadonlyAttribute
+    public var frequency: AudioParam
+
+    @ReadonlyAttribute
+    public var detune: AudioParam
+
+    @ReadonlyAttribute
+    public var Q: AudioParam
+
+    @ReadonlyAttribute
+    public var gain: AudioParam
+
+    @inlinable public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
+        let this = jsObject
+        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue, magResponse.jsValue, phaseResponse.jsValue])
+    }
+}
+
+public class BiquadFilterOptions: BridgedDictionary {
+    public convenience init(type: BiquadFilterType, Q: Float, detune: Float, frequency: Float, gain: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.type] = type.jsValue
+        object[Strings.Q] = Q.jsValue
+        object[Strings.detune] = detune.jsValue
+        object[Strings.frequency] = frequency.jsValue
+        object[Strings.gain] = gain.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _type = ReadWriteAttribute(jsObject: object, name: Strings.type)
+        _Q = ReadWriteAttribute(jsObject: object, name: Strings.Q)
+        _detune = ReadWriteAttribute(jsObject: object, name: Strings.detune)
+        _frequency = ReadWriteAttribute(jsObject: object, name: Strings.frequency)
+        _gain = ReadWriteAttribute(jsObject: object, name: Strings.gain)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var type: BiquadFilterType
+
+    @ReadWriteAttribute
+    public var Q: Float
+
+    @ReadWriteAttribute
+    public var detune: Float
+
+    @ReadWriteAttribute
+    public var frequency: Float
+
+    @ReadWriteAttribute
+    public var gain: Float
+}
+
+public enum BiquadFilterType: JSString, JSValueCompatible {
+    case lowpass = "lowpass"
+    case highpass = "highpass"
+    case bandpass = "bandpass"
+    case lowshelf = "lowshelf"
+    case highshelf = "highshelf"
+    case peaking = "peaking"
+    case notch = "notch"
+    case allpass = "allpass"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
 public enum BitrateMode: JSString, JSValueCompatible {
@@ -2604,6 +3691,99 @@ public class CaretPosition: JSBridgedClass {
     }
 }
 
+public enum ChannelCountMode: JSString, JSValueCompatible {
+    case max = "max"
+    case clampedMax = "clamped-max"
+    case explicit = "explicit"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public enum ChannelInterpretation: JSString, JSValueCompatible {
+    case speakers = "speakers"
+    case discrete = "discrete"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class ChannelMergerNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ChannelMergerNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: ChannelMergerOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+}
+
+public class ChannelMergerOptions: BridgedDictionary {
+    public convenience init(numberOfInputs: UInt32) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfInputs] = numberOfInputs.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfInputs = ReadWriteAttribute(jsObject: object, name: Strings.numberOfInputs)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfInputs: UInt32
+}
+
+public class ChannelSplitterNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ChannelSplitterNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: ChannelSplitterOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+}
+
+public class ChannelSplitterOptions: BridgedDictionary {
+    public convenience init(numberOfOutputs: UInt32) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfOutputs = ReadWriteAttribute(jsObject: object, name: Strings.numberOfOutputs)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfOutputs: UInt32
+}
+
 public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CharacterData].function! }
 
@@ -2707,6 +3887,56 @@ public enum ClientType: JSString, JSValueCompatible {
     }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class CloseEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CloseEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _wasClean = ReadonlyAttribute(jsObject: jsObject, name: Strings.wasClean)
+        _code = ReadonlyAttribute(jsObject: jsObject, name: Strings.code)
+        _reason = ReadonlyAttribute(jsObject: jsObject, name: Strings.reason)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: CloseEventInit? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var wasClean: Bool
+
+    @ReadonlyAttribute
+    public var code: UInt16
+
+    @ReadonlyAttribute
+    public var reason: String
+}
+
+public class CloseEventInit: BridgedDictionary {
+    public convenience init(wasClean: Bool, code: UInt16, reason: String) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.wasClean] = wasClean.jsValue
+        object[Strings.code] = code.jsValue
+        object[Strings.reason] = reason.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _wasClean = ReadWriteAttribute(jsObject: object, name: Strings.wasClean)
+        _code = ReadWriteAttribute(jsObject: object, name: Strings.code)
+        _reason = ReadWriteAttribute(jsObject: object, name: Strings.reason)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var wasClean: Bool
+
+    @ReadWriteAttribute
+    public var code: UInt16
+
+    @ReadWriteAttribute
+    public var reason: String
 }
 
 public enum CodecState: JSString, JSValueCompatible {
@@ -2855,6 +4085,38 @@ public class ComputedEffectTiming: BridgedDictionary {
     public var currentIteration: Double?
 }
 
+public class ConstantSourceNode: AudioScheduledSourceNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ConstantSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _offset = ReadonlyAttribute(jsObject: jsObject, name: Strings.offset)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: ConstantSourceOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var offset: AudioParam
+}
+
+public class ConstantSourceOptions: BridgedDictionary {
+    public convenience init(offset: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.offset] = offset.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _offset = ReadWriteAttribute(jsObject: object, name: Strings.offset)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var offset: Float
+}
+
 public class ConstrainBooleanParameters: BridgedDictionary {
     public convenience init(exact: Bool, ideal: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -2958,6 +4220,47 @@ public class ConvertCoordinateOptions: BridgedDictionary {
 
     @ReadWriteAttribute
     public var toBox: CSSBoxType
+}
+
+public class ConvolverNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ConvolverNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _buffer = ReadWriteAttribute(jsObject: jsObject, name: Strings.buffer)
+        _normalize = ReadWriteAttribute(jsObject: jsObject, name: Strings.normalize)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: ConvolverOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var buffer: AudioBuffer?
+
+    @ReadWriteAttribute
+    public var normalize: Bool
+}
+
+public class ConvolverOptions: BridgedDictionary {
+    public convenience init(buffer: AudioBuffer?, disableNormalization: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.buffer] = buffer.jsValue
+        object[Strings.disableNormalization] = disableNormalization.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _buffer = ReadWriteAttribute(jsObject: object, name: Strings.buffer)
+        _disableNormalization = ReadWriteAttribute(jsObject: object, name: Strings.disableNormalization)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var buffer: AudioBuffer?
+
+    @ReadWriteAttribute
+    public var disableNormalization: Bool
 }
 
 public class CountQueuingStrategy: JSBridgedClass {
@@ -4363,6 +5666,43 @@ public class DataTransferItemList: JSBridgedClass {
     }
 }
 
+public class DelayNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DelayNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _delayTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.delayTime)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: DelayOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var delayTime: AudioParam
+}
+
+public class DelayOptions: BridgedDictionary {
+    public convenience init(maxDelayTime: Double, delayTime: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.maxDelayTime] = maxDelayTime.jsValue
+        object[Strings.delayTime] = delayTime.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _maxDelayTime = ReadWriteAttribute(jsObject: object, name: Strings.maxDelayTime)
+        _delayTime = ReadWriteAttribute(jsObject: object, name: Strings.delayTime)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var maxDelayTime: Double
+
+    @ReadWriteAttribute
+    public var delayTime: Double
+}
+
 public class DevicePermissionDescriptor: BridgedDictionary {
     public convenience init(deviceId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -4377,6 +5717,25 @@ public class DevicePermissionDescriptor: BridgedDictionary {
 
     @ReadWriteAttribute
     public var deviceId: String
+}
+
+public enum DistanceModelType: JSString, JSValueCompatible {
+    case linear = "linear"
+    case inverse = "inverse"
+    case exponential = "exponential"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
 public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentNode, XPathEvaluatorBase, GlobalEventHandlers, DocumentAndElementEventHandlers, GeometryUtils {
@@ -4922,6 +6281,78 @@ public class DragEventInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var dataTransfer: DataTransfer?
+}
+
+public class DynamicsCompressorNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DynamicsCompressorNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _threshold = ReadonlyAttribute(jsObject: jsObject, name: Strings.threshold)
+        _knee = ReadonlyAttribute(jsObject: jsObject, name: Strings.knee)
+        _ratio = ReadonlyAttribute(jsObject: jsObject, name: Strings.ratio)
+        _reduction = ReadonlyAttribute(jsObject: jsObject, name: Strings.reduction)
+        _attack = ReadonlyAttribute(jsObject: jsObject, name: Strings.attack)
+        _release = ReadonlyAttribute(jsObject: jsObject, name: Strings.release)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: DynamicsCompressorOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var threshold: AudioParam
+
+    @ReadonlyAttribute
+    public var knee: AudioParam
+
+    @ReadonlyAttribute
+    public var ratio: AudioParam
+
+    @ReadonlyAttribute
+    public var reduction: Float
+
+    @ReadonlyAttribute
+    public var attack: AudioParam
+
+    @ReadonlyAttribute
+    public var release: AudioParam
+}
+
+public class DynamicsCompressorOptions: BridgedDictionary {
+    public convenience init(attack: Float, knee: Float, ratio: Float, release: Float, threshold: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.attack] = attack.jsValue
+        object[Strings.knee] = knee.jsValue
+        object[Strings.ratio] = ratio.jsValue
+        object[Strings.release] = release.jsValue
+        object[Strings.threshold] = threshold.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _attack = ReadWriteAttribute(jsObject: object, name: Strings.attack)
+        _knee = ReadWriteAttribute(jsObject: object, name: Strings.knee)
+        _ratio = ReadWriteAttribute(jsObject: object, name: Strings.ratio)
+        _release = ReadWriteAttribute(jsObject: object, name: Strings.release)
+        _threshold = ReadWriteAttribute(jsObject: object, name: Strings.threshold)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var attack: Float
+
+    @ReadWriteAttribute
+    public var knee: Float
+
+    @ReadWriteAttribute
+    public var ratio: Float
+
+    @ReadWriteAttribute
+    public var release: Float
+
+    @ReadWriteAttribute
+    public var threshold: Float
 }
 
 public class EffectTiming: BridgedDictionary {
@@ -6324,6 +7755,38 @@ public enum FrameType: JSString, JSValueCompatible {
     }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class GainNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.GainNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _gain = ReadonlyAttribute(jsObject: jsObject, name: Strings.gain)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: GainOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var gain: AudioParam
+}
+
+public class GainOptions: BridgedDictionary {
+    public convenience init(gain: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.gain] = gain.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _gain = ReadWriteAttribute(jsObject: object, name: Strings.gain)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var gain: Float
 }
 
 public protocol GenericTransformStream: JSBridgedClass {}
@@ -10280,6 +11743,44 @@ public class History: JSBridgedClass {
     }
 }
 
+public class IIRFilterNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.IIRFilterNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: IIRFilterOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options.jsValue]))
+    }
+
+    @inlinable public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
+        let this = jsObject
+        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue, magResponse.jsValue, phaseResponse.jsValue])
+    }
+}
+
+public class IIRFilterOptions: BridgedDictionary {
+    public convenience init(feedforward: [Double], feedback: [Double]) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.feedforward] = feedforward.jsValue
+        object[Strings.feedback] = feedback.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _feedforward = ReadWriteAttribute(jsObject: object, name: Strings.feedforward)
+        _feedback = ReadWriteAttribute(jsObject: object, name: Strings.feedback)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var feedforward: [Double]
+
+    @ReadWriteAttribute
+    public var feedback: [Double]
+}
+
 public class ImageBitmap: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ImageBitmap].function! }
 
@@ -11156,6 +12657,38 @@ public class MediaDevices: EventTarget {
     }
 }
 
+public class MediaElementAudioSourceNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaElementAudioSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _mediaElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaElement)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: AudioContext, options: MediaElementAudioSourceOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var mediaElement: HTMLMediaElement
+}
+
+public class MediaElementAudioSourceOptions: BridgedDictionary {
+    public convenience init(mediaElement: HTMLMediaElement) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.mediaElement] = mediaElement.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _mediaElement = ReadWriteAttribute(jsObject: object, name: Strings.mediaElement)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var mediaElement: HTMLMediaElement
+}
+
 public class MediaError: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaError].function! }
 
@@ -11476,6 +13009,54 @@ public class MediaStream: EventTarget {
     public var onremovetrack: EventHandler
 }
 
+public class MediaStreamAudioDestinationNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamAudioDestinationNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _stream = ReadonlyAttribute(jsObject: jsObject, name: Strings.stream)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: AudioContext, options: AudioNodeOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var stream: MediaStream
+}
+
+public class MediaStreamAudioSourceNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamAudioSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _mediaStream = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaStream)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: AudioContext, options: MediaStreamAudioSourceOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var mediaStream: MediaStream
+}
+
+public class MediaStreamAudioSourceOptions: BridgedDictionary {
+    public convenience init(mediaStream: MediaStream) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.mediaStream] = mediaStream.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _mediaStream = ReadWriteAttribute(jsObject: object, name: Strings.mediaStream)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var mediaStream: MediaStream
+}
+
 public class MediaStreamConstraints: BridgedDictionary {
     public convenience init(video: Bool_or_MediaTrackConstraints, audio: Bool_or_MediaTrackConstraints) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -11576,6 +13157,34 @@ public class MediaStreamTrack: EventTarget {
         let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
         _ = try await _promise.value
     }
+}
+
+public class MediaStreamTrackAudioSourceNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrackAudioSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: AudioContext, options: MediaStreamTrackAudioSourceOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options.jsValue]))
+    }
+}
+
+public class MediaStreamTrackAudioSourceOptions: BridgedDictionary {
+    public convenience init(mediaStreamTrack: MediaStreamTrack) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.mediaStreamTrack] = mediaStreamTrack.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _mediaStreamTrack = ReadWriteAttribute(jsObject: object, name: Strings.mediaStreamTrack)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var mediaStreamTrack: MediaStreamTrack
 }
 
 public class MediaStreamTrackEvent: Event {
@@ -12987,6 +14596,124 @@ public extension NonElementParentNode {
     }
 }
 
+public class OfflineAudioCompletionEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OfflineAudioCompletionEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _renderedBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.renderedBuffer)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: OfflineAudioCompletionEventInit) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var renderedBuffer: AudioBuffer
+}
+
+public class OfflineAudioCompletionEventInit: BridgedDictionary {
+    public convenience init(renderedBuffer: AudioBuffer) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.renderedBuffer] = renderedBuffer.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _renderedBuffer = ReadWriteAttribute(jsObject: object, name: Strings.renderedBuffer)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var renderedBuffer: AudioBuffer
+}
+
+public class OfflineAudioContext: BaseAudioContext {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OfflineAudioContext].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
+        _oncomplete = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncomplete)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(contextOptions: OfflineAudioContextOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions.jsValue]))
+    }
+
+    @inlinable public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [numberOfChannels.jsValue, length.jsValue, sampleRate.jsValue]))
+    }
+
+    @inlinable public func startRendering() -> JSPromise {
+        let this = jsObject
+        return this[Strings.startRendering].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func startRendering() async throws -> AudioBuffer {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.startRendering].function!(this: this, arguments: []).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
+
+    @inlinable public func resume() -> JSPromise {
+        let this = jsObject
+        return this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func resume() async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @inlinable public func suspend(suspendTime: Double) -> JSPromise {
+        let this = jsObject
+        return this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue]).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func suspend(suspendTime: Double) async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue]).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @ReadonlyAttribute
+    public var length: UInt32
+
+    @ClosureAttribute1Optional
+    public var oncomplete: EventHandler
+}
+
+public class OfflineAudioContextOptions: BridgedDictionary {
+    public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfChannels] = numberOfChannels.jsValue
+        object[Strings.length] = length.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfChannels = ReadWriteAttribute(jsObject: object, name: Strings.numberOfChannels)
+        _length = ReadWriteAttribute(jsObject: object, name: Strings.length)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfChannels: UInt32
+
+    @ReadWriteAttribute
+    public var length: UInt32
+
+    @ReadWriteAttribute
+    public var sampleRate: Float
+}
+
 public class OffscreenCanvas: EventTarget {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OffscreenCanvas].function! }
 
@@ -13128,6 +14855,106 @@ public class OptionalEffectTiming: BridgedDictionary {
     public var easing: String
 }
 
+public class OscillatorNode: AudioScheduledSourceNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OscillatorNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _frequency = ReadonlyAttribute(jsObject: jsObject, name: Strings.frequency)
+        _detune = ReadonlyAttribute(jsObject: jsObject, name: Strings.detune)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: OscillatorOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var type: OscillatorType
+
+    @ReadonlyAttribute
+    public var frequency: AudioParam
+
+    @ReadonlyAttribute
+    public var detune: AudioParam
+
+    @inlinable public func setPeriodicWave(periodicWave: PeriodicWave) {
+        let this = jsObject
+        _ = this[Strings.setPeriodicWave].function!(this: this, arguments: [periodicWave.jsValue])
+    }
+}
+
+public class OscillatorOptions: BridgedDictionary {
+    public convenience init(type: OscillatorType, frequency: Float, detune: Float, periodicWave: PeriodicWave) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.type] = type.jsValue
+        object[Strings.frequency] = frequency.jsValue
+        object[Strings.detune] = detune.jsValue
+        object[Strings.periodicWave] = periodicWave.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _type = ReadWriteAttribute(jsObject: object, name: Strings.type)
+        _frequency = ReadWriteAttribute(jsObject: object, name: Strings.frequency)
+        _detune = ReadWriteAttribute(jsObject: object, name: Strings.detune)
+        _periodicWave = ReadWriteAttribute(jsObject: object, name: Strings.periodicWave)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var type: OscillatorType
+
+    @ReadWriteAttribute
+    public var frequency: Float
+
+    @ReadWriteAttribute
+    public var detune: Float
+
+    @ReadWriteAttribute
+    public var periodicWave: PeriodicWave
+}
+
+public enum OscillatorType: JSString, JSValueCompatible {
+    case sine = "sine"
+    case square = "square"
+    case sawtooth = "sawtooth"
+    case triangle = "triangle"
+    case custom = "custom"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public enum OverSampleType: JSString, JSValueCompatible {
+    case none = "none"
+    case _2x = "2x"
+    case _4x = "4x"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public class OverconstrainedError: DOMException {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OverconstrainedError].function! }
 
@@ -13174,6 +15001,183 @@ public class PageTransitionEventInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var persisted: Bool
+}
+
+public class PannerNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PannerNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _panningModel = ReadWriteAttribute(jsObject: jsObject, name: Strings.panningModel)
+        _positionX = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionX)
+        _positionY = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionY)
+        _positionZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionZ)
+        _orientationX = ReadonlyAttribute(jsObject: jsObject, name: Strings.orientationX)
+        _orientationY = ReadonlyAttribute(jsObject: jsObject, name: Strings.orientationY)
+        _orientationZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.orientationZ)
+        _distanceModel = ReadWriteAttribute(jsObject: jsObject, name: Strings.distanceModel)
+        _refDistance = ReadWriteAttribute(jsObject: jsObject, name: Strings.refDistance)
+        _maxDistance = ReadWriteAttribute(jsObject: jsObject, name: Strings.maxDistance)
+        _rolloffFactor = ReadWriteAttribute(jsObject: jsObject, name: Strings.rolloffFactor)
+        _coneInnerAngle = ReadWriteAttribute(jsObject: jsObject, name: Strings.coneInnerAngle)
+        _coneOuterAngle = ReadWriteAttribute(jsObject: jsObject, name: Strings.coneOuterAngle)
+        _coneOuterGain = ReadWriteAttribute(jsObject: jsObject, name: Strings.coneOuterGain)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: PannerOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var panningModel: PanningModelType
+
+    @ReadonlyAttribute
+    public var positionX: AudioParam
+
+    @ReadonlyAttribute
+    public var positionY: AudioParam
+
+    @ReadonlyAttribute
+    public var positionZ: AudioParam
+
+    @ReadonlyAttribute
+    public var orientationX: AudioParam
+
+    @ReadonlyAttribute
+    public var orientationY: AudioParam
+
+    @ReadonlyAttribute
+    public var orientationZ: AudioParam
+
+    @ReadWriteAttribute
+    public var distanceModel: DistanceModelType
+
+    @ReadWriteAttribute
+    public var refDistance: Double
+
+    @ReadWriteAttribute
+    public var maxDistance: Double
+
+    @ReadWriteAttribute
+    public var rolloffFactor: Double
+
+    @ReadWriteAttribute
+    public var coneInnerAngle: Double
+
+    @ReadWriteAttribute
+    public var coneOuterAngle: Double
+
+    @ReadWriteAttribute
+    public var coneOuterGain: Double
+
+    @inlinable public func setPosition(x: Float, y: Float, z: Float) {
+        let this = jsObject
+        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
+    }
+
+    @inlinable public func setOrientation(x: Float, y: Float, z: Float) {
+        let this = jsObject
+        _ = this[Strings.setOrientation].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
+    }
+}
+
+public class PannerOptions: BridgedDictionary {
+    public convenience init(panningModel: PanningModelType, distanceModel: DistanceModelType, positionX: Float, positionY: Float, positionZ: Float, orientationX: Float, orientationY: Float, orientationZ: Float, refDistance: Double, maxDistance: Double, rolloffFactor: Double, coneInnerAngle: Double, coneOuterAngle: Double, coneOuterGain: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.panningModel] = panningModel.jsValue
+        object[Strings.distanceModel] = distanceModel.jsValue
+        object[Strings.positionX] = positionX.jsValue
+        object[Strings.positionY] = positionY.jsValue
+        object[Strings.positionZ] = positionZ.jsValue
+        object[Strings.orientationX] = orientationX.jsValue
+        object[Strings.orientationY] = orientationY.jsValue
+        object[Strings.orientationZ] = orientationZ.jsValue
+        object[Strings.refDistance] = refDistance.jsValue
+        object[Strings.maxDistance] = maxDistance.jsValue
+        object[Strings.rolloffFactor] = rolloffFactor.jsValue
+        object[Strings.coneInnerAngle] = coneInnerAngle.jsValue
+        object[Strings.coneOuterAngle] = coneOuterAngle.jsValue
+        object[Strings.coneOuterGain] = coneOuterGain.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _panningModel = ReadWriteAttribute(jsObject: object, name: Strings.panningModel)
+        _distanceModel = ReadWriteAttribute(jsObject: object, name: Strings.distanceModel)
+        _positionX = ReadWriteAttribute(jsObject: object, name: Strings.positionX)
+        _positionY = ReadWriteAttribute(jsObject: object, name: Strings.positionY)
+        _positionZ = ReadWriteAttribute(jsObject: object, name: Strings.positionZ)
+        _orientationX = ReadWriteAttribute(jsObject: object, name: Strings.orientationX)
+        _orientationY = ReadWriteAttribute(jsObject: object, name: Strings.orientationY)
+        _orientationZ = ReadWriteAttribute(jsObject: object, name: Strings.orientationZ)
+        _refDistance = ReadWriteAttribute(jsObject: object, name: Strings.refDistance)
+        _maxDistance = ReadWriteAttribute(jsObject: object, name: Strings.maxDistance)
+        _rolloffFactor = ReadWriteAttribute(jsObject: object, name: Strings.rolloffFactor)
+        _coneInnerAngle = ReadWriteAttribute(jsObject: object, name: Strings.coneInnerAngle)
+        _coneOuterAngle = ReadWriteAttribute(jsObject: object, name: Strings.coneOuterAngle)
+        _coneOuterGain = ReadWriteAttribute(jsObject: object, name: Strings.coneOuterGain)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var panningModel: PanningModelType
+
+    @ReadWriteAttribute
+    public var distanceModel: DistanceModelType
+
+    @ReadWriteAttribute
+    public var positionX: Float
+
+    @ReadWriteAttribute
+    public var positionY: Float
+
+    @ReadWriteAttribute
+    public var positionZ: Float
+
+    @ReadWriteAttribute
+    public var orientationX: Float
+
+    @ReadWriteAttribute
+    public var orientationY: Float
+
+    @ReadWriteAttribute
+    public var orientationZ: Float
+
+    @ReadWriteAttribute
+    public var refDistance: Double
+
+    @ReadWriteAttribute
+    public var maxDistance: Double
+
+    @ReadWriteAttribute
+    public var rolloffFactor: Double
+
+    @ReadWriteAttribute
+    public var coneInnerAngle: Double
+
+    @ReadWriteAttribute
+    public var coneOuterAngle: Double
+
+    @ReadWriteAttribute
+    public var coneOuterGain: Double
+}
+
+public enum PanningModelType: JSString, JSValueCompatible {
+    case equalpower = "equalpower"
+    case hRTF = "HRTF"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
 public protocol ParentNode: JSBridgedClass {}
@@ -13251,6 +15255,57 @@ public class Performance: EventTarget {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
+}
+
+public class PeriodicWave: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PeriodicWave].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        self.jsObject = jsObject
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: PeriodicWaveOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+}
+
+public class PeriodicWaveConstraints: BridgedDictionary {
+    public convenience init(disableNormalization: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.disableNormalization] = disableNormalization.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _disableNormalization = ReadWriteAttribute(jsObject: object, name: Strings.disableNormalization)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var disableNormalization: Bool
+}
+
+public class PeriodicWaveOptions: BridgedDictionary {
+    public convenience init(real: [Float], imag: [Float]) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.real] = real.jsValue
+        object[Strings.imag] = imag.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _real = ReadWriteAttribute(jsObject: object, name: Strings.real)
+        _imag = ReadWriteAttribute(jsObject: object, name: Strings.imag)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var real: [Float]
+
+    @ReadWriteAttribute
+    public var imag: [Float]
 }
 
 public class PlaneLayout: BridgedDictionary {
@@ -14571,6 +16626,22 @@ public class Screen: JSBridgedClass {
     public var pixelDepth: UInt32
 }
 
+public class ScriptProcessorNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ScriptProcessorNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _onaudioprocess = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaudioprocess)
+        _bufferSize = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferSize)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ClosureAttribute1Optional
+    public var onaudioprocess: EventHandler
+
+    @ReadonlyAttribute
+    public var bufferSize: Int32
+}
+
 public enum ScrollBehavior: JSString, JSValueCompatible {
     case auto = "auto"
     case smooth = "smooth"
@@ -15057,6 +17128,38 @@ public class StaticRangeInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var endOffset: UInt32
+}
+
+public class StereoPannerNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.StereoPannerNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _pan = ReadonlyAttribute(jsObject: jsObject, name: Strings.pan)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: StereoPannerOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var pan: AudioParam
+}
+
+public class StereoPannerOptions: BridgedDictionary {
+    public convenience init(pan: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.pan] = pan.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _pan = ReadWriteAttribute(jsObject: object, name: Strings.pan)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var pan: Float
 }
 
 public class Storage: JSBridgedClass {
@@ -15780,9 +17883,6 @@ public typealias GLuint = UInt32
 public typealias GLfloat = Float
 public typealias GLclampf = Float
 
-public typealias GLint64 = Int64
-public typealias GLuint64 = UInt64
-
 public typealias MutationCallback = ([MutationRecord], MutationObserver) -> Void
 public typealias BlobCallback = (Blob?) -> Void
 public typealias FunctionStringCallback = (String) -> Void
@@ -15802,6 +17902,9 @@ public typealias TransformerStartCallback = (TransformStreamDefaultController) -
 public typealias TransformerFlushCallback = (TransformStreamDefaultController) -> JSPromise
 public typealias TransformerTransformCallback = (JSValue, TransformStreamDefaultController) -> JSPromise
 public typealias QueuingStrategySize = (JSValue) -> Double
+public typealias DecodeErrorCallback = (DOMException) -> Void
+public typealias DecodeSuccessCallback = (AudioBuffer) -> Void
+public typealias AudioWorkletProcessCallback = ([[Float32Array]], [[Float32Array]], JSObject) -> Bool
 public typealias NavigatorUserMediaSuccessCallback = (MediaStream) -> Void
 public typealias NavigatorUserMediaErrorCallback = (DOMException) -> Void
 public typealias AudioDataOutputCallback = (AudioData) -> Void
@@ -17028,1485 +19131,45 @@ public enum VideoTransferCharacteristics: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
-public class WebGL2RenderingContext: JSBridgedClass, WebGLRenderingContextBase, WebGL2RenderingContextBase, WebGL2RenderingContextOverloads {
-    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.WebGL2RenderingContext].function! }
-
-    public let jsObject: JSObject
+public class WaveShaperNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WaveShaperNode].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        self.jsObject = jsObject
+        _curve = ReadWriteAttribute(jsObject: jsObject, name: Strings.curve)
+        _oversample = ReadWriteAttribute(jsObject: jsObject, name: Strings.oversample)
+        super.init(unsafelyWrapping: jsObject)
     }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: WaveShaperOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var curve: Float32Array?
+
+    @ReadWriteAttribute
+    public var oversample: OverSampleType
 }
 
-public protocol WebGL2RenderingContextBase: JSBridgedClass {}
-public extension WebGL2RenderingContextBase {
-    @inlinable static var READ_BUFFER: GLenum { 0x0C02 }
-
-    @inlinable static var UNPACK_ROW_LENGTH: GLenum { 0x0CF2 }
-
-    @inlinable static var UNPACK_SKIP_ROWS: GLenum { 0x0CF3 }
-
-    @inlinable static var UNPACK_SKIP_PIXELS: GLenum { 0x0CF4 }
-
-    @inlinable static var PACK_ROW_LENGTH: GLenum { 0x0D02 }
-
-    @inlinable static var PACK_SKIP_ROWS: GLenum { 0x0D03 }
-
-    @inlinable static var PACK_SKIP_PIXELS: GLenum { 0x0D04 }
-
-    @inlinable static var COLOR: GLenum { 0x1800 }
-
-    @inlinable static var DEPTH: GLenum { 0x1801 }
-
-    @inlinable static var STENCIL: GLenum { 0x1802 }
-
-    @inlinable static var RED: GLenum { 0x1903 }
-
-    @inlinable static var RGB8: GLenum { 0x8051 }
-
-    @inlinable static var RGBA8: GLenum { 0x8058 }
-
-    @inlinable static var RGB10_A2: GLenum { 0x8059 }
-
-    @inlinable static var TEXTURE_BINDING_3D: GLenum { 0x806A }
-
-    @inlinable static var UNPACK_SKIP_IMAGES: GLenum { 0x806D }
-
-    @inlinable static var UNPACK_IMAGE_HEIGHT: GLenum { 0x806E }
-
-    @inlinable static var TEXTURE_3D: GLenum { 0x806F }
-
-    @inlinable static var TEXTURE_WRAP_R: GLenum { 0x8072 }
-
-    @inlinable static var MAX_3D_TEXTURE_SIZE: GLenum { 0x8073 }
-
-    @inlinable static var UNSIGNED_INT_2_10_10_10_REV: GLenum { 0x8368 }
-
-    @inlinable static var MAX_ELEMENTS_VERTICES: GLenum { 0x80E8 }
-
-    @inlinable static var MAX_ELEMENTS_INDICES: GLenum { 0x80E9 }
-
-    @inlinable static var TEXTURE_MIN_LOD: GLenum { 0x813A }
-
-    @inlinable static var TEXTURE_MAX_LOD: GLenum { 0x813B }
-
-    @inlinable static var TEXTURE_BASE_LEVEL: GLenum { 0x813C }
-
-    @inlinable static var TEXTURE_MAX_LEVEL: GLenum { 0x813D }
-
-    @inlinable static var MIN: GLenum { 0x8007 }
-
-    @inlinable static var MAX: GLenum { 0x8008 }
-
-    @inlinable static var DEPTH_COMPONENT24: GLenum { 0x81A6 }
-
-    @inlinable static var MAX_TEXTURE_LOD_BIAS: GLenum { 0x84FD }
-
-    @inlinable static var TEXTURE_COMPARE_MODE: GLenum { 0x884C }
-
-    @inlinable static var TEXTURE_COMPARE_FUNC: GLenum { 0x884D }
-
-    @inlinable static var CURRENT_QUERY: GLenum { 0x8865 }
-
-    @inlinable static var QUERY_RESULT: GLenum { 0x8866 }
-
-    @inlinable static var QUERY_RESULT_AVAILABLE: GLenum { 0x8867 }
-
-    @inlinable static var STREAM_READ: GLenum { 0x88E1 }
-
-    @inlinable static var STREAM_COPY: GLenum { 0x88E2 }
-
-    @inlinable static var STATIC_READ: GLenum { 0x88E5 }
-
-    @inlinable static var STATIC_COPY: GLenum { 0x88E6 }
-
-    @inlinable static var DYNAMIC_READ: GLenum { 0x88E9 }
-
-    @inlinable static var DYNAMIC_COPY: GLenum { 0x88EA }
-
-    @inlinable static var MAX_DRAW_BUFFERS: GLenum { 0x8824 }
-
-    @inlinable static var DRAW_BUFFER0: GLenum { 0x8825 }
-
-    @inlinable static var DRAW_BUFFER1: GLenum { 0x8826 }
-
-    @inlinable static var DRAW_BUFFER2: GLenum { 0x8827 }
-
-    @inlinable static var DRAW_BUFFER3: GLenum { 0x8828 }
-
-    @inlinable static var DRAW_BUFFER4: GLenum { 0x8829 }
-
-    @inlinable static var DRAW_BUFFER5: GLenum { 0x882A }
-
-    @inlinable static var DRAW_BUFFER6: GLenum { 0x882B }
-
-    @inlinable static var DRAW_BUFFER7: GLenum { 0x882C }
-
-    @inlinable static var DRAW_BUFFER8: GLenum { 0x882D }
-
-    @inlinable static var DRAW_BUFFER9: GLenum { 0x882E }
-
-    @inlinable static var DRAW_BUFFER10: GLenum { 0x882F }
-
-    @inlinable static var DRAW_BUFFER11: GLenum { 0x8830 }
-
-    @inlinable static var DRAW_BUFFER12: GLenum { 0x8831 }
-
-    @inlinable static var DRAW_BUFFER13: GLenum { 0x8832 }
-
-    @inlinable static var DRAW_BUFFER14: GLenum { 0x8833 }
-
-    @inlinable static var DRAW_BUFFER15: GLenum { 0x8834 }
-
-    @inlinable static var MAX_FRAGMENT_UNIFORM_COMPONENTS: GLenum { 0x8B49 }
-
-    @inlinable static var MAX_VERTEX_UNIFORM_COMPONENTS: GLenum { 0x8B4A }
-
-    @inlinable static var SAMPLER_3D: GLenum { 0x8B5F }
-
-    @inlinable static var SAMPLER_2D_SHADOW: GLenum { 0x8B62 }
-
-    @inlinable static var FRAGMENT_SHADER_DERIVATIVE_HINT: GLenum { 0x8B8B }
-
-    @inlinable static var PIXEL_PACK_BUFFER: GLenum { 0x88EB }
-
-    @inlinable static var PIXEL_UNPACK_BUFFER: GLenum { 0x88EC }
-
-    @inlinable static var PIXEL_PACK_BUFFER_BINDING: GLenum { 0x88ED }
-
-    @inlinable static var PIXEL_UNPACK_BUFFER_BINDING: GLenum { 0x88EF }
-
-    @inlinable static var FLOAT_MAT2x3: GLenum { 0x8B65 }
-
-    @inlinable static var FLOAT_MAT2x4: GLenum { 0x8B66 }
-
-    @inlinable static var FLOAT_MAT3x2: GLenum { 0x8B67 }
-
-    @inlinable static var FLOAT_MAT3x4: GLenum { 0x8B68 }
-
-    @inlinable static var FLOAT_MAT4x2: GLenum { 0x8B69 }
-
-    @inlinable static var FLOAT_MAT4x3: GLenum { 0x8B6A }
-
-    @inlinable static var SRGB: GLenum { 0x8C40 }
-
-    @inlinable static var SRGB8: GLenum { 0x8C41 }
-
-    @inlinable static var SRGB8_ALPHA8: GLenum { 0x8C43 }
-
-    @inlinable static var COMPARE_REF_TO_TEXTURE: GLenum { 0x884E }
-
-    @inlinable static var RGBA32F: GLenum { 0x8814 }
-
-    @inlinable static var RGB32F: GLenum { 0x8815 }
-
-    @inlinable static var RGBA16F: GLenum { 0x881A }
-
-    @inlinable static var RGB16F: GLenum { 0x881B }
-
-    @inlinable static var VERTEX_ATTRIB_ARRAY_INTEGER: GLenum { 0x88FD }
-
-    @inlinable static var MAX_ARRAY_TEXTURE_LAYERS: GLenum { 0x88FF }
-
-    @inlinable static var MIN_PROGRAM_TEXEL_OFFSET: GLenum { 0x8904 }
-
-    @inlinable static var MAX_PROGRAM_TEXEL_OFFSET: GLenum { 0x8905 }
-
-    @inlinable static var MAX_VARYING_COMPONENTS: GLenum { 0x8B4B }
-
-    @inlinable static var TEXTURE_2D_ARRAY: GLenum { 0x8C1A }
-
-    @inlinable static var TEXTURE_BINDING_2D_ARRAY: GLenum { 0x8C1D }
-
-    @inlinable static var R11F_G11F_B10F: GLenum { 0x8C3A }
-
-    @inlinable static var UNSIGNED_INT_10F_11F_11F_REV: GLenum { 0x8C3B }
-
-    @inlinable static var RGB9_E5: GLenum { 0x8C3D }
-
-    @inlinable static var UNSIGNED_INT_5_9_9_9_REV: GLenum { 0x8C3E }
-
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER_MODE: GLenum { 0x8C7F }
-
-    @inlinable static var MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS: GLenum { 0x8C80 }
-
-    @inlinable static var TRANSFORM_FEEDBACK_VARYINGS: GLenum { 0x8C83 }
-
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER_START: GLenum { 0x8C84 }
-
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER_SIZE: GLenum { 0x8C85 }
-
-    @inlinable static var TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN: GLenum { 0x8C88 }
-
-    @inlinable static var RASTERIZER_DISCARD: GLenum { 0x8C89 }
-
-    @inlinable static var MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS: GLenum { 0x8C8A }
-
-    @inlinable static var MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS: GLenum { 0x8C8B }
-
-    @inlinable static var INTERLEAVED_ATTRIBS: GLenum { 0x8C8C }
-
-    @inlinable static var SEPARATE_ATTRIBS: GLenum { 0x8C8D }
-
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER: GLenum { 0x8C8E }
-
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER_BINDING: GLenum { 0x8C8F }
-
-    @inlinable static var RGBA32UI: GLenum { 0x8D70 }
-
-    @inlinable static var RGB32UI: GLenum { 0x8D71 }
-
-    @inlinable static var RGBA16UI: GLenum { 0x8D76 }
-
-    @inlinable static var RGB16UI: GLenum { 0x8D77 }
-
-    @inlinable static var RGBA8UI: GLenum { 0x8D7C }
-
-    @inlinable static var RGB8UI: GLenum { 0x8D7D }
-
-    @inlinable static var RGBA32I: GLenum { 0x8D82 }
-
-    @inlinable static var RGB32I: GLenum { 0x8D83 }
-
-    @inlinable static var RGBA16I: GLenum { 0x8D88 }
-
-    @inlinable static var RGB16I: GLenum { 0x8D89 }
-
-    @inlinable static var RGBA8I: GLenum { 0x8D8E }
-
-    @inlinable static var RGB8I: GLenum { 0x8D8F }
-
-    @inlinable static var RED_INTEGER: GLenum { 0x8D94 }
-
-    @inlinable static var RGB_INTEGER: GLenum { 0x8D98 }
-
-    @inlinable static var RGBA_INTEGER: GLenum { 0x8D99 }
-
-    @inlinable static var SAMPLER_2D_ARRAY: GLenum { 0x8DC1 }
-
-    @inlinable static var SAMPLER_2D_ARRAY_SHADOW: GLenum { 0x8DC4 }
-
-    @inlinable static var SAMPLER_CUBE_SHADOW: GLenum { 0x8DC5 }
-
-    @inlinable static var UNSIGNED_INT_VEC2: GLenum { 0x8DC6 }
-
-    @inlinable static var UNSIGNED_INT_VEC3: GLenum { 0x8DC7 }
-
-    @inlinable static var UNSIGNED_INT_VEC4: GLenum { 0x8DC8 }
-
-    @inlinable static var INT_SAMPLER_2D: GLenum { 0x8DCA }
-
-    @inlinable static var INT_SAMPLER_3D: GLenum { 0x8DCB }
-
-    @inlinable static var INT_SAMPLER_CUBE: GLenum { 0x8DCC }
-
-    @inlinable static var INT_SAMPLER_2D_ARRAY: GLenum { 0x8DCF }
-
-    @inlinable static var UNSIGNED_INT_SAMPLER_2D: GLenum { 0x8DD2 }
-
-    @inlinable static var UNSIGNED_INT_SAMPLER_3D: GLenum { 0x8DD3 }
-
-    @inlinable static var UNSIGNED_INT_SAMPLER_CUBE: GLenum { 0x8DD4 }
-
-    @inlinable static var UNSIGNED_INT_SAMPLER_2D_ARRAY: GLenum { 0x8DD7 }
-
-    @inlinable static var DEPTH_COMPONENT32F: GLenum { 0x8CAC }
-
-    @inlinable static var DEPTH32F_STENCIL8: GLenum { 0x8CAD }
-
-    @inlinable static var FLOAT_32_UNSIGNED_INT_24_8_REV: GLenum { 0x8DAD }
-
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING: GLenum { 0x8210 }
-
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE: GLenum { 0x8211 }
-
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_RED_SIZE: GLenum { 0x8212 }
-
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_GREEN_SIZE: GLenum { 0x8213 }
-
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_BLUE_SIZE: GLenum { 0x8214 }
-
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE: GLenum { 0x8215 }
-
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE: GLenum { 0x8216 }
-
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE: GLenum { 0x8217 }
-
-    @inlinable static var FRAMEBUFFER_DEFAULT: GLenum { 0x8218 }
-
-    @inlinable static var UNSIGNED_INT_24_8: GLenum { 0x84FA }
-
-    @inlinable static var DEPTH24_STENCIL8: GLenum { 0x88F0 }
-
-    @inlinable static var UNSIGNED_NORMALIZED: GLenum { 0x8C17 }
-
-    @inlinable static var DRAW_FRAMEBUFFER_BINDING: GLenum { 0x8CA6 }
-
-    @inlinable static var READ_FRAMEBUFFER: GLenum { 0x8CA8 }
-
-    @inlinable static var DRAW_FRAMEBUFFER: GLenum { 0x8CA9 }
-
-    @inlinable static var READ_FRAMEBUFFER_BINDING: GLenum { 0x8CAA }
-
-    @inlinable static var RENDERBUFFER_SAMPLES: GLenum { 0x8CAB }
-
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER: GLenum { 0x8CD4 }
-
-    @inlinable static var MAX_COLOR_ATTACHMENTS: GLenum { 0x8CDF }
-
-    @inlinable static var COLOR_ATTACHMENT1: GLenum { 0x8CE1 }
-
-    @inlinable static var COLOR_ATTACHMENT2: GLenum { 0x8CE2 }
-
-    @inlinable static var COLOR_ATTACHMENT3: GLenum { 0x8CE3 }
-
-    @inlinable static var COLOR_ATTACHMENT4: GLenum { 0x8CE4 }
-
-    @inlinable static var COLOR_ATTACHMENT5: GLenum { 0x8CE5 }
-
-    @inlinable static var COLOR_ATTACHMENT6: GLenum { 0x8CE6 }
-
-    @inlinable static var COLOR_ATTACHMENT7: GLenum { 0x8CE7 }
-
-    @inlinable static var COLOR_ATTACHMENT8: GLenum { 0x8CE8 }
-
-    @inlinable static var COLOR_ATTACHMENT9: GLenum { 0x8CE9 }
-
-    @inlinable static var COLOR_ATTACHMENT10: GLenum { 0x8CEA }
-
-    @inlinable static var COLOR_ATTACHMENT11: GLenum { 0x8CEB }
-
-    @inlinable static var COLOR_ATTACHMENT12: GLenum { 0x8CEC }
-
-    @inlinable static var COLOR_ATTACHMENT13: GLenum { 0x8CED }
-
-    @inlinable static var COLOR_ATTACHMENT14: GLenum { 0x8CEE }
-
-    @inlinable static var COLOR_ATTACHMENT15: GLenum { 0x8CEF }
-
-    @inlinable static var FRAMEBUFFER_INCOMPLETE_MULTISAMPLE: GLenum { 0x8D56 }
-
-    @inlinable static var MAX_SAMPLES: GLenum { 0x8D57 }
-
-    @inlinable static var HALF_FLOAT: GLenum { 0x140B }
-
-    @inlinable static var RG: GLenum { 0x8227 }
-
-    @inlinable static var RG_INTEGER: GLenum { 0x8228 }
-
-    @inlinable static var R8: GLenum { 0x8229 }
-
-    @inlinable static var RG8: GLenum { 0x822B }
-
-    @inlinable static var R16F: GLenum { 0x822D }
-
-    @inlinable static var R32F: GLenum { 0x822E }
-
-    @inlinable static var RG16F: GLenum { 0x822F }
-
-    @inlinable static var RG32F: GLenum { 0x8230 }
-
-    @inlinable static var R8I: GLenum { 0x8231 }
-
-    @inlinable static var R8UI: GLenum { 0x8232 }
-
-    @inlinable static var R16I: GLenum { 0x8233 }
-
-    @inlinable static var R16UI: GLenum { 0x8234 }
-
-    @inlinable static var R32I: GLenum { 0x8235 }
-
-    @inlinable static var R32UI: GLenum { 0x8236 }
-
-    @inlinable static var RG8I: GLenum { 0x8237 }
-
-    @inlinable static var RG8UI: GLenum { 0x8238 }
-
-    @inlinable static var RG16I: GLenum { 0x8239 }
-
-    @inlinable static var RG16UI: GLenum { 0x823A }
-
-    @inlinable static var RG32I: GLenum { 0x823B }
-
-    @inlinable static var RG32UI: GLenum { 0x823C }
-
-    @inlinable static var VERTEX_ARRAY_BINDING: GLenum { 0x85B5 }
-
-    @inlinable static var R8_SNORM: GLenum { 0x8F94 }
-
-    @inlinable static var RG8_SNORM: GLenum { 0x8F95 }
-
-    @inlinable static var RGB8_SNORM: GLenum { 0x8F96 }
-
-    @inlinable static var RGBA8_SNORM: GLenum { 0x8F97 }
-
-    @inlinable static var SIGNED_NORMALIZED: GLenum { 0x8F9C }
-
-    @inlinable static var COPY_READ_BUFFER: GLenum { 0x8F36 }
-
-    @inlinable static var COPY_WRITE_BUFFER: GLenum { 0x8F37 }
-
-    @inlinable static var COPY_READ_BUFFER_BINDING: GLenum { 0x8F36 }
-
-    @inlinable static var COPY_WRITE_BUFFER_BINDING: GLenum { 0x8F37 }
-
-    @inlinable static var UNIFORM_BUFFER: GLenum { 0x8A11 }
-
-    @inlinable static var UNIFORM_BUFFER_BINDING: GLenum { 0x8A28 }
-
-    @inlinable static var UNIFORM_BUFFER_START: GLenum { 0x8A29 }
-
-    @inlinable static var UNIFORM_BUFFER_SIZE: GLenum { 0x8A2A }
-
-    @inlinable static var MAX_VERTEX_UNIFORM_BLOCKS: GLenum { 0x8A2B }
-
-    @inlinable static var MAX_FRAGMENT_UNIFORM_BLOCKS: GLenum { 0x8A2D }
-
-    @inlinable static var MAX_COMBINED_UNIFORM_BLOCKS: GLenum { 0x8A2E }
-
-    @inlinable static var MAX_UNIFORM_BUFFER_BINDINGS: GLenum { 0x8A2F }
-
-    @inlinable static var MAX_UNIFORM_BLOCK_SIZE: GLenum { 0x8A30 }
-
-    @inlinable static var MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS: GLenum { 0x8A31 }
-
-    @inlinable static var MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS: GLenum { 0x8A33 }
-
-    @inlinable static var UNIFORM_BUFFER_OFFSET_ALIGNMENT: GLenum { 0x8A34 }
-
-    @inlinable static var ACTIVE_UNIFORM_BLOCKS: GLenum { 0x8A36 }
-
-    @inlinable static var UNIFORM_TYPE: GLenum { 0x8A37 }
-
-    @inlinable static var UNIFORM_SIZE: GLenum { 0x8A38 }
-
-    @inlinable static var UNIFORM_BLOCK_INDEX: GLenum { 0x8A3A }
-
-    @inlinable static var UNIFORM_OFFSET: GLenum { 0x8A3B }
-
-    @inlinable static var UNIFORM_ARRAY_STRIDE: GLenum { 0x8A3C }
-
-    @inlinable static var UNIFORM_MATRIX_STRIDE: GLenum { 0x8A3D }
-
-    @inlinable static var UNIFORM_IS_ROW_MAJOR: GLenum { 0x8A3E }
-
-    @inlinable static var UNIFORM_BLOCK_BINDING: GLenum { 0x8A3F }
-
-    @inlinable static var UNIFORM_BLOCK_DATA_SIZE: GLenum { 0x8A40 }
-
-    @inlinable static var UNIFORM_BLOCK_ACTIVE_UNIFORMS: GLenum { 0x8A42 }
-
-    @inlinable static var UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES: GLenum { 0x8A43 }
-
-    @inlinable static var UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER: GLenum { 0x8A44 }
-
-    @inlinable static var UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER: GLenum { 0x8A46 }
-
-    @inlinable static var INVALID_INDEX: GLenum { 0xFFFF_FFFF }
-
-    @inlinable static var MAX_VERTEX_OUTPUT_COMPONENTS: GLenum { 0x9122 }
-
-    @inlinable static var MAX_FRAGMENT_INPUT_COMPONENTS: GLenum { 0x9125 }
-
-    @inlinable static var MAX_SERVER_WAIT_TIMEOUT: GLenum { 0x9111 }
-
-    @inlinable static var OBJECT_TYPE: GLenum { 0x9112 }
-
-    @inlinable static var SYNC_CONDITION: GLenum { 0x9113 }
-
-    @inlinable static var SYNC_STATUS: GLenum { 0x9114 }
-
-    @inlinable static var SYNC_FLAGS: GLenum { 0x9115 }
-
-    @inlinable static var SYNC_FENCE: GLenum { 0x9116 }
-
-    @inlinable static var SYNC_GPU_COMMANDS_COMPLETE: GLenum { 0x9117 }
-
-    @inlinable static var UNSIGNALED: GLenum { 0x9118 }
-
-    @inlinable static var SIGNALED: GLenum { 0x9119 }
-
-    @inlinable static var ALREADY_SIGNALED: GLenum { 0x911A }
-
-    @inlinable static var TIMEOUT_EXPIRED: GLenum { 0x911B }
-
-    @inlinable static var CONDITION_SATISFIED: GLenum { 0x911C }
-
-    @inlinable static var WAIT_FAILED: GLenum { 0x911D }
-
-    @inlinable static var SYNC_FLUSH_COMMANDS_BIT: GLenum { 0x0000_0001 }
-
-    @inlinable static var VERTEX_ATTRIB_ARRAY_DIVISOR: GLenum { 0x88FE }
-
-    @inlinable static var ANY_SAMPLES_PASSED: GLenum { 0x8C2F }
-
-    @inlinable static var ANY_SAMPLES_PASSED_CONSERVATIVE: GLenum { 0x8D6A }
-
-    @inlinable static var SAMPLER_BINDING: GLenum { 0x8919 }
-
-    @inlinable static var RGB10_A2UI: GLenum { 0x906F }
-
-    @inlinable static var INT_2_10_10_10_REV: GLenum { 0x8D9F }
-
-    @inlinable static var TRANSFORM_FEEDBACK: GLenum { 0x8E22 }
-
-    @inlinable static var TRANSFORM_FEEDBACK_PAUSED: GLenum { 0x8E23 }
-
-    @inlinable static var TRANSFORM_FEEDBACK_ACTIVE: GLenum { 0x8E24 }
-
-    @inlinable static var TRANSFORM_FEEDBACK_BINDING: GLenum { 0x8E25 }
-
-    @inlinable static var TEXTURE_IMMUTABLE_FORMAT: GLenum { 0x912F }
-
-    @inlinable static var MAX_ELEMENT_INDEX: GLenum { 0x8D6B }
-
-    @inlinable static var TEXTURE_IMMUTABLE_LEVELS: GLenum { 0x82DF }
-
-    @inlinable static var TIMEOUT_IGNORED: GLint64 { -1 }
-
-    @inlinable static var MAX_CLIENT_WAIT_TIMEOUT_WEBGL: GLenum { 0x9247 }
-
-    @inlinable func copyBufferSubData(readTarget: GLenum, writeTarget: GLenum, readOffset: GLintptr, writeOffset: GLintptr, size: GLsizeiptr) {
-        let this = jsObject
-        _ = this[Strings.copyBufferSubData].function!(this: this, arguments: [readTarget.jsValue, writeTarget.jsValue, readOffset.jsValue, writeOffset.jsValue, size.jsValue])
-    }
-
-    @inlinable func getBufferSubData(target: GLenum, srcByteOffset: GLintptr, dstBuffer: ArrayBufferView, dstOffset: GLuint? = nil, length: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.getBufferSubData].function!(this: this, arguments: [target.jsValue, srcByteOffset.jsValue, dstBuffer.jsValue, dstOffset?.jsValue ?? .undefined, length?.jsValue ?? .undefined])
-    }
-
-    @inlinable func blitFramebuffer(srcX0: GLint, srcY0: GLint, srcX1: GLint, srcY1: GLint, dstX0: GLint, dstY0: GLint, dstX1: GLint, dstY1: GLint, mask: GLbitfield, filter: GLenum) {
-        let _arg0 = srcX0.jsValue
-        let _arg1 = srcY0.jsValue
-        let _arg2 = srcX1.jsValue
-        let _arg3 = srcY1.jsValue
-        let _arg4 = dstX0.jsValue
-        let _arg5 = dstY0.jsValue
-        let _arg6 = dstX1.jsValue
-        let _arg7 = dstY1.jsValue
-        let _arg8 = mask.jsValue
-        let _arg9 = filter.jsValue
-        let this = jsObject
-        _ = this[Strings.blitFramebuffer].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
-    }
-
-    @inlinable func framebufferTextureLayer(target: GLenum, attachment: GLenum, texture: WebGLTexture?, level: GLint, layer: GLint) {
-        let this = jsObject
-        _ = this[Strings.framebufferTextureLayer].function!(this: this, arguments: [target.jsValue, attachment.jsValue, texture.jsValue, level.jsValue, layer.jsValue])
-    }
-
-    @inlinable func invalidateFramebuffer(target: GLenum, attachments: [GLenum]) {
-        let this = jsObject
-        _ = this[Strings.invalidateFramebuffer].function!(this: this, arguments: [target.jsValue, attachments.jsValue])
-    }
-
-    @inlinable func invalidateSubFramebuffer(target: GLenum, attachments: [GLenum], x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
-        let _arg0 = target.jsValue
-        let _arg1 = attachments.jsValue
-        let _arg2 = x.jsValue
-        let _arg3 = y.jsValue
-        let _arg4 = width.jsValue
-        let _arg5 = height.jsValue
-        let this = jsObject
-        _ = this[Strings.invalidateSubFramebuffer].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
-    }
-
-    @inlinable func readBuffer(src: GLenum) {
-        let this = jsObject
-        _ = this[Strings.readBuffer].function!(this: this, arguments: [src.jsValue])
-    }
-
-    @inlinable func getInternalformatParameter(target: GLenum, internalformat: GLenum, pname: GLenum) -> JSValue {
-        let this = jsObject
-        return this[Strings.getInternalformatParameter].function!(this: this, arguments: [target.jsValue, internalformat.jsValue, pname.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func renderbufferStorageMultisample(target: GLenum, samples: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei) {
-        let this = jsObject
-        _ = this[Strings.renderbufferStorageMultisample].function!(this: this, arguments: [target.jsValue, samples.jsValue, internalformat.jsValue, width.jsValue, height.jsValue])
-    }
-
-    @inlinable func texStorage2D(target: GLenum, levels: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei) {
-        let this = jsObject
-        _ = this[Strings.texStorage2D].function!(this: this, arguments: [target.jsValue, levels.jsValue, internalformat.jsValue, width.jsValue, height.jsValue])
-    }
-
-    @inlinable func texStorage3D(target: GLenum, levels: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei) {
-        let _arg0 = target.jsValue
-        let _arg1 = levels.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = depth.jsValue
-        let this = jsObject
-        _ = this[Strings.texStorage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
-    }
-
-    @inlinable func texImage3D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, format: GLenum, type: GLenum, pboOffset: GLintptr) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = depth.jsValue
-        let _arg6 = border.jsValue
-        let _arg7 = format.jsValue
-        let _arg8 = type.jsValue
-        let _arg9 = pboOffset.jsValue
-        let this = jsObject
-        _ = this[Strings.texImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
-    }
-
-    @inlinable func texImage3D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = depth.jsValue
-        let _arg6 = border.jsValue
-        let _arg7 = format.jsValue
-        let _arg8 = type.jsValue
-        let _arg9 = source.jsValue
-        let this = jsObject
-        _ = this[Strings.texImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
-    }
-
-    @inlinable func texImage3D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, format: GLenum, type: GLenum, srcData: ArrayBufferView?) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = depth.jsValue
-        let _arg6 = border.jsValue
-        let _arg7 = format.jsValue
-        let _arg8 = type.jsValue
-        let _arg9 = srcData.jsValue
-        let this = jsObject
-        _ = this[Strings.texImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
-    }
-
-    @inlinable func texImage3D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, format: GLenum, type: GLenum, srcData: ArrayBufferView, srcOffset: GLuint) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = depth.jsValue
-        let _arg6 = border.jsValue
-        let _arg7 = format.jsValue
-        let _arg8 = type.jsValue
-        let _arg9 = srcData.jsValue
-        let _arg10 = srcOffset.jsValue
-        let this = jsObject
-        _ = this[Strings.texImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10])
-    }
-
-    @inlinable func texSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, type: GLenum, pboOffset: GLintptr) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = zoffset.jsValue
-        let _arg5 = width.jsValue
-        let _arg6 = height.jsValue
-        let _arg7 = depth.jsValue
-        let _arg8 = format.jsValue
-        let _arg9 = type.jsValue
-        let _arg10 = pboOffset.jsValue
-        let this = jsObject
-        _ = this[Strings.texSubImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10])
-    }
-
-    @inlinable func texSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, type: GLenum, source: TexImageSource) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = zoffset.jsValue
-        let _arg5 = width.jsValue
-        let _arg6 = height.jsValue
-        let _arg7 = depth.jsValue
-        let _arg8 = format.jsValue
-        let _arg9 = type.jsValue
-        let _arg10 = source.jsValue
-        let this = jsObject
-        _ = this[Strings.texSubImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10])
-    }
-
-    @inlinable func texSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, type: GLenum, srcData: ArrayBufferView?, srcOffset: GLuint? = nil) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = zoffset.jsValue
-        let _arg5 = width.jsValue
-        let _arg6 = height.jsValue
-        let _arg7 = depth.jsValue
-        let _arg8 = format.jsValue
-        let _arg9 = type.jsValue
-        let _arg10 = srcData.jsValue
-        let _arg11 = srcOffset?.jsValue ?? .undefined
-        let this = jsObject
-        _ = this[Strings.texSubImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11])
-    }
-
-    @inlinable func copyTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = zoffset.jsValue
-        let _arg5 = x.jsValue
-        let _arg6 = y.jsValue
-        let _arg7 = width.jsValue
-        let _arg8 = height.jsValue
-        let this = jsObject
-        _ = this[Strings.copyTexSubImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func compressedTexImage3D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, imageSize: GLsizei, offset: GLintptr) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = depth.jsValue
-        let _arg6 = border.jsValue
-        let _arg7 = imageSize.jsValue
-        let _arg8 = offset.jsValue
-        let this = jsObject
-        _ = this[Strings.compressedTexImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func compressedTexImage3D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = depth.jsValue
-        let _arg6 = border.jsValue
-        let _arg7 = srcData.jsValue
-        let _arg8 = srcOffset?.jsValue ?? .undefined
-        let _arg9 = srcLengthOverride?.jsValue ?? .undefined
-        let this = jsObject
-        _ = this[Strings.compressedTexImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
-    }
-
-    @inlinable func compressedTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, imageSize: GLsizei, offset: GLintptr) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = zoffset.jsValue
-        let _arg5 = width.jsValue
-        let _arg6 = height.jsValue
-        let _arg7 = depth.jsValue
-        let _arg8 = format.jsValue
-        let _arg9 = imageSize.jsValue
-        let _arg10 = offset.jsValue
-        let this = jsObject
-        _ = this[Strings.compressedTexSubImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10])
-    }
-
-    @inlinable func compressedTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = zoffset.jsValue
-        let _arg5 = width.jsValue
-        let _arg6 = height.jsValue
-        let _arg7 = depth.jsValue
-        let _arg8 = format.jsValue
-        let _arg9 = srcData.jsValue
-        let _arg10 = srcOffset?.jsValue ?? .undefined
-        let _arg11 = srcLengthOverride?.jsValue ?? .undefined
-        let this = jsObject
-        _ = this[Strings.compressedTexSubImage3D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11])
-    }
-
-    @inlinable func getFragDataLocation(program: WebGLProgram, name: String) -> GLint {
-        let this = jsObject
-        return this[Strings.getFragDataLocation].function!(this: this, arguments: [program.jsValue, name.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func uniform1ui(location: WebGLUniformLocation?, v0: GLuint) {
-        let this = jsObject
-        _ = this[Strings.uniform1ui].function!(this: this, arguments: [location.jsValue, v0.jsValue])
-    }
-
-    @inlinable func uniform2ui(location: WebGLUniformLocation?, v0: GLuint, v1: GLuint) {
-        let this = jsObject
-        _ = this[Strings.uniform2ui].function!(this: this, arguments: [location.jsValue, v0.jsValue, v1.jsValue])
-    }
-
-    @inlinable func uniform3ui(location: WebGLUniformLocation?, v0: GLuint, v1: GLuint, v2: GLuint) {
-        let this = jsObject
-        _ = this[Strings.uniform3ui].function!(this: this, arguments: [location.jsValue, v0.jsValue, v1.jsValue, v2.jsValue])
-    }
-
-    @inlinable func uniform4ui(location: WebGLUniformLocation?, v0: GLuint, v1: GLuint, v2: GLuint, v3: GLuint) {
-        let this = jsObject
-        _ = this[Strings.uniform4ui].function!(this: this, arguments: [location.jsValue, v0.jsValue, v1.jsValue, v2.jsValue, v3.jsValue])
-    }
-
-    @inlinable func uniform1uiv(location: WebGLUniformLocation?, data: Uint32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform1uiv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform2uiv(location: WebGLUniformLocation?, data: Uint32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform2uiv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform3uiv(location: WebGLUniformLocation?, data: Uint32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform3uiv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform4uiv(location: WebGLUniformLocation?, data: Uint32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform4uiv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniformMatrix3x2fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniformMatrix3x2fv].function!(this: this, arguments: [location.jsValue, transpose.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniformMatrix4x2fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniformMatrix4x2fv].function!(this: this, arguments: [location.jsValue, transpose.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniformMatrix2x3fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniformMatrix2x3fv].function!(this: this, arguments: [location.jsValue, transpose.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniformMatrix4x3fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniformMatrix4x3fv].function!(this: this, arguments: [location.jsValue, transpose.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniformMatrix2x4fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniformMatrix2x4fv].function!(this: this, arguments: [location.jsValue, transpose.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniformMatrix3x4fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniformMatrix3x4fv].function!(this: this, arguments: [location.jsValue, transpose.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func vertexAttribI4i(index: GLuint, x: GLint, y: GLint, z: GLint, w: GLint) {
-        let this = jsObject
-        _ = this[Strings.vertexAttribI4i].function!(this: this, arguments: [index.jsValue, x.jsValue, y.jsValue, z.jsValue, w.jsValue])
-    }
-
-    @inlinable func vertexAttribI4iv(index: GLuint, values: Int32List) {
-        let this = jsObject
-        _ = this[Strings.vertexAttribI4iv].function!(this: this, arguments: [index.jsValue, values.jsValue])
-    }
-
-    @inlinable func vertexAttribI4ui(index: GLuint, x: GLuint, y: GLuint, z: GLuint, w: GLuint) {
-        let this = jsObject
-        _ = this[Strings.vertexAttribI4ui].function!(this: this, arguments: [index.jsValue, x.jsValue, y.jsValue, z.jsValue, w.jsValue])
-    }
-
-    @inlinable func vertexAttribI4uiv(index: GLuint, values: Uint32List) {
-        let this = jsObject
-        _ = this[Strings.vertexAttribI4uiv].function!(this: this, arguments: [index.jsValue, values.jsValue])
-    }
-
-    @inlinable func vertexAttribIPointer(index: GLuint, size: GLint, type: GLenum, stride: GLsizei, offset: GLintptr) {
-        let this = jsObject
-        _ = this[Strings.vertexAttribIPointer].function!(this: this, arguments: [index.jsValue, size.jsValue, type.jsValue, stride.jsValue, offset.jsValue])
-    }
-
-    @inlinable func vertexAttribDivisor(index: GLuint, divisor: GLuint) {
-        let this = jsObject
-        _ = this[Strings.vertexAttribDivisor].function!(this: this, arguments: [index.jsValue, divisor.jsValue])
-    }
-
-    @inlinable func drawArraysInstanced(mode: GLenum, first: GLint, count: GLsizei, instanceCount: GLsizei) {
-        let this = jsObject
-        _ = this[Strings.drawArraysInstanced].function!(this: this, arguments: [mode.jsValue, first.jsValue, count.jsValue, instanceCount.jsValue])
-    }
-
-    @inlinable func drawElementsInstanced(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr, instanceCount: GLsizei) {
-        let this = jsObject
-        _ = this[Strings.drawElementsInstanced].function!(this: this, arguments: [mode.jsValue, count.jsValue, type.jsValue, offset.jsValue, instanceCount.jsValue])
-    }
-
-    @inlinable func drawRangeElements(mode: GLenum, start: GLuint, end: GLuint, count: GLsizei, type: GLenum, offset: GLintptr) {
-        let _arg0 = mode.jsValue
-        let _arg1 = start.jsValue
-        let _arg2 = end.jsValue
-        let _arg3 = count.jsValue
-        let _arg4 = type.jsValue
-        let _arg5 = offset.jsValue
-        let this = jsObject
-        _ = this[Strings.drawRangeElements].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
-    }
-
-    @inlinable func drawBuffers(buffers: [GLenum]) {
-        let this = jsObject
-        _ = this[Strings.drawBuffers].function!(this: this, arguments: [buffers.jsValue])
-    }
-
-    @inlinable func clearBufferfv(buffer: GLenum, drawbuffer: GLint, values: Float32List, srcOffset: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.clearBufferfv].function!(this: this, arguments: [buffer.jsValue, drawbuffer.jsValue, values.jsValue, srcOffset?.jsValue ?? .undefined])
-    }
-
-    @inlinable func clearBufferiv(buffer: GLenum, drawbuffer: GLint, values: Int32List, srcOffset: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.clearBufferiv].function!(this: this, arguments: [buffer.jsValue, drawbuffer.jsValue, values.jsValue, srcOffset?.jsValue ?? .undefined])
-    }
-
-    @inlinable func clearBufferuiv(buffer: GLenum, drawbuffer: GLint, values: Uint32List, srcOffset: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.clearBufferuiv].function!(this: this, arguments: [buffer.jsValue, drawbuffer.jsValue, values.jsValue, srcOffset?.jsValue ?? .undefined])
-    }
-
-    @inlinable func clearBufferfi(buffer: GLenum, drawbuffer: GLint, depth: GLfloat, stencil: GLint) {
-        let this = jsObject
-        _ = this[Strings.clearBufferfi].function!(this: this, arguments: [buffer.jsValue, drawbuffer.jsValue, depth.jsValue, stencil.jsValue])
-    }
-
-    @inlinable func createQuery() -> WebGLQuery? {
-        let this = jsObject
-        return this[Strings.createQuery].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @inlinable func deleteQuery(query: WebGLQuery?) {
-        let this = jsObject
-        _ = this[Strings.deleteQuery].function!(this: this, arguments: [query.jsValue])
-    }
-
-    @inlinable func isQuery(query: WebGLQuery?) -> GLboolean {
-        let this = jsObject
-        return this[Strings.isQuery].function!(this: this, arguments: [query.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func beginQuery(target: GLenum, query: WebGLQuery) {
-        let this = jsObject
-        _ = this[Strings.beginQuery].function!(this: this, arguments: [target.jsValue, query.jsValue])
-    }
-
-    @inlinable func endQuery(target: GLenum) {
-        let this = jsObject
-        _ = this[Strings.endQuery].function!(this: this, arguments: [target.jsValue])
-    }
-
-    @inlinable func getQuery(target: GLenum, pname: GLenum) -> WebGLQuery? {
-        let this = jsObject
-        return this[Strings.getQuery].function!(this: this, arguments: [target.jsValue, pname.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func getQueryParameter(query: WebGLQuery, pname: GLenum) -> JSValue {
-        let this = jsObject
-        return this[Strings.getQueryParameter].function!(this: this, arguments: [query.jsValue, pname.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func createSampler() -> WebGLSampler? {
-        let this = jsObject
-        return this[Strings.createSampler].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @inlinable func deleteSampler(sampler: WebGLSampler?) {
-        let this = jsObject
-        _ = this[Strings.deleteSampler].function!(this: this, arguments: [sampler.jsValue])
-    }
-
-    @inlinable func isSampler(sampler: WebGLSampler?) -> GLboolean {
-        let this = jsObject
-        return this[Strings.isSampler].function!(this: this, arguments: [sampler.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func bindSampler(unit: GLuint, sampler: WebGLSampler?) {
-        let this = jsObject
-        _ = this[Strings.bindSampler].function!(this: this, arguments: [unit.jsValue, sampler.jsValue])
-    }
-
-    @inlinable func samplerParameteri(sampler: WebGLSampler, pname: GLenum, param: GLint) {
-        let this = jsObject
-        _ = this[Strings.samplerParameteri].function!(this: this, arguments: [sampler.jsValue, pname.jsValue, param.jsValue])
-    }
-
-    @inlinable func samplerParameterf(sampler: WebGLSampler, pname: GLenum, param: GLfloat) {
-        let this = jsObject
-        _ = this[Strings.samplerParameterf].function!(this: this, arguments: [sampler.jsValue, pname.jsValue, param.jsValue])
-    }
-
-    @inlinable func getSamplerParameter(sampler: WebGLSampler, pname: GLenum) -> JSValue {
-        let this = jsObject
-        return this[Strings.getSamplerParameter].function!(this: this, arguments: [sampler.jsValue, pname.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func fenceSync(condition: GLenum, flags: GLbitfield) -> WebGLSync? {
-        let this = jsObject
-        return this[Strings.fenceSync].function!(this: this, arguments: [condition.jsValue, flags.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func isSync(sync: WebGLSync?) -> GLboolean {
-        let this = jsObject
-        return this[Strings.isSync].function!(this: this, arguments: [sync.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func deleteSync(sync: WebGLSync?) {
-        let this = jsObject
-        _ = this[Strings.deleteSync].function!(this: this, arguments: [sync.jsValue])
-    }
-
-    @inlinable func clientWaitSync(sync: WebGLSync, flags: GLbitfield, timeout: GLuint64) -> GLenum {
-        let this = jsObject
-        return this[Strings.clientWaitSync].function!(this: this, arguments: [sync.jsValue, flags.jsValue, timeout.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func waitSync(sync: WebGLSync, flags: GLbitfield, timeout: GLint64) {
-        let this = jsObject
-        _ = this[Strings.waitSync].function!(this: this, arguments: [sync.jsValue, flags.jsValue, timeout.jsValue])
-    }
-
-    @inlinable func getSyncParameter(sync: WebGLSync, pname: GLenum) -> JSValue {
-        let this = jsObject
-        return this[Strings.getSyncParameter].function!(this: this, arguments: [sync.jsValue, pname.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func createTransformFeedback() -> WebGLTransformFeedback? {
-        let this = jsObject
-        return this[Strings.createTransformFeedback].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @inlinable func deleteTransformFeedback(tf: WebGLTransformFeedback?) {
-        let this = jsObject
-        _ = this[Strings.deleteTransformFeedback].function!(this: this, arguments: [tf.jsValue])
-    }
-
-    @inlinable func isTransformFeedback(tf: WebGLTransformFeedback?) -> GLboolean {
-        let this = jsObject
-        return this[Strings.isTransformFeedback].function!(this: this, arguments: [tf.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func bindTransformFeedback(target: GLenum, tf: WebGLTransformFeedback?) {
-        let this = jsObject
-        _ = this[Strings.bindTransformFeedback].function!(this: this, arguments: [target.jsValue, tf.jsValue])
-    }
-
-    @inlinable func beginTransformFeedback(primitiveMode: GLenum) {
-        let this = jsObject
-        _ = this[Strings.beginTransformFeedback].function!(this: this, arguments: [primitiveMode.jsValue])
-    }
-
-    @inlinable func endTransformFeedback() {
-        let this = jsObject
-        _ = this[Strings.endTransformFeedback].function!(this: this, arguments: [])
-    }
-
-    @inlinable func transformFeedbackVaryings(program: WebGLProgram, varyings: [String], bufferMode: GLenum) {
-        let this = jsObject
-        _ = this[Strings.transformFeedbackVaryings].function!(this: this, arguments: [program.jsValue, varyings.jsValue, bufferMode.jsValue])
-    }
-
-    @inlinable func getTransformFeedbackVarying(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
-        let this = jsObject
-        return this[Strings.getTransformFeedbackVarying].function!(this: this, arguments: [program.jsValue, index.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func pauseTransformFeedback() {
-        let this = jsObject
-        _ = this[Strings.pauseTransformFeedback].function!(this: this, arguments: [])
-    }
-
-    @inlinable func resumeTransformFeedback() {
-        let this = jsObject
-        _ = this[Strings.resumeTransformFeedback].function!(this: this, arguments: [])
-    }
-
-    @inlinable func bindBufferBase(target: GLenum, index: GLuint, buffer: WebGLBuffer?) {
-        let this = jsObject
-        _ = this[Strings.bindBufferBase].function!(this: this, arguments: [target.jsValue, index.jsValue, buffer.jsValue])
-    }
-
-    @inlinable func bindBufferRange(target: GLenum, index: GLuint, buffer: WebGLBuffer?, offset: GLintptr, size: GLsizeiptr) {
-        let this = jsObject
-        _ = this[Strings.bindBufferRange].function!(this: this, arguments: [target.jsValue, index.jsValue, buffer.jsValue, offset.jsValue, size.jsValue])
-    }
-
-    @inlinable func getIndexedParameter(target: GLenum, index: GLuint) -> JSValue {
-        let this = jsObject
-        return this[Strings.getIndexedParameter].function!(this: this, arguments: [target.jsValue, index.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func getUniformIndices(program: WebGLProgram, uniformNames: [String]) -> [GLuint]? {
-        let this = jsObject
-        return this[Strings.getUniformIndices].function!(this: this, arguments: [program.jsValue, uniformNames.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func getActiveUniforms(program: WebGLProgram, uniformIndices: [GLuint], pname: GLenum) -> JSValue {
-        let this = jsObject
-        return this[Strings.getActiveUniforms].function!(this: this, arguments: [program.jsValue, uniformIndices.jsValue, pname.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func getUniformBlockIndex(program: WebGLProgram, uniformBlockName: String) -> GLuint {
-        let this = jsObject
-        return this[Strings.getUniformBlockIndex].function!(this: this, arguments: [program.jsValue, uniformBlockName.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func getActiveUniformBlockParameter(program: WebGLProgram, uniformBlockIndex: GLuint, pname: GLenum) -> JSValue {
-        let this = jsObject
-        return this[Strings.getActiveUniformBlockParameter].function!(this: this, arguments: [program.jsValue, uniformBlockIndex.jsValue, pname.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func getActiveUniformBlockName(program: WebGLProgram, uniformBlockIndex: GLuint) -> String? {
-        let this = jsObject
-        return this[Strings.getActiveUniformBlockName].function!(this: this, arguments: [program.jsValue, uniformBlockIndex.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func uniformBlockBinding(program: WebGLProgram, uniformBlockIndex: GLuint, uniformBlockBinding: GLuint) {
-        let this = jsObject
-        _ = this[Strings.uniformBlockBinding].function!(this: this, arguments: [program.jsValue, uniformBlockIndex.jsValue, uniformBlockBinding.jsValue])
-    }
-
-    @inlinable func createVertexArray() -> WebGLVertexArrayObject? {
-        let this = jsObject
-        return this[Strings.createVertexArray].function!(this: this, arguments: []).fromJSValue()!
-    }
-
-    @inlinable func deleteVertexArray(vertexArray: WebGLVertexArrayObject?) {
-        let this = jsObject
-        _ = this[Strings.deleteVertexArray].function!(this: this, arguments: [vertexArray.jsValue])
-    }
-
-    @inlinable func isVertexArray(vertexArray: WebGLVertexArrayObject?) -> GLboolean {
-        let this = jsObject
-        return this[Strings.isVertexArray].function!(this: this, arguments: [vertexArray.jsValue]).fromJSValue()!
-    }
-
-    @inlinable func bindVertexArray(array: WebGLVertexArrayObject?) {
-        let this = jsObject
-        _ = this[Strings.bindVertexArray].function!(this: this, arguments: [array.jsValue])
-    }
-}
-
-public protocol WebGL2RenderingContextOverloads: JSBridgedClass {}
-public extension WebGL2RenderingContextOverloads {
-    @inlinable func bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum) {
-        let this = jsObject
-        _ = this[Strings.bufferData].function!(this: this, arguments: [target.jsValue, size.jsValue, usage.jsValue])
-    }
-
-    @inlinable func bufferData(target: GLenum, srcData: BufferSource?, usage: GLenum) {
-        let this = jsObject
-        _ = this[Strings.bufferData].function!(this: this, arguments: [target.jsValue, srcData.jsValue, usage.jsValue])
-    }
-
-    @inlinable func bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: BufferSource) {
-        let this = jsObject
-        _ = this[Strings.bufferSubData].function!(this: this, arguments: [target.jsValue, dstByteOffset.jsValue, srcData.jsValue])
-    }
-
-    @inlinable func bufferData(target: GLenum, srcData: ArrayBufferView, usage: GLenum, srcOffset: GLuint, length: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.bufferData].function!(this: this, arguments: [target.jsValue, srcData.jsValue, usage.jsValue, srcOffset.jsValue, length?.jsValue ?? .undefined])
-    }
-
-    @inlinable func bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: ArrayBufferView, srcOffset: GLuint, length: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.bufferSubData].function!(this: this, arguments: [target.jsValue, dstByteOffset.jsValue, srcData.jsValue, srcOffset.jsValue, length?.jsValue ?? .undefined])
-    }
-
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, pixels: ArrayBufferView?) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = border.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = type.jsValue
-        let _arg8 = pixels.jsValue
-        let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = format.jsValue
-        let _arg4 = type.jsValue
-        let _arg5 = source.jsValue
-        let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
-    }
-
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pixels: ArrayBufferView?) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = width.jsValue
-        let _arg5 = height.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = type.jsValue
-        let _arg8 = pixels.jsValue
-        let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = format.jsValue
-        let _arg5 = type.jsValue
-        let _arg6 = source.jsValue
-        let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6])
-    }
-
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, pboOffset: GLintptr) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = border.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = type.jsValue
-        let _arg8 = pboOffset.jsValue
-        let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = border.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = type.jsValue
-        let _arg8 = source.jsValue
-        let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, srcData: ArrayBufferView, srcOffset: GLuint) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = border.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = type.jsValue
-        let _arg8 = srcData.jsValue
-        let _arg9 = srcOffset.jsValue
-        let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
-    }
-
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pboOffset: GLintptr) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = width.jsValue
-        let _arg5 = height.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = type.jsValue
-        let _arg8 = pboOffset.jsValue
-        let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, source: TexImageSource) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = width.jsValue
-        let _arg5 = height.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = type.jsValue
-        let _arg8 = source.jsValue
-        let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, srcData: ArrayBufferView, srcOffset: GLuint) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = width.jsValue
-        let _arg5 = height.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = type.jsValue
-        let _arg8 = srcData.jsValue
-        let _arg9 = srcOffset.jsValue
-        let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
-    }
-
-    @inlinable func compressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, border: GLint, imageSize: GLsizei, offset: GLintptr) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = border.jsValue
-        let _arg6 = imageSize.jsValue
-        let _arg7 = offset.jsValue
-        let this = jsObject
-        _ = this[Strings.compressedTexImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
-    }
-
-    @inlinable func compressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, border: GLint, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = internalformat.jsValue
-        let _arg3 = width.jsValue
-        let _arg4 = height.jsValue
-        let _arg5 = border.jsValue
-        let _arg6 = srcData.jsValue
-        let _arg7 = srcOffset?.jsValue ?? .undefined
-        let _arg8 = srcLengthOverride?.jsValue ?? .undefined
-        let this = jsObject
-        _ = this[Strings.compressedTexImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func compressedTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, imageSize: GLsizei, offset: GLintptr) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = width.jsValue
-        let _arg5 = height.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = imageSize.jsValue
-        let _arg8 = offset.jsValue
-        let this = jsObject
-        _ = this[Strings.compressedTexSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
-    }
-
-    @inlinable func compressedTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
-        let _arg0 = target.jsValue
-        let _arg1 = level.jsValue
-        let _arg2 = xoffset.jsValue
-        let _arg3 = yoffset.jsValue
-        let _arg4 = width.jsValue
-        let _arg5 = height.jsValue
-        let _arg6 = format.jsValue
-        let _arg7 = srcData.jsValue
-        let _arg8 = srcOffset?.jsValue ?? .undefined
-        let _arg9 = srcLengthOverride?.jsValue ?? .undefined
-        let this = jsObject
-        _ = this[Strings.compressedTexSubImage2D].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
-    }
-
-    @inlinable func uniform1fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform1fv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform2fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform2fv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform3fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform3fv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform4fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform4fv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform1iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform1iv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform2iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform2iv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform3iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform3iv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniform4iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniform4iv].function!(this: this, arguments: [location.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniformMatrix2fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniformMatrix2fv].function!(this: this, arguments: [location.jsValue, transpose.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniformMatrix3fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniformMatrix3fv].function!(this: this, arguments: [location.jsValue, transpose.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
-    }
-
-    @inlinable func uniformMatrix4fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
-        let this = jsObject
-        _ = this[Strings.uniformMatrix4fv].function!(this: this, arguments: [location.jsValue, transpose.jsValue, data.jsValue, srcOffset?.jsValue ?? .undefined, srcLength?.jsValue ?? .undefined])
+public class WaveShaperOptions: BridgedDictionary {
+    public convenience init(curve: [Float], oversample: OverSampleType) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.curve] = curve.jsValue
+        object[Strings.oversample] = oversample.jsValue
+        self.init(unsafelyWrapping: object)
     }
 
-    @inlinable func readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, dstData: ArrayBufferView?) {
-        let _arg0 = x.jsValue
-        let _arg1 = y.jsValue
-        let _arg2 = width.jsValue
-        let _arg3 = height.jsValue
-        let _arg4 = format.jsValue
-        let _arg5 = type.jsValue
-        let _arg6 = dstData.jsValue
-        let this = jsObject
-        _ = this[Strings.readPixels].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6])
+    public required init(unsafelyWrapping object: JSObject) {
+        _curve = ReadWriteAttribute(jsObject: object, name: Strings.curve)
+        _oversample = ReadWriteAttribute(jsObject: object, name: Strings.oversample)
+        super.init(unsafelyWrapping: object)
     }
 
-    @inlinable func readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, offset: GLintptr) {
-        let _arg0 = x.jsValue
-        let _arg1 = y.jsValue
-        let _arg2 = width.jsValue
-        let _arg3 = height.jsValue
-        let _arg4 = format.jsValue
-        let _arg5 = type.jsValue
-        let _arg6 = offset.jsValue
-        let this = jsObject
-        _ = this[Strings.readPixels].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6])
-    }
+    @ReadWriteAttribute
+    public var curve: [Float]
 
-    @inlinable func readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, dstData: ArrayBufferView, dstOffset: GLuint) {
-        let _arg0 = x.jsValue
-        let _arg1 = y.jsValue
-        let _arg2 = width.jsValue
-        let _arg3 = height.jsValue
-        let _arg4 = format.jsValue
-        let _arg5 = type.jsValue
-        let _arg6 = dstData.jsValue
-        let _arg7 = dstOffset.jsValue
-        let this = jsObject
-        _ = this[Strings.readPixels].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
-    }
+    @ReadWriteAttribute
+    public var oversample: OverSampleType
 }
 
 public class WebGLActiveInfo: JSBridgedClass {
@@ -18666,14 +19329,6 @@ public enum WebGLPowerPreference: JSString, JSValueCompatible {
 
 public class WebGLProgram: WebGLObject {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLProgram].function! }
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
-    }
-}
-
-public class WebGLQuery: WebGLObject {
-    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLQuery].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
@@ -20072,14 +20727,6 @@ public extension WebGLRenderingContextOverloads {
     }
 }
 
-public class WebGLSampler: WebGLObject {
-    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLSampler].function! }
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
-    }
-}
-
 public class WebGLShader: WebGLObject {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLShader].function! }
 
@@ -20110,24 +20757,8 @@ public class WebGLShaderPrecisionFormat: JSBridgedClass {
     public var precision: GLint
 }
 
-public class WebGLSync: WebGLObject {
-    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLSync].function! }
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
-    }
-}
-
 public class WebGLTexture: WebGLObject {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLTexture].function! }
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
-    }
-}
-
-public class WebGLTransformFeedback: WebGLObject {
-    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLTransformFeedback].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
@@ -20144,11 +20775,73 @@ public class WebGLUniformLocation: JSBridgedClass {
     }
 }
 
-public class WebGLVertexArrayObject: WebGLObject {
-    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebGLVertexArrayObject].function! }
+public class WebSocket: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebSocket].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
+        _bufferedAmount = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferedAmount)
+        _onopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onopen)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
+        _extensions = ReadonlyAttribute(jsObject: jsObject, name: Strings.extensions)
+        _protocol = ReadonlyAttribute(jsObject: jsObject, name: Strings.protocol)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
+        _binaryType = ReadWriteAttribute(jsObject: jsObject, name: Strings.binaryType)
         super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(url: String, protocols: String_or_seq_of_String? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue, protocols?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var url: String
+
+    public static let CONNECTING: UInt16 = 0
+
+    public static let OPEN: UInt16 = 1
+
+    public static let CLOSING: UInt16 = 2
+
+    public static let CLOSED: UInt16 = 3
+
+    @ReadonlyAttribute
+    public var readyState: UInt16
+
+    @ReadonlyAttribute
+    public var bufferedAmount: UInt64
+
+    @ClosureAttribute1Optional
+    public var onopen: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onerror: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onclose: EventHandler
+
+    @ReadonlyAttribute
+    public var extensions: String
+
+    @ReadonlyAttribute
+    public var `protocol`: String
+
+    @inlinable public func close(code: UInt16? = nil, reason: String? = nil) {
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [code?.jsValue ?? .undefined, reason?.jsValue ?? .undefined])
+    }
+
+    @ClosureAttribute1Optional
+    public var onmessage: EventHandler
+
+    @ReadWriteAttribute
+    public var binaryType: BinaryType
+
+    @inlinable public func send(data: BlobPart) {
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue])
     }
 }
 
@@ -21808,6 +22501,70 @@ public enum console {
     }
 }
 
+@propertyWrapper public final class ClosureAttribute3<A0, A1, A2, ReturnType>
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: (A0, A1, A2) -> ReturnType {
+        get { ClosureAttribute3[name, in: jsObject] }
+        set { ClosureAttribute3[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2) -> ReturnType {
+        get {
+            let function = jsObject[name].function!
+            return { function($0.jsValue, $1.jsValue, $2.jsValue).fromJSValue()! }
+        }
+        set {
+            jsObject[name] = JSClosure {
+                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue
+            }.jsValue
+        }
+    }
+}
+
+@propertyWrapper public final class ClosureAttribute3Optional<A0, A1, A2, ReturnType>
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: ((A0, A1, A2) -> ReturnType)? {
+        get { ClosureAttribute3Optional[name, in: jsObject] }
+        set { ClosureAttribute3Optional[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1, A2) -> ReturnType)? {
+        get {
+            guard let function = jsObject[name].function else {
+                return nil
+            }
+            return { function($0.jsValue, $1.jsValue, $2.jsValue).fromJSValue()! }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[name] = JSClosure {
+                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue
+                }.jsValue
+            } else {
+                jsObject[name] = .null
+            }
+        }
+    }
+}
+
 @propertyWrapper public final class ClosureAttribute5<A0, A1, A2, A3, A4, ReturnType>
     where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
 {
@@ -21878,17 +22635,32 @@ public enum console {
     @usableFromInline static let AbortSignal: JSString = "AbortSignal"
     @usableFromInline static let AbstractRange: JSString = "AbstractRange"
     @usableFromInline static let AddSearchProvider: JSString = "AddSearchProvider"
+    @usableFromInline static let AnalyserNode: JSString = "AnalyserNode"
     @usableFromInline static let Animation: JSString = "Animation"
     @usableFromInline static let AnimationEffect: JSString = "AnimationEffect"
     @usableFromInline static let AnimationTimeline: JSString = "AnimationTimeline"
     @usableFromInline static let Attr: JSString = "Attr"
+    @usableFromInline static let AudioBuffer: JSString = "AudioBuffer"
+    @usableFromInline static let AudioBufferSourceNode: JSString = "AudioBufferSourceNode"
+    @usableFromInline static let AudioContext: JSString = "AudioContext"
     @usableFromInline static let AudioData: JSString = "AudioData"
     @usableFromInline static let AudioDecoder: JSString = "AudioDecoder"
+    @usableFromInline static let AudioDestinationNode: JSString = "AudioDestinationNode"
     @usableFromInline static let AudioEncoder: JSString = "AudioEncoder"
+    @usableFromInline static let AudioListener: JSString = "AudioListener"
+    @usableFromInline static let AudioNode: JSString = "AudioNode"
+    @usableFromInline static let AudioParam: JSString = "AudioParam"
+    @usableFromInline static let AudioParamMap: JSString = "AudioParamMap"
+    @usableFromInline static let AudioProcessingEvent: JSString = "AudioProcessingEvent"
+    @usableFromInline static let AudioScheduledSourceNode: JSString = "AudioScheduledSourceNode"
     @usableFromInline static let AudioTrack: JSString = "AudioTrack"
     @usableFromInline static let AudioTrackList: JSString = "AudioTrackList"
+    @usableFromInline static let AudioWorklet: JSString = "AudioWorklet"
+    @usableFromInline static let AudioWorkletNode: JSString = "AudioWorkletNode"
     @usableFromInline static let BarProp: JSString = "BarProp"
+    @usableFromInline static let BaseAudioContext: JSString = "BaseAudioContext"
     @usableFromInline static let BeforeUnloadEvent: JSString = "BeforeUnloadEvent"
+    @usableFromInline static let BiquadFilterNode: JSString = "BiquadFilterNode"
     @usableFromInline static let Blob: JSString = "Blob"
     @usableFromInline static let BlobEvent: JSString = "BlobEvent"
     @usableFromInline static let BroadcastChannel: JSString = "BroadcastChannel"
@@ -21902,9 +22674,14 @@ public enum console {
     @usableFromInline static let CanvasPattern: JSString = "CanvasPattern"
     @usableFromInline static let CanvasRenderingContext2D: JSString = "CanvasRenderingContext2D"
     @usableFromInline static let CaretPosition: JSString = "CaretPosition"
+    @usableFromInline static let ChannelMergerNode: JSString = "ChannelMergerNode"
+    @usableFromInline static let ChannelSplitterNode: JSString = "ChannelSplitterNode"
     @usableFromInline static let CharacterData: JSString = "CharacterData"
+    @usableFromInline static let CloseEvent: JSString = "CloseEvent"
     @usableFromInline static let Comment: JSString = "Comment"
     @usableFromInline static let CompositionEvent: JSString = "CompositionEvent"
+    @usableFromInline static let ConstantSourceNode: JSString = "ConstantSourceNode"
+    @usableFromInline static let ConvolverNode: JSString = "ConvolverNode"
     @usableFromInline static let CountQueuingStrategy: JSString = "CountQueuingStrategy"
     @usableFromInline static let CustomElementRegistry: JSString = "CustomElementRegistry"
     @usableFromInline static let CustomEvent: JSString = "CustomEvent"
@@ -21925,11 +22702,13 @@ public enum console {
     @usableFromInline static let DataTransfer: JSString = "DataTransfer"
     @usableFromInline static let DataTransferItem: JSString = "DataTransferItem"
     @usableFromInline static let DataTransferItemList: JSString = "DataTransferItemList"
+    @usableFromInline static let DelayNode: JSString = "DelayNode"
     @usableFromInline static let Document: JSString = "Document"
     @usableFromInline static let DocumentFragment: JSString = "DocumentFragment"
     @usableFromInline static let DocumentTimeline: JSString = "DocumentTimeline"
     @usableFromInline static let DocumentType: JSString = "DocumentType"
     @usableFromInline static let DragEvent: JSString = "DragEvent"
+    @usableFromInline static let DynamicsCompressorNode: JSString = "DynamicsCompressorNode"
     @usableFromInline static let Element: JSString = "Element"
     @usableFromInline static let ElementInternals: JSString = "ElementInternals"
     @usableFromInline static let EncodedAudioChunk: JSString = "EncodedAudioChunk"
@@ -21945,6 +22724,7 @@ public enum console {
     @usableFromInline static let FocusEvent: JSString = "FocusEvent"
     @usableFromInline static let FormData: JSString = "FormData"
     @usableFromInline static let FormDataEvent: JSString = "FormDataEvent"
+    @usableFromInline static let GainNode: JSString = "GainNode"
     @usableFromInline static let HTMLAllCollection: JSString = "HTMLAllCollection"
     @usableFromInline static let HTMLAnchorElement: JSString = "HTMLAnchorElement"
     @usableFromInline static let HTMLAreaElement: JSString = "HTMLAreaElement"
@@ -22023,6 +22803,7 @@ public enum console {
     @usableFromInline static let HashChangeEvent: JSString = "HashChangeEvent"
     @usableFromInline static let Headers: JSString = "Headers"
     @usableFromInline static let History: JSString = "History"
+    @usableFromInline static let IIRFilterNode: JSString = "IIRFilterNode"
     @usableFromInline static let ImageBitmap: JSString = "ImageBitmap"
     @usableFromInline static let ImageBitmapRenderingContext: JSString = "ImageBitmapRenderingContext"
     @usableFromInline static let ImageData: JSString = "ImageData"
@@ -22037,13 +22818,17 @@ public enum console {
     @usableFromInline static let Location: JSString = "Location"
     @usableFromInline static let MediaDeviceInfo: JSString = "MediaDeviceInfo"
     @usableFromInline static let MediaDevices: JSString = "MediaDevices"
+    @usableFromInline static let MediaElementAudioSourceNode: JSString = "MediaElementAudioSourceNode"
     @usableFromInline static let MediaError: JSString = "MediaError"
     @usableFromInline static let MediaQueryList: JSString = "MediaQueryList"
     @usableFromInline static let MediaQueryListEvent: JSString = "MediaQueryListEvent"
     @usableFromInline static let MediaRecorder: JSString = "MediaRecorder"
     @usableFromInline static let MediaRecorderErrorEvent: JSString = "MediaRecorderErrorEvent"
     @usableFromInline static let MediaStream: JSString = "MediaStream"
+    @usableFromInline static let MediaStreamAudioDestinationNode: JSString = "MediaStreamAudioDestinationNode"
+    @usableFromInline static let MediaStreamAudioSourceNode: JSString = "MediaStreamAudioSourceNode"
     @usableFromInline static let MediaStreamTrack: JSString = "MediaStreamTrack"
+    @usableFromInline static let MediaStreamTrackAudioSourceNode: JSString = "MediaStreamTrackAudioSourceNode"
     @usableFromInline static let MediaStreamTrackEvent: JSString = "MediaStreamTrackEvent"
     @usableFromInline static let MessageChannel: JSString = "MessageChannel"
     @usableFromInline static let MessageEvent: JSString = "MessageEvent"
@@ -22061,18 +22846,24 @@ public enum console {
     @usableFromInline static let NodeIterator: JSString = "NodeIterator"
     @usableFromInline static let NodeList: JSString = "NodeList"
     @usableFromInline static let Object: JSString = "Object"
+    @usableFromInline static let OfflineAudioCompletionEvent: JSString = "OfflineAudioCompletionEvent"
+    @usableFromInline static let OfflineAudioContext: JSString = "OfflineAudioContext"
     @usableFromInline static let OffscreenCanvas: JSString = "OffscreenCanvas"
     @usableFromInline static let OffscreenCanvasRenderingContext2D: JSString = "OffscreenCanvasRenderingContext2D"
+    @usableFromInline static let OscillatorNode: JSString = "OscillatorNode"
     @usableFromInline static let OverconstrainedError: JSString = "OverconstrainedError"
     @usableFromInline static let PageTransitionEvent: JSString = "PageTransitionEvent"
+    @usableFromInline static let PannerNode: JSString = "PannerNode"
     @usableFromInline static let Path2D: JSString = "Path2D"
     @usableFromInline static let Performance: JSString = "Performance"
+    @usableFromInline static let PeriodicWave: JSString = "PeriodicWave"
     @usableFromInline static let Plugin: JSString = "Plugin"
     @usableFromInline static let PluginArray: JSString = "PluginArray"
     @usableFromInline static let PopStateEvent: JSString = "PopStateEvent"
     @usableFromInline static let ProcessingInstruction: JSString = "ProcessingInstruction"
     @usableFromInline static let ProgressEvent: JSString = "ProgressEvent"
     @usableFromInline static let PromiseRejectionEvent: JSString = "PromiseRejectionEvent"
+    @usableFromInline static let Q: JSString = "Q"
     @usableFromInline static let RadioNodeList: JSString = "RadioNodeList"
     @usableFromInline static let Range: JSString = "Range"
     @usableFromInline static let ReadableByteStreamController: JSString = "ReadableByteStreamController"
@@ -22084,12 +22875,14 @@ public enum console {
     @usableFromInline static let Request: JSString = "Request"
     @usableFromInline static let Response: JSString = "Response"
     @usableFromInline static let Screen: JSString = "Screen"
+    @usableFromInline static let ScriptProcessorNode: JSString = "ScriptProcessorNode"
     @usableFromInline static let ServiceWorker: JSString = "ServiceWorker"
     @usableFromInline static let ServiceWorkerContainer: JSString = "ServiceWorkerContainer"
     @usableFromInline static let ServiceWorkerRegistration: JSString = "ServiceWorkerRegistration"
     @usableFromInline static let ShadowRoot: JSString = "ShadowRoot"
     @usableFromInline static let SharedWorker: JSString = "SharedWorker"
     @usableFromInline static let StaticRange: JSString = "StaticRange"
+    @usableFromInline static let StereoPannerNode: JSString = "StereoPannerNode"
     @usableFromInline static let Storage: JSString = "Storage"
     @usableFromInline static let StorageEvent: JSString = "StorageEvent"
     @usableFromInline static let SubmitEvent: JSString = "SubmitEvent"
@@ -22114,24 +22907,20 @@ public enum console {
     @usableFromInline static let VideoFrame: JSString = "VideoFrame"
     @usableFromInline static let VideoTrack: JSString = "VideoTrack"
     @usableFromInline static let VideoTrackList: JSString = "VideoTrackList"
-    @usableFromInline static let WebGL2RenderingContext: JSString = "WebGL2RenderingContext"
+    @usableFromInline static let WaveShaperNode: JSString = "WaveShaperNode"
     @usableFromInline static let WebGLActiveInfo: JSString = "WebGLActiveInfo"
     @usableFromInline static let WebGLBuffer: JSString = "WebGLBuffer"
     @usableFromInline static let WebGLContextEvent: JSString = "WebGLContextEvent"
     @usableFromInline static let WebGLFramebuffer: JSString = "WebGLFramebuffer"
     @usableFromInline static let WebGLObject: JSString = "WebGLObject"
     @usableFromInline static let WebGLProgram: JSString = "WebGLProgram"
-    @usableFromInline static let WebGLQuery: JSString = "WebGLQuery"
     @usableFromInline static let WebGLRenderbuffer: JSString = "WebGLRenderbuffer"
     @usableFromInline static let WebGLRenderingContext: JSString = "WebGLRenderingContext"
-    @usableFromInline static let WebGLSampler: JSString = "WebGLSampler"
     @usableFromInline static let WebGLShader: JSString = "WebGLShader"
     @usableFromInline static let WebGLShaderPrecisionFormat: JSString = "WebGLShaderPrecisionFormat"
-    @usableFromInline static let WebGLSync: JSString = "WebGLSync"
     @usableFromInline static let WebGLTexture: JSString = "WebGLTexture"
-    @usableFromInline static let WebGLTransformFeedback: JSString = "WebGLTransformFeedback"
     @usableFromInline static let WebGLUniformLocation: JSString = "WebGLUniformLocation"
-    @usableFromInline static let WebGLVertexArrayObject: JSString = "WebGLVertexArrayObject"
+    @usableFromInline static let WebSocket: JSString = "WebSocket"
     @usableFromInline static let WheelEvent: JSString = "WheelEvent"
     @usableFromInline static let Window: JSString = "Window"
     @usableFromInline static let Worker: JSString = "Worker"
@@ -22259,6 +23048,7 @@ public enum console {
     @usableFromInline static let attachInternals: JSString = "attachInternals"
     @usableFromInline static let attachShader: JSString = "attachShader"
     @usableFromInline static let attachShadow: JSString = "attachShadow"
+    @usableFromInline static let attack: JSString = "attack"
     @usableFromInline static let attrChange: JSString = "attrChange"
     @usableFromInline static let attrName: JSString = "attrName"
     @usableFromInline static let attributeFilter: JSString = "attributeFilter"
@@ -22270,11 +23060,13 @@ public enum console {
     @usableFromInline static let audioBitrateMode: JSString = "audioBitrateMode"
     @usableFromInline static let audioBitsPerSecond: JSString = "audioBitsPerSecond"
     @usableFromInline static let audioTracks: JSString = "audioTracks"
+    @usableFromInline static let audioWorklet: JSString = "audioWorklet"
     @usableFromInline static let autoAllocateChunkSize: JSString = "autoAllocateChunkSize"
     @usableFromInline static let autoGainControl: JSString = "autoGainControl"
     @usableFromInline static let autocapitalize: JSString = "autocapitalize"
     @usableFromInline static let autocomplete: JSString = "autocomplete"
     @usableFromInline static let autofocus: JSString = "autofocus"
+    @usableFromInline static let automationRate: JSString = "automationRate"
     @usableFromInline static let autoplay: JSString = "autoplay"
     @usableFromInline static let availHeight: JSString = "availHeight"
     @usableFromInline static let availWidth: JSString = "availWidth"
@@ -22283,24 +23075,19 @@ public enum console {
     @usableFromInline static let back: JSString = "back"
     @usableFromInline static let background: JSString = "background"
     @usableFromInline static let badInput: JSString = "badInput"
+    @usableFromInline static let baseLatency: JSString = "baseLatency"
     @usableFromInline static let baseURI: JSString = "baseURI"
     @usableFromInline static let before: JSString = "before"
     @usableFromInline static let beginPath: JSString = "beginPath"
-    @usableFromInline static let beginQuery: JSString = "beginQuery"
-    @usableFromInline static let beginTransformFeedback: JSString = "beginTransformFeedback"
     @usableFromInline static let behavior: JSString = "behavior"
     @usableFromInline static let bezierCurveTo: JSString = "bezierCurveTo"
     @usableFromInline static let bgColor: JSString = "bgColor"
+    @usableFromInline static let binaryType: JSString = "binaryType"
     @usableFromInline static let bindAttribLocation: JSString = "bindAttribLocation"
     @usableFromInline static let bindBuffer: JSString = "bindBuffer"
-    @usableFromInline static let bindBufferBase: JSString = "bindBufferBase"
-    @usableFromInline static let bindBufferRange: JSString = "bindBufferRange"
     @usableFromInline static let bindFramebuffer: JSString = "bindFramebuffer"
     @usableFromInline static let bindRenderbuffer: JSString = "bindRenderbuffer"
-    @usableFromInline static let bindSampler: JSString = "bindSampler"
     @usableFromInline static let bindTexture: JSString = "bindTexture"
-    @usableFromInline static let bindTransformFeedback: JSString = "bindTransformFeedback"
-    @usableFromInline static let bindVertexArray: JSString = "bindVertexArray"
     @usableFromInline static let bitrate: JSString = "bitrate"
     @usableFromInline static let bitrateMode: JSString = "bitrateMode"
     @usableFromInline static let bitsPerSecond: JSString = "bitsPerSecond"
@@ -22309,7 +23096,6 @@ public enum console {
     @usableFromInline static let blendEquationSeparate: JSString = "blendEquationSeparate"
     @usableFromInline static let blendFunc: JSString = "blendFunc"
     @usableFromInline static let blendFuncSeparate: JSString = "blendFuncSeparate"
-    @usableFromInline static let blitFramebuffer: JSString = "blitFramebuffer"
     @usableFromInline static let blob: JSString = "blob"
     @usableFromInline static let block: JSString = "block"
     @usableFromInline static let blocking: JSString = "blocking"
@@ -22322,9 +23108,12 @@ public enum console {
     @usableFromInline static let box: JSString = "box"
     @usableFromInline static let btoa: JSString = "btoa"
     @usableFromInline static let bubbles: JSString = "bubbles"
+    @usableFromInline static let buffer: JSString = "buffer"
     @usableFromInline static let bufferData: JSString = "bufferData"
+    @usableFromInline static let bufferSize: JSString = "bufferSize"
     @usableFromInline static let bufferSubData: JSString = "bufferSubData"
     @usableFromInline static let buffered: JSString = "buffered"
+    @usableFromInline static let bufferedAmount: JSString = "bufferedAmount"
     @usableFromInline static let button: JSString = "button"
     @usableFromInline static let buttons: JSString = "buttons"
     @usableFromInline static let byobRequest: JSString = "byobRequest"
@@ -22335,8 +23124,10 @@ public enum console {
     @usableFromInline static let caches: JSString = "caches"
     @usableFromInline static let canPlayType: JSString = "canPlayType"
     @usableFromInline static let cancel: JSString = "cancel"
+    @usableFromInline static let cancelAndHoldAtTime: JSString = "cancelAndHoldAtTime"
     @usableFromInline static let cancelAnimationFrame: JSString = "cancelAnimationFrame"
     @usableFromInline static let cancelBubble: JSString = "cancelBubble"
+    @usableFromInline static let cancelScheduledValues: JSString = "cancelScheduledValues"
     @usableFromInline static let cancelable: JSString = "cancelable"
     @usableFromInline static let canvas: JSString = "canvas"
     @usableFromInline static let caption: JSString = "caption"
@@ -22350,6 +23141,8 @@ public enum console {
     @usableFromInline static let ch: JSString = "ch"
     @usableFromInline static let chOff: JSString = "chOff"
     @usableFromInline static let channelCount: JSString = "channelCount"
+    @usableFromInline static let channelCountMode: JSString = "channelCountMode"
+    @usableFromInline static let channelInterpretation: JSString = "channelInterpretation"
     @usableFromInline static let charCode: JSString = "charCode"
     @usableFromInline static let characterData: JSString = "characterData"
     @usableFromInline static let characterDataOldValue: JSString = "characterDataOldValue"
@@ -22366,10 +23159,6 @@ public enum console {
     @usableFromInline static let classList: JSString = "classList"
     @usableFromInline static let className: JSString = "className"
     @usableFromInline static let clear: JSString = "clear"
-    @usableFromInline static let clearBufferfi: JSString = "clearBufferfi"
-    @usableFromInline static let clearBufferfv: JSString = "clearBufferfv"
-    @usableFromInline static let clearBufferiv: JSString = "clearBufferiv"
-    @usableFromInline static let clearBufferuiv: JSString = "clearBufferuiv"
     @usableFromInline static let clearColor: JSString = "clearColor"
     @usableFromInline static let clearData: JSString = "clearData"
     @usableFromInline static let clearDepth: JSString = "clearDepth"
@@ -22384,7 +23173,6 @@ public enum console {
     @usableFromInline static let clientInformation: JSString = "clientInformation"
     @usableFromInline static let clientLeft: JSString = "clientLeft"
     @usableFromInline static let clientTop: JSString = "clientTop"
-    @usableFromInline static let clientWaitSync: JSString = "clientWaitSync"
     @usableFromInline static let clientWidth: JSString = "clientWidth"
     @usableFromInline static let clientX: JSString = "clientX"
     @usableFromInline static let clientY: JSString = "clientY"
@@ -22430,13 +23218,15 @@ public enum console {
     @usableFromInline static let composedPath: JSString = "composedPath"
     @usableFromInline static let composite: JSString = "composite"
     @usableFromInline static let compressedTexImage2D: JSString = "compressedTexImage2D"
-    @usableFromInline static let compressedTexImage3D: JSString = "compressedTexImage3D"
     @usableFromInline static let compressedTexSubImage2D: JSString = "compressedTexSubImage2D"
-    @usableFromInline static let compressedTexSubImage3D: JSString = "compressedTexSubImage3D"
     @usableFromInline static let computedOffset: JSString = "computedOffset"
+    @usableFromInline static let coneInnerAngle: JSString = "coneInnerAngle"
+    @usableFromInline static let coneOuterAngle: JSString = "coneOuterAngle"
+    @usableFromInline static let coneOuterGain: JSString = "coneOuterGain"
     @usableFromInline static let config: JSString = "config"
     @usableFromInline static let configure: JSString = "configure"
     @usableFromInline static let confirm: JSString = "confirm"
+    @usableFromInline static let connect: JSString = "connect"
     @usableFromInline static let console: JSString = "console"
     @usableFromInline static let constraint: JSString = "constraint"
     @usableFromInline static let contains: JSString = "contains"
@@ -22445,6 +23235,8 @@ public enum console {
     @usableFromInline static let contentEditable: JSString = "contentEditable"
     @usableFromInline static let contentType: JSString = "contentType"
     @usableFromInline static let contentWindow: JSString = "contentWindow"
+    @usableFromInline static let context: JSString = "context"
+    @usableFromInline static let contextTime: JSString = "contextTime"
     @usableFromInline static let control: JSString = "control"
     @usableFromInline static let controller: JSString = "controller"
     @usableFromInline static let controls: JSString = "controls"
@@ -22455,48 +23247,65 @@ public enum console {
     @usableFromInline static let cookie: JSString = "cookie"
     @usableFromInline static let cookieEnabled: JSString = "cookieEnabled"
     @usableFromInline static let coords: JSString = "coords"
-    @usableFromInline static let copyBufferSubData: JSString = "copyBufferSubData"
+    @usableFromInline static let copyFromChannel: JSString = "copyFromChannel"
     @usableFromInline static let copyTexImage2D: JSString = "copyTexImage2D"
     @usableFromInline static let copyTexSubImage2D: JSString = "copyTexSubImage2D"
-    @usableFromInline static let copyTexSubImage3D: JSString = "copyTexSubImage3D"
     @usableFromInline static let copyTo: JSString = "copyTo"
+    @usableFromInline static let copyToChannel: JSString = "copyToChannel"
     @usableFromInline static let count: JSString = "count"
     @usableFromInline static let countReset: JSString = "countReset"
+    @usableFromInline static let createAnalyser: JSString = "createAnalyser"
     @usableFromInline static let createAttribute: JSString = "createAttribute"
     @usableFromInline static let createAttributeNS: JSString = "createAttributeNS"
+    @usableFromInline static let createBiquadFilter: JSString = "createBiquadFilter"
     @usableFromInline static let createBuffer: JSString = "createBuffer"
+    @usableFromInline static let createBufferSource: JSString = "createBufferSource"
     @usableFromInline static let createCDATASection: JSString = "createCDATASection"
     @usableFromInline static let createCaption: JSString = "createCaption"
+    @usableFromInline static let createChannelMerger: JSString = "createChannelMerger"
+    @usableFromInline static let createChannelSplitter: JSString = "createChannelSplitter"
     @usableFromInline static let createComment: JSString = "createComment"
     @usableFromInline static let createConicGradient: JSString = "createConicGradient"
+    @usableFromInline static let createConstantSource: JSString = "createConstantSource"
+    @usableFromInline static let createConvolver: JSString = "createConvolver"
+    @usableFromInline static let createDelay: JSString = "createDelay"
     @usableFromInline static let createDocument: JSString = "createDocument"
     @usableFromInline static let createDocumentFragment: JSString = "createDocumentFragment"
     @usableFromInline static let createDocumentType: JSString = "createDocumentType"
+    @usableFromInline static let createDynamicsCompressor: JSString = "createDynamicsCompressor"
     @usableFromInline static let createElement: JSString = "createElement"
     @usableFromInline static let createElementNS: JSString = "createElementNS"
     @usableFromInline static let createEvent: JSString = "createEvent"
     @usableFromInline static let createFramebuffer: JSString = "createFramebuffer"
+    @usableFromInline static let createGain: JSString = "createGain"
     @usableFromInline static let createHTMLDocument: JSString = "createHTMLDocument"
+    @usableFromInline static let createIIRFilter: JSString = "createIIRFilter"
     @usableFromInline static let createImageBitmap: JSString = "createImageBitmap"
     @usableFromInline static let createImageData: JSString = "createImageData"
     @usableFromInline static let createLinearGradient: JSString = "createLinearGradient"
+    @usableFromInline static let createMediaElementSource: JSString = "createMediaElementSource"
+    @usableFromInline static let createMediaStreamDestination: JSString = "createMediaStreamDestination"
+    @usableFromInline static let createMediaStreamSource: JSString = "createMediaStreamSource"
+    @usableFromInline static let createMediaStreamTrackSource: JSString = "createMediaStreamTrackSource"
     @usableFromInline static let createObjectURL: JSString = "createObjectURL"
+    @usableFromInline static let createOscillator: JSString = "createOscillator"
+    @usableFromInline static let createPanner: JSString = "createPanner"
     @usableFromInline static let createPattern: JSString = "createPattern"
+    @usableFromInline static let createPeriodicWave: JSString = "createPeriodicWave"
     @usableFromInline static let createProcessingInstruction: JSString = "createProcessingInstruction"
     @usableFromInline static let createProgram: JSString = "createProgram"
-    @usableFromInline static let createQuery: JSString = "createQuery"
     @usableFromInline static let createRadialGradient: JSString = "createRadialGradient"
     @usableFromInline static let createRange: JSString = "createRange"
     @usableFromInline static let createRenderbuffer: JSString = "createRenderbuffer"
-    @usableFromInline static let createSampler: JSString = "createSampler"
+    @usableFromInline static let createScriptProcessor: JSString = "createScriptProcessor"
     @usableFromInline static let createShader: JSString = "createShader"
+    @usableFromInline static let createStereoPanner: JSString = "createStereoPanner"
     @usableFromInline static let createTBody: JSString = "createTBody"
     @usableFromInline static let createTFoot: JSString = "createTFoot"
     @usableFromInline static let createTHead: JSString = "createTHead"
     @usableFromInline static let createTextNode: JSString = "createTextNode"
     @usableFromInline static let createTexture: JSString = "createTexture"
-    @usableFromInline static let createTransformFeedback: JSString = "createTransformFeedback"
-    @usableFromInline static let createVertexArray: JSString = "createVertexArray"
+    @usableFromInline static let createWaveShaper: JSString = "createWaveShaper"
     @usableFromInline static let credentials: JSString = "credentials"
     @usableFromInline static let crossOrigin: JSString = "crossOrigin"
     @usableFromInline static let crossOriginIsolated: JSString = "crossOriginIsolated"
@@ -22509,6 +23318,7 @@ public enum console {
     @usableFromInline static let currentSrc: JSString = "currentSrc"
     @usableFromInline static let currentTarget: JSString = "currentTarget"
     @usableFromInline static let currentTime: JSString = "currentTime"
+    @usableFromInline static let curve: JSString = "curve"
     @usableFromInline static let customElements: JSString = "customElements"
     @usableFromInline static let customError: JSString = "customError"
     @usableFromInline static let d: JSString = "d"
@@ -22533,6 +23343,7 @@ public enum console {
     @usableFromInline static let `defer`: JSString = "defer"
     @usableFromInline static let define: JSString = "define"
     @usableFromInline static let delay: JSString = "delay"
+    @usableFromInline static let delayTime: JSString = "delayTime"
     @usableFromInline static let delegatesFocus: JSString = "delegatesFocus"
     @usableFromInline static let delete: JSString = "delete"
     @usableFromInline static let deleteBuffer: JSString = "deleteBuffer"
@@ -22542,17 +23353,12 @@ public enum console {
     @usableFromInline static let deleteData: JSString = "deleteData"
     @usableFromInline static let deleteFramebuffer: JSString = "deleteFramebuffer"
     @usableFromInline static let deleteProgram: JSString = "deleteProgram"
-    @usableFromInline static let deleteQuery: JSString = "deleteQuery"
     @usableFromInline static let deleteRenderbuffer: JSString = "deleteRenderbuffer"
     @usableFromInline static let deleteRow: JSString = "deleteRow"
-    @usableFromInline static let deleteSampler: JSString = "deleteSampler"
     @usableFromInline static let deleteShader: JSString = "deleteShader"
-    @usableFromInline static let deleteSync: JSString = "deleteSync"
     @usableFromInline static let deleteTFoot: JSString = "deleteTFoot"
     @usableFromInline static let deleteTHead: JSString = "deleteTHead"
     @usableFromInline static let deleteTexture: JSString = "deleteTexture"
-    @usableFromInline static let deleteTransformFeedback: JSString = "deleteTransformFeedback"
-    @usableFromInline static let deleteVertexArray: JSString = "deleteVertexArray"
     @usableFromInline static let deltaMode: JSString = "deltaMode"
     @usableFromInline static let deltaX: JSString = "deltaX"
     @usableFromInline static let deltaY: JSString = "deltaY"
@@ -22571,6 +23377,7 @@ public enum console {
     @usableFromInline static let detach: JSString = "detach"
     @usableFromInline static let detachShader: JSString = "detachShader"
     @usableFromInline static let detail: JSString = "detail"
+    @usableFromInline static let detune: JSString = "detune"
     @usableFromInline static let deviceId: JSString = "deviceId"
     @usableFromInline static let devicePixelRatio: JSString = "devicePixelRatio"
     @usableFromInline static let dir: JSString = "dir"
@@ -22578,6 +23385,7 @@ public enum console {
     @usableFromInline static let direction: JSString = "direction"
     @usableFromInline static let dirxml: JSString = "dirxml"
     @usableFromInline static let disable: JSString = "disable"
+    @usableFromInline static let disableNormalization: JSString = "disableNormalization"
     @usableFromInline static let disableVertexAttribArray: JSString = "disableVertexAttribArray"
     @usableFromInline static let disabled: JSString = "disabled"
     @usableFromInline static let disconnect: JSString = "disconnect"
@@ -22586,6 +23394,7 @@ public enum console {
     @usableFromInline static let displayAspectWidth: JSString = "displayAspectWidth"
     @usableFromInline static let displayHeight: JSString = "displayHeight"
     @usableFromInline static let displayWidth: JSString = "displayWidth"
+    @usableFromInline static let distanceModel: JSString = "distanceModel"
     @usableFromInline static let doctype: JSString = "doctype"
     @usableFromInline static let document: JSString = "document"
     @usableFromInline static let documentElement: JSString = "documentElement"
@@ -22595,13 +23404,9 @@ public enum console {
     @usableFromInline static let download: JSString = "download"
     @usableFromInline static let draggable: JSString = "draggable"
     @usableFromInline static let drawArrays: JSString = "drawArrays"
-    @usableFromInline static let drawArraysInstanced: JSString = "drawArraysInstanced"
-    @usableFromInline static let drawBuffers: JSString = "drawBuffers"
     @usableFromInline static let drawElements: JSString = "drawElements"
-    @usableFromInline static let drawElementsInstanced: JSString = "drawElementsInstanced"
     @usableFromInline static let drawFocusIfNeeded: JSString = "drawFocusIfNeeded"
     @usableFromInline static let drawImage: JSString = "drawImage"
-    @usableFromInline static let drawRangeElements: JSString = "drawRangeElements"
     @usableFromInline static let drawingBufferHeight: JSString = "drawingBufferHeight"
     @usableFromInline static let drawingBufferWidth: JSString = "drawingBufferWidth"
     @usableFromInline static let dropEffect: JSString = "dropEffect"
@@ -22631,9 +23436,7 @@ public enum console {
     @usableFromInline static let endContainer: JSString = "endContainer"
     @usableFromInline static let endDelay: JSString = "endDelay"
     @usableFromInline static let endOffset: JSString = "endOffset"
-    @usableFromInline static let endQuery: JSString = "endQuery"
     @usableFromInline static let endTime: JSString = "endTime"
-    @usableFromInline static let endTransformFeedback: JSString = "endTransformFeedback"
     @usableFromInline static let ended: JSString = "ended"
     @usableFromInline static let endings: JSString = "endings"
     @usableFromInline static let enqueue: JSString = "enqueue"
@@ -22645,7 +23448,9 @@ public enum console {
     @usableFromInline static let eventPhase: JSString = "eventPhase"
     @usableFromInline static let exact: JSString = "exact"
     @usableFromInline static let execCommand: JSString = "execCommand"
+    @usableFromInline static let exponentialRampToValueAtTime: JSString = "exponentialRampToValueAtTime"
     @usableFromInline static let extends: JSString = "extends"
+    @usableFromInline static let extensions: JSString = "extensions"
     @usableFromInline static let external: JSString = "external"
     @usableFromInline static let extractContents: JSString = "extractContents"
     @usableFromInline static let f: JSString = "f"
@@ -22653,8 +23458,10 @@ public enum console {
     @usableFromInline static let facingMode: JSString = "facingMode"
     @usableFromInline static let failIfMajorPerformanceCaveat: JSString = "failIfMajorPerformanceCaveat"
     @usableFromInline static let fastSeek: JSString = "fastSeek"
-    @usableFromInline static let fenceSync: JSString = "fenceSync"
+    @usableFromInline static let feedback: JSString = "feedback"
+    @usableFromInline static let feedforward: JSString = "feedforward"
     @usableFromInline static let fetch: JSString = "fetch"
+    @usableFromInline static let fftSize: JSString = "fftSize"
     @usableFromInline static let fgColor: JSString = "fgColor"
     @usableFromInline static let filename: JSString = "filename"
     @usableFromInline static let files: JSString = "files"
@@ -22688,6 +23495,9 @@ public enum console {
     @usableFromInline static let format: JSString = "format"
     @usableFromInline static let forms: JSString = "forms"
     @usableFromInline static let forward: JSString = "forward"
+    @usableFromInline static let forwardX: JSString = "forwardX"
+    @usableFromInline static let forwardY: JSString = "forwardY"
+    @usableFromInline static let forwardZ: JSString = "forwardZ"
     @usableFromInline static let frame: JSString = "frame"
     @usableFromInline static let frameBorder: JSString = "frameBorder"
     @usableFromInline static let frameCount: JSString = "frameCount"
@@ -22697,9 +23507,10 @@ public enum console {
     @usableFromInline static let frameRate: JSString = "frameRate"
     @usableFromInline static let framebufferRenderbuffer: JSString = "framebufferRenderbuffer"
     @usableFromInline static let framebufferTexture2D: JSString = "framebufferTexture2D"
-    @usableFromInline static let framebufferTextureLayer: JSString = "framebufferTextureLayer"
     @usableFromInline static let framerate: JSString = "framerate"
     @usableFromInline static let frames: JSString = "frames"
+    @usableFromInline static let frequency: JSString = "frequency"
+    @usableFromInline static let frequencyBinCount: JSString = "frequencyBinCount"
     @usableFromInline static let fromBox: JSString = "fromBox"
     @usableFromInline static let fromFloat32Array: JSString = "fromFloat32Array"
     @usableFromInline static let fromFloat64Array: JSString = "fromFloat64Array"
@@ -22709,13 +23520,11 @@ public enum console {
     @usableFromInline static let fromRect: JSString = "fromRect"
     @usableFromInline static let frontFace: JSString = "frontFace"
     @usableFromInline static let fullRange: JSString = "fullRange"
+    @usableFromInline static let gain: JSString = "gain"
     @usableFromInline static let generateMipmap: JSString = "generateMipmap"
     @usableFromInline static let get: JSString = "get"
     @usableFromInline static let getActiveAttrib: JSString = "getActiveAttrib"
     @usableFromInline static let getActiveUniform: JSString = "getActiveUniform"
-    @usableFromInline static let getActiveUniformBlockName: JSString = "getActiveUniformBlockName"
-    @usableFromInline static let getActiveUniformBlockParameter: JSString = "getActiveUniformBlockParameter"
-    @usableFromInline static let getActiveUniforms: JSString = "getActiveUniforms"
     @usableFromInline static let getAll: JSString = "getAll"
     @usableFromInline static let getAllResponseHeaders: JSString = "getAllResponseHeaders"
     @usableFromInline static let getAnimations: JSString = "getAnimations"
@@ -22732,8 +23541,10 @@ public enum console {
     @usableFromInline static let getBounds: JSString = "getBounds"
     @usableFromInline static let getBoxQuads: JSString = "getBoxQuads"
     @usableFromInline static let getBufferParameter: JSString = "getBufferParameter"
-    @usableFromInline static let getBufferSubData: JSString = "getBufferSubData"
+    @usableFromInline static let getByteFrequencyData: JSString = "getByteFrequencyData"
+    @usableFromInline static let getByteTimeDomainData: JSString = "getByteTimeDomainData"
     @usableFromInline static let getCapabilities: JSString = "getCapabilities"
+    @usableFromInline static let getChannelData: JSString = "getChannelData"
     @usableFromInline static let getClientRect: JSString = "getClientRect"
     @usableFromInline static let getClientRects: JSString = "getClientRects"
     @usableFromInline static let getComputedTiming: JSString = "getComputedTiming"
@@ -22749,20 +23560,19 @@ public enum console {
     @usableFromInline static let getElementsByTagNameNS: JSString = "getElementsByTagNameNS"
     @usableFromInline static let getError: JSString = "getError"
     @usableFromInline static let getExtension: JSString = "getExtension"
-    @usableFromInline static let getFragDataLocation: JSString = "getFragDataLocation"
+    @usableFromInline static let getFloatFrequencyData: JSString = "getFloatFrequencyData"
+    @usableFromInline static let getFloatTimeDomainData: JSString = "getFloatTimeDomainData"
     @usableFromInline static let getFramebufferAttachmentParameter: JSString = "getFramebufferAttachmentParameter"
+    @usableFromInline static let getFrequencyResponse: JSString = "getFrequencyResponse"
     @usableFromInline static let getImageData: JSString = "getImageData"
-    @usableFromInline static let getIndexedParameter: JSString = "getIndexedParameter"
-    @usableFromInline static let getInternalformatParameter: JSString = "getInternalformatParameter"
     @usableFromInline static let getKeyframes: JSString = "getKeyframes"
     @usableFromInline static let getLineDash: JSString = "getLineDash"
     @usableFromInline static let getModifierState: JSString = "getModifierState"
     @usableFromInline static let getNamedItemNS: JSString = "getNamedItemNS"
+    @usableFromInline static let getOutputTimestamp: JSString = "getOutputTimestamp"
     @usableFromInline static let getParameter: JSString = "getParameter"
     @usableFromInline static let getProgramInfoLog: JSString = "getProgramInfoLog"
     @usableFromInline static let getProgramParameter: JSString = "getProgramParameter"
-    @usableFromInline static let getQuery: JSString = "getQuery"
-    @usableFromInline static let getQueryParameter: JSString = "getQueryParameter"
     @usableFromInline static let getReader: JSString = "getReader"
     @usableFromInline static let getRegistration: JSString = "getRegistration"
     @usableFromInline static let getRegistrations: JSString = "getRegistrations"
@@ -22770,7 +23580,6 @@ public enum console {
     @usableFromInline static let getResponseHeader: JSString = "getResponseHeader"
     @usableFromInline static let getRootNode: JSString = "getRootNode"
     @usableFromInline static let getSVGDocument: JSString = "getSVGDocument"
-    @usableFromInline static let getSamplerParameter: JSString = "getSamplerParameter"
     @usableFromInline static let getSettings: JSString = "getSettings"
     @usableFromInline static let getShaderInfoLog: JSString = "getShaderInfoLog"
     @usableFromInline static let getShaderParameter: JSString = "getShaderParameter"
@@ -22780,16 +23589,12 @@ public enum console {
     @usableFromInline static let getState: JSString = "getState"
     @usableFromInline static let getSupportedConstraints: JSString = "getSupportedConstraints"
     @usableFromInline static let getSupportedExtensions: JSString = "getSupportedExtensions"
-    @usableFromInline static let getSyncParameter: JSString = "getSyncParameter"
     @usableFromInline static let getTexParameter: JSString = "getTexParameter"
     @usableFromInline static let getTiming: JSString = "getTiming"
     @usableFromInline static let getTrackById: JSString = "getTrackById"
     @usableFromInline static let getTracks: JSString = "getTracks"
     @usableFromInline static let getTransform: JSString = "getTransform"
-    @usableFromInline static let getTransformFeedbackVarying: JSString = "getTransformFeedbackVarying"
     @usableFromInline static let getUniform: JSString = "getUniform"
-    @usableFromInline static let getUniformBlockIndex: JSString = "getUniformBlockIndex"
-    @usableFromInline static let getUniformIndices: JSString = "getUniformIndices"
     @usableFromInline static let getUniformLocation: JSString = "getUniformLocation"
     @usableFromInline static let getUserMedia: JSString = "getUserMedia"
     @usableFromInline static let getVertexAttrib: JSString = "getVertexAttrib"
@@ -22837,6 +23642,7 @@ public enum console {
     @usableFromInline static let ignoreMethod: JSString = "ignoreMethod"
     @usableFromInline static let ignoreSearch: JSString = "ignoreSearch"
     @usableFromInline static let ignoreVary: JSString = "ignoreVary"
+    @usableFromInline static let imag: JSString = "imag"
     @usableFromInline static let image: JSString = "image"
     @usableFromInline static let imageOrientation: JSString = "imageOrientation"
     @usableFromInline static let imageSizes: JSString = "imageSizes"
@@ -22866,6 +23672,7 @@ public enum console {
     @usableFromInline static let innerHeight: JSString = "innerHeight"
     @usableFromInline static let innerText: JSString = "innerText"
     @usableFromInline static let innerWidth: JSString = "innerWidth"
+    @usableFromInline static let inputBuffer: JSString = "inputBuffer"
     @usableFromInline static let inputEncoding: JSString = "inputEncoding"
     @usableFromInline static let inputMode: JSString = "inputMode"
     @usableFromInline static let inputType: JSString = "inputType"
@@ -22880,8 +23687,6 @@ public enum console {
     @usableFromInline static let integrity: JSString = "integrity"
     @usableFromInline static let intersectsNode: JSString = "intersectsNode"
     @usableFromInline static let invalidIteratorState: JSString = "invalidIteratorState"
-    @usableFromInline static let invalidateFramebuffer: JSString = "invalidateFramebuffer"
-    @usableFromInline static let invalidateSubFramebuffer: JSString = "invalidateSubFramebuffer"
     @usableFromInline static let inverse: JSString = "inverse"
     @usableFromInline static let invertSelf: JSString = "invertSelf"
     @usableFromInline static let `is`: JSString = "is"
@@ -22903,19 +23708,14 @@ public enum console {
     @usableFromInline static let isPointInRange: JSString = "isPointInRange"
     @usableFromInline static let isPointInStroke: JSString = "isPointInStroke"
     @usableFromInline static let isProgram: JSString = "isProgram"
-    @usableFromInline static let isQuery: JSString = "isQuery"
     @usableFromInline static let isReloadNavigation: JSString = "isReloadNavigation"
     @usableFromInline static let isRenderbuffer: JSString = "isRenderbuffer"
     @usableFromInline static let isSameNode: JSString = "isSameNode"
-    @usableFromInline static let isSampler: JSString = "isSampler"
     @usableFromInline static let isSecureContext: JSString = "isSecureContext"
     @usableFromInline static let isShader: JSString = "isShader"
-    @usableFromInline static let isSync: JSString = "isSync"
     @usableFromInline static let isTexture: JSString = "isTexture"
-    @usableFromInline static let isTransformFeedback: JSString = "isTransformFeedback"
     @usableFromInline static let isTrusted: JSString = "isTrusted"
     @usableFromInline static let isTypeSupported: JSString = "isTypeSupported"
-    @usableFromInline static let isVertexArray: JSString = "isVertexArray"
     @usableFromInline static let isVisible: JSString = "isVisible"
     @usableFromInline static let item: JSString = "item"
     @usableFromInline static let items: JSString = "items"
@@ -22930,6 +23730,7 @@ public enum console {
     @usableFromInline static let keyFrame: JSString = "keyFrame"
     @usableFromInline static let keys: JSString = "keys"
     @usableFromInline static let kind: JSString = "kind"
+    @usableFromInline static let knee: JSString = "knee"
     @usableFromInline static let label: JSString = "label"
     @usableFromInline static let labels: JSString = "labels"
     @usableFromInline static let lang: JSString = "lang"
@@ -22940,6 +23741,7 @@ public enum console {
     @usableFromInline static let lastEventId: JSString = "lastEventId"
     @usableFromInline static let lastModified: JSString = "lastModified"
     @usableFromInline static let latency: JSString = "latency"
+    @usableFromInline static let latencyHint: JSString = "latencyHint"
     @usableFromInline static let latencyMode: JSString = "latencyMode"
     @usableFromInline static let layout: JSString = "layout"
     @usableFromInline static let left: JSString = "left"
@@ -22951,12 +23753,14 @@ public enum console {
     @usableFromInline static let lineJoin: JSString = "lineJoin"
     @usableFromInline static let lineTo: JSString = "lineTo"
     @usableFromInline static let lineWidth: JSString = "lineWidth"
+    @usableFromInline static let linearRampToValueAtTime: JSString = "linearRampToValueAtTime"
     @usableFromInline static let lineno: JSString = "lineno"
     @usableFromInline static let link: JSString = "link"
     @usableFromInline static let linkColor: JSString = "linkColor"
     @usableFromInline static let linkProgram: JSString = "linkProgram"
     @usableFromInline static let links: JSString = "links"
     @usableFromInline static let list: JSString = "list"
+    @usableFromInline static let listener: JSString = "listener"
     @usableFromInline static let load: JSString = "load"
     @usableFromInline static let loaded: JSString = "loaded"
     @usableFromInline static let loading: JSString = "loading"
@@ -22970,6 +23774,8 @@ public enum console {
     @usableFromInline static let lookupNamespaceURI: JSString = "lookupNamespaceURI"
     @usableFromInline static let lookupPrefix: JSString = "lookupPrefix"
     @usableFromInline static let loop: JSString = "loop"
+    @usableFromInline static let loopEnd: JSString = "loopEnd"
+    @usableFromInline static let loopStart: JSString = "loopStart"
     @usableFromInline static let low: JSString = "low"
     @usableFromInline static let lowsrc: JSString = "lowsrc"
     @usableFromInline static let m11: JSString = "m11"
@@ -22997,10 +23803,18 @@ public enum console {
     @usableFromInline static let matrix: JSString = "matrix"
     @usableFromInline static let matrixTransform: JSString = "matrixTransform"
     @usableFromInline static let max: JSString = "max"
+    @usableFromInline static let maxChannelCount: JSString = "maxChannelCount"
+    @usableFromInline static let maxDecibels: JSString = "maxDecibels"
+    @usableFromInline static let maxDelayTime: JSString = "maxDelayTime"
+    @usableFromInline static let maxDistance: JSString = "maxDistance"
     @usableFromInline static let maxLength: JSString = "maxLength"
+    @usableFromInline static let maxValue: JSString = "maxValue"
     @usableFromInline static let measureText: JSString = "measureText"
     @usableFromInline static let media: JSString = "media"
     @usableFromInline static let mediaDevices: JSString = "mediaDevices"
+    @usableFromInline static let mediaElement: JSString = "mediaElement"
+    @usableFromInline static let mediaStream: JSString = "mediaStream"
+    @usableFromInline static let mediaStreamTrack: JSString = "mediaStreamTrack"
     @usableFromInline static let menubar: JSString = "menubar"
     @usableFromInline static let message: JSString = "message"
     @usableFromInline static let metaKey: JSString = "metaKey"
@@ -23008,7 +23822,9 @@ public enum console {
     @usableFromInline static let mimeType: JSString = "mimeType"
     @usableFromInline static let mimeTypes: JSString = "mimeTypes"
     @usableFromInline static let min: JSString = "min"
+    @usableFromInline static let minDecibels: JSString = "minDecibels"
     @usableFromInline static let minLength: JSString = "minLength"
+    @usableFromInline static let minValue: JSString = "minValue"
     @usableFromInline static let miterLimit: JSString = "miterLimit"
     @usableFromInline static let mode: JSString = "mode"
     @usableFromInline static let modifierAltGraph: JSString = "modifierAltGraph"
@@ -23055,6 +23871,8 @@ public enum console {
     @usableFromInline static let now: JSString = "now"
     @usableFromInline static let numberOfChannels: JSString = "numberOfChannels"
     @usableFromInline static let numberOfFrames: JSString = "numberOfFrames"
+    @usableFromInline static let numberOfInputs: JSString = "numberOfInputs"
+    @usableFromInline static let numberOfOutputs: JSString = "numberOfOutputs"
     @usableFromInline static let numberValue: JSString = "numberValue"
     @usableFromInline static let observe: JSString = "observe"
     @usableFromInline static let offset: JSString = "offset"
@@ -23073,6 +23891,7 @@ public enum console {
     @usableFromInline static let onabort: JSString = "onabort"
     @usableFromInline static let onaddtrack: JSString = "onaddtrack"
     @usableFromInline static let onafterprint: JSString = "onafterprint"
+    @usableFromInline static let onaudioprocess: JSString = "onaudioprocess"
     @usableFromInline static let onauxclick: JSString = "onauxclick"
     @usableFromInline static let onbeforeprint: JSString = "onbeforeprint"
     @usableFromInline static let onbeforeunload: JSString = "onbeforeunload"
@@ -23084,6 +23903,7 @@ public enum console {
     @usableFromInline static let onchange: JSString = "onchange"
     @usableFromInline static let onclick: JSString = "onclick"
     @usableFromInline static let onclose: JSString = "onclose"
+    @usableFromInline static let oncomplete: JSString = "oncomplete"
     @usableFromInline static let oncontextlost: JSString = "oncontextlost"
     @usableFromInline static let oncontextmenu: JSString = "oncontextmenu"
     @usableFromInline static let oncontextrestored: JSString = "oncontextrestored"
@@ -23142,6 +23962,7 @@ public enum console {
     @usableFromInline static let onplay: JSString = "onplay"
     @usableFromInline static let onplaying: JSString = "onplaying"
     @usableFromInline static let onpopstate: JSString = "onpopstate"
+    @usableFromInline static let onprocessorerror: JSString = "onprocessorerror"
     @usableFromInline static let onprogress: JSString = "onprogress"
     @usableFromInline static let onratechange: JSString = "onratechange"
     @usableFromInline static let onreadystatechange: JSString = "onreadystatechange"
@@ -23184,6 +24005,9 @@ public enum console {
     @usableFromInline static let optimizeForLatency: JSString = "optimizeForLatency"
     @usableFromInline static let optimum: JSString = "optimum"
     @usableFromInline static let options: JSString = "options"
+    @usableFromInline static let orientationX: JSString = "orientationX"
+    @usableFromInline static let orientationY: JSString = "orientationY"
+    @usableFromInline static let orientationZ: JSString = "orientationZ"
     @usableFromInline static let origin: JSString = "origin"
     @usableFromInline static let originAgentCluster: JSString = "originAgentCluster"
     @usableFromInline static let originTime: JSString = "originTime"
@@ -23192,7 +24016,11 @@ public enum console {
     @usableFromInline static let outerText: JSString = "outerText"
     @usableFromInline static let outerWidth: JSString = "outerWidth"
     @usableFromInline static let output: JSString = "output"
+    @usableFromInline static let outputBuffer: JSString = "outputBuffer"
+    @usableFromInline static let outputChannelCount: JSString = "outputChannelCount"
+    @usableFromInline static let outputLatency: JSString = "outputLatency"
     @usableFromInline static let overrideMimeType: JSString = "overrideMimeType"
+    @usableFromInline static let oversample: JSString = "oversample"
     @usableFromInline static let ownerDocument: JSString = "ownerDocument"
     @usableFromInline static let ownerElement: JSString = "ownerElement"
     @usableFromInline static let p1: JSString = "p1"
@@ -23203,7 +24031,11 @@ public enum console {
     @usableFromInline static let pageXOffset: JSString = "pageXOffset"
     @usableFromInline static let pageY: JSString = "pageY"
     @usableFromInline static let pageYOffset: JSString = "pageYOffset"
+    @usableFromInline static let pan: JSString = "pan"
     @usableFromInline static let panTiltZoom: JSString = "panTiltZoom"
+    @usableFromInline static let panningModel: JSString = "panningModel"
+    @usableFromInline static let parameterData: JSString = "parameterData"
+    @usableFromInline static let parameters: JSString = "parameters"
     @usableFromInline static let parent: JSString = "parent"
     @usableFromInline static let parentElement: JSString = "parentElement"
     @usableFromInline static let parentNode: JSString = "parentNode"
@@ -23215,11 +24047,12 @@ public enum console {
     @usableFromInline static let patternMismatch: JSString = "patternMismatch"
     @usableFromInline static let pause: JSString = "pause"
     @usableFromInline static let pauseOnExit: JSString = "pauseOnExit"
-    @usableFromInline static let pauseTransformFeedback: JSString = "pauseTransformFeedback"
     @usableFromInline static let paused: JSString = "paused"
     @usableFromInline static let pdfViewerEnabled: JSString = "pdfViewerEnabled"
     @usableFromInline static let pending: JSString = "pending"
     @usableFromInline static let performance: JSString = "performance"
+    @usableFromInline static let performanceTime: JSString = "performanceTime"
+    @usableFromInline static let periodicWave: JSString = "periodicWave"
     @usableFromInline static let persist: JSString = "persist"
     @usableFromInline static let persisted: JSString = "persisted"
     @usableFromInline static let personalbar: JSString = "personalbar"
@@ -23235,6 +24068,7 @@ public enum console {
     @usableFromInline static let play: JSString = "play"
     @usableFromInline static let playState: JSString = "playState"
     @usableFromInline static let playbackRate: JSString = "playbackRate"
+    @usableFromInline static let playbackTime: JSString = "playbackTime"
     @usableFromInline static let played: JSString = "played"
     @usableFromInline static let playsInline: JSString = "playsInline"
     @usableFromInline static let plugins: JSString = "plugins"
@@ -23245,6 +24079,9 @@ public enum console {
     @usableFromInline static let port2: JSString = "port2"
     @usableFromInline static let ports: JSString = "ports"
     @usableFromInline static let position: JSString = "position"
+    @usableFromInline static let positionX: JSString = "positionX"
+    @usableFromInline static let positionY: JSString = "positionY"
+    @usableFromInline static let positionZ: JSString = "positionZ"
     @usableFromInline static let postMessage: JSString = "postMessage"
     @usableFromInline static let poster: JSString = "poster"
     @usableFromInline static let powerPreference: JSString = "powerPreference"
@@ -23270,6 +24107,7 @@ public enum console {
     @usableFromInline static let previousSibling: JSString = "previousSibling"
     @usableFromInline static let primaries: JSString = "primaries"
     @usableFromInline static let print: JSString = "print"
+    @usableFromInline static let processorOptions: JSString = "processorOptions"
     @usableFromInline static let product: JSString = "product"
     @usableFromInline static let productSub: JSString = "productSub"
     @usableFromInline static let progress: JSString = "progress"
@@ -23296,22 +24134,25 @@ public enum console {
     @usableFromInline static let rangeMin: JSString = "rangeMin"
     @usableFromInline static let rangeOverflow: JSString = "rangeOverflow"
     @usableFromInline static let rangeUnderflow: JSString = "rangeUnderflow"
+    @usableFromInline static let ratio: JSString = "ratio"
     @usableFromInline static let read: JSString = "read"
     @usableFromInline static let readAsArrayBuffer: JSString = "readAsArrayBuffer"
     @usableFromInline static let readAsBinaryString: JSString = "readAsBinaryString"
     @usableFromInline static let readAsDataURL: JSString = "readAsDataURL"
     @usableFromInline static let readAsText: JSString = "readAsText"
-    @usableFromInline static let readBuffer: JSString = "readBuffer"
     @usableFromInline static let readOnly: JSString = "readOnly"
     @usableFromInline static let readPixels: JSString = "readPixels"
     @usableFromInline static let readable: JSString = "readable"
     @usableFromInline static let readableType: JSString = "readableType"
     @usableFromInline static let ready: JSString = "ready"
     @usableFromInline static let readyState: JSString = "readyState"
+    @usableFromInline static let real: JSString = "real"
     @usableFromInline static let reason: JSString = "reason"
     @usableFromInline static let rect: JSString = "rect"
     @usableFromInline static let redirect: JSString = "redirect"
     @usableFromInline static let redirected: JSString = "redirected"
+    @usableFromInline static let reduction: JSString = "reduction"
+    @usableFromInline static let refDistance: JSString = "refDistance"
     @usableFromInline static let referenceNode: JSString = "referenceNode"
     @usableFromInline static let referrer: JSString = "referrer"
     @usableFromInline static let referrerPolicy: JSString = "referrerPolicy"
@@ -23323,6 +24164,7 @@ public enum console {
     @usableFromInline static let relatedNode: JSString = "relatedNode"
     @usableFromInline static let relatedTarget: JSString = "relatedTarget"
     @usableFromInline static let relativeTo: JSString = "relativeTo"
+    @usableFromInline static let release: JSString = "release"
     @usableFromInline static let releaseEvents: JSString = "releaseEvents"
     @usableFromInline static let releaseLock: JSString = "releaseLock"
     @usableFromInline static let reload: JSString = "reload"
@@ -23338,7 +24180,7 @@ public enum console {
     @usableFromInline static let removeTrack: JSString = "removeTrack"
     @usableFromInline static let removedNodes: JSString = "removedNodes"
     @usableFromInline static let renderbufferStorage: JSString = "renderbufferStorage"
-    @usableFromInline static let renderbufferStorageMultisample: JSString = "renderbufferStorageMultisample"
+    @usableFromInline static let renderedBuffer: JSString = "renderedBuffer"
     @usableFromInline static let `repeat`: JSString = "repeat"
     @usableFromInline static let repetitionCount: JSString = "repetitionCount"
     @usableFromInline static let replace: JSString = "replace"
@@ -23374,7 +24216,6 @@ public enum console {
     @usableFromInline static let resultType: JSString = "resultType"
     @usableFromInline static let resultingClientId: JSString = "resultingClientId"
     @usableFromInline static let resume: JSString = "resume"
-    @usableFromInline static let resumeTransformFeedback: JSString = "resumeTransformFeedback"
     @usableFromInline static let returnValue: JSString = "returnValue"
     @usableFromInline static let rev: JSString = "rev"
     @usableFromInline static let reverse: JSString = "reverse"
@@ -23382,6 +24223,7 @@ public enum console {
     @usableFromInline static let revokeObjectURL: JSString = "revokeObjectURL"
     @usableFromInline static let right: JSString = "right"
     @usableFromInline static let role: JSString = "role"
+    @usableFromInline static let rolloffFactor: JSString = "rolloffFactor"
     @usableFromInline static let root: JSString = "root"
     @usableFromInline static let rotate: JSString = "rotate"
     @usableFromInline static let rotateAxisAngle: JSString = "rotateAxisAngle"
@@ -23397,8 +24239,6 @@ public enum console {
     @usableFromInline static let sampleCoverage: JSString = "sampleCoverage"
     @usableFromInline static let sampleRate: JSString = "sampleRate"
     @usableFromInline static let sampleSize: JSString = "sampleSize"
-    @usableFromInline static let samplerParameterf: JSString = "samplerParameterf"
-    @usableFromInline static let samplerParameteri: JSString = "samplerParameteri"
     @usableFromInline static let sandbox: JSString = "sandbox"
     @usableFromInline static let save: JSString = "save"
     @usableFromInline static let scalabilityMode: JSString = "scalabilityMode"
@@ -23471,16 +24311,22 @@ public enum console {
     @usableFromInline static let setMatrixValue: JSString = "setMatrixValue"
     @usableFromInline static let setNamedItem: JSString = "setNamedItem"
     @usableFromInline static let setNamedItemNS: JSString = "setNamedItemNS"
+    @usableFromInline static let setOrientation: JSString = "setOrientation"
     @usableFromInline static let setParameter: JSString = "setParameter"
+    @usableFromInline static let setPeriodicWave: JSString = "setPeriodicWave"
+    @usableFromInline static let setPosition: JSString = "setPosition"
     @usableFromInline static let setRangeText: JSString = "setRangeText"
     @usableFromInline static let setRequestHeader: JSString = "setRequestHeader"
     @usableFromInline static let setSelectionRange: JSString = "setSelectionRange"
     @usableFromInline static let setStart: JSString = "setStart"
     @usableFromInline static let setStartAfter: JSString = "setStartAfter"
     @usableFromInline static let setStartBefore: JSString = "setStartBefore"
+    @usableFromInline static let setTargetAtTime: JSString = "setTargetAtTime"
     @usableFromInline static let setTimeout: JSString = "setTimeout"
     @usableFromInline static let setTransform: JSString = "setTransform"
     @usableFromInline static let setValidity: JSString = "setValidity"
+    @usableFromInline static let setValueAtTime: JSString = "setValueAtTime"
+    @usableFromInline static let setValueCurveAtTime: JSString = "setValueCurveAtTime"
     @usableFromInline static let shaderSource: JSString = "shaderSource"
     @usableFromInline static let shadowBlur: JSString = "shadowBlur"
     @usableFromInline static let shadowColor: JSString = "shadowColor"
@@ -23503,6 +24349,7 @@ public enum console {
     @usableFromInline static let slice: JSString = "slice"
     @usableFromInline static let slot: JSString = "slot"
     @usableFromInline static let slotAssignment: JSString = "slotAssignment"
+    @usableFromInline static let smoothingTimeConstant: JSString = "smoothingTimeConstant"
     @usableFromInline static let snapshotItem: JSString = "snapshotItem"
     @usableFromInline static let snapshotLength: JSString = "snapshotLength"
     @usableFromInline static let sort: JSString = "sort"
@@ -23521,6 +24368,7 @@ public enum console {
     @usableFromInline static let startContainer: JSString = "startContainer"
     @usableFromInline static let startMessages: JSString = "startMessages"
     @usableFromInline static let startOffset: JSString = "startOffset"
+    @usableFromInline static let startRendering: JSString = "startRendering"
     @usableFromInline static let startTime: JSString = "startTime"
     @usableFromInline static let state: JSString = "state"
     @usableFromInline static let status: JSString = "status"
@@ -23559,6 +24407,7 @@ public enum console {
     @usableFromInline static let supported: JSString = "supported"
     @usableFromInline static let supports: JSString = "supports"
     @usableFromInline static let surroundContents: JSString = "surroundContents"
+    @usableFromInline static let suspend: JSString = "suspend"
     @usableFromInline static let svc: JSString = "svc"
     @usableFromInline static let systemId: JSString = "systemId"
     @usableFromInline static let tBodies: JSString = "tBodies"
@@ -23575,13 +24424,9 @@ public enum console {
     @usableFromInline static let temporalLayerId: JSString = "temporalLayerId"
     @usableFromInline static let terminate: JSString = "terminate"
     @usableFromInline static let texImage2D: JSString = "texImage2D"
-    @usableFromInline static let texImage3D: JSString = "texImage3D"
     @usableFromInline static let texParameterf: JSString = "texParameterf"
     @usableFromInline static let texParameteri: JSString = "texParameteri"
-    @usableFromInline static let texStorage2D: JSString = "texStorage2D"
-    @usableFromInline static let texStorage3D: JSString = "texStorage3D"
     @usableFromInline static let texSubImage2D: JSString = "texSubImage2D"
-    @usableFromInline static let texSubImage3D: JSString = "texSubImage3D"
     @usableFromInline static let text: JSString = "text"
     @usableFromInline static let textAlign: JSString = "textAlign"
     @usableFromInline static let textBaseline: JSString = "textBaseline"
@@ -23589,6 +24434,7 @@ public enum console {
     @usableFromInline static let textLength: JSString = "textLength"
     @usableFromInline static let textRendering: JSString = "textRendering"
     @usableFromInline static let textTracks: JSString = "textTracks"
+    @usableFromInline static let threshold: JSString = "threshold"
     @usableFromInline static let throwIfAborted: JSString = "throwIfAborted"
     @usableFromInline static let time: JSString = "time"
     @usableFromInline static let timeEnd: JSString = "timeEnd"
@@ -23621,7 +24467,6 @@ public enum console {
     @usableFromInline static let transferFromImageBitmap: JSString = "transferFromImageBitmap"
     @usableFromInline static let transferToImageBitmap: JSString = "transferToImageBitmap"
     @usableFromInline static let transform: JSString = "transform"
-    @usableFromInline static let transformFeedbackVaryings: JSString = "transformFeedbackVaryings"
     @usableFromInline static let transformPoint: JSString = "transformPoint"
     @usableFromInline static let transformToDocument: JSString = "transformToDocument"
     @usableFromInline static let transformToFragment: JSString = "transformToFragment"
@@ -23635,38 +24480,26 @@ public enum console {
     @usableFromInline static let uniform1fv: JSString = "uniform1fv"
     @usableFromInline static let uniform1i: JSString = "uniform1i"
     @usableFromInline static let uniform1iv: JSString = "uniform1iv"
-    @usableFromInline static let uniform1ui: JSString = "uniform1ui"
-    @usableFromInline static let uniform1uiv: JSString = "uniform1uiv"
     @usableFromInline static let uniform2f: JSString = "uniform2f"
     @usableFromInline static let uniform2fv: JSString = "uniform2fv"
     @usableFromInline static let uniform2i: JSString = "uniform2i"
     @usableFromInline static let uniform2iv: JSString = "uniform2iv"
-    @usableFromInline static let uniform2ui: JSString = "uniform2ui"
-    @usableFromInline static let uniform2uiv: JSString = "uniform2uiv"
     @usableFromInline static let uniform3f: JSString = "uniform3f"
     @usableFromInline static let uniform3fv: JSString = "uniform3fv"
     @usableFromInline static let uniform3i: JSString = "uniform3i"
     @usableFromInline static let uniform3iv: JSString = "uniform3iv"
-    @usableFromInline static let uniform3ui: JSString = "uniform3ui"
-    @usableFromInline static let uniform3uiv: JSString = "uniform3uiv"
     @usableFromInline static let uniform4f: JSString = "uniform4f"
     @usableFromInline static let uniform4fv: JSString = "uniform4fv"
     @usableFromInline static let uniform4i: JSString = "uniform4i"
     @usableFromInline static let uniform4iv: JSString = "uniform4iv"
-    @usableFromInline static let uniform4ui: JSString = "uniform4ui"
-    @usableFromInline static let uniform4uiv: JSString = "uniform4uiv"
-    @usableFromInline static let uniformBlockBinding: JSString = "uniformBlockBinding"
     @usableFromInline static let uniformMatrix2fv: JSString = "uniformMatrix2fv"
-    @usableFromInline static let uniformMatrix2x3fv: JSString = "uniformMatrix2x3fv"
-    @usableFromInline static let uniformMatrix2x4fv: JSString = "uniformMatrix2x4fv"
     @usableFromInline static let uniformMatrix3fv: JSString = "uniformMatrix3fv"
-    @usableFromInline static let uniformMatrix3x2fv: JSString = "uniformMatrix3x2fv"
-    @usableFromInline static let uniformMatrix3x4fv: JSString = "uniformMatrix3x4fv"
     @usableFromInline static let uniformMatrix4fv: JSString = "uniformMatrix4fv"
-    @usableFromInline static let uniformMatrix4x2fv: JSString = "uniformMatrix4x2fv"
-    @usableFromInline static let uniformMatrix4x3fv: JSString = "uniformMatrix4x3fv"
     @usableFromInline static let unregister: JSString = "unregister"
     @usableFromInline static let unregisterProtocolHandler: JSString = "unregisterProtocolHandler"
+    @usableFromInline static let upX: JSString = "upX"
+    @usableFromInline static let upY: JSString = "upY"
+    @usableFromInline static let upZ: JSString = "upZ"
     @usableFromInline static let update: JSString = "update"
     @usableFromInline static let updatePlaybackRate: JSString = "updatePlaybackRate"
     @usableFromInline static let updateTiming: JSString = "updateTiming"
@@ -23700,12 +24533,6 @@ public enum console {
     @usableFromInline static let vertexAttrib3fv: JSString = "vertexAttrib3fv"
     @usableFromInline static let vertexAttrib4f: JSString = "vertexAttrib4f"
     @usableFromInline static let vertexAttrib4fv: JSString = "vertexAttrib4fv"
-    @usableFromInline static let vertexAttribDivisor: JSString = "vertexAttribDivisor"
-    @usableFromInline static let vertexAttribI4i: JSString = "vertexAttribI4i"
-    @usableFromInline static let vertexAttribI4iv: JSString = "vertexAttribI4iv"
-    @usableFromInline static let vertexAttribI4ui: JSString = "vertexAttribI4ui"
-    @usableFromInline static let vertexAttribI4uiv: JSString = "vertexAttribI4uiv"
-    @usableFromInline static let vertexAttribIPointer: JSString = "vertexAttribIPointer"
     @usableFromInline static let vertexAttribPointer: JSString = "vertexAttribPointer"
     @usableFromInline static let video: JSString = "video"
     @usableFromInline static let videoBitsPerSecond: JSString = "videoBitsPerSecond"
@@ -23721,9 +24548,9 @@ public enum console {
     @usableFromInline static let volume: JSString = "volume"
     @usableFromInline static let vspace: JSString = "vspace"
     @usableFromInline static let w: JSString = "w"
-    @usableFromInline static let waitSync: JSString = "waitSync"
     @usableFromInline static let waiting: JSString = "waiting"
     @usableFromInline static let warn: JSString = "warn"
+    @usableFromInline static let wasClean: JSString = "wasClean"
     @usableFromInline static let webkitMatchesSelector: JSString = "webkitMatchesSelector"
     @usableFromInline static let whatToShow: JSString = "whatToShow"
     @usableFromInline static let whenDefined: JSString = "whenDefined"
@@ -23783,6 +24610,48 @@ public enum ArrayBuffer_or_String: JSValueCompatible, Any_ArrayBuffer_or_String 
             return arrayBuffer.jsValue
         case let .string(string):
             return string.jsValue
+        }
+    }
+}
+
+public protocol Any_AudioContextLatencyCategory_or_Double: ConvertibleToJSValue {}
+extension AudioContextLatencyCategory: Any_AudioContextLatencyCategory_or_Double {}
+extension Double: Any_AudioContextLatencyCategory_or_Double {}
+
+public enum AudioContextLatencyCategory_or_Double: JSValueCompatible, Any_AudioContextLatencyCategory_or_Double {
+    case audioContextLatencyCategory(AudioContextLatencyCategory)
+    case double(Double)
+
+    var audioContextLatencyCategory: AudioContextLatencyCategory? {
+        switch self {
+        case let .audioContextLatencyCategory(audioContextLatencyCategory): return audioContextLatencyCategory
+        default: return nil
+        }
+    }
+
+    var double: Double? {
+        switch self {
+        case let .double(double): return double
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let audioContextLatencyCategory: AudioContextLatencyCategory = value.fromJSValue() {
+            return .audioContextLatencyCategory(audioContextLatencyCategory)
+        }
+        if let double: Double = value.fromJSValue() {
+            return .double(double)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .audioContextLatencyCategory(audioContextLatencyCategory):
+            return audioContextLatencyCategory.jsValue
+        case let .double(double):
+            return double.jsValue
         }
     }
 }
@@ -24203,6 +25072,104 @@ public enum CanvasGradient_or_CanvasPattern_or_String: JSValueCompatible, Any_Ca
             return canvasPattern.jsValue
         case let .string(string):
             return string.jsValue
+        }
+    }
+}
+
+public protocol Any_CanvasImageSource: ConvertibleToJSValue {}
+extension HTMLCanvasElement: Any_CanvasImageSource {}
+extension HTMLOrSVGImageElement: Any_CanvasImageSource {}
+extension HTMLVideoElement: Any_CanvasImageSource {}
+extension ImageBitmap: Any_CanvasImageSource {}
+extension OffscreenCanvas: Any_CanvasImageSource {}
+extension VideoFrame: Any_CanvasImageSource {}
+
+public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
+    case htmlCanvasElement(HTMLCanvasElement)
+    case htmlOrSVGImageElement(HTMLOrSVGImageElement)
+    case htmlVideoElement(HTMLVideoElement)
+    case imageBitmap(ImageBitmap)
+    case offscreenCanvas(OffscreenCanvas)
+    case videoFrame(VideoFrame)
+
+    var htmlCanvasElement: HTMLCanvasElement? {
+        switch self {
+        case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement
+        default: return nil
+        }
+    }
+
+    var htmlOrSVGImageElement: HTMLOrSVGImageElement? {
+        switch self {
+        case let .htmlOrSVGImageElement(htmlOrSVGImageElement): return htmlOrSVGImageElement
+        default: return nil
+        }
+    }
+
+    var htmlVideoElement: HTMLVideoElement? {
+        switch self {
+        case let .htmlVideoElement(htmlVideoElement): return htmlVideoElement
+        default: return nil
+        }
+    }
+
+    var imageBitmap: ImageBitmap? {
+        switch self {
+        case let .imageBitmap(imageBitmap): return imageBitmap
+        default: return nil
+        }
+    }
+
+    var offscreenCanvas: OffscreenCanvas? {
+        switch self {
+        case let .offscreenCanvas(offscreenCanvas): return offscreenCanvas
+        default: return nil
+        }
+    }
+
+    var videoFrame: VideoFrame? {
+        switch self {
+        case let .videoFrame(videoFrame): return videoFrame
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
+            return .htmlCanvasElement(htmlCanvasElement)
+        }
+        if let htmlOrSVGImageElement: HTMLOrSVGImageElement = value.fromJSValue() {
+            return .htmlOrSVGImageElement(htmlOrSVGImageElement)
+        }
+        if let htmlVideoElement: HTMLVideoElement = value.fromJSValue() {
+            return .htmlVideoElement(htmlVideoElement)
+        }
+        if let imageBitmap: ImageBitmap = value.fromJSValue() {
+            return .imageBitmap(imageBitmap)
+        }
+        if let offscreenCanvas: OffscreenCanvas = value.fromJSValue() {
+            return .offscreenCanvas(offscreenCanvas)
+        }
+        if let videoFrame: VideoFrame = value.fromJSValue() {
+            return .videoFrame(videoFrame)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .htmlCanvasElement(htmlCanvasElement):
+            return htmlCanvasElement.jsValue
+        case let .htmlOrSVGImageElement(htmlOrSVGImageElement):
+            return htmlOrSVGImageElement.jsValue
+        case let .htmlVideoElement(htmlVideoElement):
+            return htmlVideoElement.jsValue
+        case let .imageBitmap(imageBitmap):
+            return imageBitmap.jsValue
+        case let .offscreenCanvas(offscreenCanvas):
+            return offscreenCanvas.jsValue
+        case let .videoFrame(videoFrame):
+            return videoFrame.jsValue
         }
     }
 }
@@ -26023,48 +26990,6 @@ public enum TimerHandler: JSValueCompatible, Any_TimerHandler {
             return jsFunction.jsValue
         case let .string(string):
             return string.jsValue
-        }
-    }
-}
-
-public protocol Any_Uint32List: ConvertibleToJSValue {}
-extension Uint32Array: Any_Uint32List {}
-extension Array: Any_Uint32List where Element == GLuint {}
-
-public enum Uint32List: JSValueCompatible, Any_Uint32List {
-    case uint32Array(Uint32Array)
-    case seq_of_GLuint([GLuint])
-
-    var uint32Array: Uint32Array? {
-        switch self {
-        case let .uint32Array(uint32Array): return uint32Array
-        default: return nil
-        }
-    }
-
-    var seq_of_GLuint: [GLuint]? {
-        switch self {
-        case let .seq_of_GLuint(seq_of_GLuint): return seq_of_GLuint
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let uint32Array: Uint32Array = value.fromJSValue() {
-            return .uint32Array(uint32Array)
-        }
-        if let seq_of_GLuint: [GLuint] = value.fromJSValue() {
-            return .seq_of_GLuint(seq_of_GLuint)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .uint32Array(uint32Array):
-            return uint32Array.jsValue
-        case let .seq_of_GLuint(seq_of_GLuint):
-            return seq_of_GLuint.jsValue
         }
     }
 }
