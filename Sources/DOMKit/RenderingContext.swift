@@ -7,8 +7,8 @@ public protocol Any_RenderingContext: ConvertibleToJSValue {}
 extension CanvasRenderingContext2D: Any_RenderingContext {}
 // extension GPUCanvasContext: Any_RenderingContext {}
 extension ImageBitmapRenderingContext: Any_RenderingContext {}
-// extension WebGL2RenderingContext: Any_RenderingContext {}
-// extension WebGLRenderingContext: Any_RenderingContext {}
+extension WebGL2RenderingContext: Any_RenderingContext {}
+extension WebGLRenderingContext: Any_RenderingContext {}
 
 public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
     case canvasRenderingContext2D(CanvasRenderingContext2D)
