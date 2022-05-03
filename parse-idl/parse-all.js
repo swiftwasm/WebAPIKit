@@ -7,6 +7,7 @@ const parsedFiles = await parseAll();
 console.log(
   JSON.stringify(
     [
+      "console",
       "dom",
       "fetch",
       "FileAPI",
@@ -22,7 +23,7 @@ console.log(
       "service-workers",
       "url",
       "streams",
-      "console",
+      "mediacapture-streams",
     ].map((key) => parsedFiles[key]),
     null,
     2

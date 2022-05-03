@@ -1155,6 +1155,22 @@ public class CacheStorage: JSBridgedClass {
     }
 }
 
+public class CameraDevicePermissionDescriptor: BridgedDictionary {
+    public convenience init(panTiltZoom: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.panTiltZoom] = panTiltZoom.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _panTiltZoom = ReadWriteAttribute(jsObject: object, name: Strings.panTiltZoom)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var panTiltZoom: Bool
+}
+
 public enum CanPlayTypeResult: JSString, JSValueCompatible {
     case _empty = ""
     case maybe = "maybe"
@@ -2220,6 +2236,90 @@ public class ComputedEffectTiming: BridgedDictionary {
 
     @ReadWriteAttribute
     public var currentIteration: Double?
+}
+
+public class ConstrainBooleanParameters: BridgedDictionary {
+    public convenience init(exact: Bool, ideal: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.exact] = exact.jsValue
+        object[Strings.ideal] = ideal.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _exact = ReadWriteAttribute(jsObject: object, name: Strings.exact)
+        _ideal = ReadWriteAttribute(jsObject: object, name: Strings.ideal)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var exact: Bool
+
+    @ReadWriteAttribute
+    public var ideal: Bool
+}
+
+public class ConstrainDOMStringParameters: BridgedDictionary {
+    public convenience init(exact: String_or_seq_of_String, ideal: String_or_seq_of_String) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.exact] = exact.jsValue
+        object[Strings.ideal] = ideal.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _exact = ReadWriteAttribute(jsObject: object, name: Strings.exact)
+        _ideal = ReadWriteAttribute(jsObject: object, name: Strings.ideal)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var exact: String_or_seq_of_String
+
+    @ReadWriteAttribute
+    public var ideal: String_or_seq_of_String
+}
+
+public class ConstrainDoubleRange: BridgedDictionary {
+    public convenience init(exact: Double, ideal: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.exact] = exact.jsValue
+        object[Strings.ideal] = ideal.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _exact = ReadWriteAttribute(jsObject: object, name: Strings.exact)
+        _ideal = ReadWriteAttribute(jsObject: object, name: Strings.ideal)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var exact: Double
+
+    @ReadWriteAttribute
+    public var ideal: Double
+}
+
+public class ConstrainULongRange: BridgedDictionary {
+    public convenience init(exact: UInt32, ideal: UInt32) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.exact] = exact.jsValue
+        object[Strings.ideal] = ideal.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _exact = ReadWriteAttribute(jsObject: object, name: Strings.exact)
+        _ideal = ReadWriteAttribute(jsObject: object, name: Strings.ideal)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var exact: UInt32
+
+    @ReadWriteAttribute
+    public var ideal: UInt32
 }
 
 public class CountQueuingStrategy: JSBridgedClass {
@@ -3625,6 +3725,22 @@ public class DataTransferItemList: JSBridgedClass {
     }
 }
 
+public class DevicePermissionDescriptor: BridgedDictionary {
+    public convenience init(deviceId: String) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.deviceId] = deviceId.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _deviceId = ReadWriteAttribute(jsObject: object, name: Strings.deviceId)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var deviceId: String
+}
+
 public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentNode, XPathEvaluatorBase, GlobalEventHandlers, DocumentAndElementEventHandlers {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Document].function! }
 
@@ -4096,6 +4212,27 @@ public enum DocumentVisibilityState: JSString, JSValueCompatible {
     }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class DoubleRange: BridgedDictionary {
+    public convenience init(max: Double, min: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.max] = max.jsValue
+        object[Strings.min] = min.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _max = ReadWriteAttribute(jsObject: object, name: Strings.max)
+        _min = ReadWriteAttribute(jsObject: object, name: Strings.min)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var max: Double
+
+    @ReadWriteAttribute
+    public var min: Double
 }
 
 public class DragEvent: MouseEvent {
@@ -9326,6 +9463,19 @@ public enum ImageSmoothingQuality: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
+public class InputDeviceInfo: MediaDeviceInfo {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.InputDeviceInfo].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public func getCapabilities() -> MediaTrackCapabilities {
+        let this = jsObject
+        return this[Strings.getCapabilities].function!(this: this, arguments: []).fromJSValue()!
+    }
+}
+
 public class InputEvent: UIEvent {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.InputEvent].function! }
 
@@ -9651,6 +9801,97 @@ public class Location: JSBridgedClass {
     public var ancestorOrigins: DOMStringList
 }
 
+public class MediaDeviceInfo: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaDeviceInfo].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _deviceId = ReadonlyAttribute(jsObject: jsObject, name: Strings.deviceId)
+        _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
+        _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
+        _groupId = ReadonlyAttribute(jsObject: jsObject, name: Strings.groupId)
+        self.jsObject = jsObject
+    }
+
+    @ReadonlyAttribute
+    public var deviceId: String
+
+    @ReadonlyAttribute
+    public var kind: MediaDeviceKind
+
+    @ReadonlyAttribute
+    public var label: String
+
+    @ReadonlyAttribute
+    public var groupId: String
+
+    @inlinable public func toJSON() -> JSObject {
+        let this = jsObject
+        return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
+    }
+}
+
+public enum MediaDeviceKind: JSString, JSValueCompatible {
+    case audioinput = "audioinput"
+    case audiooutput = "audiooutput"
+    case videoinput = "videoinput"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class MediaDevices: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaDevices].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _ondevicechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondevicechange)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ClosureAttribute1Optional
+    public var ondevicechange: EventHandler
+
+    @inlinable public func enumerateDevices() -> JSPromise {
+        let this = jsObject
+        return this[Strings.enumerateDevices].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func enumerateDevices() async throws -> [MediaDeviceInfo] {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.enumerateDevices].function!(this: this, arguments: []).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
+
+    @inlinable public func getSupportedConstraints() -> MediaTrackSupportedConstraints {
+        let this = jsObject
+        return this[Strings.getSupportedConstraints].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getUserMedia(constraints: MediaStreamConstraints? = nil) -> JSPromise {
+        let this = jsObject
+        return this[Strings.getUserMedia].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func getUserMedia(constraints: MediaStreamConstraints? = nil) async throws -> MediaStream {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getUserMedia].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
+}
+
 public class MediaError: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaError].function! }
 
@@ -9675,6 +9916,589 @@ public class MediaError: JSBridgedClass {
 
     @ReadonlyAttribute
     public var message: String
+}
+
+public class MediaStream: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStream].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
+        _active = ReadonlyAttribute(jsObject: jsObject, name: Strings.active)
+        _onaddtrack = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaddtrack)
+        _onremovetrack = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onremovetrack)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init() {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: []))
+    }
+
+    @inlinable public convenience init(stream: MediaStream) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue]))
+    }
+
+    @inlinable public convenience init(tracks: [MediaStreamTrack]) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [tracks.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var id: String
+
+    @inlinable public func getAudioTracks() -> [MediaStreamTrack] {
+        let this = jsObject
+        return this[Strings.getAudioTracks].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getVideoTracks() -> [MediaStreamTrack] {
+        let this = jsObject
+        return this[Strings.getVideoTracks].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getTracks() -> [MediaStreamTrack] {
+        let this = jsObject
+        return this[Strings.getTracks].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getTrackById(trackId: String) -> MediaStreamTrack? {
+        let this = jsObject
+        return this[Strings.getTrackById].function!(this: this, arguments: [trackId.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func addTrack(track: MediaStreamTrack) {
+        let this = jsObject
+        _ = this[Strings.addTrack].function!(this: this, arguments: [track.jsValue])
+    }
+
+    @inlinable public func removeTrack(track: MediaStreamTrack) {
+        let this = jsObject
+        _ = this[Strings.removeTrack].function!(this: this, arguments: [track.jsValue])
+    }
+
+    @inlinable public func clone() -> Self {
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var active: Bool
+
+    @ClosureAttribute1Optional
+    public var onaddtrack: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onremovetrack: EventHandler
+}
+
+public class MediaStreamConstraints: BridgedDictionary {
+    public convenience init(video: Bool_or_MediaTrackConstraints, audio: Bool_or_MediaTrackConstraints) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.video] = video.jsValue
+        object[Strings.audio] = audio.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _video = ReadWriteAttribute(jsObject: object, name: Strings.video)
+        _audio = ReadWriteAttribute(jsObject: object, name: Strings.audio)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var video: Bool_or_MediaTrackConstraints
+
+    @ReadWriteAttribute
+    public var audio: Bool_or_MediaTrackConstraints
+}
+
+public class MediaStreamTrack: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrack].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _kind = ReadonlyAttribute(jsObject: jsObject, name: Strings.kind)
+        _id = ReadonlyAttribute(jsObject: jsObject, name: Strings.id)
+        _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
+        _enabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.enabled)
+        _muted = ReadonlyAttribute(jsObject: jsObject, name: Strings.muted)
+        _onmute = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmute)
+        _onunmute = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onunmute)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
+        _onended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onended)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var kind: String
+
+    @ReadonlyAttribute
+    public var id: String
+
+    @ReadonlyAttribute
+    public var label: String
+
+    @ReadWriteAttribute
+    public var enabled: Bool
+
+    @ReadonlyAttribute
+    public var muted: Bool
+
+    @ClosureAttribute1Optional
+    public var onmute: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onunmute: EventHandler
+
+    @ReadonlyAttribute
+    public var readyState: MediaStreamTrackState
+
+    @ClosureAttribute1Optional
+    public var onended: EventHandler
+
+    @inlinable public func clone() -> Self {
+        let this = jsObject
+        return this[Strings.clone].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func stop() {
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [])
+    }
+
+    @inlinable public func getCapabilities() -> MediaTrackCapabilities {
+        let this = jsObject
+        return this[Strings.getCapabilities].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getConstraints() -> MediaTrackConstraints {
+        let this = jsObject
+        return this[Strings.getConstraints].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getSettings() -> MediaTrackSettings {
+        let this = jsObject
+        return this[Strings.getSettings].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func applyConstraints(constraints: MediaTrackConstraints? = nil) -> JSPromise {
+        let this = jsObject
+        return this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func applyConstraints(constraints: MediaTrackConstraints? = nil) async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
+        _ = try await _promise.value
+    }
+}
+
+public class MediaStreamTrackEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrackEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _track = ReadonlyAttribute(jsObject: jsObject, name: Strings.track)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: MediaStreamTrackEventInit) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var track: MediaStreamTrack
+}
+
+public class MediaStreamTrackEventInit: BridgedDictionary {
+    public convenience init(track: MediaStreamTrack) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.track] = track.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _track = ReadWriteAttribute(jsObject: object, name: Strings.track)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var track: MediaStreamTrack
+}
+
+public enum MediaStreamTrackState: JSString, JSValueCompatible {
+    case live = "live"
+    case ended = "ended"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class MediaTrackCapabilities: BridgedDictionary {
+    public convenience init(width: ULongRange, height: ULongRange, aspectRatio: DoubleRange, frameRate: DoubleRange, facingMode: [String], resizeMode: [String], sampleRate: ULongRange, sampleSize: ULongRange, echoCancellation: [Bool], autoGainControl: [Bool], noiseSuppression: [Bool], latency: DoubleRange, channelCount: ULongRange, deviceId: String, groupId: String) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.aspectRatio] = aspectRatio.jsValue
+        object[Strings.frameRate] = frameRate.jsValue
+        object[Strings.facingMode] = facingMode.jsValue
+        object[Strings.resizeMode] = resizeMode.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.sampleSize] = sampleSize.jsValue
+        object[Strings.echoCancellation] = echoCancellation.jsValue
+        object[Strings.autoGainControl] = autoGainControl.jsValue
+        object[Strings.noiseSuppression] = noiseSuppression.jsValue
+        object[Strings.latency] = latency.jsValue
+        object[Strings.channelCount] = channelCount.jsValue
+        object[Strings.deviceId] = deviceId.jsValue
+        object[Strings.groupId] = groupId.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _width = ReadWriteAttribute(jsObject: object, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: object, name: Strings.height)
+        _aspectRatio = ReadWriteAttribute(jsObject: object, name: Strings.aspectRatio)
+        _frameRate = ReadWriteAttribute(jsObject: object, name: Strings.frameRate)
+        _facingMode = ReadWriteAttribute(jsObject: object, name: Strings.facingMode)
+        _resizeMode = ReadWriteAttribute(jsObject: object, name: Strings.resizeMode)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        _sampleSize = ReadWriteAttribute(jsObject: object, name: Strings.sampleSize)
+        _echoCancellation = ReadWriteAttribute(jsObject: object, name: Strings.echoCancellation)
+        _autoGainControl = ReadWriteAttribute(jsObject: object, name: Strings.autoGainControl)
+        _noiseSuppression = ReadWriteAttribute(jsObject: object, name: Strings.noiseSuppression)
+        _latency = ReadWriteAttribute(jsObject: object, name: Strings.latency)
+        _channelCount = ReadWriteAttribute(jsObject: object, name: Strings.channelCount)
+        _deviceId = ReadWriteAttribute(jsObject: object, name: Strings.deviceId)
+        _groupId = ReadWriteAttribute(jsObject: object, name: Strings.groupId)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var width: ULongRange
+
+    @ReadWriteAttribute
+    public var height: ULongRange
+
+    @ReadWriteAttribute
+    public var aspectRatio: DoubleRange
+
+    @ReadWriteAttribute
+    public var frameRate: DoubleRange
+
+    @ReadWriteAttribute
+    public var facingMode: [String]
+
+    @ReadWriteAttribute
+    public var resizeMode: [String]
+
+    @ReadWriteAttribute
+    public var sampleRate: ULongRange
+
+    @ReadWriteAttribute
+    public var sampleSize: ULongRange
+
+    @ReadWriteAttribute
+    public var echoCancellation: [Bool]
+
+    @ReadWriteAttribute
+    public var autoGainControl: [Bool]
+
+    @ReadWriteAttribute
+    public var noiseSuppression: [Bool]
+
+    @ReadWriteAttribute
+    public var latency: DoubleRange
+
+    @ReadWriteAttribute
+    public var channelCount: ULongRange
+
+    @ReadWriteAttribute
+    public var deviceId: String
+
+    @ReadWriteAttribute
+    public var groupId: String
+}
+
+public class MediaTrackConstraintSet: BridgedDictionary {
+    public convenience init(width: ConstrainULong, height: ConstrainULong, aspectRatio: ConstrainDouble, frameRate: ConstrainDouble, facingMode: ConstrainDOMString, resizeMode: ConstrainDOMString, sampleRate: ConstrainULong, sampleSize: ConstrainULong, echoCancellation: ConstrainBoolean, autoGainControl: ConstrainBoolean, noiseSuppression: ConstrainBoolean, latency: ConstrainDouble, channelCount: ConstrainULong, deviceId: ConstrainDOMString, groupId: ConstrainDOMString) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.aspectRatio] = aspectRatio.jsValue
+        object[Strings.frameRate] = frameRate.jsValue
+        object[Strings.facingMode] = facingMode.jsValue
+        object[Strings.resizeMode] = resizeMode.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.sampleSize] = sampleSize.jsValue
+        object[Strings.echoCancellation] = echoCancellation.jsValue
+        object[Strings.autoGainControl] = autoGainControl.jsValue
+        object[Strings.noiseSuppression] = noiseSuppression.jsValue
+        object[Strings.latency] = latency.jsValue
+        object[Strings.channelCount] = channelCount.jsValue
+        object[Strings.deviceId] = deviceId.jsValue
+        object[Strings.groupId] = groupId.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _width = ReadWriteAttribute(jsObject: object, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: object, name: Strings.height)
+        _aspectRatio = ReadWriteAttribute(jsObject: object, name: Strings.aspectRatio)
+        _frameRate = ReadWriteAttribute(jsObject: object, name: Strings.frameRate)
+        _facingMode = ReadWriteAttribute(jsObject: object, name: Strings.facingMode)
+        _resizeMode = ReadWriteAttribute(jsObject: object, name: Strings.resizeMode)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        _sampleSize = ReadWriteAttribute(jsObject: object, name: Strings.sampleSize)
+        _echoCancellation = ReadWriteAttribute(jsObject: object, name: Strings.echoCancellation)
+        _autoGainControl = ReadWriteAttribute(jsObject: object, name: Strings.autoGainControl)
+        _noiseSuppression = ReadWriteAttribute(jsObject: object, name: Strings.noiseSuppression)
+        _latency = ReadWriteAttribute(jsObject: object, name: Strings.latency)
+        _channelCount = ReadWriteAttribute(jsObject: object, name: Strings.channelCount)
+        _deviceId = ReadWriteAttribute(jsObject: object, name: Strings.deviceId)
+        _groupId = ReadWriteAttribute(jsObject: object, name: Strings.groupId)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var width: ConstrainULong
+
+    @ReadWriteAttribute
+    public var height: ConstrainULong
+
+    @ReadWriteAttribute
+    public var aspectRatio: ConstrainDouble
+
+    @ReadWriteAttribute
+    public var frameRate: ConstrainDouble
+
+    @ReadWriteAttribute
+    public var facingMode: ConstrainDOMString
+
+    @ReadWriteAttribute
+    public var resizeMode: ConstrainDOMString
+
+    @ReadWriteAttribute
+    public var sampleRate: ConstrainULong
+
+    @ReadWriteAttribute
+    public var sampleSize: ConstrainULong
+
+    @ReadWriteAttribute
+    public var echoCancellation: ConstrainBoolean
+
+    @ReadWriteAttribute
+    public var autoGainControl: ConstrainBoolean
+
+    @ReadWriteAttribute
+    public var noiseSuppression: ConstrainBoolean
+
+    @ReadWriteAttribute
+    public var latency: ConstrainDouble
+
+    @ReadWriteAttribute
+    public var channelCount: ConstrainULong
+
+    @ReadWriteAttribute
+    public var deviceId: ConstrainDOMString
+
+    @ReadWriteAttribute
+    public var groupId: ConstrainDOMString
+}
+
+public class MediaTrackConstraints: BridgedDictionary {
+    public convenience init(advanced: [MediaTrackConstraintSet]) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.advanced] = advanced.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _advanced = ReadWriteAttribute(jsObject: object, name: Strings.advanced)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var advanced: [MediaTrackConstraintSet]
+}
+
+public class MediaTrackSettings: BridgedDictionary {
+    public convenience init(width: Int32, height: Int32, aspectRatio: Double, frameRate: Double, facingMode: String, resizeMode: String, sampleRate: Int32, sampleSize: Int32, echoCancellation: Bool, autoGainControl: Bool, noiseSuppression: Bool, latency: Double, channelCount: Int32, deviceId: String, groupId: String) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.aspectRatio] = aspectRatio.jsValue
+        object[Strings.frameRate] = frameRate.jsValue
+        object[Strings.facingMode] = facingMode.jsValue
+        object[Strings.resizeMode] = resizeMode.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.sampleSize] = sampleSize.jsValue
+        object[Strings.echoCancellation] = echoCancellation.jsValue
+        object[Strings.autoGainControl] = autoGainControl.jsValue
+        object[Strings.noiseSuppression] = noiseSuppression.jsValue
+        object[Strings.latency] = latency.jsValue
+        object[Strings.channelCount] = channelCount.jsValue
+        object[Strings.deviceId] = deviceId.jsValue
+        object[Strings.groupId] = groupId.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _width = ReadWriteAttribute(jsObject: object, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: object, name: Strings.height)
+        _aspectRatio = ReadWriteAttribute(jsObject: object, name: Strings.aspectRatio)
+        _frameRate = ReadWriteAttribute(jsObject: object, name: Strings.frameRate)
+        _facingMode = ReadWriteAttribute(jsObject: object, name: Strings.facingMode)
+        _resizeMode = ReadWriteAttribute(jsObject: object, name: Strings.resizeMode)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        _sampleSize = ReadWriteAttribute(jsObject: object, name: Strings.sampleSize)
+        _echoCancellation = ReadWriteAttribute(jsObject: object, name: Strings.echoCancellation)
+        _autoGainControl = ReadWriteAttribute(jsObject: object, name: Strings.autoGainControl)
+        _noiseSuppression = ReadWriteAttribute(jsObject: object, name: Strings.noiseSuppression)
+        _latency = ReadWriteAttribute(jsObject: object, name: Strings.latency)
+        _channelCount = ReadWriteAttribute(jsObject: object, name: Strings.channelCount)
+        _deviceId = ReadWriteAttribute(jsObject: object, name: Strings.deviceId)
+        _groupId = ReadWriteAttribute(jsObject: object, name: Strings.groupId)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var width: Int32
+
+    @ReadWriteAttribute
+    public var height: Int32
+
+    @ReadWriteAttribute
+    public var aspectRatio: Double
+
+    @ReadWriteAttribute
+    public var frameRate: Double
+
+    @ReadWriteAttribute
+    public var facingMode: String
+
+    @ReadWriteAttribute
+    public var resizeMode: String
+
+    @ReadWriteAttribute
+    public var sampleRate: Int32
+
+    @ReadWriteAttribute
+    public var sampleSize: Int32
+
+    @ReadWriteAttribute
+    public var echoCancellation: Bool
+
+    @ReadWriteAttribute
+    public var autoGainControl: Bool
+
+    @ReadWriteAttribute
+    public var noiseSuppression: Bool
+
+    @ReadWriteAttribute
+    public var latency: Double
+
+    @ReadWriteAttribute
+    public var channelCount: Int32
+
+    @ReadWriteAttribute
+    public var deviceId: String
+
+    @ReadWriteAttribute
+    public var groupId: String
+}
+
+public class MediaTrackSupportedConstraints: BridgedDictionary {
+    public convenience init(width: Bool, height: Bool, aspectRatio: Bool, frameRate: Bool, facingMode: Bool, resizeMode: Bool, sampleRate: Bool, sampleSize: Bool, echoCancellation: Bool, autoGainControl: Bool, noiseSuppression: Bool, latency: Bool, channelCount: Bool, deviceId: Bool, groupId: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.width] = width.jsValue
+        object[Strings.height] = height.jsValue
+        object[Strings.aspectRatio] = aspectRatio.jsValue
+        object[Strings.frameRate] = frameRate.jsValue
+        object[Strings.facingMode] = facingMode.jsValue
+        object[Strings.resizeMode] = resizeMode.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.sampleSize] = sampleSize.jsValue
+        object[Strings.echoCancellation] = echoCancellation.jsValue
+        object[Strings.autoGainControl] = autoGainControl.jsValue
+        object[Strings.noiseSuppression] = noiseSuppression.jsValue
+        object[Strings.latency] = latency.jsValue
+        object[Strings.channelCount] = channelCount.jsValue
+        object[Strings.deviceId] = deviceId.jsValue
+        object[Strings.groupId] = groupId.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _width = ReadWriteAttribute(jsObject: object, name: Strings.width)
+        _height = ReadWriteAttribute(jsObject: object, name: Strings.height)
+        _aspectRatio = ReadWriteAttribute(jsObject: object, name: Strings.aspectRatio)
+        _frameRate = ReadWriteAttribute(jsObject: object, name: Strings.frameRate)
+        _facingMode = ReadWriteAttribute(jsObject: object, name: Strings.facingMode)
+        _resizeMode = ReadWriteAttribute(jsObject: object, name: Strings.resizeMode)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        _sampleSize = ReadWriteAttribute(jsObject: object, name: Strings.sampleSize)
+        _echoCancellation = ReadWriteAttribute(jsObject: object, name: Strings.echoCancellation)
+        _autoGainControl = ReadWriteAttribute(jsObject: object, name: Strings.autoGainControl)
+        _noiseSuppression = ReadWriteAttribute(jsObject: object, name: Strings.noiseSuppression)
+        _latency = ReadWriteAttribute(jsObject: object, name: Strings.latency)
+        _channelCount = ReadWriteAttribute(jsObject: object, name: Strings.channelCount)
+        _deviceId = ReadWriteAttribute(jsObject: object, name: Strings.deviceId)
+        _groupId = ReadWriteAttribute(jsObject: object, name: Strings.groupId)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var width: Bool
+
+    @ReadWriteAttribute
+    public var height: Bool
+
+    @ReadWriteAttribute
+    public var aspectRatio: Bool
+
+    @ReadWriteAttribute
+    public var frameRate: Bool
+
+    @ReadWriteAttribute
+    public var facingMode: Bool
+
+    @ReadWriteAttribute
+    public var resizeMode: Bool
+
+    @ReadWriteAttribute
+    public var sampleRate: Bool
+
+    @ReadWriteAttribute
+    public var sampleSize: Bool
+
+    @ReadWriteAttribute
+    public var echoCancellation: Bool
+
+    @ReadWriteAttribute
+    public var autoGainControl: Bool
+
+    @ReadWriteAttribute
+    public var noiseSuppression: Bool
+
+    @ReadWriteAttribute
+    public var latency: Bool
+
+    @ReadWriteAttribute
+    public var channelCount: Bool
+
+    @ReadWriteAttribute
+    public var deviceId: Bool
+
+    @ReadWriteAttribute
+    public var groupId: Bool
 }
 
 public class MessageChannel: JSBridgedClass {
@@ -10306,11 +11130,17 @@ public class Navigator: JSBridgedClass, NavigatorID, NavigatorLanguage, Navigato
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _serviceWorker = ReadonlyAttribute(jsObject: jsObject, name: Strings.serviceWorker)
+        _mediaDevices = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaDevices)
         self.jsObject = jsObject
     }
 
     @ReadonlyAttribute
     public var serviceWorker: ServiceWorkerContainer
+
+    @ReadonlyAttribute
+    public var mediaDevices: MediaDevices
+
+    // XXX: member 'getUserMedia' is ignored
 }
 
 public protocol NavigatorConcurrentHardware: JSBridgedClass {}
@@ -10785,6 +11615,22 @@ public class OptionalEffectTiming: BridgedDictionary {
 
     @ReadWriteAttribute
     public var easing: String
+}
+
+public class OverconstrainedError: DOMException {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OverconstrainedError].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _constraint = ReadonlyAttribute(jsObject: jsObject, name: Strings.constraint)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(constraint: String, message: String? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [constraint.jsValue, message?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var constraint: String
 }
 
 public class PageTransitionEvent: Event {
@@ -13231,6 +14077,8 @@ public typealias TransformerStartCallback = (TransformStreamDefaultController) -
 public typealias TransformerFlushCallback = (TransformStreamDefaultController) -> JSPromise
 public typealias TransformerTransformCallback = (JSValue, TransformStreamDefaultController) -> JSPromise
 public typealias QueuingStrategySize = (JSValue) -> Double
+public typealias NavigatorUserMediaSuccessCallback = (MediaStream) -> Void
+public typealias NavigatorUserMediaErrorCallback = (DOMException) -> Void
 public class UIEvent: Event {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.UIEvent].function! }
 
@@ -13284,6 +14132,27 @@ public class UIEventInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var which: UInt32
+}
+
+public class ULongRange: BridgedDictionary {
+    public convenience init(max: UInt32, min: UInt32) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.max] = max.jsValue
+        object[Strings.min] = min.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _max = ReadWriteAttribute(jsObject: object, name: Strings.max)
+        _min = ReadWriteAttribute(jsObject: object, name: Strings.min)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var max: UInt32
+
+    @ReadWriteAttribute
+    public var min: UInt32
 }
 
 public class URL: JSBridgedClass {
@@ -13606,6 +14475,44 @@ public class ValidityStateFlags: BridgedDictionary {
 
     @ReadWriteAttribute
     public var customError: Bool
+}
+
+public enum VideoFacingModeEnum: JSString, JSValueCompatible {
+    case user = "user"
+    case environment = "environment"
+    case left = "left"
+    case right = "right"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public enum VideoResizeModeEnum: JSString, JSValueCompatible {
+    case none = "none"
+    case cropAndScale = "crop-and-scale"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
 public class VideoTrack: JSBridgedClass {
@@ -15430,12 +16337,18 @@ public enum console {
     @usableFromInline static let ImageBitmap: JSString = "ImageBitmap"
     @usableFromInline static let ImageBitmapRenderingContext: JSString = "ImageBitmapRenderingContext"
     @usableFromInline static let ImageData: JSString = "ImageData"
+    @usableFromInline static let InputDeviceInfo: JSString = "InputDeviceInfo"
     @usableFromInline static let InputEvent: JSString = "InputEvent"
     @usableFromInline static let IsSearchProviderInstalled: JSString = "IsSearchProviderInstalled"
     @usableFromInline static let KeyboardEvent: JSString = "KeyboardEvent"
     @usableFromInline static let KeyframeEffect: JSString = "KeyframeEffect"
     @usableFromInline static let Location: JSString = "Location"
+    @usableFromInline static let MediaDeviceInfo: JSString = "MediaDeviceInfo"
+    @usableFromInline static let MediaDevices: JSString = "MediaDevices"
     @usableFromInline static let MediaError: JSString = "MediaError"
+    @usableFromInline static let MediaStream: JSString = "MediaStream"
+    @usableFromInline static let MediaStreamTrack: JSString = "MediaStreamTrack"
+    @usableFromInline static let MediaStreamTrackEvent: JSString = "MediaStreamTrackEvent"
     @usableFromInline static let MessageChannel: JSString = "MessageChannel"
     @usableFromInline static let MessageEvent: JSString = "MessageEvent"
     @usableFromInline static let MessagePort: JSString = "MessagePort"
@@ -15454,6 +16367,7 @@ public enum console {
     @usableFromInline static let Object: JSString = "Object"
     @usableFromInline static let OffscreenCanvas: JSString = "OffscreenCanvas"
     @usableFromInline static let OffscreenCanvasRenderingContext2D: JSString = "OffscreenCanvasRenderingContext2D"
+    @usableFromInline static let OverconstrainedError: JSString = "OverconstrainedError"
     @usableFromInline static let PageTransitionEvent: JSString = "PageTransitionEvent"
     @usableFromInline static let Path2D: JSString = "Path2D"
     @usableFromInline static let Performance: JSString = "Performance"
@@ -15538,8 +16452,10 @@ public enum console {
     @usableFromInline static let addModule: JSString = "addModule"
     @usableFromInline static let addPath: JSString = "addPath"
     @usableFromInline static let addTextTrack: JSString = "addTextTrack"
+    @usableFromInline static let addTrack: JSString = "addTrack"
     @usableFromInline static let addedNodes: JSString = "addedNodes"
     @usableFromInline static let adoptNode: JSString = "adoptNode"
+    @usableFromInline static let advanced: JSString = "advanced"
     @usableFromInline static let after: JSString = "after"
     @usableFromInline static let alert: JSString = "alert"
     @usableFromInline static let align: JSString = "align"
@@ -15561,6 +16477,7 @@ public enum console {
     @usableFromInline static let appendChild: JSString = "appendChild"
     @usableFromInline static let appendData: JSString = "appendData"
     @usableFromInline static let applets: JSString = "applets"
+    @usableFromInline static let applyConstraints: JSString = "applyConstraints"
     @usableFromInline static let arc: JSString = "arc"
     @usableFromInline static let arcTo: JSString = "arcTo"
     @usableFromInline static let archive: JSString = "archive"
@@ -15607,6 +16524,7 @@ public enum console {
     @usableFromInline static let ariaValueText: JSString = "ariaValueText"
     @usableFromInline static let arrayBuffer: JSString = "arrayBuffer"
     @usableFromInline static let `as`: JSString = "as"
+    @usableFromInline static let aspectRatio: JSString = "aspectRatio"
     @usableFromInline static let assert: JSString = "assert"
     @usableFromInline static let assign: JSString = "assign"
     @usableFromInline static let assignedElements: JSString = "assignedElements"
@@ -15623,8 +16541,10 @@ public enum console {
     @usableFromInline static let attributeNamespace: JSString = "attributeNamespace"
     @usableFromInline static let attributeOldValue: JSString = "attributeOldValue"
     @usableFromInline static let attributes: JSString = "attributes"
+    @usableFromInline static let audio: JSString = "audio"
     @usableFromInline static let audioTracks: JSString = "audioTracks"
     @usableFromInline static let autoAllocateChunkSize: JSString = "autoAllocateChunkSize"
+    @usableFromInline static let autoGainControl: JSString = "autoGainControl"
     @usableFromInline static let autocapitalize: JSString = "autocapitalize"
     @usableFromInline static let autocomplete: JSString = "autocomplete"
     @usableFromInline static let autofocus: JSString = "autofocus"
@@ -15673,6 +16593,7 @@ public enum console {
     @usableFromInline static let cells: JSString = "cells"
     @usableFromInline static let ch: JSString = "ch"
     @usableFromInline static let chOff: JSString = "chOff"
+    @usableFromInline static let channelCount: JSString = "channelCount"
     @usableFromInline static let charCode: JSString = "charCode"
     @usableFromInline static let characterData: JSString = "characterData"
     @usableFromInline static let characterDataOldValue: JSString = "characterDataOldValue"
@@ -15733,6 +16654,7 @@ public enum console {
     @usableFromInline static let computedOffset: JSString = "computedOffset"
     @usableFromInline static let confirm: JSString = "confirm"
     @usableFromInline static let console: JSString = "console"
+    @usableFromInline static let constraint: JSString = "constraint"
     @usableFromInline static let contains: JSString = "contains"
     @usableFromInline static let content: JSString = "content"
     @usableFromInline static let contentDocument: JSString = "contentDocument"
@@ -15826,6 +16748,7 @@ public enum console {
     @usableFromInline static let desynchronized: JSString = "desynchronized"
     @usableFromInline static let detach: JSString = "detach"
     @usableFromInline static let detail: JSString = "detail"
+    @usableFromInline static let deviceId: JSString = "deviceId"
     @usableFromInline static let dir: JSString = "dir"
     @usableFromInline static let dirName: JSString = "dirName"
     @usableFromInline static let direction: JSString = "direction"
@@ -15848,6 +16771,7 @@ public enum console {
     @usableFromInline static let duration: JSString = "duration"
     @usableFromInline static let e: JSString = "e"
     @usableFromInline static let easing: JSString = "easing"
+    @usableFromInline static let echoCancellation: JSString = "echoCancellation"
     @usableFromInline static let effect: JSString = "effect"
     @usableFromInline static let effectAllowed: JSString = "effectAllowed"
     @usableFromInline static let elements: JSString = "elements"
@@ -15869,16 +16793,19 @@ public enum console {
     @usableFromInline static let endings: JSString = "endings"
     @usableFromInline static let enqueue: JSString = "enqueue"
     @usableFromInline static let enterKeyHint: JSString = "enterKeyHint"
+    @usableFromInline static let enumerateDevices: JSString = "enumerateDevices"
     @usableFromInline static let error: JSString = "error"
     @usableFromInline static let evaluate: JSString = "evaluate"
     @usableFromInline static let event: JSString = "event"
     @usableFromInline static let eventPhase: JSString = "eventPhase"
+    @usableFromInline static let exact: JSString = "exact"
     @usableFromInline static let execCommand: JSString = "execCommand"
     @usableFromInline static let extends: JSString = "extends"
     @usableFromInline static let external: JSString = "external"
     @usableFromInline static let extractContents: JSString = "extractContents"
     @usableFromInline static let f: JSString = "f"
     @usableFromInline static let face: JSString = "face"
+    @usableFromInline static let facingMode: JSString = "facingMode"
     @usableFromInline static let fastSeek: JSString = "fastSeek"
     @usableFromInline static let fetch: JSString = "fetch"
     @usableFromInline static let fgColor: JSString = "fgColor"
@@ -15916,6 +16843,7 @@ public enum console {
     @usableFromInline static let frame: JSString = "frame"
     @usableFromInline static let frameBorder: JSString = "frameBorder"
     @usableFromInline static let frameElement: JSString = "frameElement"
+    @usableFromInline static let frameRate: JSString = "frameRate"
     @usableFromInline static let frames: JSString = "frames"
     @usableFromInline static let fromFloat32Array: JSString = "fromFloat32Array"
     @usableFromInline static let fromFloat64Array: JSString = "fromFloat64Array"
@@ -15933,8 +16861,11 @@ public enum console {
     @usableFromInline static let getAttributeNames: JSString = "getAttributeNames"
     @usableFromInline static let getAttributeNode: JSString = "getAttributeNode"
     @usableFromInline static let getAttributeNodeNS: JSString = "getAttributeNodeNS"
+    @usableFromInline static let getAudioTracks: JSString = "getAudioTracks"
     @usableFromInline static let getBounds: JSString = "getBounds"
+    @usableFromInline static let getCapabilities: JSString = "getCapabilities"
     @usableFromInline static let getComputedTiming: JSString = "getComputedTiming"
+    @usableFromInline static let getConstraints: JSString = "getConstraints"
     @usableFromInline static let getContext: JSString = "getContext"
     @usableFromInline static let getContextAttributes: JSString = "getContextAttributes"
     @usableFromInline static let getCueById: JSString = "getCueById"
@@ -15956,11 +16887,16 @@ public enum console {
     @usableFromInline static let getResponseHeader: JSString = "getResponseHeader"
     @usableFromInline static let getRootNode: JSString = "getRootNode"
     @usableFromInline static let getSVGDocument: JSString = "getSVGDocument"
+    @usableFromInline static let getSettings: JSString = "getSettings"
     @usableFromInline static let getStartDate: JSString = "getStartDate"
     @usableFromInline static let getState: JSString = "getState"
+    @usableFromInline static let getSupportedConstraints: JSString = "getSupportedConstraints"
     @usableFromInline static let getTiming: JSString = "getTiming"
     @usableFromInline static let getTrackById: JSString = "getTrackById"
+    @usableFromInline static let getTracks: JSString = "getTracks"
     @usableFromInline static let getTransform: JSString = "getTransform"
+    @usableFromInline static let getUserMedia: JSString = "getUserMedia"
+    @usableFromInline static let getVideoTracks: JSString = "getVideoTracks"
     @usableFromInline static let getWriter: JSString = "getWriter"
     @usableFromInline static let globalAlpha: JSString = "globalAlpha"
     @usableFromInline static let globalCompositeOperation: JSString = "globalCompositeOperation"
@@ -15968,6 +16904,7 @@ public enum console {
     @usableFromInline static let group: JSString = "group"
     @usableFromInline static let groupCollapsed: JSString = "groupCollapsed"
     @usableFromInline static let groupEnd: JSString = "groupEnd"
+    @usableFromInline static let groupId: JSString = "groupId"
     @usableFromInline static let handled: JSString = "handled"
     @usableFromInline static let hangingBaseline: JSString = "hangingBaseline"
     @usableFromInline static let hardwareConcurrency: JSString = "hardwareConcurrency"
@@ -15995,6 +16932,7 @@ public enum console {
     @usableFromInline static let htmlFor: JSString = "htmlFor"
     @usableFromInline static let httpEquiv: JSString = "httpEquiv"
     @usableFromInline static let id: JSString = "id"
+    @usableFromInline static let ideal: JSString = "ideal"
     @usableFromInline static let ideographicBaseline: JSString = "ideographicBaseline"
     @usableFromInline static let ignoreMethod: JSString = "ignoreMethod"
     @usableFromInline static let ignoreSearch: JSString = "ignoreSearch"
@@ -16079,6 +17017,7 @@ public enum console {
     @usableFromInline static let lastElementChild: JSString = "lastElementChild"
     @usableFromInline static let lastEventId: JSString = "lastEventId"
     @usableFromInline static let lastModified: JSString = "lastModified"
+    @usableFromInline static let latency: JSString = "latency"
     @usableFromInline static let left: JSString = "left"
     @usableFromInline static let length: JSString = "length"
     @usableFromInline static let lengthComputable: JSString = "lengthComputable"
@@ -16134,6 +17073,7 @@ public enum console {
     @usableFromInline static let maxLength: JSString = "maxLength"
     @usableFromInline static let measureText: JSString = "measureText"
     @usableFromInline static let media: JSString = "media"
+    @usableFromInline static let mediaDevices: JSString = "mediaDevices"
     @usableFromInline static let menubar: JSString = "menubar"
     @usableFromInline static let message: JSString = "message"
     @usableFromInline static let metaKey: JSString = "metaKey"
@@ -16180,6 +17120,7 @@ public enum console {
     @usableFromInline static let nodeName: JSString = "nodeName"
     @usableFromInline static let nodeType: JSString = "nodeType"
     @usableFromInline static let nodeValue: JSString = "nodeValue"
+    @usableFromInline static let noiseSuppression: JSString = "noiseSuppression"
     @usableFromInline static let nonce: JSString = "nonce"
     @usableFromInline static let normalize: JSString = "normalize"
     @usableFromInline static let now: JSString = "now"
@@ -16212,6 +17153,7 @@ public enum console {
     @usableFromInline static let oncuechange: JSString = "oncuechange"
     @usableFromInline static let oncut: JSString = "oncut"
     @usableFromInline static let ondblclick: JSString = "ondblclick"
+    @usableFromInline static let ondevicechange: JSString = "ondevicechange"
     @usableFromInline static let ondrag: JSString = "ondrag"
     @usableFromInline static let ondragend: JSString = "ondragend"
     @usableFromInline static let ondragenter: JSString = "ondragenter"
@@ -16249,6 +17191,7 @@ public enum console {
     @usableFromInline static let onmouseout: JSString = "onmouseout"
     @usableFromInline static let onmouseover: JSString = "onmouseover"
     @usableFromInline static let onmouseup: JSString = "onmouseup"
+    @usableFromInline static let onmute: JSString = "onmute"
     @usableFromInline static let onoffline: JSString = "onoffline"
     @usableFromInline static let ononline: JSString = "ononline"
     @usableFromInline static let onopen: JSString = "onopen"
@@ -16283,6 +17226,7 @@ public enum console {
     @usableFromInline static let ontoggle: JSString = "ontoggle"
     @usableFromInline static let onunhandledrejection: JSString = "onunhandledrejection"
     @usableFromInline static let onunload: JSString = "onunload"
+    @usableFromInline static let onunmute: JSString = "onunmute"
     @usableFromInline static let onupdatefound: JSString = "onupdatefound"
     @usableFromInline static let onvisibilitychange: JSString = "onvisibilitychange"
     @usableFromInline static let onvolumechange: JSString = "onvolumechange"
@@ -16308,6 +17252,7 @@ public enum console {
     @usableFromInline static let p2: JSString = "p2"
     @usableFromInline static let p3: JSString = "p3"
     @usableFromInline static let p4: JSString = "p4"
+    @usableFromInline static let panTiltZoom: JSString = "panTiltZoom"
     @usableFromInline static let parent: JSString = "parent"
     @usableFromInline static let parentElement: JSString = "parentElement"
     @usableFromInline static let parentNode: JSString = "parentNode"
@@ -16422,6 +17367,7 @@ public enum console {
     @usableFromInline static let removeNamedItem: JSString = "removeNamedItem"
     @usableFromInline static let removeNamedItemNS: JSString = "removeNamedItemNS"
     @usableFromInline static let removeParameter: JSString = "removeParameter"
+    @usableFromInline static let removeTrack: JSString = "removeTrack"
     @usableFromInline static let removedNodes: JSString = "removedNodes"
     @usableFromInline static let `repeat`: JSString = "repeat"
     @usableFromInline static let replace: JSString = "replace"
@@ -16439,6 +17385,7 @@ public enum console {
     @usableFromInline static let reset: JSString = "reset"
     @usableFromInline static let resetTransform: JSString = "resetTransform"
     @usableFromInline static let resizeHeight: JSString = "resizeHeight"
+    @usableFromInline static let resizeMode: JSString = "resizeMode"
     @usableFromInline static let resizeQuality: JSString = "resizeQuality"
     @usableFromInline static let resizeWidth: JSString = "resizeWidth"
     @usableFromInline static let respond: JSString = "respond"
@@ -16471,6 +17418,8 @@ public enum console {
     @usableFromInline static let rowSpan: JSString = "rowSpan"
     @usableFromInline static let rows: JSString = "rows"
     @usableFromInline static let rules: JSString = "rules"
+    @usableFromInline static let sampleRate: JSString = "sampleRate"
+    @usableFromInline static let sampleSize: JSString = "sampleSize"
     @usableFromInline static let sandbox: JSString = "sandbox"
     @usableFromInline static let save: JSString = "save"
     @usableFromInline static let scale: JSString = "scale"
@@ -16684,6 +17633,7 @@ public enum console {
     @usableFromInline static let vendor: JSString = "vendor"
     @usableFromInline static let vendorSub: JSString = "vendorSub"
     @usableFromInline static let version: JSString = "version"
+    @usableFromInline static let video: JSString = "video"
     @usableFromInline static let videoHeight: JSString = "videoHeight"
     @usableFromInline static let videoTracks: JSString = "videoTracks"
     @usableFromInline static let videoWidth: JSString = "videoWidth"
@@ -16867,6 +17817,48 @@ public enum BlobPart: JSValueCompatible, Any_BlobPart {
             return bufferSource.jsValue
         case let .string(string):
             return string.jsValue
+        }
+    }
+}
+
+public protocol Any_Bool_or_MediaTrackConstraints: ConvertibleToJSValue {}
+extension Bool: Any_Bool_or_MediaTrackConstraints {}
+extension MediaTrackConstraints: Any_Bool_or_MediaTrackConstraints {}
+
+public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaTrackConstraints {
+    case bool(Bool)
+    case mediaTrackConstraints(MediaTrackConstraints)
+
+    var bool: Bool? {
+        switch self {
+        case let .bool(bool): return bool
+        default: return nil
+        }
+    }
+
+    var mediaTrackConstraints: MediaTrackConstraints? {
+        switch self {
+        case let .mediaTrackConstraints(mediaTrackConstraints): return mediaTrackConstraints
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let bool: Bool = value.fromJSValue() {
+            return .bool(bool)
+        }
+        if let mediaTrackConstraints: MediaTrackConstraints = value.fromJSValue() {
+            return .mediaTrackConstraints(mediaTrackConstraints)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .bool(bool):
+            return bool.jsValue
+        case let .mediaTrackConstraints(mediaTrackConstraints):
+            return mediaTrackConstraints.jsValue
         }
     }
 }
@@ -17091,6 +18083,188 @@ public enum CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto: JSValue
             return compositeOperationOrAuto.jsValue
         case let .seq_of_CompositeOperationOrAuto(seq_of_CompositeOperationOrAuto):
             return seq_of_CompositeOperationOrAuto.jsValue
+        }
+    }
+}
+
+public protocol Any_ConstrainBoolean: ConvertibleToJSValue {}
+extension Bool: Any_ConstrainBoolean {}
+extension ConstrainBooleanParameters: Any_ConstrainBoolean {}
+
+public enum ConstrainBoolean: JSValueCompatible, Any_ConstrainBoolean {
+    case bool(Bool)
+    case constrainBooleanParameters(ConstrainBooleanParameters)
+
+    var bool: Bool? {
+        switch self {
+        case let .bool(bool): return bool
+        default: return nil
+        }
+    }
+
+    var constrainBooleanParameters: ConstrainBooleanParameters? {
+        switch self {
+        case let .constrainBooleanParameters(constrainBooleanParameters): return constrainBooleanParameters
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let bool: Bool = value.fromJSValue() {
+            return .bool(bool)
+        }
+        if let constrainBooleanParameters: ConstrainBooleanParameters = value.fromJSValue() {
+            return .constrainBooleanParameters(constrainBooleanParameters)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .bool(bool):
+            return bool.jsValue
+        case let .constrainBooleanParameters(constrainBooleanParameters):
+            return constrainBooleanParameters.jsValue
+        }
+    }
+}
+
+public protocol Any_ConstrainDOMString: ConvertibleToJSValue {}
+extension ConstrainDOMStringParameters: Any_ConstrainDOMString {}
+extension String: Any_ConstrainDOMString {}
+extension Array: Any_ConstrainDOMString where Element == String {}
+
+public enum ConstrainDOMString: JSValueCompatible, Any_ConstrainDOMString {
+    case constrainDOMStringParameters(ConstrainDOMStringParameters)
+    case string(String)
+    case seq_of_String([String])
+
+    var constrainDOMStringParameters: ConstrainDOMStringParameters? {
+        switch self {
+        case let .constrainDOMStringParameters(constrainDOMStringParameters): return constrainDOMStringParameters
+        default: return nil
+        }
+    }
+
+    var string: String? {
+        switch self {
+        case let .string(string): return string
+        default: return nil
+        }
+    }
+
+    var seq_of_String: [String]? {
+        switch self {
+        case let .seq_of_String(seq_of_String): return seq_of_String
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let constrainDOMStringParameters: ConstrainDOMStringParameters = value.fromJSValue() {
+            return .constrainDOMStringParameters(constrainDOMStringParameters)
+        }
+        if let string: String = value.fromJSValue() {
+            return .string(string)
+        }
+        if let seq_of_String: [String] = value.fromJSValue() {
+            return .seq_of_String(seq_of_String)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .constrainDOMStringParameters(constrainDOMStringParameters):
+            return constrainDOMStringParameters.jsValue
+        case let .string(string):
+            return string.jsValue
+        case let .seq_of_String(seq_of_String):
+            return seq_of_String.jsValue
+        }
+    }
+}
+
+public protocol Any_ConstrainDouble: ConvertibleToJSValue {}
+extension ConstrainDoubleRange: Any_ConstrainDouble {}
+extension Double: Any_ConstrainDouble {}
+
+public enum ConstrainDouble: JSValueCompatible, Any_ConstrainDouble {
+    case constrainDoubleRange(ConstrainDoubleRange)
+    case double(Double)
+
+    var constrainDoubleRange: ConstrainDoubleRange? {
+        switch self {
+        case let .constrainDoubleRange(constrainDoubleRange): return constrainDoubleRange
+        default: return nil
+        }
+    }
+
+    var double: Double? {
+        switch self {
+        case let .double(double): return double
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let constrainDoubleRange: ConstrainDoubleRange = value.fromJSValue() {
+            return .constrainDoubleRange(constrainDoubleRange)
+        }
+        if let double: Double = value.fromJSValue() {
+            return .double(double)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .constrainDoubleRange(constrainDoubleRange):
+            return constrainDoubleRange.jsValue
+        case let .double(double):
+            return double.jsValue
+        }
+    }
+}
+
+public protocol Any_ConstrainULong: ConvertibleToJSValue {}
+extension ConstrainULongRange: Any_ConstrainULong {}
+extension UInt32: Any_ConstrainULong {}
+
+public enum ConstrainULong: JSValueCompatible, Any_ConstrainULong {
+    case constrainULongRange(ConstrainULongRange)
+    case uInt32(UInt32)
+
+    var constrainULongRange: ConstrainULongRange? {
+        switch self {
+        case let .constrainULongRange(constrainULongRange): return constrainULongRange
+        default: return nil
+        }
+    }
+
+    var uInt32: UInt32? {
+        switch self {
+        case let .uInt32(uInt32): return uInt32
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let constrainULongRange: ConstrainULongRange = value.fromJSValue() {
+            return .constrainULongRange(constrainULongRange)
+        }
+        if let uInt32: UInt32 = value.fromJSValue() {
+            return .uInt32(uInt32)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .constrainULongRange(constrainULongRange):
+            return constrainULongRange.jsValue
+        case let .uInt32(uInt32):
+            return uInt32.jsValue
         }
     }
 }
