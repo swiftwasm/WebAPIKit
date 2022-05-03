@@ -170,8 +170,8 @@ extension SlimIDLType.TypeValue: SwiftRepresentable {
                 }
                 return "\(name)"
             }
-        case let .union(types):
-            return "\(Record.useUnion(types))"
+        case .union:
+            return "JSValue"
         }
     }
 
@@ -200,12 +200,12 @@ extension SlimIDLType.TypeValue: SwiftRepresentable {
                 }
                 return "\(name)"
             }
-        case let .union(types):
-            return "\(Record.useUnion(types))"
+        case .union:
+            return "JSValue"
         }
     }
 }
 
 func unionName(types: Set<SlimIDLType>) -> String {
-    Record.useUnion(types)
+    "JSValue"
 }

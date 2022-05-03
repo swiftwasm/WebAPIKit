@@ -206,7 +206,7 @@ public class FileReader: EventTarget {
     public var readyState: UInt16
 
     @ReadonlyAttribute
-    public var result: ArrayBuffer_or_String?
+    public var result: JSValue?
 
     @ReadonlyAttribute
     public var error: DOMException?
@@ -239,7 +239,7 @@ public class URL: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public static func createObjectURL(obj: Blob_or_MediaSource) -> String {
+    @inlinable public static func createObjectURL(obj: JSValue) -> String {
         let this = constructor
         return this[Strings.createObjectURL].function!(this: this, arguments: [obj.jsValue]).fromJSValue()!
     }
@@ -286,102 +286,4 @@ public class URL: JSBridgedClass {
     @usableFromInline static let text: JSString = "text"
     @usableFromInline static let toString: JSString = "toString"
     @usableFromInline static let type: JSString = "type"
-}
-
-public protocol Any_ArrayBuffer_or_String: ConvertibleToJSValue {}
-extension ArrayBuffer: Any_ArrayBuffer_or_String {}
-extension String: Any_ArrayBuffer_or_String {}
-
-public enum ArrayBuffer_or_String: JSValueCompatible, Any_ArrayBuffer_or_String {
-    case arrayBuffer(ArrayBuffer)
-    case string(String)
-
-    var arrayBuffer: ArrayBuffer? {
-        switch self {
-        case let .arrayBuffer(arrayBuffer): return arrayBuffer
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let arrayBuffer: ArrayBuffer = value.fromJSValue() {
-            return .arrayBuffer(arrayBuffer)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .arrayBuffer(arrayBuffer):
-            return arrayBuffer.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_BlobPart: ConvertibleToJSValue {}
-extension Blob: Any_BlobPart {}
-extension BufferSource: Any_BlobPart {}
-extension String: Any_BlobPart {}
-
-public enum BlobPart: JSValueCompatible, Any_BlobPart {
-    case blob(Blob)
-    case bufferSource(BufferSource)
-    case string(String)
-
-    var blob: Blob? {
-        switch self {
-        case let .blob(blob): return blob
-        default: return nil
-        }
-    }
-
-    var bufferSource: BufferSource? {
-        switch self {
-        case let .bufferSource(bufferSource): return bufferSource
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let blob: Blob = value.fromJSValue() {
-            return .blob(blob)
-        }
-        if let bufferSource: BufferSource = value.fromJSValue() {
-            return .bufferSource(bufferSource)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .blob(blob):
-            return blob.jsValue
-        case let .bufferSource(bufferSource):
-            return bufferSource.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
 }

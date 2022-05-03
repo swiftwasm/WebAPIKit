@@ -340,7 +340,7 @@ public class AddEventListenerOptions: BridgedDictionary {
 
 public protocol Animatable: JSBridgedClass {}
 public extension Animatable {
-    @inlinable func animate(keyframes: JSObject?, options: Double_or_KeyframeAnimationOptions? = nil) -> Animation {
+    @inlinable func animate(keyframes: JSObject?, options: JSValue? = nil) -> Animation {
         let this = jsObject
         return this[Strings.animate].function!(this: this, arguments: [keyframes.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
@@ -730,7 +730,7 @@ public class BaseKeyframe: BridgedDictionary {
 }
 
 public class BasePropertyIndexedKeyframe: BridgedDictionary {
-    public convenience init(offset: nullable_Double_or_seq_of_nullable_Double, easing: String_or_seq_of_String, composite: CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto) {
+    public convenience init(offset: JSValue, easing: JSValue, composite: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.offset] = offset.jsValue
         object[Strings.easing] = easing.jsValue
@@ -746,13 +746,13 @@ public class BasePropertyIndexedKeyframe: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var offset: nullable_Double_or_seq_of_nullable_Double
+    public var offset: JSValue
 
     @ReadWriteAttribute
-    public var easing: String_or_seq_of_String
+    public var easing: JSValue
 
     @ReadWriteAttribute
-    public var composite: CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto
+    public var composite: JSValue
 }
 
 public class BeforeUnloadEvent: Event {
@@ -1242,12 +1242,12 @@ public enum CanvasFillRule: JSString, JSValueCompatible {
 
 public protocol CanvasFillStrokeStyles: JSBridgedClass {}
 public extension CanvasFillStrokeStyles {
-    @inlinable var strokeStyle: CanvasGradient_or_CanvasPattern_or_String {
+    @inlinable var strokeStyle: JSValue {
         get { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] }
         nonmutating set { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] = newValue }
     }
 
-    @inlinable var fillStyle: CanvasGradient_or_CanvasPattern_or_String {
+    @inlinable var fillStyle: JSValue {
         get { ReadWriteAttribute[Strings.fillStyle, in: jsObject] }
         nonmutating set { ReadWriteAttribute[Strings.fillStyle, in: jsObject] = newValue }
     }
@@ -1288,14 +1288,14 @@ public class CanvasFilter: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public convenience init(filters: CanvasFilterInput_or_seq_of_CanvasFilterInput? = nil) {
+    @inlinable public convenience init(filters: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [filters?.jsValue ?? .undefined]))
     }
 }
 
 public protocol CanvasFilters: JSBridgedClass {}
 public extension CanvasFilters {
-    @inlinable var filter: CanvasFilter_or_String {
+    @inlinable var filter: JSValue {
         get { ReadWriteAttribute[Strings.filter, in: jsObject] }
         nonmutating set { ReadWriteAttribute[Strings.filter, in: jsObject] = newValue }
     }
@@ -1512,7 +1512,7 @@ public extension CanvasPath {
         _ = this[Strings.rect].function!(this: this, arguments: [x.jsValue, y.jsValue, w.jsValue, h.jsValue])
     }
 
-    @inlinable func roundRect(x: Double, y: Double, w: Double, h: Double, radii: DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double? = nil) {
+    @inlinable func roundRect(x: Double, y: Double, w: Double, h: Double, radii: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.roundRect].function!(this: this, arguments: [x.jsValue, y.jsValue, w.jsValue, h.jsValue, radii?.jsValue ?? .undefined])
     }
@@ -1964,17 +1964,17 @@ public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
 
 public protocol ChildNode: JSBridgedClass {}
 public extension ChildNode {
-    @inlinable func before(nodes: Node_or_String...) {
+    @inlinable func before(nodes: JSValue...) {
         let this = jsObject
         _ = this[Strings.before].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
-    @inlinable func after(nodes: Node_or_String...) {
+    @inlinable func after(nodes: JSValue...) {
         let this = jsObject
         _ = this[Strings.after].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
-    @inlinable func replaceWith(nodes: Node_or_String...) {
+    @inlinable func replaceWith(nodes: JSValue...) {
         let this = jsObject
         _ = this[Strings.replaceWith].function!(this: this, arguments: nodes.map(\.jsValue))
     }
@@ -2308,7 +2308,7 @@ public class DOMMatrix: DOMMatrixReadOnly {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(init: String_or_seq_of_Double? = nil) {
+    @inlinable public convenience init(init: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue ?? .undefined]))
     }
 
@@ -2690,7 +2690,7 @@ public class DOMMatrixReadOnly: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public convenience init(init: String_or_seq_of_Double? = nil) {
+    @inlinable public convenience init(init: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [`init`?.jsValue ?? .undefined]))
     }
 
@@ -3581,12 +3581,12 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
         return this[Strings.getElementsByClassName].function!(this: this, arguments: [classNames.jsValue]).fromJSValue()!
     }
 
-    @inlinable public func createElement(localName: String, options: ElementCreationOptions_or_String? = nil) -> Element {
+    @inlinable public func createElement(localName: String, options: JSValue? = nil) -> Element {
         let this = jsObject
         return this[Strings.createElement].function!(this: this, arguments: [localName.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
-    @inlinable public func createElementNS(namespace: String?, qualifiedName: String, options: ElementCreationOptions_or_String? = nil) -> Element {
+    @inlinable public func createElementNS(namespace: String?, qualifiedName: String, options: JSValue? = nil) -> Element {
         let this = jsObject
         return this[Strings.createElementNS].function!(this: this, arguments: [namespace.jsValue, qualifiedName.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
@@ -4274,7 +4274,7 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
     @ReadonlyAttribute
     public var shadowRoot: ShadowRoot?
 
-    @inlinable public func setFormValue(value: File_or_FormData_or_String?, state: File_or_FormData_or_String? = nil) {
+    @inlinable public func setFormValue(value: JSValue?, state: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.setFormValue].function!(this: this, arguments: [value.jsValue, state?.jsValue ?? .undefined])
     }
@@ -5338,11 +5338,11 @@ public class HTMLAllCollection: JSBridgedClass {
         jsObject[key].fromJSValue()!
     }
 
-    @inlinable public subscript(key: String) -> Element_or_HTMLCollection? {
+    @inlinable public subscript(key: String) -> JSValue? {
         jsObject[key].fromJSValue()
     }
 
-    @inlinable public func item(nameOrIndex: String? = nil) -> Element_or_HTMLCollection? {
+    @inlinable public func item(nameOrIndex: String? = nil) -> JSValue? {
         let this = jsObject
         return this[Strings.item].function!(this: this, arguments: [nameOrIndex?.jsValue ?? .undefined]).fromJSValue()!
     }
@@ -6030,7 +6030,7 @@ public class HTMLFormControlsCollection: HTMLCollection {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public subscript(key: String) -> Element_or_RadioNodeList? {
+    @inlinable public subscript(key: String) -> JSValue? {
         jsObject[key].fromJSValue()
     }
 }
@@ -6102,7 +6102,7 @@ public class HTMLFormElement: HTMLElement {
         jsObject[key].fromJSValue()!
     }
 
-    @inlinable public subscript(key: String) -> Element_or_RadioNodeList {
+    @inlinable public subscript(key: String) -> JSValue {
         jsObject[key].fromJSValue()!
     }
 
@@ -7531,7 +7531,7 @@ public class HTMLOptionsCollection: HTMLCollection {
 
     // XXX: unsupported setter for keys of type UInt32
 
-    @inlinable public func add(element: HTMLOptGroupElement_or_HTMLOptionElement, before: HTMLElement_or_Int32? = nil) {
+    @inlinable public func add(element: JSValue, before: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.add].function!(this: this, arguments: [element.jsValue, before?.jsValue ?? .undefined])
     }
@@ -7894,7 +7894,7 @@ public class HTMLSelectElement: HTMLElement {
         return this[Strings.namedItem].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
     }
 
-    @inlinable public func add(element: HTMLOptGroupElement_or_HTMLOptionElement, before: HTMLElement_or_Int32? = nil) {
+    @inlinable public func add(element: JSValue, before: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.add].function!(this: this, arguments: [element.jsValue, before?.jsValue ?? .undefined])
     }
@@ -7973,7 +7973,7 @@ public class HTMLSlotElement: HTMLElement {
         return this[Strings.assignedElements].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
-    @inlinable public func assign(nodes: Element_or_Text...) {
+    @inlinable public func assign(nodes: JSValue...) {
         let this = jsObject
         _ = this[Strings.assign].function!(this: this, arguments: nodes.map(\.jsValue))
     }
@@ -8898,7 +8898,7 @@ public class ImageBitmapRenderingContext: JSBridgedClass {
     }
 
     @ReadonlyAttribute
-    public var canvas: HTMLCanvasElement_or_OffscreenCanvas
+    public var canvas: JSValue
 
     @inlinable public func transferFromImageBitmap(bitmap: ImageBitmap?) {
         let this = jsObject
@@ -9241,7 +9241,7 @@ public class KeyframeEffect: AnimationEffect {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(target: Element?, keyframes: JSObject?, options: Double_or_KeyframeEffectOptions? = nil) {
+    @inlinable public convenience init(target: Element?, keyframes: JSObject?, options: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [target.jsValue, keyframes.jsValue, options?.jsValue ?? .undefined]))
     }
 
@@ -10441,7 +10441,7 @@ public enum OffscreenRenderingContextId: JSString, JSValueCompatible {
 }
 
 public class OptionalEffectTiming: BridgedDictionary {
-    public convenience init(delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, duration: Double_or_String, direction: PlaybackDirection, easing: String) {
+    public convenience init(delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, duration: JSValue, direction: PlaybackDirection, easing: String) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.delay] = delay.jsValue
         object[Strings.endDelay] = endDelay.jsValue
@@ -10482,7 +10482,7 @@ public class OptionalEffectTiming: BridgedDictionary {
     public var iterations: Double
 
     @ReadWriteAttribute
-    public var duration: Double_or_String
+    public var duration: JSValue
 
     @ReadWriteAttribute
     public var direction: PlaybackDirection
@@ -10533,17 +10533,17 @@ public extension ParentNode {
 
     @inlinable var childElementCount: UInt32 { ReadonlyAttribute[Strings.childElementCount, in: jsObject] }
 
-    @inlinable func prepend(nodes: Node_or_String...) {
+    @inlinable func prepend(nodes: JSValue...) {
         let this = jsObject
         _ = this[Strings.prepend].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
-    @inlinable func append(nodes: Node_or_String...) {
+    @inlinable func append(nodes: JSValue...) {
         let this = jsObject
         _ = this[Strings.append].function!(this: this, arguments: nodes.map(\.jsValue))
     }
 
-    @inlinable func replaceChildren(nodes: Node_or_String...) {
+    @inlinable func replaceChildren(nodes: JSValue...) {
         let this = jsObject
         _ = this[Strings.replaceChildren].function!(this: this, arguments: nodes.map(\.jsValue))
     }
@@ -10568,7 +10568,7 @@ public class Path2D: JSBridgedClass, CanvasPath {
         self.jsObject = jsObject
     }
 
-    @inlinable public convenience init(path: Path2D_or_String? = nil) {
+    @inlinable public convenience init(path: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [path?.jsValue ?? .undefined]))
     }
 
@@ -12152,7 +12152,7 @@ public class SharedWorker: EventTarget, AbstractWorker {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(scriptURL: String, options: String_or_WorkerOptions? = nil) {
+    @inlinable public convenience init(scriptURL: String, options: JSValue? = nil) {
         self.init(unsafelyWrapping: Self.constructor.new(arguments: [scriptURL.jsValue, options?.jsValue ?? .undefined]))
     }
 
@@ -12740,11 +12740,11 @@ public class TrackEvent: Event {
     }
 
     @ReadonlyAttribute
-    public var track: AudioTrack_or_TextTrack_or_VideoTrack?
+    public var track: JSValue?
 }
 
 public class TrackEventInit: BridgedDictionary {
-    public convenience init(track: AudioTrack_or_TextTrack_or_VideoTrack?) {
+    public convenience init(track: JSValue?) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.track] = track.jsValue
         self.init(unsafelyWrapping: object)
@@ -12756,7 +12756,7 @@ public class TrackEventInit: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var track: AudioTrack_or_TextTrack_or_VideoTrack?
+    public var track: JSValue?
 }
 
 public class TransformStream: JSBridgedClass {
@@ -12929,7 +12929,7 @@ public typealias MutationCallback = ([MutationRecord], MutationObserver) -> Void
 public typealias BlobCallback = (Blob?) -> Void
 public typealias FunctionStringCallback = (String) -> Void
 public typealias EventHandlerNonNull = (Event) -> JSValue
-public typealias OnErrorEventHandlerNonNull = (Event_or_String, String, UInt32, UInt32, JSValue) -> JSValue
+public typealias OnErrorEventHandlerNonNull = (JSValue, String, UInt32, UInt32, JSValue) -> JSValue
 public typealias OnBeforeUnloadEventHandlerNonNull = (Event) -> String?
 public typealias FrameRequestCallback = (DOMHighResTimeStamp) -> Void
 public class UIEvent: Event {
@@ -14025,7 +14025,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
     @ReadonlyAttribute
     public var upload: XMLHttpRequestUpload
 
-    @inlinable public func send(body: Document_or_XMLHttpRequestBodyInit? = nil) {
+    @inlinable public func send(body: JSValue? = nil) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [body?.jsValue ?? .undefined])
     }
@@ -16084,1600 +16084,4 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let x: JSString = "x"
     @usableFromInline static let y: JSString = "y"
     @usableFromInline static let z: JSString = "z"
-}
-
-public protocol Any_AudioTrack_or_TextTrack_or_VideoTrack: ConvertibleToJSValue {}
-extension AudioTrack: Any_AudioTrack_or_TextTrack_or_VideoTrack {}
-extension TextTrack: Any_AudioTrack_or_TextTrack_or_VideoTrack {}
-extension VideoTrack: Any_AudioTrack_or_TextTrack_or_VideoTrack {}
-
-public enum AudioTrack_or_TextTrack_or_VideoTrack: JSValueCompatible, Any_AudioTrack_or_TextTrack_or_VideoTrack {
-    case audioTrack(AudioTrack)
-    case textTrack(TextTrack)
-    case videoTrack(VideoTrack)
-
-    var audioTrack: AudioTrack? {
-        switch self {
-        case let .audioTrack(audioTrack): return audioTrack
-        default: return nil
-        }
-    }
-
-    var textTrack: TextTrack? {
-        switch self {
-        case let .textTrack(textTrack): return textTrack
-        default: return nil
-        }
-    }
-
-    var videoTrack: VideoTrack? {
-        switch self {
-        case let .videoTrack(videoTrack): return videoTrack
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let audioTrack: AudioTrack = value.fromJSValue() {
-            return .audioTrack(audioTrack)
-        }
-        if let textTrack: TextTrack = value.fromJSValue() {
-            return .textTrack(textTrack)
-        }
-        if let videoTrack: VideoTrack = value.fromJSValue() {
-            return .videoTrack(videoTrack)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .audioTrack(audioTrack):
-            return audioTrack.jsValue
-        case let .textTrack(textTrack):
-            return textTrack.jsValue
-        case let .videoTrack(videoTrack):
-            return videoTrack.jsValue
-        }
-    }
-}
-
-public protocol Any_CanvasFilterInput_or_seq_of_CanvasFilterInput: ConvertibleToJSValue {}
-extension CanvasFilterInput: Any_CanvasFilterInput_or_seq_of_CanvasFilterInput {}
-extension Array: Any_CanvasFilterInput_or_seq_of_CanvasFilterInput where Element == CanvasFilterInput {}
-
-public enum CanvasFilterInput_or_seq_of_CanvasFilterInput: JSValueCompatible, Any_CanvasFilterInput_or_seq_of_CanvasFilterInput {
-    case canvasFilterInput(CanvasFilterInput)
-    case seq_of_CanvasFilterInput([CanvasFilterInput])
-
-    var canvasFilterInput: CanvasFilterInput? {
-        switch self {
-        case let .canvasFilterInput(canvasFilterInput): return canvasFilterInput
-        default: return nil
-        }
-    }
-
-    var seq_of_CanvasFilterInput: [CanvasFilterInput]? {
-        switch self {
-        case let .seq_of_CanvasFilterInput(seq_of_CanvasFilterInput): return seq_of_CanvasFilterInput
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let canvasFilterInput: CanvasFilterInput = value.fromJSValue() {
-            return .canvasFilterInput(canvasFilterInput)
-        }
-        if let seq_of_CanvasFilterInput: [CanvasFilterInput] = value.fromJSValue() {
-            return .seq_of_CanvasFilterInput(seq_of_CanvasFilterInput)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .canvasFilterInput(canvasFilterInput):
-            return canvasFilterInput.jsValue
-        case let .seq_of_CanvasFilterInput(seq_of_CanvasFilterInput):
-            return seq_of_CanvasFilterInput.jsValue
-        }
-    }
-}
-
-public protocol Any_CanvasFilter_or_String: ConvertibleToJSValue {}
-extension CanvasFilter: Any_CanvasFilter_or_String {}
-extension String: Any_CanvasFilter_or_String {}
-
-public enum CanvasFilter_or_String: JSValueCompatible, Any_CanvasFilter_or_String {
-    case canvasFilter(CanvasFilter)
-    case string(String)
-
-    var canvasFilter: CanvasFilter? {
-        switch self {
-        case let .canvasFilter(canvasFilter): return canvasFilter
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let canvasFilter: CanvasFilter = value.fromJSValue() {
-            return .canvasFilter(canvasFilter)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .canvasFilter(canvasFilter):
-            return canvasFilter.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_CanvasGradient_or_CanvasPattern_or_String: ConvertibleToJSValue {}
-extension CanvasGradient: Any_CanvasGradient_or_CanvasPattern_or_String {}
-extension CanvasPattern: Any_CanvasGradient_or_CanvasPattern_or_String {}
-extension String: Any_CanvasGradient_or_CanvasPattern_or_String {}
-
-public enum CanvasGradient_or_CanvasPattern_or_String: JSValueCompatible, Any_CanvasGradient_or_CanvasPattern_or_String {
-    case canvasGradient(CanvasGradient)
-    case canvasPattern(CanvasPattern)
-    case string(String)
-
-    var canvasGradient: CanvasGradient? {
-        switch self {
-        case let .canvasGradient(canvasGradient): return canvasGradient
-        default: return nil
-        }
-    }
-
-    var canvasPattern: CanvasPattern? {
-        switch self {
-        case let .canvasPattern(canvasPattern): return canvasPattern
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let canvasGradient: CanvasGradient = value.fromJSValue() {
-            return .canvasGradient(canvasGradient)
-        }
-        if let canvasPattern: CanvasPattern = value.fromJSValue() {
-            return .canvasPattern(canvasPattern)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .canvasGradient(canvasGradient):
-            return canvasGradient.jsValue
-        case let .canvasPattern(canvasPattern):
-            return canvasPattern.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto: ConvertibleToJSValue {}
-extension CompositeOperationOrAuto: Any_CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto {}
-extension Array: Any_CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto where Element == CompositeOperationOrAuto {}
-
-public enum CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto: JSValueCompatible, Any_CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto {
-    case compositeOperationOrAuto(CompositeOperationOrAuto)
-    case seq_of_CompositeOperationOrAuto([CompositeOperationOrAuto])
-
-    var compositeOperationOrAuto: CompositeOperationOrAuto? {
-        switch self {
-        case let .compositeOperationOrAuto(compositeOperationOrAuto): return compositeOperationOrAuto
-        default: return nil
-        }
-    }
-
-    var seq_of_CompositeOperationOrAuto: [CompositeOperationOrAuto]? {
-        switch self {
-        case let .seq_of_CompositeOperationOrAuto(seq_of_CompositeOperationOrAuto): return seq_of_CompositeOperationOrAuto
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let compositeOperationOrAuto: CompositeOperationOrAuto = value.fromJSValue() {
-            return .compositeOperationOrAuto(compositeOperationOrAuto)
-        }
-        if let seq_of_CompositeOperationOrAuto: [CompositeOperationOrAuto] = value.fromJSValue() {
-            return .seq_of_CompositeOperationOrAuto(seq_of_CompositeOperationOrAuto)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .compositeOperationOrAuto(compositeOperationOrAuto):
-            return compositeOperationOrAuto.jsValue
-        case let .seq_of_CompositeOperationOrAuto(seq_of_CompositeOperationOrAuto):
-            return seq_of_CompositeOperationOrAuto.jsValue
-        }
-    }
-}
-
-public protocol Any_DOMPointInit_or_Double: ConvertibleToJSValue {}
-extension DOMPointInit: Any_DOMPointInit_or_Double {}
-extension Double: Any_DOMPointInit_or_Double {}
-
-public enum DOMPointInit_or_Double: JSValueCompatible, Any_DOMPointInit_or_Double {
-    case domPointInit(DOMPointInit)
-    case double(Double)
-
-    var domPointInit: DOMPointInit? {
-        switch self {
-        case let .domPointInit(domPointInit): return domPointInit
-        default: return nil
-        }
-    }
-
-    var double: Double? {
-        switch self {
-        case let .double(double): return double
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let domPointInit: DOMPointInit = value.fromJSValue() {
-            return .domPointInit(domPointInit)
-        }
-        if let double: Double = value.fromJSValue() {
-            return .double(double)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .domPointInit(domPointInit):
-            return domPointInit.jsValue
-        case let .double(double):
-            return double.jsValue
-        }
-    }
-}
-
-public protocol Any_DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double: ConvertibleToJSValue {}
-extension DOMPointInit: Any_DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double {}
-extension Double: Any_DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double {}
-extension Array: Any_DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double where Element == DOMPointInit_or_Double {}
-
-public enum DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double: JSValueCompatible, Any_DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double {
-    case domPointInit(DOMPointInit)
-    case double(Double)
-    case seq_of_DOMPointInit_or_Double([DOMPointInit_or_Double])
-
-    var domPointInit: DOMPointInit? {
-        switch self {
-        case let .domPointInit(domPointInit): return domPointInit
-        default: return nil
-        }
-    }
-
-    var double: Double? {
-        switch self {
-        case let .double(double): return double
-        default: return nil
-        }
-    }
-
-    var seq_of_DOMPointInit_or_Double: [DOMPointInit_or_Double]? {
-        switch self {
-        case let .seq_of_DOMPointInit_or_Double(seq_of_DOMPointInit_or_Double): return seq_of_DOMPointInit_or_Double
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let domPointInit: DOMPointInit = value.fromJSValue() {
-            return .domPointInit(domPointInit)
-        }
-        if let double: Double = value.fromJSValue() {
-            return .double(double)
-        }
-        if let seq_of_DOMPointInit_or_Double: [DOMPointInit_or_Double] = value.fromJSValue() {
-            return .seq_of_DOMPointInit_or_Double(seq_of_DOMPointInit_or_Double)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .domPointInit(domPointInit):
-            return domPointInit.jsValue
-        case let .double(double):
-            return double.jsValue
-        case let .seq_of_DOMPointInit_or_Double(seq_of_DOMPointInit_or_Double):
-            return seq_of_DOMPointInit_or_Double.jsValue
-        }
-    }
-}
-
-public protocol Any_Document_or_XMLHttpRequestBodyInit: ConvertibleToJSValue {}
-extension Document: Any_Document_or_XMLHttpRequestBodyInit {}
-extension XMLHttpRequestBodyInit: Any_Document_or_XMLHttpRequestBodyInit {}
-
-public enum Document_or_XMLHttpRequestBodyInit: JSValueCompatible, Any_Document_or_XMLHttpRequestBodyInit {
-    case document(Document)
-    case xmlHttpRequestBodyInit(XMLHttpRequestBodyInit)
-
-    var document: Document? {
-        switch self {
-        case let .document(document): return document
-        default: return nil
-        }
-    }
-
-    var xmlHttpRequestBodyInit: XMLHttpRequestBodyInit? {
-        switch self {
-        case let .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit): return xmlHttpRequestBodyInit
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let document: Document = value.fromJSValue() {
-            return .document(document)
-        }
-        if let xmlHttpRequestBodyInit: XMLHttpRequestBodyInit = value.fromJSValue() {
-            return .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .document(document):
-            return document.jsValue
-        case let .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit):
-            return xmlHttpRequestBodyInit.jsValue
-        }
-    }
-}
-
-public protocol Any_Double_or_KeyframeAnimationOptions: ConvertibleToJSValue {}
-extension Double: Any_Double_or_KeyframeAnimationOptions {}
-extension KeyframeAnimationOptions: Any_Double_or_KeyframeAnimationOptions {}
-
-public enum Double_or_KeyframeAnimationOptions: JSValueCompatible, Any_Double_or_KeyframeAnimationOptions {
-    case double(Double)
-    case keyframeAnimationOptions(KeyframeAnimationOptions)
-
-    var double: Double? {
-        switch self {
-        case let .double(double): return double
-        default: return nil
-        }
-    }
-
-    var keyframeAnimationOptions: KeyframeAnimationOptions? {
-        switch self {
-        case let .keyframeAnimationOptions(keyframeAnimationOptions): return keyframeAnimationOptions
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let double: Double = value.fromJSValue() {
-            return .double(double)
-        }
-        if let keyframeAnimationOptions: KeyframeAnimationOptions = value.fromJSValue() {
-            return .keyframeAnimationOptions(keyframeAnimationOptions)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .double(double):
-            return double.jsValue
-        case let .keyframeAnimationOptions(keyframeAnimationOptions):
-            return keyframeAnimationOptions.jsValue
-        }
-    }
-}
-
-public protocol Any_Double_or_KeyframeEffectOptions: ConvertibleToJSValue {}
-extension Double: Any_Double_or_KeyframeEffectOptions {}
-extension KeyframeEffectOptions: Any_Double_or_KeyframeEffectOptions {}
-
-public enum Double_or_KeyframeEffectOptions: JSValueCompatible, Any_Double_or_KeyframeEffectOptions {
-    case double(Double)
-    case keyframeEffectOptions(KeyframeEffectOptions)
-
-    var double: Double? {
-        switch self {
-        case let .double(double): return double
-        default: return nil
-        }
-    }
-
-    var keyframeEffectOptions: KeyframeEffectOptions? {
-        switch self {
-        case let .keyframeEffectOptions(keyframeEffectOptions): return keyframeEffectOptions
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let double: Double = value.fromJSValue() {
-            return .double(double)
-        }
-        if let keyframeEffectOptions: KeyframeEffectOptions = value.fromJSValue() {
-            return .keyframeEffectOptions(keyframeEffectOptions)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .double(double):
-            return double.jsValue
-        case let .keyframeEffectOptions(keyframeEffectOptions):
-            return keyframeEffectOptions.jsValue
-        }
-    }
-}
-
-public protocol Any_Double_or_String: ConvertibleToJSValue {}
-extension Double: Any_Double_or_String {}
-extension String: Any_Double_or_String {}
-
-public enum Double_or_String: JSValueCompatible, Any_Double_or_String {
-    case double(Double)
-    case string(String)
-
-    var double: Double? {
-        switch self {
-        case let .double(double): return double
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let double: Double = value.fromJSValue() {
-            return .double(double)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .double(double):
-            return double.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_ElementCreationOptions_or_String: ConvertibleToJSValue {}
-extension ElementCreationOptions: Any_ElementCreationOptions_or_String {}
-extension String: Any_ElementCreationOptions_or_String {}
-
-public enum ElementCreationOptions_or_String: JSValueCompatible, Any_ElementCreationOptions_or_String {
-    case elementCreationOptions(ElementCreationOptions)
-    case string(String)
-
-    var elementCreationOptions: ElementCreationOptions? {
-        switch self {
-        case let .elementCreationOptions(elementCreationOptions): return elementCreationOptions
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let elementCreationOptions: ElementCreationOptions = value.fromJSValue() {
-            return .elementCreationOptions(elementCreationOptions)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .elementCreationOptions(elementCreationOptions):
-            return elementCreationOptions.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_Element_or_HTMLCollection: ConvertibleToJSValue {}
-extension Element: Any_Element_or_HTMLCollection {}
-extension HTMLCollection: Any_Element_or_HTMLCollection {}
-
-public enum Element_or_HTMLCollection: JSValueCompatible, Any_Element_or_HTMLCollection {
-    case element(Element)
-    case htmlCollection(HTMLCollection)
-
-    var element: Element? {
-        switch self {
-        case let .element(element): return element
-        default: return nil
-        }
-    }
-
-    var htmlCollection: HTMLCollection? {
-        switch self {
-        case let .htmlCollection(htmlCollection): return htmlCollection
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let element: Element = value.fromJSValue() {
-            return .element(element)
-        }
-        if let htmlCollection: HTMLCollection = value.fromJSValue() {
-            return .htmlCollection(htmlCollection)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .element(element):
-            return element.jsValue
-        case let .htmlCollection(htmlCollection):
-            return htmlCollection.jsValue
-        }
-    }
-}
-
-public protocol Any_Element_or_RadioNodeList: ConvertibleToJSValue {}
-extension Element: Any_Element_or_RadioNodeList {}
-extension RadioNodeList: Any_Element_or_RadioNodeList {}
-
-public enum Element_or_RadioNodeList: JSValueCompatible, Any_Element_or_RadioNodeList {
-    case element(Element)
-    case radioNodeList(RadioNodeList)
-
-    var element: Element? {
-        switch self {
-        case let .element(element): return element
-        default: return nil
-        }
-    }
-
-    var radioNodeList: RadioNodeList? {
-        switch self {
-        case let .radioNodeList(radioNodeList): return radioNodeList
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let element: Element = value.fromJSValue() {
-            return .element(element)
-        }
-        if let radioNodeList: RadioNodeList = value.fromJSValue() {
-            return .radioNodeList(radioNodeList)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .element(element):
-            return element.jsValue
-        case let .radioNodeList(radioNodeList):
-            return radioNodeList.jsValue
-        }
-    }
-}
-
-public protocol Any_Element_or_Text: ConvertibleToJSValue {}
-extension Element: Any_Element_or_Text {}
-extension Text: Any_Element_or_Text {}
-
-public enum Element_or_Text: JSValueCompatible, Any_Element_or_Text {
-    case element(Element)
-    case text(Text)
-
-    var element: Element? {
-        switch self {
-        case let .element(element): return element
-        default: return nil
-        }
-    }
-
-    var text: Text? {
-        switch self {
-        case let .text(text): return text
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let element: Element = value.fromJSValue() {
-            return .element(element)
-        }
-        if let text: Text = value.fromJSValue() {
-            return .text(text)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .element(element):
-            return element.jsValue
-        case let .text(text):
-            return text.jsValue
-        }
-    }
-}
-
-public protocol Any_Event_or_String: ConvertibleToJSValue {}
-extension Event: Any_Event_or_String {}
-extension String: Any_Event_or_String {}
-
-public enum Event_or_String: JSValueCompatible, Any_Event_or_String {
-    case event(Event)
-    case string(String)
-
-    var event: Event? {
-        switch self {
-        case let .event(event): return event
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let event: Event = value.fromJSValue() {
-            return .event(event)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .event(event):
-            return event.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_File_or_FormData_or_String: ConvertibleToJSValue {}
-extension File: Any_File_or_FormData_or_String {}
-extension FormData: Any_File_or_FormData_or_String {}
-extension String: Any_File_or_FormData_or_String {}
-
-public enum File_or_FormData_or_String: JSValueCompatible, Any_File_or_FormData_or_String {
-    case file(File)
-    case formData(FormData)
-    case string(String)
-
-    var file: File? {
-        switch self {
-        case let .file(file): return file
-        default: return nil
-        }
-    }
-
-    var formData: FormData? {
-        switch self {
-        case let .formData(formData): return formData
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let file: File = value.fromJSValue() {
-            return .file(file)
-        }
-        if let formData: FormData = value.fromJSValue() {
-            return .formData(formData)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .file(file):
-            return file.jsValue
-        case let .formData(formData):
-            return formData.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_FormDataEntryValue: ConvertibleToJSValue {}
-extension File: Any_FormDataEntryValue {}
-extension String: Any_FormDataEntryValue {}
-
-public enum FormDataEntryValue: JSValueCompatible, Any_FormDataEntryValue {
-    case file(File)
-    case string(String)
-
-    var file: File? {
-        switch self {
-        case let .file(file): return file
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let file: File = value.fromJSValue() {
-            return .file(file)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .file(file):
-            return file.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_HTMLCanvasElement_or_OffscreenCanvas: ConvertibleToJSValue {}
-extension HTMLCanvasElement: Any_HTMLCanvasElement_or_OffscreenCanvas {}
-extension OffscreenCanvas: Any_HTMLCanvasElement_or_OffscreenCanvas {}
-
-public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCanvasElement_or_OffscreenCanvas {
-    case htmlCanvasElement(HTMLCanvasElement)
-    case offscreenCanvas(OffscreenCanvas)
-
-    var htmlCanvasElement: HTMLCanvasElement? {
-        switch self {
-        case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement
-        default: return nil
-        }
-    }
-
-    var offscreenCanvas: OffscreenCanvas? {
-        switch self {
-        case let .offscreenCanvas(offscreenCanvas): return offscreenCanvas
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
-            return .htmlCanvasElement(htmlCanvasElement)
-        }
-        if let offscreenCanvas: OffscreenCanvas = value.fromJSValue() {
-            return .offscreenCanvas(offscreenCanvas)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .htmlCanvasElement(htmlCanvasElement):
-            return htmlCanvasElement.jsValue
-        case let .offscreenCanvas(offscreenCanvas):
-            return offscreenCanvas.jsValue
-        }
-    }
-}
-
-public protocol Any_HTMLElement_or_Int32: ConvertibleToJSValue {}
-extension HTMLElement: Any_HTMLElement_or_Int32 {}
-extension Int32: Any_HTMLElement_or_Int32 {}
-
-public enum HTMLElement_or_Int32: JSValueCompatible, Any_HTMLElement_or_Int32 {
-    case htmlElement(HTMLElement)
-    case int32(Int32)
-
-    var htmlElement: HTMLElement? {
-        switch self {
-        case let .htmlElement(htmlElement): return htmlElement
-        default: return nil
-        }
-    }
-
-    var int32: Int32? {
-        switch self {
-        case let .int32(int32): return int32
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let htmlElement: HTMLElement = value.fromJSValue() {
-            return .htmlElement(htmlElement)
-        }
-        if let int32: Int32 = value.fromJSValue() {
-            return .int32(int32)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .htmlElement(htmlElement):
-            return htmlElement.jsValue
-        case let .int32(int32):
-            return int32.jsValue
-        }
-    }
-}
-
-public protocol Any_HTMLOptGroupElement_or_HTMLOptionElement: ConvertibleToJSValue {}
-extension HTMLOptGroupElement: Any_HTMLOptGroupElement_or_HTMLOptionElement {}
-extension HTMLOptionElement: Any_HTMLOptGroupElement_or_HTMLOptionElement {}
-
-public enum HTMLOptGroupElement_or_HTMLOptionElement: JSValueCompatible, Any_HTMLOptGroupElement_or_HTMLOptionElement {
-    case htmlOptGroupElement(HTMLOptGroupElement)
-    case htmlOptionElement(HTMLOptionElement)
-
-    var htmlOptGroupElement: HTMLOptGroupElement? {
-        switch self {
-        case let .htmlOptGroupElement(htmlOptGroupElement): return htmlOptGroupElement
-        default: return nil
-        }
-    }
-
-    var htmlOptionElement: HTMLOptionElement? {
-        switch self {
-        case let .htmlOptionElement(htmlOptionElement): return htmlOptionElement
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let htmlOptGroupElement: HTMLOptGroupElement = value.fromJSValue() {
-            return .htmlOptGroupElement(htmlOptGroupElement)
-        }
-        if let htmlOptionElement: HTMLOptionElement = value.fromJSValue() {
-            return .htmlOptionElement(htmlOptionElement)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .htmlOptGroupElement(htmlOptGroupElement):
-            return htmlOptGroupElement.jsValue
-        case let .htmlOptionElement(htmlOptionElement):
-            return htmlOptionElement.jsValue
-        }
-    }
-}
-
-public protocol Any_HeadersInit: ConvertibleToJSValue {}
-extension Dictionary: Any_HeadersInit where Key == String, Value == String {}
-extension Array: Any_HeadersInit where Element == [String] {}
-
-public enum HeadersInit: JSValueCompatible, Any_HeadersInit {
-    case record_String_to_String([String: String])
-    case seq_of_seq_of_String([[String]])
-
-    var record_String_to_String: [String: String]? {
-        switch self {
-        case let .record_String_to_String(record_String_to_String): return record_String_to_String
-        default: return nil
-        }
-    }
-
-    var seq_of_seq_of_String: [[String]]? {
-        switch self {
-        case let .seq_of_seq_of_String(seq_of_seq_of_String): return seq_of_seq_of_String
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let record_String_to_String: [String: String] = value.fromJSValue() {
-            return .record_String_to_String(record_String_to_String)
-        }
-        if let seq_of_seq_of_String: [[String]] = value.fromJSValue() {
-            return .seq_of_seq_of_String(seq_of_seq_of_String)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .record_String_to_String(record_String_to_String):
-            return record_String_to_String.jsValue
-        case let .seq_of_seq_of_String(seq_of_seq_of_String):
-            return seq_of_seq_of_String.jsValue
-        }
-    }
-}
-
-public protocol Any_ImageBitmapSource: ConvertibleToJSValue {}
-extension Blob: Any_ImageBitmapSource {}
-extension CanvasImageSource: Any_ImageBitmapSource {}
-extension ImageData: Any_ImageBitmapSource {}
-
-public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
-    case blob(Blob)
-    case canvasImageSource(CanvasImageSource)
-    case imageData(ImageData)
-
-    var blob: Blob? {
-        switch self {
-        case let .blob(blob): return blob
-        default: return nil
-        }
-    }
-
-    var canvasImageSource: CanvasImageSource? {
-        switch self {
-        case let .canvasImageSource(canvasImageSource): return canvasImageSource
-        default: return nil
-        }
-    }
-
-    var imageData: ImageData? {
-        switch self {
-        case let .imageData(imageData): return imageData
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let blob: Blob = value.fromJSValue() {
-            return .blob(blob)
-        }
-        if let canvasImageSource: CanvasImageSource = value.fromJSValue() {
-            return .canvasImageSource(canvasImageSource)
-        }
-        if let imageData: ImageData = value.fromJSValue() {
-            return .imageData(imageData)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .blob(blob):
-            return blob.jsValue
-        case let .canvasImageSource(canvasImageSource):
-            return canvasImageSource.jsValue
-        case let .imageData(imageData):
-            return imageData.jsValue
-        }
-    }
-}
-
-public protocol Any_MessageEventSource: ConvertibleToJSValue {}
-extension MessagePort: Any_MessageEventSource {}
-extension ServiceWorker: Any_MessageEventSource {}
-extension WindowProxy: Any_MessageEventSource {}
-
-public enum MessageEventSource: JSValueCompatible, Any_MessageEventSource {
-    case messagePort(MessagePort)
-    case serviceWorker(ServiceWorker)
-    case windowProxy(WindowProxy)
-
-    var messagePort: MessagePort? {
-        switch self {
-        case let .messagePort(messagePort): return messagePort
-        default: return nil
-        }
-    }
-
-    var serviceWorker: ServiceWorker? {
-        switch self {
-        case let .serviceWorker(serviceWorker): return serviceWorker
-        default: return nil
-        }
-    }
-
-    var windowProxy: WindowProxy? {
-        switch self {
-        case let .windowProxy(windowProxy): return windowProxy
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let messagePort: MessagePort = value.fromJSValue() {
-            return .messagePort(messagePort)
-        }
-        if let serviceWorker: ServiceWorker = value.fromJSValue() {
-            return .serviceWorker(serviceWorker)
-        }
-        if let windowProxy: WindowProxy = value.fromJSValue() {
-            return .windowProxy(windowProxy)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .messagePort(messagePort):
-            return messagePort.jsValue
-        case let .serviceWorker(serviceWorker):
-            return serviceWorker.jsValue
-        case let .windowProxy(windowProxy):
-            return windowProxy.jsValue
-        }
-    }
-}
-
-public protocol Any_Node_or_String: ConvertibleToJSValue {}
-extension Node: Any_Node_or_String {}
-extension String: Any_Node_or_String {}
-
-public enum Node_or_String: JSValueCompatible, Any_Node_or_String {
-    case node(Node)
-    case string(String)
-
-    var node: Node? {
-        switch self {
-        case let .node(node): return node
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let node: Node = value.fromJSValue() {
-            return .node(node)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .node(node):
-            return node.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_Path2D_or_String: ConvertibleToJSValue {}
-extension Path2D: Any_Path2D_or_String {}
-extension String: Any_Path2D_or_String {}
-
-public enum Path2D_or_String: JSValueCompatible, Any_Path2D_or_String {
-    case path2D(Path2D)
-    case string(String)
-
-    var path2D: Path2D? {
-        switch self {
-        case let .path2D(path2D): return path2D
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let path2D: Path2D = value.fromJSValue() {
-            return .path2D(path2D)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .path2D(path2D):
-            return path2D.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_ReadableStreamController: ConvertibleToJSValue {}
-extension ReadableByteStreamController: Any_ReadableStreamController {}
-extension ReadableStreamDefaultController: Any_ReadableStreamController {}
-
-public enum ReadableStreamController: JSValueCompatible, Any_ReadableStreamController {
-    case readableByteStreamController(ReadableByteStreamController)
-    case readableStreamDefaultController(ReadableStreamDefaultController)
-
-    var readableByteStreamController: ReadableByteStreamController? {
-        switch self {
-        case let .readableByteStreamController(readableByteStreamController): return readableByteStreamController
-        default: return nil
-        }
-    }
-
-    var readableStreamDefaultController: ReadableStreamDefaultController? {
-        switch self {
-        case let .readableStreamDefaultController(readableStreamDefaultController): return readableStreamDefaultController
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let readableByteStreamController: ReadableByteStreamController = value.fromJSValue() {
-            return .readableByteStreamController(readableByteStreamController)
-        }
-        if let readableStreamDefaultController: ReadableStreamDefaultController = value.fromJSValue() {
-            return .readableStreamDefaultController(readableStreamDefaultController)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .readableByteStreamController(readableByteStreamController):
-            return readableByteStreamController.jsValue
-        case let .readableStreamDefaultController(readableStreamDefaultController):
-            return readableStreamDefaultController.jsValue
-        }
-    }
-}
-
-public protocol Any_ReadableStreamReader: ConvertibleToJSValue {}
-extension ReadableStreamBYOBReader: Any_ReadableStreamReader {}
-extension ReadableStreamDefaultReader: Any_ReadableStreamReader {}
-
-public enum ReadableStreamReader: JSValueCompatible, Any_ReadableStreamReader {
-    case readableStreamBYOBReader(ReadableStreamBYOBReader)
-    case readableStreamDefaultReader(ReadableStreamDefaultReader)
-
-    var readableStreamBYOBReader: ReadableStreamBYOBReader? {
-        switch self {
-        case let .readableStreamBYOBReader(readableStreamBYOBReader): return readableStreamBYOBReader
-        default: return nil
-        }
-    }
-
-    var readableStreamDefaultReader: ReadableStreamDefaultReader? {
-        switch self {
-        case let .readableStreamDefaultReader(readableStreamDefaultReader): return readableStreamDefaultReader
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let readableStreamBYOBReader: ReadableStreamBYOBReader = value.fromJSValue() {
-            return .readableStreamBYOBReader(readableStreamBYOBReader)
-        }
-        if let readableStreamDefaultReader: ReadableStreamDefaultReader = value.fromJSValue() {
-            return .readableStreamDefaultReader(readableStreamDefaultReader)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .readableStreamBYOBReader(readableStreamBYOBReader):
-            return readableStreamBYOBReader.jsValue
-        case let .readableStreamDefaultReader(readableStreamDefaultReader):
-            return readableStreamDefaultReader.jsValue
-        }
-    }
-}
-
-public protocol Any_RequestInfo: ConvertibleToJSValue {}
-extension Request: Any_RequestInfo {}
-extension String: Any_RequestInfo {}
-
-public enum RequestInfo: JSValueCompatible, Any_RequestInfo {
-    case request(Request)
-    case string(String)
-
-    var request: Request? {
-        switch self {
-        case let .request(request): return request
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let request: Request = value.fromJSValue() {
-            return .request(request)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .request(request):
-            return request.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_String_or_WorkerOptions: ConvertibleToJSValue {}
-extension String: Any_String_or_WorkerOptions {}
-extension WorkerOptions: Any_String_or_WorkerOptions {}
-
-public enum String_or_WorkerOptions: JSValueCompatible, Any_String_or_WorkerOptions {
-    case string(String)
-    case workerOptions(WorkerOptions)
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    var workerOptions: WorkerOptions? {
-        switch self {
-        case let .workerOptions(workerOptions): return workerOptions
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        if let workerOptions: WorkerOptions = value.fromJSValue() {
-            return .workerOptions(workerOptions)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .string(string):
-            return string.jsValue
-        case let .workerOptions(workerOptions):
-            return workerOptions.jsValue
-        }
-    }
-}
-
-public protocol Any_String_or_seq_of_Double: ConvertibleToJSValue {}
-extension String: Any_String_or_seq_of_Double {}
-extension Array: Any_String_or_seq_of_Double where Element == Double {}
-
-public enum String_or_seq_of_Double: JSValueCompatible, Any_String_or_seq_of_Double {
-    case string(String)
-    case seq_of_Double([Double])
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    var seq_of_Double: [Double]? {
-        switch self {
-        case let .seq_of_Double(seq_of_Double): return seq_of_Double
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        if let seq_of_Double: [Double] = value.fromJSValue() {
-            return .seq_of_Double(seq_of_Double)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .string(string):
-            return string.jsValue
-        case let .seq_of_Double(seq_of_Double):
-            return seq_of_Double.jsValue
-        }
-    }
-}
-
-public protocol Any_String_or_seq_of_String: ConvertibleToJSValue {}
-extension String: Any_String_or_seq_of_String {}
-extension Array: Any_String_or_seq_of_String where Element == String {}
-
-public enum String_or_seq_of_String: JSValueCompatible, Any_String_or_seq_of_String {
-    case string(String)
-    case seq_of_String([String])
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    var seq_of_String: [String]? {
-        switch self {
-        case let .seq_of_String(seq_of_String): return seq_of_String
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        if let seq_of_String: [String] = value.fromJSValue() {
-            return .seq_of_String(seq_of_String)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .string(string):
-            return string.jsValue
-        case let .seq_of_String(seq_of_String):
-            return seq_of_String.jsValue
-        }
-    }
-}
-
-public protocol Any_TimerHandler: ConvertibleToJSValue {}
-extension JSFunction: Any_TimerHandler {}
-extension String: Any_TimerHandler {}
-
-public enum TimerHandler: JSValueCompatible, Any_TimerHandler {
-    case jsFunction(JSFunction)
-    case string(String)
-
-    var jsFunction: JSFunction? {
-        switch self {
-        case let .jsFunction(jsFunction): return jsFunction
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let jsFunction: JSFunction = value.fromJSValue() {
-            return .jsFunction(jsFunction)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .jsFunction(jsFunction):
-            return jsFunction.jsValue
-        case let .string(string):
-            return string.jsValue
-        }
-    }
-}
-
-public protocol Any_XMLHttpRequestBodyInit: ConvertibleToJSValue {}
-extension Blob: Any_XMLHttpRequestBodyInit {}
-extension BufferSource: Any_XMLHttpRequestBodyInit {}
-extension FormData: Any_XMLHttpRequestBodyInit {}
-extension String: Any_XMLHttpRequestBodyInit {}
-extension URLSearchParams: Any_XMLHttpRequestBodyInit {}
-
-public enum XMLHttpRequestBodyInit: JSValueCompatible, Any_XMLHttpRequestBodyInit {
-    case blob(Blob)
-    case bufferSource(BufferSource)
-    case formData(FormData)
-    case string(String)
-    case urlSearchParams(URLSearchParams)
-
-    var blob: Blob? {
-        switch self {
-        case let .blob(blob): return blob
-        default: return nil
-        }
-    }
-
-    var bufferSource: BufferSource? {
-        switch self {
-        case let .bufferSource(bufferSource): return bufferSource
-        default: return nil
-        }
-    }
-
-    var formData: FormData? {
-        switch self {
-        case let .formData(formData): return formData
-        default: return nil
-        }
-    }
-
-    var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    var urlSearchParams: URLSearchParams? {
-        switch self {
-        case let .urlSearchParams(urlSearchParams): return urlSearchParams
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let blob: Blob = value.fromJSValue() {
-            return .blob(blob)
-        }
-        if let bufferSource: BufferSource = value.fromJSValue() {
-            return .bufferSource(bufferSource)
-        }
-        if let formData: FormData = value.fromJSValue() {
-            return .formData(formData)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        if let urlSearchParams: URLSearchParams = value.fromJSValue() {
-            return .urlSearchParams(urlSearchParams)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .blob(blob):
-            return blob.jsValue
-        case let .bufferSource(bufferSource):
-            return bufferSource.jsValue
-        case let .formData(formData):
-            return formData.jsValue
-        case let .string(string):
-            return string.jsValue
-        case let .urlSearchParams(urlSearchParams):
-            return urlSearchParams.jsValue
-        }
-    }
-}
-
-public protocol Any_nullable_Double_or_seq_of_nullable_Double: ConvertibleToJSValue {}
-extension Optional: Any_nullable_Double_or_seq_of_nullable_Double where Wrapped == Double {}
-extension Array: Any_nullable_Double_or_seq_of_nullable_Double where Element == Double? {}
-
-public enum nullable_Double_or_seq_of_nullable_Double: JSValueCompatible, Any_nullable_Double_or_seq_of_nullable_Double {
-    case nullable_Double(Double?)
-    case seq_of_nullable_Double([Double?])
-
-    var nullable_Double: Double?? {
-        switch self {
-        case let .nullable_Double(nullable_Double): return nullable_Double
-        default: return nil
-        }
-    }
-
-    var seq_of_nullable_Double: [Double?]? {
-        switch self {
-        case let .seq_of_nullable_Double(seq_of_nullable_Double): return seq_of_nullable_Double
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let nullable_Double: Double? = value.fromJSValue() {
-            return .nullable_Double(nullable_Double)
-        }
-        if let seq_of_nullable_Double: [Double?] = value.fromJSValue() {
-            return .seq_of_nullable_Double(seq_of_nullable_Double)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .nullable_Double(nullable_Double):
-            return nullable_Double.jsValue
-        case let .seq_of_nullable_Double(seq_of_nullable_Double):
-            return seq_of_nullable_Double.jsValue
-        }
-    }
 }

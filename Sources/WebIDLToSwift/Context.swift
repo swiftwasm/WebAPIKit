@@ -79,6 +79,7 @@ enum Context {
 struct Record {
     private(set) var closurePatterns: Set<ClosurePattern> = []
     private(set) var strings: Set<String> = ["toString"]
+    @available(*, deprecated)
     private(set) var unions: Set<UnionType> = []
     private(set) static var current = Record()
 
@@ -93,16 +94,6 @@ struct Record {
         }
         current.strings.insert(name)
         return "Strings.\(name)"
-    }
-
-    @discardableResult
-    static func useUnion(_ types: Set<SlimIDLType>) -> String {
-        let union = current.unions.first(where: { $0.types == types }) ?? UnionType(types: types)
-        useUnion(union)
-        return union.name
-    }
-    static func useUnion(_ union: UnionType) {
-        current.unions.insert(union)
     }
 
     static func useClosurePattern(_ closurePattern: ClosurePattern) {

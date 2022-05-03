@@ -59,7 +59,6 @@ struct SlimIDLType: Hashable, Encodable {
             case let .union(types):
                 let slimmed = Set(types.map(SlimIDLType.init))
                 self = .union(slimmed)
-                Record.useUnion(UnionType(types: slimmed))
             }
         }
     }
