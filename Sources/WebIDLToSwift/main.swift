@@ -19,9 +19,12 @@ func main() {
         let startTime = Date()
         print("Generating bindings for \(idlInputs.map(\.path))...")
         let idls = try idlInputs.map { try (name: $0.name, collection: IDLParser.parseIDL(path: $0.path)) }
-        let graph = DeclGraph.build(from: idls.map { ($0, $1.array) })
-        print(graph.render())
-//        let scc = graph.buildSCC()
+        var graph = DeclGraph.build(from: idls.map { ($0, $1.array) })
+        graph.compact()
+
+        if let graphPath = ProcessInfo.processInfo.environment["WEBIDL_TO_SWIFT_DUMP_GRAPH"] {
+            try graph.render().write(toFile: graphPath, atomically: true, encoding: .utf8)
+        }
 
         try generate(idls: idls.map(\.collection), imports: [], outputPath: "Sources/DOMKit/DOMKit.swift")
         print("Done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")

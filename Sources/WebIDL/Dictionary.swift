@@ -15,4 +15,7 @@ public struct IDLDictionary: IDLNode, IDLNamed {
         public let extAttrs: [IDLExtendedAttribute]
         public let `default`: IDLValue?
     }
+    public func accept<V>(visitor: inout V) where V : IDLDeclVisitor {
+        visitor.visit(self)
+    }
 }

@@ -24,35 +24,31 @@ enum IDLParser {
     }
 
     static func defaultIDLs() -> [(name: String, path: URL)] {
-        let enabledIDLs: [(moduleName: String, idlNames: [String], imports: [String])] = [
-//            ("DOMKit", [
-//                "fetch",
-//                "geometry",
-//                "hr-time",
-//                "referrer-policy",
-//                "uievents",
-//                "wai-aria",
-//                "web-animations",
-//                "xhr",
-//                "service-workers",
-//                "streams",
-//                "dom",
-//                "html",
-//            ], ["DOMKitConsole", "DOMKitFileAPI", "DOMKitWebIDL", "DOMKitURL"]),
-            ("DOMKitWebIDL", ["webidl"], []),
-            ("DOMKitURL", ["url"], []),
-            ("DOMKitConsole", ["console"], []),
-            ("DOMKitFileAPI", ["FileAPI"], ["DOMKitWebIDL"]),
+        let enabledIDLs = [
+            "fetch",
+            "geometry",
+            "hr-time",
+            "referrer-policy",
+            "uievents",
+            "wai-aria",
+            "web-animations",
+            "xhr",
+            "service-workers",
+            "streams",
+            "dom",
+            "html",
+            "webidl",
+            "url",
+            "console",
+            "FileAPI"
         ]
-        return enabledIDLs.flatMap { idl in
-            idl.idlNames.map {
-                let path = packageDir
-                    .appendingPathComponent("node_modules")
-                    .appendingPathComponent("@webref")
-                    .appendingPathComponent("idl")
-                    .appendingPathComponent($0 + ".idl")
-                return ($0, path)
-            }
+        return enabledIDLs.map { idl in
+            let path = packageDir
+                .appendingPathComponent("node_modules")
+                .appendingPathComponent("@webref")
+                .appendingPathComponent("idl")
+                .appendingPathComponent(idl + ".idl")
+            return (idl, path)
         }
     }
 }

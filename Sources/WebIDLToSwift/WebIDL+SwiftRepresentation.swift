@@ -640,7 +640,7 @@ extension IDLType: SwiftRepresentable {
 extension IDLTypedef: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         if case .union = idlType.value {
-            return ""
+            return "public typealias \(name) = JSValue"
         }
         return "public typealias \(name) = \(idlType)"
     }

@@ -28,16 +28,7 @@ let package = Package(
             dependencies: ["DOMKit"]),
         .target(
             name: "DOMKit",
-            dependencies: dependencyOfWebIDLToSwift + [
-                "DOMKitFileAPI",
-                "DOMKitConsole",
-                "DOMKitWebIDL",
-                "DOMKitURL",
-            ]),
-        .target(name: "DOMKitConsole", dependencies: dependencyOfWebIDLToSwift),
-        .target(name: "DOMKitFileAPI", dependencies: dependencyOfWebIDLToSwift + ["DOMKitWebIDL"]),
-        .target(name: "DOMKitWebIDL", dependencies: dependencyOfWebIDLToSwift),
-        .target(name: "DOMKitURL", dependencies: dependencyOfWebIDLToSwift),
+            dependencies: dependencyOfWebIDLToSwift),
         // This support library should be moved to JavaScriptKit
         .target(name: "ECMAScript", dependencies: [
             "JavaScriptKit",

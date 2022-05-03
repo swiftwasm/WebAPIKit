@@ -9,9 +9,13 @@ class IDLSource {
 
 protocol IDLCodeGenUnit: IDLNode {
     var identifier: String? { get }
+    var partial: Bool { get }
 }
 extension IDLCodeGenUnit where Self: IDLNamed {
     var identifier: String? { name }
+}
+extension IDLCodeGenUnit {
+    var partial: Bool { false }
 }
 extension IDLInterface: IDLCodeGenUnit {}
 extension IDLInterfaceMixin: IDLCodeGenUnit {}
@@ -24,6 +28,46 @@ extension IDLEnum: IDLCodeGenUnit {}
 extension IDLCallback: IDLCodeGenUnit {}
 extension IDLCallbackInterface: IDLCodeGenUnit {}
 extension IDLNamespace: IDLCodeGenUnit {}
+
+extension IDLType {
+    fileprivate static func shouldIgnore(name: String) -> Bool {
+        // https://webidl.spec.whatwg.org/#idl-types
+        [
+            "Int8Array", "Int16Array", "Int32Array", "Uint8Array", "Uint16Array", "Uint32Array",
+            "Uint8ClampedArray", "BigInt64Array", "BigUint64Array", "Float32Array", "Float64Array",
+            "ArrayBuffer",
+            "FrozenArray",
+            "ObservableArray",
+            "DataView",
+            "Promise",
+            "sequence",
+            "record",
+            "boolean",
+            "any",
+            "DOMString",
+            "USVString",
+            "CSSOMString",
+            "ByteString",
+            "object",
+            "undefined",
+            "float",
+            "unrestricted float",
+            "double",
+            "unrestricted double",
+            "octet",
+            "unsigned short",
+            "unsigned long",
+            "unsigned long long",
+            "byte",
+            "short",
+            "long",
+            "long long",
+            "Function",
+            "bigint"
+        ]
+            .contains(name)
+    }
+}
 
 struct DeclGraph {
 
@@ -50,18 +94,20 @@ struct DeclGraph {
             hasher.combine(ObjectIdentifier(self))
         }
         var description: String {
-            "\(source.name).\(declNode.identifier ?? _typeName(type(of: declNode)))"
+            "\(declNode.partial ? "(P) " : "")\(source.name).\(declNode.identifier ?? _typeName(type(of: declNode)))"
         }
     }
 
     private var resolutions: [UnresolvedRef: [NodeId]] = [:]
-    private var nodes: [Node] = []
+    private var nodes: [Node?] = []
     private(set) var forwardEdges: [NodeId: Set<NodeId>] = [:]
 
-    private var nodeByName: [String: NodeId] = [:]
+    typealias NodeByNameRecord = (primary: NodeId?, all: [NodeId])
+    private var nodeByName: [String: NodeByNameRecord] = [:]
     private var sources: [String: IDLSource] = [:]
 
     mutating func addEdge(from source: NodeId, to destination: NodeId) {
+        guard source != destination else { return }
         self.forwardEdges[source, default: []].insert(destination)
     }
 
@@ -75,7 +121,17 @@ struct DeclGraph {
             let newNode = Node(declNode: decl, source: source)
             nodes.append(newNode)
             if let identifier = decl.identifier {
-                nodeByName[identifier] = newNodeId
+                let record: NodeByNameRecord
+                if var existing = nodeByName[identifier] {
+                    existing.all.append(newNodeId)
+                    if existing.primary == nil, !decl.partial {
+                        existing.primary = newNodeId
+                    }
+                    record = existing
+                } else {
+                    record = (primary: decl.partial ? nil : newNodeId, all: [newNodeId])
+                }
+                nodeByName[identifier] = record
             }
 
             IDLDeclWalker.walk(
@@ -109,19 +165,20 @@ struct DeclGraph {
                 return resolve(id: id).map { [$0] } ?? []
             case .union(let types):
                 return types.flatMap { resolve(ref: .type($0)) }
-            default:
-                print("IDLType \(ref) is not handled")
-                return []
+            case .generic(let base, let args):
+                return (resolve(id: base).map { [$0] } ?? []) + args.flatMap { resolve(ref: .type($0)) }
             }
         }
     }
 
     private func resolve(id: String) -> NodeId? {
         guard let node = nodeByName[id] else {
-            print("'\(id)' not found")
+            if !IDLType.shouldIgnore(name: id) {
+                print("'\(id)' not found")
+            }
             return nil
         }
-        return node
+        return node.primary
     }
 
     func transposed() -> DeclGraph {
@@ -147,6 +204,24 @@ struct DeclGraph {
             postWalk(node)
         }
         visit(node)
+    }
+
+    mutating func compact() {
+        for (_, nodes) in nodeByName {
+            let nodesBySource = Dictionary(grouping: nodes.all, by: {
+                self.nodes[$0]?.source.name
+            })
+            for (_, nodes) in nodesBySource {
+                guard nodes.count >= 2 else { continue }
+                let primary = nodes[0]
+                for other in nodes[1...] {
+                    let otherEdges = self.forwardEdges[other] ?? []
+                    self.forwardEdges[primary]?.formUnion(otherEdges)
+                    self.forwardEdges[other]?.removeAll()
+                    self.nodes[other] = nil
+                }
+            }
+        }
     }
 
     func buildSCC() -> [Set<NodeId>] {
@@ -187,7 +262,7 @@ struct DeclGraph {
         var output = "digraph DependenciesGraph {\n"
         output += "  node [shape = box]\n"
         func renderNode(node id: NodeId) {
-            let node = self.nodes[id]
+            guard let node = self.nodes[id] else { return }
             output += #"  "_\#(id)" [label="\#(node)"]"# + "\n"
         }
         for node in nodes.indices {
@@ -218,6 +293,9 @@ fileprivate struct IDLDeclWalker: IDLDeclVisitor {
     }
 
     mutating public func visit(_ interface: IDLInterface) {
+        if let inheritance = interface.inheritance {
+            self.process(.identifier(inheritance))
+        }
         for member in interface.members {
             self.process(member)
         }
@@ -241,6 +319,15 @@ fileprivate struct IDLDeclWalker: IDLDeclVisitor {
         }
     }
     
+    mutating func visit(_ callbackInterface: IDLCallbackInterface) {
+        if let inheritance = callbackInterface.inheritance {
+            self.process(.identifier(inheritance))
+        }
+        for member in callbackInterface.members {
+            self.process(member)
+        }
+    }
+
     public mutating func visit(_ typedef: IDLTypedef) {
         process(.type(typedef.idlType))
     }
@@ -265,7 +352,35 @@ fileprivate struct IDLDeclWalker: IDLDeclVisitor {
     mutating func visit(_ argument: IDLArgument) {
         process(.type(argument.idlType))
     }
-    
+
+    mutating func visit(_ constant: IDLConstant) {
+        process(.type(constant.idlType))
+    }
+
+    mutating func visit(_ attribute: IDLAttribute) {
+        process(.type(attribute.idlType))
+    }
+
+    mutating func visit(_ dictionary: IDLDictionary) {
+        for member in dictionary.members {
+            process(.type(member.idlType))
+        }
+    }
+
+    mutating func visit(_ namespace: IDLNamespace) {
+        for member in namespace.members {
+            process(member)
+        }
+    }
+    mutating func visit<T: IDLDeclaration>(_ decl: T) {
+        for type in decl.idlType {
+            process(.type(type))
+        }
+        for arg in decl.arguments {
+            process(arg)
+        }
+    }
+
     public func visit(_ rawNode: IDLNode) {
         print("Unhandled IDLNode in IDLDeclWalker: \(type(of: rawNode))")
     }
