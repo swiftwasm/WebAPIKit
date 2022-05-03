@@ -23,6 +23,7 @@ console.log(
       "url",
       "streams",
       "console",
+      "websockets",
     ].map((key) => parsedFiles[key]),
     null,
     2
