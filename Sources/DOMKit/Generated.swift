@@ -923,12 +923,35 @@ public enum AudioContextLatencyCategory: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
-public class AudioContextOptions: BridgedDictionary {
-    public convenience init(latencyHint: AudioContextLatencyCategory_or_Double, sampleRate: Float) {
+public class BoxQuadOptions: BridgedDictionary {
+    public convenience init(box: CSSBoxType, relativeTo: GeometryNode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.latencyHint] = latencyHint.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.box] = box.jsValue
+        object[Strings.relativeTo] = relativeTo.jsValue
         self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _box = ReadWriteAttribute(jsObject: object, name: Strings.box)
+        _relativeTo = ReadWriteAttribute(jsObject: object, name: Strings.relativeTo)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var box: CSSBoxType
+
+    @ReadWriteAttribute
+    public var relativeTo: GeometryNode
+}
+
+public class BroadcastChannel: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BroadcastChannel].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
+        _onmessageerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessageerror)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
@@ -1008,8 +1031,53 @@ public class AudioListener: JSBridgedClass {
     @ReadonlyAttribute
     public var forwardY: AudioParam
 
+public enum CSSBoxType: JSString, JSValueCompatible {
+    case margin = "margin"
+    case border = "border"
+    case padding = "padding"
+    case content = "content"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class CSSPseudoElement: EventTarget, GeometryUtils {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSPseudoElement].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
+        _element = ReadonlyAttribute(jsObject: jsObject, name: Strings.element)
+        _parent = ReadonlyAttribute(jsObject: jsObject, name: Strings.parent)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
     @ReadonlyAttribute
-    public var forwardZ: AudioParam
+    public var type: String
+
+    @ReadonlyAttribute
+    public var element: Element
+
+    @ReadonlyAttribute
+    public var parent: CSSPseudoElement_or_Element
+
+    @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
+        let this = jsObject
+        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+    }
+}
+
+public class Cache: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Cache].function! }
 
     @ReadonlyAttribute
     public var upX: AudioParam
@@ -2059,6 +2127,33 @@ public class Cache: JSBridgedClass {
         let this = jsObject
         return this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue ?? .undefined, options?.jsValue ?? .undefined]).fromJSValue()!
     }
+}
+
+public class CaretPosition: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CaretPosition].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _offsetNode = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetNode)
+        _offset = ReadonlyAttribute(jsObject: jsObject, name: Strings.offset)
+        self.jsObject = jsObject
+    }
+
+    @ReadonlyAttribute
+    public var offsetNode: Node
+
+    @ReadonlyAttribute
+    public var offset: UInt32
+
+    @inlinable public func getClientRect() -> DOMRect? {
+        let this = jsObject
+        return this[Strings.getClientRect].function!(this: this, arguments: []).fromJSValue()!
+    }
+}
+
+public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CharacterData].function! }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) async throws -> [Response] {
@@ -2335,9 +2430,43 @@ public extension CanvasDrawPath {
         _ = this[Strings.fill].function!(this: this, arguments: [path.jsValue, fillRule?.jsValue ?? .undefined])
     }
 
-    @inlinable func stroke() {
-        let this = jsObject
-        _ = this[Strings.stroke].function!(this: this, arguments: [])
+    @ReadWriteAttribute
+    public var progress: Double?
+
+    @ReadWriteAttribute
+    public var currentIteration: Double?
+}
+
+public class ConvertCoordinateOptions: BridgedDictionary {
+    public convenience init(fromBox: CSSBoxType, toBox: CSSBoxType) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.fromBox] = fromBox.jsValue
+        object[Strings.toBox] = toBox.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _fromBox = ReadWriteAttribute(jsObject: object, name: Strings.fromBox)
+        _toBox = ReadWriteAttribute(jsObject: object, name: Strings.toBox)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var fromBox: CSSBoxType
+
+    @ReadWriteAttribute
+    public var toBox: CSSBoxType
+}
+
+public class CountQueuingStrategy: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CountQueuingStrategy].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _highWaterMark = ReadonlyAttribute(jsObject: jsObject, name: Strings.highWaterMark)
+        _size = ReadonlyAttribute(jsObject: jsObject, name: Strings.size)
+        self.jsObject = jsObject
     }
 
     @inlinable func stroke(path: Path2D) {
@@ -3759,32 +3888,53 @@ public class DOMImplementation: JSBridgedClass {
     }
 }
 
-public class DOMMatrix: DOMMatrixReadOnly {
-    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DOMMatrix].function! }
+public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentNode, XPathEvaluatorBase, GlobalEventHandlers, DocumentAndElementEventHandlers, GeometryUtils {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Document].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _a = ReadWriteAttribute(jsObject: jsObject, name: Strings.a)
-        _b = ReadWriteAttribute(jsObject: jsObject, name: Strings.b)
-        _c = ReadWriteAttribute(jsObject: jsObject, name: Strings.c)
-        _d = ReadWriteAttribute(jsObject: jsObject, name: Strings.d)
-        _e = ReadWriteAttribute(jsObject: jsObject, name: Strings.e)
-        _f = ReadWriteAttribute(jsObject: jsObject, name: Strings.f)
-        _m11 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m11)
-        _m12 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m12)
-        _m13 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m13)
-        _m14 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m14)
-        _m21 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m21)
-        _m22 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m22)
-        _m23 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m23)
-        _m24 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m24)
-        _m31 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m31)
-        _m32 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m32)
-        _m33 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m33)
-        _m34 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m34)
-        _m41 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m41)
-        _m42 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m42)
-        _m43 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m43)
-        _m44 = ReadWriteAttribute(jsObject: jsObject, name: Strings.m44)
+        _implementation = ReadonlyAttribute(jsObject: jsObject, name: Strings.implementation)
+        _URL = ReadonlyAttribute(jsObject: jsObject, name: Strings.URL)
+        _documentURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.documentURI)
+        _compatMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.compatMode)
+        _characterSet = ReadonlyAttribute(jsObject: jsObject, name: Strings.characterSet)
+        _charset = ReadonlyAttribute(jsObject: jsObject, name: Strings.charset)
+        _inputEncoding = ReadonlyAttribute(jsObject: jsObject, name: Strings.inputEncoding)
+        _contentType = ReadonlyAttribute(jsObject: jsObject, name: Strings.contentType)
+        _doctype = ReadonlyAttribute(jsObject: jsObject, name: Strings.doctype)
+        _documentElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.documentElement)
+        _location = ReadonlyAttribute(jsObject: jsObject, name: Strings.location)
+        _domain = ReadWriteAttribute(jsObject: jsObject, name: Strings.domain)
+        _referrer = ReadonlyAttribute(jsObject: jsObject, name: Strings.referrer)
+        _cookie = ReadWriteAttribute(jsObject: jsObject, name: Strings.cookie)
+        _lastModified = ReadonlyAttribute(jsObject: jsObject, name: Strings.lastModified)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
+        _title = ReadWriteAttribute(jsObject: jsObject, name: Strings.title)
+        _dir = ReadWriteAttribute(jsObject: jsObject, name: Strings.dir)
+        _body = ReadWriteAttribute(jsObject: jsObject, name: Strings.body)
+        _head = ReadonlyAttribute(jsObject: jsObject, name: Strings.head)
+        _images = ReadonlyAttribute(jsObject: jsObject, name: Strings.images)
+        _embeds = ReadonlyAttribute(jsObject: jsObject, name: Strings.embeds)
+        _plugins = ReadonlyAttribute(jsObject: jsObject, name: Strings.plugins)
+        _links = ReadonlyAttribute(jsObject: jsObject, name: Strings.links)
+        _forms = ReadonlyAttribute(jsObject: jsObject, name: Strings.forms)
+        _scripts = ReadonlyAttribute(jsObject: jsObject, name: Strings.scripts)
+        _currentScript = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentScript)
+        _defaultView = ReadonlyAttribute(jsObject: jsObject, name: Strings.defaultView)
+        _designMode = ReadWriteAttribute(jsObject: jsObject, name: Strings.designMode)
+        _hidden = ReadonlyAttribute(jsObject: jsObject, name: Strings.hidden)
+        _visibilityState = ReadonlyAttribute(jsObject: jsObject, name: Strings.visibilityState)
+        _onreadystatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onreadystatechange)
+        _onvisibilitychange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onvisibilitychange)
+        _fgColor = ReadWriteAttribute(jsObject: jsObject, name: Strings.fgColor)
+        _linkColor = ReadWriteAttribute(jsObject: jsObject, name: Strings.linkColor)
+        _vlinkColor = ReadWriteAttribute(jsObject: jsObject, name: Strings.vlinkColor)
+        _alinkColor = ReadWriteAttribute(jsObject: jsObject, name: Strings.alinkColor)
+        _bgColor = ReadWriteAttribute(jsObject: jsObject, name: Strings.bgColor)
+        _anchors = ReadonlyAttribute(jsObject: jsObject, name: Strings.anchors)
+        _applets = ReadonlyAttribute(jsObject: jsObject, name: Strings.applets)
+        _all = ReadonlyAttribute(jsObject: jsObject, name: Strings.all)
+        _timeline = ReadonlyAttribute(jsObject: jsObject, name: Strings.timeline)
+        _scrollingElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollingElement)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -4067,8 +4217,26 @@ public class DOMMatrix2DInit: BridgedDictionary {
     @ReadWriteAttribute
     public var m41: Double
 
-    @ReadWriteAttribute
-    public var m42: Double
+    @ReadonlyAttribute
+    public var timeline: DocumentTimeline
+
+    @inlinable public func elementFromPoint(x: Double, y: Double) -> Element? {
+        let this = jsObject
+        return this[Strings.elementFromPoint].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func elementsFromPoint(x: Double, y: Double) -> [Element] {
+        let this = jsObject
+        return this[Strings.elementsFromPoint].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func caretPositionFromPoint(x: Double, y: Double) -> CaretPosition? {
+        let this = jsObject
+        return this[Strings.caretPositionFromPoint].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var scrollingElement: Element?
 }
 
 public class DOMMatrixInit: BridgedDictionary {
@@ -4225,11 +4393,30 @@ public class DOMMatrixReadOnly: JSBridgedClass {
     @ReadonlyAttribute
     public var m22: Double
 
-    @ReadonlyAttribute
-    public var m23: Double
+public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin, Animatable, GeometryUtils {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Element].function! }
 
-    @ReadonlyAttribute
-    public var m24: Double
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.namespaceURI)
+        _prefix = ReadonlyAttribute(jsObject: jsObject, name: Strings.prefix)
+        _localName = ReadonlyAttribute(jsObject: jsObject, name: Strings.localName)
+        _tagName = ReadonlyAttribute(jsObject: jsObject, name: Strings.tagName)
+        _id = ReadWriteAttribute(jsObject: jsObject, name: Strings.id)
+        _className = ReadWriteAttribute(jsObject: jsObject, name: Strings.className)
+        _classList = ReadonlyAttribute(jsObject: jsObject, name: Strings.classList)
+        _slot = ReadWriteAttribute(jsObject: jsObject, name: Strings.slot)
+        _attributes = ReadonlyAttribute(jsObject: jsObject, name: Strings.attributes)
+        _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: Strings.shadowRoot)
+        _scrollTop = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollTop)
+        _scrollLeft = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollLeft)
+        _scrollWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollWidth)
+        _scrollHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollHeight)
+        _clientTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientTop)
+        _clientLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientLeft)
+        _clientWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientWidth)
+        _clientHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientHeight)
+        super.init(unsafelyWrapping: jsObject)
+    }
 
     @ReadonlyAttribute
     public var m31: Double
@@ -4394,7 +4581,84 @@ public enum DOMParserSupportedType: JSString, JSValueCompatible {
         self.init(rawValue: JSString(string))
     }
 
-    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+    @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
+        let this = jsObject
+        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func getClientRects() -> DOMRectList {
+        let this = jsObject
+        return this[Strings.getClientRects].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getBoundingClientRect() -> DOMRect {
+        let this = jsObject
+        return this[Strings.getBoundingClientRect].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func isVisible(options: IsVisibleOptions? = nil) -> Bool {
+        let this = jsObject
+        return this[Strings.isVisible].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func scrollIntoView(arg: Bool_or_ScrollIntoViewOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollIntoView].function!(this: this, arguments: [arg?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scroll(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scroll(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func scrollTo(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scrollTo(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func scrollBy(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scrollBy(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @ReadWriteAttribute
+    public var scrollTop: Double
+
+    @ReadWriteAttribute
+    public var scrollLeft: Double
+
+    @ReadonlyAttribute
+    public var scrollWidth: Int32
+
+    @ReadonlyAttribute
+    public var scrollHeight: Int32
+
+    @ReadonlyAttribute
+    public var clientTop: Int32
+
+    @ReadonlyAttribute
+    public var clientLeft: Int32
+
+    @ReadonlyAttribute
+    public var clientWidth: Int32
+
+    @ReadonlyAttribute
+    public var clientHeight: Int32
 }
 
 public class DOMPoint: DOMPointReadOnly {
@@ -5442,8 +5706,43 @@ public enum DocumentReadyState: JSString, JSValueCompatible {
 public class DocumentTimeline: AnimationTimeline {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DocumentTimeline].function! }
 
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
+public protocol GeometryUtils: JSBridgedClass {}
+public extension GeometryUtils {
+    @inlinable func getBoxQuads(options: BoxQuadOptions? = nil) -> [DOMQuad] {
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: tokens.map(\.jsValue))
+        return this[Strings.getBoxQuads].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func toggle(token: String, force: Bool? = nil) -> Bool {
+    @inlinable func convertQuadFromNode(quad: DOMQuadInit, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMQuad {
+        let this = jsObject
+        return this[Strings.toggle].function!(this: this, arguments: [token.jsValue, force?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.convertQuadFromNode].function!(this: this, arguments: [quad.jsValue, from.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func replace(token: String, newToken: String) -> Bool {
+    @inlinable func convertRectFromNode(rect: DOMRectReadOnly, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMQuad {
+        let this = jsObject
+        return this[Strings.replace].function!(this: this, arguments: [token.jsValue, newToken.jsValue]).fromJSValue()!
+        return this[Strings.convertRectFromNode].function!(this: this, arguments: [rect.jsValue, from.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func supports(token: String) -> Bool {
+    @inlinable func convertPointFromNode(point: DOMPointInit, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMPoint {
+        let this = jsObject
+        return this[Strings.supports].function!(this: this, arguments: [token.jsValue]).fromJSValue()!
+        return this[Strings.convertPointFromNode].function!(this: this, arguments: [point.jsValue, from.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+    }
+}
+
+    @ReadWriteAttribute
+    public var value: String
+public class GetAnimationsOptions: BridgedDictionary {
+    public convenience init(subtree: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.subtree] = subtree.jsValue
+        self.init(unsafelyWrapping: object)
     }
 
     @inlinable public convenience init(options: DocumentTimelineOptions? = nil) {
@@ -9074,13 +9373,24 @@ public class HTMLMeterElement: HTMLElement {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.HTMLMeterElement].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
-        _min = ReadWriteAttribute(jsObject: jsObject, name: Strings.min)
-        _max = ReadWriteAttribute(jsObject: jsObject, name: Strings.max)
-        _low = ReadWriteAttribute(jsObject: jsObject, name: Strings.low)
-        _high = ReadWriteAttribute(jsObject: jsObject, name: Strings.high)
-        _optimum = ReadWriteAttribute(jsObject: jsObject, name: Strings.optimum)
-        _labels = ReadonlyAttribute(jsObject: jsObject, name: Strings.labels)
+        _title = ReadWriteAttribute(jsObject: jsObject, name: Strings.title)
+        _lang = ReadWriteAttribute(jsObject: jsObject, name: Strings.lang)
+        _translate = ReadWriteAttribute(jsObject: jsObject, name: Strings.translate)
+        _dir = ReadWriteAttribute(jsObject: jsObject, name: Strings.dir)
+        _hidden = ReadWriteAttribute(jsObject: jsObject, name: Strings.hidden)
+        _inert = ReadWriteAttribute(jsObject: jsObject, name: Strings.inert)
+        _accessKey = ReadWriteAttribute(jsObject: jsObject, name: Strings.accessKey)
+        _accessKeyLabel = ReadonlyAttribute(jsObject: jsObject, name: Strings.accessKeyLabel)
+        _draggable = ReadWriteAttribute(jsObject: jsObject, name: Strings.draggable)
+        _spellcheck = ReadWriteAttribute(jsObject: jsObject, name: Strings.spellcheck)
+        _autocapitalize = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocapitalize)
+        _innerText = ReadWriteAttribute(jsObject: jsObject, name: Strings.innerText)
+        _outerText = ReadWriteAttribute(jsObject: jsObject, name: Strings.outerText)
+        _offsetParent = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetParent)
+        _offsetTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetTop)
+        _offsetLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetLeft)
+        _offsetWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetWidth)
+        _offsetHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetHeight)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -9089,9 +9399,9 @@ public class HTMLMeterElement: HTMLElement {
     }
 
     @ReadWriteAttribute
-    public var value: Double
 
     @ReadWriteAttribute
+    public var value: Double
     public var min: Double
 
     @ReadWriteAttribute
@@ -9127,7 +9437,48 @@ public class HTMLModElement: HTMLElement {
     public var cite: String
 
     @ReadWriteAttribute
-    public var dateTime: String
+    public var outerText: String
+
+    @ReadWriteAttribute
+    public var name: String
+    @inlinable public func attachInternals() -> ElementInternals {
+        let this = jsObject
+        return this[Strings.attachInternals].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var sandbox: DOMTokenList
+
+    @ReadWriteAttribute
+    public var allow: String
+
+    @ReadWriteAttribute
+    public var allowFullscreen: Bool
+
+    @ReadWriteAttribute
+    public var width: String
+
+    @ReadWriteAttribute
+    public var height: String
+    public var offsetParent: Element?
+
+    @ReadWriteAttribute
+    public var referrerPolicy: String
+    @ReadonlyAttribute
+    public var offsetTop: Int32
+
+    @ReadWriteAttribute
+    public var loading: String
+    @ReadonlyAttribute
+    public var offsetLeft: Int32
+
+    @ReadonlyAttribute
+    public var contentDocument: Document?
+    public var offsetWidth: Int32
+
+    @ReadonlyAttribute
+    public var contentWindow: WindowProxy?
+    public var offsetHeight: Int32
 }
 
 public class HTMLOListElement: HTMLElement {
@@ -9599,10 +9950,22 @@ public class HTMLScriptElement: HTMLElement {
         _text = ReadWriteAttribute(jsObject: jsObject, name: Strings.text)
         _integrity = ReadWriteAttribute(jsObject: jsObject, name: Strings.integrity)
         _referrerPolicy = ReadWriteAttribute(jsObject: jsObject, name: Strings.referrerPolicy)
-        _blocking = ReadonlyAttribute(jsObject: jsObject, name: Strings.blocking)
-        _charset = ReadWriteAttribute(jsObject: jsObject, name: Strings.charset)
-        _event = ReadWriteAttribute(jsObject: jsObject, name: Strings.event)
-        _htmlFor = ReadWriteAttribute(jsObject: jsObject, name: Strings.htmlFor)
+        _decoding = ReadWriteAttribute(jsObject: jsObject, name: Strings.decoding)
+        _loading = ReadWriteAttribute(jsObject: jsObject, name: Strings.loading)
+        _name = ReadWriteAttribute(jsObject: jsObject, name: Strings.name)
+        _lowsrc = ReadWriteAttribute(jsObject: jsObject, name: Strings.lowsrc)
+        _align = ReadWriteAttribute(jsObject: jsObject, name: Strings.align)
+        _hspace = ReadWriteAttribute(jsObject: jsObject, name: Strings.hspace)
+        _loop = ReadWriteAttribute(jsObject: jsObject, name: Strings.loop)
+        _scrollAmount = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollAmount)
+        _scrollDelay = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollDelay)
+        _trueSpeed = ReadWriteAttribute(jsObject: jsObject, name: Strings.trueSpeed)
+        _vspace = ReadWriteAttribute(jsObject: jsObject, name: Strings.vspace)
+        _width = ReadWriteAttribute(jsObject: jsObject, name: Strings.width)
+        _longDesc = ReadWriteAttribute(jsObject: jsObject, name: Strings.longDesc)
+        _border = ReadWriteAttribute(jsObject: jsObject, name: Strings.border)
+        _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
+        _y = ReadonlyAttribute(jsObject: jsObject, name: Strings.y)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -9652,7 +10015,35 @@ public class HTMLScriptElement: HTMLElement {
     public var event: String
 
     @ReadWriteAttribute
-    public var htmlFor: String
+    public var border: String
+
+    @ReadonlyAttribute
+    public var buffered: TimeRanges
+
+    @inlinable public func load() {
+        let this = jsObject
+        _ = this[Strings.load].function!(this: this, arguments: [])
+    }
+
+    @inlinable public func canPlayType(type: String) -> CanPlayTypeResult {
+        let this = jsObject
+        return this[Strings.canPlayType].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+    }
+
+    public static let HAVE_NOTHING: UInt16 = 0
+
+    public static let HAVE_METADATA: UInt16 = 1
+
+    public static let HAVE_CURRENT_DATA: UInt16 = 2
+
+    public static let HAVE_FUTURE_DATA: UInt16 = 3
+
+    public static let HAVE_ENOUGH_DATA: UInt16 = 4
+    public var x: Int32
+
+    @ReadonlyAttribute
+    public var readyState: UInt16
+    public var y: Int32
 }
 
 public class HTMLSelectElement: HTMLElement {
@@ -12229,8 +12620,20 @@ public class MimeTypeArray: JSBridgedClass {
     }
 }
 
-public class MouseEvent: UIEvent {
-    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MouseEvent].function! }
+public class IsVisibleOptions: BridgedDictionary {
+    public convenience init() {
+        let object = JSObject.global[Strings.Object].function!.new()
+
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        super.init(unsafelyWrapping: object)
+    }
+}
+
+public class KeyboardEvent: UIEvent {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.KeyboardEvent].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _screenX = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenX)
@@ -12419,8 +12822,73 @@ public class MutationEvent: Event {
     }
 }
 
-public class MutationObserver: JSBridgedClass {
-    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MutationObserver].function! }
+public class MediaQueryList: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaQueryList].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
+        _matches = ReadonlyAttribute(jsObject: jsObject, name: Strings.matches)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var media: String
+
+    @ReadonlyAttribute
+    public var matches: Bool
+
+    // XXX: member 'addListener' is ignored
+
+    // XXX: member 'removeListener' is ignored
+
+    @ClosureAttribute1Optional
+    public var onchange: EventHandler
+}
+
+public class MediaQueryListEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaQueryListEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
+        _matches = ReadonlyAttribute(jsObject: jsObject, name: Strings.matches)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: MediaQueryListEventInit? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var media: String
+
+    @ReadonlyAttribute
+    public var matches: Bool
+}
+
+public class MediaQueryListEventInit: BridgedDictionary {
+    public convenience init(media: String, matches: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.media] = media.jsValue
+        object[Strings.matches] = matches.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _media = ReadWriteAttribute(jsObject: object, name: Strings.media)
+        _matches = ReadWriteAttribute(jsObject: object, name: Strings.matches)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var media: String
+
+    @ReadWriteAttribute
+    public var matches: Bool
+}
+
+public class MessageChannel: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MessageChannel].function! }
 
     public let jsObject: JSObject
 
@@ -12564,9 +13032,25 @@ public class NamedNodeMap: JSBridgedClass {
         return this[Strings.getNamedItemNS].function!(this: this, arguments: [namespace.jsValue, localName.jsValue]).fromJSValue()!
     }
 
-    @inlinable public func setNamedItem(attr: Attr) -> Attr? {
-        let this = jsObject
-        return this[Strings.setNamedItem].function!(this: this, arguments: [attr.jsValue]).fromJSValue()!
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _screenX = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenX)
+        _screenY = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenY)
+        _clientX = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientX)
+        _clientY = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientY)
+        _ctrlKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.ctrlKey)
+        _shiftKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.shiftKey)
+        _altKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.altKey)
+        _metaKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.metaKey)
+        _button = ReadonlyAttribute(jsObject: jsObject, name: Strings.button)
+        _buttons = ReadonlyAttribute(jsObject: jsObject, name: Strings.buttons)
+        _relatedTarget = ReadonlyAttribute(jsObject: jsObject, name: Strings.relatedTarget)
+        _pageX = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageX)
+        _pageY = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageY)
+        _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
+        _y = ReadonlyAttribute(jsObject: jsObject, name: Strings.y)
+        _offsetX = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetX)
+        _offsetY = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetY)
+        super.init(unsafelyWrapping: jsObject)
     }
 
     @inlinable public func setNamedItemNS(attr: Attr) -> Attr? {
@@ -12641,6 +13125,24 @@ public class NavigationPreloadManager: JSBridgedClass {
         let _promise: JSPromise = this[Strings.getState].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
+
+    @ReadonlyAttribute
+    public var pageX: Double
+
+    @ReadonlyAttribute
+    public var pageY: Double
+
+    @ReadonlyAttribute
+    public var x: Double
+
+    @ReadonlyAttribute
+    public var y: Double
+
+    @ReadonlyAttribute
+    public var offsetX: Double
+
+    @ReadonlyAttribute
+    public var offsetY: Double
 }
 
 public class NavigationPreloadState: BridgedDictionary {
@@ -14157,6 +14659,16 @@ public class Range: AbstractRange {
     @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
     }
+
+    @inlinable public func getClientRects() -> DOMRectList {
+        let this = jsObject
+        return this[Strings.getClientRects].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getBoundingClientRect() -> DOMRect {
+        let this = jsObject
+        return this[Strings.getBoundingClientRect].function!(this: this, arguments: []).fromJSValue()!
+    }
 }
 
 public class ReadableByteStreamController: JSBridgedClass {
@@ -14963,20 +15475,113 @@ public enum ResponseType: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
-public class ScriptProcessorNode: AudioNode {
-    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ScriptProcessorNode].function! }
+public class Screen: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Screen].function! }
+
+    public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onaudioprocess = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaudioprocess)
-        _bufferSize = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferSize)
-        super.init(unsafelyWrapping: jsObject)
+        _availWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.availWidth)
+        _availHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.availHeight)
+        _width = ReadonlyAttribute(jsObject: jsObject, name: Strings.width)
+        _height = ReadonlyAttribute(jsObject: jsObject, name: Strings.height)
+        _colorDepth = ReadonlyAttribute(jsObject: jsObject, name: Strings.colorDepth)
+        _pixelDepth = ReadonlyAttribute(jsObject: jsObject, name: Strings.pixelDepth)
+        self.jsObject = jsObject
     }
 
-    @ClosureAttribute1Optional
-    public var onaudioprocess: EventHandler
+    @ReadonlyAttribute
+    public var availWidth: Int32
 
     @ReadonlyAttribute
-    public var bufferSize: Int32
+    public var availHeight: Int32
+
+    @ReadonlyAttribute
+    public var width: Int32
+
+    @ReadonlyAttribute
+    public var height: Int32
+
+    @ReadonlyAttribute
+    public var colorDepth: UInt32
+
+    @ReadonlyAttribute
+    public var pixelDepth: UInt32
+}
+
+public enum ScrollBehavior: JSString, JSValueCompatible {
+    case auto = "auto"
+    case smooth = "smooth"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class ScrollIntoViewOptions: BridgedDictionary {
+    public convenience init(block: ScrollLogicalPosition, inline: ScrollLogicalPosition) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.block] = block.jsValue
+        object[Strings.inline] = inline.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _block = ReadWriteAttribute(jsObject: object, name: Strings.block)
+        _inline = ReadWriteAttribute(jsObject: object, name: Strings.inline)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var block: ScrollLogicalPosition
+
+    @ReadWriteAttribute
+    public var inline: ScrollLogicalPosition
+}
+
+public enum ScrollLogicalPosition: JSString, JSValueCompatible {
+    case start = "start"
+    case center = "center"
+    case end = "end"
+    case nearest = "nearest"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class ScrollOptions: BridgedDictionary {
+    public convenience init(behavior: ScrollBehavior) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.behavior] = behavior.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _behavior = ReadWriteAttribute(jsObject: object, name: Strings.behavior)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var behavior: ScrollBehavior
 }
 
 public enum ScrollRestoration: JSString, JSValueCompatible {
@@ -14995,6 +15600,27 @@ public enum ScrollRestoration: JSString, JSValueCompatible {
     }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class ScrollToOptions: BridgedDictionary {
+    public convenience init(left: Double, top: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.left] = left.jsValue
+        object[Strings.top] = top.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _left = ReadWriteAttribute(jsObject: object, name: Strings.left)
+        _top = ReadWriteAttribute(jsObject: object, name: Strings.top)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var left: Double
+
+    @ReadWriteAttribute
+    public var top: Double
 }
 
 public enum SelectionMode: JSString, JSValueCompatible {
@@ -15595,7 +16221,7 @@ public class SubmitEventInit: BridgedDictionary {
     public var submitter: HTMLElement?
 }
 
-public class Text: CharacterData, Slottable {
+public class Text: CharacterData, Slottable, GeometryUtils {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Text].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -16756,6 +17382,20 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
         _clientInformation = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientInformation)
         _originAgentCluster = ReadonlyAttribute(jsObject: jsObject, name: Strings.originAgentCluster)
         _external = ReadonlyAttribute(jsObject: jsObject, name: Strings.external)
+        _screen = ReadonlyAttribute(jsObject: jsObject, name: Strings.screen)
+        _innerWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.innerWidth)
+        _innerHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.innerHeight)
+        _scrollX = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollX)
+        _pageXOffset = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageXOffset)
+        _scrollY = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollY)
+        _pageYOffset = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageYOffset)
+        _screenX = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenX)
+        _screenLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenLeft)
+        _screenY = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenY)
+        _screenTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenTop)
+        _outerWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.outerWidth)
+        _outerHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.outerHeight)
+        _devicePixelRatio = ReadonlyAttribute(jsObject: jsObject, name: Strings.devicePixelRatio)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -16910,6 +17550,103 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @ReadonlyAttribute
     public var external: External
+
+    @inlinable public func matchMedia(query: String) -> MediaQueryList {
+        let this = jsObject
+        return this[Strings.matchMedia].function!(this: this, arguments: [query.jsValue]).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var screen: Screen
+
+    @inlinable public func moveTo(x: Int32, y: Int32) {
+        let this = jsObject
+        _ = this[Strings.moveTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func moveBy(x: Int32, y: Int32) {
+        let this = jsObject
+        _ = this[Strings.moveBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func resizeTo(width: Int32, height: Int32) {
+        let this = jsObject
+        _ = this[Strings.resizeTo].function!(this: this, arguments: [width.jsValue, height.jsValue])
+    }
+
+    @inlinable public func resizeBy(x: Int32, y: Int32) {
+        let this = jsObject
+        _ = this[Strings.resizeBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @ReadonlyAttribute
+    public var innerWidth: Int32
+
+    @ReadonlyAttribute
+    public var innerHeight: Int32
+
+    @ReadonlyAttribute
+    public var scrollX: Double
+
+    @ReadonlyAttribute
+    public var pageXOffset: Double
+
+    @ReadonlyAttribute
+    public var scrollY: Double
+
+    @ReadonlyAttribute
+    public var pageYOffset: Double
+
+    @inlinable public func scroll(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scroll(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func scrollTo(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scrollTo(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func scrollBy(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scrollBy(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @ReadonlyAttribute
+    public var screenX: Int32
+
+    @ReadonlyAttribute
+    public var screenLeft: Int32
+
+    @ReadonlyAttribute
+    public var screenY: Int32
+
+    @ReadonlyAttribute
+    public var screenTop: Int32
+
+    @ReadonlyAttribute
+    public var outerWidth: Int32
+
+    @ReadonlyAttribute
+    public var outerHeight: Int32
+
+    @ReadonlyAttribute
+    public var devicePixelRatio: Double
 }
 
 public protocol WindowEventHandlers: JSBridgedClass {}
@@ -18367,14 +19104,14 @@ public enum console {
     @usableFromInline static let BroadcastChannel: JSString = "BroadcastChannel"
     @usableFromInline static let ByteLengthQueuingStrategy: JSString = "ByteLengthQueuingStrategy"
     @usableFromInline static let CDATASection: JSString = "CDATASection"
+    @usableFromInline static let CSSPseudoElement: JSString = "CSSPseudoElement"
     @usableFromInline static let Cache: JSString = "Cache"
     @usableFromInline static let CacheStorage: JSString = "CacheStorage"
     @usableFromInline static let CanvasFilter: JSString = "CanvasFilter"
     @usableFromInline static let CanvasGradient: JSString = "CanvasGradient"
     @usableFromInline static let CanvasPattern: JSString = "CanvasPattern"
     @usableFromInline static let CanvasRenderingContext2D: JSString = "CanvasRenderingContext2D"
-    @usableFromInline static let ChannelMergerNode: JSString = "ChannelMergerNode"
-    @usableFromInline static let ChannelSplitterNode: JSString = "ChannelSplitterNode"
+    @usableFromInline static let CaretPosition: JSString = "CaretPosition"
     @usableFromInline static let CharacterData: JSString = "CharacterData"
     @usableFromInline static let Comment: JSString = "Comment"
     @usableFromInline static let CompositionEvent: JSString = "CompositionEvent"
@@ -18513,12 +19250,8 @@ public enum console {
     @usableFromInline static let MediaDevices: JSString = "MediaDevices"
     @usableFromInline static let MediaElementAudioSourceNode: JSString = "MediaElementAudioSourceNode"
     @usableFromInline static let MediaError: JSString = "MediaError"
-    @usableFromInline static let MediaStream: JSString = "MediaStream"
-    @usableFromInline static let MediaStreamAudioDestinationNode: JSString = "MediaStreamAudioDestinationNode"
-    @usableFromInline static let MediaStreamAudioSourceNode: JSString = "MediaStreamAudioSourceNode"
-    @usableFromInline static let MediaStreamTrack: JSString = "MediaStreamTrack"
-    @usableFromInline static let MediaStreamTrackAudioSourceNode: JSString = "MediaStreamTrackAudioSourceNode"
-    @usableFromInline static let MediaStreamTrackEvent: JSString = "MediaStreamTrackEvent"
+    @usableFromInline static let MediaQueryList: JSString = "MediaQueryList"
+    @usableFromInline static let MediaQueryListEvent: JSString = "MediaQueryListEvent"
     @usableFromInline static let MessageChannel: JSString = "MessageChannel"
     @usableFromInline static let MessageEvent: JSString = "MessageEvent"
     @usableFromInline static let MessagePort: JSString = "MessagePort"
@@ -18563,7 +19296,7 @@ public enum console {
     @usableFromInline static let ReadableStreamDefaultReader: JSString = "ReadableStreamDefaultReader"
     @usableFromInline static let Request: JSString = "Request"
     @usableFromInline static let Response: JSString = "Response"
-    @usableFromInline static let ScriptProcessorNode: JSString = "ScriptProcessorNode"
+    @usableFromInline static let Screen: JSString = "Screen"
     @usableFromInline static let ServiceWorker: JSString = "ServiceWorker"
     @usableFromInline static let ServiceWorkerContainer: JSString = "ServiceWorkerContainer"
     @usableFromInline static let ServiceWorkerRegistration: JSString = "ServiceWorkerRegistration"
@@ -18731,6 +19464,8 @@ public enum console {
     @usableFromInline static let autofocus: JSString = "autofocus"
     @usableFromInline static let automationRate: JSString = "automationRate"
     @usableFromInline static let autoplay: JSString = "autoplay"
+    @usableFromInline static let availHeight: JSString = "availHeight"
+    @usableFromInline static let availWidth: JSString = "availWidth"
     @usableFromInline static let axis: JSString = "axis"
     @usableFromInline static let b: JSString = "b"
     @usableFromInline static let back: JSString = "back"
@@ -18744,6 +19479,7 @@ public enum console {
     @usableFromInline static let bezierCurveTo: JSString = "bezierCurveTo"
     @usableFromInline static let bgColor: JSString = "bgColor"
     @usableFromInline static let blob: JSString = "blob"
+    @usableFromInline static let block: JSString = "block"
     @usableFromInline static let blocking: JSString = "blocking"
     @usableFromInline static let blur: JSString = "blur"
     @usableFromInline static let body: JSString = "body"
@@ -18751,6 +19487,7 @@ public enum console {
     @usableFromInline static let booleanValue: JSString = "booleanValue"
     @usableFromInline static let border: JSString = "border"
     @usableFromInline static let bottom: JSString = "bottom"
+    @usableFromInline static let box: JSString = "box"
     @usableFromInline static let btoa: JSString = "btoa"
     @usableFromInline static let bubbles: JSString = "bubbles"
     @usableFromInline static let buffer: JSString = "buffer"
@@ -18774,6 +19511,7 @@ public enum console {
     @usableFromInline static let caption: JSString = "caption"
     @usableFromInline static let capture: JSString = "capture"
     @usableFromInline static let captureEvents: JSString = "captureEvents"
+    @usableFromInline static let caretPositionFromPoint: JSString = "caretPositionFromPoint"
     @usableFromInline static let cellIndex: JSString = "cellIndex"
     @usableFromInline static let cellPadding: JSString = "cellPadding"
     @usableFromInline static let cellSpacing: JSString = "cellSpacing"
@@ -18804,8 +19542,12 @@ public enum console {
     @usableFromInline static let clearRect: JSString = "clearRect"
     @usableFromInline static let clearTimeout: JSString = "clearTimeout"
     @usableFromInline static let click: JSString = "click"
+    @usableFromInline static let clientHeight: JSString = "clientHeight"
     @usableFromInline static let clientId: JSString = "clientId"
     @usableFromInline static let clientInformation: JSString = "clientInformation"
+    @usableFromInline static let clientLeft: JSString = "clientLeft"
+    @usableFromInline static let clientTop: JSString = "clientTop"
+    @usableFromInline static let clientWidth: JSString = "clientWidth"
     @usableFromInline static let clientX: JSString = "clientX"
     @usableFromInline static let clientY: JSString = "clientY"
     @usableFromInline static let clip: JSString = "clip"
@@ -18825,6 +19567,7 @@ public enum console {
     @usableFromInline static let collapsed: JSString = "collapsed"
     @usableFromInline static let colno: JSString = "colno"
     @usableFromInline static let color: JSString = "color"
+    @usableFromInline static let colorDepth: JSString = "colorDepth"
     @usableFromInline static let colorSpace: JSString = "colorSpace"
     @usableFromInline static let colorSpaceConversion: JSString = "colorSpaceConversion"
     @usableFromInline static let cols: JSString = "cols"
@@ -18859,6 +19602,9 @@ public enum console {
     @usableFromInline static let control: JSString = "control"
     @usableFromInline static let controller: JSString = "controller"
     @usableFromInline static let controls: JSString = "controls"
+    @usableFromInline static let convertPointFromNode: JSString = "convertPointFromNode"
+    @usableFromInline static let convertQuadFromNode: JSString = "convertQuadFromNode"
+    @usableFromInline static let convertRectFromNode: JSString = "convertRectFromNode"
     @usableFromInline static let convertToBlob: JSString = "convertToBlob"
     @usableFromInline static let cookie: JSString = "cookie"
     @usableFromInline static let cookieEnabled: JSString = "cookieEnabled"
@@ -18969,8 +19715,7 @@ public enum console {
     @usableFromInline static let desynchronized: JSString = "desynchronized"
     @usableFromInline static let detach: JSString = "detach"
     @usableFromInline static let detail: JSString = "detail"
-    @usableFromInline static let detune: JSString = "detune"
-    @usableFromInline static let deviceId: JSString = "deviceId"
+    @usableFromInline static let devicePixelRatio: JSString = "devicePixelRatio"
     @usableFromInline static let dir: JSString = "dir"
     @usableFromInline static let dirName: JSString = "dirName"
     @usableFromInline static let direction: JSString = "direction"
@@ -18998,7 +19743,10 @@ public enum console {
     @usableFromInline static let echoCancellation: JSString = "echoCancellation"
     @usableFromInline static let effect: JSString = "effect"
     @usableFromInline static let effectAllowed: JSString = "effectAllowed"
+    @usableFromInline static let element: JSString = "element"
+    @usableFromInline static let elementFromPoint: JSString = "elementFromPoint"
     @usableFromInline static let elements: JSString = "elements"
+    @usableFromInline static let elementsFromPoint: JSString = "elementsFromPoint"
     @usableFromInline static let ellipse: JSString = "ellipse"
     @usableFromInline static let emHeightAscent: JSString = "emHeightAscent"
     @usableFromInline static let emHeightDescent: JSString = "emHeightDescent"
@@ -19076,8 +19824,7 @@ public enum console {
     @usableFromInline static let frameElement: JSString = "frameElement"
     @usableFromInline static let frameRate: JSString = "frameRate"
     @usableFromInline static let frames: JSString = "frames"
-    @usableFromInline static let frequency: JSString = "frequency"
-    @usableFromInline static let frequencyBinCount: JSString = "frequencyBinCount"
+    @usableFromInline static let fromBox: JSString = "fromBox"
     @usableFromInline static let fromFloat32Array: JSString = "fromFloat32Array"
     @usableFromInline static let fromFloat64Array: JSString = "fromFloat64Array"
     @usableFromInline static let fromMatrix: JSString = "fromMatrix"
@@ -19095,12 +19842,11 @@ public enum console {
     @usableFromInline static let getAttributeNames: JSString = "getAttributeNames"
     @usableFromInline static let getAttributeNode: JSString = "getAttributeNode"
     @usableFromInline static let getAttributeNodeNS: JSString = "getAttributeNodeNS"
-    @usableFromInline static let getAudioTracks: JSString = "getAudioTracks"
+    @usableFromInline static let getBoundingClientRect: JSString = "getBoundingClientRect"
     @usableFromInline static let getBounds: JSString = "getBounds"
-    @usableFromInline static let getByteFrequencyData: JSString = "getByteFrequencyData"
-    @usableFromInline static let getByteTimeDomainData: JSString = "getByteTimeDomainData"
-    @usableFromInline static let getCapabilities: JSString = "getCapabilities"
-    @usableFromInline static let getChannelData: JSString = "getChannelData"
+    @usableFromInline static let getBoxQuads: JSString = "getBoxQuads"
+    @usableFromInline static let getClientRect: JSString = "getClientRect"
+    @usableFromInline static let getClientRects: JSString = "getClientRects"
     @usableFromInline static let getComputedTiming: JSString = "getComputedTiming"
     @usableFromInline static let getConstraints: JSString = "getConstraints"
     @usableFromInline static let getContext: JSString = "getContext"
@@ -19203,8 +19949,10 @@ public enum console {
     @usableFromInline static let initMutationEvent: JSString = "initMutationEvent"
     @usableFromInline static let initStorageEvent: JSString = "initStorageEvent"
     @usableFromInline static let initUIEvent: JSString = "initUIEvent"
+    @usableFromInline static let inline: JSString = "inline"
+    @usableFromInline static let innerHeight: JSString = "innerHeight"
     @usableFromInline static let innerText: JSString = "innerText"
-    @usableFromInline static let inputBuffer: JSString = "inputBuffer"
+    @usableFromInline static let innerWidth: JSString = "innerWidth"
     @usableFromInline static let inputEncoding: JSString = "inputEncoding"
     @usableFromInline static let inputMode: JSString = "inputMode"
     @usableFromInline static let inputType: JSString = "inputType"
@@ -19239,6 +19987,7 @@ public enum console {
     @usableFromInline static let isSameNode: JSString = "isSameNode"
     @usableFromInline static let isSecureContext: JSString = "isSecureContext"
     @usableFromInline static let isTrusted: JSString = "isTrusted"
+    @usableFromInline static let isVisible: JSString = "isVisible"
     @usableFromInline static let item: JSString = "item"
     @usableFromInline static let items: JSString = "items"
     @usableFromInline static let iterateNext: JSString = "iterateNext"
@@ -19316,6 +20065,7 @@ public enum console {
     @usableFromInline static let marginWidth: JSString = "marginWidth"
     @usableFromInline static let match: JSString = "match"
     @usableFromInline static let matchAll: JSString = "matchAll"
+    @usableFromInline static let matchMedia: JSString = "matchMedia"
     @usableFromInline static let matches: JSString = "matches"
     @usableFromInline static let matrixTransform: JSString = "matrixTransform"
     @usableFromInline static let max: JSString = "max"
@@ -19352,6 +20102,7 @@ public enum console {
     @usableFromInline static let modifierSuper: JSString = "modifierSuper"
     @usableFromInline static let modifierSymbol: JSString = "modifierSymbol"
     @usableFromInline static let modifierSymbolLock: JSString = "modifierSymbolLock"
+    @usableFromInline static let moveBy: JSString = "moveBy"
     @usableFromInline static let moveTo: JSString = "moveTo"
     @usableFromInline static let multiple: JSString = "multiple"
     @usableFromInline static let multiply: JSString = "multiply"
@@ -19389,6 +20140,14 @@ public enum console {
     @usableFromInline static let numberValue: JSString = "numberValue"
     @usableFromInline static let observe: JSString = "observe"
     @usableFromInline static let offset: JSString = "offset"
+    @usableFromInline static let offsetHeight: JSString = "offsetHeight"
+    @usableFromInline static let offsetLeft: JSString = "offsetLeft"
+    @usableFromInline static let offsetNode: JSString = "offsetNode"
+    @usableFromInline static let offsetParent: JSString = "offsetParent"
+    @usableFromInline static let offsetTop: JSString = "offsetTop"
+    @usableFromInline static let offsetWidth: JSString = "offsetWidth"
+    @usableFromInline static let offsetX: JSString = "offsetX"
+    @usableFromInline static let offsetY: JSString = "offsetY"
     @usableFromInline static let ok: JSString = "ok"
     @usableFromInline static let oldURL: JSString = "oldURL"
     @usableFromInline static let oldValue: JSString = "oldValue"
@@ -19512,10 +20271,9 @@ public enum console {
     @usableFromInline static let originAgentCluster: JSString = "originAgentCluster"
     @usableFromInline static let originTime: JSString = "originTime"
     @usableFromInline static let oscpu: JSString = "oscpu"
+    @usableFromInline static let outerHeight: JSString = "outerHeight"
     @usableFromInline static let outerText: JSString = "outerText"
-    @usableFromInline static let outputBuffer: JSString = "outputBuffer"
-    @usableFromInline static let outputChannelCount: JSString = "outputChannelCount"
-    @usableFromInline static let outputLatency: JSString = "outputLatency"
+    @usableFromInline static let outerWidth: JSString = "outerWidth"
     @usableFromInline static let overrideMimeType: JSString = "overrideMimeType"
     @usableFromInline static let oversample: JSString = "oversample"
     @usableFromInline static let ownerDocument: JSString = "ownerDocument"
@@ -19524,11 +20282,10 @@ public enum console {
     @usableFromInline static let p2: JSString = "p2"
     @usableFromInline static let p3: JSString = "p3"
     @usableFromInline static let p4: JSString = "p4"
-    @usableFromInline static let pan: JSString = "pan"
-    @usableFromInline static let panTiltZoom: JSString = "panTiltZoom"
-    @usableFromInline static let panningModel: JSString = "panningModel"
-    @usableFromInline static let parameterData: JSString = "parameterData"
-    @usableFromInline static let parameters: JSString = "parameters"
+    @usableFromInline static let pageX: JSString = "pageX"
+    @usableFromInline static let pageXOffset: JSString = "pageXOffset"
+    @usableFromInline static let pageY: JSString = "pageY"
+    @usableFromInline static let pageYOffset: JSString = "pageYOffset"
     @usableFromInline static let parent: JSString = "parent"
     @usableFromInline static let parentElement: JSString = "parentElement"
     @usableFromInline static let parentNode: JSString = "parentNode"
@@ -19553,6 +20310,7 @@ public enum console {
     @usableFromInline static let ping: JSString = "ping"
     @usableFromInline static let pipeThrough: JSString = "pipeThrough"
     @usableFromInline static let pipeTo: JSString = "pipeTo"
+    @usableFromInline static let pixelDepth: JSString = "pixelDepth"
     @usableFromInline static let placeholder: JSString = "placeholder"
     @usableFromInline static let platform: JSString = "platform"
     @usableFromInline static let play: JSString = "play"
@@ -19597,6 +20355,7 @@ public enum console {
     @usableFromInline static let promise: JSString = "promise"
     @usableFromInline static let prompt: JSString = "prompt"
     @usableFromInline static let `protocol`: JSString = "protocol"
+    @usableFromInline static let pseudo: JSString = "pseudo"
     @usableFromInline static let pseudoElement: JSString = "pseudoElement"
     @usableFromInline static let publicId: JSString = "publicId"
     @usableFromInline static let pull: JSString = "pull"
@@ -19642,7 +20401,7 @@ public enum console {
     @usableFromInline static let relList: JSString = "relList"
     @usableFromInline static let relatedNode: JSString = "relatedNode"
     @usableFromInline static let relatedTarget: JSString = "relatedTarget"
-    @usableFromInline static let release: JSString = "release"
+    @usableFromInline static let relativeTo: JSString = "relativeTo"
     @usableFromInline static let releaseEvents: JSString = "releaseEvents"
     @usableFromInline static let releaseLock: JSString = "releaseLock"
     @usableFromInline static let reload: JSString = "reload"
@@ -19673,9 +20432,11 @@ public enum console {
     @usableFromInline static let required: JSString = "required"
     @usableFromInline static let reset: JSString = "reset"
     @usableFromInline static let resetTransform: JSString = "resetTransform"
+    @usableFromInline static let resizeBy: JSString = "resizeBy"
     @usableFromInline static let resizeHeight: JSString = "resizeHeight"
     @usableFromInline static let resizeMode: JSString = "resizeMode"
     @usableFromInline static let resizeQuality: JSString = "resizeQuality"
+    @usableFromInline static let resizeTo: JSString = "resizeTo"
     @usableFromInline static let resizeWidth: JSString = "resizeWidth"
     @usableFromInline static let respond: JSString = "respond"
     @usableFromInline static let respondWithNewView: JSString = "respondWithNewView"
@@ -19720,16 +20481,30 @@ public enum console {
     @usableFromInline static let scaleSelf: JSString = "scaleSelf"
     @usableFromInline static let scheme: JSString = "scheme"
     @usableFromInline static let scope: JSString = "scope"
+    @usableFromInline static let screen: JSString = "screen"
+    @usableFromInline static let screenLeft: JSString = "screenLeft"
+    @usableFromInline static let screenTop: JSString = "screenTop"
     @usableFromInline static let screenX: JSString = "screenX"
     @usableFromInline static let screenY: JSString = "screenY"
     @usableFromInline static let scriptURL: JSString = "scriptURL"
     @usableFromInline static let scripts: JSString = "scripts"
+    @usableFromInline static let scroll: JSString = "scroll"
     @usableFromInline static let scrollAmount: JSString = "scrollAmount"
+    @usableFromInline static let scrollBy: JSString = "scrollBy"
     @usableFromInline static let scrollDelay: JSString = "scrollDelay"
+    @usableFromInline static let scrollHeight: JSString = "scrollHeight"
+    @usableFromInline static let scrollIntoView: JSString = "scrollIntoView"
+    @usableFromInline static let scrollLeft: JSString = "scrollLeft"
     @usableFromInline static let scrollPathIntoView: JSString = "scrollPathIntoView"
     @usableFromInline static let scrollRestoration: JSString = "scrollRestoration"
+    @usableFromInline static let scrollTo: JSString = "scrollTo"
+    @usableFromInline static let scrollTop: JSString = "scrollTop"
+    @usableFromInline static let scrollWidth: JSString = "scrollWidth"
+    @usableFromInline static let scrollX: JSString = "scrollX"
+    @usableFromInline static let scrollY: JSString = "scrollY"
     @usableFromInline static let scrollbars: JSString = "scrollbars"
     @usableFromInline static let scrolling: JSString = "scrolling"
+    @usableFromInline static let scrollingElement: JSString = "scrollingElement"
     @usableFromInline static let search: JSString = "search"
     @usableFromInline static let searchParams: JSString = "searchParams"
     @usableFromInline static let sectionRowIndex: JSString = "sectionRowIndex"
@@ -19882,6 +20657,7 @@ public enum console {
     @usableFromInline static let timeline: JSString = "timeline"
     @usableFromInline static let timeout: JSString = "timeout"
     @usableFromInline static let title: JSString = "title"
+    @usableFromInline static let toBox: JSString = "toBox"
     @usableFromInline static let toDataURL: JSString = "toDataURL"
     @usableFromInline static let toFloat32Array: JSString = "toFloat32Array"
     @usableFromInline static let toFloat64Array: JSString = "toFloat64Array"
@@ -20168,13 +20944,13 @@ public enum BlobPart: JSValueCompatible, Any_BlobPart {
     }
 }
 
-public protocol Any_Bool_or_MediaTrackConstraints: ConvertibleToJSValue {}
-extension Bool: Any_Bool_or_MediaTrackConstraints {}
-extension MediaTrackConstraints: Any_Bool_or_MediaTrackConstraints {}
+public protocol Any_Bool_or_ScrollIntoViewOptions: ConvertibleToJSValue {}
+extension Bool: Any_Bool_or_ScrollIntoViewOptions {}
+extension ScrollIntoViewOptions: Any_Bool_or_ScrollIntoViewOptions {}
 
-public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaTrackConstraints {
+public enum Bool_or_ScrollIntoViewOptions: JSValueCompatible, Any_Bool_or_ScrollIntoViewOptions {
     case bool(Bool)
-    case mediaTrackConstraints(MediaTrackConstraints)
+    case scrollIntoViewOptions(ScrollIntoViewOptions)
 
     var bool: Bool? {
         switch self {
@@ -20183,9 +20959,9 @@ public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaT
         }
     }
 
-    var mediaTrackConstraints: MediaTrackConstraints? {
+    var scrollIntoViewOptions: ScrollIntoViewOptions? {
         switch self {
-        case let .mediaTrackConstraints(mediaTrackConstraints): return mediaTrackConstraints
+        case let .scrollIntoViewOptions(scrollIntoViewOptions): return scrollIntoViewOptions
         default: return nil
         }
     }
@@ -20194,8 +20970,8 @@ public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaT
         if let bool: Bool = value.fromJSValue() {
             return .bool(bool)
         }
-        if let mediaTrackConstraints: MediaTrackConstraints = value.fromJSValue() {
-            return .mediaTrackConstraints(mediaTrackConstraints)
+        if let scrollIntoViewOptions: ScrollIntoViewOptions = value.fromJSValue() {
+            return .scrollIntoViewOptions(scrollIntoViewOptions)
         }
         return nil
     }
@@ -20204,8 +20980,8 @@ public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaT
         switch self {
         case let .bool(bool):
             return bool.jsValue
-        case let .mediaTrackConstraints(mediaTrackConstraints):
-            return mediaTrackConstraints.jsValue
+        case let .scrollIntoViewOptions(scrollIntoViewOptions):
+            return scrollIntoViewOptions.jsValue
         }
     }
 }
@@ -20248,6 +21024,48 @@ public enum BufferSource: JSValueCompatible, Any_BufferSource {
             return arrayBuffer.jsValue
         case let .arrayBufferView(arrayBufferView):
             return arrayBufferView.jsValue
+        }
+    }
+}
+
+public protocol Any_CSSPseudoElement_or_Element: ConvertibleToJSValue {}
+extension CSSPseudoElement: Any_CSSPseudoElement_or_Element {}
+extension Element: Any_CSSPseudoElement_or_Element {}
+
+public enum CSSPseudoElement_or_Element: JSValueCompatible, Any_CSSPseudoElement_or_Element {
+    case cssPseudoElement(CSSPseudoElement)
+    case element(Element)
+
+    var cssPseudoElement: CSSPseudoElement? {
+        switch self {
+        case let .cssPseudoElement(cssPseudoElement): return cssPseudoElement
+        default: return nil
+        }
+    }
+
+    var element: Element? {
+        switch self {
+        case let .element(element): return element
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let cssPseudoElement: CSSPseudoElement = value.fromJSValue() {
+            return .cssPseudoElement(cssPseudoElement)
+        }
+        if let element: Element = value.fromJSValue() {
+            return .element(element)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .cssPseudoElement(cssPseudoElement):
+            return cssPseudoElement.jsValue
+        case let .element(element):
+            return element.jsValue
         }
     }
 }
@@ -21186,6 +22004,76 @@ public enum FormDataEntryValue: JSValueCompatible, Any_FormDataEntryValue {
             return file.jsValue
         case let .string(string):
             return string.jsValue
+        }
+    }
+}
+
+public protocol Any_GeometryNode: ConvertibleToJSValue {}
+extension CSSPseudoElement: Any_GeometryNode {}
+extension Document: Any_GeometryNode {}
+extension Element: Any_GeometryNode {}
+extension Text: Any_GeometryNode {}
+
+public enum GeometryNode: JSValueCompatible, Any_GeometryNode {
+    case cssPseudoElement(CSSPseudoElement)
+    case document(Document)
+    case element(Element)
+    case text(Text)
+
+    var cssPseudoElement: CSSPseudoElement? {
+        switch self {
+        case let .cssPseudoElement(cssPseudoElement): return cssPseudoElement
+        default: return nil
+        }
+    }
+
+    var document: Document? {
+        switch self {
+        case let .document(document): return document
+        default: return nil
+        }
+    }
+
+    var element: Element? {
+        switch self {
+        case let .element(element): return element
+        default: return nil
+        }
+    }
+
+    var text: Text? {
+        switch self {
+        case let .text(text): return text
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let cssPseudoElement: CSSPseudoElement = value.fromJSValue() {
+            return .cssPseudoElement(cssPseudoElement)
+        }
+        if let document: Document = value.fromJSValue() {
+            return .document(document)
+        }
+        if let element: Element = value.fromJSValue() {
+            return .element(element)
+        }
+        if let text: Text = value.fromJSValue() {
+            return .text(text)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .cssPseudoElement(cssPseudoElement):
+            return cssPseudoElement.jsValue
+        case let .document(document):
+            return document.jsValue
+        case let .element(element):
+            return element.jsValue
+        case let .text(text):
+            return text.jsValue
         }
     }
 }

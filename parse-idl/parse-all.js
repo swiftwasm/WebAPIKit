@@ -23,6 +23,8 @@ console.log(
       "service-workers",
       "url",
       "streams",
+      "css-pseudo",
+      "cssom-view",
       "mediacapture-streams",
       "webaudio",
     ].map((key) => parsedFiles[key]),
