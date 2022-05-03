@@ -7,7 +7,6 @@ enum IDLBuilder {
 
     import JavaScriptKit
     import JavaScriptEventLoop
-    import JavaScriptBigIntSupport
     \n
     """
 
