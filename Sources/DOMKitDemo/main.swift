@@ -1,10 +1,15 @@
-import JavaScriptKit
 import DOMKit
+import JavaScriptKit
 
 let document = globalThis.document
 
-let header = HTMLElement(from: document.createElement(localName: "h1"))!
-header.innerText = "Hello World!"
-_ = document.body!.appendChild(node: header)
+let button = HTMLElement(from: document.createElement(localName: "button"))!
+button.innerText = "Hello World!"
+_ = document.body!.appendChild(node: button)
 
 console.log(data: "Hello, world!")
+
+button.onclick = { _ in
+  runWebGLDemo()
+  return .undefined
+}
