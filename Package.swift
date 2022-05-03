@@ -8,12 +8,10 @@ let package = Package(
     products: [
         .executable(
             name: "DOMKitDemo",
-            targets: ["DOMKitDemo"]
-        ),
+            targets: ["DOMKitDemo"]),
         .library(
             name: "DOMKit",
-            targets: ["DOMKit"]
-        ),
+            targets: ["DOMKit"]),
         .library(name: "WebIDL", targets: ["WebIDL"]),
         .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
@@ -26,8 +24,7 @@ let package = Package(
     targets: [
         .target(
             name: "DOMKitDemo",
-            dependencies: ["DOMKit"]
-        ),
+            dependencies: ["DOMKit"]),
         .target(
             name: "DOMKit",
             dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]
@@ -40,11 +37,9 @@ let package = Package(
         .target(name: "WebIDL"),
         .target(
             name: "WebIDLToSwift",
-            dependencies: ["WebIDL"]
-        ),
+            dependencies: ["WebIDL"]),
         .testTarget(
             name: "DOMKitTests",
-            dependencies: ["DOMKit"]
-        ),
+            dependencies: ["DOMKit"]),
     ]
 )
