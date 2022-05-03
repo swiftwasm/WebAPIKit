@@ -333,6 +333,89 @@ public class AddEventListenerOptions: BridgedDictionary {
     public var signal: AbortSignal
 }
 
+public class AnalyserNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AnalyserNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _fftSize = ReadWriteAttribute(jsObject: jsObject, name: Strings.fftSize)
+        _frequencyBinCount = ReadonlyAttribute(jsObject: jsObject, name: Strings.frequencyBinCount)
+        _minDecibels = ReadWriteAttribute(jsObject: jsObject, name: Strings.minDecibels)
+        _maxDecibels = ReadWriteAttribute(jsObject: jsObject, name: Strings.maxDecibels)
+        _smoothingTimeConstant = ReadWriteAttribute(jsObject: jsObject, name: Strings.smoothingTimeConstant)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: AnalyserOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @inlinable public func getFloatFrequencyData(array: Float32Array) {
+        let this = jsObject
+        _ = this[Strings.getFloatFrequencyData].function!(this: this, arguments: [array.jsValue])
+    }
+
+    @inlinable public func getByteFrequencyData(array: Uint8Array) {
+        let this = jsObject
+        _ = this[Strings.getByteFrequencyData].function!(this: this, arguments: [array.jsValue])
+    }
+
+    @inlinable public func getFloatTimeDomainData(array: Float32Array) {
+        let this = jsObject
+        _ = this[Strings.getFloatTimeDomainData].function!(this: this, arguments: [array.jsValue])
+    }
+
+    @inlinable public func getByteTimeDomainData(array: Uint8Array) {
+        let this = jsObject
+        _ = this[Strings.getByteTimeDomainData].function!(this: this, arguments: [array.jsValue])
+    }
+
+    @ReadWriteAttribute
+    public var fftSize: UInt32
+
+    @ReadonlyAttribute
+    public var frequencyBinCount: UInt32
+
+    @ReadWriteAttribute
+    public var minDecibels: Double
+
+    @ReadWriteAttribute
+    public var maxDecibels: Double
+
+    @ReadWriteAttribute
+    public var smoothingTimeConstant: Double
+}
+
+public class AnalyserOptions: BridgedDictionary {
+    public convenience init(fftSize: UInt32, maxDecibels: Double, minDecibels: Double, smoothingTimeConstant: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.fftSize] = fftSize.jsValue
+        object[Strings.maxDecibels] = maxDecibels.jsValue
+        object[Strings.minDecibels] = minDecibels.jsValue
+        object[Strings.smoothingTimeConstant] = smoothingTimeConstant.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _fftSize = ReadWriteAttribute(jsObject: object, name: Strings.fftSize)
+        _maxDecibels = ReadWriteAttribute(jsObject: object, name: Strings.maxDecibels)
+        _minDecibels = ReadWriteAttribute(jsObject: object, name: Strings.minDecibels)
+        _smoothingTimeConstant = ReadWriteAttribute(jsObject: object, name: Strings.smoothingTimeConstant)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var fftSize: UInt32
+
+    @ReadWriteAttribute
+    public var maxDecibels: Double
+
+    @ReadWriteAttribute
+    public var minDecibels: Double
+
+    @ReadWriteAttribute
+    public var smoothingTimeConstant: Double
+}
+
 public protocol Animatable: JSBridgedClass {}
 public extension Animatable {
     @inlinable func animate(keyframes: JSObject?, options: Double_or_KeyframeAnimationOptions? = nil) -> Animation {
@@ -590,6 +673,679 @@ public class Attr: Node {
     public var specified: Bool
 }
 
+public class AudioBuffer: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioBuffer].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _sampleRate = ReadonlyAttribute(jsObject: jsObject, name: Strings.sampleRate)
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
+        _duration = ReadonlyAttribute(jsObject: jsObject, name: Strings.duration)
+        _numberOfChannels = ReadonlyAttribute(jsObject: jsObject, name: Strings.numberOfChannels)
+        self.jsObject = jsObject
+    }
+
+    @inlinable public convenience init(options: AudioBufferOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [options.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var sampleRate: Float
+
+    @ReadonlyAttribute
+    public var length: UInt32
+
+    @ReadonlyAttribute
+    public var duration: Double
+
+    @ReadonlyAttribute
+    public var numberOfChannels: UInt32
+
+    @inlinable public func getChannelData(channel: UInt32) -> Float32Array {
+        let this = jsObject
+        return this[Strings.getChannelData].function!(this: this, arguments: [channel.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func copyFromChannel(destination: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
+        let this = jsObject
+        _ = this[Strings.copyFromChannel].function!(this: this, arguments: [destination.jsValue, channelNumber.jsValue, bufferOffset?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func copyToChannel(source: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
+        let this = jsObject
+        _ = this[Strings.copyToChannel].function!(this: this, arguments: [source.jsValue, channelNumber.jsValue, bufferOffset?.jsValue ?? .undefined])
+    }
+}
+
+public class AudioBufferOptions: BridgedDictionary {
+    public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfChannels] = numberOfChannels.jsValue
+        object[Strings.length] = length.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfChannels = ReadWriteAttribute(jsObject: object, name: Strings.numberOfChannels)
+        _length = ReadWriteAttribute(jsObject: object, name: Strings.length)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfChannels: UInt32
+
+    @ReadWriteAttribute
+    public var length: UInt32
+
+    @ReadWriteAttribute
+    public var sampleRate: Float
+}
+
+public class AudioBufferSourceNode: AudioScheduledSourceNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioBufferSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _buffer = ReadWriteAttribute(jsObject: jsObject, name: Strings.buffer)
+        _playbackRate = ReadonlyAttribute(jsObject: jsObject, name: Strings.playbackRate)
+        _detune = ReadonlyAttribute(jsObject: jsObject, name: Strings.detune)
+        _loop = ReadWriteAttribute(jsObject: jsObject, name: Strings.loop)
+        _loopStart = ReadWriteAttribute(jsObject: jsObject, name: Strings.loopStart)
+        _loopEnd = ReadWriteAttribute(jsObject: jsObject, name: Strings.loopEnd)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: AudioBufferSourceOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var buffer: AudioBuffer?
+
+    @ReadonlyAttribute
+    public var playbackRate: AudioParam
+
+    @ReadonlyAttribute
+    public var detune: AudioParam
+
+    @ReadWriteAttribute
+    public var loop: Bool
+
+    @ReadWriteAttribute
+    public var loopStart: Double
+
+    @ReadWriteAttribute
+    public var loopEnd: Double
+
+    // XXX: member 'start' is ignored
+}
+
+public class AudioBufferSourceOptions: BridgedDictionary {
+    public convenience init(buffer: AudioBuffer?, detune: Float, loop: Bool, loopEnd: Double, loopStart: Double, playbackRate: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.buffer] = buffer.jsValue
+        object[Strings.detune] = detune.jsValue
+        object[Strings.loop] = loop.jsValue
+        object[Strings.loopEnd] = loopEnd.jsValue
+        object[Strings.loopStart] = loopStart.jsValue
+        object[Strings.playbackRate] = playbackRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _buffer = ReadWriteAttribute(jsObject: object, name: Strings.buffer)
+        _detune = ReadWriteAttribute(jsObject: object, name: Strings.detune)
+        _loop = ReadWriteAttribute(jsObject: object, name: Strings.loop)
+        _loopEnd = ReadWriteAttribute(jsObject: object, name: Strings.loopEnd)
+        _loopStart = ReadWriteAttribute(jsObject: object, name: Strings.loopStart)
+        _playbackRate = ReadWriteAttribute(jsObject: object, name: Strings.playbackRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var buffer: AudioBuffer?
+
+    @ReadWriteAttribute
+    public var detune: Float
+
+    @ReadWriteAttribute
+    public var loop: Bool
+
+    @ReadWriteAttribute
+    public var loopEnd: Double
+
+    @ReadWriteAttribute
+    public var loopStart: Double
+
+    @ReadWriteAttribute
+    public var playbackRate: Float
+}
+
+public class AudioContext: BaseAudioContext {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioContext].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _baseLatency = ReadonlyAttribute(jsObject: jsObject, name: Strings.baseLatency)
+        _outputLatency = ReadonlyAttribute(jsObject: jsObject, name: Strings.outputLatency)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(contextOptions: AudioContextOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var baseLatency: Double
+
+    @ReadonlyAttribute
+    public var outputLatency: Double
+
+    @inlinable public func getOutputTimestamp() -> AudioTimestamp {
+        let this = jsObject
+        return this[Strings.getOutputTimestamp].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func resume() -> JSPromise {
+        let this = jsObject
+        return this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func resume() async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @inlinable public func suspend() -> JSPromise {
+        let this = jsObject
+        return this[Strings.suspend].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func suspend() async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: []).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @inlinable public func close() -> JSPromise {
+        let this = jsObject
+        return this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func close() async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.close].function!(this: this, arguments: []).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @inlinable public func createMediaElementSource(mediaElement: HTMLMediaElement) -> MediaElementAudioSourceNode {
+        let this = jsObject
+        return this[Strings.createMediaElementSource].function!(this: this, arguments: [mediaElement.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createMediaStreamSource(mediaStream: MediaStream) -> MediaStreamAudioSourceNode {
+        let this = jsObject
+        return this[Strings.createMediaStreamSource].function!(this: this, arguments: [mediaStream.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createMediaStreamTrackSource(mediaStreamTrack: MediaStreamTrack) -> MediaStreamTrackAudioSourceNode {
+        let this = jsObject
+        return this[Strings.createMediaStreamTrackSource].function!(this: this, arguments: [mediaStreamTrack.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createMediaStreamDestination() -> MediaStreamAudioDestinationNode {
+        let this = jsObject
+        return this[Strings.createMediaStreamDestination].function!(this: this, arguments: []).fromJSValue()!
+    }
+}
+
+public enum AudioContextLatencyCategory: JSString, JSValueCompatible {
+    case balanced = "balanced"
+    case interactive = "interactive"
+    case playback = "playback"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class AudioContextOptions: BridgedDictionary {
+    public convenience init(latencyHint: AudioContextLatencyCategory_or_Double, sampleRate: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.latencyHint] = latencyHint.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _latencyHint = ReadWriteAttribute(jsObject: object, name: Strings.latencyHint)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var latencyHint: AudioContextLatencyCategory_or_Double
+
+    @ReadWriteAttribute
+    public var sampleRate: Float
+}
+
+public enum AudioContextState: JSString, JSValueCompatible {
+    case suspended = "suspended"
+    case running = "running"
+    case closed = "closed"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class AudioDestinationNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioDestinationNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _maxChannelCount = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxChannelCount)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var maxChannelCount: UInt32
+}
+
+public class AudioListener: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioListener].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _positionX = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionX)
+        _positionY = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionY)
+        _positionZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionZ)
+        _forwardX = ReadonlyAttribute(jsObject: jsObject, name: Strings.forwardX)
+        _forwardY = ReadonlyAttribute(jsObject: jsObject, name: Strings.forwardY)
+        _forwardZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.forwardZ)
+        _upX = ReadonlyAttribute(jsObject: jsObject, name: Strings.upX)
+        _upY = ReadonlyAttribute(jsObject: jsObject, name: Strings.upY)
+        _upZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.upZ)
+        self.jsObject = jsObject
+    }
+
+    @ReadonlyAttribute
+    public var positionX: AudioParam
+
+    @ReadonlyAttribute
+    public var positionY: AudioParam
+
+    @ReadonlyAttribute
+    public var positionZ: AudioParam
+
+    @ReadonlyAttribute
+    public var forwardX: AudioParam
+
+    @ReadonlyAttribute
+    public var forwardY: AudioParam
+
+    @ReadonlyAttribute
+    public var forwardZ: AudioParam
+
+    @ReadonlyAttribute
+    public var upX: AudioParam
+
+    @ReadonlyAttribute
+    public var upY: AudioParam
+
+    @ReadonlyAttribute
+    public var upZ: AudioParam
+
+    @inlinable public func setPosition(x: Float, y: Float, z: Float) {
+        let this = jsObject
+        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
+    }
+
+    @inlinable public func setOrientation(x: Float, y: Float, z: Float, xUp: Float, yUp: Float, zUp: Float) {
+        let _arg0 = x.jsValue
+        let _arg1 = y.jsValue
+        let _arg2 = z.jsValue
+        let _arg3 = xUp.jsValue
+        let _arg4 = yUp.jsValue
+        let _arg5 = zUp.jsValue
+        let this = jsObject
+        _ = this[Strings.setOrientation].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
+    }
+}
+
+public class AudioNode: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _context = ReadonlyAttribute(jsObject: jsObject, name: Strings.context)
+        _numberOfInputs = ReadonlyAttribute(jsObject: jsObject, name: Strings.numberOfInputs)
+        _numberOfOutputs = ReadonlyAttribute(jsObject: jsObject, name: Strings.numberOfOutputs)
+        _channelCount = ReadWriteAttribute(jsObject: jsObject, name: Strings.channelCount)
+        _channelCountMode = ReadWriteAttribute(jsObject: jsObject, name: Strings.channelCountMode)
+        _channelInterpretation = ReadWriteAttribute(jsObject: jsObject, name: Strings.channelInterpretation)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public func connect(destinationNode: AudioNode, output: UInt32? = nil, input: UInt32? = nil) -> Self {
+        let this = jsObject
+        return this[Strings.connect].function!(this: this, arguments: [destinationNode.jsValue, output?.jsValue ?? .undefined, input?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func connect(destinationParam: AudioParam, output: UInt32? = nil) {
+        let this = jsObject
+        _ = this[Strings.connect].function!(this: this, arguments: [destinationParam.jsValue, output?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func disconnect() {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [])
+    }
+
+    @inlinable public func disconnect(output: UInt32) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [output.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationNode: AudioNode) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue, output.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32, input: UInt32) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue, output.jsValue, input.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationParam: AudioParam) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue])
+    }
+
+    @inlinable public func disconnect(destinationParam: AudioParam, output: UInt32) {
+        let this = jsObject
+        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue, output.jsValue])
+    }
+
+    @ReadonlyAttribute
+    public var context: BaseAudioContext
+
+    @ReadonlyAttribute
+    public var numberOfInputs: UInt32
+
+    @ReadonlyAttribute
+    public var numberOfOutputs: UInt32
+
+    @ReadWriteAttribute
+    public var channelCount: UInt32
+
+    @ReadWriteAttribute
+    public var channelCountMode: ChannelCountMode
+
+    @ReadWriteAttribute
+    public var channelInterpretation: ChannelInterpretation
+}
+
+public class AudioNodeOptions: BridgedDictionary {
+    public convenience init(channelCount: UInt32, channelCountMode: ChannelCountMode, channelInterpretation: ChannelInterpretation) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.channelCount] = channelCount.jsValue
+        object[Strings.channelCountMode] = channelCountMode.jsValue
+        object[Strings.channelInterpretation] = channelInterpretation.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _channelCount = ReadWriteAttribute(jsObject: object, name: Strings.channelCount)
+        _channelCountMode = ReadWriteAttribute(jsObject: object, name: Strings.channelCountMode)
+        _channelInterpretation = ReadWriteAttribute(jsObject: object, name: Strings.channelInterpretation)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var channelCount: UInt32
+
+    @ReadWriteAttribute
+    public var channelCountMode: ChannelCountMode
+
+    @ReadWriteAttribute
+    public var channelInterpretation: ChannelInterpretation
+}
+
+public class AudioParam: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioParam].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _value = ReadWriteAttribute(jsObject: jsObject, name: Strings.value)
+        _automationRate = ReadWriteAttribute(jsObject: jsObject, name: Strings.automationRate)
+        _defaultValue = ReadonlyAttribute(jsObject: jsObject, name: Strings.defaultValue)
+        _minValue = ReadonlyAttribute(jsObject: jsObject, name: Strings.minValue)
+        _maxValue = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxValue)
+        self.jsObject = jsObject
+    }
+
+    @ReadWriteAttribute
+    public var value: Float
+
+    @ReadWriteAttribute
+    public var automationRate: AutomationRate
+
+    @ReadonlyAttribute
+    public var defaultValue: Float
+
+    @ReadonlyAttribute
+    public var minValue: Float
+
+    @ReadonlyAttribute
+    public var maxValue: Float
+
+    @inlinable public func setValueAtTime(value: Float, startTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.setValueAtTime].function!(this: this, arguments: [value.jsValue, startTime.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func linearRampToValueAtTime(value: Float, endTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.linearRampToValueAtTime].function!(this: this, arguments: [value.jsValue, endTime.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func exponentialRampToValueAtTime(value: Float, endTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.exponentialRampToValueAtTime].function!(this: this, arguments: [value.jsValue, endTime.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func setTargetAtTime(target: Float, startTime: Double, timeConstant: Float) -> Self {
+        let this = jsObject
+        return this[Strings.setTargetAtTime].function!(this: this, arguments: [target.jsValue, startTime.jsValue, timeConstant.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func setValueCurveAtTime(values: [Float], startTime: Double, duration: Double) -> Self {
+        let this = jsObject
+        return this[Strings.setValueCurveAtTime].function!(this: this, arguments: [values.jsValue, startTime.jsValue, duration.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func cancelScheduledValues(cancelTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.cancelScheduledValues].function!(this: this, arguments: [cancelTime.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func cancelAndHoldAtTime(cancelTime: Double) -> Self {
+        let this = jsObject
+        return this[Strings.cancelAndHoldAtTime].function!(this: this, arguments: [cancelTime.jsValue]).fromJSValue()!
+    }
+}
+
+public class AudioParamDescriptor: BridgedDictionary {
+    public convenience init(name: String, defaultValue: Float, minValue: Float, maxValue: Float, automationRate: AutomationRate) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.name] = name.jsValue
+        object[Strings.defaultValue] = defaultValue.jsValue
+        object[Strings.minValue] = minValue.jsValue
+        object[Strings.maxValue] = maxValue.jsValue
+        object[Strings.automationRate] = automationRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _name = ReadWriteAttribute(jsObject: object, name: Strings.name)
+        _defaultValue = ReadWriteAttribute(jsObject: object, name: Strings.defaultValue)
+        _minValue = ReadWriteAttribute(jsObject: object, name: Strings.minValue)
+        _maxValue = ReadWriteAttribute(jsObject: object, name: Strings.maxValue)
+        _automationRate = ReadWriteAttribute(jsObject: object, name: Strings.automationRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var name: String
+
+    @ReadWriteAttribute
+    public var defaultValue: Float
+
+    @ReadWriteAttribute
+    public var minValue: Float
+
+    @ReadWriteAttribute
+    public var maxValue: Float
+
+    @ReadWriteAttribute
+    public var automationRate: AutomationRate
+}
+
+public class AudioParamMap: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioParamMap].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        self.jsObject = jsObject
+    }
+
+    // XXX: make me Map-like!
+}
+
+public class AudioProcessingEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioProcessingEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _playbackTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.playbackTime)
+        _inputBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.inputBuffer)
+        _outputBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.outputBuffer)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: AudioProcessingEventInit) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var playbackTime: Double
+
+    @ReadonlyAttribute
+    public var inputBuffer: AudioBuffer
+
+    @ReadonlyAttribute
+    public var outputBuffer: AudioBuffer
+}
+
+public class AudioProcessingEventInit: BridgedDictionary {
+    public convenience init(playbackTime: Double, inputBuffer: AudioBuffer, outputBuffer: AudioBuffer) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.playbackTime] = playbackTime.jsValue
+        object[Strings.inputBuffer] = inputBuffer.jsValue
+        object[Strings.outputBuffer] = outputBuffer.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _playbackTime = ReadWriteAttribute(jsObject: object, name: Strings.playbackTime)
+        _inputBuffer = ReadWriteAttribute(jsObject: object, name: Strings.inputBuffer)
+        _outputBuffer = ReadWriteAttribute(jsObject: object, name: Strings.outputBuffer)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var playbackTime: Double
+
+    @ReadWriteAttribute
+    public var inputBuffer: AudioBuffer
+
+    @ReadWriteAttribute
+    public var outputBuffer: AudioBuffer
+}
+
+public class AudioScheduledSourceNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioScheduledSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _onended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onended)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ClosureAttribute1Optional
+    public var onended: EventHandler
+
+    @inlinable public func start(when: Double? = nil) {
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func stop(when: Double? = nil) {
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [when?.jsValue ?? .undefined])
+    }
+}
+
+public class AudioTimestamp: BridgedDictionary {
+    public convenience init(contextTime: Double, performanceTime: DOMHighResTimeStamp) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.contextTime] = contextTime.jsValue
+        object[Strings.performanceTime] = performanceTime.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _contextTime = ReadWriteAttribute(jsObject: object, name: Strings.contextTime)
+        _performanceTime = ReadWriteAttribute(jsObject: object, name: Strings.performanceTime)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var contextTime: Double
+
+    @ReadWriteAttribute
+    public var performanceTime: DOMHighResTimeStamp
+}
+
 public class AudioTrack: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.AudioTrack].function! }
 
@@ -653,6 +1409,92 @@ public class AudioTrackList: EventTarget {
     public var onremovetrack: EventHandler
 }
 
+public class AudioWorklet: Worklet {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioWorklet].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+}
+
+public class AudioWorkletNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.AudioWorkletNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _parameters = ReadonlyAttribute(jsObject: jsObject, name: Strings.parameters)
+        _port = ReadonlyAttribute(jsObject: jsObject, name: Strings.port)
+        _onprocessorerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onprocessorerror)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, name: String, options: AudioWorkletNodeOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, name.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var parameters: AudioParamMap
+
+    @ReadonlyAttribute
+    public var port: MessagePort
+
+    @ClosureAttribute1Optional
+    public var onprocessorerror: EventHandler
+}
+
+public class AudioWorkletNodeOptions: BridgedDictionary {
+    public convenience init(numberOfInputs: UInt32, numberOfOutputs: UInt32, outputChannelCount: [UInt32], parameterData: [String: Double], processorOptions: JSObject) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfInputs] = numberOfInputs.jsValue
+        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue
+        object[Strings.outputChannelCount] = outputChannelCount.jsValue
+        object[Strings.parameterData] = parameterData.jsValue
+        object[Strings.processorOptions] = processorOptions.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfInputs = ReadWriteAttribute(jsObject: object, name: Strings.numberOfInputs)
+        _numberOfOutputs = ReadWriteAttribute(jsObject: object, name: Strings.numberOfOutputs)
+        _outputChannelCount = ReadWriteAttribute(jsObject: object, name: Strings.outputChannelCount)
+        _parameterData = ReadWriteAttribute(jsObject: object, name: Strings.parameterData)
+        _processorOptions = ReadWriteAttribute(jsObject: object, name: Strings.processorOptions)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfInputs: UInt32
+
+    @ReadWriteAttribute
+    public var numberOfOutputs: UInt32
+
+    @ReadWriteAttribute
+    public var outputChannelCount: [UInt32]
+
+    @ReadWriteAttribute
+    public var parameterData: [String: Double]
+
+    @ReadWriteAttribute
+    public var processorOptions: JSObject
+}
+
+public enum AutomationRate: JSString, JSValueCompatible {
+    case aRate = "a-rate"
+    case kRate = "k-rate"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public class BarProp: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.BarProp].function! }
 
@@ -665,6 +1507,136 @@ public class BarProp: JSBridgedClass {
 
     @ReadonlyAttribute
     public var visible: Bool
+}
+
+public class BaseAudioContext: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BaseAudioContext].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _destination = ReadonlyAttribute(jsObject: jsObject, name: Strings.destination)
+        _sampleRate = ReadonlyAttribute(jsObject: jsObject, name: Strings.sampleRate)
+        _currentTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentTime)
+        _listener = ReadonlyAttribute(jsObject: jsObject, name: Strings.listener)
+        _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
+        _audioWorklet = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioWorklet)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var destination: AudioDestinationNode
+
+    @ReadonlyAttribute
+    public var sampleRate: Float
+
+    @ReadonlyAttribute
+    public var currentTime: Double
+
+    @ReadonlyAttribute
+    public var listener: AudioListener
+
+    @ReadonlyAttribute
+    public var state: AudioContextState
+
+    @ReadonlyAttribute
+    public var audioWorklet: AudioWorklet
+
+    @ClosureAttribute1Optional
+    public var onstatechange: EventHandler
+
+    @inlinable public func createAnalyser() -> AnalyserNode {
+        let this = jsObject
+        return this[Strings.createAnalyser].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createBiquadFilter() -> BiquadFilterNode {
+        let this = jsObject
+        return this[Strings.createBiquadFilter].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createBuffer(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) -> AudioBuffer {
+        let this = jsObject
+        return this[Strings.createBuffer].function!(this: this, arguments: [numberOfChannels.jsValue, length.jsValue, sampleRate.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createBufferSource() -> AudioBufferSourceNode {
+        let this = jsObject
+        return this[Strings.createBufferSource].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createChannelMerger(numberOfInputs: UInt32? = nil) -> ChannelMergerNode {
+        let this = jsObject
+        return this[Strings.createChannelMerger].function!(this: this, arguments: [numberOfInputs?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createChannelSplitter(numberOfOutputs: UInt32? = nil) -> ChannelSplitterNode {
+        let this = jsObject
+        return this[Strings.createChannelSplitter].function!(this: this, arguments: [numberOfOutputs?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createConstantSource() -> ConstantSourceNode {
+        let this = jsObject
+        return this[Strings.createConstantSource].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createConvolver() -> ConvolverNode {
+        let this = jsObject
+        return this[Strings.createConvolver].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createDelay(maxDelayTime: Double? = nil) -> DelayNode {
+        let this = jsObject
+        return this[Strings.createDelay].function!(this: this, arguments: [maxDelayTime?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createDynamicsCompressor() -> DynamicsCompressorNode {
+        let this = jsObject
+        return this[Strings.createDynamicsCompressor].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createGain() -> GainNode {
+        let this = jsObject
+        return this[Strings.createGain].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createIIRFilter(feedforward: [Double], feedback: [Double]) -> IIRFilterNode {
+        let this = jsObject
+        return this[Strings.createIIRFilter].function!(this: this, arguments: [feedforward.jsValue, feedback.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func createOscillator() -> OscillatorNode {
+        let this = jsObject
+        return this[Strings.createOscillator].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createPanner() -> PannerNode {
+        let this = jsObject
+        return this[Strings.createPanner].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createPeriodicWave(real: [Float], imag: [Float], constraints: PeriodicWaveConstraints? = nil) -> PeriodicWave {
+        let this = jsObject
+        return this[Strings.createPeriodicWave].function!(this: this, arguments: [real.jsValue, imag.jsValue, constraints?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createScriptProcessor(bufferSize: UInt32? = nil, numberOfInputChannels: UInt32? = nil, numberOfOutputChannels: UInt32? = nil) -> ScriptProcessorNode {
+        let this = jsObject
+        return this[Strings.createScriptProcessor].function!(this: this, arguments: [bufferSize?.jsValue ?? .undefined, numberOfInputChannels?.jsValue ?? .undefined, numberOfOutputChannels?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func createStereoPanner() -> StereoPannerNode {
+        let this = jsObject
+        return this[Strings.createStereoPanner].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func createWaveShaper() -> WaveShaperNode {
+        let this = jsObject
+        return this[Strings.createWaveShaper].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    // XXX: member 'decodeAudioData' is ignored
+
+    // XXX: member 'decodeAudioData' is ignored
 }
 
 public class BaseComputedKeyframe: BridgedDictionary {
@@ -758,6 +1730,121 @@ public class BeforeUnloadEvent: Event {
     }
 
     // XXX: member 'returnValue' is ignored
+}
+
+public enum BinaryType: JSString, JSValueCompatible {
+    case blob = "blob"
+    case arraybuffer = "arraybuffer"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class BiquadFilterNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BiquadFilterNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _frequency = ReadonlyAttribute(jsObject: jsObject, name: Strings.frequency)
+        _detune = ReadonlyAttribute(jsObject: jsObject, name: Strings.detune)
+        _Q = ReadonlyAttribute(jsObject: jsObject, name: Strings.Q)
+        _gain = ReadonlyAttribute(jsObject: jsObject, name: Strings.gain)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: BiquadFilterOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var type: BiquadFilterType
+
+    @ReadonlyAttribute
+    public var frequency: AudioParam
+
+    @ReadonlyAttribute
+    public var detune: AudioParam
+
+    @ReadonlyAttribute
+    public var Q: AudioParam
+
+    @ReadonlyAttribute
+    public var gain: AudioParam
+
+    @inlinable public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
+        let this = jsObject
+        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue, magResponse.jsValue, phaseResponse.jsValue])
+    }
+}
+
+public class BiquadFilterOptions: BridgedDictionary {
+    public convenience init(type: BiquadFilterType, Q: Float, detune: Float, frequency: Float, gain: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.type] = type.jsValue
+        object[Strings.Q] = Q.jsValue
+        object[Strings.detune] = detune.jsValue
+        object[Strings.frequency] = frequency.jsValue
+        object[Strings.gain] = gain.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _type = ReadWriteAttribute(jsObject: object, name: Strings.type)
+        _Q = ReadWriteAttribute(jsObject: object, name: Strings.Q)
+        _detune = ReadWriteAttribute(jsObject: object, name: Strings.detune)
+        _frequency = ReadWriteAttribute(jsObject: object, name: Strings.frequency)
+        _gain = ReadWriteAttribute(jsObject: object, name: Strings.gain)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var type: BiquadFilterType
+
+    @ReadWriteAttribute
+    public var Q: Float
+
+    @ReadWriteAttribute
+    public var detune: Float
+
+    @ReadWriteAttribute
+    public var frequency: Float
+
+    @ReadWriteAttribute
+    public var gain: Float
+}
+
+public enum BiquadFilterType: JSString, JSValueCompatible {
+    case lowpass = "lowpass"
+    case highpass = "highpass"
+    case bandpass = "bandpass"
+    case lowshelf = "lowshelf"
+    case highshelf = "highshelf"
+    case peaking = "peaking"
+    case notch = "notch"
+    case allpass = "allpass"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
 public enum BitrateMode: JSString, JSValueCompatible {
@@ -960,6 +2047,27 @@ public extension Body {
     }
 }
 
+public class BoxQuadOptions: BridgedDictionary {
+    public convenience init(box: CSSBoxType, relativeTo: GeometryNode) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.box] = box.jsValue
+        object[Strings.relativeTo] = relativeTo.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _box = ReadWriteAttribute(jsObject: object, name: Strings.box)
+        _relativeTo = ReadWriteAttribute(jsObject: object, name: Strings.relativeTo)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var box: CSSBoxType
+
+    @ReadWriteAttribute
+    public var relativeTo: GeometryNode
+}
+
 public class BroadcastChannel: EventTarget {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BroadcastChannel].function! }
 
@@ -1021,6 +2129,51 @@ public class CDATASection: Text {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
+    }
+}
+
+public enum CSSBoxType: JSString, JSValueCompatible {
+    case margin = "margin"
+    case border = "border"
+    case padding = "padding"
+    case content = "content"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class CSSPseudoElement: EventTarget, GeometryUtils {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CSSPseudoElement].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _type = ReadonlyAttribute(jsObject: jsObject, name: Strings.type)
+        _element = ReadonlyAttribute(jsObject: jsObject, name: Strings.element)
+        _parent = ReadonlyAttribute(jsObject: jsObject, name: Strings.parent)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var type: String
+
+    @ReadonlyAttribute
+    public var element: Element
+
+    @ReadonlyAttribute
+    public var parent: CSSPseudoElement_or_Element
+
+    @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
+        let this = jsObject
+        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
     }
 }
 
@@ -2065,6 +3218,122 @@ public extension CanvasUserInterface {
     }
 }
 
+public class CaretPosition: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.CaretPosition].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _offsetNode = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetNode)
+        _offset = ReadonlyAttribute(jsObject: jsObject, name: Strings.offset)
+        self.jsObject = jsObject
+    }
+
+    @ReadonlyAttribute
+    public var offsetNode: Node
+
+    @ReadonlyAttribute
+    public var offset: UInt32
+
+    @inlinable public func getClientRect() -> DOMRect? {
+        let this = jsObject
+        return this[Strings.getClientRect].function!(this: this, arguments: []).fromJSValue()!
+    }
+}
+
+public enum ChannelCountMode: JSString, JSValueCompatible {
+    case max = "max"
+    case clampedMax = "clamped-max"
+    case explicit = "explicit"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public enum ChannelInterpretation: JSString, JSValueCompatible {
+    case speakers = "speakers"
+    case discrete = "discrete"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class ChannelMergerNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ChannelMergerNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: ChannelMergerOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+}
+
+public class ChannelMergerOptions: BridgedDictionary {
+    public convenience init(numberOfInputs: UInt32) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfInputs] = numberOfInputs.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfInputs = ReadWriteAttribute(jsObject: object, name: Strings.numberOfInputs)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfInputs: UInt32
+}
+
+public class ChannelSplitterNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ChannelSplitterNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: ChannelSplitterOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+}
+
+public class ChannelSplitterOptions: BridgedDictionary {
+    public convenience init(numberOfOutputs: UInt32) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfOutputs = ReadWriteAttribute(jsObject: object, name: Strings.numberOfOutputs)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfOutputs: UInt32
+}
+
 public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CharacterData].function! }
 
@@ -2168,6 +3437,56 @@ public enum ClientType: JSString, JSValueCompatible {
     }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class CloseEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.CloseEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _wasClean = ReadonlyAttribute(jsObject: jsObject, name: Strings.wasClean)
+        _code = ReadonlyAttribute(jsObject: jsObject, name: Strings.code)
+        _reason = ReadonlyAttribute(jsObject: jsObject, name: Strings.reason)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: CloseEventInit? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var wasClean: Bool
+
+    @ReadonlyAttribute
+    public var code: UInt16
+
+    @ReadonlyAttribute
+    public var reason: String
+}
+
+public class CloseEventInit: BridgedDictionary {
+    public convenience init(wasClean: Bool, code: UInt16, reason: String) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.wasClean] = wasClean.jsValue
+        object[Strings.code] = code.jsValue
+        object[Strings.reason] = reason.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _wasClean = ReadWriteAttribute(jsObject: object, name: Strings.wasClean)
+        _code = ReadWriteAttribute(jsObject: object, name: Strings.code)
+        _reason = ReadWriteAttribute(jsObject: object, name: Strings.reason)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var wasClean: Bool
+
+    @ReadWriteAttribute
+    public var code: UInt16
+
+    @ReadWriteAttribute
+    public var reason: String
 }
 
 public enum ColorSpaceConversion: JSString, JSValueCompatible {
@@ -2297,6 +3616,38 @@ public class ComputedEffectTiming: BridgedDictionary {
     public var currentIteration: Double?
 }
 
+public class ConstantSourceNode: AudioScheduledSourceNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ConstantSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _offset = ReadonlyAttribute(jsObject: jsObject, name: Strings.offset)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: ConstantSourceOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var offset: AudioParam
+}
+
+public class ConstantSourceOptions: BridgedDictionary {
+    public convenience init(offset: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.offset] = offset.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _offset = ReadWriteAttribute(jsObject: object, name: Strings.offset)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var offset: Float
+}
+
 public class ConstrainBooleanParameters: BridgedDictionary {
     public convenience init(exact: Bool, ideal: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -2379,6 +3730,68 @@ public class ConstrainULongRange: BridgedDictionary {
 
     @ReadWriteAttribute
     public var ideal: UInt32
+}
+
+public class ConvertCoordinateOptions: BridgedDictionary {
+    public convenience init(fromBox: CSSBoxType, toBox: CSSBoxType) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.fromBox] = fromBox.jsValue
+        object[Strings.toBox] = toBox.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _fromBox = ReadWriteAttribute(jsObject: object, name: Strings.fromBox)
+        _toBox = ReadWriteAttribute(jsObject: object, name: Strings.toBox)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var fromBox: CSSBoxType
+
+    @ReadWriteAttribute
+    public var toBox: CSSBoxType
+}
+
+public class ConvolverNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ConvolverNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _buffer = ReadWriteAttribute(jsObject: jsObject, name: Strings.buffer)
+        _normalize = ReadWriteAttribute(jsObject: jsObject, name: Strings.normalize)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: ConvolverOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var buffer: AudioBuffer?
+
+    @ReadWriteAttribute
+    public var normalize: Bool
+}
+
+public class ConvolverOptions: BridgedDictionary {
+    public convenience init(buffer: AudioBuffer?, disableNormalization: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.buffer] = buffer.jsValue
+        object[Strings.disableNormalization] = disableNormalization.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _buffer = ReadWriteAttribute(jsObject: object, name: Strings.buffer)
+        _disableNormalization = ReadWriteAttribute(jsObject: object, name: Strings.disableNormalization)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var buffer: AudioBuffer?
+
+    @ReadWriteAttribute
+    public var disableNormalization: Bool
 }
 
 public class CountQueuingStrategy: JSBridgedClass {
@@ -3784,6 +5197,43 @@ public class DataTransferItemList: JSBridgedClass {
     }
 }
 
+public class DelayNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DelayNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _delayTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.delayTime)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: DelayOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var delayTime: AudioParam
+}
+
+public class DelayOptions: BridgedDictionary {
+    public convenience init(maxDelayTime: Double, delayTime: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.maxDelayTime] = maxDelayTime.jsValue
+        object[Strings.delayTime] = delayTime.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _maxDelayTime = ReadWriteAttribute(jsObject: object, name: Strings.maxDelayTime)
+        _delayTime = ReadWriteAttribute(jsObject: object, name: Strings.delayTime)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var maxDelayTime: Double
+
+    @ReadWriteAttribute
+    public var delayTime: Double
+}
+
 public class DevicePermissionDescriptor: BridgedDictionary {
     public convenience init(deviceId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -3800,7 +5250,26 @@ public class DevicePermissionDescriptor: BridgedDictionary {
     public var deviceId: String
 }
 
-public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentNode, XPathEvaluatorBase, GlobalEventHandlers, DocumentAndElementEventHandlers {
+public enum DistanceModelType: JSString, JSValueCompatible {
+    case linear = "linear"
+    case inverse = "inverse"
+    case exponential = "exponential"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentNode, XPathEvaluatorBase, GlobalEventHandlers, DocumentAndElementEventHandlers, GeometryUtils {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Document].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -3846,6 +5315,7 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
         _applets = ReadonlyAttribute(jsObject: jsObject, name: Strings.applets)
         _all = ReadonlyAttribute(jsObject: jsObject, name: Strings.all)
         _timeline = ReadonlyAttribute(jsObject: jsObject, name: Strings.timeline)
+        _scrollingElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollingElement)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -4146,6 +5616,24 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @ReadonlyAttribute
     public var timeline: DocumentTimeline
+
+    @inlinable public func elementFromPoint(x: Double, y: Double) -> Element? {
+        let this = jsObject
+        return this[Strings.elementFromPoint].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func elementsFromPoint(x: Double, y: Double) -> [Element] {
+        let this = jsObject
+        return this[Strings.elementsFromPoint].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func caretPositionFromPoint(x: Double, y: Double) -> CaretPosition? {
+        let this = jsObject
+        return this[Strings.caretPositionFromPoint].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var scrollingElement: Element?
 }
 
 public protocol DocumentAndElementEventHandlers: JSBridgedClass {}
@@ -4326,6 +5814,78 @@ public class DragEventInit: BridgedDictionary {
     public var dataTransfer: DataTransfer?
 }
 
+public class DynamicsCompressorNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.DynamicsCompressorNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _threshold = ReadonlyAttribute(jsObject: jsObject, name: Strings.threshold)
+        _knee = ReadonlyAttribute(jsObject: jsObject, name: Strings.knee)
+        _ratio = ReadonlyAttribute(jsObject: jsObject, name: Strings.ratio)
+        _reduction = ReadonlyAttribute(jsObject: jsObject, name: Strings.reduction)
+        _attack = ReadonlyAttribute(jsObject: jsObject, name: Strings.attack)
+        _release = ReadonlyAttribute(jsObject: jsObject, name: Strings.release)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: DynamicsCompressorOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var threshold: AudioParam
+
+    @ReadonlyAttribute
+    public var knee: AudioParam
+
+    @ReadonlyAttribute
+    public var ratio: AudioParam
+
+    @ReadonlyAttribute
+    public var reduction: Float
+
+    @ReadonlyAttribute
+    public var attack: AudioParam
+
+    @ReadonlyAttribute
+    public var release: AudioParam
+}
+
+public class DynamicsCompressorOptions: BridgedDictionary {
+    public convenience init(attack: Float, knee: Float, ratio: Float, release: Float, threshold: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.attack] = attack.jsValue
+        object[Strings.knee] = knee.jsValue
+        object[Strings.ratio] = ratio.jsValue
+        object[Strings.release] = release.jsValue
+        object[Strings.threshold] = threshold.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _attack = ReadWriteAttribute(jsObject: object, name: Strings.attack)
+        _knee = ReadWriteAttribute(jsObject: object, name: Strings.knee)
+        _ratio = ReadWriteAttribute(jsObject: object, name: Strings.ratio)
+        _release = ReadWriteAttribute(jsObject: object, name: Strings.release)
+        _threshold = ReadWriteAttribute(jsObject: object, name: Strings.threshold)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var attack: Float
+
+    @ReadWriteAttribute
+    public var knee: Float
+
+    @ReadWriteAttribute
+    public var ratio: Float
+
+    @ReadWriteAttribute
+    public var release: Float
+
+    @ReadWriteAttribute
+    public var threshold: Float
+}
+
 public class EffectTiming: BridgedDictionary {
     public convenience init(delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, direction: PlaybackDirection, easing: String) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -4372,7 +5932,7 @@ public class EffectTiming: BridgedDictionary {
     public var easing: String
 }
 
-public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin, Animatable {
+public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin, Animatable, GeometryUtils {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Element].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -4386,6 +5946,14 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
         _slot = ReadWriteAttribute(jsObject: jsObject, name: Strings.slot)
         _attributes = ReadonlyAttribute(jsObject: jsObject, name: Strings.attributes)
         _shadowRoot = ReadonlyAttribute(jsObject: jsObject, name: Strings.shadowRoot)
+        _scrollTop = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollTop)
+        _scrollLeft = ReadWriteAttribute(jsObject: jsObject, name: Strings.scrollLeft)
+        _scrollWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollWidth)
+        _scrollHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollHeight)
+        _clientTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientTop)
+        _clientLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientLeft)
+        _clientWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientWidth)
+        _clientHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientHeight)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -4543,6 +6111,85 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
         let this = jsObject
         _ = this[Strings.insertAdjacentText].function!(this: this, arguments: [`where`.jsValue, data.jsValue])
     }
+
+    @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
+        let this = jsObject
+        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func getClientRects() -> DOMRectList {
+        let this = jsObject
+        return this[Strings.getClientRects].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getBoundingClientRect() -> DOMRect {
+        let this = jsObject
+        return this[Strings.getBoundingClientRect].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func isVisible(options: IsVisibleOptions? = nil) -> Bool {
+        let this = jsObject
+        return this[Strings.isVisible].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable public func scrollIntoView(arg: Bool_or_ScrollIntoViewOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollIntoView].function!(this: this, arguments: [arg?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scroll(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scroll(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func scrollTo(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scrollTo(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func scrollBy(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scrollBy(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @ReadWriteAttribute
+    public var scrollTop: Double
+
+    @ReadWriteAttribute
+    public var scrollLeft: Double
+
+    @ReadonlyAttribute
+    public var scrollWidth: Int32
+
+    @ReadonlyAttribute
+    public var scrollHeight: Int32
+
+    @ReadonlyAttribute
+    public var clientTop: Int32
+
+    @ReadonlyAttribute
+    public var clientLeft: Int32
+
+    @ReadonlyAttribute
+    public var clientWidth: Int32
+
+    @ReadonlyAttribute
+    public var clientHeight: Int32
 }
 
 public protocol ElementContentEditable: JSBridgedClass {}
@@ -5431,11 +7078,66 @@ public enum FrameType: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
+public class GainNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.GainNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _gain = ReadonlyAttribute(jsObject: jsObject, name: Strings.gain)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: GainOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var gain: AudioParam
+}
+
+public class GainOptions: BridgedDictionary {
+    public convenience init(gain: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.gain] = gain.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _gain = ReadWriteAttribute(jsObject: object, name: Strings.gain)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var gain: Float
+}
+
 public protocol GenericTransformStream: JSBridgedClass {}
 public extension GenericTransformStream {
     @inlinable var readable: ReadableStream { ReadonlyAttribute[Strings.readable, in: jsObject] }
 
     @inlinable var writable: WritableStream { ReadonlyAttribute[Strings.writable, in: jsObject] }
+}
+
+public protocol GeometryUtils: JSBridgedClass {}
+public extension GeometryUtils {
+    @inlinable func getBoxQuads(options: BoxQuadOptions? = nil) -> [DOMQuad] {
+        let this = jsObject
+        return this[Strings.getBoxQuads].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable func convertQuadFromNode(quad: DOMQuadInit, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMQuad {
+        let this = jsObject
+        return this[Strings.convertQuadFromNode].function!(this: this, arguments: [quad.jsValue, from.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable func convertRectFromNode(rect: DOMRectReadOnly, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMQuad {
+        let this = jsObject
+        return this[Strings.convertRectFromNode].function!(this: this, arguments: [rect.jsValue, from.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+    }
+
+    @inlinable func convertPointFromNode(point: DOMPointInit, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMPoint {
+        let this = jsObject
+        return this[Strings.convertPointFromNode].function!(this: this, arguments: [point.jsValue, from.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+    }
 }
 
 public class GetAnimationsOptions: BridgedDictionary {
@@ -6334,6 +8036,11 @@ public class HTMLElement: Element, GlobalEventHandlers, DocumentAndElementEventH
         _autocapitalize = ReadWriteAttribute(jsObject: jsObject, name: Strings.autocapitalize)
         _innerText = ReadWriteAttribute(jsObject: jsObject, name: Strings.innerText)
         _outerText = ReadWriteAttribute(jsObject: jsObject, name: Strings.outerText)
+        _offsetParent = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetParent)
+        _offsetTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetTop)
+        _offsetLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetLeft)
+        _offsetWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetWidth)
+        _offsetHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetHeight)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -6389,6 +8096,21 @@ public class HTMLElement: Element, GlobalEventHandlers, DocumentAndElementEventH
         let this = jsObject
         return this[Strings.attachInternals].function!(this: this, arguments: []).fromJSValue()!
     }
+
+    @ReadonlyAttribute
+    public var offsetParent: Element?
+
+    @ReadonlyAttribute
+    public var offsetTop: Int32
+
+    @ReadonlyAttribute
+    public var offsetLeft: Int32
+
+    @ReadonlyAttribute
+    public var offsetWidth: Int32
+
+    @ReadonlyAttribute
+    public var offsetHeight: Int32
 }
 
 public class HTMLEmbedElement: HTMLElement {
@@ -6943,6 +8665,8 @@ public class HTMLImageElement: HTMLElement {
         _vspace = ReadWriteAttribute(jsObject: jsObject, name: Strings.vspace)
         _longDesc = ReadWriteAttribute(jsObject: jsObject, name: Strings.longDesc)
         _border = ReadWriteAttribute(jsObject: jsObject, name: Strings.border)
+        _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
+        _y = ReadonlyAttribute(jsObject: jsObject, name: Strings.y)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -7030,6 +8754,12 @@ public class HTMLImageElement: HTMLElement {
 
     @ReadWriteAttribute
     public var border: String
+
+    @ReadonlyAttribute
+    public var x: Int32
+
+    @ReadonlyAttribute
+    public var y: Int32
 }
 
 public class HTMLInputElement: HTMLElement {
@@ -9315,6 +11045,44 @@ public class History: JSBridgedClass {
     }
 }
 
+public class IIRFilterNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.IIRFilterNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: IIRFilterOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options.jsValue]))
+    }
+
+    @inlinable public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
+        let this = jsObject
+        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue, magResponse.jsValue, phaseResponse.jsValue])
+    }
+}
+
+public class IIRFilterOptions: BridgedDictionary {
+    public convenience init(feedforward: [Double], feedback: [Double]) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.feedforward] = feedforward.jsValue
+        object[Strings.feedback] = feedback.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _feedforward = ReadWriteAttribute(jsObject: object, name: Strings.feedforward)
+        _feedback = ReadWriteAttribute(jsObject: object, name: Strings.feedback)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var feedforward: [Double]
+
+    @ReadWriteAttribute
+    public var feedback: [Double]
+}
+
 public class ImageBitmap: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.ImageBitmap].function! }
 
@@ -9583,6 +11351,18 @@ public class InputEventInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var inputType: String
+}
+
+public class IsVisibleOptions: BridgedDictionary {
+    public convenience init() {
+        let object = JSObject.global[Strings.Object].function!.new()
+
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        super.init(unsafelyWrapping: object)
+    }
 }
 
 public class KeyboardEvent: UIEvent {
@@ -9951,6 +11731,38 @@ public class MediaDevices: EventTarget {
     }
 }
 
+public class MediaElementAudioSourceNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaElementAudioSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _mediaElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaElement)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: AudioContext, options: MediaElementAudioSourceOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var mediaElement: HTMLMediaElement
+}
+
+public class MediaElementAudioSourceOptions: BridgedDictionary {
+    public convenience init(mediaElement: HTMLMediaElement) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.mediaElement] = mediaElement.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _mediaElement = ReadWriteAttribute(jsObject: object, name: Strings.mediaElement)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var mediaElement: HTMLMediaElement
+}
+
 public class MediaError: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.MediaError].function! }
 
@@ -9975,6 +11787,71 @@ public class MediaError: JSBridgedClass {
 
     @ReadonlyAttribute
     public var message: String
+}
+
+public class MediaQueryList: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaQueryList].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
+        _matches = ReadonlyAttribute(jsObject: jsObject, name: Strings.matches)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var media: String
+
+    @ReadonlyAttribute
+    public var matches: Bool
+
+    // XXX: member 'addListener' is ignored
+
+    // XXX: member 'removeListener' is ignored
+
+    @ClosureAttribute1Optional
+    public var onchange: EventHandler
+}
+
+public class MediaQueryListEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaQueryListEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
+        _matches = ReadonlyAttribute(jsObject: jsObject, name: Strings.matches)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: MediaQueryListEventInit? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var media: String
+
+    @ReadonlyAttribute
+    public var matches: Bool
+}
+
+public class MediaQueryListEventInit: BridgedDictionary {
+    public convenience init(media: String, matches: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.media] = media.jsValue
+        object[Strings.matches] = matches.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _media = ReadWriteAttribute(jsObject: object, name: Strings.media)
+        _matches = ReadWriteAttribute(jsObject: object, name: Strings.matches)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var media: String
+
+    @ReadWriteAttribute
+    public var matches: Bool
 }
 
 public class MediaRecorder: EventTarget {
@@ -10206,6 +12083,54 @@ public class MediaStream: EventTarget {
     public var onremovetrack: EventHandler
 }
 
+public class MediaStreamAudioDestinationNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamAudioDestinationNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _stream = ReadonlyAttribute(jsObject: jsObject, name: Strings.stream)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: AudioContext, options: AudioNodeOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var stream: MediaStream
+}
+
+public class MediaStreamAudioSourceNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamAudioSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _mediaStream = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaStream)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: AudioContext, options: MediaStreamAudioSourceOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var mediaStream: MediaStream
+}
+
+public class MediaStreamAudioSourceOptions: BridgedDictionary {
+    public convenience init(mediaStream: MediaStream) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.mediaStream] = mediaStream.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _mediaStream = ReadWriteAttribute(jsObject: object, name: Strings.mediaStream)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var mediaStream: MediaStream
+}
+
 public class MediaStreamConstraints: BridgedDictionary {
     public convenience init(video: Bool_or_MediaTrackConstraints, audio: Bool_or_MediaTrackConstraints) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -10306,6 +12231,34 @@ public class MediaStreamTrack: EventTarget {
         let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
         _ = try await _promise.value
     }
+}
+
+public class MediaStreamTrackAudioSourceNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStreamTrackAudioSourceNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: AudioContext, options: MediaStreamTrackAudioSourceOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options.jsValue]))
+    }
+}
+
+public class MediaStreamTrackAudioSourceOptions: BridgedDictionary {
+    public convenience init(mediaStreamTrack: MediaStreamTrack) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.mediaStreamTrack] = mediaStreamTrack.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _mediaStreamTrack = ReadWriteAttribute(jsObject: object, name: Strings.mediaStreamTrack)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var mediaStreamTrack: MediaStreamTrack
 }
 
 public class MediaStreamTrackEvent: Event {
@@ -10920,6 +12873,12 @@ public class MouseEvent: UIEvent {
         _button = ReadonlyAttribute(jsObject: jsObject, name: Strings.button)
         _buttons = ReadonlyAttribute(jsObject: jsObject, name: Strings.buttons)
         _relatedTarget = ReadonlyAttribute(jsObject: jsObject, name: Strings.relatedTarget)
+        _pageX = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageX)
+        _pageY = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageY)
+        _x = ReadonlyAttribute(jsObject: jsObject, name: Strings.x)
+        _y = ReadonlyAttribute(jsObject: jsObject, name: Strings.y)
+        _offsetX = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetX)
+        _offsetY = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetY)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -10984,6 +12943,24 @@ public class MouseEvent: UIEvent {
         let this = jsObject
         _ = this[Strings.initMouseEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14])
     }
+
+    @ReadonlyAttribute
+    public var pageX: Double
+
+    @ReadonlyAttribute
+    public var pageY: Double
+
+    @ReadonlyAttribute
+    public var x: Double
+
+    @ReadonlyAttribute
+    public var y: Double
+
+    @ReadonlyAttribute
+    public var offsetX: Double
+
+    @ReadonlyAttribute
+    public var offsetY: Double
 }
 
 public class MouseEventInit: BridgedDictionary {
@@ -11693,6 +13670,124 @@ public extension NonElementParentNode {
     }
 }
 
+public class OfflineAudioCompletionEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OfflineAudioCompletionEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _renderedBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.renderedBuffer)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: OfflineAudioCompletionEventInit) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var renderedBuffer: AudioBuffer
+}
+
+public class OfflineAudioCompletionEventInit: BridgedDictionary {
+    public convenience init(renderedBuffer: AudioBuffer) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.renderedBuffer] = renderedBuffer.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _renderedBuffer = ReadWriteAttribute(jsObject: object, name: Strings.renderedBuffer)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var renderedBuffer: AudioBuffer
+}
+
+public class OfflineAudioContext: BaseAudioContext {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OfflineAudioContext].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
+        _oncomplete = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncomplete)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(contextOptions: OfflineAudioContextOptions) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [contextOptions.jsValue]))
+    }
+
+    @inlinable public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [numberOfChannels.jsValue, length.jsValue, sampleRate.jsValue]))
+    }
+
+    @inlinable public func startRendering() -> JSPromise {
+        let this = jsObject
+        return this[Strings.startRendering].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func startRendering() async throws -> AudioBuffer {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.startRendering].function!(this: this, arguments: []).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
+
+    @inlinable public func resume() -> JSPromise {
+        let this = jsObject
+        return this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func resume() async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.resume].function!(this: this, arguments: []).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @inlinable public func suspend(suspendTime: Double) -> JSPromise {
+        let this = jsObject
+        return this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue]).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func suspend(suspendTime: Double) async throws {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue]).fromJSValue()!
+        _ = try await _promise.value
+    }
+
+    @ReadonlyAttribute
+    public var length: UInt32
+
+    @ClosureAttribute1Optional
+    public var oncomplete: EventHandler
+}
+
+public class OfflineAudioContextOptions: BridgedDictionary {
+    public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.numberOfChannels] = numberOfChannels.jsValue
+        object[Strings.length] = length.jsValue
+        object[Strings.sampleRate] = sampleRate.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _numberOfChannels = ReadWriteAttribute(jsObject: object, name: Strings.numberOfChannels)
+        _length = ReadWriteAttribute(jsObject: object, name: Strings.length)
+        _sampleRate = ReadWriteAttribute(jsObject: object, name: Strings.sampleRate)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var numberOfChannels: UInt32
+
+    @ReadWriteAttribute
+    public var length: UInt32
+
+    @ReadWriteAttribute
+    public var sampleRate: Float
+}
+
 public class OffscreenCanvas: EventTarget {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OffscreenCanvas].function! }
 
@@ -11834,6 +13929,106 @@ public class OptionalEffectTiming: BridgedDictionary {
     public var easing: String
 }
 
+public class OscillatorNode: AudioScheduledSourceNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OscillatorNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _type = ReadWriteAttribute(jsObject: jsObject, name: Strings.type)
+        _frequency = ReadonlyAttribute(jsObject: jsObject, name: Strings.frequency)
+        _detune = ReadonlyAttribute(jsObject: jsObject, name: Strings.detune)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: OscillatorOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var type: OscillatorType
+
+    @ReadonlyAttribute
+    public var frequency: AudioParam
+
+    @ReadonlyAttribute
+    public var detune: AudioParam
+
+    @inlinable public func setPeriodicWave(periodicWave: PeriodicWave) {
+        let this = jsObject
+        _ = this[Strings.setPeriodicWave].function!(this: this, arguments: [periodicWave.jsValue])
+    }
+}
+
+public class OscillatorOptions: BridgedDictionary {
+    public convenience init(type: OscillatorType, frequency: Float, detune: Float, periodicWave: PeriodicWave) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.type] = type.jsValue
+        object[Strings.frequency] = frequency.jsValue
+        object[Strings.detune] = detune.jsValue
+        object[Strings.periodicWave] = periodicWave.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _type = ReadWriteAttribute(jsObject: object, name: Strings.type)
+        _frequency = ReadWriteAttribute(jsObject: object, name: Strings.frequency)
+        _detune = ReadWriteAttribute(jsObject: object, name: Strings.detune)
+        _periodicWave = ReadWriteAttribute(jsObject: object, name: Strings.periodicWave)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var type: OscillatorType
+
+    @ReadWriteAttribute
+    public var frequency: Float
+
+    @ReadWriteAttribute
+    public var detune: Float
+
+    @ReadWriteAttribute
+    public var periodicWave: PeriodicWave
+}
+
+public enum OscillatorType: JSString, JSValueCompatible {
+    case sine = "sine"
+    case square = "square"
+    case sawtooth = "sawtooth"
+    case triangle = "triangle"
+    case custom = "custom"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public enum OverSampleType: JSString, JSValueCompatible {
+    case none = "none"
+    case _2x = "2x"
+    case _4x = "4x"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public class OverconstrainedError: DOMException {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.OverconstrainedError].function! }
 
@@ -11880,6 +14075,183 @@ public class PageTransitionEventInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var persisted: Bool
+}
+
+public class PannerNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.PannerNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _panningModel = ReadWriteAttribute(jsObject: jsObject, name: Strings.panningModel)
+        _positionX = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionX)
+        _positionY = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionY)
+        _positionZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.positionZ)
+        _orientationX = ReadonlyAttribute(jsObject: jsObject, name: Strings.orientationX)
+        _orientationY = ReadonlyAttribute(jsObject: jsObject, name: Strings.orientationY)
+        _orientationZ = ReadonlyAttribute(jsObject: jsObject, name: Strings.orientationZ)
+        _distanceModel = ReadWriteAttribute(jsObject: jsObject, name: Strings.distanceModel)
+        _refDistance = ReadWriteAttribute(jsObject: jsObject, name: Strings.refDistance)
+        _maxDistance = ReadWriteAttribute(jsObject: jsObject, name: Strings.maxDistance)
+        _rolloffFactor = ReadWriteAttribute(jsObject: jsObject, name: Strings.rolloffFactor)
+        _coneInnerAngle = ReadWriteAttribute(jsObject: jsObject, name: Strings.coneInnerAngle)
+        _coneOuterAngle = ReadWriteAttribute(jsObject: jsObject, name: Strings.coneOuterAngle)
+        _coneOuterGain = ReadWriteAttribute(jsObject: jsObject, name: Strings.coneOuterGain)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: PannerOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var panningModel: PanningModelType
+
+    @ReadonlyAttribute
+    public var positionX: AudioParam
+
+    @ReadonlyAttribute
+    public var positionY: AudioParam
+
+    @ReadonlyAttribute
+    public var positionZ: AudioParam
+
+    @ReadonlyAttribute
+    public var orientationX: AudioParam
+
+    @ReadonlyAttribute
+    public var orientationY: AudioParam
+
+    @ReadonlyAttribute
+    public var orientationZ: AudioParam
+
+    @ReadWriteAttribute
+    public var distanceModel: DistanceModelType
+
+    @ReadWriteAttribute
+    public var refDistance: Double
+
+    @ReadWriteAttribute
+    public var maxDistance: Double
+
+    @ReadWriteAttribute
+    public var rolloffFactor: Double
+
+    @ReadWriteAttribute
+    public var coneInnerAngle: Double
+
+    @ReadWriteAttribute
+    public var coneOuterAngle: Double
+
+    @ReadWriteAttribute
+    public var coneOuterGain: Double
+
+    @inlinable public func setPosition(x: Float, y: Float, z: Float) {
+        let this = jsObject
+        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
+    }
+
+    @inlinable public func setOrientation(x: Float, y: Float, z: Float) {
+        let this = jsObject
+        _ = this[Strings.setOrientation].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
+    }
+}
+
+public class PannerOptions: BridgedDictionary {
+    public convenience init(panningModel: PanningModelType, distanceModel: DistanceModelType, positionX: Float, positionY: Float, positionZ: Float, orientationX: Float, orientationY: Float, orientationZ: Float, refDistance: Double, maxDistance: Double, rolloffFactor: Double, coneInnerAngle: Double, coneOuterAngle: Double, coneOuterGain: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.panningModel] = panningModel.jsValue
+        object[Strings.distanceModel] = distanceModel.jsValue
+        object[Strings.positionX] = positionX.jsValue
+        object[Strings.positionY] = positionY.jsValue
+        object[Strings.positionZ] = positionZ.jsValue
+        object[Strings.orientationX] = orientationX.jsValue
+        object[Strings.orientationY] = orientationY.jsValue
+        object[Strings.orientationZ] = orientationZ.jsValue
+        object[Strings.refDistance] = refDistance.jsValue
+        object[Strings.maxDistance] = maxDistance.jsValue
+        object[Strings.rolloffFactor] = rolloffFactor.jsValue
+        object[Strings.coneInnerAngle] = coneInnerAngle.jsValue
+        object[Strings.coneOuterAngle] = coneOuterAngle.jsValue
+        object[Strings.coneOuterGain] = coneOuterGain.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _panningModel = ReadWriteAttribute(jsObject: object, name: Strings.panningModel)
+        _distanceModel = ReadWriteAttribute(jsObject: object, name: Strings.distanceModel)
+        _positionX = ReadWriteAttribute(jsObject: object, name: Strings.positionX)
+        _positionY = ReadWriteAttribute(jsObject: object, name: Strings.positionY)
+        _positionZ = ReadWriteAttribute(jsObject: object, name: Strings.positionZ)
+        _orientationX = ReadWriteAttribute(jsObject: object, name: Strings.orientationX)
+        _orientationY = ReadWriteAttribute(jsObject: object, name: Strings.orientationY)
+        _orientationZ = ReadWriteAttribute(jsObject: object, name: Strings.orientationZ)
+        _refDistance = ReadWriteAttribute(jsObject: object, name: Strings.refDistance)
+        _maxDistance = ReadWriteAttribute(jsObject: object, name: Strings.maxDistance)
+        _rolloffFactor = ReadWriteAttribute(jsObject: object, name: Strings.rolloffFactor)
+        _coneInnerAngle = ReadWriteAttribute(jsObject: object, name: Strings.coneInnerAngle)
+        _coneOuterAngle = ReadWriteAttribute(jsObject: object, name: Strings.coneOuterAngle)
+        _coneOuterGain = ReadWriteAttribute(jsObject: object, name: Strings.coneOuterGain)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var panningModel: PanningModelType
+
+    @ReadWriteAttribute
+    public var distanceModel: DistanceModelType
+
+    @ReadWriteAttribute
+    public var positionX: Float
+
+    @ReadWriteAttribute
+    public var positionY: Float
+
+    @ReadWriteAttribute
+    public var positionZ: Float
+
+    @ReadWriteAttribute
+    public var orientationX: Float
+
+    @ReadWriteAttribute
+    public var orientationY: Float
+
+    @ReadWriteAttribute
+    public var orientationZ: Float
+
+    @ReadWriteAttribute
+    public var refDistance: Double
+
+    @ReadWriteAttribute
+    public var maxDistance: Double
+
+    @ReadWriteAttribute
+    public var rolloffFactor: Double
+
+    @ReadWriteAttribute
+    public var coneInnerAngle: Double
+
+    @ReadWriteAttribute
+    public var coneOuterAngle: Double
+
+    @ReadWriteAttribute
+    public var coneOuterGain: Double
+}
+
+public enum PanningModelType: JSString, JSValueCompatible {
+    case equalpower = "equalpower"
+    case hRTF = "HRTF"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
 public protocol ParentNode: JSBridgedClass {}
@@ -11957,6 +14329,57 @@ public class Performance: EventTarget {
         let this = jsObject
         return this[Strings.toJSON].function!(this: this, arguments: []).fromJSValue()!
     }
+}
+
+public class PeriodicWave: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.PeriodicWave].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        self.jsObject = jsObject
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: PeriodicWaveOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+}
+
+public class PeriodicWaveConstraints: BridgedDictionary {
+    public convenience init(disableNormalization: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.disableNormalization] = disableNormalization.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _disableNormalization = ReadWriteAttribute(jsObject: object, name: Strings.disableNormalization)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var disableNormalization: Bool
+}
+
+public class PeriodicWaveOptions: BridgedDictionary {
+    public convenience init(real: [Float], imag: [Float]) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.real] = real.jsValue
+        object[Strings.imag] = imag.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _real = ReadWriteAttribute(jsObject: object, name: Strings.real)
+        _imag = ReadWriteAttribute(jsObject: object, name: Strings.imag)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var real: [Float]
+
+    @ReadWriteAttribute
+    public var imag: [Float]
 }
 
 public enum PlaybackDirection: JSString, JSValueCompatible {
@@ -12386,6 +14809,16 @@ public class Range: AbstractRange {
 
     @inlinable public var description: String {
         jsObject[Strings.toString]!().fromJSValue()!
+    }
+
+    @inlinable public func getClientRects() -> DOMRectList {
+        let this = jsObject
+        return this[Strings.getClientRects].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @inlinable public func getBoundingClientRect() -> DOMRect {
+        let this = jsObject
+        return this[Strings.getBoundingClientRect].function!(this: this, arguments: []).fromJSValue()!
     }
 }
 
@@ -13212,6 +15645,131 @@ public enum ResponseType: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
+public class Screen: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Screen].function! }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _availWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.availWidth)
+        _availHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.availHeight)
+        _width = ReadonlyAttribute(jsObject: jsObject, name: Strings.width)
+        _height = ReadonlyAttribute(jsObject: jsObject, name: Strings.height)
+        _colorDepth = ReadonlyAttribute(jsObject: jsObject, name: Strings.colorDepth)
+        _pixelDepth = ReadonlyAttribute(jsObject: jsObject, name: Strings.pixelDepth)
+        self.jsObject = jsObject
+    }
+
+    @ReadonlyAttribute
+    public var availWidth: Int32
+
+    @ReadonlyAttribute
+    public var availHeight: Int32
+
+    @ReadonlyAttribute
+    public var width: Int32
+
+    @ReadonlyAttribute
+    public var height: Int32
+
+    @ReadonlyAttribute
+    public var colorDepth: UInt32
+
+    @ReadonlyAttribute
+    public var pixelDepth: UInt32
+}
+
+public class ScriptProcessorNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.ScriptProcessorNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _onaudioprocess = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaudioprocess)
+        _bufferSize = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferSize)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ClosureAttribute1Optional
+    public var onaudioprocess: EventHandler
+
+    @ReadonlyAttribute
+    public var bufferSize: Int32
+}
+
+public enum ScrollBehavior: JSString, JSValueCompatible {
+    case auto = "auto"
+    case smooth = "smooth"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class ScrollIntoViewOptions: BridgedDictionary {
+    public convenience init(block: ScrollLogicalPosition, inline: ScrollLogicalPosition) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.block] = block.jsValue
+        object[Strings.inline] = inline.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _block = ReadWriteAttribute(jsObject: object, name: Strings.block)
+        _inline = ReadWriteAttribute(jsObject: object, name: Strings.inline)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var block: ScrollLogicalPosition
+
+    @ReadWriteAttribute
+    public var inline: ScrollLogicalPosition
+}
+
+public enum ScrollLogicalPosition: JSString, JSValueCompatible {
+    case start = "start"
+    case center = "center"
+    case end = "end"
+    case nearest = "nearest"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class ScrollOptions: BridgedDictionary {
+    public convenience init(behavior: ScrollBehavior) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.behavior] = behavior.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _behavior = ReadWriteAttribute(jsObject: object, name: Strings.behavior)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var behavior: ScrollBehavior
+}
+
 public enum ScrollRestoration: JSString, JSValueCompatible {
     case auto = "auto"
     case manual = "manual"
@@ -13228,6 +15786,27 @@ public enum ScrollRestoration: JSString, JSValueCompatible {
     }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class ScrollToOptions: BridgedDictionary {
+    public convenience init(left: Double, top: Double) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.left] = left.jsValue
+        object[Strings.top] = top.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _left = ReadWriteAttribute(jsObject: object, name: Strings.left)
+        _top = ReadWriteAttribute(jsObject: object, name: Strings.top)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var left: Double
+
+    @ReadWriteAttribute
+    public var top: Double
 }
 
 public enum SelectionMode: JSString, JSValueCompatible {
@@ -13604,6 +16183,38 @@ public class StaticRangeInit: BridgedDictionary {
     public var endOffset: UInt32
 }
 
+public class StereoPannerNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.StereoPannerNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _pan = ReadonlyAttribute(jsObject: jsObject, name: Strings.pan)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: StereoPannerOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var pan: AudioParam
+}
+
+public class StereoPannerOptions: BridgedDictionary {
+    public convenience init(pan: Float) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.pan] = pan.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _pan = ReadWriteAttribute(jsObject: object, name: Strings.pan)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var pan: Float
+}
+
 public class Storage: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Storage].function! }
 
@@ -13796,7 +16407,7 @@ public class SubmitEventInit: BridgedDictionary {
     public var submitter: HTMLElement?
 }
 
-public class Text: CharacterData, Slottable {
+public class Text: CharacterData, Slottable, GeometryUtils {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.Text].function! }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
@@ -14313,6 +16924,9 @@ public typealias TransformerStartCallback = (TransformStreamDefaultController) -
 public typealias TransformerFlushCallback = (TransformStreamDefaultController) -> JSPromise
 public typealias TransformerTransformCallback = (JSValue, TransformStreamDefaultController) -> JSPromise
 public typealias QueuingStrategySize = (JSValue) -> Double
+public typealias DecodeErrorCallback = (DOMException) -> Void
+public typealias DecodeSuccessCallback = (AudioBuffer) -> Void
+public typealias AudioWorkletProcessCallback = ([[Float32Array]], [[Float32Array]], JSObject) -> Bool
 public typealias NavigatorUserMediaSuccessCallback = (MediaStream) -> Void
 public typealias NavigatorUserMediaErrorCallback = (DOMException) -> Void
 public class UIEvent: Event {
@@ -14818,6 +17432,117 @@ public class VideoTrackList: EventTarget {
     public var onremovetrack: EventHandler
 }
 
+public class WaveShaperNode: AudioNode {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WaveShaperNode].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _curve = ReadWriteAttribute(jsObject: jsObject, name: Strings.curve)
+        _oversample = ReadWriteAttribute(jsObject: jsObject, name: Strings.oversample)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(context: BaseAudioContext, options: WaveShaperOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadWriteAttribute
+    public var curve: Float32Array?
+
+    @ReadWriteAttribute
+    public var oversample: OverSampleType
+}
+
+public class WaveShaperOptions: BridgedDictionary {
+    public convenience init(curve: [Float], oversample: OverSampleType) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.curve] = curve.jsValue
+        object[Strings.oversample] = oversample.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _curve = ReadWriteAttribute(jsObject: object, name: Strings.curve)
+        _oversample = ReadWriteAttribute(jsObject: object, name: Strings.oversample)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var curve: [Float]
+
+    @ReadWriteAttribute
+    public var oversample: OverSampleType
+}
+
+public class WebSocket: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WebSocket].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
+        _bufferedAmount = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferedAmount)
+        _onopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onopen)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
+        _extensions = ReadonlyAttribute(jsObject: jsObject, name: Strings.extensions)
+        _protocol = ReadonlyAttribute(jsObject: jsObject, name: Strings.protocol)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
+        _binaryType = ReadWriteAttribute(jsObject: jsObject, name: Strings.binaryType)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(url: String, protocols: String_or_seq_of_String? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [url.jsValue, protocols?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var url: String
+
+    public static let CONNECTING: UInt16 = 0
+
+    public static let OPEN: UInt16 = 1
+
+    public static let CLOSING: UInt16 = 2
+
+    public static let CLOSED: UInt16 = 3
+
+    @ReadonlyAttribute
+    public var readyState: UInt16
+
+    @ReadonlyAttribute
+    public var bufferedAmount: UInt64
+
+    @ClosureAttribute1Optional
+    public var onopen: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onerror: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onclose: EventHandler
+
+    @ReadonlyAttribute
+    public var extensions: String
+
+    @ReadonlyAttribute
+    public var `protocol`: String
+
+    @inlinable public func close(code: UInt16? = nil, reason: String? = nil) {
+        let this = jsObject
+        _ = this[Strings.close].function!(this: this, arguments: [code?.jsValue ?? .undefined, reason?.jsValue ?? .undefined])
+    }
+
+    @ClosureAttribute1Optional
+    public var onmessage: EventHandler
+
+    @ReadWriteAttribute
+    public var binaryType: BinaryType
+
+    @inlinable public func send(data: BlobPart) {
+        let this = jsObject
+        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue])
+    }
+}
+
 public class WheelEvent: MouseEvent {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.WheelEvent].function! }
 
@@ -14913,6 +17638,20 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
         _clientInformation = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientInformation)
         _originAgentCluster = ReadonlyAttribute(jsObject: jsObject, name: Strings.originAgentCluster)
         _external = ReadonlyAttribute(jsObject: jsObject, name: Strings.external)
+        _screen = ReadonlyAttribute(jsObject: jsObject, name: Strings.screen)
+        _innerWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.innerWidth)
+        _innerHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.innerHeight)
+        _scrollX = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollX)
+        _pageXOffset = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageXOffset)
+        _scrollY = ReadonlyAttribute(jsObject: jsObject, name: Strings.scrollY)
+        _pageYOffset = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageYOffset)
+        _screenX = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenX)
+        _screenLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenLeft)
+        _screenY = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenY)
+        _screenTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenTop)
+        _outerWidth = ReadonlyAttribute(jsObject: jsObject, name: Strings.outerWidth)
+        _outerHeight = ReadonlyAttribute(jsObject: jsObject, name: Strings.outerHeight)
+        _devicePixelRatio = ReadonlyAttribute(jsObject: jsObject, name: Strings.devicePixelRatio)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -15067,6 +17806,103 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @ReadonlyAttribute
     public var external: External
+
+    @inlinable public func matchMedia(query: String) -> MediaQueryList {
+        let this = jsObject
+        return this[Strings.matchMedia].function!(this: this, arguments: [query.jsValue]).fromJSValue()!
+    }
+
+    @ReadonlyAttribute
+    public var screen: Screen
+
+    @inlinable public func moveTo(x: Int32, y: Int32) {
+        let this = jsObject
+        _ = this[Strings.moveTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func moveBy(x: Int32, y: Int32) {
+        let this = jsObject
+        _ = this[Strings.moveBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func resizeTo(width: Int32, height: Int32) {
+        let this = jsObject
+        _ = this[Strings.resizeTo].function!(this: this, arguments: [width.jsValue, height.jsValue])
+    }
+
+    @inlinable public func resizeBy(x: Int32, y: Int32) {
+        let this = jsObject
+        _ = this[Strings.resizeBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @ReadonlyAttribute
+    public var innerWidth: Int32
+
+    @ReadonlyAttribute
+    public var innerHeight: Int32
+
+    @ReadonlyAttribute
+    public var scrollX: Double
+
+    @ReadonlyAttribute
+    public var pageXOffset: Double
+
+    @ReadonlyAttribute
+    public var scrollY: Double
+
+    @ReadonlyAttribute
+    public var pageYOffset: Double
+
+    @inlinable public func scroll(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scroll(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func scrollTo(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scrollTo(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @inlinable public func scrollBy(options: ScrollToOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func scrollBy(x: Double, y: Double) {
+        let this = jsObject
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+    }
+
+    @ReadonlyAttribute
+    public var screenX: Int32
+
+    @ReadonlyAttribute
+    public var screenLeft: Int32
+
+    @ReadonlyAttribute
+    public var screenY: Int32
+
+    @ReadonlyAttribute
+    public var screenTop: Int32
+
+    @ReadonlyAttribute
+    public var outerWidth: Int32
+
+    @ReadonlyAttribute
+    public var outerHeight: Int32
+
+    @ReadonlyAttribute
+    public var devicePixelRatio: Double
 }
 
 public protocol WindowEventHandlers: JSBridgedClass {}
@@ -16363,6 +19199,70 @@ public enum console {
     }
 }
 
+@propertyWrapper public final class ClosureAttribute3<A0, A1, A2, ReturnType>
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: (A0, A1, A2) -> ReturnType {
+        get { ClosureAttribute3[name, in: jsObject] }
+        set { ClosureAttribute3[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2) -> ReturnType {
+        get {
+            let function = jsObject[name].function!
+            return { function($0.jsValue, $1.jsValue, $2.jsValue).fromJSValue()! }
+        }
+        set {
+            jsObject[name] = JSClosure {
+                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue
+            }.jsValue
+        }
+    }
+}
+
+@propertyWrapper public final class ClosureAttribute3Optional<A0, A1, A2, ReturnType>
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    @usableFromInline let jsObject: JSObject
+    @usableFromInline let name: JSString
+
+    public init(jsObject: JSObject, name: JSString) {
+        self.jsObject = jsObject
+        self.name = name
+    }
+
+    @inlinable public var wrappedValue: ((A0, A1, A2) -> ReturnType)? {
+        get { ClosureAttribute3Optional[name, in: jsObject] }
+        set { ClosureAttribute3Optional[name, in: jsObject] = newValue }
+    }
+
+    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1, A2) -> ReturnType)? {
+        get {
+            guard let function = jsObject[name].function else {
+                return nil
+            }
+            return { function($0.jsValue, $1.jsValue, $2.jsValue).fromJSValue()! }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[name] = JSClosure {
+                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue
+                }.jsValue
+            } else {
+                jsObject[name] = .null
+            }
+        }
+    }
+}
+
 @propertyWrapper public final class ClosureAttribute5<A0, A1, A2, A3, A4, ReturnType>
     where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
 {
@@ -16433,28 +19333,50 @@ public enum console {
     @usableFromInline static let AbortSignal: JSString = "AbortSignal"
     @usableFromInline static let AbstractRange: JSString = "AbstractRange"
     @usableFromInline static let AddSearchProvider: JSString = "AddSearchProvider"
+    @usableFromInline static let AnalyserNode: JSString = "AnalyserNode"
     @usableFromInline static let Animation: JSString = "Animation"
     @usableFromInline static let AnimationEffect: JSString = "AnimationEffect"
     @usableFromInline static let AnimationTimeline: JSString = "AnimationTimeline"
     @usableFromInline static let Attr: JSString = "Attr"
+    @usableFromInline static let AudioBuffer: JSString = "AudioBuffer"
+    @usableFromInline static let AudioBufferSourceNode: JSString = "AudioBufferSourceNode"
+    @usableFromInline static let AudioContext: JSString = "AudioContext"
+    @usableFromInline static let AudioDestinationNode: JSString = "AudioDestinationNode"
+    @usableFromInline static let AudioListener: JSString = "AudioListener"
+    @usableFromInline static let AudioNode: JSString = "AudioNode"
+    @usableFromInline static let AudioParam: JSString = "AudioParam"
+    @usableFromInline static let AudioParamMap: JSString = "AudioParamMap"
+    @usableFromInline static let AudioProcessingEvent: JSString = "AudioProcessingEvent"
+    @usableFromInline static let AudioScheduledSourceNode: JSString = "AudioScheduledSourceNode"
     @usableFromInline static let AudioTrack: JSString = "AudioTrack"
     @usableFromInline static let AudioTrackList: JSString = "AudioTrackList"
+    @usableFromInline static let AudioWorklet: JSString = "AudioWorklet"
+    @usableFromInline static let AudioWorkletNode: JSString = "AudioWorkletNode"
     @usableFromInline static let BarProp: JSString = "BarProp"
+    @usableFromInline static let BaseAudioContext: JSString = "BaseAudioContext"
     @usableFromInline static let BeforeUnloadEvent: JSString = "BeforeUnloadEvent"
+    @usableFromInline static let BiquadFilterNode: JSString = "BiquadFilterNode"
     @usableFromInline static let Blob: JSString = "Blob"
     @usableFromInline static let BlobEvent: JSString = "BlobEvent"
     @usableFromInline static let BroadcastChannel: JSString = "BroadcastChannel"
     @usableFromInline static let ByteLengthQueuingStrategy: JSString = "ByteLengthQueuingStrategy"
     @usableFromInline static let CDATASection: JSString = "CDATASection"
+    @usableFromInline static let CSSPseudoElement: JSString = "CSSPseudoElement"
     @usableFromInline static let Cache: JSString = "Cache"
     @usableFromInline static let CacheStorage: JSString = "CacheStorage"
     @usableFromInline static let CanvasFilter: JSString = "CanvasFilter"
     @usableFromInline static let CanvasGradient: JSString = "CanvasGradient"
     @usableFromInline static let CanvasPattern: JSString = "CanvasPattern"
     @usableFromInline static let CanvasRenderingContext2D: JSString = "CanvasRenderingContext2D"
+    @usableFromInline static let CaretPosition: JSString = "CaretPosition"
+    @usableFromInline static let ChannelMergerNode: JSString = "ChannelMergerNode"
+    @usableFromInline static let ChannelSplitterNode: JSString = "ChannelSplitterNode"
     @usableFromInline static let CharacterData: JSString = "CharacterData"
+    @usableFromInline static let CloseEvent: JSString = "CloseEvent"
     @usableFromInline static let Comment: JSString = "Comment"
     @usableFromInline static let CompositionEvent: JSString = "CompositionEvent"
+    @usableFromInline static let ConstantSourceNode: JSString = "ConstantSourceNode"
+    @usableFromInline static let ConvolverNode: JSString = "ConvolverNode"
     @usableFromInline static let CountQueuingStrategy: JSString = "CountQueuingStrategy"
     @usableFromInline static let CustomElementRegistry: JSString = "CustomElementRegistry"
     @usableFromInline static let CustomEvent: JSString = "CustomEvent"
@@ -16475,11 +19397,13 @@ public enum console {
     @usableFromInline static let DataTransfer: JSString = "DataTransfer"
     @usableFromInline static let DataTransferItem: JSString = "DataTransferItem"
     @usableFromInline static let DataTransferItemList: JSString = "DataTransferItemList"
+    @usableFromInline static let DelayNode: JSString = "DelayNode"
     @usableFromInline static let Document: JSString = "Document"
     @usableFromInline static let DocumentFragment: JSString = "DocumentFragment"
     @usableFromInline static let DocumentTimeline: JSString = "DocumentTimeline"
     @usableFromInline static let DocumentType: JSString = "DocumentType"
     @usableFromInline static let DragEvent: JSString = "DragEvent"
+    @usableFromInline static let DynamicsCompressorNode: JSString = "DynamicsCompressorNode"
     @usableFromInline static let Element: JSString = "Element"
     @usableFromInline static let ElementInternals: JSString = "ElementInternals"
     @usableFromInline static let ErrorEvent: JSString = "ErrorEvent"
@@ -16493,6 +19417,7 @@ public enum console {
     @usableFromInline static let FocusEvent: JSString = "FocusEvent"
     @usableFromInline static let FormData: JSString = "FormData"
     @usableFromInline static let FormDataEvent: JSString = "FormDataEvent"
+    @usableFromInline static let GainNode: JSString = "GainNode"
     @usableFromInline static let HTMLAllCollection: JSString = "HTMLAllCollection"
     @usableFromInline static let HTMLAnchorElement: JSString = "HTMLAnchorElement"
     @usableFromInline static let HTMLAreaElement: JSString = "HTMLAreaElement"
@@ -16571,6 +19496,7 @@ public enum console {
     @usableFromInline static let HashChangeEvent: JSString = "HashChangeEvent"
     @usableFromInline static let Headers: JSString = "Headers"
     @usableFromInline static let History: JSString = "History"
+    @usableFromInline static let IIRFilterNode: JSString = "IIRFilterNode"
     @usableFromInline static let ImageBitmap: JSString = "ImageBitmap"
     @usableFromInline static let ImageBitmapRenderingContext: JSString = "ImageBitmapRenderingContext"
     @usableFromInline static let ImageData: JSString = "ImageData"
@@ -16582,11 +19508,17 @@ public enum console {
     @usableFromInline static let Location: JSString = "Location"
     @usableFromInline static let MediaDeviceInfo: JSString = "MediaDeviceInfo"
     @usableFromInline static let MediaDevices: JSString = "MediaDevices"
+    @usableFromInline static let MediaElementAudioSourceNode: JSString = "MediaElementAudioSourceNode"
     @usableFromInline static let MediaError: JSString = "MediaError"
+    @usableFromInline static let MediaQueryList: JSString = "MediaQueryList"
+    @usableFromInline static let MediaQueryListEvent: JSString = "MediaQueryListEvent"
     @usableFromInline static let MediaRecorder: JSString = "MediaRecorder"
     @usableFromInline static let MediaRecorderErrorEvent: JSString = "MediaRecorderErrorEvent"
     @usableFromInline static let MediaStream: JSString = "MediaStream"
+    @usableFromInline static let MediaStreamAudioDestinationNode: JSString = "MediaStreamAudioDestinationNode"
+    @usableFromInline static let MediaStreamAudioSourceNode: JSString = "MediaStreamAudioSourceNode"
     @usableFromInline static let MediaStreamTrack: JSString = "MediaStreamTrack"
+    @usableFromInline static let MediaStreamTrackAudioSourceNode: JSString = "MediaStreamTrackAudioSourceNode"
     @usableFromInline static let MediaStreamTrackEvent: JSString = "MediaStreamTrackEvent"
     @usableFromInline static let MessageChannel: JSString = "MessageChannel"
     @usableFromInline static let MessageEvent: JSString = "MessageEvent"
@@ -16604,18 +19536,24 @@ public enum console {
     @usableFromInline static let NodeIterator: JSString = "NodeIterator"
     @usableFromInline static let NodeList: JSString = "NodeList"
     @usableFromInline static let Object: JSString = "Object"
+    @usableFromInline static let OfflineAudioCompletionEvent: JSString = "OfflineAudioCompletionEvent"
+    @usableFromInline static let OfflineAudioContext: JSString = "OfflineAudioContext"
     @usableFromInline static let OffscreenCanvas: JSString = "OffscreenCanvas"
     @usableFromInline static let OffscreenCanvasRenderingContext2D: JSString = "OffscreenCanvasRenderingContext2D"
+    @usableFromInline static let OscillatorNode: JSString = "OscillatorNode"
     @usableFromInline static let OverconstrainedError: JSString = "OverconstrainedError"
     @usableFromInline static let PageTransitionEvent: JSString = "PageTransitionEvent"
+    @usableFromInline static let PannerNode: JSString = "PannerNode"
     @usableFromInline static let Path2D: JSString = "Path2D"
     @usableFromInline static let Performance: JSString = "Performance"
+    @usableFromInline static let PeriodicWave: JSString = "PeriodicWave"
     @usableFromInline static let Plugin: JSString = "Plugin"
     @usableFromInline static let PluginArray: JSString = "PluginArray"
     @usableFromInline static let PopStateEvent: JSString = "PopStateEvent"
     @usableFromInline static let ProcessingInstruction: JSString = "ProcessingInstruction"
     @usableFromInline static let ProgressEvent: JSString = "ProgressEvent"
     @usableFromInline static let PromiseRejectionEvent: JSString = "PromiseRejectionEvent"
+    @usableFromInline static let Q: JSString = "Q"
     @usableFromInline static let RadioNodeList: JSString = "RadioNodeList"
     @usableFromInline static let Range: JSString = "Range"
     @usableFromInline static let ReadableByteStreamController: JSString = "ReadableByteStreamController"
@@ -16626,12 +19564,15 @@ public enum console {
     @usableFromInline static let ReadableStreamDefaultReader: JSString = "ReadableStreamDefaultReader"
     @usableFromInline static let Request: JSString = "Request"
     @usableFromInline static let Response: JSString = "Response"
+    @usableFromInline static let Screen: JSString = "Screen"
+    @usableFromInline static let ScriptProcessorNode: JSString = "ScriptProcessorNode"
     @usableFromInline static let ServiceWorker: JSString = "ServiceWorker"
     @usableFromInline static let ServiceWorkerContainer: JSString = "ServiceWorkerContainer"
     @usableFromInline static let ServiceWorkerRegistration: JSString = "ServiceWorkerRegistration"
     @usableFromInline static let ShadowRoot: JSString = "ShadowRoot"
     @usableFromInline static let SharedWorker: JSString = "SharedWorker"
     @usableFromInline static let StaticRange: JSString = "StaticRange"
+    @usableFromInline static let StereoPannerNode: JSString = "StereoPannerNode"
     @usableFromInline static let Storage: JSString = "Storage"
     @usableFromInline static let StorageEvent: JSString = "StorageEvent"
     @usableFromInline static let SubmitEvent: JSString = "SubmitEvent"
@@ -16652,6 +19593,8 @@ public enum console {
     @usableFromInline static let ValidityState: JSString = "ValidityState"
     @usableFromInline static let VideoTrack: JSString = "VideoTrack"
     @usableFromInline static let VideoTrackList: JSString = "VideoTrackList"
+    @usableFromInline static let WaveShaperNode: JSString = "WaveShaperNode"
+    @usableFromInline static let WebSocket: JSString = "WebSocket"
     @usableFromInline static let WheelEvent: JSString = "WheelEvent"
     @usableFromInline static let Window: JSString = "Window"
     @usableFromInline static let Worker: JSString = "Worker"
@@ -16773,6 +19716,7 @@ public enum console {
     @usableFromInline static let atob: JSString = "atob"
     @usableFromInline static let attachInternals: JSString = "attachInternals"
     @usableFromInline static let attachShadow: JSString = "attachShadow"
+    @usableFromInline static let attack: JSString = "attack"
     @usableFromInline static let attrChange: JSString = "attrChange"
     @usableFromInline static let attrName: JSString = "attrName"
     @usableFromInline static let attributeFilter: JSString = "attributeFilter"
@@ -16784,25 +19728,32 @@ public enum console {
     @usableFromInline static let audioBitrateMode: JSString = "audioBitrateMode"
     @usableFromInline static let audioBitsPerSecond: JSString = "audioBitsPerSecond"
     @usableFromInline static let audioTracks: JSString = "audioTracks"
+    @usableFromInline static let audioWorklet: JSString = "audioWorklet"
     @usableFromInline static let autoAllocateChunkSize: JSString = "autoAllocateChunkSize"
     @usableFromInline static let autoGainControl: JSString = "autoGainControl"
     @usableFromInline static let autocapitalize: JSString = "autocapitalize"
     @usableFromInline static let autocomplete: JSString = "autocomplete"
     @usableFromInline static let autofocus: JSString = "autofocus"
+    @usableFromInline static let automationRate: JSString = "automationRate"
     @usableFromInline static let autoplay: JSString = "autoplay"
+    @usableFromInline static let availHeight: JSString = "availHeight"
+    @usableFromInline static let availWidth: JSString = "availWidth"
     @usableFromInline static let axis: JSString = "axis"
     @usableFromInline static let b: JSString = "b"
     @usableFromInline static let back: JSString = "back"
     @usableFromInline static let background: JSString = "background"
     @usableFromInline static let badInput: JSString = "badInput"
+    @usableFromInline static let baseLatency: JSString = "baseLatency"
     @usableFromInline static let baseURI: JSString = "baseURI"
     @usableFromInline static let before: JSString = "before"
     @usableFromInline static let beginPath: JSString = "beginPath"
     @usableFromInline static let behavior: JSString = "behavior"
     @usableFromInline static let bezierCurveTo: JSString = "bezierCurveTo"
     @usableFromInline static let bgColor: JSString = "bgColor"
+    @usableFromInline static let binaryType: JSString = "binaryType"
     @usableFromInline static let bitsPerSecond: JSString = "bitsPerSecond"
     @usableFromInline static let blob: JSString = "blob"
+    @usableFromInline static let block: JSString = "block"
     @usableFromInline static let blocking: JSString = "blocking"
     @usableFromInline static let blur: JSString = "blur"
     @usableFromInline static let body: JSString = "body"
@@ -16810,9 +19761,13 @@ public enum console {
     @usableFromInline static let booleanValue: JSString = "booleanValue"
     @usableFromInline static let border: JSString = "border"
     @usableFromInline static let bottom: JSString = "bottom"
+    @usableFromInline static let box: JSString = "box"
     @usableFromInline static let btoa: JSString = "btoa"
     @usableFromInline static let bubbles: JSString = "bubbles"
+    @usableFromInline static let buffer: JSString = "buffer"
+    @usableFromInline static let bufferSize: JSString = "bufferSize"
     @usableFromInline static let buffered: JSString = "buffered"
+    @usableFromInline static let bufferedAmount: JSString = "bufferedAmount"
     @usableFromInline static let button: JSString = "button"
     @usableFromInline static let buttons: JSString = "buttons"
     @usableFromInline static let byobRequest: JSString = "byobRequest"
@@ -16822,13 +19777,16 @@ public enum console {
     @usableFromInline static let caches: JSString = "caches"
     @usableFromInline static let canPlayType: JSString = "canPlayType"
     @usableFromInline static let cancel: JSString = "cancel"
+    @usableFromInline static let cancelAndHoldAtTime: JSString = "cancelAndHoldAtTime"
     @usableFromInline static let cancelAnimationFrame: JSString = "cancelAnimationFrame"
     @usableFromInline static let cancelBubble: JSString = "cancelBubble"
+    @usableFromInline static let cancelScheduledValues: JSString = "cancelScheduledValues"
     @usableFromInline static let cancelable: JSString = "cancelable"
     @usableFromInline static let canvas: JSString = "canvas"
     @usableFromInline static let caption: JSString = "caption"
     @usableFromInline static let capture: JSString = "capture"
     @usableFromInline static let captureEvents: JSString = "captureEvents"
+    @usableFromInline static let caretPositionFromPoint: JSString = "caretPositionFromPoint"
     @usableFromInline static let cellIndex: JSString = "cellIndex"
     @usableFromInline static let cellPadding: JSString = "cellPadding"
     @usableFromInline static let cellSpacing: JSString = "cellSpacing"
@@ -16836,6 +19794,8 @@ public enum console {
     @usableFromInline static let ch: JSString = "ch"
     @usableFromInline static let chOff: JSString = "chOff"
     @usableFromInline static let channelCount: JSString = "channelCount"
+    @usableFromInline static let channelCountMode: JSString = "channelCountMode"
+    @usableFromInline static let channelInterpretation: JSString = "channelInterpretation"
     @usableFromInline static let charCode: JSString = "charCode"
     @usableFromInline static let characterData: JSString = "characterData"
     @usableFromInline static let characterDataOldValue: JSString = "characterDataOldValue"
@@ -16857,8 +19817,12 @@ public enum console {
     @usableFromInline static let clearRect: JSString = "clearRect"
     @usableFromInline static let clearTimeout: JSString = "clearTimeout"
     @usableFromInline static let click: JSString = "click"
+    @usableFromInline static let clientHeight: JSString = "clientHeight"
     @usableFromInline static let clientId: JSString = "clientId"
     @usableFromInline static let clientInformation: JSString = "clientInformation"
+    @usableFromInline static let clientLeft: JSString = "clientLeft"
+    @usableFromInline static let clientTop: JSString = "clientTop"
+    @usableFromInline static let clientWidth: JSString = "clientWidth"
     @usableFromInline static let clientX: JSString = "clientX"
     @usableFromInline static let clientY: JSString = "clientY"
     @usableFromInline static let clip: JSString = "clip"
@@ -16878,6 +19842,7 @@ public enum console {
     @usableFromInline static let collapsed: JSString = "collapsed"
     @usableFromInline static let colno: JSString = "colno"
     @usableFromInline static let color: JSString = "color"
+    @usableFromInline static let colorDepth: JSString = "colorDepth"
     @usableFromInline static let colorSpace: JSString = "colorSpace"
     @usableFromInline static let colorSpaceConversion: JSString = "colorSpaceConversion"
     @usableFromInline static let cols: JSString = "cols"
@@ -16894,7 +19859,11 @@ public enum console {
     @usableFromInline static let composedPath: JSString = "composedPath"
     @usableFromInline static let composite: JSString = "composite"
     @usableFromInline static let computedOffset: JSString = "computedOffset"
+    @usableFromInline static let coneInnerAngle: JSString = "coneInnerAngle"
+    @usableFromInline static let coneOuterAngle: JSString = "coneOuterAngle"
+    @usableFromInline static let coneOuterGain: JSString = "coneOuterGain"
     @usableFromInline static let confirm: JSString = "confirm"
+    @usableFromInline static let connect: JSString = "connect"
     @usableFromInline static let console: JSString = "console"
     @usableFromInline static let constraint: JSString = "constraint"
     @usableFromInline static let contains: JSString = "contains"
@@ -16903,40 +19872,69 @@ public enum console {
     @usableFromInline static let contentEditable: JSString = "contentEditable"
     @usableFromInline static let contentType: JSString = "contentType"
     @usableFromInline static let contentWindow: JSString = "contentWindow"
+    @usableFromInline static let context: JSString = "context"
+    @usableFromInline static let contextTime: JSString = "contextTime"
     @usableFromInline static let control: JSString = "control"
     @usableFromInline static let controller: JSString = "controller"
     @usableFromInline static let controls: JSString = "controls"
+    @usableFromInline static let convertPointFromNode: JSString = "convertPointFromNode"
+    @usableFromInline static let convertQuadFromNode: JSString = "convertQuadFromNode"
+    @usableFromInline static let convertRectFromNode: JSString = "convertRectFromNode"
     @usableFromInline static let convertToBlob: JSString = "convertToBlob"
     @usableFromInline static let cookie: JSString = "cookie"
     @usableFromInline static let cookieEnabled: JSString = "cookieEnabled"
     @usableFromInline static let coords: JSString = "coords"
+    @usableFromInline static let copyFromChannel: JSString = "copyFromChannel"
+    @usableFromInline static let copyToChannel: JSString = "copyToChannel"
     @usableFromInline static let count: JSString = "count"
     @usableFromInline static let countReset: JSString = "countReset"
+    @usableFromInline static let createAnalyser: JSString = "createAnalyser"
     @usableFromInline static let createAttribute: JSString = "createAttribute"
     @usableFromInline static let createAttributeNS: JSString = "createAttributeNS"
+    @usableFromInline static let createBiquadFilter: JSString = "createBiquadFilter"
+    @usableFromInline static let createBuffer: JSString = "createBuffer"
+    @usableFromInline static let createBufferSource: JSString = "createBufferSource"
     @usableFromInline static let createCDATASection: JSString = "createCDATASection"
     @usableFromInline static let createCaption: JSString = "createCaption"
+    @usableFromInline static let createChannelMerger: JSString = "createChannelMerger"
+    @usableFromInline static let createChannelSplitter: JSString = "createChannelSplitter"
     @usableFromInline static let createComment: JSString = "createComment"
     @usableFromInline static let createConicGradient: JSString = "createConicGradient"
+    @usableFromInline static let createConstantSource: JSString = "createConstantSource"
+    @usableFromInline static let createConvolver: JSString = "createConvolver"
+    @usableFromInline static let createDelay: JSString = "createDelay"
     @usableFromInline static let createDocument: JSString = "createDocument"
     @usableFromInline static let createDocumentFragment: JSString = "createDocumentFragment"
     @usableFromInline static let createDocumentType: JSString = "createDocumentType"
+    @usableFromInline static let createDynamicsCompressor: JSString = "createDynamicsCompressor"
     @usableFromInline static let createElement: JSString = "createElement"
     @usableFromInline static let createElementNS: JSString = "createElementNS"
     @usableFromInline static let createEvent: JSString = "createEvent"
+    @usableFromInline static let createGain: JSString = "createGain"
     @usableFromInline static let createHTMLDocument: JSString = "createHTMLDocument"
+    @usableFromInline static let createIIRFilter: JSString = "createIIRFilter"
     @usableFromInline static let createImageBitmap: JSString = "createImageBitmap"
     @usableFromInline static let createImageData: JSString = "createImageData"
     @usableFromInline static let createLinearGradient: JSString = "createLinearGradient"
+    @usableFromInline static let createMediaElementSource: JSString = "createMediaElementSource"
+    @usableFromInline static let createMediaStreamDestination: JSString = "createMediaStreamDestination"
+    @usableFromInline static let createMediaStreamSource: JSString = "createMediaStreamSource"
+    @usableFromInline static let createMediaStreamTrackSource: JSString = "createMediaStreamTrackSource"
     @usableFromInline static let createObjectURL: JSString = "createObjectURL"
+    @usableFromInline static let createOscillator: JSString = "createOscillator"
+    @usableFromInline static let createPanner: JSString = "createPanner"
     @usableFromInline static let createPattern: JSString = "createPattern"
+    @usableFromInline static let createPeriodicWave: JSString = "createPeriodicWave"
     @usableFromInline static let createProcessingInstruction: JSString = "createProcessingInstruction"
     @usableFromInline static let createRadialGradient: JSString = "createRadialGradient"
     @usableFromInline static let createRange: JSString = "createRange"
+    @usableFromInline static let createScriptProcessor: JSString = "createScriptProcessor"
+    @usableFromInline static let createStereoPanner: JSString = "createStereoPanner"
     @usableFromInline static let createTBody: JSString = "createTBody"
     @usableFromInline static let createTFoot: JSString = "createTFoot"
     @usableFromInline static let createTHead: JSString = "createTHead"
     @usableFromInline static let createTextNode: JSString = "createTextNode"
+    @usableFromInline static let createWaveShaper: JSString = "createWaveShaper"
     @usableFromInline static let credentials: JSString = "credentials"
     @usableFromInline static let crossOrigin: JSString = "crossOrigin"
     @usableFromInline static let crossOriginIsolated: JSString = "crossOriginIsolated"
@@ -16948,6 +19946,7 @@ public enum console {
     @usableFromInline static let currentSrc: JSString = "currentSrc"
     @usableFromInline static let currentTarget: JSString = "currentTarget"
     @usableFromInline static let currentTime: JSString = "currentTime"
+    @usableFromInline static let curve: JSString = "curve"
     @usableFromInline static let customElements: JSString = "customElements"
     @usableFromInline static let customError: JSString = "customError"
     @usableFromInline static let d: JSString = "d"
@@ -16970,6 +19969,7 @@ public enum console {
     @usableFromInline static let `defer`: JSString = "defer"
     @usableFromInline static let define: JSString = "define"
     @usableFromInline static let delay: JSString = "delay"
+    @usableFromInline static let delayTime: JSString = "delayTime"
     @usableFromInline static let delegatesFocus: JSString = "delegatesFocus"
     @usableFromInline static let delete: JSString = "delete"
     @usableFromInline static let deleteCaption: JSString = "deleteCaption"
@@ -16990,15 +19990,19 @@ public enum console {
     @usableFromInline static let desynchronized: JSString = "desynchronized"
     @usableFromInline static let detach: JSString = "detach"
     @usableFromInline static let detail: JSString = "detail"
+    @usableFromInline static let detune: JSString = "detune"
     @usableFromInline static let deviceId: JSString = "deviceId"
+    @usableFromInline static let devicePixelRatio: JSString = "devicePixelRatio"
     @usableFromInline static let dir: JSString = "dir"
     @usableFromInline static let dirName: JSString = "dirName"
     @usableFromInline static let direction: JSString = "direction"
     @usableFromInline static let dirxml: JSString = "dirxml"
     @usableFromInline static let disable: JSString = "disable"
+    @usableFromInline static let disableNormalization: JSString = "disableNormalization"
     @usableFromInline static let disabled: JSString = "disabled"
     @usableFromInline static let disconnect: JSString = "disconnect"
     @usableFromInline static let dispatchEvent: JSString = "dispatchEvent"
+    @usableFromInline static let distanceModel: JSString = "distanceModel"
     @usableFromInline static let doctype: JSString = "doctype"
     @usableFromInline static let document: JSString = "document"
     @usableFromInline static let documentElement: JSString = "documentElement"
@@ -17016,7 +20020,10 @@ public enum console {
     @usableFromInline static let echoCancellation: JSString = "echoCancellation"
     @usableFromInline static let effect: JSString = "effect"
     @usableFromInline static let effectAllowed: JSString = "effectAllowed"
+    @usableFromInline static let element: JSString = "element"
+    @usableFromInline static let elementFromPoint: JSString = "elementFromPoint"
     @usableFromInline static let elements: JSString = "elements"
+    @usableFromInline static let elementsFromPoint: JSString = "elementsFromPoint"
     @usableFromInline static let ellipse: JSString = "ellipse"
     @usableFromInline static let emHeightAscent: JSString = "emHeightAscent"
     @usableFromInline static let emHeightDescent: JSString = "emHeightDescent"
@@ -17042,14 +20049,19 @@ public enum console {
     @usableFromInline static let eventPhase: JSString = "eventPhase"
     @usableFromInline static let exact: JSString = "exact"
     @usableFromInline static let execCommand: JSString = "execCommand"
+    @usableFromInline static let exponentialRampToValueAtTime: JSString = "exponentialRampToValueAtTime"
     @usableFromInline static let extends: JSString = "extends"
+    @usableFromInline static let extensions: JSString = "extensions"
     @usableFromInline static let external: JSString = "external"
     @usableFromInline static let extractContents: JSString = "extractContents"
     @usableFromInline static let f: JSString = "f"
     @usableFromInline static let face: JSString = "face"
     @usableFromInline static let facingMode: JSString = "facingMode"
     @usableFromInline static let fastSeek: JSString = "fastSeek"
+    @usableFromInline static let feedback: JSString = "feedback"
+    @usableFromInline static let feedforward: JSString = "feedforward"
     @usableFromInline static let fetch: JSString = "fetch"
+    @usableFromInline static let fftSize: JSString = "fftSize"
     @usableFromInline static let fgColor: JSString = "fgColor"
     @usableFromInline static let filename: JSString = "filename"
     @usableFromInline static let files: JSString = "files"
@@ -17082,17 +20094,24 @@ public enum console {
     @usableFromInline static let formTarget: JSString = "formTarget"
     @usableFromInline static let forms: JSString = "forms"
     @usableFromInline static let forward: JSString = "forward"
+    @usableFromInline static let forwardX: JSString = "forwardX"
+    @usableFromInline static let forwardY: JSString = "forwardY"
+    @usableFromInline static let forwardZ: JSString = "forwardZ"
     @usableFromInline static let frame: JSString = "frame"
     @usableFromInline static let frameBorder: JSString = "frameBorder"
     @usableFromInline static let frameElement: JSString = "frameElement"
     @usableFromInline static let frameRate: JSString = "frameRate"
     @usableFromInline static let frames: JSString = "frames"
+    @usableFromInline static let frequency: JSString = "frequency"
+    @usableFromInline static let frequencyBinCount: JSString = "frequencyBinCount"
+    @usableFromInline static let fromBox: JSString = "fromBox"
     @usableFromInline static let fromFloat32Array: JSString = "fromFloat32Array"
     @usableFromInline static let fromFloat64Array: JSString = "fromFloat64Array"
     @usableFromInline static let fromMatrix: JSString = "fromMatrix"
     @usableFromInline static let fromPoint: JSString = "fromPoint"
     @usableFromInline static let fromQuad: JSString = "fromQuad"
     @usableFromInline static let fromRect: JSString = "fromRect"
+    @usableFromInline static let gain: JSString = "gain"
     @usableFromInline static let get: JSString = "get"
     @usableFromInline static let getAll: JSString = "getAll"
     @usableFromInline static let getAllResponseHeaders: JSString = "getAllResponseHeaders"
@@ -17104,8 +20123,15 @@ public enum console {
     @usableFromInline static let getAttributeNode: JSString = "getAttributeNode"
     @usableFromInline static let getAttributeNodeNS: JSString = "getAttributeNodeNS"
     @usableFromInline static let getAudioTracks: JSString = "getAudioTracks"
+    @usableFromInline static let getBoundingClientRect: JSString = "getBoundingClientRect"
     @usableFromInline static let getBounds: JSString = "getBounds"
+    @usableFromInline static let getBoxQuads: JSString = "getBoxQuads"
+    @usableFromInline static let getByteFrequencyData: JSString = "getByteFrequencyData"
+    @usableFromInline static let getByteTimeDomainData: JSString = "getByteTimeDomainData"
     @usableFromInline static let getCapabilities: JSString = "getCapabilities"
+    @usableFromInline static let getChannelData: JSString = "getChannelData"
+    @usableFromInline static let getClientRect: JSString = "getClientRect"
+    @usableFromInline static let getClientRects: JSString = "getClientRects"
     @usableFromInline static let getComputedTiming: JSString = "getComputedTiming"
     @usableFromInline static let getConstraints: JSString = "getConstraints"
     @usableFromInline static let getContext: JSString = "getContext"
@@ -17117,11 +20143,15 @@ public enum console {
     @usableFromInline static let getElementsByName: JSString = "getElementsByName"
     @usableFromInline static let getElementsByTagName: JSString = "getElementsByTagName"
     @usableFromInline static let getElementsByTagNameNS: JSString = "getElementsByTagNameNS"
+    @usableFromInline static let getFloatFrequencyData: JSString = "getFloatFrequencyData"
+    @usableFromInline static let getFloatTimeDomainData: JSString = "getFloatTimeDomainData"
+    @usableFromInline static let getFrequencyResponse: JSString = "getFrequencyResponse"
     @usableFromInline static let getImageData: JSString = "getImageData"
     @usableFromInline static let getKeyframes: JSString = "getKeyframes"
     @usableFromInline static let getLineDash: JSString = "getLineDash"
     @usableFromInline static let getModifierState: JSString = "getModifierState"
     @usableFromInline static let getNamedItemNS: JSString = "getNamedItemNS"
+    @usableFromInline static let getOutputTimestamp: JSString = "getOutputTimestamp"
     @usableFromInline static let getParameter: JSString = "getParameter"
     @usableFromInline static let getReader: JSString = "getReader"
     @usableFromInline static let getRegistration: JSString = "getRegistration"
@@ -17179,6 +20209,7 @@ public enum console {
     @usableFromInline static let ignoreMethod: JSString = "ignoreMethod"
     @usableFromInline static let ignoreSearch: JSString = "ignoreSearch"
     @usableFromInline static let ignoreVary: JSString = "ignoreVary"
+    @usableFromInline static let imag: JSString = "imag"
     @usableFromInline static let imageOrientation: JSString = "imageOrientation"
     @usableFromInline static let imageSizes: JSString = "imageSizes"
     @usableFromInline static let imageSmoothingEnabled: JSString = "imageSmoothingEnabled"
@@ -17203,7 +20234,11 @@ public enum console {
     @usableFromInline static let initMutationEvent: JSString = "initMutationEvent"
     @usableFromInline static let initStorageEvent: JSString = "initStorageEvent"
     @usableFromInline static let initUIEvent: JSString = "initUIEvent"
+    @usableFromInline static let inline: JSString = "inline"
+    @usableFromInline static let innerHeight: JSString = "innerHeight"
     @usableFromInline static let innerText: JSString = "innerText"
+    @usableFromInline static let innerWidth: JSString = "innerWidth"
+    @usableFromInline static let inputBuffer: JSString = "inputBuffer"
     @usableFromInline static let inputEncoding: JSString = "inputEncoding"
     @usableFromInline static let inputMode: JSString = "inputMode"
     @usableFromInline static let inputType: JSString = "inputType"
@@ -17239,6 +20274,7 @@ public enum console {
     @usableFromInline static let isSecureContext: JSString = "isSecureContext"
     @usableFromInline static let isTrusted: JSString = "isTrusted"
     @usableFromInline static let isTypeSupported: JSString = "isTypeSupported"
+    @usableFromInline static let isVisible: JSString = "isVisible"
     @usableFromInline static let item: JSString = "item"
     @usableFromInline static let items: JSString = "items"
     @usableFromInline static let iterateNext: JSString = "iterateNext"
@@ -17251,6 +20287,7 @@ public enum console {
     @usableFromInline static let keyCode: JSString = "keyCode"
     @usableFromInline static let keys: JSString = "keys"
     @usableFromInline static let kind: JSString = "kind"
+    @usableFromInline static let knee: JSString = "knee"
     @usableFromInline static let label: JSString = "label"
     @usableFromInline static let labels: JSString = "labels"
     @usableFromInline static let lang: JSString = "lang"
@@ -17261,6 +20298,7 @@ public enum console {
     @usableFromInline static let lastEventId: JSString = "lastEventId"
     @usableFromInline static let lastModified: JSString = "lastModified"
     @usableFromInline static let latency: JSString = "latency"
+    @usableFromInline static let latencyHint: JSString = "latencyHint"
     @usableFromInline static let left: JSString = "left"
     @usableFromInline static let length: JSString = "length"
     @usableFromInline static let lengthComputable: JSString = "lengthComputable"
@@ -17270,11 +20308,13 @@ public enum console {
     @usableFromInline static let lineJoin: JSString = "lineJoin"
     @usableFromInline static let lineTo: JSString = "lineTo"
     @usableFromInline static let lineWidth: JSString = "lineWidth"
+    @usableFromInline static let linearRampToValueAtTime: JSString = "linearRampToValueAtTime"
     @usableFromInline static let lineno: JSString = "lineno"
     @usableFromInline static let link: JSString = "link"
     @usableFromInline static let linkColor: JSString = "linkColor"
     @usableFromInline static let links: JSString = "links"
     @usableFromInline static let list: JSString = "list"
+    @usableFromInline static let listener: JSString = "listener"
     @usableFromInline static let load: JSString = "load"
     @usableFromInline static let loaded: JSString = "loaded"
     @usableFromInline static let loading: JSString = "loading"
@@ -17288,6 +20328,8 @@ public enum console {
     @usableFromInline static let lookupNamespaceURI: JSString = "lookupNamespaceURI"
     @usableFromInline static let lookupPrefix: JSString = "lookupPrefix"
     @usableFromInline static let loop: JSString = "loop"
+    @usableFromInline static let loopEnd: JSString = "loopEnd"
+    @usableFromInline static let loopStart: JSString = "loopStart"
     @usableFromInline static let low: JSString = "low"
     @usableFromInline static let lowsrc: JSString = "lowsrc"
     @usableFromInline static let m11: JSString = "m11"
@@ -17310,13 +20352,22 @@ public enum console {
     @usableFromInline static let marginWidth: JSString = "marginWidth"
     @usableFromInline static let match: JSString = "match"
     @usableFromInline static let matchAll: JSString = "matchAll"
+    @usableFromInline static let matchMedia: JSString = "matchMedia"
     @usableFromInline static let matches: JSString = "matches"
     @usableFromInline static let matrixTransform: JSString = "matrixTransform"
     @usableFromInline static let max: JSString = "max"
+    @usableFromInline static let maxChannelCount: JSString = "maxChannelCount"
+    @usableFromInline static let maxDecibels: JSString = "maxDecibels"
+    @usableFromInline static let maxDelayTime: JSString = "maxDelayTime"
+    @usableFromInline static let maxDistance: JSString = "maxDistance"
     @usableFromInline static let maxLength: JSString = "maxLength"
+    @usableFromInline static let maxValue: JSString = "maxValue"
     @usableFromInline static let measureText: JSString = "measureText"
     @usableFromInline static let media: JSString = "media"
     @usableFromInline static let mediaDevices: JSString = "mediaDevices"
+    @usableFromInline static let mediaElement: JSString = "mediaElement"
+    @usableFromInline static let mediaStream: JSString = "mediaStream"
+    @usableFromInline static let mediaStreamTrack: JSString = "mediaStreamTrack"
     @usableFromInline static let menubar: JSString = "menubar"
     @usableFromInline static let message: JSString = "message"
     @usableFromInline static let metaKey: JSString = "metaKey"
@@ -17324,7 +20375,9 @@ public enum console {
     @usableFromInline static let mimeType: JSString = "mimeType"
     @usableFromInline static let mimeTypes: JSString = "mimeTypes"
     @usableFromInline static let min: JSString = "min"
+    @usableFromInline static let minDecibels: JSString = "minDecibels"
     @usableFromInline static let minLength: JSString = "minLength"
+    @usableFromInline static let minValue: JSString = "minValue"
     @usableFromInline static let miterLimit: JSString = "miterLimit"
     @usableFromInline static let mode: JSString = "mode"
     @usableFromInline static let modifierAltGraph: JSString = "modifierAltGraph"
@@ -17337,6 +20390,7 @@ public enum console {
     @usableFromInline static let modifierSuper: JSString = "modifierSuper"
     @usableFromInline static let modifierSymbol: JSString = "modifierSymbol"
     @usableFromInline static let modifierSymbolLock: JSString = "modifierSymbolLock"
+    @usableFromInline static let moveBy: JSString = "moveBy"
     @usableFromInline static let moveTo: JSString = "moveTo"
     @usableFromInline static let multiple: JSString = "multiple"
     @usableFromInline static let multiply: JSString = "multiply"
@@ -17368,9 +20422,20 @@ public enum console {
     @usableFromInline static let nonce: JSString = "nonce"
     @usableFromInline static let normalize: JSString = "normalize"
     @usableFromInline static let now: JSString = "now"
+    @usableFromInline static let numberOfChannels: JSString = "numberOfChannels"
+    @usableFromInline static let numberOfInputs: JSString = "numberOfInputs"
+    @usableFromInline static let numberOfOutputs: JSString = "numberOfOutputs"
     @usableFromInline static let numberValue: JSString = "numberValue"
     @usableFromInline static let observe: JSString = "observe"
     @usableFromInline static let offset: JSString = "offset"
+    @usableFromInline static let offsetHeight: JSString = "offsetHeight"
+    @usableFromInline static let offsetLeft: JSString = "offsetLeft"
+    @usableFromInline static let offsetNode: JSString = "offsetNode"
+    @usableFromInline static let offsetParent: JSString = "offsetParent"
+    @usableFromInline static let offsetTop: JSString = "offsetTop"
+    @usableFromInline static let offsetWidth: JSString = "offsetWidth"
+    @usableFromInline static let offsetX: JSString = "offsetX"
+    @usableFromInline static let offsetY: JSString = "offsetY"
     @usableFromInline static let ok: JSString = "ok"
     @usableFromInline static let oldURL: JSString = "oldURL"
     @usableFromInline static let oldValue: JSString = "oldValue"
@@ -17378,6 +20443,7 @@ public enum console {
     @usableFromInline static let onabort: JSString = "onabort"
     @usableFromInline static let onaddtrack: JSString = "onaddtrack"
     @usableFromInline static let onafterprint: JSString = "onafterprint"
+    @usableFromInline static let onaudioprocess: JSString = "onaudioprocess"
     @usableFromInline static let onauxclick: JSString = "onauxclick"
     @usableFromInline static let onbeforeprint: JSString = "onbeforeprint"
     @usableFromInline static let onbeforeunload: JSString = "onbeforeunload"
@@ -17389,6 +20455,7 @@ public enum console {
     @usableFromInline static let onchange: JSString = "onchange"
     @usableFromInline static let onclick: JSString = "onclick"
     @usableFromInline static let onclose: JSString = "onclose"
+    @usableFromInline static let oncomplete: JSString = "oncomplete"
     @usableFromInline static let oncontextlost: JSString = "oncontextlost"
     @usableFromInline static let oncontextmenu: JSString = "oncontextmenu"
     @usableFromInline static let oncontextrestored: JSString = "oncontextrestored"
@@ -17447,6 +20514,7 @@ public enum console {
     @usableFromInline static let onplay: JSString = "onplay"
     @usableFromInline static let onplaying: JSString = "onplaying"
     @usableFromInline static let onpopstate: JSString = "onpopstate"
+    @usableFromInline static let onprocessorerror: JSString = "onprocessorerror"
     @usableFromInline static let onprogress: JSString = "onprogress"
     @usableFromInline static let onratechange: JSString = "onratechange"
     @usableFromInline static let onreadystatechange: JSString = "onreadystatechange"
@@ -17488,19 +20556,36 @@ public enum console {
     @usableFromInline static let opener: JSString = "opener"
     @usableFromInline static let optimum: JSString = "optimum"
     @usableFromInline static let options: JSString = "options"
+    @usableFromInline static let orientationX: JSString = "orientationX"
+    @usableFromInline static let orientationY: JSString = "orientationY"
+    @usableFromInline static let orientationZ: JSString = "orientationZ"
     @usableFromInline static let origin: JSString = "origin"
     @usableFromInline static let originAgentCluster: JSString = "originAgentCluster"
     @usableFromInline static let originTime: JSString = "originTime"
     @usableFromInline static let oscpu: JSString = "oscpu"
+    @usableFromInline static let outerHeight: JSString = "outerHeight"
     @usableFromInline static let outerText: JSString = "outerText"
+    @usableFromInline static let outerWidth: JSString = "outerWidth"
+    @usableFromInline static let outputBuffer: JSString = "outputBuffer"
+    @usableFromInline static let outputChannelCount: JSString = "outputChannelCount"
+    @usableFromInline static let outputLatency: JSString = "outputLatency"
     @usableFromInline static let overrideMimeType: JSString = "overrideMimeType"
+    @usableFromInline static let oversample: JSString = "oversample"
     @usableFromInline static let ownerDocument: JSString = "ownerDocument"
     @usableFromInline static let ownerElement: JSString = "ownerElement"
     @usableFromInline static let p1: JSString = "p1"
     @usableFromInline static let p2: JSString = "p2"
     @usableFromInline static let p3: JSString = "p3"
     @usableFromInline static let p4: JSString = "p4"
+    @usableFromInline static let pageX: JSString = "pageX"
+    @usableFromInline static let pageXOffset: JSString = "pageXOffset"
+    @usableFromInline static let pageY: JSString = "pageY"
+    @usableFromInline static let pageYOffset: JSString = "pageYOffset"
+    @usableFromInline static let pan: JSString = "pan"
     @usableFromInline static let panTiltZoom: JSString = "panTiltZoom"
+    @usableFromInline static let panningModel: JSString = "panningModel"
+    @usableFromInline static let parameterData: JSString = "parameterData"
+    @usableFromInline static let parameters: JSString = "parameters"
     @usableFromInline static let parent: JSString = "parent"
     @usableFromInline static let parentElement: JSString = "parentElement"
     @usableFromInline static let parentNode: JSString = "parentNode"
@@ -17516,6 +20601,8 @@ public enum console {
     @usableFromInline static let pdfViewerEnabled: JSString = "pdfViewerEnabled"
     @usableFromInline static let pending: JSString = "pending"
     @usableFromInline static let performance: JSString = "performance"
+    @usableFromInline static let performanceTime: JSString = "performanceTime"
+    @usableFromInline static let periodicWave: JSString = "periodicWave"
     @usableFromInline static let persist: JSString = "persist"
     @usableFromInline static let persisted: JSString = "persisted"
     @usableFromInline static let personalbar: JSString = "personalbar"
@@ -17523,11 +20610,13 @@ public enum console {
     @usableFromInline static let ping: JSString = "ping"
     @usableFromInline static let pipeThrough: JSString = "pipeThrough"
     @usableFromInline static let pipeTo: JSString = "pipeTo"
+    @usableFromInline static let pixelDepth: JSString = "pixelDepth"
     @usableFromInline static let placeholder: JSString = "placeholder"
     @usableFromInline static let platform: JSString = "platform"
     @usableFromInline static let play: JSString = "play"
     @usableFromInline static let playState: JSString = "playState"
     @usableFromInline static let playbackRate: JSString = "playbackRate"
+    @usableFromInline static let playbackTime: JSString = "playbackTime"
     @usableFromInline static let played: JSString = "played"
     @usableFromInline static let playsInline: JSString = "playsInline"
     @usableFromInline static let plugins: JSString = "plugins"
@@ -17537,6 +20626,9 @@ public enum console {
     @usableFromInline static let port2: JSString = "port2"
     @usableFromInline static let ports: JSString = "ports"
     @usableFromInline static let position: JSString = "position"
+    @usableFromInline static let positionX: JSString = "positionX"
+    @usableFromInline static let positionY: JSString = "positionY"
+    @usableFromInline static let positionZ: JSString = "positionZ"
     @usableFromInline static let postMessage: JSString = "postMessage"
     @usableFromInline static let poster: JSString = "poster"
     @usableFromInline static let preMultiplySelf: JSString = "preMultiplySelf"
@@ -17556,12 +20648,14 @@ public enum console {
     @usableFromInline static let previousNode: JSString = "previousNode"
     @usableFromInline static let previousSibling: JSString = "previousSibling"
     @usableFromInline static let print: JSString = "print"
+    @usableFromInline static let processorOptions: JSString = "processorOptions"
     @usableFromInline static let product: JSString = "product"
     @usableFromInline static let productSub: JSString = "productSub"
     @usableFromInline static let progress: JSString = "progress"
     @usableFromInline static let promise: JSString = "promise"
     @usableFromInline static let prompt: JSString = "prompt"
     @usableFromInline static let `protocol`: JSString = "protocol"
+    @usableFromInline static let pseudo: JSString = "pseudo"
     @usableFromInline static let pseudoElement: JSString = "pseudoElement"
     @usableFromInline static let publicId: JSString = "publicId"
     @usableFromInline static let pull: JSString = "pull"
@@ -17579,6 +20673,7 @@ public enum console {
     @usableFromInline static let querySelectorAll: JSString = "querySelectorAll"
     @usableFromInline static let rangeOverflow: JSString = "rangeOverflow"
     @usableFromInline static let rangeUnderflow: JSString = "rangeUnderflow"
+    @usableFromInline static let ratio: JSString = "ratio"
     @usableFromInline static let read: JSString = "read"
     @usableFromInline static let readAsArrayBuffer: JSString = "readAsArrayBuffer"
     @usableFromInline static let readAsBinaryString: JSString = "readAsBinaryString"
@@ -17589,10 +20684,13 @@ public enum console {
     @usableFromInline static let readableType: JSString = "readableType"
     @usableFromInline static let ready: JSString = "ready"
     @usableFromInline static let readyState: JSString = "readyState"
+    @usableFromInline static let real: JSString = "real"
     @usableFromInline static let reason: JSString = "reason"
     @usableFromInline static let rect: JSString = "rect"
     @usableFromInline static let redirect: JSString = "redirect"
     @usableFromInline static let redirected: JSString = "redirected"
+    @usableFromInline static let reduction: JSString = "reduction"
+    @usableFromInline static let refDistance: JSString = "refDistance"
     @usableFromInline static let referenceNode: JSString = "referenceNode"
     @usableFromInline static let referrer: JSString = "referrer"
     @usableFromInline static let referrerPolicy: JSString = "referrerPolicy"
@@ -17603,6 +20701,8 @@ public enum console {
     @usableFromInline static let relList: JSString = "relList"
     @usableFromInline static let relatedNode: JSString = "relatedNode"
     @usableFromInline static let relatedTarget: JSString = "relatedTarget"
+    @usableFromInline static let relativeTo: JSString = "relativeTo"
+    @usableFromInline static let release: JSString = "release"
     @usableFromInline static let releaseEvents: JSString = "releaseEvents"
     @usableFromInline static let releaseLock: JSString = "releaseLock"
     @usableFromInline static let reload: JSString = "reload"
@@ -17617,6 +20717,7 @@ public enum console {
     @usableFromInline static let removeParameter: JSString = "removeParameter"
     @usableFromInline static let removeTrack: JSString = "removeTrack"
     @usableFromInline static let removedNodes: JSString = "removedNodes"
+    @usableFromInline static let renderedBuffer: JSString = "renderedBuffer"
     @usableFromInline static let `repeat`: JSString = "repeat"
     @usableFromInline static let replace: JSString = "replace"
     @usableFromInline static let replaceChild: JSString = "replaceChild"
@@ -17633,9 +20734,11 @@ public enum console {
     @usableFromInline static let required: JSString = "required"
     @usableFromInline static let reset: JSString = "reset"
     @usableFromInline static let resetTransform: JSString = "resetTransform"
+    @usableFromInline static let resizeBy: JSString = "resizeBy"
     @usableFromInline static let resizeHeight: JSString = "resizeHeight"
     @usableFromInline static let resizeMode: JSString = "resizeMode"
     @usableFromInline static let resizeQuality: JSString = "resizeQuality"
+    @usableFromInline static let resizeTo: JSString = "resizeTo"
     @usableFromInline static let resizeWidth: JSString = "resizeWidth"
     @usableFromInline static let respond: JSString = "respond"
     @usableFromInline static let respondWithNewView: JSString = "respondWithNewView"
@@ -17656,6 +20759,7 @@ public enum console {
     @usableFromInline static let revokeObjectURL: JSString = "revokeObjectURL"
     @usableFromInline static let right: JSString = "right"
     @usableFromInline static let role: JSString = "role"
+    @usableFromInline static let rolloffFactor: JSString = "rolloffFactor"
     @usableFromInline static let root: JSString = "root"
     @usableFromInline static let rotate: JSString = "rotate"
     @usableFromInline static let rotateAxisAngle: JSString = "rotateAxisAngle"
@@ -17679,16 +20783,30 @@ public enum console {
     @usableFromInline static let scaleSelf: JSString = "scaleSelf"
     @usableFromInline static let scheme: JSString = "scheme"
     @usableFromInline static let scope: JSString = "scope"
+    @usableFromInline static let screen: JSString = "screen"
+    @usableFromInline static let screenLeft: JSString = "screenLeft"
+    @usableFromInline static let screenTop: JSString = "screenTop"
     @usableFromInline static let screenX: JSString = "screenX"
     @usableFromInline static let screenY: JSString = "screenY"
     @usableFromInline static let scriptURL: JSString = "scriptURL"
     @usableFromInline static let scripts: JSString = "scripts"
+    @usableFromInline static let scroll: JSString = "scroll"
     @usableFromInline static let scrollAmount: JSString = "scrollAmount"
+    @usableFromInline static let scrollBy: JSString = "scrollBy"
     @usableFromInline static let scrollDelay: JSString = "scrollDelay"
+    @usableFromInline static let scrollHeight: JSString = "scrollHeight"
+    @usableFromInline static let scrollIntoView: JSString = "scrollIntoView"
+    @usableFromInline static let scrollLeft: JSString = "scrollLeft"
     @usableFromInline static let scrollPathIntoView: JSString = "scrollPathIntoView"
     @usableFromInline static let scrollRestoration: JSString = "scrollRestoration"
+    @usableFromInline static let scrollTo: JSString = "scrollTo"
+    @usableFromInline static let scrollTop: JSString = "scrollTop"
+    @usableFromInline static let scrollWidth: JSString = "scrollWidth"
+    @usableFromInline static let scrollX: JSString = "scrollX"
+    @usableFromInline static let scrollY: JSString = "scrollY"
     @usableFromInline static let scrollbars: JSString = "scrollbars"
     @usableFromInline static let scrolling: JSString = "scrolling"
+    @usableFromInline static let scrollingElement: JSString = "scrollingElement"
     @usableFromInline static let search: JSString = "search"
     @usableFromInline static let searchParams: JSString = "searchParams"
     @usableFromInline static let sectionRowIndex: JSString = "sectionRowIndex"
@@ -17725,16 +20843,22 @@ public enum console {
     @usableFromInline static let setMatrixValue: JSString = "setMatrixValue"
     @usableFromInline static let setNamedItem: JSString = "setNamedItem"
     @usableFromInline static let setNamedItemNS: JSString = "setNamedItemNS"
+    @usableFromInline static let setOrientation: JSString = "setOrientation"
     @usableFromInline static let setParameter: JSString = "setParameter"
+    @usableFromInline static let setPeriodicWave: JSString = "setPeriodicWave"
+    @usableFromInline static let setPosition: JSString = "setPosition"
     @usableFromInline static let setRangeText: JSString = "setRangeText"
     @usableFromInline static let setRequestHeader: JSString = "setRequestHeader"
     @usableFromInline static let setSelectionRange: JSString = "setSelectionRange"
     @usableFromInline static let setStart: JSString = "setStart"
     @usableFromInline static let setStartAfter: JSString = "setStartAfter"
     @usableFromInline static let setStartBefore: JSString = "setStartBefore"
+    @usableFromInline static let setTargetAtTime: JSString = "setTargetAtTime"
     @usableFromInline static let setTimeout: JSString = "setTimeout"
     @usableFromInline static let setTransform: JSString = "setTransform"
     @usableFromInline static let setValidity: JSString = "setValidity"
+    @usableFromInline static let setValueAtTime: JSString = "setValueAtTime"
+    @usableFromInline static let setValueCurveAtTime: JSString = "setValueCurveAtTime"
     @usableFromInline static let shadowBlur: JSString = "shadowBlur"
     @usableFromInline static let shadowColor: JSString = "shadowColor"
     @usableFromInline static let shadowOffsetX: JSString = "shadowOffsetX"
@@ -17756,6 +20880,7 @@ public enum console {
     @usableFromInline static let slice: JSString = "slice"
     @usableFromInline static let slot: JSString = "slot"
     @usableFromInline static let slotAssignment: JSString = "slotAssignment"
+    @usableFromInline static let smoothingTimeConstant: JSString = "smoothingTimeConstant"
     @usableFromInline static let snapshotItem: JSString = "snapshotItem"
     @usableFromInline static let snapshotLength: JSString = "snapshotLength"
     @usableFromInline static let sort: JSString = "sort"
@@ -17774,6 +20899,7 @@ public enum console {
     @usableFromInline static let startContainer: JSString = "startContainer"
     @usableFromInline static let startMessages: JSString = "startMessages"
     @usableFromInline static let startOffset: JSString = "startOffset"
+    @usableFromInline static let startRendering: JSString = "startRendering"
     @usableFromInline static let startTime: JSString = "startTime"
     @usableFromInline static let state: JSString = "state"
     @usableFromInline static let status: JSString = "status"
@@ -17802,6 +20928,7 @@ public enum console {
     @usableFromInline static let summary: JSString = "summary"
     @usableFromInline static let supports: JSString = "supports"
     @usableFromInline static let surroundContents: JSString = "surroundContents"
+    @usableFromInline static let suspend: JSString = "suspend"
     @usableFromInline static let systemId: JSString = "systemId"
     @usableFromInline static let tBodies: JSString = "tBodies"
     @usableFromInline static let tFoot: JSString = "tFoot"
@@ -17822,6 +20949,7 @@ public enum console {
     @usableFromInline static let textLength: JSString = "textLength"
     @usableFromInline static let textRendering: JSString = "textRendering"
     @usableFromInline static let textTracks: JSString = "textTracks"
+    @usableFromInline static let threshold: JSString = "threshold"
     @usableFromInline static let throwIfAborted: JSString = "throwIfAborted"
     @usableFromInline static let time: JSString = "time"
     @usableFromInline static let timeEnd: JSString = "timeEnd"
@@ -17832,6 +20960,7 @@ public enum console {
     @usableFromInline static let timeline: JSString = "timeline"
     @usableFromInline static let timeout: JSString = "timeout"
     @usableFromInline static let title: JSString = "title"
+    @usableFromInline static let toBox: JSString = "toBox"
     @usableFromInline static let toDataURL: JSString = "toDataURL"
     @usableFromInline static let toFloat32Array: JSString = "toFloat32Array"
     @usableFromInline static let toFloat64Array: JSString = "toFloat64Array"
@@ -17862,6 +20991,9 @@ public enum console {
     @usableFromInline static let types: JSString = "types"
     @usableFromInline static let unregister: JSString = "unregister"
     @usableFromInline static let unregisterProtocolHandler: JSString = "unregisterProtocolHandler"
+    @usableFromInline static let upX: JSString = "upX"
+    @usableFromInline static let upY: JSString = "upY"
+    @usableFromInline static let upZ: JSString = "upZ"
     @usableFromInline static let update: JSString = "update"
     @usableFromInline static let updatePlaybackRate: JSString = "updatePlaybackRate"
     @usableFromInline static let updateTiming: JSString = "updateTiming"
@@ -17899,6 +21031,7 @@ public enum console {
     @usableFromInline static let w: JSString = "w"
     @usableFromInline static let waiting: JSString = "waiting"
     @usableFromInline static let warn: JSString = "warn"
+    @usableFromInline static let wasClean: JSString = "wasClean"
     @usableFromInline static let webkitMatchesSelector: JSString = "webkitMatchesSelector"
     @usableFromInline static let whatToShow: JSString = "whatToShow"
     @usableFromInline static let whenDefined: JSString = "whenDefined"
@@ -17958,6 +21091,48 @@ public enum ArrayBuffer_or_String: JSValueCompatible, Any_ArrayBuffer_or_String 
             return arrayBuffer.jsValue
         case let .string(string):
             return string.jsValue
+        }
+    }
+}
+
+public protocol Any_AudioContextLatencyCategory_or_Double: ConvertibleToJSValue {}
+extension AudioContextLatencyCategory: Any_AudioContextLatencyCategory_or_Double {}
+extension Double: Any_AudioContextLatencyCategory_or_Double {}
+
+public enum AudioContextLatencyCategory_or_Double: JSValueCompatible, Any_AudioContextLatencyCategory_or_Double {
+    case audioContextLatencyCategory(AudioContextLatencyCategory)
+    case double(Double)
+
+    var audioContextLatencyCategory: AudioContextLatencyCategory? {
+        switch self {
+        case let .audioContextLatencyCategory(audioContextLatencyCategory): return audioContextLatencyCategory
+        default: return nil
+        }
+    }
+
+    var double: Double? {
+        switch self {
+        case let .double(double): return double
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let audioContextLatencyCategory: AudioContextLatencyCategory = value.fromJSValue() {
+            return .audioContextLatencyCategory(audioContextLatencyCategory)
+        }
+        if let double: Double = value.fromJSValue() {
+            return .double(double)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .audioContextLatencyCategory(audioContextLatencyCategory):
+            return audioContextLatencyCategory.jsValue
+        case let .double(double):
+            return double.jsValue
         }
     }
 }
@@ -18116,6 +21291,48 @@ public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaT
     }
 }
 
+public protocol Any_Bool_or_ScrollIntoViewOptions: ConvertibleToJSValue {}
+extension Bool: Any_Bool_or_ScrollIntoViewOptions {}
+extension ScrollIntoViewOptions: Any_Bool_or_ScrollIntoViewOptions {}
+
+public enum Bool_or_ScrollIntoViewOptions: JSValueCompatible, Any_Bool_or_ScrollIntoViewOptions {
+    case bool(Bool)
+    case scrollIntoViewOptions(ScrollIntoViewOptions)
+
+    var bool: Bool? {
+        switch self {
+        case let .bool(bool): return bool
+        default: return nil
+        }
+    }
+
+    var scrollIntoViewOptions: ScrollIntoViewOptions? {
+        switch self {
+        case let .scrollIntoViewOptions(scrollIntoViewOptions): return scrollIntoViewOptions
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let bool: Bool = value.fromJSValue() {
+            return .bool(bool)
+        }
+        if let scrollIntoViewOptions: ScrollIntoViewOptions = value.fromJSValue() {
+            return .scrollIntoViewOptions(scrollIntoViewOptions)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .bool(bool):
+            return bool.jsValue
+        case let .scrollIntoViewOptions(scrollIntoViewOptions):
+            return scrollIntoViewOptions.jsValue
+        }
+    }
+}
+
 public protocol Any_BufferSource: ConvertibleToJSValue {}
 extension ArrayBuffer: Any_BufferSource {}
 extension ArrayBufferView: Any_BufferSource {}
@@ -18154,6 +21371,48 @@ public enum BufferSource: JSValueCompatible, Any_BufferSource {
             return arrayBuffer.jsValue
         case let .arrayBufferView(arrayBufferView):
             return arrayBufferView.jsValue
+        }
+    }
+}
+
+public protocol Any_CSSPseudoElement_or_Element: ConvertibleToJSValue {}
+extension CSSPseudoElement: Any_CSSPseudoElement_or_Element {}
+extension Element: Any_CSSPseudoElement_or_Element {}
+
+public enum CSSPseudoElement_or_Element: JSValueCompatible, Any_CSSPseudoElement_or_Element {
+    case cssPseudoElement(CSSPseudoElement)
+    case element(Element)
+
+    var cssPseudoElement: CSSPseudoElement? {
+        switch self {
+        case let .cssPseudoElement(cssPseudoElement): return cssPseudoElement
+        default: return nil
+        }
+    }
+
+    var element: Element? {
+        switch self {
+        case let .element(element): return element
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let cssPseudoElement: CSSPseudoElement = value.fromJSValue() {
+            return .cssPseudoElement(cssPseudoElement)
+        }
+        if let element: Element = value.fromJSValue() {
+            return .element(element)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .cssPseudoElement(cssPseudoElement):
+            return cssPseudoElement.jsValue
+        case let .element(element):
+            return element.jsValue
         }
     }
 }
@@ -19092,6 +22351,76 @@ public enum FormDataEntryValue: JSValueCompatible, Any_FormDataEntryValue {
             return file.jsValue
         case let .string(string):
             return string.jsValue
+        }
+    }
+}
+
+public protocol Any_GeometryNode: ConvertibleToJSValue {}
+extension CSSPseudoElement: Any_GeometryNode {}
+extension Document: Any_GeometryNode {}
+extension Element: Any_GeometryNode {}
+extension Text: Any_GeometryNode {}
+
+public enum GeometryNode: JSValueCompatible, Any_GeometryNode {
+    case cssPseudoElement(CSSPseudoElement)
+    case document(Document)
+    case element(Element)
+    case text(Text)
+
+    var cssPseudoElement: CSSPseudoElement? {
+        switch self {
+        case let .cssPseudoElement(cssPseudoElement): return cssPseudoElement
+        default: return nil
+        }
+    }
+
+    var document: Document? {
+        switch self {
+        case let .document(document): return document
+        default: return nil
+        }
+    }
+
+    var element: Element? {
+        switch self {
+        case let .element(element): return element
+        default: return nil
+        }
+    }
+
+    var text: Text? {
+        switch self {
+        case let .text(text): return text
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let cssPseudoElement: CSSPseudoElement = value.fromJSValue() {
+            return .cssPseudoElement(cssPseudoElement)
+        }
+        if let document: Document = value.fromJSValue() {
+            return .document(document)
+        }
+        if let element: Element = value.fromJSValue() {
+            return .element(element)
+        }
+        if let text: Text = value.fromJSValue() {
+            return .text(text)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .cssPseudoElement(cssPseudoElement):
+            return cssPseudoElement.jsValue
+        case let .document(document):
+            return document.jsValue
+        case let .element(element):
+            return element.jsValue
+        case let .text(text):
+            return text.jsValue
         }
     }
 }
