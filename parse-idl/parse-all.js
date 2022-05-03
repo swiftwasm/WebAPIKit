@@ -26,8 +26,9 @@ console.log(
       "websockets",
       "css-pseudo",
       "cssom-view",
-      "mediacapture-streams",
       "webaudio",
+      "mediacapture-streams",
+      "mediastream-recording",
     ].map((key) => parsedFiles[key]),
     null,
     2
