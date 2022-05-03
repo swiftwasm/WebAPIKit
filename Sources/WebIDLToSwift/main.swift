@@ -19,11 +19,22 @@ func main() {
         let startTime = Date()
         print("Generating bindings for \(idlInputs.map(\.path))...")
         let idls = try idlInputs.map { try (name: $0.name, collection: IDLParser.parseIDL(path: $0.path)) }
-        var graph = DeclGraph.build(from: idls.map { ($0, $1.array) })
-        graph.compact()
+        let graph = DeclGraph.build(from: idls.map { ($0, $1.array) })
 
         if let graphPath = ProcessInfo.processInfo.environment["WEBIDL_TO_SWIFT_DUMP_GRAPH"] {
             try graph.render().write(toFile: graphPath, atomically: true, encoding: .utf8)
+        }
+
+        let dag = DeclSetDAG.build(from: graph)
+
+        if let graphPath = ProcessInfo.processInfo.environment["WEBIDL_TO_SWIFT_DUMP_DAG"] {
+            try dag.render().write(toFile: graphPath, atomically: true, encoding: .utf8)
+        }
+
+        for (node, nodeId) in zip(dag.nodes, dag.nodes.indices) {
+            guard let node = node else { continue }
+            guard let dests = dag.forwardEdges[nodeId]?.map({ dag.nodes[$0] }) else { continue }
+            print("\(node) --> \(dests)")
         }
 
         try generate(idls: idls.map(\.collection), imports: [], outputPath: "Sources/DOMKit/DOMKit.swift")

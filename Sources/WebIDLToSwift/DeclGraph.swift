@@ -71,10 +71,6 @@ extension IDLType {
 
 struct DeclGraph {
 
-    struct UnownedNode {
-        unowned let value: Node
-    }
-
     typealias NodeId = Array<Node>.Index
 
     final class Node: Hashable, CustomStringConvertible {
@@ -99,7 +95,7 @@ struct DeclGraph {
     }
 
     private var resolutions: [UnresolvedRef: [NodeId]] = [:]
-    private var nodes: [Node?] = []
+    private(set) var nodes: [Node?] = []
     private(set) var forwardEdges: [NodeId: Set<NodeId>] = [:]
 
     typealias NodeByNameRecord = (primary: NodeId?, all: [NodeId])
@@ -251,7 +247,6 @@ struct DeclGraph {
         var graph = DeclGraph()
 
         for idl in idls {
-            print("Building graph from \(idl.unitName)")
             graph.collect(unitName: idl.unitName, decls: idl.collection)
         }
         graph.resolve()
@@ -276,7 +271,114 @@ struct DeclGraph {
     }
 }
 
-enum UnresolvedRef: Hashable {
+
+struct DeclSetDAG {
+    struct Node: CustomStringConvertible {
+        let sources: Set<String>
+        let decls: Set<DeclGraph.NodeId>
+
+        var description: String {
+            sources.joined(separator: ", ")
+        }
+    }
+    typealias NodeId = Array<Node>.Index
+
+    private(set) var nodes: [Node?] = []
+    private(set) var forwardEdges: [NodeId: Set<NodeId>] = [:]
+    private(set) var backEdges: [NodeId: Set<NodeId>] = [:]
+
+    static func build(from declGraph: DeclGraph) -> DeclSetDAG {
+        var graph = DeclSetDAG()
+        let scc = declGraph.buildSCC()
+
+        var declToNode: [DeclGraph.NodeId: NodeId] = [:]
+        for declNodes in scc {
+            let sources = Set(declNodes.compactMap { declGraph.nodes[$0]?.source.name })
+            guard !sources.isEmpty else { continue }
+            let newNode = Node(sources: sources, decls: declNodes)
+            let nodeId = graph.nodes.count
+            graph.nodes.append(newNode)
+            for decl in declNodes {
+                declToNode[decl] = nodeId
+            }
+        }
+
+        for declNodes in scc {
+            let selfNode = declToNode[declNodes.first!]!
+            for declNode in declNodes {
+                for destDecl in declGraph.forwardEdges[declNode] ?? [] {
+                    // If the edge is not SCC internal, add edge between components
+                    guard let destNode = declToNode[destDecl],
+                          !declNodes.contains(destDecl) else { continue }
+                    graph.addEdge(from: selfNode, to: destNode)
+                }
+            }
+        }
+        return graph
+    }
+
+    mutating func addEdge(from source: NodeId, to dest: NodeId) {
+        if source != dest {
+            self.forwardEdges[source, default: []].insert(dest)
+            self.backEdges[dest, default: []].insert(source)
+        }
+    }
+
+    mutating func removeEdge(from source: NodeId, to dest: NodeId) {
+        self.forwardEdges[source]?.remove(dest)
+        self.backEdges[dest]?.remove(source)
+    }
+
+    mutating func merge(keep: NodeId, remove: NodeId) {
+        for pointer in self.forwardEdges[remove] ?? [] {
+            removeEdge(from: remove, to: pointer)
+            addEdge(from: keep, to: pointer)
+        }
+        self.forwardEdges[remove] = nil
+        for pointer in self.backEdges[remove] ?? [] {
+            removeEdge(from: pointer, to: remove)
+            addEdge(from: pointer, to: keep)
+        }
+        self.backEdges[remove] = nil
+        self.nodes[remove] = nil
+    }
+
+    mutating func compact() {
+        var visited: Set<NodeId> = []
+        for nodeId in nodes.indices {
+            guard !visited.contains(nodeId) else { continue }
+            visited.insert(nodeId)
+            guard let node = self.nodes[nodeId] else { continue }
+            let edges = self.forwardEdges[nodeId] ?? []
+            for dest in edges {
+                guard let destNode = nodes[dest] else { continue }
+                // Merge if the edge connects the same sources
+                if destNode.sources == node.sources {
+                    merge(keep: nodeId, remove: dest)
+                }
+            }
+        }
+    }
+
+    func render() -> String {
+        var output = "digraph DependenciesGraph {\n"
+        output += "  node [shape = box]\n"
+        func renderNode(node id: NodeId) {
+            guard let node = self.nodes[id] else { return }
+            output += #"  "_\#(id)" [label="\#(id)_\#(node)"]"# + "\n"
+        }
+        for node in nodes.indices {
+            renderNode(node: node)
+            for edge in forwardEdges[node] ?? [] {
+                output += #"  "_\#(node)" -> "_\#(edge)""# + "\n"
+            }
+        }
+        output += "}\n"
+        return output
+    }
+}
+
+fileprivate enum UnresolvedRef: Hashable {
     case identifier(String)
     case type(IDLType)
 }
