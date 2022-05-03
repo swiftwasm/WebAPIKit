@@ -24,6 +24,7 @@ console.log(
       "url",
       "streams",
       "mediacapture-streams",
+      "mediastream-recording",
     ].map((key) => parsedFiles[key]),
     null,
     2

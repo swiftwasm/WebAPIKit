@@ -760,6 +760,24 @@ public class BeforeUnloadEvent: Event {
     // XXX: member 'returnValue' is ignored
 }
 
+public enum BitrateMode: JSString, JSValueCompatible {
+    case constant = "constant"
+    case variable = "variable"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public class Blob: JSBridgedClass {
     @inlinable public class var constructor: JSFunction { JSObject.global[Strings.Blob].function! }
 
@@ -811,6 +829,47 @@ public class Blob: JSBridgedClass {
         let _promise: JSPromise = this[Strings.arrayBuffer].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
+}
+
+public class BlobEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.BlobEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _data = ReadonlyAttribute(jsObject: jsObject, name: Strings.data)
+        _timecode = ReadonlyAttribute(jsObject: jsObject, name: Strings.timecode)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: BlobEventInit) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var data: Blob
+
+    @ReadonlyAttribute
+    public var timecode: DOMHighResTimeStamp
+}
+
+public class BlobEventInit: BridgedDictionary {
+    public convenience init(data: Blob, timecode: DOMHighResTimeStamp) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.data] = data.jsValue
+        object[Strings.timecode] = timecode.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _data = ReadWriteAttribute(jsObject: object, name: Strings.data)
+        _timecode = ReadWriteAttribute(jsObject: object, name: Strings.timecode)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var data: Blob
+
+    @ReadWriteAttribute
+    public var timecode: DOMHighResTimeStamp
 }
 
 public class BlobPropertyBag: BridgedDictionary {
@@ -9918,6 +9977,164 @@ public class MediaError: JSBridgedClass {
     public var message: String
 }
 
+public class MediaRecorder: EventTarget {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaRecorder].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _stream = ReadonlyAttribute(jsObject: jsObject, name: Strings.stream)
+        _mimeType = ReadonlyAttribute(jsObject: jsObject, name: Strings.mimeType)
+        _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
+        _onstart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstart)
+        _onstop = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstop)
+        _ondataavailable = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.ondataavailable)
+        _onpause = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onpause)
+        _onresume = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onresume)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _videoBitsPerSecond = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoBitsPerSecond)
+        _audioBitsPerSecond = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioBitsPerSecond)
+        _audioBitrateMode = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioBitrateMode)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(stream: MediaStream, options: MediaRecorderOptions? = nil) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [stream.jsValue, options?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var stream: MediaStream
+
+    @ReadonlyAttribute
+    public var mimeType: String
+
+    @ReadonlyAttribute
+    public var state: RecordingState
+
+    @ClosureAttribute1Optional
+    public var onstart: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onstop: EventHandler
+
+    @ClosureAttribute1Optional
+    public var ondataavailable: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onpause: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onresume: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onerror: EventHandler
+
+    @ReadonlyAttribute
+    public var videoBitsPerSecond: UInt32
+
+    @ReadonlyAttribute
+    public var audioBitsPerSecond: UInt32
+
+    @ReadonlyAttribute
+    public var audioBitrateMode: BitrateMode
+
+    @inlinable public func start(timeslice: UInt32? = nil) {
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [timeslice?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func stop() {
+        let this = jsObject
+        _ = this[Strings.stop].function!(this: this, arguments: [])
+    }
+
+    @inlinable public func pause() {
+        let this = jsObject
+        _ = this[Strings.pause].function!(this: this, arguments: [])
+    }
+
+    @inlinable public func resume() {
+        let this = jsObject
+        _ = this[Strings.resume].function!(this: this, arguments: [])
+    }
+
+    @inlinable public func requestData() {
+        let this = jsObject
+        _ = this[Strings.requestData].function!(this: this, arguments: [])
+    }
+
+    @inlinable public static func isTypeSupported(type: String) -> Bool {
+        let this = constructor
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+    }
+}
+
+public class MediaRecorderErrorEvent: Event {
+    @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaRecorderErrorEvent].function! }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: MediaRecorderErrorEventInit) {
+        self.init(unsafelyWrapping: Self.constructor.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var error: DOMException
+}
+
+public class MediaRecorderErrorEventInit: BridgedDictionary {
+    public convenience init(error: DOMException) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.error] = error.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _error = ReadWriteAttribute(jsObject: object, name: Strings.error)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var error: DOMException
+}
+
+public class MediaRecorderOptions: BridgedDictionary {
+    public convenience init(mimeType: String, audioBitsPerSecond: UInt32, videoBitsPerSecond: UInt32, bitsPerSecond: UInt32, audioBitrateMode: BitrateMode) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.mimeType] = mimeType.jsValue
+        object[Strings.audioBitsPerSecond] = audioBitsPerSecond.jsValue
+        object[Strings.videoBitsPerSecond] = videoBitsPerSecond.jsValue
+        object[Strings.bitsPerSecond] = bitsPerSecond.jsValue
+        object[Strings.audioBitrateMode] = audioBitrateMode.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _mimeType = ReadWriteAttribute(jsObject: object, name: Strings.mimeType)
+        _audioBitsPerSecond = ReadWriteAttribute(jsObject: object, name: Strings.audioBitsPerSecond)
+        _videoBitsPerSecond = ReadWriteAttribute(jsObject: object, name: Strings.videoBitsPerSecond)
+        _bitsPerSecond = ReadWriteAttribute(jsObject: object, name: Strings.bitsPerSecond)
+        _audioBitrateMode = ReadWriteAttribute(jsObject: object, name: Strings.audioBitrateMode)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var mimeType: String
+
+    @ReadWriteAttribute
+    public var audioBitsPerSecond: UInt32
+
+    @ReadWriteAttribute
+    public var videoBitsPerSecond: UInt32
+
+    @ReadWriteAttribute
+    public var bitsPerSecond: UInt32
+
+    @ReadWriteAttribute
+    public var audioBitrateMode: BitrateMode
+}
+
 public class MediaStream: EventTarget {
     @inlinable override public class var constructor: JSFunction { JSObject.global[Strings.MediaStream].function! }
 
@@ -12527,6 +12744,25 @@ public class ReadableWritablePair: BridgedDictionary {
 
     @ReadWriteAttribute
     public var writable: WritableStream
+}
+
+public enum RecordingState: JSString, JSValueCompatible {
+    case inactive = "inactive"
+    case recording = "recording"
+    case paused = "paused"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
 public enum ReferrerPolicy: JSString, JSValueCompatible {
@@ -16206,6 +16442,7 @@ public enum console {
     @usableFromInline static let BarProp: JSString = "BarProp"
     @usableFromInline static let BeforeUnloadEvent: JSString = "BeforeUnloadEvent"
     @usableFromInline static let Blob: JSString = "Blob"
+    @usableFromInline static let BlobEvent: JSString = "BlobEvent"
     @usableFromInline static let BroadcastChannel: JSString = "BroadcastChannel"
     @usableFromInline static let ByteLengthQueuingStrategy: JSString = "ByteLengthQueuingStrategy"
     @usableFromInline static let CDATASection: JSString = "CDATASection"
@@ -16346,6 +16583,8 @@ public enum console {
     @usableFromInline static let MediaDeviceInfo: JSString = "MediaDeviceInfo"
     @usableFromInline static let MediaDevices: JSString = "MediaDevices"
     @usableFromInline static let MediaError: JSString = "MediaError"
+    @usableFromInline static let MediaRecorder: JSString = "MediaRecorder"
+    @usableFromInline static let MediaRecorderErrorEvent: JSString = "MediaRecorderErrorEvent"
     @usableFromInline static let MediaStream: JSString = "MediaStream"
     @usableFromInline static let MediaStreamTrack: JSString = "MediaStreamTrack"
     @usableFromInline static let MediaStreamTrackEvent: JSString = "MediaStreamTrackEvent"
@@ -16542,6 +16781,8 @@ public enum console {
     @usableFromInline static let attributeOldValue: JSString = "attributeOldValue"
     @usableFromInline static let attributes: JSString = "attributes"
     @usableFromInline static let audio: JSString = "audio"
+    @usableFromInline static let audioBitrateMode: JSString = "audioBitrateMode"
+    @usableFromInline static let audioBitsPerSecond: JSString = "audioBitsPerSecond"
     @usableFromInline static let audioTracks: JSString = "audioTracks"
     @usableFromInline static let autoAllocateChunkSize: JSString = "autoAllocateChunkSize"
     @usableFromInline static let autoGainControl: JSString = "autoGainControl"
@@ -16560,6 +16801,7 @@ public enum console {
     @usableFromInline static let behavior: JSString = "behavior"
     @usableFromInline static let bezierCurveTo: JSString = "bezierCurveTo"
     @usableFromInline static let bgColor: JSString = "bgColor"
+    @usableFromInline static let bitsPerSecond: JSString = "bitsPerSecond"
     @usableFromInline static let blob: JSString = "blob"
     @usableFromInline static let blocking: JSString = "blocking"
     @usableFromInline static let blur: JSString = "blur"
@@ -16996,6 +17238,7 @@ public enum console {
     @usableFromInline static let isSameNode: JSString = "isSameNode"
     @usableFromInline static let isSecureContext: JSString = "isSecureContext"
     @usableFromInline static let isTrusted: JSString = "isTrusted"
+    @usableFromInline static let isTypeSupported: JSString = "isTypeSupported"
     @usableFromInline static let item: JSString = "item"
     @usableFromInline static let items: JSString = "items"
     @usableFromInline static let iterateNext: JSString = "iterateNext"
@@ -17078,6 +17321,7 @@ public enum console {
     @usableFromInline static let message: JSString = "message"
     @usableFromInline static let metaKey: JSString = "metaKey"
     @usableFromInline static let method: JSString = "method"
+    @usableFromInline static let mimeType: JSString = "mimeType"
     @usableFromInline static let mimeTypes: JSString = "mimeTypes"
     @usableFromInline static let min: JSString = "min"
     @usableFromInline static let minLength: JSString = "minLength"
@@ -17152,6 +17396,7 @@ public enum console {
     @usableFromInline static let oncopy: JSString = "oncopy"
     @usableFromInline static let oncuechange: JSString = "oncuechange"
     @usableFromInline static let oncut: JSString = "oncut"
+    @usableFromInline static let ondataavailable: JSString = "ondataavailable"
     @usableFromInline static let ondblclick: JSString = "ondblclick"
     @usableFromInline static let ondevicechange: JSString = "ondevicechange"
     @usableFromInline static let ondrag: JSString = "ondrag"
@@ -17210,6 +17455,7 @@ public enum console {
     @usableFromInline static let onremovetrack: JSString = "onremovetrack"
     @usableFromInline static let onreset: JSString = "onreset"
     @usableFromInline static let onresize: JSString = "onresize"
+    @usableFromInline static let onresume: JSString = "onresume"
     @usableFromInline static let onscroll: JSString = "onscroll"
     @usableFromInline static let onsecuritypolicyviolation: JSString = "onsecuritypolicyviolation"
     @usableFromInline static let onseeked: JSString = "onseeked"
@@ -17217,7 +17463,9 @@ public enum console {
     @usableFromInline static let onselect: JSString = "onselect"
     @usableFromInline static let onslotchange: JSString = "onslotchange"
     @usableFromInline static let onstalled: JSString = "onstalled"
+    @usableFromInline static let onstart: JSString = "onstart"
     @usableFromInline static let onstatechange: JSString = "onstatechange"
+    @usableFromInline static let onstop: JSString = "onstop"
     @usableFromInline static let onstorage: JSString = "onstorage"
     @usableFromInline static let onsubmit: JSString = "onsubmit"
     @usableFromInline static let onsuspend: JSString = "onsuspend"
@@ -17380,6 +17628,7 @@ public enum console {
     @usableFromInline static let reportError: JSString = "reportError"
     @usableFromInline static let reportValidity: JSString = "reportValidity"
     @usableFromInline static let request: JSString = "request"
+    @usableFromInline static let requestData: JSString = "requestData"
     @usableFromInline static let requestSubmit: JSString = "requestSubmit"
     @usableFromInline static let required: JSString = "required"
     @usableFromInline static let reset: JSString = "reset"
@@ -17399,6 +17648,7 @@ public enum console {
     @usableFromInline static let result: JSString = "result"
     @usableFromInline static let resultType: JSString = "resultType"
     @usableFromInline static let resultingClientId: JSString = "resultingClientId"
+    @usableFromInline static let resume: JSString = "resume"
     @usableFromInline static let returnValue: JSString = "returnValue"
     @usableFromInline static let rev: JSString = "rev"
     @usableFromInline static let reverse: JSString = "reverse"
@@ -17537,6 +17787,7 @@ public enum console {
     @usableFromInline static let stopImmediatePropagation: JSString = "stopImmediatePropagation"
     @usableFromInline static let stopPropagation: JSString = "stopPropagation"
     @usableFromInline static let storageArea: JSString = "storageArea"
+    @usableFromInline static let stream: JSString = "stream"
     @usableFromInline static let stringValue: JSString = "stringValue"
     @usableFromInline static let stroke: JSString = "stroke"
     @usableFromInline static let strokeRect: JSString = "strokeRect"
@@ -17577,6 +17828,7 @@ public enum console {
     @usableFromInline static let timeLog: JSString = "timeLog"
     @usableFromInline static let timeOrigin: JSString = "timeOrigin"
     @usableFromInline static let timeStamp: JSString = "timeStamp"
+    @usableFromInline static let timecode: JSString = "timecode"
     @usableFromInline static let timeline: JSString = "timeline"
     @usableFromInline static let timeout: JSString = "timeout"
     @usableFromInline static let title: JSString = "title"
@@ -17634,6 +17886,7 @@ public enum console {
     @usableFromInline static let vendorSub: JSString = "vendorSub"
     @usableFromInline static let version: JSString = "version"
     @usableFromInline static let video: JSString = "video"
+    @usableFromInline static let videoBitsPerSecond: JSString = "videoBitsPerSecond"
     @usableFromInline static let videoHeight: JSString = "videoHeight"
     @usableFromInline static let videoTracks: JSString = "videoTracks"
     @usableFromInline static let videoWidth: JSString = "videoWidth"
