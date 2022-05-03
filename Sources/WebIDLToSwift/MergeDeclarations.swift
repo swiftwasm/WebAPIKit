@@ -176,9 +176,7 @@ enum DeclarationMerger {
     }
 }
 
-protocol DeclarationFile {
-    var name: String { get }
-}
+protocol DeclarationFile: IDLNamed {}
 
 extension IDLEnum: DeclarationFile {}
 

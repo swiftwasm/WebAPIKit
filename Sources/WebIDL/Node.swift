@@ -1,6 +1,8 @@
 public protocol IDLNode: Decodable {
     static var type: String { get }
     var extAttrs: [IDLExtendedAttribute] { get }
+
+    func accept<V: IDLDeclVisitor>(visitor: inout V)
 }
 
 public protocol IDLNamed {
@@ -46,5 +48,29 @@ struct IDLNodeDecoder: Decodable {
         }
 
         node = try idlType.init(from: decoder)
+    }
+}
+
+public protocol IDLDeclVisitor {
+    mutating func visit(_ interface: IDLInterface)
+    mutating func visit(_ interfaceMixin: IDLInterfaceMixin)
+    mutating func visit(_ include: IDLIncludes)
+    mutating func visit(_ callback: IDLCallback)
+    mutating func visit(_ typedef: IDLTypedef)
+    mutating func visit(_ operation: IDLOperation)
+    mutating func visit(_ constructor: IDLConstructor)
+    mutating func visit(_ enum: IDLEnum)
+    mutating func visit(_ rawNode: IDLNode)
+}
+
+public extension IDLDeclVisitor {
+    mutating func visitRoot(_ node: IDLNode) {
+        node.accept(visitor: &self)
+    }
+}
+
+public extension IDLNode {
+    func accept<V: IDLDeclVisitor>(visitor: inout V) {
+//        visitor.visit(self)
     }
 }
