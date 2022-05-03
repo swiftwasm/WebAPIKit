@@ -44,8 +44,6 @@ private func generate(idls: [GenericCollection<IDLNode>],
     contents.append(try IDLBuilder.generateClosureTypes())
     print("Generating JSString constants...")
     contents.append(try IDLBuilder.generateStrings())
-    print("Generating union protocols...")
-    contents.append(try IDLBuilder.generateUnions())
     try fileManager.createDirectory(
         at: URL(fileURLWithPath: outputPath).deletingLastPathComponent(),
         withIntermediateDirectories: true

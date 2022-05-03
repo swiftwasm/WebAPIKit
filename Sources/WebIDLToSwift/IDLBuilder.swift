@@ -127,13 +127,4 @@ enum IDLBuilder {
             }
         """
     }
-
-    static func generateUnions() throws -> SwiftSource {
-        var contents: [SwiftSource] = []
-        for union in Record.current.unions.sorted(by: { $0.name < $1.name }) {
-            guard !ignoredNames.contains(union.name) else { continue }
-            contents.append(union.swiftRepresentation)
-        }
-        return "\(lines: contents)"
-    }
 }
