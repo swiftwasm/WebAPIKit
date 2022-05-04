@@ -2,4 +2,4 @@
 
 🚨 Very experimental 🚨
 
-Type-safe access to DOM and other Web APIs from Swift, using [webidl2swift](https://github.com/Apodini/webidl2swift/pull/8) to generate the bindings and [JavaScriptKit](https://github.com/swiftwasm/JavaScriptKit) to enable access to the actual objects.
+Type-safe access to DOM and other Web APIs from Swift, using [@webref/idl](https://www.npmjs.com/package/@webref/idl) package to generate the bindings and [JavaScriptKit](https://github.com/swiftwasm/JavaScriptKit) to enable access to the actual objects.
