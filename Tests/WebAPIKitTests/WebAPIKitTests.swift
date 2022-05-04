@@ -1,9 +1,9 @@
-import DOMKit
 import Foundation
 import JavaScriptKit
+import WebAPIKit
 import XCTest
 
-final class DOMKitTests: XCTestCase {
+final class WebAPIKitTests: XCTestCase {
     func testQuerySelector() {
         let document = globalThis.document
         let button = document.createElement(localName: "button")

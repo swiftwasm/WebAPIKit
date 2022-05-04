@@ -16,10 +16,10 @@ jobs:
         run: |
           set -ex
           sudo xcode-select --switch /Applications/Xcode_13.3.1.app/Contents/Developer/
-          
+
           brew install swiftwasm/tap/carton
 
-          carton bundle --product DOMKitDemo
+          carton bundle --product WebAPIKitDemo
           carton test --environment defaultBrowser
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

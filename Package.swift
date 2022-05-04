@@ -4,15 +4,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "DOMKit",
+    name: "WebAPIKit",
     products: [
         .executable(
-            name: "DOMKitDemo",
-            targets: ["DOMKitDemo"]
+            name: "WebAPIKitDemo",
+            targets: ["WebAPIKitDemo"]
         ),
         .library(
-            name: "DOMKit",
-            targets: ["DOMKit"]
+            name: "WebAPIKit",
+            targets: ["WebAPIKit"]
         ),
         .library(name: "WebIDL", targets: ["WebIDL"]),
         .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
@@ -25,11 +25,11 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "DOMKitDemo",
-            dependencies: ["DOMKit"]
+            name: "WebAPIKitDemo",
+            dependencies: ["WebAPIKit"]
         ),
         .target(
-            name: "DOMKit",
+            name: "WebAPIKit",
             dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]
         ),
         // This support library should be moved to JavaScriptKit
@@ -43,8 +43,8 @@ let package = Package(
             dependencies: ["WebIDL"]
         ),
         .testTarget(
-            name: "DOMKitTests",
-            dependencies: ["DOMKit"]
+            name: "WebAPIKitTests",
+            dependencies: ["WebAPIKit"]
         ),
     ]
 )

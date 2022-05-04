@@ -1,5 +1,5 @@
-import DOMKit
 import JavaScriptKit
+import WebAPIKit
 
 let document = globalThis.document
 
