@@ -15,7 +15,7 @@ public typealias Float32Array = JSTypedArray<Float32>
 public typealias Float64Array = JSTypedArray<Float64>
 
 public class ArrayBuffer: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.ArrayBuffer.function! }
+    public class var constructor: JSFunction? { JSObject.global.ArrayBuffer.function }
 
     public let jsObject: JSObject
 
@@ -24,9 +24,10 @@ public class ArrayBuffer: JSBridgedClass {
     }
 
     public convenience init(length: Int) {
-        self.init(unsafelyWrapping: Self.constructor.new(length))
+        self.init(unsafelyWrapping: Self.constructor!.new(length))
     }
 
+    @inlinable
     public static func isView(_ object: JSValueCompatible) -> Bool {
         JSObject.global.ArrayBuffer.object!.isView!(object).fromJSValue()!
     }
@@ -34,22 +35,23 @@ public class ArrayBuffer: JSBridgedClass {
 
 public extension JSTypedArray {
     convenience init(_ arrayBuffer: ArrayBuffer) {
-        self.init(unsafelyWrapping: Self.constructor.new(arrayBuffer))
+        self.init(unsafelyWrapping: Self.constructor!.new(arrayBuffer))
     }
 
+    @inlinable
     var buffer: ArrayBuffer {
         ArrayBuffer(unsafelyWrapping: jsObject.buffer.object!)
     }
 }
 
 #if canImport(Foundation)
-import Foundation
+    import Foundation
 
-public extension Data {
-    init(_ arrayBuffer: ArrayBuffer) {
-        self = JSTypedArray<UInt8>(arrayBuffer).withUnsafeBytes {
-            Data(buffer: $0)
+    public extension Data {
+        init(_ arrayBuffer: ArrayBuffer) {
+            self = JSTypedArray<UInt8>(arrayBuffer).withUnsafeBytes {
+                Data(buffer: $0)
+            }
         }
     }
-}
 #endif

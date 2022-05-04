@@ -20,7 +20,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/swiftwasm/JavaScriptKit.git",
-            .revision("95d0c4cd78b48ffc7e19c618d57c3244917be09a")
+            .branch("maxd/optional-constructor")
         ),
     ],
     targets: [
@@ -30,7 +30,12 @@ let package = Package(
         ),
         .target(
             name: "WebAPIKit",
-            dependencies: ["ECMAScript", "JavaScriptKit", .product(name: "JavaScriptEventLoop", package: "JavaScriptKit")]
+            dependencies: [
+                "ECMAScript",
+                "JavaScriptKit",
+                .product(name: "JavaScriptEventLoop", package: "JavaScriptKit"),
+                .product(name: "JavaScriptBigIntSupport", package: "JavaScriptKit"),
+            ]
         ),
         // This support library should be moved to JavaScriptKit
         .target(name: "ECMAScript", dependencies: [

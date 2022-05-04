@@ -5,7 +5,7 @@
 import JavaScriptKit
 
 public class DataView: JSBridgedClass {
-    public class var constructor: JSFunction { JSObject.global.DataView.function! }
+    public class var constructor: JSFunction? { JSObject.global.DataView.function }
 
     public let jsObject: JSObject
 
@@ -17,15 +17,15 @@ public class DataView: JSBridgedClass {
     }
 
     public convenience init(buffer: ArrayBuffer) {
-        self.init(unsafelyWrapping: DataView.constructor.new(buffer.jsValue))
+        self.init(unsafelyWrapping: DataView.constructor!.new(buffer.jsValue))
     }
 
     public convenience init(buffer: ArrayBuffer, byteOffset: UInt32) {
-        self.init(unsafelyWrapping: DataView.constructor.new(buffer.jsValue, byteOffset.jsValue))
+        self.init(unsafelyWrapping: DataView.constructor!.new(buffer.jsValue, byteOffset.jsValue))
     }
 
     public convenience init(buffer: ArrayBuffer, byteOffset: UInt32, byteLength: UInt32) {
-        self.init(unsafelyWrapping: DataView.constructor.new(buffer.jsValue, byteOffset.jsValue, byteLength.jsValue))
+        self.init(unsafelyWrapping: DataView.constructor!.new(buffer.jsValue, byteOffset.jsValue, byteLength.jsValue))
     }
 
     @ReadonlyAttribute
