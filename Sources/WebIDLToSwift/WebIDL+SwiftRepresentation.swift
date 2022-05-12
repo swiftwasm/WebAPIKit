@@ -541,7 +541,7 @@ extension IDLType: SwiftRepresentable {
         "byte": "Int8",
         "short": "Int16",
         "long": "Int32",
-        "long long": "Int64",
+        "long long": "Int32",
         "Function": "JSFunction",
         "bigint": "__UNSUPPORTED_BIGINT__",
     ]

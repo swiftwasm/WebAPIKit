@@ -1016,7 +1016,7 @@ public class AudioData: JSBridgedClass {
     public var duration: UInt64
 
     @ReadonlyAttribute
-    public var timestamp: Int64
+    public var timestamp: Int32
 
     @inlinable public func allocationSize(options: AudioDataCopyToOptions) -> UInt32 {
         let this = jsObject
@@ -1071,7 +1071,7 @@ public class AudioDataCopyToOptions: BridgedDictionary {
 }
 
 public class AudioDataInit: BridgedDictionary {
-    public convenience init(format: AudioSampleFormat, sampleRate: Float, numberOfFrames: UInt32, numberOfChannels: UInt32, timestamp: Int64, data: BufferSource) {
+    public convenience init(format: AudioSampleFormat, sampleRate: Float, numberOfFrames: UInt32, numberOfChannels: UInt32, timestamp: Int32, data: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.format] = format.jsValue
         object[Strings.sampleRate] = sampleRate.jsValue
@@ -1105,7 +1105,7 @@ public class AudioDataInit: BridgedDictionary {
     public var numberOfChannels: UInt32
 
     @ReadWriteAttribute
-    public var timestamp: Int64
+    public var timestamp: Int32
 
     @ReadWriteAttribute
     public var data: BufferSource
@@ -2336,7 +2336,7 @@ public class Blob: JSBridgedClass {
     @ReadonlyAttribute
     public var type: String
 
-    @inlinable public func slice(start: Int64? = nil, end: Int64? = nil, contentType: String? = nil) -> Self {
+    @inlinable public func slice(start: Int32? = nil, end: Int32? = nil, contentType: String? = nil) -> Self {
         let this = jsObject
         return this[Strings.slice].function!(this: this, arguments: [start?.jsValue ?? .undefined, end?.jsValue ?? .undefined, contentType?.jsValue ?? .undefined]).fromJSValue()!
     }
@@ -6788,7 +6788,7 @@ public class EncodedAudioChunk: JSBridgedClass {
     public var type: EncodedAudioChunkType
 
     @ReadonlyAttribute
-    public var timestamp: Int64
+    public var timestamp: Int32
 
     @ReadonlyAttribute
     public var duration: UInt64?
@@ -6803,7 +6803,7 @@ public class EncodedAudioChunk: JSBridgedClass {
 }
 
 public class EncodedAudioChunkInit: BridgedDictionary {
-    public convenience init(type: EncodedAudioChunkType, timestamp: Int64, duration: UInt64, data: BufferSource) {
+    public convenience init(type: EncodedAudioChunkType, timestamp: Int32, duration: UInt64, data: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.type] = type.jsValue
         object[Strings.timestamp] = timestamp.jsValue
@@ -6824,7 +6824,7 @@ public class EncodedAudioChunkInit: BridgedDictionary {
     public var type: EncodedAudioChunkType
 
     @ReadWriteAttribute
-    public var timestamp: Int64
+    public var timestamp: Int32
 
     @ReadWriteAttribute
     public var duration: UInt64
@@ -6888,7 +6888,7 @@ public class EncodedVideoChunk: JSBridgedClass {
     public var type: EncodedVideoChunkType
 
     @ReadonlyAttribute
-    public var timestamp: Int64
+    public var timestamp: Int32
 
     @ReadonlyAttribute
     public var duration: UInt64?
@@ -6903,7 +6903,7 @@ public class EncodedVideoChunk: JSBridgedClass {
 }
 
 public class EncodedVideoChunkInit: BridgedDictionary {
-    public convenience init(type: EncodedVideoChunkType, timestamp: Int64, duration: UInt64, data: BufferSource) {
+    public convenience init(type: EncodedVideoChunkType, timestamp: Int32, duration: UInt64, data: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.type] = type.jsValue
         object[Strings.timestamp] = timestamp.jsValue
@@ -6924,7 +6924,7 @@ public class EncodedVideoChunkInit: BridgedDictionary {
     public var type: EncodedVideoChunkType
 
     @ReadWriteAttribute
-    public var timestamp: Int64
+    public var timestamp: Int32
 
     @ReadWriteAttribute
     public var duration: UInt64
@@ -7461,7 +7461,7 @@ public class File: Blob {
     public var name: String
 
     @ReadonlyAttribute
-    public var lastModified: Int64
+    public var lastModified: Int32
 }
 
 public class FileList: JSBridgedClass {
@@ -7483,7 +7483,7 @@ public class FileList: JSBridgedClass {
 }
 
 public class FilePropertyBag: BridgedDictionary {
-    public convenience init(lastModified: Int64) {
+    public convenience init(lastModified: Int32) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.lastModified] = lastModified.jsValue
         self.init(unsafelyWrapping: object)
@@ -7495,7 +7495,7 @@ public class FilePropertyBag: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var lastModified: Int64
+    public var lastModified: Int32
 }
 
 public class FileReader: EventTarget {
@@ -21238,15 +21238,15 @@ public typealias GLbyte = Int8
 public typealias GLshort = Int16
 public typealias GLint = Int32
 public typealias GLsizei = Int32
-public typealias GLintptr = Int64
-public typealias GLsizeiptr = Int64
+public typealias GLintptr = Int32
+public typealias GLsizeiptr = Int32
 public typealias GLubyte = UInt8
 public typealias GLushort = UInt16
 public typealias GLuint = UInt32
 public typealias GLfloat = Float
 public typealias GLclampf = Float
 
-public typealias GLint64 = Int64
+public typealias GLint64 = Int32
 public typealias GLuint64 = UInt64
 
 public typealias GPUBufferUsageFlags = UInt32
@@ -22213,7 +22213,7 @@ public class VideoFrame: JSBridgedClass {
     public var duration: UInt64?
 
     @ReadonlyAttribute
-    public var timestamp: Int64?
+    public var timestamp: Int32?
 
     @ReadonlyAttribute
     public var colorSpace: VideoColorSpace
@@ -22247,7 +22247,7 @@ public class VideoFrame: JSBridgedClass {
 }
 
 public class VideoFrameBufferInit: BridgedDictionary {
-    public convenience init(format: VideoPixelFormat, codedWidth: UInt32, codedHeight: UInt32, timestamp: Int64, duration: UInt64, layout: [PlaneLayout], visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32, colorSpace: VideoColorSpaceInit) {
+    public convenience init(format: VideoPixelFormat, codedWidth: UInt32, codedHeight: UInt32, timestamp: Int32, duration: UInt64, layout: [PlaneLayout], visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32, colorSpace: VideoColorSpaceInit) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.format] = format.jsValue
         object[Strings.codedWidth] = codedWidth.jsValue
@@ -22286,7 +22286,7 @@ public class VideoFrameBufferInit: BridgedDictionary {
     public var codedHeight: UInt32
 
     @ReadWriteAttribute
-    public var timestamp: Int64
+    public var timestamp: Int32
 
     @ReadWriteAttribute
     public var duration: UInt64
@@ -22329,7 +22329,7 @@ public class VideoFrameCopyToOptions: BridgedDictionary {
 }
 
 public class VideoFrameInit: BridgedDictionary {
-    public convenience init(duration: UInt64, timestamp: Int64, alpha: AlphaOption, visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32) {
+    public convenience init(duration: UInt64, timestamp: Int32, alpha: AlphaOption, visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.duration] = duration.jsValue
         object[Strings.timestamp] = timestamp.jsValue
@@ -22354,7 +22354,7 @@ public class VideoFrameInit: BridgedDictionary {
     public var duration: UInt64
 
     @ReadWriteAttribute
-    public var timestamp: Int64
+    public var timestamp: Int32
 
     @ReadWriteAttribute
     public var alpha: AlphaOption
