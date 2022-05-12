@@ -21238,7 +21238,6 @@ public typealias GLbyte = Int8
 public typealias GLshort = Int16
 public typealias GLint = Int32
 public typealias GLsizei = Int32
-public typealias GLintptr = Int64
 public typealias GLsizeiptr = Int64
 public typealias GLubyte = UInt8
 public typealias GLushort = UInt16

@@ -7,6 +7,9 @@ enum DeclarationMerger {
         "CustomElementConstructor",
         "ArrayBufferView",
         "RotationMatrixType",
+        // Mapped to `Int32` manually. This can't be represented as `Int64` due to `BigInt` representation on JS side,
+        // but as a pointer it can't be represented as floating point number either.
+        "GLintptr",
     ]
     static let validExposures: Set<String> = ["Window"]
 

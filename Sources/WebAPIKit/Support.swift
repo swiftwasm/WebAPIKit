@@ -1,5 +1,5 @@
-import JavaScriptKit
 @_exported import ECMAScript
+import JavaScriptKit
 
 /* TODO: fix this */
 public typealias __UNSUPPORTED_BIGINT__ = JSValue
@@ -22,3 +22,4 @@ public typealias HTMLOrSVGImageElement = HTMLImageElement
 public typealias HTMLOrSVGScriptElement = HTMLScriptElement
 public typealias BodyInit = XMLHttpRequestBodyInit
 public typealias CustomElementConstructor = JSFunction
+public typealias GLintptr = Int32
