@@ -7,6 +7,8 @@ enum DeclarationMerger {
         "CustomElementConstructor",
         "ArrayBufferView",
         "RotationMatrixType",
+        // Mapped to `Int32` manually.
+        "GLintptr",
     ]
     static let validExposures: Set<String> = ["Window"]
 

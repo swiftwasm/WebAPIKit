@@ -541,7 +541,8 @@ extension IDLType: SwiftRepresentable {
         "byte": "Int8",
         "short": "Int16",
         "long": "Int32",
-        "long long": "Int32",
+        // FIXME: this maps to BigInt when bridged to JS, which most probably leads to issues.
+        "long long": "Int64",
         "Function": "JSFunction",
         "bigint": "__UNSUPPORTED_BIGINT__",
     ]
