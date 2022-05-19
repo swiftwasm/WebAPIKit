@@ -20,7 +20,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/swiftwasm/JavaScriptKit.git",
-            .branch("maxd/optional-constructor")
+            from: "0.15.0"
         ),
     ],
     targets: [
