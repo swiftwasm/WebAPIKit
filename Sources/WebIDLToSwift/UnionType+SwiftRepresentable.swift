@@ -64,7 +64,7 @@ extension UnionType: SwiftRepresentable {
     var accessors: [SwiftSource] {
         zip(sortedTypes, sortedNames).map { type, name in
             """
-            var \(name): \(type)? {
+            public var \(name): \(type)? {
                 switch self {
                 case let .\(name)(\(name)): return \(name)
                 default: return nil

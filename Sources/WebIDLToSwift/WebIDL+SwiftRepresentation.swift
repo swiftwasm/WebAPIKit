@@ -168,7 +168,7 @@ protocol Initializable {
 
 extension MergedInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let constructor: SwiftSource = "JSObject.global[\(Context.source(for: name))].function!"
+        let constructor: SwiftSource = "JSObject.global[\(Context.source(for: name))].function"
         let body = Context.withState(.instance(constructor: constructor, this: "jsObject", className: "\(name)")) {
             members.map { member in
                 let isOverride: Bool
@@ -193,7 +193,7 @@ extension MergedInterface: SwiftRepresentable {
         let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
         return """
         public class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
-            @inlinable public\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction { \(constructor) }
+            @inlinable public\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction? { \(constructor) }
 
             \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
 
@@ -296,7 +296,7 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
         }
         return """
         @inlinable public convenience init(\(sequence: arguments.map(\.swiftRepresentation))) {
-            self.init(unsafelyWrapping: Self.constructor.new(arguments: \(argsArray)))
+            self.init(unsafelyWrapping: Self.constructor!.new(arguments: \(argsArray)))
         }
         """
     }
@@ -364,7 +364,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                 }
                 """
             case "static":
-                return Context.withState(.static(this: "constructor", className: Context.className)) {
+                return Context.withState(.static(this: "constructor!", className: Context.className)) {
                     defaultRepresentation
                 }
             case "getter":
@@ -482,7 +482,7 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
         }
         switch operation.special {
         case "static":
-            return Context.withState(.static(this: "constructor", className: Context.className)) {
+            return Context.withState(.static(this: "constructor!", className: Context.className)) {
                 defaultRepresentation
             }
         case "":

@@ -117,7 +117,7 @@ func runWebGLDemo() {
   // Get A WebGL context
   let canvas = HTMLCanvasElement(from: document.createElement(localName: "canvas"))!
   _ = document.body?.appendChild(node: canvas)
-  let context = WebGL2RenderingContext.construct(from: canvas.getContext(contextId: "webgl2")!.jsValue)!
+  let context = canvas.getContext(contextId: "webgl2")!.webGL2RenderingContext!
 
   // create GLSL shaders, upload the GLSL source, compile the shaders
   guard
