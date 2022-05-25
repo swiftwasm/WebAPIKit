@@ -10,13 +10,8 @@ import JavaScriptKit
     }
 
     @inlinable public var wrappedValue: Wrapped {
-        get { ReadWriteAttribute[name, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> Wrapped {
         get { jsObject[name].fromJSValue()! }
-        set { jsObject[name] = newValue.jsValue }
+        nonmutating set { jsObject[name] = newValue.jsValue }
     }
 }
 
@@ -30,10 +25,6 @@ import JavaScriptKit
     }
 
     @inlinable public var wrappedValue: Wrapped {
-        ReadonlyAttribute[name, in: jsObject]
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> Wrapped {
         jsObject[name].fromJSValue()!
     }
 }
