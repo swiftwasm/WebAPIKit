@@ -38,16 +38,32 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
             """
         } else if Context.constructor == nil || Context.static {
             // can't do property wrappers on extensions
-            let setter: SwiftSource = """
-            nonmutating set { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] = newValue }
-            """
+            let propertyWrapper = idlType.propertyWrapper(readonly: readonly)
+            if [SwiftSource.readOnlyAttribute, .readWriteAttribute].contains(propertyWrapper) {
+                let setter: SwiftSource = """
+                nonmutating set { jsObject[\(Context.source(for: name))] = newValue.jsValue }
+                """
 
-            return """
-            @inlinable public\(raw: Context.static ? " static" : "") var \(name): \(idlType) {
-                get { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] }
-                \(readonly ? "" : setter)
+                return """
+                @inlinable public\(raw: Context.static ? " static" : "") var \(name): \(idlType) {
+                    get { jsObject[\(Context.source(for: name))].fromJSValue()! }
+                    \(readonly ? "" : setter)
+                }
+                """
+            } else {
+                let setter: SwiftSource = """
+                nonmutating set { \(
+                    idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)
+                ), in: jsObject] = newValue }
+                """
+
+                return """
+                @inlinable public\(raw: Context.static ? " static" : "") var \(name): \(idlType) {
+                    get { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] }
+                    \(readonly ? "" : setter)
+                }
+                """
             }
-            """
         } else {
             return """
             @\(idlType.propertyWrapper(readonly: readonly))
@@ -623,9 +639,9 @@ extension IDLType: SwiftRepresentable {
         }
 
         if readonly {
-            return "ReadonlyAttribute"
+            return .readOnlyAttribute
         } else {
-            return "ReadWriteAttribute"
+            return .readWriteAttribute
         }
     }
 

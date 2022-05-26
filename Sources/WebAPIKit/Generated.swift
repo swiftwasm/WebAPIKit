@@ -7,208 +7,208 @@ import JavaScriptKit
 public protocol ARIAMixin: JSBridgedClass {}
 public extension ARIAMixin {
     @inlinable var role: String? {
-        get { ReadWriteAttribute[Strings.role, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.role, in: jsObject] = newValue }
+        get { jsObject[Strings.role].fromJSValue()! }
+        nonmutating set { jsObject[Strings.role] = newValue.jsValue }
     }
 
     @inlinable var ariaAtomic: String? {
-        get { ReadWriteAttribute[Strings.ariaAtomic, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaAtomic, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaAtomic].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaAtomic] = newValue.jsValue }
     }
 
     @inlinable var ariaAutoComplete: String? {
-        get { ReadWriteAttribute[Strings.ariaAutoComplete, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaAutoComplete, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaAutoComplete].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaAutoComplete] = newValue.jsValue }
     }
 
     @inlinable var ariaBusy: String? {
-        get { ReadWriteAttribute[Strings.ariaBusy, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaBusy, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaBusy].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaBusy] = newValue.jsValue }
     }
 
     @inlinable var ariaChecked: String? {
-        get { ReadWriteAttribute[Strings.ariaChecked, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaChecked, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaChecked].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaChecked] = newValue.jsValue }
     }
 
     @inlinable var ariaColCount: String? {
-        get { ReadWriteAttribute[Strings.ariaColCount, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaColCount, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaColCount].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaColCount] = newValue.jsValue }
     }
 
     @inlinable var ariaColIndex: String? {
-        get { ReadWriteAttribute[Strings.ariaColIndex, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaColIndex, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaColIndex].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaColIndex] = newValue.jsValue }
     }
 
     @inlinable var ariaColIndexText: String? {
-        get { ReadWriteAttribute[Strings.ariaColIndexText, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaColIndexText, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaColIndexText].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaColIndexText] = newValue.jsValue }
     }
 
     @inlinable var ariaColSpan: String? {
-        get { ReadWriteAttribute[Strings.ariaColSpan, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaColSpan, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaColSpan].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaColSpan] = newValue.jsValue }
     }
 
     @inlinable var ariaCurrent: String? {
-        get { ReadWriteAttribute[Strings.ariaCurrent, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaCurrent, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaCurrent].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaCurrent] = newValue.jsValue }
     }
 
     @inlinable var ariaDescription: String? {
-        get { ReadWriteAttribute[Strings.ariaDescription, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaDescription, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaDescription].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaDescription] = newValue.jsValue }
     }
 
     @inlinable var ariaDisabled: String? {
-        get { ReadWriteAttribute[Strings.ariaDisabled, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaDisabled, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaDisabled].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaDisabled] = newValue.jsValue }
     }
 
     @inlinable var ariaExpanded: String? {
-        get { ReadWriteAttribute[Strings.ariaExpanded, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaExpanded, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaExpanded].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaExpanded] = newValue.jsValue }
     }
 
     @inlinable var ariaHasPopup: String? {
-        get { ReadWriteAttribute[Strings.ariaHasPopup, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaHasPopup, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaHasPopup].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaHasPopup] = newValue.jsValue }
     }
 
     @inlinable var ariaHidden: String? {
-        get { ReadWriteAttribute[Strings.ariaHidden, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaHidden, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaHidden].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaHidden] = newValue.jsValue }
     }
 
     @inlinable var ariaInvalid: String? {
-        get { ReadWriteAttribute[Strings.ariaInvalid, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaInvalid, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaInvalid].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaInvalid] = newValue.jsValue }
     }
 
     @inlinable var ariaKeyShortcuts: String? {
-        get { ReadWriteAttribute[Strings.ariaKeyShortcuts, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaKeyShortcuts, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaKeyShortcuts].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaKeyShortcuts] = newValue.jsValue }
     }
 
     @inlinable var ariaLabel: String? {
-        get { ReadWriteAttribute[Strings.ariaLabel, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaLabel, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaLabel].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaLabel] = newValue.jsValue }
     }
 
     @inlinable var ariaLevel: String? {
-        get { ReadWriteAttribute[Strings.ariaLevel, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaLevel, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaLevel].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaLevel] = newValue.jsValue }
     }
 
     @inlinable var ariaLive: String? {
-        get { ReadWriteAttribute[Strings.ariaLive, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaLive, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaLive].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaLive] = newValue.jsValue }
     }
 
     @inlinable var ariaModal: String? {
-        get { ReadWriteAttribute[Strings.ariaModal, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaModal, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaModal].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaModal] = newValue.jsValue }
     }
 
     @inlinable var ariaMultiLine: String? {
-        get { ReadWriteAttribute[Strings.ariaMultiLine, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaMultiLine, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaMultiLine].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaMultiLine] = newValue.jsValue }
     }
 
     @inlinable var ariaMultiSelectable: String? {
-        get { ReadWriteAttribute[Strings.ariaMultiSelectable, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaMultiSelectable, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaMultiSelectable].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaMultiSelectable] = newValue.jsValue }
     }
 
     @inlinable var ariaOrientation: String? {
-        get { ReadWriteAttribute[Strings.ariaOrientation, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaOrientation, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaOrientation].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaOrientation] = newValue.jsValue }
     }
 
     @inlinable var ariaPlaceholder: String? {
-        get { ReadWriteAttribute[Strings.ariaPlaceholder, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaPlaceholder, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaPlaceholder].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaPlaceholder] = newValue.jsValue }
     }
 
     @inlinable var ariaPosInSet: String? {
-        get { ReadWriteAttribute[Strings.ariaPosInSet, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaPosInSet, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaPosInSet].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaPosInSet] = newValue.jsValue }
     }
 
     @inlinable var ariaPressed: String? {
-        get { ReadWriteAttribute[Strings.ariaPressed, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaPressed, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaPressed].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaPressed] = newValue.jsValue }
     }
 
     @inlinable var ariaReadOnly: String? {
-        get { ReadWriteAttribute[Strings.ariaReadOnly, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaReadOnly, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaReadOnly].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaReadOnly] = newValue.jsValue }
     }
 
     @inlinable var ariaRequired: String? {
-        get { ReadWriteAttribute[Strings.ariaRequired, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaRequired, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaRequired].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaRequired] = newValue.jsValue }
     }
 
     @inlinable var ariaRoleDescription: String? {
-        get { ReadWriteAttribute[Strings.ariaRoleDescription, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaRoleDescription, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaRoleDescription].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaRoleDescription] = newValue.jsValue }
     }
 
     @inlinable var ariaRowCount: String? {
-        get { ReadWriteAttribute[Strings.ariaRowCount, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaRowCount, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaRowCount].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaRowCount] = newValue.jsValue }
     }
 
     @inlinable var ariaRowIndex: String? {
-        get { ReadWriteAttribute[Strings.ariaRowIndex, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaRowIndex, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaRowIndex].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaRowIndex] = newValue.jsValue }
     }
 
     @inlinable var ariaRowIndexText: String? {
-        get { ReadWriteAttribute[Strings.ariaRowIndexText, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaRowIndexText, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaRowIndexText].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaRowIndexText] = newValue.jsValue }
     }
 
     @inlinable var ariaRowSpan: String? {
-        get { ReadWriteAttribute[Strings.ariaRowSpan, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaRowSpan, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaRowSpan].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaRowSpan] = newValue.jsValue }
     }
 
     @inlinable var ariaSelected: String? {
-        get { ReadWriteAttribute[Strings.ariaSelected, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaSelected, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaSelected].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaSelected] = newValue.jsValue }
     }
 
     @inlinable var ariaSetSize: String? {
-        get { ReadWriteAttribute[Strings.ariaSetSize, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaSetSize, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaSetSize].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaSetSize] = newValue.jsValue }
     }
 
     @inlinable var ariaSort: String? {
-        get { ReadWriteAttribute[Strings.ariaSort, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaSort, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaSort].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaSort] = newValue.jsValue }
     }
 
     @inlinable var ariaValueMax: String? {
-        get { ReadWriteAttribute[Strings.ariaValueMax, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaValueMax, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaValueMax].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaValueMax] = newValue.jsValue }
     }
 
     @inlinable var ariaValueMin: String? {
-        get { ReadWriteAttribute[Strings.ariaValueMin, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaValueMin, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaValueMin].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaValueMin] = newValue.jsValue }
     }
 
     @inlinable var ariaValueNow: String? {
-        get { ReadWriteAttribute[Strings.ariaValueNow, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaValueNow, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaValueNow].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaValueNow] = newValue.jsValue }
     }
 
     @inlinable var ariaValueText: String? {
-        get { ReadWriteAttribute[Strings.ariaValueText, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.ariaValueText, in: jsObject] = newValue }
+        get { jsObject[Strings.ariaValueText].fromJSValue()! }
+        nonmutating set { jsObject[Strings.ariaValueText] = newValue.jsValue }
     }
 }
 
@@ -2435,7 +2435,7 @@ public protocol Body: JSBridgedClass {}
 public extension Body {
     // XXX: attribute 'body' is ignored
 
-    @inlinable var bodyUsed: Bool { ReadonlyAttribute[Strings.bodyUsed, in: jsObject] }
+    @inlinable var bodyUsed: Bool { jsObject[Strings.bodyUsed].fromJSValue()! }
 
     @inlinable func arrayBuffer() -> JSPromise {
         let this = jsObject
@@ -2856,13 +2856,13 @@ public enum CanPlayTypeResult: JSString, JSValueCompatible {
 public protocol CanvasCompositing: JSBridgedClass {}
 public extension CanvasCompositing {
     @inlinable var globalAlpha: Double {
-        get { ReadWriteAttribute[Strings.globalAlpha, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.globalAlpha, in: jsObject] = newValue }
+        get { jsObject[Strings.globalAlpha].fromJSValue()! }
+        nonmutating set { jsObject[Strings.globalAlpha] = newValue.jsValue }
     }
 
     @inlinable var globalCompositeOperation: String {
-        get { ReadWriteAttribute[Strings.globalCompositeOperation, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.globalCompositeOperation, in: jsObject] = newValue }
+        get { jsObject[Strings.globalCompositeOperation].fromJSValue()! }
+        nonmutating set { jsObject[Strings.globalCompositeOperation] = newValue.jsValue }
     }
 }
 
@@ -2991,13 +2991,13 @@ public enum CanvasFillRule: JSString, JSValueCompatible {
 public protocol CanvasFillStrokeStyles: JSBridgedClass {}
 public extension CanvasFillStrokeStyles {
     @inlinable var strokeStyle: CanvasGradient_or_CanvasPattern_or_String {
-        get { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.strokeStyle, in: jsObject] = newValue }
+        get { jsObject[Strings.strokeStyle].fromJSValue()! }
+        nonmutating set { jsObject[Strings.strokeStyle] = newValue.jsValue }
     }
 
     @inlinable var fillStyle: CanvasGradient_or_CanvasPattern_or_String {
-        get { ReadWriteAttribute[Strings.fillStyle, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.fillStyle, in: jsObject] = newValue }
+        get { jsObject[Strings.fillStyle].fromJSValue()! }
+        nonmutating set { jsObject[Strings.fillStyle] = newValue.jsValue }
     }
 
     @inlinable func createLinearGradient(x0: Double, y0: Double, x1: Double, y1: Double) -> CanvasGradient {
@@ -3044,8 +3044,8 @@ public class CanvasFilter: JSBridgedClass {
 public protocol CanvasFilters: JSBridgedClass {}
 public extension CanvasFilters {
     @inlinable var filter: CanvasFilter_or_String {
-        get { ReadWriteAttribute[Strings.filter, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.filter, in: jsObject] = newValue }
+        get { jsObject[Strings.filter].fromJSValue()! }
+        nonmutating set { jsObject[Strings.filter] = newValue.jsValue }
     }
 }
 
@@ -3169,13 +3169,13 @@ public extension CanvasImageData {
 public protocol CanvasImageSmoothing: JSBridgedClass {}
 public extension CanvasImageSmoothing {
     @inlinable var imageSmoothingEnabled: Bool {
-        get { ReadWriteAttribute[Strings.imageSmoothingEnabled, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.imageSmoothingEnabled, in: jsObject] = newValue }
+        get { jsObject[Strings.imageSmoothingEnabled].fromJSValue()! }
+        nonmutating set { jsObject[Strings.imageSmoothingEnabled] = newValue.jsValue }
     }
 
     @inlinable var imageSmoothingQuality: ImageSmoothingQuality {
-        get { ReadWriteAttribute[Strings.imageSmoothingQuality, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.imageSmoothingQuality, in: jsObject] = newValue }
+        get { jsObject[Strings.imageSmoothingQuality].fromJSValue()! }
+        nonmutating set { jsObject[Strings.imageSmoothingQuality] = newValue.jsValue }
     }
 }
 
@@ -3293,23 +3293,23 @@ public extension CanvasPath {
 public protocol CanvasPathDrawingStyles: JSBridgedClass {}
 public extension CanvasPathDrawingStyles {
     @inlinable var lineWidth: Double {
-        get { ReadWriteAttribute[Strings.lineWidth, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.lineWidth, in: jsObject] = newValue }
+        get { jsObject[Strings.lineWidth].fromJSValue()! }
+        nonmutating set { jsObject[Strings.lineWidth] = newValue.jsValue }
     }
 
     @inlinable var lineCap: CanvasLineCap {
-        get { ReadWriteAttribute[Strings.lineCap, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.lineCap, in: jsObject] = newValue }
+        get { jsObject[Strings.lineCap].fromJSValue()! }
+        nonmutating set { jsObject[Strings.lineCap] = newValue.jsValue }
     }
 
     @inlinable var lineJoin: CanvasLineJoin {
-        get { ReadWriteAttribute[Strings.lineJoin, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.lineJoin, in: jsObject] = newValue }
+        get { jsObject[Strings.lineJoin].fromJSValue()! }
+        nonmutating set { jsObject[Strings.lineJoin] = newValue.jsValue }
     }
 
     @inlinable var miterLimit: Double {
-        get { ReadWriteAttribute[Strings.miterLimit, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.miterLimit, in: jsObject] = newValue }
+        get { jsObject[Strings.miterLimit].fromJSValue()! }
+        nonmutating set { jsObject[Strings.miterLimit] = newValue.jsValue }
     }
 
     @inlinable func setLineDash(segments: [Double]) {
@@ -3323,8 +3323,8 @@ public extension CanvasPathDrawingStyles {
     }
 
     @inlinable var lineDashOffset: Double {
-        get { ReadWriteAttribute[Strings.lineDashOffset, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.lineDashOffset, in: jsObject] = newValue }
+        get { jsObject[Strings.lineDashOffset].fromJSValue()! }
+        nonmutating set { jsObject[Strings.lineDashOffset] = newValue.jsValue }
     }
 }
 
@@ -3414,23 +3414,23 @@ public class CanvasRenderingContext2DSettings: BridgedDictionary {
 public protocol CanvasShadowStyles: JSBridgedClass {}
 public extension CanvasShadowStyles {
     @inlinable var shadowOffsetX: Double {
-        get { ReadWriteAttribute[Strings.shadowOffsetX, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.shadowOffsetX, in: jsObject] = newValue }
+        get { jsObject[Strings.shadowOffsetX].fromJSValue()! }
+        nonmutating set { jsObject[Strings.shadowOffsetX] = newValue.jsValue }
     }
 
     @inlinable var shadowOffsetY: Double {
-        get { ReadWriteAttribute[Strings.shadowOffsetY, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.shadowOffsetY, in: jsObject] = newValue }
+        get { jsObject[Strings.shadowOffsetY].fromJSValue()! }
+        nonmutating set { jsObject[Strings.shadowOffsetY] = newValue.jsValue }
     }
 
     @inlinable var shadowBlur: Double {
-        get { ReadWriteAttribute[Strings.shadowBlur, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.shadowBlur, in: jsObject] = newValue }
+        get { jsObject[Strings.shadowBlur].fromJSValue()! }
+        nonmutating set { jsObject[Strings.shadowBlur] = newValue.jsValue }
     }
 
     @inlinable var shadowColor: String {
-        get { ReadWriteAttribute[Strings.shadowColor, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.shadowColor, in: jsObject] = newValue }
+        get { jsObject[Strings.shadowColor].fromJSValue()! }
+        nonmutating set { jsObject[Strings.shadowColor] = newValue.jsValue }
     }
 }
 
@@ -3521,53 +3521,53 @@ public enum CanvasTextBaseline: JSString, JSValueCompatible {
 public protocol CanvasTextDrawingStyles: JSBridgedClass {}
 public extension CanvasTextDrawingStyles {
     @inlinable var font: String {
-        get { ReadWriteAttribute[Strings.font, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.font, in: jsObject] = newValue }
+        get { jsObject[Strings.font].fromJSValue()! }
+        nonmutating set { jsObject[Strings.font] = newValue.jsValue }
     }
 
     @inlinable var textAlign: CanvasTextAlign {
-        get { ReadWriteAttribute[Strings.textAlign, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.textAlign, in: jsObject] = newValue }
+        get { jsObject[Strings.textAlign].fromJSValue()! }
+        nonmutating set { jsObject[Strings.textAlign] = newValue.jsValue }
     }
 
     @inlinable var textBaseline: CanvasTextBaseline {
-        get { ReadWriteAttribute[Strings.textBaseline, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.textBaseline, in: jsObject] = newValue }
+        get { jsObject[Strings.textBaseline].fromJSValue()! }
+        nonmutating set { jsObject[Strings.textBaseline] = newValue.jsValue }
     }
 
     @inlinable var direction: CanvasDirection {
-        get { ReadWriteAttribute[Strings.direction, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.direction, in: jsObject] = newValue }
+        get { jsObject[Strings.direction].fromJSValue()! }
+        nonmutating set { jsObject[Strings.direction] = newValue.jsValue }
     }
 
     @inlinable var letterSpacing: String {
-        get { ReadWriteAttribute[Strings.letterSpacing, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.letterSpacing, in: jsObject] = newValue }
+        get { jsObject[Strings.letterSpacing].fromJSValue()! }
+        nonmutating set { jsObject[Strings.letterSpacing] = newValue.jsValue }
     }
 
     @inlinable var fontKerning: CanvasFontKerning {
-        get { ReadWriteAttribute[Strings.fontKerning, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.fontKerning, in: jsObject] = newValue }
+        get { jsObject[Strings.fontKerning].fromJSValue()! }
+        nonmutating set { jsObject[Strings.fontKerning] = newValue.jsValue }
     }
 
     @inlinable var fontStretch: CanvasFontStretch {
-        get { ReadWriteAttribute[Strings.fontStretch, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.fontStretch, in: jsObject] = newValue }
+        get { jsObject[Strings.fontStretch].fromJSValue()! }
+        nonmutating set { jsObject[Strings.fontStretch] = newValue.jsValue }
     }
 
     @inlinable var fontVariantCaps: CanvasFontVariantCaps {
-        get { ReadWriteAttribute[Strings.fontVariantCaps, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.fontVariantCaps, in: jsObject] = newValue }
+        get { jsObject[Strings.fontVariantCaps].fromJSValue()! }
+        nonmutating set { jsObject[Strings.fontVariantCaps] = newValue.jsValue }
     }
 
     @inlinable var textRendering: CanvasTextRendering {
-        get { ReadWriteAttribute[Strings.textRendering, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.textRendering, in: jsObject] = newValue }
+        get { jsObject[Strings.textRendering].fromJSValue()! }
+        nonmutating set { jsObject[Strings.textRendering] = newValue.jsValue }
     }
 
     @inlinable var wordSpacing: String {
-        get { ReadWriteAttribute[Strings.wordSpacing, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.wordSpacing, in: jsObject] = newValue }
+        get { jsObject[Strings.wordSpacing].fromJSValue()! }
+        nonmutating set { jsObject[Strings.wordSpacing] = newValue.jsValue }
     }
 }
 
@@ -6138,7 +6138,7 @@ public class DocumentFragment: Node, NonElementParentNode, ParentNode {
 
 public protocol DocumentOrShadowRoot: JSBridgedClass {}
 public extension DocumentOrShadowRoot {
-    @inlinable var activeElement: Element? { ReadonlyAttribute[Strings.activeElement, in: jsObject] }
+    @inlinable var activeElement: Element? { jsObject[Strings.activeElement].fromJSValue()! }
 
     @inlinable func getAnimations() -> [Animation] {
         let this = jsObject
@@ -6665,20 +6665,20 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
 public protocol ElementContentEditable: JSBridgedClass {}
 public extension ElementContentEditable {
     @inlinable var contentEditable: String {
-        get { ReadWriteAttribute[Strings.contentEditable, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.contentEditable, in: jsObject] = newValue }
+        get { jsObject[Strings.contentEditable].fromJSValue()! }
+        nonmutating set { jsObject[Strings.contentEditable] = newValue.jsValue }
     }
 
     @inlinable var enterKeyHint: String {
-        get { ReadWriteAttribute[Strings.enterKeyHint, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.enterKeyHint, in: jsObject] = newValue }
+        get { jsObject[Strings.enterKeyHint].fromJSValue()! }
+        nonmutating set { jsObject[Strings.enterKeyHint] = newValue.jsValue }
     }
 
-    @inlinable var isContentEditable: Bool { ReadonlyAttribute[Strings.isContentEditable, in: jsObject] }
+    @inlinable var isContentEditable: Bool { jsObject[Strings.isContentEditable].fromJSValue()! }
 
     @inlinable var inputMode: String {
-        get { ReadWriteAttribute[Strings.inputMode, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.inputMode, in: jsObject] = newValue }
+        get { jsObject[Strings.inputMode].fromJSValue()! }
+        nonmutating set { jsObject[Strings.inputMode] = newValue.jsValue }
     }
 }
 
@@ -9371,8 +9371,8 @@ public class GPUMultisampleState: BridgedDictionary {
 public protocol GPUObjectBase: JSBridgedClass {}
 public extension GPUObjectBase {
     @inlinable var label: String? {
-        get { ReadWriteAttribute[Strings.label, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.label, in: jsObject] = newValue }
+        get { jsObject[Strings.label].fromJSValue()! }
+        nonmutating set { jsObject[Strings.label] = newValue.jsValue }
     }
 }
 
@@ -11150,9 +11150,9 @@ public class GainOptions: BridgedDictionary {
 
 public protocol GenericTransformStream: JSBridgedClass {}
 public extension GenericTransformStream {
-    @inlinable var readable: ReadableStream { ReadonlyAttribute[Strings.readable, in: jsObject] }
+    @inlinable var readable: ReadableStream { jsObject[Strings.readable].fromJSValue()! }
 
-    @inlinable var writable: WritableStream { ReadonlyAttribute[Strings.writable, in: jsObject] }
+    @inlinable var writable: WritableStream { jsObject[Strings.writable].fromJSValue()! }
 }
 
 public protocol GeometryUtils: JSBridgedClass {}
@@ -12535,55 +12535,55 @@ public class HTMLHtmlElement: HTMLElement {
 public protocol HTMLHyperlinkElementUtils: JSBridgedClass {}
 public extension HTMLHyperlinkElementUtils {
     @inlinable var href: String {
-        get { ReadWriteAttribute[Strings.href, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.href, in: jsObject] = newValue }
+        get { jsObject[Strings.href].fromJSValue()! }
+        nonmutating set { jsObject[Strings.href] = newValue.jsValue }
     }
 
-    @inlinable var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
+    @inlinable var origin: String { jsObject[Strings.origin].fromJSValue()! }
 
     @inlinable var `protocol`: String {
-        get { ReadWriteAttribute[Strings.protocol, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.protocol, in: jsObject] = newValue }
+        get { jsObject[Strings.protocol].fromJSValue()! }
+        nonmutating set { jsObject[Strings.protocol] = newValue.jsValue }
     }
 
     @inlinable var username: String {
-        get { ReadWriteAttribute[Strings.username, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.username, in: jsObject] = newValue }
+        get { jsObject[Strings.username].fromJSValue()! }
+        nonmutating set { jsObject[Strings.username] = newValue.jsValue }
     }
 
     @inlinable var password: String {
-        get { ReadWriteAttribute[Strings.password, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.password, in: jsObject] = newValue }
+        get { jsObject[Strings.password].fromJSValue()! }
+        nonmutating set { jsObject[Strings.password] = newValue.jsValue }
     }
 
     @inlinable var host: String {
-        get { ReadWriteAttribute[Strings.host, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.host, in: jsObject] = newValue }
+        get { jsObject[Strings.host].fromJSValue()! }
+        nonmutating set { jsObject[Strings.host] = newValue.jsValue }
     }
 
     @inlinable var hostname: String {
-        get { ReadWriteAttribute[Strings.hostname, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.hostname, in: jsObject] = newValue }
+        get { jsObject[Strings.hostname].fromJSValue()! }
+        nonmutating set { jsObject[Strings.hostname] = newValue.jsValue }
     }
 
     @inlinable var port: String {
-        get { ReadWriteAttribute[Strings.port, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.port, in: jsObject] = newValue }
+        get { jsObject[Strings.port].fromJSValue()! }
+        nonmutating set { jsObject[Strings.port] = newValue.jsValue }
     }
 
     @inlinable var pathname: String {
-        get { ReadWriteAttribute[Strings.pathname, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.pathname, in: jsObject] = newValue }
+        get { jsObject[Strings.pathname].fromJSValue()! }
+        nonmutating set { jsObject[Strings.pathname] = newValue.jsValue }
     }
 
     @inlinable var search: String {
-        get { ReadWriteAttribute[Strings.search, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.search, in: jsObject] = newValue }
+        get { jsObject[Strings.search].fromJSValue()! }
+        nonmutating set { jsObject[Strings.search] = newValue.jsValue }
     }
 
     @inlinable var hash: String {
-        get { ReadWriteAttribute[Strings.hash, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.hash, in: jsObject] = newValue }
+        get { jsObject[Strings.hash].fromJSValue()! }
+        nonmutating set { jsObject[Strings.hash] = newValue.jsValue }
     }
 }
 
@@ -13807,21 +13807,21 @@ public class HTMLOptionsCollection: HTMLCollection {
 
 public protocol HTMLOrSVGElement: JSBridgedClass {}
 public extension HTMLOrSVGElement {
-    @inlinable var dataset: DOMStringMap { ReadonlyAttribute[Strings.dataset, in: jsObject] }
+    @inlinable var dataset: DOMStringMap { jsObject[Strings.dataset].fromJSValue()! }
 
     @inlinable var nonce: String {
-        get { ReadWriteAttribute[Strings.nonce, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.nonce, in: jsObject] = newValue }
+        get { jsObject[Strings.nonce].fromJSValue()! }
+        nonmutating set { jsObject[Strings.nonce] = newValue.jsValue }
     }
 
     @inlinable var autofocus: Bool {
-        get { ReadWriteAttribute[Strings.autofocus, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.autofocus, in: jsObject] = newValue }
+        get { jsObject[Strings.autofocus].fromJSValue()! }
+        nonmutating set { jsObject[Strings.autofocus] = newValue.jsValue }
     }
 
     @inlinable var tabIndex: Int32 {
-        get { ReadWriteAttribute[Strings.tabIndex, in: jsObject] }
-        nonmutating set { ReadWriteAttribute[Strings.tabIndex, in: jsObject] = newValue }
+        get { jsObject[Strings.tabIndex].fromJSValue()! }
+        nonmutating set { jsObject[Strings.tabIndex] = newValue.jsValue }
     }
 
     @inlinable func focus(options: FocusOptions? = nil) {
@@ -17624,7 +17624,7 @@ public class Navigator: JSBridgedClass, NavigatorID, NavigatorLanguage, Navigato
 
 public protocol NavigatorConcurrentHardware: JSBridgedClass {}
 public extension NavigatorConcurrentHardware {
-    @inlinable var hardwareConcurrency: UInt64 { ReadonlyAttribute[Strings.hardwareConcurrency, in: jsObject] }
+    @inlinable var hardwareConcurrency: UInt64 { jsObject[Strings.hardwareConcurrency].fromJSValue()! }
 }
 
 public protocol NavigatorContentUtils: JSBridgedClass {}
@@ -17642,66 +17642,66 @@ public extension NavigatorContentUtils {
 
 public protocol NavigatorCookies: JSBridgedClass {}
 public extension NavigatorCookies {
-    @inlinable var cookieEnabled: Bool { ReadonlyAttribute[Strings.cookieEnabled, in: jsObject] }
+    @inlinable var cookieEnabled: Bool { jsObject[Strings.cookieEnabled].fromJSValue()! }
 }
 
 public protocol NavigatorGPU: JSBridgedClass {}
 public extension NavigatorGPU {
-    @inlinable var gpu: GPU { ReadonlyAttribute[Strings.gpu, in: jsObject] }
+    @inlinable var gpu: GPU { jsObject[Strings.gpu].fromJSValue()! }
 }
 
 public protocol NavigatorID: JSBridgedClass {}
 public extension NavigatorID {
-    @inlinable var appCodeName: String { ReadonlyAttribute[Strings.appCodeName, in: jsObject] }
+    @inlinable var appCodeName: String { jsObject[Strings.appCodeName].fromJSValue()! }
 
-    @inlinable var appName: String { ReadonlyAttribute[Strings.appName, in: jsObject] }
+    @inlinable var appName: String { jsObject[Strings.appName].fromJSValue()! }
 
-    @inlinable var appVersion: String { ReadonlyAttribute[Strings.appVersion, in: jsObject] }
+    @inlinable var appVersion: String { jsObject[Strings.appVersion].fromJSValue()! }
 
-    @inlinable var platform: String { ReadonlyAttribute[Strings.platform, in: jsObject] }
+    @inlinable var platform: String { jsObject[Strings.platform].fromJSValue()! }
 
-    @inlinable var product: String { ReadonlyAttribute[Strings.product, in: jsObject] }
+    @inlinable var product: String { jsObject[Strings.product].fromJSValue()! }
 
-    @inlinable var productSub: String { ReadonlyAttribute[Strings.productSub, in: jsObject] }
+    @inlinable var productSub: String { jsObject[Strings.productSub].fromJSValue()! }
 
-    @inlinable var userAgent: String { ReadonlyAttribute[Strings.userAgent, in: jsObject] }
+    @inlinable var userAgent: String { jsObject[Strings.userAgent].fromJSValue()! }
 
-    @inlinable var vendor: String { ReadonlyAttribute[Strings.vendor, in: jsObject] }
+    @inlinable var vendor: String { jsObject[Strings.vendor].fromJSValue()! }
 
-    @inlinable var vendorSub: String { ReadonlyAttribute[Strings.vendorSub, in: jsObject] }
+    @inlinable var vendorSub: String { jsObject[Strings.vendorSub].fromJSValue()! }
 
     @inlinable func taintEnabled() -> Bool {
         let this = jsObject
         return this[Strings.taintEnabled].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    @inlinable var oscpu: String { ReadonlyAttribute[Strings.oscpu, in: jsObject] }
+    @inlinable var oscpu: String { jsObject[Strings.oscpu].fromJSValue()! }
 }
 
 public protocol NavigatorLanguage: JSBridgedClass {}
 public extension NavigatorLanguage {
-    @inlinable var language: String { ReadonlyAttribute[Strings.language, in: jsObject] }
+    @inlinable var language: String { jsObject[Strings.language].fromJSValue()! }
 
-    @inlinable var languages: [String] { ReadonlyAttribute[Strings.languages, in: jsObject] }
+    @inlinable var languages: [String] { jsObject[Strings.languages].fromJSValue()! }
 }
 
 public protocol NavigatorOnLine: JSBridgedClass {}
 public extension NavigatorOnLine {
-    @inlinable var onLine: Bool { ReadonlyAttribute[Strings.onLine, in: jsObject] }
+    @inlinable var onLine: Bool { jsObject[Strings.onLine].fromJSValue()! }
 }
 
 public protocol NavigatorPlugins: JSBridgedClass {}
 public extension NavigatorPlugins {
-    @inlinable var plugins: PluginArray { ReadonlyAttribute[Strings.plugins, in: jsObject] }
+    @inlinable var plugins: PluginArray { jsObject[Strings.plugins].fromJSValue()! }
 
-    @inlinable var mimeTypes: MimeTypeArray { ReadonlyAttribute[Strings.mimeTypes, in: jsObject] }
+    @inlinable var mimeTypes: MimeTypeArray { jsObject[Strings.mimeTypes].fromJSValue()! }
 
     @inlinable func javaEnabled() -> Bool {
         let this = jsObject
         return this[Strings.javaEnabled].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    @inlinable var pdfViewerEnabled: Bool { ReadonlyAttribute[Strings.pdfViewerEnabled, in: jsObject] }
+    @inlinable var pdfViewerEnabled: Bool { jsObject[Strings.pdfViewerEnabled].fromJSValue()! }
 }
 
 public class Node: EventTarget {
@@ -17947,9 +17947,9 @@ public class NodeList: JSBridgedClass, Sequence {
 
 public protocol NonDocumentTypeChildNode: JSBridgedClass {}
 public extension NonDocumentTypeChildNode {
-    @inlinable var previousElementSibling: Element? { ReadonlyAttribute[Strings.previousElementSibling, in: jsObject] }
+    @inlinable var previousElementSibling: Element? { jsObject[Strings.previousElementSibling].fromJSValue()! }
 
-    @inlinable var nextElementSibling: Element? { ReadonlyAttribute[Strings.nextElementSibling, in: jsObject] }
+    @inlinable var nextElementSibling: Element? { jsObject[Strings.nextElementSibling].fromJSValue()! }
 }
 
 public protocol NonElementParentNode: JSBridgedClass {}
@@ -18546,13 +18546,13 @@ public enum PanningModelType: JSString, JSValueCompatible {
 
 public protocol ParentNode: JSBridgedClass {}
 public extension ParentNode {
-    @inlinable var children: HTMLCollection { ReadonlyAttribute[Strings.children, in: jsObject] }
+    @inlinable var children: HTMLCollection { jsObject[Strings.children].fromJSValue()! }
 
-    @inlinable var firstElementChild: Element? { ReadonlyAttribute[Strings.firstElementChild, in: jsObject] }
+    @inlinable var firstElementChild: Element? { jsObject[Strings.firstElementChild].fromJSValue()! }
 
-    @inlinable var lastElementChild: Element? { ReadonlyAttribute[Strings.lastElementChild, in: jsObject] }
+    @inlinable var lastElementChild: Element? { jsObject[Strings.lastElementChild].fromJSValue()! }
 
-    @inlinable var childElementCount: UInt32 { ReadonlyAttribute[Strings.childElementCount, in: jsObject] }
+    @inlinable var childElementCount: UInt32 { jsObject[Strings.childElementCount].fromJSValue()! }
 
     @inlinable func prepend(nodes: Node_or_String...) {
         let this = jsObject
@@ -19388,7 +19388,7 @@ public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericR
 
 public protocol ReadableStreamGenericReader: JSBridgedClass {}
 public extension ReadableStreamGenericReader {
-    @inlinable var closed: JSPromise { ReadonlyAttribute[Strings.closed, in: jsObject] }
+    @inlinable var closed: JSPromise { jsObject[Strings.closed].fromJSValue()! }
 
     @inlinable func cancel(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
@@ -20448,7 +20448,7 @@ public enum SlotAssignmentMode: JSString, JSValueCompatible {
 
 public protocol Slottable: JSBridgedClass {}
 public extension Slottable {
-    @inlinable var assignedSlot: HTMLSlotElement? { ReadonlyAttribute[Strings.assignedSlot, in: jsObject] }
+    @inlinable var assignedSlot: HTMLSlotElement? { jsObject[Strings.assignedSlot].fromJSValue()! }
 }
 
 public class StaticRange: AbstractRange {
@@ -24823,11 +24823,11 @@ public extension WebGLRenderingContextBase {
 
     @inlinable static var BROWSER_DEFAULT_WEBGL: GLenum { 0x9244 }
 
-    @inlinable var canvas: HTMLCanvasElement_or_OffscreenCanvas { ReadonlyAttribute[Strings.canvas, in: jsObject] }
+    @inlinable var canvas: HTMLCanvasElement_or_OffscreenCanvas { jsObject[Strings.canvas].fromJSValue()! }
 
-    @inlinable var drawingBufferWidth: GLsizei { ReadonlyAttribute[Strings.drawingBufferWidth, in: jsObject] }
+    @inlinable var drawingBufferWidth: GLsizei { jsObject[Strings.drawingBufferWidth].fromJSValue()! }
 
-    @inlinable var drawingBufferHeight: GLsizei { ReadonlyAttribute[Strings.drawingBufferHeight, in: jsObject] }
+    @inlinable var drawingBufferHeight: GLsizei { jsObject[Strings.drawingBufferHeight].fromJSValue()! }
 
     @inlinable func getContextAttributes() -> WebGLContextAttributes? {
         let this = jsObject
@@ -26200,7 +26200,7 @@ public extension WindowEventHandlers {
 
 public protocol WindowLocalStorage: JSBridgedClass {}
 public extension WindowLocalStorage {
-    @inlinable var localStorage: Storage { ReadonlyAttribute[Strings.localStorage, in: jsObject] }
+    @inlinable var localStorage: Storage { jsObject[Strings.localStorage].fromJSValue()! }
 }
 
 public protocol WindowOrWorkerGlobalScope: JSBridgedClass {}
@@ -26217,11 +26217,11 @@ public extension WindowOrWorkerGlobalScope {
         return try await _promise.value.fromJSValue()!
     }
 
-    @inlinable var origin: String { ReadonlyAttribute[Strings.origin, in: jsObject] }
+    @inlinable var origin: String { jsObject[Strings.origin].fromJSValue()! }
 
-    @inlinable var isSecureContext: Bool { ReadonlyAttribute[Strings.isSecureContext, in: jsObject] }
+    @inlinable var isSecureContext: Bool { jsObject[Strings.isSecureContext].fromJSValue()! }
 
-    @inlinable var crossOriginIsolated: Bool { ReadonlyAttribute[Strings.crossOriginIsolated, in: jsObject] }
+    @inlinable var crossOriginIsolated: Bool { jsObject[Strings.crossOriginIsolated].fromJSValue()! }
 
     @inlinable func reportError(e: JSValue) {
         let this = jsObject
@@ -26301,9 +26301,9 @@ public extension WindowOrWorkerGlobalScope {
         return this[Strings.structuredClone].function!(this: this, arguments: [value.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
     }
 
-    @inlinable var performance: Performance { ReadonlyAttribute[Strings.performance, in: jsObject] }
+    @inlinable var performance: Performance { jsObject[Strings.performance].fromJSValue()! }
 
-    @inlinable var caches: CacheStorage { ReadonlyAttribute[Strings.caches, in: jsObject] }
+    @inlinable var caches: CacheStorage { jsObject[Strings.caches].fromJSValue()! }
 }
 
 public class WindowPostMessageOptions: BridgedDictionary {
@@ -26324,7 +26324,7 @@ public class WindowPostMessageOptions: BridgedDictionary {
 
 public protocol WindowSessionStorage: JSBridgedClass {}
 public extension WindowSessionStorage {
-    @inlinable var sessionStorage: Storage { ReadonlyAttribute[Strings.sessionStorage, in: jsObject] }
+    @inlinable var sessionStorage: Storage { jsObject[Strings.sessionStorage].fromJSValue()! }
 }
 
 public class Worker: EventTarget, AbstractWorker {

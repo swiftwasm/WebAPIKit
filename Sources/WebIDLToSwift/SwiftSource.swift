@@ -65,6 +65,9 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation, E
             }
         }
     }
+
+    static let readOnlyAttribute: Self = "ReadonlyAttribute"
+    static let readWriteAttribute: Self = "ReadWriteAttribute"
 }
 
 extension Array where Element == SwiftSource {
