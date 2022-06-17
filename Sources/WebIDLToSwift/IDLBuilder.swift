@@ -27,6 +27,7 @@ enum IDLBuilder {
         "DOMMatrix_or_Float32Array_or_Float64Array",
         "RenderingContext",
         "OffscreenRenderingContext",
+        "OffscreenRenderingContextId",
     ]
 
     static func writeFile(path: String, content: String) throws {

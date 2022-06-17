@@ -18141,27 +18141,6 @@ public class OffscreenCanvasRenderingContext2D: JSBridgedClass, CanvasState, Can
     public var canvas: OffscreenCanvas
 }
 
-public enum OffscreenRenderingContextId: JSString, JSValueCompatible {
-    case _2d = "2d"
-    case bitmaprenderer = "bitmaprenderer"
-    case webgl = "webgl"
-    case webgl2 = "webgl2"
-    case webgpu = "webgpu"
-
-    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.jsString {
-            return Self(rawValue: string)
-        }
-        return nil
-    }
-
-    @inlinable public init?(string: String) {
-        self.init(rawValue: JSString(string))
-    }
-
-    @inlinable public var jsValue: JSValue { rawValue.jsValue }
-}
-
 public class OptionalEffectTiming: BridgedDictionary {
     public convenience init(delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, duration: Double_or_String, direction: PlaybackDirection, easing: String) {
         let object = JSObject.global[Strings.Object].function!.new()
