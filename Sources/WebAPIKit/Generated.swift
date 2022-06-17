@@ -11886,10 +11886,7 @@ public class HTMLCanvasElement: HTMLElement {
     @ReadWriteAttribute
     public var height: UInt32
 
-    @inlinable public func getContext(contextId: String, options: JSValue? = nil) -> RenderingContext? {
-        let this = jsObject
-        return this[Strings.getContext].function!(this: this, arguments: [contextId.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
-    }
+    // XXX: member 'getContext' is ignored
 
     @inlinable public func toDataURL(type: String? = nil, quality: JSValue? = nil) -> String {
         let this = jsObject
@@ -18099,10 +18096,7 @@ public class OffscreenCanvas: EventTarget {
     @ReadWriteAttribute
     public var height: UInt64
 
-    @inlinable public func getContext(contextId: OffscreenRenderingContextId, options: JSValue? = nil) -> OffscreenRenderingContext? {
-        let this = jsObject
-        return this[Strings.getContext].function!(this: this, arguments: [contextId.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
-    }
+    // XXX: member 'getContext' is ignored
 
     @inlinable public func transferToImageBitmap() -> ImageBitmap {
         let this = jsObject
@@ -28619,7 +28613,6 @@ public enum console {
     @usableFromInline static let getClientRects: JSString = "getClientRects"
     @usableFromInline static let getComputedTiming: JSString = "getComputedTiming"
     @usableFromInline static let getConstraints: JSString = "getConstraints"
-    @usableFromInline static let getContext: JSString = "getContext"
     @usableFromInline static let getContextAttributes: JSString = "getContextAttributes"
     @usableFromInline static let getCueById: JSString = "getCueById"
     @usableFromInline static let getCurrentTexture: JSString = "getCurrentTexture"
@@ -32066,90 +32059,6 @@ public enum Node_or_String: JSValueCompatible, Any_Node_or_String {
     }
 }
 
-public protocol Any_OffscreenRenderingContext: ConvertibleToJSValue {}
-extension GPUCanvasContext: Any_OffscreenRenderingContext {}
-extension ImageBitmapRenderingContext: Any_OffscreenRenderingContext {}
-extension OffscreenCanvasRenderingContext2D: Any_OffscreenRenderingContext {}
-extension WebGL2RenderingContext: Any_OffscreenRenderingContext {}
-extension WebGLRenderingContext: Any_OffscreenRenderingContext {}
-
-public enum OffscreenRenderingContext: JSValueCompatible, Any_OffscreenRenderingContext {
-    case gpuCanvasContext(GPUCanvasContext)
-    case imageBitmapRenderingContext(ImageBitmapRenderingContext)
-    case offscreenCanvasRenderingContext2D(OffscreenCanvasRenderingContext2D)
-    case webGL2RenderingContext(WebGL2RenderingContext)
-    case webGLRenderingContext(WebGLRenderingContext)
-
-    public var gpuCanvasContext: GPUCanvasContext? {
-        switch self {
-        case let .gpuCanvasContext(gpuCanvasContext): return gpuCanvasContext
-        default: return nil
-        }
-    }
-
-    public var imageBitmapRenderingContext: ImageBitmapRenderingContext? {
-        switch self {
-        case let .imageBitmapRenderingContext(imageBitmapRenderingContext): return imageBitmapRenderingContext
-        default: return nil
-        }
-    }
-
-    public var offscreenCanvasRenderingContext2D: OffscreenCanvasRenderingContext2D? {
-        switch self {
-        case let .offscreenCanvasRenderingContext2D(offscreenCanvasRenderingContext2D): return offscreenCanvasRenderingContext2D
-        default: return nil
-        }
-    }
-
-    public var webGL2RenderingContext: WebGL2RenderingContext? {
-        switch self {
-        case let .webGL2RenderingContext(webGL2RenderingContext): return webGL2RenderingContext
-        default: return nil
-        }
-    }
-
-    public var webGLRenderingContext: WebGLRenderingContext? {
-        switch self {
-        case let .webGLRenderingContext(webGLRenderingContext): return webGLRenderingContext
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let gpuCanvasContext: GPUCanvasContext = value.fromJSValue() {
-            return .gpuCanvasContext(gpuCanvasContext)
-        }
-        if let imageBitmapRenderingContext: ImageBitmapRenderingContext = value.fromJSValue() {
-            return .imageBitmapRenderingContext(imageBitmapRenderingContext)
-        }
-        if let offscreenCanvasRenderingContext2D: OffscreenCanvasRenderingContext2D = value.fromJSValue() {
-            return .offscreenCanvasRenderingContext2D(offscreenCanvasRenderingContext2D)
-        }
-        if let webGL2RenderingContext: WebGL2RenderingContext = value.fromJSValue() {
-            return .webGL2RenderingContext(webGL2RenderingContext)
-        }
-        if let webGLRenderingContext: WebGLRenderingContext = value.fromJSValue() {
-            return .webGLRenderingContext(webGLRenderingContext)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .gpuCanvasContext(gpuCanvasContext):
-            return gpuCanvasContext.jsValue
-        case let .imageBitmapRenderingContext(imageBitmapRenderingContext):
-            return imageBitmapRenderingContext.jsValue
-        case let .offscreenCanvasRenderingContext2D(offscreenCanvasRenderingContext2D):
-            return offscreenCanvasRenderingContext2D.jsValue
-        case let .webGL2RenderingContext(webGL2RenderingContext):
-            return webGL2RenderingContext.jsValue
-        case let .webGLRenderingContext(webGLRenderingContext):
-            return webGLRenderingContext.jsValue
-        }
-    }
-}
-
 public protocol Any_Path2D_or_String: ConvertibleToJSValue {}
 extension Path2D: Any_Path2D_or_String {}
 extension String: Any_Path2D_or_String {}
@@ -32272,90 +32181,6 @@ public enum ReadableStreamReader: JSValueCompatible, Any_ReadableStreamReader {
             return readableStreamBYOBReader.jsValue
         case let .readableStreamDefaultReader(readableStreamDefaultReader):
             return readableStreamDefaultReader.jsValue
-        }
-    }
-}
-
-public protocol Any_RenderingContext: ConvertibleToJSValue {}
-extension CanvasRenderingContext2D: Any_RenderingContext {}
-extension GPUCanvasContext: Any_RenderingContext {}
-extension ImageBitmapRenderingContext: Any_RenderingContext {}
-extension WebGL2RenderingContext: Any_RenderingContext {}
-extension WebGLRenderingContext: Any_RenderingContext {}
-
-public enum RenderingContext: JSValueCompatible, Any_RenderingContext {
-    case canvasRenderingContext2D(CanvasRenderingContext2D)
-    case gpuCanvasContext(GPUCanvasContext)
-    case imageBitmapRenderingContext(ImageBitmapRenderingContext)
-    case webGL2RenderingContext(WebGL2RenderingContext)
-    case webGLRenderingContext(WebGLRenderingContext)
-
-    public var canvasRenderingContext2D: CanvasRenderingContext2D? {
-        switch self {
-        case let .canvasRenderingContext2D(canvasRenderingContext2D): return canvasRenderingContext2D
-        default: return nil
-        }
-    }
-
-    public var gpuCanvasContext: GPUCanvasContext? {
-        switch self {
-        case let .gpuCanvasContext(gpuCanvasContext): return gpuCanvasContext
-        default: return nil
-        }
-    }
-
-    public var imageBitmapRenderingContext: ImageBitmapRenderingContext? {
-        switch self {
-        case let .imageBitmapRenderingContext(imageBitmapRenderingContext): return imageBitmapRenderingContext
-        default: return nil
-        }
-    }
-
-    public var webGL2RenderingContext: WebGL2RenderingContext? {
-        switch self {
-        case let .webGL2RenderingContext(webGL2RenderingContext): return webGL2RenderingContext
-        default: return nil
-        }
-    }
-
-    public var webGLRenderingContext: WebGLRenderingContext? {
-        switch self {
-        case let .webGLRenderingContext(webGLRenderingContext): return webGLRenderingContext
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let canvasRenderingContext2D: CanvasRenderingContext2D = value.fromJSValue() {
-            return .canvasRenderingContext2D(canvasRenderingContext2D)
-        }
-        if let gpuCanvasContext: GPUCanvasContext = value.fromJSValue() {
-            return .gpuCanvasContext(gpuCanvasContext)
-        }
-        if let imageBitmapRenderingContext: ImageBitmapRenderingContext = value.fromJSValue() {
-            return .imageBitmapRenderingContext(imageBitmapRenderingContext)
-        }
-        if let webGL2RenderingContext: WebGL2RenderingContext = value.fromJSValue() {
-            return .webGL2RenderingContext(webGL2RenderingContext)
-        }
-        if let webGLRenderingContext: WebGLRenderingContext = value.fromJSValue() {
-            return .webGLRenderingContext(webGLRenderingContext)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .canvasRenderingContext2D(canvasRenderingContext2D):
-            return canvasRenderingContext2D.jsValue
-        case let .gpuCanvasContext(gpuCanvasContext):
-            return gpuCanvasContext.jsValue
-        case let .imageBitmapRenderingContext(imageBitmapRenderingContext):
-            return imageBitmapRenderingContext.jsValue
-        case let .webGL2RenderingContext(webGL2RenderingContext):
-            return webGL2RenderingContext.jsValue
-        case let .webGLRenderingContext(webGLRenderingContext):
-            return webGLRenderingContext.jsValue
         }
     }
 }
