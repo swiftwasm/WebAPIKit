@@ -5,10 +5,6 @@ public protocol RenderingContext: JSValueCompatible {
     static var contextID: JSString { get }
 }
 
-extension GPUCanvasContext: RenderingContext {
-    public static var contextID: JSString { "webgpu" }
-}
-
 extension ImageBitmapRenderingContext: RenderingContext {
     public static var contextID: JSString { "bitmaprenderer" }
 }
@@ -17,23 +13,12 @@ extension CanvasRenderingContext2D: RenderingContext {
     public static var contextID: JSString { "2d" }
 }
 
-extension WebGL2RenderingContext: RenderingContext {
-    public static var contextID: JSString { "webgl2" }
-}
-
-extension WebGLRenderingContext: RenderingContext {
-    public static var contextID: JSString { "webgl" }
-}
-
 public protocol OffscreenRenderingContext: JSValueCompatible {
     static var contextID: JSString { get }
 }
 
-extension GPUCanvasContext: OffscreenRenderingContext {}
 extension ImageBitmapRenderingContext: OffscreenRenderingContext {}
 extension CanvasRenderingContext2D: OffscreenRenderingContext {}
-extension WebGL2RenderingContext: OffscreenRenderingContext {}
-extension WebGLRenderingContext: OffscreenRenderingContext {}
 extension OffscreenCanvasRenderingContext2D: OffscreenRenderingContext {
     public static var contextID: JSString { "2d" }
 }

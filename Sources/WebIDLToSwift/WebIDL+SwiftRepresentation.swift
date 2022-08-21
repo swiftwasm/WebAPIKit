@@ -207,9 +207,11 @@ extension MergedInterface: SwiftRepresentable {
         }
 
         let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
+        let access: SwiftSource = ["DOMException", "EventTarget", "Event", "Worklet"].contains(name) ? "open" : "public"
+
         return """
-        public class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
-            @inlinable public\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction? { \(constructor) }
+        \(access) class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
+            @inlinable \(access)\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction? { \(constructor) }
 
             \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
 

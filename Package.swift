@@ -1,20 +1,48 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "WebAPIKit",
+    platforms: [.macOS(.v10_13)],
     products: [
         .executable(
             name: "WebAPIKitDemo",
             targets: ["WebAPIKitDemo"]
         ),
         .library(
-            name: "WebAPIKit",
-            targets: ["WebAPIKit"]
+            name: "WebAPIBase",
+            targets: ["WebAPIBase"]
         ),
-        .library(name: "WebIDL", targets: ["WebIDL"]),
+        .library(
+            name: "DOM",
+            targets: ["DOM"]
+        ),
+        .library(
+            name: "WebSockets",
+            targets: ["WebSockets"]
+        ),
+        .library(
+            name: "WebAudio",
+            targets: ["WebAudio"]
+        ),
+        .library(
+            name: "WebAnimations",
+            targets: ["WebAnimations"]
+        ),
+        .library(
+            name: "WebGL1",
+            targets: ["WebGL1"]
+        ),
+        .library(
+            name: "WebGL2",
+            targets: ["WebGL2"]
+        ),
+        .library(
+            name: "WebGPU",
+            targets: ["WebGPU"]
+        ),
         .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
     dependencies: [
@@ -24,32 +52,56 @@ let package = Package(
         ),
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "WebAPIKitDemo",
-            dependencies: ["WebAPIKit"]
+            dependencies: ["DOM", "WebGL2"]
         ),
         .target(
-            name: "WebAPIKit",
-            dependencies: [
-                "ECMAScript",
-                "JavaScriptKit",
-                .product(name: "JavaScriptEventLoop", package: "JavaScriptKit"),
-                .product(name: "JavaScriptBigIntSupport", package: "JavaScriptKit"),
-            ]
+            name: "WebAPIBase",
+            dependencies: ["ECMAScript"]
+        ),
+        .target(
+            name: "DOM",
+            dependencies: ["WebAPIBase", "ECMAScript"]
+        ),
+        .target(
+            name: "WebSockets",
+            dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
+        ),
+        .target(
+            name: "WebAudio",
+            dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
+        ),
+        .target(
+            name: "WebAnimations",
+            dependencies: ["DOM", "WebAPIBase", "WebAudio", "ECMAScript"]
+        ),
+        .target(
+            name: "WebGL1",
+            dependencies: ["DOM", "WebAnimations", "ECMAScript"]
+        ),
+        .target(
+            name: "WebGL2",
+            dependencies: ["WebGL1", "ECMAScript"]
+        ),
+        .target(
+            name: "WebGPU",
+            dependencies: ["DOM", "WebAnimations", "WebGL1", "ECMAScript"]
         ),
         // This support library should be moved to JavaScriptKit
         .target(name: "ECMAScript", dependencies: [
             "JavaScriptKit",
             .product(name: "JavaScriptEventLoop", package: "JavaScriptKit"),
+            .product(name: "JavaScriptBigIntSupport", package: "JavaScriptKit"),
         ]),
         .target(name: "WebIDL"),
-        .target(
+        .executableTarget(
             name: "WebIDLToSwift",
             dependencies: ["WebIDL"]
         ),
         .testTarget(
             name: "WebAPIKitTests",
-            dependencies: ["WebAPIKit"]
+            dependencies: ["DOM"]
         ),
     ]
 )

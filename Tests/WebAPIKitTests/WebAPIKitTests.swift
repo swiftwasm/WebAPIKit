@@ -1,6 +1,6 @@
+import DOM
 import Foundation
 import JavaScriptKit
-import WebAPIKit
 import XCTest
 
 final class WebAPIKitTests: XCTestCase {
