@@ -1,5 +1,6 @@
 import DOM
 import JavaScriptKit
+import WebAPIBase
 
 let document = globalThis.document
 

@@ -207,7 +207,9 @@ extension MergedInterface: SwiftRepresentable {
         }
 
         let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
-        let access: SwiftSource = ["DOMException", "EventTarget", "Event", "Worklet"].contains(name) ? "open" : "public"
+        // Allow cross-module subclassing with `open` access modifier for classes that require this.
+        let openClasses = ["DOMException", "EventTarget", "Event", "Worklet", "WebGLObject"]
+        let access: SwiftSource = openClasses.contains(name) ? "open" : "public"
 
         return """
         \(access) class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
@@ -628,6 +630,7 @@ extension IDLType: SwiftRepresentable {
         // (should they be a JSFunction? or a closure? or something else?))
         if case let .single(name) = value {
             let readonlyComment: SwiftSource = readonly ? " /* XXX: should be readonly! */ " : ""
+            // print(Context.types)
             if let callback = Context.types[name] as? IDLCallback {
                 return "\(closureWrapper(callback, optional: false))\(readonlyComment)"
             }
@@ -648,10 +651,9 @@ extension IDLType: SwiftRepresentable {
     }
 
     private func closureWrapper(_ callback: IDLCallback, optional: Bool) -> SwiftSource {
-        let void: SwiftSource = callback.idlType.swiftRepresentation == "Void" ? "Void" : ""
-        let optional: SwiftSource = optional ? "Optional" : ""
-        let argCount = String(callback.arguments.count)
-        return "ClosureAttribute\(argCount)\(optional)\(void)"
+        let returnsVoid = callback.idlType.swiftRepresentation == "Void"
+        let argCount = callback.arguments.count
+        return ClosurePattern(nullable: optional, void: returnsVoid, argCount: argCount).name
     }
 }
 

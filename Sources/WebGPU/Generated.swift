@@ -4,6 +4,8 @@ import DOM
 import ECMAScript
 import JavaScriptKit
 import WebAnimations
+import WebAPIBase
+import WebAudio
 import WebGL1
 
 public class GPU: JSBridgedClass {
@@ -1047,7 +1049,7 @@ public class GPUDevice: EventTarget, GPUObjectBase {
         _limits = ReadonlyAttribute(jsObject: jsObject, name: Strings.limits)
         _queue = ReadonlyAttribute(jsObject: jsObject, name: Strings.queue)
         _lost = ReadonlyAttribute(jsObject: jsObject, name: Strings.lost)
-        _onuncapturederror = ReadWriteAttribute(jsObject: jsObject, name: Strings.onuncapturederror)
+        _onuncapturederror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onuncapturederror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -1174,7 +1176,7 @@ public class GPUDevice: EventTarget, GPUObjectBase {
         return try await _promise.value.fromJSValue()!
     }
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onuncapturederror: EventHandler
 }
 

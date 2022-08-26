@@ -1,4 +1,5 @@
 import DOM
+import JavaScriptKit
 
 public typealias GLintptr = Int32
 

@@ -80,12 +80,12 @@ public class WebSocket: EventTarget {
         _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
         _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
         _bufferedAmount = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferedAmount)
-        _onopen = ReadWriteAttribute(jsObject: jsObject, name: Strings.onopen)
-        _onerror = ReadWriteAttribute(jsObject: jsObject, name: Strings.onerror)
-        _onclose = ReadWriteAttribute(jsObject: jsObject, name: Strings.onclose)
+        _onopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onopen)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
         _extensions = ReadonlyAttribute(jsObject: jsObject, name: Strings.extensions)
         _protocol = ReadonlyAttribute(jsObject: jsObject, name: Strings.protocol)
-        _onmessage = ReadWriteAttribute(jsObject: jsObject, name: Strings.onmessage)
+        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
         _binaryType = ReadWriteAttribute(jsObject: jsObject, name: Strings.binaryType)
         super.init(unsafelyWrapping: jsObject)
     }
@@ -111,13 +111,13 @@ public class WebSocket: EventTarget {
     @ReadonlyAttribute
     public var bufferedAmount: UInt64
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onopen: EventHandler
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onerror: EventHandler
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onclose: EventHandler
 
     @ReadonlyAttribute
@@ -131,7 +131,7 @@ public class WebSocket: EventTarget {
         _ = this[Strings.close].function!(this: this, arguments: [code?.jsValue ?? .undefined, reason?.jsValue ?? .undefined])
     }
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onmessage: EventHandler
 
     @ReadWriteAttribute

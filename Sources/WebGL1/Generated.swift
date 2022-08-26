@@ -5,6 +5,8 @@ import ECMAScript
 import JavaScriptBigIntSupport
 import JavaScriptKit
 import WebAnimations
+import WebAPIBase
+import WebAudio
 
 public typealias GLenum = UInt32
 public typealias GLboolean = Bool
@@ -146,8 +148,8 @@ public class WebGLFramebuffer: WebGLObject {
     }
 }
 
-public class WebGLObject: JSBridgedClass {
-    @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.WebGLObject].function }
+open class WebGLObject: JSBridgedClass {
+    @inlinable open class var constructor: JSFunction? { JSObject.global[Strings.WebGLObject].function }
 
     public let jsObject: JSObject
 

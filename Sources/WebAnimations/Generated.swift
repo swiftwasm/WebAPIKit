@@ -32,9 +32,9 @@ public class Animation: EventTarget {
         _pending = ReadonlyAttribute(jsObject: jsObject, name: Strings.pending)
         _ready = ReadonlyAttribute(jsObject: jsObject, name: Strings.ready)
         _finished = ReadonlyAttribute(jsObject: jsObject, name: Strings.finished)
-        _onfinish = ReadWriteAttribute(jsObject: jsObject, name: Strings.onfinish)
-        _oncancel = ReadWriteAttribute(jsObject: jsObject, name: Strings.oncancel)
-        _onremove = ReadWriteAttribute(jsObject: jsObject, name: Strings.onremove)
+        _onfinish = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onfinish)
+        _oncancel = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncancel)
+        _onremove = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onremove)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -69,13 +69,13 @@ public class Animation: EventTarget {
     @ReadonlyAttribute
     public var finished: JSPromise
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onfinish: EventHandler
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var oncancel: EventHandler
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onremove: EventHandler
 
     @inlinable public func cancel() {

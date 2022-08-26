@@ -51,12 +51,12 @@ enum DeclarationMerger {
         // }
         // print(byName.filter { $0.value.count > 1 }.map { "\($0.key ?? "<nil>"): \($0.value.map { type(of: $0).type }))" }.joined(separator: "\n"))
 
-        func all<T: IDLNode>(_: T.Type) -> [T] {
+        func allNodes<T: IDLNode>(ofType: T.Type) -> [T] {
             byType[T.type]?.map { $0 as! T } ?? []
         }
 
         let mixins = Dictionary(
-            grouping: all(IDLInterfaceMixin.self).map {
+            grouping: allNodes(ofType: IDLInterfaceMixin.self).map {
                 MergedMixin(
                     name: $0.name,
                     members: addAsync($0.members.array) as! [IDLInterfaceMixinMember]
@@ -69,11 +69,11 @@ enum DeclarationMerger {
             }
         }
 
-        let includes = Dictionary(grouping: all(IDLIncludes.self)) { $0.target }
+        let includes = Dictionary(grouping: allNodes(ofType: IDLIncludes.self)) { $0.target }
             .mapValues { $0.map(\.includes).filter { !Self.ignoredParents.contains($0) } }
 
         let mergedInterfaces = Dictionary(
-            grouping: all(IDLInterface.self).map {
+            grouping: allNodes(ofType: IDLInterface.self).map {
                 MergedInterface(
                     name: $0.name,
                     parentClasses: [$0.inheritance]
@@ -104,7 +104,7 @@ enum DeclarationMerger {
         }.filter { $0.value.exposedToAll || $0.value.exposed.contains(where: validExposures.contains) }
 
         let mergedDictionaries = Dictionary(
-            grouping: all(IDLDictionary.self).map {
+            grouping: allNodes(ofType: IDLDictionary.self).map {
                 MergedDictionary(
                     name: $0.name,
                     inheritance: [$0.inheritance]
@@ -124,7 +124,7 @@ enum DeclarationMerger {
         }
 
         let mergedNamespaces = Dictionary(
-            grouping: all(IDLNamespace.self).map {
+            grouping: allNodes(ofType: IDLNamespace.self).map {
                 MergedNamespace(
                     name: $0.name,
                     members: addAsync($0.members.array) as! [IDLNamespaceMember]
@@ -137,9 +137,9 @@ enum DeclarationMerger {
             }
         }
 
-        print("unhandled callback interfaces", all(IDLCallbackInterface.self).map(\.name))
+        print("unhandled callback interfaces", allNodes(ofType: IDLCallbackInterface.self).map(\.name))
 
-        var allTypes: [IDLTypealias] = all(IDLTypedef.self) + all(IDLCallback.self)
+        var allTypes: [IDLTypealias] = allNodes(ofType: IDLTypedef.self) + allNodes(ofType: IDLCallback.self)
         allTypes.removeAll(where: { ignoredTypedefs.contains($0.name) })
         let mergedTypes = Dictionary(uniqueKeysWithValues: allTypes.map { ($0.name, $0) })
 
@@ -170,7 +170,7 @@ enum DeclarationMerger {
         return MergeResult(
             declarations: arrays
                 + [Typedefs(typedefs: allTypes)]
-                + all(IDLEnum.self),
+                + allNodes(ofType: IDLEnum.self),
             interfaces: mergedInterfaces,
             types: mergedTypes
             // unions: unions

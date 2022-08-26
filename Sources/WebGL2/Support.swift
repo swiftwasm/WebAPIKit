@@ -1,4 +1,5 @@
 import DOM
+import JavaScriptKit
 
 extension WebGL2RenderingContext: RenderingContext {
   public static var contextID: JSString { "webgl2" }

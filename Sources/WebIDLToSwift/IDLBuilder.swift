@@ -44,7 +44,7 @@ enum IDLBuilder {
         try (formedPreamble + "\n\n" + content).write(toFile: path, atomically: true, encoding: .utf8)
     }
 
-    static func generateIDLBindings(idl: [GenericCollection<IDLNode>]) throws -> SwiftSource {
+    static func generateIDLBindings(idl: [GenericCollection<IDLNode>], baseTypes: [String : IDLTypealias]) throws -> SwiftSource {
         let declarations = idl.flatMap(\.array)
         let merged = DeclarationMerger.merge(declarations: declarations)
         var contents: [SwiftSource] = []
@@ -53,7 +53,7 @@ enum IDLBuilder {
                 continue
             }
 
-            let nodeContent = Context.withState(.root(
+            var state = Context.State.root(
                 interfaces: merged.interfaces,
                 ignored: [
                     // functions as parameters are unsupported
@@ -110,7 +110,10 @@ enum IDLBuilder {
                     "OffscreenCanvas": ["getContext"],
                 ],
                 types: merged.types
-            )) {
+            )
+            state.add(types: baseTypes)
+
+            let nodeContent = Context.withState(state) {
                 toSwift(node)
             }
             contents.append(nodeContent)

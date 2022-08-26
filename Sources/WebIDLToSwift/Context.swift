@@ -86,5 +86,11 @@ enum Context {
             newState.types = types
             return newState
         }
+
+        mutating func add(types: [String: IDLTypealias]) {
+            for (name, type) in types {
+                self.types[name] = type
+            }
+        }
     }
 }

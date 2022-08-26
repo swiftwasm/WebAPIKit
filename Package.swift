@@ -78,15 +78,15 @@ let package = Package(
         ),
         .target(
             name: "WebGL1",
-            dependencies: ["DOM", "WebAnimations", "ECMAScript"]
+            dependencies: ["DOM", "WebAPIBase", "WebAudio", "WebAnimations", "ECMAScript"]
         ),
         .target(
             name: "WebGL2",
-            dependencies: ["WebGL1", "ECMAScript"]
+            dependencies: ["DOM", "WebAPIBase", "WebAudio", "WebAnimations", "WebGL1", "ECMAScript"]
         ),
         .target(
             name: "WebGPU",
-            dependencies: ["DOM", "WebAnimations", "WebGL1", "ECMAScript"]
+            dependencies: ["DOM", "WebAPIBase", "WebAudio", "WebAnimations", "WebGL1", "ECMAScript"]
         ),
         // This support library should be moved to JavaScriptKit
         .target(name: "ECMAScript", dependencies: [

@@ -722,11 +722,11 @@ public class AudioScheduledSourceNode: AudioNode {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.AudioScheduledSourceNode].function }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onended = ReadWriteAttribute(jsObject: jsObject, name: Strings.onended)
+        _onended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onended)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onended: EventHandler
 
     @inlinable public func start(when: Double? = nil) {
@@ -775,7 +775,7 @@ public class AudioWorkletNode: AudioNode {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _parameters = ReadonlyAttribute(jsObject: jsObject, name: Strings.parameters)
         _port = ReadonlyAttribute(jsObject: jsObject, name: Strings.port)
-        _onprocessorerror = ReadWriteAttribute(jsObject: jsObject, name: Strings.onprocessorerror)
+        _onprocessorerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onprocessorerror)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -789,7 +789,7 @@ public class AudioWorkletNode: AudioNode {
     @ReadonlyAttribute
     public var port: MessagePort
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onprocessorerror: EventHandler
 }
 
@@ -857,7 +857,7 @@ public class BaseAudioContext: EventTarget {
         _listener = ReadonlyAttribute(jsObject: jsObject, name: Strings.listener)
         _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
         _audioWorklet = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioWorklet)
-        _onstatechange = ReadWriteAttribute(jsObject: jsObject, name: Strings.onstatechange)
+        _onstatechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onstatechange)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -879,7 +879,7 @@ public class BaseAudioContext: EventTarget {
     @ReadonlyAttribute
     public var audioWorklet: AudioWorklet
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onstatechange: EventHandler
 
     @inlinable public func createAnalyser() -> AnalyserNode {
@@ -1583,7 +1583,7 @@ public class OfflineAudioContext: BaseAudioContext {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
-        _oncomplete = ReadWriteAttribute(jsObject: jsObject, name: Strings.oncomplete)
+        _oncomplete = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncomplete)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -1634,7 +1634,7 @@ public class OfflineAudioContext: BaseAudioContext {
     @ReadonlyAttribute
     public var length: UInt32
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var oncomplete: EventHandler
 }
 
@@ -1996,12 +1996,12 @@ public class ScriptProcessorNode: AudioNode {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.ScriptProcessorNode].function }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _onaudioprocess = ReadWriteAttribute(jsObject: jsObject, name: Strings.onaudioprocess)
+        _onaudioprocess = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaudioprocess)
         _bufferSize = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferSize)
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @ReadWriteAttribute
+    @ClosureAttribute1Optional
     public var onaudioprocess: EventHandler
 
     @ReadonlyAttribute

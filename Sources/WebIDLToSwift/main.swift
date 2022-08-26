@@ -10,6 +10,9 @@ func main() {
             .deletingLastPathComponent()
             .deletingLastPathComponent()
 
+        let domIDL = try [baseModule, domModule].flatMap { try IDLParser.parseIDL(modules: $0.idlModules) }
+        let domTypes = DeclarationMerger.merge(declarations: domIDL.flatMap(\.array)).types
+
         for module in modules {
             let startTime = Date()
             let idl = try IDLParser.parseIDL(modules: module.idlModules)
