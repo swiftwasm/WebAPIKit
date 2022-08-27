@@ -9,47 +9,59 @@ func main() {
             .deletingLastPathComponent()
             .deletingLastPathComponent()
             .deletingLastPathComponent()
-
         let domIDL = try [baseModule, domModule].flatMap { try IDLParser.parseIDL(modules: $0.idlModules) }
         let domTypes = DeclarationMerger.merge(declarations: domIDL.flatMap(\.array)).types
 
+        // Collect closure patterns from all modules to subsequently write them together with `baseModule`.
+        var closurePatterns = Set<ClosurePattern>()
+
         for module in modules {
-            let startTime = Date()
-            let idl = try IDLParser.parseIDL(modules: module.idlModules)
-
-            let outputDir = packageDir
-                .appendingPathComponent("Sources")
-                .appendingPathComponent(module.swiftModule)
-
-            print("Making sure that directory exists: \(outputDir.path)")
-            try FileManager.default.createDirectory(at: outputDir, withIntermediateDirectories: true)
-
-            let outputPath = outputDir.appendingPathComponent("Generated.swift").path
-            var contents: [SwiftSource] = []
-            print("Generating bindings...")
-            contents.append(try IDLBuilder.generateIDLBindings(idl: idl))
-            print("Generating closure property wrappers...")
-            contents.append(try IDLBuilder.generateClosureTypes())
-            print("Generating JSString constants...")
-            contents.append(try IDLBuilder.generateStrings())
-            print("Generating union protocols...")
-            contents.append(try IDLBuilder.generateUnions())
-            try IDLBuilder.writeFile(
-                path: outputPath,
-                content: contents.joined(separator: "\n\n").source,
-                moduleDependencies: module.dependencies
-            )
-
-            SwiftFormatter.run(source: outputPath)
-            print("Module \(module.swiftModule) done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
+            try generate(module, packageDir: packageDir, domTypes: domTypes)
+            closurePatterns.formUnion(ModuleState.closurePatterns)
         }
 
-        try generateManifest(modules)
+        try generate(baseModule, packageDir: packageDir, shouldGenerateClosurePatterns: true)
+
+        try generateManifest([baseModule] + modules)
             .write(toFile: packageDir.appendingPathComponent("Package.swift").path, atomically: true, encoding: .utf8)
         print("Package.swift manifest successfully regenerated and updated on the filesystem.")
     } catch {
         handleDecodingError(error)
     }
+}
+
+private func generate(
+    _ module: Module,
+    packageDir: URL,
+    domTypes: [String: IDLTypealias] = [:],
+    shouldGenerateClosurePatterns: Bool = false
+) throws {
+    let startTime = Date()
+    let idl = try IDLParser.parseIDL(modules: module.idlModules)
+
+    let outputDir = packageDir
+        .appendingPathComponent("Sources")
+        .appendingPathComponent(module.swiftModule)
+
+    print("Making sure that directory exists: \(outputDir.path)")
+    try FileManager.default.createDirectory(at: outputDir, withIntermediateDirectories: true)
+
+    let outputPath = outputDir.appendingPathComponent("Generated.swift").path
+    var contents: [SwiftSource] = []
+    contents.append(try IDLBuilder.generateIDLBindings(idl: idl, baseTypes: domTypes))
+    if shouldGenerateClosurePatterns {
+        contents.append(try IDLBuilder.generateClosureTypes())
+    }
+    try IDLBuilder.writeFile(
+        path: outputPath,
+        content: contents.joined(separator: "\n\n").source,
+        moduleDependencies: module.dependencies
+    )
+
+    ModuleState.reset()
+
+    SwiftFormatter.run(source: outputPath)
+    print("Module \(module.swiftModule) done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")
 }
 
 private func handleDecodingError(_ error: Error) {

@@ -17330,457 +17330,6 @@ public class XSLTProcessor: JSBridgedClass {
     }
 }
 
-/* variadic generics please */
-@propertyWrapper public final class ClosureAttribute0<ReturnType>
-    where ReturnType: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: () -> ReturnType {
-        get { ClosureAttribute0[name, in: jsObject] }
-        set { ClosureAttribute0[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> () -> ReturnType {
-        get {
-            let function = jsObject[name].function!
-            return { function().fromJSValue()! }
-        }
-        set {
-            jsObject[name] = JSClosure { _ in
-                newValue().jsValue
-            }.jsValue
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute0Optional<ReturnType>
-    where ReturnType: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: (() -> ReturnType)? {
-        get { ClosureAttribute0Optional[name, in: jsObject] }
-        set { ClosureAttribute0Optional[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (() -> ReturnType)? {
-        get {
-            guard let function = jsObject[name].function else {
-                return nil
-            }
-            return { function().fromJSValue()! }
-        }
-        set {
-            if let newValue = newValue {
-                jsObject[name] = JSClosure { _ in
-                    newValue().jsValue
-                }.jsValue
-            } else {
-                jsObject[name] = .null
-            }
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute0OptionalVoid {
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: (() -> Void)? {
-        get { ClosureAttribute0OptionalVoid[name, in: jsObject] }
-        set { ClosureAttribute0OptionalVoid[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (() -> Void)? {
-        get {
-            guard let function = jsObject[name].function else {
-                return nil
-            }
-            return { function() }
-        }
-        set {
-            if let newValue = newValue {
-                jsObject[name] = JSClosure { _ in
-                    newValue()
-                    return .undefined
-                }.jsValue
-            } else {
-                jsObject[name] = .null
-            }
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute0Void {
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: () -> Void {
-        get { ClosureAttribute0Void[name, in: jsObject] }
-        set { ClosureAttribute0Void[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> () -> Void {
-        get {
-            let function = jsObject[name].function!
-            return { function() }
-        }
-        set {
-            jsObject[name] = JSClosure { _ in
-                newValue()
-                return .undefined
-            }.jsValue
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute1<A0, ReturnType>
-    where A0: JSValueCompatible, ReturnType: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: (A0) -> ReturnType {
-        get { ClosureAttribute1[name, in: jsObject] }
-        set { ClosureAttribute1[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0) -> ReturnType {
-        get {
-            let function = jsObject[name].function!
-            return { function($0.jsValue).fromJSValue()! }
-        }
-        set {
-            jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!).jsValue
-            }.jsValue
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute1Optional<A0, ReturnType>
-    where A0: JSValueCompatible, ReturnType: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: ((A0) -> ReturnType)? {
-        get { ClosureAttribute1Optional[name, in: jsObject] }
-        set { ClosureAttribute1Optional[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0) -> ReturnType)? {
-        get {
-            guard let function = jsObject[name].function else {
-                return nil
-            }
-            return { function($0.jsValue).fromJSValue()! }
-        }
-        set {
-            if let newValue = newValue {
-                jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!).jsValue
-                }.jsValue
-            } else {
-                jsObject[name] = .null
-            }
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute1OptionalVoid<A0>
-    where A0: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: ((A0) -> Void)? {
-        get { ClosureAttribute1OptionalVoid[name, in: jsObject] }
-        set { ClosureAttribute1OptionalVoid[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0) -> Void)? {
-        get {
-            guard let function = jsObject[name].function else {
-                return nil
-            }
-            return { function($0.jsValue) }
-        }
-        set {
-            if let newValue = newValue {
-                jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!)
-                    return .undefined
-                }.jsValue
-            } else {
-                jsObject[name] = .null
-            }
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute1Void<A0>
-    where A0: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: (A0) -> Void {
-        get { ClosureAttribute1Void[name, in: jsObject] }
-        set { ClosureAttribute1Void[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0) -> Void {
-        get {
-            let function = jsObject[name].function!
-            return { function($0.jsValue) }
-        }
-        set {
-            jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!)
-                return .undefined
-            }.jsValue
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute2<A0, A1, ReturnType>
-    where A0: JSValueCompatible, A1: JSValueCompatible, ReturnType: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: (A0, A1) -> ReturnType {
-        get { ClosureAttribute2[name, in: jsObject] }
-        set { ClosureAttribute2[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1) -> ReturnType {
-        get {
-            let function = jsObject[name].function!
-            return { function($0.jsValue, $1.jsValue).fromJSValue()! }
-        }
-        set {
-            jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!).jsValue
-            }.jsValue
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute2Optional<A0, A1, ReturnType>
-    where A0: JSValueCompatible, A1: JSValueCompatible, ReturnType: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: ((A0, A1) -> ReturnType)? {
-        get { ClosureAttribute2Optional[name, in: jsObject] }
-        set { ClosureAttribute2Optional[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1) -> ReturnType)? {
-        get {
-            guard let function = jsObject[name].function else {
-                return nil
-            }
-            return { function($0.jsValue, $1.jsValue).fromJSValue()! }
-        }
-        set {
-            if let newValue = newValue {
-                jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!).jsValue
-                }.jsValue
-            } else {
-                jsObject[name] = .null
-            }
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute2OptionalVoid<A0, A1>
-    where A0: JSValueCompatible, A1: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: ((A0, A1) -> Void)? {
-        get { ClosureAttribute2OptionalVoid[name, in: jsObject] }
-        set { ClosureAttribute2OptionalVoid[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1) -> Void)? {
-        get {
-            guard let function = jsObject[name].function else {
-                return nil
-            }
-            return { function($0.jsValue, $1.jsValue) }
-        }
-        set {
-            if let newValue = newValue {
-                jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!)
-                    return .undefined
-                }.jsValue
-            } else {
-                jsObject[name] = .null
-            }
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute2Void<A0, A1>
-    where A0: JSValueCompatible, A1: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: (A0, A1) -> Void {
-        get { ClosureAttribute2Void[name, in: jsObject] }
-        set { ClosureAttribute2Void[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1) -> Void {
-        get {
-            let function = jsObject[name].function!
-            return { function($0.jsValue, $1.jsValue) }
-        }
-        set {
-            jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!)
-                return .undefined
-            }.jsValue
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute5<A0, A1, A2, A3, A4, ReturnType>
-    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: (A0, A1, A2, A3, A4) -> ReturnType {
-        get { ClosureAttribute5[name, in: jsObject] }
-        set { ClosureAttribute5[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2, A3, A4) -> ReturnType {
-        get {
-            let function = jsObject[name].function!
-            return { function($0.jsValue, $1.jsValue, $2.jsValue, $3.jsValue, $4.jsValue).fromJSValue()! }
-        }
-        set {
-            jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!).jsValue
-            }.jsValue
-        }
-    }
-}
-
-@propertyWrapper public final class ClosureAttribute5Optional<A0, A1, A2, A3, A4, ReturnType>
-    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
-{
-    @usableFromInline let jsObject: JSObject
-    @usableFromInline let name: JSString
-
-    public init(jsObject: JSObject, name: JSString) {
-        self.jsObject = jsObject
-        self.name = name
-    }
-
-    @inlinable public var wrappedValue: ((A0, A1, A2, A3, A4) -> ReturnType)? {
-        get { ClosureAttribute5Optional[name, in: jsObject] }
-        set { ClosureAttribute5Optional[name, in: jsObject] = newValue }
-    }
-
-    @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> ((A0, A1, A2, A3, A4) -> ReturnType)? {
-        get {
-            guard let function = jsObject[name].function else {
-                return nil
-            }
-            return { function($0.jsValue, $1.jsValue, $2.jsValue, $3.jsValue, $4.jsValue).fromJSValue()! }
-        }
-        set {
-            if let newValue = newValue {
-                jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!).jsValue
-                }.jsValue
-            } else {
-                jsObject[name] = .null
-            }
-        }
-    }
-}
-
 @usableFromInline enum Strings {
     static let _self: JSString = "self"
     @usableFromInline static let AbortController: JSString = "AbortController"
@@ -17814,7 +17363,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let CountQueuingStrategy: JSString = "CountQueuingStrategy"
     @usableFromInline static let CustomElementRegistry: JSString = "CustomElementRegistry"
     @usableFromInline static let CustomEvent: JSString = "CustomEvent"
-    @usableFromInline static let DOMException: JSString = "DOMException"
     @usableFromInline static let DOMImplementation: JSString = "DOMImplementation"
     @usableFromInline static let DOMMatrix: JSString = "DOMMatrix"
     @usableFromInline static let DOMMatrixReadOnly: JSString = "DOMMatrixReadOnly"
@@ -18010,7 +17558,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let TreeWalker: JSString = "TreeWalker"
     @usableFromInline static let UIEvent: JSString = "UIEvent"
     @usableFromInline static let URL: JSString = "URL"
-    @usableFromInline static let URLSearchParams: JSString = "URLSearchParams"
     @usableFromInline static let ValidityState: JSString = "ValidityState"
     @usableFromInline static let VideoColorSpace: JSString = "VideoColorSpace"
     @usableFromInline static let VideoDecoder: JSString = "VideoDecoder"
@@ -18132,7 +17679,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let arrayBuffer: JSString = "arrayBuffer"
     @usableFromInline static let `as`: JSString = "as"
     @usableFromInline static let aspectRatio: JSString = "aspectRatio"
-    @usableFromInline static let assert: JSString = "assert"
     @usableFromInline static let assign: JSString = "assign"
     @usableFromInline static let assignedElements: JSString = "assignedElements"
     @usableFromInline static let assignedNodes: JSString = "assignedNodes"
@@ -18281,7 +17827,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let config: JSString = "config"
     @usableFromInline static let configure: JSString = "configure"
     @usableFromInline static let confirm: JSString = "confirm"
-    @usableFromInline static let console: JSString = "console"
     @usableFromInline static let constraint: JSString = "constraint"
     @usableFromInline static let contains: JSString = "contains"
     @usableFromInline static let content: JSString = "content"
@@ -18300,8 +17845,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let cookieEnabled: JSString = "cookieEnabled"
     @usableFromInline static let coords: JSString = "coords"
     @usableFromInline static let copyTo: JSString = "copyTo"
-    @usableFromInline static let count: JSString = "count"
-    @usableFromInline static let countReset: JSString = "countReset"
     @usableFromInline static let createAttribute: JSString = "createAttribute"
     @usableFromInline static let createAttributeNS: JSString = "createAttributeNS"
     @usableFromInline static let createCDATASection: JSString = "createCDATASection"
@@ -18344,7 +17887,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let dataTransfer: JSString = "dataTransfer"
     @usableFromInline static let dataset: JSString = "dataset"
     @usableFromInline static let dateTime: JSString = "dateTime"
-    @usableFromInline static let debug: JSString = "debug"
     @usableFromInline static let declare: JSString = "declare"
     @usableFromInline static let decode: JSString = "decode"
     @usableFromInline static let decodeQueueSize: JSString = "decodeQueueSize"
@@ -18387,7 +17929,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let dir: JSString = "dir"
     @usableFromInline static let dirName: JSString = "dirName"
     @usableFromInline static let direction: JSString = "direction"
-    @usableFromInline static let dirxml: JSString = "dirxml"
     @usableFromInline static let disable: JSString = "disable"
     @usableFromInline static let disabled: JSString = "disabled"
     @usableFromInline static let disconnect: JSString = "disconnect"
@@ -18546,9 +18087,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let globalAlpha: JSString = "globalAlpha"
     @usableFromInline static let globalCompositeOperation: JSString = "globalCompositeOperation"
     @usableFromInline static let go: JSString = "go"
-    @usableFromInline static let group: JSString = "group"
-    @usableFromInline static let groupCollapsed: JSString = "groupCollapsed"
-    @usableFromInline static let groupEnd: JSString = "groupEnd"
     @usableFromInline static let groupId: JSString = "groupId"
     @usableFromInline static let handled: JSString = "handled"
     @usableFromInline static let hangingBaseline: JSString = "hangingBaseline"
@@ -18598,7 +18136,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let indeterminate: JSString = "indeterminate"
     @usableFromInline static let index: JSString = "index"
     @usableFromInline static let inert: JSString = "inert"
-    @usableFromInline static let info: JSString = "info"
     @usableFromInline static let initCompositionEvent: JSString = "initCompositionEvent"
     @usableFromInline static let initCustomEvent: JSString = "initCustomEvent"
     @usableFromInline static let initEvent: JSString = "initEvent"
@@ -18694,7 +18231,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let location: JSString = "location"
     @usableFromInline static let locationbar: JSString = "locationbar"
     @usableFromInline static let locked: JSString = "locked"
-    @usableFromInline static let log: JSString = "log"
     @usableFromInline static let longDesc: JSString = "longDesc"
     @usableFromInline static let lookupNamespaceURI: JSString = "lookupNamespaceURI"
     @usableFromInline static let lookupPrefix: JSString = "lookupPrefix"
@@ -19136,7 +18672,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let scrolling: JSString = "scrolling"
     @usableFromInline static let scrollingElement: JSString = "scrollingElement"
     @usableFromInline static let search: JSString = "search"
-    @usableFromInline static let searchParams: JSString = "searchParams"
     @usableFromInline static let sectionRowIndex: JSString = "sectionRowIndex"
     @usableFromInline static let seekable: JSString = "seekable"
     @usableFromInline static let seeking: JSString = "seeking"
@@ -19204,7 +18739,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let slotAssignment: JSString = "slotAssignment"
     @usableFromInline static let snapshotItem: JSString = "snapshotItem"
     @usableFromInline static let snapshotLength: JSString = "snapshotLength"
-    @usableFromInline static let sort: JSString = "sort"
     @usableFromInline static let source: JSString = "source"
     @usableFromInline static let span: JSString = "span"
     @usableFromInline static let specified: JSString = "specified"
@@ -19256,7 +18790,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let tFoot: JSString = "tFoot"
     @usableFromInline static let tHead: JSString = "tHead"
     @usableFromInline static let tabIndex: JSString = "tabIndex"
-    @usableFromInline static let table: JSString = "table"
     @usableFromInline static let tagName: JSString = "tagName"
     @usableFromInline static let taintEnabled: JSString = "taintEnabled"
     @usableFromInline static let takeRecords: JSString = "takeRecords"
@@ -19273,9 +18806,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let textRendering: JSString = "textRendering"
     @usableFromInline static let textTracks: JSString = "textTracks"
     @usableFromInline static let throwIfAborted: JSString = "throwIfAborted"
-    @usableFromInline static let time: JSString = "time"
-    @usableFromInline static let timeEnd: JSString = "timeEnd"
-    @usableFromInline static let timeLog: JSString = "timeLog"
     @usableFromInline static let timeOrigin: JSString = "timeOrigin"
     @usableFromInline static let timeStamp: JSString = "timeStamp"
     @usableFromInline static let timecode: JSString = "timecode"
@@ -19295,7 +18825,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let toolbar: JSString = "toolbar"
     @usableFromInline static let top: JSString = "top"
     @usableFromInline static let total: JSString = "total"
-    @usableFromInline static let trace: JSString = "trace"
     @usableFromInline static let track: JSString = "track"
     @usableFromInline static let tracks: JSString = "tracks"
     @usableFromInline static let transfer: JSString = "transfer"
@@ -19349,7 +18878,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let vspace: JSString = "vspace"
     @usableFromInline static let w: JSString = "w"
     @usableFromInline static let waiting: JSString = "waiting"
-    @usableFromInline static let warn: JSString = "warn"
     @usableFromInline static let webkitMatchesSelector: JSString = "webkitMatchesSelector"
     @usableFromInline static let whatToShow: JSString = "whatToShow"
     @usableFromInline static let whenDefined: JSString = "whenDefined"
@@ -19605,48 +19133,6 @@ public enum Bool_or_ScrollIntoViewOptions: JSValueCompatible, Any_Bool_or_Scroll
             return bool.jsValue
         case let .scrollIntoViewOptions(scrollIntoViewOptions):
             return scrollIntoViewOptions.jsValue
-        }
-    }
-}
-
-public protocol Any_BufferSource: ConvertibleToJSValue {}
-extension ArrayBuffer: Any_BufferSource {}
-extension ArrayBufferView: Any_BufferSource {}
-
-public enum BufferSource: JSValueCompatible, Any_BufferSource {
-    case arrayBuffer(ArrayBuffer)
-    case arrayBufferView(ArrayBufferView)
-
-    public var arrayBuffer: ArrayBuffer? {
-        switch self {
-        case let .arrayBuffer(arrayBuffer): return arrayBuffer
-        default: return nil
-        }
-    }
-
-    public var arrayBufferView: ArrayBufferView? {
-        switch self {
-        case let .arrayBufferView(arrayBufferView): return arrayBufferView
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let arrayBuffer: ArrayBuffer = value.fromJSValue() {
-            return .arrayBuffer(arrayBuffer)
-        }
-        if let arrayBufferView: ArrayBufferView = value.fromJSValue() {
-            return .arrayBufferView(arrayBufferView)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .arrayBuffer(arrayBuffer):
-            return arrayBuffer.jsValue
-        case let .arrayBufferView(arrayBufferView):
-            return arrayBufferView.jsValue
         }
     }
 }
@@ -21201,62 +20687,6 @@ public enum String_or_WorkerOptions: JSValueCompatible, Any_String_or_WorkerOpti
             return string.jsValue
         case let .workerOptions(workerOptions):
             return workerOptions.jsValue
-        }
-    }
-}
-
-public protocol Any_String_or_record_String_to_String_or_seq_of_seq_of_String: ConvertibleToJSValue {}
-extension String: Any_String_or_record_String_to_String_or_seq_of_seq_of_String {}
-extension Dictionary: Any_String_or_record_String_to_String_or_seq_of_seq_of_String where Key == String, Value == String {}
-extension Array: Any_String_or_record_String_to_String_or_seq_of_seq_of_String where Element == [String] {}
-
-public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCompatible, Any_String_or_record_String_to_String_or_seq_of_seq_of_String {
-    case string(String)
-    case record_String_to_String([String: String])
-    case seq_of_seq_of_String([[String]])
-
-    public var string: String? {
-        switch self {
-        case let .string(string): return string
-        default: return nil
-        }
-    }
-
-    public var record_String_to_String: [String: String]? {
-        switch self {
-        case let .record_String_to_String(record_String_to_String): return record_String_to_String
-        default: return nil
-        }
-    }
-
-    public var seq_of_seq_of_String: [[String]]? {
-        switch self {
-        case let .seq_of_seq_of_String(seq_of_seq_of_String): return seq_of_seq_of_String
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        if let record_String_to_String: [String: String] = value.fromJSValue() {
-            return .record_String_to_String(record_String_to_String)
-        }
-        if let seq_of_seq_of_String: [[String]] = value.fromJSValue() {
-            return .seq_of_seq_of_String(seq_of_seq_of_String)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .string(string):
-            return string.jsValue
-        case let .record_String_to_String(record_String_to_String):
-            return record_String_to_String.jsValue
-        case let .seq_of_seq_of_String(seq_of_seq_of_String):
-            return seq_of_seq_of_String.jsValue
         }
     }
 }

@@ -59,8 +59,8 @@ struct SwiftSource: CustomStringConvertible, ExpressibleByStringInterpolation, E
             output += values.map(\.source).joined(separator: "\n")
         }
 
-        mutating func appendInterpolation<T>(state: Context.State, _ value: T) {
-            Context.withState(state) {
+        mutating func appendInterpolation<T>(state: ScopedState, _ value: T) {
+            ModuleState.withScope(state) {
                 output += toSwift(value).source
             }
         }

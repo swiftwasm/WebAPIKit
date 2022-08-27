@@ -42,7 +42,6 @@ let domModule = Module(
 )
 
 let modules = [
-    baseModule,
     domModule,
     Module(
         swiftModule: "WebSockets",

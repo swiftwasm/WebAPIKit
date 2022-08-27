@@ -44,92 +44,98 @@ enum IDLBuilder {
         try (formedPreamble + "\n\n" + content).write(toFile: path, atomically: true, encoding: .utf8)
     }
 
-    static func generateIDLBindings(idl: [GenericCollection<IDLNode>], baseTypes: [String : IDLTypealias]) throws -> SwiftSource {
+    static func generateIDLBindings(idl: [GenericCollection<IDLNode>], baseTypes: [String: IDLTypealias]) throws -> SwiftSource {
+        print("Generating bindings...")
         let declarations = idl.flatMap(\.array)
         let merged = DeclarationMerger.merge(declarations: declarations)
         var contents: [SwiftSource] = []
-        for node in merged.declarations.sorted(by: { $0.name < $1.name }) {
-            if ignoredNames.contains(node.name) {
-                continue
-            }
 
-            var state = Context.State.root(
-                interfaces: merged.interfaces,
-                ignored: [
-                    // functions as parameters are unsupported
-                    "AnimationFrameProvider": ["requestAnimationFrame"],
-                    "AnimationWorkletGlobalScope": ["registerAnimator"],
-                    "AudioWorkletGlobalScope": ["registerProcessor"],
-                    "BaseAudioContext": ["decodeAudioData"],
-                    "ComputePressureObserver": ["<constructor>"],
-                    "DataTransferItem": ["getAsString"],
-                    "FileSystemDirectoryEntry": ["getFile", "getDirectory"],
-                    "FileSystemDirectoryReader": ["readEntries"],
-                    "FileSystemEntry": ["getParent"],
-                    "FileSystemFileEntry": ["file"],
-                    "Geolocation": ["getCurrentPosition", "watchPosition"],
-                    "HTMLCanvasElement": ["toBlob", "getContext"],
-                    "HTMLVideoElement": ["requestVideoFrameCallback"],
-                    "IntersectionObserver": ["<constructor>"],
-                    "LayoutWorkletGlobalScope": ["registerLayout"],
-                    "LockManager": ["request"],
-                    "MediaSession": ["setActionHandler"],
-                    "MutationObserver": ["<constructor>"],
-                    "Navigator": ["getUserMedia"],
-                    "Notification": ["requestPermission"],
-                    "PaintWorkletGlobalScope": ["registerPaint"],
-                    "PerformanceObserver": ["<constructor>"],
-                    "RemotePlayback": ["watchAvailability"],
-                    "ReportingObserver": ["<constructor>"],
-                    "ResizeObserver": ["<constructor>"],
-                    "RTCPeerConnection": ["createOffer", "setLocalDescription", "createAnswer", "setRemoteDescription", "addIceCandidate"],
-                    "Scheduler": ["postTask"],
-                    "Window": ["requestIdleCallback"],
-                    "WindowOrWorkerGlobalScope": ["queueMicrotask"],
-                    "XRSession": ["requestAnimationFrame"],
-                    // variadic callbacks are unsupported
-                    "TrustedTypePolicyFactory": ["createPolicy"],
-                    // NodeFilter
-                    "Document": ["createNodeIterator", "createTreeWalker"],
-                    "NodeIterator": ["filter"],
-                    "TreeWalker": ["filter"],
-                    // EventListener
-                    "EventTarget": ["addEventListener", "removeEventListener"],
-                    "MediaQueryList": ["addListener", "removeListener"],
-                    // invalid override in Swift
-                    "BeforeUnloadEvent": ["returnValue"],
-                    "CSSColor": ["colorSpace"],
-                    "SVGElement": ["className"],
-                    "AudioBufferSourceNode": ["start"],
-                    // XPathNSResolver
-                    "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
-                    // disabled pending addition of more specs
-                    "HTMLMediaElement": ["srcObject"],
-                    "Blob": ["stream"],
-                    "Body": ["body"],
-                    "OffscreenCanvas": ["getContext"],
-                ],
-                types: merged.types
-            )
-            state.add(types: baseTypes)
+        var state = ScopedState.root(
+            interfaces: merged.interfaces,
+            ignored: [
+                // functions as parameters are unsupported
+                "AnimationFrameProvider": ["requestAnimationFrame"],
+                "AnimationWorkletGlobalScope": ["registerAnimator"],
+                "AudioWorkletGlobalScope": ["registerProcessor"],
+                "BaseAudioContext": ["decodeAudioData"],
+                "ComputePressureObserver": ["<constructor>"],
+                "DataTransferItem": ["getAsString"],
+                "FileSystemDirectoryEntry": ["getFile", "getDirectory"],
+                "FileSystemDirectoryReader": ["readEntries"],
+                "FileSystemEntry": ["getParent"],
+                "FileSystemFileEntry": ["file"],
+                "Geolocation": ["getCurrentPosition", "watchPosition"],
+                "HTMLCanvasElement": ["toBlob", "getContext"],
+                "HTMLVideoElement": ["requestVideoFrameCallback"],
+                "IntersectionObserver": ["<constructor>"],
+                "LayoutWorkletGlobalScope": ["registerLayout"],
+                "LockManager": ["request"],
+                "MediaSession": ["setActionHandler"],
+                "MutationObserver": ["<constructor>"],
+                "Navigator": ["getUserMedia"],
+                "Notification": ["requestPermission"],
+                "PaintWorkletGlobalScope": ["registerPaint"],
+                "PerformanceObserver": ["<constructor>"],
+                "RemotePlayback": ["watchAvailability"],
+                "ReportingObserver": ["<constructor>"],
+                "ResizeObserver": ["<constructor>"],
+                "RTCPeerConnection": ["createOffer", "setLocalDescription", "createAnswer", "setRemoteDescription", "addIceCandidate"],
+                "Scheduler": ["postTask"],
+                "Window": ["requestIdleCallback"],
+                "WindowOrWorkerGlobalScope": ["queueMicrotask"],
+                "XRSession": ["requestAnimationFrame"],
+                // variadic callbacks are unsupported
+                "TrustedTypePolicyFactory": ["createPolicy"],
+                // NodeFilter
+                "Document": ["createNodeIterator", "createTreeWalker"],
+                "NodeIterator": ["filter"],
+                "TreeWalker": ["filter"],
+                // EventListener
+                "EventTarget": ["addEventListener", "removeEventListener"],
+                "MediaQueryList": ["addListener", "removeListener"],
+                // invalid override in Swift
+                "BeforeUnloadEvent": ["returnValue"],
+                "CSSColor": ["colorSpace"],
+                "SVGElement": ["className"],
+                "AudioBufferSourceNode": ["start"],
+                // XPathNSResolver
+                "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
+                // disabled pending addition of more specs
+                "HTMLMediaElement": ["srcObject"],
+                "Blob": ["stream"],
+                "Body": ["body"],
+                "OffscreenCanvas": ["getContext"],
+            ],
+            types: merged.types
+        )
+        state.add(types: baseTypes)
 
-            let nodeContent = Context.withState(state) {
-                toSwift(node)
+        try ModuleState.withScope(state) {
+            for node in merged.declarations.sorted(by: { $0.name < $1.name }) {
+                if ignoredNames.contains(node.name) {
+                    continue
+                }
+
+                contents.append(toSwift(node))
             }
-            contents.append(nodeContent)
+            try contents.append(IDLBuilder.generateStrings())
+            try contents.append(IDLBuilder.generateUnions())
         }
         return "\(lines: contents)"
     }
 
     static func generateClosureTypes() throws -> SwiftSource {
+        print("Generating closure property wrappers...")
         return """
         /* variadic generics please */
-        \(lines: Context.closurePatterns.sorted().map(\.swiftRepresentation))
+        \(lines: ModuleState.closurePatterns.sorted().map(\.swiftRepresentation))
         """
     }
 
     static func generateStrings() throws -> SwiftSource {
-        let strings = Context.strings.sorted()
+        print("Generating JSString constants...")
+
+        let strings = ModuleState.strings.sorted()
         return """
             @usableFromInline enum Strings {
                 static let _self: JSString = "self"
@@ -139,8 +145,9 @@ enum IDLBuilder {
     }
 
     static func generateUnions() throws -> SwiftSource {
+        print("Generating union protocols...")
         var contents: [SwiftSource] = []
-        for union in Context.unions.sorted(by: { $0.name < $1.name }) {
+        for union in ModuleState.unions.sorted(by: { $0.name < $1.name }) {
             guard !ignoredNames.contains(union.name) else { continue }
             contents.append(union.swiftRepresentation)
         }
