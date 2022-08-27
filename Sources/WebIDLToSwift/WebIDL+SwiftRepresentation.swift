@@ -21,13 +21,13 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
     }
 
     var swiftRepresentation: SwiftSource {
-        if Context.ignored[Context.className.source]?.contains(name) ?? false {
+        if ModuleState.ignored[ModuleState.className.source]?.contains(name) ?? false {
             return """
             // XXX: attribute '\(name)' is ignored
             """
         }
-        if Context.override {
-            assert(!Context.static)
+        if ModuleState.override {
+            assert(!ModuleState.static)
             // can't do property wrappers on override declarations
             return """
             @usableFromInline let \(wrapperName): \(idlType.propertyWrapper(readonly: readonly))<\(idlType)>
@@ -36,30 +36,30 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
                 \(readonly ? "" : "set { \(wrapperName).wrappedValue = newValue }")
             }
             """
-        } else if Context.constructor == nil || Context.static {
+        } else if ModuleState.constructor == nil || ModuleState.static {
             // can't do property wrappers on extensions
             let propertyWrapper = idlType.propertyWrapper(readonly: readonly)
             if [SwiftSource.readOnlyAttribute, .readWriteAttribute].contains(propertyWrapper) {
                 let setter: SwiftSource = """
-                nonmutating set { jsObject[\(Context.source(for: name))] = newValue.jsValue }
+                nonmutating set { jsObject[\(ModuleState.source(for: name))] = newValue.jsValue }
                 """
 
                 return """
-                @inlinable public\(raw: Context.static ? " static" : "") var \(name): \(idlType) {
-                    get { jsObject[\(Context.source(for: name))].fromJSValue()! }
+                @inlinable public\(raw: ModuleState.static ? " static" : "") var \(name): \(idlType) {
+                    get { jsObject[\(ModuleState.source(for: name))].fromJSValue()! }
                     \(readonly ? "" : setter)
                 }
                 """
             } else {
                 let setter: SwiftSource = """
                 nonmutating set { \(
-                    idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)
+                    idlType.propertyWrapper(readonly: readonly))[\(ModuleState.source(for: name)
                 ), in: jsObject] = newValue }
                 """
 
                 return """
-                @inlinable public\(raw: Context.static ? " static" : "") var \(name): \(idlType) {
-                    get { \(idlType.propertyWrapper(readonly: readonly))[\(Context.source(for: name)), in: jsObject] }
+                @inlinable public\(raw: ModuleState.static ? " static" : "") var \(name): \(idlType) {
+                    get { \(idlType.propertyWrapper(readonly: readonly))[\(ModuleState.source(for: name)), in: jsObject] }
                     \(readonly ? "" : setter)
                 }
                 """
@@ -73,9 +73,9 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
     }
 
     var initializer: SwiftSource? {
-        assert(!Context.static)
+        assert(!ModuleState.static)
         return """
-        \(wrapperName) = \(idlType.propertyWrapper(readonly: readonly))(jsObject: jsObject, name: \(Context.source(for: name)))
+        \(wrapperName) = \(idlType.propertyWrapper(readonly: readonly))(jsObject: jsObject, name: \(ModuleState.source(for: name)))
         """
     }
 }
@@ -102,15 +102,15 @@ extension MergedDictionary: SwiftRepresentable {
         }
         return """
         public convenience init(\(sequence: params)) {
-            let object = JSObject.global[\(Context.source(for: "Object"))].function!.new()
+            let object = JSObject.global[\(ModuleState.source(for: "Object"))].function!.new()
             \(lines: membersWithPropertyWrapper.map { member, wrapper in
                 if member.idlType.isFunction {
                     return """
-                    \(wrapper)[\(Context.source(for: member.name)), in: object] = \(member.name)
+                    \(wrapper)[\(ModuleState.source(for: member.name)), in: object] = \(member.name)
                     """
                 } else {
                     return """
-                    object[\(Context.source(for: member.name))] = \(member.name).jsValue
+                    object[\(ModuleState.source(for: member.name))] = \(member.name).jsValue
                     """
                 }
             })
@@ -119,7 +119,7 @@ extension MergedDictionary: SwiftRepresentable {
 
         public required init(unsafelyWrapping object: JSObject) {
             \(lines: membersWithPropertyWrapper.map { member, wrapper in
-                "_\(raw: member.name) = \(wrapper)(jsObject: object, name: \(Context.source(for: member.name)))"
+                "_\(raw: member.name) = \(wrapper)(jsObject: object, name: \(ModuleState.source(for: member.name)))"
             })
             super.init(unsafelyWrapping: object)
         }
@@ -162,8 +162,8 @@ extension IDLEnum: SwiftRepresentable {
 extension IDLCallback: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         let isVoid = idlType.swiftRepresentation == "Void"
-        Context.closurePatterns.insert(ClosurePattern(nullable: false, void: isVoid, argCount: arguments.count))
-        Context.closurePatterns.insert(ClosurePattern(nullable: true, void: isVoid, argCount: arguments.count))
+        ModuleState.add(closurePattern: ClosurePattern(nullable: false, void: isVoid, argCount: arguments.count))
+        ModuleState.add(closurePattern: ClosurePattern(nullable: true, void: isVoid, argCount: arguments.count))
         return """
         public typealias \(name) = (\(sequence: arguments.map {
             "\($0.idlType)\($0.variadic ? "..." : "")"
@@ -184,32 +184,36 @@ protocol Initializable {
 
 extension MergedInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let constructor: SwiftSource = "JSObject.global[\(Context.source(for: name))].function"
-        let body = Context.withState(.instance(constructor: constructor, this: "jsObject", className: "\(name)")) {
+        let constructor: SwiftSource = "JSObject.global[\(ModuleState.source(for: name))].function"
+        let body = ModuleState.withScope(.instance(constructor: constructor, this: "jsObject", className: "\(name)")) {
             members.map { member in
                 let isOverride: Bool
                 if let memberName = (member as? IDLNamed)?.name {
-                    if Context.ignored[name]?.contains(memberName) ?? false {
+                    if ModuleState.ignored[name]?.contains(memberName) ?? false {
                         return "// XXX: member '\(memberName)' is ignored"
                     }
                     isOverride = parentClasses.flatMap {
-                        Context.interfaces[$0]?.members ?? []
+                        ModuleState.interfaces[$0]?.members ?? []
                     }.contains {
                         memberName == ($0 as? IDLNamed)?.name
                     }
                 } else {
                     isOverride = false
                 }
-                return Context.withState(.override(isOverride)) {
+                return ModuleState.withScope(.override(isOverride)) {
                     toSwift(member)
                 }
             }.joined(separator: "\n\n")
         }
 
         let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
+        // Allow cross-module subclassing with `open` access modifier for classes that require this.
+        let openClasses = ["DOMException", "EventTarget", "Event", "Worklet", "WebGLObject"]
+        let access: SwiftSource = openClasses.contains(name) ? "open" : "public"
+
         return """
-        public class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
-            @inlinable public\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction? { \(constructor) }
+        \(access) class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
+            @inlinable \(access)\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction? { \(constructor) }
 
             \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
 
@@ -225,7 +229,7 @@ extension MergedInterface: SwiftRepresentable {
 
     var memberInits: [SwiftSource] {
         members.filter { member in
-            if let ignored = Context.ignored[name],
+            if let ignored = ModuleState.ignored[name],
                let memberName = (member as? IDLNamed)?.name
             {
                 return !ignored.contains(memberName)
@@ -260,7 +264,7 @@ extension IDLSetLikeDeclaration: SwiftRepresentable, Initializable {
 
 extension MergedMixin: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        Context.withState(.instance(constructor: nil, this: "jsObject", className: "\(name)", inProtocol: true)) {
+        ModuleState.withScope(.instance(constructor: nil, this: "jsObject", className: "\(name)", inProtocol: true)) {
             """
             public protocol \(name): JSBridgedClass {}
             public extension \(name) {
@@ -273,7 +277,7 @@ extension MergedMixin: SwiftRepresentable {
 
 extension IDLConstant: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
-        if Context.inProtocol {
+        if ModuleState.inProtocol {
             // Static stored properties not supported in protocol extensions
             return """
             @inlinable public static var \(name): \(idlType) { \(value) }
@@ -290,9 +294,9 @@ extension IDLConstant: SwiftRepresentable, Initializable {
 
 extension IDLConstructor: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
-        assert(!Context.static)
+        assert(!ModuleState.static)
         assert(arguments.dropLast().allSatisfy { !$0.variadic })
-        if Context.ignored[Context.className.source]?.contains("<constructor>") ?? false {
+        if ModuleState.ignored[ModuleState.className.source]?.contains("<constructor>") ?? false {
             return "// XXX: constructor is ignored"
         }
         let args: [SwiftSource] = arguments.map {
@@ -326,14 +330,14 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
             return """
             public typealias Element = \(idlType[0])
             @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-            public func makeAsyncIterator() -> ValueIterableAsyncIterator<\(Context.className)> {
+            public func makeAsyncIterator() -> ValueIterableAsyncIterator<\(ModuleState.className)> {
                 ValueIterableAsyncIterator(sequence: self)
             }
             """
         } else {
             return """
             public typealias Element = \(idlType[0])
-            public func makeIterator() -> ValueIterableIterator<\(Context.className)> {
+            public func makeIterator() -> ValueIterableIterator<\(ModuleState.className)> {
                 ValueIterableIterator(sequence: self)
             }
             """
@@ -345,8 +349,8 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
 
 extension MergedNamespace: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        let this: SwiftSource = "JSObject.global[\(Context.source(for: name))].object!"
-        let body = Context.withState(.static(this: this, inClass: false, className: "\(name)")) {
+        let this: SwiftSource = "JSObject.global[\(ModuleState.source(for: name))].object!"
+        let body = ModuleState.withScope(.static(this: this, inClass: false, className: "\(name)")) {
             members.map(toSwift).joined(separator: "\n\n")
         }
         return """
@@ -363,7 +367,7 @@ extension MergedNamespace: SwiftRepresentable {
 
 extension IDLOperation: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
-        if Context.ignored[Context.className.source]?.contains(name) ?? false {
+        if ModuleState.ignored[ModuleState.className.source]?.contains(name) ?? false {
             return """
             // XXX: method '\(name)' is ignored
             """
@@ -371,16 +375,16 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         if special.isEmpty {
             return defaultRepresentation
         } else {
-            assert(!Context.static)
+            assert(!ModuleState.static)
             switch special {
             case "stringifier":
                 return """
                 @inlinable public var description: String {
-                    \(Context.this)[Strings.toString]!().fromJSValue()!
+                    \(ModuleState.this)[Strings.toString]!().fromJSValue()!
                 }
                 """
             case "static":
-                return Context.withState(.static(this: "constructor!", className: Context.className)) {
+                return ModuleState.withScope(.static(this: "constructor!", className: ModuleState.className)) {
                     defaultRepresentation
                 }
             case "getter":
@@ -440,19 +444,19 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             argsArray = "[\(sequence: args)]"
         }
 
-        let function: SwiftSource = "this[\(Context.source(for: name))].function!"
+        let function: SwiftSource = "this[\(ModuleState.source(for: name))].function!"
         return (
             prep: """
             \(lines: prep)
-            let this = \(Context.this)
+            let this = \(ModuleState.this)
             """,
             call: "\(function)(this: this, arguments: \(argsArray))"
         )
     }
 
     fileprivate var nameAndParams: SwiftSource {
-        let accessModifier: SwiftSource = Context.static ? (Context.inClass ? " class" : " static") : ""
-        let overrideModifier: SwiftSource = Context.override ? "override " : ""
+        let accessModifier: SwiftSource = ModuleState.static ? (ModuleState.inClass ? " class" : " static") : ""
+        let overrideModifier: SwiftSource = ModuleState.override ? "override " : ""
         return """
         \(overrideModifier)public\(accessModifier) func \(name)(\(sequence: arguments.map(\.swiftRepresentation)))
         """
@@ -460,10 +464,10 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
     private var defaultRepresentation: SwiftSource {
         var returnType = idlType!.swiftRepresentation
-        if returnType == Context.className {
+        if returnType == ModuleState.className {
             returnType = "Self"
         }
-        if Context.override, Context.static {
+        if ModuleState.override, ModuleState.static {
             return """
             // XXX: illegal static override
             // \(nameAndParams) -> \(returnType)
@@ -492,13 +496,13 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
 extension AsyncOperation: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
-        if Context.ignored[Context.className.source]?.contains(name) ?? false {
+        if ModuleState.ignored[ModuleState.className.source]?.contains(name) ?? false {
             // covered by non-async operation
             return ""
         }
         switch operation.special {
         case "static":
-            return Context.withState(.static(this: "constructor!", className: Context.className)) {
+            return ModuleState.withScope(.static(this: "constructor!", className: ModuleState.className)) {
                 defaultRepresentation
             }
         case "":
@@ -509,7 +513,7 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
     }
 
     var defaultRepresentation: SwiftSource {
-        if Context.override, Context.static || operation.special == "static" {
+        if ModuleState.override, ModuleState.static || operation.special == "static" {
             return """
             // XXX: illegal static override
             // \(operation.nameAndParams) async -> \(returnType)
@@ -607,12 +611,12 @@ extension IDLType: SwiftRepresentable {
 
     var isFunction: Bool {
         if case let .single(name) = value {
-            if Context.types[name] is IDLCallback {
+            if ModuleState.types[name] is IDLCallback {
                 return true
             }
-            if let ref = Context.types[name] as? IDLTypedef,
+            if let ref = ModuleState.types[name] as? IDLTypedef,
                case let .single(name) = ref.idlType.value,
-               Context.types[name] is IDLCallback
+               ModuleState.types[name] is IDLCallback
             {
                 assert(ref.idlType.nullable)
                 return true
@@ -626,12 +630,13 @@ extension IDLType: SwiftRepresentable {
         // (should they be a JSFunction? or a closure? or something else?))
         if case let .single(name) = value {
             let readonlyComment: SwiftSource = readonly ? " /* XXX: should be readonly! */ " : ""
-            if let callback = Context.types[name] as? IDLCallback {
+            // print(ModuleState.types)
+            if let callback = ModuleState.types[name] as? IDLCallback {
                 return "\(closureWrapper(callback, optional: false))\(readonlyComment)"
             }
-            if let ref = Context.types[name] as? IDLTypedef,
+            if let ref = ModuleState.types[name] as? IDLTypedef,
                case let .single(name) = ref.idlType.value,
-               let callback = Context.types[name] as? IDLCallback
+               let callback = ModuleState.types[name] as? IDLCallback
             {
                 assert(ref.idlType.nullable)
                 return "\(closureWrapper(callback, optional: true))\(readonlyComment)"
@@ -646,10 +651,9 @@ extension IDLType: SwiftRepresentable {
     }
 
     private func closureWrapper(_ callback: IDLCallback, optional: Bool) -> SwiftSource {
-        let void: SwiftSource = callback.idlType.swiftRepresentation == "Void" ? "Void" : ""
-        let optional: SwiftSource = optional ? "Optional" : ""
-        let argCount = String(callback.arguments.count)
-        return "ClosureAttribute\(argCount)\(optional)\(void)"
+        let returnsVoid = callback.idlType.swiftRepresentation == "Void"
+        let argCount = callback.arguments.count
+        return ClosurePattern(nullable: optional, void: returnsVoid, argCount: argCount).name
     }
 }
 
@@ -657,7 +661,7 @@ extension IDLTypedef: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         if case let .union(types) = idlType.value {
             let typeSet = Set(types.map(SlimIDLType.init))
-            if let existing = Context.unions.first(where: { $0.types == typeSet }) {
+            if let existing = ModuleState.unions.first(where: { $0.types == typeSet }) {
                 if let existingName = existing.friendlyName {
                     return "public typealias \(name) = \(existingName)"
                 } else {
@@ -665,7 +669,7 @@ extension IDLTypedef: SwiftRepresentable {
                     return ""
                 }
             } else {
-                Context.unions.insert(UnionType(types: typeSet, friendlyName: name))
+                ModuleState.add(union: UnionType(types: typeSet, friendlyName: name))
                 return ""
             }
         }

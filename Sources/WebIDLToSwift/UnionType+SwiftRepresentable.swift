@@ -207,7 +207,7 @@ extension SlimIDLType.TypeValue: SwiftRepresentable {
 }
 
 func unionName(types: Set<SlimIDLType>) -> String {
-    let union = Context.unions.first(where: { $0.types == types }) ?? UnionType(types: types)
-    Context.unions.insert(union)
+    let union = ModuleState.unions.first(where: { $0.types == types }) ?? UnionType(types: types)
+    ModuleState.add(union: union)
     return union.name
 }

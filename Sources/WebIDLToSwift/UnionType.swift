@@ -37,7 +37,7 @@ struct SlimIDLType: Hashable, Encodable {
         let value = TypeValue(type.value)
         self.value = value
         nullable = type.nullable
-        
+
         if type.nullable {
             inlineTypeName = "nullable_\(value.inlineTypeName)"
         } else {
@@ -59,7 +59,7 @@ struct SlimIDLType: Hashable, Encodable {
             case let .union(types):
                 let slimmed = Set(types.map(SlimIDLType.init))
                 self = .union(slimmed)
-                Context.unions.insert(UnionType(types: slimmed))
+                ModuleState.add(union: UnionType(types: slimmed))
             }
         }
     }

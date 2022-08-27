@@ -27,7 +27,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import WebAPIKit
+import DOM
+import WebAPIBase
+import WebGL1
+import WebGL2
 
 let vertexShaderSource =
   """
