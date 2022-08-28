@@ -23,6 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check if codegen output is stale
         run: |
+          cd parse-idl && npm install && cd ..
           swift run WebIDLToSwift
           git diff --exit-code *
       - name: Run the test suite on macOS
