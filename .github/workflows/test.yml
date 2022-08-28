@@ -7,15 +7,29 @@ on:
 
 jobs:
   macos_test:
-    runs-on: macos-12
+  strategy:
+  matrix:
+    include:
+      - os: macos-11
+        xcode: Xcode_13.2.1
+      - os: macos-12
+        xcode: Xcode_13.4.1
+      - os: macos-12
+        xcode: Xcode_14.0
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v2
+      - name: Check if codegen output is stale
+        run: |
+          swift run WebIDLToSwift
+          git diff --exit-code *
       - name: Run the test suite on macOS
         shell: bash
         run: |
           set -ex
-          sudo xcode-select --switch /Applications/Xcode_13.3.1.app/Contents/Developer/
+          sudo xcode-select --switch /Applications/${{ matrix.xcode }}.app/Contents/Developer/
 
           brew install swiftwasm/tap/carton
 

@@ -29,7 +29,7 @@ func generateManifest(_ modules: [Module]) -> String {
         dependencies: [
             .package(
                 url: "https://github.com/swiftwasm/JavaScriptKit.git",
-                from: "0.15.0"
+                from: "0.16.0"
             ),
         ],
         targets: [
