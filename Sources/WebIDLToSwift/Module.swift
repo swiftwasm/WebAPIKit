@@ -37,6 +37,7 @@ let domModule = Module(
         "mediastream-recording",
         "webcodecs",
         "service-workers",
+        "touch-events",
     ],
     dependencies: ["WebAPIBase"]
 )

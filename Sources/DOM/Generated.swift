@@ -6197,6 +6197,26 @@ public extension GlobalEventHandlers {
         get { ClosureAttribute1Optional[Strings.onwheel, in: jsObject] }
         nonmutating set { ClosureAttribute1Optional[Strings.onwheel, in: jsObject] = newValue }
     }
+
+    @inlinable var ontouchstart: EventHandler {
+        get { ClosureAttribute1Optional[Strings.ontouchstart, in: jsObject] }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontouchstart, in: jsObject] = newValue }
+    }
+
+    @inlinable var ontouchend: EventHandler {
+        get { ClosureAttribute1Optional[Strings.ontouchend, in: jsObject] }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontouchend, in: jsObject] = newValue }
+    }
+
+    @inlinable var ontouchmove: EventHandler {
+        get { ClosureAttribute1Optional[Strings.ontouchmove, in: jsObject] }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontouchmove, in: jsObject] = newValue }
+    }
+
+    @inlinable var ontouchcancel: EventHandler {
+        get { ClosureAttribute1Optional[Strings.ontouchcancel, in: jsObject] }
+        nonmutating set { ClosureAttribute1Optional[Strings.ontouchcancel, in: jsObject] = newValue }
+    }
 }
 
 public class HTMLAllCollection: JSBridgedClass {
@@ -14846,6 +14866,268 @@ public class TimeRanges: JSBridgedClass {
     }
 }
 
+public class Touch: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.Touch].function }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _identifier = ReadonlyAttribute(jsObject: jsObject, name: Strings.identifier)
+        _target = ReadonlyAttribute(jsObject: jsObject, name: Strings.target)
+        _screenX = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenX)
+        _screenY = ReadonlyAttribute(jsObject: jsObject, name: Strings.screenY)
+        _clientX = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientX)
+        _clientY = ReadonlyAttribute(jsObject: jsObject, name: Strings.clientY)
+        _pageX = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageX)
+        _pageY = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageY)
+        _radiusX = ReadonlyAttribute(jsObject: jsObject, name: Strings.radiusX)
+        _radiusY = ReadonlyAttribute(jsObject: jsObject, name: Strings.radiusY)
+        _rotationAngle = ReadonlyAttribute(jsObject: jsObject, name: Strings.rotationAngle)
+        _force = ReadonlyAttribute(jsObject: jsObject, name: Strings.force)
+        _altitudeAngle = ReadonlyAttribute(jsObject: jsObject, name: Strings.altitudeAngle)
+        _azimuthAngle = ReadonlyAttribute(jsObject: jsObject, name: Strings.azimuthAngle)
+        _touchType = ReadonlyAttribute(jsObject: jsObject, name: Strings.touchType)
+        self.jsObject = jsObject
+    }
+
+    @inlinable public convenience init(touchInitDict: TouchInit) {
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [touchInitDict.jsValue]))
+    }
+
+    @ReadonlyAttribute
+    public var identifier: Int32
+
+    @ReadonlyAttribute
+    public var target: EventTarget
+
+    @ReadonlyAttribute
+    public var screenX: Double
+
+    @ReadonlyAttribute
+    public var screenY: Double
+
+    @ReadonlyAttribute
+    public var clientX: Double
+
+    @ReadonlyAttribute
+    public var clientY: Double
+
+    @ReadonlyAttribute
+    public var pageX: Double
+
+    @ReadonlyAttribute
+    public var pageY: Double
+
+    @ReadonlyAttribute
+    public var radiusX: Float
+
+    @ReadonlyAttribute
+    public var radiusY: Float
+
+    @ReadonlyAttribute
+    public var rotationAngle: Float
+
+    @ReadonlyAttribute
+    public var force: Float
+
+    @ReadonlyAttribute
+    public var altitudeAngle: Float
+
+    @ReadonlyAttribute
+    public var azimuthAngle: Float
+
+    @ReadonlyAttribute
+    public var touchType: TouchType
+}
+
+public class TouchEvent: UIEvent {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.TouchEvent].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _touches = ReadonlyAttribute(jsObject: jsObject, name: Strings.touches)
+        _targetTouches = ReadonlyAttribute(jsObject: jsObject, name: Strings.targetTouches)
+        _changedTouches = ReadonlyAttribute(jsObject: jsObject, name: Strings.changedTouches)
+        _altKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.altKey)
+        _metaKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.metaKey)
+        _ctrlKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.ctrlKey)
+        _shiftKey = ReadonlyAttribute(jsObject: jsObject, name: Strings.shiftKey)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(type: String, eventInitDict: TouchEventInit? = nil) {
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+    }
+
+    @ReadonlyAttribute
+    public var touches: TouchList
+
+    @ReadonlyAttribute
+    public var targetTouches: TouchList
+
+    @ReadonlyAttribute
+    public var changedTouches: TouchList
+
+    @ReadonlyAttribute
+    public var altKey: Bool
+
+    @ReadonlyAttribute
+    public var metaKey: Bool
+
+    @ReadonlyAttribute
+    public var ctrlKey: Bool
+
+    @ReadonlyAttribute
+    public var shiftKey: Bool
+}
+
+public class TouchEventInit: BridgedDictionary {
+    public convenience init(touches: [Touch], targetTouches: [Touch], changedTouches: [Touch]) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.touches] = touches.jsValue
+        object[Strings.targetTouches] = targetTouches.jsValue
+        object[Strings.changedTouches] = changedTouches.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _touches = ReadWriteAttribute(jsObject: object, name: Strings.touches)
+        _targetTouches = ReadWriteAttribute(jsObject: object, name: Strings.targetTouches)
+        _changedTouches = ReadWriteAttribute(jsObject: object, name: Strings.changedTouches)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var touches: [Touch]
+
+    @ReadWriteAttribute
+    public var targetTouches: [Touch]
+
+    @ReadWriteAttribute
+    public var changedTouches: [Touch]
+}
+
+public class TouchInit: BridgedDictionary {
+    public convenience init(identifier: Int32, target: EventTarget, clientX: Double, clientY: Double, screenX: Double, screenY: Double, pageX: Double, pageY: Double, radiusX: Float, radiusY: Float, rotationAngle: Float, force: Float, altitudeAngle: Double, azimuthAngle: Double, touchType: TouchType) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.identifier] = identifier.jsValue
+        object[Strings.target] = target.jsValue
+        object[Strings.clientX] = clientX.jsValue
+        object[Strings.clientY] = clientY.jsValue
+        object[Strings.screenX] = screenX.jsValue
+        object[Strings.screenY] = screenY.jsValue
+        object[Strings.pageX] = pageX.jsValue
+        object[Strings.pageY] = pageY.jsValue
+        object[Strings.radiusX] = radiusX.jsValue
+        object[Strings.radiusY] = radiusY.jsValue
+        object[Strings.rotationAngle] = rotationAngle.jsValue
+        object[Strings.force] = force.jsValue
+        object[Strings.altitudeAngle] = altitudeAngle.jsValue
+        object[Strings.azimuthAngle] = azimuthAngle.jsValue
+        object[Strings.touchType] = touchType.jsValue
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _identifier = ReadWriteAttribute(jsObject: object, name: Strings.identifier)
+        _target = ReadWriteAttribute(jsObject: object, name: Strings.target)
+        _clientX = ReadWriteAttribute(jsObject: object, name: Strings.clientX)
+        _clientY = ReadWriteAttribute(jsObject: object, name: Strings.clientY)
+        _screenX = ReadWriteAttribute(jsObject: object, name: Strings.screenX)
+        _screenY = ReadWriteAttribute(jsObject: object, name: Strings.screenY)
+        _pageX = ReadWriteAttribute(jsObject: object, name: Strings.pageX)
+        _pageY = ReadWriteAttribute(jsObject: object, name: Strings.pageY)
+        _radiusX = ReadWriteAttribute(jsObject: object, name: Strings.radiusX)
+        _radiusY = ReadWriteAttribute(jsObject: object, name: Strings.radiusY)
+        _rotationAngle = ReadWriteAttribute(jsObject: object, name: Strings.rotationAngle)
+        _force = ReadWriteAttribute(jsObject: object, name: Strings.force)
+        _altitudeAngle = ReadWriteAttribute(jsObject: object, name: Strings.altitudeAngle)
+        _azimuthAngle = ReadWriteAttribute(jsObject: object, name: Strings.azimuthAngle)
+        _touchType = ReadWriteAttribute(jsObject: object, name: Strings.touchType)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var identifier: Int32
+
+    @ReadWriteAttribute
+    public var target: EventTarget
+
+    @ReadWriteAttribute
+    public var clientX: Double
+
+    @ReadWriteAttribute
+    public var clientY: Double
+
+    @ReadWriteAttribute
+    public var screenX: Double
+
+    @ReadWriteAttribute
+    public var screenY: Double
+
+    @ReadWriteAttribute
+    public var pageX: Double
+
+    @ReadWriteAttribute
+    public var pageY: Double
+
+    @ReadWriteAttribute
+    public var radiusX: Float
+
+    @ReadWriteAttribute
+    public var radiusY: Float
+
+    @ReadWriteAttribute
+    public var rotationAngle: Float
+
+    @ReadWriteAttribute
+    public var force: Float
+
+    @ReadWriteAttribute
+    public var altitudeAngle: Double
+
+    @ReadWriteAttribute
+    public var azimuthAngle: Double
+
+    @ReadWriteAttribute
+    public var touchType: TouchType
+}
+
+public class TouchList: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.TouchList].function }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
+        self.jsObject = jsObject
+    }
+
+    @ReadonlyAttribute
+    public var length: UInt32
+
+    @inlinable public subscript(key: Int) -> Touch? {
+        jsObject[key].fromJSValue()
+    }
+}
+
+public enum TouchType: JSString, JSValueCompatible {
+    case direct = "direct"
+    case stylus = "stylus"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public class TrackEvent: Event {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.TrackEvent].function }
 
@@ -17552,6 +17834,9 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let TextTrackCueList: JSString = "TextTrackCueList"
     @usableFromInline static let TextTrackList: JSString = "TextTrackList"
     @usableFromInline static let TimeRanges: JSString = "TimeRanges"
+    @usableFromInline static let Touch: JSString = "Touch"
+    @usableFromInline static let TouchEvent: JSString = "TouchEvent"
+    @usableFromInline static let TouchList: JSString = "TouchList"
     @usableFromInline static let TrackEvent: JSString = "TrackEvent"
     @usableFromInline static let TransformStream: JSString = "TransformStream"
     @usableFromInline static let TransformStreamDefaultController: JSString = "TransformStreamDefaultController"
@@ -17621,6 +17906,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let alphabeticBaseline: JSString = "alphabeticBaseline"
     @usableFromInline static let alt: JSString = "alt"
     @usableFromInline static let altKey: JSString = "altKey"
+    @usableFromInline static let altitudeAngle: JSString = "altitudeAngle"
     @usableFromInline static let ancestorOrigins: JSString = "ancestorOrigins"
     @usableFromInline static let anchors: JSString = "anchors"
     @usableFromInline static let animated: JSString = "animated"
@@ -17707,6 +17993,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let availHeight: JSString = "availHeight"
     @usableFromInline static let availWidth: JSString = "availWidth"
     @usableFromInline static let axis: JSString = "axis"
+    @usableFromInline static let azimuthAngle: JSString = "azimuthAngle"
     @usableFromInline static let b: JSString = "b"
     @usableFromInline static let back: JSString = "back"
     @usableFromInline static let background: JSString = "background"
@@ -17757,6 +18044,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let cells: JSString = "cells"
     @usableFromInline static let ch: JSString = "ch"
     @usableFromInline static let chOff: JSString = "chOff"
+    @usableFromInline static let changedTouches: JSString = "changedTouches"
     @usableFromInline static let channelCount: JSString = "channelCount"
     @usableFromInline static let charCode: JSString = "charCode"
     @usableFromInline static let characterData: JSString = "characterData"
@@ -18011,6 +18299,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let fontKerning: JSString = "fontKerning"
     @usableFromInline static let fontStretch: JSString = "fontStretch"
     @usableFromInline static let fontVariantCaps: JSString = "fontVariantCaps"
+    @usableFromInline static let force: JSString = "force"
     @usableFromInline static let form: JSString = "form"
     @usableFromInline static let formAction: JSString = "formAction"
     @usableFromInline static let formData: JSString = "formData"
@@ -18117,6 +18406,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let httpEquiv: JSString = "httpEquiv"
     @usableFromInline static let id: JSString = "id"
     @usableFromInline static let ideal: JSString = "ideal"
+    @usableFromInline static let identifier: JSString = "identifier"
     @usableFromInline static let ideographicBaseline: JSString = "ideographicBaseline"
     @usableFromInline static let ignoreMethod: JSString = "ignoreMethod"
     @usableFromInline static let ignoreSearch: JSString = "ignoreSearch"
@@ -18430,6 +18720,10 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let ontimeout: JSString = "ontimeout"
     @usableFromInline static let ontimeupdate: JSString = "ontimeupdate"
     @usableFromInline static let ontoggle: JSString = "ontoggle"
+    @usableFromInline static let ontouchcancel: JSString = "ontouchcancel"
+    @usableFromInline static let ontouchend: JSString = "ontouchend"
+    @usableFromInline static let ontouchmove: JSString = "ontouchmove"
+    @usableFromInline static let ontouchstart: JSString = "ontouchstart"
     @usableFromInline static let onunhandledrejection: JSString = "onunhandledrejection"
     @usableFromInline static let onunload: JSString = "onunload"
     @usableFromInline static let onunmute: JSString = "onunmute"
@@ -18541,6 +18835,8 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let queryCommandValue: JSString = "queryCommandValue"
     @usableFromInline static let querySelector: JSString = "querySelector"
     @usableFromInline static let querySelectorAll: JSString = "querySelectorAll"
+    @usableFromInline static let radiusX: JSString = "radiusX"
+    @usableFromInline static let radiusY: JSString = "radiusY"
     @usableFromInline static let rangeOverflow: JSString = "rangeOverflow"
     @usableFromInline static let rangeUnderflow: JSString = "rangeUnderflow"
     @usableFromInline static let read: JSString = "read"
@@ -18630,6 +18926,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let rotateFromVector: JSString = "rotateFromVector"
     @usableFromInline static let rotateFromVectorSelf: JSString = "rotateFromVectorSelf"
     @usableFromInline static let rotateSelf: JSString = "rotateSelf"
+    @usableFromInline static let rotationAngle: JSString = "rotationAngle"
     @usableFromInline static let roundRect: JSString = "roundRect"
     @usableFromInline static let rowIndex: JSString = "rowIndex"
     @usableFromInline static let rowSpan: JSString = "rowSpan"
@@ -18795,6 +19092,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let takeRecords: JSString = "takeRecords"
     @usableFromInline static let target: JSString = "target"
     @usableFromInline static let targetOrigin: JSString = "targetOrigin"
+    @usableFromInline static let targetTouches: JSString = "targetTouches"
     @usableFromInline static let tee: JSString = "tee"
     @usableFromInline static let temporalLayerId: JSString = "temporalLayerId"
     @usableFromInline static let terminate: JSString = "terminate"
@@ -18825,6 +19123,8 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let toolbar: JSString = "toolbar"
     @usableFromInline static let top: JSString = "top"
     @usableFromInline static let total: JSString = "total"
+    @usableFromInline static let touchType: JSString = "touchType"
+    @usableFromInline static let touches: JSString = "touches"
     @usableFromInline static let track: JSString = "track"
     @usableFromInline static let tracks: JSString = "tracks"
     @usableFromInline static let transfer: JSString = "transfer"
