@@ -949,16 +949,6 @@ public class BarProp: JSBridgedClass {
     public var visible: Bool
 }
 
-public class BeforeUnloadEvent: Event {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.BeforeUnloadEvent].function }
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
-    }
-
-    // XXX: member 'returnValue' is ignored
-}
-
 public enum BitrateMode: JSString, JSValueCompatible {
     case constant = "constant"
     case variable = "variable"
@@ -17882,7 +17872,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let AudioTrack: JSString = "AudioTrack"
     @usableFromInline static let AudioTrackList: JSString = "AudioTrackList"
     @usableFromInline static let BarProp: JSString = "BarProp"
-    @usableFromInline static let BeforeUnloadEvent: JSString = "BeforeUnloadEvent"
     @usableFromInline static let Blob: JSString = "Blob"
     @usableFromInline static let BlobEvent: JSString = "BlobEvent"
     @usableFromInline static let BroadcastChannel: JSString = "BroadcastChannel"
