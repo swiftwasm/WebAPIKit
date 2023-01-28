@@ -395,18 +395,35 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                 return ModuleState.withScope(.static(this: "constructor!", className: ModuleState.className)) {
                     defaultRepresentation
                 }
-            case "getter":
-                var keyType = toSwift(arguments[0].idlType)
-                if keyType == "UInt32" {
+            case "getter" where !name.isEmpty:
+                return defaultRepresentation
+            case "setter" where name.isEmpty:
+                var keyType = arguments[0].idlType.swiftRepresentation
+                if keyType.source == "UInt32" {
                     keyType = "Int"
                 }
+                let valueType = arguments[1].idlType
+                let key: SwiftSource = keyType.swiftRepresentation.source == "UInt32" ? "Int(key)" : "key"
+                let getterBody: SwiftSource
+                if valueType.nullable {
+                    getterBody = """
+                    super[\(key)] as? \(valueType.baseType)
+                    """
+                } else {
+                    getterBody = """
+                    super[\(key)] as! \(valueType)
+                    """
+                }
                 return """
-                @inlinable public subscript(key: \(keyType)) -> \(idlType!) {
-                    jsObject[key].fromJSValue()\(idlType!.nullable ? "" : "!")
+                @inlinable public override subscript(key: \(keyType)) -> \(valueType) {
+                    get {
+                        \(getterBody)
+                    }
+                    set {
+                        jsObject[\(key)] = _toJSValue(newValue)
+                    }
                 }
                 """
-            case "setter":
-                return "// XXX: unsupported setter for keys of type \(arguments[0].idlType)"
             case "deleter":
                 return "// XXX: unsupported deleter for keys of type \(arguments[0].idlType)"
             default:
@@ -520,6 +537,40 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
             \(prep)
             let _promise: JSPromise = \(call).fromJSValue()!
             \(result)
+        }
+        """
+    }
+
+    var initializer: SwiftSource? { nil }
+}
+
+extension SubscriptOperation: SwiftRepresentable, Initializable {
+    var swiftRepresentation: SwiftSource {
+        var keyType = toSwift(getter.arguments[0].idlType)
+        if keyType == "UInt32" {
+            keyType = "Int"
+        }
+
+        let getterSource: SwiftSource = "jsObject[key].fromJSValue()\(getter.idlType!.nullable ? "" : "!")"
+
+        if setter != nil {
+            assert(setter!.arguments.count == 2)
+            assert(setter!.arguments[0].idlType == getter.arguments[0].idlType)
+            return """
+            @inlinable public subscript(key: \(keyType)) -> \(getter.idlType!) {
+                get {
+                    \(getterSource)
+                }
+                set {
+                    jsObject[key] = _toJSValue(newValue)
+                }
+            }
+            """
+        }
+
+        return """
+        @inlinable public subscript(key: \(keyType)) -> \(getter.idlType!) {
+            \(getterSource)
         }
         """
     }

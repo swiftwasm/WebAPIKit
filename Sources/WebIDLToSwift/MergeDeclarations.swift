@@ -15,7 +15,7 @@ enum DeclarationMerger {
 
     static let ignoredParents: Set<String> = ["LinkStyle"]
 
-    private static func addAsync(_ members: [IDLNode]) -> [IDLNode] {
+    private static func enhanceMembers(_ members: [IDLNode]) -> [IDLNode] {
         members.flatMap { member -> [IDLNode] in
             if let operation = member as? IDLOperation,
                case .generic("Promise", _) = operation.idlType?.value
@@ -23,6 +23,49 @@ enum DeclarationMerger {
                 return [member, AsyncOperation(operation: operation)]
             } else {
                 return [member]
+            }
+        }.reduce(into: [IDLNode]()) { partialResult, node in
+            guard let operation = node as? IDLOperation else {
+                partialResult.append(node)
+                return
+            }
+            // annoyingly, the spec writers didn’t
+            switch operation.special {
+            case "getter":
+                if let setterIndex = partialResult.lastIndex(where: { node in
+                    if let op = node as? IDLOperation {
+                        return op.special == "setter" && op.arguments[1].idlType.value == operation.idlType?.value
+                    } else {
+                        return false
+                    }
+                }) {
+                    let setter = partialResult[setterIndex] as! IDLOperation
+                    if setter.name.isEmpty {
+                        partialResult.remove(at: setterIndex)
+                    }
+                    partialResult.append(SubscriptOperation(getter: operation, setter: setter))
+                } else {
+                    partialResult.append(SubscriptOperation(getter: operation))
+                }
+                if !operation.name.isEmpty {
+                    partialResult.append(operation)
+                }
+            case "setter":
+                if let subscriptIndex = partialResult.lastIndex(where: { node in
+                    if let op = node as? SubscriptOperation {
+                        return op.getter.idlType?.value == operation.arguments[1].idlType.value
+                    } else {
+                        return false
+                    }
+                }) {
+                    let subscriptOp = partialResult[subscriptIndex] as! SubscriptOperation
+                    partialResult.remove(at: subscriptIndex)
+                    partialResult.append(SubscriptOperation(getter: subscriptOp.getter, setter: operation))
+                } else {
+                    partialResult.append(node)
+                }
+            default:
+                partialResult.append(node)
             }
         }
     }
@@ -59,7 +102,7 @@ enum DeclarationMerger {
             grouping: allNodes(ofType: IDLInterfaceMixin.self).map {
                 MergedMixin(
                     name: $0.name,
-                    members: addAsync($0.members.array) as! [IDLInterfaceMixinMember]
+                    members: enhanceMembers($0.members.array) as! [IDLInterfaceMixinMember]
                 )
             },
             by: \.name
@@ -79,7 +122,7 @@ enum DeclarationMerger {
                     parentClasses: [$0.inheritance]
                         .compactMap { $0 }
                         .filter { !Self.ignoredParents.contains($0) },
-                    members: addAsync($0.members.array) as! [IDLInterfaceMember],
+                    members: enhanceMembers($0.members.array) as! [IDLInterfaceMember],
                     exposed: Set(
                         $0.extAttrs
                             .filter { $0.name == "Exposed" }
@@ -127,7 +170,7 @@ enum DeclarationMerger {
             grouping: allNodes(ofType: IDLNamespace.self).map {
                 MergedNamespace(
                     name: $0.name,
-                    members: addAsync($0.members.array) as! [IDLNamespaceMember]
+                    members: enhanceMembers($0.members.array) as! [IDLNamespaceMember]
                 )
             },
             by: \.name
@@ -202,6 +245,22 @@ struct AsyncOperation: IDLNode, IDLNamespaceMember, IDLInterfaceMember, IDLInter
             fatalError("Return type of async function \(name) is not a Promise")
         }
         return values.first!
+    }
+}
+
+struct SubscriptOperation: IDLNode, IDLInterfaceMember, IDLInterfaceMixinMember, IDLNamed {
+    static var type: String { "" }
+    var extAttrs: [IDLExtendedAttribute] {
+        precondition(getter.extAttrs.isEmpty)
+        precondition(setter?.extAttrs.isEmpty ?? true)
+        return []
+    }
+
+    var name: String { "subscript" }
+    let getter: IDLOperation
+    var setter: IDLOperation?
+    var returnType: IDLType {
+        getter.idlType!
     }
 }
 

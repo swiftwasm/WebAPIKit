@@ -3640,6 +3640,11 @@ public class DOMRectList: JSBridgedClass {
     @inlinable public subscript(key: Int) -> DOMRect? {
         jsObject[key].fromJSValue()
     }
+
+    @inlinable public func item(index: UInt32) -> DOMRect? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+    }
 }
 
 public class DOMRectReadOnly: JSBridgedClass {
@@ -3715,6 +3720,11 @@ public class DOMStringList: JSBridgedClass {
         jsObject[key].fromJSValue()
     }
 
+    @inlinable public func item(index: UInt32) -> String? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+    }
+
     @inlinable public func contains(string: String) -> Bool {
         let this = jsObject
         return this[Strings.contains].function!(this: this, arguments: [_toJSValue(string)]).fromJSValue()!
@@ -3731,10 +3741,13 @@ public class DOMStringMap: JSBridgedClass {
     }
 
     @inlinable public subscript(key: String) -> String {
-        jsObject[key].fromJSValue()!
+        get {
+            jsObject[key].fromJSValue()!
+        }
+        set {
+            jsObject[key] = _toJSValue(newValue)
+        }
     }
-
-    // XXX: unsupported setter for keys of type String
 
     // XXX: unsupported deleter for keys of type String
 }
@@ -3755,6 +3768,11 @@ public class DOMTokenList: JSBridgedClass, Sequence {
 
     @inlinable public subscript(key: Int) -> String? {
         jsObject[key].fromJSValue()
+    }
+
+    @inlinable public func item(index: UInt32) -> String? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 
     @inlinable public func contains(token: String) -> Bool {
@@ -5535,6 +5553,11 @@ public class FileList: JSBridgedClass {
         jsObject[key].fromJSValue()
     }
 
+    @inlinable public func item(index: UInt32) -> File? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+    }
+
     @ReadonlyAttribute
     public var length: UInt32
 }
@@ -6223,6 +6246,11 @@ public class HTMLAllCollection: JSBridgedClass {
         jsObject[key].fromJSValue()
     }
 
+    @inlinable public func namedItem(name: String) -> Element_or_HTMLCollection? {
+        let this = jsObject
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+    }
+
     @inlinable public func item(nameOrIndex: String? = nil) -> Element_or_HTMLCollection? {
         let this = jsObject
         return this[Strings.item].function!(this: this, arguments: [_toJSValue(nameOrIndex)]).fromJSValue()!
@@ -6570,8 +6598,18 @@ public class HTMLCollection: JSBridgedClass {
         jsObject[key].fromJSValue()
     }
 
+    @inlinable public func item(index: UInt32) -> Element? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+    }
+
     @inlinable public subscript(key: String) -> Element? {
         jsObject[key].fromJSValue()
+    }
+
+    @inlinable public func namedItem(name: String) -> Element? {
+        let this = jsObject
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 }
 
@@ -6933,6 +6971,11 @@ public class HTMLFormControlsCollection: HTMLCollection {
 
     @inlinable public subscript(key: String) -> Element_or_RadioNodeList? {
         jsObject[key].fromJSValue()
+    }
+
+    @inlinable override public func namedItem(name: String) -> Element_or_RadioNodeList? {
+        let this = jsObject
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 }
 
@@ -8440,7 +8483,14 @@ public class HTMLOptionsCollection: HTMLCollection {
         set { _length.wrappedValue = newValue }
     }
 
-    // XXX: unsupported setter for keys of type UInt32
+    @inlinable override public subscript(key: Int) -> HTMLOptionElement? {
+        get {
+            super[key] as? HTMLOptionElement
+        }
+        set {
+            jsObject[key] = _toJSValue(newValue)
+        }
+    }
 
     @inlinable public func add(element: HTMLOptGroupElement_or_HTMLOptionElement, before: HTMLElement_or_Int32? = nil) {
         let this = jsObject
@@ -8796,8 +8846,9 @@ public class HTMLSelectElement: HTMLElement {
     @ReadWriteAttribute
     public var length: UInt32
 
-    @inlinable public subscript(key: Int) -> HTMLOptionElement? {
-        jsObject[key].fromJSValue()
+    @inlinable public func item(index: UInt32) -> HTMLOptionElement? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 
     @inlinable public func namedItem(name: String) -> HTMLOptionElement? {
@@ -8820,7 +8871,14 @@ public class HTMLSelectElement: HTMLElement {
         _ = this[Strings.remove].function!(this: this, arguments: [_toJSValue(index)])
     }
 
-    // XXX: unsupported setter for keys of type UInt32
+    @inlinable public subscript(key: Int) -> HTMLOptionElement? {
+        get {
+            jsObject[key].fromJSValue()
+        }
+        set {
+            jsObject[key] = _toJSValue(newValue)
+        }
+    }
 
     @ReadonlyAttribute
     public var selectedOptions: HTMLCollection
@@ -11619,8 +11677,18 @@ public class MimeTypeArray: JSBridgedClass {
         jsObject[key].fromJSValue()
     }
 
+    @inlinable public func item(index: UInt32) -> MimeType? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+    }
+
     @inlinable public subscript(key: String) -> MimeType? {
         jsObject[key].fromJSValue()
+    }
+
+    @inlinable public func namedItem(name: String) -> MimeType? {
+        let this = jsObject
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 }
 
@@ -11953,8 +12021,18 @@ public class NamedNodeMap: JSBridgedClass {
         jsObject[key].fromJSValue()
     }
 
+    @inlinable public func item(index: UInt32) -> Attr? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+    }
+
     @inlinable public subscript(key: String) -> Attr? {
         jsObject[key].fromJSValue()
+    }
+
+    @inlinable public func getNamedItem(qualifiedName: String) -> Attr? {
+        let this = jsObject
+        return this[Strings.getNamedItem].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
     }
 
     @inlinable public func getNamedItemNS(namespace: String?, localName: String) -> Attr? {
@@ -12394,6 +12472,11 @@ public class NodeList: JSBridgedClass, Sequence {
         jsObject[key].fromJSValue()
     }
 
+    @inlinable public func item(index: UInt32) -> Node? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+    }
+
     @ReadonlyAttribute
     public var length: UInt32
 
@@ -12659,8 +12742,18 @@ public class Plugin: JSBridgedClass {
         jsObject[key].fromJSValue()
     }
 
+    @inlinable public func item(index: UInt32) -> MimeType? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+    }
+
     @inlinable public subscript(key: String) -> MimeType? {
         jsObject[key].fromJSValue()
+    }
+
+    @inlinable public func namedItem(name: String) -> MimeType? {
+        let this = jsObject
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 }
 
@@ -12686,8 +12779,18 @@ public class PluginArray: JSBridgedClass {
         jsObject[key].fromJSValue()
     }
 
+    @inlinable public func item(index: UInt32) -> Plugin? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+    }
+
     @inlinable public subscript(key: String) -> Plugin? {
         jsObject[key].fromJSValue()
+    }
+
+    @inlinable public func namedItem(name: String) -> Plugin? {
+        let this = jsObject
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 }
 
@@ -14540,11 +14643,19 @@ public class Storage: JSBridgedClass {
         return this[Strings.key].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 
-    @inlinable public subscript(key: String) -> String? {
-        jsObject[key].fromJSValue()
+    @inlinable public func getItem(key: String) -> String? {
+        let this = jsObject
+        return this[Strings.getItem].function!(this: this, arguments: [_toJSValue(key)]).fromJSValue()!
     }
 
-    // XXX: unsupported setter for keys of type String
+    @inlinable public subscript(key: String) -> String? {
+        get {
+            jsObject[key].fromJSValue()
+        }
+        set {
+            jsObject[key] = _toJSValue(newValue)
+        }
+    }
 
     // XXX: unsupported deleter for keys of type String
 
@@ -15256,6 +15367,11 @@ public class TouchList: JSBridgedClass {
 
     @inlinable public subscript(key: Int) -> Touch? {
         jsObject[key].fromJSValue()
+    }
+
+    @inlinable public func item(index: UInt32) -> Touch? {
+        let this = jsObject
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 }
 
@@ -18510,8 +18626,10 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let getElementsByTagName: JSString = "getElementsByTagName"
     @usableFromInline static let getElementsByTagNameNS: JSString = "getElementsByTagNameNS"
     @usableFromInline static let getImageData: JSString = "getImageData"
+    @usableFromInline static let getItem: JSString = "getItem"
     @usableFromInline static let getLineDash: JSString = "getLineDash"
     @usableFromInline static let getModifierState: JSString = "getModifierState"
+    @usableFromInline static let getNamedItem: JSString = "getNamedItem"
     @usableFromInline static let getNamedItemNS: JSString = "getNamedItemNS"
     @usableFromInline static let getParameter: JSString = "getParameter"
     @usableFromInline static let getReader: JSString = "getReader"
