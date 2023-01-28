@@ -18,27 +18,27 @@ public class AnalyserNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: AnalyserOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @inlinable public func getFloatFrequencyData(array: Float32Array) {
         let this = jsObject
-        _ = this[Strings.getFloatFrequencyData].function!(this: this, arguments: [array.jsValue])
+        _ = this[Strings.getFloatFrequencyData].function!(this: this, arguments: [_toJSValue(array)])
     }
 
     @inlinable public func getByteFrequencyData(array: Uint8Array) {
         let this = jsObject
-        _ = this[Strings.getByteFrequencyData].function!(this: this, arguments: [array.jsValue])
+        _ = this[Strings.getByteFrequencyData].function!(this: this, arguments: [_toJSValue(array)])
     }
 
     @inlinable public func getFloatTimeDomainData(array: Float32Array) {
         let this = jsObject
-        _ = this[Strings.getFloatTimeDomainData].function!(this: this, arguments: [array.jsValue])
+        _ = this[Strings.getFloatTimeDomainData].function!(this: this, arguments: [_toJSValue(array)])
     }
 
     @inlinable public func getByteTimeDomainData(array: Uint8Array) {
         let this = jsObject
-        _ = this[Strings.getByteTimeDomainData].function!(this: this, arguments: [array.jsValue])
+        _ = this[Strings.getByteTimeDomainData].function!(this: this, arguments: [_toJSValue(array)])
     }
 
     @ReadWriteAttribute
@@ -60,10 +60,10 @@ public class AnalyserNode: AudioNode {
 public class AnalyserOptions: BridgedDictionary {
     public convenience init(fftSize: UInt32, maxDecibels: Double, minDecibels: Double, smoothingTimeConstant: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.fftSize] = fftSize.jsValue
-        object[Strings.maxDecibels] = maxDecibels.jsValue
-        object[Strings.minDecibels] = minDecibels.jsValue
-        object[Strings.smoothingTimeConstant] = smoothingTimeConstant.jsValue
+        object[Strings.fftSize] = _toJSValue(fftSize)
+        object[Strings.maxDecibels] = _toJSValue(maxDecibels)
+        object[Strings.minDecibels] = _toJSValue(minDecibels)
+        object[Strings.smoothingTimeConstant] = _toJSValue(smoothingTimeConstant)
         self.init(unsafelyWrapping: object)
     }
 
@@ -102,7 +102,7 @@ public class AudioBuffer: JSBridgedClass {
     }
 
     @inlinable public convenience init(options: AudioBufferOptions) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [options.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -119,26 +119,26 @@ public class AudioBuffer: JSBridgedClass {
 
     @inlinable public func getChannelData(channel: UInt32) -> Float32Array {
         let this = jsObject
-        return this[Strings.getChannelData].function!(this: this, arguments: [channel.jsValue]).fromJSValue()!
+        return this[Strings.getChannelData].function!(this: this, arguments: [_toJSValue(channel)]).fromJSValue()!
     }
 
     @inlinable public func copyFromChannel(destination: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.copyFromChannel].function!(this: this, arguments: [destination.jsValue, channelNumber.jsValue, bufferOffset?.jsValue ?? .undefined])
+        _ = this[Strings.copyFromChannel].function!(this: this, arguments: [_toJSValue(destination), _toJSValue(channelNumber), _toJSValue(bufferOffset)])
     }
 
     @inlinable public func copyToChannel(source: Float32Array, channelNumber: UInt32, bufferOffset: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.copyToChannel].function!(this: this, arguments: [source.jsValue, channelNumber.jsValue, bufferOffset?.jsValue ?? .undefined])
+        _ = this[Strings.copyToChannel].function!(this: this, arguments: [_toJSValue(source), _toJSValue(channelNumber), _toJSValue(bufferOffset)])
     }
 }
 
 public class AudioBufferOptions: BridgedDictionary {
     public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.numberOfChannels] = numberOfChannels.jsValue
-        object[Strings.length] = length.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.numberOfChannels] = _toJSValue(numberOfChannels)
+        object[Strings.length] = _toJSValue(length)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
         self.init(unsafelyWrapping: object)
     }
 
@@ -173,7 +173,7 @@ public class AudioBufferSourceNode: AudioScheduledSourceNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: AudioBufferSourceOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadWriteAttribute
@@ -200,12 +200,12 @@ public class AudioBufferSourceNode: AudioScheduledSourceNode {
 public class AudioBufferSourceOptions: BridgedDictionary {
     public convenience init(buffer: AudioBuffer?, detune: Float, loop: Bool, loopEnd: Double, loopStart: Double, playbackRate: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.buffer] = buffer.jsValue
-        object[Strings.detune] = detune.jsValue
-        object[Strings.loop] = loop.jsValue
-        object[Strings.loopEnd] = loopEnd.jsValue
-        object[Strings.loopStart] = loopStart.jsValue
-        object[Strings.playbackRate] = playbackRate.jsValue
+        object[Strings.buffer] = _toJSValue(buffer)
+        object[Strings.detune] = _toJSValue(detune)
+        object[Strings.loop] = _toJSValue(loop)
+        object[Strings.loopEnd] = _toJSValue(loopEnd)
+        object[Strings.loopStart] = _toJSValue(loopStart)
+        object[Strings.playbackRate] = _toJSValue(playbackRate)
         self.init(unsafelyWrapping: object)
     }
 
@@ -248,7 +248,7 @@ public class AudioContext: BaseAudioContext {
     }
 
     @inlinable public convenience init(contextOptions: AudioContextOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [contextOptions?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(contextOptions)]))
     }
 
     @ReadonlyAttribute
@@ -300,17 +300,17 @@ public class AudioContext: BaseAudioContext {
 
     @inlinable public func createMediaElementSource(mediaElement: HTMLMediaElement) -> MediaElementAudioSourceNode {
         let this = jsObject
-        return this[Strings.createMediaElementSource].function!(this: this, arguments: [mediaElement.jsValue]).fromJSValue()!
+        return this[Strings.createMediaElementSource].function!(this: this, arguments: [_toJSValue(mediaElement)]).fromJSValue()!
     }
 
     @inlinable public func createMediaStreamSource(mediaStream: MediaStream) -> MediaStreamAudioSourceNode {
         let this = jsObject
-        return this[Strings.createMediaStreamSource].function!(this: this, arguments: [mediaStream.jsValue]).fromJSValue()!
+        return this[Strings.createMediaStreamSource].function!(this: this, arguments: [_toJSValue(mediaStream)]).fromJSValue()!
     }
 
     @inlinable public func createMediaStreamTrackSource(mediaStreamTrack: MediaStreamTrack) -> MediaStreamTrackAudioSourceNode {
         let this = jsObject
-        return this[Strings.createMediaStreamTrackSource].function!(this: this, arguments: [mediaStreamTrack.jsValue]).fromJSValue()!
+        return this[Strings.createMediaStreamTrackSource].function!(this: this, arguments: [_toJSValue(mediaStreamTrack)]).fromJSValue()!
     }
 
     @inlinable public func createMediaStreamDestination() -> MediaStreamAudioDestinationNode {
@@ -341,8 +341,8 @@ public enum AudioContextLatencyCategory: JSString, JSValueCompatible {
 public class AudioContextOptions: BridgedDictionary {
     public convenience init(latencyHint: AudioContextLatencyCategory_or_Double, sampleRate: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.latencyHint] = latencyHint.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.latencyHint] = _toJSValue(latencyHint)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
         self.init(unsafelyWrapping: object)
     }
 
@@ -437,18 +437,12 @@ public class AudioListener: JSBridgedClass {
 
     @inlinable public func setPosition(x: Float, y: Float, z: Float) {
         let this = jsObject
-        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
+        _ = this[Strings.setPosition].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z)])
     }
 
     @inlinable public func setOrientation(x: Float, y: Float, z: Float, xUp: Float, yUp: Float, zUp: Float) {
-        let _arg0 = x.jsValue
-        let _arg1 = y.jsValue
-        let _arg2 = z.jsValue
-        let _arg3 = xUp.jsValue
-        let _arg4 = yUp.jsValue
-        let _arg5 = zUp.jsValue
         let this = jsObject
-        _ = this[Strings.setOrientation].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
+        _ = this[Strings.setOrientation].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(xUp), _toJSValue(yUp), _toJSValue(zUp)])
     }
 }
 
@@ -467,12 +461,12 @@ public class AudioNode: EventTarget {
 
     @inlinable public func connect(destinationNode: AudioNode, output: UInt32? = nil, input: UInt32? = nil) -> Self {
         let this = jsObject
-        return this[Strings.connect].function!(this: this, arguments: [destinationNode.jsValue, output?.jsValue ?? .undefined, input?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.connect].function!(this: this, arguments: [_toJSValue(destinationNode), _toJSValue(output), _toJSValue(input)]).fromJSValue()!
     }
 
     @inlinable public func connect(destinationParam: AudioParam, output: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.connect].function!(this: this, arguments: [destinationParam.jsValue, output?.jsValue ?? .undefined])
+        _ = this[Strings.connect].function!(this: this, arguments: [_toJSValue(destinationParam), _toJSValue(output)])
     }
 
     @inlinable public func disconnect() {
@@ -482,32 +476,32 @@ public class AudioNode: EventTarget {
 
     @inlinable public func disconnect(output: UInt32) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [output.jsValue])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [_toJSValue(output)])
     }
 
     @inlinable public func disconnect(destinationNode: AudioNode) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [_toJSValue(destinationNode)])
     }
 
     @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue, output.jsValue])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [_toJSValue(destinationNode), _toJSValue(output)])
     }
 
     @inlinable public func disconnect(destinationNode: AudioNode, output: UInt32, input: UInt32) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationNode.jsValue, output.jsValue, input.jsValue])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [_toJSValue(destinationNode), _toJSValue(output), _toJSValue(input)])
     }
 
     @inlinable public func disconnect(destinationParam: AudioParam) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [_toJSValue(destinationParam)])
     }
 
     @inlinable public func disconnect(destinationParam: AudioParam, output: UInt32) {
         let this = jsObject
-        _ = this[Strings.disconnect].function!(this: this, arguments: [destinationParam.jsValue, output.jsValue])
+        _ = this[Strings.disconnect].function!(this: this, arguments: [_toJSValue(destinationParam), _toJSValue(output)])
     }
 
     @ReadonlyAttribute
@@ -532,9 +526,9 @@ public class AudioNode: EventTarget {
 public class AudioNodeOptions: BridgedDictionary {
     public convenience init(channelCount: UInt32, channelCountMode: ChannelCountMode, channelInterpretation: ChannelInterpretation) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.channelCount] = channelCount.jsValue
-        object[Strings.channelCountMode] = channelCountMode.jsValue
-        object[Strings.channelInterpretation] = channelInterpretation.jsValue
+        object[Strings.channelCount] = _toJSValue(channelCount)
+        object[Strings.channelCountMode] = _toJSValue(channelCountMode)
+        object[Strings.channelInterpretation] = _toJSValue(channelInterpretation)
         self.init(unsafelyWrapping: object)
     }
 
@@ -586,48 +580,48 @@ public class AudioParam: JSBridgedClass {
 
     @inlinable public func setValueAtTime(value: Float, startTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.setValueAtTime].function!(this: this, arguments: [value.jsValue, startTime.jsValue]).fromJSValue()!
+        return this[Strings.setValueAtTime].function!(this: this, arguments: [_toJSValue(value), _toJSValue(startTime)]).fromJSValue()!
     }
 
     @inlinable public func linearRampToValueAtTime(value: Float, endTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.linearRampToValueAtTime].function!(this: this, arguments: [value.jsValue, endTime.jsValue]).fromJSValue()!
+        return this[Strings.linearRampToValueAtTime].function!(this: this, arguments: [_toJSValue(value), _toJSValue(endTime)]).fromJSValue()!
     }
 
     @inlinable public func exponentialRampToValueAtTime(value: Float, endTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.exponentialRampToValueAtTime].function!(this: this, arguments: [value.jsValue, endTime.jsValue]).fromJSValue()!
+        return this[Strings.exponentialRampToValueAtTime].function!(this: this, arguments: [_toJSValue(value), _toJSValue(endTime)]).fromJSValue()!
     }
 
     @inlinable public func setTargetAtTime(target: Float, startTime: Double, timeConstant: Float) -> Self {
         let this = jsObject
-        return this[Strings.setTargetAtTime].function!(this: this, arguments: [target.jsValue, startTime.jsValue, timeConstant.jsValue]).fromJSValue()!
+        return this[Strings.setTargetAtTime].function!(this: this, arguments: [_toJSValue(target), _toJSValue(startTime), _toJSValue(timeConstant)]).fromJSValue()!
     }
 
     @inlinable public func setValueCurveAtTime(values: [Float], startTime: Double, duration: Double) -> Self {
         let this = jsObject
-        return this[Strings.setValueCurveAtTime].function!(this: this, arguments: [values.jsValue, startTime.jsValue, duration.jsValue]).fromJSValue()!
+        return this[Strings.setValueCurveAtTime].function!(this: this, arguments: [_toJSValue(values), _toJSValue(startTime), _toJSValue(duration)]).fromJSValue()!
     }
 
     @inlinable public func cancelScheduledValues(cancelTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.cancelScheduledValues].function!(this: this, arguments: [cancelTime.jsValue]).fromJSValue()!
+        return this[Strings.cancelScheduledValues].function!(this: this, arguments: [_toJSValue(cancelTime)]).fromJSValue()!
     }
 
     @inlinable public func cancelAndHoldAtTime(cancelTime: Double) -> Self {
         let this = jsObject
-        return this[Strings.cancelAndHoldAtTime].function!(this: this, arguments: [cancelTime.jsValue]).fromJSValue()!
+        return this[Strings.cancelAndHoldAtTime].function!(this: this, arguments: [_toJSValue(cancelTime)]).fromJSValue()!
     }
 }
 
 public class AudioParamDescriptor: BridgedDictionary {
     public convenience init(name: String, defaultValue: Float, minValue: Float, maxValue: Float, automationRate: AutomationRate) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.name] = name.jsValue
-        object[Strings.defaultValue] = defaultValue.jsValue
-        object[Strings.minValue] = minValue.jsValue
-        object[Strings.maxValue] = maxValue.jsValue
-        object[Strings.automationRate] = automationRate.jsValue
+        object[Strings.name] = _toJSValue(name)
+        object[Strings.defaultValue] = _toJSValue(defaultValue)
+        object[Strings.minValue] = _toJSValue(minValue)
+        object[Strings.maxValue] = _toJSValue(maxValue)
+        object[Strings.automationRate] = _toJSValue(automationRate)
         self.init(unsafelyWrapping: object)
     }
 
@@ -679,7 +673,7 @@ public class AudioProcessingEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: AudioProcessingEventInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -695,9 +689,9 @@ public class AudioProcessingEvent: Event {
 public class AudioProcessingEventInit: BridgedDictionary {
     public convenience init(playbackTime: Double, inputBuffer: AudioBuffer, outputBuffer: AudioBuffer) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.playbackTime] = playbackTime.jsValue
-        object[Strings.inputBuffer] = inputBuffer.jsValue
-        object[Strings.outputBuffer] = outputBuffer.jsValue
+        object[Strings.playbackTime] = _toJSValue(playbackTime)
+        object[Strings.inputBuffer] = _toJSValue(inputBuffer)
+        object[Strings.outputBuffer] = _toJSValue(outputBuffer)
         self.init(unsafelyWrapping: object)
     }
 
@@ -731,20 +725,20 @@ public class AudioScheduledSourceNode: AudioNode {
 
     @inlinable public func start(when: Double? = nil) {
         let this = jsObject
-        _ = this[Strings.start].function!(this: this, arguments: [when?.jsValue ?? .undefined])
+        _ = this[Strings.start].function!(this: this, arguments: [_toJSValue(when)])
     }
 
     @inlinable public func stop(when: Double? = nil) {
         let this = jsObject
-        _ = this[Strings.stop].function!(this: this, arguments: [when?.jsValue ?? .undefined])
+        _ = this[Strings.stop].function!(this: this, arguments: [_toJSValue(when)])
     }
 }
 
 public class AudioTimestamp: BridgedDictionary {
     public convenience init(contextTime: Double, performanceTime: DOMHighResTimeStamp) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.contextTime] = contextTime.jsValue
-        object[Strings.performanceTime] = performanceTime.jsValue
+        object[Strings.contextTime] = _toJSValue(contextTime)
+        object[Strings.performanceTime] = _toJSValue(performanceTime)
         self.init(unsafelyWrapping: object)
     }
 
@@ -780,7 +774,7 @@ public class AudioWorkletNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, name: String, options: AudioWorkletNodeOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, name.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(name), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -796,11 +790,11 @@ public class AudioWorkletNode: AudioNode {
 public class AudioWorkletNodeOptions: BridgedDictionary {
     public convenience init(numberOfInputs: UInt32, numberOfOutputs: UInt32, outputChannelCount: [UInt32], parameterData: [String: Double], processorOptions: JSObject) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.numberOfInputs] = numberOfInputs.jsValue
-        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue
-        object[Strings.outputChannelCount] = outputChannelCount.jsValue
-        object[Strings.parameterData] = parameterData.jsValue
-        object[Strings.processorOptions] = processorOptions.jsValue
+        object[Strings.numberOfInputs] = _toJSValue(numberOfInputs)
+        object[Strings.numberOfOutputs] = _toJSValue(numberOfOutputs)
+        object[Strings.outputChannelCount] = _toJSValue(outputChannelCount)
+        object[Strings.parameterData] = _toJSValue(parameterData)
+        object[Strings.processorOptions] = _toJSValue(processorOptions)
         self.init(unsafelyWrapping: object)
     }
 
@@ -894,7 +888,7 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createBuffer(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) -> AudioBuffer {
         let this = jsObject
-        return this[Strings.createBuffer].function!(this: this, arguments: [numberOfChannels.jsValue, length.jsValue, sampleRate.jsValue]).fromJSValue()!
+        return this[Strings.createBuffer].function!(this: this, arguments: [_toJSValue(numberOfChannels), _toJSValue(length), _toJSValue(sampleRate)]).fromJSValue()!
     }
 
     @inlinable public func createBufferSource() -> AudioBufferSourceNode {
@@ -904,12 +898,12 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createChannelMerger(numberOfInputs: UInt32? = nil) -> ChannelMergerNode {
         let this = jsObject
-        return this[Strings.createChannelMerger].function!(this: this, arguments: [numberOfInputs?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createChannelMerger].function!(this: this, arguments: [_toJSValue(numberOfInputs)]).fromJSValue()!
     }
 
     @inlinable public func createChannelSplitter(numberOfOutputs: UInt32? = nil) -> ChannelSplitterNode {
         let this = jsObject
-        return this[Strings.createChannelSplitter].function!(this: this, arguments: [numberOfOutputs?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createChannelSplitter].function!(this: this, arguments: [_toJSValue(numberOfOutputs)]).fromJSValue()!
     }
 
     @inlinable public func createConstantSource() -> ConstantSourceNode {
@@ -924,7 +918,7 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createDelay(maxDelayTime: Double? = nil) -> DelayNode {
         let this = jsObject
-        return this[Strings.createDelay].function!(this: this, arguments: [maxDelayTime?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createDelay].function!(this: this, arguments: [_toJSValue(maxDelayTime)]).fromJSValue()!
     }
 
     @inlinable public func createDynamicsCompressor() -> DynamicsCompressorNode {
@@ -939,7 +933,7 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createIIRFilter(feedforward: [Double], feedback: [Double]) -> IIRFilterNode {
         let this = jsObject
-        return this[Strings.createIIRFilter].function!(this: this, arguments: [feedforward.jsValue, feedback.jsValue]).fromJSValue()!
+        return this[Strings.createIIRFilter].function!(this: this, arguments: [_toJSValue(feedforward), _toJSValue(feedback)]).fromJSValue()!
     }
 
     @inlinable public func createOscillator() -> OscillatorNode {
@@ -954,12 +948,12 @@ public class BaseAudioContext: EventTarget {
 
     @inlinable public func createPeriodicWave(real: [Float], imag: [Float], constraints: PeriodicWaveConstraints? = nil) -> PeriodicWave {
         let this = jsObject
-        return this[Strings.createPeriodicWave].function!(this: this, arguments: [real.jsValue, imag.jsValue, constraints?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createPeriodicWave].function!(this: this, arguments: [_toJSValue(real), _toJSValue(imag), _toJSValue(constraints)]).fromJSValue()!
     }
 
     @inlinable public func createScriptProcessor(bufferSize: UInt32? = nil, numberOfInputChannels: UInt32? = nil, numberOfOutputChannels: UInt32? = nil) -> ScriptProcessorNode {
         let this = jsObject
-        return this[Strings.createScriptProcessor].function!(this: this, arguments: [bufferSize?.jsValue ?? .undefined, numberOfInputChannels?.jsValue ?? .undefined, numberOfOutputChannels?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createScriptProcessor].function!(this: this, arguments: [_toJSValue(bufferSize), _toJSValue(numberOfInputChannels), _toJSValue(numberOfOutputChannels)]).fromJSValue()!
     }
 
     @inlinable public func createStereoPanner() -> StereoPannerNode {
@@ -990,7 +984,7 @@ public class BiquadFilterNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: BiquadFilterOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadWriteAttribute
@@ -1010,18 +1004,18 @@ public class BiquadFilterNode: AudioNode {
 
     @inlinable public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
         let this = jsObject
-        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue, magResponse.jsValue, phaseResponse.jsValue])
+        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [_toJSValue(frequencyHz), _toJSValue(magResponse), _toJSValue(phaseResponse)])
     }
 }
 
 public class BiquadFilterOptions: BridgedDictionary {
     public convenience init(type: BiquadFilterType, Q: Float, detune: Float, frequency: Float, gain: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue
-        object[Strings.Q] = Q.jsValue
-        object[Strings.detune] = detune.jsValue
-        object[Strings.frequency] = frequency.jsValue
-        object[Strings.gain] = gain.jsValue
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.Q] = _toJSValue(Q)
+        object[Strings.detune] = _toJSValue(detune)
+        object[Strings.frequency] = _toJSValue(frequency)
+        object[Strings.gain] = _toJSValue(gain)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1119,14 +1113,14 @@ public class ChannelMergerNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: ChannelMergerOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 }
 
 public class ChannelMergerOptions: BridgedDictionary {
     public convenience init(numberOfInputs: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.numberOfInputs] = numberOfInputs.jsValue
+        object[Strings.numberOfInputs] = _toJSValue(numberOfInputs)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1147,14 +1141,14 @@ public class ChannelSplitterNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: ChannelSplitterOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 }
 
 public class ChannelSplitterOptions: BridgedDictionary {
     public convenience init(numberOfOutputs: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.numberOfOutputs] = numberOfOutputs.jsValue
+        object[Strings.numberOfOutputs] = _toJSValue(numberOfOutputs)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1176,7 +1170,7 @@ public class ConstantSourceNode: AudioScheduledSourceNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: ConstantSourceOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -1186,7 +1180,7 @@ public class ConstantSourceNode: AudioScheduledSourceNode {
 public class ConstantSourceOptions: BridgedDictionary {
     public convenience init(offset: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = offset.jsValue
+        object[Strings.offset] = _toJSValue(offset)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1209,7 +1203,7 @@ public class ConvolverNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: ConvolverOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadWriteAttribute
@@ -1222,8 +1216,8 @@ public class ConvolverNode: AudioNode {
 public class ConvolverOptions: BridgedDictionary {
     public convenience init(buffer: AudioBuffer?, disableNormalization: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.buffer] = buffer.jsValue
-        object[Strings.disableNormalization] = disableNormalization.jsValue
+        object[Strings.buffer] = _toJSValue(buffer)
+        object[Strings.disableNormalization] = _toJSValue(disableNormalization)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1249,7 +1243,7 @@ public class DelayNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: DelayOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -1259,8 +1253,8 @@ public class DelayNode: AudioNode {
 public class DelayOptions: BridgedDictionary {
     public convenience init(maxDelayTime: Double, delayTime: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.maxDelayTime] = maxDelayTime.jsValue
-        object[Strings.delayTime] = delayTime.jsValue
+        object[Strings.maxDelayTime] = _toJSValue(maxDelayTime)
+        object[Strings.delayTime] = _toJSValue(delayTime)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1310,7 +1304,7 @@ public class DynamicsCompressorNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: DynamicsCompressorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -1335,11 +1329,11 @@ public class DynamicsCompressorNode: AudioNode {
 public class DynamicsCompressorOptions: BridgedDictionary {
     public convenience init(attack: Float, knee: Float, ratio: Float, release: Float, threshold: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.attack] = attack.jsValue
-        object[Strings.knee] = knee.jsValue
-        object[Strings.ratio] = ratio.jsValue
-        object[Strings.release] = release.jsValue
-        object[Strings.threshold] = threshold.jsValue
+        object[Strings.attack] = _toJSValue(attack)
+        object[Strings.knee] = _toJSValue(knee)
+        object[Strings.ratio] = _toJSValue(ratio)
+        object[Strings.release] = _toJSValue(release)
+        object[Strings.threshold] = _toJSValue(threshold)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1377,7 +1371,7 @@ public class GainNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: GainOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -1387,7 +1381,7 @@ public class GainNode: AudioNode {
 public class GainOptions: BridgedDictionary {
     public convenience init(gain: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.gain] = gain.jsValue
+        object[Strings.gain] = _toJSValue(gain)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1408,20 +1402,20 @@ public class IIRFilterNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: IIRFilterOptions) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @inlinable public func getFrequencyResponse(frequencyHz: Float32Array, magResponse: Float32Array, phaseResponse: Float32Array) {
         let this = jsObject
-        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [frequencyHz.jsValue, magResponse.jsValue, phaseResponse.jsValue])
+        _ = this[Strings.getFrequencyResponse].function!(this: this, arguments: [_toJSValue(frequencyHz), _toJSValue(magResponse), _toJSValue(phaseResponse)])
     }
 }
 
 public class IIRFilterOptions: BridgedDictionary {
     public convenience init(feedforward: [Double], feedback: [Double]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.feedforward] = feedforward.jsValue
-        object[Strings.feedback] = feedback.jsValue
+        object[Strings.feedforward] = _toJSValue(feedforward)
+        object[Strings.feedback] = _toJSValue(feedback)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1447,7 +1441,7 @@ public class MediaElementAudioSourceNode: AudioNode {
     }
 
     @inlinable public convenience init(context: AudioContext, options: MediaElementAudioSourceOptions) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -1457,7 +1451,7 @@ public class MediaElementAudioSourceNode: AudioNode {
 public class MediaElementAudioSourceOptions: BridgedDictionary {
     public convenience init(mediaElement: HTMLMediaElement) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mediaElement] = mediaElement.jsValue
+        object[Strings.mediaElement] = _toJSValue(mediaElement)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1479,7 +1473,7 @@ public class MediaStreamAudioDestinationNode: AudioNode {
     }
 
     @inlinable public convenience init(context: AudioContext, options: AudioNodeOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -1495,7 +1489,7 @@ public class MediaStreamAudioSourceNode: AudioNode {
     }
 
     @inlinable public convenience init(context: AudioContext, options: MediaStreamAudioSourceOptions) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -1505,7 +1499,7 @@ public class MediaStreamAudioSourceNode: AudioNode {
 public class MediaStreamAudioSourceOptions: BridgedDictionary {
     public convenience init(mediaStream: MediaStream) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mediaStream] = mediaStream.jsValue
+        object[Strings.mediaStream] = _toJSValue(mediaStream)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1526,14 +1520,14 @@ public class MediaStreamTrackAudioSourceNode: AudioNode {
     }
 
     @inlinable public convenience init(context: AudioContext, options: MediaStreamTrackAudioSourceOptions) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 }
 
 public class MediaStreamTrackAudioSourceOptions: BridgedDictionary {
     public convenience init(mediaStreamTrack: MediaStreamTrack) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mediaStreamTrack] = mediaStreamTrack.jsValue
+        object[Strings.mediaStreamTrack] = _toJSValue(mediaStreamTrack)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1555,7 +1549,7 @@ public class OfflineAudioCompletionEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: OfflineAudioCompletionEventInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -1565,7 +1559,7 @@ public class OfflineAudioCompletionEvent: Event {
 public class OfflineAudioCompletionEventInit: BridgedDictionary {
     public convenience init(renderedBuffer: AudioBuffer) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.renderedBuffer] = renderedBuffer.jsValue
+        object[Strings.renderedBuffer] = _toJSValue(renderedBuffer)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1588,11 +1582,11 @@ public class OfflineAudioContext: BaseAudioContext {
     }
 
     @inlinable public convenience init(contextOptions: OfflineAudioContextOptions) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [contextOptions.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(contextOptions)]))
     }
 
     @inlinable public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [numberOfChannels.jsValue, length.jsValue, sampleRate.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(numberOfChannels), _toJSValue(length), _toJSValue(sampleRate)]))
     }
 
     @inlinable public func startRendering() -> JSPromise {
@@ -1621,13 +1615,13 @@ public class OfflineAudioContext: BaseAudioContext {
 
     @inlinable public func suspend(suspendTime: Double) -> JSPromise {
         let this = jsObject
-        return this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue]).fromJSValue()!
+        return this[Strings.suspend].function!(this: this, arguments: [_toJSValue(suspendTime)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func suspend(suspendTime: Double) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: [suspendTime.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.suspend].function!(this: this, arguments: [_toJSValue(suspendTime)]).fromJSValue()!
         _ = try await _promise.value
     }
 
@@ -1641,9 +1635,9 @@ public class OfflineAudioContext: BaseAudioContext {
 public class OfflineAudioContextOptions: BridgedDictionary {
     public convenience init(numberOfChannels: UInt32, length: UInt32, sampleRate: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.numberOfChannels] = numberOfChannels.jsValue
-        object[Strings.length] = length.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
+        object[Strings.numberOfChannels] = _toJSValue(numberOfChannels)
+        object[Strings.length] = _toJSValue(length)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1675,7 +1669,7 @@ public class OscillatorNode: AudioScheduledSourceNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: OscillatorOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadWriteAttribute
@@ -1689,17 +1683,17 @@ public class OscillatorNode: AudioScheduledSourceNode {
 
     @inlinable public func setPeriodicWave(periodicWave: PeriodicWave) {
         let this = jsObject
-        _ = this[Strings.setPeriodicWave].function!(this: this, arguments: [periodicWave.jsValue])
+        _ = this[Strings.setPeriodicWave].function!(this: this, arguments: [_toJSValue(periodicWave)])
     }
 }
 
 public class OscillatorOptions: BridgedDictionary {
     public convenience init(type: OscillatorType, frequency: Float, detune: Float, periodicWave: PeriodicWave) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue
-        object[Strings.frequency] = frequency.jsValue
-        object[Strings.detune] = detune.jsValue
-        object[Strings.periodicWave] = periodicWave.jsValue
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.frequency] = _toJSValue(frequency)
+        object[Strings.detune] = _toJSValue(detune)
+        object[Strings.periodicWave] = _toJSValue(periodicWave)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1786,7 +1780,7 @@ public class PannerNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: PannerOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadWriteAttribute
@@ -1833,32 +1827,32 @@ public class PannerNode: AudioNode {
 
     @inlinable public func setPosition(x: Float, y: Float, z: Float) {
         let this = jsObject
-        _ = this[Strings.setPosition].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
+        _ = this[Strings.setPosition].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z)])
     }
 
     @inlinable public func setOrientation(x: Float, y: Float, z: Float) {
         let this = jsObject
-        _ = this[Strings.setOrientation].function!(this: this, arguments: [x.jsValue, y.jsValue, z.jsValue])
+        _ = this[Strings.setOrientation].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z)])
     }
 }
 
 public class PannerOptions: BridgedDictionary {
     public convenience init(panningModel: PanningModelType, distanceModel: DistanceModelType, positionX: Float, positionY: Float, positionZ: Float, orientationX: Float, orientationY: Float, orientationZ: Float, refDistance: Double, maxDistance: Double, rolloffFactor: Double, coneInnerAngle: Double, coneOuterAngle: Double, coneOuterGain: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.panningModel] = panningModel.jsValue
-        object[Strings.distanceModel] = distanceModel.jsValue
-        object[Strings.positionX] = positionX.jsValue
-        object[Strings.positionY] = positionY.jsValue
-        object[Strings.positionZ] = positionZ.jsValue
-        object[Strings.orientationX] = orientationX.jsValue
-        object[Strings.orientationY] = orientationY.jsValue
-        object[Strings.orientationZ] = orientationZ.jsValue
-        object[Strings.refDistance] = refDistance.jsValue
-        object[Strings.maxDistance] = maxDistance.jsValue
-        object[Strings.rolloffFactor] = rolloffFactor.jsValue
-        object[Strings.coneInnerAngle] = coneInnerAngle.jsValue
-        object[Strings.coneOuterAngle] = coneOuterAngle.jsValue
-        object[Strings.coneOuterGain] = coneOuterGain.jsValue
+        object[Strings.panningModel] = _toJSValue(panningModel)
+        object[Strings.distanceModel] = _toJSValue(distanceModel)
+        object[Strings.positionX] = _toJSValue(positionX)
+        object[Strings.positionY] = _toJSValue(positionY)
+        object[Strings.positionZ] = _toJSValue(positionZ)
+        object[Strings.orientationX] = _toJSValue(orientationX)
+        object[Strings.orientationY] = _toJSValue(orientationY)
+        object[Strings.orientationZ] = _toJSValue(orientationZ)
+        object[Strings.refDistance] = _toJSValue(refDistance)
+        object[Strings.maxDistance] = _toJSValue(maxDistance)
+        object[Strings.rolloffFactor] = _toJSValue(rolloffFactor)
+        object[Strings.coneInnerAngle] = _toJSValue(coneInnerAngle)
+        object[Strings.coneOuterAngle] = _toJSValue(coneOuterAngle)
+        object[Strings.coneOuterGain] = _toJSValue(coneOuterGain)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1951,14 +1945,14 @@ public class PeriodicWave: JSBridgedClass {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: PeriodicWaveOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 }
 
 public class PeriodicWaveConstraints: BridgedDictionary {
     public convenience init(disableNormalization: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.disableNormalization] = disableNormalization.jsValue
+        object[Strings.disableNormalization] = _toJSValue(disableNormalization)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1974,8 +1968,8 @@ public class PeriodicWaveConstraints: BridgedDictionary {
 public class PeriodicWaveOptions: BridgedDictionary {
     public convenience init(real: [Float], imag: [Float]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.real] = real.jsValue
-        object[Strings.imag] = imag.jsValue
+        object[Strings.real] = _toJSValue(real)
+        object[Strings.imag] = _toJSValue(imag)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2017,7 +2011,7 @@ public class StereoPannerNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: StereoPannerOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -2027,7 +2021,7 @@ public class StereoPannerNode: AudioNode {
 public class StereoPannerOptions: BridgedDictionary {
     public convenience init(pan: Float) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.pan] = pan.jsValue
+        object[Strings.pan] = _toJSValue(pan)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2053,7 +2047,7 @@ public class WaveShaperNode: AudioNode {
     }
 
     @inlinable public convenience init(context: BaseAudioContext, options: WaveShaperOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [context.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(context), _toJSValue(options)]))
     }
 
     @ReadWriteAttribute
@@ -2066,8 +2060,8 @@ public class WaveShaperNode: AudioNode {
 public class WaveShaperOptions: BridgedDictionary {
     public convenience init(curve: [Float], oversample: OverSampleType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.curve] = curve.jsValue
-        object[Strings.oversample] = oversample.jsValue
+        object[Strings.curve] = _toJSValue(curve)
+        object[Strings.oversample] = _toJSValue(oversample)
         self.init(unsafelyWrapping: object)
     }
 

@@ -16,7 +16,7 @@ open class DOMException: JSBridgedClass {
     }
 
     @inlinable public convenience init(message: String? = nil, name: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [message?.jsValue ?? .undefined, name?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(message), _toJSValue(name)]))
     }
 
     @ReadonlyAttribute
@@ -103,7 +103,7 @@ public class URL: JSBridgedClass {
     }
 
     @inlinable public convenience init(url: String, base: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [url.jsValue, base?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(url), _toJSValue(base)]))
     }
 
     @ReadWriteAttribute
@@ -158,37 +158,37 @@ public class URLSearchParams: JSBridgedClass, Sequence {
     }
 
     @inlinable public convenience init(init: String_or_record_String_to_String_or_seq_of_seq_of_String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @inlinable public func append(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: [name.jsValue, value.jsValue])
+        _ = this[Strings.append].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)])
     }
 
     @inlinable public func delete(name: String) {
         let this = jsObject
-        _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue])
+        _ = this[Strings.delete].function!(this: this, arguments: [_toJSValue(name)])
     }
 
     @inlinable public func get(name: String) -> String? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func getAll(name: String) -> [String] {
         let this = jsObject
-        return this[Strings.getAll].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.getAll].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func has(name: String) -> Bool {
         let this = jsObject
-        return this[Strings.has].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.has].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func set(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.set].function!(this: this, arguments: [name.jsValue, value.jsValue])
+        _ = this[Strings.set].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)])
     }
 
     @inlinable public func sort() {
@@ -213,7 +213,7 @@ public enum console {
 
     @inlinable public static func assert(condition: Bool? = nil, data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.assert].function!(this: this, arguments: [condition?.jsValue ?? .undefined] + data.map(\.jsValue))
+        _ = this[Strings.assert].function!(this: this, arguments: [_toJSValue(condition)] + data.map(_toJSValue))
     }
 
     @inlinable public static func clear() {
@@ -223,67 +223,67 @@ public enum console {
 
     @inlinable public static func debug(data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.debug].function!(this: this, arguments: data.map(\.jsValue))
+        _ = this[Strings.debug].function!(this: this, arguments: data.map(_toJSValue))
     }
 
     @inlinable public static func error(data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.error].function!(this: this, arguments: data.map(\.jsValue))
+        _ = this[Strings.error].function!(this: this, arguments: data.map(_toJSValue))
     }
 
     @inlinable public static func info(data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.info].function!(this: this, arguments: data.map(\.jsValue))
+        _ = this[Strings.info].function!(this: this, arguments: data.map(_toJSValue))
     }
 
     @inlinable public static func log(data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.log].function!(this: this, arguments: data.map(\.jsValue))
+        _ = this[Strings.log].function!(this: this, arguments: data.map(_toJSValue))
     }
 
     @inlinable public static func table(tabularData: JSValue? = nil, properties: [String]? = nil) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.table].function!(this: this, arguments: [tabularData?.jsValue ?? .undefined, properties?.jsValue ?? .undefined])
+        _ = this[Strings.table].function!(this: this, arguments: [_toJSValue(tabularData), _toJSValue(properties)])
     }
 
     @inlinable public static func trace(data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.trace].function!(this: this, arguments: data.map(\.jsValue))
+        _ = this[Strings.trace].function!(this: this, arguments: data.map(_toJSValue))
     }
 
     @inlinable public static func warn(data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.warn].function!(this: this, arguments: data.map(\.jsValue))
+        _ = this[Strings.warn].function!(this: this, arguments: data.map(_toJSValue))
     }
 
     @inlinable public static func dir(item: JSValue? = nil, options: JSObject? = nil) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.dir].function!(this: this, arguments: [item?.jsValue ?? .undefined, options?.jsValue ?? .undefined])
+        _ = this[Strings.dir].function!(this: this, arguments: [_toJSValue(item), _toJSValue(options)])
     }
 
     @inlinable public static func dirxml(data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.dirxml].function!(this: this, arguments: data.map(\.jsValue))
+        _ = this[Strings.dirxml].function!(this: this, arguments: data.map(_toJSValue))
     }
 
     @inlinable public static func count(label: String? = nil) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.count].function!(this: this, arguments: [label?.jsValue ?? .undefined])
+        _ = this[Strings.count].function!(this: this, arguments: [_toJSValue(label)])
     }
 
     @inlinable public static func countReset(label: String? = nil) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.countReset].function!(this: this, arguments: [label?.jsValue ?? .undefined])
+        _ = this[Strings.countReset].function!(this: this, arguments: [_toJSValue(label)])
     }
 
     @inlinable public static func group(data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.group].function!(this: this, arguments: data.map(\.jsValue))
+        _ = this[Strings.group].function!(this: this, arguments: data.map(_toJSValue))
     }
 
     @inlinable public static func groupCollapsed(data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.groupCollapsed].function!(this: this, arguments: data.map(\.jsValue))
+        _ = this[Strings.groupCollapsed].function!(this: this, arguments: data.map(_toJSValue))
     }
 
     @inlinable public static func groupEnd() {
@@ -293,17 +293,17 @@ public enum console {
 
     @inlinable public static func time(label: String? = nil) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.time].function!(this: this, arguments: [label?.jsValue ?? .undefined])
+        _ = this[Strings.time].function!(this: this, arguments: [_toJSValue(label)])
     }
 
     @inlinable public static func timeLog(label: String? = nil, data: JSValue...) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.timeLog].function!(this: this, arguments: [label?.jsValue ?? .undefined] + data.map(\.jsValue))
+        _ = this[Strings.timeLog].function!(this: this, arguments: [_toJSValue(label)] + data.map(_toJSValue))
     }
 
     @inlinable public static func timeEnd(label: String? = nil) {
         let this = JSObject.global[Strings.console].object!
-        _ = this[Strings.timeEnd].function!(this: this, arguments: [label?.jsValue ?? .undefined])
+        _ = this[Strings.timeEnd].function!(this: this, arguments: [_toJSValue(label)])
     }
 }
 
@@ -480,7 +480,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
         }
         set {
             jsObject[name] = JSClosure { _ in
-                newValue().jsValue
+                _toJSValue(newValue())
             }.jsValue
         }
     }
@@ -512,7 +512,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure { _ in
-                    newValue().jsValue
+                    _toJSValue(newValue())
                 }.jsValue
             } else {
                 jsObject[name] = .null
@@ -602,11 +602,11 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0) -> ReturnType {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue).fromJSValue()! }
+            return { function(_toJSValue($0)).fromJSValue()! }
         }
         set {
             jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!).jsValue
+                _toJSValue(newValue($0[0].fromJSValue()!))
             }.jsValue
         }
     }
@@ -633,12 +633,12 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue).fromJSValue()! }
+            return { function(_toJSValue($0)).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!).jsValue
+                    _toJSValue(newValue($0[0].fromJSValue()!))
                 }.jsValue
             } else {
                 jsObject[name] = .null
@@ -668,7 +668,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue) }
+            return { function(_toJSValue($0)) }
         }
         set {
             if let newValue = newValue {
@@ -702,7 +702,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0) -> Void {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue) }
+            return { function(_toJSValue($0)) }
         }
         set {
             jsObject[name] = JSClosure {
@@ -732,11 +732,11 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1) -> ReturnType {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue, $1.jsValue).fromJSValue()! }
+            return { function(_toJSValue($0), _toJSValue($1)).fromJSValue()! }
         }
         set {
             jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!).jsValue
+                _toJSValue(newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!))
             }.jsValue
         }
     }
@@ -763,12 +763,12 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue, $1.jsValue).fromJSValue()! }
+            return { function(_toJSValue($0), _toJSValue($1)).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!).jsValue
+                    _toJSValue(newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!))
                 }.jsValue
             } else {
                 jsObject[name] = .null
@@ -798,7 +798,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue, $1.jsValue) }
+            return { function(_toJSValue($0), _toJSValue($1)) }
         }
         set {
             if let newValue = newValue {
@@ -832,7 +832,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1) -> Void {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue, $1.jsValue) }
+            return { function(_toJSValue($0), _toJSValue($1)) }
         }
         set {
             jsObject[name] = JSClosure {
@@ -862,11 +862,11 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2) -> ReturnType {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue, $1.jsValue, $2.jsValue).fromJSValue()! }
+            return { function(_toJSValue($0), _toJSValue($1), _toJSValue($2)).fromJSValue()! }
         }
         set {
             jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue
+                _toJSValue(newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!))
             }.jsValue
         }
     }
@@ -893,12 +893,12 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue, $1.jsValue, $2.jsValue).fromJSValue()! }
+            return { function(_toJSValue($0), _toJSValue($1), _toJSValue($2)).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!).jsValue
+                    _toJSValue(newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!))
                 }.jsValue
             } else {
                 jsObject[name] = .null
@@ -926,11 +926,11 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @inlinable public static subscript(name: JSString, in jsObject: JSObject) -> (A0, A1, A2, A3, A4) -> ReturnType {
         get {
             let function = jsObject[name].function!
-            return { function($0.jsValue, $1.jsValue, $2.jsValue, $3.jsValue, $4.jsValue).fromJSValue()! }
+            return { function(_toJSValue($0), _toJSValue($1), _toJSValue($2), _toJSValue($3), _toJSValue($4)).fromJSValue()! }
         }
         set {
             jsObject[name] = JSClosure {
-                newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!).jsValue
+                _toJSValue(newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!))
             }.jsValue
         }
     }
@@ -957,12 +957,12 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             guard let function = jsObject[name].function else {
                 return nil
             }
-            return { function($0.jsValue, $1.jsValue, $2.jsValue, $3.jsValue, $4.jsValue).fromJSValue()! }
+            return { function(_toJSValue($0), _toJSValue($1), _toJSValue($2), _toJSValue($3), _toJSValue($4)).fromJSValue()! }
         }
         set {
             if let newValue = newValue {
                 jsObject[name] = JSClosure {
-                    newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!).jsValue
+                    _toJSValue(newValue($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!))
                 }.jsValue
             } else {
                 jsObject[name] = .null

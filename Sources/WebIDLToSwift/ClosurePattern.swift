@@ -33,7 +33,7 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
         } else {
             getFunction = "let function = jsObject[name].function!"
         }
-        let call: SwiftSource = "function(\(sequence: indexes.map { "$\($0).jsValue" }))"
+        let call: SwiftSource = "function(\(sequence: indexes.map { "_toJSValue($\($0))" }))"
         let closureBody: SwiftSource
         if void {
             closureBody = call
@@ -55,7 +55,7 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
             return .undefined
             """
         } else {
-            body = "\(call).jsValue"
+            body = "_toJSValue(\(call))"
         }
         let setClosure: SwiftSource = """
             jsObject[name] = JSClosure { \(argCount == 0 ? "_ in" : "")

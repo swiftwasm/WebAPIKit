@@ -90,7 +90,7 @@ public class GamepadEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: GamepadEventInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -100,7 +100,7 @@ public class GamepadEvent: Event {
 public class GamepadEventInit: BridgedDictionary {
     public convenience init(gamepad: Gamepad) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.gamepad] = gamepad.jsValue
+        object[Strings.gamepad] = _toJSValue(gamepad)
         self.init(unsafelyWrapping: object)
     }
 
@@ -147,13 +147,13 @@ public class GamepadHapticActuator: JSBridgedClass {
 
     @inlinable public func pulse(value: Double, duration: Double) -> JSPromise {
         let this = jsObject
-        return this[Strings.pulse].function!(this: this, arguments: [value.jsValue, duration.jsValue]).fromJSValue()!
+        return this[Strings.pulse].function!(this: this, arguments: [_toJSValue(value), _toJSValue(duration)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func pulse(value: Double, duration: Double) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.pulse].function!(this: this, arguments: [value.jsValue, duration.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.pulse].function!(this: this, arguments: [_toJSValue(value), _toJSValue(duration)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 }

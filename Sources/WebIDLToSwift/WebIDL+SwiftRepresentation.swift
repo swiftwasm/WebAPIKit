@@ -41,7 +41,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
             let propertyWrapper = idlType.propertyWrapper(readonly: readonly)
             if [SwiftSource.readOnlyAttribute, .readWriteAttribute].contains(propertyWrapper) {
                 let setter: SwiftSource = """
-                nonmutating set { jsObject[\(ModuleState.source(for: name))] = newValue.jsValue }
+                nonmutating set { jsObject[\(ModuleState.source(for: name))] = _toJSValue(newValue) }
                 """
 
                 return """
@@ -110,7 +110,7 @@ extension MergedDictionary: SwiftRepresentable {
                     """
                 } else {
                     return """
-                    object[\(ModuleState.source(for: member.name))] = \(member.name).jsValue
+                    object[\(ModuleState.source(for: member.name))] = _toJSValue(\(member.name))
                     """
                 }
             })
@@ -300,12 +300,12 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
             return "// XXX: constructor is ignored"
         }
         let args: [SwiftSource] = arguments.map {
-            "\($0.name)\($0.optional ? "?" : "").jsValue \($0.optional ? " ?? .undefined" : "")"
+            "_toJSValue(\($0.name))"
         }
         let argsArray: SwiftSource
         if let last = arguments.last, last.variadic {
             precondition(!last.optional, "Optional variadic arguments not supported")
-            let variadic: SwiftSource = "\(last.name).map(\\.jsValue)"
+            let variadic: SwiftSource = "\(last.name).map(_toJSValue)"
             if args.count == 1 {
                 argsArray = variadic
             } else {
@@ -408,33 +408,15 @@ extension IDLOperation: SwiftRepresentable, Initializable {
     }
 
     fileprivate var defaultBody: (prep: SwiftSource, call: SwiftSource) {
-        let args: [SwiftSource]
-        let prep: [SwiftSource]
         assert(arguments.dropLast().allSatisfy { !$0.variadic })
-        if arguments.count <= 5 {
-            args = arguments.map { arg in
-                if arg.optional {
-                    return "\(arg.name)?.jsValue ?? .undefined"
-                } else {
-                    return "\(arg.name).jsValue"
-                }
-            }
-            prep = []
-        } else {
-            args = (0 ..< arguments.count).map { "_arg\(String($0))" }
-            prep = arguments.enumerated().map { i, arg in
-                if arg.optional {
-                    return "let _arg\(String(i)) = \(arg.name)?.jsValue ?? .undefined"
-                } else {
-                    return "let _arg\(String(i)) = \(arg.name).jsValue"
-                }
-            }
+        let args: [SwiftSource] = arguments.map { arg in
+            "_toJSValue(\(arg.name))"
         }
 
         let argsArray: SwiftSource
         if let last = arguments.last, last.variadic {
             precondition(!last.optional, "Optional variadic arguments not supported")
-            let variadic: SwiftSource = "\(last.name).map(\\.jsValue)"
+            let variadic: SwiftSource = "\(last.name).map(_toJSValue)"
             if args.count == 1 {
                 argsArray = variadic
             } else {
@@ -446,10 +428,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
         let function: SwiftSource = "this[\(ModuleState.source(for: name))].function!"
         return (
-            prep: """
-            \(lines: prep)
-            let this = \(ModuleState.this)
-            """,
+            prep: "let this = \(ModuleState.this)",
             call: "\(function)(this: this, arguments: \(argsArray))"
         )
     }

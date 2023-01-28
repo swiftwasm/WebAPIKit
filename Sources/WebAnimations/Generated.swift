@@ -10,12 +10,12 @@ public protocol Animatable: JSBridgedClass {}
 public extension Animatable {
     @inlinable func animate(keyframes: JSObject?, options: Double_or_KeyframeAnimationOptions? = nil) -> Animation {
         let this = jsObject
-        return this[Strings.animate].function!(this: this, arguments: [keyframes.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.animate].function!(this: this, arguments: [_toJSValue(keyframes), _toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable func getAnimations(options: GetAnimationsOptions? = nil) -> [Animation] {
         let this = jsObject
-        return this[Strings.getAnimations].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.getAnimations].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 }
 
@@ -39,7 +39,7 @@ public class Animation: EventTarget {
     }
 
     @inlinable public convenience init(effect: AnimationEffect? = nil, timeline: AnimationTimeline? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [effect?.jsValue ?? .undefined, timeline?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(effect), _toJSValue(timeline)]))
     }
 
     @ReadWriteAttribute
@@ -100,7 +100,7 @@ public class Animation: EventTarget {
 
     @inlinable public func updatePlaybackRate(playbackRate: Double) {
         let this = jsObject
-        _ = this[Strings.updatePlaybackRate].function!(this: this, arguments: [playbackRate.jsValue])
+        _ = this[Strings.updatePlaybackRate].function!(this: this, arguments: [_toJSValue(playbackRate)])
     }
 
     @inlinable public func reverse() {
@@ -140,7 +140,7 @@ public class AnimationEffect: JSBridgedClass {
 
     @inlinable public func updateTiming(timing: OptionalEffectTiming? = nil) {
         let this = jsObject
-        _ = this[Strings.updateTiming].function!(this: this, arguments: [timing?.jsValue ?? .undefined])
+        _ = this[Strings.updateTiming].function!(this: this, arguments: [_toJSValue(timing)])
     }
 }
 
@@ -204,10 +204,10 @@ public class AnimationTimeline: JSBridgedClass {
 public class BaseComputedKeyframe: BridgedDictionary {
     public convenience init(offset: Double?, computedOffset: Double, easing: String, composite: CompositeOperationOrAuto) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = offset.jsValue
-        object[Strings.computedOffset] = computedOffset.jsValue
-        object[Strings.easing] = easing.jsValue
-        object[Strings.composite] = composite.jsValue
+        object[Strings.offset] = _toJSValue(offset)
+        object[Strings.computedOffset] = _toJSValue(computedOffset)
+        object[Strings.easing] = _toJSValue(easing)
+        object[Strings.composite] = _toJSValue(composite)
         self.init(unsafelyWrapping: object)
     }
 
@@ -235,9 +235,9 @@ public class BaseComputedKeyframe: BridgedDictionary {
 public class BaseKeyframe: BridgedDictionary {
     public convenience init(offset: Double?, easing: String, composite: CompositeOperationOrAuto) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = offset.jsValue
-        object[Strings.easing] = easing.jsValue
-        object[Strings.composite] = composite.jsValue
+        object[Strings.offset] = _toJSValue(offset)
+        object[Strings.easing] = _toJSValue(easing)
+        object[Strings.composite] = _toJSValue(composite)
         self.init(unsafelyWrapping: object)
     }
 
@@ -261,9 +261,9 @@ public class BaseKeyframe: BridgedDictionary {
 public class BasePropertyIndexedKeyframe: BridgedDictionary {
     public convenience init(offset: nullable_Double_or_seq_of_nullable_Double, easing: String_or_seq_of_String, composite: CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = offset.jsValue
-        object[Strings.easing] = easing.jsValue
-        object[Strings.composite] = composite.jsValue
+        object[Strings.offset] = _toJSValue(offset)
+        object[Strings.easing] = _toJSValue(easing)
+        object[Strings.composite] = _toJSValue(composite)
         self.init(unsafelyWrapping: object)
     }
 
@@ -326,8 +326,8 @@ public enum CompositeOperationOrAuto: JSString, JSValueCompatible {
 public class ComputedEffectTiming: BridgedDictionary {
     public convenience init(progress: Double?, currentIteration: Double?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.progress] = progress.jsValue
-        object[Strings.currentIteration] = currentIteration.jsValue
+        object[Strings.progress] = _toJSValue(progress)
+        object[Strings.currentIteration] = _toJSValue(currentIteration)
         self.init(unsafelyWrapping: object)
     }
 
@@ -360,14 +360,14 @@ public class DocumentTimeline: AnimationTimeline {
     }
 
     @inlinable public convenience init(options: DocumentTimelineOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(options)]))
     }
 }
 
 public class DocumentTimelineOptions: BridgedDictionary {
     public convenience init(originTime: DOMHighResTimeStamp) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.originTime] = originTime.jsValue
+        object[Strings.originTime] = _toJSValue(originTime)
         self.init(unsafelyWrapping: object)
     }
 
@@ -383,13 +383,13 @@ public class DocumentTimelineOptions: BridgedDictionary {
 public class EffectTiming: BridgedDictionary {
     public convenience init(delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, direction: PlaybackDirection, easing: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.delay] = delay.jsValue
-        object[Strings.endDelay] = endDelay.jsValue
-        object[Strings.fill] = fill.jsValue
-        object[Strings.iterationStart] = iterationStart.jsValue
-        object[Strings.iterations] = iterations.jsValue
-        object[Strings.direction] = direction.jsValue
-        object[Strings.easing] = easing.jsValue
+        object[Strings.delay] = _toJSValue(delay)
+        object[Strings.endDelay] = _toJSValue(endDelay)
+        object[Strings.fill] = _toJSValue(fill)
+        object[Strings.iterationStart] = _toJSValue(iterationStart)
+        object[Strings.iterations] = _toJSValue(iterations)
+        object[Strings.direction] = _toJSValue(direction)
+        object[Strings.easing] = _toJSValue(easing)
         self.init(unsafelyWrapping: object)
     }
 
@@ -450,7 +450,7 @@ public enum FillMode: JSString, JSValueCompatible {
 public class GetAnimationsOptions: BridgedDictionary {
     public convenience init(subtree: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.subtree] = subtree.jsValue
+        object[Strings.subtree] = _toJSValue(subtree)
         self.init(unsafelyWrapping: object)
     }
 
@@ -466,8 +466,8 @@ public class GetAnimationsOptions: BridgedDictionary {
 public class KeyframeAnimationOptions: BridgedDictionary {
     public convenience init(id: String, timeline: AnimationTimeline?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.id] = id.jsValue
-        object[Strings.timeline] = timeline.jsValue
+        object[Strings.id] = _toJSValue(id)
+        object[Strings.timeline] = _toJSValue(timeline)
         self.init(unsafelyWrapping: object)
     }
 
@@ -495,11 +495,11 @@ public class KeyframeEffect: AnimationEffect {
     }
 
     @inlinable public convenience init(target: Element?, keyframes: JSObject?, options: Double_or_KeyframeEffectOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [target.jsValue, keyframes.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(target), _toJSValue(keyframes), _toJSValue(options)]))
     }
 
     @inlinable public convenience init(source: KeyframeEffect) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [source.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(source)]))
     }
 
     @ReadWriteAttribute
@@ -518,15 +518,15 @@ public class KeyframeEffect: AnimationEffect {
 
     @inlinable public func setKeyframes(keyframes: JSObject?) {
         let this = jsObject
-        _ = this[Strings.setKeyframes].function!(this: this, arguments: [keyframes.jsValue])
+        _ = this[Strings.setKeyframes].function!(this: this, arguments: [_toJSValue(keyframes)])
     }
 }
 
 public class KeyframeEffectOptions: BridgedDictionary {
     public convenience init(composite: CompositeOperation, pseudoElement: String?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.composite] = composite.jsValue
-        object[Strings.pseudoElement] = pseudoElement.jsValue
+        object[Strings.composite] = _toJSValue(composite)
+        object[Strings.pseudoElement] = _toJSValue(pseudoElement)
         self.init(unsafelyWrapping: object)
     }
 
@@ -546,14 +546,14 @@ public class KeyframeEffectOptions: BridgedDictionary {
 public class OptionalEffectTiming: BridgedDictionary {
     public convenience init(delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, duration: Double_or_String, direction: PlaybackDirection, easing: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.delay] = delay.jsValue
-        object[Strings.endDelay] = endDelay.jsValue
-        object[Strings.fill] = fill.jsValue
-        object[Strings.iterationStart] = iterationStart.jsValue
-        object[Strings.iterations] = iterations.jsValue
-        object[Strings.duration] = duration.jsValue
-        object[Strings.direction] = direction.jsValue
-        object[Strings.easing] = easing.jsValue
+        object[Strings.delay] = _toJSValue(delay)
+        object[Strings.endDelay] = _toJSValue(endDelay)
+        object[Strings.fill] = _toJSValue(fill)
+        object[Strings.iterationStart] = _toJSValue(iterationStart)
+        object[Strings.iterations] = _toJSValue(iterations)
+        object[Strings.duration] = _toJSValue(duration)
+        object[Strings.direction] = _toJSValue(direction)
+        object[Strings.easing] = _toJSValue(easing)
         self.init(unsafelyWrapping: object)
     }
 

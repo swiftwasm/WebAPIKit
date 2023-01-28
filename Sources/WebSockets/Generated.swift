@@ -34,7 +34,7 @@ public class CloseEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: CloseEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -50,9 +50,9 @@ public class CloseEvent: Event {
 public class CloseEventInit: BridgedDictionary {
     public convenience init(wasClean: Bool, code: UInt16, reason: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.wasClean] = wasClean.jsValue
-        object[Strings.code] = code.jsValue
-        object[Strings.reason] = reason.jsValue
+        object[Strings.wasClean] = _toJSValue(wasClean)
+        object[Strings.code] = _toJSValue(code)
+        object[Strings.reason] = _toJSValue(reason)
         self.init(unsafelyWrapping: object)
     }
 
@@ -91,7 +91,7 @@ public class WebSocket: EventTarget {
     }
 
     @inlinable public convenience init(url: String, protocols: String_or_seq_of_String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [url.jsValue, protocols?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(url), _toJSValue(protocols)]))
     }
 
     @ReadonlyAttribute
@@ -128,7 +128,7 @@ public class WebSocket: EventTarget {
 
     @inlinable public func close(code: UInt16? = nil, reason: String? = nil) {
         let this = jsObject
-        _ = this[Strings.close].function!(this: this, arguments: [code?.jsValue ?? .undefined, reason?.jsValue ?? .undefined])
+        _ = this[Strings.close].function!(this: this, arguments: [_toJSValue(code), _toJSValue(reason)])
     }
 
     @ClosureAttribute1Optional
@@ -139,7 +139,7 @@ public class WebSocket: EventTarget {
 
     @inlinable public func send(data: Blob_or_BufferSource_or_String) {
         let this = jsObject
-        _ = this[Strings.send].function!(this: this, arguments: [data.jsValue])
+        _ = this[Strings.send].function!(this: this, arguments: [_toJSValue(data)])
     }
 }
 

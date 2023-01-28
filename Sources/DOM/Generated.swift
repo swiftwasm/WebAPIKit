@@ -9,207 +9,207 @@ public protocol ARIAMixin: JSBridgedClass {}
 public extension ARIAMixin {
     @inlinable var role: String? {
         get { jsObject[Strings.role].fromJSValue()! }
-        nonmutating set { jsObject[Strings.role] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.role] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaAtomic: String? {
         get { jsObject[Strings.ariaAtomic].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaAtomic] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaAtomic] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaAutoComplete: String? {
         get { jsObject[Strings.ariaAutoComplete].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaAutoComplete] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaAutoComplete] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaBusy: String? {
         get { jsObject[Strings.ariaBusy].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaBusy] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaBusy] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaChecked: String? {
         get { jsObject[Strings.ariaChecked].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaChecked] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaChecked] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaColCount: String? {
         get { jsObject[Strings.ariaColCount].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaColCount] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaColCount] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaColIndex: String? {
         get { jsObject[Strings.ariaColIndex].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaColIndex] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaColIndex] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaColIndexText: String? {
         get { jsObject[Strings.ariaColIndexText].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaColIndexText] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaColIndexText] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaColSpan: String? {
         get { jsObject[Strings.ariaColSpan].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaColSpan] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaColSpan] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaCurrent: String? {
         get { jsObject[Strings.ariaCurrent].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaCurrent] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaCurrent] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaDescription: String? {
         get { jsObject[Strings.ariaDescription].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaDescription] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaDescription] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaDisabled: String? {
         get { jsObject[Strings.ariaDisabled].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaDisabled] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaDisabled] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaExpanded: String? {
         get { jsObject[Strings.ariaExpanded].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaExpanded] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaExpanded] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaHasPopup: String? {
         get { jsObject[Strings.ariaHasPopup].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaHasPopup] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaHasPopup] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaHidden: String? {
         get { jsObject[Strings.ariaHidden].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaHidden] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaHidden] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaInvalid: String? {
         get { jsObject[Strings.ariaInvalid].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaInvalid] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaInvalid] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaKeyShortcuts: String? {
         get { jsObject[Strings.ariaKeyShortcuts].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaKeyShortcuts] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaKeyShortcuts] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaLabel: String? {
         get { jsObject[Strings.ariaLabel].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaLabel] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaLabel] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaLevel: String? {
         get { jsObject[Strings.ariaLevel].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaLevel] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaLevel] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaLive: String? {
         get { jsObject[Strings.ariaLive].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaLive] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaLive] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaModal: String? {
         get { jsObject[Strings.ariaModal].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaModal] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaModal] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaMultiLine: String? {
         get { jsObject[Strings.ariaMultiLine].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaMultiLine] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaMultiLine] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaMultiSelectable: String? {
         get { jsObject[Strings.ariaMultiSelectable].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaMultiSelectable] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaMultiSelectable] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaOrientation: String? {
         get { jsObject[Strings.ariaOrientation].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaOrientation] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaOrientation] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaPlaceholder: String? {
         get { jsObject[Strings.ariaPlaceholder].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaPlaceholder] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaPlaceholder] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaPosInSet: String? {
         get { jsObject[Strings.ariaPosInSet].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaPosInSet] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaPosInSet] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaPressed: String? {
         get { jsObject[Strings.ariaPressed].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaPressed] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaPressed] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaReadOnly: String? {
         get { jsObject[Strings.ariaReadOnly].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaReadOnly] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaReadOnly] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRequired: String? {
         get { jsObject[Strings.ariaRequired].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaRequired] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaRequired] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRoleDescription: String? {
         get { jsObject[Strings.ariaRoleDescription].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaRoleDescription] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaRoleDescription] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRowCount: String? {
         get { jsObject[Strings.ariaRowCount].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaRowCount] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaRowCount] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRowIndex: String? {
         get { jsObject[Strings.ariaRowIndex].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaRowIndex] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaRowIndex] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRowIndexText: String? {
         get { jsObject[Strings.ariaRowIndexText].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaRowIndexText] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaRowIndexText] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRowSpan: String? {
         get { jsObject[Strings.ariaRowSpan].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaRowSpan] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaRowSpan] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaSelected: String? {
         get { jsObject[Strings.ariaSelected].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaSelected] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaSelected] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaSetSize: String? {
         get { jsObject[Strings.ariaSetSize].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaSetSize] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaSetSize] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaSort: String? {
         get { jsObject[Strings.ariaSort].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaSort] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaSort] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaValueMax: String? {
         get { jsObject[Strings.ariaValueMax].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaValueMax] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaValueMax] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaValueMin: String? {
         get { jsObject[Strings.ariaValueMin].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaValueMin] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaValueMin] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaValueNow: String? {
         get { jsObject[Strings.ariaValueNow].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaValueNow] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaValueNow] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaValueText: String? {
         get { jsObject[Strings.ariaValueText].fromJSValue()! }
-        nonmutating set { jsObject[Strings.ariaValueText] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.ariaValueText] = _toJSValue(newValue) }
     }
 }
 
@@ -232,7 +232,7 @@ public class AbortController: JSBridgedClass {
 
     @inlinable public func abort(reason: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined])
+        _ = this[Strings.abort].function!(this: this, arguments: [_toJSValue(reason)])
     }
 }
 
@@ -248,12 +248,12 @@ public class AbortSignal: EventTarget {
 
     @inlinable public static func abort(reason: JSValue? = nil) -> Self {
         let this = constructor!
-        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.abort].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
     }
 
     @inlinable public static func timeout(milliseconds: UInt64) -> Self {
         let this = constructor!
-        return this[Strings.timeout].function!(this: this, arguments: [milliseconds.jsValue]).fromJSValue()!
+        return this[Strings.timeout].function!(this: this, arguments: [_toJSValue(milliseconds)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -312,9 +312,9 @@ public extension AbstractWorker {
 public class AddEventListenerOptions: BridgedDictionary {
     public convenience init(passive: Bool, once: Bool, signal: AbortSignal) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.passive] = passive.jsValue
-        object[Strings.once] = once.jsValue
-        object[Strings.signal] = signal.jsValue
+        object[Strings.passive] = _toJSValue(passive)
+        object[Strings.once] = _toJSValue(once)
+        object[Strings.signal] = _toJSValue(signal)
         self.init(unsafelyWrapping: object)
     }
 
@@ -359,7 +359,7 @@ public extension AnimationFrameProvider {
 
     @inlinable func cancelAnimationFrame(handle: UInt32) {
         let this = jsObject
-        _ = this[Strings.cancelAnimationFrame].function!(this: this, arguments: [handle.jsValue])
+        _ = this[Strings.cancelAnimationFrame].function!(this: this, arguments: [_toJSValue(handle)])
     }
 }
 
@@ -384,7 +384,7 @@ public enum AppendMode: JSString, JSValueCompatible {
 public class AssignedNodesOptions: BridgedDictionary {
     public convenience init(flatten: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.flatten] = flatten.jsValue
+        object[Strings.flatten] = _toJSValue(flatten)
         self.init(unsafelyWrapping: object)
     }
 
@@ -449,7 +449,7 @@ public class AudioData: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: AudioDataInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -472,12 +472,12 @@ public class AudioData: JSBridgedClass {
 
     @inlinable public func allocationSize(options: AudioDataCopyToOptions) -> UInt32 {
         let this = jsObject
-        return this[Strings.allocationSize].function!(this: this, arguments: [options.jsValue]).fromJSValue()!
+        return this[Strings.allocationSize].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable public func copyTo(destination: BufferSource, options: AudioDataCopyToOptions) {
         let this = jsObject
-        _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue, options.jsValue])
+        _ = this[Strings.copyTo].function!(this: this, arguments: [_toJSValue(destination), _toJSValue(options)])
     }
 
     @inlinable public func clone() -> Self {
@@ -494,10 +494,10 @@ public class AudioData: JSBridgedClass {
 public class AudioDataCopyToOptions: BridgedDictionary {
     public convenience init(planeIndex: UInt32, frameOffset: UInt32, frameCount: UInt32, format: AudioSampleFormat) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.planeIndex] = planeIndex.jsValue
-        object[Strings.frameOffset] = frameOffset.jsValue
-        object[Strings.frameCount] = frameCount.jsValue
-        object[Strings.format] = format.jsValue
+        object[Strings.planeIndex] = _toJSValue(planeIndex)
+        object[Strings.frameOffset] = _toJSValue(frameOffset)
+        object[Strings.frameCount] = _toJSValue(frameCount)
+        object[Strings.format] = _toJSValue(format)
         self.init(unsafelyWrapping: object)
     }
 
@@ -525,12 +525,12 @@ public class AudioDataCopyToOptions: BridgedDictionary {
 public class AudioDataInit: BridgedDictionary {
     public convenience init(format: AudioSampleFormat, sampleRate: Float, numberOfFrames: UInt32, numberOfChannels: UInt32, timestamp: Int64, data: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.format] = format.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
-        object[Strings.numberOfFrames] = numberOfFrames.jsValue
-        object[Strings.numberOfChannels] = numberOfChannels.jsValue
-        object[Strings.timestamp] = timestamp.jsValue
-        object[Strings.data] = data.jsValue
+        object[Strings.format] = _toJSValue(format)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
+        object[Strings.numberOfFrames] = _toJSValue(numberOfFrames)
+        object[Strings.numberOfChannels] = _toJSValue(numberOfChannels)
+        object[Strings.timestamp] = _toJSValue(timestamp)
+        object[Strings.data] = _toJSValue(data)
         self.init(unsafelyWrapping: object)
     }
 
@@ -575,7 +575,7 @@ public class AudioDecoder: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: AudioDecoderInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -586,12 +586,12 @@ public class AudioDecoder: JSBridgedClass {
 
     @inlinable public func configure(config: AudioDecoderConfig) {
         let this = jsObject
-        _ = this[Strings.configure].function!(this: this, arguments: [config.jsValue])
+        _ = this[Strings.configure].function!(this: this, arguments: [_toJSValue(config)])
     }
 
     @inlinable public func decode(chunk: EncodedAudioChunk) {
         let this = jsObject
-        _ = this[Strings.decode].function!(this: this, arguments: [chunk.jsValue])
+        _ = this[Strings.decode].function!(this: this, arguments: [_toJSValue(chunk)])
     }
 
     @inlinable public func flush() -> JSPromise {
@@ -618,13 +618,13 @@ public class AudioDecoder: JSBridgedClass {
 
     @inlinable public static func isConfigSupported(config: AudioDecoderConfig) -> JSPromise {
         let this = constructor!
-        return this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
+        return this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public static func isConfigSupported(config: AudioDecoderConfig) async throws -> AudioDecoderSupport {
         let this = constructor!
-        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 }
@@ -632,10 +632,10 @@ public class AudioDecoder: JSBridgedClass {
 public class AudioDecoderConfig: BridgedDictionary {
     public convenience init(codec: String, sampleRate: UInt32, numberOfChannels: UInt32, description: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.codec] = codec.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
-        object[Strings.numberOfChannels] = numberOfChannels.jsValue
-        object[Strings.description] = description.jsValue
+        object[Strings.codec] = _toJSValue(codec)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
+        object[Strings.numberOfChannels] = _toJSValue(numberOfChannels)
+        object[Strings.description] = _toJSValue(description)
         self.init(unsafelyWrapping: object)
     }
 
@@ -684,8 +684,8 @@ public class AudioDecoderInit: BridgedDictionary {
 public class AudioDecoderSupport: BridgedDictionary {
     public convenience init(supported: Bool, config: AudioDecoderConfig) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.supported] = supported.jsValue
-        object[Strings.config] = config.jsValue
+        object[Strings.supported] = _toJSValue(supported)
+        object[Strings.config] = _toJSValue(config)
         self.init(unsafelyWrapping: object)
     }
 
@@ -714,7 +714,7 @@ public class AudioEncoder: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: AudioEncoderInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -725,12 +725,12 @@ public class AudioEncoder: JSBridgedClass {
 
     @inlinable public func configure(config: AudioEncoderConfig) {
         let this = jsObject
-        _ = this[Strings.configure].function!(this: this, arguments: [config.jsValue])
+        _ = this[Strings.configure].function!(this: this, arguments: [_toJSValue(config)])
     }
 
     @inlinable public func encode(data: AudioData) {
         let this = jsObject
-        _ = this[Strings.encode].function!(this: this, arguments: [data.jsValue])
+        _ = this[Strings.encode].function!(this: this, arguments: [_toJSValue(data)])
     }
 
     @inlinable public func flush() -> JSPromise {
@@ -757,13 +757,13 @@ public class AudioEncoder: JSBridgedClass {
 
     @inlinable public static func isConfigSupported(config: AudioEncoderConfig) -> JSPromise {
         let this = constructor!
-        return this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
+        return this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public static func isConfigSupported(config: AudioEncoderConfig) async throws -> AudioEncoderSupport {
         let this = constructor!
-        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 }
@@ -771,10 +771,10 @@ public class AudioEncoder: JSBridgedClass {
 public class AudioEncoderConfig: BridgedDictionary {
     public convenience init(codec: String, sampleRate: UInt32, numberOfChannels: UInt32, bitrate: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.codec] = codec.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
-        object[Strings.numberOfChannels] = numberOfChannels.jsValue
-        object[Strings.bitrate] = bitrate.jsValue
+        object[Strings.codec] = _toJSValue(codec)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
+        object[Strings.numberOfChannels] = _toJSValue(numberOfChannels)
+        object[Strings.bitrate] = _toJSValue(bitrate)
         self.init(unsafelyWrapping: object)
     }
 
@@ -823,8 +823,8 @@ public class AudioEncoderInit: BridgedDictionary {
 public class AudioEncoderSupport: BridgedDictionary {
     public convenience init(supported: Bool, config: AudioEncoderConfig) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.supported] = supported.jsValue
-        object[Strings.config] = config.jsValue
+        object[Strings.supported] = _toJSValue(supported)
+        object[Strings.config] = _toJSValue(config)
         self.init(unsafelyWrapping: object)
     }
 
@@ -919,7 +919,7 @@ public class AudioTrackList: EventTarget {
 
     @inlinable public func getTrackById(id: String) -> AudioTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [id.jsValue]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()!
     }
 
     @ClosureAttribute1Optional
@@ -986,7 +986,7 @@ public class Blob: JSBridgedClass {
     }
 
     @inlinable public convenience init(blobParts: [BlobPart]? = nil, options: BlobPropertyBag? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [blobParts?.jsValue ?? .undefined, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(blobParts), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -997,7 +997,7 @@ public class Blob: JSBridgedClass {
 
     @inlinable public func slice(start: Int64? = nil, end: Int64? = nil, contentType: String? = nil) -> Self {
         let this = jsObject
-        return this[Strings.slice].function!(this: this, arguments: [start?.jsValue ?? .undefined, end?.jsValue ?? .undefined, contentType?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.slice].function!(this: this, arguments: [_toJSValue(start), _toJSValue(end), _toJSValue(contentType)]).fromJSValue()!
     }
 
     @inlinable public func stream() -> ReadableStream {
@@ -1040,7 +1040,7 @@ public class BlobEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: BlobEventInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -1053,8 +1053,8 @@ public class BlobEvent: Event {
 public class BlobEventInit: BridgedDictionary {
     public convenience init(data: Blob, timecode: DOMHighResTimeStamp) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.data] = data.jsValue
-        object[Strings.timecode] = timecode.jsValue
+        object[Strings.data] = _toJSValue(data)
+        object[Strings.timecode] = _toJSValue(timecode)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1074,8 +1074,8 @@ public class BlobEventInit: BridgedDictionary {
 public class BlobPropertyBag: BridgedDictionary {
     public convenience init(type: String, endings: EndingType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue
-        object[Strings.endings] = endings.jsValue
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.endings] = _toJSValue(endings)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1162,8 +1162,8 @@ public extension Body {
 public class BoxQuadOptions: BridgedDictionary {
     public convenience init(box: CSSBoxType, relativeTo: GeometryNode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.box] = box.jsValue
-        object[Strings.relativeTo] = relativeTo.jsValue
+        object[Strings.box] = _toJSValue(box)
+        object[Strings.relativeTo] = _toJSValue(relativeTo)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1191,7 +1191,7 @@ public class BroadcastChannel: EventTarget {
     }
 
     @inlinable public convenience init(name: String) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [name.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(name)]))
     }
 
     @ReadonlyAttribute
@@ -1199,7 +1199,7 @@ public class BroadcastChannel: EventTarget {
 
     @inlinable public func postMessage(message: JSValue) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [_toJSValue(message)])
     }
 
     @inlinable public func close() {
@@ -1226,7 +1226,7 @@ public class ByteLengthQueuingStrategy: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: QueuingStrategyInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -1285,7 +1285,7 @@ public class CSSPseudoElement: EventTarget, GeometryUtils {
 
     @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
         let this = jsObject
-        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return this[Strings.pseudo].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
 }
 
@@ -1300,85 +1300,85 @@ public class Cache: JSBridgedClass {
 
     @inlinable public func match(request: RequestInfo, options: CacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.match].function!(this: this, arguments: [request.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.match].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func match(request: RequestInfo, options: CacheQueryOptions? = nil) async throws -> Response? {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [request.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue ?? .undefined, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.matchAll].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func matchAll(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) async throws -> [Response] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.matchAll].function!(this: this, arguments: [request?.jsValue ?? .undefined, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.matchAll].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func add(request: RequestInfo) -> JSPromise {
         let this = jsObject
-        return this[Strings.add].function!(this: this, arguments: [request.jsValue]).fromJSValue()!
+        return this[Strings.add].function!(this: this, arguments: [_toJSValue(request)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func add(request: RequestInfo) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.add].function!(this: this, arguments: [request.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.add].function!(this: this, arguments: [_toJSValue(request)]).fromJSValue()!
         _ = try await _promise.value
     }
 
     @inlinable public func addAll(requests: [RequestInfo]) -> JSPromise {
         let this = jsObject
-        return this[Strings.addAll].function!(this: this, arguments: [requests.jsValue]).fromJSValue()!
+        return this[Strings.addAll].function!(this: this, arguments: [_toJSValue(requests)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func addAll(requests: [RequestInfo]) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.addAll].function!(this: this, arguments: [requests.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.addAll].function!(this: this, arguments: [_toJSValue(requests)]).fromJSValue()!
         _ = try await _promise.value
     }
 
     @inlinable public func put(request: RequestInfo, response: Response) -> JSPromise {
         let this = jsObject
-        return this[Strings.put].function!(this: this, arguments: [request.jsValue, response.jsValue]).fromJSValue()!
+        return this[Strings.put].function!(this: this, arguments: [_toJSValue(request), _toJSValue(response)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func put(request: RequestInfo, response: Response) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.put].function!(this: this, arguments: [request.jsValue, response.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.put].function!(this: this, arguments: [_toJSValue(request), _toJSValue(response)]).fromJSValue()!
         _ = try await _promise.value
     }
 
     @inlinable public func delete(request: RequestInfo, options: CacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.delete].function!(this: this, arguments: [request.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.delete].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func delete(request: RequestInfo, options: CacheQueryOptions? = nil) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [request.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func keys(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.keys].function!(this: this, arguments: [request?.jsValue ?? .undefined, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.keys].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func keys(request: RequestInfo? = nil, options: CacheQueryOptions? = nil) async throws -> [Request] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.keys].function!(this: this, arguments: [request?.jsValue ?? .undefined, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.keys].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 }
@@ -1386,9 +1386,9 @@ public class Cache: JSBridgedClass {
 public class CacheQueryOptions: BridgedDictionary {
     public convenience init(ignoreSearch: Bool, ignoreMethod: Bool, ignoreVary: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.ignoreSearch] = ignoreSearch.jsValue
-        object[Strings.ignoreMethod] = ignoreMethod.jsValue
-        object[Strings.ignoreVary] = ignoreVary.jsValue
+        object[Strings.ignoreSearch] = _toJSValue(ignoreSearch)
+        object[Strings.ignoreMethod] = _toJSValue(ignoreMethod)
+        object[Strings.ignoreVary] = _toJSValue(ignoreVary)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1420,49 +1420,49 @@ public class CacheStorage: JSBridgedClass {
 
     @inlinable public func match(request: RequestInfo, options: MultiCacheQueryOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.match].function!(this: this, arguments: [request.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.match].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func match(request: RequestInfo, options: MultiCacheQueryOptions? = nil) async throws -> Response? {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [request.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.match].function!(this: this, arguments: [_toJSValue(request), _toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func has(cacheName: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.has].function!(this: this, arguments: [cacheName.jsValue]).fromJSValue()!
+        return this[Strings.has].function!(this: this, arguments: [_toJSValue(cacheName)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func has(cacheName: String) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.has].function!(this: this, arguments: [cacheName.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.has].function!(this: this, arguments: [_toJSValue(cacheName)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func open(cacheName: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.open].function!(this: this, arguments: [cacheName.jsValue]).fromJSValue()!
+        return this[Strings.open].function!(this: this, arguments: [_toJSValue(cacheName)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func open(cacheName: String) async throws -> Cache {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: [cacheName.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.open].function!(this: this, arguments: [_toJSValue(cacheName)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func delete(cacheName: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.delete].function!(this: this, arguments: [cacheName.jsValue]).fromJSValue()!
+        return this[Strings.delete].function!(this: this, arguments: [_toJSValue(cacheName)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func delete(cacheName: String) async throws -> Bool {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [cacheName.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.delete].function!(this: this, arguments: [_toJSValue(cacheName)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
@@ -1482,7 +1482,7 @@ public class CacheStorage: JSBridgedClass {
 public class CameraDevicePermissionDescriptor: BridgedDictionary {
     public convenience init(panTiltZoom: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.panTiltZoom] = panTiltZoom.jsValue
+        object[Strings.panTiltZoom] = _toJSValue(panTiltZoom)
         self.init(unsafelyWrapping: object)
     }
 
@@ -1518,12 +1518,12 @@ public protocol CanvasCompositing: JSBridgedClass {}
 public extension CanvasCompositing {
     @inlinable var globalAlpha: Double {
         get { jsObject[Strings.globalAlpha].fromJSValue()! }
-        nonmutating set { jsObject[Strings.globalAlpha] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.globalAlpha] = _toJSValue(newValue) }
     }
 
     @inlinable var globalCompositeOperation: String {
         get { jsObject[Strings.globalCompositeOperation].fromJSValue()! }
-        nonmutating set { jsObject[Strings.globalCompositeOperation] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.globalCompositeOperation] = _toJSValue(newValue) }
     }
 }
 
@@ -1550,26 +1550,17 @@ public protocol CanvasDrawImage: JSBridgedClass {}
 public extension CanvasDrawImage {
     @inlinable func drawImage(image: CanvasImageSource, dx: Double, dy: Double) {
         let this = jsObject
-        _ = this[Strings.drawImage].function!(this: this, arguments: [image.jsValue, dx.jsValue, dy.jsValue])
+        _ = this[Strings.drawImage].function!(this: this, arguments: [_toJSValue(image), _toJSValue(dx), _toJSValue(dy)])
     }
 
     @inlinable func drawImage(image: CanvasImageSource, dx: Double, dy: Double, dw: Double, dh: Double) {
         let this = jsObject
-        _ = this[Strings.drawImage].function!(this: this, arguments: [image.jsValue, dx.jsValue, dy.jsValue, dw.jsValue, dh.jsValue])
+        _ = this[Strings.drawImage].function!(this: this, arguments: [_toJSValue(image), _toJSValue(dx), _toJSValue(dy), _toJSValue(dw), _toJSValue(dh)])
     }
 
     @inlinable func drawImage(image: CanvasImageSource, sx: Double, sy: Double, sw: Double, sh: Double, dx: Double, dy: Double, dw: Double, dh: Double) {
-        let _arg0 = image.jsValue
-        let _arg1 = sx.jsValue
-        let _arg2 = sy.jsValue
-        let _arg3 = sw.jsValue
-        let _arg4 = sh.jsValue
-        let _arg5 = dx.jsValue
-        let _arg6 = dy.jsValue
-        let _arg7 = dw.jsValue
-        let _arg8 = dh.jsValue
         let this = jsObject
-        _ = this[Strings.drawImage].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8])
+        _ = this[Strings.drawImage].function!(this: this, arguments: [_toJSValue(image), _toJSValue(sx), _toJSValue(sy), _toJSValue(sw), _toJSValue(sh), _toJSValue(dx), _toJSValue(dy), _toJSValue(dw), _toJSValue(dh)])
     }
 }
 
@@ -1582,12 +1573,12 @@ public extension CanvasDrawPath {
 
     @inlinable func fill(fillRule: CanvasFillRule? = nil) {
         let this = jsObject
-        _ = this[Strings.fill].function!(this: this, arguments: [fillRule?.jsValue ?? .undefined])
+        _ = this[Strings.fill].function!(this: this, arguments: [_toJSValue(fillRule)])
     }
 
     @inlinable func fill(path: Path2D, fillRule: CanvasFillRule? = nil) {
         let this = jsObject
-        _ = this[Strings.fill].function!(this: this, arguments: [path.jsValue, fillRule?.jsValue ?? .undefined])
+        _ = this[Strings.fill].function!(this: this, arguments: [_toJSValue(path), _toJSValue(fillRule)])
     }
 
     @inlinable func stroke() {
@@ -1597,37 +1588,37 @@ public extension CanvasDrawPath {
 
     @inlinable func stroke(path: Path2D) {
         let this = jsObject
-        _ = this[Strings.stroke].function!(this: this, arguments: [path.jsValue])
+        _ = this[Strings.stroke].function!(this: this, arguments: [_toJSValue(path)])
     }
 
     @inlinable func clip(fillRule: CanvasFillRule? = nil) {
         let this = jsObject
-        _ = this[Strings.clip].function!(this: this, arguments: [fillRule?.jsValue ?? .undefined])
+        _ = this[Strings.clip].function!(this: this, arguments: [_toJSValue(fillRule)])
     }
 
     @inlinable func clip(path: Path2D, fillRule: CanvasFillRule? = nil) {
         let this = jsObject
-        _ = this[Strings.clip].function!(this: this, arguments: [path.jsValue, fillRule?.jsValue ?? .undefined])
+        _ = this[Strings.clip].function!(this: this, arguments: [_toJSValue(path), _toJSValue(fillRule)])
     }
 
     @inlinable func isPointInPath(x: Double, y: Double, fillRule: CanvasFillRule? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.isPointInPath].function!(this: this, arguments: [x.jsValue, y.jsValue, fillRule?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.isPointInPath].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(fillRule)]).fromJSValue()!
     }
 
     @inlinable func isPointInPath(path: Path2D, x: Double, y: Double, fillRule: CanvasFillRule? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.isPointInPath].function!(this: this, arguments: [path.jsValue, x.jsValue, y.jsValue, fillRule?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.isPointInPath].function!(this: this, arguments: [_toJSValue(path), _toJSValue(x), _toJSValue(y), _toJSValue(fillRule)]).fromJSValue()!
     }
 
     @inlinable func isPointInStroke(x: Double, y: Double) -> Bool {
         let this = jsObject
-        return this[Strings.isPointInStroke].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+        return this[Strings.isPointInStroke].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()!
     }
 
     @inlinable func isPointInStroke(path: Path2D, x: Double, y: Double) -> Bool {
         let this = jsObject
-        return this[Strings.isPointInStroke].function!(this: this, arguments: [path.jsValue, x.jsValue, y.jsValue]).fromJSValue()!
+        return this[Strings.isPointInStroke].function!(this: this, arguments: [_toJSValue(path), _toJSValue(x), _toJSValue(y)]).fromJSValue()!
     }
 }
 
@@ -1653,38 +1644,32 @@ public protocol CanvasFillStrokeStyles: JSBridgedClass {}
 public extension CanvasFillStrokeStyles {
     @inlinable var strokeStyle: CanvasGradient_or_CanvasPattern_or_String {
         get { jsObject[Strings.strokeStyle].fromJSValue()! }
-        nonmutating set { jsObject[Strings.strokeStyle] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.strokeStyle] = _toJSValue(newValue) }
     }
 
     @inlinable var fillStyle: CanvasGradient_or_CanvasPattern_or_String {
         get { jsObject[Strings.fillStyle].fromJSValue()! }
-        nonmutating set { jsObject[Strings.fillStyle] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.fillStyle] = _toJSValue(newValue) }
     }
 
     @inlinable func createLinearGradient(x0: Double, y0: Double, x1: Double, y1: Double) -> CanvasGradient {
         let this = jsObject
-        return this[Strings.createLinearGradient].function!(this: this, arguments: [x0.jsValue, y0.jsValue, x1.jsValue, y1.jsValue]).fromJSValue()!
+        return this[Strings.createLinearGradient].function!(this: this, arguments: [_toJSValue(x0), _toJSValue(y0), _toJSValue(x1), _toJSValue(y1)]).fromJSValue()!
     }
 
     @inlinable func createRadialGradient(x0: Double, y0: Double, r0: Double, x1: Double, y1: Double, r1: Double) -> CanvasGradient {
-        let _arg0 = x0.jsValue
-        let _arg1 = y0.jsValue
-        let _arg2 = r0.jsValue
-        let _arg3 = x1.jsValue
-        let _arg4 = y1.jsValue
-        let _arg5 = r1.jsValue
         let this = jsObject
-        return this[Strings.createRadialGradient].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
+        return this[Strings.createRadialGradient].function!(this: this, arguments: [_toJSValue(x0), _toJSValue(y0), _toJSValue(r0), _toJSValue(x1), _toJSValue(y1), _toJSValue(r1)]).fromJSValue()!
     }
 
     @inlinable func createConicGradient(startAngle: Double, x: Double, y: Double) -> CanvasGradient {
         let this = jsObject
-        return this[Strings.createConicGradient].function!(this: this, arguments: [startAngle.jsValue, x.jsValue, y.jsValue]).fromJSValue()!
+        return this[Strings.createConicGradient].function!(this: this, arguments: [_toJSValue(startAngle), _toJSValue(x), _toJSValue(y)]).fromJSValue()!
     }
 
     @inlinable func createPattern(image: CanvasImageSource, repetition: String) -> CanvasPattern? {
         let this = jsObject
-        return this[Strings.createPattern].function!(this: this, arguments: [image.jsValue, repetition.jsValue]).fromJSValue()!
+        return this[Strings.createPattern].function!(this: this, arguments: [_toJSValue(image), _toJSValue(repetition)]).fromJSValue()!
     }
 }
 
@@ -1698,7 +1683,7 @@ public class CanvasFilter: JSBridgedClass {
     }
 
     @inlinable public convenience init(filters: CanvasFilterInput_or_seq_of_CanvasFilterInput? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [filters?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(filters)]))
     }
 }
 
@@ -1706,7 +1691,7 @@ public protocol CanvasFilters: JSBridgedClass {}
 public extension CanvasFilters {
     @inlinable var filter: CanvasFilter_or_String {
         get { jsObject[Strings.filter].fromJSValue()! }
-        nonmutating set { jsObject[Strings.filter] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.filter] = _toJSValue(newValue) }
     }
 }
 
@@ -1788,7 +1773,7 @@ public class CanvasGradient: JSBridgedClass {
 
     @inlinable public func addColorStop(offset: Double, color: String) {
         let this = jsObject
-        _ = this[Strings.addColorStop].function!(this: this, arguments: [offset.jsValue, color.jsValue])
+        _ = this[Strings.addColorStop].function!(this: this, arguments: [_toJSValue(offset), _toJSValue(color)])
     }
 }
 
@@ -1796,34 +1781,27 @@ public protocol CanvasImageData: JSBridgedClass {}
 public extension CanvasImageData {
     @inlinable func createImageData(sw: Int32, sh: Int32, settings: ImageDataSettings? = nil) -> ImageData {
         let this = jsObject
-        return this[Strings.createImageData].function!(this: this, arguments: [sw.jsValue, sh.jsValue, settings?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createImageData].function!(this: this, arguments: [_toJSValue(sw), _toJSValue(sh), _toJSValue(settings)]).fromJSValue()!
     }
 
     @inlinable func createImageData(imagedata: ImageData) -> ImageData {
         let this = jsObject
-        return this[Strings.createImageData].function!(this: this, arguments: [imagedata.jsValue]).fromJSValue()!
+        return this[Strings.createImageData].function!(this: this, arguments: [_toJSValue(imagedata)]).fromJSValue()!
     }
 
     @inlinable func getImageData(sx: Int32, sy: Int32, sw: Int32, sh: Int32, settings: ImageDataSettings? = nil) -> ImageData {
         let this = jsObject
-        return this[Strings.getImageData].function!(this: this, arguments: [sx.jsValue, sy.jsValue, sw.jsValue, sh.jsValue, settings?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.getImageData].function!(this: this, arguments: [_toJSValue(sx), _toJSValue(sy), _toJSValue(sw), _toJSValue(sh), _toJSValue(settings)]).fromJSValue()!
     }
 
     @inlinable func putImageData(imagedata: ImageData, dx: Int32, dy: Int32) {
         let this = jsObject
-        _ = this[Strings.putImageData].function!(this: this, arguments: [imagedata.jsValue, dx.jsValue, dy.jsValue])
+        _ = this[Strings.putImageData].function!(this: this, arguments: [_toJSValue(imagedata), _toJSValue(dx), _toJSValue(dy)])
     }
 
     @inlinable func putImageData(imagedata: ImageData, dx: Int32, dy: Int32, dirtyX: Int32, dirtyY: Int32, dirtyWidth: Int32, dirtyHeight: Int32) {
-        let _arg0 = imagedata.jsValue
-        let _arg1 = dx.jsValue
-        let _arg2 = dy.jsValue
-        let _arg3 = dirtyX.jsValue
-        let _arg4 = dirtyY.jsValue
-        let _arg5 = dirtyWidth.jsValue
-        let _arg6 = dirtyHeight.jsValue
         let this = jsObject
-        _ = this[Strings.putImageData].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6])
+        _ = this[Strings.putImageData].function!(this: this, arguments: [_toJSValue(imagedata), _toJSValue(dx), _toJSValue(dy), _toJSValue(dirtyX), _toJSValue(dirtyY), _toJSValue(dirtyWidth), _toJSValue(dirtyHeight)])
     }
 }
 
@@ -1831,12 +1809,12 @@ public protocol CanvasImageSmoothing: JSBridgedClass {}
 public extension CanvasImageSmoothing {
     @inlinable var imageSmoothingEnabled: Bool {
         get { jsObject[Strings.imageSmoothingEnabled].fromJSValue()! }
-        nonmutating set { jsObject[Strings.imageSmoothingEnabled] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.imageSmoothingEnabled] = _toJSValue(newValue) }
     }
 
     @inlinable var imageSmoothingQuality: ImageSmoothingQuality {
         get { jsObject[Strings.imageSmoothingQuality].fromJSValue()! }
-        nonmutating set { jsObject[Strings.imageSmoothingQuality] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.imageSmoothingQuality] = _toJSValue(newValue) }
     }
 }
 
@@ -1887,67 +1865,47 @@ public extension CanvasPath {
 
     @inlinable func moveTo(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.moveTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.moveTo].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable func lineTo(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.lineTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.lineTo].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable func quadraticCurveTo(cpx: Double, cpy: Double, x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.quadraticCurveTo].function!(this: this, arguments: [cpx.jsValue, cpy.jsValue, x.jsValue, y.jsValue])
+        _ = this[Strings.quadraticCurveTo].function!(this: this, arguments: [_toJSValue(cpx), _toJSValue(cpy), _toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable func bezierCurveTo(cp1x: Double, cp1y: Double, cp2x: Double, cp2y: Double, x: Double, y: Double) {
-        let _arg0 = cp1x.jsValue
-        let _arg1 = cp1y.jsValue
-        let _arg2 = cp2x.jsValue
-        let _arg3 = cp2y.jsValue
-        let _arg4 = x.jsValue
-        let _arg5 = y.jsValue
         let this = jsObject
-        _ = this[Strings.bezierCurveTo].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
+        _ = this[Strings.bezierCurveTo].function!(this: this, arguments: [_toJSValue(cp1x), _toJSValue(cp1y), _toJSValue(cp2x), _toJSValue(cp2y), _toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable func arcTo(x1: Double, y1: Double, x2: Double, y2: Double, radius: Double) {
         let this = jsObject
-        _ = this[Strings.arcTo].function!(this: this, arguments: [x1.jsValue, y1.jsValue, x2.jsValue, y2.jsValue, radius.jsValue])
+        _ = this[Strings.arcTo].function!(this: this, arguments: [_toJSValue(x1), _toJSValue(y1), _toJSValue(x2), _toJSValue(y2), _toJSValue(radius)])
     }
 
     @inlinable func rect(x: Double, y: Double, w: Double, h: Double) {
         let this = jsObject
-        _ = this[Strings.rect].function!(this: this, arguments: [x.jsValue, y.jsValue, w.jsValue, h.jsValue])
+        _ = this[Strings.rect].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(w), _toJSValue(h)])
     }
 
     @inlinable func roundRect(x: Double, y: Double, w: Double, h: Double, radii: DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double? = nil) {
         let this = jsObject
-        _ = this[Strings.roundRect].function!(this: this, arguments: [x.jsValue, y.jsValue, w.jsValue, h.jsValue, radii?.jsValue ?? .undefined])
+        _ = this[Strings.roundRect].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(w), _toJSValue(h), _toJSValue(radii)])
     }
 
     @inlinable func arc(x: Double, y: Double, radius: Double, startAngle: Double, endAngle: Double, counterclockwise: Bool? = nil) {
-        let _arg0 = x.jsValue
-        let _arg1 = y.jsValue
-        let _arg2 = radius.jsValue
-        let _arg3 = startAngle.jsValue
-        let _arg4 = endAngle.jsValue
-        let _arg5 = counterclockwise?.jsValue ?? .undefined
         let this = jsObject
-        _ = this[Strings.arc].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
+        _ = this[Strings.arc].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(radius), _toJSValue(startAngle), _toJSValue(endAngle), _toJSValue(counterclockwise)])
     }
 
     @inlinable func ellipse(x: Double, y: Double, radiusX: Double, radiusY: Double, rotation: Double, startAngle: Double, endAngle: Double, counterclockwise: Bool? = nil) {
-        let _arg0 = x.jsValue
-        let _arg1 = y.jsValue
-        let _arg2 = radiusX.jsValue
-        let _arg3 = radiusY.jsValue
-        let _arg4 = rotation.jsValue
-        let _arg5 = startAngle.jsValue
-        let _arg6 = endAngle.jsValue
-        let _arg7 = counterclockwise?.jsValue ?? .undefined
         let this = jsObject
-        _ = this[Strings.ellipse].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
+        _ = this[Strings.ellipse].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(radiusX), _toJSValue(radiusY), _toJSValue(rotation), _toJSValue(startAngle), _toJSValue(endAngle), _toJSValue(counterclockwise)])
     }
 }
 
@@ -1955,27 +1913,27 @@ public protocol CanvasPathDrawingStyles: JSBridgedClass {}
 public extension CanvasPathDrawingStyles {
     @inlinable var lineWidth: Double {
         get { jsObject[Strings.lineWidth].fromJSValue()! }
-        nonmutating set { jsObject[Strings.lineWidth] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.lineWidth] = _toJSValue(newValue) }
     }
 
     @inlinable var lineCap: CanvasLineCap {
         get { jsObject[Strings.lineCap].fromJSValue()! }
-        nonmutating set { jsObject[Strings.lineCap] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.lineCap] = _toJSValue(newValue) }
     }
 
     @inlinable var lineJoin: CanvasLineJoin {
         get { jsObject[Strings.lineJoin].fromJSValue()! }
-        nonmutating set { jsObject[Strings.lineJoin] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.lineJoin] = _toJSValue(newValue) }
     }
 
     @inlinable var miterLimit: Double {
         get { jsObject[Strings.miterLimit].fromJSValue()! }
-        nonmutating set { jsObject[Strings.miterLimit] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.miterLimit] = _toJSValue(newValue) }
     }
 
     @inlinable func setLineDash(segments: [Double]) {
         let this = jsObject
-        _ = this[Strings.setLineDash].function!(this: this, arguments: [segments.jsValue])
+        _ = this[Strings.setLineDash].function!(this: this, arguments: [_toJSValue(segments)])
     }
 
     @inlinable func getLineDash() -> [Double] {
@@ -1985,7 +1943,7 @@ public extension CanvasPathDrawingStyles {
 
     @inlinable var lineDashOffset: Double {
         get { jsObject[Strings.lineDashOffset].fromJSValue()! }
-        nonmutating set { jsObject[Strings.lineDashOffset] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.lineDashOffset] = _toJSValue(newValue) }
     }
 }
 
@@ -2000,7 +1958,7 @@ public class CanvasPattern: JSBridgedClass {
 
     @inlinable public func setTransform(transform: DOMMatrix2DInit? = nil) {
         let this = jsObject
-        _ = this[Strings.setTransform].function!(this: this, arguments: [transform?.jsValue ?? .undefined])
+        _ = this[Strings.setTransform].function!(this: this, arguments: [_toJSValue(transform)])
     }
 }
 
@@ -2008,17 +1966,17 @@ public protocol CanvasRect: JSBridgedClass {}
 public extension CanvasRect {
     @inlinable func clearRect(x: Double, y: Double, w: Double, h: Double) {
         let this = jsObject
-        _ = this[Strings.clearRect].function!(this: this, arguments: [x.jsValue, y.jsValue, w.jsValue, h.jsValue])
+        _ = this[Strings.clearRect].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(w), _toJSValue(h)])
     }
 
     @inlinable func fillRect(x: Double, y: Double, w: Double, h: Double) {
         let this = jsObject
-        _ = this[Strings.fillRect].function!(this: this, arguments: [x.jsValue, y.jsValue, w.jsValue, h.jsValue])
+        _ = this[Strings.fillRect].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(w), _toJSValue(h)])
     }
 
     @inlinable func strokeRect(x: Double, y: Double, w: Double, h: Double) {
         let this = jsObject
-        _ = this[Strings.strokeRect].function!(this: this, arguments: [x.jsValue, y.jsValue, w.jsValue, h.jsValue])
+        _ = this[Strings.strokeRect].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(w), _toJSValue(h)])
     }
 }
 
@@ -2044,10 +2002,10 @@ public class CanvasRenderingContext2D: JSBridgedClass, CanvasState, CanvasTransf
 public class CanvasRenderingContext2DSettings: BridgedDictionary {
     public convenience init(alpha: Bool, desynchronized: Bool, colorSpace: PredefinedColorSpace, willReadFrequently: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.alpha] = alpha.jsValue
-        object[Strings.desynchronized] = desynchronized.jsValue
-        object[Strings.colorSpace] = colorSpace.jsValue
-        object[Strings.willReadFrequently] = willReadFrequently.jsValue
+        object[Strings.alpha] = _toJSValue(alpha)
+        object[Strings.desynchronized] = _toJSValue(desynchronized)
+        object[Strings.colorSpace] = _toJSValue(colorSpace)
+        object[Strings.willReadFrequently] = _toJSValue(willReadFrequently)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2076,22 +2034,22 @@ public protocol CanvasShadowStyles: JSBridgedClass {}
 public extension CanvasShadowStyles {
     @inlinable var shadowOffsetX: Double {
         get { jsObject[Strings.shadowOffsetX].fromJSValue()! }
-        nonmutating set { jsObject[Strings.shadowOffsetX] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.shadowOffsetX] = _toJSValue(newValue) }
     }
 
     @inlinable var shadowOffsetY: Double {
         get { jsObject[Strings.shadowOffsetY].fromJSValue()! }
-        nonmutating set { jsObject[Strings.shadowOffsetY] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.shadowOffsetY] = _toJSValue(newValue) }
     }
 
     @inlinable var shadowBlur: Double {
         get { jsObject[Strings.shadowBlur].fromJSValue()! }
-        nonmutating set { jsObject[Strings.shadowBlur] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.shadowBlur] = _toJSValue(newValue) }
     }
 
     @inlinable var shadowColor: String {
         get { jsObject[Strings.shadowColor].fromJSValue()! }
-        nonmutating set { jsObject[Strings.shadowColor] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.shadowColor] = _toJSValue(newValue) }
     }
 }
 
@@ -2122,17 +2080,17 @@ public protocol CanvasText: JSBridgedClass {}
 public extension CanvasText {
     @inlinable func fillText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
         let this = jsObject
-        _ = this[Strings.fillText].function!(this: this, arguments: [text.jsValue, x.jsValue, y.jsValue, maxWidth?.jsValue ?? .undefined])
+        _ = this[Strings.fillText].function!(this: this, arguments: [_toJSValue(text), _toJSValue(x), _toJSValue(y), _toJSValue(maxWidth)])
     }
 
     @inlinable func strokeText(text: String, x: Double, y: Double, maxWidth: Double? = nil) {
         let this = jsObject
-        _ = this[Strings.strokeText].function!(this: this, arguments: [text.jsValue, x.jsValue, y.jsValue, maxWidth?.jsValue ?? .undefined])
+        _ = this[Strings.strokeText].function!(this: this, arguments: [_toJSValue(text), _toJSValue(x), _toJSValue(y), _toJSValue(maxWidth)])
     }
 
     @inlinable func measureText(text: String) -> TextMetrics {
         let this = jsObject
-        return this[Strings.measureText].function!(this: this, arguments: [text.jsValue]).fromJSValue()!
+        return this[Strings.measureText].function!(this: this, arguments: [_toJSValue(text)]).fromJSValue()!
     }
 }
 
@@ -2183,52 +2141,52 @@ public protocol CanvasTextDrawingStyles: JSBridgedClass {}
 public extension CanvasTextDrawingStyles {
     @inlinable var font: String {
         get { jsObject[Strings.font].fromJSValue()! }
-        nonmutating set { jsObject[Strings.font] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.font] = _toJSValue(newValue) }
     }
 
     @inlinable var textAlign: CanvasTextAlign {
         get { jsObject[Strings.textAlign].fromJSValue()! }
-        nonmutating set { jsObject[Strings.textAlign] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.textAlign] = _toJSValue(newValue) }
     }
 
     @inlinable var textBaseline: CanvasTextBaseline {
         get { jsObject[Strings.textBaseline].fromJSValue()! }
-        nonmutating set { jsObject[Strings.textBaseline] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.textBaseline] = _toJSValue(newValue) }
     }
 
     @inlinable var direction: CanvasDirection {
         get { jsObject[Strings.direction].fromJSValue()! }
-        nonmutating set { jsObject[Strings.direction] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.direction] = _toJSValue(newValue) }
     }
 
     @inlinable var letterSpacing: String {
         get { jsObject[Strings.letterSpacing].fromJSValue()! }
-        nonmutating set { jsObject[Strings.letterSpacing] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.letterSpacing] = _toJSValue(newValue) }
     }
 
     @inlinable var fontKerning: CanvasFontKerning {
         get { jsObject[Strings.fontKerning].fromJSValue()! }
-        nonmutating set { jsObject[Strings.fontKerning] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.fontKerning] = _toJSValue(newValue) }
     }
 
     @inlinable var fontStretch: CanvasFontStretch {
         get { jsObject[Strings.fontStretch].fromJSValue()! }
-        nonmutating set { jsObject[Strings.fontStretch] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.fontStretch] = _toJSValue(newValue) }
     }
 
     @inlinable var fontVariantCaps: CanvasFontVariantCaps {
         get { jsObject[Strings.fontVariantCaps].fromJSValue()! }
-        nonmutating set { jsObject[Strings.fontVariantCaps] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.fontVariantCaps] = _toJSValue(newValue) }
     }
 
     @inlinable var textRendering: CanvasTextRendering {
         get { jsObject[Strings.textRendering].fromJSValue()! }
-        nonmutating set { jsObject[Strings.textRendering] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.textRendering] = _toJSValue(newValue) }
     }
 
     @inlinable var wordSpacing: String {
         get { jsObject[Strings.wordSpacing].fromJSValue()! }
-        nonmutating set { jsObject[Strings.wordSpacing] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.wordSpacing] = _toJSValue(newValue) }
     }
 }
 
@@ -2256,28 +2214,22 @@ public protocol CanvasTransform: JSBridgedClass {}
 public extension CanvasTransform {
     @inlinable func scale(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scale].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.scale].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable func rotate(angle: Double) {
         let this = jsObject
-        _ = this[Strings.rotate].function!(this: this, arguments: [angle.jsValue])
+        _ = this[Strings.rotate].function!(this: this, arguments: [_toJSValue(angle)])
     }
 
     @inlinable func translate(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.translate].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.translate].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable func transform(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double) {
-        let _arg0 = a.jsValue
-        let _arg1 = b.jsValue
-        let _arg2 = c.jsValue
-        let _arg3 = d.jsValue
-        let _arg4 = e.jsValue
-        let _arg5 = f.jsValue
         let this = jsObject
-        _ = this[Strings.transform].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
+        _ = this[Strings.transform].function!(this: this, arguments: [_toJSValue(a), _toJSValue(b), _toJSValue(c), _toJSValue(d), _toJSValue(e), _toJSValue(f)])
     }
 
     @inlinable func getTransform() -> DOMMatrix {
@@ -2286,19 +2238,13 @@ public extension CanvasTransform {
     }
 
     @inlinable func setTransform(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double) {
-        let _arg0 = a.jsValue
-        let _arg1 = b.jsValue
-        let _arg2 = c.jsValue
-        let _arg3 = d.jsValue
-        let _arg4 = e.jsValue
-        let _arg5 = f.jsValue
         let this = jsObject
-        _ = this[Strings.setTransform].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5])
+        _ = this[Strings.setTransform].function!(this: this, arguments: [_toJSValue(a), _toJSValue(b), _toJSValue(c), _toJSValue(d), _toJSValue(e), _toJSValue(f)])
     }
 
     @inlinable func setTransform(transform: DOMMatrix2DInit? = nil) {
         let this = jsObject
-        _ = this[Strings.setTransform].function!(this: this, arguments: [transform?.jsValue ?? .undefined])
+        _ = this[Strings.setTransform].function!(this: this, arguments: [_toJSValue(transform)])
     }
 
     @inlinable func resetTransform() {
@@ -2311,12 +2257,12 @@ public protocol CanvasUserInterface: JSBridgedClass {}
 public extension CanvasUserInterface {
     @inlinable func drawFocusIfNeeded(element: Element) {
         let this = jsObject
-        _ = this[Strings.drawFocusIfNeeded].function!(this: this, arguments: [element.jsValue])
+        _ = this[Strings.drawFocusIfNeeded].function!(this: this, arguments: [_toJSValue(element)])
     }
 
     @inlinable func drawFocusIfNeeded(path: Path2D, element: Element) {
         let this = jsObject
-        _ = this[Strings.drawFocusIfNeeded].function!(this: this, arguments: [path.jsValue, element.jsValue])
+        _ = this[Strings.drawFocusIfNeeded].function!(this: this, arguments: [_toJSValue(path), _toJSValue(element)])
     }
 
     @inlinable func scrollPathIntoView() {
@@ -2326,7 +2272,7 @@ public extension CanvasUserInterface {
 
     @inlinable func scrollPathIntoView(path: Path2D) {
         let this = jsObject
-        _ = this[Strings.scrollPathIntoView].function!(this: this, arguments: [path.jsValue])
+        _ = this[Strings.scrollPathIntoView].function!(this: this, arguments: [_toJSValue(path)])
     }
 }
 
@@ -2370,27 +2316,27 @@ public class CharacterData: Node, NonDocumentTypeChildNode, ChildNode {
 
     @inlinable public func substringData(offset: UInt32, count: UInt32) -> String {
         let this = jsObject
-        return this[Strings.substringData].function!(this: this, arguments: [offset.jsValue, count.jsValue]).fromJSValue()!
+        return this[Strings.substringData].function!(this: this, arguments: [_toJSValue(offset), _toJSValue(count)]).fromJSValue()!
     }
 
     @inlinable public func appendData(data: String) {
         let this = jsObject
-        _ = this[Strings.appendData].function!(this: this, arguments: [data.jsValue])
+        _ = this[Strings.appendData].function!(this: this, arguments: [_toJSValue(data)])
     }
 
     @inlinable public func insertData(offset: UInt32, data: String) {
         let this = jsObject
-        _ = this[Strings.insertData].function!(this: this, arguments: [offset.jsValue, data.jsValue])
+        _ = this[Strings.insertData].function!(this: this, arguments: [_toJSValue(offset), _toJSValue(data)])
     }
 
     @inlinable public func deleteData(offset: UInt32, count: UInt32) {
         let this = jsObject
-        _ = this[Strings.deleteData].function!(this: this, arguments: [offset.jsValue, count.jsValue])
+        _ = this[Strings.deleteData].function!(this: this, arguments: [_toJSValue(offset), _toJSValue(count)])
     }
 
     @inlinable public func replaceData(offset: UInt32, count: UInt32, data: String) {
         let this = jsObject
-        _ = this[Strings.replaceData].function!(this: this, arguments: [offset.jsValue, count.jsValue, data.jsValue])
+        _ = this[Strings.replaceData].function!(this: this, arguments: [_toJSValue(offset), _toJSValue(count), _toJSValue(data)])
     }
 }
 
@@ -2398,17 +2344,17 @@ public protocol ChildNode: JSBridgedClass {}
 public extension ChildNode {
     @inlinable func before(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.before].function!(this: this, arguments: nodes.map(\.jsValue))
+        _ = this[Strings.before].function!(this: this, arguments: nodes.map(_toJSValue))
     }
 
     @inlinable func after(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.after].function!(this: this, arguments: nodes.map(\.jsValue))
+        _ = this[Strings.after].function!(this: this, arguments: nodes.map(_toJSValue))
     }
 
     @inlinable func replaceWith(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.replaceWith].function!(this: this, arguments: nodes.map(\.jsValue))
+        _ = this[Strings.replaceWith].function!(this: this, arguments: nodes.map(_toJSValue))
     }
 
     @inlinable func remove() {
@@ -2420,8 +2366,8 @@ public extension ChildNode {
 public class ClientQueryOptions: BridgedDictionary {
     public convenience init(includeUncontrolled: Bool, type: ClientType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.includeUncontrolled] = includeUncontrolled.jsValue
-        object[Strings.type] = type.jsValue
+        object[Strings.includeUncontrolled] = _toJSValue(includeUncontrolled)
+        object[Strings.type] = _toJSValue(type)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2503,7 +2449,7 @@ public class Comment: CharacterData {
     }
 
     @inlinable public convenience init(data: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [data?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(data)]))
     }
 }
 
@@ -2516,7 +2462,7 @@ public class CompositionEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: CompositionEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -2524,14 +2470,14 @@ public class CompositionEvent: UIEvent {
 
     @inlinable public func initCompositionEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: WindowProxy? = nil, dataArg: String? = nil) {
         let this = jsObject
-        _ = this[Strings.initCompositionEvent].function!(this: this, arguments: [typeArg.jsValue, bubblesArg?.jsValue ?? .undefined, cancelableArg?.jsValue ?? .undefined, viewArg?.jsValue ?? .undefined, dataArg?.jsValue ?? .undefined])
+        _ = this[Strings.initCompositionEvent].function!(this: this, arguments: [_toJSValue(typeArg), _toJSValue(bubblesArg), _toJSValue(cancelableArg), _toJSValue(viewArg), _toJSValue(dataArg)])
     }
 }
 
 public class CompositionEventInit: BridgedDictionary {
     public convenience init(data: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.data] = data.jsValue
+        object[Strings.data] = _toJSValue(data)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2547,8 +2493,8 @@ public class CompositionEventInit: BridgedDictionary {
 public class ConstrainBooleanParameters: BridgedDictionary {
     public convenience init(exact: Bool, ideal: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.exact] = exact.jsValue
-        object[Strings.ideal] = ideal.jsValue
+        object[Strings.exact] = _toJSValue(exact)
+        object[Strings.ideal] = _toJSValue(ideal)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2568,8 +2514,8 @@ public class ConstrainBooleanParameters: BridgedDictionary {
 public class ConstrainDOMStringParameters: BridgedDictionary {
     public convenience init(exact: String_or_seq_of_String, ideal: String_or_seq_of_String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.exact] = exact.jsValue
-        object[Strings.ideal] = ideal.jsValue
+        object[Strings.exact] = _toJSValue(exact)
+        object[Strings.ideal] = _toJSValue(ideal)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2589,8 +2535,8 @@ public class ConstrainDOMStringParameters: BridgedDictionary {
 public class ConstrainDoubleRange: BridgedDictionary {
     public convenience init(exact: Double, ideal: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.exact] = exact.jsValue
-        object[Strings.ideal] = ideal.jsValue
+        object[Strings.exact] = _toJSValue(exact)
+        object[Strings.ideal] = _toJSValue(ideal)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2610,8 +2556,8 @@ public class ConstrainDoubleRange: BridgedDictionary {
 public class ConstrainULongRange: BridgedDictionary {
     public convenience init(exact: UInt32, ideal: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.exact] = exact.jsValue
-        object[Strings.ideal] = ideal.jsValue
+        object[Strings.exact] = _toJSValue(exact)
+        object[Strings.ideal] = _toJSValue(ideal)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2631,8 +2577,8 @@ public class ConstrainULongRange: BridgedDictionary {
 public class ConvertCoordinateOptions: BridgedDictionary {
     public convenience init(fromBox: CSSBoxType, toBox: CSSBoxType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.fromBox] = fromBox.jsValue
-        object[Strings.toBox] = toBox.jsValue
+        object[Strings.fromBox] = _toJSValue(fromBox)
+        object[Strings.toBox] = _toJSValue(toBox)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2661,7 +2607,7 @@ public class CountQueuingStrategy: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: QueuingStrategyInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -2682,29 +2628,29 @@ public class CustomElementRegistry: JSBridgedClass {
 
     @inlinable public func define(name: String, constructor: CustomElementConstructor, options: ElementDefinitionOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.define].function!(this: this, arguments: [name.jsValue, constructor.jsValue, options?.jsValue ?? .undefined])
+        _ = this[Strings.define].function!(this: this, arguments: [_toJSValue(name), _toJSValue(constructor), _toJSValue(options)])
     }
 
     @inlinable public func get(name: String) -> CustomElementConstructor? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func whenDefined(name: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.whenDefined].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.whenDefined].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func whenDefined(name: String) async throws -> CustomElementConstructor {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.whenDefined].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.whenDefined].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func upgrade(root: Node) {
         let this = jsObject
-        _ = this[Strings.upgrade].function!(this: this, arguments: [root.jsValue])
+        _ = this[Strings.upgrade].function!(this: this, arguments: [_toJSValue(root)])
     }
 }
 
@@ -2717,7 +2663,7 @@ public class CustomEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: CustomEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -2725,14 +2671,14 @@ public class CustomEvent: Event {
 
     @inlinable public func initCustomEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, detail: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.initCustomEvent].function!(this: this, arguments: [type.jsValue, bubbles?.jsValue ?? .undefined, cancelable?.jsValue ?? .undefined, detail?.jsValue ?? .undefined])
+        _ = this[Strings.initCustomEvent].function!(this: this, arguments: [_toJSValue(type), _toJSValue(bubbles), _toJSValue(cancelable), _toJSValue(detail)])
     }
 }
 
 public class CustomEventInit: BridgedDictionary {
     public convenience init(detail: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.detail] = detail.jsValue
+        object[Strings.detail] = _toJSValue(detail)
         self.init(unsafelyWrapping: object)
     }
 
@@ -2756,17 +2702,17 @@ public class DOMImplementation: JSBridgedClass {
 
     @inlinable public func createDocumentType(qualifiedName: String, publicId: String, systemId: String) -> DocumentType {
         let this = jsObject
-        return this[Strings.createDocumentType].function!(this: this, arguments: [qualifiedName.jsValue, publicId.jsValue, systemId.jsValue]).fromJSValue()!
+        return this[Strings.createDocumentType].function!(this: this, arguments: [_toJSValue(qualifiedName), _toJSValue(publicId), _toJSValue(systemId)]).fromJSValue()!
     }
 
     @inlinable public func createDocument(namespace: String?, qualifiedName: String, doctype: DocumentType? = nil) -> XMLDocument {
         let this = jsObject
-        return this[Strings.createDocument].function!(this: this, arguments: [namespace.jsValue, qualifiedName.jsValue, doctype?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createDocument].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(qualifiedName), _toJSValue(doctype)]).fromJSValue()!
     }
 
     @inlinable public func createHTMLDocument(title: String? = nil) -> Document {
         let this = jsObject
-        return this[Strings.createHTMLDocument].function!(this: this, arguments: [title?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createHTMLDocument].function!(this: this, arguments: [_toJSValue(title)]).fromJSValue()!
     }
 
     @inlinable public func hasFeature() -> Bool {
@@ -2805,7 +2751,7 @@ public class DOMMatrix: DOMMatrixReadOnly {
     }
 
     @inlinable public convenience init(init: String_or_seq_of_Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     // XXX: illegal static override
@@ -2951,58 +2897,52 @@ public class DOMMatrix: DOMMatrixReadOnly {
 
     @inlinable public func multiplySelf(other: DOMMatrixInit? = nil) -> Self {
         let this = jsObject
-        return this[Strings.multiplySelf].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.multiplySelf].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @inlinable public func preMultiplySelf(other: DOMMatrixInit? = nil) -> Self {
         let this = jsObject
-        return this[Strings.preMultiplySelf].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.preMultiplySelf].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @inlinable public func translateSelf(tx: Double? = nil, ty: Double? = nil, tz: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.translateSelf].function!(this: this, arguments: [tx?.jsValue ?? .undefined, ty?.jsValue ?? .undefined, tz?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.translateSelf].function!(this: this, arguments: [_toJSValue(tx), _toJSValue(ty), _toJSValue(tz)]).fromJSValue()!
     }
 
     @inlinable public func scaleSelf(scaleX: Double? = nil, scaleY: Double? = nil, scaleZ: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> Self {
-        let _arg0 = scaleX?.jsValue ?? .undefined
-        let _arg1 = scaleY?.jsValue ?? .undefined
-        let _arg2 = scaleZ?.jsValue ?? .undefined
-        let _arg3 = originX?.jsValue ?? .undefined
-        let _arg4 = originY?.jsValue ?? .undefined
-        let _arg5 = originZ?.jsValue ?? .undefined
         let this = jsObject
-        return this[Strings.scaleSelf].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
+        return this[Strings.scaleSelf].function!(this: this, arguments: [_toJSValue(scaleX), _toJSValue(scaleY), _toJSValue(scaleZ), _toJSValue(originX), _toJSValue(originY), _toJSValue(originZ)]).fromJSValue()!
     }
 
     @inlinable public func scale3dSelf(scale: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.scale3dSelf].function!(this: this, arguments: [scale?.jsValue ?? .undefined, originX?.jsValue ?? .undefined, originY?.jsValue ?? .undefined, originZ?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.scale3dSelf].function!(this: this, arguments: [_toJSValue(scale), _toJSValue(originX), _toJSValue(originY), _toJSValue(originZ)]).fromJSValue()!
     }
 
     @inlinable public func rotateSelf(rotX: Double? = nil, rotY: Double? = nil, rotZ: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.rotateSelf].function!(this: this, arguments: [rotX?.jsValue ?? .undefined, rotY?.jsValue ?? .undefined, rotZ?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateSelf].function!(this: this, arguments: [_toJSValue(rotX), _toJSValue(rotY), _toJSValue(rotZ)]).fromJSValue()!
     }
 
     @inlinable public func rotateFromVectorSelf(x: Double? = nil, y: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.rotateFromVectorSelf].function!(this: this, arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateFromVectorSelf].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()!
     }
 
     @inlinable public func rotateAxisAngleSelf(x: Double? = nil, y: Double? = nil, z: Double? = nil, angle: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.rotateAxisAngleSelf].function!(this: this, arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, z?.jsValue ?? .undefined, angle?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateAxisAngleSelf].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(angle)]).fromJSValue()!
     }
 
     @inlinable public func skewXSelf(sx: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.skewXSelf].function!(this: this, arguments: [sx?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.skewXSelf].function!(this: this, arguments: [_toJSValue(sx)]).fromJSValue()!
     }
 
     @inlinable public func skewYSelf(sy: Double? = nil) -> Self {
         let this = jsObject
-        return this[Strings.skewYSelf].function!(this: this, arguments: [sy?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.skewYSelf].function!(this: this, arguments: [_toJSValue(sy)]).fromJSValue()!
     }
 
     @inlinable public func invertSelf() -> Self {
@@ -3012,25 +2952,25 @@ public class DOMMatrix: DOMMatrixReadOnly {
 
     @inlinable public func setMatrixValue(transformList: String) -> Self {
         let this = jsObject
-        return this[Strings.setMatrixValue].function!(this: this, arguments: [transformList.jsValue]).fromJSValue()!
+        return this[Strings.setMatrixValue].function!(this: this, arguments: [_toJSValue(transformList)]).fromJSValue()!
     }
 }
 
 public class DOMMatrix2DInit: BridgedDictionary {
     public convenience init(a: Double, b: Double, c: Double, d: Double, e: Double, f: Double, m11: Double, m12: Double, m21: Double, m22: Double, m41: Double, m42: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.a] = a.jsValue
-        object[Strings.b] = b.jsValue
-        object[Strings.c] = c.jsValue
-        object[Strings.d] = d.jsValue
-        object[Strings.e] = e.jsValue
-        object[Strings.f] = f.jsValue
-        object[Strings.m11] = m11.jsValue
-        object[Strings.m12] = m12.jsValue
-        object[Strings.m21] = m21.jsValue
-        object[Strings.m22] = m22.jsValue
-        object[Strings.m41] = m41.jsValue
-        object[Strings.m42] = m42.jsValue
+        object[Strings.a] = _toJSValue(a)
+        object[Strings.b] = _toJSValue(b)
+        object[Strings.c] = _toJSValue(c)
+        object[Strings.d] = _toJSValue(d)
+        object[Strings.e] = _toJSValue(e)
+        object[Strings.f] = _toJSValue(f)
+        object[Strings.m11] = _toJSValue(m11)
+        object[Strings.m12] = _toJSValue(m12)
+        object[Strings.m21] = _toJSValue(m21)
+        object[Strings.m22] = _toJSValue(m22)
+        object[Strings.m41] = _toJSValue(m41)
+        object[Strings.m42] = _toJSValue(m42)
         self.init(unsafelyWrapping: object)
     }
 
@@ -3090,17 +3030,17 @@ public class DOMMatrix2DInit: BridgedDictionary {
 public class DOMMatrixInit: BridgedDictionary {
     public convenience init(m13: Double, m14: Double, m23: Double, m24: Double, m31: Double, m32: Double, m33: Double, m34: Double, m43: Double, m44: Double, is2D: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.m13] = m13.jsValue
-        object[Strings.m14] = m14.jsValue
-        object[Strings.m23] = m23.jsValue
-        object[Strings.m24] = m24.jsValue
-        object[Strings.m31] = m31.jsValue
-        object[Strings.m32] = m32.jsValue
-        object[Strings.m33] = m33.jsValue
-        object[Strings.m34] = m34.jsValue
-        object[Strings.m43] = m43.jsValue
-        object[Strings.m44] = m44.jsValue
-        object[Strings.is2D] = is2D.jsValue
+        object[Strings.m13] = _toJSValue(m13)
+        object[Strings.m14] = _toJSValue(m14)
+        object[Strings.m23] = _toJSValue(m23)
+        object[Strings.m24] = _toJSValue(m24)
+        object[Strings.m31] = _toJSValue(m31)
+        object[Strings.m32] = _toJSValue(m32)
+        object[Strings.m33] = _toJSValue(m33)
+        object[Strings.m34] = _toJSValue(m34)
+        object[Strings.m43] = _toJSValue(m43)
+        object[Strings.m44] = _toJSValue(m44)
+        object[Strings.is2D] = _toJSValue(is2D)
         self.init(unsafelyWrapping: object)
     }
 
@@ -3187,22 +3127,22 @@ public class DOMMatrixReadOnly: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: String_or_seq_of_Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @inlinable public static func fromMatrix(other: DOMMatrixInit? = nil) -> Self {
         let this = constructor!
-        return this[Strings.fromMatrix].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.fromMatrix].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @inlinable public static func fromFloat32Array(array32: Float32Array) -> Self {
         let this = constructor!
-        return this[Strings.fromFloat32Array].function!(this: this, arguments: [array32.jsValue]).fromJSValue()!
+        return this[Strings.fromFloat32Array].function!(this: this, arguments: [_toJSValue(array32)]).fromJSValue()!
     }
 
     @inlinable public static func fromFloat64Array(array64: Float64Array) -> Self {
         let this = constructor!
-        return this[Strings.fromFloat64Array].function!(this: this, arguments: [array64.jsValue]).fromJSValue()!
+        return this[Strings.fromFloat64Array].function!(this: this, arguments: [_toJSValue(array64)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -3279,58 +3219,52 @@ public class DOMMatrixReadOnly: JSBridgedClass {
 
     @inlinable public func translate(tx: Double? = nil, ty: Double? = nil, tz: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.translate].function!(this: this, arguments: [tx?.jsValue ?? .undefined, ty?.jsValue ?? .undefined, tz?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.translate].function!(this: this, arguments: [_toJSValue(tx), _toJSValue(ty), _toJSValue(tz)]).fromJSValue()!
     }
 
     @inlinable public func scale(scaleX: Double? = nil, scaleY: Double? = nil, scaleZ: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> DOMMatrix {
-        let _arg0 = scaleX?.jsValue ?? .undefined
-        let _arg1 = scaleY?.jsValue ?? .undefined
-        let _arg2 = scaleZ?.jsValue ?? .undefined
-        let _arg3 = originX?.jsValue ?? .undefined
-        let _arg4 = originY?.jsValue ?? .undefined
-        let _arg5 = originZ?.jsValue ?? .undefined
         let this = jsObject
-        return this[Strings.scale].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
+        return this[Strings.scale].function!(this: this, arguments: [_toJSValue(scaleX), _toJSValue(scaleY), _toJSValue(scaleZ), _toJSValue(originX), _toJSValue(originY), _toJSValue(originZ)]).fromJSValue()!
     }
 
     @inlinable public func scaleNonUniform(scaleX: Double? = nil, scaleY: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.scaleNonUniform].function!(this: this, arguments: [scaleX?.jsValue ?? .undefined, scaleY?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.scaleNonUniform].function!(this: this, arguments: [_toJSValue(scaleX), _toJSValue(scaleY)]).fromJSValue()!
     }
 
     @inlinable public func scale3d(scale: Double? = nil, originX: Double? = nil, originY: Double? = nil, originZ: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.scale3d].function!(this: this, arguments: [scale?.jsValue ?? .undefined, originX?.jsValue ?? .undefined, originY?.jsValue ?? .undefined, originZ?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.scale3d].function!(this: this, arguments: [_toJSValue(scale), _toJSValue(originX), _toJSValue(originY), _toJSValue(originZ)]).fromJSValue()!
     }
 
     @inlinable public func rotate(rotX: Double? = nil, rotY: Double? = nil, rotZ: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.rotate].function!(this: this, arguments: [rotX?.jsValue ?? .undefined, rotY?.jsValue ?? .undefined, rotZ?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.rotate].function!(this: this, arguments: [_toJSValue(rotX), _toJSValue(rotY), _toJSValue(rotZ)]).fromJSValue()!
     }
 
     @inlinable public func rotateFromVector(x: Double? = nil, y: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.rotateFromVector].function!(this: this, arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateFromVector].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()!
     }
 
     @inlinable public func rotateAxisAngle(x: Double? = nil, y: Double? = nil, z: Double? = nil, angle: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.rotateAxisAngle].function!(this: this, arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, z?.jsValue ?? .undefined, angle?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.rotateAxisAngle].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(angle)]).fromJSValue()!
     }
 
     @inlinable public func skewX(sx: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.skewX].function!(this: this, arguments: [sx?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.skewX].function!(this: this, arguments: [_toJSValue(sx)]).fromJSValue()!
     }
 
     @inlinable public func skewY(sy: Double? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.skewY].function!(this: this, arguments: [sy?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.skewY].function!(this: this, arguments: [_toJSValue(sy)]).fromJSValue()!
     }
 
     @inlinable public func multiply(other: DOMMatrixInit? = nil) -> DOMMatrix {
         let this = jsObject
-        return this[Strings.multiply].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.multiply].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @inlinable public func flipX() -> DOMMatrix {
@@ -3350,7 +3284,7 @@ public class DOMMatrixReadOnly: JSBridgedClass {
 
     @inlinable public func transformPoint(point: DOMPointInit? = nil) -> DOMPoint {
         let this = jsObject
-        return this[Strings.transformPoint].function!(this: this, arguments: [point?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.transformPoint].function!(this: this, arguments: [_toJSValue(point)]).fromJSValue()!
     }
 
     @inlinable public func toFloat32Array() -> Float32Array {
@@ -3388,7 +3322,7 @@ public class DOMParser: JSBridgedClass {
 
     @inlinable public func parseFromString(string: String, type: DOMParserSupportedType) -> Document {
         let this = jsObject
-        return this[Strings.parseFromString].function!(this: this, arguments: [string.jsValue, type.jsValue]).fromJSValue()!
+        return this[Strings.parseFromString].function!(this: this, arguments: [_toJSValue(string), _toJSValue(type)]).fromJSValue()!
     }
 }
 
@@ -3425,7 +3359,7 @@ public class DOMPoint: DOMPointReadOnly {
     }
 
     @inlinable public convenience init(x: Double? = nil, y: Double? = nil, z: Double? = nil, w: Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, z?.jsValue ?? .undefined, w?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(w)]))
     }
 
     // XXX: illegal static override
@@ -3459,10 +3393,10 @@ public class DOMPoint: DOMPointReadOnly {
 public class DOMPointInit: BridgedDictionary {
     public convenience init(x: Double, y: Double, z: Double, w: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.x] = x.jsValue
-        object[Strings.y] = y.jsValue
-        object[Strings.z] = z.jsValue
-        object[Strings.w] = w.jsValue
+        object[Strings.x] = _toJSValue(x)
+        object[Strings.y] = _toJSValue(y)
+        object[Strings.z] = _toJSValue(z)
+        object[Strings.w] = _toJSValue(w)
         self.init(unsafelyWrapping: object)
     }
 
@@ -3501,12 +3435,12 @@ public class DOMPointReadOnly: JSBridgedClass {
     }
 
     @inlinable public convenience init(x: Double? = nil, y: Double? = nil, z: Double? = nil, w: Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, z?.jsValue ?? .undefined, w?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(w)]))
     }
 
     @inlinable public static func fromPoint(other: DOMPointInit? = nil) -> Self {
         let this = constructor!
-        return this[Strings.fromPoint].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.fromPoint].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -3523,7 +3457,7 @@ public class DOMPointReadOnly: JSBridgedClass {
 
     @inlinable public func matrixTransform(matrix: DOMMatrixInit? = nil) -> DOMPoint {
         let this = jsObject
-        return this[Strings.matrixTransform].function!(this: this, arguments: [matrix?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.matrixTransform].function!(this: this, arguments: [_toJSValue(matrix)]).fromJSValue()!
     }
 
     @inlinable public func toJSON() -> JSObject {
@@ -3546,17 +3480,17 @@ public class DOMQuad: JSBridgedClass {
     }
 
     @inlinable public convenience init(p1: DOMPointInit? = nil, p2: DOMPointInit? = nil, p3: DOMPointInit? = nil, p4: DOMPointInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [p1?.jsValue ?? .undefined, p2?.jsValue ?? .undefined, p3?.jsValue ?? .undefined, p4?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(p1), _toJSValue(p2), _toJSValue(p3), _toJSValue(p4)]))
     }
 
     @inlinable public static func fromRect(other: DOMRectInit? = nil) -> Self {
         let this = constructor!
-        return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.fromRect].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @inlinable public static func fromQuad(other: DOMQuadInit? = nil) -> Self {
         let this = constructor!
-        return this[Strings.fromQuad].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.fromQuad].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -3585,10 +3519,10 @@ public class DOMQuad: JSBridgedClass {
 public class DOMQuadInit: BridgedDictionary {
     public convenience init(p1: DOMPointInit, p2: DOMPointInit, p3: DOMPointInit, p4: DOMPointInit) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.p1] = p1.jsValue
-        object[Strings.p2] = p2.jsValue
-        object[Strings.p3] = p3.jsValue
-        object[Strings.p4] = p4.jsValue
+        object[Strings.p1] = _toJSValue(p1)
+        object[Strings.p2] = _toJSValue(p2)
+        object[Strings.p3] = _toJSValue(p3)
+        object[Strings.p4] = _toJSValue(p4)
         self.init(unsafelyWrapping: object)
     }
 
@@ -3625,7 +3559,7 @@ public class DOMRect: DOMRectReadOnly {
     }
 
     @inlinable public convenience init(x: Double? = nil, y: Double? = nil, width: Double? = nil, height: Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, width?.jsValue ?? .undefined, height?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height)]))
     }
 
     // XXX: illegal static override
@@ -3659,10 +3593,10 @@ public class DOMRect: DOMRectReadOnly {
 public class DOMRectInit: BridgedDictionary {
     public convenience init(x: Double, y: Double, width: Double, height: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.x] = x.jsValue
-        object[Strings.y] = y.jsValue
-        object[Strings.width] = width.jsValue
-        object[Strings.height] = height.jsValue
+        object[Strings.x] = _toJSValue(x)
+        object[Strings.y] = _toJSValue(y)
+        object[Strings.width] = _toJSValue(width)
+        object[Strings.height] = _toJSValue(height)
         self.init(unsafelyWrapping: object)
     }
 
@@ -3723,12 +3657,12 @@ public class DOMRectReadOnly: JSBridgedClass {
     }
 
     @inlinable public convenience init(x: Double? = nil, y: Double? = nil, width: Double? = nil, height: Double? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [x?.jsValue ?? .undefined, y?.jsValue ?? .undefined, width?.jsValue ?? .undefined, height?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height)]))
     }
 
     @inlinable public static func fromRect(other: DOMRectInit? = nil) -> Self {
         let this = constructor!
-        return this[Strings.fromRect].function!(this: this, arguments: [other?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.fromRect].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -3780,7 +3714,7 @@ public class DOMStringList: JSBridgedClass {
 
     @inlinable public func contains(string: String) -> Bool {
         let this = jsObject
-        return this[Strings.contains].function!(this: this, arguments: [string.jsValue]).fromJSValue()!
+        return this[Strings.contains].function!(this: this, arguments: [_toJSValue(string)]).fromJSValue()!
     }
 }
 
@@ -3822,32 +3756,32 @@ public class DOMTokenList: JSBridgedClass, Sequence {
 
     @inlinable public func contains(token: String) -> Bool {
         let this = jsObject
-        return this[Strings.contains].function!(this: this, arguments: [token.jsValue]).fromJSValue()!
+        return this[Strings.contains].function!(this: this, arguments: [_toJSValue(token)]).fromJSValue()!
     }
 
     @inlinable public func add(tokens: String...) {
         let this = jsObject
-        _ = this[Strings.add].function!(this: this, arguments: tokens.map(\.jsValue))
+        _ = this[Strings.add].function!(this: this, arguments: tokens.map(_toJSValue))
     }
 
     @inlinable public func remove(tokens: String...) {
         let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: tokens.map(\.jsValue))
+        _ = this[Strings.remove].function!(this: this, arguments: tokens.map(_toJSValue))
     }
 
     @inlinable public func toggle(token: String, force: Bool? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.toggle].function!(this: this, arguments: [token.jsValue, force?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.toggle].function!(this: this, arguments: [_toJSValue(token), _toJSValue(force)]).fromJSValue()!
     }
 
     @inlinable public func replace(token: String, newToken: String) -> Bool {
         let this = jsObject
-        return this[Strings.replace].function!(this: this, arguments: [token.jsValue, newToken.jsValue]).fromJSValue()!
+        return this[Strings.replace].function!(this: this, arguments: [_toJSValue(token), _toJSValue(newToken)]).fromJSValue()!
     }
 
     @inlinable public func supports(token: String) -> Bool {
         let this = jsObject
-        return this[Strings.supports].function!(this: this, arguments: [token.jsValue]).fromJSValue()!
+        return this[Strings.supports].function!(this: this, arguments: [_toJSValue(token)]).fromJSValue()!
     }
 
     @ReadWriteAttribute
@@ -3888,7 +3822,7 @@ public class DataTransfer: JSBridgedClass {
 
     @inlinable public func setDragImage(image: Element, x: Int32, y: Int32) {
         let this = jsObject
-        _ = this[Strings.setDragImage].function!(this: this, arguments: [image.jsValue, x.jsValue, y.jsValue])
+        _ = this[Strings.setDragImage].function!(this: this, arguments: [_toJSValue(image), _toJSValue(x), _toJSValue(y)])
     }
 
     @ReadonlyAttribute
@@ -3896,17 +3830,17 @@ public class DataTransfer: JSBridgedClass {
 
     @inlinable public func getData(format: String) -> String {
         let this = jsObject
-        return this[Strings.getData].function!(this: this, arguments: [format.jsValue]).fromJSValue()!
+        return this[Strings.getData].function!(this: this, arguments: [_toJSValue(format)]).fromJSValue()!
     }
 
     @inlinable public func setData(format: String, data: String) {
         let this = jsObject
-        _ = this[Strings.setData].function!(this: this, arguments: [format.jsValue, data.jsValue])
+        _ = this[Strings.setData].function!(this: this, arguments: [_toJSValue(format), _toJSValue(data)])
     }
 
     @inlinable public func clearData(format: String? = nil) {
         let this = jsObject
-        _ = this[Strings.clearData].function!(this: this, arguments: [format?.jsValue ?? .undefined])
+        _ = this[Strings.clearData].function!(this: this, arguments: [_toJSValue(format)])
     }
 
     @ReadonlyAttribute
@@ -3957,17 +3891,17 @@ public class DataTransferItemList: JSBridgedClass {
 
     @inlinable public func add(data: String, type: String) -> DataTransferItem? {
         let this = jsObject
-        return this[Strings.add].function!(this: this, arguments: [data.jsValue, type.jsValue]).fromJSValue()!
+        return this[Strings.add].function!(this: this, arguments: [_toJSValue(data), _toJSValue(type)]).fromJSValue()!
     }
 
     @inlinable public func add(data: File) -> DataTransferItem? {
         let this = jsObject
-        return this[Strings.add].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
+        return this[Strings.add].function!(this: this, arguments: [_toJSValue(data)]).fromJSValue()!
     }
 
     @inlinable public func remove(index: UInt32) {
         let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue])
+        _ = this[Strings.remove].function!(this: this, arguments: [_toJSValue(index)])
     }
 
     @inlinable public func clear() {
@@ -3979,7 +3913,7 @@ public class DataTransferItemList: JSBridgedClass {
 public class DevicePermissionDescriptor: BridgedDictionary {
     public convenience init(deviceId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.deviceId] = deviceId.jsValue
+        object[Strings.deviceId] = _toJSValue(deviceId)
         self.init(unsafelyWrapping: object)
     }
 
@@ -4077,27 +4011,27 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func getElementsByTagName(qualifiedName: String) -> HTMLCollection {
         let this = jsObject
-        return this[Strings.getElementsByTagName].function!(this: this, arguments: [qualifiedName.jsValue]).fromJSValue()!
+        return this[Strings.getElementsByTagName].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
     }
 
     @inlinable public func getElementsByTagNameNS(namespace: String?, localName: String) -> HTMLCollection {
         let this = jsObject
-        return this[Strings.getElementsByTagNameNS].function!(this: this, arguments: [namespace.jsValue, localName.jsValue]).fromJSValue()!
+        return this[Strings.getElementsByTagNameNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
     }
 
     @inlinable public func getElementsByClassName(classNames: String) -> HTMLCollection {
         let this = jsObject
-        return this[Strings.getElementsByClassName].function!(this: this, arguments: [classNames.jsValue]).fromJSValue()!
+        return this[Strings.getElementsByClassName].function!(this: this, arguments: [_toJSValue(classNames)]).fromJSValue()!
     }
 
     @inlinable public func createElement(localName: String, options: ElementCreationOptions_or_String? = nil) -> Element {
         let this = jsObject
-        return this[Strings.createElement].function!(this: this, arguments: [localName.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createElement].function!(this: this, arguments: [_toJSValue(localName), _toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable public func createElementNS(namespace: String?, qualifiedName: String, options: ElementCreationOptions_or_String? = nil) -> Element {
         let this = jsObject
-        return this[Strings.createElementNS].function!(this: this, arguments: [namespace.jsValue, qualifiedName.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createElementNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(qualifiedName), _toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable public func createDocumentFragment() -> DocumentFragment {
@@ -4107,47 +4041,47 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func createTextNode(data: String) -> Text {
         let this = jsObject
-        return this[Strings.createTextNode].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
+        return this[Strings.createTextNode].function!(this: this, arguments: [_toJSValue(data)]).fromJSValue()!
     }
 
     @inlinable public func createCDATASection(data: String) -> CDATASection {
         let this = jsObject
-        return this[Strings.createCDATASection].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
+        return this[Strings.createCDATASection].function!(this: this, arguments: [_toJSValue(data)]).fromJSValue()!
     }
 
     @inlinable public func createComment(data: String) -> Comment {
         let this = jsObject
-        return this[Strings.createComment].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
+        return this[Strings.createComment].function!(this: this, arguments: [_toJSValue(data)]).fromJSValue()!
     }
 
     @inlinable public func createProcessingInstruction(target: String, data: String) -> ProcessingInstruction {
         let this = jsObject
-        return this[Strings.createProcessingInstruction].function!(this: this, arguments: [target.jsValue, data.jsValue]).fromJSValue()!
+        return this[Strings.createProcessingInstruction].function!(this: this, arguments: [_toJSValue(target), _toJSValue(data)]).fromJSValue()!
     }
 
     @inlinable public func importNode(node: Node, deep: Bool? = nil) -> Node {
         let this = jsObject
-        return this[Strings.importNode].function!(this: this, arguments: [node.jsValue, deep?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.importNode].function!(this: this, arguments: [_toJSValue(node), _toJSValue(deep)]).fromJSValue()!
     }
 
     @inlinable public func adoptNode(node: Node) -> Node {
         let this = jsObject
-        return this[Strings.adoptNode].function!(this: this, arguments: [node.jsValue]).fromJSValue()!
+        return this[Strings.adoptNode].function!(this: this, arguments: [_toJSValue(node)]).fromJSValue()!
     }
 
     @inlinable public func createAttribute(localName: String) -> Attr {
         let this = jsObject
-        return this[Strings.createAttribute].function!(this: this, arguments: [localName.jsValue]).fromJSValue()!
+        return this[Strings.createAttribute].function!(this: this, arguments: [_toJSValue(localName)]).fromJSValue()!
     }
 
     @inlinable public func createAttributeNS(namespace: String?, qualifiedName: String) -> Attr {
         let this = jsObject
-        return this[Strings.createAttributeNS].function!(this: this, arguments: [namespace.jsValue, qualifiedName.jsValue]).fromJSValue()!
+        return this[Strings.createAttributeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(qualifiedName)]).fromJSValue()!
     }
 
     @inlinable public func createEvent(interface: String) -> Event {
         let this = jsObject
-        return this[Strings.createEvent].function!(this: this, arguments: [interface.jsValue]).fromJSValue()!
+        return this[Strings.createEvent].function!(this: this, arguments: [_toJSValue(interface)]).fromJSValue()!
     }
 
     @inlinable public func createRange() -> Range {
@@ -4213,7 +4147,7 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func getElementsByName(elementName: String) -> NodeList {
         let this = jsObject
-        return this[Strings.getElementsByName].function!(this: this, arguments: [elementName.jsValue]).fromJSValue()!
+        return this[Strings.getElementsByName].function!(this: this, arguments: [_toJSValue(elementName)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -4221,12 +4155,12 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func open(unused1: String? = nil, unused2: String? = nil) -> Self {
         let this = jsObject
-        return this[Strings.open].function!(this: this, arguments: [unused1?.jsValue ?? .undefined, unused2?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.open].function!(this: this, arguments: [_toJSValue(unused1), _toJSValue(unused2)]).fromJSValue()!
     }
 
     @inlinable public func open(url: String, name: String, features: String) -> WindowProxy? {
         let this = jsObject
-        return this[Strings.open].function!(this: this, arguments: [url.jsValue, name.jsValue, features.jsValue]).fromJSValue()!
+        return this[Strings.open].function!(this: this, arguments: [_toJSValue(url), _toJSValue(name), _toJSValue(features)]).fromJSValue()!
     }
 
     @inlinable public func close() {
@@ -4236,12 +4170,12 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func write(text: String...) {
         let this = jsObject
-        _ = this[Strings.write].function!(this: this, arguments: text.map(\.jsValue))
+        _ = this[Strings.write].function!(this: this, arguments: text.map(_toJSValue))
     }
 
     @inlinable public func writeln(text: String...) {
         let this = jsObject
-        _ = this[Strings.writeln].function!(this: this, arguments: text.map(\.jsValue))
+        _ = this[Strings.writeln].function!(this: this, arguments: text.map(_toJSValue))
     }
 
     @ReadonlyAttribute
@@ -4257,32 +4191,32 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func execCommand(commandId: String, showUI: Bool? = nil, value: String? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.execCommand].function!(this: this, arguments: [commandId.jsValue, showUI?.jsValue ?? .undefined, value?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.execCommand].function!(this: this, arguments: [_toJSValue(commandId), _toJSValue(showUI), _toJSValue(value)]).fromJSValue()!
     }
 
     @inlinable public func queryCommandEnabled(commandId: String) -> Bool {
         let this = jsObject
-        return this[Strings.queryCommandEnabled].function!(this: this, arguments: [commandId.jsValue]).fromJSValue()!
+        return this[Strings.queryCommandEnabled].function!(this: this, arguments: [_toJSValue(commandId)]).fromJSValue()!
     }
 
     @inlinable public func queryCommandIndeterm(commandId: String) -> Bool {
         let this = jsObject
-        return this[Strings.queryCommandIndeterm].function!(this: this, arguments: [commandId.jsValue]).fromJSValue()!
+        return this[Strings.queryCommandIndeterm].function!(this: this, arguments: [_toJSValue(commandId)]).fromJSValue()!
     }
 
     @inlinable public func queryCommandState(commandId: String) -> Bool {
         let this = jsObject
-        return this[Strings.queryCommandState].function!(this: this, arguments: [commandId.jsValue]).fromJSValue()!
+        return this[Strings.queryCommandState].function!(this: this, arguments: [_toJSValue(commandId)]).fromJSValue()!
     }
 
     @inlinable public func queryCommandSupported(commandId: String) -> Bool {
         let this = jsObject
-        return this[Strings.queryCommandSupported].function!(this: this, arguments: [commandId.jsValue]).fromJSValue()!
+        return this[Strings.queryCommandSupported].function!(this: this, arguments: [_toJSValue(commandId)]).fromJSValue()!
     }
 
     @inlinable public func queryCommandValue(commandId: String) -> String {
         let this = jsObject
-        return this[Strings.queryCommandValue].function!(this: this, arguments: [commandId.jsValue]).fromJSValue()!
+        return this[Strings.queryCommandValue].function!(this: this, arguments: [_toJSValue(commandId)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -4338,17 +4272,17 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func elementFromPoint(x: Double, y: Double) -> Element? {
         let this = jsObject
-        return this[Strings.elementFromPoint].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+        return this[Strings.elementFromPoint].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()!
     }
 
     @inlinable public func elementsFromPoint(x: Double, y: Double) -> [Element] {
         let this = jsObject
-        return this[Strings.elementsFromPoint].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+        return this[Strings.elementsFromPoint].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()!
     }
 
     @inlinable public func caretPositionFromPoint(x: Double, y: Double) -> CaretPosition? {
         let this = jsObject
-        return this[Strings.caretPositionFromPoint].function!(this: this, arguments: [x.jsValue, y.jsValue]).fromJSValue()!
+        return this[Strings.caretPositionFromPoint].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -4450,8 +4384,8 @@ public enum DocumentVisibilityState: JSString, JSValueCompatible {
 public class DoubleRange: BridgedDictionary {
     public convenience init(max: Double, min: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.max] = max.jsValue
-        object[Strings.min] = min.jsValue
+        object[Strings.max] = _toJSValue(max)
+        object[Strings.min] = _toJSValue(min)
         self.init(unsafelyWrapping: object)
     }
 
@@ -4477,7 +4411,7 @@ public class DragEvent: MouseEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: DragEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -4487,7 +4421,7 @@ public class DragEvent: MouseEvent {
 public class DragEventInit: BridgedDictionary {
     public convenience init(dataTransfer: DataTransfer?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.dataTransfer] = dataTransfer.jsValue
+        object[Strings.dataTransfer] = _toJSValue(dataTransfer)
         self.init(unsafelyWrapping: object)
     }
 
@@ -4564,77 +4498,77 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
 
     @inlinable public func getAttribute(qualifiedName: String) -> String? {
         let this = jsObject
-        return this[Strings.getAttribute].function!(this: this, arguments: [qualifiedName.jsValue]).fromJSValue()!
+        return this[Strings.getAttribute].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
     }
 
     @inlinable public func getAttributeNS(namespace: String?, localName: String) -> String? {
         let this = jsObject
-        return this[Strings.getAttributeNS].function!(this: this, arguments: [namespace.jsValue, localName.jsValue]).fromJSValue()!
+        return this[Strings.getAttributeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
     }
 
     @inlinable public func setAttribute(qualifiedName: String, value: String) {
         let this = jsObject
-        _ = this[Strings.setAttribute].function!(this: this, arguments: [qualifiedName.jsValue, value.jsValue])
+        _ = this[Strings.setAttribute].function!(this: this, arguments: [_toJSValue(qualifiedName), _toJSValue(value)])
     }
 
     @inlinable public func setAttributeNS(namespace: String?, qualifiedName: String, value: String) {
         let this = jsObject
-        _ = this[Strings.setAttributeNS].function!(this: this, arguments: [namespace.jsValue, qualifiedName.jsValue, value.jsValue])
+        _ = this[Strings.setAttributeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(qualifiedName), _toJSValue(value)])
     }
 
     @inlinable public func removeAttribute(qualifiedName: String) {
         let this = jsObject
-        _ = this[Strings.removeAttribute].function!(this: this, arguments: [qualifiedName.jsValue])
+        _ = this[Strings.removeAttribute].function!(this: this, arguments: [_toJSValue(qualifiedName)])
     }
 
     @inlinable public func removeAttributeNS(namespace: String?, localName: String) {
         let this = jsObject
-        _ = this[Strings.removeAttributeNS].function!(this: this, arguments: [namespace.jsValue, localName.jsValue])
+        _ = this[Strings.removeAttributeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)])
     }
 
     @inlinable public func toggleAttribute(qualifiedName: String, force: Bool? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.toggleAttribute].function!(this: this, arguments: [qualifiedName.jsValue, force?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.toggleAttribute].function!(this: this, arguments: [_toJSValue(qualifiedName), _toJSValue(force)]).fromJSValue()!
     }
 
     @inlinable public func hasAttribute(qualifiedName: String) -> Bool {
         let this = jsObject
-        return this[Strings.hasAttribute].function!(this: this, arguments: [qualifiedName.jsValue]).fromJSValue()!
+        return this[Strings.hasAttribute].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
     }
 
     @inlinable public func hasAttributeNS(namespace: String?, localName: String) -> Bool {
         let this = jsObject
-        return this[Strings.hasAttributeNS].function!(this: this, arguments: [namespace.jsValue, localName.jsValue]).fromJSValue()!
+        return this[Strings.hasAttributeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
     }
 
     @inlinable public func getAttributeNode(qualifiedName: String) -> Attr? {
         let this = jsObject
-        return this[Strings.getAttributeNode].function!(this: this, arguments: [qualifiedName.jsValue]).fromJSValue()!
+        return this[Strings.getAttributeNode].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
     }
 
     @inlinable public func getAttributeNodeNS(namespace: String?, localName: String) -> Attr? {
         let this = jsObject
-        return this[Strings.getAttributeNodeNS].function!(this: this, arguments: [namespace.jsValue, localName.jsValue]).fromJSValue()!
+        return this[Strings.getAttributeNodeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
     }
 
     @inlinable public func setAttributeNode(attr: Attr) -> Attr? {
         let this = jsObject
-        return this[Strings.setAttributeNode].function!(this: this, arguments: [attr.jsValue]).fromJSValue()!
+        return this[Strings.setAttributeNode].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()!
     }
 
     @inlinable public func setAttributeNodeNS(attr: Attr) -> Attr? {
         let this = jsObject
-        return this[Strings.setAttributeNodeNS].function!(this: this, arguments: [attr.jsValue]).fromJSValue()!
+        return this[Strings.setAttributeNodeNS].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()!
     }
 
     @inlinable public func removeAttributeNode(attr: Attr) -> Attr {
         let this = jsObject
-        return this[Strings.removeAttributeNode].function!(this: this, arguments: [attr.jsValue]).fromJSValue()!
+        return this[Strings.removeAttributeNode].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()!
     }
 
     @inlinable public func attachShadow(init: ShadowRootInit) -> ShadowRoot {
         let this = jsObject
-        return this[Strings.attachShadow].function!(this: this, arguments: [`init`.jsValue]).fromJSValue()!
+        return this[Strings.attachShadow].function!(this: this, arguments: [_toJSValue(`init`)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -4642,47 +4576,47 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
 
     @inlinable public func closest(selectors: String) -> Element? {
         let this = jsObject
-        return this[Strings.closest].function!(this: this, arguments: [selectors.jsValue]).fromJSValue()!
+        return this[Strings.closest].function!(this: this, arguments: [_toJSValue(selectors)]).fromJSValue()!
     }
 
     @inlinable public func matches(selectors: String) -> Bool {
         let this = jsObject
-        return this[Strings.matches].function!(this: this, arguments: [selectors.jsValue]).fromJSValue()!
+        return this[Strings.matches].function!(this: this, arguments: [_toJSValue(selectors)]).fromJSValue()!
     }
 
     @inlinable public func webkitMatchesSelector(selectors: String) -> Bool {
         let this = jsObject
-        return this[Strings.webkitMatchesSelector].function!(this: this, arguments: [selectors.jsValue]).fromJSValue()!
+        return this[Strings.webkitMatchesSelector].function!(this: this, arguments: [_toJSValue(selectors)]).fromJSValue()!
     }
 
     @inlinable public func getElementsByTagName(qualifiedName: String) -> HTMLCollection {
         let this = jsObject
-        return this[Strings.getElementsByTagName].function!(this: this, arguments: [qualifiedName.jsValue]).fromJSValue()!
+        return this[Strings.getElementsByTagName].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
     }
 
     @inlinable public func getElementsByTagNameNS(namespace: String?, localName: String) -> HTMLCollection {
         let this = jsObject
-        return this[Strings.getElementsByTagNameNS].function!(this: this, arguments: [namespace.jsValue, localName.jsValue]).fromJSValue()!
+        return this[Strings.getElementsByTagNameNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
     }
 
     @inlinable public func getElementsByClassName(classNames: String) -> HTMLCollection {
         let this = jsObject
-        return this[Strings.getElementsByClassName].function!(this: this, arguments: [classNames.jsValue]).fromJSValue()!
+        return this[Strings.getElementsByClassName].function!(this: this, arguments: [_toJSValue(classNames)]).fromJSValue()!
     }
 
     @inlinable public func insertAdjacentElement(where: String, element: Element) -> Element? {
         let this = jsObject
-        return this[Strings.insertAdjacentElement].function!(this: this, arguments: [`where`.jsValue, element.jsValue]).fromJSValue()!
+        return this[Strings.insertAdjacentElement].function!(this: this, arguments: [_toJSValue(`where`), _toJSValue(element)]).fromJSValue()!
     }
 
     @inlinable public func insertAdjacentText(where: String, data: String) {
         let this = jsObject
-        _ = this[Strings.insertAdjacentText].function!(this: this, arguments: [`where`.jsValue, data.jsValue])
+        _ = this[Strings.insertAdjacentText].function!(this: this, arguments: [_toJSValue(`where`), _toJSValue(data)])
     }
 
     @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
         let this = jsObject
-        return this[Strings.pseudo].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return this[Strings.pseudo].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
 
     @inlinable public func getClientRects() -> DOMRectList {
@@ -4697,42 +4631,42 @@ public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slo
 
     @inlinable public func isVisible(options: IsVisibleOptions? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.isVisible].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.isVisible].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable public func scrollIntoView(arg: Bool_or_ScrollIntoViewOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scrollIntoView].function!(this: this, arguments: [arg?.jsValue ?? .undefined])
+        _ = this[Strings.scrollIntoView].function!(this: this, arguments: [_toJSValue(arg)])
     }
 
     @inlinable public func scroll(options: ScrollToOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+        _ = this[Strings.scroll].function!(this: this, arguments: [_toJSValue(options)])
     }
 
     @inlinable public func scroll(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.scroll].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable public func scrollTo(options: ScrollToOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [_toJSValue(options)])
     }
 
     @inlinable public func scrollTo(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable public func scrollBy(options: ScrollToOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [_toJSValue(options)])
     }
 
     @inlinable public func scrollBy(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @ReadWriteAttribute
@@ -4764,26 +4698,26 @@ public protocol ElementContentEditable: JSBridgedClass {}
 public extension ElementContentEditable {
     @inlinable var contentEditable: String {
         get { jsObject[Strings.contentEditable].fromJSValue()! }
-        nonmutating set { jsObject[Strings.contentEditable] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.contentEditable] = _toJSValue(newValue) }
     }
 
     @inlinable var enterKeyHint: String {
         get { jsObject[Strings.enterKeyHint].fromJSValue()! }
-        nonmutating set { jsObject[Strings.enterKeyHint] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.enterKeyHint] = _toJSValue(newValue) }
     }
 
     @inlinable var isContentEditable: Bool { jsObject[Strings.isContentEditable].fromJSValue()! }
 
     @inlinable var inputMode: String {
         get { jsObject[Strings.inputMode].fromJSValue()! }
-        nonmutating set { jsObject[Strings.inputMode] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.inputMode] = _toJSValue(newValue) }
     }
 }
 
 public class ElementCreationOptions: BridgedDictionary {
     public convenience init(is: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.is] = `is`.jsValue
+        object[Strings.is] = _toJSValue(`is`)
         self.init(unsafelyWrapping: object)
     }
 
@@ -4799,7 +4733,7 @@ public class ElementCreationOptions: BridgedDictionary {
 public class ElementDefinitionOptions: BridgedDictionary {
     public convenience init(extends: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.extends] = extends.jsValue
+        object[Strings.extends] = _toJSValue(extends)
         self.init(unsafelyWrapping: object)
     }
 
@@ -4832,7 +4766,7 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
 
     @inlinable public func setFormValue(value: File_or_FormData_or_String?, state: File_or_FormData_or_String? = nil) {
         let this = jsObject
-        _ = this[Strings.setFormValue].function!(this: this, arguments: [value.jsValue, state?.jsValue ?? .undefined])
+        _ = this[Strings.setFormValue].function!(this: this, arguments: [_toJSValue(value), _toJSValue(state)])
     }
 
     @ReadonlyAttribute
@@ -4840,7 +4774,7 @@ public class ElementInternals: JSBridgedClass, ARIAMixin {
 
     @inlinable public func setValidity(flags: ValidityStateFlags? = nil, message: String? = nil, anchor: HTMLElement? = nil) {
         let this = jsObject
-        _ = this[Strings.setValidity].function!(this: this, arguments: [flags?.jsValue ?? .undefined, message?.jsValue ?? .undefined, anchor?.jsValue ?? .undefined])
+        _ = this[Strings.setValidity].function!(this: this, arguments: [_toJSValue(flags), _toJSValue(message), _toJSValue(anchor)])
     }
 
     @ReadonlyAttribute
@@ -4880,7 +4814,7 @@ public class EncodedAudioChunk: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: EncodedAudioChunkInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -4897,17 +4831,17 @@ public class EncodedAudioChunk: JSBridgedClass {
 
     @inlinable public func copyTo(destination: BufferSource) {
         let this = jsObject
-        _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue])
+        _ = this[Strings.copyTo].function!(this: this, arguments: [_toJSValue(destination)])
     }
 }
 
 public class EncodedAudioChunkInit: BridgedDictionary {
     public convenience init(type: EncodedAudioChunkType, timestamp: Int64, duration: UInt64, data: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue
-        object[Strings.timestamp] = timestamp.jsValue
-        object[Strings.duration] = duration.jsValue
-        object[Strings.data] = data.jsValue
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.timestamp] = _toJSValue(timestamp)
+        object[Strings.duration] = _toJSValue(duration)
+        object[Strings.data] = _toJSValue(data)
         self.init(unsafelyWrapping: object)
     }
 
@@ -4935,7 +4869,7 @@ public class EncodedAudioChunkInit: BridgedDictionary {
 public class EncodedAudioChunkMetadata: BridgedDictionary {
     public convenience init(decoderConfig: AudioDecoderConfig) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.decoderConfig] = decoderConfig.jsValue
+        object[Strings.decoderConfig] = _toJSValue(decoderConfig)
         self.init(unsafelyWrapping: object)
     }
 
@@ -4980,7 +4914,7 @@ public class EncodedVideoChunk: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: EncodedVideoChunkInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -4997,17 +4931,17 @@ public class EncodedVideoChunk: JSBridgedClass {
 
     @inlinable public func copyTo(destination: BufferSource) {
         let this = jsObject
-        _ = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue])
+        _ = this[Strings.copyTo].function!(this: this, arguments: [_toJSValue(destination)])
     }
 }
 
 public class EncodedVideoChunkInit: BridgedDictionary {
     public convenience init(type: EncodedVideoChunkType, timestamp: Int64, duration: UInt64, data: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue
-        object[Strings.timestamp] = timestamp.jsValue
-        object[Strings.duration] = duration.jsValue
-        object[Strings.data] = data.jsValue
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.timestamp] = _toJSValue(timestamp)
+        object[Strings.duration] = _toJSValue(duration)
+        object[Strings.data] = _toJSValue(data)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5035,9 +4969,9 @@ public class EncodedVideoChunkInit: BridgedDictionary {
 public class EncodedVideoChunkMetadata: BridgedDictionary {
     public convenience init(decoderConfig: VideoDecoderConfig, svc: SvcOutputMetadata, alphaSideData: BufferSource) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.decoderConfig] = decoderConfig.jsValue
-        object[Strings.svc] = svc.jsValue
-        object[Strings.alphaSideData] = alphaSideData.jsValue
+        object[Strings.decoderConfig] = _toJSValue(decoderConfig)
+        object[Strings.svc] = _toJSValue(svc)
+        object[Strings.alphaSideData] = _toJSValue(alphaSideData)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5125,7 +5059,7 @@ public class ErrorEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: ErrorEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -5147,11 +5081,11 @@ public class ErrorEvent: Event {
 public class ErrorEventInit: BridgedDictionary {
     public convenience init(message: String, filename: String, lineno: UInt32, colno: UInt32, error: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.message] = message.jsValue
-        object[Strings.filename] = filename.jsValue
-        object[Strings.lineno] = lineno.jsValue
-        object[Strings.colno] = colno.jsValue
-        object[Strings.error] = error.jsValue
+        object[Strings.message] = _toJSValue(message)
+        object[Strings.filename] = _toJSValue(filename)
+        object[Strings.lineno] = _toJSValue(lineno)
+        object[Strings.colno] = _toJSValue(colno)
+        object[Strings.error] = _toJSValue(error)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5203,7 +5137,7 @@ open class Event: JSBridgedClass {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: EventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -5275,16 +5209,16 @@ open class Event: JSBridgedClass {
 
     @inlinable public func initEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil) {
         let this = jsObject
-        _ = this[Strings.initEvent].function!(this: this, arguments: [type.jsValue, bubbles?.jsValue ?? .undefined, cancelable?.jsValue ?? .undefined])
+        _ = this[Strings.initEvent].function!(this: this, arguments: [_toJSValue(type), _toJSValue(bubbles), _toJSValue(cancelable)])
     }
 }
 
 public class EventInit: BridgedDictionary {
     public convenience init(bubbles: Bool, cancelable: Bool, composed: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.bubbles] = bubbles.jsValue
-        object[Strings.cancelable] = cancelable.jsValue
-        object[Strings.composed] = composed.jsValue
+        object[Strings.bubbles] = _toJSValue(bubbles)
+        object[Strings.cancelable] = _toJSValue(cancelable)
+        object[Strings.composed] = _toJSValue(composed)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5308,7 +5242,7 @@ public class EventInit: BridgedDictionary {
 public class EventListenerOptions: BridgedDictionary {
     public convenience init(capture: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.capture] = capture.jsValue
+        object[Strings.capture] = _toJSValue(capture)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5324,20 +5258,20 @@ public class EventListenerOptions: BridgedDictionary {
 public class EventModifierInit: BridgedDictionary {
     public convenience init(ctrlKey: Bool, shiftKey: Bool, altKey: Bool, metaKey: Bool, modifierAltGraph: Bool, modifierCapsLock: Bool, modifierFn: Bool, modifierFnLock: Bool, modifierHyper: Bool, modifierNumLock: Bool, modifierScrollLock: Bool, modifierSuper: Bool, modifierSymbol: Bool, modifierSymbolLock: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.ctrlKey] = ctrlKey.jsValue
-        object[Strings.shiftKey] = shiftKey.jsValue
-        object[Strings.altKey] = altKey.jsValue
-        object[Strings.metaKey] = metaKey.jsValue
-        object[Strings.modifierAltGraph] = modifierAltGraph.jsValue
-        object[Strings.modifierCapsLock] = modifierCapsLock.jsValue
-        object[Strings.modifierFn] = modifierFn.jsValue
-        object[Strings.modifierFnLock] = modifierFnLock.jsValue
-        object[Strings.modifierHyper] = modifierHyper.jsValue
-        object[Strings.modifierNumLock] = modifierNumLock.jsValue
-        object[Strings.modifierScrollLock] = modifierScrollLock.jsValue
-        object[Strings.modifierSuper] = modifierSuper.jsValue
-        object[Strings.modifierSymbol] = modifierSymbol.jsValue
-        object[Strings.modifierSymbolLock] = modifierSymbolLock.jsValue
+        object[Strings.ctrlKey] = _toJSValue(ctrlKey)
+        object[Strings.shiftKey] = _toJSValue(shiftKey)
+        object[Strings.altKey] = _toJSValue(altKey)
+        object[Strings.metaKey] = _toJSValue(metaKey)
+        object[Strings.modifierAltGraph] = _toJSValue(modifierAltGraph)
+        object[Strings.modifierCapsLock] = _toJSValue(modifierCapsLock)
+        object[Strings.modifierFn] = _toJSValue(modifierFn)
+        object[Strings.modifierFnLock] = _toJSValue(modifierFnLock)
+        object[Strings.modifierHyper] = _toJSValue(modifierHyper)
+        object[Strings.modifierNumLock] = _toJSValue(modifierNumLock)
+        object[Strings.modifierScrollLock] = _toJSValue(modifierScrollLock)
+        object[Strings.modifierSuper] = _toJSValue(modifierSuper)
+        object[Strings.modifierSymbol] = _toJSValue(modifierSymbol)
+        object[Strings.modifierSymbolLock] = _toJSValue(modifierSymbolLock)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5416,7 +5350,7 @@ public class EventSource: EventTarget {
     }
 
     @inlinable public convenience init(url: String, eventSourceInitDict: EventSourceInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [url.jsValue, eventSourceInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(url), _toJSValue(eventSourceInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -5452,7 +5386,7 @@ public class EventSource: EventTarget {
 public class EventSourceInit: BridgedDictionary {
     public convenience init(withCredentials: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.withCredentials] = withCredentials.jsValue
+        object[Strings.withCredentials] = _toJSValue(withCredentials)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5484,7 +5418,7 @@ open class EventTarget: JSBridgedClass {
 
     @inlinable public func dispatchEvent(event: Event) -> Bool {
         let this = jsObject
-        return this[Strings.dispatchEvent].function!(this: this, arguments: [event.jsValue]).fromJSValue()!
+        return this[Strings.dispatchEvent].function!(this: this, arguments: [_toJSValue(event)]).fromJSValue()!
     }
 }
 
@@ -5523,12 +5457,12 @@ public class External: JSBridgedClass {
 public class FetchEventInit: BridgedDictionary {
     public convenience init(request: Request, preloadResponse: JSPromise, clientId: String, resultingClientId: String, replacesClientId: String, handled: JSPromise) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.request] = request.jsValue
-        object[Strings.preloadResponse] = preloadResponse.jsValue
-        object[Strings.clientId] = clientId.jsValue
-        object[Strings.resultingClientId] = resultingClientId.jsValue
-        object[Strings.replacesClientId] = replacesClientId.jsValue
-        object[Strings.handled] = handled.jsValue
+        object[Strings.request] = _toJSValue(request)
+        object[Strings.preloadResponse] = _toJSValue(preloadResponse)
+        object[Strings.clientId] = _toJSValue(clientId)
+        object[Strings.resultingClientId] = _toJSValue(resultingClientId)
+        object[Strings.replacesClientId] = _toJSValue(replacesClientId)
+        object[Strings.handled] = _toJSValue(handled)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5571,7 +5505,7 @@ public class File: Blob {
     }
 
     @inlinable public convenience init(fileBits: [BlobPart], fileName: String, options: FilePropertyBag? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [fileBits.jsValue, fileName.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(fileBits), _toJSValue(fileName), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -5602,7 +5536,7 @@ public class FileList: JSBridgedClass {
 public class FilePropertyBag: BridgedDictionary {
     public convenience init(lastModified: Int64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.lastModified] = lastModified.jsValue
+        object[Strings.lastModified] = _toJSValue(lastModified)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5637,22 +5571,22 @@ public class FileReader: EventTarget {
 
     @inlinable public func readAsArrayBuffer(blob: Blob) {
         let this = jsObject
-        _ = this[Strings.readAsArrayBuffer].function!(this: this, arguments: [blob.jsValue])
+        _ = this[Strings.readAsArrayBuffer].function!(this: this, arguments: [_toJSValue(blob)])
     }
 
     @inlinable public func readAsBinaryString(blob: Blob) {
         let this = jsObject
-        _ = this[Strings.readAsBinaryString].function!(this: this, arguments: [blob.jsValue])
+        _ = this[Strings.readAsBinaryString].function!(this: this, arguments: [_toJSValue(blob)])
     }
 
     @inlinable public func readAsText(blob: Blob, encoding: String? = nil) {
         let this = jsObject
-        _ = this[Strings.readAsText].function!(this: this, arguments: [blob.jsValue, encoding?.jsValue ?? .undefined])
+        _ = this[Strings.readAsText].function!(this: this, arguments: [_toJSValue(blob), _toJSValue(encoding)])
     }
 
     @inlinable public func readAsDataURL(blob: Blob) {
         let this = jsObject
-        _ = this[Strings.readAsDataURL].function!(this: this, arguments: [blob.jsValue])
+        _ = this[Strings.readAsDataURL].function!(this: this, arguments: [_toJSValue(blob)])
     }
 
     @inlinable public func abort() {
@@ -5703,7 +5637,7 @@ public class FocusEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: FocusEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -5713,7 +5647,7 @@ public class FocusEvent: UIEvent {
 public class FocusEventInit: BridgedDictionary {
     public convenience init(relatedTarget: EventTarget?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.relatedTarget] = relatedTarget.jsValue
+        object[Strings.relatedTarget] = _toJSValue(relatedTarget)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5729,7 +5663,7 @@ public class FocusEventInit: BridgedDictionary {
 public class FocusOptions: BridgedDictionary {
     public convenience init(preventScroll: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.preventScroll] = preventScroll.jsValue
+        object[Strings.preventScroll] = _toJSValue(preventScroll)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5752,47 +5686,47 @@ public class FormData: JSBridgedClass, Sequence {
     }
 
     @inlinable public convenience init(form: HTMLFormElement? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [form?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(form)]))
     }
 
     @inlinable public func append(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: [name.jsValue, value.jsValue])
+        _ = this[Strings.append].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)])
     }
 
     @inlinable public func append(name: String, blobValue: Blob, filename: String? = nil) {
         let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: [name.jsValue, blobValue.jsValue, filename?.jsValue ?? .undefined])
+        _ = this[Strings.append].function!(this: this, arguments: [_toJSValue(name), _toJSValue(blobValue), _toJSValue(filename)])
     }
 
     @inlinable public func delete(name: String) {
         let this = jsObject
-        _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue])
+        _ = this[Strings.delete].function!(this: this, arguments: [_toJSValue(name)])
     }
 
     @inlinable public func get(name: String) -> FormDataEntryValue? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func getAll(name: String) -> [FormDataEntryValue] {
         let this = jsObject
-        return this[Strings.getAll].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.getAll].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func has(name: String) -> Bool {
         let this = jsObject
-        return this[Strings.has].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.has].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func set(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.set].function!(this: this, arguments: [name.jsValue, value.jsValue])
+        _ = this[Strings.set].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)])
     }
 
     @inlinable public func set(name: String, blobValue: Blob, filename: String? = nil) {
         let this = jsObject
-        _ = this[Strings.set].function!(this: this, arguments: [name.jsValue, blobValue.jsValue, filename?.jsValue ?? .undefined])
+        _ = this[Strings.set].function!(this: this, arguments: [_toJSValue(name), _toJSValue(blobValue), _toJSValue(filename)])
     }
 
     public typealias Element = String
@@ -5810,7 +5744,7 @@ public class FormDataEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: FormDataEventInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -5820,7 +5754,7 @@ public class FormDataEvent: Event {
 public class FormDataEventInit: BridgedDictionary {
     public convenience init(formData: FormData) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.formData] = formData.jsValue
+        object[Strings.formData] = _toJSValue(formData)
         self.init(unsafelyWrapping: object)
     }
 
@@ -5864,29 +5798,29 @@ public protocol GeometryUtils: JSBridgedClass {}
 public extension GeometryUtils {
     @inlinable func getBoxQuads(options: BoxQuadOptions? = nil) -> [DOMQuad] {
         let this = jsObject
-        return this[Strings.getBoxQuads].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.getBoxQuads].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable func convertQuadFromNode(quad: DOMQuadInit, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMQuad {
         let this = jsObject
-        return this[Strings.convertQuadFromNode].function!(this: this, arguments: [quad.jsValue, from.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.convertQuadFromNode].function!(this: this, arguments: [_toJSValue(quad), _toJSValue(from), _toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable func convertRectFromNode(rect: DOMRectReadOnly, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMQuad {
         let this = jsObject
-        return this[Strings.convertRectFromNode].function!(this: this, arguments: [rect.jsValue, from.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.convertRectFromNode].function!(this: this, arguments: [_toJSValue(rect), _toJSValue(from), _toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable func convertPointFromNode(point: DOMPointInit, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMPoint {
         let this = jsObject
-        return this[Strings.convertPointFromNode].function!(this: this, arguments: [point.jsValue, from.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.convertPointFromNode].function!(this: this, arguments: [_toJSValue(point), _toJSValue(from), _toJSValue(options)]).fromJSValue()!
     }
 }
 
 public class GetRootNodeOptions: BridgedDictionary {
     public convenience init(composed: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.composed] = composed.jsValue
+        object[Strings.composed] = _toJSValue(composed)
         self.init(unsafelyWrapping: object)
     }
 
@@ -6285,7 +6219,7 @@ public class HTMLAllCollection: JSBridgedClass {
 
     @inlinable public func item(nameOrIndex: String? = nil) -> Element_or_HTMLCollection? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [nameOrIndex?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(nameOrIndex)]).fromJSValue()!
     }
 }
 
@@ -6569,7 +6503,7 @@ public class HTMLButtonElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [_toJSValue(error)])
     }
 
     @ReadonlyAttribute
@@ -6599,7 +6533,7 @@ public class HTMLCanvasElement: HTMLElement {
 
     @inlinable public func toDataURL(type: String? = nil, quality: JSValue? = nil) -> String {
         let this = jsObject
-        return this[Strings.toDataURL].function!(this: this, arguments: [type?.jsValue ?? .undefined, quality?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.toDataURL].function!(this: this, arguments: [_toJSValue(type), _toJSValue(quality)]).fromJSValue()!
     }
 
     // XXX: member 'toBlob' is ignored
@@ -6727,7 +6661,7 @@ public class HTMLDialogElement: HTMLElement {
 
     @inlinable public func close(returnValue: String? = nil) {
         let this = jsObject
-        _ = this[Strings.close].function!(this: this, arguments: [returnValue?.jsValue ?? .undefined])
+        _ = this[Strings.close].function!(this: this, arguments: [_toJSValue(returnValue)])
     }
 }
 
@@ -6953,7 +6887,7 @@ public class HTMLFieldSetElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [_toJSValue(error)])
     }
 }
 
@@ -7071,7 +7005,7 @@ public class HTMLFormElement: HTMLElement {
 
     @inlinable public func requestSubmit(submitter: HTMLElement? = nil) {
         let this = jsObject
-        _ = this[Strings.requestSubmit].function!(this: this, arguments: [submitter?.jsValue ?? .undefined])
+        _ = this[Strings.requestSubmit].function!(this: this, arguments: [_toJSValue(submitter)])
     }
 
     @inlinable public func reset() {
@@ -7242,54 +7176,54 @@ public protocol HTMLHyperlinkElementUtils: JSBridgedClass {}
 public extension HTMLHyperlinkElementUtils {
     @inlinable var href: String {
         get { jsObject[Strings.href].fromJSValue()! }
-        nonmutating set { jsObject[Strings.href] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.href] = _toJSValue(newValue) }
     }
 
     @inlinable var origin: String { jsObject[Strings.origin].fromJSValue()! }
 
     @inlinable var `protocol`: String {
         get { jsObject[Strings.protocol].fromJSValue()! }
-        nonmutating set { jsObject[Strings.protocol] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.protocol] = _toJSValue(newValue) }
     }
 
     @inlinable var username: String {
         get { jsObject[Strings.username].fromJSValue()! }
-        nonmutating set { jsObject[Strings.username] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.username] = _toJSValue(newValue) }
     }
 
     @inlinable var password: String {
         get { jsObject[Strings.password].fromJSValue()! }
-        nonmutating set { jsObject[Strings.password] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.password] = _toJSValue(newValue) }
     }
 
     @inlinable var host: String {
         get { jsObject[Strings.host].fromJSValue()! }
-        nonmutating set { jsObject[Strings.host] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.host] = _toJSValue(newValue) }
     }
 
     @inlinable var hostname: String {
         get { jsObject[Strings.hostname].fromJSValue()! }
-        nonmutating set { jsObject[Strings.hostname] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.hostname] = _toJSValue(newValue) }
     }
 
     @inlinable var port: String {
         get { jsObject[Strings.port].fromJSValue()! }
-        nonmutating set { jsObject[Strings.port] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.port] = _toJSValue(newValue) }
     }
 
     @inlinable var pathname: String {
         get { jsObject[Strings.pathname].fromJSValue()! }
-        nonmutating set { jsObject[Strings.pathname] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.pathname] = _toJSValue(newValue) }
     }
 
     @inlinable var search: String {
         get { jsObject[Strings.search].fromJSValue()! }
-        nonmutating set { jsObject[Strings.search] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.search] = _toJSValue(newValue) }
     }
 
     @inlinable var hash: String {
         get { jsObject[Strings.hash].fromJSValue()! }
-        nonmutating set { jsObject[Strings.hash] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.hash] = _toJSValue(newValue) }
     }
 }
 
@@ -7672,12 +7606,12 @@ public class HTMLInputElement: HTMLElement {
 
     @inlinable public func stepUp(n: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.stepUp].function!(this: this, arguments: [n?.jsValue ?? .undefined])
+        _ = this[Strings.stepUp].function!(this: this, arguments: [_toJSValue(n)])
     }
 
     @inlinable public func stepDown(n: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.stepDown].function!(this: this, arguments: [n?.jsValue ?? .undefined])
+        _ = this[Strings.stepDown].function!(this: this, arguments: [_toJSValue(n)])
     }
 
     @ReadonlyAttribute
@@ -7701,7 +7635,7 @@ public class HTMLInputElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [_toJSValue(error)])
     }
 
     @ReadonlyAttribute
@@ -7723,17 +7657,17 @@ public class HTMLInputElement: HTMLElement {
 
     @inlinable public func setRangeText(replacement: String) {
         let this = jsObject
-        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue])
+        _ = this[Strings.setRangeText].function!(this: this, arguments: [_toJSValue(replacement)])
     }
 
     @inlinable public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
         let this = jsObject
-        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue, start.jsValue, end.jsValue, selectionMode?.jsValue ?? .undefined])
+        _ = this[Strings.setRangeText].function!(this: this, arguments: [_toJSValue(replacement), _toJSValue(start), _toJSValue(end), _toJSValue(selectionMode)])
     }
 
     @inlinable public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
         let this = jsObject
-        _ = this[Strings.setSelectionRange].function!(this: this, arguments: [start.jsValue, end.jsValue, direction?.jsValue ?? .undefined])
+        _ = this[Strings.setSelectionRange].function!(this: this, arguments: [_toJSValue(start), _toJSValue(end), _toJSValue(direction)])
     }
 
     @inlinable public func showPicker() {
@@ -8056,7 +7990,7 @@ public class HTMLMediaElement: HTMLElement {
 
     @inlinable public func canPlayType(type: String) -> CanPlayTypeResult {
         let this = jsObject
-        return this[Strings.canPlayType].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return this[Strings.canPlayType].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
 
     public static let HAVE_NOTHING: UInt16 = 0
@@ -8080,7 +8014,7 @@ public class HTMLMediaElement: HTMLElement {
 
     @inlinable public func fastSeek(time: Double) {
         let this = jsObject
-        _ = this[Strings.fastSeek].function!(this: this, arguments: [time.jsValue])
+        _ = this[Strings.fastSeek].function!(this: this, arguments: [_toJSValue(time)])
     }
 
     @ReadonlyAttribute
@@ -8158,7 +8092,7 @@ public class HTMLMediaElement: HTMLElement {
 
     @inlinable public func addTextTrack(kind: TextTrackKind, label: String? = nil, language: String? = nil) -> TextTrack {
         let this = jsObject
-        return this[Strings.addTextTrack].function!(this: this, arguments: [kind.jsValue, label?.jsValue ?? .undefined, language?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.addTextTrack].function!(this: this, arguments: [_toJSValue(kind), _toJSValue(label), _toJSValue(language)]).fromJSValue()!
     }
 }
 
@@ -8381,7 +8315,7 @@ public class HTMLObjectElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [_toJSValue(error)])
     }
 
     @ReadWriteAttribute
@@ -8501,12 +8435,12 @@ public class HTMLOptionsCollection: HTMLCollection {
 
     @inlinable public func add(element: HTMLOptGroupElement_or_HTMLOptionElement, before: HTMLElement_or_Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.add].function!(this: this, arguments: [element.jsValue, before?.jsValue ?? .undefined])
+        _ = this[Strings.add].function!(this: this, arguments: [_toJSValue(element), _toJSValue(before)])
     }
 
     @inlinable public func remove(index: Int32) {
         let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue])
+        _ = this[Strings.remove].function!(this: this, arguments: [_toJSValue(index)])
     }
 
     @ReadWriteAttribute
@@ -8519,22 +8453,22 @@ public extension HTMLOrSVGElement {
 
     @inlinable var nonce: String {
         get { jsObject[Strings.nonce].fromJSValue()! }
-        nonmutating set { jsObject[Strings.nonce] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.nonce] = _toJSValue(newValue) }
     }
 
     @inlinable var autofocus: Bool {
         get { jsObject[Strings.autofocus].fromJSValue()! }
-        nonmutating set { jsObject[Strings.autofocus] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.autofocus] = _toJSValue(newValue) }
     }
 
     @inlinable var tabIndex: Int32 {
         get { jsObject[Strings.tabIndex].fromJSValue()! }
-        nonmutating set { jsObject[Strings.tabIndex] = newValue.jsValue }
+        nonmutating set { jsObject[Strings.tabIndex] = _toJSValue(newValue) }
     }
 
     @inlinable func focus(options: FocusOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.focus].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+        _ = this[Strings.focus].function!(this: this, arguments: [_toJSValue(options)])
     }
 
     @inlinable func blur() {
@@ -8603,7 +8537,7 @@ public class HTMLOutputElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [_toJSValue(error)])
     }
 
     @ReadonlyAttribute
@@ -8782,7 +8716,7 @@ public class HTMLScriptElement: HTMLElement {
 
     @inlinable public static func supports(type: String) -> Bool {
         let this = constructor!
-        return this[Strings.supports].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return this[Strings.supports].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
 
     @ReadWriteAttribute
@@ -8859,12 +8793,12 @@ public class HTMLSelectElement: HTMLElement {
 
     @inlinable public func namedItem(name: String) -> HTMLOptionElement? {
         let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func add(element: HTMLOptGroupElement_or_HTMLOptionElement, before: HTMLElement_or_Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.add].function!(this: this, arguments: [element.jsValue, before?.jsValue ?? .undefined])
+        _ = this[Strings.add].function!(this: this, arguments: [_toJSValue(element), _toJSValue(before)])
     }
 
     @inlinable public func remove() {
@@ -8874,7 +8808,7 @@ public class HTMLSelectElement: HTMLElement {
 
     @inlinable public func remove(index: Int32) {
         let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: [index.jsValue])
+        _ = this[Strings.remove].function!(this: this, arguments: [_toJSValue(index)])
     }
 
     // XXX: unsupported setter for keys of type UInt32
@@ -8909,7 +8843,7 @@ public class HTMLSelectElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [_toJSValue(error)])
     }
 
     @ReadonlyAttribute
@@ -8933,17 +8867,17 @@ public class HTMLSlotElement: HTMLElement {
 
     @inlinable public func assignedNodes(options: AssignedNodesOptions? = nil) -> [Node] {
         let this = jsObject
-        return this[Strings.assignedNodes].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.assignedNodes].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable public func assignedElements(options: AssignedNodesOptions? = nil) -> [Element] {
         let this = jsObject
-        return this[Strings.assignedElements].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.assignedElements].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable public func assign(nodes: Element_or_Text...) {
         let this = jsObject
-        _ = this[Strings.assign].function!(this: this, arguments: nodes.map(\.jsValue))
+        _ = this[Strings.assign].function!(this: this, arguments: nodes.map(_toJSValue))
     }
 }
 
@@ -9224,12 +9158,12 @@ public class HTMLTableElement: HTMLElement {
 
     @inlinable public func insertRow(index: Int32? = nil) -> HTMLTableRowElement {
         let this = jsObject
-        return this[Strings.insertRow].function!(this: this, arguments: [index?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.insertRow].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 
     @inlinable public func deleteRow(index: Int32) {
         let this = jsObject
-        _ = this[Strings.deleteRow].function!(this: this, arguments: [index.jsValue])
+        _ = this[Strings.deleteRow].function!(this: this, arguments: [_toJSValue(index)])
     }
 
     @ReadWriteAttribute
@@ -9290,12 +9224,12 @@ public class HTMLTableRowElement: HTMLElement {
 
     @inlinable public func insertCell(index: Int32? = nil) -> HTMLTableCellElement {
         let this = jsObject
-        return this[Strings.insertCell].function!(this: this, arguments: [index?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.insertCell].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 
     @inlinable public func deleteCell(index: Int32) {
         let this = jsObject
-        _ = this[Strings.deleteCell].function!(this: this, arguments: [index.jsValue])
+        _ = this[Strings.deleteCell].function!(this: this, arguments: [_toJSValue(index)])
     }
 
     @ReadWriteAttribute
@@ -9335,12 +9269,12 @@ public class HTMLTableSectionElement: HTMLElement {
 
     @inlinable public func insertRow(index: Int32? = nil) -> HTMLTableRowElement {
         let this = jsObject
-        return this[Strings.insertRow].function!(this: this, arguments: [index?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.insertRow].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 
     @inlinable public func deleteRow(index: Int32) {
         let this = jsObject
-        _ = this[Strings.deleteRow].function!(this: this, arguments: [index.jsValue])
+        _ = this[Strings.deleteRow].function!(this: this, arguments: [_toJSValue(index)])
     }
 
     @ReadWriteAttribute
@@ -9479,7 +9413,7 @@ public class HTMLTextAreaElement: HTMLElement {
 
     @inlinable public func setCustomValidity(error: String) {
         let this = jsObject
-        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [error.jsValue])
+        _ = this[Strings.setCustomValidity].function!(this: this, arguments: [_toJSValue(error)])
     }
 
     @ReadonlyAttribute
@@ -9501,17 +9435,17 @@ public class HTMLTextAreaElement: HTMLElement {
 
     @inlinable public func setRangeText(replacement: String) {
         let this = jsObject
-        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue])
+        _ = this[Strings.setRangeText].function!(this: this, arguments: [_toJSValue(replacement)])
     }
 
     @inlinable public func setRangeText(replacement: String, start: UInt32, end: UInt32, selectionMode: SelectionMode? = nil) {
         let this = jsObject
-        _ = this[Strings.setRangeText].function!(this: this, arguments: [replacement.jsValue, start.jsValue, end.jsValue, selectionMode?.jsValue ?? .undefined])
+        _ = this[Strings.setRangeText].function!(this: this, arguments: [_toJSValue(replacement), _toJSValue(start), _toJSValue(end), _toJSValue(selectionMode)])
     }
 
     @inlinable public func setSelectionRange(start: UInt32, end: UInt32, direction: String? = nil) {
         let this = jsObject
-        _ = this[Strings.setSelectionRange].function!(this: this, arguments: [start.jsValue, end.jsValue, direction?.jsValue ?? .undefined])
+        _ = this[Strings.setSelectionRange].function!(this: this, arguments: [_toJSValue(start), _toJSValue(end), _toJSValue(direction)])
     }
 }
 
@@ -9688,7 +9622,7 @@ public class HashChangeEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: HashChangeEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -9701,8 +9635,8 @@ public class HashChangeEvent: Event {
 public class HashChangeEventInit: BridgedDictionary {
     public convenience init(oldURL: String, newURL: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.oldURL] = oldURL.jsValue
-        object[Strings.newURL] = newURL.jsValue
+        object[Strings.oldURL] = _toJSValue(oldURL)
+        object[Strings.newURL] = _toJSValue(newURL)
         self.init(unsafelyWrapping: object)
     }
 
@@ -9729,32 +9663,32 @@ public class Headers: JSBridgedClass, Sequence {
     }
 
     @inlinable public convenience init(init: HeadersInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @inlinable public func append(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: [name.jsValue, value.jsValue])
+        _ = this[Strings.append].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)])
     }
 
     @inlinable public func delete(name: String) {
         let this = jsObject
-        _ = this[Strings.delete].function!(this: this, arguments: [name.jsValue])
+        _ = this[Strings.delete].function!(this: this, arguments: [_toJSValue(name)])
     }
 
     @inlinable public func get(name: String) -> String? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func has(name: String) -> Bool {
         let this = jsObject
-        return this[Strings.has].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.has].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func set(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.set].function!(this: this, arguments: [name.jsValue, value.jsValue])
+        _ = this[Strings.set].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)])
     }
 
     public typealias Element = String
@@ -9786,7 +9720,7 @@ public class History: JSBridgedClass {
 
     @inlinable public func go(delta: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.go].function!(this: this, arguments: [delta?.jsValue ?? .undefined])
+        _ = this[Strings.go].function!(this: this, arguments: [_toJSValue(delta)])
     }
 
     @inlinable public func back() {
@@ -9801,12 +9735,12 @@ public class History: JSBridgedClass {
 
     @inlinable public func pushState(data: JSValue, unused: String, url: String? = nil) {
         let this = jsObject
-        _ = this[Strings.pushState].function!(this: this, arguments: [data.jsValue, unused.jsValue, url?.jsValue ?? .undefined])
+        _ = this[Strings.pushState].function!(this: this, arguments: [_toJSValue(data), _toJSValue(unused), _toJSValue(url)])
     }
 
     @inlinable public func replaceState(data: JSValue, unused: String, url: String? = nil) {
         let this = jsObject
-        _ = this[Strings.replaceState].function!(this: this, arguments: [data.jsValue, unused.jsValue, url?.jsValue ?? .undefined])
+        _ = this[Strings.replaceState].function!(this: this, arguments: [_toJSValue(data), _toJSValue(unused), _toJSValue(url)])
     }
 }
 
@@ -9836,12 +9770,12 @@ public class ImageBitmap: JSBridgedClass {
 public class ImageBitmapOptions: BridgedDictionary {
     public convenience init(imageOrientation: ImageOrientation, premultiplyAlpha: PremultiplyAlpha, colorSpaceConversion: ColorSpaceConversion, resizeWidth: UInt32, resizeHeight: UInt32, resizeQuality: ResizeQuality) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.imageOrientation] = imageOrientation.jsValue
-        object[Strings.premultiplyAlpha] = premultiplyAlpha.jsValue
-        object[Strings.colorSpaceConversion] = colorSpaceConversion.jsValue
-        object[Strings.resizeWidth] = resizeWidth.jsValue
-        object[Strings.resizeHeight] = resizeHeight.jsValue
-        object[Strings.resizeQuality] = resizeQuality.jsValue
+        object[Strings.imageOrientation] = _toJSValue(imageOrientation)
+        object[Strings.premultiplyAlpha] = _toJSValue(premultiplyAlpha)
+        object[Strings.colorSpaceConversion] = _toJSValue(colorSpaceConversion)
+        object[Strings.resizeWidth] = _toJSValue(resizeWidth)
+        object[Strings.resizeHeight] = _toJSValue(resizeHeight)
+        object[Strings.resizeQuality] = _toJSValue(resizeQuality)
         self.init(unsafelyWrapping: object)
     }
 
@@ -9889,14 +9823,14 @@ public class ImageBitmapRenderingContext: JSBridgedClass {
 
     @inlinable public func transferFromImageBitmap(bitmap: ImageBitmap?) {
         let this = jsObject
-        _ = this[Strings.transferFromImageBitmap].function!(this: this, arguments: [bitmap.jsValue])
+        _ = this[Strings.transferFromImageBitmap].function!(this: this, arguments: [_toJSValue(bitmap)])
     }
 }
 
 public class ImageBitmapRenderingContextSettings: BridgedDictionary {
     public convenience init(alpha: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.alpha] = alpha.jsValue
+        object[Strings.alpha] = _toJSValue(alpha)
         self.init(unsafelyWrapping: object)
     }
 
@@ -9923,11 +9857,11 @@ public class ImageData: JSBridgedClass {
     }
 
     @inlinable public convenience init(sw: UInt32, sh: UInt32, settings: ImageDataSettings? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [sw.jsValue, sh.jsValue, settings?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(sw), _toJSValue(sh), _toJSValue(settings)]))
     }
 
     @inlinable public convenience init(data: Uint8ClampedArray, sw: UInt32, sh: UInt32? = nil, settings: ImageDataSettings? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [data.jsValue, sw.jsValue, sh?.jsValue ?? .undefined, settings?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(data), _toJSValue(sw), _toJSValue(sh), _toJSValue(settings)]))
     }
 
     @ReadonlyAttribute
@@ -9946,7 +9880,7 @@ public class ImageData: JSBridgedClass {
 public class ImageDataSettings: BridgedDictionary {
     public convenience init(colorSpace: PredefinedColorSpace) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.colorSpace] = colorSpace.jsValue
+        object[Strings.colorSpace] = _toJSValue(colorSpace)
         self.init(unsafelyWrapping: object)
     }
 
@@ -9962,8 +9896,8 @@ public class ImageDataSettings: BridgedDictionary {
 public class ImageDecodeOptions: BridgedDictionary {
     public convenience init(frameIndex: UInt32, completeFramesOnly: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.frameIndex] = frameIndex.jsValue
-        object[Strings.completeFramesOnly] = completeFramesOnly.jsValue
+        object[Strings.frameIndex] = _toJSValue(frameIndex)
+        object[Strings.completeFramesOnly] = _toJSValue(completeFramesOnly)
         self.init(unsafelyWrapping: object)
     }
 
@@ -9983,8 +9917,8 @@ public class ImageDecodeOptions: BridgedDictionary {
 public class ImageDecodeResult: BridgedDictionary {
     public convenience init(image: VideoFrame, complete: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.image] = image.jsValue
-        object[Strings.complete] = complete.jsValue
+        object[Strings.image] = _toJSValue(image)
+        object[Strings.complete] = _toJSValue(complete)
         self.init(unsafelyWrapping: object)
     }
 
@@ -10015,7 +9949,7 @@ public class ImageDecoder: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: ImageDecoderInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -10032,13 +9966,13 @@ public class ImageDecoder: JSBridgedClass {
 
     @inlinable public func decode(options: ImageDecodeOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.decode].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.decode].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func decode(options: ImageDecodeOptions? = nil) async throws -> ImageDecodeResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.decode].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.decode].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
@@ -10054,13 +9988,13 @@ public class ImageDecoder: JSBridgedClass {
 
     @inlinable public static func isTypeSupported(type: String) -> JSPromise {
         let this = constructor!
-        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public static func isTypeSupported(type: String) async throws -> Bool {
         let this = constructor!
-        let _promise: JSPromise = this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.isTypeSupported].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 }
@@ -10068,13 +10002,13 @@ public class ImageDecoder: JSBridgedClass {
 public class ImageDecoderInit: BridgedDictionary {
     public convenience init(type: String, data: ImageBufferSource, premultiplyAlpha: PremultiplyAlpha, colorSpaceConversion: ColorSpaceConversion, desiredWidth: UInt32, desiredHeight: UInt32, preferAnimation: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue
-        object[Strings.data] = data.jsValue
-        object[Strings.premultiplyAlpha] = premultiplyAlpha.jsValue
-        object[Strings.colorSpaceConversion] = colorSpaceConversion.jsValue
-        object[Strings.desiredWidth] = desiredWidth.jsValue
-        object[Strings.desiredHeight] = desiredHeight.jsValue
-        object[Strings.preferAnimation] = preferAnimation.jsValue
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.data] = _toJSValue(data)
+        object[Strings.premultiplyAlpha] = _toJSValue(premultiplyAlpha)
+        object[Strings.colorSpaceConversion] = _toJSValue(colorSpaceConversion)
+        object[Strings.desiredWidth] = _toJSValue(desiredWidth)
+        object[Strings.desiredHeight] = _toJSValue(desiredHeight)
+        object[Strings.preferAnimation] = _toJSValue(preferAnimation)
         self.init(unsafelyWrapping: object)
     }
 
@@ -10114,8 +10048,8 @@ public class ImageDecoderInit: BridgedDictionary {
 public class ImageEncodeOptions: BridgedDictionary {
     public convenience init(type: String, quality: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue
-        object[Strings.quality] = quality.jsValue
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.quality] = _toJSValue(quality)
         self.init(unsafelyWrapping: object)
     }
 
@@ -10251,7 +10185,7 @@ public class InputEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: InputEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -10267,9 +10201,9 @@ public class InputEvent: UIEvent {
 public class InputEventInit: BridgedDictionary {
     public convenience init(data: String?, isComposing: Bool, inputType: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.data] = data.jsValue
-        object[Strings.isComposing] = isComposing.jsValue
-        object[Strings.inputType] = inputType.jsValue
+        object[Strings.data] = _toJSValue(data)
+        object[Strings.isComposing] = _toJSValue(isComposing)
+        object[Strings.inputType] = _toJSValue(inputType)
         self.init(unsafelyWrapping: object)
     }
 
@@ -10321,7 +10255,7 @@ public class KeyboardEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: KeyboardEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     public static let DOM_KEY_LOCATION_STANDARD: UInt32 = 0x00
@@ -10361,22 +10295,12 @@ public class KeyboardEvent: UIEvent {
 
     @inlinable public func getModifierState(keyArg: String) -> Bool {
         let this = jsObject
-        return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue]).fromJSValue()!
+        return this[Strings.getModifierState].function!(this: this, arguments: [_toJSValue(keyArg)]).fromJSValue()!
     }
 
     @inlinable public func initKeyboardEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, keyArg: String? = nil, locationArg: UInt32? = nil, ctrlKey: Bool? = nil, altKey: Bool? = nil, shiftKey: Bool? = nil, metaKey: Bool? = nil) {
-        let _arg0 = typeArg.jsValue
-        let _arg1 = bubblesArg?.jsValue ?? .undefined
-        let _arg2 = cancelableArg?.jsValue ?? .undefined
-        let _arg3 = viewArg?.jsValue ?? .undefined
-        let _arg4 = keyArg?.jsValue ?? .undefined
-        let _arg5 = locationArg?.jsValue ?? .undefined
-        let _arg6 = ctrlKey?.jsValue ?? .undefined
-        let _arg7 = altKey?.jsValue ?? .undefined
-        let _arg8 = shiftKey?.jsValue ?? .undefined
-        let _arg9 = metaKey?.jsValue ?? .undefined
         let this = jsObject
-        _ = this[Strings.initKeyboardEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9])
+        _ = this[Strings.initKeyboardEvent].function!(this: this, arguments: [_toJSValue(typeArg), _toJSValue(bubblesArg), _toJSValue(cancelableArg), _toJSValue(viewArg), _toJSValue(keyArg), _toJSValue(locationArg), _toJSValue(ctrlKey), _toJSValue(altKey), _toJSValue(shiftKey), _toJSValue(metaKey)])
     }
 
     @ReadonlyAttribute
@@ -10389,13 +10313,13 @@ public class KeyboardEvent: UIEvent {
 public class KeyboardEventInit: BridgedDictionary {
     public convenience init(key: String, code: String, location: UInt32, repeat: Bool, isComposing: Bool, charCode: UInt32, keyCode: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.key] = key.jsValue
-        object[Strings.code] = code.jsValue
-        object[Strings.location] = location.jsValue
-        object[Strings.repeat] = `repeat`.jsValue
-        object[Strings.isComposing] = isComposing.jsValue
-        object[Strings.charCode] = charCode.jsValue
-        object[Strings.keyCode] = keyCode.jsValue
+        object[Strings.key] = _toJSValue(key)
+        object[Strings.code] = _toJSValue(code)
+        object[Strings.location] = _toJSValue(location)
+        object[Strings.repeat] = _toJSValue(`repeat`)
+        object[Strings.isComposing] = _toJSValue(isComposing)
+        object[Strings.charCode] = _toJSValue(charCode)
+        object[Strings.keyCode] = _toJSValue(keyCode)
         self.init(unsafelyWrapping: object)
     }
 
@@ -10498,12 +10422,12 @@ public class Location: JSBridgedClass {
 
     @inlinable public func assign(url: String) {
         let this = jsObject
-        _ = this[Strings.assign].function!(this: this, arguments: [url.jsValue])
+        _ = this[Strings.assign].function!(this: this, arguments: [_toJSValue(url)])
     }
 
     @inlinable public func replace(url: String) {
         let this = jsObject
-        _ = this[Strings.replace].function!(this: this, arguments: [url.jsValue])
+        _ = this[Strings.replace].function!(this: this, arguments: [_toJSValue(url)])
     }
 
     @inlinable public func reload() {
@@ -10595,13 +10519,13 @@ public class MediaDevices: EventTarget {
 
     @inlinable public func getUserMedia(constraints: MediaStreamConstraints? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.getUserMedia].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.getUserMedia].function!(this: this, arguments: [_toJSValue(constraints)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getUserMedia(constraints: MediaStreamConstraints? = nil) async throws -> MediaStream {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getUserMedia].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.getUserMedia].function!(this: this, arguments: [_toJSValue(constraints)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 }
@@ -10666,7 +10590,7 @@ public class MediaQueryListEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: MediaQueryListEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -10679,8 +10603,8 @@ public class MediaQueryListEvent: Event {
 public class MediaQueryListEventInit: BridgedDictionary {
     public convenience init(media: String, matches: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.media] = media.jsValue
-        object[Strings.matches] = matches.jsValue
+        object[Strings.media] = _toJSValue(media)
+        object[Strings.matches] = _toJSValue(matches)
         self.init(unsafelyWrapping: object)
     }
 
@@ -10717,7 +10641,7 @@ public class MediaRecorder: EventTarget {
     }
 
     @inlinable public convenience init(stream: MediaStream, options: MediaRecorderOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [stream.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(stream), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -10758,7 +10682,7 @@ public class MediaRecorder: EventTarget {
 
     @inlinable public func start(timeslice: UInt32? = nil) {
         let this = jsObject
-        _ = this[Strings.start].function!(this: this, arguments: [timeslice?.jsValue ?? .undefined])
+        _ = this[Strings.start].function!(this: this, arguments: [_toJSValue(timeslice)])
     }
 
     @inlinable public func stop() {
@@ -10783,7 +10707,7 @@ public class MediaRecorder: EventTarget {
 
     @inlinable public static func isTypeSupported(type: String) -> Bool {
         let this = constructor!
-        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
 }
 
@@ -10796,7 +10720,7 @@ public class MediaRecorderErrorEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: MediaRecorderErrorEventInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -10806,7 +10730,7 @@ public class MediaRecorderErrorEvent: Event {
 public class MediaRecorderErrorEventInit: BridgedDictionary {
     public convenience init(error: DOMException) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.error] = error.jsValue
+        object[Strings.error] = _toJSValue(error)
         self.init(unsafelyWrapping: object)
     }
 
@@ -10822,11 +10746,11 @@ public class MediaRecorderErrorEventInit: BridgedDictionary {
 public class MediaRecorderOptions: BridgedDictionary {
     public convenience init(mimeType: String, audioBitsPerSecond: UInt32, videoBitsPerSecond: UInt32, bitsPerSecond: UInt32, audioBitrateMode: BitrateMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mimeType] = mimeType.jsValue
-        object[Strings.audioBitsPerSecond] = audioBitsPerSecond.jsValue
-        object[Strings.videoBitsPerSecond] = videoBitsPerSecond.jsValue
-        object[Strings.bitsPerSecond] = bitsPerSecond.jsValue
-        object[Strings.audioBitrateMode] = audioBitrateMode.jsValue
+        object[Strings.mimeType] = _toJSValue(mimeType)
+        object[Strings.audioBitsPerSecond] = _toJSValue(audioBitsPerSecond)
+        object[Strings.videoBitsPerSecond] = _toJSValue(videoBitsPerSecond)
+        object[Strings.bitsPerSecond] = _toJSValue(bitsPerSecond)
+        object[Strings.audioBitrateMode] = _toJSValue(audioBitrateMode)
         self.init(unsafelyWrapping: object)
     }
 
@@ -10900,22 +10824,22 @@ public class MediaSource: EventTarget {
 
     @inlinable public func addSourceBuffer(type: String) -> SourceBuffer {
         let this = jsObject
-        return this[Strings.addSourceBuffer].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return this[Strings.addSourceBuffer].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
 
     @inlinable public func removeSourceBuffer(sourceBuffer: SourceBuffer) {
         let this = jsObject
-        _ = this[Strings.removeSourceBuffer].function!(this: this, arguments: [sourceBuffer.jsValue])
+        _ = this[Strings.removeSourceBuffer].function!(this: this, arguments: [_toJSValue(sourceBuffer)])
     }
 
     @inlinable public func endOfStream(error: EndOfStreamError? = nil) {
         let this = jsObject
-        _ = this[Strings.endOfStream].function!(this: this, arguments: [error?.jsValue ?? .undefined])
+        _ = this[Strings.endOfStream].function!(this: this, arguments: [_toJSValue(error)])
     }
 
     @inlinable public func setLiveSeekableRange(start: Double, end: Double) {
         let this = jsObject
-        _ = this[Strings.setLiveSeekableRange].function!(this: this, arguments: [start.jsValue, end.jsValue])
+        _ = this[Strings.setLiveSeekableRange].function!(this: this, arguments: [_toJSValue(start), _toJSValue(end)])
     }
 
     @inlinable public func clearLiveSeekableRange() {
@@ -10925,7 +10849,7 @@ public class MediaSource: EventTarget {
 
     @inlinable public static func isTypeSupported(type: String) -> Bool {
         let this = constructor!
-        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
 }
 
@@ -10945,11 +10869,11 @@ public class MediaStream: EventTarget {
     }
 
     @inlinable public convenience init(stream: MediaStream) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [stream.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(stream)]))
     }
 
     @inlinable public convenience init(tracks: [MediaStreamTrack]) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [tracks.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(tracks)]))
     }
 
     @ReadonlyAttribute
@@ -10972,17 +10896,17 @@ public class MediaStream: EventTarget {
 
     @inlinable public func getTrackById(trackId: String) -> MediaStreamTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [trackId.jsValue]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(trackId)]).fromJSValue()!
     }
 
     @inlinable public func addTrack(track: MediaStreamTrack) {
         let this = jsObject
-        _ = this[Strings.addTrack].function!(this: this, arguments: [track.jsValue])
+        _ = this[Strings.addTrack].function!(this: this, arguments: [_toJSValue(track)])
     }
 
     @inlinable public func removeTrack(track: MediaStreamTrack) {
         let this = jsObject
-        _ = this[Strings.removeTrack].function!(this: this, arguments: [track.jsValue])
+        _ = this[Strings.removeTrack].function!(this: this, arguments: [_toJSValue(track)])
     }
 
     @inlinable public func clone() -> Self {
@@ -11003,8 +10927,8 @@ public class MediaStream: EventTarget {
 public class MediaStreamConstraints: BridgedDictionary {
     public convenience init(video: Bool_or_MediaTrackConstraints, audio: Bool_or_MediaTrackConstraints) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.video] = video.jsValue
-        object[Strings.audio] = audio.jsValue
+        object[Strings.video] = _toJSValue(video)
+        object[Strings.audio] = _toJSValue(audio)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11091,13 +11015,13 @@ public class MediaStreamTrack: EventTarget {
 
     @inlinable public func applyConstraints(constraints: MediaTrackConstraints? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.applyConstraints].function!(this: this, arguments: [_toJSValue(constraints)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func applyConstraints(constraints: MediaTrackConstraints? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [constraints?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.applyConstraints].function!(this: this, arguments: [_toJSValue(constraints)]).fromJSValue()!
         _ = try await _promise.value
     }
 }
@@ -11111,7 +11035,7 @@ public class MediaStreamTrackEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: MediaStreamTrackEventInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -11121,7 +11045,7 @@ public class MediaStreamTrackEvent: Event {
 public class MediaStreamTrackEventInit: BridgedDictionary {
     public convenience init(track: MediaStreamTrack) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.track] = track.jsValue
+        object[Strings.track] = _toJSValue(track)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11155,21 +11079,21 @@ public enum MediaStreamTrackState: JSString, JSValueCompatible {
 public class MediaTrackCapabilities: BridgedDictionary {
     public convenience init(width: ULongRange, height: ULongRange, aspectRatio: DoubleRange, frameRate: DoubleRange, facingMode: [String], resizeMode: [String], sampleRate: ULongRange, sampleSize: ULongRange, echoCancellation: [Bool], autoGainControl: [Bool], noiseSuppression: [Bool], latency: DoubleRange, channelCount: ULongRange, deviceId: String, groupId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.width] = width.jsValue
-        object[Strings.height] = height.jsValue
-        object[Strings.aspectRatio] = aspectRatio.jsValue
-        object[Strings.frameRate] = frameRate.jsValue
-        object[Strings.facingMode] = facingMode.jsValue
-        object[Strings.resizeMode] = resizeMode.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
-        object[Strings.sampleSize] = sampleSize.jsValue
-        object[Strings.echoCancellation] = echoCancellation.jsValue
-        object[Strings.autoGainControl] = autoGainControl.jsValue
-        object[Strings.noiseSuppression] = noiseSuppression.jsValue
-        object[Strings.latency] = latency.jsValue
-        object[Strings.channelCount] = channelCount.jsValue
-        object[Strings.deviceId] = deviceId.jsValue
-        object[Strings.groupId] = groupId.jsValue
+        object[Strings.width] = _toJSValue(width)
+        object[Strings.height] = _toJSValue(height)
+        object[Strings.aspectRatio] = _toJSValue(aspectRatio)
+        object[Strings.frameRate] = _toJSValue(frameRate)
+        object[Strings.facingMode] = _toJSValue(facingMode)
+        object[Strings.resizeMode] = _toJSValue(resizeMode)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
+        object[Strings.sampleSize] = _toJSValue(sampleSize)
+        object[Strings.echoCancellation] = _toJSValue(echoCancellation)
+        object[Strings.autoGainControl] = _toJSValue(autoGainControl)
+        object[Strings.noiseSuppression] = _toJSValue(noiseSuppression)
+        object[Strings.latency] = _toJSValue(latency)
+        object[Strings.channelCount] = _toJSValue(channelCount)
+        object[Strings.deviceId] = _toJSValue(deviceId)
+        object[Strings.groupId] = _toJSValue(groupId)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11241,21 +11165,21 @@ public class MediaTrackCapabilities: BridgedDictionary {
 public class MediaTrackConstraintSet: BridgedDictionary {
     public convenience init(width: ConstrainULong, height: ConstrainULong, aspectRatio: ConstrainDouble, frameRate: ConstrainDouble, facingMode: ConstrainDOMString, resizeMode: ConstrainDOMString, sampleRate: ConstrainULong, sampleSize: ConstrainULong, echoCancellation: ConstrainBoolean, autoGainControl: ConstrainBoolean, noiseSuppression: ConstrainBoolean, latency: ConstrainDouble, channelCount: ConstrainULong, deviceId: ConstrainDOMString, groupId: ConstrainDOMString) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.width] = width.jsValue
-        object[Strings.height] = height.jsValue
-        object[Strings.aspectRatio] = aspectRatio.jsValue
-        object[Strings.frameRate] = frameRate.jsValue
-        object[Strings.facingMode] = facingMode.jsValue
-        object[Strings.resizeMode] = resizeMode.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
-        object[Strings.sampleSize] = sampleSize.jsValue
-        object[Strings.echoCancellation] = echoCancellation.jsValue
-        object[Strings.autoGainControl] = autoGainControl.jsValue
-        object[Strings.noiseSuppression] = noiseSuppression.jsValue
-        object[Strings.latency] = latency.jsValue
-        object[Strings.channelCount] = channelCount.jsValue
-        object[Strings.deviceId] = deviceId.jsValue
-        object[Strings.groupId] = groupId.jsValue
+        object[Strings.width] = _toJSValue(width)
+        object[Strings.height] = _toJSValue(height)
+        object[Strings.aspectRatio] = _toJSValue(aspectRatio)
+        object[Strings.frameRate] = _toJSValue(frameRate)
+        object[Strings.facingMode] = _toJSValue(facingMode)
+        object[Strings.resizeMode] = _toJSValue(resizeMode)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
+        object[Strings.sampleSize] = _toJSValue(sampleSize)
+        object[Strings.echoCancellation] = _toJSValue(echoCancellation)
+        object[Strings.autoGainControl] = _toJSValue(autoGainControl)
+        object[Strings.noiseSuppression] = _toJSValue(noiseSuppression)
+        object[Strings.latency] = _toJSValue(latency)
+        object[Strings.channelCount] = _toJSValue(channelCount)
+        object[Strings.deviceId] = _toJSValue(deviceId)
+        object[Strings.groupId] = _toJSValue(groupId)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11327,7 +11251,7 @@ public class MediaTrackConstraintSet: BridgedDictionary {
 public class MediaTrackConstraints: BridgedDictionary {
     public convenience init(advanced: [MediaTrackConstraintSet]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.advanced] = advanced.jsValue
+        object[Strings.advanced] = _toJSValue(advanced)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11343,21 +11267,21 @@ public class MediaTrackConstraints: BridgedDictionary {
 public class MediaTrackSettings: BridgedDictionary {
     public convenience init(width: Int32, height: Int32, aspectRatio: Double, frameRate: Double, facingMode: String, resizeMode: String, sampleRate: Int32, sampleSize: Int32, echoCancellation: Bool, autoGainControl: Bool, noiseSuppression: Bool, latency: Double, channelCount: Int32, deviceId: String, groupId: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.width] = width.jsValue
-        object[Strings.height] = height.jsValue
-        object[Strings.aspectRatio] = aspectRatio.jsValue
-        object[Strings.frameRate] = frameRate.jsValue
-        object[Strings.facingMode] = facingMode.jsValue
-        object[Strings.resizeMode] = resizeMode.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
-        object[Strings.sampleSize] = sampleSize.jsValue
-        object[Strings.echoCancellation] = echoCancellation.jsValue
-        object[Strings.autoGainControl] = autoGainControl.jsValue
-        object[Strings.noiseSuppression] = noiseSuppression.jsValue
-        object[Strings.latency] = latency.jsValue
-        object[Strings.channelCount] = channelCount.jsValue
-        object[Strings.deviceId] = deviceId.jsValue
-        object[Strings.groupId] = groupId.jsValue
+        object[Strings.width] = _toJSValue(width)
+        object[Strings.height] = _toJSValue(height)
+        object[Strings.aspectRatio] = _toJSValue(aspectRatio)
+        object[Strings.frameRate] = _toJSValue(frameRate)
+        object[Strings.facingMode] = _toJSValue(facingMode)
+        object[Strings.resizeMode] = _toJSValue(resizeMode)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
+        object[Strings.sampleSize] = _toJSValue(sampleSize)
+        object[Strings.echoCancellation] = _toJSValue(echoCancellation)
+        object[Strings.autoGainControl] = _toJSValue(autoGainControl)
+        object[Strings.noiseSuppression] = _toJSValue(noiseSuppression)
+        object[Strings.latency] = _toJSValue(latency)
+        object[Strings.channelCount] = _toJSValue(channelCount)
+        object[Strings.deviceId] = _toJSValue(deviceId)
+        object[Strings.groupId] = _toJSValue(groupId)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11429,21 +11353,21 @@ public class MediaTrackSettings: BridgedDictionary {
 public class MediaTrackSupportedConstraints: BridgedDictionary {
     public convenience init(width: Bool, height: Bool, aspectRatio: Bool, frameRate: Bool, facingMode: Bool, resizeMode: Bool, sampleRate: Bool, sampleSize: Bool, echoCancellation: Bool, autoGainControl: Bool, noiseSuppression: Bool, latency: Bool, channelCount: Bool, deviceId: Bool, groupId: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.width] = width.jsValue
-        object[Strings.height] = height.jsValue
-        object[Strings.aspectRatio] = aspectRatio.jsValue
-        object[Strings.frameRate] = frameRate.jsValue
-        object[Strings.facingMode] = facingMode.jsValue
-        object[Strings.resizeMode] = resizeMode.jsValue
-        object[Strings.sampleRate] = sampleRate.jsValue
-        object[Strings.sampleSize] = sampleSize.jsValue
-        object[Strings.echoCancellation] = echoCancellation.jsValue
-        object[Strings.autoGainControl] = autoGainControl.jsValue
-        object[Strings.noiseSuppression] = noiseSuppression.jsValue
-        object[Strings.latency] = latency.jsValue
-        object[Strings.channelCount] = channelCount.jsValue
-        object[Strings.deviceId] = deviceId.jsValue
-        object[Strings.groupId] = groupId.jsValue
+        object[Strings.width] = _toJSValue(width)
+        object[Strings.height] = _toJSValue(height)
+        object[Strings.aspectRatio] = _toJSValue(aspectRatio)
+        object[Strings.frameRate] = _toJSValue(frameRate)
+        object[Strings.facingMode] = _toJSValue(facingMode)
+        object[Strings.resizeMode] = _toJSValue(resizeMode)
+        object[Strings.sampleRate] = _toJSValue(sampleRate)
+        object[Strings.sampleSize] = _toJSValue(sampleSize)
+        object[Strings.echoCancellation] = _toJSValue(echoCancellation)
+        object[Strings.autoGainControl] = _toJSValue(autoGainControl)
+        object[Strings.noiseSuppression] = _toJSValue(noiseSuppression)
+        object[Strings.latency] = _toJSValue(latency)
+        object[Strings.channelCount] = _toJSValue(channelCount)
+        object[Strings.deviceId] = _toJSValue(deviceId)
+        object[Strings.groupId] = _toJSValue(groupId)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11547,7 +11471,7 @@ public class MessageEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: MessageEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -11566,27 +11490,19 @@ public class MessageEvent: Event {
     public var ports: [MessagePort]
 
     @inlinable public func initMessageEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, data: JSValue? = nil, origin: String? = nil, lastEventId: String? = nil, source: MessageEventSource? = nil, ports: [MessagePort]? = nil) {
-        let _arg0 = type.jsValue
-        let _arg1 = bubbles?.jsValue ?? .undefined
-        let _arg2 = cancelable?.jsValue ?? .undefined
-        let _arg3 = data?.jsValue ?? .undefined
-        let _arg4 = origin?.jsValue ?? .undefined
-        let _arg5 = lastEventId?.jsValue ?? .undefined
-        let _arg6 = source?.jsValue ?? .undefined
-        let _arg7 = ports?.jsValue ?? .undefined
         let this = jsObject
-        _ = this[Strings.initMessageEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
+        _ = this[Strings.initMessageEvent].function!(this: this, arguments: [_toJSValue(type), _toJSValue(bubbles), _toJSValue(cancelable), _toJSValue(data), _toJSValue(origin), _toJSValue(lastEventId), _toJSValue(source), _toJSValue(ports)])
     }
 }
 
 public class MessageEventInit: BridgedDictionary {
     public convenience init(data: JSValue, origin: String, lastEventId: String, source: MessageEventSource?, ports: [MessagePort]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.data] = data.jsValue
-        object[Strings.origin] = origin.jsValue
-        object[Strings.lastEventId] = lastEventId.jsValue
-        object[Strings.source] = source.jsValue
-        object[Strings.ports] = ports.jsValue
+        object[Strings.data] = _toJSValue(data)
+        object[Strings.origin] = _toJSValue(origin)
+        object[Strings.lastEventId] = _toJSValue(lastEventId)
+        object[Strings.source] = _toJSValue(source)
+        object[Strings.ports] = _toJSValue(ports)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11626,12 +11542,12 @@ public class MessagePort: EventTarget {
 
     @inlinable public func postMessage(message: JSValue, transfer: [JSObject]) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, transfer.jsValue])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [_toJSValue(message), _toJSValue(transfer)])
     }
 
     @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [_toJSValue(message), _toJSValue(options)])
     }
 
     @inlinable public func start() {
@@ -11724,7 +11640,7 @@ public class MouseEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: MouseEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -11762,27 +11678,12 @@ public class MouseEvent: UIEvent {
 
     @inlinable public func getModifierState(keyArg: String) -> Bool {
         let this = jsObject
-        return this[Strings.getModifierState].function!(this: this, arguments: [keyArg.jsValue]).fromJSValue()!
+        return this[Strings.getModifierState].function!(this: this, arguments: [_toJSValue(keyArg)]).fromJSValue()!
     }
 
     @inlinable public func initMouseEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil, screenXArg: Int32? = nil, screenYArg: Int32? = nil, clientXArg: Int32? = nil, clientYArg: Int32? = nil, ctrlKeyArg: Bool? = nil, altKeyArg: Bool? = nil, shiftKeyArg: Bool? = nil, metaKeyArg: Bool? = nil, buttonArg: Int16? = nil, relatedTargetArg: EventTarget? = nil) {
-        let _arg0 = typeArg.jsValue
-        let _arg1 = bubblesArg?.jsValue ?? .undefined
-        let _arg2 = cancelableArg?.jsValue ?? .undefined
-        let _arg3 = viewArg?.jsValue ?? .undefined
-        let _arg4 = detailArg?.jsValue ?? .undefined
-        let _arg5 = screenXArg?.jsValue ?? .undefined
-        let _arg6 = screenYArg?.jsValue ?? .undefined
-        let _arg7 = clientXArg?.jsValue ?? .undefined
-        let _arg8 = clientYArg?.jsValue ?? .undefined
-        let _arg9 = ctrlKeyArg?.jsValue ?? .undefined
-        let _arg10 = altKeyArg?.jsValue ?? .undefined
-        let _arg11 = shiftKeyArg?.jsValue ?? .undefined
-        let _arg12 = metaKeyArg?.jsValue ?? .undefined
-        let _arg13 = buttonArg?.jsValue ?? .undefined
-        let _arg14 = relatedTargetArg?.jsValue ?? .undefined
         let this = jsObject
-        _ = this[Strings.initMouseEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8, _arg9, _arg10, _arg11, _arg12, _arg13, _arg14])
+        _ = this[Strings.initMouseEvent].function!(this: this, arguments: [_toJSValue(typeArg), _toJSValue(bubblesArg), _toJSValue(cancelableArg), _toJSValue(viewArg), _toJSValue(detailArg), _toJSValue(screenXArg), _toJSValue(screenYArg), _toJSValue(clientXArg), _toJSValue(clientYArg), _toJSValue(ctrlKeyArg), _toJSValue(altKeyArg), _toJSValue(shiftKeyArg), _toJSValue(metaKeyArg), _toJSValue(buttonArg), _toJSValue(relatedTargetArg)])
     }
 
     @ReadonlyAttribute
@@ -11807,13 +11708,13 @@ public class MouseEvent: UIEvent {
 public class MouseEventInit: BridgedDictionary {
     public convenience init(screenX: Int32, screenY: Int32, clientX: Int32, clientY: Int32, button: Int16, buttons: UInt16, relatedTarget: EventTarget?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.screenX] = screenX.jsValue
-        object[Strings.screenY] = screenY.jsValue
-        object[Strings.clientX] = clientX.jsValue
-        object[Strings.clientY] = clientY.jsValue
-        object[Strings.button] = button.jsValue
-        object[Strings.buttons] = buttons.jsValue
-        object[Strings.relatedTarget] = relatedTarget.jsValue
+        object[Strings.screenX] = _toJSValue(screenX)
+        object[Strings.screenY] = _toJSValue(screenY)
+        object[Strings.clientX] = _toJSValue(clientX)
+        object[Strings.clientY] = _toJSValue(clientY)
+        object[Strings.button] = _toJSValue(button)
+        object[Strings.buttons] = _toJSValue(buttons)
+        object[Strings.relatedTarget] = _toJSValue(relatedTarget)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11853,7 +11754,7 @@ public class MouseEventInit: BridgedDictionary {
 public class MultiCacheQueryOptions: BridgedDictionary {
     public convenience init(cacheName: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.cacheName] = cacheName.jsValue
+        object[Strings.cacheName] = _toJSValue(cacheName)
         self.init(unsafelyWrapping: object)
     }
 
@@ -11900,16 +11801,8 @@ public class MutationEvent: Event {
     public var attrChange: UInt16
 
     @inlinable public func initMutationEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, relatedNodeArg: Node? = nil, prevValueArg: String? = nil, newValueArg: String? = nil, attrNameArg: String? = nil, attrChangeArg: UInt16? = nil) {
-        let _arg0 = typeArg.jsValue
-        let _arg1 = bubblesArg?.jsValue ?? .undefined
-        let _arg2 = cancelableArg?.jsValue ?? .undefined
-        let _arg3 = relatedNodeArg?.jsValue ?? .undefined
-        let _arg4 = prevValueArg?.jsValue ?? .undefined
-        let _arg5 = newValueArg?.jsValue ?? .undefined
-        let _arg6 = attrNameArg?.jsValue ?? .undefined
-        let _arg7 = attrChangeArg?.jsValue ?? .undefined
         let this = jsObject
-        _ = this[Strings.initMutationEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
+        _ = this[Strings.initMutationEvent].function!(this: this, arguments: [_toJSValue(typeArg), _toJSValue(bubblesArg), _toJSValue(cancelableArg), _toJSValue(relatedNodeArg), _toJSValue(prevValueArg), _toJSValue(newValueArg), _toJSValue(attrNameArg), _toJSValue(attrChangeArg)])
     }
 }
 
@@ -11926,7 +11819,7 @@ public class MutationObserver: JSBridgedClass {
 
     @inlinable public func observe(target: Node, options: MutationObserverInit? = nil) {
         let this = jsObject
-        _ = this[Strings.observe].function!(this: this, arguments: [target.jsValue, options?.jsValue ?? .undefined])
+        _ = this[Strings.observe].function!(this: this, arguments: [_toJSValue(target), _toJSValue(options)])
     }
 
     @inlinable public func disconnect() {
@@ -11943,13 +11836,13 @@ public class MutationObserver: JSBridgedClass {
 public class MutationObserverInit: BridgedDictionary {
     public convenience init(childList: Bool, attributes: Bool, characterData: Bool, subtree: Bool, attributeOldValue: Bool, characterDataOldValue: Bool, attributeFilter: [String]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.childList] = childList.jsValue
-        object[Strings.attributes] = attributes.jsValue
-        object[Strings.characterData] = characterData.jsValue
-        object[Strings.subtree] = subtree.jsValue
-        object[Strings.attributeOldValue] = attributeOldValue.jsValue
-        object[Strings.characterDataOldValue] = characterDataOldValue.jsValue
-        object[Strings.attributeFilter] = attributeFilter.jsValue
+        object[Strings.childList] = _toJSValue(childList)
+        object[Strings.attributes] = _toJSValue(attributes)
+        object[Strings.characterData] = _toJSValue(characterData)
+        object[Strings.subtree] = _toJSValue(subtree)
+        object[Strings.attributeOldValue] = _toJSValue(attributeOldValue)
+        object[Strings.characterDataOldValue] = _toJSValue(characterDataOldValue)
+        object[Strings.attributeFilter] = _toJSValue(attributeFilter)
         self.init(unsafelyWrapping: object)
     }
 
@@ -12055,27 +11948,27 @@ public class NamedNodeMap: JSBridgedClass {
 
     @inlinable public func getNamedItemNS(namespace: String?, localName: String) -> Attr? {
         let this = jsObject
-        return this[Strings.getNamedItemNS].function!(this: this, arguments: [namespace.jsValue, localName.jsValue]).fromJSValue()!
+        return this[Strings.getNamedItemNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
     }
 
     @inlinable public func setNamedItem(attr: Attr) -> Attr? {
         let this = jsObject
-        return this[Strings.setNamedItem].function!(this: this, arguments: [attr.jsValue]).fromJSValue()!
+        return this[Strings.setNamedItem].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()!
     }
 
     @inlinable public func setNamedItemNS(attr: Attr) -> Attr? {
         let this = jsObject
-        return this[Strings.setNamedItemNS].function!(this: this, arguments: [attr.jsValue]).fromJSValue()!
+        return this[Strings.setNamedItemNS].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()!
     }
 
     @inlinable public func removeNamedItem(qualifiedName: String) -> Attr {
         let this = jsObject
-        return this[Strings.removeNamedItem].function!(this: this, arguments: [qualifiedName.jsValue]).fromJSValue()!
+        return this[Strings.removeNamedItem].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
     }
 
     @inlinable public func removeNamedItemNS(namespace: String?, localName: String) -> Attr {
         let this = jsObject
-        return this[Strings.removeNamedItemNS].function!(this: this, arguments: [namespace.jsValue, localName.jsValue]).fromJSValue()!
+        return this[Strings.removeNamedItemNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
     }
 }
 
@@ -12114,13 +12007,13 @@ public class NavigationPreloadManager: JSBridgedClass {
 
     @inlinable public func setHeaderValue(value: String) -> JSPromise {
         let this = jsObject
-        return this[Strings.setHeaderValue].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
+        return this[Strings.setHeaderValue].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func setHeaderValue(value: String) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.setHeaderValue].function!(this: this, arguments: [value.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.setHeaderValue].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
         _ = try await _promise.value
     }
 
@@ -12140,8 +12033,8 @@ public class NavigationPreloadManager: JSBridgedClass {
 public class NavigationPreloadState: BridgedDictionary {
     public convenience init(enabled: Bool, headerValue: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.enabled] = enabled.jsValue
-        object[Strings.headerValue] = headerValue.jsValue
+        object[Strings.enabled] = _toJSValue(enabled)
+        object[Strings.headerValue] = _toJSValue(headerValue)
         self.init(unsafelyWrapping: object)
     }
 
@@ -12187,12 +12080,12 @@ public protocol NavigatorContentUtils: JSBridgedClass {}
 public extension NavigatorContentUtils {
     @inlinable func registerProtocolHandler(scheme: String, url: String) {
         let this = jsObject
-        _ = this[Strings.registerProtocolHandler].function!(this: this, arguments: [scheme.jsValue, url.jsValue])
+        _ = this[Strings.registerProtocolHandler].function!(this: this, arguments: [_toJSValue(scheme), _toJSValue(url)])
     }
 
     @inlinable func unregisterProtocolHandler(scheme: String, url: String) {
         let this = jsObject
-        _ = this[Strings.unregisterProtocolHandler].function!(this: this, arguments: [scheme.jsValue, url.jsValue])
+        _ = this[Strings.unregisterProtocolHandler].function!(this: this, arguments: [_toJSValue(scheme), _toJSValue(url)])
     }
 }
 
@@ -12317,7 +12210,7 @@ public class Node: EventTarget {
 
     @inlinable public func getRootNode(options: GetRootNodeOptions? = nil) -> Self {
         let this = jsObject
-        return this[Strings.getRootNode].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.getRootNode].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -12359,17 +12252,17 @@ public class Node: EventTarget {
 
     @inlinable public func cloneNode(deep: Bool? = nil) -> Self {
         let this = jsObject
-        return this[Strings.cloneNode].function!(this: this, arguments: [deep?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.cloneNode].function!(this: this, arguments: [_toJSValue(deep)]).fromJSValue()!
     }
 
     @inlinable public func isEqualNode(otherNode: Node?) -> Bool {
         let this = jsObject
-        return this[Strings.isEqualNode].function!(this: this, arguments: [otherNode.jsValue]).fromJSValue()!
+        return this[Strings.isEqualNode].function!(this: this, arguments: [_toJSValue(otherNode)]).fromJSValue()!
     }
 
     @inlinable public func isSameNode(otherNode: Node?) -> Bool {
         let this = jsObject
-        return this[Strings.isSameNode].function!(this: this, arguments: [otherNode.jsValue]).fromJSValue()!
+        return this[Strings.isSameNode].function!(this: this, arguments: [_toJSValue(otherNode)]).fromJSValue()!
     }
 
     public static let DOCUMENT_POSITION_DISCONNECTED: UInt16 = 0x01
@@ -12386,47 +12279,47 @@ public class Node: EventTarget {
 
     @inlinable public func compareDocumentPosition(other: Node) -> UInt16 {
         let this = jsObject
-        return this[Strings.compareDocumentPosition].function!(this: this, arguments: [other.jsValue]).fromJSValue()!
+        return this[Strings.compareDocumentPosition].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @inlinable public func contains(other: Node?) -> Bool {
         let this = jsObject
-        return this[Strings.contains].function!(this: this, arguments: [other.jsValue]).fromJSValue()!
+        return this[Strings.contains].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
     @inlinable public func lookupPrefix(namespace: String?) -> String? {
         let this = jsObject
-        return this[Strings.lookupPrefix].function!(this: this, arguments: [namespace.jsValue]).fromJSValue()!
+        return this[Strings.lookupPrefix].function!(this: this, arguments: [_toJSValue(namespace)]).fromJSValue()!
     }
 
     @inlinable public func lookupNamespaceURI(prefix: String?) -> String? {
         let this = jsObject
-        return this[Strings.lookupNamespaceURI].function!(this: this, arguments: [prefix.jsValue]).fromJSValue()!
+        return this[Strings.lookupNamespaceURI].function!(this: this, arguments: [_toJSValue(prefix)]).fromJSValue()!
     }
 
     @inlinable public func isDefaultNamespace(namespace: String?) -> Bool {
         let this = jsObject
-        return this[Strings.isDefaultNamespace].function!(this: this, arguments: [namespace.jsValue]).fromJSValue()!
+        return this[Strings.isDefaultNamespace].function!(this: this, arguments: [_toJSValue(namespace)]).fromJSValue()!
     }
 
     @inlinable public func insertBefore(node: Node, child: Node?) -> Self {
         let this = jsObject
-        return this[Strings.insertBefore].function!(this: this, arguments: [node.jsValue, child.jsValue]).fromJSValue()!
+        return this[Strings.insertBefore].function!(this: this, arguments: [_toJSValue(node), _toJSValue(child)]).fromJSValue()!
     }
 
     @inlinable public func appendChild(node: Node) -> Self {
         let this = jsObject
-        return this[Strings.appendChild].function!(this: this, arguments: [node.jsValue]).fromJSValue()!
+        return this[Strings.appendChild].function!(this: this, arguments: [_toJSValue(node)]).fromJSValue()!
     }
 
     @inlinable public func replaceChild(node: Node, child: Node) -> Self {
         let this = jsObject
-        return this[Strings.replaceChild].function!(this: this, arguments: [node.jsValue, child.jsValue]).fromJSValue()!
+        return this[Strings.replaceChild].function!(this: this, arguments: [_toJSValue(node), _toJSValue(child)]).fromJSValue()!
     }
 
     @inlinable public func removeChild(child: Node) -> Self {
         let this = jsObject
-        return this[Strings.removeChild].function!(this: this, arguments: [child.jsValue]).fromJSValue()!
+        return this[Strings.removeChild].function!(this: this, arguments: [_toJSValue(child)]).fromJSValue()!
     }
 }
 
@@ -12507,7 +12400,7 @@ public protocol NonElementParentNode: JSBridgedClass {}
 public extension NonElementParentNode {
     @inlinable func getElementById(elementId: String) -> Element? {
         let this = jsObject
-        return this[Strings.getElementById].function!(this: this, arguments: [elementId.jsValue]).fromJSValue()!
+        return this[Strings.getElementById].function!(this: this, arguments: [_toJSValue(elementId)]).fromJSValue()!
     }
 }
 
@@ -12523,7 +12416,7 @@ public class OffscreenCanvas: EventTarget {
     }
 
     @inlinable public convenience init(width: UInt64, height: UInt64) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [width.jsValue, height.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(width), _toJSValue(height)]))
     }
 
     @ReadWriteAttribute
@@ -12541,13 +12434,13 @@ public class OffscreenCanvas: EventTarget {
 
     @inlinable public func convertToBlob(options: ImageEncodeOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.convertToBlob].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func convertToBlob(options: ImageEncodeOptions? = nil) async throws -> Blob {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.convertToBlob].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.convertToBlob].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
@@ -12586,7 +12479,7 @@ public class OverconstrainedError: DOMException {
     }
 
     @inlinable public convenience init(constraint: String, message: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [constraint.jsValue, message?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(constraint), _toJSValue(message)]))
     }
 
     @ReadonlyAttribute
@@ -12602,7 +12495,7 @@ public class PageTransitionEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: PageTransitionEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -12612,7 +12505,7 @@ public class PageTransitionEvent: Event {
 public class PageTransitionEventInit: BridgedDictionary {
     public convenience init(persisted: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.persisted] = persisted.jsValue
+        object[Strings.persisted] = _toJSValue(persisted)
         self.init(unsafelyWrapping: object)
     }
 
@@ -12637,27 +12530,27 @@ public extension ParentNode {
 
     @inlinable func prepend(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.prepend].function!(this: this, arguments: nodes.map(\.jsValue))
+        _ = this[Strings.prepend].function!(this: this, arguments: nodes.map(_toJSValue))
     }
 
     @inlinable func append(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.append].function!(this: this, arguments: nodes.map(\.jsValue))
+        _ = this[Strings.append].function!(this: this, arguments: nodes.map(_toJSValue))
     }
 
     @inlinable func replaceChildren(nodes: Node_or_String...) {
         let this = jsObject
-        _ = this[Strings.replaceChildren].function!(this: this, arguments: nodes.map(\.jsValue))
+        _ = this[Strings.replaceChildren].function!(this: this, arguments: nodes.map(_toJSValue))
     }
 
     @inlinable func querySelector(selectors: String) -> Element? {
         let this = jsObject
-        return this[Strings.querySelector].function!(this: this, arguments: [selectors.jsValue]).fromJSValue()!
+        return this[Strings.querySelector].function!(this: this, arguments: [_toJSValue(selectors)]).fromJSValue()!
     }
 
     @inlinable func querySelectorAll(selectors: String) -> NodeList {
         let this = jsObject
-        return this[Strings.querySelectorAll].function!(this: this, arguments: [selectors.jsValue]).fromJSValue()!
+        return this[Strings.querySelectorAll].function!(this: this, arguments: [_toJSValue(selectors)]).fromJSValue()!
     }
 }
 
@@ -12671,12 +12564,12 @@ public class Path2D: JSBridgedClass, CanvasPath {
     }
 
     @inlinable public convenience init(path: Path2D_or_String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [path?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(path)]))
     }
 
     @inlinable public func addPath(path: Path2D, transform: DOMMatrix2DInit? = nil) {
         let this = jsObject
-        _ = this[Strings.addPath].function!(this: this, arguments: [path.jsValue, transform?.jsValue ?? .undefined])
+        _ = this[Strings.addPath].function!(this: this, arguments: [_toJSValue(path), _toJSValue(transform)])
     }
 }
 
@@ -12705,8 +12598,8 @@ public class Performance: EventTarget {
 public class PlaneLayout: BridgedDictionary {
     public convenience init(offset: UInt32, stride: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = offset.jsValue
-        object[Strings.stride] = stride.jsValue
+        object[Strings.offset] = _toJSValue(offset)
+        object[Strings.stride] = _toJSValue(stride)
         self.init(unsafelyWrapping: object)
     }
 
@@ -12793,7 +12686,7 @@ public class PopStateEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: PopStateEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -12803,7 +12696,7 @@ public class PopStateEvent: Event {
 public class PopStateEventInit: BridgedDictionary {
     public convenience init(state: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.state] = state.jsValue
+        object[Strings.state] = _toJSValue(state)
         self.init(unsafelyWrapping: object)
     }
 
@@ -12876,7 +12769,7 @@ public class ProgressEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: ProgressEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -12892,9 +12785,9 @@ public class ProgressEvent: Event {
 public class ProgressEventInit: BridgedDictionary {
     public convenience init(lengthComputable: Bool, loaded: UInt64, total: UInt64) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.lengthComputable] = lengthComputable.jsValue
-        object[Strings.loaded] = loaded.jsValue
-        object[Strings.total] = total.jsValue
+        object[Strings.lengthComputable] = _toJSValue(lengthComputable)
+        object[Strings.loaded] = _toJSValue(loaded)
+        object[Strings.total] = _toJSValue(total)
         self.init(unsafelyWrapping: object)
     }
 
@@ -12925,7 +12818,7 @@ public class PromiseRejectionEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: PromiseRejectionEventInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -12938,8 +12831,8 @@ public class PromiseRejectionEvent: Event {
 public class PromiseRejectionEventInit: BridgedDictionary {
     public convenience init(promise: JSPromise, reason: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.promise] = promise.jsValue
-        object[Strings.reason] = reason.jsValue
+        object[Strings.promise] = _toJSValue(promise)
+        object[Strings.reason] = _toJSValue(reason)
         self.init(unsafelyWrapping: object)
     }
 
@@ -12959,7 +12852,7 @@ public class PromiseRejectionEventInit: BridgedDictionary {
 public class QueuingStrategy: BridgedDictionary {
     public convenience init(highWaterMark: Double, size: @escaping QueuingStrategySize) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.highWaterMark] = highWaterMark.jsValue
+        object[Strings.highWaterMark] = _toJSValue(highWaterMark)
         ClosureAttribute1[Strings.size, in: object] = size
         self.init(unsafelyWrapping: object)
     }
@@ -12980,7 +12873,7 @@ public class QueuingStrategy: BridgedDictionary {
 public class QueuingStrategyInit: BridgedDictionary {
     public convenience init(highWaterMark: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.highWaterMark] = highWaterMark.jsValue
+        object[Strings.highWaterMark] = _toJSValue(highWaterMark)
         self.init(unsafelyWrapping: object)
     }
 
@@ -13022,47 +12915,47 @@ public class Range: AbstractRange {
 
     @inlinable public func setStart(node: Node, offset: UInt32) {
         let this = jsObject
-        _ = this[Strings.setStart].function!(this: this, arguments: [node.jsValue, offset.jsValue])
+        _ = this[Strings.setStart].function!(this: this, arguments: [_toJSValue(node), _toJSValue(offset)])
     }
 
     @inlinable public func setEnd(node: Node, offset: UInt32) {
         let this = jsObject
-        _ = this[Strings.setEnd].function!(this: this, arguments: [node.jsValue, offset.jsValue])
+        _ = this[Strings.setEnd].function!(this: this, arguments: [_toJSValue(node), _toJSValue(offset)])
     }
 
     @inlinable public func setStartBefore(node: Node) {
         let this = jsObject
-        _ = this[Strings.setStartBefore].function!(this: this, arguments: [node.jsValue])
+        _ = this[Strings.setStartBefore].function!(this: this, arguments: [_toJSValue(node)])
     }
 
     @inlinable public func setStartAfter(node: Node) {
         let this = jsObject
-        _ = this[Strings.setStartAfter].function!(this: this, arguments: [node.jsValue])
+        _ = this[Strings.setStartAfter].function!(this: this, arguments: [_toJSValue(node)])
     }
 
     @inlinable public func setEndBefore(node: Node) {
         let this = jsObject
-        _ = this[Strings.setEndBefore].function!(this: this, arguments: [node.jsValue])
+        _ = this[Strings.setEndBefore].function!(this: this, arguments: [_toJSValue(node)])
     }
 
     @inlinable public func setEndAfter(node: Node) {
         let this = jsObject
-        _ = this[Strings.setEndAfter].function!(this: this, arguments: [node.jsValue])
+        _ = this[Strings.setEndAfter].function!(this: this, arguments: [_toJSValue(node)])
     }
 
     @inlinable public func collapse(toStart: Bool? = nil) {
         let this = jsObject
-        _ = this[Strings.collapse].function!(this: this, arguments: [toStart?.jsValue ?? .undefined])
+        _ = this[Strings.collapse].function!(this: this, arguments: [_toJSValue(toStart)])
     }
 
     @inlinable public func selectNode(node: Node) {
         let this = jsObject
-        _ = this[Strings.selectNode].function!(this: this, arguments: [node.jsValue])
+        _ = this[Strings.selectNode].function!(this: this, arguments: [_toJSValue(node)])
     }
 
     @inlinable public func selectNodeContents(node: Node) {
         let this = jsObject
-        _ = this[Strings.selectNodeContents].function!(this: this, arguments: [node.jsValue])
+        _ = this[Strings.selectNodeContents].function!(this: this, arguments: [_toJSValue(node)])
     }
 
     public static let START_TO_START: UInt16 = 0
@@ -13075,7 +12968,7 @@ public class Range: AbstractRange {
 
     @inlinable public func compareBoundaryPoints(how: UInt16, sourceRange: Range) -> Int16 {
         let this = jsObject
-        return this[Strings.compareBoundaryPoints].function!(this: this, arguments: [how.jsValue, sourceRange.jsValue]).fromJSValue()!
+        return this[Strings.compareBoundaryPoints].function!(this: this, arguments: [_toJSValue(how), _toJSValue(sourceRange)]).fromJSValue()!
     }
 
     @inlinable public func deleteContents() {
@@ -13095,12 +12988,12 @@ public class Range: AbstractRange {
 
     @inlinable public func insertNode(node: Node) {
         let this = jsObject
-        _ = this[Strings.insertNode].function!(this: this, arguments: [node.jsValue])
+        _ = this[Strings.insertNode].function!(this: this, arguments: [_toJSValue(node)])
     }
 
     @inlinable public func surroundContents(newParent: Node) {
         let this = jsObject
-        _ = this[Strings.surroundContents].function!(this: this, arguments: [newParent.jsValue])
+        _ = this[Strings.surroundContents].function!(this: this, arguments: [_toJSValue(newParent)])
     }
 
     @inlinable public func cloneRange() -> Self {
@@ -13115,17 +13008,17 @@ public class Range: AbstractRange {
 
     @inlinable public func isPointInRange(node: Node, offset: UInt32) -> Bool {
         let this = jsObject
-        return this[Strings.isPointInRange].function!(this: this, arguments: [node.jsValue, offset.jsValue]).fromJSValue()!
+        return this[Strings.isPointInRange].function!(this: this, arguments: [_toJSValue(node), _toJSValue(offset)]).fromJSValue()!
     }
 
     @inlinable public func comparePoint(node: Node, offset: UInt32) -> Int16 {
         let this = jsObject
-        return this[Strings.comparePoint].function!(this: this, arguments: [node.jsValue, offset.jsValue]).fromJSValue()!
+        return this[Strings.comparePoint].function!(this: this, arguments: [_toJSValue(node), _toJSValue(offset)]).fromJSValue()!
     }
 
     @inlinable public func intersectsNode(node: Node) -> Bool {
         let this = jsObject
-        return this[Strings.intersectsNode].function!(this: this, arguments: [node.jsValue]).fromJSValue()!
+        return this[Strings.intersectsNode].function!(this: this, arguments: [_toJSValue(node)]).fromJSValue()!
     }
 
     @inlinable public var description: String {
@@ -13167,12 +13060,12 @@ public class ReadableByteStreamController: JSBridgedClass {
 
     @inlinable public func enqueue(chunk: ArrayBufferView) {
         let this = jsObject
-        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk.jsValue])
+        _ = this[Strings.enqueue].function!(this: this, arguments: [_toJSValue(chunk)])
     }
 
     @inlinable public func error(e: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue ?? .undefined])
+        _ = this[Strings.error].function!(this: this, arguments: [_toJSValue(e)])
     }
 }
 
@@ -13187,7 +13080,7 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
     }
 
     @inlinable public convenience init(underlyingSource: JSObject? = nil, strategy: QueuingStrategy? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [underlyingSource?.jsValue ?? .undefined, strategy?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(underlyingSource), _toJSValue(strategy)]))
     }
 
     @ReadonlyAttribute
@@ -13195,35 +13088,35 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
 
     @inlinable public func cancel(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.cancel].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func cancel(reason: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.cancel].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
         _ = try await _promise.value
     }
 
     @inlinable public func getReader(options: ReadableStreamGetReaderOptions? = nil) -> ReadableStreamReader {
         let this = jsObject
-        return this[Strings.getReader].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.getReader].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable public func pipeThrough(transform: ReadableWritablePair, options: StreamPipeOptions? = nil) -> Self {
         let this = jsObject
-        return this[Strings.pipeThrough].function!(this: this, arguments: [transform.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.pipeThrough].function!(this: this, arguments: [_toJSValue(transform), _toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable public func pipeTo(destination: WritableStream, options: StreamPipeOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.pipeTo].function!(this: this, arguments: [destination.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.pipeTo].function!(this: this, arguments: [_toJSValue(destination), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func pipeTo(destination: WritableStream, options: StreamPipeOptions? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.pipeTo].function!(this: this, arguments: [destination.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.pipeTo].function!(this: this, arguments: [_toJSValue(destination), _toJSValue(options)]).fromJSValue()!
         _ = try await _promise.value
     }
 
@@ -13242,8 +13135,8 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
 public class ReadableStreamBYOBReadResult: BridgedDictionary {
     public convenience init(value: ArrayBufferView?, done: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.value] = value.jsValue
-        object[Strings.done] = done.jsValue
+        object[Strings.value] = _toJSValue(value)
+        object[Strings.done] = _toJSValue(done)
         self.init(unsafelyWrapping: object)
     }
 
@@ -13270,18 +13163,18 @@ public class ReadableStreamBYOBReader: JSBridgedClass, ReadableStreamGenericRead
     }
 
     @inlinable public convenience init(stream: ReadableStream) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [stream.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(stream)]))
     }
 
     @inlinable public func read(view: ArrayBufferView) -> JSPromise {
         let this = jsObject
-        return this[Strings.read].function!(this: this, arguments: [view.jsValue]).fromJSValue()!
+        return this[Strings.read].function!(this: this, arguments: [_toJSValue(view)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func read(view: ArrayBufferView) async throws -> ReadableStreamBYOBReadResult {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: [view.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.read].function!(this: this, arguments: [_toJSValue(view)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
@@ -13306,12 +13199,12 @@ public class ReadableStreamBYOBRequest: JSBridgedClass {
 
     @inlinable public func respond(bytesWritten: UInt64) {
         let this = jsObject
-        _ = this[Strings.respond].function!(this: this, arguments: [bytesWritten.jsValue])
+        _ = this[Strings.respond].function!(this: this, arguments: [_toJSValue(bytesWritten)])
     }
 
     @inlinable public func respondWithNewView(view: ArrayBufferView) {
         let this = jsObject
-        _ = this[Strings.respondWithNewView].function!(this: this, arguments: [view.jsValue])
+        _ = this[Strings.respondWithNewView].function!(this: this, arguments: [_toJSValue(view)])
     }
 }
 
@@ -13335,20 +13228,20 @@ public class ReadableStreamDefaultController: JSBridgedClass {
 
     @inlinable public func enqueue(chunk: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk?.jsValue ?? .undefined])
+        _ = this[Strings.enqueue].function!(this: this, arguments: [_toJSValue(chunk)])
     }
 
     @inlinable public func error(e: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue ?? .undefined])
+        _ = this[Strings.error].function!(this: this, arguments: [_toJSValue(e)])
     }
 }
 
 public class ReadableStreamDefaultReadResult: BridgedDictionary {
     public convenience init(value: JSValue, done: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.value] = value.jsValue
-        object[Strings.done] = done.jsValue
+        object[Strings.value] = _toJSValue(value)
+        object[Strings.done] = _toJSValue(done)
         self.init(unsafelyWrapping: object)
     }
 
@@ -13375,7 +13268,7 @@ public class ReadableStreamDefaultReader: JSBridgedClass, ReadableStreamGenericR
     }
 
     @inlinable public convenience init(stream: ReadableStream) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [stream.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(stream)]))
     }
 
     @inlinable public func read() -> JSPromise {
@@ -13402,13 +13295,13 @@ public extension ReadableStreamGenericReader {
 
     @inlinable func cancel(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.cancel].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable func cancel(reason: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.cancel].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.cancel].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
         _ = try await _promise.value
     }
 }
@@ -13416,7 +13309,7 @@ public extension ReadableStreamGenericReader {
 public class ReadableStreamGetReaderOptions: BridgedDictionary {
     public convenience init(mode: ReadableStreamReaderMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mode] = mode.jsValue
+        object[Strings.mode] = _toJSValue(mode)
         self.init(unsafelyWrapping: object)
     }
 
@@ -13432,7 +13325,7 @@ public class ReadableStreamGetReaderOptions: BridgedDictionary {
 public class ReadableStreamIteratorOptions: BridgedDictionary {
     public convenience init(preventCancel: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.preventCancel] = preventCancel.jsValue
+        object[Strings.preventCancel] = _toJSValue(preventCancel)
         self.init(unsafelyWrapping: object)
     }
 
@@ -13482,8 +13375,8 @@ public enum ReadableStreamType: JSString, JSValueCompatible {
 public class ReadableWritablePair: BridgedDictionary {
     public convenience init(readable: ReadableStream, writable: WritableStream) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.readable] = readable.jsValue
-        object[Strings.writable] = writable.jsValue
+        object[Strings.readable] = _toJSValue(readable)
+        object[Strings.writable] = _toJSValue(writable)
         self.init(unsafelyWrapping: object)
     }
 
@@ -13566,9 +13459,9 @@ public enum ReferrerPolicy: JSString, JSValueCompatible {
 public class RegistrationOptions: BridgedDictionary {
     public convenience init(scope: String, type: WorkerType, updateViaCache: ServiceWorkerUpdateViaCache) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.scope] = scope.jsValue
-        object[Strings.type] = type.jsValue
-        object[Strings.updateViaCache] = updateViaCache.jsValue
+        object[Strings.scope] = _toJSValue(scope)
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.updateViaCache] = _toJSValue(updateViaCache)
         self.init(unsafelyWrapping: object)
     }
 
@@ -13614,7 +13507,7 @@ public class Request: JSBridgedClass, Body {
     }
 
     @inlinable public convenience init(input: RequestInfo, init: RequestInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [input.jsValue, `init`?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(input), _toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -13748,19 +13641,19 @@ public enum RequestDestination: JSString, JSValueCompatible {
 public class RequestInit: BridgedDictionary {
     public convenience init(method: String, headers: HeadersInit, body: BodyInit?, referrer: String, referrerPolicy: ReferrerPolicy, mode: RequestMode, credentials: RequestCredentials, cache: RequestCache, redirect: RequestRedirect, integrity: String, keepalive: Bool, signal: AbortSignal?, window: JSValue) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.method] = method.jsValue
-        object[Strings.headers] = headers.jsValue
-        object[Strings.body] = body.jsValue
-        object[Strings.referrer] = referrer.jsValue
-        object[Strings.referrerPolicy] = referrerPolicy.jsValue
-        object[Strings.mode] = mode.jsValue
-        object[Strings.credentials] = credentials.jsValue
-        object[Strings.cache] = cache.jsValue
-        object[Strings.redirect] = redirect.jsValue
-        object[Strings.integrity] = integrity.jsValue
-        object[Strings.keepalive] = keepalive.jsValue
-        object[Strings.signal] = signal.jsValue
-        object[Strings.window] = window.jsValue
+        object[Strings.method] = _toJSValue(method)
+        object[Strings.headers] = _toJSValue(headers)
+        object[Strings.body] = _toJSValue(body)
+        object[Strings.referrer] = _toJSValue(referrer)
+        object[Strings.referrerPolicy] = _toJSValue(referrerPolicy)
+        object[Strings.mode] = _toJSValue(mode)
+        object[Strings.credentials] = _toJSValue(credentials)
+        object[Strings.cache] = _toJSValue(cache)
+        object[Strings.redirect] = _toJSValue(redirect)
+        object[Strings.integrity] = _toJSValue(integrity)
+        object[Strings.keepalive] = _toJSValue(keepalive)
+        object[Strings.signal] = _toJSValue(signal)
+        object[Strings.window] = _toJSValue(window)
         self.init(unsafelyWrapping: object)
     }
 
@@ -13897,7 +13790,7 @@ public class Response: JSBridgedClass, Body {
     }
 
     @inlinable public convenience init(body: BodyInit? = nil, init: ResponseInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [body?.jsValue ?? .undefined, `init`?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(body), _toJSValue(`init`)]))
     }
 
     @inlinable public static func error() -> Self {
@@ -13907,7 +13800,7 @@ public class Response: JSBridgedClass, Body {
 
     @inlinable public static func redirect(url: String, status: UInt16? = nil) -> Self {
         let this = constructor!
-        return this[Strings.redirect].function!(this: this, arguments: [url.jsValue, status?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.redirect].function!(this: this, arguments: [_toJSValue(url), _toJSValue(status)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -13940,9 +13833,9 @@ public class Response: JSBridgedClass, Body {
 public class ResponseInit: BridgedDictionary {
     public convenience init(status: UInt16, statusText: String, headers: HeadersInit) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.status] = status.jsValue
-        object[Strings.statusText] = statusText.jsValue
-        object[Strings.headers] = headers.jsValue
+        object[Strings.status] = _toJSValue(status)
+        object[Strings.statusText] = _toJSValue(statusText)
+        object[Strings.headers] = _toJSValue(headers)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14040,8 +13933,8 @@ public enum ScrollBehavior: JSString, JSValueCompatible {
 public class ScrollIntoViewOptions: BridgedDictionary {
     public convenience init(block: ScrollLogicalPosition, inline: ScrollLogicalPosition) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.block] = block.jsValue
-        object[Strings.inline] = inline.jsValue
+        object[Strings.block] = _toJSValue(block)
+        object[Strings.inline] = _toJSValue(inline)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14081,7 +13974,7 @@ public enum ScrollLogicalPosition: JSString, JSValueCompatible {
 public class ScrollOptions: BridgedDictionary {
     public convenience init(behavior: ScrollBehavior) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.behavior] = behavior.jsValue
+        object[Strings.behavior] = _toJSValue(behavior)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14115,8 +14008,8 @@ public enum ScrollRestoration: JSString, JSValueCompatible {
 public class ScrollToOptions: BridgedDictionary {
     public convenience init(left: Double, top: Double) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.left] = left.jsValue
-        object[Strings.top] = top.jsValue
+        object[Strings.left] = _toJSValue(left)
+        object[Strings.top] = _toJSValue(top)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14171,12 +14064,12 @@ public class ServiceWorker: EventTarget, AbstractWorker {
 
     @inlinable public func postMessage(message: JSValue, transfer: [JSObject]) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, transfer.jsValue])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [_toJSValue(message), _toJSValue(transfer)])
     }
 
     @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [_toJSValue(message), _toJSValue(options)])
     }
 
     @ClosureAttribute1Optional
@@ -14203,25 +14096,25 @@ public class ServiceWorkerContainer: EventTarget {
 
     @inlinable public func register(scriptURL: String, options: RegistrationOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.register].function!(this: this, arguments: [_toJSValue(scriptURL), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func register(scriptURL: String, options: RegistrationOptions? = nil) async throws -> ServiceWorkerRegistration {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.register].function!(this: this, arguments: [scriptURL.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.register].function!(this: this, arguments: [_toJSValue(scriptURL), _toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable public func getRegistration(clientURL: String? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.getRegistration].function!(this: this, arguments: [_toJSValue(clientURL)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func getRegistration(clientURL: String? = nil) async throws -> ServiceWorkerRegistration? {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.getRegistration].function!(this: this, arguments: [clientURL?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.getRegistration].function!(this: this, arguments: [_toJSValue(clientURL)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
@@ -14384,9 +14277,9 @@ public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot {
 public class ShadowRootInit: BridgedDictionary {
     public convenience init(mode: ShadowRootMode, delegatesFocus: Bool, slotAssignment: SlotAssignmentMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.mode] = mode.jsValue
-        object[Strings.delegatesFocus] = delegatesFocus.jsValue
-        object[Strings.slotAssignment] = slotAssignment.jsValue
+        object[Strings.mode] = _toJSValue(mode)
+        object[Strings.delegatesFocus] = _toJSValue(delegatesFocus)
+        object[Strings.slotAssignment] = _toJSValue(slotAssignment)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14434,7 +14327,7 @@ public class SharedWorker: EventTarget, AbstractWorker {
     }
 
     @inlinable public convenience init(scriptURL: String, options: String_or_WorkerOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [scriptURL.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(scriptURL), _toJSValue(options)]))
     }
 
     @ReadonlyAttribute
@@ -14529,7 +14422,7 @@ public class SourceBuffer: EventTarget {
 
     @inlinable public func appendBuffer(data: BufferSource) {
         let this = jsObject
-        _ = this[Strings.appendBuffer].function!(this: this, arguments: [data.jsValue])
+        _ = this[Strings.appendBuffer].function!(this: this, arguments: [_toJSValue(data)])
     }
 
     @inlinable public func abort() {
@@ -14539,12 +14432,12 @@ public class SourceBuffer: EventTarget {
 
     @inlinable public func changeType(type: String) {
         let this = jsObject
-        _ = this[Strings.changeType].function!(this: this, arguments: [type.jsValue])
+        _ = this[Strings.changeType].function!(this: this, arguments: [_toJSValue(type)])
     }
 
     @inlinable public func remove(start: Double, end: Double) {
         let this = jsObject
-        _ = this[Strings.remove].function!(this: this, arguments: [start.jsValue, end.jsValue])
+        _ = this[Strings.remove].function!(this: this, arguments: [_toJSValue(start), _toJSValue(end)])
     }
 }
 
@@ -14580,17 +14473,17 @@ public class StaticRange: AbstractRange {
     }
 
     @inlinable public convenience init(init: StaticRangeInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 }
 
 public class StaticRangeInit: BridgedDictionary {
     public convenience init(startContainer: Node, startOffset: UInt32, endContainer: Node, endOffset: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.startContainer] = startContainer.jsValue
-        object[Strings.startOffset] = startOffset.jsValue
-        object[Strings.endContainer] = endContainer.jsValue
-        object[Strings.endOffset] = endOffset.jsValue
+        object[Strings.startContainer] = _toJSValue(startContainer)
+        object[Strings.startOffset] = _toJSValue(startOffset)
+        object[Strings.endContainer] = _toJSValue(endContainer)
+        object[Strings.endOffset] = _toJSValue(endOffset)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14630,7 +14523,7 @@ public class Storage: JSBridgedClass {
 
     @inlinable public func key(index: UInt32) -> String? {
         let this = jsObject
-        return this[Strings.key].function!(this: this, arguments: [index.jsValue]).fromJSValue()!
+        return this[Strings.key].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 
     @inlinable public subscript(key: String) -> String? {
@@ -14660,7 +14553,7 @@ public class StorageEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: StorageEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -14679,27 +14572,19 @@ public class StorageEvent: Event {
     public var storageArea: Storage?
 
     @inlinable public func initStorageEvent(type: String, bubbles: Bool? = nil, cancelable: Bool? = nil, key: String? = nil, oldValue: String? = nil, newValue: String? = nil, url: String? = nil, storageArea: Storage? = nil) {
-        let _arg0 = type.jsValue
-        let _arg1 = bubbles?.jsValue ?? .undefined
-        let _arg2 = cancelable?.jsValue ?? .undefined
-        let _arg3 = key?.jsValue ?? .undefined
-        let _arg4 = oldValue?.jsValue ?? .undefined
-        let _arg5 = newValue?.jsValue ?? .undefined
-        let _arg6 = url?.jsValue ?? .undefined
-        let _arg7 = storageArea?.jsValue ?? .undefined
         let this = jsObject
-        _ = this[Strings.initStorageEvent].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7])
+        _ = this[Strings.initStorageEvent].function!(this: this, arguments: [_toJSValue(type), _toJSValue(bubbles), _toJSValue(cancelable), _toJSValue(key), _toJSValue(oldValue), _toJSValue(newValue), _toJSValue(url), _toJSValue(storageArea)])
     }
 }
 
 public class StorageEventInit: BridgedDictionary {
     public convenience init(key: String?, oldValue: String?, newValue: String?, url: String, storageArea: Storage?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.key] = key.jsValue
-        object[Strings.oldValue] = oldValue.jsValue
-        object[Strings.newValue] = newValue.jsValue
-        object[Strings.url] = url.jsValue
-        object[Strings.storageArea] = storageArea.jsValue
+        object[Strings.key] = _toJSValue(key)
+        object[Strings.oldValue] = _toJSValue(oldValue)
+        object[Strings.newValue] = _toJSValue(newValue)
+        object[Strings.url] = _toJSValue(url)
+        object[Strings.storageArea] = _toJSValue(storageArea)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14731,10 +14616,10 @@ public class StorageEventInit: BridgedDictionary {
 public class StreamPipeOptions: BridgedDictionary {
     public convenience init(preventClose: Bool, preventAbort: Bool, preventCancel: Bool, signal: AbortSignal) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.preventClose] = preventClose.jsValue
-        object[Strings.preventAbort] = preventAbort.jsValue
-        object[Strings.preventCancel] = preventCancel.jsValue
-        object[Strings.signal] = signal.jsValue
+        object[Strings.preventClose] = _toJSValue(preventClose)
+        object[Strings.preventAbort] = _toJSValue(preventAbort)
+        object[Strings.preventCancel] = _toJSValue(preventCancel)
+        object[Strings.signal] = _toJSValue(signal)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14762,7 +14647,7 @@ public class StreamPipeOptions: BridgedDictionary {
 public class StructuredSerializeOptions: BridgedDictionary {
     public convenience init(transfer: [JSObject]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.transfer] = transfer.jsValue
+        object[Strings.transfer] = _toJSValue(transfer)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14784,7 +14669,7 @@ public class SubmitEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: SubmitEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -14794,7 +14679,7 @@ public class SubmitEvent: Event {
 public class SubmitEventInit: BridgedDictionary {
     public convenience init(submitter: HTMLElement?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.submitter] = submitter.jsValue
+        object[Strings.submitter] = _toJSValue(submitter)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14810,7 +14695,7 @@ public class SubmitEventInit: BridgedDictionary {
 public class SvcOutputMetadata: BridgedDictionary {
     public convenience init(temporalLayerId: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.temporalLayerId] = temporalLayerId.jsValue
+        object[Strings.temporalLayerId] = _toJSValue(temporalLayerId)
         self.init(unsafelyWrapping: object)
     }
 
@@ -14832,12 +14717,12 @@ public class Text: CharacterData, Slottable, GeometryUtils {
     }
 
     @inlinable public convenience init(data: String? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [data?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(data)]))
     }
 
     @inlinable public func splitText(offset: UInt32) -> Self {
         let this = jsObject
-        return this[Strings.splitText].function!(this: this, arguments: [offset.jsValue]).fromJSValue()!
+        return this[Strings.splitText].function!(this: this, arguments: [_toJSValue(offset)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -14945,12 +14830,12 @@ public class TextTrack: EventTarget {
 
     @inlinable public func addCue(cue: TextTrackCue) {
         let this = jsObject
-        _ = this[Strings.addCue].function!(this: this, arguments: [cue.jsValue])
+        _ = this[Strings.addCue].function!(this: this, arguments: [_toJSValue(cue)])
     }
 
     @inlinable public func removeCue(cue: TextTrackCue) {
         let this = jsObject
-        _ = this[Strings.removeCue].function!(this: this, arguments: [cue.jsValue])
+        _ = this[Strings.removeCue].function!(this: this, arguments: [_toJSValue(cue)])
     }
 
     @ClosureAttribute1Optional
@@ -15015,7 +14900,7 @@ public class TextTrackCueList: JSBridgedClass {
 
     @inlinable public func getCueById(id: String) -> TextTrackCue? {
         let this = jsObject
-        return this[Strings.getCueById].function!(this: this, arguments: [id.jsValue]).fromJSValue()!
+        return this[Strings.getCueById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()!
     }
 }
 
@@ -15060,7 +14945,7 @@ public class TextTrackList: EventTarget {
 
     @inlinable public func getTrackById(id: String) -> TextTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [id.jsValue]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()!
     }
 
     @ClosureAttribute1Optional
@@ -15107,12 +14992,12 @@ public class TimeRanges: JSBridgedClass {
 
     @inlinable public func start(index: UInt32) -> Double {
         let this = jsObject
-        return this[Strings.start].function!(this: this, arguments: [index.jsValue]).fromJSValue()!
+        return this[Strings.start].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 
     @inlinable public func end(index: UInt32) -> Double {
         let this = jsObject
-        return this[Strings.end].function!(this: this, arguments: [index.jsValue]).fromJSValue()!
+        return this[Strings.end].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 }
 
@@ -15141,7 +15026,7 @@ public class Touch: JSBridgedClass {
     }
 
     @inlinable public convenience init(touchInitDict: TouchInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [touchInitDict.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(touchInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -15205,7 +15090,7 @@ public class TouchEvent: UIEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: TouchEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -15233,9 +15118,9 @@ public class TouchEvent: UIEvent {
 public class TouchEventInit: BridgedDictionary {
     public convenience init(touches: [Touch], targetTouches: [Touch], changedTouches: [Touch]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.touches] = touches.jsValue
-        object[Strings.targetTouches] = targetTouches.jsValue
-        object[Strings.changedTouches] = changedTouches.jsValue
+        object[Strings.touches] = _toJSValue(touches)
+        object[Strings.targetTouches] = _toJSValue(targetTouches)
+        object[Strings.changedTouches] = _toJSValue(changedTouches)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15259,21 +15144,21 @@ public class TouchEventInit: BridgedDictionary {
 public class TouchInit: BridgedDictionary {
     public convenience init(identifier: Int32, target: EventTarget, clientX: Double, clientY: Double, screenX: Double, screenY: Double, pageX: Double, pageY: Double, radiusX: Float, radiusY: Float, rotationAngle: Float, force: Float, altitudeAngle: Double, azimuthAngle: Double, touchType: TouchType) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.identifier] = identifier.jsValue
-        object[Strings.target] = target.jsValue
-        object[Strings.clientX] = clientX.jsValue
-        object[Strings.clientY] = clientY.jsValue
-        object[Strings.screenX] = screenX.jsValue
-        object[Strings.screenY] = screenY.jsValue
-        object[Strings.pageX] = pageX.jsValue
-        object[Strings.pageY] = pageY.jsValue
-        object[Strings.radiusX] = radiusX.jsValue
-        object[Strings.radiusY] = radiusY.jsValue
-        object[Strings.rotationAngle] = rotationAngle.jsValue
-        object[Strings.force] = force.jsValue
-        object[Strings.altitudeAngle] = altitudeAngle.jsValue
-        object[Strings.azimuthAngle] = azimuthAngle.jsValue
-        object[Strings.touchType] = touchType.jsValue
+        object[Strings.identifier] = _toJSValue(identifier)
+        object[Strings.target] = _toJSValue(target)
+        object[Strings.clientX] = _toJSValue(clientX)
+        object[Strings.clientY] = _toJSValue(clientY)
+        object[Strings.screenX] = _toJSValue(screenX)
+        object[Strings.screenY] = _toJSValue(screenY)
+        object[Strings.pageX] = _toJSValue(pageX)
+        object[Strings.pageY] = _toJSValue(pageY)
+        object[Strings.radiusX] = _toJSValue(radiusX)
+        object[Strings.radiusY] = _toJSValue(radiusY)
+        object[Strings.rotationAngle] = _toJSValue(rotationAngle)
+        object[Strings.force] = _toJSValue(force)
+        object[Strings.altitudeAngle] = _toJSValue(altitudeAngle)
+        object[Strings.azimuthAngle] = _toJSValue(azimuthAngle)
+        object[Strings.touchType] = _toJSValue(touchType)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15387,7 +15272,7 @@ public class TrackEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: TrackEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -15397,7 +15282,7 @@ public class TrackEvent: Event {
 public class TrackEventInit: BridgedDictionary {
     public convenience init(track: AudioTrack_or_TextTrack_or_VideoTrack?) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.track] = track.jsValue
+        object[Strings.track] = _toJSValue(track)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15422,7 +15307,7 @@ public class TransformStream: JSBridgedClass {
     }
 
     @inlinable public convenience init(transformer: JSObject? = nil, writableStrategy: QueuingStrategy? = nil, readableStrategy: QueuingStrategy? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [transformer?.jsValue ?? .undefined, writableStrategy?.jsValue ?? .undefined, readableStrategy?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(transformer), _toJSValue(writableStrategy), _toJSValue(readableStrategy)]))
     }
 
     @ReadonlyAttribute
@@ -15447,12 +15332,12 @@ public class TransformStreamDefaultController: JSBridgedClass {
 
     @inlinable public func enqueue(chunk: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.enqueue].function!(this: this, arguments: [chunk?.jsValue ?? .undefined])
+        _ = this[Strings.enqueue].function!(this: this, arguments: [_toJSValue(chunk)])
     }
 
     @inlinable public func error(reason: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.error].function!(this: this, arguments: [reason?.jsValue ?? .undefined])
+        _ = this[Strings.error].function!(this: this, arguments: [_toJSValue(reason)])
     }
 
     @inlinable public func terminate() {
@@ -15467,8 +15352,8 @@ public class Transformer: BridgedDictionary {
         ClosureAttribute1[Strings.start, in: object] = start
         ClosureAttribute2[Strings.transform, in: object] = transform
         ClosureAttribute1[Strings.flush, in: object] = flush
-        object[Strings.readableType] = readableType.jsValue
-        object[Strings.writableType] = writableType.jsValue
+        object[Strings.readableType] = _toJSValue(readableType)
+        object[Strings.writableType] = _toJSValue(writableType)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15601,7 +15486,7 @@ public class UIEvent: Event {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: UIEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     @ReadonlyAttribute
@@ -15612,7 +15497,7 @@ public class UIEvent: Event {
 
     @inlinable public func initUIEvent(typeArg: String, bubblesArg: Bool? = nil, cancelableArg: Bool? = nil, viewArg: Window? = nil, detailArg: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.initUIEvent].function!(this: this, arguments: [typeArg.jsValue, bubblesArg?.jsValue ?? .undefined, cancelableArg?.jsValue ?? .undefined, viewArg?.jsValue ?? .undefined, detailArg?.jsValue ?? .undefined])
+        _ = this[Strings.initUIEvent].function!(this: this, arguments: [_toJSValue(typeArg), _toJSValue(bubblesArg), _toJSValue(cancelableArg), _toJSValue(viewArg), _toJSValue(detailArg)])
     }
 
     @ReadonlyAttribute
@@ -15622,9 +15507,9 @@ public class UIEvent: Event {
 public class UIEventInit: BridgedDictionary {
     public convenience init(view: Window?, detail: Int32, which: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.view] = view.jsValue
-        object[Strings.detail] = detail.jsValue
-        object[Strings.which] = which.jsValue
+        object[Strings.view] = _toJSValue(view)
+        object[Strings.detail] = _toJSValue(detail)
+        object[Strings.which] = _toJSValue(which)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15648,8 +15533,8 @@ public class UIEventInit: BridgedDictionary {
 public class ULongRange: BridgedDictionary {
     public convenience init(max: UInt32, min: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.max] = max.jsValue
-        object[Strings.min] = min.jsValue
+        object[Strings.max] = _toJSValue(max)
+        object[Strings.min] = _toJSValue(min)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15677,12 +15562,12 @@ public class URL: JSBridgedClass {
 
     @inlinable public static func createObjectURL(obj: Blob_or_MediaSource) -> String {
         let this = constructor!
-        return this[Strings.createObjectURL].function!(this: this, arguments: [obj.jsValue]).fromJSValue()!
+        return this[Strings.createObjectURL].function!(this: this, arguments: [_toJSValue(obj)]).fromJSValue()!
     }
 
     @inlinable public static func revokeObjectURL(url: String) {
         let this = constructor!
-        _ = this[Strings.revokeObjectURL].function!(this: this, arguments: [url.jsValue])
+        _ = this[Strings.revokeObjectURL].function!(this: this, arguments: [_toJSValue(url)])
     }
 }
 
@@ -15693,7 +15578,7 @@ public class UnderlyingSink: BridgedDictionary {
         ClosureAttribute2[Strings.write, in: object] = write
         ClosureAttribute0[Strings.close, in: object] = close
         ClosureAttribute1[Strings.abort, in: object] = abort
-        object[Strings.type] = type.jsValue
+        object[Strings.type] = _toJSValue(type)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15728,8 +15613,8 @@ public class UnderlyingSource: BridgedDictionary {
         ClosureAttribute1[Strings.start, in: object] = start
         ClosureAttribute1[Strings.pull, in: object] = pull
         ClosureAttribute1[Strings.cancel, in: object] = cancel
-        object[Strings.type] = type.jsValue
-        object[Strings.autoAllocateChunkSize] = autoAllocateChunkSize.jsValue
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.autoAllocateChunkSize] = _toJSValue(autoAllocateChunkSize)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15815,16 +15700,16 @@ public class ValidityState: JSBridgedClass {
 public class ValidityStateFlags: BridgedDictionary {
     public convenience init(valueMissing: Bool, typeMismatch: Bool, patternMismatch: Bool, tooLong: Bool, tooShort: Bool, rangeUnderflow: Bool, rangeOverflow: Bool, stepMismatch: Bool, badInput: Bool, customError: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.valueMissing] = valueMissing.jsValue
-        object[Strings.typeMismatch] = typeMismatch.jsValue
-        object[Strings.patternMismatch] = patternMismatch.jsValue
-        object[Strings.tooLong] = tooLong.jsValue
-        object[Strings.tooShort] = tooShort.jsValue
-        object[Strings.rangeUnderflow] = rangeUnderflow.jsValue
-        object[Strings.rangeOverflow] = rangeOverflow.jsValue
-        object[Strings.stepMismatch] = stepMismatch.jsValue
-        object[Strings.badInput] = badInput.jsValue
-        object[Strings.customError] = customError.jsValue
+        object[Strings.valueMissing] = _toJSValue(valueMissing)
+        object[Strings.typeMismatch] = _toJSValue(typeMismatch)
+        object[Strings.patternMismatch] = _toJSValue(patternMismatch)
+        object[Strings.tooLong] = _toJSValue(tooLong)
+        object[Strings.tooShort] = _toJSValue(tooShort)
+        object[Strings.rangeUnderflow] = _toJSValue(rangeUnderflow)
+        object[Strings.rangeOverflow] = _toJSValue(rangeOverflow)
+        object[Strings.stepMismatch] = _toJSValue(stepMismatch)
+        object[Strings.badInput] = _toJSValue(badInput)
+        object[Strings.customError] = _toJSValue(customError)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15906,7 +15791,7 @@ public class VideoColorSpace: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: VideoColorSpaceInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -15930,10 +15815,10 @@ public class VideoColorSpace: JSBridgedClass {
 public class VideoColorSpaceInit: BridgedDictionary {
     public convenience init(primaries: VideoColorPrimaries, transfer: VideoTransferCharacteristics, matrix: VideoMatrixCoefficients, fullRange: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.primaries] = primaries.jsValue
-        object[Strings.transfer] = transfer.jsValue
-        object[Strings.matrix] = matrix.jsValue
-        object[Strings.fullRange] = fullRange.jsValue
+        object[Strings.primaries] = _toJSValue(primaries)
+        object[Strings.transfer] = _toJSValue(transfer)
+        object[Strings.matrix] = _toJSValue(matrix)
+        object[Strings.fullRange] = _toJSValue(fullRange)
         self.init(unsafelyWrapping: object)
     }
 
@@ -15970,7 +15855,7 @@ public class VideoDecoder: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: VideoDecoderInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -15981,12 +15866,12 @@ public class VideoDecoder: JSBridgedClass {
 
     @inlinable public func configure(config: VideoDecoderConfig) {
         let this = jsObject
-        _ = this[Strings.configure].function!(this: this, arguments: [config.jsValue])
+        _ = this[Strings.configure].function!(this: this, arguments: [_toJSValue(config)])
     }
 
     @inlinable public func decode(chunk: EncodedVideoChunk) {
         let this = jsObject
-        _ = this[Strings.decode].function!(this: this, arguments: [chunk.jsValue])
+        _ = this[Strings.decode].function!(this: this, arguments: [_toJSValue(chunk)])
     }
 
     @inlinable public func flush() -> JSPromise {
@@ -16013,13 +15898,13 @@ public class VideoDecoder: JSBridgedClass {
 
     @inlinable public static func isConfigSupported(config: VideoDecoderConfig) -> JSPromise {
         let this = constructor!
-        return this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
+        return this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public static func isConfigSupported(config: VideoDecoderConfig) async throws -> VideoDecoderSupport {
         let this = constructor!
-        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 }
@@ -16027,15 +15912,15 @@ public class VideoDecoder: JSBridgedClass {
 public class VideoDecoderConfig: BridgedDictionary {
     public convenience init(codec: String, description: BufferSource, codedWidth: UInt32, codedHeight: UInt32, displayAspectWidth: UInt32, displayAspectHeight: UInt32, colorSpace: VideoColorSpaceInit, hardwareAcceleration: HardwareAcceleration, optimizeForLatency: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.codec] = codec.jsValue
-        object[Strings.description] = description.jsValue
-        object[Strings.codedWidth] = codedWidth.jsValue
-        object[Strings.codedHeight] = codedHeight.jsValue
-        object[Strings.displayAspectWidth] = displayAspectWidth.jsValue
-        object[Strings.displayAspectHeight] = displayAspectHeight.jsValue
-        object[Strings.colorSpace] = colorSpace.jsValue
-        object[Strings.hardwareAcceleration] = hardwareAcceleration.jsValue
-        object[Strings.optimizeForLatency] = optimizeForLatency.jsValue
+        object[Strings.codec] = _toJSValue(codec)
+        object[Strings.description] = _toJSValue(description)
+        object[Strings.codedWidth] = _toJSValue(codedWidth)
+        object[Strings.codedHeight] = _toJSValue(codedHeight)
+        object[Strings.displayAspectWidth] = _toJSValue(displayAspectWidth)
+        object[Strings.displayAspectHeight] = _toJSValue(displayAspectHeight)
+        object[Strings.colorSpace] = _toJSValue(colorSpace)
+        object[Strings.hardwareAcceleration] = _toJSValue(hardwareAcceleration)
+        object[Strings.optimizeForLatency] = _toJSValue(optimizeForLatency)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16104,8 +15989,8 @@ public class VideoDecoderInit: BridgedDictionary {
 public class VideoDecoderSupport: BridgedDictionary {
     public convenience init(supported: Bool, config: VideoDecoderConfig) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.supported] = supported.jsValue
-        object[Strings.config] = config.jsValue
+        object[Strings.supported] = _toJSValue(supported)
+        object[Strings.config] = _toJSValue(config)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16134,7 +16019,7 @@ public class VideoEncoder: JSBridgedClass {
     }
 
     @inlinable public convenience init(init: VideoEncoderInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [`init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -16145,12 +16030,12 @@ public class VideoEncoder: JSBridgedClass {
 
     @inlinable public func configure(config: VideoEncoderConfig) {
         let this = jsObject
-        _ = this[Strings.configure].function!(this: this, arguments: [config.jsValue])
+        _ = this[Strings.configure].function!(this: this, arguments: [_toJSValue(config)])
     }
 
     @inlinable public func encode(frame: VideoFrame, options: VideoEncoderEncodeOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.encode].function!(this: this, arguments: [frame.jsValue, options?.jsValue ?? .undefined])
+        _ = this[Strings.encode].function!(this: this, arguments: [_toJSValue(frame), _toJSValue(options)])
     }
 
     @inlinable public func flush() -> JSPromise {
@@ -16177,13 +16062,13 @@ public class VideoEncoder: JSBridgedClass {
 
     @inlinable public static func isConfigSupported(config: VideoEncoderConfig) -> JSPromise {
         let this = constructor!
-        return this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
+        return this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public static func isConfigSupported(config: VideoEncoderConfig) async throws -> VideoEncoderSupport {
         let this = constructor!
-        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [config.jsValue]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 }
@@ -16191,18 +16076,18 @@ public class VideoEncoder: JSBridgedClass {
 public class VideoEncoderConfig: BridgedDictionary {
     public convenience init(codec: String, width: UInt32, height: UInt32, displayWidth: UInt32, displayHeight: UInt32, bitrate: UInt64, framerate: Double, hardwareAcceleration: HardwareAcceleration, alpha: AlphaOption, scalabilityMode: String, bitrateMode: BitrateMode, latencyMode: LatencyMode) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.codec] = codec.jsValue
-        object[Strings.width] = width.jsValue
-        object[Strings.height] = height.jsValue
-        object[Strings.displayWidth] = displayWidth.jsValue
-        object[Strings.displayHeight] = displayHeight.jsValue
-        object[Strings.bitrate] = bitrate.jsValue
-        object[Strings.framerate] = framerate.jsValue
-        object[Strings.hardwareAcceleration] = hardwareAcceleration.jsValue
-        object[Strings.alpha] = alpha.jsValue
-        object[Strings.scalabilityMode] = scalabilityMode.jsValue
-        object[Strings.bitrateMode] = bitrateMode.jsValue
-        object[Strings.latencyMode] = latencyMode.jsValue
+        object[Strings.codec] = _toJSValue(codec)
+        object[Strings.width] = _toJSValue(width)
+        object[Strings.height] = _toJSValue(height)
+        object[Strings.displayWidth] = _toJSValue(displayWidth)
+        object[Strings.displayHeight] = _toJSValue(displayHeight)
+        object[Strings.bitrate] = _toJSValue(bitrate)
+        object[Strings.framerate] = _toJSValue(framerate)
+        object[Strings.hardwareAcceleration] = _toJSValue(hardwareAcceleration)
+        object[Strings.alpha] = _toJSValue(alpha)
+        object[Strings.scalabilityMode] = _toJSValue(scalabilityMode)
+        object[Strings.bitrateMode] = _toJSValue(bitrateMode)
+        object[Strings.latencyMode] = _toJSValue(latencyMode)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16262,7 +16147,7 @@ public class VideoEncoderConfig: BridgedDictionary {
 public class VideoEncoderEncodeOptions: BridgedDictionary {
     public convenience init(keyFrame: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.keyFrame] = keyFrame.jsValue
+        object[Strings.keyFrame] = _toJSValue(keyFrame)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16299,8 +16184,8 @@ public class VideoEncoderInit: BridgedDictionary {
 public class VideoEncoderSupport: BridgedDictionary {
     public convenience init(supported: Bool, config: VideoEncoderConfig) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.supported] = supported.jsValue
-        object[Strings.config] = config.jsValue
+        object[Strings.supported] = _toJSValue(supported)
+        object[Strings.config] = _toJSValue(config)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16357,11 +16242,11 @@ public class VideoFrame: JSBridgedClass {
     }
 
     @inlinable public convenience init(image: CanvasImageSource, init: VideoFrameInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [image.jsValue, `init`?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(image), _toJSValue(`init`)]))
     }
 
     @inlinable public convenience init(data: BufferSource, init: VideoFrameBufferInit) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [data.jsValue, `init`.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(data), _toJSValue(`init`)]))
     }
 
     @ReadonlyAttribute
@@ -16396,18 +16281,18 @@ public class VideoFrame: JSBridgedClass {
 
     @inlinable public func allocationSize(options: VideoFrameCopyToOptions? = nil) -> UInt32 {
         let this = jsObject
-        return this[Strings.allocationSize].function!(this: this, arguments: [options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.allocationSize].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable public func copyTo(destination: BufferSource, options: VideoFrameCopyToOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.copyTo].function!(this: this, arguments: [_toJSValue(destination), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func copyTo(destination: BufferSource, options: VideoFrameCopyToOptions? = nil) async throws -> [PlaneLayout] {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.copyTo].function!(this: this, arguments: [destination.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.copyTo].function!(this: this, arguments: [_toJSValue(destination), _toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
@@ -16425,16 +16310,16 @@ public class VideoFrame: JSBridgedClass {
 public class VideoFrameBufferInit: BridgedDictionary {
     public convenience init(format: VideoPixelFormat, codedWidth: UInt32, codedHeight: UInt32, timestamp: Int64, duration: UInt64, layout: [PlaneLayout], visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32, colorSpace: VideoColorSpaceInit) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.format] = format.jsValue
-        object[Strings.codedWidth] = codedWidth.jsValue
-        object[Strings.codedHeight] = codedHeight.jsValue
-        object[Strings.timestamp] = timestamp.jsValue
-        object[Strings.duration] = duration.jsValue
-        object[Strings.layout] = layout.jsValue
-        object[Strings.visibleRect] = visibleRect.jsValue
-        object[Strings.displayWidth] = displayWidth.jsValue
-        object[Strings.displayHeight] = displayHeight.jsValue
-        object[Strings.colorSpace] = colorSpace.jsValue
+        object[Strings.format] = _toJSValue(format)
+        object[Strings.codedWidth] = _toJSValue(codedWidth)
+        object[Strings.codedHeight] = _toJSValue(codedHeight)
+        object[Strings.timestamp] = _toJSValue(timestamp)
+        object[Strings.duration] = _toJSValue(duration)
+        object[Strings.layout] = _toJSValue(layout)
+        object[Strings.visibleRect] = _toJSValue(visibleRect)
+        object[Strings.displayWidth] = _toJSValue(displayWidth)
+        object[Strings.displayHeight] = _toJSValue(displayHeight)
+        object[Strings.colorSpace] = _toJSValue(colorSpace)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16486,8 +16371,8 @@ public class VideoFrameBufferInit: BridgedDictionary {
 public class VideoFrameCopyToOptions: BridgedDictionary {
     public convenience init(rect: DOMRectInit, layout: [PlaneLayout]) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.rect] = rect.jsValue
-        object[Strings.layout] = layout.jsValue
+        object[Strings.rect] = _toJSValue(rect)
+        object[Strings.layout] = _toJSValue(layout)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16507,12 +16392,12 @@ public class VideoFrameCopyToOptions: BridgedDictionary {
 public class VideoFrameInit: BridgedDictionary {
     public convenience init(duration: UInt64, timestamp: Int64, alpha: AlphaOption, visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.duration] = duration.jsValue
-        object[Strings.timestamp] = timestamp.jsValue
-        object[Strings.alpha] = alpha.jsValue
-        object[Strings.visibleRect] = visibleRect.jsValue
-        object[Strings.displayWidth] = displayWidth.jsValue
-        object[Strings.displayHeight] = displayHeight.jsValue
+        object[Strings.duration] = _toJSValue(duration)
+        object[Strings.timestamp] = _toJSValue(timestamp)
+        object[Strings.alpha] = _toJSValue(alpha)
+        object[Strings.visibleRect] = _toJSValue(visibleRect)
+        object[Strings.displayWidth] = _toJSValue(displayWidth)
+        object[Strings.displayHeight] = _toJSValue(displayHeight)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16663,7 +16548,7 @@ public class VideoTrackList: EventTarget {
 
     @inlinable public func getTrackById(id: String) -> VideoTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [id.jsValue]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -16710,7 +16595,7 @@ public class WheelEvent: MouseEvent {
     }
 
     @inlinable public convenience init(type: String, eventInitDict: WheelEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [type.jsValue, eventInitDict?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
     public static let DOM_DELTA_PIXEL: UInt32 = 0x00
@@ -16735,10 +16620,10 @@ public class WheelEvent: MouseEvent {
 public class WheelEventInit: BridgedDictionary {
     public convenience init(deltaX: Double, deltaY: Double, deltaZ: Double, deltaMode: UInt32) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.deltaX] = deltaX.jsValue
-        object[Strings.deltaY] = deltaY.jsValue
-        object[Strings.deltaZ] = deltaZ.jsValue
-        object[Strings.deltaMode] = deltaMode.jsValue
+        object[Strings.deltaX] = _toJSValue(deltaX)
+        object[Strings.deltaY] = _toJSValue(deltaY)
+        object[Strings.deltaZ] = _toJSValue(deltaZ)
+        object[Strings.deltaMode] = _toJSValue(deltaMode)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16898,7 +16783,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func open(url: String? = nil, target: String? = nil, features: String? = nil) -> WindowProxy? {
         let this = jsObject
-        return this[Strings.open].function!(this: this, arguments: [url?.jsValue ?? .undefined, target?.jsValue ?? .undefined, features?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.open].function!(this: this, arguments: [_toJSValue(url), _toJSValue(target), _toJSValue(features)]).fromJSValue()!
     }
 
     @inlinable public subscript(key: String) -> JSObject {
@@ -16921,17 +16806,17 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func alert(message: String) {
         let this = jsObject
-        _ = this[Strings.alert].function!(this: this, arguments: [message.jsValue])
+        _ = this[Strings.alert].function!(this: this, arguments: [_toJSValue(message)])
     }
 
     @inlinable public func confirm(message: String? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.confirm].function!(this: this, arguments: [message?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.confirm].function!(this: this, arguments: [_toJSValue(message)]).fromJSValue()!
     }
 
     @inlinable public func prompt(message: String? = nil, default: String? = nil) -> String? {
         let this = jsObject
-        return this[Strings.prompt].function!(this: this, arguments: [message?.jsValue ?? .undefined, `default`?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.prompt].function!(this: this, arguments: [_toJSValue(message), _toJSValue(`default`)]).fromJSValue()!
     }
 
     @inlinable public func print() {
@@ -16941,12 +16826,12 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func postMessage(message: JSValue, targetOrigin: String, transfer: [JSObject]? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, targetOrigin.jsValue, transfer?.jsValue ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [_toJSValue(message), _toJSValue(targetOrigin), _toJSValue(transfer)])
     }
 
     @inlinable public func postMessage(message: JSValue, options: WindowPostMessageOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [_toJSValue(message), _toJSValue(options)])
     }
 
     @inlinable public func captureEvents() {
@@ -16964,7 +16849,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func matchMedia(query: String) -> MediaQueryList {
         let this = jsObject
-        return this[Strings.matchMedia].function!(this: this, arguments: [query.jsValue]).fromJSValue()!
+        return this[Strings.matchMedia].function!(this: this, arguments: [_toJSValue(query)]).fromJSValue()!
     }
 
     @ReadonlyAttribute
@@ -16972,22 +16857,22 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func moveTo(x: Int32, y: Int32) {
         let this = jsObject
-        _ = this[Strings.moveTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.moveTo].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable public func moveBy(x: Int32, y: Int32) {
         let this = jsObject
-        _ = this[Strings.moveBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.moveBy].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable public func resizeTo(width: Int32, height: Int32) {
         let this = jsObject
-        _ = this[Strings.resizeTo].function!(this: this, arguments: [width.jsValue, height.jsValue])
+        _ = this[Strings.resizeTo].function!(this: this, arguments: [_toJSValue(width), _toJSValue(height)])
     }
 
     @inlinable public func resizeBy(x: Int32, y: Int32) {
         let this = jsObject
-        _ = this[Strings.resizeBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.resizeBy].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @ReadonlyAttribute
@@ -17010,32 +16895,32 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func scroll(options: ScrollToOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scroll].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+        _ = this[Strings.scroll].function!(this: this, arguments: [_toJSValue(options)])
     }
 
     @inlinable public func scroll(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scroll].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.scroll].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable public func scrollTo(options: ScrollToOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scrollTo].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [_toJSValue(options)])
     }
 
     @inlinable public func scrollTo(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scrollTo].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.scrollTo].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @inlinable public func scrollBy(options: ScrollToOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.scrollBy].function!(this: this, arguments: [options?.jsValue ?? .undefined])
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [_toJSValue(options)])
     }
 
     @inlinable public func scrollBy(x: Double, y: Double) {
         let this = jsObject
-        _ = this[Strings.scrollBy].function!(this: this, arguments: [x.jsValue, y.jsValue])
+        _ = this[Strings.scrollBy].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)])
     }
 
     @ReadonlyAttribute
@@ -17158,93 +17043,81 @@ public extension WindowOrWorkerGlobalScope {
 
     @inlinable func reportError(e: JSValue) {
         let this = jsObject
-        _ = this[Strings.reportError].function!(this: this, arguments: [e.jsValue])
+        _ = this[Strings.reportError].function!(this: this, arguments: [_toJSValue(e)])
     }
 
     @inlinable func btoa(data: String) -> String {
         let this = jsObject
-        return this[Strings.btoa].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
+        return this[Strings.btoa].function!(this: this, arguments: [_toJSValue(data)]).fromJSValue()!
     }
 
     @inlinable func atob(data: String) -> String {
         let this = jsObject
-        return this[Strings.atob].function!(this: this, arguments: [data.jsValue]).fromJSValue()!
+        return this[Strings.atob].function!(this: this, arguments: [_toJSValue(data)]).fromJSValue()!
     }
 
     @inlinable func setTimeout(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
         let this = jsObject
-        return this[Strings.setTimeout].function!(this: this, arguments: [handler.jsValue, timeout?.jsValue ?? .undefined] + arguments.map(\.jsValue)).fromJSValue()!
+        return this[Strings.setTimeout].function!(this: this, arguments: [_toJSValue(handler), _toJSValue(timeout)] + arguments.map(_toJSValue)).fromJSValue()!
     }
 
     @inlinable func clearTimeout(id: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.clearTimeout].function!(this: this, arguments: [id?.jsValue ?? .undefined])
+        _ = this[Strings.clearTimeout].function!(this: this, arguments: [_toJSValue(id)])
     }
 
     @inlinable func setInterval(handler: TimerHandler, timeout: Int32? = nil, arguments: JSValue...) -> Int32 {
         let this = jsObject
-        return this[Strings.setInterval].function!(this: this, arguments: [handler.jsValue, timeout?.jsValue ?? .undefined] + arguments.map(\.jsValue)).fromJSValue()!
+        return this[Strings.setInterval].function!(this: this, arguments: [_toJSValue(handler), _toJSValue(timeout)] + arguments.map(_toJSValue)).fromJSValue()!
     }
 
     @inlinable func clearInterval(id: Int32? = nil) {
         let this = jsObject
-        _ = this[Strings.clearInterval].function!(this: this, arguments: [id?.jsValue ?? .undefined])
+        _ = this[Strings.clearInterval].function!(this: this, arguments: [_toJSValue(id)])
     }
 
     // XXX: method 'queueMicrotask' is ignored
 
     @inlinable func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.createImageBitmap].function!(this: this, arguments: [image.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.createImageBitmap].function!(this: this, arguments: [_toJSValue(image), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) async throws -> ImageBitmap {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.createImageBitmap].function!(this: this, arguments: [image.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.createImageBitmap].function!(this: this, arguments: [_toJSValue(image), _toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable func createImageBitmap(image: ImageBitmapSource, sx: Int32, sy: Int32, sw: Int32, sh: Int32, options: ImageBitmapOptions? = nil) -> JSPromise {
-        let _arg0 = image.jsValue
-        let _arg1 = sx.jsValue
-        let _arg2 = sy.jsValue
-        let _arg3 = sw.jsValue
-        let _arg4 = sh.jsValue
-        let _arg5 = options?.jsValue ?? .undefined
         let this = jsObject
-        return this[Strings.createImageBitmap].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
+        return this[Strings.createImageBitmap].function!(this: this, arguments: [_toJSValue(image), _toJSValue(sx), _toJSValue(sy), _toJSValue(sw), _toJSValue(sh), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable func createImageBitmap(image: ImageBitmapSource, sx: Int32, sy: Int32, sw: Int32, sh: Int32, options: ImageBitmapOptions? = nil) async throws -> ImageBitmap {
-        let _arg0 = image.jsValue
-        let _arg1 = sx.jsValue
-        let _arg2 = sy.jsValue
-        let _arg3 = sw.jsValue
-        let _arg4 = sh.jsValue
-        let _arg5 = options?.jsValue ?? .undefined
         let this = jsObject
-        let _promise: JSPromise = this[Strings.createImageBitmap].function!(this: this, arguments: [_arg0, _arg1, _arg2, _arg3, _arg4, _arg5]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.createImageBitmap].function!(this: this, arguments: [_toJSValue(image), _toJSValue(sx), _toJSValue(sy), _toJSValue(sw), _toJSValue(sh), _toJSValue(options)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
     @inlinable func structuredClone(value: JSValue, options: StructuredSerializeOptions? = nil) -> JSValue {
         let this = jsObject
-        return this[Strings.structuredClone].function!(this: this, arguments: [value.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.structuredClone].function!(this: this, arguments: [_toJSValue(value), _toJSValue(options)]).fromJSValue()!
     }
 
     @inlinable var performance: Performance { jsObject[Strings.performance].fromJSValue()! }
 
     @inlinable func fetch(input: RequestInfo, init: RequestInit? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.fetch].function!(this: this, arguments: [input.jsValue, `init`?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.fetch].function!(this: this, arguments: [_toJSValue(input), _toJSValue(`init`)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable func fetch(input: RequestInfo, init: RequestInit? = nil) async throws -> Response {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.fetch].function!(this: this, arguments: [input.jsValue, `init`?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.fetch].function!(this: this, arguments: [_toJSValue(input), _toJSValue(`init`)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 
@@ -17254,7 +17127,7 @@ public extension WindowOrWorkerGlobalScope {
 public class WindowPostMessageOptions: BridgedDictionary {
     public convenience init(targetOrigin: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.targetOrigin] = targetOrigin.jsValue
+        object[Strings.targetOrigin] = _toJSValue(targetOrigin)
         self.init(unsafelyWrapping: object)
     }
 
@@ -17282,7 +17155,7 @@ public class Worker: EventTarget, AbstractWorker {
     }
 
     @inlinable public convenience init(scriptURL: String, options: WorkerOptions? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [scriptURL.jsValue, options?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(scriptURL), _toJSValue(options)]))
     }
 
     @inlinable public func terminate() {
@@ -17292,12 +17165,12 @@ public class Worker: EventTarget, AbstractWorker {
 
     @inlinable public func postMessage(message: JSValue, transfer: [JSObject]) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, transfer.jsValue])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [_toJSValue(message), _toJSValue(transfer)])
     }
 
     @inlinable public func postMessage(message: JSValue, options: StructuredSerializeOptions? = nil) {
         let this = jsObject
-        _ = this[Strings.postMessage].function!(this: this, arguments: [message.jsValue, options?.jsValue ?? .undefined])
+        _ = this[Strings.postMessage].function!(this: this, arguments: [_toJSValue(message), _toJSValue(options)])
     }
 
     @ClosureAttribute1Optional
@@ -17310,9 +17183,9 @@ public class Worker: EventTarget, AbstractWorker {
 public class WorkerOptions: BridgedDictionary {
     public convenience init(type: WorkerType, credentials: RequestCredentials, name: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.type] = type.jsValue
-        object[Strings.credentials] = credentials.jsValue
-        object[Strings.name] = name.jsValue
+        object[Strings.type] = _toJSValue(type)
+        object[Strings.credentials] = _toJSValue(credentials)
+        object[Strings.name] = _toJSValue(name)
         self.init(unsafelyWrapping: object)
     }
 
@@ -17362,13 +17235,13 @@ open class Worklet: JSBridgedClass {
 
     @inlinable public func addModule(moduleURL: String, options: WorkletOptions? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.addModule].function!(this: this, arguments: [moduleURL.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.addModule].function!(this: this, arguments: [_toJSValue(moduleURL), _toJSValue(options)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func addModule(moduleURL: String, options: WorkletOptions? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.addModule].function!(this: this, arguments: [moduleURL.jsValue, options?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.addModule].function!(this: this, arguments: [_toJSValue(moduleURL), _toJSValue(options)]).fromJSValue()!
         _ = try await _promise.value
     }
 }
@@ -17376,7 +17249,7 @@ open class Worklet: JSBridgedClass {
 public class WorkletOptions: BridgedDictionary {
     public convenience init(credentials: RequestCredentials) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.credentials] = credentials.jsValue
+        object[Strings.credentials] = _toJSValue(credentials)
         self.init(unsafelyWrapping: object)
     }
 
@@ -17400,7 +17273,7 @@ public class WritableStream: JSBridgedClass {
     }
 
     @inlinable public convenience init(underlyingSink: JSObject? = nil, strategy: QueuingStrategy? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [underlyingSink?.jsValue ?? .undefined, strategy?.jsValue ?? .undefined]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(underlyingSink), _toJSValue(strategy)]))
     }
 
     @ReadonlyAttribute
@@ -17408,13 +17281,13 @@ public class WritableStream: JSBridgedClass {
 
     @inlinable public func abort(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.abort].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func abort(reason: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
         _ = try await _promise.value
     }
 
@@ -17451,7 +17324,7 @@ public class WritableStreamDefaultController: JSBridgedClass {
 
     @inlinable public func error(e: JSValue? = nil) {
         let this = jsObject
-        _ = this[Strings.error].function!(this: this, arguments: [e?.jsValue ?? .undefined])
+        _ = this[Strings.error].function!(this: this, arguments: [_toJSValue(e)])
     }
 }
 
@@ -17468,7 +17341,7 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
     }
 
     @inlinable public convenience init(stream: WritableStream) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [stream.jsValue]))
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(stream)]))
     }
 
     @ReadonlyAttribute
@@ -17482,13 +17355,13 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
 
     @inlinable public func abort(reason: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.abort].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func abort(reason: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [reason?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.abort].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
         _ = try await _promise.value
     }
 
@@ -17511,13 +17384,13 @@ public class WritableStreamDefaultWriter: JSBridgedClass {
 
     @inlinable public func write(chunk: JSValue? = nil) -> JSPromise {
         let this = jsObject
-        return this[Strings.write].function!(this: this, arguments: [chunk?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.write].function!(this: this, arguments: [_toJSValue(chunk)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @inlinable public func write(chunk: JSValue? = nil) async throws {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [chunk?.jsValue ?? .undefined]).fromJSValue()!
+        let _promise: JSPromise = this[Strings.write].function!(this: this, arguments: [_toJSValue(chunk)]).fromJSValue()!
         _ = try await _promise.value
     }
 }
@@ -17571,17 +17444,17 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
 
     @inlinable public func open(method: String, url: String) {
         let this = jsObject
-        _ = this[Strings.open].function!(this: this, arguments: [method.jsValue, url.jsValue])
+        _ = this[Strings.open].function!(this: this, arguments: [_toJSValue(method), _toJSValue(url)])
     }
 
     @inlinable public func open(method: String, url: String, async: Bool, username: String? = nil, password: String? = nil) {
         let this = jsObject
-        _ = this[Strings.open].function!(this: this, arguments: [method.jsValue, url.jsValue, async.jsValue, username?.jsValue ?? .undefined, password?.jsValue ?? .undefined])
+        _ = this[Strings.open].function!(this: this, arguments: [_toJSValue(method), _toJSValue(url), _toJSValue(async), _toJSValue(username), _toJSValue(password)])
     }
 
     @inlinable public func setRequestHeader(name: String, value: String) {
         let this = jsObject
-        _ = this[Strings.setRequestHeader].function!(this: this, arguments: [name.jsValue, value.jsValue])
+        _ = this[Strings.setRequestHeader].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)])
     }
 
     @ReadWriteAttribute
@@ -17595,7 +17468,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
 
     @inlinable public func send(body: Document_or_XMLHttpRequestBodyInit? = nil) {
         let this = jsObject
-        _ = this[Strings.send].function!(this: this, arguments: [body?.jsValue ?? .undefined])
+        _ = this[Strings.send].function!(this: this, arguments: [_toJSValue(body)])
     }
 
     @inlinable public func abort() {
@@ -17614,7 +17487,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
 
     @inlinable public func getResponseHeader(name: String) -> String? {
         let this = jsObject
-        return this[Strings.getResponseHeader].function!(this: this, arguments: [name.jsValue]).fromJSValue()!
+        return this[Strings.getResponseHeader].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
     @inlinable public func getAllResponseHeaders() -> String {
@@ -17624,7 +17497,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
 
     @inlinable public func overrideMimeType(mime: String) {
         let this = jsObject
-        _ = this[Strings.overrideMimeType].function!(this: this, arguments: [mime.jsValue])
+        _ = this[Strings.overrideMimeType].function!(this: this, arguments: [_toJSValue(mime)])
     }
 
     @ReadWriteAttribute
@@ -17740,7 +17613,7 @@ public class XPathExpression: JSBridgedClass {
 
     @inlinable public func evaluate(contextNode: Node, type: UInt16? = nil, result: XPathResult? = nil) -> XPathResult {
         let this = jsObject
-        return this[Strings.evaluate].function!(this: this, arguments: [contextNode.jsValue, type?.jsValue ?? .undefined, result?.jsValue ?? .undefined]).fromJSValue()!
+        return this[Strings.evaluate].function!(this: this, arguments: [_toJSValue(contextNode), _toJSValue(type), _toJSValue(result)]).fromJSValue()!
     }
 }
 
@@ -17808,7 +17681,7 @@ public class XPathResult: JSBridgedClass {
 
     @inlinable public func snapshotItem(index: UInt32) -> Node? {
         let this = jsObject
-        return this[Strings.snapshotItem].function!(this: this, arguments: [index.jsValue]).fromJSValue()!
+        return this[Strings.snapshotItem].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
     }
 }
 
@@ -17827,32 +17700,32 @@ public class XSLTProcessor: JSBridgedClass {
 
     @inlinable public func importStylesheet(style: Node) {
         let this = jsObject
-        _ = this[Strings.importStylesheet].function!(this: this, arguments: [style.jsValue])
+        _ = this[Strings.importStylesheet].function!(this: this, arguments: [_toJSValue(style)])
     }
 
     @inlinable public func transformToFragment(source: Node, output: Document) -> DocumentFragment {
         let this = jsObject
-        return this[Strings.transformToFragment].function!(this: this, arguments: [source.jsValue, output.jsValue]).fromJSValue()!
+        return this[Strings.transformToFragment].function!(this: this, arguments: [_toJSValue(source), _toJSValue(output)]).fromJSValue()!
     }
 
     @inlinable public func transformToDocument(source: Node) -> Document {
         let this = jsObject
-        return this[Strings.transformToDocument].function!(this: this, arguments: [source.jsValue]).fromJSValue()!
+        return this[Strings.transformToDocument].function!(this: this, arguments: [_toJSValue(source)]).fromJSValue()!
     }
 
     @inlinable public func setParameter(namespaceURI: String, localName: String, value: JSValue) {
         let this = jsObject
-        _ = this[Strings.setParameter].function!(this: this, arguments: [namespaceURI.jsValue, localName.jsValue, value.jsValue])
+        _ = this[Strings.setParameter].function!(this: this, arguments: [_toJSValue(namespaceURI), _toJSValue(localName), _toJSValue(value)])
     }
 
     @inlinable public func getParameter(namespaceURI: String, localName: String) -> JSValue {
         let this = jsObject
-        return this[Strings.getParameter].function!(this: this, arguments: [namespaceURI.jsValue, localName.jsValue]).fromJSValue()!
+        return this[Strings.getParameter].function!(this: this, arguments: [_toJSValue(namespaceURI), _toJSValue(localName)]).fromJSValue()!
     }
 
     @inlinable public func removeParameter(namespaceURI: String, localName: String) {
         let this = jsObject
-        _ = this[Strings.removeParameter].function!(this: this, arguments: [namespaceURI.jsValue, localName.jsValue])
+        _ = this[Strings.removeParameter].function!(this: this, arguments: [_toJSValue(namespaceURI), _toJSValue(localName)])
     }
 
     @inlinable public func clearParameters() {
