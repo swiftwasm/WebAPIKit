@@ -304,7 +304,7 @@ extension IDLConstructor: SwiftRepresentable, Initializable {
         }
         let argsArray: SwiftSource
         if let last = arguments.last, last.variadic {
-            // TODO: handle optional variadics (if necessary?)
+            precondition(!last.optional, "Optional variadic arguments not supported")
             let variadic: SwiftSource = "\(last.name).map(\\.jsValue)"
             if args.count == 1 {
                 argsArray = variadic
@@ -433,7 +433,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
         let argsArray: SwiftSource
         if let last = arguments.last, last.variadic {
-            // TODO: handle optional variadics (if necessary?)
+            precondition(!last.optional, "Optional variadic arguments not supported")
             let variadic: SwiftSource = "\(last.name).map(\\.jsValue)"
             if args.count == 1 {
                 argsArray = variadic
