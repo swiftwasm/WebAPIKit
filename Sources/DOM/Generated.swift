@@ -355,7 +355,10 @@ public enum AlphaOption: JSString, JSValueCompatible {
 
 public protocol AnimationFrameProvider: JSBridgedClass {}
 public extension AnimationFrameProvider {
-    // XXX: method 'requestAnimationFrame' is ignored
+    @inlinable func requestAnimationFrame(callback: @escaping FrameRequestCallback) -> UInt32 {
+        let this = jsObject
+        return this[Strings.requestAnimationFrame].function!(this: this, arguments: [_toJSValue(callback)]).fromJSValue()!
+    }
 
     @inlinable func cancelAnimationFrame(handle: UInt32) {
         let this = jsObject
@@ -3864,7 +3867,10 @@ public class DataTransferItem: JSBridgedClass {
     @ReadonlyAttribute
     public var type: String
 
-    // XXX: member 'getAsString' is ignored
+    @inlinable public func getAsString(callback: FunctionStringCallback?) {
+        let this = jsObject
+        _ = this[Strings.getAsString].function!(this: this, arguments: [_toJSValue(callback)])
+    }
 
     @inlinable public func getAsFile() -> File? {
         let this = jsObject
@@ -6536,7 +6542,10 @@ public class HTMLCanvasElement: HTMLElement {
         return this[Strings.toDataURL].function!(this: this, arguments: [_toJSValue(type), _toJSValue(quality)]).fromJSValue()!
     }
 
-    // XXX: member 'toBlob' is ignored
+    @inlinable public func toBlob(callback: @escaping BlobCallback, type: String? = nil, quality: JSValue? = nil) {
+        let this = jsObject
+        _ = this[Strings.toBlob].function!(this: this, arguments: [_toJSValue(callback), _toJSValue(type), _toJSValue(quality)])
+    }
 
     @inlinable public func transferControlToOffscreen() -> OffscreenCanvas {
         let this = jsObject
@@ -11815,7 +11824,9 @@ public class MutationObserver: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    // XXX: constructor is ignored
+    @inlinable public convenience init(callback: @escaping MutationCallback) {
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(callback)]))
+    }
 
     @inlinable public func observe(target: Node, options: MutationObserverInit? = nil) {
         let this = jsObject
@@ -12065,7 +12076,10 @@ public class Navigator: JSBridgedClass, NavigatorID, NavigatorLanguage, Navigato
     @ReadonlyAttribute
     public var mediaDevices: MediaDevices
 
-    // XXX: member 'getUserMedia' is ignored
+    @inlinable public func getUserMedia(constraints: MediaStreamConstraints, successCallback: @escaping NavigatorUserMediaSuccessCallback, errorCallback: @escaping NavigatorUserMediaErrorCallback) {
+        let this = jsObject
+        _ = this[Strings.getUserMedia].function!(this: this, arguments: [_toJSValue(constraints), _toJSValue(successCallback), _toJSValue(errorCallback)])
+    }
 
     @ReadonlyAttribute
     public var serviceWorker: ServiceWorkerContainer
@@ -17076,7 +17090,10 @@ public extension WindowOrWorkerGlobalScope {
         _ = this[Strings.clearInterval].function!(this: this, arguments: [_toJSValue(id)])
     }
 
-    // XXX: method 'queueMicrotask' is ignored
+    @inlinable func queueMicrotask(callback: @escaping VoidFunction) {
+        let this = jsObject
+        _ = this[Strings.queueMicrotask].function!(this: this, arguments: [_toJSValue(callback)])
+    }
 
     @inlinable func createImageBitmap(image: ImageBitmapSource, options: ImageBitmapOptions? = nil) -> JSPromise {
         let this = jsObject
@@ -18470,6 +18487,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let getAll: JSString = "getAll"
     @usableFromInline static let getAllResponseHeaders: JSString = "getAllResponseHeaders"
     @usableFromInline static let getAsFile: JSString = "getAsFile"
+    @usableFromInline static let getAsString: JSString = "getAsString"
     @usableFromInline static let getAttribute: JSString = "getAttribute"
     @usableFromInline static let getAttributeNS: JSString = "getAttributeNS"
     @usableFromInline static let getAttributeNames: JSString = "getAttributeNames"
@@ -18982,6 +19000,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let queryCommandValue: JSString = "queryCommandValue"
     @usableFromInline static let querySelector: JSString = "querySelector"
     @usableFromInline static let querySelectorAll: JSString = "querySelectorAll"
+    @usableFromInline static let queueMicrotask: JSString = "queueMicrotask"
     @usableFromInline static let radiusX: JSString = "radiusX"
     @usableFromInline static let radiusY: JSString = "radiusY"
     @usableFromInline static let rangeOverflow: JSString = "rangeOverflow"
@@ -19038,6 +19057,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let reportError: JSString = "reportError"
     @usableFromInline static let reportValidity: JSString = "reportValidity"
     @usableFromInline static let request: JSString = "request"
+    @usableFromInline static let requestAnimationFrame: JSString = "requestAnimationFrame"
     @usableFromInline static let requestData: JSString = "requestData"
     @usableFromInline static let requestSubmit: JSString = "requestSubmit"
     @usableFromInline static let required: JSString = "required"
@@ -19263,6 +19283,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let timestamp: JSString = "timestamp"
     @usableFromInline static let timestampOffset: JSString = "timestampOffset"
     @usableFromInline static let title: JSString = "title"
+    @usableFromInline static let toBlob: JSString = "toBlob"
     @usableFromInline static let toBox: JSString = "toBox"
     @usableFromInline static let toDataURL: JSString = "toDataURL"
     @usableFromInline static let toFloat32Array: JSString = "toFloat32Array"

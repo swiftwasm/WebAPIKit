@@ -966,9 +966,17 @@ public class BaseAudioContext: EventTarget {
         return this[Strings.createWaveShaper].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    // XXX: member 'decodeAudioData' is ignored
+    @inlinable public func decodeAudioData(audioData: ArrayBuffer, successCallback: DecodeSuccessCallback? = nil, errorCallback: DecodeErrorCallback? = nil) -> JSPromise {
+        let this = jsObject
+        return this[Strings.decodeAudioData].function!(this: this, arguments: [_toJSValue(audioData), _toJSValue(successCallback), _toJSValue(errorCallback)]).fromJSValue()!
+    }
 
-    // XXX: member 'decodeAudioData' is ignored
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func decodeAudioData(audioData: ArrayBuffer, successCallback: DecodeSuccessCallback? = nil, errorCallback: DecodeErrorCallback? = nil) async throws -> AudioBuffer {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.decodeAudioData].function!(this: this, arguments: [_toJSValue(audioData), _toJSValue(successCallback), _toJSValue(errorCallback)]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
 }
 
 public class BiquadFilterNode: AudioNode {
@@ -2161,6 +2169,7 @@ public class WaveShaperOptions: BridgedDictionary {
     @usableFromInline static let createWaveShaper: JSString = "createWaveShaper"
     @usableFromInline static let currentTime: JSString = "currentTime"
     @usableFromInline static let curve: JSString = "curve"
+    @usableFromInline static let decodeAudioData: JSString = "decodeAudioData"
     @usableFromInline static let defaultValue: JSString = "defaultValue"
     @usableFromInline static let delayTime: JSString = "delayTime"
     @usableFromInline static let destination: JSString = "destination"
