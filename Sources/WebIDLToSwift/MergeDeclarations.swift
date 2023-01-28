@@ -33,7 +33,7 @@ enum DeclarationMerger {
         }
 
         let missedTypes = Set(declarations.map { type(of: $0).type })
-            .symmetricDifference([
+            .subtracting([
                 IDLInterfaceMixin.type,
                 IDLInterface.type,
                 IDLDictionary.type,
@@ -51,7 +51,7 @@ enum DeclarationMerger {
         // }
         // print(byName.filter { $0.value.count > 1 }.map { "\($0.key ?? "<nil>"): \($0.value.map { type(of: $0).type }))" }.joined(separator: "\n"))
 
-        func allNodes<T: IDLNode>(ofType: T.Type) -> [T] {
+        func allNodes<T: IDLNode>(ofType _: T.Type) -> [T] {
             byType[T.type]?.map { $0 as! T } ?? []
         }
 
