@@ -53,37 +53,6 @@ enum IDLBuilder {
         var state = ScopedState.root(
             interfaces: merged.interfaces,
             ignored: [
-                // functions as parameters are unsupported
-                "AnimationFrameProvider": ["requestAnimationFrame"],
-                "AnimationWorkletGlobalScope": ["registerAnimator"],
-                "AudioWorkletGlobalScope": ["registerProcessor"],
-                "BaseAudioContext": ["decodeAudioData"],
-                "ComputePressureObserver": ["<constructor>"],
-                "DataTransferItem": ["getAsString"],
-                "FileSystemDirectoryEntry": ["getFile", "getDirectory"],
-                "FileSystemDirectoryReader": ["readEntries"],
-                "FileSystemEntry": ["getParent"],
-                "FileSystemFileEntry": ["file"],
-                "Geolocation": ["getCurrentPosition", "watchPosition"],
-                "HTMLCanvasElement": ["toBlob", "getContext"],
-                "HTMLVideoElement": ["requestVideoFrameCallback"],
-                "IntersectionObserver": ["<constructor>"],
-                "LayoutWorkletGlobalScope": ["registerLayout"],
-                "LockManager": ["request"],
-                "MediaSession": ["setActionHandler"],
-                "MutationObserver": ["<constructor>"],
-                "Navigator": ["getUserMedia"],
-                "Notification": ["requestPermission"],
-                "PaintWorkletGlobalScope": ["registerPaint"],
-                "PerformanceObserver": ["<constructor>"],
-                "RemotePlayback": ["watchAvailability"],
-                "ReportingObserver": ["<constructor>"],
-                "ResizeObserver": ["<constructor>"],
-                "RTCPeerConnection": ["createOffer", "setLocalDescription", "createAnswer", "setRemoteDescription", "addIceCandidate"],
-                "Scheduler": ["postTask"],
-                "Window": ["requestIdleCallback"],
-                "WindowOrWorkerGlobalScope": ["queueMicrotask"],
-                "XRSession": ["requestAnimationFrame"],
                 // variadic callbacks are unsupported
                 "TrustedTypePolicyFactory": ["createPolicy"],
                 // NodeFilter
@@ -93,14 +62,15 @@ enum IDLBuilder {
                 // EventListener
                 "EventTarget": ["addEventListener", "removeEventListener"],
                 "MediaQueryList": ["addListener", "removeListener"],
+                // XPathNSResolver
+                "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
                 // invalid override in Swift
                 "BeforeUnloadEvent": ["returnValue"],
                 "CSSColor": ["colorSpace"],
                 "SVGElement": ["className"],
                 "AudioBufferSourceNode": ["start"],
-                // XPathNSResolver
-                "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
                 // manually implemented
+                "HTMLCanvasElement": ["getContext"],
                 "OffscreenCanvas": ["getContext"],
             ],
             types: merged.types
