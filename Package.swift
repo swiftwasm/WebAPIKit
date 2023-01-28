@@ -107,5 +107,9 @@ let package = Package(
             name: "WebIDLToSwift",
             dependencies: ["WebIDL"]
         ),
+        .testTarget(
+            name: "WebAPIKitTests",
+            dependencies: ["DOM"]
+        ),
     ]
 )

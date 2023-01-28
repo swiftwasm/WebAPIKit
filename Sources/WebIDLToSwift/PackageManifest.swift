@@ -58,6 +58,10 @@ func generateManifest(_ modules: [Module]) -> String {
                 name: "WebIDLToSwift",
                 dependencies: ["WebIDL"]
             ),
+            .testTarget(
+                name: "WebAPIKitTests",
+                dependencies: ["DOM"]
+            ),
         ]
     )
     """#
