@@ -47,6 +47,10 @@ let package = Package(
             name: "Gamepad",
             targets: ["Gamepad"]
         ),
+        .library(
+            name: "CSSOM",
+            targets: ["CSSOM"]
+        ),
         .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
     dependencies: [
@@ -94,6 +98,10 @@ let package = Package(
         ),
         .target(
             name: "Gamepad",
+            dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
+        ),
+        .target(
+            name: "CSSOM",
             dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
         ),
         // This support library should be moved to JavaScriptKit

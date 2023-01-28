@@ -80,4 +80,9 @@ let modules = [
         idlModules: ["gamepad", "gamepad-extensions"],
         dependencies: ["DOM", "WebAPIBase"]
     ),
+    Module(
+        swiftModule: "CSSOM",
+        idlModules: ["cssom", "cssom-view", "css-typed-om"],
+        dependencies: ["DOM", "WebAPIBase"]
+    ),
 ]

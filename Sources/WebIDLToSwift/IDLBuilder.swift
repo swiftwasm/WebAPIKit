@@ -28,6 +28,7 @@ enum IDLBuilder {
         "OffscreenRenderingContext",
         "OffscreenRenderingContextId",
         "BeforeUnloadEvent",
+        "CSSColor",
     ]
 
     static func writeFile(path: String, content: String, moduleDependencies: [String]) throws {
@@ -66,13 +67,13 @@ enum IDLBuilder {
                 // XPathNSResolver
                 "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
                 // invalid override in Swift
-                "CSSColor": ["colorSpace"],
                 "SVGElement": ["className"],
                 // manually implemented
                 "HTMLCanvasElement": ["getContext"],
                 "OffscreenCanvas": ["getContext"],
                 "HTMLFormControlsCollection": ["namedItem"],
                 "AudioBufferSourceNode": ["start"],
+                "CSSColor": ["colorSpace"],
             ],
             types: merged.types
         )
