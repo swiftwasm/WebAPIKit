@@ -6973,10 +6973,7 @@ public class HTMLFormControlsCollection: HTMLCollection {
         jsObject[key].fromJSValue()
     }
 
-    @inlinable override public func namedItem(name: String) -> Element_or_RadioNodeList? {
-        let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
-    }
+    // XXX: member 'namedItem' is ignored
 }
 
 public class HTMLFormElement: HTMLElement {

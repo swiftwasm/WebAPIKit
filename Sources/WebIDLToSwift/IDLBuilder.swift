@@ -72,6 +72,7 @@ enum IDLBuilder {
                 // manually implemented
                 "HTMLCanvasElement": ["getContext"],
                 "OffscreenCanvas": ["getContext"],
+                "HTMLFormControlsCollection": ["namedItem"]
             ],
             types: merged.types
         )
