@@ -43,6 +43,10 @@ let package = Package(
             name: "WebGPU",
             targets: ["WebGPU"]
         ),
+        .library(
+            name: "Gamepad",
+            targets: ["Gamepad"]
+        ),
         .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
     dependencies: [
@@ -87,6 +91,10 @@ let package = Package(
         .target(
             name: "WebGPU",
             dependencies: ["DOM", "WebAPIBase", "WebAudio", "WebAnimations", "WebGL1", "ECMAScript"]
+        ),
+        .target(
+            name: "Gamepad",
+            dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
         ),
         // This support library should be moved to JavaScriptKit
         .target(name: "ECMAScript", dependencies: [

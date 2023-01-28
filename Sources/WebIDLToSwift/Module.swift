@@ -74,4 +74,9 @@ let modules = [
         idlModules: ["webgpu"],
         dependencies: ["DOM", "WebAPIBase", "WebAudio", "WebAnimations", "WebGL1"]
     ),
+    Module(
+        swiftModule: "Gamepad",
+        idlModules: ["gamepad", "gamepad-extensions"],
+        dependencies: ["DOM", "WebAPIBase"]
+    ),
 ]
