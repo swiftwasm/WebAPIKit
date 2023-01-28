@@ -363,6 +363,24 @@ public extension AnimationFrameProvider {
     }
 }
 
+public enum AppendMode: JSString, JSValueCompatible {
+    case segments = "segments"
+    case sequence = "sequence"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public class AssignedNodesOptions: BridgedDictionary {
     public convenience init(flatten: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -858,6 +876,7 @@ public class AudioTrack: JSBridgedClass {
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
         _language = ReadonlyAttribute(jsObject: jsObject, name: Strings.language)
         _enabled = ReadWriteAttribute(jsObject: jsObject, name: Strings.enabled)
+        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         self.jsObject = jsObject
     }
 
@@ -875,6 +894,9 @@ public class AudioTrack: JSBridgedClass {
 
     @ReadWriteAttribute
     public var enabled: Bool
+
+    @ReadonlyAttribute
+    public var sourceBuffer: SourceBuffer?
 }
 
 public class AudioTrackList: EventTarget {
@@ -978,7 +1000,10 @@ public class Blob: JSBridgedClass {
         return this[Strings.slice].function!(this: this, arguments: [start?.jsValue ?? .undefined, end?.jsValue ?? .undefined, contentType?.jsValue ?? .undefined]).fromJSValue()!
     }
 
-    // XXX: member 'stream' is ignored
+    @inlinable public func stream() -> ReadableStream {
+        let this = jsObject
+        return this[Strings.stream].function!(this: this, arguments: []).fromJSValue()!
+    }
 
     @inlinable public func text() -> JSPromise {
         let this = jsObject
@@ -1069,7 +1094,7 @@ public class BlobPropertyBag: BridgedDictionary {
 
 public protocol Body: JSBridgedClass {}
 public extension Body {
-    // XXX: attribute 'body' is ignored
+    @inlinable var body: ReadableStream? { jsObject[Strings.body].fromJSValue()! }
 
     @inlinable var bodyUsed: Bool { jsObject[Strings.bodyUsed].fromJSValue()! }
 
@@ -5051,6 +5076,24 @@ public enum EncodedVideoChunkType: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
+public enum EndOfStreamError: JSString, JSValueCompatible {
+    case network = "network"
+    case decode = "decode"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public enum EndingType: JSString, JSValueCompatible {
     case transparent = "transparent"
     case native = "native"
@@ -7945,6 +7988,7 @@ public class HTMLMediaElement: HTMLElement {
     public required init(unsafelyWrapping jsObject: JSObject) {
         _error = ReadonlyAttribute(jsObject: jsObject, name: Strings.error)
         _src = ReadWriteAttribute(jsObject: jsObject, name: Strings.src)
+        _srcObject = ReadWriteAttribute(jsObject: jsObject, name: Strings.srcObject)
         _currentSrc = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentSrc)
         _crossOrigin = ReadWriteAttribute(jsObject: jsObject, name: Strings.crossOrigin)
         _networkState = ReadonlyAttribute(jsObject: jsObject, name: Strings.networkState)
@@ -7979,7 +8023,8 @@ public class HTMLMediaElement: HTMLElement {
     @ReadWriteAttribute
     public var src: String
 
-    // XXX: member 'srcObject' is ignored
+    @ReadWriteAttribute
+    public var srcObject: MediaProvider?
 
     @ReadonlyAttribute
     public var currentSrc: String
@@ -10810,6 +10855,80 @@ public class MediaRecorderOptions: BridgedDictionary {
     public var audioBitrateMode: BitrateMode
 }
 
+public class MediaSource: EventTarget {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.MediaSource].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _sourceBuffers = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffers)
+        _activeSourceBuffers = ReadonlyAttribute(jsObject: jsObject, name: Strings.activeSourceBuffers)
+        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
+        _duration = ReadWriteAttribute(jsObject: jsObject, name: Strings.duration)
+        _onsourceopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsourceopen)
+        _onsourceended = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsourceended)
+        _onsourceclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onsourceclose)
+        _canConstructInDedicatedWorker = ReadonlyAttribute(jsObject: jsObject, name: Strings.canConstructInDedicatedWorker)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init() {
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: []))
+    }
+
+    @ReadonlyAttribute
+    public var sourceBuffers: SourceBufferList
+
+    @ReadonlyAttribute
+    public var activeSourceBuffers: SourceBufferList
+
+    @ReadonlyAttribute
+    public var readyState: ReadyState
+
+    @ReadWriteAttribute
+    public var duration: Double
+
+    @ClosureAttribute1Optional
+    public var onsourceopen: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onsourceended: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onsourceclose: EventHandler
+
+    @ReadonlyAttribute
+    public var canConstructInDedicatedWorker: Bool
+
+    @inlinable public func addSourceBuffer(type: String) -> SourceBuffer {
+        let this = jsObject
+        return this[Strings.addSourceBuffer].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+    }
+
+    @inlinable public func removeSourceBuffer(sourceBuffer: SourceBuffer) {
+        let this = jsObject
+        _ = this[Strings.removeSourceBuffer].function!(this: this, arguments: [sourceBuffer.jsValue])
+    }
+
+    @inlinable public func endOfStream(error: EndOfStreamError? = nil) {
+        let this = jsObject
+        _ = this[Strings.endOfStream].function!(this: this, arguments: [error?.jsValue ?? .undefined])
+    }
+
+    @inlinable public func setLiveSeekableRange(start: Double, end: Double) {
+        let this = jsObject
+        _ = this[Strings.setLiveSeekableRange].function!(this: this, arguments: [start.jsValue, end.jsValue])
+    }
+
+    @inlinable public func clearLiveSeekableRange() {
+        let this = jsObject
+        _ = this[Strings.clearLiveSeekableRange].function!(this: this, arguments: [])
+    }
+
+    @inlinable public static func isTypeSupported(type: String) -> Bool {
+        let this = constructor!
+        return this[Strings.isTypeSupported].function!(this: this, arguments: [type.jsValue]).fromJSValue()!
+    }
+}
+
 public class MediaStream: EventTarget {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.MediaStream].function }
 
@@ -13381,6 +13500,25 @@ public class ReadableWritablePair: BridgedDictionary {
     public var writable: WritableStream
 }
 
+public enum ReadyState: JSString, JSValueCompatible {
+    case closed = "closed"
+    case open = "open"
+    case ended = "ended"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
 public enum RecordingState: JSString, JSValueCompatible {
     case inactive = "inactive"
     case recording = "recording"
@@ -14326,6 +14464,114 @@ public extension Slottable {
     @inlinable var assignedSlot: HTMLSlotElement? { jsObject[Strings.assignedSlot].fromJSValue()! }
 }
 
+public class SourceBuffer: EventTarget {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.SourceBuffer].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _mode = ReadWriteAttribute(jsObject: jsObject, name: Strings.mode)
+        _updating = ReadonlyAttribute(jsObject: jsObject, name: Strings.updating)
+        _buffered = ReadonlyAttribute(jsObject: jsObject, name: Strings.buffered)
+        _timestampOffset = ReadWriteAttribute(jsObject: jsObject, name: Strings.timestampOffset)
+        _audioTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.audioTracks)
+        _videoTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.videoTracks)
+        _textTracks = ReadonlyAttribute(jsObject: jsObject, name: Strings.textTracks)
+        _appendWindowStart = ReadWriteAttribute(jsObject: jsObject, name: Strings.appendWindowStart)
+        _appendWindowEnd = ReadWriteAttribute(jsObject: jsObject, name: Strings.appendWindowEnd)
+        _onupdatestart = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onupdatestart)
+        _onupdate = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onupdate)
+        _onupdateend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onupdateend)
+        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
+        _onabort = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onabort)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadWriteAttribute
+    public var mode: AppendMode
+
+    @ReadonlyAttribute
+    public var updating: Bool
+
+    @ReadonlyAttribute
+    public var buffered: TimeRanges
+
+    @ReadWriteAttribute
+    public var timestampOffset: Double
+
+    @ReadonlyAttribute
+    public var audioTracks: AudioTrackList
+
+    @ReadonlyAttribute
+    public var videoTracks: VideoTrackList
+
+    @ReadonlyAttribute
+    public var textTracks: TextTrackList
+
+    @ReadWriteAttribute
+    public var appendWindowStart: Double
+
+    @ReadWriteAttribute
+    public var appendWindowEnd: Double
+
+    @ClosureAttribute1Optional
+    public var onupdatestart: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onupdate: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onupdateend: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onerror: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onabort: EventHandler
+
+    @inlinable public func appendBuffer(data: BufferSource) {
+        let this = jsObject
+        _ = this[Strings.appendBuffer].function!(this: this, arguments: [data.jsValue])
+    }
+
+    @inlinable public func abort() {
+        let this = jsObject
+        _ = this[Strings.abort].function!(this: this, arguments: [])
+    }
+
+    @inlinable public func changeType(type: String) {
+        let this = jsObject
+        _ = this[Strings.changeType].function!(this: this, arguments: [type.jsValue])
+    }
+
+    @inlinable public func remove(start: Double, end: Double) {
+        let this = jsObject
+        _ = this[Strings.remove].function!(this: this, arguments: [start.jsValue, end.jsValue])
+    }
+}
+
+public class SourceBufferList: EventTarget {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.SourceBufferList].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _length = ReadonlyAttribute(jsObject: jsObject, name: Strings.length)
+        _onaddsourcebuffer = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onaddsourcebuffer)
+        _onremovesourcebuffer = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onremovesourcebuffer)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var length: UInt32
+
+    @ClosureAttribute1Optional
+    public var onaddsourcebuffer: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onremovesourcebuffer: EventHandler
+
+    @inlinable public subscript(key: Int) -> SourceBuffer {
+        jsObject[key].fromJSValue()!
+    }
+}
+
 public class StaticRange: AbstractRange {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.StaticRange].function }
 
@@ -14669,6 +14915,7 @@ public class TextTrack: EventTarget {
         _cues = ReadonlyAttribute(jsObject: jsObject, name: Strings.cues)
         _activeCues = ReadonlyAttribute(jsObject: jsObject, name: Strings.activeCues)
         _oncuechange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.oncuechange)
+        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -14708,6 +14955,9 @@ public class TextTrack: EventTarget {
 
     @ClosureAttribute1Optional
     public var oncuechange: EventHandler
+
+    @ReadonlyAttribute
+    public var sourceBuffer: SourceBuffer?
 }
 
 public class TextTrackCue: EventTarget {
@@ -16369,6 +16619,7 @@ public class VideoTrack: JSBridgedClass {
         _label = ReadonlyAttribute(jsObject: jsObject, name: Strings.label)
         _language = ReadonlyAttribute(jsObject: jsObject, name: Strings.language)
         _selected = ReadWriteAttribute(jsObject: jsObject, name: Strings.selected)
+        _sourceBuffer = ReadonlyAttribute(jsObject: jsObject, name: Strings.sourceBuffer)
         self.jsObject = jsObject
     }
 
@@ -16386,6 +16637,9 @@ public class VideoTrack: JSBridgedClass {
 
     @ReadWriteAttribute
     public var selected: Bool
+
+    @ReadonlyAttribute
+    public var sourceBuffer: SourceBuffer?
 }
 
 public class VideoTrackList: EventTarget {
@@ -17776,6 +18030,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let MediaQueryListEvent: JSString = "MediaQueryListEvent"
     @usableFromInline static let MediaRecorder: JSString = "MediaRecorder"
     @usableFromInline static let MediaRecorderErrorEvent: JSString = "MediaRecorderErrorEvent"
+    @usableFromInline static let MediaSource: JSString = "MediaSource"
     @usableFromInline static let MediaStream: JSString = "MediaStream"
     @usableFromInline static let MediaStreamTrack: JSString = "MediaStreamTrack"
     @usableFromInline static let MediaStreamTrackEvent: JSString = "MediaStreamTrackEvent"
@@ -17823,6 +18078,8 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let ServiceWorkerRegistration: JSString = "ServiceWorkerRegistration"
     @usableFromInline static let ShadowRoot: JSString = "ShadowRoot"
     @usableFromInline static let SharedWorker: JSString = "SharedWorker"
+    @usableFromInline static let SourceBuffer: JSString = "SourceBuffer"
+    @usableFromInline static let SourceBufferList: JSString = "SourceBufferList"
     @usableFromInline static let StaticRange: JSString = "StaticRange"
     @usableFromInline static let Storage: JSString = "Storage"
     @usableFromInline static let StorageEvent: JSString = "StorageEvent"
@@ -17878,6 +18135,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let active: JSString = "active"
     @usableFromInline static let activeCues: JSString = "activeCues"
     @usableFromInline static let activeElement: JSString = "activeElement"
+    @usableFromInline static let activeSourceBuffers: JSString = "activeSourceBuffers"
     @usableFromInline static let actualBoundingBoxAscent: JSString = "actualBoundingBoxAscent"
     @usableFromInline static let actualBoundingBoxDescent: JSString = "actualBoundingBoxDescent"
     @usableFromInline static let actualBoundingBoxLeft: JSString = "actualBoundingBoxLeft"
@@ -17888,6 +18146,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let addCue: JSString = "addCue"
     @usableFromInline static let addModule: JSString = "addModule"
     @usableFromInline static let addPath: JSString = "addPath"
+    @usableFromInline static let addSourceBuffer: JSString = "addSourceBuffer"
     @usableFromInline static let addTextTrack: JSString = "addTextTrack"
     @usableFromInline static let addTrack: JSString = "addTrack"
     @usableFromInline static let addedNodes: JSString = "addedNodes"
@@ -17914,8 +18173,11 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let appName: JSString = "appName"
     @usableFromInline static let appVersion: JSString = "appVersion"
     @usableFromInline static let append: JSString = "append"
+    @usableFromInline static let appendBuffer: JSString = "appendBuffer"
     @usableFromInline static let appendChild: JSString = "appendChild"
     @usableFromInline static let appendData: JSString = "appendData"
+    @usableFromInline static let appendWindowEnd: JSString = "appendWindowEnd"
+    @usableFromInline static let appendWindowStart: JSString = "appendWindowStart"
     @usableFromInline static let applets: JSString = "applets"
     @usableFromInline static let applyConstraints: JSString = "applyConstraints"
     @usableFromInline static let arc: JSString = "arc"
@@ -18028,6 +18290,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let cache: JSString = "cache"
     @usableFromInline static let cacheName: JSString = "cacheName"
     @usableFromInline static let caches: JSString = "caches"
+    @usableFromInline static let canConstructInDedicatedWorker: JSString = "canConstructInDedicatedWorker"
     @usableFromInline static let canPlayType: JSString = "canPlayType"
     @usableFromInline static let cancel: JSString = "cancel"
     @usableFromInline static let cancelAnimationFrame: JSString = "cancelAnimationFrame"
@@ -18044,6 +18307,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let cells: JSString = "cells"
     @usableFromInline static let ch: JSString = "ch"
     @usableFromInline static let chOff: JSString = "chOff"
+    @usableFromInline static let changeType: JSString = "changeType"
     @usableFromInline static let changedTouches: JSString = "changedTouches"
     @usableFromInline static let channelCount: JSString = "channelCount"
     @usableFromInline static let charCode: JSString = "charCode"
@@ -18063,6 +18327,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let clear: JSString = "clear"
     @usableFromInline static let clearData: JSString = "clearData"
     @usableFromInline static let clearInterval: JSString = "clearInterval"
+    @usableFromInline static let clearLiveSeekableRange: JSString = "clearLiveSeekableRange"
     @usableFromInline static let clearParameters: JSString = "clearParameters"
     @usableFromInline static let clearRect: JSString = "clearRect"
     @usableFromInline static let clearTimeout: JSString = "clearTimeout"
@@ -18257,6 +18522,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let enctype: JSString = "enctype"
     @usableFromInline static let end: JSString = "end"
     @usableFromInline static let endContainer: JSString = "endContainer"
+    @usableFromInline static let endOfStream: JSString = "endOfStream"
     @usableFromInline static let endOffset: JSString = "endOffset"
     @usableFromInline static let endTime: JSString = "endTime"
     @usableFromInline static let ended: JSString = "ended"
@@ -18626,6 +18892,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let oldValue: JSString = "oldValue"
     @usableFromInline static let onLine: JSString = "onLine"
     @usableFromInline static let onabort: JSString = "onabort"
+    @usableFromInline static let onaddsourcebuffer: JSString = "onaddsourcebuffer"
     @usableFromInline static let onaddtrack: JSString = "onaddtrack"
     @usableFromInline static let onafterprint: JSString = "onafterprint"
     @usableFromInline static let onauxclick: JSString = "onauxclick"
@@ -18700,6 +18967,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let onratechange: JSString = "onratechange"
     @usableFromInline static let onreadystatechange: JSString = "onreadystatechange"
     @usableFromInline static let onrejectionhandled: JSString = "onrejectionhandled"
+    @usableFromInline static let onremovesourcebuffer: JSString = "onremovesourcebuffer"
     @usableFromInline static let onremovetrack: JSString = "onremovetrack"
     @usableFromInline static let onreset: JSString = "onreset"
     @usableFromInline static let onresize: JSString = "onresize"
@@ -18710,6 +18978,9 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let onseeking: JSString = "onseeking"
     @usableFromInline static let onselect: JSString = "onselect"
     @usableFromInline static let onslotchange: JSString = "onslotchange"
+    @usableFromInline static let onsourceclose: JSString = "onsourceclose"
+    @usableFromInline static let onsourceended: JSString = "onsourceended"
+    @usableFromInline static let onsourceopen: JSString = "onsourceopen"
     @usableFromInline static let onstalled: JSString = "onstalled"
     @usableFromInline static let onstart: JSString = "onstart"
     @usableFromInline static let onstatechange: JSString = "onstatechange"
@@ -18727,7 +18998,10 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let onunhandledrejection: JSString = "onunhandledrejection"
     @usableFromInline static let onunload: JSString = "onunload"
     @usableFromInline static let onunmute: JSString = "onunmute"
+    @usableFromInline static let onupdate: JSString = "onupdate"
+    @usableFromInline static let onupdateend: JSString = "onupdateend"
     @usableFromInline static let onupdatefound: JSString = "onupdatefound"
+    @usableFromInline static let onupdatestart: JSString = "onupdatestart"
     @usableFromInline static let onvisibilitychange: JSString = "onvisibilitychange"
     @usableFromInline static let onvolumechange: JSString = "onvolumechange"
     @usableFromInline static let onwaiting: JSString = "onwaiting"
@@ -18876,6 +19150,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let removeNamedItem: JSString = "removeNamedItem"
     @usableFromInline static let removeNamedItemNS: JSString = "removeNamedItemNS"
     @usableFromInline static let removeParameter: JSString = "removeParameter"
+    @usableFromInline static let removeSourceBuffer: JSString = "removeSourceBuffer"
     @usableFromInline static let removeTrack: JSString = "removeTrack"
     @usableFromInline static let removedNodes: JSString = "removedNodes"
     @usableFromInline static let `repeat`: JSString = "repeat"
@@ -19000,6 +19275,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let setHeaderValue: JSString = "setHeaderValue"
     @usableFromInline static let setInterval: JSString = "setInterval"
     @usableFromInline static let setLineDash: JSString = "setLineDash"
+    @usableFromInline static let setLiveSeekableRange: JSString = "setLiveSeekableRange"
     @usableFromInline static let setMatrixValue: JSString = "setMatrixValue"
     @usableFromInline static let setNamedItem: JSString = "setNamedItem"
     @usableFromInline static let setNamedItemNS: JSString = "setNamedItemNS"
@@ -19037,12 +19313,15 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let snapshotItem: JSString = "snapshotItem"
     @usableFromInline static let snapshotLength: JSString = "snapshotLength"
     @usableFromInline static let source: JSString = "source"
+    @usableFromInline static let sourceBuffer: JSString = "sourceBuffer"
+    @usableFromInline static let sourceBuffers: JSString = "sourceBuffers"
     @usableFromInline static let span: JSString = "span"
     @usableFromInline static let specified: JSString = "specified"
     @usableFromInline static let spellcheck: JSString = "spellcheck"
     @usableFromInline static let splitText: JSString = "splitText"
     @usableFromInline static let src: JSString = "src"
     @usableFromInline static let srcElement: JSString = "srcElement"
+    @usableFromInline static let srcObject: JSString = "srcObject"
     @usableFromInline static let srcdoc: JSString = "srcdoc"
     @usableFromInline static let srclang: JSString = "srclang"
     @usableFromInline static let srcset: JSString = "srcset"
@@ -19109,6 +19388,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let timecode: JSString = "timecode"
     @usableFromInline static let timeout: JSString = "timeout"
     @usableFromInline static let timestamp: JSString = "timestamp"
+    @usableFromInline static let timestampOffset: JSString = "timestampOffset"
     @usableFromInline static let title: JSString = "title"
     @usableFromInline static let toBox: JSString = "toBox"
     @usableFromInline static let toDataURL: JSString = "toDataURL"
@@ -19145,6 +19425,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let unregisterProtocolHandler: JSString = "unregisterProtocolHandler"
     @usableFromInline static let update: JSString = "update"
     @usableFromInline static let updateViaCache: JSString = "updateViaCache"
+    @usableFromInline static let updating: JSString = "updating"
     @usableFromInline static let upgrade: JSString = "upgrade"
     @usableFromInline static let upload: JSString = "upload"
     @usableFromInline static let url: JSString = "url"
@@ -20679,6 +20960,62 @@ public enum ImageBufferSource: JSValueCompatible, Any_ImageBufferSource {
             return bufferSource.jsValue
         case let .readableStream(readableStream):
             return readableStream.jsValue
+        }
+    }
+}
+
+public protocol Any_MediaProvider: ConvertibleToJSValue {}
+extension Blob: Any_MediaProvider {}
+extension MediaSource: Any_MediaProvider {}
+extension MediaStream: Any_MediaProvider {}
+
+public enum MediaProvider: JSValueCompatible, Any_MediaProvider {
+    case blob(Blob)
+    case mediaSource(MediaSource)
+    case mediaStream(MediaStream)
+
+    public var blob: Blob? {
+        switch self {
+        case let .blob(blob): return blob
+        default: return nil
+        }
+    }
+
+    public var mediaSource: MediaSource? {
+        switch self {
+        case let .mediaSource(mediaSource): return mediaSource
+        default: return nil
+        }
+    }
+
+    public var mediaStream: MediaStream? {
+        switch self {
+        case let .mediaStream(mediaStream): return mediaStream
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let blob: Blob = value.fromJSValue() {
+            return .blob(blob)
+        }
+        if let mediaSource: MediaSource = value.fromJSValue() {
+            return .mediaSource(mediaSource)
+        }
+        if let mediaStream: MediaStream = value.fromJSValue() {
+            return .mediaStream(mediaStream)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .blob(blob):
+            return blob.jsValue
+        case let .mediaSource(mediaSource):
+            return mediaSource.jsValue
+        case let .mediaStream(mediaStream):
+            return mediaStream.jsValue
         }
     }
 }

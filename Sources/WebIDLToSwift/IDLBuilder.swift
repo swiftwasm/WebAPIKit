@@ -17,7 +17,7 @@ enum IDLBuilder {
         // redundant unions
         "CSSColorValue_or_CSSStyleValue",
         // need types from specs not yet included
-        "ShadowAnimation", "MediaProvider", "Blob_or_MediaSource",
+        "ShadowAnimation", "Blob_or_MediaSource",
         "HTMLOrSVGImageElement", "HTMLOrSVGScriptElement", "BodyInit",
         // implemented manually
         // ArrayBufferView
@@ -100,10 +100,7 @@ enum IDLBuilder {
                 "AudioBufferSourceNode": ["start"],
                 // XPathNSResolver
                 "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
-                // disabled pending addition of more specs
-                "HTMLMediaElement": ["srcObject"],
-                "Blob": ["stream"],
-                "Body": ["body"],
+                // manually implemented
                 "OffscreenCanvas": ["getContext"],
             ],
             types: merged.types

@@ -38,6 +38,7 @@ let domModule = Module(
         "webcodecs",
         "service-workers",
         "touch-events",
+        "media-source",
     ],
     dependencies: ["WebAPIBase"]
 )
