@@ -4,7 +4,7 @@ import JavaScriptKit
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -19,7 +19,7 @@ import JavaScriptKit
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }

@@ -463,7 +463,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -492,7 +492,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -525,7 +525,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -559,7 +559,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -589,7 +589,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -618,7 +618,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -653,7 +653,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -689,7 +689,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -719,7 +719,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -748,7 +748,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -783,7 +783,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -819,7 +819,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -849,7 +849,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -878,7 +878,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -913,7 +913,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
@@ -942,7 +942,7 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
 
-    public init(jsObject: JSObject, name: JSString) {
+    @inlinable public init(jsObject: JSObject, name: JSString) {
         self.jsObject = jsObject
         self.name = name
     }
