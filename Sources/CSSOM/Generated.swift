@@ -396,7 +396,8 @@ public class CSSColorValue: CSSStyleValue {
         return this[Strings.to].function!(this: this, arguments: [_toJSValue(colorSpace)]).fromJSValue()!
     }
 
-    @inlinable override public class func parse(cssText: String) -> CSSColorValue_or_CSSStyleValue {
+    // returns CSSStyleValue | CSSColorValue
+    @inlinable public class func parse(cssText: String) -> CSSStyleValue {
         let this = constructor!
         return this[Strings.parse].function!(this: this, arguments: [_toJSValue(cssText)]).fromJSValue()!
     }
@@ -953,7 +954,7 @@ public class CSSNumericValue: CSSStyleValue {
         return this[Strings.type].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    @inlinable override public class func parse(cssText: String) -> Self {
+    @inlinable public class func parse(cssText: String) -> Self {
         let this = constructor!
         return this[Strings.parse].function!(this: this, arguments: [_toJSValue(cssText)]).fromJSValue()!
     }
