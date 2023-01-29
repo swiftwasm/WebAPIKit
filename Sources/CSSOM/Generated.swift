@@ -396,8 +396,10 @@ public class CSSColorValue: CSSStyleValue {
         return this[Strings.to].function!(this: this, arguments: [_toJSValue(colorSpace)]).fromJSValue()!
     }
 
-    // XXX: illegal static override
-    // override public class func parse(cssText: String) -> CSSColorValue_or_CSSStyleValue
+    @inlinable override public class func parse(cssText: String) -> CSSColorValue_or_CSSStyleValue {
+        let this = constructor!
+        return this[Strings.parse].function!(this: this, arguments: [_toJSValue(cssText)]).fromJSValue()!
+    }
 }
 
 public class CSSGroupingRule: CSSRule {
@@ -951,8 +953,10 @@ public class CSSNumericValue: CSSStyleValue {
         return this[Strings.type].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    // XXX: illegal static override
-    // override public class func parse(cssText: String) -> Self
+    @inlinable override public class func parse(cssText: String) -> Self {
+        let this = constructor!
+        return this[Strings.parse].function!(this: this, arguments: [_toJSValue(cssText)]).fromJSValue()!
+    }
 }
 
 public class CSSOKLCH: CSSColorValue {

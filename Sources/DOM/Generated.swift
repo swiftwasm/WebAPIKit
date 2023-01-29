@@ -2769,14 +2769,20 @@ public class DOMMatrix: DOMMatrixReadOnly {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
-    // XXX: illegal static override
-    // override public class func fromMatrix(other: DOMMatrixInit? = nil) -> Self
+    @inlinable override public class func fromMatrix(other: DOMMatrixInit? = nil) -> Self {
+        let this = constructor!
+        return this[Strings.fromMatrix].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
+    }
 
-    // XXX: illegal static override
-    // override public class func fromFloat32Array(array32: Float32Array) -> Self
+    @inlinable override public class func fromFloat32Array(array32: Float32Array) -> Self {
+        let this = constructor!
+        return this[Strings.fromFloat32Array].function!(this: this, arguments: [_toJSValue(array32)]).fromJSValue()!
+    }
 
-    // XXX: illegal static override
-    // override public class func fromFloat64Array(array64: Float64Array) -> Self
+    @inlinable override public class func fromFloat64Array(array64: Float64Array) -> Self {
+        let this = constructor!
+        return this[Strings.fromFloat64Array].function!(this: this, arguments: [_toJSValue(array64)]).fromJSValue()!
+    }
 
     @usableFromInline let _a: ReadWriteAttribute<Double>
     @inlinable override public var a: Double {
@@ -3377,8 +3383,10 @@ public class DOMPoint: DOMPointReadOnly {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(w)]))
     }
 
-    // XXX: illegal static override
-    // override public class func fromPoint(other: DOMPointInit? = nil) -> Self
+    @inlinable override public class func fromPoint(other: DOMPointInit? = nil) -> Self {
+        let this = constructor!
+        return this[Strings.fromPoint].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
+    }
 
     @usableFromInline let _x: ReadWriteAttribute<Double>
     @inlinable override public var x: Double {
@@ -3577,8 +3585,10 @@ public class DOMRect: DOMRectReadOnly {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height)]))
     }
 
-    // XXX: illegal static override
-    // override public class func fromRect(other: DOMRectInit? = nil) -> Self
+    @inlinable override public class func fromRect(other: DOMRectInit? = nil) -> Self {
+        let this = constructor!
+        return this[Strings.fromRect].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
+    }
 
     @usableFromInline let _x: ReadWriteAttribute<Double>
     @inlinable override public var x: Double {

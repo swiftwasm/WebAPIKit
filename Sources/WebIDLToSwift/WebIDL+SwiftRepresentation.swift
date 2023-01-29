@@ -481,11 +481,8 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         if returnType == ModuleState.className {
             returnType = "Self"
         }
-        if ModuleState.override, ModuleState.static {
-            return """
-            // XXX: illegal static override
-            // \(nameAndParams) -> \(returnType)
-            """
+        if ModuleState.override, ModuleState.static, !ModuleState.inClass {
+            preconditionFailure("Cannot override static method in non-class")
         }
 
         let (prep, call) = defaultBody
@@ -527,11 +524,8 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
     }
 
     var defaultRepresentation: SwiftSource {
-        if ModuleState.override, ModuleState.static || operation.special == "static" {
-            return """
-            // XXX: illegal static override
-            // \(operation.nameAndParams) async -> \(returnType)
-            """
+        if ModuleState.override, ModuleState.static || operation.special == "static", !ModuleState.inClass {
+            preconditionFailure("Cannot override static method in non-class")
         }
 
         let (prep, call) = operation.defaultBody
