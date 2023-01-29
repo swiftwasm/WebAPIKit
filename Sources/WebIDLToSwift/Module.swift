@@ -85,4 +85,9 @@ let modules = [
         idlModules: ["cssom", "cssom-view", "css-typed-om"],
         dependencies: ["DOM", "WebAPIBase"]
     ),
+    Module(
+        swiftModule: "SVG",
+        idlModules: ["SVG", "css-masking", "svg-animations"],
+        dependencies: ["DOM", "WebAPIBase"]
+    ),
 ]

@@ -4321,8 +4321,8 @@ public extension DocumentAndElementEventHandlers {
     }
 }
 
-public class DocumentFragment: Node, NonElementParentNode, ParentNode {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.DocumentFragment].function }
+open class DocumentFragment: Node, NonElementParentNode, ParentNode {
+    @inlinable override open class var constructor: JSFunction? { JSObject.global[Strings.DocumentFragment].function }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         super.init(unsafelyWrapping: jsObject)
@@ -4448,8 +4448,8 @@ public class DragEventInit: BridgedDictionary {
     public var dataTransfer: DataTransfer?
 }
 
-public class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin, GeometryUtils {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.Element].function }
+open class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slottable, ARIAMixin, GeometryUtils {
+    @inlinable override open class var constructor: JSFunction? { JSObject.global[Strings.Element].function }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _namespaceURI = ReadonlyAttribute(jsObject: jsObject, name: Strings.namespaceURI)
@@ -12227,8 +12227,8 @@ public extension NavigatorPlugins {
     @inlinable var pdfViewerEnabled: Bool { jsObject[Strings.pdfViewerEnabled].fromJSValue()! }
 }
 
-public class Node: EventTarget {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.Node].function }
+open class Node: EventTarget {
+    @inlinable override open class var constructor: JSFunction? { JSObject.global[Strings.Node].function }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _nodeType = ReadonlyAttribute(jsObject: jsObject, name: Strings.nodeType)
@@ -14350,8 +14350,8 @@ public enum ServiceWorkerUpdateViaCache: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
-public class ShadowRoot: DocumentFragment, DocumentOrShadowRoot {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.ShadowRoot].function }
+open class ShadowRoot: DocumentFragment, DocumentOrShadowRoot {
+    @inlinable override open class var constructor: JSFunction? { JSObject.global[Strings.ShadowRoot].function }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _mode = ReadonlyAttribute(jsObject: jsObject, name: Strings.mode)

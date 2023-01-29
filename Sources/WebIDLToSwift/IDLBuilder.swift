@@ -29,6 +29,7 @@ enum IDLBuilder {
         "OffscreenRenderingContextId",
         "BeforeUnloadEvent",
         "CSSColor",
+        "SVGElement",
     ]
 
     static func writeFile(path: String, content: String, moduleDependencies: [String]) throws {
@@ -66,8 +67,6 @@ enum IDLBuilder {
                 "MediaQueryList": ["addListener", "removeListener"],
                 // XPathNSResolver
                 "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
-                // invalid override in Swift
-                "SVGElement": ["className"],
                 // manually implemented
                 "HTMLCanvasElement": ["getContext"],
                 "OffscreenCanvas": ["getContext"],

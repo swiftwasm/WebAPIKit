@@ -51,6 +51,10 @@ let package = Package(
             name: "CSSOM",
             targets: ["CSSOM"]
         ),
+        .library(
+            name: "SVG",
+            targets: ["SVG"]
+        ),
         .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
     dependencies: [
@@ -102,6 +106,10 @@ let package = Package(
         ),
         .target(
             name: "CSSOM",
+            dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
+        ),
+        .target(
+            name: "SVG",
             dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
         ),
         // This support library should be moved to JavaScriptKit

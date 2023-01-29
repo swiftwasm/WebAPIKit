@@ -216,7 +216,17 @@ extension MergedInterface: SwiftRepresentable {
 
         let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
         // Allow cross-module subclassing with `open` access modifier for classes that require this.
-        let openClasses = ["DOMException", "EventTarget", "Event", "Worklet", "WebGLObject"]
+        let openClasses = [
+            "DocumentFragment",
+            "DOMException",
+            "Element",
+            "EventTarget",
+            "Event",
+            "Node",
+            "ShadowRoot",
+            "Worklet",
+            "WebGLObject",
+        ]
         let access: SwiftSource = openClasses.contains(name) ? "open" : "public"
 
         return """
