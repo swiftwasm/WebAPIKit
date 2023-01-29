@@ -16817,6 +16817,10 @@ public class WheelEventInit: BridgedDictionary {
 public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, WindowOrWorkerGlobalScope, AnimationFrameProvider, WindowSessionStorage, WindowLocalStorage {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.Window].function }
 
+    @inlinable public static var global: Window {
+        Window(unsafelyWrapping: JSObject.global)
+    }
+
     public required init(unsafelyWrapping jsObject: JSObject) {
         _event = ReadonlyAttribute(jsObject: jsObject, name: Strings.event)
         _window = ReadonlyAttribute(jsObject: jsObject, name: Strings.window)

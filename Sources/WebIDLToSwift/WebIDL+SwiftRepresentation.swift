@@ -237,11 +237,24 @@ extension MergedInterface: SwiftRepresentable {
         ]
         let access: SwiftSource = openClasses.contains(name) ? "open" : "public"
 
+        let globalAccessor: SwiftSource
+        if global {
+            globalAccessor = """
+            @inlinable public static var global: \(name) {
+                \(name)(unsafelyWrapping: JSObject.global)
+            }
+            """
+        } else {
+            globalAccessor = ""
+        }
+
         return """
         \(access) class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
             @inlinable \(access)\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction? { \(constructor) }
 
             \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
+
+            \(globalAccessor)
 
             public required init(unsafelyWrapping jsObject: JSObject) {
                 \(memberInits.joined(separator: "\n"))

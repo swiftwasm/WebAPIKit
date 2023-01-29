@@ -128,7 +128,8 @@ enum DeclarationMerger {
                             .filter { $0.name == "Exposed" }
                             .flatMap { $0.rhs?.identifiers ?? [] }
                     ),
-                    exposedToAll: $0.extAttrs.contains { $0.name == "Exposed" && $0.rhs == .wildcard }
+                    exposedToAll: $0.extAttrs.contains { $0.name == "Exposed" && $0.rhs == .wildcard },
+                    global: $0.extAttrs.contains { $0.name == "Global" }
                 )
             },
             by: \.name
@@ -138,6 +139,7 @@ enum DeclarationMerger {
                 partialResult.members += interface.members
                 partialResult.exposed.formUnion(interface.exposed)
                 partialResult.exposedToAll = partialResult.exposedToAll || interface.exposedToAll
+                partialResult.global = partialResult.global || interface.global
             }
             interface.mixins = includes[interface.name, default: []]
             if let decl = interface.members.first(where: { $0 is IDLIterableDeclaration }) as? IDLIterableDeclaration {
@@ -287,6 +289,7 @@ struct MergedInterface: DeclarationFile {
     var members: [IDLInterfaceMember]
     var exposed: Set<String>
     var exposedToAll: Bool
+    var global: Bool
 }
 
 struct Typedefs: DeclarationFile, SwiftRepresentable {
