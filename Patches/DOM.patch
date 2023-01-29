@@ -1,0 +1,31 @@
+diff --git a/Sources/DOM/Generated.swift b/Sources/DOM/Generated.swift
+index 0d66a02..708adef 100644
+--- a/Sources/DOM/Generated.swift
++++ b/Sources/DOM/Generated.swift
+@@ -957,8 +957,15 @@ public class BeforeUnloadEvent: Event {
+         super.init(unsafelyWrapping: jsObject)
+     }
+
++    @available(*, unavailable)
++    override public var returnValue: Bool {
++        get { !_returnValue.wrappedValue.isEmpty }
++        set {}
++    }
++
+     @usableFromInline let _returnValue: ReadWriteAttribute<String>
+-    @inlinable override public var returnValue: String {
++    // renamed because `String` is not compatible with `Bool`
++    @inlinable public var returnValueAsString: String {
+         get { _returnValue.wrappedValue }
+         set { _returnValue.wrappedValue = newValue }
+     }
+@@ -6978,7 +6985,8 @@ public class HTMLFormControlsCollection: HTMLCollection {
+         jsObject[key].fromJSValue()
+     }
+
+-    @inlinable override public func namedItem(name: String) -> Element_or_RadioNodeList? {
++    // `override` removed since the superclass returns a more constrained type `Element`
++    @inlinable func namedItem(name: String) -> Element_or_RadioNodeList? {
+         let this = jsObject
+         return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+     }

@@ -194,7 +194,11 @@ public class AudioBufferSourceNode: AudioScheduledSourceNode {
     @ReadWriteAttribute
     public var loopEnd: Double
 
-    // XXX: member 'start' is ignored
+    // `override` removed since the superclass function has fewer parameters
+    @inlinable func start(when: Double? = nil, offset: Double? = nil, duration: Double? = nil) {
+        let this = jsObject
+        _ = this[Strings.start].function!(this: this, arguments: [_toJSValue(when), _toJSValue(offset), _toJSValue(duration)])
+    }
 }
 
 public class AudioBufferSourceOptions: BridgedDictionary {

@@ -1,0 +1,20 @@
+diff --git a/Sources/CSSOM/Generated.swift b/Sources/CSSOM/Generated.swift
+index e9f9df4..331ec01 100644
+--- a/Sources/CSSOM/Generated.swift
++++ b/Sources/CSSOM/Generated.swift
+@@ -361,8 +361,14 @@ public class CSSColor: CSSColorValue {
+         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(colorSpace), _toJSValue(channels), _toJSValue(alpha)]))
+     }
+
++    @available(*, unavailable)
++    override public var colorSpace: CSSKeywordValue {
++        get { colorSpaceOrString.cssKeywordValue! }
++        set { colorSpaceOrString = .cssKeywordValue(newValue) }
++    }
++
+     @usableFromInline let _colorSpace: ReadWriteAttribute<CSSKeywordish>
+-    @inlinable override public var colorSpace: CSSKeywordish {
++    @inlinable public var colorSpaceOrString: CSSKeywordish {
+         get { _colorSpace.wrappedValue }
+         set { _colorSpace.wrappedValue = newValue }
+     }

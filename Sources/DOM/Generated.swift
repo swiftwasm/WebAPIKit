@@ -949,6 +949,28 @@ public class BarProp: JSBridgedClass {
     public var visible: Bool
 }
 
+public class BeforeUnloadEvent: Event {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.BeforeUnloadEvent].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _returnValue = ReadWriteAttribute(jsObject: jsObject, name: Strings.returnValue)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @available(*, unavailable)
+    override public var returnValue: Bool {
+        get { !_returnValue.wrappedValue.isEmpty }
+        set {}
+    }
+
+    @usableFromInline let _returnValue: ReadWriteAttribute<String>
+    // renamed because `String` is not compatible with `Bool`
+    @inlinable public var returnValueAsString: String {
+        get { _returnValue.wrappedValue }
+        set { _returnValue.wrappedValue = newValue }
+    }
+}
+
 public enum BitrateMode: JSString, JSValueCompatible {
     case constant = "constant"
     case variable = "variable"
@@ -6963,7 +6985,11 @@ public class HTMLFormControlsCollection: HTMLCollection {
         jsObject[key].fromJSValue()
     }
 
-    // XXX: member 'namedItem' is ignored
+    // `override` removed since the superclass returns a more constrained type `Element`
+    @inlinable func namedItem(name: String) -> Element_or_RadioNodeList? {
+        let this = jsObject
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+    }
 }
 
 public class HTMLFormElement: HTMLElement {
@@ -17872,6 +17898,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let AudioTrack: JSString = "AudioTrack"
     @usableFromInline static let AudioTrackList: JSString = "AudioTrackList"
     @usableFromInline static let BarProp: JSString = "BarProp"
+    @usableFromInline static let BeforeUnloadEvent: JSString = "BeforeUnloadEvent"
     @usableFromInline static let Blob: JSString = "Blob"
     @usableFromInline static let BlobEvent: JSString = "BlobEvent"
     @usableFromInline static let BroadcastChannel: JSString = "BroadcastChannel"

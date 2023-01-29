@@ -27,9 +27,6 @@ enum IDLBuilder {
         "RenderingContext",
         "OffscreenRenderingContext",
         "OffscreenRenderingContextId",
-        "BeforeUnloadEvent",
-        "CSSColor",
-        "SVGElement",
     ]
 
     static func writeFile(path: String, content: String, moduleDependencies: [String]) throws {
@@ -70,9 +67,6 @@ enum IDLBuilder {
                 // manually implemented
                 "HTMLCanvasElement": ["getContext"],
                 "OffscreenCanvas": ["getContext"],
-                "HTMLFormControlsCollection": ["namedItem"],
-                "AudioBufferSourceNode": ["start"],
-                "CSSColor": ["colorSpace"],
             ],
             types: merged.types
         )

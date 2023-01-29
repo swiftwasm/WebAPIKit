@@ -347,6 +347,39 @@ public enum CSSBoxType: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
+public class CSSColor: CSSColorValue {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.CSSColor].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _colorSpace = ReadWriteAttribute(jsObject: jsObject, name: Strings.colorSpace)
+        _channels = ReadWriteAttribute(jsObject: jsObject, name: Strings.channels)
+        _alpha = ReadWriteAttribute(jsObject: jsObject, name: Strings.alpha)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @inlinable public convenience init(colorSpace: CSSKeywordish, channels: [CSSColorPercent], alpha: CSSNumberish? = nil) {
+        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(colorSpace), _toJSValue(channels), _toJSValue(alpha)]))
+    }
+
+    @available(*, unavailable)
+    override public var colorSpace: CSSKeywordValue {
+        get { colorSpaceOrString.cssKeywordValue! }
+        set { colorSpaceOrString = .cssKeywordValue(newValue) }
+    }
+
+    @usableFromInline let _colorSpace: ReadWriteAttribute<CSSKeywordish>
+    @inlinable public var colorSpaceOrString: CSSKeywordish {
+        get { _colorSpace.wrappedValue }
+        set { _colorSpace.wrappedValue = newValue }
+    }
+
+    @ReadWriteAttribute
+    public var channels: [CSSColorPercent]
+
+    @ReadWriteAttribute
+    public var alpha: CSSNumberish
+}
+
 public class CSSColorValue: CSSStyleValue {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.CSSColorValue].function }
 
@@ -2017,6 +2050,7 @@ public typealias CSSColorAngle = CSSColorRGBComp
 @usableFromInline enum Strings {
     static let _self: JSString = "self"
     @usableFromInline static let CSS: JSString = "CSS"
+    @usableFromInline static let CSSColor: JSString = "CSSColor"
     @usableFromInline static let CSSColorValue: JSString = "CSSColorValue"
     @usableFromInline static let CSSGroupingRule: JSString = "CSSGroupingRule"
     @usableFromInline static let CSSHSL: JSString = "CSSHSL"
@@ -2093,6 +2127,7 @@ public typealias CSSColorAngle = CSSColorRGBComp
     @usableFromInline static let box: JSString = "box"
     @usableFromInline static let c: JSString = "c"
     @usableFromInline static let ch: JSString = "ch"
+    @usableFromInline static let channels: JSString = "channels"
     @usableFromInline static let clear: JSString = "clear"
     @usableFromInline static let cm: JSString = "cm"
     @usableFromInline static let colorDepth: JSString = "colorDepth"

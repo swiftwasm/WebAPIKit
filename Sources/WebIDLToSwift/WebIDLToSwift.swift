@@ -1,12 +1,17 @@
 import Foundation
 import WebIDL
 
+private enum Mode: String {
+    case noPatch = "no-patch"
+}
+
 @main
 enum WebIDLToSwift {
     static let group = DispatchGroup()
 
     static func main() {
         do {
+            let mode = parseArgs()
             let packageDir = URL(fileURLWithPath: #file)
                 .deletingLastPathComponent()
                 .deletingLastPathComponent()
@@ -18,11 +23,11 @@ enum WebIDLToSwift {
             var closurePatterns = Set<ClosurePattern>()
 
             for module in modules {
-                try generate(module, packageDir: packageDir, domTypes: domTypes)
+                try generate(module, packageDir: packageDir, domTypes: domTypes, patch: mode != .noPatch)
                 closurePatterns.formUnion(ModuleState.closurePatterns)
             }
 
-            try generate(baseModule, packageDir: packageDir, shouldGenerateClosurePatterns: true)
+            try generate(baseModule, packageDir: packageDir, shouldGenerateClosurePatterns: true, patch: mode != .noPatch)
 
             group.wait()
 
@@ -34,11 +39,28 @@ enum WebIDLToSwift {
         }
     }
 
+    private static func parseArgs() -> Mode? {
+        var mode: Mode?
+        for arg in CommandLine.arguments.dropFirst() {
+            if arg.starts(with: "--") {
+                if let parsed = Mode(rawValue: String(arg.dropFirst(2))) {
+                    mode = parsed
+                } else {
+                    print("Unknown option: \(arg)")
+                }
+            } else {
+                print("Unknown argument: \(arg)")
+            }
+        }
+        return mode
+    }
+
     private static func generate(
         _ module: Module,
         packageDir: URL,
         domTypes: [String: IDLTypealias] = [:],
-        shouldGenerateClosurePatterns: Bool = false
+        shouldGenerateClosurePatterns: Bool = false,
+        patch: Bool
     ) throws {
         let startTime = Date()
         let idl = try IDLParser.parseIDL(modules: module.idlModules)
@@ -66,7 +88,10 @@ enum WebIDLToSwift {
 
         group.enter()
         DispatchQueue.global().async {
-            SwiftFormatter.run(source: outputPath)
+            Shell.format(source: outputPath)
+            if patch {
+                Shell.patch(module: module)
+            }
             group.leave()
         }
         print("Module \(module.swiftModule) done in \(Int(Date().timeIntervalSince(startTime) * 1000))ms.")

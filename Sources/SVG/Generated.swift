@@ -540,6 +540,28 @@ public class SVGDiscardElement: SVGAnimationElement {
     }
 }
 
+public class SVGElement: Element, GlobalEventHandlers, DocumentAndElementEventHandlers, SVGElementInstance, HTMLOrSVGElement {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.SVGElement].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _svgClassName = ReadonlyAttribute(jsObject: jsObject, name: Strings.className)
+        _ownerSVGElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.ownerSVGElement)
+        _viewportElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.viewportElement)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    // Renamed because superclass has a `className` property of type `String`
+    // NOTE! Accessing `className` on an SVGElement will crash your app
+    @ReadonlyAttribute
+    public var svgClassName: SVGAnimatedString
+
+    @ReadonlyAttribute
+    public var ownerSVGElement: SVGSVGElement?
+
+    @ReadonlyAttribute
+    public var viewportElement: SVGElement?
+}
+
 public protocol SVGElementInstance: JSBridgedClass {}
 public extension SVGElementInstance {
     @inlinable var correspondingElement: SVGElement? { jsObject[Strings.correspondingElement].fromJSValue()! }
