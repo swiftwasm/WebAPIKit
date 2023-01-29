@@ -2480,11 +2480,13 @@ public enum AudioContextLatencyCategory_or_Double: JSValueCompatible, Any_AudioC
     case double(Double)
 
     init(_ audioContextLatencyCategory: AudioContextLatencyCategory) {
-        self = .audioContextLatencyCategory(audioContextLatencyCategory)
+        let val: AudioContextLatencyCategory_or_Double = .audioContextLatencyCategory(audioContextLatencyCategory)
+        self = val
     }
 
     init(_ double: Double) {
-        self = .double(double)
+        let val: AudioContextLatencyCategory_or_Double = .double(double)
+        self = val
     }
 
     public var audioContextLatencyCategory: AudioContextLatencyCategory? {
@@ -2530,11 +2532,13 @@ public enum AudioSinkInfo_or_String: JSValueCompatible, Any_AudioSinkInfo_or_Str
     case string(String)
 
     init(_ audioSinkInfo: AudioSinkInfo) {
-        self = .audioSinkInfo(audioSinkInfo)
+        let val: AudioSinkInfo_or_String = .audioSinkInfo(audioSinkInfo)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: AudioSinkInfo_or_String = .string(string)
+        self = val
     }
 
     public var audioSinkInfo: AudioSinkInfo? {
@@ -2580,11 +2584,13 @@ public enum AudioSinkOptions_or_String: JSValueCompatible, Any_AudioSinkOptions_
     case string(String)
 
     init(_ audioSinkOptions: AudioSinkOptions) {
-        self = .audioSinkOptions(audioSinkOptions)
+        let val: AudioSinkOptions_or_String = .audioSinkOptions(audioSinkOptions)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: AudioSinkOptions_or_String = .string(string)
+        self = val
     }
 
     public var audioSinkOptions: AudioSinkOptions? {

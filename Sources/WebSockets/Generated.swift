@@ -177,15 +177,28 @@ public enum Blob_or_BufferSource_or_String: JSValueCompatible, Any_Blob_or_Buffe
     case string(String)
 
     init(_ blob: Blob) {
-        self = .blob(blob)
+        let val: Blob_or_BufferSource_or_String = .blob(blob)
+        self = val
     }
 
     init(_ bufferSource: BufferSource) {
-        self = .bufferSource(bufferSource)
+        let val: Blob_or_BufferSource_or_String = .bufferSource(bufferSource)
+        self = val
+    }
+
+    init(_ arrayBuffer: ArrayBuffer) {
+        let val: BufferSource = .arrayBuffer(arrayBuffer)
+        self = .init(val)
+    }
+
+    init(_ arrayBufferView: ArrayBufferView) {
+        let val: BufferSource = .arrayBufferView(arrayBufferView)
+        self = .init(val)
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: Blob_or_BufferSource_or_String = .string(string)
+        self = val
     }
 
     public var blob: Blob? {
@@ -243,11 +256,13 @@ public enum String_or_seq_of_String: JSValueCompatible, Any_String_or_seq_of_Str
     case seq_of_String([String])
 
     init(_ string: String) {
-        self = .string(string)
+        let val: String_or_seq_of_String = .string(string)
+        self = val
     }
 
     init(_ seq_of_String: [String]) {
-        self = .seq_of_String(seq_of_String)
+        let val: String_or_seq_of_String = .seq_of_String(seq_of_String)
+        self = val
     }
 
     public var string: String? {

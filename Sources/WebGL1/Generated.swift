@@ -1744,11 +1744,13 @@ public enum Float32List: JSValueCompatible, Any_Float32List {
     case seq_of_GLfloat([GLfloat])
 
     init(_ float32Array: Float32Array) {
-        self = .float32Array(float32Array)
+        let val: Float32List = .float32Array(float32Array)
+        self = val
     }
 
     init(_ seq_of_GLfloat: [GLfloat]) {
-        self = .seq_of_GLfloat(seq_of_GLfloat)
+        let val: Float32List = .seq_of_GLfloat(seq_of_GLfloat)
+        self = val
     }
 
     public var float32Array: Float32Array? {
@@ -1794,11 +1796,13 @@ public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCan
     case offscreenCanvas(OffscreenCanvas)
 
     init(_ htmlCanvasElement: HTMLCanvasElement) {
-        self = .htmlCanvasElement(htmlCanvasElement)
+        let val: HTMLCanvasElement_or_OffscreenCanvas = .htmlCanvasElement(htmlCanvasElement)
+        self = val
     }
 
     init(_ offscreenCanvas: OffscreenCanvas) {
-        self = .offscreenCanvas(offscreenCanvas)
+        let val: HTMLCanvasElement_or_OffscreenCanvas = .offscreenCanvas(offscreenCanvas)
+        self = val
     }
 
     public var htmlCanvasElement: HTMLCanvasElement? {
@@ -1844,11 +1848,13 @@ public enum Int32List: JSValueCompatible, Any_Int32List {
     case seq_of_GLint([GLint])
 
     init(_ int32Array: Int32Array) {
-        self = .int32Array(int32Array)
+        let val: Int32List = .int32Array(int32Array)
+        self = val
     }
 
     init(_ seq_of_GLint: [GLint]) {
-        self = .seq_of_GLint(seq_of_GLint)
+        let val: Int32List = .seq_of_GLint(seq_of_GLint)
+        self = val
     }
 
     public var int32Array: Int32Array? {
@@ -1904,31 +1910,38 @@ public enum TexImageSource: JSValueCompatible, Any_TexImageSource {
     case videoFrame(VideoFrame)
 
     init(_ htmlCanvasElement: HTMLCanvasElement) {
-        self = .htmlCanvasElement(htmlCanvasElement)
+        let val: TexImageSource = .htmlCanvasElement(htmlCanvasElement)
+        self = val
     }
 
     init(_ htmlImageElement: HTMLImageElement) {
-        self = .htmlImageElement(htmlImageElement)
+        let val: TexImageSource = .htmlImageElement(htmlImageElement)
+        self = val
     }
 
     init(_ htmlVideoElement: HTMLVideoElement) {
-        self = .htmlVideoElement(htmlVideoElement)
+        let val: TexImageSource = .htmlVideoElement(htmlVideoElement)
+        self = val
     }
 
     init(_ imageBitmap: ImageBitmap) {
-        self = .imageBitmap(imageBitmap)
+        let val: TexImageSource = .imageBitmap(imageBitmap)
+        self = val
     }
 
     init(_ imageData: ImageData) {
-        self = .imageData(imageData)
+        let val: TexImageSource = .imageData(imageData)
+        self = val
     }
 
     init(_ offscreenCanvas: OffscreenCanvas) {
-        self = .offscreenCanvas(offscreenCanvas)
+        let val: TexImageSource = .offscreenCanvas(offscreenCanvas)
+        self = val
     }
 
     init(_ videoFrame: VideoFrame) {
-        self = .videoFrame(videoFrame)
+        let val: TexImageSource = .videoFrame(videoFrame)
+        self = val
     }
 
     public var htmlCanvasElement: HTMLCanvasElement? {

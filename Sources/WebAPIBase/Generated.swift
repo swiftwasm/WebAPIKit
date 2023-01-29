@@ -367,11 +367,13 @@ public enum BufferSource: JSValueCompatible, Any_BufferSource {
     case arrayBufferView(ArrayBufferView)
 
     init(_ arrayBuffer: ArrayBuffer) {
-        self = .arrayBuffer(arrayBuffer)
+        let val: BufferSource = .arrayBuffer(arrayBuffer)
+        self = val
     }
 
     init(_ arrayBufferView: ArrayBufferView) {
-        self = .arrayBufferView(arrayBufferView)
+        let val: BufferSource = .arrayBufferView(arrayBufferView)
+        self = val
     }
 
     public var arrayBuffer: ArrayBuffer? {
@@ -419,15 +421,18 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     case seq_of_seq_of_String([[String]])
 
     init(_ string: String) {
-        self = .string(string)
+        let val: String_or_record_String_to_String_or_seq_of_seq_of_String = .string(string)
+        self = val
     }
 
     init(_ record_String_to_String: [String: String]) {
-        self = .record_String_to_String(record_String_to_String)
+        let val: String_or_record_String_to_String_or_seq_of_seq_of_String = .record_String_to_String(record_String_to_String)
+        self = val
     }
 
     init(_ seq_of_seq_of_String: [[String]]) {
-        self = .seq_of_seq_of_String(seq_of_seq_of_String)
+        let val: String_or_record_String_to_String_or_seq_of_seq_of_String = .seq_of_seq_of_String(seq_of_seq_of_String)
+        self = val
     }
 
     public var string: String? {

@@ -2356,11 +2356,33 @@ public enum CSSColorRGBComp: JSValueCompatible, Any_CSSColorRGBComp {
     case cssNumberish(CSSNumberish)
 
     init(_ cssKeywordish: CSSKeywordish) {
-        self = .cssKeywordish(cssKeywordish)
+        let val: CSSColorRGBComp = .cssKeywordish(cssKeywordish)
+        self = val
+    }
+
+    init(_ cssKeywordValue: CSSKeywordValue) {
+        let val: CSSKeywordish = .cssKeywordValue(cssKeywordValue)
+        self = .init(val)
+    }
+
+    init(_ string: String) {
+        let val: CSSKeywordish = .string(string)
+        self = .init(val)
     }
 
     init(_ cssNumberish: CSSNumberish) {
-        self = .cssNumberish(cssNumberish)
+        let val: CSSColorRGBComp = .cssNumberish(cssNumberish)
+        self = val
+    }
+
+    init(_ cssNumericValue: CSSNumericValue) {
+        let val: CSSNumberish = .cssNumericValue(cssNumericValue)
+        self = .init(val)
+    }
+
+    init(_ double: Double) {
+        let val: CSSNumberish = .double(double)
+        self = .init(val)
     }
 
     public var cssKeywordish: CSSKeywordish? {
@@ -2406,11 +2428,13 @@ public enum CSSKeywordish: JSValueCompatible, Any_CSSKeywordish {
     case string(String)
 
     init(_ cssKeywordValue: CSSKeywordValue) {
-        self = .cssKeywordValue(cssKeywordValue)
+        let val: CSSKeywordish = .cssKeywordValue(cssKeywordValue)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: CSSKeywordish = .string(string)
+        self = val
     }
 
     public var cssKeywordValue: CSSKeywordValue? {
@@ -2456,11 +2480,13 @@ public enum CSSNumberish: JSValueCompatible, Any_CSSNumberish {
     case double(Double)
 
     init(_ cssNumericValue: CSSNumericValue) {
-        self = .cssNumericValue(cssNumericValue)
+        let val: CSSNumberish = .cssNumericValue(cssNumericValue)
+        self = val
     }
 
     init(_ double: Double) {
-        self = .double(double)
+        let val: CSSNumberish = .double(double)
+        self = val
     }
 
     public var cssNumericValue: CSSNumericValue? {
@@ -2506,11 +2532,23 @@ public enum CSSPerspectiveValue: JSValueCompatible, Any_CSSPerspectiveValue {
     case cssNumericValue(CSSNumericValue)
 
     init(_ cssKeywordish: CSSKeywordish) {
-        self = .cssKeywordish(cssKeywordish)
+        let val: CSSPerspectiveValue = .cssKeywordish(cssKeywordish)
+        self = val
+    }
+
+    init(_ cssKeywordValue: CSSKeywordValue) {
+        let val: CSSKeywordish = .cssKeywordValue(cssKeywordValue)
+        self = .init(val)
+    }
+
+    init(_ string: String) {
+        let val: CSSKeywordish = .string(string)
+        self = .init(val)
     }
 
     init(_ cssNumericValue: CSSNumericValue) {
-        self = .cssNumericValue(cssNumericValue)
+        let val: CSSPerspectiveValue = .cssNumericValue(cssNumericValue)
+        self = val
     }
 
     public var cssKeywordish: CSSKeywordish? {
@@ -2556,11 +2594,13 @@ public enum CSSStyleValue_or_String: JSValueCompatible, Any_CSSStyleValue_or_Str
     case string(String)
 
     init(_ cssStyleValue: CSSStyleValue) {
-        self = .cssStyleValue(cssStyleValue)
+        let val: CSSStyleValue_or_String = .cssStyleValue(cssStyleValue)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: CSSStyleValue_or_String = .string(string)
+        self = val
     }
 
     public var cssStyleValue: CSSStyleValue? {
@@ -2606,11 +2646,13 @@ public enum CSSUnparsedSegment: JSValueCompatible, Any_CSSUnparsedSegment {
     case string(String)
 
     init(_ cssVariableReferenceValue: CSSVariableReferenceValue) {
-        self = .cssVariableReferenceValue(cssVariableReferenceValue)
+        let val: CSSUnparsedSegment = .cssVariableReferenceValue(cssVariableReferenceValue)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: CSSUnparsedSegment = .string(string)
+        self = val
     }
 
     public var cssVariableReferenceValue: CSSVariableReferenceValue? {
@@ -2656,11 +2698,13 @@ public enum Element_or_ProcessingInstruction: JSValueCompatible, Any_Element_or_
     case processingInstruction(ProcessingInstruction)
 
     init(_ element: Element) {
-        self = .element(element)
+        let val: Element_or_ProcessingInstruction = .element(element)
+        self = val
     }
 
     init(_ processingInstruction: ProcessingInstruction) {
-        self = .processingInstruction(processingInstruction)
+        let val: Element_or_ProcessingInstruction = .processingInstruction(processingInstruction)
+        self = val
     }
 
     public var element: Element? {
@@ -2710,19 +2754,23 @@ public enum GeometryNode: JSValueCompatible, Any_GeometryNode {
     case text(Text)
 
     init(_ cssPseudoElement: CSSPseudoElement) {
-        self = .cssPseudoElement(cssPseudoElement)
+        let val: GeometryNode = .cssPseudoElement(cssPseudoElement)
+        self = val
     }
 
     init(_ document: Document) {
-        self = .document(document)
+        let val: GeometryNode = .document(document)
+        self = val
     }
 
     init(_ element: Element) {
-        self = .element(element)
+        let val: GeometryNode = .element(element)
+        self = val
     }
 
     init(_ text: Text) {
-        self = .text(text)
+        let val: GeometryNode = .text(text)
+        self = val
     }
 
     public var cssPseudoElement: CSSPseudoElement? {
@@ -2792,11 +2840,13 @@ public enum MediaList_or_String: JSValueCompatible, Any_MediaList_or_String {
     case string(String)
 
     init(_ mediaList: MediaList) {
-        self = .mediaList(mediaList)
+        let val: MediaList_or_String = .mediaList(mediaList)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: MediaList_or_String = .string(string)
+        self = val
     }
 
     public var mediaList: MediaList? {

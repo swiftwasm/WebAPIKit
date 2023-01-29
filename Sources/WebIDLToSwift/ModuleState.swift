@@ -36,6 +36,16 @@ enum ModuleState {
         unions.insert(union)
     }
 
+    static func union(for types: Set<SlimIDLType>, defaultName: String? = nil) -> UnionType {
+        if let existing = ModuleState.unions.first(where: { $0.types == types }) {
+            return existing
+        } else {
+            let new = UnionType(types: types, friendlyName: defaultName)
+            ModuleState.add(union: new)
+            return new
+        }
+    }
+
     static func add(closurePattern: ClosurePattern) {
         closurePatterns.insert(closurePattern)
     }

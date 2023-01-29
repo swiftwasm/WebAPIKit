@@ -3887,11 +3887,13 @@ public enum GPUAutoLayoutMode_or_GPUPipelineLayout: JSValueCompatible, Any_GPUAu
     case gpuPipelineLayout(GPUPipelineLayout)
 
     init(_ gpuAutoLayoutMode: GPUAutoLayoutMode) {
-        self = .gpuAutoLayoutMode(gpuAutoLayoutMode)
+        let val: GPUAutoLayoutMode_or_GPUPipelineLayout = .gpuAutoLayoutMode(gpuAutoLayoutMode)
+        self = val
     }
 
     init(_ gpuPipelineLayout: GPUPipelineLayout) {
-        self = .gpuPipelineLayout(gpuPipelineLayout)
+        let val: GPUAutoLayoutMode_or_GPUPipelineLayout = .gpuPipelineLayout(gpuPipelineLayout)
+        self = val
     }
 
     public var gpuAutoLayoutMode: GPUAutoLayoutMode? {
@@ -3941,19 +3943,23 @@ public enum GPUBindingResource: JSValueCompatible, Any_GPUBindingResource {
     case gpuTextureView(GPUTextureView)
 
     init(_ gpuBufferBinding: GPUBufferBinding) {
-        self = .gpuBufferBinding(gpuBufferBinding)
+        let val: GPUBindingResource = .gpuBufferBinding(gpuBufferBinding)
+        self = val
     }
 
     init(_ gpuExternalTexture: GPUExternalTexture) {
-        self = .gpuExternalTexture(gpuExternalTexture)
+        let val: GPUBindingResource = .gpuExternalTexture(gpuExternalTexture)
+        self = val
     }
 
     init(_ gpuSampler: GPUSampler) {
-        self = .gpuSampler(gpuSampler)
+        let val: GPUBindingResource = .gpuSampler(gpuSampler)
+        self = val
     }
 
     init(_ gpuTextureView: GPUTextureView) {
-        self = .gpuTextureView(gpuTextureView)
+        let val: GPUBindingResource = .gpuTextureView(gpuTextureView)
+        self = val
     }
 
     public var gpuBufferBinding: GPUBufferBinding? {
@@ -4023,11 +4029,13 @@ public enum GPUColor: JSValueCompatible, Any_GPUColor {
     case seq_of_Double([Double])
 
     init(_ gpuColorDict: GPUColorDict) {
-        self = .gpuColorDict(gpuColorDict)
+        let val: GPUColor = .gpuColorDict(gpuColorDict)
+        self = val
     }
 
     init(_ seq_of_Double: [Double]) {
-        self = .seq_of_Double(seq_of_Double)
+        let val: GPUColor = .seq_of_Double(seq_of_Double)
+        self = val
     }
 
     public var gpuColorDict: GPUColorDict? {
@@ -4073,11 +4081,13 @@ public enum GPUExtent3D: JSValueCompatible, Any_GPUExtent3D {
     case seq_of_GPUIntegerCoordinate([GPUIntegerCoordinate])
 
     init(_ gpuExtent3DDict: GPUExtent3DDict) {
-        self = .gpuExtent3DDict(gpuExtent3DDict)
+        let val: GPUExtent3D = .gpuExtent3DDict(gpuExtent3DDict)
+        self = val
     }
 
     init(_ seq_of_GPUIntegerCoordinate: [GPUIntegerCoordinate]) {
-        self = .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate)
+        let val: GPUExtent3D = .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate)
+        self = val
     }
 
     public var gpuExtent3DDict: GPUExtent3DDict? {
@@ -4123,11 +4133,13 @@ public enum GPUOrigin2D: JSValueCompatible, Any_GPUOrigin2D {
     case seq_of_GPUIntegerCoordinate([GPUIntegerCoordinate])
 
     init(_ gpuOrigin2DDict: GPUOrigin2DDict) {
-        self = .gpuOrigin2DDict(gpuOrigin2DDict)
+        let val: GPUOrigin2D = .gpuOrigin2DDict(gpuOrigin2DDict)
+        self = val
     }
 
     init(_ seq_of_GPUIntegerCoordinate: [GPUIntegerCoordinate]) {
-        self = .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate)
+        let val: GPUOrigin2D = .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate)
+        self = val
     }
 
     public var gpuOrigin2DDict: GPUOrigin2DDict? {
@@ -4173,11 +4185,13 @@ public enum GPUOrigin3D: JSValueCompatible, Any_GPUOrigin3D {
     case seq_of_GPUIntegerCoordinate([GPUIntegerCoordinate])
 
     init(_ gpuOrigin3DDict: GPUOrigin3DDict) {
-        self = .gpuOrigin3DDict(gpuOrigin3DDict)
+        let val: GPUOrigin3D = .gpuOrigin3DDict(gpuOrigin3DDict)
+        self = val
     }
 
     init(_ seq_of_GPUIntegerCoordinate: [GPUIntegerCoordinate]) {
-        self = .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate)
+        let val: GPUOrigin3D = .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate)
+        self = val
     }
 
     public var gpuOrigin3DDict: GPUOrigin3DDict? {
@@ -4227,19 +4241,23 @@ public enum HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCan
     case offscreenCanvas(OffscreenCanvas)
 
     init(_ htmlCanvasElement: HTMLCanvasElement) {
-        self = .htmlCanvasElement(htmlCanvasElement)
+        let val: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas = .htmlCanvasElement(htmlCanvasElement)
+        self = val
     }
 
     init(_ htmlVideoElement: HTMLVideoElement) {
-        self = .htmlVideoElement(htmlVideoElement)
+        let val: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas = .htmlVideoElement(htmlVideoElement)
+        self = val
     }
 
     init(_ imageBitmap: ImageBitmap) {
-        self = .imageBitmap(imageBitmap)
+        let val: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas = .imageBitmap(imageBitmap)
+        self = val
     }
 
     init(_ offscreenCanvas: OffscreenCanvas) {
-        self = .offscreenCanvas(offscreenCanvas)
+        let val: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas = .offscreenCanvas(offscreenCanvas)
+        self = val
     }
 
     public var htmlCanvasElement: HTMLCanvasElement? {
@@ -4309,11 +4327,13 @@ public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCan
     case offscreenCanvas(OffscreenCanvas)
 
     init(_ htmlCanvasElement: HTMLCanvasElement) {
-        self = .htmlCanvasElement(htmlCanvasElement)
+        let val: HTMLCanvasElement_or_OffscreenCanvas = .htmlCanvasElement(htmlCanvasElement)
+        self = val
     }
 
     init(_ offscreenCanvas: OffscreenCanvas) {
-        self = .offscreenCanvas(offscreenCanvas)
+        let val: HTMLCanvasElement_or_OffscreenCanvas = .offscreenCanvas(offscreenCanvas)
+        self = val
     }
 
     public var htmlCanvasElement: HTMLCanvasElement? {

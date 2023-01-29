@@ -727,18 +727,20 @@ extension IDLType: SwiftRepresentable {
 }
 
 extension IDLTypedef: SwiftRepresentable {
-    var swiftRepresentation: SwiftSource {
+    var unionType: UnionType? {
         if case let .union(types) = idlType.value {
-            let typeSet = Set(types.map(SlimIDLType.init))
-            if let existing = ModuleState.unions.first(where: { $0.types == typeSet }) {
-                if let existingName = existing.friendlyName {
-                    return "public typealias \(name) = \(existingName)"
-                } else {
-                    existing.friendlyName = name
-                    return ""
-                }
+            return ModuleState.union(for: Set(types.map(SlimIDLType.init)), defaultName: name)
+        }
+        return nil
+    }
+
+    var swiftRepresentation: SwiftSource {
+        if let unionType {
+            guard unionType.friendlyName != name else { return "" }
+            if let existingName = unionType.friendlyName {
+                return "public typealias \(name) = \(existingName)"
             } else {
-                ModuleState.add(union: UnionType(types: typeSet, friendlyName: name))
+                unionType.friendlyName = name
                 return ""
             }
         }

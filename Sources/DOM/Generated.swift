@@ -19766,11 +19766,13 @@ public enum AddEventListenerOptions_or_Bool: JSValueCompatible, Any_AddEventList
     case bool(Bool)
 
     init(_ addEventListenerOptions: AddEventListenerOptions) {
-        self = .addEventListenerOptions(addEventListenerOptions)
+        let val: AddEventListenerOptions_or_Bool = .addEventListenerOptions(addEventListenerOptions)
+        self = val
     }
 
     init(_ bool: Bool) {
-        self = .bool(bool)
+        let val: AddEventListenerOptions_or_Bool = .bool(bool)
+        self = val
     }
 
     public var addEventListenerOptions: AddEventListenerOptions? {
@@ -19816,11 +19818,13 @@ public enum ArrayBuffer_or_String: JSValueCompatible, Any_ArrayBuffer_or_String 
     case string(String)
 
     init(_ arrayBuffer: ArrayBuffer) {
-        self = .arrayBuffer(arrayBuffer)
+        let val: ArrayBuffer_or_String = .arrayBuffer(arrayBuffer)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: ArrayBuffer_or_String = .string(string)
+        self = val
     }
 
     public var arrayBuffer: ArrayBuffer? {
@@ -19868,15 +19872,18 @@ public enum AudioTrack_or_TextTrack_or_VideoTrack: JSValueCompatible, Any_AudioT
     case videoTrack(VideoTrack)
 
     init(_ audioTrack: AudioTrack) {
-        self = .audioTrack(audioTrack)
+        let val: AudioTrack_or_TextTrack_or_VideoTrack = .audioTrack(audioTrack)
+        self = val
     }
 
     init(_ textTrack: TextTrack) {
-        self = .textTrack(textTrack)
+        let val: AudioTrack_or_TextTrack_or_VideoTrack = .textTrack(textTrack)
+        self = val
     }
 
     init(_ videoTrack: VideoTrack) {
-        self = .videoTrack(videoTrack)
+        let val: AudioTrack_or_TextTrack_or_VideoTrack = .videoTrack(videoTrack)
+        self = val
     }
 
     public var audioTrack: AudioTrack? {
@@ -19936,15 +19943,28 @@ public enum BlobPart: JSValueCompatible, Any_BlobPart {
     case string(String)
 
     init(_ blob: Blob) {
-        self = .blob(blob)
+        let val: BlobPart = .blob(blob)
+        self = val
     }
 
     init(_ bufferSource: BufferSource) {
-        self = .bufferSource(bufferSource)
+        let val: BlobPart = .bufferSource(bufferSource)
+        self = val
+    }
+
+    init(_ arrayBuffer: ArrayBuffer) {
+        let val: BufferSource = .arrayBuffer(arrayBuffer)
+        self = .init(val)
+    }
+
+    init(_ arrayBufferView: ArrayBufferView) {
+        let val: BufferSource = .arrayBufferView(arrayBufferView)
+        self = .init(val)
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: BlobPart = .string(string)
+        self = val
     }
 
     public var blob: Blob? {
@@ -20004,15 +20024,18 @@ public enum Bool_or_Double_or_String: JSValueCompatible, Any_Bool_or_Double_or_S
     case string(String)
 
     init(_ bool: Bool) {
-        self = .bool(bool)
+        let val: Bool_or_Double_or_String = .bool(bool)
+        self = val
     }
 
     init(_ double: Double) {
-        self = .double(double)
+        let val: Bool_or_Double_or_String = .double(double)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: Bool_or_Double_or_String = .string(string)
+        self = val
     }
 
     public var bool: Bool? {
@@ -20070,11 +20093,13 @@ public enum Bool_or_EventListenerOptions: JSValueCompatible, Any_Bool_or_EventLi
     case eventListenerOptions(EventListenerOptions)
 
     init(_ bool: Bool) {
-        self = .bool(bool)
+        let val: Bool_or_EventListenerOptions = .bool(bool)
+        self = val
     }
 
     init(_ eventListenerOptions: EventListenerOptions) {
-        self = .eventListenerOptions(eventListenerOptions)
+        let val: Bool_or_EventListenerOptions = .eventListenerOptions(eventListenerOptions)
+        self = val
     }
 
     public var bool: Bool? {
@@ -20120,11 +20145,13 @@ public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaT
     case mediaTrackConstraints(MediaTrackConstraints)
 
     init(_ bool: Bool) {
-        self = .bool(bool)
+        let val: Bool_or_MediaTrackConstraints = .bool(bool)
+        self = val
     }
 
     init(_ mediaTrackConstraints: MediaTrackConstraints) {
-        self = .mediaTrackConstraints(mediaTrackConstraints)
+        let val: Bool_or_MediaTrackConstraints = .mediaTrackConstraints(mediaTrackConstraints)
+        self = val
     }
 
     public var bool: Bool? {
@@ -20170,11 +20197,13 @@ public enum Bool_or_ScrollIntoViewOptions: JSValueCompatible, Any_Bool_or_Scroll
     case scrollIntoViewOptions(ScrollIntoViewOptions)
 
     init(_ bool: Bool) {
-        self = .bool(bool)
+        let val: Bool_or_ScrollIntoViewOptions = .bool(bool)
+        self = val
     }
 
     init(_ scrollIntoViewOptions: ScrollIntoViewOptions) {
-        self = .scrollIntoViewOptions(scrollIntoViewOptions)
+        let val: Bool_or_ScrollIntoViewOptions = .scrollIntoViewOptions(scrollIntoViewOptions)
+        self = val
     }
 
     public var bool: Bool? {
@@ -20220,11 +20249,13 @@ public enum CSSPseudoElement_or_Element: JSValueCompatible, Any_CSSPseudoElement
     case element(Element)
 
     init(_ cssPseudoElement: CSSPseudoElement) {
-        self = .cssPseudoElement(cssPseudoElement)
+        let val: CSSPseudoElement_or_Element = .cssPseudoElement(cssPseudoElement)
+        self = val
     }
 
     init(_ element: Element) {
-        self = .element(element)
+        let val: CSSPseudoElement_or_Element = .element(element)
+        self = val
     }
 
     public var cssPseudoElement: CSSPseudoElement? {
@@ -20272,15 +20303,18 @@ public enum CanvasGradient_or_CanvasPattern_or_String: JSValueCompatible, Any_Ca
     case string(String)
 
     init(_ canvasGradient: CanvasGradient) {
-        self = .canvasGradient(canvasGradient)
+        let val: CanvasGradient_or_CanvasPattern_or_String = .canvasGradient(canvasGradient)
+        self = val
     }
 
     init(_ canvasPattern: CanvasPattern) {
-        self = .canvasPattern(canvasPattern)
+        let val: CanvasGradient_or_CanvasPattern_or_String = .canvasPattern(canvasPattern)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: CanvasGradient_or_CanvasPattern_or_String = .string(string)
+        self = val
     }
 
     public var canvasGradient: CanvasGradient? {
@@ -20346,27 +20380,33 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
     case videoFrame(VideoFrame)
 
     init(_ htmlCanvasElement: HTMLCanvasElement) {
-        self = .htmlCanvasElement(htmlCanvasElement)
+        let val: CanvasImageSource = .htmlCanvasElement(htmlCanvasElement)
+        self = val
     }
 
-    init(_ htmlOrSVGImageElement: HTMLOrSVGImageElement) {
-        self = .htmlOrSVGImageElement(htmlOrSVGImageElement)
+    init(_ htmlImageElement: HTMLImageElement) {
+        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlImageElement)
+        self = val
     }
 
     init(_ htmlVideoElement: HTMLVideoElement) {
-        self = .htmlVideoElement(htmlVideoElement)
+        let val: CanvasImageSource = .htmlVideoElement(htmlVideoElement)
+        self = val
     }
 
     init(_ imageBitmap: ImageBitmap) {
-        self = .imageBitmap(imageBitmap)
+        let val: CanvasImageSource = .imageBitmap(imageBitmap)
+        self = val
     }
 
     init(_ offscreenCanvas: OffscreenCanvas) {
-        self = .offscreenCanvas(offscreenCanvas)
+        let val: CanvasImageSource = .offscreenCanvas(offscreenCanvas)
+        self = val
     }
 
     init(_ videoFrame: VideoFrame) {
-        self = .videoFrame(videoFrame)
+        let val: CanvasImageSource = .videoFrame(videoFrame)
+        self = val
     }
 
     public var htmlCanvasElement: HTMLCanvasElement? {
@@ -20460,11 +20500,13 @@ public enum ConstrainBoolean: JSValueCompatible, Any_ConstrainBoolean {
     case constrainBooleanParameters(ConstrainBooleanParameters)
 
     init(_ bool: Bool) {
-        self = .bool(bool)
+        let val: ConstrainBoolean = .bool(bool)
+        self = val
     }
 
     init(_ constrainBooleanParameters: ConstrainBooleanParameters) {
-        self = .constrainBooleanParameters(constrainBooleanParameters)
+        let val: ConstrainBoolean = .constrainBooleanParameters(constrainBooleanParameters)
+        self = val
     }
 
     public var bool: Bool? {
@@ -20512,15 +20554,18 @@ public enum ConstrainDOMString: JSValueCompatible, Any_ConstrainDOMString {
     case seq_of_String([String])
 
     init(_ constrainDOMStringParameters: ConstrainDOMStringParameters) {
-        self = .constrainDOMStringParameters(constrainDOMStringParameters)
+        let val: ConstrainDOMString = .constrainDOMStringParameters(constrainDOMStringParameters)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: ConstrainDOMString = .string(string)
+        self = val
     }
 
     init(_ seq_of_String: [String]) {
-        self = .seq_of_String(seq_of_String)
+        let val: ConstrainDOMString = .seq_of_String(seq_of_String)
+        self = val
     }
 
     public var constrainDOMStringParameters: ConstrainDOMStringParameters? {
@@ -20578,11 +20623,13 @@ public enum ConstrainDouble: JSValueCompatible, Any_ConstrainDouble {
     case double(Double)
 
     init(_ constrainDoubleRange: ConstrainDoubleRange) {
-        self = .constrainDoubleRange(constrainDoubleRange)
+        let val: ConstrainDouble = .constrainDoubleRange(constrainDoubleRange)
+        self = val
     }
 
     init(_ double: Double) {
-        self = .double(double)
+        let val: ConstrainDouble = .double(double)
+        self = val
     }
 
     public var constrainDoubleRange: ConstrainDoubleRange? {
@@ -20628,11 +20675,13 @@ public enum ConstrainULong: JSValueCompatible, Any_ConstrainULong {
     case uInt32(UInt32)
 
     init(_ constrainULongRange: ConstrainULongRange) {
-        self = .constrainULongRange(constrainULongRange)
+        let val: ConstrainULong = .constrainULongRange(constrainULongRange)
+        self = val
     }
 
     init(_ uInt32: UInt32) {
-        self = .uInt32(uInt32)
+        let val: ConstrainULong = .uInt32(uInt32)
+        self = val
     }
 
     public var constrainULongRange: ConstrainULongRange? {
@@ -20678,11 +20727,13 @@ public enum DOMPointInit_or_Double: JSValueCompatible, Any_DOMPointInit_or_Doubl
     case double(Double)
 
     init(_ domPointInit: DOMPointInit) {
-        self = .domPointInit(domPointInit)
+        let val: DOMPointInit_or_Double = .domPointInit(domPointInit)
+        self = val
     }
 
     init(_ double: Double) {
-        self = .double(double)
+        let val: DOMPointInit_or_Double = .double(double)
+        self = val
     }
 
     public var domPointInit: DOMPointInit? {
@@ -20730,15 +20781,18 @@ public enum DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double: JSValueComp
     case seq_of_DOMPointInit_or_Double([DOMPointInit_or_Double])
 
     init(_ domPointInit: DOMPointInit) {
-        self = .domPointInit(domPointInit)
+        let val: DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double = .domPointInit(domPointInit)
+        self = val
     }
 
     init(_ double: Double) {
-        self = .double(double)
+        let val: DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double = .double(double)
+        self = val
     }
 
     init(_ seq_of_DOMPointInit_or_Double: [DOMPointInit_or_Double]) {
-        self = .seq_of_DOMPointInit_or_Double(seq_of_DOMPointInit_or_Double)
+        let val: DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double = .seq_of_DOMPointInit_or_Double(seq_of_DOMPointInit_or_Double)
+        self = val
     }
 
     public var domPointInit: DOMPointInit? {
@@ -20796,11 +20850,48 @@ public enum Document_or_XMLHttpRequestBodyInit: JSValueCompatible, Any_Document_
     case xmlHttpRequestBodyInit(XMLHttpRequestBodyInit)
 
     init(_ document: Document) {
-        self = .document(document)
+        let val: Document_or_XMLHttpRequestBodyInit = .document(document)
+        self = val
     }
 
     init(_ xmlHttpRequestBodyInit: XMLHttpRequestBodyInit) {
-        self = .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit)
+        let val: Document_or_XMLHttpRequestBodyInit = .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit)
+        self = val
+    }
+
+    init(_ blob: Blob) {
+        let val: XMLHttpRequestBodyInit = .blob(blob)
+        self = .init(val)
+    }
+
+    init(_ bufferSource: BufferSource) {
+        let val: XMLHttpRequestBodyInit = .bufferSource(bufferSource)
+        self = .init(val)
+    }
+
+    init(_ arrayBuffer: ArrayBuffer) {
+        let val: BufferSource = .arrayBuffer(arrayBuffer)
+        self = .init(val)
+    }
+
+    init(_ arrayBufferView: ArrayBufferView) {
+        let val: BufferSource = .arrayBufferView(arrayBufferView)
+        self = .init(val)
+    }
+
+    init(_ formData: FormData) {
+        let val: XMLHttpRequestBodyInit = .formData(formData)
+        self = .init(val)
+    }
+
+    init(_ string: String) {
+        let val: XMLHttpRequestBodyInit = .string(string)
+        self = .init(val)
+    }
+
+    init(_ urlSearchParams: URLSearchParams) {
+        let val: XMLHttpRequestBodyInit = .urlSearchParams(urlSearchParams)
+        self = .init(val)
     }
 
     public var document: Document? {
@@ -20846,11 +20937,13 @@ public enum ElementCreationOptions_or_String: JSValueCompatible, Any_ElementCrea
     case string(String)
 
     init(_ elementCreationOptions: ElementCreationOptions) {
-        self = .elementCreationOptions(elementCreationOptions)
+        let val: ElementCreationOptions_or_String = .elementCreationOptions(elementCreationOptions)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: ElementCreationOptions_or_String = .string(string)
+        self = val
     }
 
     public var elementCreationOptions: ElementCreationOptions? {
@@ -20896,11 +20989,13 @@ public enum Element_or_HTMLCollection: JSValueCompatible, Any_Element_or_HTMLCol
     case htmlCollection(HTMLCollection)
 
     init(_ element: Element) {
-        self = .element(element)
+        let val: Element_or_HTMLCollection = .element(element)
+        self = val
     }
 
     init(_ htmlCollection: HTMLCollection) {
-        self = .htmlCollection(htmlCollection)
+        let val: Element_or_HTMLCollection = .htmlCollection(htmlCollection)
+        self = val
     }
 
     public var element: Element? {
@@ -20946,11 +21041,13 @@ public enum Element_or_RadioNodeList: JSValueCompatible, Any_Element_or_RadioNod
     case radioNodeList(RadioNodeList)
 
     init(_ element: Element) {
-        self = .element(element)
+        let val: Element_or_RadioNodeList = .element(element)
+        self = val
     }
 
     init(_ radioNodeList: RadioNodeList) {
-        self = .radioNodeList(radioNodeList)
+        let val: Element_or_RadioNodeList = .radioNodeList(radioNodeList)
+        self = val
     }
 
     public var element: Element? {
@@ -20996,11 +21093,13 @@ public enum Element_or_Text: JSValueCompatible, Any_Element_or_Text {
     case text(Text)
 
     init(_ element: Element) {
-        self = .element(element)
+        let val: Element_or_Text = .element(element)
+        self = val
     }
 
     init(_ text: Text) {
-        self = .text(text)
+        let val: Element_or_Text = .text(text)
+        self = val
     }
 
     public var element: Element? {
@@ -21046,11 +21145,13 @@ public enum Event_or_String: JSValueCompatible, Any_Event_or_String {
     case string(String)
 
     init(_ event: Event) {
-        self = .event(event)
+        let val: Event_or_String = .event(event)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: Event_or_String = .string(string)
+        self = val
     }
 
     public var event: Event? {
@@ -21098,15 +21199,18 @@ public enum File_or_FormData_or_String: JSValueCompatible, Any_File_or_FormData_
     case string(String)
 
     init(_ file: File) {
-        self = .file(file)
+        let val: File_or_FormData_or_String = .file(file)
+        self = val
     }
 
     init(_ formData: FormData) {
-        self = .formData(formData)
+        let val: File_or_FormData_or_String = .formData(formData)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: File_or_FormData_or_String = .string(string)
+        self = val
     }
 
     public var file: File? {
@@ -21164,11 +21268,13 @@ public enum FormDataEntryValue: JSValueCompatible, Any_FormDataEntryValue {
     case string(String)
 
     init(_ file: File) {
-        self = .file(file)
+        let val: FormDataEntryValue = .file(file)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: FormDataEntryValue = .string(string)
+        self = val
     }
 
     public var file: File? {
@@ -21218,19 +21324,23 @@ public enum GeometryNode: JSValueCompatible, Any_GeometryNode {
     case text(Text)
 
     init(_ cssPseudoElement: CSSPseudoElement) {
-        self = .cssPseudoElement(cssPseudoElement)
+        let val: GeometryNode = .cssPseudoElement(cssPseudoElement)
+        self = val
     }
 
     init(_ document: Document) {
-        self = .document(document)
+        let val: GeometryNode = .document(document)
+        self = val
     }
 
     init(_ element: Element) {
-        self = .element(element)
+        let val: GeometryNode = .element(element)
+        self = val
     }
 
     init(_ text: Text) {
-        self = .text(text)
+        let val: GeometryNode = .text(text)
+        self = val
     }
 
     public var cssPseudoElement: CSSPseudoElement? {
@@ -21300,11 +21410,13 @@ public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCan
     case offscreenCanvas(OffscreenCanvas)
 
     init(_ htmlCanvasElement: HTMLCanvasElement) {
-        self = .htmlCanvasElement(htmlCanvasElement)
+        let val: HTMLCanvasElement_or_OffscreenCanvas = .htmlCanvasElement(htmlCanvasElement)
+        self = val
     }
 
     init(_ offscreenCanvas: OffscreenCanvas) {
-        self = .offscreenCanvas(offscreenCanvas)
+        let val: HTMLCanvasElement_or_OffscreenCanvas = .offscreenCanvas(offscreenCanvas)
+        self = val
     }
 
     public var htmlCanvasElement: HTMLCanvasElement? {
@@ -21350,11 +21462,13 @@ public enum HTMLElement_or_Int32: JSValueCompatible, Any_HTMLElement_or_Int32 {
     case int32(Int32)
 
     init(_ htmlElement: HTMLElement) {
-        self = .htmlElement(htmlElement)
+        let val: HTMLElement_or_Int32 = .htmlElement(htmlElement)
+        self = val
     }
 
     init(_ int32: Int32) {
-        self = .int32(int32)
+        let val: HTMLElement_or_Int32 = .int32(int32)
+        self = val
     }
 
     public var htmlElement: HTMLElement? {
@@ -21400,11 +21514,13 @@ public enum HTMLOptGroupElement_or_HTMLOptionElement: JSValueCompatible, Any_HTM
     case htmlOptionElement(HTMLOptionElement)
 
     init(_ htmlOptGroupElement: HTMLOptGroupElement) {
-        self = .htmlOptGroupElement(htmlOptGroupElement)
+        let val: HTMLOptGroupElement_or_HTMLOptionElement = .htmlOptGroupElement(htmlOptGroupElement)
+        self = val
     }
 
     init(_ htmlOptionElement: HTMLOptionElement) {
-        self = .htmlOptionElement(htmlOptionElement)
+        let val: HTMLOptGroupElement_or_HTMLOptionElement = .htmlOptionElement(htmlOptionElement)
+        self = val
     }
 
     public var htmlOptGroupElement: HTMLOptGroupElement? {
@@ -21450,11 +21566,13 @@ public enum HeadersInit: JSValueCompatible, Any_HeadersInit {
     case seq_of_seq_of_String([[String]])
 
     init(_ record_String_to_String: [String: String]) {
-        self = .record_String_to_String(record_String_to_String)
+        let val: HeadersInit = .record_String_to_String(record_String_to_String)
+        self = val
     }
 
     init(_ seq_of_seq_of_String: [[String]]) {
-        self = .seq_of_seq_of_String(seq_of_seq_of_String)
+        let val: HeadersInit = .seq_of_seq_of_String(seq_of_seq_of_String)
+        self = val
     }
 
     public var record_String_to_String: [String: String]? {
@@ -21502,15 +21620,48 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
     case imageData(ImageData)
 
     init(_ blob: Blob) {
-        self = .blob(blob)
+        let val: ImageBitmapSource = .blob(blob)
+        self = val
     }
 
     init(_ canvasImageSource: CanvasImageSource) {
-        self = .canvasImageSource(canvasImageSource)
+        let val: ImageBitmapSource = .canvasImageSource(canvasImageSource)
+        self = val
+    }
+
+    init(_ htmlCanvasElement: HTMLCanvasElement) {
+        let val: CanvasImageSource = .htmlCanvasElement(htmlCanvasElement)
+        self = .init(val)
+    }
+
+    init(_ htmlImageElement: HTMLImageElement) {
+        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlImageElement)
+        self = .init(val)
+    }
+
+    init(_ htmlVideoElement: HTMLVideoElement) {
+        let val: CanvasImageSource = .htmlVideoElement(htmlVideoElement)
+        self = .init(val)
+    }
+
+    init(_ imageBitmap: ImageBitmap) {
+        let val: CanvasImageSource = .imageBitmap(imageBitmap)
+        self = .init(val)
+    }
+
+    init(_ offscreenCanvas: OffscreenCanvas) {
+        let val: CanvasImageSource = .offscreenCanvas(offscreenCanvas)
+        self = .init(val)
+    }
+
+    init(_ videoFrame: VideoFrame) {
+        let val: CanvasImageSource = .videoFrame(videoFrame)
+        self = .init(val)
     }
 
     init(_ imageData: ImageData) {
-        self = .imageData(imageData)
+        let val: ImageBitmapSource = .imageData(imageData)
+        self = val
     }
 
     public var blob: Blob? {
@@ -21568,11 +21719,23 @@ public enum ImageBufferSource: JSValueCompatible, Any_ImageBufferSource {
     case readableStream(ReadableStream)
 
     init(_ bufferSource: BufferSource) {
-        self = .bufferSource(bufferSource)
+        let val: ImageBufferSource = .bufferSource(bufferSource)
+        self = val
+    }
+
+    init(_ arrayBuffer: ArrayBuffer) {
+        let val: BufferSource = .arrayBuffer(arrayBuffer)
+        self = .init(val)
+    }
+
+    init(_ arrayBufferView: ArrayBufferView) {
+        let val: BufferSource = .arrayBufferView(arrayBufferView)
+        self = .init(val)
     }
 
     init(_ readableStream: ReadableStream) {
-        self = .readableStream(readableStream)
+        let val: ImageBufferSource = .readableStream(readableStream)
+        self = val
     }
 
     public var bufferSource: BufferSource? {
@@ -21620,15 +21783,18 @@ public enum MediaProvider: JSValueCompatible, Any_MediaProvider {
     case mediaStream(MediaStream)
 
     init(_ blob: Blob) {
-        self = .blob(blob)
+        let val: MediaProvider = .blob(blob)
+        self = val
     }
 
     init(_ mediaSource: MediaSource) {
-        self = .mediaSource(mediaSource)
+        let val: MediaProvider = .mediaSource(mediaSource)
+        self = val
     }
 
     init(_ mediaStream: MediaStream) {
-        self = .mediaStream(mediaStream)
+        let val: MediaProvider = .mediaStream(mediaStream)
+        self = val
     }
 
     public var blob: Blob? {
@@ -21688,15 +21854,18 @@ public enum MessageEventSource: JSValueCompatible, Any_MessageEventSource {
     case windowProxy(WindowProxy)
 
     init(_ messagePort: MessagePort) {
-        self = .messagePort(messagePort)
+        let val: MessageEventSource = .messagePort(messagePort)
+        self = val
     }
 
     init(_ serviceWorker: ServiceWorker) {
-        self = .serviceWorker(serviceWorker)
+        let val: MessageEventSource = .serviceWorker(serviceWorker)
+        self = val
     }
 
     init(_ windowProxy: WindowProxy) {
-        self = .windowProxy(windowProxy)
+        let val: MessageEventSource = .windowProxy(windowProxy)
+        self = val
     }
 
     public var messagePort: MessagePort? {
@@ -21754,11 +21923,13 @@ public enum Node_or_String: JSValueCompatible, Any_Node_or_String {
     case string(String)
 
     init(_ node: Node) {
-        self = .node(node)
+        let val: Node_or_String = .node(node)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: Node_or_String = .string(string)
+        self = val
     }
 
     public var node: Node? {
@@ -21804,11 +21975,13 @@ public enum Path2D_or_String: JSValueCompatible, Any_Path2D_or_String {
     case string(String)
 
     init(_ path2D: Path2D) {
-        self = .path2D(path2D)
+        let val: Path2D_or_String = .path2D(path2D)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: Path2D_or_String = .string(string)
+        self = val
     }
 
     public var path2D: Path2D? {
@@ -21854,11 +22027,13 @@ public enum ReadableStreamController: JSValueCompatible, Any_ReadableStreamContr
     case readableStreamDefaultController(ReadableStreamDefaultController)
 
     init(_ readableByteStreamController: ReadableByteStreamController) {
-        self = .readableByteStreamController(readableByteStreamController)
+        let val: ReadableStreamController = .readableByteStreamController(readableByteStreamController)
+        self = val
     }
 
     init(_ readableStreamDefaultController: ReadableStreamDefaultController) {
-        self = .readableStreamDefaultController(readableStreamDefaultController)
+        let val: ReadableStreamController = .readableStreamDefaultController(readableStreamDefaultController)
+        self = val
     }
 
     public var readableByteStreamController: ReadableByteStreamController? {
@@ -21904,11 +22079,13 @@ public enum ReadableStreamReader: JSValueCompatible, Any_ReadableStreamReader {
     case readableStreamDefaultReader(ReadableStreamDefaultReader)
 
     init(_ readableStreamBYOBReader: ReadableStreamBYOBReader) {
-        self = .readableStreamBYOBReader(readableStreamBYOBReader)
+        let val: ReadableStreamReader = .readableStreamBYOBReader(readableStreamBYOBReader)
+        self = val
     }
 
     init(_ readableStreamDefaultReader: ReadableStreamDefaultReader) {
-        self = .readableStreamDefaultReader(readableStreamDefaultReader)
+        let val: ReadableStreamReader = .readableStreamDefaultReader(readableStreamDefaultReader)
+        self = val
     }
 
     public var readableStreamBYOBReader: ReadableStreamBYOBReader? {
@@ -21954,11 +22131,13 @@ public enum RequestInfo: JSValueCompatible, Any_RequestInfo {
     case string(String)
 
     init(_ request: Request) {
-        self = .request(request)
+        let val: RequestInfo = .request(request)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: RequestInfo = .string(string)
+        self = val
     }
 
     public var request: Request? {
@@ -22004,11 +22183,13 @@ public enum String_or_WorkerOptions: JSValueCompatible, Any_String_or_WorkerOpti
     case workerOptions(WorkerOptions)
 
     init(_ string: String) {
-        self = .string(string)
+        let val: String_or_WorkerOptions = .string(string)
+        self = val
     }
 
     init(_ workerOptions: WorkerOptions) {
-        self = .workerOptions(workerOptions)
+        let val: String_or_WorkerOptions = .workerOptions(workerOptions)
+        self = val
     }
 
     public var string: String? {
@@ -22054,11 +22235,13 @@ public enum String_or_seq_of_Double: JSValueCompatible, Any_String_or_seq_of_Dou
     case seq_of_Double([Double])
 
     init(_ string: String) {
-        self = .string(string)
+        let val: String_or_seq_of_Double = .string(string)
+        self = val
     }
 
     init(_ seq_of_Double: [Double]) {
-        self = .seq_of_Double(seq_of_Double)
+        let val: String_or_seq_of_Double = .seq_of_Double(seq_of_Double)
+        self = val
     }
 
     public var string: String? {
@@ -22104,11 +22287,13 @@ public enum String_or_seq_of_String: JSValueCompatible, Any_String_or_seq_of_Str
     case seq_of_String([String])
 
     init(_ string: String) {
-        self = .string(string)
+        let val: String_or_seq_of_String = .string(string)
+        self = val
     }
 
     init(_ seq_of_String: [String]) {
-        self = .seq_of_String(seq_of_String)
+        let val: String_or_seq_of_String = .seq_of_String(seq_of_String)
+        self = val
     }
 
     public var string: String? {
@@ -22154,11 +22339,13 @@ public enum TimerHandler: JSValueCompatible, Any_TimerHandler {
     case string(String)
 
     init(_ jsFunction: JSFunction) {
-        self = .jsFunction(jsFunction)
+        let val: TimerHandler = .jsFunction(jsFunction)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: TimerHandler = .string(string)
+        self = val
     }
 
     public var jsFunction: JSFunction? {
@@ -22210,23 +22397,38 @@ public enum XMLHttpRequestBodyInit: JSValueCompatible, Any_XMLHttpRequestBodyIni
     case urlSearchParams(URLSearchParams)
 
     init(_ blob: Blob) {
-        self = .blob(blob)
+        let val: XMLHttpRequestBodyInit = .blob(blob)
+        self = val
     }
 
     init(_ bufferSource: BufferSource) {
-        self = .bufferSource(bufferSource)
+        let val: XMLHttpRequestBodyInit = .bufferSource(bufferSource)
+        self = val
+    }
+
+    init(_ arrayBuffer: ArrayBuffer) {
+        let val: BufferSource = .arrayBuffer(arrayBuffer)
+        self = .init(val)
+    }
+
+    init(_ arrayBufferView: ArrayBufferView) {
+        let val: BufferSource = .arrayBufferView(arrayBufferView)
+        self = .init(val)
     }
 
     init(_ formData: FormData) {
-        self = .formData(formData)
+        let val: XMLHttpRequestBodyInit = .formData(formData)
+        self = val
     }
 
     init(_ string: String) {
-        self = .string(string)
+        let val: XMLHttpRequestBodyInit = .string(string)
+        self = val
     }
 
     init(_ urlSearchParams: URLSearchParams) {
-        self = .urlSearchParams(urlSearchParams)
+        let val: XMLHttpRequestBodyInit = .urlSearchParams(urlSearchParams)
+        self = val
     }
 
     public var blob: Blob? {

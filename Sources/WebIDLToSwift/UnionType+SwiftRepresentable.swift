@@ -63,13 +63,34 @@ extension UnionType: SwiftRepresentable {
         }
     }
 
+    private func union(for type: SlimIDLType) -> UnionType? {
+        switch type.value {
+        case .generic: return nil
+        case let .single(name): return (ModuleState.types[name] as? IDLTypedef)?.unionType
+        case let .union(types): return ModuleState.union(for: types)
+        }
+    }
+
     var initializers: [SwiftSource] {
-        zip(sortedTypes, sortedNames).map { type, name in
-            """
+        zip(sortedTypes, sortedNames).flatMap { type, name in
+            let basicInitializer: [SwiftSource] = ["""
             init(_ \(name): \(type)) {
-                self = .\(name)(\(name))
+                let val: \(self.name) = .\(name)(\(name))
+                self = val
             }
-            """
+            """]
+            if let union = union(for: type) {
+                return basicInitializer + union.initializers.map { code in
+                    if code.source.contains("self = val") {
+                        return SwiftSource(
+                            code.source.replacingOccurrences(of: "self = val", with: "self = .init(val)")
+                        )
+                    } else {
+                        return code
+                    }
+                }
+            }
+            return basicInitializer
         }
     }
 
