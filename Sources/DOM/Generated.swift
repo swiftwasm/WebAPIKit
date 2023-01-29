@@ -246,12 +246,12 @@ public class AbortSignal: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public static func abort(reason: JSValue? = nil) -> Self {
+    @inlinable public class func abort(reason: JSValue? = nil) -> Self {
         let this = constructor!
         return this[Strings.abort].function!(this: this, arguments: [_toJSValue(reason)]).fromJSValue()!
     }
 
-    @inlinable public static func timeout(milliseconds: UInt64) -> Self {
+    @inlinable public class func timeout(milliseconds: UInt64) -> Self {
         let this = constructor!
         return this[Strings.timeout].function!(this: this, arguments: [_toJSValue(milliseconds)]).fromJSValue()!
     }
@@ -619,13 +619,13 @@ public class AudioDecoder: JSBridgedClass {
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    @inlinable public static func isConfigSupported(config: AudioDecoderConfig) -> JSPromise {
+    @inlinable public class func isConfigSupported(config: AudioDecoderConfig) -> JSPromise {
         let this = constructor!
         return this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public static func isConfigSupported(config: AudioDecoderConfig) async throws -> AudioDecoderSupport {
+    @inlinable public class func isConfigSupported(config: AudioDecoderConfig) async throws -> AudioDecoderSupport {
         let this = constructor!
         let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
@@ -758,13 +758,13 @@ public class AudioEncoder: JSBridgedClass {
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    @inlinable public static func isConfigSupported(config: AudioEncoderConfig) -> JSPromise {
+    @inlinable public class func isConfigSupported(config: AudioEncoderConfig) -> JSPromise {
         let this = constructor!
         return this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public static func isConfigSupported(config: AudioEncoderConfig) async throws -> AudioEncoderSupport {
+    @inlinable public class func isConfigSupported(config: AudioEncoderConfig) async throws -> AudioEncoderSupport {
         let this = constructor!
         let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
@@ -2770,13 +2770,13 @@ public class DOMMatrix: DOMMatrixReadOnly {
     }
 
     // XXX: illegal static override
-    // override public static func fromMatrix(other: DOMMatrixInit? = nil) -> Self
+    // override public class func fromMatrix(other: DOMMatrixInit? = nil) -> Self
 
     // XXX: illegal static override
-    // override public static func fromFloat32Array(array32: Float32Array) -> Self
+    // override public class func fromFloat32Array(array32: Float32Array) -> Self
 
     // XXX: illegal static override
-    // override public static func fromFloat64Array(array64: Float64Array) -> Self
+    // override public class func fromFloat64Array(array64: Float64Array) -> Self
 
     @usableFromInline let _a: ReadWriteAttribute<Double>
     @inlinable override public var a: Double {
@@ -3145,17 +3145,17 @@ public class DOMMatrixReadOnly: JSBridgedClass {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(`init`)]))
     }
 
-    @inlinable public static func fromMatrix(other: DOMMatrixInit? = nil) -> Self {
+    @inlinable public class func fromMatrix(other: DOMMatrixInit? = nil) -> Self {
         let this = constructor!
         return this[Strings.fromMatrix].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
-    @inlinable public static func fromFloat32Array(array32: Float32Array) -> Self {
+    @inlinable public class func fromFloat32Array(array32: Float32Array) -> Self {
         let this = constructor!
         return this[Strings.fromFloat32Array].function!(this: this, arguments: [_toJSValue(array32)]).fromJSValue()!
     }
 
-    @inlinable public static func fromFloat64Array(array64: Float64Array) -> Self {
+    @inlinable public class func fromFloat64Array(array64: Float64Array) -> Self {
         let this = constructor!
         return this[Strings.fromFloat64Array].function!(this: this, arguments: [_toJSValue(array64)]).fromJSValue()!
     }
@@ -3378,7 +3378,7 @@ public class DOMPoint: DOMPointReadOnly {
     }
 
     // XXX: illegal static override
-    // override public static func fromPoint(other: DOMPointInit? = nil) -> Self
+    // override public class func fromPoint(other: DOMPointInit? = nil) -> Self
 
     @usableFromInline let _x: ReadWriteAttribute<Double>
     @inlinable override public var x: Double {
@@ -3453,7 +3453,7 @@ public class DOMPointReadOnly: JSBridgedClass {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(w)]))
     }
 
-    @inlinable public static func fromPoint(other: DOMPointInit? = nil) -> Self {
+    @inlinable public class func fromPoint(other: DOMPointInit? = nil) -> Self {
         let this = constructor!
         return this[Strings.fromPoint].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
@@ -3498,12 +3498,12 @@ public class DOMQuad: JSBridgedClass {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(p1), _toJSValue(p2), _toJSValue(p3), _toJSValue(p4)]))
     }
 
-    @inlinable public static func fromRect(other: DOMRectInit? = nil) -> Self {
+    @inlinable public class func fromRect(other: DOMRectInit? = nil) -> Self {
         let this = constructor!
         return this[Strings.fromRect].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
 
-    @inlinable public static func fromQuad(other: DOMQuadInit? = nil) -> Self {
+    @inlinable public class func fromQuad(other: DOMQuadInit? = nil) -> Self {
         let this = constructor!
         return this[Strings.fromQuad].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
@@ -3578,7 +3578,7 @@ public class DOMRect: DOMRectReadOnly {
     }
 
     // XXX: illegal static override
-    // override public static func fromRect(other: DOMRectInit? = nil) -> Self
+    // override public class func fromRect(other: DOMRectInit? = nil) -> Self
 
     @usableFromInline let _x: ReadWriteAttribute<Double>
     @inlinable override public var x: Double {
@@ -3680,7 +3680,7 @@ public class DOMRectReadOnly: JSBridgedClass {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height)]))
     }
 
-    @inlinable public static func fromRect(other: DOMRectInit? = nil) -> Self {
+    @inlinable public class func fromRect(other: DOMRectInit? = nil) -> Self {
         let this = constructor!
         return this[Strings.fromRect].function!(this: this, arguments: [_toJSValue(other)]).fromJSValue()!
     }
@@ -8786,7 +8786,7 @@ public class HTMLScriptElement: HTMLElement {
     @ReadonlyAttribute
     public var blocking: DOMTokenList
 
-    @inlinable public static func supports(type: String) -> Bool {
+    @inlinable public class func supports(type: String) -> Bool {
         let this = constructor!
         return this[Strings.supports].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
@@ -10066,13 +10066,13 @@ public class ImageDecoder: JSBridgedClass {
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    @inlinable public static func isTypeSupported(type: String) -> JSPromise {
+    @inlinable public class func isTypeSupported(type: String) -> JSPromise {
         let this = constructor!
         return this[Strings.isTypeSupported].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public static func isTypeSupported(type: String) async throws -> Bool {
+    @inlinable public class func isTypeSupported(type: String) async throws -> Bool {
         let this = constructor!
         let _promise: JSPromise = this[Strings.isTypeSupported].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
@@ -10785,7 +10785,7 @@ public class MediaRecorder: EventTarget {
         _ = this[Strings.requestData].function!(this: this, arguments: [])
     }
 
-    @inlinable public static func isTypeSupported(type: String) -> Bool {
+    @inlinable public class func isTypeSupported(type: String) -> Bool {
         let this = constructor!
         return this[Strings.isTypeSupported].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
@@ -10927,7 +10927,7 @@ public class MediaSource: EventTarget {
         _ = this[Strings.clearLiveSeekableRange].function!(this: this, arguments: [])
     }
 
-    @inlinable public static func isTypeSupported(type: String) -> Bool {
+    @inlinable public class func isTypeSupported(type: String) -> Bool {
         let this = constructor!
         return this[Strings.isTypeSupported].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
     }
@@ -13923,12 +13923,12 @@ public class Response: JSBridgedClass, Body {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(body), _toJSValue(`init`)]))
     }
 
-    @inlinable public static func error() -> Self {
+    @inlinable public class func error() -> Self {
         let this = constructor!
         return this[Strings.error].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    @inlinable public static func redirect(url: String, status: UInt16? = nil) -> Self {
+    @inlinable public class func redirect(url: String, status: UInt16? = nil) -> Self {
         let this = constructor!
         return this[Strings.redirect].function!(this: this, arguments: [_toJSValue(url), _toJSValue(status)]).fromJSValue()!
     }
@@ -15703,12 +15703,12 @@ public class URL: JSBridgedClass {
         self.jsObject = jsObject
     }
 
-    @inlinable public static func createObjectURL(obj: Blob_or_MediaSource) -> String {
+    @inlinable public class func createObjectURL(obj: Blob_or_MediaSource) -> String {
         let this = constructor!
         return this[Strings.createObjectURL].function!(this: this, arguments: [_toJSValue(obj)]).fromJSValue()!
     }
 
-    @inlinable public static func revokeObjectURL(url: String) {
+    @inlinable public class func revokeObjectURL(url: String) {
         let this = constructor!
         _ = this[Strings.revokeObjectURL].function!(this: this, arguments: [_toJSValue(url)])
     }
@@ -16039,13 +16039,13 @@ public class VideoDecoder: JSBridgedClass {
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    @inlinable public static func isConfigSupported(config: VideoDecoderConfig) -> JSPromise {
+    @inlinable public class func isConfigSupported(config: VideoDecoderConfig) -> JSPromise {
         let this = constructor!
         return this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public static func isConfigSupported(config: VideoDecoderConfig) async throws -> VideoDecoderSupport {
+    @inlinable public class func isConfigSupported(config: VideoDecoderConfig) async throws -> VideoDecoderSupport {
         let this = constructor!
         let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!
@@ -16203,13 +16203,13 @@ public class VideoEncoder: JSBridgedClass {
         _ = this[Strings.close].function!(this: this, arguments: [])
     }
 
-    @inlinable public static func isConfigSupported(config: VideoEncoderConfig) -> JSPromise {
+    @inlinable public class func isConfigSupported(config: VideoEncoderConfig) -> JSPromise {
         let this = constructor!
         return this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public static func isConfigSupported(config: VideoEncoderConfig) async throws -> VideoEncoderSupport {
+    @inlinable public class func isConfigSupported(config: VideoEncoderConfig) async throws -> VideoEncoderSupport {
         let this = constructor!
         let _promise: JSPromise = this[Strings.isConfigSupported].function!(this: this, arguments: [_toJSValue(config)]).fromJSValue()!
         return try await _promise.value.fromJSValue()!

@@ -85,6 +85,7 @@ struct ScopedState {
         newState.this = this
         newState.inProtocol = inProtocol
         newState.className = className
+        newState.inClass = true
         return newState
     }
 

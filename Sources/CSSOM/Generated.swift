@@ -397,7 +397,7 @@ public class CSSColorValue: CSSStyleValue {
     }
 
     // XXX: illegal static override
-    // override public static func parse(cssText: String) -> CSSColorValue_or_CSSStyleValue
+    // override public class func parse(cssText: String) -> CSSColorValue_or_CSSStyleValue
 }
 
 public class CSSGroupingRule: CSSRule {
@@ -952,7 +952,7 @@ public class CSSNumericValue: CSSStyleValue {
     }
 
     // XXX: illegal static override
-    // override public static func parse(cssText: String) -> Self
+    // override public class func parse(cssText: String) -> Self
 }
 
 public class CSSOKLCH: CSSColorValue {
@@ -1419,12 +1419,12 @@ public class CSSStyleValue: JSBridgedClass {
         jsObject[Strings.toString]!().fromJSValue()!
     }
 
-    @inlinable public static func parse(property: String, cssText: String) -> Self {
+    @inlinable public class func parse(property: String, cssText: String) -> Self {
         let this = constructor!
         return this[Strings.parse].function!(this: this, arguments: [_toJSValue(property), _toJSValue(cssText)]).fromJSValue()!
     }
 
-    @inlinable public static func parseAll(property: String, cssText: String) -> [CSSStyleValue] {
+    @inlinable public class func parseAll(property: String, cssText: String) -> [CSSStyleValue] {
         let this = constructor!
         return this[Strings.parseAll].function!(this: this, arguments: [_toJSValue(property), _toJSValue(cssText)]).fromJSValue()!
     }
