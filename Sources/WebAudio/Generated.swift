@@ -2091,7 +2091,7 @@ public class WaveShaperOptions: BridgedDictionary {
 }
 
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let AnalyserNode: JSString = "AnalyserNode"
     @usableFromInline static let AudioBuffer: JSString = "AudioBuffer"
     @usableFromInline static let AudioBufferSourceNode: JSString = "AudioBufferSourceNode"

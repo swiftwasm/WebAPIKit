@@ -1551,7 +1551,7 @@ public class WebGLUniformLocation: JSBridgedClass {
 }
 
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let Object: JSString = "Object"
     @usableFromInline static let WebGLActiveInfo: JSString = "WebGLActiveInfo"
     @usableFromInline static let WebGLBuffer: JSString = "WebGLBuffer"

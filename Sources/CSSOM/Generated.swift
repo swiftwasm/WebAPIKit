@@ -2059,7 +2059,7 @@ public typealias CSSColorPercent = CSSColorRGBComp
 public typealias CSSColorNumber = CSSColorRGBComp
 public typealias CSSColorAngle = CSSColorRGBComp
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let CSS: JSString = "CSS"
     @usableFromInline static let CSSColor: JSString = "CSSColor"
     @usableFromInline static let CSSColorValue: JSString = "CSSColorValue"

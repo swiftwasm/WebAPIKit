@@ -308,7 +308,7 @@ public enum console {
 }
 
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let DOMException: JSString = "DOMException"
     @usableFromInline static let URL: JSString = "URL"
     @usableFromInline static let URLSearchParams: JSString = "URLSearchParams"

@@ -635,7 +635,7 @@ public enum TimelinePhase: JSString, JSValueCompatible {
 }
 
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let Animation: JSString = "Animation"
     @usableFromInline static let AnimationEffect: JSString = "AnimationEffect"
     @usableFromInline static let AnimationTimeline: JSString = "AnimationTimeline"

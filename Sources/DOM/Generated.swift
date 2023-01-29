@@ -17913,7 +17913,7 @@ public class XSLTProcessor: JSBridgedClass {
 }
 
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let AbortController: JSString = "AbortController"
     @usableFromInline static let AbortSignal: JSString = "AbortSignal"
     @usableFromInline static let AbstractRange: JSString = "AbstractRange"

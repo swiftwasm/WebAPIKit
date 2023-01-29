@@ -291,7 +291,7 @@ public extension WindowEventHandlers {
 }
 
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let Gamepad: JSString = "Gamepad"
     @usableFromInline static let GamepadButton: JSString = "GamepadButton"
     @usableFromInline static let GamepadEvent: JSString = "GamepadEvent"

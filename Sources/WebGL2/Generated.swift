@@ -1235,7 +1235,7 @@ public class WebGLVertexArrayObject: WebGLObject {
 }
 
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let WebGL2RenderingContext: JSString = "WebGL2RenderingContext"
     @usableFromInline static let WebGLQuery: JSString = "WebGLQuery"
     @usableFromInline static let WebGLSampler: JSString = "WebGLSampler"

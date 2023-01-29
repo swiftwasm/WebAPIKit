@@ -100,7 +100,7 @@ enum IDLBuilder {
         let strings = ModuleState.strings.sorted()
         return """
             @usableFromInline enum Strings {
-                static let _self: JSString = "self"
+                @usableFromInline static let _self: JSString = "self"
                 \(lines: strings.map { "@usableFromInline static let `\(raw: $0)`: JSString = \(quoted: $0)" })
             }
         """

@@ -2005,7 +2005,7 @@ public class TimeEvent: Event {
 }
 
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let Object: JSString = "Object"
     @usableFromInline static let SVGAElement: JSString = "SVGAElement"
     @usableFromInline static let SVGAngle: JSString = "SVGAngle"

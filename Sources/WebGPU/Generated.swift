@@ -3387,7 +3387,7 @@ public typealias GPUSignedOffset32 = Int32
 public typealias GPUFlagsConstant = UInt32
 
 @usableFromInline enum Strings {
-    static let _self: JSString = "self"
+    @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let GPU: JSString = "GPU"
     @usableFromInline static let GPUAdapter: JSString = "GPUAdapter"
     @usableFromInline static let GPUBindGroup: JSString = "GPUBindGroup"
