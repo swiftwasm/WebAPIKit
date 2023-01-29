@@ -486,6 +486,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     }
 }
 
+@inlinable public func _toJSValue<ReturnType>(_ value: @escaping () -> ReturnType) -> JSValue
+    where ReturnType: JSValueCompatible
+{
+    JSClosure { _ in
+        _toJSValue(value())
+    }.jsValue
+}
+
 @propertyWrapper public final class ClosureAttribute0Optional<ReturnType>
     where ReturnType: JSValueCompatible
 {
@@ -519,6 +527,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             }
         }
     }
+}
+
+@inlinable public func _toJSValue<ReturnType>(_ value: (() -> ReturnType)?) -> JSValue
+    where ReturnType: JSValueCompatible
+{
+    JSClosure { _ in
+        _toJSValue(value?())
+    }.jsValue
 }
 
 @propertyWrapper public final class ClosureAttribute0OptionalVoid {
@@ -555,6 +571,13 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     }
 }
 
+@inlinable public func _toJSValue(_ value: (() -> Void)?) -> JSValue {
+    JSClosure { _ in
+        value?()
+        return .undefined
+    }.jsValue
+}
+
 @propertyWrapper public final class ClosureAttribute0Void {
     @usableFromInline let jsObject: JSObject
     @usableFromInline let name: JSString
@@ -581,6 +604,13 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             }.jsValue
         }
     }
+}
+
+@inlinable public func _toJSValue(_ value: @escaping () -> Void) -> JSValue {
+    JSClosure { _ in
+        value()
+        return .undefined
+    }.jsValue
 }
 
 @propertyWrapper public final class ClosureAttribute1<A0, ReturnType>
@@ -610,6 +640,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             }.jsValue
         }
     }
+}
+
+@inlinable public func _toJSValue<A0, ReturnType>(_ value: @escaping (A0) -> ReturnType) -> JSValue
+    where A0: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    JSClosure {
+        _toJSValue(value($0[0].fromJSValue()!))
+    }.jsValue
 }
 
 @propertyWrapper public final class ClosureAttribute1Optional<A0, ReturnType>
@@ -645,6 +683,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             }
         }
     }
+}
+
+@inlinable public func _toJSValue<A0, ReturnType>(_ value: ((A0) -> ReturnType)?) -> JSValue
+    where A0: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    JSClosure {
+        _toJSValue(value?($0[0].fromJSValue()!))
+    }.jsValue
 }
 
 @propertyWrapper public final class ClosureAttribute1OptionalVoid<A0>
@@ -683,6 +729,15 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     }
 }
 
+@inlinable public func _toJSValue<A0>(_ value: ((A0) -> Void)?) -> JSValue
+    where A0: JSValueCompatible
+{
+    JSClosure {
+        value?($0[0].fromJSValue()!)
+        return .undefined
+    }.jsValue
+}
+
 @propertyWrapper public final class ClosureAttribute1Void<A0>
     where A0: JSValueCompatible
 {
@@ -713,6 +768,15 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     }
 }
 
+@inlinable public func _toJSValue<A0>(_ value: @escaping (A0) -> Void) -> JSValue
+    where A0: JSValueCompatible
+{
+    JSClosure {
+        value($0[0].fromJSValue()!)
+        return .undefined
+    }.jsValue
+}
+
 @propertyWrapper public final class ClosureAttribute2<A0, A1, ReturnType>
     where A0: JSValueCompatible, A1: JSValueCompatible, ReturnType: JSValueCompatible
 {
@@ -740,6 +804,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             }.jsValue
         }
     }
+}
+
+@inlinable public func _toJSValue<A0, A1, ReturnType>(_ value: @escaping (A0, A1) -> ReturnType) -> JSValue
+    where A0: JSValueCompatible, A1: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    JSClosure {
+        _toJSValue(value($0[0].fromJSValue()!, $0[1].fromJSValue()!))
+    }.jsValue
 }
 
 @propertyWrapper public final class ClosureAttribute2Optional<A0, A1, ReturnType>
@@ -775,6 +847,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             }
         }
     }
+}
+
+@inlinable public func _toJSValue<A0, A1, ReturnType>(_ value: ((A0, A1) -> ReturnType)?) -> JSValue
+    where A0: JSValueCompatible, A1: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    JSClosure {
+        _toJSValue(value?($0[0].fromJSValue()!, $0[1].fromJSValue()!))
+    }.jsValue
 }
 
 @propertyWrapper public final class ClosureAttribute2OptionalVoid<A0, A1>
@@ -813,6 +893,15 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     }
 }
 
+@inlinable public func _toJSValue<A0, A1>(_ value: ((A0, A1) -> Void)?) -> JSValue
+    where A0: JSValueCompatible, A1: JSValueCompatible
+{
+    JSClosure {
+        value?($0[0].fromJSValue()!, $0[1].fromJSValue()!)
+        return .undefined
+    }.jsValue
+}
+
 @propertyWrapper public final class ClosureAttribute2Void<A0, A1>
     where A0: JSValueCompatible, A1: JSValueCompatible
 {
@@ -843,6 +932,15 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     }
 }
 
+@inlinable public func _toJSValue<A0, A1>(_ value: @escaping (A0, A1) -> Void) -> JSValue
+    where A0: JSValueCompatible, A1: JSValueCompatible
+{
+    JSClosure {
+        value($0[0].fromJSValue()!, $0[1].fromJSValue()!)
+        return .undefined
+    }.jsValue
+}
+
 @propertyWrapper public final class ClosureAttribute3<A0, A1, A2, ReturnType>
     where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
 {
@@ -870,6 +968,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             }.jsValue
         }
     }
+}
+
+@inlinable public func _toJSValue<A0, A1, A2, ReturnType>(_ value: @escaping (A0, A1, A2) -> ReturnType) -> JSValue
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    JSClosure {
+        _toJSValue(value($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!))
+    }.jsValue
 }
 
 @propertyWrapper public final class ClosureAttribute3Optional<A0, A1, A2, ReturnType>
@@ -907,6 +1013,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     }
 }
 
+@inlinable public func _toJSValue<A0, A1, A2, ReturnType>(_ value: ((A0, A1, A2) -> ReturnType)?) -> JSValue
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    JSClosure {
+        _toJSValue(value?($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!))
+    }.jsValue
+}
+
 @propertyWrapper public final class ClosureAttribute5<A0, A1, A2, A3, A4, ReturnType>
     where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
 {
@@ -934,6 +1048,14 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             }.jsValue
         }
     }
+}
+
+@inlinable public func _toJSValue<A0, A1, A2, A3, A4, ReturnType>(_ value: @escaping (A0, A1, A2, A3, A4) -> ReturnType) -> JSValue
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    JSClosure {
+        _toJSValue(value($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!))
+    }.jsValue
 }
 
 @propertyWrapper public final class ClosureAttribute5Optional<A0, A1, A2, A3, A4, ReturnType>
@@ -969,4 +1091,12 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
             }
         }
     }
+}
+
+@inlinable public func _toJSValue<A0, A1, A2, A3, A4, ReturnType>(_ value: ((A0, A1, A2, A3, A4) -> ReturnType)?) -> JSValue
+    where A0: JSValueCompatible, A1: JSValueCompatible, A2: JSValueCompatible, A3: JSValueCompatible, A4: JSValueCompatible, ReturnType: JSValueCompatible
+{
+    JSClosure {
+        _toJSValue(value?($0[0].fromJSValue()!, $0[1].fromJSValue()!, $0[2].fromJSValue()!, $0[3].fromJSValue()!, $0[4].fromJSValue()!))
+    }.jsValue
 }

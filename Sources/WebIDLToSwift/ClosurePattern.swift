@@ -46,8 +46,8 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
         """
     }
 
-    private var setter: SwiftSource {
-        let call: SwiftSource = "newValue(\(sequence: indexes.map { "$0[\($0)].fromJSValue()!" }))"
+    private func jsClosureWrapper(name: SwiftSource) -> SwiftSource {
+        let call: SwiftSource = "\(name)(\(sequence: indexes.map { "$0[\($0)].fromJSValue()!" }))"
         let body: SwiftSource
         if void {
             body = """
@@ -57,11 +57,16 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
         } else {
             body = "_toJSValue(\(call))"
         }
-        let setClosure: SwiftSource = """
-            jsObject[name] = JSClosure { \(argCount == 0 ? "_ in" : "")
+
+        return """
+            JSClosure { \(argCount == 0 ? "_ in" : "")
                 \(body)
             }.jsValue
         """
+    }
+
+    private var setter: SwiftSource {
+        let setClosure: SwiftSource = "jsObject[name] = \(jsClosureWrapper(name: "newValue"))"
 
         if nullable {
             return """
@@ -78,15 +83,17 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
 
     var typeParams: SwiftSource {
         if typeNames.isEmpty { return "" }
-        return """
-        <\(sequence: typeNames)>
-        where \(sequence: typeNames.map { "\($0): JSValueCompatible" })
-        """
+        return "<\(sequence: typeNames)>"
     }
 
-    var swiftRepresentation: SwiftSource {
+    var whereClause: SwiftSource {
+        if typeNames.isEmpty { return "" }
+        return "\nwhere \(sequence: typeNames.map { "\($0): JSValueCompatible" })"
+    }
+
+    var propertyWrapper: SwiftSource {
         """
-        @propertyWrapper public final class \(name)\(typeParams) {
+        @propertyWrapper public final class \(name)\(typeParams) \(whereClause) {
 
             @usableFromInline let jsObject: JSObject
             @usableFromInline let name: JSString
@@ -110,6 +117,22 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
                 }
             }
         }
+        """
+    }
+
+    var toJSValue: SwiftSource {
+        let escaping: SwiftSource = nullable ? "" : "@escaping"
+        return """
+        @inlinable public func _toJSValue\(typeParams)(_ value: \(escaping) \(closureType)) -> JSValue \(whereClause) {
+            \(jsClosureWrapper(name: nullable ? "value?" : "value"))
+        }
+        """
+    }
+
+    var swiftRepresentation: SwiftSource {
+        """
+        \(propertyWrapper)
+        \(toJSValue)
         """
     }
 }
