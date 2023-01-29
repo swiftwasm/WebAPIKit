@@ -671,15 +671,16 @@ extension IDLType: SwiftRepresentable {
         // TODO: handle readonly closure properties
         // (should they be a JSFunction? or a closure? or something else?))
         if case let .single(name) = value {
-            precondition(!readonly, "readonly closure properties are not supported")
             if let callback = ModuleState.types[name] as? IDLCallback {
+                precondition(!readonly, "readonly closure properties are not supported")
                 return "\(closureWrapper(callback, optional: false))"
             }
             if let ref = ModuleState.types[name] as? IDLTypedef,
                case let .single(name) = ref.idlType.value,
                let callback = ModuleState.types[name] as? IDLCallback
             {
-                assert(ref.idlType.nullable)
+                precondition(!readonly, "readonly closure properties are not supported")
+                precondition(ref.idlType.nullable)
                 return "\(closureWrapper(callback, optional: true))"
             }
         }
