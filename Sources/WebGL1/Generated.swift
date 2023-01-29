@@ -803,6 +803,16 @@ public extension WebGLRenderingContextBase {
 
     @inlinable var drawingBufferHeight: GLsizei { jsObject[Strings.drawingBufferHeight].fromJSValue()! }
 
+    @inlinable var drawingBufferColorSpace: PredefinedColorSpace {
+        get { jsObject[Strings.drawingBufferColorSpace].fromJSValue()! }
+        nonmutating set { jsObject[Strings.drawingBufferColorSpace] = _toJSValue(newValue) }
+    }
+
+    @inlinable var unpackColorSpace: PredefinedColorSpace {
+        get { jsObject[Strings.unpackColorSpace].fromJSValue()! }
+        nonmutating set { jsObject[Strings.unpackColorSpace] = _toJSValue(newValue) }
+    }
+
     @inlinable func getContextAttributes() -> WebGLContextAttributes? {
         let this = jsObject
         return this[Strings.getContextAttributes].function!(this: this, arguments: []).fromJSValue()!
@@ -1616,6 +1626,7 @@ public class WebGLUniformLocation: JSBridgedClass {
     @usableFromInline static let disableVertexAttribArray: JSString = "disableVertexAttribArray"
     @usableFromInline static let drawArrays: JSString = "drawArrays"
     @usableFromInline static let drawElements: JSString = "drawElements"
+    @usableFromInline static let drawingBufferColorSpace: JSString = "drawingBufferColorSpace"
     @usableFromInline static let drawingBufferHeight: JSString = "drawingBufferHeight"
     @usableFromInline static let drawingBufferWidth: JSString = "drawingBufferWidth"
     @usableFromInline static let enable: JSString = "enable"
@@ -1709,6 +1720,7 @@ public class WebGLUniformLocation: JSBridgedClass {
     @usableFromInline static let uniformMatrix2fv: JSString = "uniformMatrix2fv"
     @usableFromInline static let uniformMatrix3fv: JSString = "uniformMatrix3fv"
     @usableFromInline static let uniformMatrix4fv: JSString = "uniformMatrix4fv"
+    @usableFromInline static let unpackColorSpace: JSString = "unpackColorSpace"
     @usableFromInline static let useProgram: JSString = "useProgram"
     @usableFromInline static let validateProgram: JSString = "validateProgram"
     @usableFromInline static let vertexAttrib1f: JSString = "vertexAttrib1f"

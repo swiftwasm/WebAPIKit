@@ -190,15 +190,11 @@ public class AnimationTimeline: JSBridgedClass {
 
     public required init(unsafelyWrapping jsObject: JSObject) {
         _currentTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.currentTime)
-        _phase = ReadonlyAttribute(jsObject: jsObject, name: Strings.phase)
         self.jsObject = jsObject
     }
 
     @ReadonlyAttribute
     public var currentTime: Double?
-
-    @ReadonlyAttribute
-    public var phase: TimelinePhase
 }
 
 public class BaseComputedKeyframe: BridgedDictionary {
@@ -381,10 +377,8 @@ public class DocumentTimelineOptions: BridgedDictionary {
 }
 
 public class EffectTiming: BridgedDictionary {
-    public convenience init(delay: Double, endDelay: Double, fill: FillMode, iterationStart: Double, iterations: Double, direction: PlaybackDirection, easing: String) {
+    public convenience init(fill: FillMode, iterationStart: Double, iterations: Double, direction: PlaybackDirection, easing: String) {
         let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.delay] = _toJSValue(delay)
-        object[Strings.endDelay] = _toJSValue(endDelay)
         object[Strings.fill] = _toJSValue(fill)
         object[Strings.iterationStart] = _toJSValue(iterationStart)
         object[Strings.iterations] = _toJSValue(iterations)
@@ -394,8 +388,6 @@ public class EffectTiming: BridgedDictionary {
     }
 
     public required init(unsafelyWrapping object: JSObject) {
-        _delay = ReadWriteAttribute(jsObject: object, name: Strings.delay)
-        _endDelay = ReadWriteAttribute(jsObject: object, name: Strings.endDelay)
         _fill = ReadWriteAttribute(jsObject: object, name: Strings.fill)
         _iterationStart = ReadWriteAttribute(jsObject: object, name: Strings.iterationStart)
         _iterations = ReadWriteAttribute(jsObject: object, name: Strings.iterations)
@@ -403,12 +395,6 @@ public class EffectTiming: BridgedDictionary {
         _easing = ReadWriteAttribute(jsObject: object, name: Strings.easing)
         super.init(unsafelyWrapping: object)
     }
-
-    @ReadWriteAttribute
-    public var delay: Double
-
-    @ReadWriteAttribute
-    public var endDelay: Double
 
     @ReadWriteAttribute
     public var fill: FillMode
@@ -614,26 +600,6 @@ public enum PlaybackDirection: JSString, JSValueCompatible {
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 
-public enum TimelinePhase: JSString, JSValueCompatible {
-    case inactive = "inactive"
-    case before = "before"
-    case active = "active"
-    case after = "after"
-
-    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.jsString {
-            return Self(rawValue: string)
-        }
-        return nil
-    }
-
-    @inlinable public init?(string: String) {
-        self.init(rawValue: JSString(string))
-    }
-
-    @inlinable public var jsValue: JSValue { rawValue.jsValue }
-}
-
 @usableFromInline enum Strings {
     @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let Animation: JSString = "Animation"
@@ -673,7 +639,6 @@ public enum TimelinePhase: JSString, JSValueCompatible {
     @usableFromInline static let pause: JSString = "pause"
     @usableFromInline static let pending: JSString = "pending"
     @usableFromInline static let persist: JSString = "persist"
-    @usableFromInline static let phase: JSString = "phase"
     @usableFromInline static let play: JSString = "play"
     @usableFromInline static let playState: JSString = "playState"
     @usableFromInline static let playbackRate: JSString = "playbackRate"

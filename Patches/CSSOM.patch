@@ -1,25 +1,9 @@
 diff --git a/Sources/CSSOM/Generated.swift b/Sources/CSSOM/Generated.swift
-index b22e2a9..814ae93 100644
+index 16a452b..1242f02 100644
 --- a/Sources/CSSOM/Generated.swift
 +++ b/Sources/CSSOM/Generated.swift
-@@ -361,8 +361,14 @@ public class CSSColor: CSSColorValue {
-         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(colorSpace), _toJSValue(channels), _toJSValue(alpha)]))
-     }
- 
-+    @available(*, unavailable)
-+    override public var colorSpace: CSSKeywordValue {
-+        get { colorSpaceOrString.cssKeywordValue! }
-+        set { colorSpaceOrString = .cssKeywordValue(newValue) }
-+    }
-+
-     @usableFromInline let _colorSpace: ReadWriteAttribute<CSSKeywordish>
--    @inlinable override public var colorSpace: CSSKeywordish {
-+    @inlinable public var colorSpaceOrString: CSSKeywordish {
-         get { _colorSpace.wrappedValue }
-         set { _colorSpace.wrappedValue = newValue }
-     }
-@@ -390,7 +396,8 @@ public class CSSColorValue: CSSStyleValue {
-         return this[Strings.to].function!(this: this, arguments: [_toJSValue(colorSpace)]).fromJSValue()!
+@@ -378,7 +378,8 @@ public class CSSColorValue: CSSStyleValue {
+         super.init(unsafelyWrapping: jsObject)
      }
  
 -    @inlinable override public class func parse(cssText: String) -> CSSColorValue_or_CSSStyleValue {
@@ -28,7 +12,7 @@ index b22e2a9..814ae93 100644
          let this = constructor!
          return this[Strings.parse].function!(this: this, arguments: [_toJSValue(cssText)]).fromJSValue()!
      }
-@@ -947,7 +954,7 @@ public class CSSNumericValue: CSSStyleValue {
+@@ -935,7 +936,7 @@ public class CSSNumericValue: CSSStyleValue {
          return this[Strings.type].function!(this: this, arguments: []).fromJSValue()!
      }
  

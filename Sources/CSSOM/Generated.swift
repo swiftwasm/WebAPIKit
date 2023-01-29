@@ -361,17 +361,8 @@ public class CSSColor: CSSColorValue {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(colorSpace), _toJSValue(channels), _toJSValue(alpha)]))
     }
 
-    @available(*, unavailable)
-    override public var colorSpace: CSSKeywordValue {
-        get { colorSpaceOrString.cssKeywordValue! }
-        set { colorSpaceOrString = .cssKeywordValue(newValue) }
-    }
-
-    @usableFromInline let _colorSpace: ReadWriteAttribute<CSSKeywordish>
-    @inlinable public var colorSpaceOrString: CSSKeywordish {
-        get { _colorSpace.wrappedValue }
-        set { _colorSpace.wrappedValue = newValue }
-    }
+    @ReadWriteAttribute
+    public var colorSpace: CSSKeywordish
 
     @ReadWriteAttribute
     public var channels: [CSSColorPercent]
@@ -384,16 +375,7 @@ public class CSSColorValue: CSSStyleValue {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.CSSColorValue].function }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _colorSpace = ReadonlyAttribute(jsObject: jsObject, name: Strings.colorSpace)
         super.init(unsafelyWrapping: jsObject)
-    }
-
-    @ReadonlyAttribute
-    public var colorSpace: CSSKeywordValue
-
-    @inlinable public func to(colorSpace: CSSKeywordish) -> Self {
-        let this = jsObject
-        return this[Strings.to].function!(this: this, arguments: [_toJSValue(colorSpace)]).fromJSValue()!
     }
 
     // returns CSSStyleValue | CSSColorValue
@@ -1616,6 +1598,27 @@ public class CaretPosition: JSBridgedClass {
     }
 }
 
+public class CheckVisibilityOptions: BridgedDictionary {
+    public convenience init(checkOpacity: Bool, checkVisibilityCSS: Bool) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.checkOpacity] = _toJSValue(checkOpacity)
+        object[Strings.checkVisibilityCSS] = _toJSValue(checkVisibilityCSS)
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _checkOpacity = ReadWriteAttribute(jsObject: object, name: Strings.checkOpacity)
+        _checkVisibilityCSS = ReadWriteAttribute(jsObject: object, name: Strings.checkVisibilityCSS)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var checkOpacity: Bool
+
+    @ReadWriteAttribute
+    public var checkVisibilityCSS: Bool
+}
+
 public class ConvertCoordinateOptions: BridgedDictionary {
     public convenience init(fromBox: CSSBoxType, toBox: CSSBoxType) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -1674,18 +1677,6 @@ public extension GeometryUtils {
     @inlinable func convertPointFromNode(point: DOMPointInit, from: GeometryNode, options: ConvertCoordinateOptions? = nil) -> DOMPoint {
         let this = jsObject
         return this[Strings.convertPointFromNode].function!(this: this, arguments: [_toJSValue(point), _toJSValue(from), _toJSValue(options)]).fromJSValue()!
-    }
-}
-
-public class IsVisibleOptions: BridgedDictionary {
-    public convenience init() {
-        let object = JSObject.global[Strings.Object].function!.new()
-
-        self.init(unsafelyWrapping: object)
-    }
-
-    public required init(unsafelyWrapping object: JSObject) {
-        super.init(unsafelyWrapping: object)
     }
 }
 
@@ -1838,6 +1829,7 @@ public class Screen: JSBridgedClass {
 
 public enum ScrollBehavior: JSString, JSValueCompatible {
     case auto = "auto"
+    case instant = "instant"
     case smooth = "smooth"
 
     @inlinable public static func construct(from jsValue: JSValue) -> Self? {
@@ -2058,6 +2050,54 @@ public class StyleSheetList: JSBridgedClass {
 public typealias CSSColorPercent = CSSColorRGBComp
 public typealias CSSColorNumber = CSSColorRGBComp
 public typealias CSSColorAngle = CSSColorRGBComp
+public class VisualViewport: EventTarget {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.VisualViewport].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _offsetLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetLeft)
+        _offsetTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.offsetTop)
+        _pageLeft = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageLeft)
+        _pageTop = ReadonlyAttribute(jsObject: jsObject, name: Strings.pageTop)
+        _width = ReadonlyAttribute(jsObject: jsObject, name: Strings.width)
+        _height = ReadonlyAttribute(jsObject: jsObject, name: Strings.height)
+        _scale = ReadonlyAttribute(jsObject: jsObject, name: Strings.scale)
+        _onresize = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onresize)
+        _onscroll = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onscroll)
+        _onscrollend = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onscrollend)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var offsetLeft: Double
+
+    @ReadonlyAttribute
+    public var offsetTop: Double
+
+    @ReadonlyAttribute
+    public var pageLeft: Double
+
+    @ReadonlyAttribute
+    public var pageTop: Double
+
+    @ReadonlyAttribute
+    public var width: Double
+
+    @ReadonlyAttribute
+    public var height: Double
+
+    @ReadonlyAttribute
+    public var scale: Double
+
+    @ClosureAttribute1Optional
+    public var onresize: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onscroll: EventHandler
+
+    @ClosureAttribute1Optional
+    public var onscrollend: EventHandler
+}
+
 @usableFromInline enum Strings {
     @usableFromInline static let _self: JSString = "self"
     @usableFromInline static let CSS: JSString = "CSS"
@@ -2118,6 +2158,7 @@ public typealias CSSColorAngle = CSSColorRGBComp
     @usableFromInline static let StylePropertyMapReadOnly: JSString = "StylePropertyMapReadOnly"
     @usableFromInline static let StyleSheet: JSString = "StyleSheet"
     @usableFromInline static let StyleSheetList: JSString = "StyleSheetList"
+    @usableFromInline static let VisualViewport: JSString = "VisualViewport"
     @usableFromInline static let a: JSString = "a"
     @usableFromInline static let add: JSString = "add"
     @usableFromInline static let addListener: JSString = "addListener"
@@ -2140,6 +2181,8 @@ public typealias CSSColorAngle = CSSColorRGBComp
     @usableFromInline static let c: JSString = "c"
     @usableFromInline static let ch: JSString = "ch"
     @usableFromInline static let channels: JSString = "channels"
+    @usableFromInline static let checkOpacity: JSString = "checkOpacity"
+    @usableFromInline static let checkVisibilityCSS: JSString = "checkVisibilityCSS"
     @usableFromInline static let clear: JSString = "clear"
     @usableFromInline static let cm: JSString = "cm"
     @usableFromInline static let colorDepth: JSString = "colorDepth"
@@ -2223,11 +2266,18 @@ public typealias CSSColorAngle = CSSColorRGBComp
     @usableFromInline static let namespaceURI: JSString = "namespaceURI"
     @usableFromInline static let number: JSString = "number"
     @usableFromInline static let offset: JSString = "offset"
+    @usableFromInline static let offsetLeft: JSString = "offsetLeft"
     @usableFromInline static let offsetNode: JSString = "offsetNode"
+    @usableFromInline static let offsetTop: JSString = "offsetTop"
     @usableFromInline static let onchange: JSString = "onchange"
+    @usableFromInline static let onresize: JSString = "onresize"
+    @usableFromInline static let onscroll: JSString = "onscroll"
+    @usableFromInline static let onscrollend: JSString = "onscrollend"
     @usableFromInline static let `operator`: JSString = "operator"
     @usableFromInline static let ownerNode: JSString = "ownerNode"
     @usableFromInline static let ownerRule: JSString = "ownerRule"
+    @usableFromInline static let pageLeft: JSString = "pageLeft"
+    @usableFromInline static let pageTop: JSString = "pageTop"
     @usableFromInline static let parentRule: JSString = "parentRule"
     @usableFromInline static let parentStyleSheet: JSString = "parentStyleSheet"
     @usableFromInline static let parse: JSString = "parse"
@@ -2252,6 +2302,7 @@ public typealias CSSColorAngle = CSSColorRGBComp
     @usableFromInline static let rlh: JSString = "rlh"
     @usableFromInline static let rules: JSString = "rules"
     @usableFromInline static let s: JSString = "s"
+    @usableFromInline static let scale: JSString = "scale"
     @usableFromInline static let selectorText: JSString = "selectorText"
     @usableFromInline static let set: JSString = "set"
     @usableFromInline static let setProperty: JSString = "setProperty"

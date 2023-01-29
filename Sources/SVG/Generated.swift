@@ -540,7 +540,7 @@ public class SVGDiscardElement: SVGAnimationElement {
     }
 }
 
-public class SVGElement: Element, GlobalEventHandlers, DocumentAndElementEventHandlers, SVGElementInstance, HTMLOrSVGElement {
+public class SVGElement: Element, GlobalEventHandlers, SVGElementInstance, HTMLOrSVGElement {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.SVGElement].function }
 
     public required init(unsafelyWrapping jsObject: JSObject) {
