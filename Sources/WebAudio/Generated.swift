@@ -2479,6 +2479,14 @@ public enum AudioContextLatencyCategory_or_Double: JSValueCompatible, Any_AudioC
     case audioContextLatencyCategory(AudioContextLatencyCategory)
     case double(Double)
 
+    init(_ audioContextLatencyCategory: AudioContextLatencyCategory) {
+        self = .audioContextLatencyCategory(audioContextLatencyCategory)
+    }
+
+    init(_ double: Double) {
+        self = .double(double)
+    }
+
     public var audioContextLatencyCategory: AudioContextLatencyCategory? {
         switch self {
         case let .audioContextLatencyCategory(audioContextLatencyCategory): return audioContextLatencyCategory
@@ -2521,6 +2529,14 @@ public enum AudioSinkInfo_or_String: JSValueCompatible, Any_AudioSinkInfo_or_Str
     case audioSinkInfo(AudioSinkInfo)
     case string(String)
 
+    init(_ audioSinkInfo: AudioSinkInfo) {
+        self = .audioSinkInfo(audioSinkInfo)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
     public var audioSinkInfo: AudioSinkInfo? {
         switch self {
         case let .audioSinkInfo(audioSinkInfo): return audioSinkInfo
@@ -2562,6 +2578,14 @@ extension String: Any_AudioSinkOptions_or_String {}
 public enum AudioSinkOptions_or_String: JSValueCompatible, Any_AudioSinkOptions_or_String {
     case audioSinkOptions(AudioSinkOptions)
     case string(String)
+
+    init(_ audioSinkOptions: AudioSinkOptions) {
+        self = .audioSinkOptions(audioSinkOptions)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var audioSinkOptions: AudioSinkOptions? {
         switch self {

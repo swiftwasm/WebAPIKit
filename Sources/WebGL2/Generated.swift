@@ -1359,6 +1359,14 @@ public enum Uint32List: JSValueCompatible, Any_Uint32List {
     case uint32Array(Uint32Array)
     case seq_of_GLuint([GLuint])
 
+    init(_ uint32Array: Uint32Array) {
+        self = .uint32Array(uint32Array)
+    }
+
+    init(_ seq_of_GLuint: [GLuint]) {
+        self = .seq_of_GLuint(seq_of_GLuint)
+    }
+
     public var uint32Array: Uint32Array? {
         switch self {
         case let .uint32Array(uint32Array): return uint32Array

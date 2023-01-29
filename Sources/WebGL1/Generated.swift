@@ -1743,6 +1743,14 @@ public enum Float32List: JSValueCompatible, Any_Float32List {
     case float32Array(Float32Array)
     case seq_of_GLfloat([GLfloat])
 
+    init(_ float32Array: Float32Array) {
+        self = .float32Array(float32Array)
+    }
+
+    init(_ seq_of_GLfloat: [GLfloat]) {
+        self = .seq_of_GLfloat(seq_of_GLfloat)
+    }
+
     public var float32Array: Float32Array? {
         switch self {
         case let .float32Array(float32Array): return float32Array
@@ -1785,6 +1793,14 @@ public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCan
     case htmlCanvasElement(HTMLCanvasElement)
     case offscreenCanvas(OffscreenCanvas)
 
+    init(_ htmlCanvasElement: HTMLCanvasElement) {
+        self = .htmlCanvasElement(htmlCanvasElement)
+    }
+
+    init(_ offscreenCanvas: OffscreenCanvas) {
+        self = .offscreenCanvas(offscreenCanvas)
+    }
+
     public var htmlCanvasElement: HTMLCanvasElement? {
         switch self {
         case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement
@@ -1826,6 +1842,14 @@ extension Array: Any_Int32List where Element == GLint {}
 public enum Int32List: JSValueCompatible, Any_Int32List {
     case int32Array(Int32Array)
     case seq_of_GLint([GLint])
+
+    init(_ int32Array: Int32Array) {
+        self = .int32Array(int32Array)
+    }
+
+    init(_ seq_of_GLint: [GLint]) {
+        self = .seq_of_GLint(seq_of_GLint)
+    }
 
     public var int32Array: Int32Array? {
         switch self {
@@ -1878,6 +1902,34 @@ public enum TexImageSource: JSValueCompatible, Any_TexImageSource {
     case imageData(ImageData)
     case offscreenCanvas(OffscreenCanvas)
     case videoFrame(VideoFrame)
+
+    init(_ htmlCanvasElement: HTMLCanvasElement) {
+        self = .htmlCanvasElement(htmlCanvasElement)
+    }
+
+    init(_ htmlImageElement: HTMLImageElement) {
+        self = .htmlImageElement(htmlImageElement)
+    }
+
+    init(_ htmlVideoElement: HTMLVideoElement) {
+        self = .htmlVideoElement(htmlVideoElement)
+    }
+
+    init(_ imageBitmap: ImageBitmap) {
+        self = .imageBitmap(imageBitmap)
+    }
+
+    init(_ imageData: ImageData) {
+        self = .imageData(imageData)
+    }
+
+    init(_ offscreenCanvas: OffscreenCanvas) {
+        self = .offscreenCanvas(offscreenCanvas)
+    }
+
+    init(_ videoFrame: VideoFrame) {
+        self = .videoFrame(videoFrame)
+    }
 
     public var htmlCanvasElement: HTMLCanvasElement? {
         switch self {

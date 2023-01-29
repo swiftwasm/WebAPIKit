@@ -664,6 +664,14 @@ public enum CompositeOperationOrAuto_or_seq_of_CompositeOperationOrAuto: JSValue
     case compositeOperationOrAuto(CompositeOperationOrAuto)
     case seq_of_CompositeOperationOrAuto([CompositeOperationOrAuto])
 
+    init(_ compositeOperationOrAuto: CompositeOperationOrAuto) {
+        self = .compositeOperationOrAuto(compositeOperationOrAuto)
+    }
+
+    init(_ seq_of_CompositeOperationOrAuto: [CompositeOperationOrAuto]) {
+        self = .seq_of_CompositeOperationOrAuto(seq_of_CompositeOperationOrAuto)
+    }
+
     public var compositeOperationOrAuto: CompositeOperationOrAuto? {
         switch self {
         case let .compositeOperationOrAuto(compositeOperationOrAuto): return compositeOperationOrAuto
@@ -705,6 +713,14 @@ extension KeyframeAnimationOptions: Any_Double_or_KeyframeAnimationOptions {}
 public enum Double_or_KeyframeAnimationOptions: JSValueCompatible, Any_Double_or_KeyframeAnimationOptions {
     case double(Double)
     case keyframeAnimationOptions(KeyframeAnimationOptions)
+
+    init(_ double: Double) {
+        self = .double(double)
+    }
+
+    init(_ keyframeAnimationOptions: KeyframeAnimationOptions) {
+        self = .keyframeAnimationOptions(keyframeAnimationOptions)
+    }
 
     public var double: Double? {
         switch self {
@@ -748,6 +764,14 @@ public enum Double_or_KeyframeEffectOptions: JSValueCompatible, Any_Double_or_Ke
     case double(Double)
     case keyframeEffectOptions(KeyframeEffectOptions)
 
+    init(_ double: Double) {
+        self = .double(double)
+    }
+
+    init(_ keyframeEffectOptions: KeyframeEffectOptions) {
+        self = .keyframeEffectOptions(keyframeEffectOptions)
+    }
+
     public var double: Double? {
         switch self {
         case let .double(double): return double
@@ -789,6 +813,14 @@ extension String: Any_Double_or_String {}
 public enum Double_or_String: JSValueCompatible, Any_Double_or_String {
     case double(Double)
     case string(String)
+
+    init(_ double: Double) {
+        self = .double(double)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var double: Double? {
         switch self {
@@ -832,6 +864,14 @@ public enum String_or_seq_of_String: JSValueCompatible, Any_String_or_seq_of_Str
     case string(String)
     case seq_of_String([String])
 
+    init(_ string: String) {
+        self = .string(string)
+    }
+
+    init(_ seq_of_String: [String]) {
+        self = .seq_of_String(seq_of_String)
+    }
+
     public var string: String? {
         switch self {
         case let .string(string): return string
@@ -873,6 +913,14 @@ extension Array: Any_nullable_Double_or_seq_of_nullable_Double where Element == 
 public enum nullable_Double_or_seq_of_nullable_Double: JSValueCompatible, Any_nullable_Double_or_seq_of_nullable_Double {
     case nullable_Double(Double?)
     case seq_of_nullable_Double([Double?])
+
+    init(_ nullable_Double: Double?) {
+        self = .nullable_Double(nullable_Double)
+    }
+
+    init(_ seq_of_nullable_Double: [Double?]) {
+        self = .seq_of_nullable_Double(seq_of_nullable_Double)
+    }
 
     public var nullable_Double: Double?? {
         switch self {

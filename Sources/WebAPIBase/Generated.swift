@@ -366,6 +366,14 @@ public enum BufferSource: JSValueCompatible, Any_BufferSource {
     case arrayBuffer(ArrayBuffer)
     case arrayBufferView(ArrayBufferView)
 
+    init(_ arrayBuffer: ArrayBuffer) {
+        self = .arrayBuffer(arrayBuffer)
+    }
+
+    init(_ arrayBufferView: ArrayBufferView) {
+        self = .arrayBufferView(arrayBufferView)
+    }
+
     public var arrayBuffer: ArrayBuffer? {
         switch self {
         case let .arrayBuffer(arrayBuffer): return arrayBuffer
@@ -409,6 +417,18 @@ public enum String_or_record_String_to_String_or_seq_of_seq_of_String: JSValueCo
     case string(String)
     case record_String_to_String([String: String])
     case seq_of_seq_of_String([[String]])
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
+    init(_ record_String_to_String: [String: String]) {
+        self = .record_String_to_String(record_String_to_String)
+    }
+
+    init(_ seq_of_seq_of_String: [[String]]) {
+        self = .seq_of_seq_of_String(seq_of_seq_of_String)
+    }
 
     public var string: String? {
         switch self {

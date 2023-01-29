@@ -19765,6 +19765,14 @@ public enum AddEventListenerOptions_or_Bool: JSValueCompatible, Any_AddEventList
     case addEventListenerOptions(AddEventListenerOptions)
     case bool(Bool)
 
+    init(_ addEventListenerOptions: AddEventListenerOptions) {
+        self = .addEventListenerOptions(addEventListenerOptions)
+    }
+
+    init(_ bool: Bool) {
+        self = .bool(bool)
+    }
+
     public var addEventListenerOptions: AddEventListenerOptions? {
         switch self {
         case let .addEventListenerOptions(addEventListenerOptions): return addEventListenerOptions
@@ -19806,6 +19814,14 @@ extension String: Any_ArrayBuffer_or_String {}
 public enum ArrayBuffer_or_String: JSValueCompatible, Any_ArrayBuffer_or_String {
     case arrayBuffer(ArrayBuffer)
     case string(String)
+
+    init(_ arrayBuffer: ArrayBuffer) {
+        self = .arrayBuffer(arrayBuffer)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var arrayBuffer: ArrayBuffer? {
         switch self {
@@ -19850,6 +19866,18 @@ public enum AudioTrack_or_TextTrack_or_VideoTrack: JSValueCompatible, Any_AudioT
     case audioTrack(AudioTrack)
     case textTrack(TextTrack)
     case videoTrack(VideoTrack)
+
+    init(_ audioTrack: AudioTrack) {
+        self = .audioTrack(audioTrack)
+    }
+
+    init(_ textTrack: TextTrack) {
+        self = .textTrack(textTrack)
+    }
+
+    init(_ videoTrack: VideoTrack) {
+        self = .videoTrack(videoTrack)
+    }
 
     public var audioTrack: AudioTrack? {
         switch self {
@@ -19907,6 +19935,18 @@ public enum BlobPart: JSValueCompatible, Any_BlobPart {
     case bufferSource(BufferSource)
     case string(String)
 
+    init(_ blob: Blob) {
+        self = .blob(blob)
+    }
+
+    init(_ bufferSource: BufferSource) {
+        self = .bufferSource(bufferSource)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
     public var blob: Blob? {
         switch self {
         case let .blob(blob): return blob
@@ -19963,6 +20003,18 @@ public enum Bool_or_Double_or_String: JSValueCompatible, Any_Bool_or_Double_or_S
     case double(Double)
     case string(String)
 
+    init(_ bool: Bool) {
+        self = .bool(bool)
+    }
+
+    init(_ double: Double) {
+        self = .double(double)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
     public var bool: Bool? {
         switch self {
         case let .bool(bool): return bool
@@ -20017,6 +20069,14 @@ public enum Bool_or_EventListenerOptions: JSValueCompatible, Any_Bool_or_EventLi
     case bool(Bool)
     case eventListenerOptions(EventListenerOptions)
 
+    init(_ bool: Bool) {
+        self = .bool(bool)
+    }
+
+    init(_ eventListenerOptions: EventListenerOptions) {
+        self = .eventListenerOptions(eventListenerOptions)
+    }
+
     public var bool: Bool? {
         switch self {
         case let .bool(bool): return bool
@@ -20058,6 +20118,14 @@ extension MediaTrackConstraints: Any_Bool_or_MediaTrackConstraints {}
 public enum Bool_or_MediaTrackConstraints: JSValueCompatible, Any_Bool_or_MediaTrackConstraints {
     case bool(Bool)
     case mediaTrackConstraints(MediaTrackConstraints)
+
+    init(_ bool: Bool) {
+        self = .bool(bool)
+    }
+
+    init(_ mediaTrackConstraints: MediaTrackConstraints) {
+        self = .mediaTrackConstraints(mediaTrackConstraints)
+    }
 
     public var bool: Bool? {
         switch self {
@@ -20101,6 +20169,14 @@ public enum Bool_or_ScrollIntoViewOptions: JSValueCompatible, Any_Bool_or_Scroll
     case bool(Bool)
     case scrollIntoViewOptions(ScrollIntoViewOptions)
 
+    init(_ bool: Bool) {
+        self = .bool(bool)
+    }
+
+    init(_ scrollIntoViewOptions: ScrollIntoViewOptions) {
+        self = .scrollIntoViewOptions(scrollIntoViewOptions)
+    }
+
     public var bool: Bool? {
         switch self {
         case let .bool(bool): return bool
@@ -20142,6 +20218,14 @@ extension Element: Any_CSSPseudoElement_or_Element {}
 public enum CSSPseudoElement_or_Element: JSValueCompatible, Any_CSSPseudoElement_or_Element {
     case cssPseudoElement(CSSPseudoElement)
     case element(Element)
+
+    init(_ cssPseudoElement: CSSPseudoElement) {
+        self = .cssPseudoElement(cssPseudoElement)
+    }
+
+    init(_ element: Element) {
+        self = .element(element)
+    }
 
     public var cssPseudoElement: CSSPseudoElement? {
         switch self {
@@ -20186,6 +20270,18 @@ public enum CanvasGradient_or_CanvasPattern_or_String: JSValueCompatible, Any_Ca
     case canvasGradient(CanvasGradient)
     case canvasPattern(CanvasPattern)
     case string(String)
+
+    init(_ canvasGradient: CanvasGradient) {
+        self = .canvasGradient(canvasGradient)
+    }
+
+    init(_ canvasPattern: CanvasPattern) {
+        self = .canvasPattern(canvasPattern)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var canvasGradient: CanvasGradient? {
         switch self {
@@ -20248,6 +20344,30 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
     case imageBitmap(ImageBitmap)
     case offscreenCanvas(OffscreenCanvas)
     case videoFrame(VideoFrame)
+
+    init(_ htmlCanvasElement: HTMLCanvasElement) {
+        self = .htmlCanvasElement(htmlCanvasElement)
+    }
+
+    init(_ htmlOrSVGImageElement: HTMLOrSVGImageElement) {
+        self = .htmlOrSVGImageElement(htmlOrSVGImageElement)
+    }
+
+    init(_ htmlVideoElement: HTMLVideoElement) {
+        self = .htmlVideoElement(htmlVideoElement)
+    }
+
+    init(_ imageBitmap: ImageBitmap) {
+        self = .imageBitmap(imageBitmap)
+    }
+
+    init(_ offscreenCanvas: OffscreenCanvas) {
+        self = .offscreenCanvas(offscreenCanvas)
+    }
+
+    init(_ videoFrame: VideoFrame) {
+        self = .videoFrame(videoFrame)
+    }
 
     public var htmlCanvasElement: HTMLCanvasElement? {
         switch self {
@@ -20339,6 +20459,14 @@ public enum ConstrainBoolean: JSValueCompatible, Any_ConstrainBoolean {
     case bool(Bool)
     case constrainBooleanParameters(ConstrainBooleanParameters)
 
+    init(_ bool: Bool) {
+        self = .bool(bool)
+    }
+
+    init(_ constrainBooleanParameters: ConstrainBooleanParameters) {
+        self = .constrainBooleanParameters(constrainBooleanParameters)
+    }
+
     public var bool: Bool? {
         switch self {
         case let .bool(bool): return bool
@@ -20382,6 +20510,18 @@ public enum ConstrainDOMString: JSValueCompatible, Any_ConstrainDOMString {
     case constrainDOMStringParameters(ConstrainDOMStringParameters)
     case string(String)
     case seq_of_String([String])
+
+    init(_ constrainDOMStringParameters: ConstrainDOMStringParameters) {
+        self = .constrainDOMStringParameters(constrainDOMStringParameters)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
+    init(_ seq_of_String: [String]) {
+        self = .seq_of_String(seq_of_String)
+    }
 
     public var constrainDOMStringParameters: ConstrainDOMStringParameters? {
         switch self {
@@ -20437,6 +20577,14 @@ public enum ConstrainDouble: JSValueCompatible, Any_ConstrainDouble {
     case constrainDoubleRange(ConstrainDoubleRange)
     case double(Double)
 
+    init(_ constrainDoubleRange: ConstrainDoubleRange) {
+        self = .constrainDoubleRange(constrainDoubleRange)
+    }
+
+    init(_ double: Double) {
+        self = .double(double)
+    }
+
     public var constrainDoubleRange: ConstrainDoubleRange? {
         switch self {
         case let .constrainDoubleRange(constrainDoubleRange): return constrainDoubleRange
@@ -20479,6 +20627,14 @@ public enum ConstrainULong: JSValueCompatible, Any_ConstrainULong {
     case constrainULongRange(ConstrainULongRange)
     case uInt32(UInt32)
 
+    init(_ constrainULongRange: ConstrainULongRange) {
+        self = .constrainULongRange(constrainULongRange)
+    }
+
+    init(_ uInt32: UInt32) {
+        self = .uInt32(uInt32)
+    }
+
     public var constrainULongRange: ConstrainULongRange? {
         switch self {
         case let .constrainULongRange(constrainULongRange): return constrainULongRange
@@ -20520,6 +20676,14 @@ extension Double: Any_DOMPointInit_or_Double {}
 public enum DOMPointInit_or_Double: JSValueCompatible, Any_DOMPointInit_or_Double {
     case domPointInit(DOMPointInit)
     case double(Double)
+
+    init(_ domPointInit: DOMPointInit) {
+        self = .domPointInit(domPointInit)
+    }
+
+    init(_ double: Double) {
+        self = .double(double)
+    }
 
     public var domPointInit: DOMPointInit? {
         switch self {
@@ -20564,6 +20728,18 @@ public enum DOMPointInit_or_Double_or_seq_of_DOMPointInit_or_Double: JSValueComp
     case domPointInit(DOMPointInit)
     case double(Double)
     case seq_of_DOMPointInit_or_Double([DOMPointInit_or_Double])
+
+    init(_ domPointInit: DOMPointInit) {
+        self = .domPointInit(domPointInit)
+    }
+
+    init(_ double: Double) {
+        self = .double(double)
+    }
+
+    init(_ seq_of_DOMPointInit_or_Double: [DOMPointInit_or_Double]) {
+        self = .seq_of_DOMPointInit_or_Double(seq_of_DOMPointInit_or_Double)
+    }
 
     public var domPointInit: DOMPointInit? {
         switch self {
@@ -20619,6 +20795,14 @@ public enum Document_or_XMLHttpRequestBodyInit: JSValueCompatible, Any_Document_
     case document(Document)
     case xmlHttpRequestBodyInit(XMLHttpRequestBodyInit)
 
+    init(_ document: Document) {
+        self = .document(document)
+    }
+
+    init(_ xmlHttpRequestBodyInit: XMLHttpRequestBodyInit) {
+        self = .xmlHttpRequestBodyInit(xmlHttpRequestBodyInit)
+    }
+
     public var document: Document? {
         switch self {
         case let .document(document): return document
@@ -20660,6 +20844,14 @@ extension String: Any_ElementCreationOptions_or_String {}
 public enum ElementCreationOptions_or_String: JSValueCompatible, Any_ElementCreationOptions_or_String {
     case elementCreationOptions(ElementCreationOptions)
     case string(String)
+
+    init(_ elementCreationOptions: ElementCreationOptions) {
+        self = .elementCreationOptions(elementCreationOptions)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var elementCreationOptions: ElementCreationOptions? {
         switch self {
@@ -20703,6 +20895,14 @@ public enum Element_or_HTMLCollection: JSValueCompatible, Any_Element_or_HTMLCol
     case element(Element)
     case htmlCollection(HTMLCollection)
 
+    init(_ element: Element) {
+        self = .element(element)
+    }
+
+    init(_ htmlCollection: HTMLCollection) {
+        self = .htmlCollection(htmlCollection)
+    }
+
     public var element: Element? {
         switch self {
         case let .element(element): return element
@@ -20744,6 +20944,14 @@ extension RadioNodeList: Any_Element_or_RadioNodeList {}
 public enum Element_or_RadioNodeList: JSValueCompatible, Any_Element_or_RadioNodeList {
     case element(Element)
     case radioNodeList(RadioNodeList)
+
+    init(_ element: Element) {
+        self = .element(element)
+    }
+
+    init(_ radioNodeList: RadioNodeList) {
+        self = .radioNodeList(radioNodeList)
+    }
 
     public var element: Element? {
         switch self {
@@ -20787,6 +20995,14 @@ public enum Element_or_Text: JSValueCompatible, Any_Element_or_Text {
     case element(Element)
     case text(Text)
 
+    init(_ element: Element) {
+        self = .element(element)
+    }
+
+    init(_ text: Text) {
+        self = .text(text)
+    }
+
     public var element: Element? {
         switch self {
         case let .element(element): return element
@@ -20828,6 +21044,14 @@ extension String: Any_Event_or_String {}
 public enum Event_or_String: JSValueCompatible, Any_Event_or_String {
     case event(Event)
     case string(String)
+
+    init(_ event: Event) {
+        self = .event(event)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var event: Event? {
         switch self {
@@ -20872,6 +21096,18 @@ public enum File_or_FormData_or_String: JSValueCompatible, Any_File_or_FormData_
     case file(File)
     case formData(FormData)
     case string(String)
+
+    init(_ file: File) {
+        self = .file(file)
+    }
+
+    init(_ formData: FormData) {
+        self = .formData(formData)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var file: File? {
         switch self {
@@ -20927,6 +21163,14 @@ public enum FormDataEntryValue: JSValueCompatible, Any_FormDataEntryValue {
     case file(File)
     case string(String)
 
+    init(_ file: File) {
+        self = .file(file)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
     public var file: File? {
         switch self {
         case let .file(file): return file
@@ -20972,6 +21216,22 @@ public enum GeometryNode: JSValueCompatible, Any_GeometryNode {
     case document(Document)
     case element(Element)
     case text(Text)
+
+    init(_ cssPseudoElement: CSSPseudoElement) {
+        self = .cssPseudoElement(cssPseudoElement)
+    }
+
+    init(_ document: Document) {
+        self = .document(document)
+    }
+
+    init(_ element: Element) {
+        self = .element(element)
+    }
+
+    init(_ text: Text) {
+        self = .text(text)
+    }
 
     public var cssPseudoElement: CSSPseudoElement? {
         switch self {
@@ -21039,6 +21299,14 @@ public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCan
     case htmlCanvasElement(HTMLCanvasElement)
     case offscreenCanvas(OffscreenCanvas)
 
+    init(_ htmlCanvasElement: HTMLCanvasElement) {
+        self = .htmlCanvasElement(htmlCanvasElement)
+    }
+
+    init(_ offscreenCanvas: OffscreenCanvas) {
+        self = .offscreenCanvas(offscreenCanvas)
+    }
+
     public var htmlCanvasElement: HTMLCanvasElement? {
         switch self {
         case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement
@@ -21080,6 +21348,14 @@ extension Int32: Any_HTMLElement_or_Int32 {}
 public enum HTMLElement_or_Int32: JSValueCompatible, Any_HTMLElement_or_Int32 {
     case htmlElement(HTMLElement)
     case int32(Int32)
+
+    init(_ htmlElement: HTMLElement) {
+        self = .htmlElement(htmlElement)
+    }
+
+    init(_ int32: Int32) {
+        self = .int32(int32)
+    }
 
     public var htmlElement: HTMLElement? {
         switch self {
@@ -21123,6 +21399,14 @@ public enum HTMLOptGroupElement_or_HTMLOptionElement: JSValueCompatible, Any_HTM
     case htmlOptGroupElement(HTMLOptGroupElement)
     case htmlOptionElement(HTMLOptionElement)
 
+    init(_ htmlOptGroupElement: HTMLOptGroupElement) {
+        self = .htmlOptGroupElement(htmlOptGroupElement)
+    }
+
+    init(_ htmlOptionElement: HTMLOptionElement) {
+        self = .htmlOptionElement(htmlOptionElement)
+    }
+
     public var htmlOptGroupElement: HTMLOptGroupElement? {
         switch self {
         case let .htmlOptGroupElement(htmlOptGroupElement): return htmlOptGroupElement
@@ -21164,6 +21448,14 @@ extension Array: Any_HeadersInit where Element == [String] {}
 public enum HeadersInit: JSValueCompatible, Any_HeadersInit {
     case record_String_to_String([String: String])
     case seq_of_seq_of_String([[String]])
+
+    init(_ record_String_to_String: [String: String]) {
+        self = .record_String_to_String(record_String_to_String)
+    }
+
+    init(_ seq_of_seq_of_String: [[String]]) {
+        self = .seq_of_seq_of_String(seq_of_seq_of_String)
+    }
 
     public var record_String_to_String: [String: String]? {
         switch self {
@@ -21208,6 +21500,18 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
     case blob(Blob)
     case canvasImageSource(CanvasImageSource)
     case imageData(ImageData)
+
+    init(_ blob: Blob) {
+        self = .blob(blob)
+    }
+
+    init(_ canvasImageSource: CanvasImageSource) {
+        self = .canvasImageSource(canvasImageSource)
+    }
+
+    init(_ imageData: ImageData) {
+        self = .imageData(imageData)
+    }
 
     public var blob: Blob? {
         switch self {
@@ -21263,6 +21567,14 @@ public enum ImageBufferSource: JSValueCompatible, Any_ImageBufferSource {
     case bufferSource(BufferSource)
     case readableStream(ReadableStream)
 
+    init(_ bufferSource: BufferSource) {
+        self = .bufferSource(bufferSource)
+    }
+
+    init(_ readableStream: ReadableStream) {
+        self = .readableStream(readableStream)
+    }
+
     public var bufferSource: BufferSource? {
         switch self {
         case let .bufferSource(bufferSource): return bufferSource
@@ -21306,6 +21618,18 @@ public enum MediaProvider: JSValueCompatible, Any_MediaProvider {
     case blob(Blob)
     case mediaSource(MediaSource)
     case mediaStream(MediaStream)
+
+    init(_ blob: Blob) {
+        self = .blob(blob)
+    }
+
+    init(_ mediaSource: MediaSource) {
+        self = .mediaSource(mediaSource)
+    }
+
+    init(_ mediaStream: MediaStream) {
+        self = .mediaStream(mediaStream)
+    }
 
     public var blob: Blob? {
         switch self {
@@ -21363,6 +21687,18 @@ public enum MessageEventSource: JSValueCompatible, Any_MessageEventSource {
     case serviceWorker(ServiceWorker)
     case windowProxy(WindowProxy)
 
+    init(_ messagePort: MessagePort) {
+        self = .messagePort(messagePort)
+    }
+
+    init(_ serviceWorker: ServiceWorker) {
+        self = .serviceWorker(serviceWorker)
+    }
+
+    init(_ windowProxy: WindowProxy) {
+        self = .windowProxy(windowProxy)
+    }
+
     public var messagePort: MessagePort? {
         switch self {
         case let .messagePort(messagePort): return messagePort
@@ -21417,6 +21753,14 @@ public enum Node_or_String: JSValueCompatible, Any_Node_or_String {
     case node(Node)
     case string(String)
 
+    init(_ node: Node) {
+        self = .node(node)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
     public var node: Node? {
         switch self {
         case let .node(node): return node
@@ -21458,6 +21802,14 @@ extension String: Any_Path2D_or_String {}
 public enum Path2D_or_String: JSValueCompatible, Any_Path2D_or_String {
     case path2D(Path2D)
     case string(String)
+
+    init(_ path2D: Path2D) {
+        self = .path2D(path2D)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var path2D: Path2D? {
         switch self {
@@ -21501,6 +21853,14 @@ public enum ReadableStreamController: JSValueCompatible, Any_ReadableStreamContr
     case readableByteStreamController(ReadableByteStreamController)
     case readableStreamDefaultController(ReadableStreamDefaultController)
 
+    init(_ readableByteStreamController: ReadableByteStreamController) {
+        self = .readableByteStreamController(readableByteStreamController)
+    }
+
+    init(_ readableStreamDefaultController: ReadableStreamDefaultController) {
+        self = .readableStreamDefaultController(readableStreamDefaultController)
+    }
+
     public var readableByteStreamController: ReadableByteStreamController? {
         switch self {
         case let .readableByteStreamController(readableByteStreamController): return readableByteStreamController
@@ -21542,6 +21902,14 @@ extension ReadableStreamDefaultReader: Any_ReadableStreamReader {}
 public enum ReadableStreamReader: JSValueCompatible, Any_ReadableStreamReader {
     case readableStreamBYOBReader(ReadableStreamBYOBReader)
     case readableStreamDefaultReader(ReadableStreamDefaultReader)
+
+    init(_ readableStreamBYOBReader: ReadableStreamBYOBReader) {
+        self = .readableStreamBYOBReader(readableStreamBYOBReader)
+    }
+
+    init(_ readableStreamDefaultReader: ReadableStreamDefaultReader) {
+        self = .readableStreamDefaultReader(readableStreamDefaultReader)
+    }
 
     public var readableStreamBYOBReader: ReadableStreamBYOBReader? {
         switch self {
@@ -21585,6 +21953,14 @@ public enum RequestInfo: JSValueCompatible, Any_RequestInfo {
     case request(Request)
     case string(String)
 
+    init(_ request: Request) {
+        self = .request(request)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
     public var request: Request? {
         switch self {
         case let .request(request): return request
@@ -21626,6 +22002,14 @@ extension WorkerOptions: Any_String_or_WorkerOptions {}
 public enum String_or_WorkerOptions: JSValueCompatible, Any_String_or_WorkerOptions {
     case string(String)
     case workerOptions(WorkerOptions)
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
+    init(_ workerOptions: WorkerOptions) {
+        self = .workerOptions(workerOptions)
+    }
 
     public var string: String? {
         switch self {
@@ -21669,6 +22053,14 @@ public enum String_or_seq_of_Double: JSValueCompatible, Any_String_or_seq_of_Dou
     case string(String)
     case seq_of_Double([Double])
 
+    init(_ string: String) {
+        self = .string(string)
+    }
+
+    init(_ seq_of_Double: [Double]) {
+        self = .seq_of_Double(seq_of_Double)
+    }
+
     public var string: String? {
         switch self {
         case let .string(string): return string
@@ -21711,6 +22103,14 @@ public enum String_or_seq_of_String: JSValueCompatible, Any_String_or_seq_of_Str
     case string(String)
     case seq_of_String([String])
 
+    init(_ string: String) {
+        self = .string(string)
+    }
+
+    init(_ seq_of_String: [String]) {
+        self = .seq_of_String(seq_of_String)
+    }
+
     public var string: String? {
         switch self {
         case let .string(string): return string
@@ -21752,6 +22152,14 @@ extension String: Any_TimerHandler {}
 public enum TimerHandler: JSValueCompatible, Any_TimerHandler {
     case jsFunction(JSFunction)
     case string(String)
+
+    init(_ jsFunction: JSFunction) {
+        self = .jsFunction(jsFunction)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var jsFunction: JSFunction? {
         switch self {
@@ -21800,6 +22208,26 @@ public enum XMLHttpRequestBodyInit: JSValueCompatible, Any_XMLHttpRequestBodyIni
     case formData(FormData)
     case string(String)
     case urlSearchParams(URLSearchParams)
+
+    init(_ blob: Blob) {
+        self = .blob(blob)
+    }
+
+    init(_ bufferSource: BufferSource) {
+        self = .bufferSource(bufferSource)
+    }
+
+    init(_ formData: FormData) {
+        self = .formData(formData)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
+    init(_ urlSearchParams: URLSearchParams) {
+        self = .urlSearchParams(urlSearchParams)
+    }
 
     public var blob: Blob? {
         switch self {

@@ -176,6 +176,18 @@ public enum Blob_or_BufferSource_or_String: JSValueCompatible, Any_Blob_or_Buffe
     case bufferSource(BufferSource)
     case string(String)
 
+    init(_ blob: Blob) {
+        self = .blob(blob)
+    }
+
+    init(_ bufferSource: BufferSource) {
+        self = .bufferSource(bufferSource)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
     public var blob: Blob? {
         switch self {
         case let .blob(blob): return blob
@@ -229,6 +241,14 @@ extension Array: Any_String_or_seq_of_String where Element == String {}
 public enum String_or_seq_of_String: JSValueCompatible, Any_String_or_seq_of_String {
     case string(String)
     case seq_of_String([String])
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
+    init(_ seq_of_String: [String]) {
+        self = .seq_of_String(seq_of_String)
+    }
 
     public var string: String? {
         switch self {

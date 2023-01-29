@@ -33,6 +33,8 @@ extension UnionType: SwiftRepresentable {
         public enum \(name): JSValueCompatible, Any_\(name) {
             \(lines: cases)
 
+            \(lines: initializers)
+
             \(lines: accessors)
 
             public static func construct(from value: JSValue) -> Self? {
@@ -58,6 +60,16 @@ extension UnionType: SwiftRepresentable {
     var cases: [SwiftSource] {
         zip(sortedTypes, sortedNames).map { type, name in
             "case \(name)(\(type))"
+        }
+    }
+
+    var initializers: [SwiftSource] {
+        zip(sortedTypes, sortedNames).map { type, name in
+            """
+            init(_ \(name): \(type)) {
+                self = .\(name)(\(name))
+            }
+            """
         }
     }
 

@@ -3886,6 +3886,14 @@ public enum GPUAutoLayoutMode_or_GPUPipelineLayout: JSValueCompatible, Any_GPUAu
     case gpuAutoLayoutMode(GPUAutoLayoutMode)
     case gpuPipelineLayout(GPUPipelineLayout)
 
+    init(_ gpuAutoLayoutMode: GPUAutoLayoutMode) {
+        self = .gpuAutoLayoutMode(gpuAutoLayoutMode)
+    }
+
+    init(_ gpuPipelineLayout: GPUPipelineLayout) {
+        self = .gpuPipelineLayout(gpuPipelineLayout)
+    }
+
     public var gpuAutoLayoutMode: GPUAutoLayoutMode? {
         switch self {
         case let .gpuAutoLayoutMode(gpuAutoLayoutMode): return gpuAutoLayoutMode
@@ -3931,6 +3939,22 @@ public enum GPUBindingResource: JSValueCompatible, Any_GPUBindingResource {
     case gpuExternalTexture(GPUExternalTexture)
     case gpuSampler(GPUSampler)
     case gpuTextureView(GPUTextureView)
+
+    init(_ gpuBufferBinding: GPUBufferBinding) {
+        self = .gpuBufferBinding(gpuBufferBinding)
+    }
+
+    init(_ gpuExternalTexture: GPUExternalTexture) {
+        self = .gpuExternalTexture(gpuExternalTexture)
+    }
+
+    init(_ gpuSampler: GPUSampler) {
+        self = .gpuSampler(gpuSampler)
+    }
+
+    init(_ gpuTextureView: GPUTextureView) {
+        self = .gpuTextureView(gpuTextureView)
+    }
 
     public var gpuBufferBinding: GPUBufferBinding? {
         switch self {
@@ -3998,6 +4022,14 @@ public enum GPUColor: JSValueCompatible, Any_GPUColor {
     case gpuColorDict(GPUColorDict)
     case seq_of_Double([Double])
 
+    init(_ gpuColorDict: GPUColorDict) {
+        self = .gpuColorDict(gpuColorDict)
+    }
+
+    init(_ seq_of_Double: [Double]) {
+        self = .seq_of_Double(seq_of_Double)
+    }
+
     public var gpuColorDict: GPUColorDict? {
         switch self {
         case let .gpuColorDict(gpuColorDict): return gpuColorDict
@@ -4039,6 +4071,14 @@ extension Array: Any_GPUExtent3D where Element == GPUIntegerCoordinate {}
 public enum GPUExtent3D: JSValueCompatible, Any_GPUExtent3D {
     case gpuExtent3DDict(GPUExtent3DDict)
     case seq_of_GPUIntegerCoordinate([GPUIntegerCoordinate])
+
+    init(_ gpuExtent3DDict: GPUExtent3DDict) {
+        self = .gpuExtent3DDict(gpuExtent3DDict)
+    }
+
+    init(_ seq_of_GPUIntegerCoordinate: [GPUIntegerCoordinate]) {
+        self = .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate)
+    }
 
     public var gpuExtent3DDict: GPUExtent3DDict? {
         switch self {
@@ -4082,6 +4122,14 @@ public enum GPUOrigin2D: JSValueCompatible, Any_GPUOrigin2D {
     case gpuOrigin2DDict(GPUOrigin2DDict)
     case seq_of_GPUIntegerCoordinate([GPUIntegerCoordinate])
 
+    init(_ gpuOrigin2DDict: GPUOrigin2DDict) {
+        self = .gpuOrigin2DDict(gpuOrigin2DDict)
+    }
+
+    init(_ seq_of_GPUIntegerCoordinate: [GPUIntegerCoordinate]) {
+        self = .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate)
+    }
+
     public var gpuOrigin2DDict: GPUOrigin2DDict? {
         switch self {
         case let .gpuOrigin2DDict(gpuOrigin2DDict): return gpuOrigin2DDict
@@ -4123,6 +4171,14 @@ extension Array: Any_GPUOrigin3D where Element == GPUIntegerCoordinate {}
 public enum GPUOrigin3D: JSValueCompatible, Any_GPUOrigin3D {
     case gpuOrigin3DDict(GPUOrigin3DDict)
     case seq_of_GPUIntegerCoordinate([GPUIntegerCoordinate])
+
+    init(_ gpuOrigin3DDict: GPUOrigin3DDict) {
+        self = .gpuOrigin3DDict(gpuOrigin3DDict)
+    }
+
+    init(_ seq_of_GPUIntegerCoordinate: [GPUIntegerCoordinate]) {
+        self = .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate)
+    }
 
     public var gpuOrigin3DDict: GPUOrigin3DDict? {
         switch self {
@@ -4169,6 +4225,22 @@ public enum HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCan
     case htmlVideoElement(HTMLVideoElement)
     case imageBitmap(ImageBitmap)
     case offscreenCanvas(OffscreenCanvas)
+
+    init(_ htmlCanvasElement: HTMLCanvasElement) {
+        self = .htmlCanvasElement(htmlCanvasElement)
+    }
+
+    init(_ htmlVideoElement: HTMLVideoElement) {
+        self = .htmlVideoElement(htmlVideoElement)
+    }
+
+    init(_ imageBitmap: ImageBitmap) {
+        self = .imageBitmap(imageBitmap)
+    }
+
+    init(_ offscreenCanvas: OffscreenCanvas) {
+        self = .offscreenCanvas(offscreenCanvas)
+    }
 
     public var htmlCanvasElement: HTMLCanvasElement? {
         switch self {
@@ -4235,6 +4307,14 @@ extension OffscreenCanvas: Any_HTMLCanvasElement_or_OffscreenCanvas {}
 public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCanvasElement_or_OffscreenCanvas {
     case htmlCanvasElement(HTMLCanvasElement)
     case offscreenCanvas(OffscreenCanvas)
+
+    init(_ htmlCanvasElement: HTMLCanvasElement) {
+        self = .htmlCanvasElement(htmlCanvasElement)
+    }
+
+    init(_ offscreenCanvas: OffscreenCanvas) {
+        self = .offscreenCanvas(offscreenCanvas)
+    }
 
     public var htmlCanvasElement: HTMLCanvasElement? {
         switch self {

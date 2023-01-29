@@ -2355,6 +2355,14 @@ public enum CSSColorRGBComp: JSValueCompatible, Any_CSSColorRGBComp {
     case cssKeywordish(CSSKeywordish)
     case cssNumberish(CSSNumberish)
 
+    init(_ cssKeywordish: CSSKeywordish) {
+        self = .cssKeywordish(cssKeywordish)
+    }
+
+    init(_ cssNumberish: CSSNumberish) {
+        self = .cssNumberish(cssNumberish)
+    }
+
     public var cssKeywordish: CSSKeywordish? {
         switch self {
         case let .cssKeywordish(cssKeywordish): return cssKeywordish
@@ -2396,6 +2404,14 @@ extension String: Any_CSSKeywordish {}
 public enum CSSKeywordish: JSValueCompatible, Any_CSSKeywordish {
     case cssKeywordValue(CSSKeywordValue)
     case string(String)
+
+    init(_ cssKeywordValue: CSSKeywordValue) {
+        self = .cssKeywordValue(cssKeywordValue)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var cssKeywordValue: CSSKeywordValue? {
         switch self {
@@ -2439,6 +2455,14 @@ public enum CSSNumberish: JSValueCompatible, Any_CSSNumberish {
     case cssNumericValue(CSSNumericValue)
     case double(Double)
 
+    init(_ cssNumericValue: CSSNumericValue) {
+        self = .cssNumericValue(cssNumericValue)
+    }
+
+    init(_ double: Double) {
+        self = .double(double)
+    }
+
     public var cssNumericValue: CSSNumericValue? {
         switch self {
         case let .cssNumericValue(cssNumericValue): return cssNumericValue
@@ -2480,6 +2504,14 @@ extension CSSNumericValue: Any_CSSPerspectiveValue {}
 public enum CSSPerspectiveValue: JSValueCompatible, Any_CSSPerspectiveValue {
     case cssKeywordish(CSSKeywordish)
     case cssNumericValue(CSSNumericValue)
+
+    init(_ cssKeywordish: CSSKeywordish) {
+        self = .cssKeywordish(cssKeywordish)
+    }
+
+    init(_ cssNumericValue: CSSNumericValue) {
+        self = .cssNumericValue(cssNumericValue)
+    }
 
     public var cssKeywordish: CSSKeywordish? {
         switch self {
@@ -2523,6 +2555,14 @@ public enum CSSStyleValue_or_String: JSValueCompatible, Any_CSSStyleValue_or_Str
     case cssStyleValue(CSSStyleValue)
     case string(String)
 
+    init(_ cssStyleValue: CSSStyleValue) {
+        self = .cssStyleValue(cssStyleValue)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
     public var cssStyleValue: CSSStyleValue? {
         switch self {
         case let .cssStyleValue(cssStyleValue): return cssStyleValue
@@ -2565,6 +2605,14 @@ public enum CSSUnparsedSegment: JSValueCompatible, Any_CSSUnparsedSegment {
     case cssVariableReferenceValue(CSSVariableReferenceValue)
     case string(String)
 
+    init(_ cssVariableReferenceValue: CSSVariableReferenceValue) {
+        self = .cssVariableReferenceValue(cssVariableReferenceValue)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
+
     public var cssVariableReferenceValue: CSSVariableReferenceValue? {
         switch self {
         case let .cssVariableReferenceValue(cssVariableReferenceValue): return cssVariableReferenceValue
@@ -2606,6 +2654,14 @@ extension ProcessingInstruction: Any_Element_or_ProcessingInstruction {}
 public enum Element_or_ProcessingInstruction: JSValueCompatible, Any_Element_or_ProcessingInstruction {
     case element(Element)
     case processingInstruction(ProcessingInstruction)
+
+    init(_ element: Element) {
+        self = .element(element)
+    }
+
+    init(_ processingInstruction: ProcessingInstruction) {
+        self = .processingInstruction(processingInstruction)
+    }
 
     public var element: Element? {
         switch self {
@@ -2652,6 +2708,22 @@ public enum GeometryNode: JSValueCompatible, Any_GeometryNode {
     case document(Document)
     case element(Element)
     case text(Text)
+
+    init(_ cssPseudoElement: CSSPseudoElement) {
+        self = .cssPseudoElement(cssPseudoElement)
+    }
+
+    init(_ document: Document) {
+        self = .document(document)
+    }
+
+    init(_ element: Element) {
+        self = .element(element)
+    }
+
+    init(_ text: Text) {
+        self = .text(text)
+    }
 
     public var cssPseudoElement: CSSPseudoElement? {
         switch self {
@@ -2718,6 +2790,14 @@ extension String: Any_MediaList_or_String {}
 public enum MediaList_or_String: JSValueCompatible, Any_MediaList_or_String {
     case mediaList(MediaList)
     case string(String)
+
+    init(_ mediaList: MediaList) {
+        self = .mediaList(mediaList)
+    }
+
+    init(_ string: String) {
+        self = .string(string)
+    }
 
     public var mediaList: MediaList? {
         switch self {
