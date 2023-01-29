@@ -180,8 +180,6 @@ enum DeclarationMerger {
             }
         }
 
-        print("unhandled callback interfaces", allNodes(ofType: IDLCallbackInterface.self).map(\.name))
-
         var allTypes: [IDLTypealias] = allNodes(ofType: IDLTypedef.self) + allNodes(ofType: IDLCallback.self)
         allTypes.removeAll(where: { ignoredTypedefs.contains($0.name) })
         let mergedTypes = Dictionary(uniqueKeysWithValues: allTypes.map { ($0.name, $0) })
@@ -213,7 +211,8 @@ enum DeclarationMerger {
         return MergeResult(
             declarations: arrays
                 + [Typedefs(typedefs: allTypes)]
-                + allNodes(ofType: IDLEnum.self),
+                + allNodes(ofType: IDLEnum.self)
+                + allNodes(ofType: IDLCallbackInterface.self),
             interfaces: mergedInterfaces,
             types: mergedTypes
             // unions: unions
@@ -233,6 +232,7 @@ protocol DeclarationFile {
 }
 
 extension IDLEnum: DeclarationFile {}
+extension IDLCallbackInterface: DeclarationFile {}
 
 struct AsyncOperation: IDLNode, IDLNamespaceMember, IDLInterfaceMember, IDLInterfaceMixinMember, IDLNamed {
     static var type: String { "" }

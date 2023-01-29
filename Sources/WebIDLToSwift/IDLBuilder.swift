@@ -19,6 +19,9 @@ enum IDLBuilder {
         // need types from specs not yet included
         "ShadowAnimation", "Blob_or_MediaSource",
         "HTMLOrSVGImageElement", "HTMLOrSVGScriptElement", "BodyInit",
+        // Need better callback interface support
+        "NodeFilter",
+        "XPathNSResolver",
         // implemented manually
         // ArrayBufferView
         "BigInt64Array_or_BigUint64Array_or_DataView_or_Float32Array_or_Float64Array_or_Int16Array_or_Int32Array_or_Int8Array_or_Uint16Array_or_Uint32Array_or_Uint8Array_or_Uint8ClampedArray",
@@ -59,9 +62,6 @@ enum IDLBuilder {
                 "Document": ["createNodeIterator", "createTreeWalker"],
                 "NodeIterator": ["filter"],
                 "TreeWalker": ["filter"],
-                // EventListener
-                "EventTarget": ["addEventListener", "removeEventListener"],
-                "MediaQueryList": ["addListener", "removeListener"],
                 // XPathNSResolver
                 "XPathEvaluatorBase": ["createExpression", "createNSResolver", "evaluate"],
                 // manually implemented

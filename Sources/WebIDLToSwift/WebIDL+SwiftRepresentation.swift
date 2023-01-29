@@ -182,7 +182,15 @@ extension IDLCallback: SwiftRepresentable {
 
 extension IDLCallbackInterface: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        "// XXX: unsupported callback interface: \(name)"
+        let operations = members.compactMap { $0 as? IDLOperation }
+        precondition(operations.count == 1)
+        let callback = operations[0]
+        return """
+        \(members.count > 1 ? "// XXX: members other than the operation are ignored" : "")
+        public typealias \(name) = (\(sequence: callback.arguments.map {
+            "\($0.idlType)\($0.variadic ? "..." : "")"
+        })) -> \(callback.idlType!)
+        """
     }
 }
 

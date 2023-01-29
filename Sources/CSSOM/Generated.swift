@@ -1747,9 +1747,15 @@ public class MediaQueryList: EventTarget {
     @ReadonlyAttribute
     public var matches: Bool
 
-    // XXX: member 'addListener' is ignored
+    @inlinable public func addListener(callback: EventListener?) {
+        let this = jsObject
+        _ = this[Strings.addListener].function!(this: this, arguments: [_toJSValue(callback)])
+    }
 
-    // XXX: member 'removeListener' is ignored
+    @inlinable public func removeListener(callback: EventListener?) {
+        let this = jsObject
+        _ = this[Strings.removeListener].function!(this: this, arguments: [_toJSValue(callback)])
+    }
 
     @ClosureAttribute1Optional
     public var onchange: EventHandler
@@ -2114,6 +2120,7 @@ public typealias CSSColorAngle = CSSColorRGBComp
     @usableFromInline static let StyleSheetList: JSString = "StyleSheetList"
     @usableFromInline static let a: JSString = "a"
     @usableFromInline static let add: JSString = "add"
+    @usableFromInline static let addListener: JSString = "addListener"
     @usableFromInline static let addRule: JSString = "addRule"
     @usableFromInline static let adoptedStyleSheets: JSString = "adoptedStyleSheets"
     @usableFromInline static let alpha: JSString = "alpha"
@@ -2236,6 +2243,7 @@ public typealias CSSColorAngle = CSSColorRGBComp
     @usableFromInline static let rad: JSString = "rad"
     @usableFromInline static let relativeTo: JSString = "relativeTo"
     @usableFromInline static let rem: JSString = "rem"
+    @usableFromInline static let removeListener: JSString = "removeListener"
     @usableFromInline static let removeProperty: JSString = "removeProperty"
     @usableFromInline static let removeRule: JSString = "removeRule"
     @usableFromInline static let replace: JSString = "replace"

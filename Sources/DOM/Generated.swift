@@ -5285,6 +5285,7 @@ public class EventInit: BridgedDictionary {
     public var composed: Bool
 }
 
+public typealias EventListener = (Event) -> Void
 public class EventListenerOptions: BridgedDictionary {
     public convenience init(capture: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -5458,9 +5459,15 @@ open class EventTarget: JSBridgedClass {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: []))
     }
 
-    // XXX: member 'addEventListener' is ignored
+    @inlinable public func addEventListener(type: String, callback: EventListener?, options: AddEventListenerOptions_or_Bool? = nil) {
+        let this = jsObject
+        _ = this[Strings.addEventListener].function!(this: this, arguments: [_toJSValue(type), _toJSValue(callback), _toJSValue(options)])
+    }
 
-    // XXX: member 'removeEventListener' is ignored
+    @inlinable public func removeEventListener(type: String, callback: EventListener?, options: Bool_or_EventListenerOptions? = nil) {
+        let this = jsObject
+        _ = this[Strings.removeEventListener].function!(this: this, arguments: [_toJSValue(type), _toJSValue(callback), _toJSValue(options)])
+    }
 
     @inlinable public func dispatchEvent(event: Event) -> Bool {
         let this = jsObject
@@ -10662,9 +10669,15 @@ public class MediaQueryList: EventTarget {
     @ReadonlyAttribute
     public var matches: Bool
 
-    // XXX: member 'addListener' is ignored
+    @inlinable public func addListener(callback: EventListener?) {
+        let this = jsObject
+        _ = this[Strings.addListener].function!(this: this, arguments: [_toJSValue(callback)])
+    }
 
-    // XXX: member 'removeListener' is ignored
+    @inlinable public func removeListener(callback: EventListener?) {
+        let this = jsObject
+        _ = this[Strings.removeListener].function!(this: this, arguments: [_toJSValue(callback)])
+    }
 
     @ClosureAttribute1Optional
     public var onchange: EventHandler
@@ -18173,6 +18186,8 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let addAll: JSString = "addAll"
     @usableFromInline static let addColorStop: JSString = "addColorStop"
     @usableFromInline static let addCue: JSString = "addCue"
+    @usableFromInline static let addEventListener: JSString = "addEventListener"
+    @usableFromInline static let addListener: JSString = "addListener"
     @usableFromInline static let addModule: JSString = "addModule"
     @usableFromInline static let addPath: JSString = "addPath"
     @usableFromInline static let addSourceBuffer: JSString = "addSourceBuffer"
@@ -19180,6 +19195,8 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let removeAttributeNode: JSString = "removeAttributeNode"
     @usableFromInline static let removeChild: JSString = "removeChild"
     @usableFromInline static let removeCue: JSString = "removeCue"
+    @usableFromInline static let removeEventListener: JSString = "removeEventListener"
+    @usableFromInline static let removeListener: JSString = "removeListener"
     @usableFromInline static let removeNamedItem: JSString = "removeNamedItem"
     @usableFromInline static let removeNamedItemNS: JSString = "removeNamedItemNS"
     @usableFromInline static let removeParameter: JSString = "removeParameter"
@@ -19515,6 +19532,48 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let z: JSString = "z"
 }
 
+public protocol Any_AddEventListenerOptions_or_Bool: ConvertibleToJSValue {}
+extension AddEventListenerOptions: Any_AddEventListenerOptions_or_Bool {}
+extension Bool: Any_AddEventListenerOptions_or_Bool {}
+
+public enum AddEventListenerOptions_or_Bool: JSValueCompatible, Any_AddEventListenerOptions_or_Bool {
+    case addEventListenerOptions(AddEventListenerOptions)
+    case bool(Bool)
+
+    public var addEventListenerOptions: AddEventListenerOptions? {
+        switch self {
+        case let .addEventListenerOptions(addEventListenerOptions): return addEventListenerOptions
+        default: return nil
+        }
+    }
+
+    public var bool: Bool? {
+        switch self {
+        case let .bool(bool): return bool
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let addEventListenerOptions: AddEventListenerOptions = value.fromJSValue() {
+            return .addEventListenerOptions(addEventListenerOptions)
+        }
+        if let bool: Bool = value.fromJSValue() {
+            return .bool(bool)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .addEventListenerOptions(addEventListenerOptions):
+            return addEventListenerOptions.jsValue
+        case let .bool(bool):
+            return bool.jsValue
+        }
+    }
+}
+
 public protocol Any_ArrayBuffer_or_String: ConvertibleToJSValue {}
 extension ArrayBuffer: Any_ArrayBuffer_or_String {}
 extension String: Any_ArrayBuffer_or_String {}
@@ -19665,6 +19724,48 @@ public enum BlobPart: JSValueCompatible, Any_BlobPart {
             return bufferSource.jsValue
         case let .string(string):
             return string.jsValue
+        }
+    }
+}
+
+public protocol Any_Bool_or_EventListenerOptions: ConvertibleToJSValue {}
+extension Bool: Any_Bool_or_EventListenerOptions {}
+extension EventListenerOptions: Any_Bool_or_EventListenerOptions {}
+
+public enum Bool_or_EventListenerOptions: JSValueCompatible, Any_Bool_or_EventListenerOptions {
+    case bool(Bool)
+    case eventListenerOptions(EventListenerOptions)
+
+    public var bool: Bool? {
+        switch self {
+        case let .bool(bool): return bool
+        default: return nil
+        }
+    }
+
+    public var eventListenerOptions: EventListenerOptions? {
+        switch self {
+        case let .eventListenerOptions(eventListenerOptions): return eventListenerOptions
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let bool: Bool = value.fromJSValue() {
+            return .bool(bool)
+        }
+        if let eventListenerOptions: EventListenerOptions = value.fromJSValue() {
+            return .eventListenerOptions(eventListenerOptions)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .bool(bool):
+            return bool.jsValue
+        case let .eventListenerOptions(eventListenerOptions):
+            return eventListenerOptions.jsValue
         }
     }
 }
