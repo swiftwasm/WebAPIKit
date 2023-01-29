@@ -456,7 +456,13 @@ extension IDLOperation: SwiftRepresentable, Initializable {
                 }
                 """
             case "deleter":
-                return "// XXX: unsupported deleter for keys of type \(arguments[0].idlType)"
+                // Use Reflect.deleteProperty since `delete` would require wiring up a hook in JSKit,
+                // and this is used rarely enough that perf should be irrelevant.
+                return """
+                @inlinable public func removeValue(forKey key: \(arguments[0].idlType)) {
+                    _ = JSObject.global.Reflect.deleteProperty(jsObject, _toJSValue(key))
+                }
+                """
             default:
                 fatalError("Unsupported special operation \(special)")
             }

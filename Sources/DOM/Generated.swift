@@ -3826,7 +3826,9 @@ public class DOMStringMap: JSBridgedClass {
         }
     }
 
-    // XXX: unsupported deleter for keys of type String
+    @inlinable public func removeValue(forKey key: String) {
+        _ = JSObject.global.Reflect.deleteProperty(jsObject, _toJSValue(key))
+    }
 }
 
 public class DOMTokenList: JSBridgedClass, Sequence {
@@ -14771,7 +14773,9 @@ public class Storage: JSBridgedClass {
         }
     }
 
-    // XXX: unsupported deleter for keys of type String
+    @inlinable public func removeValue(forKey key: String) {
+        _ = JSObject.global.Reflect.deleteProperty(jsObject, _toJSValue(key))
+    }
 
     @inlinable public func clear() {
         let this = jsObject
