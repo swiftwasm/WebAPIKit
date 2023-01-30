@@ -72,7 +72,7 @@ extension UnionType: SwiftRepresentable {
     }
 
     var initializers: [SwiftSource] {
-        zip(sortedTypes, sortedNames).flatMap { type, name in
+        zip(sortedTypes, sortedNames).flatMap { (type, name) -> [SwiftSource] in
             let basicInitializer: [SwiftSource] = ["""
             init(_ \(name): \(type)) {
                 let val: \(self.name) = .\(name)(\(name))
