@@ -735,7 +735,7 @@ extension IDLTypedef: SwiftRepresentable {
     }
 
     var swiftRepresentation: SwiftSource {
-        if let unionType {
+        if let unionType = unionType {
             guard unionType.friendlyName != name else { return "" }
             if let existingName = unionType.friendlyName {
                 return "public typealias \(name) = \(existingName)"
