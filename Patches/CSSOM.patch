@@ -1,5 +1,3 @@
-diff --git a/Sources/CSSOM/Generated.swift b/Sources/CSSOM/Generated.swift
-index 16a452b..1242f02 100644
 --- a/Sources/CSSOM/Generated.swift
 +++ b/Sources/CSSOM/Generated.swift
 @@ -378,7 +378,8 @@ public class CSSColorValue: CSSStyleValue {

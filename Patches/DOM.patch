@@ -1,5 +1,3 @@
-diff --git a/Sources/DOM/Generated.swift b/Sources/DOM/Generated.swift
-index 1f45705..d5e36dd 100644
 --- a/Sources/DOM/Generated.swift
 +++ b/Sources/DOM/Generated.swift
 @@ -1005,8 +1005,15 @@ public class BeforeUnloadEvent: Event {
