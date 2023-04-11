@@ -2,6 +2,7 @@
 
 import DOM
 import ECMAScript
+import JavaScriptEventLoop
 import JavaScriptKit
 import WebAnimations
 import WebAPIBase
