@@ -222,7 +222,6 @@ extension MergedInterface: SwiftRepresentable {
             }.joined(separator: "\n\n")
         }
 
-        let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
         // Allow cross-module subclassing with `open` access modifier for classes that require this.
         let openClasses = [
             "DocumentFragment",
@@ -237,29 +236,32 @@ extension MergedInterface: SwiftRepresentable {
         ]
         let access: SwiftSource = openClasses.contains(name) ? "open" : "public"
 
-        let globalAccessor: SwiftSource
-        if global {
-            globalAccessor = """
-            @inlinable public static var global: \(name) {
-                \(name)(unsafelyWrapping: JSObject.global)
-            }
-            """
+        let header: SwiftSource
+        if partial {
+            header = "public extension \(name)"
         } else {
-            globalAccessor = ""
+            let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
+            header = "\(access) class \(name): \(sequence: inheritance.map(SwiftSource.init(_:)))"
         }
 
         return """
-        \(access) class \(name): \(sequence: inheritance.map(SwiftSource.init(_:))) {
-            @inlinable \(access)\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction? { \(constructor) }
+        \(header) {
+            \(partial ? "" : """
+                @inlinable \(access)\(parentClasses.isEmpty ? "" : " override") class var constructor: JSFunction? { \(constructor) }
 
-            \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
+                \(parentClasses.isEmpty ? "public let jsObject: JSObject" : "")
 
-            \(globalAccessor)
+                \(global ? """
+                    @inlinable public static var global: \(name) {
+                        \(name)(unsafelyWrapping: JSObject.global)
+                    }
+                """ : "")
 
-            public required init(unsafelyWrapping jsObject: JSObject) {
-                \(memberInits.joined(separator: "\n"))
-                \(parentClasses.isEmpty ? "self.jsObject = jsObject" : "super.init(unsafelyWrapping: jsObject)")
-            }
+                public required init(unsafelyWrapping jsObject: JSObject) {
+                    \(memberInits.joined(separator: "\n"))
+                    \(parentClasses.isEmpty ? "self.jsObject = jsObject" : "super.init(unsafelyWrapping: jsObject)")
+                }
+            """)
 
             \(body)
         }

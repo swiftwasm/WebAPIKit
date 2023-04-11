@@ -15806,21 +15806,13 @@ public class ULongRange: BridgedDictionary {
     public var min: UInt32
 }
 
-public class URL: JSBridgedClass {
-    @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.URL].function }
-
-    public let jsObject: JSObject
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        self.jsObject = jsObject
-    }
-
-    @inlinable public class func createObjectURL(obj: Blob_or_MediaSource) -> String {
+public extension URL {
+    @inlinable class func createObjectURL(obj: Blob_or_MediaSource) -> String {
         let this = constructor!
         return this[Strings.createObjectURL].function!(this: this, arguments: [_toJSValue(obj)]).fromJSValue()!
     }
 
-    @inlinable public class func revokeObjectURL(url: String) {
+    @inlinable class func revokeObjectURL(url: String) {
         let this = constructor!
         _ = this[Strings.revokeObjectURL].function!(this: this, arguments: [_toJSValue(url)])
     }

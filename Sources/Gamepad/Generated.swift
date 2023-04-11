@@ -362,16 +362,8 @@ public class GamepadTouch: JSBridgedClass {
     public var surfaceDimensions: Uint32Array?
 }
 
-public class Navigator: JSBridgedClass {
-    @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.Navigator].function }
-
-    public let jsObject: JSObject
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        self.jsObject = jsObject
-    }
-
-    @inlinable public func getGamepads() -> [Gamepad?] {
+public extension Navigator {
+    @inlinable func getGamepads() -> [Gamepad?] {
         let this = jsObject
         return this[Strings.getGamepads].function!(this: this, arguments: []).fromJSValue()!
     }

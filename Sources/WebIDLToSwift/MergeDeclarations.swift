@@ -121,6 +121,7 @@ enum DeclarationMerger {
             grouping: allNodes(ofType: IDLInterface.self).map {
                 MergedInterface(
                     name: $0.name,
+                    partial: $0.partial,
                     parentClasses: [$0.inheritance]
                         .compactMap { $0 }
                         .filter { !Self.ignoredParents.contains($0) },
@@ -137,6 +138,7 @@ enum DeclarationMerger {
             by: \.name
         ).mapValues { toMerge -> MergedInterface in
             var interface = toMerge.dropFirst().reduce(into: toMerge.first!) { partialResult, interface in
+                partialResult.partial = partialResult.partial && interface.partial
                 partialResult.parentClasses += interface.parentClasses
                 partialResult.members += interface.members
                 partialResult.exposed.formUnion(interface.exposed)
@@ -287,6 +289,7 @@ struct MergedDictionary: DeclarationFile {
 
 struct MergedInterface: DeclarationFile {
     let name: String
+    var partial: Bool
     var parentClasses: [String]
     var mixins: [String] = []
     var members: [IDLInterfaceMember]
