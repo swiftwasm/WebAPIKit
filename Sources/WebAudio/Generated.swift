@@ -493,7 +493,7 @@ public class AudioNode: EventTarget {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public func connect(destinationNode: AudioNode, output: UInt32? = nil, input: UInt32? = nil) -> Self {
+    @discardableResult @inlinable public func connect<NodeType: AudioNode>(destinationNode: NodeType, output: UInt32? = nil, input: UInt32? = nil) -> NodeType {
         let this = jsObject
         return this[Strings.connect].function!(this: this, arguments: [_toJSValue(destinationNode), _toJSValue(output), _toJSValue(input)]).fromJSValue()!
     }
