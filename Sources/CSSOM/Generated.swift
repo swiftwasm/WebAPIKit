@@ -1640,7 +1640,6 @@ public class ConvertCoordinateOptions: BridgedDictionary {
     public var toBox: CSSBoxType
 }
 
-public protocol DocumentOrShadowRoot: JSBridgedClass {}
 public extension DocumentOrShadowRoot {
     @inlinable var styleSheets: StyleSheetList { jsObject[Strings.styleSheets].fromJSValue()! }
 

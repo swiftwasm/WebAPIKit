@@ -340,7 +340,6 @@ public class ComputedEffectTiming: BridgedDictionary {
     public var currentIteration: Double?
 }
 
-public protocol DocumentOrShadowRoot: JSBridgedClass {}
 public extension DocumentOrShadowRoot {
     @inlinable func getAnimations() -> [Animation] {
         let this = jsObject

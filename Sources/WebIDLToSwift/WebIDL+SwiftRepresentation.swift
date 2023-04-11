@@ -305,7 +305,7 @@ extension MergedMixin: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         ModuleState.withScope(.instance(constructor: nil, this: "jsObject", className: "\(name)", inProtocol: true)) {
             """
-            public protocol \(name): JSBridgedClass {}
+            \(partial ? "" : "public protocol \(name): JSBridgedClass {}")
             public extension \(name) {
                 \(members.map(toSwift).joined(separator: "\n\n"))
             }

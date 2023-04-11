@@ -377,7 +377,6 @@ public class Navigator: JSBridgedClass {
     }
 }
 
-public protocol WindowEventHandlers: JSBridgedClass {}
 public extension WindowEventHandlers {
     @inlinable var ongamepadconnected: EventHandler {
         get { ClosureAttribute1Optional[Strings.ongamepadconnected, in: jsObject] }

@@ -102,12 +102,14 @@ enum DeclarationMerger {
             grouping: allNodes(ofType: IDLInterfaceMixin.self).map {
                 MergedMixin(
                     name: $0.name,
+                    partial: $0.partial,
                     members: enhanceMembers($0.members.array) as! [IDLInterfaceMixinMember]
                 )
             },
             by: \.name
         ).mapValues {
             $0.dropFirst().reduce(into: $0.first!) { partialResult, mixin in
+                partialResult.partial = partialResult.partial && mixin.partial
                 partialResult.members += mixin.members
             }
         }
@@ -273,6 +275,7 @@ struct MergedNamespace: DeclarationFile {
 
 struct MergedMixin: DeclarationFile {
     let name: String
+    var partial: Bool
     var members: [IDLInterfaceMixinMember]
 }
 
