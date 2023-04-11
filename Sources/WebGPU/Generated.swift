@@ -2,6 +2,7 @@
 
 import DOM
 import ECMAScript
+import JavaScriptBigIntSupport
 import JavaScriptEventLoop
 import JavaScriptKit
 import WebAnimations

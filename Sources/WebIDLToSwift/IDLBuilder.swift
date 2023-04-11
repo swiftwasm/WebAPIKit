@@ -38,7 +38,7 @@ enum IDLBuilder {
         }
 
         var dependencies = basicDependencies + moduleDependencies
-        if content.contains(" Int64") {
+        if content.contains(" Int64") || content.contains(" UInt64") {
             dependencies.append("JavaScriptBigIntSupport")
         }
 
