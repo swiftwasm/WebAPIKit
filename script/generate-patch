@@ -8,13 +8,16 @@ if [ $# -ne 1 ]; then
 fi
 
 FILE=Sources/$1/Generated.swift
-NEW_HEADER=$(cat <<EOF
---- a/$FILE
-+++ b/$FILE
-EOF)
 
 cp $FILE $FILE.modified
 swift run WebIDLToSwift --no-patch
-git diff --no-ext-diff --no-index $FILE $FILE.modified | tail -n +5 | sed "s/^/$NEW_HEADER/" | sed 's/[[:space:]]*$//'
+
+cat <<EOF > "Patches/$1.patch"
+--- a/$FILE
++++ b/$FILE
+EOF
+
+git diff --no-ext-diff --no-index $FILE $FILE.modified | tail -n +5 | sed 's/[[:space:]]*$//' >> "Patches/$1.patch"
+
 swift run WebIDLToSwift
 rm $FILE.modified
