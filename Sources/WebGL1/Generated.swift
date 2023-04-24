@@ -816,7 +816,7 @@ public extension WebGLRenderingContextBase {
 
     @inlinable func getContextAttributes() -> WebGLContextAttributes? {
         let this = jsObject
-        return this[Strings.getContextAttributes].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.getContextAttributes].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func isContextLost() -> Bool {
@@ -826,12 +826,12 @@ public extension WebGLRenderingContextBase {
 
     @inlinable func getSupportedExtensions() -> [String]? {
         let this = jsObject
-        return this[Strings.getSupportedExtensions].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.getSupportedExtensions].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func getExtension(name: String) -> JSObject? {
         let this = jsObject
-        return this[Strings.getExtension].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.getExtension].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 
     @inlinable func activeTexture(texture: GLenum) {
@@ -941,32 +941,32 @@ public extension WebGLRenderingContextBase {
 
     @inlinable func createBuffer() -> WebGLBuffer? {
         let this = jsObject
-        return this[Strings.createBuffer].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.createBuffer].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func createFramebuffer() -> WebGLFramebuffer? {
         let this = jsObject
-        return this[Strings.createFramebuffer].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.createFramebuffer].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func createProgram() -> WebGLProgram? {
         let this = jsObject
-        return this[Strings.createProgram].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.createProgram].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func createRenderbuffer() -> WebGLRenderbuffer? {
         let this = jsObject
-        return this[Strings.createRenderbuffer].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.createRenderbuffer].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func createShader(type: GLenum) -> WebGLShader? {
         let this = jsObject
-        return this[Strings.createShader].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
+        return this[Strings.createShader].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()
     }
 
     @inlinable func createTexture() -> WebGLTexture? {
         let this = jsObject
-        return this[Strings.createTexture].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.createTexture].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func cullFace(mode: GLenum) {
@@ -1086,17 +1086,17 @@ public extension WebGLRenderingContextBase {
 
     @inlinable func getActiveAttrib(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
         let this = jsObject
-        return this[Strings.getActiveAttrib].function!(this: this, arguments: [_toJSValue(program), _toJSValue(index)]).fromJSValue()!
+        return this[Strings.getActiveAttrib].function!(this: this, arguments: [_toJSValue(program), _toJSValue(index)]).fromJSValue()
     }
 
     @inlinable func getActiveUniform(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
         let this = jsObject
-        return this[Strings.getActiveUniform].function!(this: this, arguments: [_toJSValue(program), _toJSValue(index)]).fromJSValue()!
+        return this[Strings.getActiveUniform].function!(this: this, arguments: [_toJSValue(program), _toJSValue(index)]).fromJSValue()
     }
 
     @inlinable func getAttachedShaders(program: WebGLProgram) -> [WebGLShader]? {
         let this = jsObject
-        return this[Strings.getAttachedShaders].function!(this: this, arguments: [_toJSValue(program)]).fromJSValue()!
+        return this[Strings.getAttachedShaders].function!(this: this, arguments: [_toJSValue(program)]).fromJSValue()
     }
 
     @inlinable func getAttribLocation(program: WebGLProgram, name: String) -> GLint {
@@ -1131,7 +1131,7 @@ public extension WebGLRenderingContextBase {
 
     @inlinable func getProgramInfoLog(program: WebGLProgram) -> String? {
         let this = jsObject
-        return this[Strings.getProgramInfoLog].function!(this: this, arguments: [_toJSValue(program)]).fromJSValue()!
+        return this[Strings.getProgramInfoLog].function!(this: this, arguments: [_toJSValue(program)]).fromJSValue()
     }
 
     @inlinable func getRenderbufferParameter(target: GLenum, pname: GLenum) -> JSValue {
@@ -1146,17 +1146,17 @@ public extension WebGLRenderingContextBase {
 
     @inlinable func getShaderPrecisionFormat(shadertype: GLenum, precisiontype: GLenum) -> WebGLShaderPrecisionFormat? {
         let this = jsObject
-        return this[Strings.getShaderPrecisionFormat].function!(this: this, arguments: [_toJSValue(shadertype), _toJSValue(precisiontype)]).fromJSValue()!
+        return this[Strings.getShaderPrecisionFormat].function!(this: this, arguments: [_toJSValue(shadertype), _toJSValue(precisiontype)]).fromJSValue()
     }
 
     @inlinable func getShaderInfoLog(shader: WebGLShader) -> String? {
         let this = jsObject
-        return this[Strings.getShaderInfoLog].function!(this: this, arguments: [_toJSValue(shader)]).fromJSValue()!
+        return this[Strings.getShaderInfoLog].function!(this: this, arguments: [_toJSValue(shader)]).fromJSValue()
     }
 
     @inlinable func getShaderSource(shader: WebGLShader) -> String? {
         let this = jsObject
-        return this[Strings.getShaderSource].function!(this: this, arguments: [_toJSValue(shader)]).fromJSValue()!
+        return this[Strings.getShaderSource].function!(this: this, arguments: [_toJSValue(shader)]).fromJSValue()
     }
 
     @inlinable func getTexParameter(target: GLenum, pname: GLenum) -> JSValue {
@@ -1171,7 +1171,7 @@ public extension WebGLRenderingContextBase {
 
     @inlinable func getUniformLocation(program: WebGLProgram, name: String) -> WebGLUniformLocation? {
         let this = jsObject
-        return this[Strings.getUniformLocation].function!(this: this, arguments: [_toJSValue(program), _toJSValue(name)]).fromJSValue()!
+        return this[Strings.getUniformLocation].function!(this: this, arguments: [_toJSValue(program), _toJSValue(name)]).fromJSValue()
     }
 
     @inlinable func getVertexAttrib(index: GLuint, pname: GLenum) -> JSValue {

@@ -813,7 +813,7 @@ public extension WebGL2RenderingContextBase {
 
     @inlinable func createQuery() -> WebGLQuery? {
         let this = jsObject
-        return this[Strings.createQuery].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.createQuery].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func deleteQuery(query: WebGLQuery?) {
@@ -838,7 +838,7 @@ public extension WebGL2RenderingContextBase {
 
     @inlinable func getQuery(target: GLenum, pname: GLenum) -> WebGLQuery? {
         let this = jsObject
-        return this[Strings.getQuery].function!(this: this, arguments: [_toJSValue(target), _toJSValue(pname)]).fromJSValue()!
+        return this[Strings.getQuery].function!(this: this, arguments: [_toJSValue(target), _toJSValue(pname)]).fromJSValue()
     }
 
     @inlinable func getQueryParameter(query: WebGLQuery, pname: GLenum) -> JSValue {
@@ -848,7 +848,7 @@ public extension WebGL2RenderingContextBase {
 
     @inlinable func createSampler() -> WebGLSampler? {
         let this = jsObject
-        return this[Strings.createSampler].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.createSampler].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func deleteSampler(sampler: WebGLSampler?) {
@@ -883,7 +883,7 @@ public extension WebGL2RenderingContextBase {
 
     @inlinable func fenceSync(condition: GLenum, flags: GLbitfield) -> WebGLSync? {
         let this = jsObject
-        return this[Strings.fenceSync].function!(this: this, arguments: [_toJSValue(condition), _toJSValue(flags)]).fromJSValue()!
+        return this[Strings.fenceSync].function!(this: this, arguments: [_toJSValue(condition), _toJSValue(flags)]).fromJSValue()
     }
 
     @inlinable func isSync(sync: WebGLSync?) -> GLboolean {
@@ -913,7 +913,7 @@ public extension WebGL2RenderingContextBase {
 
     @inlinable func createTransformFeedback() -> WebGLTransformFeedback? {
         let this = jsObject
-        return this[Strings.createTransformFeedback].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.createTransformFeedback].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func deleteTransformFeedback(tf: WebGLTransformFeedback?) {
@@ -948,7 +948,7 @@ public extension WebGL2RenderingContextBase {
 
     @inlinable func getTransformFeedbackVarying(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
         let this = jsObject
-        return this[Strings.getTransformFeedbackVarying].function!(this: this, arguments: [_toJSValue(program), _toJSValue(index)]).fromJSValue()!
+        return this[Strings.getTransformFeedbackVarying].function!(this: this, arguments: [_toJSValue(program), _toJSValue(index)]).fromJSValue()
     }
 
     @inlinable func pauseTransformFeedback() {
@@ -978,7 +978,7 @@ public extension WebGL2RenderingContextBase {
 
     @inlinable func getUniformIndices(program: WebGLProgram, uniformNames: [String]) -> [GLuint]? {
         let this = jsObject
-        return this[Strings.getUniformIndices].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformNames)]).fromJSValue()!
+        return this[Strings.getUniformIndices].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformNames)]).fromJSValue()
     }
 
     @inlinable func getActiveUniforms(program: WebGLProgram, uniformIndices: [GLuint], pname: GLenum) -> JSValue {
@@ -998,7 +998,7 @@ public extension WebGL2RenderingContextBase {
 
     @inlinable func getActiveUniformBlockName(program: WebGLProgram, uniformBlockIndex: GLuint) -> String? {
         let this = jsObject
-        return this[Strings.getActiveUniformBlockName].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformBlockIndex)]).fromJSValue()!
+        return this[Strings.getActiveUniformBlockName].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformBlockIndex)]).fromJSValue()
     }
 
     @inlinable func uniformBlockBinding(program: WebGLProgram, uniformBlockIndex: GLuint, uniformBlockBinding: GLuint) {
@@ -1008,7 +1008,7 @@ public extension WebGL2RenderingContextBase {
 
     @inlinable func createVertexArray() -> WebGLVertexArrayObject? {
         let this = jsObject
-        return this[Strings.createVertexArray].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.createVertexArray].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable func deleteVertexArray(vertexArray: WebGLVertexArrayObject?) {

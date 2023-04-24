@@ -54,7 +54,7 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
 
                 return """
                 @inlinable public\(raw: ModuleState.static ? " static" : "") var \(name): \(idlType) {
-                    get { jsObject[\(ModuleState.source(for: name))].fromJSValue()! }
+                    get { jsObject[\(ModuleState.source(for: name))]\(idlType.fromJSValue) }
                     \(readonly ? "" : setter)
                 }
                 """
@@ -506,7 +506,8 @@ extension IDLOperation: SwiftRepresentable, Initializable {
     }
 
     private var defaultRepresentation: SwiftSource {
-        var returnType = idlType!.swiftRepresentation
+        guard let idlType else { fatalError() }
+        var returnType = idlType.swiftRepresentation
         if returnType == ModuleState.className {
             returnType = "Self"
         }
@@ -517,10 +518,10 @@ extension IDLOperation: SwiftRepresentable, Initializable {
         let (prep, call) = defaultBody
 
         let body: SwiftSource
-        if idlType?.swiftRepresentation.source == "Void" {
+        if idlType.swiftRepresentation.source == "Void" {
             body = "_ = \(call)"
         } else {
-            body = "return \(call).fromJSValue()!"
+            body = "return \(call)\(idlType.fromJSValue)"
         }
 
         return """
@@ -562,7 +563,7 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
         if returnType.swiftRepresentation.source == "Void" {
             result = "_ = try await _promise.value"
         } else {
-            result = "return try await _promise.value.fromJSValue()!"
+            result = "return try await _promise.value\(returnType.fromJSValue)"
         }
         return """
         @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
@@ -583,14 +584,15 @@ extension SubscriptOperation: SwiftRepresentable, Initializable {
         if keyType == "UInt32" {
             keyType = "Int"
         }
+        let idlType = getter.idlType!
 
-        let getterSource: SwiftSource = "jsObject[key].fromJSValue()\(getter.idlType!.nullable ? "" : "!")"
+        let getterSource: SwiftSource = "jsObject[key]\(idlType.fromJSValue)"
 
         if setter != nil {
             assert(setter!.arguments.count == 2)
             assert(setter!.arguments[0].idlType == getter.arguments[0].idlType)
             return """
-            @inlinable public subscript(key: \(keyType)) -> \(getter.idlType!) {
+            @inlinable public subscript(key: \(keyType)) -> \(idlType) {
                 get {
                     \(getterSource)
                 }
@@ -602,7 +604,7 @@ extension SubscriptOperation: SwiftRepresentable, Initializable {
         }
 
         return """
-        @inlinable public subscript(key: \(keyType)) -> \(getter.idlType!) {
+        @inlinable public subscript(key: \(keyType)) -> \(idlType) {
             \(getterSource)
         }
         """
@@ -643,6 +645,14 @@ extension IDLType: SwiftRepresentable {
             return "\(baseType)?"
         }
         return baseType
+    }
+
+    var fromJSValue: SwiftSource {
+        if nullable {
+            return ".fromJSValue()"
+        } else {
+            return ".fromJSValue()!"
+        }
     }
 
     var baseType: SwiftSource {

@@ -9,247 +9,247 @@ import WebAPIBase
 public protocol ARIAMixin: JSBridgedClass {}
 public extension ARIAMixin {
     @inlinable var role: String? {
-        get { jsObject[Strings.role].fromJSValue()! }
+        get { jsObject[Strings.role].fromJSValue() }
         nonmutating set { jsObject[Strings.role] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaActiveDescendantElement: Element? {
-        get { jsObject[Strings.ariaActiveDescendantElement].fromJSValue()! }
+        get { jsObject[Strings.ariaActiveDescendantElement].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaActiveDescendantElement] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaAtomic: String? {
-        get { jsObject[Strings.ariaAtomic].fromJSValue()! }
+        get { jsObject[Strings.ariaAtomic].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaAtomic] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaAutoComplete: String? {
-        get { jsObject[Strings.ariaAutoComplete].fromJSValue()! }
+        get { jsObject[Strings.ariaAutoComplete].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaAutoComplete] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaBusy: String? {
-        get { jsObject[Strings.ariaBusy].fromJSValue()! }
+        get { jsObject[Strings.ariaBusy].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaBusy] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaChecked: String? {
-        get { jsObject[Strings.ariaChecked].fromJSValue()! }
+        get { jsObject[Strings.ariaChecked].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaChecked] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaColCount: String? {
-        get { jsObject[Strings.ariaColCount].fromJSValue()! }
+        get { jsObject[Strings.ariaColCount].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaColCount] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaColIndex: String? {
-        get { jsObject[Strings.ariaColIndex].fromJSValue()! }
+        get { jsObject[Strings.ariaColIndex].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaColIndex] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaColIndexText: String? {
-        get { jsObject[Strings.ariaColIndexText].fromJSValue()! }
+        get { jsObject[Strings.ariaColIndexText].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaColIndexText] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaColSpan: String? {
-        get { jsObject[Strings.ariaColSpan].fromJSValue()! }
+        get { jsObject[Strings.ariaColSpan].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaColSpan] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaControlsElements: [Element]? {
-        get { jsObject[Strings.ariaControlsElements].fromJSValue()! }
+        get { jsObject[Strings.ariaControlsElements].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaControlsElements] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaCurrent: String? {
-        get { jsObject[Strings.ariaCurrent].fromJSValue()! }
+        get { jsObject[Strings.ariaCurrent].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaCurrent] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaDescribedByElements: [Element]? {
-        get { jsObject[Strings.ariaDescribedByElements].fromJSValue()! }
+        get { jsObject[Strings.ariaDescribedByElements].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaDescribedByElements] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaDescription: String? {
-        get { jsObject[Strings.ariaDescription].fromJSValue()! }
+        get { jsObject[Strings.ariaDescription].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaDescription] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaDetailsElements: [Element]? {
-        get { jsObject[Strings.ariaDetailsElements].fromJSValue()! }
+        get { jsObject[Strings.ariaDetailsElements].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaDetailsElements] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaDisabled: String? {
-        get { jsObject[Strings.ariaDisabled].fromJSValue()! }
+        get { jsObject[Strings.ariaDisabled].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaDisabled] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaErrorMessageElements: [Element]? {
-        get { jsObject[Strings.ariaErrorMessageElements].fromJSValue()! }
+        get { jsObject[Strings.ariaErrorMessageElements].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaErrorMessageElements] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaExpanded: String? {
-        get { jsObject[Strings.ariaExpanded].fromJSValue()! }
+        get { jsObject[Strings.ariaExpanded].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaExpanded] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaFlowToElements: [Element]? {
-        get { jsObject[Strings.ariaFlowToElements].fromJSValue()! }
+        get { jsObject[Strings.ariaFlowToElements].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaFlowToElements] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaHasPopup: String? {
-        get { jsObject[Strings.ariaHasPopup].fromJSValue()! }
+        get { jsObject[Strings.ariaHasPopup].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaHasPopup] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaHidden: String? {
-        get { jsObject[Strings.ariaHidden].fromJSValue()! }
+        get { jsObject[Strings.ariaHidden].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaHidden] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaInvalid: String? {
-        get { jsObject[Strings.ariaInvalid].fromJSValue()! }
+        get { jsObject[Strings.ariaInvalid].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaInvalid] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaKeyShortcuts: String? {
-        get { jsObject[Strings.ariaKeyShortcuts].fromJSValue()! }
+        get { jsObject[Strings.ariaKeyShortcuts].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaKeyShortcuts] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaLabel: String? {
-        get { jsObject[Strings.ariaLabel].fromJSValue()! }
+        get { jsObject[Strings.ariaLabel].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaLabel] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaLabelledByElements: [Element]? {
-        get { jsObject[Strings.ariaLabelledByElements].fromJSValue()! }
+        get { jsObject[Strings.ariaLabelledByElements].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaLabelledByElements] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaLevel: String? {
-        get { jsObject[Strings.ariaLevel].fromJSValue()! }
+        get { jsObject[Strings.ariaLevel].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaLevel] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaLive: String? {
-        get { jsObject[Strings.ariaLive].fromJSValue()! }
+        get { jsObject[Strings.ariaLive].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaLive] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaModal: String? {
-        get { jsObject[Strings.ariaModal].fromJSValue()! }
+        get { jsObject[Strings.ariaModal].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaModal] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaMultiLine: String? {
-        get { jsObject[Strings.ariaMultiLine].fromJSValue()! }
+        get { jsObject[Strings.ariaMultiLine].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaMultiLine] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaMultiSelectable: String? {
-        get { jsObject[Strings.ariaMultiSelectable].fromJSValue()! }
+        get { jsObject[Strings.ariaMultiSelectable].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaMultiSelectable] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaOrientation: String? {
-        get { jsObject[Strings.ariaOrientation].fromJSValue()! }
+        get { jsObject[Strings.ariaOrientation].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaOrientation] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaOwnsElements: [Element]? {
-        get { jsObject[Strings.ariaOwnsElements].fromJSValue()! }
+        get { jsObject[Strings.ariaOwnsElements].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaOwnsElements] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaPlaceholder: String? {
-        get { jsObject[Strings.ariaPlaceholder].fromJSValue()! }
+        get { jsObject[Strings.ariaPlaceholder].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaPlaceholder] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaPosInSet: String? {
-        get { jsObject[Strings.ariaPosInSet].fromJSValue()! }
+        get { jsObject[Strings.ariaPosInSet].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaPosInSet] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaPressed: String? {
-        get { jsObject[Strings.ariaPressed].fromJSValue()! }
+        get { jsObject[Strings.ariaPressed].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaPressed] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaReadOnly: String? {
-        get { jsObject[Strings.ariaReadOnly].fromJSValue()! }
+        get { jsObject[Strings.ariaReadOnly].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaReadOnly] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRequired: String? {
-        get { jsObject[Strings.ariaRequired].fromJSValue()! }
+        get { jsObject[Strings.ariaRequired].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaRequired] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRoleDescription: String? {
-        get { jsObject[Strings.ariaRoleDescription].fromJSValue()! }
+        get { jsObject[Strings.ariaRoleDescription].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaRoleDescription] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRowCount: String? {
-        get { jsObject[Strings.ariaRowCount].fromJSValue()! }
+        get { jsObject[Strings.ariaRowCount].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaRowCount] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRowIndex: String? {
-        get { jsObject[Strings.ariaRowIndex].fromJSValue()! }
+        get { jsObject[Strings.ariaRowIndex].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaRowIndex] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRowIndexText: String? {
-        get { jsObject[Strings.ariaRowIndexText].fromJSValue()! }
+        get { jsObject[Strings.ariaRowIndexText].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaRowIndexText] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaRowSpan: String? {
-        get { jsObject[Strings.ariaRowSpan].fromJSValue()! }
+        get { jsObject[Strings.ariaRowSpan].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaRowSpan] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaSelected: String? {
-        get { jsObject[Strings.ariaSelected].fromJSValue()! }
+        get { jsObject[Strings.ariaSelected].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaSelected] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaSetSize: String? {
-        get { jsObject[Strings.ariaSetSize].fromJSValue()! }
+        get { jsObject[Strings.ariaSetSize].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaSetSize] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaSort: String? {
-        get { jsObject[Strings.ariaSort].fromJSValue()! }
+        get { jsObject[Strings.ariaSort].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaSort] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaValueMax: String? {
-        get { jsObject[Strings.ariaValueMax].fromJSValue()! }
+        get { jsObject[Strings.ariaValueMax].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaValueMax] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaValueMin: String? {
-        get { jsObject[Strings.ariaValueMin].fromJSValue()! }
+        get { jsObject[Strings.ariaValueMin].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaValueMin] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaValueNow: String? {
-        get { jsObject[Strings.ariaValueNow].fromJSValue()! }
+        get { jsObject[Strings.ariaValueNow].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaValueNow] = _toJSValue(newValue) }
     }
 
     @inlinable var ariaValueText: String? {
-        get { jsObject[Strings.ariaValueText].fromJSValue()! }
+        get { jsObject[Strings.ariaValueText].fromJSValue() }
         nonmutating set { jsObject[Strings.ariaValueText] = _toJSValue(newValue) }
     }
 }
@@ -971,7 +971,7 @@ public class AudioTrackList: EventTarget {
 
     @inlinable public func getTrackById(id: String) -> AudioTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()
     }
 
     @ClosureAttribute1Optional
@@ -1158,7 +1158,7 @@ public class BlobPropertyBag: BridgedDictionary {
 
 public protocol Body: JSBridgedClass {}
 public extension Body {
-    @inlinable var body: ReadableStream? { jsObject[Strings.body].fromJSValue()! }
+    @inlinable var body: ReadableStream? { jsObject[Strings.body].fromJSValue() }
 
     @inlinable var bodyUsed: Bool { jsObject[Strings.bodyUsed].fromJSValue()! }
 
@@ -1349,7 +1349,7 @@ public class CSSPseudoElement: EventTarget, GeometryUtils {
 
     @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
         let this = jsObject
-        return this[Strings.pseudo].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
+        return this[Strings.pseudo].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()
     }
 }
 
@@ -1733,7 +1733,7 @@ public extension CanvasFillStrokeStyles {
 
     @inlinable func createPattern(image: CanvasImageSource, repetition: String) -> CanvasPattern? {
         let this = jsObject
-        return this[Strings.createPattern].function!(this: this, arguments: [_toJSValue(image), _toJSValue(repetition)]).fromJSValue()!
+        return this[Strings.createPattern].function!(this: this, arguments: [_toJSValue(image), _toJSValue(repetition)]).fromJSValue()
     }
 }
 
@@ -2345,7 +2345,7 @@ public class CaretPosition: JSBridgedClass {
 
     @inlinable public func getClientRect() -> DOMRect? {
         let this = jsObject
-        return this[Strings.getClientRect].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.getClientRect].function!(this: this, arguments: []).fromJSValue()
     }
 }
 
@@ -3721,7 +3721,7 @@ public class DOMRectList: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> DOMRect? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 }
 
@@ -3800,7 +3800,7 @@ public class DOMStringList: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> String? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public func contains(string: String) -> Bool {
@@ -3852,7 +3852,7 @@ public class DOMTokenList: JSBridgedClass, Sequence {
 
     @inlinable public func item(index: UInt32) -> String? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public func contains(token: String) -> Bool {
@@ -3972,7 +3972,7 @@ public class DataTransferItem: JSBridgedClass {
 
     @inlinable public func getAsFile() -> File? {
         let this = jsObject
-        return this[Strings.getAsFile].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.getAsFile].function!(this: this, arguments: []).fromJSValue()
     }
 }
 
@@ -3995,12 +3995,12 @@ public class DataTransferItemList: JSBridgedClass {
 
     @inlinable public func add(data: String, type: String) -> DataTransferItem? {
         let this = jsObject
-        return this[Strings.add].function!(this: this, arguments: [_toJSValue(data), _toJSValue(type)]).fromJSValue()!
+        return this[Strings.add].function!(this: this, arguments: [_toJSValue(data), _toJSValue(type)]).fromJSValue()
     }
 
     @inlinable public func add(data: File) -> DataTransferItem? {
         let this = jsObject
-        return this[Strings.add].function!(this: this, arguments: [_toJSValue(data)]).fromJSValue()!
+        return this[Strings.add].function!(this: this, arguments: [_toJSValue(data)]).fromJSValue()
     }
 
     @inlinable public func remove(index: UInt32) {
@@ -4264,7 +4264,7 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func open(url: String, name: String, features: String) -> WindowProxy? {
         let this = jsObject
-        return this[Strings.open].function!(this: this, arguments: [_toJSValue(url), _toJSValue(name), _toJSValue(features)]).fromJSValue()!
+        return this[Strings.open].function!(this: this, arguments: [_toJSValue(url), _toJSValue(name), _toJSValue(features)]).fromJSValue()
     }
 
     @inlinable public func close() {
@@ -4376,7 +4376,7 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func elementFromPoint(x: Double, y: Double) -> Element? {
         let this = jsObject
-        return this[Strings.elementFromPoint].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()!
+        return this[Strings.elementFromPoint].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()
     }
 
     @inlinable public func elementsFromPoint(x: Double, y: Double) -> [Element] {
@@ -4386,7 +4386,7 @@ public class Document: Node, NonElementParentNode, DocumentOrShadowRoot, ParentN
 
     @inlinable public func caretPositionFromPoint(x: Double, y: Double) -> CaretPosition? {
         let this = jsObject
-        return this[Strings.caretPositionFromPoint].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()!
+        return this[Strings.caretPositionFromPoint].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y)]).fromJSValue()
     }
 
     @ReadonlyAttribute
@@ -4407,7 +4407,7 @@ open class DocumentFragment: Node, NonElementParentNode, ParentNode {
 
 public protocol DocumentOrShadowRoot: JSBridgedClass {}
 public extension DocumentOrShadowRoot {
-    @inlinable var activeElement: Element? { jsObject[Strings.activeElement].fromJSValue()! }
+    @inlinable var activeElement: Element? { jsObject[Strings.activeElement].fromJSValue() }
 }
 
 public enum DocumentReadyState: JSString, JSValueCompatible {
@@ -4584,12 +4584,12 @@ open class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slott
 
     @inlinable public func getAttribute(qualifiedName: String) -> String? {
         let this = jsObject
-        return this[Strings.getAttribute].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
+        return this[Strings.getAttribute].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()
     }
 
     @inlinable public func getAttributeNS(namespace: String?, localName: String) -> String? {
         let this = jsObject
-        return this[Strings.getAttributeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
+        return this[Strings.getAttributeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()
     }
 
     @inlinable public func setAttribute(qualifiedName: String, value: String) {
@@ -4629,22 +4629,22 @@ open class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slott
 
     @inlinable public func getAttributeNode(qualifiedName: String) -> Attr? {
         let this = jsObject
-        return this[Strings.getAttributeNode].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
+        return this[Strings.getAttributeNode].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()
     }
 
     @inlinable public func getAttributeNodeNS(namespace: String?, localName: String) -> Attr? {
         let this = jsObject
-        return this[Strings.getAttributeNodeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
+        return this[Strings.getAttributeNodeNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()
     }
 
     @inlinable public func setAttributeNode(attr: Attr) -> Attr? {
         let this = jsObject
-        return this[Strings.setAttributeNode].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()!
+        return this[Strings.setAttributeNode].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()
     }
 
     @inlinable public func setAttributeNodeNS(attr: Attr) -> Attr? {
         let this = jsObject
-        return this[Strings.setAttributeNodeNS].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()!
+        return this[Strings.setAttributeNodeNS].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()
     }
 
     @inlinable public func removeAttributeNode(attr: Attr) -> Attr {
@@ -4662,7 +4662,7 @@ open class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slott
 
     @inlinable public func closest(selectors: String) -> Element? {
         let this = jsObject
-        return this[Strings.closest].function!(this: this, arguments: [_toJSValue(selectors)]).fromJSValue()!
+        return this[Strings.closest].function!(this: this, arguments: [_toJSValue(selectors)]).fromJSValue()
     }
 
     @inlinable public func matches(selectors: String) -> Bool {
@@ -4692,7 +4692,7 @@ open class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slott
 
     @inlinable public func insertAdjacentElement(where: String, element: Element) -> Element? {
         let this = jsObject
-        return this[Strings.insertAdjacentElement].function!(this: this, arguments: [_toJSValue(`where`), _toJSValue(element)]).fromJSValue()!
+        return this[Strings.insertAdjacentElement].function!(this: this, arguments: [_toJSValue(`where`), _toJSValue(element)]).fromJSValue()
     }
 
     @inlinable public func insertAdjacentText(where: String, data: String) {
@@ -4702,7 +4702,7 @@ open class Element: Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slott
 
     @inlinable public func pseudo(type: String) -> CSSPseudoElement? {
         let this = jsObject
-        return this[Strings.pseudo].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()!
+        return this[Strings.pseudo].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()
     }
 
     @inlinable public func getClientRects() -> DOMRectList {
@@ -5624,7 +5624,7 @@ public class FileList: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> File? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @ReadonlyAttribute
@@ -5809,7 +5809,7 @@ public class FormData: JSBridgedClass, Sequence {
 
     @inlinable public func get(name: String) -> FormDataEntryValue? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 
     @inlinable public func getAll(name: String) -> [FormDataEntryValue] {
@@ -6352,12 +6352,12 @@ public class HTMLAllCollection: JSBridgedClass {
 
     @inlinable public func namedItem(name: String) -> Element_or_HTMLCollection? {
         let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 
     @inlinable public func item(nameOrIndex: String? = nil) -> Element_or_HTMLCollection? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(nameOrIndex)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(nameOrIndex)]).fromJSValue()
     }
 }
 
@@ -6704,7 +6704,7 @@ public class HTMLCollection: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> Element? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public subscript(key: String) -> Element? {
@@ -6713,7 +6713,7 @@ public class HTMLCollection: JSBridgedClass {
 
     @inlinable public func namedItem(name: String) -> Element? {
         let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 }
 
@@ -6973,7 +6973,7 @@ public class HTMLEmbedElement: HTMLElement {
 
     @inlinable public func getSVGDocument() -> Document? {
         let this = jsObject
-        return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()
     }
 
     @ReadWriteAttribute
@@ -7080,7 +7080,7 @@ public class HTMLFormControlsCollection: HTMLCollection {
     // `override` removed since the superclass returns a more constrained type `Element`
     @inlinable func namedItem(name: String) -> Element_or_RadioNodeList? {
         let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 }
 
@@ -7451,7 +7451,7 @@ public class HTMLIFrameElement: HTMLElement {
 
     @inlinable public func getSVGDocument() -> Document? {
         let this = jsObject
-        return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()
     }
 
     @ReadWriteAttribute
@@ -8448,7 +8448,7 @@ public class HTMLObjectElement: HTMLElement {
 
     @inlinable public func getSVGDocument() -> Document? {
         let this = jsObject
-        return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.getSVGDocument].function!(this: this, arguments: []).fromJSValue()
     }
 
     @ReadonlyAttribute
@@ -8953,12 +8953,12 @@ public class HTMLSelectElement: HTMLElement {
 
     @inlinable public func item(index: UInt32) -> HTMLOptionElement? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public func namedItem(name: String) -> HTMLOptionElement? {
         let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 
     @inlinable public func add(element: HTMLOptGroupElement_or_HTMLOptionElement, before: HTMLElement_or_Int32? = nil) {
@@ -9854,7 +9854,7 @@ public class Headers: JSBridgedClass, Sequence {
 
     @inlinable public func get(name: String) -> String? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 
     @inlinable public func has(name: String) -> Bool {
@@ -11041,7 +11041,7 @@ public class MediaStream: EventTarget {
 
     @inlinable public func getTrackById(trackId: String) -> MediaStreamTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(trackId)]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(trackId)]).fromJSValue()
     }
 
     @inlinable public func addTrack(track: MediaStreamTrack) {
@@ -11757,7 +11757,7 @@ public class MimeTypeArray: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> MimeType? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public subscript(key: String) -> MimeType? {
@@ -11766,7 +11766,7 @@ public class MimeTypeArray: JSBridgedClass {
 
     @inlinable public func namedItem(name: String) -> MimeType? {
         let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 }
 
@@ -12101,7 +12101,7 @@ public class NamedNodeMap: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> Attr? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public subscript(key: String) -> Attr? {
@@ -12110,22 +12110,22 @@ public class NamedNodeMap: JSBridgedClass {
 
     @inlinable public func getNamedItem(qualifiedName: String) -> Attr? {
         let this = jsObject
-        return this[Strings.getNamedItem].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()!
+        return this[Strings.getNamedItem].function!(this: this, arguments: [_toJSValue(qualifiedName)]).fromJSValue()
     }
 
     @inlinable public func getNamedItemNS(namespace: String?, localName: String) -> Attr? {
         let this = jsObject
-        return this[Strings.getNamedItemNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()!
+        return this[Strings.getNamedItemNS].function!(this: this, arguments: [_toJSValue(namespace), _toJSValue(localName)]).fromJSValue()
     }
 
     @inlinable public func setNamedItem(attr: Attr) -> Attr? {
         let this = jsObject
-        return this[Strings.setNamedItem].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()!
+        return this[Strings.setNamedItem].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()
     }
 
     @inlinable public func setNamedItemNS(attr: Attr) -> Attr? {
         let this = jsObject
-        return this[Strings.setNamedItemNS].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()!
+        return this[Strings.setNamedItemNS].function!(this: this, arguments: [_toJSValue(attr)]).fromJSValue()
     }
 
     @inlinable public func removeNamedItem(qualifiedName: String) -> Attr {
@@ -12463,12 +12463,12 @@ open class Node: EventTarget {
 
     @inlinable public func lookupPrefix(namespace: String?) -> String? {
         let this = jsObject
-        return this[Strings.lookupPrefix].function!(this: this, arguments: [_toJSValue(namespace)]).fromJSValue()!
+        return this[Strings.lookupPrefix].function!(this: this, arguments: [_toJSValue(namespace)]).fromJSValue()
     }
 
     @inlinable public func lookupNamespaceURI(prefix: String?) -> String? {
         let this = jsObject
-        return this[Strings.lookupNamespaceURI].function!(this: this, arguments: [_toJSValue(prefix)]).fromJSValue()!
+        return this[Strings.lookupNamespaceURI].function!(this: this, arguments: [_toJSValue(prefix)]).fromJSValue()
     }
 
     @inlinable public func isDefaultNamespace(namespace: String?) -> Bool {
@@ -12526,12 +12526,12 @@ public class NodeIterator: JSBridgedClass {
 
     @inlinable public func nextNode() -> Node? {
         let this = jsObject
-        return this[Strings.nextNode].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.nextNode].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable public func previousNode() -> Node? {
         let this = jsObject
-        return this[Strings.previousNode].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.previousNode].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable public func detach() {
@@ -12556,7 +12556,7 @@ public class NodeList: JSBridgedClass, Sequence {
 
     @inlinable public func item(index: UInt32) -> Node? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @ReadonlyAttribute
@@ -12570,16 +12570,16 @@ public class NodeList: JSBridgedClass, Sequence {
 
 public protocol NonDocumentTypeChildNode: JSBridgedClass {}
 public extension NonDocumentTypeChildNode {
-    @inlinable var previousElementSibling: Element? { jsObject[Strings.previousElementSibling].fromJSValue()! }
+    @inlinable var previousElementSibling: Element? { jsObject[Strings.previousElementSibling].fromJSValue() }
 
-    @inlinable var nextElementSibling: Element? { jsObject[Strings.nextElementSibling].fromJSValue()! }
+    @inlinable var nextElementSibling: Element? { jsObject[Strings.nextElementSibling].fromJSValue() }
 }
 
 public protocol NonElementParentNode: JSBridgedClass {}
 public extension NonElementParentNode {
     @inlinable func getElementById(elementId: String) -> Element? {
         let this = jsObject
-        return this[Strings.getElementById].function!(this: this, arguments: [_toJSValue(elementId)]).fromJSValue()!
+        return this[Strings.getElementById].function!(this: this, arguments: [_toJSValue(elementId)]).fromJSValue()
     }
 }
 
@@ -12701,9 +12701,9 @@ public protocol ParentNode: JSBridgedClass {}
 public extension ParentNode {
     @inlinable var children: HTMLCollection { jsObject[Strings.children].fromJSValue()! }
 
-    @inlinable var firstElementChild: Element? { jsObject[Strings.firstElementChild].fromJSValue()! }
+    @inlinable var firstElementChild: Element? { jsObject[Strings.firstElementChild].fromJSValue() }
 
-    @inlinable var lastElementChild: Element? { jsObject[Strings.lastElementChild].fromJSValue()! }
+    @inlinable var lastElementChild: Element? { jsObject[Strings.lastElementChild].fromJSValue() }
 
     @inlinable var childElementCount: UInt32 { jsObject[Strings.childElementCount].fromJSValue()! }
 
@@ -12724,7 +12724,7 @@ public extension ParentNode {
 
     @inlinable func querySelector(selectors: String) -> Element? {
         let this = jsObject
-        return this[Strings.querySelector].function!(this: this, arguments: [_toJSValue(selectors)]).fromJSValue()!
+        return this[Strings.querySelector].function!(this: this, arguments: [_toJSValue(selectors)]).fromJSValue()
     }
 
     @inlinable func querySelectorAll(selectors: String) -> NodeList {
@@ -12826,7 +12826,7 @@ public class Plugin: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> MimeType? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public subscript(key: String) -> MimeType? {
@@ -12835,7 +12835,7 @@ public class Plugin: JSBridgedClass {
 
     @inlinable public func namedItem(name: String) -> MimeType? {
         let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 }
 
@@ -12863,7 +12863,7 @@ public class PluginArray: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> Plugin? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public subscript(key: String) -> Plugin? {
@@ -12872,7 +12872,7 @@ public class PluginArray: JSBridgedClass {
 
     @inlinable public func namedItem(name: String) -> Plugin? {
         let this = jsObject
-        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 }
 
@@ -14588,7 +14588,7 @@ public enum SlotAssignmentMode: JSString, JSValueCompatible {
 
 public protocol Slottable: JSBridgedClass {}
 public extension Slottable {
-    @inlinable var assignedSlot: HTMLSlotElement? { jsObject[Strings.assignedSlot].fromJSValue()! }
+    @inlinable var assignedSlot: HTMLSlotElement? { jsObject[Strings.assignedSlot].fromJSValue() }
 }
 
 public class SourceBuffer: EventTarget {
@@ -14757,12 +14757,12 @@ public class Storage: JSBridgedClass {
 
     @inlinable public func key(index: UInt32) -> String? {
         let this = jsObject
-        return this[Strings.key].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.key].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public func getItem(key: String) -> String? {
         let this = jsObject
-        return this[Strings.getItem].function!(this: this, arguments: [_toJSValue(key)]).fromJSValue()!
+        return this[Strings.getItem].function!(this: this, arguments: [_toJSValue(key)]).fromJSValue()
     }
 
     @inlinable public subscript(key: String) -> String? {
@@ -15144,7 +15144,7 @@ public class TextTrackCueList: JSBridgedClass {
 
     @inlinable public func getCueById(id: String) -> TextTrackCue? {
         let this = jsObject
-        return this[Strings.getCueById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()!
+        return this[Strings.getCueById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()
     }
 }
 
@@ -15189,7 +15189,7 @@ public class TextTrackList: EventTarget {
 
     @inlinable public func getTrackById(id: String) -> TextTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()
     }
 
     @ClosureAttribute1Optional
@@ -15499,7 +15499,7 @@ public class TouchList: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> Touch? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 }
 
@@ -15665,37 +15665,37 @@ public class TreeWalker: JSBridgedClass {
 
     @inlinable public func parentNode() -> Node? {
         let this = jsObject
-        return this[Strings.parentNode].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.parentNode].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable public func firstChild() -> Node? {
         let this = jsObject
-        return this[Strings.firstChild].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.firstChild].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable public func lastChild() -> Node? {
         let this = jsObject
-        return this[Strings.lastChild].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.lastChild].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable public func previousSibling() -> Node? {
         let this = jsObject
-        return this[Strings.previousSibling].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.previousSibling].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable public func nextSibling() -> Node? {
         let this = jsObject
-        return this[Strings.nextSibling].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.nextSibling].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable public func previousNode() -> Node? {
         let this = jsObject
-        return this[Strings.previousNode].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.previousNode].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable public func nextNode() -> Node? {
         let this = jsObject
-        return this[Strings.nextNode].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.nextNode].function!(this: this, arguments: []).fromJSValue()
     }
 }
 
@@ -16847,7 +16847,7 @@ public class VideoTrackList: EventTarget {
 
     @inlinable public func getTrackById(id: String) -> VideoTrack? {
         let this = jsObject
-        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()!
+        return this[Strings.getTrackById].function!(this: this, arguments: [_toJSValue(id)]).fromJSValue()
     }
 
     @ReadonlyAttribute
@@ -17138,7 +17138,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func open(url: String? = nil, target: String? = nil, features: String? = nil) -> WindowProxy? {
         let this = jsObject
-        return this[Strings.open].function!(this: this, arguments: [_toJSValue(url), _toJSValue(target), _toJSValue(features)]).fromJSValue()!
+        return this[Strings.open].function!(this: this, arguments: [_toJSValue(url), _toJSValue(target), _toJSValue(features)]).fromJSValue()
     }
 
     @inlinable public subscript(key: String) -> JSObject {
@@ -17171,7 +17171,7 @@ public class Window: EventTarget, GlobalEventHandlers, WindowEventHandlers, Wind
 
     @inlinable public func prompt(message: String? = nil, default: String? = nil) -> String? {
         let this = jsObject
-        return this[Strings.prompt].function!(this: this, arguments: [_toJSValue(message), _toJSValue(`default`)]).fromJSValue()!
+        return this[Strings.prompt].function!(this: this, arguments: [_toJSValue(message), _toJSValue(`default`)]).fromJSValue()
     }
 
     @inlinable public func print() {
@@ -17848,7 +17848,7 @@ public class XMLHttpRequest: XMLHttpRequestEventTarget {
 
     @inlinable public func getResponseHeader(name: String) -> String? {
         let this = jsObject
-        return this[Strings.getResponseHeader].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.getResponseHeader].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 
     @inlinable public func getAllResponseHeaders() -> String {
@@ -18037,12 +18037,12 @@ public class XPathResult: JSBridgedClass {
 
     @inlinable public func iterateNext() -> Node? {
         let this = jsObject
-        return this[Strings.iterateNext].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.iterateNext].function!(this: this, arguments: []).fromJSValue()
     }
 
     @inlinable public func snapshotItem(index: UInt32) -> Node? {
         let this = jsObject
-        return this[Strings.snapshotItem].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.snapshotItem].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 }
 

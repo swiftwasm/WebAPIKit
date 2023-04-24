@@ -1,9 +1,9 @@
 --- a/Sources/DOM/Generated.swift
 +++ b/Sources/DOM/Generated.swift
-@@ -1005,8 +1005,15 @@ public class BeforeUnloadEvent: Event {
+@@ -1006,8 +1006,15 @@ public class BeforeUnloadEvent: Event {
          super.init(unsafelyWrapping: jsObject)
      }
- 
+
 +    @available(*, unavailable)
 +    override public var returnValue: Bool {
 +        get { !_returnValue.wrappedValue.isEmpty }
@@ -17,20 +17,20 @@
          get { _returnValue.wrappedValue }
          set { _returnValue.wrappedValue = newValue }
      }
-@@ -7069,7 +7076,8 @@ public class HTMLFormControlsCollection: HTMLCollection {
+@@ -7070,7 +7077,8 @@ public class HTMLFormControlsCollection: HTMLCollection {
          jsObject[key].fromJSValue()
      }
- 
+
 -    @inlinable override public func namedItem(name: String) -> Element_or_RadioNodeList? {
 +    // `override` removed since the superclass returns a more constrained type `Element`
 +    @inlinable func namedItem(name: String) -> Element_or_RadioNodeList? {
          let this = jsObject
-         return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+         return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
      }
-@@ -20376,19 +20384,9 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
+@@ -20369,19 +20377,9 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
          self = val
      }
- 
+
 -    init(_ htmlOrSVGImageElement: HTMLOrSVGImageElement) {
 -        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlOrSVGImageElement)
 -        self = val
@@ -47,12 +47,12 @@
 +        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlImageElement)
 +        self = val
      }
- 
+
      init(_ htmlVideoElement: HTMLVideoElement) {
-@@ -21636,18 +21634,8 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
+@@ -21629,18 +21627,8 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
          self = .init(val)
      }
- 
+
 -    init(_ htmlOrSVGImageElement: HTMLOrSVGImageElement) {
 -        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlOrSVGImageElement)
 -        self = .init(val)
@@ -68,4 +68,4 @@
 +        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlImageElement)
          self = .init(val)
      }
- 
+

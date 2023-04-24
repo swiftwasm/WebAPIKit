@@ -1149,7 +1149,7 @@ public class CSSRuleList: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> CSSRule? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @ReadonlyAttribute
@@ -1595,7 +1595,7 @@ public class CaretPosition: JSBridgedClass {
 
     @inlinable public func getClientRect() -> DOMRect? {
         let this = jsObject
-        return this[Strings.getClientRect].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.getClientRect].function!(this: this, arguments: []).fromJSValue()
     }
 }
 
@@ -1682,7 +1682,7 @@ public extension GeometryUtils {
 
 public protocol LinkStyle: JSBridgedClass {}
 public extension LinkStyle {
-    @inlinable var sheet: CSSStyleSheet? { jsObject[Strings.sheet].fromJSValue()! }
+    @inlinable var sheet: CSSStyleSheet? { jsObject[Strings.sheet].fromJSValue() }
 }
 
 public class MediaList: JSBridgedClass {
@@ -1708,7 +1708,7 @@ public class MediaList: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> String? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @inlinable public func appendMedium(medium: String) {
@@ -2040,7 +2040,7 @@ public class StyleSheetList: JSBridgedClass {
 
     @inlinable public func item(index: UInt32) -> CSSStyleSheet? {
         let this = jsObject
-        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()!
+        return this[Strings.item].function!(this: this, arguments: [_toJSValue(index)]).fromJSValue()
     }
 
     @ReadonlyAttribute

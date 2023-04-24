@@ -175,7 +175,7 @@ public class URLSearchParams: JSBridgedClass, Sequence {
 
     @inlinable public func get(name: String) -> String? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
     }
 
     @inlinable public func getAll(name: String) -> [String] {

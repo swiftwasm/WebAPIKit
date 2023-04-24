@@ -38,6 +38,7 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
         if void {
             closureBody = call
         } else {
+            // XXX: For nullable return types, should not use `!` here
             closureBody = "\(call).fromJSValue()!"
         }
         return """

@@ -28,7 +28,7 @@ public class GPU: JSBridgedClass {
     @inlinable public func requestAdapter(options: GPURequestAdapterOptions? = nil) async throws -> GPUAdapter? {
         let this = jsObject
         let _promise: JSPromise = this[Strings.requestAdapter].function!(this: this, arguments: [_toJSValue(options)]).fromJSValue()!
-        return try await _promise.value.fromJSValue()!
+        return try await _promise.value.fromJSValue()
     }
 
     @inlinable public func getPreferredCanvasFormat() -> GPUTextureFormat {
@@ -1265,7 +1265,7 @@ public class GPUDevice: EventTarget, GPUObjectBase {
     @inlinable public func popErrorScope() async throws -> GPUError? {
         let this = jsObject
         let _promise: JSPromise = this[Strings.popErrorScope].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.value.fromJSValue()!
+        return try await _promise.value.fromJSValue()
     }
 
     @ClosureAttribute1Optional
