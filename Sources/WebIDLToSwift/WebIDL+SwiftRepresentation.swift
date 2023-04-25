@@ -506,7 +506,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
     }
 
     private var defaultRepresentation: SwiftSource {
-        guard let idlType else { fatalError() }
+        guard let idlType = idlType else { fatalError() }
         var returnType = idlType.swiftRepresentation
         if returnType == ModuleState.className {
             returnType = "Self"
