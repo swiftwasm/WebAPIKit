@@ -1,6 +1,6 @@
 --- a/Sources/DOM/Generated.swift
 +++ b/Sources/DOM/Generated.swift
-@@ -1006,8 +1006,15 @@ public class BeforeUnloadEvent: Event {
+@@ -1007,8 +1007,15 @@ public class BeforeUnloadEvent: Event {
          super.init(unsafelyWrapping: jsObject)
      }
 
@@ -17,7 +17,7 @@
          get { _returnValue.wrappedValue }
          set { _returnValue.wrappedValue = newValue }
      }
-@@ -7070,7 +7077,8 @@ public class HTMLFormControlsCollection: HTMLCollection {
+@@ -7095,7 +7102,8 @@ public class HTMLFormControlsCollection: HTMLCollection {
          jsObject[key].fromJSValue()
      }
 
@@ -27,7 +27,26 @@
          let this = jsObject
          return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
      }
-@@ -20369,19 +20377,9 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
+@@ -17153,7 +17161,6 @@ public class VisibilityStateEntry: PerformanceEntry {
+         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
+         _entryType = ReadonlyAttribute(jsObject: jsObject, name: Strings.entryType)
+         _startTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.startTime)
+-        _duration = ReadonlyAttribute(jsObject: jsObject, name: Strings.duration)
+         super.init(unsafelyWrapping: jsObject)
+     }
+
+@@ -17166,8 +17173,8 @@ public class VisibilityStateEntry: PerformanceEntry {
+     @usableFromInline let _startTime: ReadonlyAttribute<DOMHighResTimeStamp>
+     @inlinable override public var startTime: DOMHighResTimeStamp { _startTime.wrappedValue }
+
+-    @usableFromInline let _duration: ReadonlyAttribute<UInt32>
+-    @inlinable override public var duration: UInt32 { _duration.wrappedValue }
++    // XXX: override of property `duration` removed because the type here is UInt32 but the
++    // type in the superclass is DOMHighResTimestamp (Double).
+ }
+
+ public class VisualViewport: EventTarget {
+@@ -20687,19 +20694,9 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
          self = val
      }
 
@@ -49,7 +68,7 @@
      }
 
      init(_ htmlVideoElement: HTMLVideoElement) {
-@@ -21629,18 +21627,8 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
+@@ -21947,18 +21944,8 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
          self = .init(val)
      }
 

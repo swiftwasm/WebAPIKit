@@ -479,6 +479,8 @@ public class CSSImportRule: CSSRule {
         _href = ReadonlyAttribute(jsObject: jsObject, name: Strings.href)
         _media = ReadonlyAttribute(jsObject: jsObject, name: Strings.media)
         _styleSheet = ReadonlyAttribute(jsObject: jsObject, name: Strings.styleSheet)
+        _layerName = ReadonlyAttribute(jsObject: jsObject, name: Strings.layerName)
+        _supportsText = ReadonlyAttribute(jsObject: jsObject, name: Strings.supportsText)
         super.init(unsafelyWrapping: jsObject)
     }
 
@@ -489,7 +491,13 @@ public class CSSImportRule: CSSRule {
     public var media: MediaList
 
     @ReadonlyAttribute
-    public var styleSheet: CSSStyleSheet
+    public var styleSheet: CSSStyleSheet?
+
+    @ReadonlyAttribute
+    public var layerName: String?
+
+    @ReadonlyAttribute
+    public var supportsText: String?
 }
 
 public class CSSKeywordValue: CSSStyleValue {
@@ -1967,9 +1975,10 @@ public class StylePropertyMapReadOnly: JSBridgedClass, Sequence {
         ValueIterableIterator(sequence: self)
     }
 
-    @inlinable public func get(property: String) -> JSValue {
+    // TODO: remove patch once https://github.com/w3c/css-houdini-drafts/issues/1095 is fixed
+    @inlinable public func get(property: String) -> CSSStyleValue? {
         let this = jsObject
-        return this[Strings.get].function!(this: this, arguments: [_toJSValue(property)]).fromJSValue()!
+        return this[Strings.get].function!(this: this, arguments: [_toJSValue(property)]).fromJSValue()
     }
 
     @inlinable public func getAll(property: String) -> [CSSStyleValue] {
@@ -2243,6 +2252,7 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let item: JSString = "item"
     @usableFromInline static let kHz: JSString = "kHz"
     @usableFromInline static let l: JSString = "l"
+    @usableFromInline static let layerName: JSString = "layerName"
     @usableFromInline static let left: JSString = "left"
     @usableFromInline static let length: JSString = "length"
     @usableFromInline static let lh: JSString = "lh"
@@ -2313,6 +2323,7 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let styleSheet: JSString = "styleSheet"
     @usableFromInline static let styleSheets: JSString = "styleSheets"
     @usableFromInline static let sub: JSString = "sub"
+    @usableFromInline static let supportsText: JSString = "supportsText"
     @usableFromInline static let svb: JSString = "svb"
     @usableFromInline static let svh: JSString = "svh"
     @usableFromInline static let svi: JSString = "svi"

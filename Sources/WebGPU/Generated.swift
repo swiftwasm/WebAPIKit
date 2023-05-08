@@ -16,6 +16,7 @@ public class GPU: JSBridgedClass {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
+        _wgslLanguageFeatures = ReadonlyAttribute(jsObject: jsObject, name: Strings.wgslLanguageFeatures)
         self.jsObject = jsObject
     }
 
@@ -35,6 +36,9 @@ public class GPU: JSBridgedClass {
         let this = jsObject
         return this[Strings.getPreferredCanvasFormat].function!(this: this, arguments: []).fromJSValue()!
     }
+
+    @ReadonlyAttribute
+    public var wgslLanguageFeatures: WGSLLanguageFeatures
 }
 
 public class GPUAdapter: JSBridgedClass {
@@ -271,12 +275,12 @@ public class GPUBindGroupLayoutEntry: BridgedDictionary {
 
 public protocol GPUBindingCommandsMixin: JSBridgedClass {}
 public extension GPUBindingCommandsMixin {
-    @inlinable func setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup, dynamicOffsets: [GPUBufferDynamicOffset]? = nil) {
+    @inlinable func setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup?, dynamicOffsets: [GPUBufferDynamicOffset]? = nil) {
         let this = jsObject
         _ = this[Strings.setBindGroup].function!(this: this, arguments: [_toJSValue(index), _toJSValue(bindGroup), _toJSValue(dynamicOffsets)])
     }
 
-    @inlinable func setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup, dynamicOffsetsData: Uint32Array, dynamicOffsetsDataStart: GPUSize64, dynamicOffsetsDataLength: GPUSize32) {
+    @inlinable func setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup?, dynamicOffsetsData: Uint32Array, dynamicOffsetsDataStart: GPUSize64, dynamicOffsetsDataLength: GPUSize32) {
         let this = jsObject
         _ = this[Strings.setBindGroup].function!(this: this, arguments: [_toJSValue(index), _toJSValue(bindGroup), _toJSValue(dynamicOffsetsData), _toJSValue(dynamicOffsetsDataStart), _toJSValue(dynamicOffsetsDataLength)])
     }
@@ -965,37 +969,19 @@ public class GPUComputePassEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMi
     }
 }
 
-public enum GPUComputePassTimestampLocation: JSString, JSValueCompatible {
-    case beginning = "beginning"
-    case end = "end"
-
-    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.jsString {
-            return Self(rawValue: string)
-        }
-        return nil
-    }
-
-    @inlinable public init?(string: String) {
-        self.init(rawValue: JSString(string))
-    }
-
-    @inlinable public var jsValue: JSValue { rawValue.jsValue }
-}
-
-public class GPUComputePassTimestampWrite: BridgedDictionary {
-    public convenience init(querySet: GPUQuerySet, queryIndex: GPUSize32, location: GPUComputePassTimestampLocation) {
+public class GPUComputePassTimestampWrites: BridgedDictionary {
+    public convenience init(querySet: GPUQuerySet, beginningOfPassWriteIndex: GPUSize32, endOfPassWriteIndex: GPUSize32) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.querySet] = _toJSValue(querySet)
-        object[Strings.queryIndex] = _toJSValue(queryIndex)
-        object[Strings.location] = _toJSValue(location)
+        object[Strings.beginningOfPassWriteIndex] = _toJSValue(beginningOfPassWriteIndex)
+        object[Strings.endOfPassWriteIndex] = _toJSValue(endOfPassWriteIndex)
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
         _querySet = ReadWriteAttribute(jsObject: object, name: Strings.querySet)
-        _queryIndex = ReadWriteAttribute(jsObject: object, name: Strings.queryIndex)
-        _location = ReadWriteAttribute(jsObject: object, name: Strings.location)
+        _beginningOfPassWriteIndex = ReadWriteAttribute(jsObject: object, name: Strings.beginningOfPassWriteIndex)
+        _endOfPassWriteIndex = ReadWriteAttribute(jsObject: object, name: Strings.endOfPassWriteIndex)
         super.init(unsafelyWrapping: object)
     }
 
@@ -1003,10 +989,10 @@ public class GPUComputePassTimestampWrite: BridgedDictionary {
     public var querySet: GPUQuerySet
 
     @ReadWriteAttribute
-    public var queryIndex: GPUSize32
+    public var beginningOfPassWriteIndex: GPUSize32
 
     @ReadWriteAttribute
-    public var location: GPUComputePassTimestampLocation
+    public var endOfPassWriteIndex: GPUSize32
 }
 
 public class GPUComputePipeline: JSBridgedClass, GPUObjectBase, GPUPipelineBase {
@@ -1310,13 +1296,14 @@ public class GPUDeviceLostInfo: JSBridgedClass {
     }
 
     @ReadonlyAttribute
-    public var reason: GPUDeviceLostReason?
+    public var reason: GPUDeviceLostReason
 
     @ReadonlyAttribute
     public var message: String
 }
 
 public enum GPUDeviceLostReason: JSString, JSValueCompatible {
+    case unknown = "unknown"
     case destroyed = "destroyed"
 
     @inlinable public static func construct(from jsValue: JSValue) -> Self? {
@@ -1398,12 +1385,8 @@ public class GPUExternalTexture: JSBridgedClass, GPUObjectBase {
     public let jsObject: JSObject
 
     public required init(unsafelyWrapping jsObject: JSObject) {
-        _expired = ReadonlyAttribute(jsObject: jsObject, name: Strings.expired)
         self.jsObject = jsObject
     }
-
-    @ReadonlyAttribute
-    public var expired: Bool
 }
 
 public class GPUExternalTextureBindingLayout: BridgedDictionary {
@@ -1419,7 +1402,7 @@ public class GPUExternalTextureBindingLayout: BridgedDictionary {
 }
 
 public class GPUExternalTextureDescriptor: BridgedDictionary {
-    public convenience init(source: HTMLVideoElement, colorSpace: PredefinedColorSpace) {
+    public convenience init(source: HTMLVideoElement_or_VideoFrame, colorSpace: PredefinedColorSpace) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.source] = _toJSValue(source)
         object[Strings.colorSpace] = _toJSValue(colorSpace)
@@ -1433,7 +1416,7 @@ public class GPUExternalTextureDescriptor: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var source: HTMLVideoElement
+    public var source: HTMLVideoElement_or_VideoFrame
 
     @ReadWriteAttribute
     public var colorSpace: PredefinedColorSpace
@@ -1449,6 +1432,8 @@ public enum GPUFeatureName: JSString, JSValueCompatible {
     case indirectFirstInstance = "indirect-first-instance"
     case shaderF16 = "shader-f16"
     case rg11b10ufloatRenderable = "rg11b10ufloat-renderable"
+    case bgra8unormStorage = "bgra8unorm-storage"
+    case float32Filterable = "float32-filterable"
 
     @inlinable public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString {
@@ -1853,7 +1838,7 @@ public class GPUPipelineError: DOMException {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(message: String, options: GPUPipelineErrorInit) {
+    @inlinable public convenience init(message: String?, options: GPUPipelineErrorInit) {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(message), _toJSValue(options)]))
     }
 
@@ -2208,7 +2193,7 @@ public extension GPURenderCommandsMixin {
         _ = this[Strings.setIndexBuffer].function!(this: this, arguments: [_toJSValue(buffer), _toJSValue(indexFormat), _toJSValue(offset), _toJSValue(size)])
     }
 
-    @inlinable func setVertexBuffer(slot: GPUIndex32, buffer: GPUBuffer, offset: GPUSize64? = nil, size: GPUSize64? = nil) {
+    @inlinable func setVertexBuffer(slot: GPUIndex32, buffer: GPUBuffer?, offset: GPUSize64? = nil, size: GPUSize64? = nil) {
         let this = jsObject
         _ = this[Strings.setVertexBuffer].function!(this: this, arguments: [_toJSValue(slot), _toJSValue(buffer), _toJSValue(offset), _toJSValue(size)])
     }
@@ -2438,37 +2423,19 @@ public class GPURenderPassLayout: BridgedDictionary {
     public var sampleCount: GPUSize32
 }
 
-public enum GPURenderPassTimestampLocation: JSString, JSValueCompatible {
-    case beginning = "beginning"
-    case end = "end"
-
-    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.jsString {
-            return Self(rawValue: string)
-        }
-        return nil
-    }
-
-    @inlinable public init?(string: String) {
-        self.init(rawValue: JSString(string))
-    }
-
-    @inlinable public var jsValue: JSValue { rawValue.jsValue }
-}
-
-public class GPURenderPassTimestampWrite: BridgedDictionary {
-    public convenience init(querySet: GPUQuerySet, queryIndex: GPUSize32, location: GPURenderPassTimestampLocation) {
+public class GPURenderPassTimestampWrites: BridgedDictionary {
+    public convenience init(querySet: GPUQuerySet, beginningOfPassWriteIndex: GPUSize32, endOfPassWriteIndex: GPUSize32) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.querySet] = _toJSValue(querySet)
-        object[Strings.queryIndex] = _toJSValue(queryIndex)
-        object[Strings.location] = _toJSValue(location)
+        object[Strings.beginningOfPassWriteIndex] = _toJSValue(beginningOfPassWriteIndex)
+        object[Strings.endOfPassWriteIndex] = _toJSValue(endOfPassWriteIndex)
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) {
         _querySet = ReadWriteAttribute(jsObject: object, name: Strings.querySet)
-        _queryIndex = ReadWriteAttribute(jsObject: object, name: Strings.queryIndex)
-        _location = ReadWriteAttribute(jsObject: object, name: Strings.location)
+        _beginningOfPassWriteIndex = ReadWriteAttribute(jsObject: object, name: Strings.beginningOfPassWriteIndex)
+        _endOfPassWriteIndex = ReadWriteAttribute(jsObject: object, name: Strings.endOfPassWriteIndex)
         super.init(unsafelyWrapping: object)
     }
 
@@ -2476,10 +2443,10 @@ public class GPURenderPassTimestampWrite: BridgedDictionary {
     public var querySet: GPUQuerySet
 
     @ReadWriteAttribute
-    public var queryIndex: GPUSize32
+    public var beginningOfPassWriteIndex: GPUSize32
 
     @ReadWriteAttribute
-    public var location: GPURenderPassTimestampLocation
+    public var endOfPassWriteIndex: GPUSize32
 }
 
 public class GPURenderPipeline: JSBridgedClass, GPUObjectBase, GPUPipelineBase {
@@ -2664,15 +2631,15 @@ public class GPUShaderModule: JSBridgedClass, GPUObjectBase {
         self.jsObject = jsObject
     }
 
-    @inlinable public func compilationInfo() -> JSPromise {
+    @inlinable public func getCompilationInfo() -> JSPromise {
         let this = jsObject
-        return this[Strings.compilationInfo].function!(this: this, arguments: []).fromJSValue()!
+        return this[Strings.getCompilationInfo].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func compilationInfo() async throws -> GPUCompilationInfo {
+    @inlinable public func getCompilationInfo() async throws -> GPUCompilationInfo {
         let this = jsObject
-        let _promise: JSPromise = this[Strings.compilationInfo].function!(this: this, arguments: []).fromJSValue()!
+        let _promise: JSPromise = this[Strings.getCompilationInfo].function!(this: this, arguments: []).fromJSValue()!
         return try await _promise.value.fromJSValue()!
     }
 }
@@ -2870,6 +2837,7 @@ public class GPUSupportedLimits: JSBridgedClass {
         _maxTextureDimension3D = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxTextureDimension3D)
         _maxTextureArrayLayers = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxTextureArrayLayers)
         _maxBindGroups = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxBindGroups)
+        _maxBindGroupsPlusVertexBuffers = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxBindGroupsPlusVertexBuffers)
         _maxBindingsPerBindGroup = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxBindingsPerBindGroup)
         _maxDynamicUniformBuffersPerPipelineLayout = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxDynamicUniformBuffersPerPipelineLayout)
         _maxDynamicStorageBuffersPerPipelineLayout = ReadonlyAttribute(jsObject: jsObject, name: Strings.maxDynamicStorageBuffersPerPipelineLayout)
@@ -2913,6 +2881,9 @@ public class GPUSupportedLimits: JSBridgedClass {
 
     @ReadonlyAttribute
     public var maxBindGroups: UInt32
+
+    @ReadonlyAttribute
+    public var maxBindGroupsPlusVertexBuffers: UInt32
 
     @ReadonlyAttribute
     public var maxBindingsPerBindGroup: UInt32
@@ -3568,8 +3539,6 @@ public typealias GPUShaderStageFlags = UInt32
 
 public typealias GPUPipelineConstantValue = Double
 public typealias GPUColorWriteFlags = UInt32
-public typealias GPUComputePassTimestampWrites = [GPUComputePassTimestampWrite]
-public typealias GPURenderPassTimestampWrites = [GPURenderPassTimestampWrite]
 public typealias GPUBufferDynamicOffset = UInt32
 public typealias GPUStencilValue = UInt32
 public typealias GPUSampleMask = UInt32
@@ -3580,6 +3549,18 @@ public typealias GPUIndex32 = UInt32
 public typealias GPUSize32 = UInt32
 public typealias GPUSignedOffset32 = Int32
 public typealias GPUFlagsConstant = UInt32
+
+public class WGSLLanguageFeatures: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.WGSLLanguageFeatures].function }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        self.jsObject = jsObject
+    }
+
+    // XXX: make me Set-like!
+}
 
 @usableFromInline enum Strings {
     @usableFromInline static let _self: JSString = "self"
@@ -3624,6 +3605,7 @@ public typealias GPUFlagsConstant = UInt32
     @usableFromInline static let GPUUncapturedErrorEvent: JSString = "GPUUncapturedErrorEvent"
     @usableFromInline static let GPUValidationError: JSString = "GPUValidationError"
     @usableFromInline static let Object: JSString = "Object"
+    @usableFromInline static let WGSLLanguageFeatures: JSString = "WGSLLanguageFeatures"
     @usableFromInline static let a: JSString = "a"
     @usableFromInline static let access: JSString = "access"
     @usableFromInline static let addressModeU: JSString = "addressModeU"
@@ -3643,6 +3625,7 @@ public typealias GPUFlagsConstant = UInt32
     @usableFromInline static let beginComputePass: JSString = "beginComputePass"
     @usableFromInline static let beginOcclusionQuery: JSString = "beginOcclusionQuery"
     @usableFromInline static let beginRenderPass: JSString = "beginRenderPass"
+    @usableFromInline static let beginningOfPassWriteIndex: JSString = "beginningOfPassWriteIndex"
     @usableFromInline static let bindGroupLayouts: JSString = "bindGroupLayouts"
     @usableFromInline static let binding: JSString = "binding"
     @usableFromInline static let blend: JSString = "blend"
@@ -3658,7 +3641,6 @@ public typealias GPUFlagsConstant = UInt32
     @usableFromInline static let colorFormats: JSString = "colorFormats"
     @usableFromInline static let colorSpace: JSString = "colorSpace"
     @usableFromInline static let compare: JSString = "compare"
-    @usableFromInline static let compilationInfo: JSString = "compilationInfo"
     @usableFromInline static let compute: JSString = "compute"
     @usableFromInline static let configure: JSString = "configure"
     @usableFromInline static let constants: JSString = "constants"
@@ -3712,11 +3694,11 @@ public typealias GPUFlagsConstant = UInt32
     @usableFromInline static let dstFactor: JSString = "dstFactor"
     @usableFromInline static let end: JSString = "end"
     @usableFromInline static let endOcclusionQuery: JSString = "endOcclusionQuery"
+    @usableFromInline static let endOfPassWriteIndex: JSString = "endOfPassWriteIndex"
     @usableFromInline static let entries: JSString = "entries"
     @usableFromInline static let entryPoint: JSString = "entryPoint"
     @usableFromInline static let error: JSString = "error"
     @usableFromInline static let executeBundles: JSString = "executeBundles"
-    @usableFromInline static let expired: JSString = "expired"
     @usableFromInline static let externalTexture: JSString = "externalTexture"
     @usableFromInline static let failOp: JSString = "failOp"
     @usableFromInline static let features: JSString = "features"
@@ -3728,6 +3710,7 @@ public typealias GPUFlagsConstant = UInt32
     @usableFromInline static let frontFace: JSString = "frontFace"
     @usableFromInline static let g: JSString = "g"
     @usableFromInline static let getBindGroupLayout: JSString = "getBindGroupLayout"
+    @usableFromInline static let getCompilationInfo: JSString = "getCompilationInfo"
     @usableFromInline static let getCurrentTexture: JSString = "getCurrentTexture"
     @usableFromInline static let getMappedRange: JSString = "getMappedRange"
     @usableFromInline static let getPreferredCanvasFormat: JSString = "getPreferredCanvasFormat"
@@ -3745,7 +3728,6 @@ public typealias GPUFlagsConstant = UInt32
     @usableFromInline static let lineNum: JSString = "lineNum"
     @usableFromInline static let linePos: JSString = "linePos"
     @usableFromInline static let loadOp: JSString = "loadOp"
-    @usableFromInline static let location: JSString = "location"
     @usableFromInline static let lodMaxClamp: JSString = "lodMaxClamp"
     @usableFromInline static let lodMinClamp: JSString = "lodMinClamp"
     @usableFromInline static let lost: JSString = "lost"
@@ -3756,6 +3738,7 @@ public typealias GPUFlagsConstant = UInt32
     @usableFromInline static let mask: JSString = "mask"
     @usableFromInline static let maxAnisotropy: JSString = "maxAnisotropy"
     @usableFromInline static let maxBindGroups: JSString = "maxBindGroups"
+    @usableFromInline static let maxBindGroupsPlusVertexBuffers: JSString = "maxBindGroupsPlusVertexBuffers"
     @usableFromInline static let maxBindingsPerBindGroup: JSString = "maxBindingsPerBindGroup"
     @usableFromInline static let maxBufferSize: JSString = "maxBufferSize"
     @usableFromInline static let maxColorAttachmentBytesPerSample: JSString = "maxColorAttachmentBytesPerSample"
@@ -3811,7 +3794,6 @@ public typealias GPUFlagsConstant = UInt32
     @usableFromInline static let primitive: JSString = "primitive"
     @usableFromInline static let pushDebugGroup: JSString = "pushDebugGroup"
     @usableFromInline static let pushErrorScope: JSString = "pushErrorScope"
-    @usableFromInline static let queryIndex: JSString = "queryIndex"
     @usableFromInline static let querySet: JSString = "querySet"
     @usableFromInline static let queue: JSString = "queue"
     @usableFromInline static let r: JSString = "r"
@@ -3870,6 +3852,7 @@ public typealias GPUFlagsConstant = UInt32
     @usableFromInline static let viewDimension: JSString = "viewDimension"
     @usableFromInline static let viewFormats: JSString = "viewFormats"
     @usableFromInline static let visibility: JSString = "visibility"
+    @usableFromInline static let wgslLanguageFeatures: JSString = "wgslLanguageFeatures"
     @usableFromInline static let width: JSString = "width"
     @usableFromInline static let writeBuffer: JSString = "writeBuffer"
     @usableFromInline static let writeMask: JSString = "writeMask"
@@ -4368,6 +4351,58 @@ public enum HTMLCanvasElement_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCan
             return htmlCanvasElement.jsValue
         case let .offscreenCanvas(offscreenCanvas):
             return offscreenCanvas.jsValue
+        }
+    }
+}
+
+public protocol Any_HTMLVideoElement_or_VideoFrame: ConvertibleToJSValue {}
+extension HTMLVideoElement: Any_HTMLVideoElement_or_VideoFrame {}
+extension VideoFrame: Any_HTMLVideoElement_or_VideoFrame {}
+
+public enum HTMLVideoElement_or_VideoFrame: JSValueCompatible, Any_HTMLVideoElement_or_VideoFrame {
+    case htmlVideoElement(HTMLVideoElement)
+    case videoFrame(VideoFrame)
+
+    init(_ htmlVideoElement: HTMLVideoElement) {
+        let val: HTMLVideoElement_or_VideoFrame = .htmlVideoElement(htmlVideoElement)
+        self = val
+    }
+
+    init(_ videoFrame: VideoFrame) {
+        let val: HTMLVideoElement_or_VideoFrame = .videoFrame(videoFrame)
+        self = val
+    }
+
+    public var htmlVideoElement: HTMLVideoElement? {
+        switch self {
+        case let .htmlVideoElement(htmlVideoElement): return htmlVideoElement
+        default: return nil
+        }
+    }
+
+    public var videoFrame: VideoFrame? {
+        switch self {
+        case let .videoFrame(videoFrame): return videoFrame
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let htmlVideoElement: HTMLVideoElement = value.fromJSValue() {
+            return .htmlVideoElement(htmlVideoElement)
+        }
+        if let videoFrame: VideoFrame = value.fromJSValue() {
+            return .videoFrame(videoFrame)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .htmlVideoElement(htmlVideoElement):
+            return htmlVideoElement.jsValue
+        case let .videoFrame(videoFrame):
+            return videoFrame.jsValue
         }
     }
 }

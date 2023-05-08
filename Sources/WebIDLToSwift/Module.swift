@@ -39,6 +39,7 @@ let domModule = Module(
         "service-workers",
         "touch-events",
         "media-source",
+        "performance-timeline",
     ],
     dependencies: ["WebAPIBase"]
 )
