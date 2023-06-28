@@ -297,11 +297,6 @@ public class AbortSignal: EventTarget {
         return this[Strings.timeout].function!(this: this, arguments: [_toJSValue(milliseconds)]).fromJSValue()!
     }
 
-    @inlinable public class func any(signals: [AbortSignal]) -> Self {
-        let this = constructor!
-        return this[Strings.any].function!(this: this, arguments: [_toJSValue(signals)]).fromJSValue()!
-    }
-
     @ReadonlyAttribute
     public var aborted: Bool
 
@@ -6948,9 +6943,9 @@ public class HTMLElement: Element, GlobalEventHandlers, ElementContentEditable, 
         _ = this[Strings.hidePopover].function!(this: this, arguments: [])
     }
 
-    @inlinable public func togglePopover(force: Bool? = nil) -> Bool {
+    @inlinable public func togglePopover(force: Bool? = nil) {
         let this = jsObject
-        return this[Strings.togglePopover].function!(this: this, arguments: [_toJSValue(force)]).fromJSValue()!
+        _ = this[Strings.togglePopover].function!(this: this, arguments: [_toJSValue(force)])
     }
 
     @ReadWriteAttribute
@@ -13498,11 +13493,6 @@ public class ReadableStream: JSBridgedClass, AsyncSequence {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(underlyingSource), _toJSValue(strategy)]))
     }
 
-    @inlinable public class func from(asyncIterable: JSValue) -> Self {
-        let this = constructor!
-        return this[Strings.from].function!(this: this, arguments: [_toJSValue(asyncIterable)]).fromJSValue()!
-    }
-
     @ReadonlyAttribute
     public var locked: Bool
 
@@ -16868,7 +16858,7 @@ public class VideoFrame: JSBridgedClass {
 }
 
 public class VideoFrameBufferInit: BridgedDictionary {
-    public convenience init(format: VideoPixelFormat, codedWidth: UInt32, codedHeight: UInt32, timestamp: Int64, duration: UInt64, layout: [PlaneLayout], visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32, colorSpace: VideoColorSpaceInit, transfer: [ArrayBuffer]) {
+    public convenience init(format: VideoPixelFormat, codedWidth: UInt32, codedHeight: UInt32, timestamp: Int64, duration: UInt64, layout: [PlaneLayout], visibleRect: DOMRectInit, displayWidth: UInt32, displayHeight: UInt32, colorSpace: VideoColorSpaceInit) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.format] = _toJSValue(format)
         object[Strings.codedWidth] = _toJSValue(codedWidth)
@@ -16880,7 +16870,6 @@ public class VideoFrameBufferInit: BridgedDictionary {
         object[Strings.displayWidth] = _toJSValue(displayWidth)
         object[Strings.displayHeight] = _toJSValue(displayHeight)
         object[Strings.colorSpace] = _toJSValue(colorSpace)
-        object[Strings.transfer] = _toJSValue(transfer)
         self.init(unsafelyWrapping: object)
     }
 
@@ -16895,7 +16884,6 @@ public class VideoFrameBufferInit: BridgedDictionary {
         _displayWidth = ReadWriteAttribute(jsObject: object, name: Strings.displayWidth)
         _displayHeight = ReadWriteAttribute(jsObject: object, name: Strings.displayHeight)
         _colorSpace = ReadWriteAttribute(jsObject: object, name: Strings.colorSpace)
-        _transfer = ReadWriteAttribute(jsObject: object, name: Strings.transfer)
         super.init(unsafelyWrapping: object)
     }
 
@@ -16928,9 +16916,6 @@ public class VideoFrameBufferInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var colorSpace: VideoColorSpaceInit
-
-    @ReadWriteAttribute
-    public var transfer: [ArrayBuffer]
 }
 
 public class VideoFrameCopyToOptions: BridgedDictionary {
@@ -18718,7 +18703,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let ancestorOrigins: JSString = "ancestorOrigins"
     @usableFromInline static let anchors: JSString = "anchors"
     @usableFromInline static let animated: JSString = "animated"
-    @usableFromInline static let any: JSString = "any"
     @usableFromInline static let appCodeName: JSString = "appCodeName"
     @usableFromInline static let appName: JSString = "appName"
     @usableFromInline static let appVersion: JSString = "appVersion"
@@ -19152,7 +19136,6 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let frameRate: JSString = "frameRate"
     @usableFromInline static let framerate: JSString = "framerate"
     @usableFromInline static let frames: JSString = "frames"
-    @usableFromInline static let from: JSString = "from"
     @usableFromInline static let fromBox: JSString = "fromBox"
     @usableFromInline static let fromFloat32Array: JSString = "fromFloat32Array"
     @usableFromInline static let fromFloat64Array: JSString = "fromFloat64Array"
