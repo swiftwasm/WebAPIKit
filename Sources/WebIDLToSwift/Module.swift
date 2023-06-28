@@ -91,4 +91,9 @@ let modules = [
         idlModules: ["SVG", "css-masking", "svg-animations"],
         dependencies: ["DOM", "WebAPIBase"]
     ),
+    Module(
+        swiftModule: "FileSystem",
+        idlModules: ["fs", "file-system-access"],
+        dependencies: ["DOM", "WebAPIBase"]
+    ),
 ]

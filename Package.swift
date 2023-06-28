@@ -55,6 +55,10 @@ let package = Package(
             name: "SVG",
             targets: ["SVG"]
         ),
+        .library(
+            name: "FileSystem",
+            targets: ["FileSystem"]
+        ),
         .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
     dependencies: [
@@ -110,6 +114,10 @@ let package = Package(
         ),
         .target(
             name: "SVG",
+            dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
+        ),
+        .target(
+            name: "FileSystem",
             dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
         ),
         // This support library should be moved to JavaScriptKit
