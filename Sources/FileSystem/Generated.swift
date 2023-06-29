@@ -194,17 +194,9 @@ public class FileSystemFileHandle: FileSystemHandle {
         return try await _promise.value.fromJSValue()!
     }
 
-    @inlinable public func createSyncAccessHandle() -> JSPromise {
-        let this = jsObject
-        return this[Strings.createSyncAccessHandle].function!(this: this, arguments: []).fromJSValue()!
-    }
+    // XXX: member 'createSyncAccessHandle' is ignored
 
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @inlinable public func createSyncAccessHandle() async throws -> FileSystemSyncAccessHandle {
-        let this = jsObject
-        let _promise: JSPromise = this[Strings.createSyncAccessHandle].function!(this: this, arguments: []).fromJSValue()!
-        return try await _promise.value.fromJSValue()!
-    }
+    // XXX: member 'createSyncAccessHandle' is ignored
 }
 
 public class FileSystemGetDirectoryOptions: BridgedDictionary {
@@ -556,7 +548,6 @@ public class WriteParams: BridgedDictionary {
     @usableFromInline static let accept: JSString = "accept"
     @usableFromInline static let at: JSString = "at"
     @usableFromInline static let create: JSString = "create"
-    @usableFromInline static let createSyncAccessHandle: JSString = "createSyncAccessHandle"
     @usableFromInline static let createWritable: JSString = "createWritable"
     @usableFromInline static let data: JSString = "data"
     @usableFromInline static let description: JSString = "description"

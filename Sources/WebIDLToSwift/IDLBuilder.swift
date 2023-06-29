@@ -67,6 +67,8 @@ enum IDLBuilder {
                 // manually implemented
                 "HTMLCanvasElement": ["getContext"],
                 "OffscreenCanvas": ["getContext"],
+                // [Exposed] is unsupported, manually disable affected symbols:
+                "FileSystemFileHandle": ["createSyncAccessHandle"],
             ],
             types: merged.types
         )
