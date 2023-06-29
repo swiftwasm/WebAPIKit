@@ -152,7 +152,7 @@ func runWebGLDemo() {
         0.0, 0.0,
         0.0, 0.5,
         0.7, 0.0,
-      ]).buffer
+      ]).buffer as! ArrayBuffer
     ),
     usage: WebGL2RenderingContext.STATIC_DRAW
   )
