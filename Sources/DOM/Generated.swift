@@ -18032,8 +18032,8 @@ public class WorkletOptions: BridgedDictionary {
     public var credentials: RequestCredentials
 }
 
-public class WritableStream: JSBridgedClass {
-    @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.WritableStream].function }
+open class WritableStream: JSBridgedClass {
+    @inlinable open class var constructor: JSFunction? { JSObject.global[Strings.WritableStream].function }
 
     public let jsObject: JSObject
 

@@ -233,6 +233,7 @@ extension MergedInterface: SwiftRepresentable {
             "ShadowRoot",
             "Worklet",
             "WebGLObject",
+            "WritableStream",
         ]
         let access: SwiftSource = openClasses.contains(name) ? "open" : "public"
 
