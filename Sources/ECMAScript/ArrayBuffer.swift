@@ -33,14 +33,63 @@ public class ArrayBuffer: JSBridgedClass {
     }
 }
 
+public class SharedArrayBuffer: JSBridgedClass {
+    public class var constructor: JSFunction? { JSObject.global.SharedArrayBuffer.function }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        self.jsObject = jsObject
+    }
+
+    public convenience init(length: Int) {
+        self.init(unsafelyWrapping: Self.constructor!.new(length))
+    }
+
+    public convenience init(length: Int, maxByteLength: Int) {
+        self.init(unsafelyWrapping: Self.constructor!.new(length, ["maxByteLength": maxByteLength]))
+    }
+
+    public var byteLength: Int {
+        Int(jsObject.byteLength.number!)
+    }
+
+    public var growable: Bool {
+        jsObject.growable.boolean!
+    }
+
+    public var maxByteLength: Int {
+        Int(jsObject.maxByteLength.number!)
+    }
+
+    public func grow(newLength: Int) {
+        _ = jsObject.grow!(newLength)
+    }
+
+    public func slice(begin: Int) -> SharedArrayBuffer {
+        jsObject.slice!(begin).fromJSValue()!
+    }
+    public func slice(begin: Int, end: Int) -> SharedArrayBuffer {
+        jsObject.slice!(begin, end).fromJSValue()!
+    }
+}
+
+public protocol ArrayBuffer_or_SharedArrayBuffer: JSValueCompatible {}
+extension ArrayBuffer: ArrayBuffer_or_SharedArrayBuffer {}
+extension SharedArrayBuffer: ArrayBuffer_or_SharedArrayBuffer {}
+
 public extension JSTypedArray {
     convenience init(_ arrayBuffer: ArrayBuffer) {
         self.init(unsafelyWrapping: Self.constructor!.new(arrayBuffer))
     }
 
+    convenience init(_ sharedArrayBuffer: SharedArrayBuffer) {
+        self.init(unsafelyWrapping: Self.constructor!.new(sharedArrayBuffer))
+    }
+
     @inlinable
-    var buffer: ArrayBuffer {
-        ArrayBuffer(unsafelyWrapping: jsObject.buffer.object!)
+    var buffer: ArrayBuffer_or_SharedArrayBuffer {
+        (ArrayBuffer(from: jsObject.buffer) ?? SharedArrayBuffer(from: jsObject.buffer))!
     }
 }
 
@@ -50,6 +99,12 @@ public extension JSTypedArray {
     public extension Data {
         init(_ arrayBuffer: ArrayBuffer) {
             self = JSTypedArray<UInt8>(arrayBuffer).withUnsafeBytes {
+                Data(buffer: $0)
+            }
+        }
+
+        init(_ sharedArrayBuffer: SharedArrayBuffer) {
+            self = JSTypedArray<UInt8>(sharedArrayBuffer).withUnsafeBytes {
                 Data(buffer: $0)
             }
         }
