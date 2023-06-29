@@ -31,7 +31,7 @@ final class WebAPIKitTests: XCTestCase {
         let array: [UInt8] = [1, 2, 3, 4, 5]
         let typedArray = JSTypedArray(array)
 
-        let data = Data(typedArray.buffer)
+        let data = Data(typedArray.arrayBuffer)
 
         typedArray.withUnsafeBytes {
             XCTAssertEqual($0.count, data.count)
