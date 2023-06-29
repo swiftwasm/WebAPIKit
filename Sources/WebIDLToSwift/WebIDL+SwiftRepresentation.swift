@@ -783,3 +783,12 @@ extension IDLValue: SwiftRepresentable {
         }
     }
 }
+
+extension Extension: SwiftRepresentable {
+    var swiftRepresentation: SwiftSource {
+         """
+         extension \(conformer): \(raw: protocols.joined(separator: ", ")) {}
+         \n
+         """
+    }
+}

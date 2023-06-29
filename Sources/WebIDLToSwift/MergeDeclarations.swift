@@ -114,8 +114,9 @@ enum DeclarationMerger {
             }
         }
 
-        let includes = Dictionary(grouping: allNodes(ofType: IDLIncludes.self)) { $0.target }
+        var includes = Dictionary(grouping: allNodes(ofType: IDLIncludes.self)) { $0.target }
             .mapValues { $0.map(\.includes).filter { !Self.ignoredParents.contains($0) } }
+            .filter { !$0.value.isEmpty }
 
         let mergedInterfaces = Dictionary(
             grouping: allNodes(ofType: IDLInterface.self).map {
@@ -145,7 +146,7 @@ enum DeclarationMerger {
                 partialResult.exposedToAll = partialResult.exposedToAll || interface.exposedToAll
                 partialResult.global = partialResult.global || interface.global
             }
-            interface.mixins = includes[interface.name, default: []]
+            interface.mixins = includes.removeValue(forKey: interface.name) ?? []
             if let decl = interface.members.first(where: { $0 is IDLIterableDeclaration }) as? IDLIterableDeclaration {
                 interface.mixins.append(decl.async ? "AsyncSequence" : "Sequence")
             }
@@ -214,6 +215,7 @@ enum DeclarationMerger {
                 + Array(mergedDictionaries.values)
                 + Array(mixins.values)
                 + Array(mergedNamespaces.values)
+                + Array(includes.map(Extension.init))
         return MergeResult(
             declarations: arrays
                 + [Typedefs(typedefs: allTypes)]
@@ -297,6 +299,14 @@ struct MergedInterface: DeclarationFile {
     var exposedToAll: Bool
     var global: Bool
 }
+
+struct Extension: DeclarationFile {
+    // sort next to declaration of protocol, hopefully
+    var name: String { protocols.joined(separator: ", ") }
+    let conformer: String
+    var protocols: [String]
+}
+
 
 struct Typedefs: DeclarationFile, SwiftRepresentable {
     let name = "Typedefs"

@@ -439,6 +439,10 @@ public extension NavigatorStorage {
     @inlinable var storage: StorageManager { jsObject[Strings.storage].fromJSValue()! }
 }
 
+extension WorkerNavigator: NavigatorStorage {}
+
+extension Navigator: NavigatorStorage {}
+
 public class OpenFilePickerOptions: BridgedDictionary {
     public convenience init(multiple: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()

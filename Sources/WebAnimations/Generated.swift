@@ -20,6 +20,8 @@ public extension Animatable {
     }
 }
 
+extension Element: Animatable {}
+
 public class Animation: EventTarget {
     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.Animation].function }
 

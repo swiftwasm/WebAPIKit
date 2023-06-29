@@ -3532,6 +3532,10 @@ public extension NavigatorGPU {
     @inlinable var gpu: GPU { jsObject[Strings.gpu].fromJSValue()! }
 }
 
+extension Navigator: NavigatorGPU {}
+
+extension WorkerNavigator: NavigatorGPU {}
+
 public typealias GPUBufferUsageFlags = UInt32
 public typealias GPUMapModeFlags = UInt32
 public typealias GPUTextureUsageFlags = UInt32

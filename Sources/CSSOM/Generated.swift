@@ -1665,6 +1665,10 @@ public extension ElementCSSInlineStyle {
     @inlinable var attributeStyleMap: StylePropertyMap { jsObject[Strings.attributeStyleMap].fromJSValue()! }
 }
 
+extension SVGElement: ElementCSSInlineStyle {}
+
+extension MathMLElement: ElementCSSInlineStyle {}
+
 public protocol GeometryUtils: JSBridgedClass {}
 public extension GeometryUtils {
     @inlinable func getBoxQuads(options: BoxQuadOptions? = nil) -> [DOMQuad] {
@@ -1687,6 +1691,10 @@ public extension GeometryUtils {
         return this[Strings.convertPointFromNode].function!(this: this, arguments: [_toJSValue(point), _toJSValue(from), _toJSValue(options)]).fromJSValue()!
     }
 }
+
+extension Text: GeometryUtils {}
+
+extension CSSPseudoElement: GeometryUtils {}
 
 public protocol LinkStyle: JSBridgedClass {}
 public extension LinkStyle {
