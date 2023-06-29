@@ -74,10 +74,6 @@ public class SharedArrayBuffer: JSBridgedClass {
     }
 }
 
-public protocol ArrayBuffer_or_SharedArrayBuffer: JSValueCompatible {}
-extension ArrayBuffer: ArrayBuffer_or_SharedArrayBuffer {}
-extension SharedArrayBuffer: ArrayBuffer_or_SharedArrayBuffer {}
-
 public extension JSTypedArray {
     convenience init(_ arrayBuffer: ArrayBuffer) {
         self.init(unsafelyWrapping: Self.constructor!.new(arrayBuffer))
@@ -87,9 +83,15 @@ public extension JSTypedArray {
         self.init(unsafelyWrapping: Self.constructor!.new(sharedArrayBuffer))
     }
 
+    // Exactly one of these two properties will be non-nil.
     @inlinable
-    var buffer: ArrayBuffer_or_SharedArrayBuffer {
-        (ArrayBuffer(from: jsObject.buffer) ?? SharedArrayBuffer(from: jsObject.buffer))!
+    var arrayBuffer: ArrayBuffer! {
+        ArrayBuffer(from: jsObject.buffer)
+    }
+
+    @inlinable
+    var sharedArrayBuffer: SharedArrayBuffer! {
+        SharedArrayBuffer(from: jsObject.buffer)
     }
 }
 
