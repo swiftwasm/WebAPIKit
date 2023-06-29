@@ -94,7 +94,7 @@ let modules = [
     ),
     Module(
         swiftModule: "FileSystem",
-        idlModules: ["fs", "file-system-access"],
+        idlModules: ["fs", "storage", "file-system-access"],
         dependencies: ["DOM", "WebAPIBase"]
     ),
 ]

@@ -434,6 +434,11 @@ public class FileSystemWritableFileStream: WritableStream {
     }
 }
 
+public protocol NavigatorStorage: JSBridgedClass {}
+public extension NavigatorStorage {
+    @inlinable var storage: StorageManager { jsObject[Strings.storage].fromJSValue()! }
+}
+
 public class OpenFilePickerOptions: BridgedDictionary {
     public convenience init(multiple: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -464,6 +469,85 @@ public class SaveFilePickerOptions: BridgedDictionary {
 
     @ReadWriteAttribute
     public var suggestedName: String?
+}
+
+public class StorageEstimate: BridgedDictionary {
+    public convenience init(usage: UInt64, quota: UInt64) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.usage] = _toJSValue(usage)
+        object[Strings.quota] = _toJSValue(quota)
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _usage = ReadWriteAttribute(jsObject: object, name: Strings.usage)
+        _quota = ReadWriteAttribute(jsObject: object, name: Strings.quota)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var usage: UInt64
+
+    @ReadWriteAttribute
+    public var quota: UInt64
+}
+
+public class StorageManager: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.StorageManager].function }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        self.jsObject = jsObject
+    }
+
+    @inlinable public func getDirectory() -> JSPromise {
+        let this = jsObject
+        return this[Strings.getDirectory].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func getDirectory() async throws -> FileSystemDirectoryHandle {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.getDirectory].function!(this: this, arguments: []).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
+
+    @inlinable public func persisted() -> JSPromise {
+        let this = jsObject
+        return this[Strings.persisted].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func persisted() async throws -> Bool {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.persisted].function!(this: this, arguments: []).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
+
+    @inlinable public func persist() -> JSPromise {
+        let this = jsObject
+        return this[Strings.persist].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func persist() async throws -> Bool {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.persist].function!(this: this, arguments: []).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
+
+    @inlinable public func estimate() -> JSPromise {
+        let this = jsObject
+        return this[Strings.estimate].function!(this: this, arguments: []).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func estimate() async throws -> StorageEstimate {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.estimate].function!(this: this, arguments: []).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
 }
 
 public enum WellKnownDirectory: JSString, JSValueCompatible {
@@ -545,13 +629,16 @@ public class WriteParams: BridgedDictionary {
     @usableFromInline static let FileSystemHandle: JSString = "FileSystemHandle"
     @usableFromInline static let FileSystemWritableFileStream: JSString = "FileSystemWritableFileStream"
     @usableFromInline static let Object: JSString = "Object"
+    @usableFromInline static let StorageManager: JSString = "StorageManager"
     @usableFromInline static let accept: JSString = "accept"
     @usableFromInline static let at: JSString = "at"
     @usableFromInline static let create: JSString = "create"
     @usableFromInline static let createWritable: JSString = "createWritable"
     @usableFromInline static let data: JSString = "data"
     @usableFromInline static let description: JSString = "description"
+    @usableFromInline static let estimate: JSString = "estimate"
     @usableFromInline static let excludeAcceptAllOption: JSString = "excludeAcceptAllOption"
+    @usableFromInline static let getDirectory: JSString = "getDirectory"
     @usableFromInline static let getDirectoryHandle: JSString = "getDirectoryHandle"
     @usableFromInline static let getFile: JSString = "getFile"
     @usableFromInline static let getFileHandle: JSString = "getFileHandle"
@@ -563,8 +650,11 @@ public class WriteParams: BridgedDictionary {
     @usableFromInline static let mode: JSString = "mode"
     @usableFromInline static let multiple: JSString = "multiple"
     @usableFromInline static let name: JSString = "name"
+    @usableFromInline static let persist: JSString = "persist"
+    @usableFromInline static let persisted: JSString = "persisted"
     @usableFromInline static let position: JSString = "position"
     @usableFromInline static let queryPermission: JSString = "queryPermission"
+    @usableFromInline static let quota: JSString = "quota"
     @usableFromInline static let recursive: JSString = "recursive"
     @usableFromInline static let removeEntry: JSString = "removeEntry"
     @usableFromInline static let requestPermission: JSString = "requestPermission"
@@ -572,11 +662,13 @@ public class WriteParams: BridgedDictionary {
     @usableFromInline static let seek: JSString = "seek"
     @usableFromInline static let size: JSString = "size"
     @usableFromInline static let startIn: JSString = "startIn"
+    @usableFromInline static let storage: JSString = "storage"
     @usableFromInline static let suggestedName: JSString = "suggestedName"
     @usableFromInline static let toString: JSString = "toString"
     @usableFromInline static let truncate: JSString = "truncate"
     @usableFromInline static let type: JSString = "type"
     @usableFromInline static let types: JSString = "types"
+    @usableFromInline static let usage: JSString = "usage"
     @usableFromInline static let write: JSString = "write"
 }
 
