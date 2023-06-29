@@ -12284,6 +12284,7 @@ public class Navigator: JSBridgedClass, NavigatorID, NavigatorLanguage, Navigato
         _userActivation = ReadonlyAttribute(jsObject: jsObject, name: Strings.userActivation)
         _mediaDevices = ReadonlyAttribute(jsObject: jsObject, name: Strings.mediaDevices)
         _serviceWorker = ReadonlyAttribute(jsObject: jsObject, name: Strings.serviceWorker)
+        _permissions = ReadonlyAttribute(jsObject: jsObject, name: Strings.permissions)
         self.jsObject = jsObject
     }
 
@@ -12300,6 +12301,9 @@ public class Navigator: JSBridgedClass, NavigatorID, NavigatorLanguage, Navigato
 
     @ReadonlyAttribute
     public var serviceWorker: ServiceWorkerContainer
+
+    @ReadonlyAttribute
+    public var permissions: Permissions
 }
 
 public protocol NavigatorConcurrentHardware: JSBridgedClass {}
@@ -12975,6 +12979,104 @@ public class PerformanceObserverInit: BridgedDictionary {
 
     @ReadWriteAttribute
     public var buffered: Bool
+}
+
+public class PermissionDescriptor: BridgedDictionary {
+    public convenience init(name: String) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.name] = _toJSValue(name)
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _name = ReadWriteAttribute(jsObject: object, name: Strings.name)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var name: String
+}
+
+public class PermissionSetParameters: BridgedDictionary {
+    public convenience init(descriptor: PermissionDescriptor, state: PermissionState) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.descriptor] = _toJSValue(descriptor)
+        object[Strings.state] = _toJSValue(state)
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) {
+        _descriptor = ReadWriteAttribute(jsObject: object, name: Strings.descriptor)
+        _state = ReadWriteAttribute(jsObject: object, name: Strings.state)
+        super.init(unsafelyWrapping: object)
+    }
+
+    @ReadWriteAttribute
+    public var descriptor: PermissionDescriptor
+
+    @ReadWriteAttribute
+    public var state: PermissionState
+}
+
+public enum PermissionState: JSString, JSValueCompatible {
+    case granted = "granted"
+    case denied = "denied"
+    case prompt = "prompt"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString {
+            return Self(rawValue: string)
+        }
+        return nil
+    }
+
+    @inlinable public init?(string: String) {
+        self.init(rawValue: JSString(string))
+    }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
+
+public class PermissionStatus: EventTarget {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.PermissionStatus].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        _state = ReadonlyAttribute(jsObject: jsObject, name: Strings.state)
+        _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
+        _onchange = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onchange)
+        super.init(unsafelyWrapping: jsObject)
+    }
+
+    @ReadonlyAttribute
+    public var state: PermissionState
+
+    @ReadonlyAttribute
+    public var name: String
+
+    @ClosureAttribute1Optional
+    public var onchange: EventHandler
+}
+
+public class Permissions: JSBridgedClass {
+    @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.Permissions].function }
+
+    public let jsObject: JSObject
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        self.jsObject = jsObject
+    }
+
+    @inlinable public func query(permissionDesc: JSObject) -> JSPromise {
+        let this = jsObject
+        return this[Strings.query].function!(this: this, arguments: [_toJSValue(permissionDesc)]).fromJSValue()!
+    }
+
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @inlinable public func query(permissionDesc: JSObject) async throws -> PermissionStatus {
+        let this = jsObject
+        let _promise: JSPromise = this[Strings.query].function!(this: this, arguments: [_toJSValue(permissionDesc)]).fromJSValue()!
+        return try await _promise.value.fromJSValue()!
+    }
 }
 
 public class PlaneLayout: BridgedDictionary {
@@ -18599,6 +18701,8 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let PerformanceEntry: JSString = "PerformanceEntry"
     @usableFromInline static let PerformanceObserver: JSString = "PerformanceObserver"
     @usableFromInline static let PerformanceObserverEntryList: JSString = "PerformanceObserverEntryList"
+    @usableFromInline static let PermissionStatus: JSString = "PermissionStatus"
+    @usableFromInline static let Permissions: JSString = "Permissions"
     @usableFromInline static let Plugin: JSString = "Plugin"
     @usableFromInline static let PluginArray: JSString = "PluginArray"
     @usableFromInline static let PopStateEvent: JSString = "PopStateEvent"
@@ -19030,6 +19134,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let deltaY: JSString = "deltaY"
     @usableFromInline static let deltaZ: JSString = "deltaZ"
     @usableFromInline static let description: JSString = "description"
+    @usableFromInline static let descriptor: JSString = "descriptor"
     @usableFromInline static let designMode: JSString = "designMode"
     @usableFromInline static let desiredHeight: JSString = "desiredHeight"
     @usableFromInline static let desiredSize: JSString = "desiredSize"
@@ -19636,6 +19741,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let paused: JSString = "paused"
     @usableFromInline static let pdfViewerEnabled: JSString = "pdfViewerEnabled"
     @usableFromInline static let performance: JSString = "performance"
+    @usableFromInline static let permissions: JSString = "permissions"
     @usableFromInline static let persisted: JSString = "persisted"
     @usableFromInline static let personalbar: JSString = "personalbar"
     @usableFromInline static let ping: JSString = "ping"
@@ -19694,6 +19800,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let putImageData: JSString = "putImageData"
     @usableFromInline static let quadraticCurveTo: JSString = "quadraticCurveTo"
     @usableFromInline static let quality: JSString = "quality"
+    @usableFromInline static let query: JSString = "query"
     @usableFromInline static let queryCommandEnabled: JSString = "queryCommandEnabled"
     @usableFromInline static let queryCommandIndeterm: JSString = "queryCommandIndeterm"
     @usableFromInline static let queryCommandState: JSString = "queryCommandState"
