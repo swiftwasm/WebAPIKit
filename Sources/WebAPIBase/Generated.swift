@@ -175,9 +175,9 @@ public class URLSearchParams: JSBridgedClass, Sequence {
         _ = this[Strings.append].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)])
     }
 
-    @inlinable public func delete(name: String) {
+    @inlinable public func delete(name: String, value: String? = nil) {
         let this = jsObject
-        _ = this[Strings.delete].function!(this: this, arguments: [_toJSValue(name)])
+        _ = this[Strings.delete].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)])
     }
 
     @inlinable public func get(name: String) -> String? {
@@ -190,9 +190,9 @@ public class URLSearchParams: JSBridgedClass, Sequence {
         return this[Strings.getAll].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
     }
 
-    @inlinable public func has(name: String) -> Bool {
+    @inlinable public func has(name: String, value: String? = nil) -> Bool {
         let this = jsObject
-        return this[Strings.has].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()!
+        return this[Strings.has].function!(this: this, arguments: [_toJSValue(name), _toJSValue(value)]).fromJSValue()!
     }
 
     @inlinable public func set(name: String, value: String) {
@@ -367,6 +367,77 @@ public enum console {
     @usableFromInline static let trace: JSString = "trace"
     @usableFromInline static let username: JSString = "username"
     @usableFromInline static let warn: JSString = "warn"
+}
+
+public protocol Any_AllowSharedBufferSource: ConvertibleToJSValue {}
+extension ArrayBuffer: Any_AllowSharedBufferSource {}
+extension ArrayBufferView: Any_AllowSharedBufferSource {}
+extension SharedArrayBuffer: Any_AllowSharedBufferSource {}
+
+public enum AllowSharedBufferSource: JSValueCompatible, Any_AllowSharedBufferSource {
+    case arrayBuffer(ArrayBuffer)
+    case arrayBufferView(ArrayBufferView)
+    case sharedArrayBuffer(SharedArrayBuffer)
+
+    init(_ arrayBuffer: ArrayBuffer) {
+        let val: AllowSharedBufferSource = .arrayBuffer(arrayBuffer)
+        self = val
+    }
+
+    init(_ arrayBufferView: ArrayBufferView) {
+        let val: AllowSharedBufferSource = .arrayBufferView(arrayBufferView)
+        self = val
+    }
+
+    init(_ sharedArrayBuffer: SharedArrayBuffer) {
+        let val: AllowSharedBufferSource = .sharedArrayBuffer(sharedArrayBuffer)
+        self = val
+    }
+
+    public var arrayBuffer: ArrayBuffer? {
+        switch self {
+        case let .arrayBuffer(arrayBuffer): return arrayBuffer
+        default: return nil
+        }
+    }
+
+    public var arrayBufferView: ArrayBufferView? {
+        switch self {
+        case let .arrayBufferView(arrayBufferView): return arrayBufferView
+        default: return nil
+        }
+    }
+
+    public var sharedArrayBuffer: SharedArrayBuffer? {
+        switch self {
+        case let .sharedArrayBuffer(sharedArrayBuffer): return sharedArrayBuffer
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let arrayBuffer: ArrayBuffer = value.fromJSValue() {
+            return .arrayBuffer(arrayBuffer)
+        }
+        if let arrayBufferView: ArrayBufferView = value.fromJSValue() {
+            return .arrayBufferView(arrayBufferView)
+        }
+        if let sharedArrayBuffer: SharedArrayBuffer = value.fromJSValue() {
+            return .sharedArrayBuffer(sharedArrayBuffer)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .arrayBuffer(arrayBuffer):
+            return arrayBuffer.jsValue
+        case let .arrayBufferView(arrayBufferView):
+            return arrayBufferView.jsValue
+        case let .sharedArrayBuffer(sharedArrayBuffer):
+            return sharedArrayBuffer.jsValue
+        }
+    }
 }
 
 public protocol Any_BufferSource: ConvertibleToJSValue {}
