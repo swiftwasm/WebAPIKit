@@ -19,10 +19,12 @@ public class ArrayBuffer: JSBridgedClass {
 
     public let jsObject: JSObject
 
+    @inlinable
     public required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 
+    @inlinable
     public convenience init(length: Int) {
         self.init(unsafelyWrapping: Self.constructor!.new(length))
     }
@@ -38,37 +40,46 @@ public class SharedArrayBuffer: JSBridgedClass {
 
     public let jsObject: JSObject
 
+    @inlinable
     public required init(unsafelyWrapping jsObject: JSObject) {
         self.jsObject = jsObject
     }
 
+    @inlinable
     public convenience init(length: Int) {
         self.init(unsafelyWrapping: Self.constructor!.new(length))
     }
 
+    @inlinable
     public convenience init(length: Int, maxByteLength: Int) {
         self.init(unsafelyWrapping: Self.constructor!.new(length, ["maxByteLength": maxByteLength]))
     }
 
+    @inlinable
     public var byteLength: Int {
         Int(jsObject.byteLength.number!)
     }
 
+    @inlinable
     public var growable: Bool {
         jsObject.growable.boolean!
     }
 
+    @inlinable
     public var maxByteLength: Int {
         Int(jsObject.maxByteLength.number!)
     }
 
+    @inlinable
     public func grow(newLength: Int) {
         _ = jsObject.grow!(newLength)
     }
 
+    @inlinable
     public func slice(begin: Int) -> SharedArrayBuffer {
         jsObject.slice!(begin).fromJSValue()!
     }
+    @inlinable
     public func slice(begin: Int, end: Int) -> SharedArrayBuffer {
         jsObject.slice!(begin, end).fromJSValue()!
     }
