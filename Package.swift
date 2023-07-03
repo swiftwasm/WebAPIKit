@@ -110,7 +110,7 @@ let package = Package(
         ),
         .target(
             name: "CSSOM",
-            dependencies: ["DOM", "WebAPIBase", "ECMAScript"]
+            dependencies: ["DOM", "WebAPIBase", "SVG", "ECMAScript"]
         ),
         .target(
             name: "SVG",

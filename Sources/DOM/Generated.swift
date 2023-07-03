@@ -10643,6 +10643,14 @@ public class Location: JSBridgedClass {
     public var ancestorOrigins: DOMStringList
 }
 
+public class MathMLElement: Element, GlobalEventHandlers, HTMLOrSVGElement {
+    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.MathMLElement].function }
+
+    public required init(unsafelyWrapping jsObject: JSObject) {
+        super.init(unsafelyWrapping: jsObject)
+    }
+}
+
 public class MediaDeviceInfo: JSBridgedClass {
     @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.MediaDeviceInfo].function }
 
@@ -18665,6 +18673,7 @@ public class XSLTProcessor: JSBridgedClass {
     @usableFromInline static let IsSearchProviderInstalled: JSString = "IsSearchProviderInstalled"
     @usableFromInline static let KeyboardEvent: JSString = "KeyboardEvent"
     @usableFromInline static let Location: JSString = "Location"
+    @usableFromInline static let MathMLElement: JSString = "MathMLElement"
     @usableFromInline static let MediaDeviceInfo: JSString = "MediaDeviceInfo"
     @usableFromInline static let MediaDevices: JSString = "MediaDevices"
     @usableFromInline static let MediaError: JSString = "MediaError"

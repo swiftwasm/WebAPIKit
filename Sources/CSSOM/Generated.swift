@@ -4,6 +4,7 @@ import DOM
 import ECMAScript
 import JavaScriptEventLoop
 import JavaScriptKit
+import SVG
 import WebAPIBase
 
 public class BoxQuadOptions: BridgedDictionary {
@@ -1665,9 +1666,9 @@ public extension ElementCSSInlineStyle {
     @inlinable var attributeStyleMap: StylePropertyMap { jsObject[Strings.attributeStyleMap].fromJSValue()! }
 }
 
-extension SVGElement: ElementCSSInlineStyle {}
-
 extension MathMLElement: ElementCSSInlineStyle {}
+
+extension SVGElement: ElementCSSInlineStyle {}
 
 public protocol GeometryUtils: JSBridgedClass {}
 public extension GeometryUtils {
@@ -1692,9 +1693,9 @@ public extension GeometryUtils {
     }
 }
 
-extension Text: GeometryUtils {}
-
 extension CSSPseudoElement: GeometryUtils {}
+
+extension Text: GeometryUtils {}
 
 public protocol LinkStyle: JSBridgedClass {}
 public extension LinkStyle {

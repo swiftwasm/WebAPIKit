@@ -41,6 +41,7 @@ let domModule = Module(
         "media-source",
         "performance-timeline",
         "permissions",
+        "mathml-core",
     ],
     dependencies: ["WebAPIBase"]
 )
@@ -85,7 +86,7 @@ let modules = [
     Module(
         swiftModule: "CSSOM",
         idlModules: ["cssom", "cssom-view", "css-typed-om"],
-        dependencies: ["DOM", "WebAPIBase"]
+        dependencies: ["DOM", "WebAPIBase", "SVG"]
     ),
     Module(
         swiftModule: "SVG",
