@@ -439,8 +439,6 @@ public extension NavigatorStorage {
     @inlinable var storage: StorageManager { jsObject[Strings.storage].fromJSValue()! }
 }
 
-extension WorkerNavigator: NavigatorStorage {}
-
 extension Navigator: NavigatorStorage {}
 
 public class OpenFilePickerOptions: BridgedDictionary {

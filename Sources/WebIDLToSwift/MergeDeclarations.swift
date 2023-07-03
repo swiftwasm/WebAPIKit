@@ -11,6 +11,7 @@ enum DeclarationMerger {
         // but as a pointer it can't be represented as floating point number either.
         "GLintptr",
     ]
+    static let ignoredIncludeTargets: Set<String> = ["WorkerNavigator"]
     static let validExposures: Set<String> = ["Window"]
 
     static let ignoredParents: Set<String> = ["LinkStyle"]
@@ -117,6 +118,7 @@ enum DeclarationMerger {
         var includes = Dictionary(grouping: allNodes(ofType: IDLIncludes.self)) { $0.target }
             .mapValues { $0.map(\.includes).filter { !Self.ignoredParents.contains($0) } }
             .filter { !$0.value.isEmpty }
+            .filter { !ignoredIncludeTargets.contains($0.key) }
 
         let mergedInterfaces = Dictionary(
             grouping: allNodes(ofType: IDLInterface.self).map {
