@@ -304,7 +304,7 @@ struct MergedInterface: DeclarationFile {
 
 struct Extension: DeclarationFile {
     // sort next to declaration of protocol, hopefully
-    var name: String { protocols.joined(separator: ", ") }
+    var name: String { "\(protocols.joined(separator: ", ")) - \(conformer)" }
     let conformer: String
     var protocols: [String]
 }
