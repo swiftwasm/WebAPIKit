@@ -2095,12 +2095,12 @@ public class GPUQueue: JSBridgedClass, GPUObjectBase {
         _ = try await _promise.value
     }
 
-    @inlinable public func writeBuffer(buffer: GPUBuffer, bufferOffset: GPUSize64, data: BufferSource, dataOffset: GPUSize64? = nil, size: GPUSize64? = nil) {
+    @inlinable public func writeBuffer(buffer: GPUBuffer, bufferOffset: GPUSize64, data: AllowSharedBufferSource, dataOffset: GPUSize64? = nil, size: GPUSize64? = nil) {
         let this = jsObject
         _ = this[Strings.writeBuffer].function!(this: this, arguments: [_toJSValue(buffer), _toJSValue(bufferOffset), _toJSValue(data), _toJSValue(dataOffset), _toJSValue(size)])
     }
 
-    @inlinable public func writeTexture(destination: GPUImageCopyTexture, data: BufferSource, dataLayout: GPUImageDataLayout, size: GPUExtent3D) {
+    @inlinable public func writeTexture(destination: GPUImageCopyTexture, data: AllowSharedBufferSource, dataLayout: GPUImageDataLayout, size: GPUExtent3D) {
         let this = jsObject
         _ = this[Strings.writeTexture].function!(this: this, arguments: [_toJSValue(destination), _toJSValue(data), _toJSValue(dataLayout), _toJSValue(size)])
     }

@@ -147,7 +147,7 @@ func runWebGLDemo() {
   context.bindBuffer(target: WebGL2RenderingContext.ARRAY_BUFFER, buffer: positionBuffer)
   context.bufferData(
     target: WebGL2RenderingContext.ARRAY_BUFFER,
-    srcData: BufferSource.arrayBuffer(
+    srcData: .arrayBuffer(
       Float32Array([
         0.0, 0.0,
         0.0, 0.5,

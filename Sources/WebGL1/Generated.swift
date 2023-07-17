@@ -1412,12 +1412,12 @@ public extension WebGLRenderingContextOverloads {
         _ = this[Strings.bufferData].function!(this: this, arguments: [_toJSValue(target), _toJSValue(size), _toJSValue(usage)])
     }
 
-    @inlinable func bufferData(target: GLenum, data: BufferSource?, usage: GLenum) {
+    @inlinable func bufferData(target: GLenum, data: AllowSharedBufferSource?, usage: GLenum) {
         let this = jsObject
         _ = this[Strings.bufferData].function!(this: this, arguments: [_toJSValue(target), _toJSValue(data), _toJSValue(usage)])
     }
 
-    @inlinable func bufferSubData(target: GLenum, offset: GLintptr, data: BufferSource) {
+    @inlinable func bufferSubData(target: GLenum, offset: GLintptr, data: AllowSharedBufferSource) {
         let this = jsObject
         _ = this[Strings.bufferSubData].function!(this: this, arguments: [_toJSValue(target), _toJSValue(offset), _toJSValue(data)])
     }
