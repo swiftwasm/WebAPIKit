@@ -40,6 +40,8 @@ let domModule = Module(
         "touch-events",
         "media-source",
         "performance-timeline",
+        "permissions",
+        "mathml-core",
     ],
     dependencies: ["WebAPIBase"]
 )
@@ -84,11 +86,16 @@ let modules = [
     Module(
         swiftModule: "CSSOM",
         idlModules: ["cssom", "cssom-view", "css-typed-om"],
-        dependencies: ["DOM", "WebAPIBase"]
+        dependencies: ["DOM", "WebAPIBase", "SVG"]
     ),
     Module(
         swiftModule: "SVG",
         idlModules: ["SVG", "css-masking", "svg-animations"],
+        dependencies: ["DOM", "WebAPIBase"]
+    ),
+    Module(
+        swiftModule: "FileSystem",
+        idlModules: ["fs", "storage", "file-system-access"],
         dependencies: ["DOM", "WebAPIBase"]
     ),
 ]

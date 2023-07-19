@@ -4,6 +4,7 @@ import DOM
 import ECMAScript
 import JavaScriptEventLoop
 import JavaScriptKit
+import SVG
 import WebAPIBase
 
 public class BoxQuadOptions: BridgedDictionary {
@@ -1665,6 +1666,10 @@ public extension ElementCSSInlineStyle {
     @inlinable var attributeStyleMap: StylePropertyMap { jsObject[Strings.attributeStyleMap].fromJSValue()! }
 }
 
+extension MathMLElement: ElementCSSInlineStyle {}
+
+extension SVGElement: ElementCSSInlineStyle {}
+
 public protocol GeometryUtils: JSBridgedClass {}
 public extension GeometryUtils {
     @inlinable func getBoxQuads(options: BoxQuadOptions? = nil) -> [DOMQuad] {
@@ -1687,6 +1692,10 @@ public extension GeometryUtils {
         return this[Strings.convertPointFromNode].function!(this: this, arguments: [_toJSValue(point), _toJSValue(from), _toJSValue(options)]).fromJSValue()!
     }
 }
+
+extension CSSPseudoElement: GeometryUtils {}
+
+extension Text: GeometryUtils {}
 
 public protocol LinkStyle: JSBridgedClass {}
 public extension LinkStyle {

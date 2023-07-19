@@ -6,3 +6,4 @@ xcuserdata/
 node_modules
 .vscode
 .swiftpm
+data.json

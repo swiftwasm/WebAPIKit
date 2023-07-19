@@ -233,6 +233,7 @@ extension MergedInterface: SwiftRepresentable {
             "ShadowRoot",
             "Worklet",
             "WebGLObject",
+            "WritableStream",
         ]
         let access: SwiftSource = openClasses.contains(name) ? "open" : "public"
 
@@ -780,5 +781,14 @@ extension IDLValue: SwiftRepresentable {
         case .dictionary:
             return "[:]"
         }
+    }
+}
+
+extension Extension: SwiftRepresentable {
+    var swiftRepresentation: SwiftSource {
+         """
+         extension \(conformer): \(raw: protocols.joined(separator: ", ")) {}
+         \n
+         """
     }
 }

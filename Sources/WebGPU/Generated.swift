@@ -396,10 +396,10 @@ public class GPUBuffer: JSBridgedClass, GPUObjectBase {
     }
 
     @ReadonlyAttribute
-    public var size: GPUSize64
+    public var size: GPUSize64Out
 
     @ReadonlyAttribute
-    public var usage: GPUBufferUsageFlags
+    public var usage: GPUFlagsConstant
 
     @ReadonlyAttribute
     public var mapState: GPUBufferMapState
@@ -1518,7 +1518,7 @@ public class GPUImageCopyBuffer: BridgedDictionary {
 }
 
 public class GPUImageCopyExternalImage: BridgedDictionary {
-    public convenience init(source: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas, origin: GPUOrigin2D, flipY: Bool) {
+    public convenience init(source: GPUImageCopyExternalImageSource, origin: GPUOrigin2D, flipY: Bool) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.source] = _toJSValue(source)
         object[Strings.origin] = _toJSValue(origin)
@@ -1534,7 +1534,7 @@ public class GPUImageCopyExternalImage: BridgedDictionary {
     }
 
     @ReadWriteAttribute
-    public var source: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas
+    public var source: GPUImageCopyExternalImageSource
 
     @ReadWriteAttribute
     public var origin: GPUOrigin2D
@@ -1838,7 +1838,7 @@ public class GPUPipelineError: DOMException {
         super.init(unsafelyWrapping: jsObject)
     }
 
-    @inlinable public convenience init(message: String?, options: GPUPipelineErrorInit) {
+    @inlinable public convenience init(message: String? = nil, options: GPUPipelineErrorInit) {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(message), _toJSValue(options)]))
     }
 
@@ -2027,7 +2027,7 @@ public class GPUQuerySet: JSBridgedClass, GPUObjectBase {
     public var type: GPUQueryType
 
     @ReadonlyAttribute
-    public var count: GPUSize32
+    public var count: GPUSize32Out
 }
 
 public class GPUQuerySetDescriptor: BridgedDictionary {
@@ -2095,12 +2095,12 @@ public class GPUQueue: JSBridgedClass, GPUObjectBase {
         _ = try await _promise.value
     }
 
-    @inlinable public func writeBuffer(buffer: GPUBuffer, bufferOffset: GPUSize64, data: BufferSource, dataOffset: GPUSize64? = nil, size: GPUSize64? = nil) {
+    @inlinable public func writeBuffer(buffer: GPUBuffer, bufferOffset: GPUSize64, data: AllowSharedBufferSource, dataOffset: GPUSize64? = nil, size: GPUSize64? = nil) {
         let this = jsObject
         _ = this[Strings.writeBuffer].function!(this: this, arguments: [_toJSValue(buffer), _toJSValue(bufferOffset), _toJSValue(data), _toJSValue(dataOffset), _toJSValue(size)])
     }
 
-    @inlinable public func writeTexture(destination: GPUImageCopyTexture, data: BufferSource, dataLayout: GPUImageDataLayout, size: GPUExtent3D) {
+    @inlinable public func writeTexture(destination: GPUImageCopyTexture, data: AllowSharedBufferSource, dataLayout: GPUImageDataLayout, size: GPUExtent3D) {
         let this = jsObject
         _ = this[Strings.writeTexture].function!(this: this, arguments: [_toJSValue(destination), _toJSValue(data), _toJSValue(dataLayout), _toJSValue(size)])
     }
@@ -2992,19 +2992,19 @@ public class GPUTexture: JSBridgedClass, GPUObjectBase {
     }
 
     @ReadonlyAttribute
-    public var width: GPUIntegerCoordinate
+    public var width: GPUIntegerCoordinateOut
 
     @ReadonlyAttribute
-    public var height: GPUIntegerCoordinate
+    public var height: GPUIntegerCoordinateOut
 
     @ReadonlyAttribute
-    public var depthOrArrayLayers: GPUIntegerCoordinate
+    public var depthOrArrayLayers: GPUIntegerCoordinateOut
 
     @ReadonlyAttribute
-    public var mipLevelCount: GPUIntegerCoordinate
+    public var mipLevelCount: GPUIntegerCoordinateOut
 
     @ReadonlyAttribute
-    public var sampleCount: GPUSize32
+    public var sampleCount: GPUSize32Out
 
     @ReadonlyAttribute
     public var dimension: GPUTextureDimension
@@ -3013,7 +3013,7 @@ public class GPUTexture: JSBridgedClass, GPUObjectBase {
     public var format: GPUTextureFormat
 
     @ReadonlyAttribute
-    public var usage: GPUTextureUsageFlags
+    public var usage: GPUFlagsConstant
 }
 
 public enum GPUTextureAspect: JSString, JSValueCompatible {
@@ -3532,6 +3532,8 @@ public extension NavigatorGPU {
     @inlinable var gpu: GPU { jsObject[Strings.gpu].fromJSValue()! }
 }
 
+extension Navigator: NavigatorGPU {}
+
 public typealias GPUBufferUsageFlags = UInt32
 public typealias GPUMapModeFlags = UInt32
 public typealias GPUTextureUsageFlags = UInt32
@@ -3539,6 +3541,7 @@ public typealias GPUShaderStageFlags = UInt32
 
 public typealias GPUPipelineConstantValue = Double
 public typealias GPUColorWriteFlags = UInt32
+
 public typealias GPUBufferDynamicOffset = UInt32
 public typealias GPUStencilValue = UInt32
 public typealias GPUSampleMask = UInt32
@@ -3548,6 +3551,9 @@ public typealias GPUIntegerCoordinate = UInt32
 public typealias GPUIndex32 = UInt32
 public typealias GPUSize32 = UInt32
 public typealias GPUSignedOffset32 = Int32
+public typealias GPUSize64Out = UInt64
+public typealias GPUIntegerCoordinateOut = UInt32
+public typealias GPUSize32Out = UInt32
 public typealias GPUFlagsConstant = UInt32
 
 public class WGSLLanguageFeatures: JSBridgedClass {
@@ -4109,6 +4115,115 @@ public enum GPUExtent3D: JSValueCompatible, Any_GPUExtent3D {
     }
 }
 
+public protocol Any_GPUImageCopyExternalImageSource: ConvertibleToJSValue {}
+extension HTMLCanvasElement: Any_GPUImageCopyExternalImageSource {}
+extension HTMLVideoElement: Any_GPUImageCopyExternalImageSource {}
+extension ImageBitmap: Any_GPUImageCopyExternalImageSource {}
+extension OffscreenCanvas: Any_GPUImageCopyExternalImageSource {}
+extension VideoFrame: Any_GPUImageCopyExternalImageSource {}
+
+public enum GPUImageCopyExternalImageSource: JSValueCompatible, Any_GPUImageCopyExternalImageSource {
+    case htmlCanvasElement(HTMLCanvasElement)
+    case htmlVideoElement(HTMLVideoElement)
+    case imageBitmap(ImageBitmap)
+    case offscreenCanvas(OffscreenCanvas)
+    case videoFrame(VideoFrame)
+
+    init(_ htmlCanvasElement: HTMLCanvasElement) {
+        let val: GPUImageCopyExternalImageSource = .htmlCanvasElement(htmlCanvasElement)
+        self = val
+    }
+
+    init(_ htmlVideoElement: HTMLVideoElement) {
+        let val: GPUImageCopyExternalImageSource = .htmlVideoElement(htmlVideoElement)
+        self = val
+    }
+
+    init(_ imageBitmap: ImageBitmap) {
+        let val: GPUImageCopyExternalImageSource = .imageBitmap(imageBitmap)
+        self = val
+    }
+
+    init(_ offscreenCanvas: OffscreenCanvas) {
+        let val: GPUImageCopyExternalImageSource = .offscreenCanvas(offscreenCanvas)
+        self = val
+    }
+
+    init(_ videoFrame: VideoFrame) {
+        let val: GPUImageCopyExternalImageSource = .videoFrame(videoFrame)
+        self = val
+    }
+
+    public var htmlCanvasElement: HTMLCanvasElement? {
+        switch self {
+        case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement
+        default: return nil
+        }
+    }
+
+    public var htmlVideoElement: HTMLVideoElement? {
+        switch self {
+        case let .htmlVideoElement(htmlVideoElement): return htmlVideoElement
+        default: return nil
+        }
+    }
+
+    public var imageBitmap: ImageBitmap? {
+        switch self {
+        case let .imageBitmap(imageBitmap): return imageBitmap
+        default: return nil
+        }
+    }
+
+    public var offscreenCanvas: OffscreenCanvas? {
+        switch self {
+        case let .offscreenCanvas(offscreenCanvas): return offscreenCanvas
+        default: return nil
+        }
+    }
+
+    public var videoFrame: VideoFrame? {
+        switch self {
+        case let .videoFrame(videoFrame): return videoFrame
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
+            return .htmlCanvasElement(htmlCanvasElement)
+        }
+        if let htmlVideoElement: HTMLVideoElement = value.fromJSValue() {
+            return .htmlVideoElement(htmlVideoElement)
+        }
+        if let imageBitmap: ImageBitmap = value.fromJSValue() {
+            return .imageBitmap(imageBitmap)
+        }
+        if let offscreenCanvas: OffscreenCanvas = value.fromJSValue() {
+            return .offscreenCanvas(offscreenCanvas)
+        }
+        if let videoFrame: VideoFrame = value.fromJSValue() {
+            return .videoFrame(videoFrame)
+        }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .htmlCanvasElement(htmlCanvasElement):
+            return htmlCanvasElement.jsValue
+        case let .htmlVideoElement(htmlVideoElement):
+            return htmlVideoElement.jsValue
+        case let .imageBitmap(imageBitmap):
+            return imageBitmap.jsValue
+        case let .offscreenCanvas(offscreenCanvas):
+            return offscreenCanvas.jsValue
+        case let .videoFrame(videoFrame):
+            return videoFrame.jsValue
+        }
+    }
+}
+
 public protocol Any_GPUOrigin2D: ConvertibleToJSValue {}
 extension GPUOrigin2DDict: Any_GPUOrigin2D {}
 extension Array: Any_GPUOrigin2D where Element == GPUIntegerCoordinate {}
@@ -4209,96 +4324,6 @@ public enum GPUOrigin3D: JSValueCompatible, Any_GPUOrigin3D {
             return gpuOrigin3DDict.jsValue
         case let .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate):
             return seq_of_GPUIntegerCoordinate.jsValue
-        }
-    }
-}
-
-public protocol Any_HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas: ConvertibleToJSValue {}
-extension HTMLCanvasElement: Any_HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas {}
-extension HTMLVideoElement: Any_HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas {}
-extension ImageBitmap: Any_HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas {}
-extension OffscreenCanvas: Any_HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas {}
-
-public enum HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas: JSValueCompatible, Any_HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas {
-    case htmlCanvasElement(HTMLCanvasElement)
-    case htmlVideoElement(HTMLVideoElement)
-    case imageBitmap(ImageBitmap)
-    case offscreenCanvas(OffscreenCanvas)
-
-    init(_ htmlCanvasElement: HTMLCanvasElement) {
-        let val: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas = .htmlCanvasElement(htmlCanvasElement)
-        self = val
-    }
-
-    init(_ htmlVideoElement: HTMLVideoElement) {
-        let val: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas = .htmlVideoElement(htmlVideoElement)
-        self = val
-    }
-
-    init(_ imageBitmap: ImageBitmap) {
-        let val: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas = .imageBitmap(imageBitmap)
-        self = val
-    }
-
-    init(_ offscreenCanvas: OffscreenCanvas) {
-        let val: HTMLCanvasElement_or_HTMLVideoElement_or_ImageBitmap_or_OffscreenCanvas = .offscreenCanvas(offscreenCanvas)
-        self = val
-    }
-
-    public var htmlCanvasElement: HTMLCanvasElement? {
-        switch self {
-        case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement
-        default: return nil
-        }
-    }
-
-    public var htmlVideoElement: HTMLVideoElement? {
-        switch self {
-        case let .htmlVideoElement(htmlVideoElement): return htmlVideoElement
-        default: return nil
-        }
-    }
-
-    public var imageBitmap: ImageBitmap? {
-        switch self {
-        case let .imageBitmap(imageBitmap): return imageBitmap
-        default: return nil
-        }
-    }
-
-    public var offscreenCanvas: OffscreenCanvas? {
-        switch self {
-        case let .offscreenCanvas(offscreenCanvas): return offscreenCanvas
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
-            return .htmlCanvasElement(htmlCanvasElement)
-        }
-        if let htmlVideoElement: HTMLVideoElement = value.fromJSValue() {
-            return .htmlVideoElement(htmlVideoElement)
-        }
-        if let imageBitmap: ImageBitmap = value.fromJSValue() {
-            return .imageBitmap(imageBitmap)
-        }
-        if let offscreenCanvas: OffscreenCanvas = value.fromJSValue() {
-            return .offscreenCanvas(offscreenCanvas)
-        }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .htmlCanvasElement(htmlCanvasElement):
-            return htmlCanvasElement.jsValue
-        case let .htmlVideoElement(htmlVideoElement):
-            return htmlVideoElement.jsValue
-        case let .imageBitmap(imageBitmap):
-            return imageBitmap.jsValue
-        case let .offscreenCanvas(offscreenCanvas):
-            return offscreenCanvas.jsValue
         }
     }
 }
