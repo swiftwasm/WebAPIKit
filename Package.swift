@@ -136,3 +136,4 @@ let package = Package(
             dependencies: ["DOM"]
         ),
     ]
+)
