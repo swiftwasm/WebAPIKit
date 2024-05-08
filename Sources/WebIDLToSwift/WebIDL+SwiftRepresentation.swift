@@ -243,6 +243,7 @@ extension MergedInterface: SwiftRepresentable {
         } else {
             let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
             header = "\(access) class \(name): \(sequence: inheritance.map(SwiftSource.init(_:)))"
+            DeclarationMerger.defindedClass.insert(name)
         }
 
         return """

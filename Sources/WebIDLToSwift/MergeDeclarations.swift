@@ -15,6 +15,7 @@ enum DeclarationMerger {
     static let validExposures: Set<String> = ["Window"]
 
     static let ignoredParents: Set<String> = ["LinkStyle"]
+    static var defindedClass: Set<String> = []
 
     private static func enhanceMembers(_ members: [IDLNode]) -> [IDLNode] {
         members.flatMap { member -> [IDLNode] in
@@ -148,7 +149,9 @@ enum DeclarationMerger {
                 partialResult.exposedToAll = partialResult.exposedToAll || interface.exposedToAll
                 partialResult.global = partialResult.global || interface.global
             }
-            interface.mixins = includes.removeValue(forKey: interface.name) ?? []
+            if !DeclarationMerger.defindedClass.contains(interface.name) {
+                interface.mixins = includes.removeValue(forKey: interface.name) ?? []
+            }
             if let decl = interface.members.first(where: { $0 is IDLIterableDeclaration }) as? IDLIterableDeclaration {
                 interface.mixins.append(decl.async ? "AsyncSequence" : "Sequence")
             }
