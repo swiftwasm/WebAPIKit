@@ -26,7 +26,7 @@ enum Shell {
         // print("*** running script: \(script)")
         let task = Process()
         task.standardError = FileHandle.standardError
-        task.arguments = ["-c", script]
+        task.arguments = ["--login", "-c", script]
         task.launchPath = "/bin/zsh"
         task.currentDirectoryURL = projectRoot
         task.launch()
