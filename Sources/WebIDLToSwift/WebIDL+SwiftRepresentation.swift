@@ -509,7 +509,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
     private var defaultRepresentation: SwiftSource {
         guard let idlType = idlType else { fatalError() }
         var returnType = idlType.swiftRepresentation
-        if returnType == ModuleState.className {
+        if returnType == ModuleState.className && arguments.allSatisfy({ $0.idlType.swiftRepresentation != returnType }) {
             returnType = "Self"
         }
         if ModuleState.override, ModuleState.static, !ModuleState.inClass {

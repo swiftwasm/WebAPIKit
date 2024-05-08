@@ -31,25 +31,25 @@
          return this[Strings.isDefaultNamespace].function!(this: this, arguments: [_toJSValue(namespace)]).fromJSValue()!
      }
  
--    @inlinable public func insertBefore(node: Node, child: Node?) -> Self {
+-    @inlinable public func insertBefore(node: Node, child: Node?) -> Node {
 +    @discardableResult @inlinable public func insertBefore<NodeType: Node>(node: NodeType, child: Node?) -> NodeType {
          let this = jsObject
          return this[Strings.insertBefore].function!(this: this, arguments: [_toJSValue(node), _toJSValue(child)]).fromJSValue()!
      }
  
--    @inlinable public func appendChild(node: Node) -> Self {
+-    @inlinable public func appendChild(node: Node) -> Node {
 +    @discardableResult @inlinable public func appendChild<NodeType: Node>(node: NodeType) -> NodeType {
          let this = jsObject
          return this[Strings.appendChild].function!(this: this, arguments: [_toJSValue(node)]).fromJSValue()!
      }
  
--    @inlinable public func replaceChild(node: Node, child: Node) -> Self {
+-    @inlinable public func replaceChild(node: Node, child: Node) -> Node {
 +    @discardableResult @inlinable public func replaceChild<NodeType: Node>(node: Node, child: NodeType) -> NodeType {
          let this = jsObject
          return this[Strings.replaceChild].function!(this: this, arguments: [_toJSValue(node), _toJSValue(child)]).fromJSValue()!
      }
  
--    @inlinable public func removeChild(child: Node) -> Self {
+-    @inlinable public func removeChild(child: Node) -> Node {
 +    @discardableResult @inlinable public func removeChild<NodeType: Node>(child: NodeType) -> NodeType {
          let this = jsObject
          return this[Strings.removeChild].function!(this: this, arguments: [_toJSValue(child)]).fromJSValue()!
