@@ -8,8 +8,8 @@ enum IDLParser {
         let pipe = Pipe()
         task.standardOutput = pipe
         task.standardError = FileHandle.standardError
-        task.arguments = ["-c", "npm start --silent \(modules.joined(separator: " "))"]
-        task.launchPath = "/bin/zsh"
+        task.arguments = ["start", "--silent"] + modules
+        task.launchPath = findExecutable("npm")
         task.currentDirectoryURL = URL(fileURLWithPath: #file)
             .deletingLastPathComponent()
             .appendingPathComponent("../../parse-idl")
