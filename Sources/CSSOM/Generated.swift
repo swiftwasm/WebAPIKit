@@ -1666,6 +1666,8 @@ public extension ElementCSSInlineStyle {
     @inlinable var attributeStyleMap: StylePropertyMap { jsObject[Strings.attributeStyleMap].fromJSValue()! }
 }
 
+extension HTMLElement: ElementCSSInlineStyle {}
+
 extension MathMLElement: ElementCSSInlineStyle {}
 
 extension SVGElement: ElementCSSInlineStyle {}
@@ -1694,6 +1696,10 @@ public extension GeometryUtils {
 }
 
 extension CSSPseudoElement: GeometryUtils {}
+
+extension Document: GeometryUtils {}
+
+extension Element: GeometryUtils {}
 
 extension Text: GeometryUtils {}
 
