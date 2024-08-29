@@ -11,6 +11,10 @@ let package = Package(
             name: "WebAPIKitDemo",
             targets: ["WebAPIKitDemo"]
         ),
+         .library(
+            name: "ECMAScript",
+            targets: ["ECMAScript"]
+        ),
         .library(
             name: "WebAPIBase",
             targets: ["WebAPIBase"]
