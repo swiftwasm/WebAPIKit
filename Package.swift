@@ -11,10 +11,6 @@ let package = Package(
             name: "WebAPIKitDemo",
             targets: ["WebAPIKitDemo"]
         ),
-         .library(
-            name: "ECMAScript",
-            targets: ["ECMAScript"]
-        ),
         .library(
             name: "WebAPIBase",
             targets: ["WebAPIBase"]
@@ -62,6 +58,11 @@ let package = Package(
         .library(
             name: "FileSystem",
             targets: ["FileSystem"]
+        ),
+        // This support library should be moved to JavaScriptKit
+        .library(
+            name: "ECMAScript",
+            targets: ["ECMAScript"]
         ),
         .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
