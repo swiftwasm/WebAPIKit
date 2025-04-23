@@ -74,7 +74,7 @@ extension UnionType: SwiftRepresentable {
     var initializers: [SwiftSource] {
         zip(sortedTypes, sortedNames).flatMap { (type, name) -> [SwiftSource] in
             let basicInitializer: [SwiftSource] = ["""
-            init(_ \(name): \(type)) {
+            public init(_ \(name): \(type)) {
                 let val: \(self.name) = .\(name)(\(name))
                 self = val
             }
@@ -162,10 +162,8 @@ extension SlimIDLType: SwiftRepresentable {
             case "FrozenArray", "ObservableArray":
                 // ???
                 return ["Element == \(args[0])"]
-            case "Promise":
+            case "Promise", "record":
                 return []
-            case "record":
-                return ["Key == \(args[0])", "Value == \(args[1])"]
             default:
                 fatalError("Unsupported generic type: \(name)")
             }
@@ -190,7 +188,7 @@ extension SlimIDLType.TypeValue: SwiftRepresentable {
             case "Promise":
                 return "JSPromise"
             case "record":
-                return "Dictionary"
+                return "JSObject"
             default:
                 fatalError("Unsupported generic type: \(name)")
             }
@@ -220,7 +218,7 @@ extension SlimIDLType.TypeValue: SwiftRepresentable {
             case "Promise":
                 return "JSPromise"
             case "record":
-                return "[\(args[0]): \(args[1])]"
+                return "JSObject"
             default:
                 fatalError("Unsupported generic type: \(name)")
             }

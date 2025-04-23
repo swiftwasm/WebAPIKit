@@ -63,6 +63,7 @@ struct ScopedState {
     private(set) var this: SwiftSource!
     private(set) var className: SwiftSource!
     private(set) var interfaces: [String: MergedInterface]!
+    private(set) var dictionaries: [String: MergedDictionary]!
     private(set) var ignored: [String: Set<String>]!
     private(set) var types: [String: IDLTypealias]!
     private(set) var override = false
@@ -106,12 +107,14 @@ struct ScopedState {
     }
 
     static func root(
+        dictionaries: [String: MergedDictionary],
         interfaces: [String: MergedInterface],
         ignored: [String: Set<String>],
         types: [String: IDLTypealias]
     ) -> Self {
         var newState = ModuleState.current
         newState.interfaces = interfaces
+        newState.dictionaries = dictionaries
         newState.ignored = ignored
         newState.types = types
         return newState

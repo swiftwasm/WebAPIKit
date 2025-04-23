@@ -88,6 +88,16 @@ extension IDLAttribute: SwiftRepresentable, Initializable {
     }
 }
 
+extension IDLDictionary.Member {
+    var isOptional: Bool {
+        !required && !idlType.nullable && !idlType.isFunction
+    }
+
+    var optionalSuffix: String {
+        isOptional ? "?" : ""
+    }
+}
+
 extension MergedDictionary: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
         """
@@ -98,7 +108,7 @@ extension MergedDictionary: SwiftRepresentable {
         """
     }
 
-    private var membersWithPropertyWrapper: [(IDLDictionary.Member, SwiftSource)] {
+    private func membersWithPropertyWrapper(_ members: [IDLDictionary.Member]) -> [(IDLDictionary.Member, SwiftSource)] {
         members.map {
             ($0, $0.idlType.propertyWrapper(readonly: false))
         }
@@ -111,7 +121,7 @@ extension MergedDictionary: SwiftRepresentable {
         return """
         public convenience init(\(sequence: params)) {
             let object = JSObject.global[\(ModuleState.source(for: "Object"))].function!.new()
-            \(lines: membersWithPropertyWrapper.map { member, wrapper in
+            \(lines: membersWithPropertyWrapper(members).map { member, wrapper in
                 if member.idlType.isFunction {
                     return """
                     \(wrapper)[\(ModuleState.source(for: member.name)), in: object] = \(member.name)
@@ -126,7 +136,7 @@ extension MergedDictionary: SwiftRepresentable {
         }
 
         public required init(unsafelyWrapping object: JSObject) {
-            \(lines: membersWithPropertyWrapper.map { member, wrapper in
+            \(lines: membersWithPropertyWrapper(members).map { member, wrapper in
                 "_\(raw: member.name) = \(wrapper)(jsObject: object, name: \(ModuleState.source(for: member.name)))"
             })
             super.init(unsafelyWrapping: object)
@@ -135,10 +145,10 @@ extension MergedDictionary: SwiftRepresentable {
     }
 
     private var swiftMembers: [SwiftSource] {
-        membersWithPropertyWrapper.map { member, wrapper in
+        self.membersWithPropertyWrapper(members).map { member, wrapper in
             """
             @\(wrapper)
-            public var \(member.name): \(member.idlType)
+            public var \(member.name): \(member.idlType)\(member.optionalSuffix)
             """
         }
     }
