@@ -18,6 +18,10 @@ enum DeclarationMerger {
 
     private static func enhanceMembers(_ members: [IDLNode]) -> [IDLNode] {
         members.flatMap { member -> [IDLNode] in
+            if let named = member as? IDLNamed, named.name.contains("-") {
+                return []
+            }
+
             if let operation = member as? IDLOperation,
                case .generic("Promise", _) = operation.idlType?.value
             {
@@ -223,6 +227,7 @@ enum DeclarationMerger {
                 + [Typedefs(typedefs: allTypes)]
                 + allNodes(ofType: IDLEnum.self)
                 + allNodes(ofType: IDLCallbackInterface.self),
+            dictionaries: mergedDictionaries,
             interfaces: mergedInterfaces,
             types: mergedTypes
             // unions: unions
@@ -231,6 +236,7 @@ enum DeclarationMerger {
 
     struct MergeResult {
         let declarations: [DeclarationFile]
+        let dictionaries: [String: MergedDictionary]
         let interfaces: [String: MergedInterface]
         let types: [String: IDLTypealias]
         // let unions: Set<UnionType>
