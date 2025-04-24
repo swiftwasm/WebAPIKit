@@ -2,7 +2,7 @@ import Foundation
 import WebIDL
 
 enum IDLBuilder {
-    static let basicDependencies = ["ECMAScript", "JavaScriptKit", "JavaScriptEventLoop"]
+    static let basicDependencies = ["ECMAScript", "JavaScriptKit"]
     static let optionalDependencies = ["JavaScriptEventLoop"]
 
     static let preamble = """
@@ -95,9 +95,8 @@ enum IDLBuilder {
     }
 
     static func generateClosureTypes() throws -> SwiftSource {
-        print("Generating closure property wrappers...")
+        print("Generating closure wrappers...")
         return """
-        /* variadic generics please */
         \(lines: ModuleState.closurePatterns.sorted().map(\.swiftRepresentation))
         """
     }
