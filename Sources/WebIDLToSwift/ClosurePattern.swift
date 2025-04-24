@@ -1,6 +1,6 @@
 struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
     static func < (lhs: ClosurePattern, rhs: ClosurePattern) -> Bool {
-        lhs.name.source < rhs.name.source
+        lhs.closureType.source < rhs.closureType.source
     }
 
     let nullable: Bool
@@ -22,16 +22,16 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
         return nullable ? "(\(closure))?" : closure
     }
 
-    private var getter: SwiftSource {
+    func getter(name: SwiftSource) -> SwiftSource {
         let getFunction: SwiftSource
         if nullable {
             getFunction = """
-            guard let function = jsObject[name].function else {
+            guard let function = jsObject[\(name)].function else {
                 return nil
             }
             """
         } else {
-            getFunction = "let function = jsObject[name].function!"
+            getFunction = "let function = jsObject[\(name)].function!"
         }
         let call: SwiftSource = "function(\(sequence: indexes.map { "_toJSValue($\($0))" }))"
         let closureBody: SwiftSource
@@ -66,15 +66,15 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
         """
     }
 
-    private var setter: SwiftSource {
-        let setClosure: SwiftSource = "jsObject[name] = \(jsClosureWrapper(name: "newValue"))"
+    func setter(name: SwiftSource) -> SwiftSource {
+        let setClosure: SwiftSource = "jsObject[\(name)] = \(jsClosureWrapper(name: "newValue"))"
 
         if nullable {
             return """
                 if let newValue = newValue {
                     \(setClosure)
                 } else {
-                    jsObject[name] = .null
+                    jsObject[\(name)] = .null
                 }
             """
         } else {
@@ -121,6 +121,7 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
         """
     }
 
+
     var toJSValue: SwiftSource {
         let escaping: SwiftSource = nullable ? "" : "@escaping"
         return """
@@ -132,7 +133,6 @@ struct ClosurePattern: SwiftRepresentable, Equatable, Hashable, Comparable {
 
     var swiftRepresentation: SwiftSource {
         """
-        \(propertyWrapper)
         \(toJSValue)
         """
     }

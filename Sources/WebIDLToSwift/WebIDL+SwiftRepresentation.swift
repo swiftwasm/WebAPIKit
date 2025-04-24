@@ -5,7 +5,7 @@ extension IDLArgument: SwiftRepresentable {
         let type: SwiftSource
         if variadic {
             type = "\(idlType)..."
-        } else if idlType.isFunction, !optional, !idlType.nullable {
+        } else if idlType.closurePattern != nil && !optional && !idlType.nullable {
             type = "@escaping \(idlType)"
         } else {
             type = "\(idlType)"
@@ -23,7 +23,7 @@ extension IDLArgument: SwiftRepresentable {
     }
 }
 
-extension IDLAttribute: SwiftRepresentable, Initializable {
+extension IDLAttribute: SwiftRepresentable {
     private var wrapperName: SwiftSource {
         "_\(raw: name)"
     }
@@ -247,12 +247,16 @@ extension MergedInterface: SwiftRepresentable {
         ]
         let access: SwiftSource = openClasses.contains(name) ? "open" : "public"
 
+        let hasAsyncSequence: Bool
         let header: SwiftSource
         if partial {
             header = "public extension \(name)"
+            hasAsyncSequence = false
         } else {
             let inheritance = (parentClasses.isEmpty ? ["JSBridgedClass"] : parentClasses) + mixins
+                .filter { $0 != "AsyncSequence" }
             header = "\(access) class \(name): \(sequence: inheritance.map(SwiftSource.init(_:)))"
+            hasAsyncSequence = mixins.contains { $0 == "AsyncSequence" }
         }
 
         return """
@@ -269,13 +273,22 @@ extension MergedInterface: SwiftRepresentable {
                 """ : "")
 
                 public required init(unsafelyWrapping jsObject: JSObject) {
-                    \(memberInits.joined(separator: "\n"))
                     \(parentClasses.isEmpty ? "self.jsObject = jsObject" : "super.init(unsafelyWrapping: jsObject)")
                 }
             """)
 
             \(body)
         }
+
+        \(hasAsyncSequence ?
+            """
+            #if canImport(JavaScriptEventLoop)
+            public extension \(name): AsyncSequence {}
+            #endif
+            """ :
+            ""
+        )
+
         """
     }
 
@@ -380,11 +393,13 @@ extension IDLIterableDeclaration: SwiftRepresentable, Initializable {
     var swiftRepresentation: SwiftSource {
         if async {
             return """
+            #if canImport(JavaScriptEventLoop)
             public typealias Element = \(idlType[0])
             @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
             public func makeAsyncIterator() -> ValueIterableAsyncIterator<\(ModuleState.className)> {
                 ValueIterableAsyncIterator(sequence: self)
             }
+            #endif
             """
         } else {
             return """
