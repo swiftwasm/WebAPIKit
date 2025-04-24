@@ -36,47 +36,27 @@ extension IDLAttribute: SwiftRepresentable {
         }
         if ModuleState.override {
             assert(!ModuleState.static)
-            // can't do property wrappers on override declarations
-            return """
-            @usableFromInline let \(wrapperName): \(idlType.propertyWrapper(readonly: readonly))<\(idlType)>
-            @inlinable override public var \(name): \(idlType) {
-                get { \(wrapperName).wrappedValue }
-                \(readonly ? "" : "set { \(wrapperName).wrappedValue = newValue }")
-            }
-            """
-        } else if ModuleState.constructor == nil || ModuleState.static {
-            // can't do property wrappers on extensions
-            let propertyWrapper = idlType.propertyWrapper(readonly: readonly)
-            if [SwiftSource.readOnlyAttribute, .readWriteAttribute].contains(propertyWrapper) {
-                let setter: SwiftSource = """
-                nonmutating set { jsObject[\(ModuleState.source(for: name))] = _toJSValue(newValue) }
-                """
 
-                return """
-                @inlinable public\(raw: ModuleState.static ? " static" : "") var \(name): \(idlType) {
-                    get { jsObject[\(ModuleState.source(for: name))]\(idlType.fromJSValue) }
-                    \(readonly ? "" : setter)
-                }
-                """
-            } else {
-                let setter: SwiftSource = """
-                nonmutating set { \(
-                    idlType.propertyWrapper(readonly: readonly))[\(ModuleState.source(for: name)
-                ), in: jsObject] = newValue }
-                """
-
-                return """
-                @inlinable public\(raw: ModuleState.static ? " static" : "") var \(name): \(idlType) {
-                    get { \(idlType.propertyWrapper(readonly: readonly))[\(ModuleState.source(for: name)), in: jsObject] }
-                    \(readonly ? "" : setter)
-                }
-                """
-            }
+            return ""
         } else {
+            let stringKey = ModuleState.source(for: name)
+            let getter: SwiftSource
+            let setter: SwiftSource
+
+            if let closure = idlType.closurePattern {
+                getter = "get { \(closure.getter(name: stringKey)) }"
+                setter = "set { \(closure.setter(name: stringKey)) }"
+            } else {
+                getter = "get { jsObject[\(stringKey)]\(idlType.fromJSValue) }"
+                setter = "set { jsObject[\(stringKey)] = _toJSValue(newValue) }"
+            }
+
             return """
-            @\(idlType.propertyWrapper(readonly: readonly))
-            public var \(name): \(idlType)
-            """
+                @inlinable public\(raw: ModuleState.static ? " static" : "") var \(name): \(idlType) {
+                    \(getter)
+                    \(readonly ? "" : setter)
+                }
+                """
         }
     }
 
