@@ -1,6 +1,6 @@
 --- a/Sources/DOM/Generated.swift
 +++ b/Sources/DOM/Generated.swift
-@@ -1007,8 +1007,15 @@ public class BeforeUnloadEvent: Event {
+@@ -1017,8 +1017,15 @@ public class BeforeUnloadEvent: Event {
          super.init(unsafelyWrapping: jsObject)
      }
 
@@ -17,7 +17,7 @@
          get { _returnValue.wrappedValue }
          set { _returnValue.wrappedValue = newValue }
      }
-@@ -7095,7 +7102,8 @@ public class HTMLFormControlsCollection: HTMLCollection {
+@@ -7110,7 +7117,8 @@ public class HTMLFormControlsCollection: HTMLCollection {
          jsObject[key].fromJSValue()
      }
 
@@ -27,7 +27,34 @@
          let this = jsObject
          return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
      }
-@@ -17153,7 +17161,6 @@ public class VisibilityStateEntry: PerformanceEntry {
+@@ -13067,22 +13075,22 @@ open class Node: EventTarget {
+         return this[Strings.isDefaultNamespace].function!(this: this, arguments: [_toJSValue(namespace)]).fromJSValue()!
+     }
+ 
+-    @inlinable public func insertBefore(node: Node, child: Node?) -> Node {
++    @discardableResult @inlinable public func insertBefore<NodeType: Node>(node: NodeType, child: Node?) -> NodeType {
+         let this = jsObject
+         return this[Strings.insertBefore].function!(this: this, arguments: [_toJSValue(node), _toJSValue(child)]).fromJSValue()!
+     }
+ 
+-    @inlinable public func appendChild(node: Node) -> Node {
++    @discardableResult @inlinable public func appendChild<NodeType: Node>(node: NodeType) -> NodeType {
+         let this = jsObject
+         return this[Strings.appendChild].function!(this: this, arguments: [_toJSValue(node)]).fromJSValue()!
+     }
+ 
+-    @inlinable public func replaceChild(node: Node, child: Node) -> Node {
++    @discardableResult @inlinable public func replaceChild<NodeType: Node>(node: Node, child: NodeType) -> NodeType {
+         let this = jsObject
+         return this[Strings.replaceChild].function!(this: this, arguments: [_toJSValue(node), _toJSValue(child)]).fromJSValue()!
+     }
+ 
+-    @inlinable public func removeChild(child: Node) -> Node {
++    @discardableResult @inlinable public func removeChild<NodeType: Node>(child: NodeType) -> NodeType {
+         let this = jsObject
+         return this[Strings.removeChild].function!(this: this, arguments: [_toJSValue(child)]).fromJSValue()!
+     }
+@@ -17809,7 +17817,6 @@ public class VisibilityStateEntry: PerformanceEntry {
          _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
          _entryType = ReadonlyAttribute(jsObject: jsObject, name: Strings.entryType)
          _startTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.startTime)
@@ -35,7 +62,7 @@
          super.init(unsafelyWrapping: jsObject)
      }
 
-@@ -17166,8 +17173,8 @@ public class VisibilityStateEntry: PerformanceEntry {
+@@ -17822,8 +17829,8 @@ public class VisibilityStateEntry: PerformanceEntry {
      @usableFromInline let _startTime: ReadonlyAttribute<DOMHighResTimeStamp>
      @inlinable override public var startTime: DOMHighResTimeStamp { _startTime.wrappedValue }
 
@@ -46,7 +73,7 @@
  }
 
  public class VisualViewport: EventTarget {
-@@ -20687,19 +20694,9 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
+@@ -21388,19 +21395,9 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
          self = val
      }
 
@@ -68,7 +95,7 @@
      }
 
      init(_ htmlVideoElement: HTMLVideoElement) {
-@@ -21947,18 +21944,8 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
+@@ -22648,18 +22645,8 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
          self = .init(val)
      }
 
