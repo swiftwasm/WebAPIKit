@@ -11,7 +11,7 @@ enum WebIDLToSwift {
 
     static func main() {
         do {
-            let mode = parseArgs()
+            let (mode, moduleNames) = parseArgs()
             let packageDir = URL(fileURLWithPath: #file)
                 .deletingLastPathComponent()
                 .deletingLastPathComponent()
@@ -22,6 +22,9 @@ enum WebIDLToSwift {
             // Collect closure patterns from all modules to subsequently write them together with `baseModule`.
             var closurePatterns = Set<ClosurePattern>()
 
+            let modules = if moduleNames.isEmpty { modules } else {
+                modules.filter { moduleNames.contains($0.swiftModule) }
+            }
             for module in modules {
                 try generate(module, packageDir: packageDir, domTypes: domTypes, patch: mode != .noPatch)
                 closurePatterns.formUnion(ModuleState.closurePatterns)
@@ -39,8 +42,9 @@ enum WebIDLToSwift {
         }
     }
 
-    private static func parseArgs() -> Mode? {
+    private static func parseArgs() -> (Mode?, moduleNames: [String]) {
         var mode: Mode?
+        var moduleNames = [String]()
         for arg in CommandLine.arguments.dropFirst() {
             if arg.starts(with: "--") {
                 if let parsed = Mode(rawValue: String(arg.dropFirst(2))) {
@@ -49,10 +53,10 @@ enum WebIDLToSwift {
                     print("Unknown option: \(arg)")
                 }
             } else {
-                print("Unknown argument: \(arg)")
+                moduleNames.append(arg)
             }
         }
-        return mode
+        return (mode, moduleNames)
     }
 
     private static func generate(

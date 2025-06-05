@@ -71,59 +71,90 @@ extension IDLDictionary.Member {
     }
 }
 
+extension IDLDictionary.Member: SwiftRepresentable {
+    var swiftRepresentation: SwiftSource {
+        if ModuleState.override {
+            assert(!ModuleState.static)
+            return ""
+        } else {
+            let stringKey = ModuleState.source(for: name)
+            let getter: SwiftSource
+            let setter: SwiftSource
+
+            if let closure = idlType.closurePattern {
+                getter = "get { \(closure.getter(name: stringKey)) }"
+                setter = "set { \(closure.setter(name: stringKey)) }"
+            } else {
+                getter = "get { jsObject[\(stringKey)]\(idlType.fromJSValue) }"
+                setter = "set { jsObject[\(stringKey)] = _toJSValue(newValue) }"
+            }
+
+            return """
+                @inlinable public\(raw: ModuleState.static ? " static" : "") var \(name): \(idlType) {
+                    \(getter)
+                    \(setter)
+                }
+                """
+        }
+    }
+}
+
 extension MergedDictionary: SwiftRepresentable {
     var swiftRepresentation: SwiftSource {
-        """
-        public class \(name): BridgedDictionary {
-            \(swiftInit)
-            \(swiftMembers.joined(separator: "\n\n"))
-        }
-        """
+        let inheritanceClause: SwiftSource =
+            if self.inheritance.isEmpty {
+                ": JSDictionaryCompatible"
+            } else {
+                ": \(self.inheritance.joined(separator: ", "))"
+            }
+
+        return """
+            open class \(name)\(inheritanceClause) {
+                \(self.inheritance.isEmpty ? "public let jsObject: JSObject" : "")
+
+                \(swiftInit)
+
+                \(lines: self.members.map(\.swiftRepresentation))
+            }
+            """
     }
 
-    private func membersWithPropertyWrapper(_ members: [IDLDictionary.Member]) -> [(IDLDictionary.Member, SwiftSource)] {
-        members.map {
-            ($0, $0.idlType.propertyWrapper(readonly: false))
+    private var convenienceInit: SwiftSource {
+        let inheritedMembers: [IDLDictionary.Member] = self.inheritance.reduce(into: []) {
+            // FIXME: if dictionary is not found in the current module, it's coming from a dependency,
+            // but for now we have to skip it, since `ModuleState` doesn't seem to handle dependencies.
+            return $0.append(contentsOf: ModuleState.dictionaries[$1]?.members ?? [])
         }
-    }
 
-    private var swiftInit: SwiftSource {
-        let params: [SwiftSource] = members.map {
-            "\($0.name): \($0.idlType.isFunction ? "@escaping " : "")\($0.idlType)"
+        let params: [SwiftSource] = (inheritedMembers + members).map {
+            let escaping = if let closurePattern = $0.idlType.closurePattern {
+                closurePattern.nullable || $0.isOptional ? "" : "@escaping "
+            } else { "" }
+            return "\($0.name): \(escaping)\($0.idlType)\($0.isOptional ? "? = nil" : "")"
         }
+
         return """
         public convenience init(\(sequence: params)) {
             let object = JSObject.global[\(ModuleState.source(for: "Object"))].function!.new()
-            \(lines: membersWithPropertyWrapper(members).map { member, wrapper in
-                if member.idlType.isFunction {
-                    return """
-                    \(wrapper)[\(ModuleState.source(for: member.name)), in: object] = \(member.name)
-                    """
-                } else {
+            \(lines: (inheritedMembers + members).map { member in
                     return """
                     object[\(ModuleState.source(for: member.name))] = _toJSValue(\(member.name))
                     """
-                }
             })
-            self.init(unsafelyWrapping: object)
-        }
 
-        public required init(unsafelyWrapping object: JSObject) {
-            \(lines: membersWithPropertyWrapper(members).map { member, wrapper in
-                "_\(raw: member.name) = \(wrapper)(jsObject: object, name: \(ModuleState.source(for: member.name)))"
-            })
-            super.init(unsafelyWrapping: object)
+            self.init(unsafelyWrapping: object)
         }
         """
     }
 
-    private var swiftMembers: [SwiftSource] {
-        self.membersWithPropertyWrapper(members).map { member, wrapper in
+    private var swiftInit: SwiftSource {
+        return """
+            \(self.convenienceInit)
+
+            public required init(unsafelyWrapping object: JSObject) {
+                \(self.inheritance.isEmpty ? "self.jsObject = object" : "super.init(unsafelyWrapping: object)")
+            }
             """
-            @\(wrapper)
-            public var \(member.name): \(member.idlType)\(member.optionalSuffix)
-            """
-        }
     }
 }
 
@@ -765,8 +796,8 @@ extension IDLTypedef: SwiftRepresentable {
                 unionType.friendlyName = name
                 return ""
             }
-        }
-        return "public typealias \(name) = \(idlType)"
+        } else if let type = Self.typeNameMap[name] { aliasedType = type } else { aliasedType = "\(idlType)" }
+        return "public typealias \(name) = \(aliasedType)"
     }
 }
 
