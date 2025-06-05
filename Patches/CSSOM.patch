@@ -3,9 +3,9 @@ index 9cd2fb3..7aec5a8 100644
 --- a/Sources/CSSOM/Generated.swift
 +++ b/Sources/CSSOM/Generated.swift
 @@ -411,7 +411,7 @@ public class CSSColorValue: CSSStyleValue {
-
+ 
      public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
-
+ 
 -    @inlinable override public class func parse(cssText: String) -> CSSColorValue_or_CSSStyleValue {
 +    @inlinable public class func parse(cssText: String) -> CSSColorValue {
          let this = constructor!
@@ -14,7 +14,7 @@ index 9cd2fb3..7aec5a8 100644
 @@ -947,7 +947,7 @@ public class CSSNumericValue: CSSStyleValue {
          return this[Strings.type].function!(this: this, arguments: []).fromJSValue()!
      }
-
+ 
 -    @inlinable override public class func parse(cssText: String) -> CSSNumericValue {
 +    @inlinable public class func parse(cssText: String) -> CSSNumericValue {
          let this = constructor!
@@ -23,7 +23,7 @@ index 9cd2fb3..7aec5a8 100644
 @@ -2072,9 +2072,10 @@ public class StylePropertyMapReadOnly: JSBridgedClass, Sequence {
          ValueIterableIterator(sequence: self)
      }
-
+ 
 -    @inlinable final public func get(property: String) -> CSSStyleValue_or_Void {
 +    // TODO: remove patch once https://github.com/w3c/css-houdini-drafts/issues/1095 is fixed
 +    @inlinable final public func get(property: String) -> CSSStyleValue? {
@@ -31,7 +31,7 @@ index 9cd2fb3..7aec5a8 100644
 -        return this[Strings.get].function!(this: this, arguments: [_toJSValue(property)]).fromJSValue()!
 +        return this[Strings.get].function!(this: this, arguments: [_toJSValue(property)]).fromJSValue()
      }
-
+ 
      @inlinable final public func getAll(property: String) -> [CSSStyleValue] {
 @@ -2706,49 +2707,6 @@ public enum CSSStyleValue_or_String: JSValueCompatible, Any_CSSStyleValue_or_Str
          }
@@ -68,25 +68,18 @@ index 9cd2fb3..7aec5a8 100644
 -    }
 -
 -    public static func construct(from value: JSValue) -> Self? {
--        if let cssStyleValue: CSSStyleValue = value.fromJSValue() {
--            return .cssStyleValue(cssStyleValue)
--        }
--        if let void: Void = value.fromJSValue() {
--            return .void(void)
--        }
+-        if let cssStyleValue: CSSStyleValue = value.fromJSValue() { return .cssStyleValue(cssStyleValue) }
+-        if let void: Void = value.fromJSValue() { return .void(void) }
 -        return nil
 -    }
 -
 -    public var jsValue: JSValue {
 -        switch self {
--        case let .cssStyleValue(cssStyleValue):
--            return cssStyleValue.jsValue
--        case let .void(void):
--            return void.jsValue
+-        case let .cssStyleValue(cssStyleValue): return cssStyleValue.jsValue
+-        case let .void(void): return void.jsValue
 -        }
 -    }
 -}
--
  public protocol Any_CSSUnparsedSegment: ConvertibleToJSValue {}
  extension CSSVariableReferenceValue: Any_CSSUnparsedSegment {}
  extension String: Any_CSSUnparsedSegment {}

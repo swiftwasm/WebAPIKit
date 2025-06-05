@@ -3,9 +3,9 @@ index 9fa75ba..0339568 100644
 --- a/Sources/DOM/Generated.swift
 +++ b/Sources/DOM/Generated.swift
 @@ -1094,6 +1094,17 @@ public class BeforeUnloadEvent: Event {
-
+ 
      public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
-
+ 
 +    @available(*, unavailable)
 +    override public var returnValue: Bool {
 +        get { !self.returnValueAsString.isEmpty }
@@ -18,7 +18,7 @@ index 9fa75ba..0339568 100644
 +        set { self.jsObject[Strings.returnValue] = .string(newValue) }
 +    }
  }
-
+ 
  public enum BitrateMode: JSString, JSValueCompatible {
 @@ -24231,14 +24242,6 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
          let val: CanvasImageSource = .htmlOrSVGImageElement(htmlOrSVGImageElement)
