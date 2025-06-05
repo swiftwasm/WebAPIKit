@@ -1,41 +1,42 @@
+diff --git a/Sources/CSSOM/Generated.swift b/Sources/CSSOM/Generated.swift
+index 9cd2fb3..7aec5a8 100644
 --- a/Sources/CSSOM/Generated.swift
 +++ b/Sources/CSSOM/Generated.swift
-@@ -379,7 +379,8 @@ public class CSSColorValue: CSSStyleValue {
-         super.init(unsafelyWrapping: jsObject)
-     }
+@@ -411,7 +411,7 @@ public class CSSColorValue: CSSStyleValue {
+
+     public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
 
 -    @inlinable override public class func parse(cssText: String) -> CSSColorValue_or_CSSStyleValue {
-+    // returns CSSStyleValue | CSSColorValue
-+    @inlinable public class func parse(cssText: String) -> CSSStyleValue {
++    @inlinable public class func parse(cssText: String) -> CSSColorValue {
          let this = constructor!
          return this[Strings.parse].function!(this: this, arguments: [_toJSValue(cssText)]).fromJSValue()!
      }
-@@ -944,7 +945,7 @@ public class CSSNumericValue: CSSStyleValue {
+@@ -947,7 +947,7 @@ public class CSSNumericValue: CSSStyleValue {
          return this[Strings.type].function!(this: this, arguments: []).fromJSValue()!
      }
 
--    @inlinable override public class func parse(cssText: String) -> Self {
-+    @inlinable public class func parse(cssText: String) -> Self {
+-    @inlinable override public class func parse(cssText: String) -> CSSNumericValue {
++    @inlinable public class func parse(cssText: String) -> CSSNumericValue {
          let this = constructor!
          return this[Strings.parse].function!(this: this, arguments: [_toJSValue(cssText)]).fromJSValue()!
      }
-@@ -1974,9 +1975,10 @@ public class StylePropertyMapReadOnly: JSBridgedClass, Sequence {
+@@ -2072,9 +2072,10 @@ public class StylePropertyMapReadOnly: JSBridgedClass, Sequence {
          ValueIterableIterator(sequence: self)
      }
 
--    @inlinable public func get(property: String) -> CSSStyleValue_or_Void {
+-    @inlinable final public func get(property: String) -> CSSStyleValue_or_Void {
 +    // TODO: remove patch once https://github.com/w3c/css-houdini-drafts/issues/1095 is fixed
-+    @inlinable public func get(property: String) -> CSSStyleValue? {
++    @inlinable final public func get(property: String) -> CSSStyleValue? {
          let this = jsObject
 -        return this[Strings.get].function!(this: this, arguments: [_toJSValue(property)]).fromJSValue()!
 +        return this[Strings.get].function!(this: this, arguments: [_toJSValue(property)]).fromJSValue()
      }
 
-     @inlinable public func getAll(property: String) -> [CSSStyleValue] {
-@@ -2646,58 +2648,6 @@ public enum CSSStyleValue_or_String: JSValueCompatible, Any_CSSStyleValue_or_Str
+     @inlinable final public func getAll(property: String) -> [CSSStyleValue] {
+@@ -2706,49 +2707,6 @@ public enum CSSStyleValue_or_String: JSValueCompatible, Any_CSSStyleValue_or_Str
+         }
      }
  }
-
 -public protocol Any_CSSStyleValue_or_Void: ConvertibleToJSValue {}
 -extension CSSStyleValue: Any_CSSStyleValue_or_Void {}
 -extension Void: Any_CSSStyleValue_or_Void {}
@@ -44,12 +45,11 @@
 -    case cssStyleValue(CSSStyleValue)
 -    case void(Void)
 -
--    init(_ cssStyleValue: CSSStyleValue) {
+-    public init(_ cssStyleValue: CSSStyleValue) {
 -        let val: CSSStyleValue_or_Void = .cssStyleValue(cssStyleValue)
 -        self = val
 -    }
--
--    init(_ void: Void) {
+-    public init(_ void: Void) {
 -        let val: CSSStyleValue_or_Void = .void(void)
 -        self = val
 -    }
@@ -60,7 +60,6 @@
 -        default: return nil
 -        }
 -    }
--
 -    public var void: Void? {
 -        switch self {
 -        case let .void(void): return void
