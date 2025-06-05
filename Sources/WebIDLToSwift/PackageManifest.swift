@@ -1,14 +1,14 @@
 // swiftlint:disable function_body_length
 func generateManifest(_ modules: [Module]) -> String {
     #"""
-    // swift-tools-version:5.5
+    // swift-tools-version: 6.1
     // The swift-tools-version declares the minimum version of Swift required to build this package.
 
     import PackageDescription
 
     let package = Package(
         name: "WebAPIKit",
-        platforms: [.macOS(.v10_13)],
+        platforms: [.macOS(.v10_15)],
         products: [
             .executable(
                 name: "WebAPIKitDemo",
@@ -29,7 +29,7 @@ func generateManifest(_ modules: [Module]) -> String {
         dependencies: [
             .package(
                 url: "https://github.com/swiftwasm/JavaScriptKit.git",
-                .upToNextMajor(from: "0.16.0")
+                .upToNextMajor(from: "0.29.0")
             ),
         ],
         targets: [
@@ -62,7 +62,8 @@ func generateManifest(_ modules: [Module]) -> String {
                 name: "WebAPIKitTests",
                 dependencies: ["DOM"]
             ),
-        ]
+        ],
+        swiftLanguageModes: [.v5]
     )
     """#
 }

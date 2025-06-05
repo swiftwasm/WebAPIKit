@@ -59,18 +59,11 @@ extension IDLAttribute: SwiftRepresentable {
                 """
         }
     }
-
-    var initializer: SwiftSource? {
-        assert(!ModuleState.static)
-        return """
-        \(wrapperName) = \(idlType.propertyWrapper(readonly: readonly))(jsObject: jsObject, name: \(ModuleState.source(for: name)))
-        """
-    }
 }
 
 extension IDLDictionary.Member {
     var isOptional: Bool {
-        !required && !idlType.nullable && !idlType.isFunction
+        !required && !idlType.nullable
     }
 
     var optionalSuffix: String {
@@ -263,7 +256,7 @@ extension MergedInterface: SwiftRepresentable {
         \(hasAsyncSequence ?
             """
             #if canImport(JavaScriptEventLoop)
-            public extension \(name): AsyncSequence {}
+            extension \(name): AsyncSequence {}
             #endif
             """ :
             ""
@@ -427,7 +420,7 @@ extension IDLOperation: SwiftRepresentable, Initializable {
             case "stringifier":
                 return """
                 @inlinable public var description: String {
-                    \(ModuleState.this)[Strings.toString]!().fromJSValue()!
+                    \(ModuleState.this)[Strings.toString].function!().fromJSValue()!
                 }
                 """
             case "static":
@@ -505,7 +498,11 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
     fileprivate var nameAndParams: SwiftSource {
         let accessModifier: SwiftSource = ModuleState.static ? (ModuleState.inClass ? " class" : " static") : ""
-        let overrideModifier: SwiftSource = ModuleState.override ? "override " : ""
+        let overrideModifier: SwiftSource = if ModuleState.static && ModuleState.inClass {
+            ModuleState.override ? "override " : ""
+        } else {
+            ModuleState.inClass && !ModuleState.current.inProtocol ? "final " : ""
+        }
         return """
         \(overrideModifier)public\(accessModifier) func \(name)(\(sequence: arguments.map(\.swiftRepresentation)))
         """
@@ -513,10 +510,14 @@ extension IDLOperation: SwiftRepresentable, Initializable {
 
     private var defaultRepresentation: SwiftSource {
         guard let idlType = idlType else { fatalError() }
-        var returnType = idlType.swiftRepresentation
-        if returnType == ModuleState.className {
-            returnType = "Self"
+
+        // skip overrides, since ancestor functions are final and JS will do dynamic dispatch to overrides anyway
+        // FIXME: still emit overrides that have a different number of arguments than an ancestor method, just without `override` keyword
+        guard !ModuleState.override || ModuleState.static else {
+            return ""
         }
+
+        let returnType = idlType.swiftRepresentation
         if ModuleState.override, ModuleState.static, !ModuleState.inClass {
             preconditionFailure("Cannot override static method in non-class")
         }
@@ -572,12 +573,14 @@ extension AsyncOperation: SwiftRepresentable, Initializable {
             result = "return try await _promise.value\(returnType.fromJSValue)"
         }
         return """
+        #if canImport(JavaScriptEventLoop)
         @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-        @inlinable \(operation.nameAndParams) async throws -> \(returnType) {
+        @inlinable \(operation.nameAndParams) async throws(JSException) -> \(returnType) {
             \(prep)
             let _promise: JSPromise = \(call).fromJSValue()!
             \(result)
         }
+        #endif
         """
     }
 
@@ -673,7 +676,7 @@ extension IDLType: SwiftRepresentable {
             case "Promise":
                 return "JSPromise"
             case "record":
-                return "[\(args[0]): \(args[1])]"
+                return "JSObject"
             default:
                 fatalError("Unsupported generic type: \(name)")
             }
@@ -712,39 +715,38 @@ extension IDLType: SwiftRepresentable {
         return false
     }
 
-    func propertyWrapper(readonly: Bool) -> SwiftSource {
-        // TODO: handle readonly closure properties
-        // (should they be a JSFunction? or a closure? or something else?))
+    var closurePattern: ClosurePattern? {
         if case let .single(name) = value {
             if let callback = ModuleState.types[name] as? IDLCallback {
-                precondition(!readonly, "readonly closure properties are not supported")
-                return "\(closureWrapper(callback, optional: false))"
+                return closureWrapper(callback, optional: false)
             }
             if let ref = ModuleState.types[name] as? IDLTypedef,
                case let .single(name) = ref.idlType.value,
                let callback = ModuleState.types[name] as? IDLCallback
             {
-                precondition(!readonly, "readonly closure properties are not supported")
                 precondition(ref.idlType.nullable)
-                return "\(closureWrapper(callback, optional: true))"
+                return closureWrapper(callback, optional: true)
             }
         }
 
-        if readonly {
-            return .readOnlyAttribute
-        } else {
-            return .readWriteAttribute
-        }
+        return nil
     }
 
-    private func closureWrapper(_ callback: IDLCallback, optional: Bool) -> SwiftSource {
+    private func closureWrapper(_ callback: IDLCallback, optional: Bool) -> ClosurePattern {
         let returnsVoid = callback.idlType.swiftRepresentation == "Void"
         let argCount = callback.arguments.count
-        return ClosurePattern(nullable: optional, void: returnsVoid, argCount: argCount).name
+        return ClosurePattern(nullable: optional, void: returnsVoid, argCount: argCount)
     }
 }
 
 extension IDLTypedef: SwiftRepresentable {
+    static let typeNameMap: [String: SwiftSource] = [
+        // FIXME: WebIDL specifies these as `unsigned long long`, but major browsers expect
+        // a JS number and not BigInt here, so we have to keep it `Int32` on the Swift side.
+        "GLintptr": "Int32",
+        "GPUSize64": "UInt32",
+    ]
+
     var unionType: UnionType? {
         if case let .union(types) = idlType.value {
             return ModuleState.union(for: Set(types.map(SlimIDLType.init)), defaultName: name)
@@ -753,6 +755,8 @@ extension IDLTypedef: SwiftRepresentable {
     }
 
     var swiftRepresentation: SwiftSource {
+        let aliasedType: SwiftSource
+
         if let unionType = unionType {
             guard unionType.friendlyName != name else { return "" }
             if let existingName = unionType.friendlyName {
