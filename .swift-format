@@ -1,0 +1,11 @@
+{
+  "version" : 1,
+  "indentation" : {
+    "spaces" : 4
+  },
+  "tabWidth" : 4,
+  "lineLength": 120,
+  "respectsExistingLineBreaks": false,
+  "lineBreakBeforeEachArgument": true,
+  "prioritizeKeepingFunctionOutputTogether": true
+}
