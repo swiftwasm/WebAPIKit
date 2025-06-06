@@ -3,1355 +3,2339 @@
 import DOM
 import ECMAScript
 import JavaScriptBigIntSupport
-import JavaScriptEventLoop
 import JavaScriptKit
-import WebAnimations
 import WebAPIBase
+import WebAnimations
 import WebAudio
 import WebGL1
+
+#if canImport(JavaScriptEventLoop)
+    import JavaScriptEventLoop
+#endif
+#if canImport(_Concurrency)
+    import _Concurrency
+#endif
 
 public typealias GLint64 = Int64
 public typealias GLuint64 = UInt64
 
-public class WebGL2RenderingContext: JSBridgedClass, WebGLRenderingContextBase, WebGL2RenderingContextBase, WebGL2RenderingContextOverloads {
+public class WebGL2RenderingContext: JSBridgedClass, WebGLRenderingContextBase, WebGL2RenderingContextBase,
+    WebGL2RenderingContextOverloads
+{
     @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.WebGL2RenderingContext].function }
 
     public let jsObject: JSObject
 
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        self.jsObject = jsObject
-    }
+    public required init(unsafelyWrapping jsObject: JSObject) { self.jsObject = jsObject }
+
 }
 
 public protocol WebGL2RenderingContextBase: JSBridgedClass {}
-public extension WebGL2RenderingContextBase {
-    @inlinable static var READ_BUFFER: GLenum { 0x0C02 }
+extension WebGL2RenderingContextBase {
+    @inlinable public static var READ_BUFFER: GLenum { 0x0C02 }
 
-    @inlinable static var UNPACK_ROW_LENGTH: GLenum { 0x0CF2 }
+    @inlinable public static var UNPACK_ROW_LENGTH: GLenum { 0x0CF2 }
 
-    @inlinable static var UNPACK_SKIP_ROWS: GLenum { 0x0CF3 }
+    @inlinable public static var UNPACK_SKIP_ROWS: GLenum { 0x0CF3 }
 
-    @inlinable static var UNPACK_SKIP_PIXELS: GLenum { 0x0CF4 }
+    @inlinable public static var UNPACK_SKIP_PIXELS: GLenum { 0x0CF4 }
 
-    @inlinable static var PACK_ROW_LENGTH: GLenum { 0x0D02 }
+    @inlinable public static var PACK_ROW_LENGTH: GLenum { 0x0D02 }
 
-    @inlinable static var PACK_SKIP_ROWS: GLenum { 0x0D03 }
+    @inlinable public static var PACK_SKIP_ROWS: GLenum { 0x0D03 }
 
-    @inlinable static var PACK_SKIP_PIXELS: GLenum { 0x0D04 }
+    @inlinable public static var PACK_SKIP_PIXELS: GLenum { 0x0D04 }
 
-    @inlinable static var COLOR: GLenum { 0x1800 }
+    @inlinable public static var COLOR: GLenum { 0x1800 }
 
-    @inlinable static var DEPTH: GLenum { 0x1801 }
+    @inlinable public static var DEPTH: GLenum { 0x1801 }
 
-    @inlinable static var STENCIL: GLenum { 0x1802 }
+    @inlinable public static var STENCIL: GLenum { 0x1802 }
 
-    @inlinable static var RED: GLenum { 0x1903 }
+    @inlinable public static var RED: GLenum { 0x1903 }
 
-    @inlinable static var RGB8: GLenum { 0x8051 }
+    @inlinable public static var RGB8: GLenum { 0x8051 }
 
-    @inlinable static var RGBA8: GLenum { 0x8058 }
+    @inlinable public static var RGBA8: GLenum { 0x8058 }
 
-    @inlinable static var RGB10_A2: GLenum { 0x8059 }
+    @inlinable public static var RGB10_A2: GLenum { 0x8059 }
 
-    @inlinable static var TEXTURE_BINDING_3D: GLenum { 0x806A }
+    @inlinable public static var TEXTURE_BINDING_3D: GLenum { 0x806A }
 
-    @inlinable static var UNPACK_SKIP_IMAGES: GLenum { 0x806D }
+    @inlinable public static var UNPACK_SKIP_IMAGES: GLenum { 0x806D }
 
-    @inlinable static var UNPACK_IMAGE_HEIGHT: GLenum { 0x806E }
+    @inlinable public static var UNPACK_IMAGE_HEIGHT: GLenum { 0x806E }
 
-    @inlinable static var TEXTURE_3D: GLenum { 0x806F }
+    @inlinable public static var TEXTURE_3D: GLenum { 0x806F }
 
-    @inlinable static var TEXTURE_WRAP_R: GLenum { 0x8072 }
+    @inlinable public static var TEXTURE_WRAP_R: GLenum { 0x8072 }
 
-    @inlinable static var MAX_3D_TEXTURE_SIZE: GLenum { 0x8073 }
+    @inlinable public static var MAX_3D_TEXTURE_SIZE: GLenum { 0x8073 }
 
-    @inlinable static var UNSIGNED_INT_2_10_10_10_REV: GLenum { 0x8368 }
+    @inlinable public static var UNSIGNED_INT_2_10_10_10_REV: GLenum { 0x8368 }
 
-    @inlinable static var MAX_ELEMENTS_VERTICES: GLenum { 0x80E8 }
+    @inlinable public static var MAX_ELEMENTS_VERTICES: GLenum { 0x80E8 }
 
-    @inlinable static var MAX_ELEMENTS_INDICES: GLenum { 0x80E9 }
+    @inlinable public static var MAX_ELEMENTS_INDICES: GLenum { 0x80E9 }
 
-    @inlinable static var TEXTURE_MIN_LOD: GLenum { 0x813A }
+    @inlinable public static var TEXTURE_MIN_LOD: GLenum { 0x813A }
 
-    @inlinable static var TEXTURE_MAX_LOD: GLenum { 0x813B }
+    @inlinable public static var TEXTURE_MAX_LOD: GLenum { 0x813B }
 
-    @inlinable static var TEXTURE_BASE_LEVEL: GLenum { 0x813C }
+    @inlinable public static var TEXTURE_BASE_LEVEL: GLenum { 0x813C }
 
-    @inlinable static var TEXTURE_MAX_LEVEL: GLenum { 0x813D }
+    @inlinable public static var TEXTURE_MAX_LEVEL: GLenum { 0x813D }
 
-    @inlinable static var MIN: GLenum { 0x8007 }
+    @inlinable public static var MIN: GLenum { 0x8007 }
 
-    @inlinable static var MAX: GLenum { 0x8008 }
+    @inlinable public static var MAX: GLenum { 0x8008 }
 
-    @inlinable static var DEPTH_COMPONENT24: GLenum { 0x81A6 }
+    @inlinable public static var DEPTH_COMPONENT24: GLenum { 0x81A6 }
 
-    @inlinable static var MAX_TEXTURE_LOD_BIAS: GLenum { 0x84FD }
+    @inlinable public static var MAX_TEXTURE_LOD_BIAS: GLenum { 0x84FD }
 
-    @inlinable static var TEXTURE_COMPARE_MODE: GLenum { 0x884C }
+    @inlinable public static var TEXTURE_COMPARE_MODE: GLenum { 0x884C }
 
-    @inlinable static var TEXTURE_COMPARE_FUNC: GLenum { 0x884D }
+    @inlinable public static var TEXTURE_COMPARE_FUNC: GLenum { 0x884D }
 
-    @inlinable static var CURRENT_QUERY: GLenum { 0x8865 }
+    @inlinable public static var CURRENT_QUERY: GLenum { 0x8865 }
 
-    @inlinable static var QUERY_RESULT: GLenum { 0x8866 }
+    @inlinable public static var QUERY_RESULT: GLenum { 0x8866 }
 
-    @inlinable static var QUERY_RESULT_AVAILABLE: GLenum { 0x8867 }
+    @inlinable public static var QUERY_RESULT_AVAILABLE: GLenum { 0x8867 }
 
-    @inlinable static var STREAM_READ: GLenum { 0x88E1 }
+    @inlinable public static var STREAM_READ: GLenum { 0x88E1 }
 
-    @inlinable static var STREAM_COPY: GLenum { 0x88E2 }
+    @inlinable public static var STREAM_COPY: GLenum { 0x88E2 }
 
-    @inlinable static var STATIC_READ: GLenum { 0x88E5 }
+    @inlinable public static var STATIC_READ: GLenum { 0x88E5 }
 
-    @inlinable static var STATIC_COPY: GLenum { 0x88E6 }
+    @inlinable public static var STATIC_COPY: GLenum { 0x88E6 }
 
-    @inlinable static var DYNAMIC_READ: GLenum { 0x88E9 }
+    @inlinable public static var DYNAMIC_READ: GLenum { 0x88E9 }
 
-    @inlinable static var DYNAMIC_COPY: GLenum { 0x88EA }
+    @inlinable public static var DYNAMIC_COPY: GLenum { 0x88EA }
 
-    @inlinable static var MAX_DRAW_BUFFERS: GLenum { 0x8824 }
+    @inlinable public static var MAX_DRAW_BUFFERS: GLenum { 0x8824 }
 
-    @inlinable static var DRAW_BUFFER0: GLenum { 0x8825 }
+    @inlinable public static var DRAW_BUFFER0: GLenum { 0x8825 }
 
-    @inlinable static var DRAW_BUFFER1: GLenum { 0x8826 }
+    @inlinable public static var DRAW_BUFFER1: GLenum { 0x8826 }
 
-    @inlinable static var DRAW_BUFFER2: GLenum { 0x8827 }
+    @inlinable public static var DRAW_BUFFER2: GLenum { 0x8827 }
 
-    @inlinable static var DRAW_BUFFER3: GLenum { 0x8828 }
+    @inlinable public static var DRAW_BUFFER3: GLenum { 0x8828 }
 
-    @inlinable static var DRAW_BUFFER4: GLenum { 0x8829 }
+    @inlinable public static var DRAW_BUFFER4: GLenum { 0x8829 }
 
-    @inlinable static var DRAW_BUFFER5: GLenum { 0x882A }
+    @inlinable public static var DRAW_BUFFER5: GLenum { 0x882A }
 
-    @inlinable static var DRAW_BUFFER6: GLenum { 0x882B }
+    @inlinable public static var DRAW_BUFFER6: GLenum { 0x882B }
 
-    @inlinable static var DRAW_BUFFER7: GLenum { 0x882C }
+    @inlinable public static var DRAW_BUFFER7: GLenum { 0x882C }
 
-    @inlinable static var DRAW_BUFFER8: GLenum { 0x882D }
+    @inlinable public static var DRAW_BUFFER8: GLenum { 0x882D }
 
-    @inlinable static var DRAW_BUFFER9: GLenum { 0x882E }
+    @inlinable public static var DRAW_BUFFER9: GLenum { 0x882E }
 
-    @inlinable static var DRAW_BUFFER10: GLenum { 0x882F }
+    @inlinable public static var DRAW_BUFFER10: GLenum { 0x882F }
 
-    @inlinable static var DRAW_BUFFER11: GLenum { 0x8830 }
+    @inlinable public static var DRAW_BUFFER11: GLenum { 0x8830 }
 
-    @inlinable static var DRAW_BUFFER12: GLenum { 0x8831 }
+    @inlinable public static var DRAW_BUFFER12: GLenum { 0x8831 }
 
-    @inlinable static var DRAW_BUFFER13: GLenum { 0x8832 }
+    @inlinable public static var DRAW_BUFFER13: GLenum { 0x8832 }
 
-    @inlinable static var DRAW_BUFFER14: GLenum { 0x8833 }
+    @inlinable public static var DRAW_BUFFER14: GLenum { 0x8833 }
 
-    @inlinable static var DRAW_BUFFER15: GLenum { 0x8834 }
+    @inlinable public static var DRAW_BUFFER15: GLenum { 0x8834 }
 
-    @inlinable static var MAX_FRAGMENT_UNIFORM_COMPONENTS: GLenum { 0x8B49 }
+    @inlinable public static var MAX_FRAGMENT_UNIFORM_COMPONENTS: GLenum { 0x8B49 }
 
-    @inlinable static var MAX_VERTEX_UNIFORM_COMPONENTS: GLenum { 0x8B4A }
+    @inlinable public static var MAX_VERTEX_UNIFORM_COMPONENTS: GLenum { 0x8B4A }
 
-    @inlinable static var SAMPLER_3D: GLenum { 0x8B5F }
+    @inlinable public static var SAMPLER_3D: GLenum { 0x8B5F }
 
-    @inlinable static var SAMPLER_2D_SHADOW: GLenum { 0x8B62 }
+    @inlinable public static var SAMPLER_2D_SHADOW: GLenum { 0x8B62 }
 
-    @inlinable static var FRAGMENT_SHADER_DERIVATIVE_HINT: GLenum { 0x8B8B }
+    @inlinable public static var FRAGMENT_SHADER_DERIVATIVE_HINT: GLenum { 0x8B8B }
 
-    @inlinable static var PIXEL_PACK_BUFFER: GLenum { 0x88EB }
+    @inlinable public static var PIXEL_PACK_BUFFER: GLenum { 0x88EB }
 
-    @inlinable static var PIXEL_UNPACK_BUFFER: GLenum { 0x88EC }
+    @inlinable public static var PIXEL_UNPACK_BUFFER: GLenum { 0x88EC }
 
-    @inlinable static var PIXEL_PACK_BUFFER_BINDING: GLenum { 0x88ED }
+    @inlinable public static var PIXEL_PACK_BUFFER_BINDING: GLenum { 0x88ED }
 
-    @inlinable static var PIXEL_UNPACK_BUFFER_BINDING: GLenum { 0x88EF }
+    @inlinable public static var PIXEL_UNPACK_BUFFER_BINDING: GLenum { 0x88EF }
 
-    @inlinable static var FLOAT_MAT2x3: GLenum { 0x8B65 }
+    @inlinable public static var FLOAT_MAT2x3: GLenum { 0x8B65 }
 
-    @inlinable static var FLOAT_MAT2x4: GLenum { 0x8B66 }
+    @inlinable public static var FLOAT_MAT2x4: GLenum { 0x8B66 }
 
-    @inlinable static var FLOAT_MAT3x2: GLenum { 0x8B67 }
+    @inlinable public static var FLOAT_MAT3x2: GLenum { 0x8B67 }
 
-    @inlinable static var FLOAT_MAT3x4: GLenum { 0x8B68 }
+    @inlinable public static var FLOAT_MAT3x4: GLenum { 0x8B68 }
 
-    @inlinable static var FLOAT_MAT4x2: GLenum { 0x8B69 }
+    @inlinable public static var FLOAT_MAT4x2: GLenum { 0x8B69 }
 
-    @inlinable static var FLOAT_MAT4x3: GLenum { 0x8B6A }
+    @inlinable public static var FLOAT_MAT4x3: GLenum { 0x8B6A }
 
-    @inlinable static var SRGB: GLenum { 0x8C40 }
+    @inlinable public static var SRGB: GLenum { 0x8C40 }
 
-    @inlinable static var SRGB8: GLenum { 0x8C41 }
+    @inlinable public static var SRGB8: GLenum { 0x8C41 }
 
-    @inlinable static var SRGB8_ALPHA8: GLenum { 0x8C43 }
+    @inlinable public static var SRGB8_ALPHA8: GLenum { 0x8C43 }
 
-    @inlinable static var COMPARE_REF_TO_TEXTURE: GLenum { 0x884E }
+    @inlinable public static var COMPARE_REF_TO_TEXTURE: GLenum { 0x884E }
 
-    @inlinable static var RGBA32F: GLenum { 0x8814 }
+    @inlinable public static var RGBA32F: GLenum { 0x8814 }
 
-    @inlinable static var RGB32F: GLenum { 0x8815 }
+    @inlinable public static var RGB32F: GLenum { 0x8815 }
 
-    @inlinable static var RGBA16F: GLenum { 0x881A }
+    @inlinable public static var RGBA16F: GLenum { 0x881A }
 
-    @inlinable static var RGB16F: GLenum { 0x881B }
+    @inlinable public static var RGB16F: GLenum { 0x881B }
 
-    @inlinable static var VERTEX_ATTRIB_ARRAY_INTEGER: GLenum { 0x88FD }
+    @inlinable public static var VERTEX_ATTRIB_ARRAY_INTEGER: GLenum { 0x88FD }
 
-    @inlinable static var MAX_ARRAY_TEXTURE_LAYERS: GLenum { 0x88FF }
+    @inlinable public static var MAX_ARRAY_TEXTURE_LAYERS: GLenum { 0x88FF }
 
-    @inlinable static var MIN_PROGRAM_TEXEL_OFFSET: GLenum { 0x8904 }
+    @inlinable public static var MIN_PROGRAM_TEXEL_OFFSET: GLenum { 0x8904 }
 
-    @inlinable static var MAX_PROGRAM_TEXEL_OFFSET: GLenum { 0x8905 }
+    @inlinable public static var MAX_PROGRAM_TEXEL_OFFSET: GLenum { 0x8905 }
 
-    @inlinable static var MAX_VARYING_COMPONENTS: GLenum { 0x8B4B }
+    @inlinable public static var MAX_VARYING_COMPONENTS: GLenum { 0x8B4B }
 
-    @inlinable static var TEXTURE_2D_ARRAY: GLenum { 0x8C1A }
+    @inlinable public static var TEXTURE_2D_ARRAY: GLenum { 0x8C1A }
 
-    @inlinable static var TEXTURE_BINDING_2D_ARRAY: GLenum { 0x8C1D }
+    @inlinable public static var TEXTURE_BINDING_2D_ARRAY: GLenum { 0x8C1D }
 
-    @inlinable static var R11F_G11F_B10F: GLenum { 0x8C3A }
+    @inlinable public static var R11F_G11F_B10F: GLenum { 0x8C3A }
 
-    @inlinable static var UNSIGNED_INT_10F_11F_11F_REV: GLenum { 0x8C3B }
+    @inlinable public static var UNSIGNED_INT_10F_11F_11F_REV: GLenum { 0x8C3B }
 
-    @inlinable static var RGB9_E5: GLenum { 0x8C3D }
+    @inlinable public static var RGB9_E5: GLenum { 0x8C3D }
 
-    @inlinable static var UNSIGNED_INT_5_9_9_9_REV: GLenum { 0x8C3E }
+    @inlinable public static var UNSIGNED_INT_5_9_9_9_REV: GLenum { 0x8C3E }
 
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER_MODE: GLenum { 0x8C7F }
+    @inlinable public static var TRANSFORM_FEEDBACK_BUFFER_MODE: GLenum { 0x8C7F }
 
-    @inlinable static var MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS: GLenum { 0x8C80 }
+    @inlinable public static var MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS: GLenum { 0x8C80 }
 
-    @inlinable static var TRANSFORM_FEEDBACK_VARYINGS: GLenum { 0x8C83 }
+    @inlinable public static var TRANSFORM_FEEDBACK_VARYINGS: GLenum { 0x8C83 }
 
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER_START: GLenum { 0x8C84 }
+    @inlinable public static var TRANSFORM_FEEDBACK_BUFFER_START: GLenum { 0x8C84 }
 
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER_SIZE: GLenum { 0x8C85 }
+    @inlinable public static var TRANSFORM_FEEDBACK_BUFFER_SIZE: GLenum { 0x8C85 }
 
-    @inlinable static var TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN: GLenum { 0x8C88 }
+    @inlinable public static var TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN: GLenum { 0x8C88 }
 
-    @inlinable static var RASTERIZER_DISCARD: GLenum { 0x8C89 }
+    @inlinable public static var RASTERIZER_DISCARD: GLenum { 0x8C89 }
 
-    @inlinable static var MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS: GLenum { 0x8C8A }
+    @inlinable public static var MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS: GLenum { 0x8C8A }
 
-    @inlinable static var MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS: GLenum { 0x8C8B }
+    @inlinable public static var MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS: GLenum { 0x8C8B }
 
-    @inlinable static var INTERLEAVED_ATTRIBS: GLenum { 0x8C8C }
+    @inlinable public static var INTERLEAVED_ATTRIBS: GLenum { 0x8C8C }
 
-    @inlinable static var SEPARATE_ATTRIBS: GLenum { 0x8C8D }
+    @inlinable public static var SEPARATE_ATTRIBS: GLenum { 0x8C8D }
 
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER: GLenum { 0x8C8E }
+    @inlinable public static var TRANSFORM_FEEDBACK_BUFFER: GLenum { 0x8C8E }
 
-    @inlinable static var TRANSFORM_FEEDBACK_BUFFER_BINDING: GLenum { 0x8C8F }
+    @inlinable public static var TRANSFORM_FEEDBACK_BUFFER_BINDING: GLenum { 0x8C8F }
 
-    @inlinable static var RGBA32UI: GLenum { 0x8D70 }
+    @inlinable public static var RGBA32UI: GLenum { 0x8D70 }
 
-    @inlinable static var RGB32UI: GLenum { 0x8D71 }
+    @inlinable public static var RGB32UI: GLenum { 0x8D71 }
 
-    @inlinable static var RGBA16UI: GLenum { 0x8D76 }
+    @inlinable public static var RGBA16UI: GLenum { 0x8D76 }
 
-    @inlinable static var RGB16UI: GLenum { 0x8D77 }
+    @inlinable public static var RGB16UI: GLenum { 0x8D77 }
 
-    @inlinable static var RGBA8UI: GLenum { 0x8D7C }
+    @inlinable public static var RGBA8UI: GLenum { 0x8D7C }
 
-    @inlinable static var RGB8UI: GLenum { 0x8D7D }
+    @inlinable public static var RGB8UI: GLenum { 0x8D7D }
 
-    @inlinable static var RGBA32I: GLenum { 0x8D82 }
+    @inlinable public static var RGBA32I: GLenum { 0x8D82 }
 
-    @inlinable static var RGB32I: GLenum { 0x8D83 }
+    @inlinable public static var RGB32I: GLenum { 0x8D83 }
 
-    @inlinable static var RGBA16I: GLenum { 0x8D88 }
+    @inlinable public static var RGBA16I: GLenum { 0x8D88 }
 
-    @inlinable static var RGB16I: GLenum { 0x8D89 }
+    @inlinable public static var RGB16I: GLenum { 0x8D89 }
 
-    @inlinable static var RGBA8I: GLenum { 0x8D8E }
+    @inlinable public static var RGBA8I: GLenum { 0x8D8E }
 
-    @inlinable static var RGB8I: GLenum { 0x8D8F }
+    @inlinable public static var RGB8I: GLenum { 0x8D8F }
 
-    @inlinable static var RED_INTEGER: GLenum { 0x8D94 }
+    @inlinable public static var RED_INTEGER: GLenum { 0x8D94 }
 
-    @inlinable static var RGB_INTEGER: GLenum { 0x8D98 }
+    @inlinable public static var RGB_INTEGER: GLenum { 0x8D98 }
 
-    @inlinable static var RGBA_INTEGER: GLenum { 0x8D99 }
+    @inlinable public static var RGBA_INTEGER: GLenum { 0x8D99 }
 
-    @inlinable static var SAMPLER_2D_ARRAY: GLenum { 0x8DC1 }
+    @inlinable public static var SAMPLER_2D_ARRAY: GLenum { 0x8DC1 }
 
-    @inlinable static var SAMPLER_2D_ARRAY_SHADOW: GLenum { 0x8DC4 }
+    @inlinable public static var SAMPLER_2D_ARRAY_SHADOW: GLenum { 0x8DC4 }
 
-    @inlinable static var SAMPLER_CUBE_SHADOW: GLenum { 0x8DC5 }
+    @inlinable public static var SAMPLER_CUBE_SHADOW: GLenum { 0x8DC5 }
 
-    @inlinable static var UNSIGNED_INT_VEC2: GLenum { 0x8DC6 }
+    @inlinable public static var UNSIGNED_INT_VEC2: GLenum { 0x8DC6 }
 
-    @inlinable static var UNSIGNED_INT_VEC3: GLenum { 0x8DC7 }
+    @inlinable public static var UNSIGNED_INT_VEC3: GLenum { 0x8DC7 }
 
-    @inlinable static var UNSIGNED_INT_VEC4: GLenum { 0x8DC8 }
+    @inlinable public static var UNSIGNED_INT_VEC4: GLenum { 0x8DC8 }
 
-    @inlinable static var INT_SAMPLER_2D: GLenum { 0x8DCA }
+    @inlinable public static var INT_SAMPLER_2D: GLenum { 0x8DCA }
 
-    @inlinable static var INT_SAMPLER_3D: GLenum { 0x8DCB }
+    @inlinable public static var INT_SAMPLER_3D: GLenum { 0x8DCB }
 
-    @inlinable static var INT_SAMPLER_CUBE: GLenum { 0x8DCC }
+    @inlinable public static var INT_SAMPLER_CUBE: GLenum { 0x8DCC }
 
-    @inlinable static var INT_SAMPLER_2D_ARRAY: GLenum { 0x8DCF }
+    @inlinable public static var INT_SAMPLER_2D_ARRAY: GLenum { 0x8DCF }
 
-    @inlinable static var UNSIGNED_INT_SAMPLER_2D: GLenum { 0x8DD2 }
+    @inlinable public static var UNSIGNED_INT_SAMPLER_2D: GLenum { 0x8DD2 }
 
-    @inlinable static var UNSIGNED_INT_SAMPLER_3D: GLenum { 0x8DD3 }
+    @inlinable public static var UNSIGNED_INT_SAMPLER_3D: GLenum { 0x8DD3 }
 
-    @inlinable static var UNSIGNED_INT_SAMPLER_CUBE: GLenum { 0x8DD4 }
+    @inlinable public static var UNSIGNED_INT_SAMPLER_CUBE: GLenum { 0x8DD4 }
 
-    @inlinable static var UNSIGNED_INT_SAMPLER_2D_ARRAY: GLenum { 0x8DD7 }
+    @inlinable public static var UNSIGNED_INT_SAMPLER_2D_ARRAY: GLenum { 0x8DD7 }
 
-    @inlinable static var DEPTH_COMPONENT32F: GLenum { 0x8CAC }
+    @inlinable public static var DEPTH_COMPONENT32F: GLenum { 0x8CAC }
 
-    @inlinable static var DEPTH32F_STENCIL8: GLenum { 0x8CAD }
+    @inlinable public static var DEPTH32F_STENCIL8: GLenum { 0x8CAD }
 
-    @inlinable static var FLOAT_32_UNSIGNED_INT_24_8_REV: GLenum { 0x8DAD }
+    @inlinable public static var FLOAT_32_UNSIGNED_INT_24_8_REV: GLenum { 0x8DAD }
 
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING: GLenum { 0x8210 }
+    @inlinable public static var FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING: GLenum { 0x8210 }
 
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE: GLenum { 0x8211 }
+    @inlinable public static var FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE: GLenum { 0x8211 }
 
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_RED_SIZE: GLenum { 0x8212 }
+    @inlinable public static var FRAMEBUFFER_ATTACHMENT_RED_SIZE: GLenum { 0x8212 }
 
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_GREEN_SIZE: GLenum { 0x8213 }
+    @inlinable public static var FRAMEBUFFER_ATTACHMENT_GREEN_SIZE: GLenum { 0x8213 }
 
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_BLUE_SIZE: GLenum { 0x8214 }
+    @inlinable public static var FRAMEBUFFER_ATTACHMENT_BLUE_SIZE: GLenum { 0x8214 }
 
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE: GLenum { 0x8215 }
+    @inlinable public static var FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE: GLenum { 0x8215 }
 
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE: GLenum { 0x8216 }
+    @inlinable public static var FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE: GLenum { 0x8216 }
 
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE: GLenum { 0x8217 }
+    @inlinable public static var FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE: GLenum { 0x8217 }
 
-    @inlinable static var FRAMEBUFFER_DEFAULT: GLenum { 0x8218 }
+    @inlinable public static var FRAMEBUFFER_DEFAULT: GLenum { 0x8218 }
 
-    @inlinable static var UNSIGNED_INT_24_8: GLenum { 0x84FA }
+    @inlinable public static var UNSIGNED_INT_24_8: GLenum { 0x84FA }
 
-    @inlinable static var DEPTH24_STENCIL8: GLenum { 0x88F0 }
+    @inlinable public static var DEPTH24_STENCIL8: GLenum { 0x88F0 }
 
-    @inlinable static var UNSIGNED_NORMALIZED: GLenum { 0x8C17 }
+    @inlinable public static var UNSIGNED_NORMALIZED: GLenum { 0x8C17 }
 
-    @inlinable static var DRAW_FRAMEBUFFER_BINDING: GLenum { 0x8CA6 }
+    @inlinable public static var DRAW_FRAMEBUFFER_BINDING: GLenum { 0x8CA6 }
 
-    @inlinable static var READ_FRAMEBUFFER: GLenum { 0x8CA8 }
+    @inlinable public static var READ_FRAMEBUFFER: GLenum { 0x8CA8 }
 
-    @inlinable static var DRAW_FRAMEBUFFER: GLenum { 0x8CA9 }
+    @inlinable public static var DRAW_FRAMEBUFFER: GLenum { 0x8CA9 }
 
-    @inlinable static var READ_FRAMEBUFFER_BINDING: GLenum { 0x8CAA }
+    @inlinable public static var READ_FRAMEBUFFER_BINDING: GLenum { 0x8CAA }
 
-    @inlinable static var RENDERBUFFER_SAMPLES: GLenum { 0x8CAB }
+    @inlinable public static var RENDERBUFFER_SAMPLES: GLenum { 0x8CAB }
 
-    @inlinable static var FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER: GLenum { 0x8CD4 }
+    @inlinable public static var FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER: GLenum { 0x8CD4 }
 
-    @inlinable static var MAX_COLOR_ATTACHMENTS: GLenum { 0x8CDF }
+    @inlinable public static var MAX_COLOR_ATTACHMENTS: GLenum { 0x8CDF }
 
-    @inlinable static var COLOR_ATTACHMENT1: GLenum { 0x8CE1 }
+    @inlinable public static var COLOR_ATTACHMENT1: GLenum { 0x8CE1 }
 
-    @inlinable static var COLOR_ATTACHMENT2: GLenum { 0x8CE2 }
+    @inlinable public static var COLOR_ATTACHMENT2: GLenum { 0x8CE2 }
 
-    @inlinable static var COLOR_ATTACHMENT3: GLenum { 0x8CE3 }
+    @inlinable public static var COLOR_ATTACHMENT3: GLenum { 0x8CE3 }
 
-    @inlinable static var COLOR_ATTACHMENT4: GLenum { 0x8CE4 }
+    @inlinable public static var COLOR_ATTACHMENT4: GLenum { 0x8CE4 }
 
-    @inlinable static var COLOR_ATTACHMENT5: GLenum { 0x8CE5 }
+    @inlinable public static var COLOR_ATTACHMENT5: GLenum { 0x8CE5 }
 
-    @inlinable static var COLOR_ATTACHMENT6: GLenum { 0x8CE6 }
+    @inlinable public static var COLOR_ATTACHMENT6: GLenum { 0x8CE6 }
 
-    @inlinable static var COLOR_ATTACHMENT7: GLenum { 0x8CE7 }
+    @inlinable public static var COLOR_ATTACHMENT7: GLenum { 0x8CE7 }
 
-    @inlinable static var COLOR_ATTACHMENT8: GLenum { 0x8CE8 }
+    @inlinable public static var COLOR_ATTACHMENT8: GLenum { 0x8CE8 }
 
-    @inlinable static var COLOR_ATTACHMENT9: GLenum { 0x8CE9 }
+    @inlinable public static var COLOR_ATTACHMENT9: GLenum { 0x8CE9 }
 
-    @inlinable static var COLOR_ATTACHMENT10: GLenum { 0x8CEA }
+    @inlinable public static var COLOR_ATTACHMENT10: GLenum { 0x8CEA }
 
-    @inlinable static var COLOR_ATTACHMENT11: GLenum { 0x8CEB }
+    @inlinable public static var COLOR_ATTACHMENT11: GLenum { 0x8CEB }
 
-    @inlinable static var COLOR_ATTACHMENT12: GLenum { 0x8CEC }
+    @inlinable public static var COLOR_ATTACHMENT12: GLenum { 0x8CEC }
 
-    @inlinable static var COLOR_ATTACHMENT13: GLenum { 0x8CED }
+    @inlinable public static var COLOR_ATTACHMENT13: GLenum { 0x8CED }
 
-    @inlinable static var COLOR_ATTACHMENT14: GLenum { 0x8CEE }
+    @inlinable public static var COLOR_ATTACHMENT14: GLenum { 0x8CEE }
 
-    @inlinable static var COLOR_ATTACHMENT15: GLenum { 0x8CEF }
+    @inlinable public static var COLOR_ATTACHMENT15: GLenum { 0x8CEF }
 
-    @inlinable static var FRAMEBUFFER_INCOMPLETE_MULTISAMPLE: GLenum { 0x8D56 }
+    @inlinable public static var FRAMEBUFFER_INCOMPLETE_MULTISAMPLE: GLenum { 0x8D56 }
 
-    @inlinable static var MAX_SAMPLES: GLenum { 0x8D57 }
+    @inlinable public static var MAX_SAMPLES: GLenum { 0x8D57 }
 
-    @inlinable static var HALF_FLOAT: GLenum { 0x140B }
+    @inlinable public static var HALF_FLOAT: GLenum { 0x140B }
 
-    @inlinable static var RG: GLenum { 0x8227 }
+    @inlinable public static var RG: GLenum { 0x8227 }
 
-    @inlinable static var RG_INTEGER: GLenum { 0x8228 }
+    @inlinable public static var RG_INTEGER: GLenum { 0x8228 }
 
-    @inlinable static var R8: GLenum { 0x8229 }
+    @inlinable public static var R8: GLenum { 0x8229 }
 
-    @inlinable static var RG8: GLenum { 0x822B }
+    @inlinable public static var RG8: GLenum { 0x822B }
 
-    @inlinable static var R16F: GLenum { 0x822D }
+    @inlinable public static var R16F: GLenum { 0x822D }
 
-    @inlinable static var R32F: GLenum { 0x822E }
+    @inlinable public static var R32F: GLenum { 0x822E }
 
-    @inlinable static var RG16F: GLenum { 0x822F }
+    @inlinable public static var RG16F: GLenum { 0x822F }
 
-    @inlinable static var RG32F: GLenum { 0x8230 }
+    @inlinable public static var RG32F: GLenum { 0x8230 }
 
-    @inlinable static var R8I: GLenum { 0x8231 }
+    @inlinable public static var R8I: GLenum { 0x8231 }
 
-    @inlinable static var R8UI: GLenum { 0x8232 }
+    @inlinable public static var R8UI: GLenum { 0x8232 }
 
-    @inlinable static var R16I: GLenum { 0x8233 }
+    @inlinable public static var R16I: GLenum { 0x8233 }
 
-    @inlinable static var R16UI: GLenum { 0x8234 }
+    @inlinable public static var R16UI: GLenum { 0x8234 }
 
-    @inlinable static var R32I: GLenum { 0x8235 }
+    @inlinable public static var R32I: GLenum { 0x8235 }
 
-    @inlinable static var R32UI: GLenum { 0x8236 }
+    @inlinable public static var R32UI: GLenum { 0x8236 }
 
-    @inlinable static var RG8I: GLenum { 0x8237 }
+    @inlinable public static var RG8I: GLenum { 0x8237 }
 
-    @inlinable static var RG8UI: GLenum { 0x8238 }
+    @inlinable public static var RG8UI: GLenum { 0x8238 }
 
-    @inlinable static var RG16I: GLenum { 0x8239 }
+    @inlinable public static var RG16I: GLenum { 0x8239 }
 
-    @inlinable static var RG16UI: GLenum { 0x823A }
+    @inlinable public static var RG16UI: GLenum { 0x823A }
 
-    @inlinable static var RG32I: GLenum { 0x823B }
+    @inlinable public static var RG32I: GLenum { 0x823B }
 
-    @inlinable static var RG32UI: GLenum { 0x823C }
+    @inlinable public static var RG32UI: GLenum { 0x823C }
 
-    @inlinable static var VERTEX_ARRAY_BINDING: GLenum { 0x85B5 }
+    @inlinable public static var VERTEX_ARRAY_BINDING: GLenum { 0x85B5 }
 
-    @inlinable static var R8_SNORM: GLenum { 0x8F94 }
+    @inlinable public static var R8_SNORM: GLenum { 0x8F94 }
 
-    @inlinable static var RG8_SNORM: GLenum { 0x8F95 }
+    @inlinable public static var RG8_SNORM: GLenum { 0x8F95 }
 
-    @inlinable static var RGB8_SNORM: GLenum { 0x8F96 }
+    @inlinable public static var RGB8_SNORM: GLenum { 0x8F96 }
 
-    @inlinable static var RGBA8_SNORM: GLenum { 0x8F97 }
+    @inlinable public static var RGBA8_SNORM: GLenum { 0x8F97 }
 
-    @inlinable static var SIGNED_NORMALIZED: GLenum { 0x8F9C }
+    @inlinable public static var SIGNED_NORMALIZED: GLenum { 0x8F9C }
 
-    @inlinable static var COPY_READ_BUFFER: GLenum { 0x8F36 }
+    @inlinable public static var COPY_READ_BUFFER: GLenum { 0x8F36 }
 
-    @inlinable static var COPY_WRITE_BUFFER: GLenum { 0x8F37 }
+    @inlinable public static var COPY_WRITE_BUFFER: GLenum { 0x8F37 }
 
-    @inlinable static var COPY_READ_BUFFER_BINDING: GLenum { 0x8F36 }
+    @inlinable public static var COPY_READ_BUFFER_BINDING: GLenum { 0x8F36 }
 
-    @inlinable static var COPY_WRITE_BUFFER_BINDING: GLenum { 0x8F37 }
+    @inlinable public static var COPY_WRITE_BUFFER_BINDING: GLenum { 0x8F37 }
 
-    @inlinable static var UNIFORM_BUFFER: GLenum { 0x8A11 }
+    @inlinable public static var UNIFORM_BUFFER: GLenum { 0x8A11 }
 
-    @inlinable static var UNIFORM_BUFFER_BINDING: GLenum { 0x8A28 }
+    @inlinable public static var UNIFORM_BUFFER_BINDING: GLenum { 0x8A28 }
 
-    @inlinable static var UNIFORM_BUFFER_START: GLenum { 0x8A29 }
+    @inlinable public static var UNIFORM_BUFFER_START: GLenum { 0x8A29 }
 
-    @inlinable static var UNIFORM_BUFFER_SIZE: GLenum { 0x8A2A }
+    @inlinable public static var UNIFORM_BUFFER_SIZE: GLenum { 0x8A2A }
 
-    @inlinable static var MAX_VERTEX_UNIFORM_BLOCKS: GLenum { 0x8A2B }
+    @inlinable public static var MAX_VERTEX_UNIFORM_BLOCKS: GLenum { 0x8A2B }
 
-    @inlinable static var MAX_FRAGMENT_UNIFORM_BLOCKS: GLenum { 0x8A2D }
+    @inlinable public static var MAX_FRAGMENT_UNIFORM_BLOCKS: GLenum { 0x8A2D }
 
-    @inlinable static var MAX_COMBINED_UNIFORM_BLOCKS: GLenum { 0x8A2E }
+    @inlinable public static var MAX_COMBINED_UNIFORM_BLOCKS: GLenum { 0x8A2E }
 
-    @inlinable static var MAX_UNIFORM_BUFFER_BINDINGS: GLenum { 0x8A2F }
+    @inlinable public static var MAX_UNIFORM_BUFFER_BINDINGS: GLenum { 0x8A2F }
 
-    @inlinable static var MAX_UNIFORM_BLOCK_SIZE: GLenum { 0x8A30 }
+    @inlinable public static var MAX_UNIFORM_BLOCK_SIZE: GLenum { 0x8A30 }
 
-    @inlinable static var MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS: GLenum { 0x8A31 }
+    @inlinable public static var MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS: GLenum { 0x8A31 }
 
-    @inlinable static var MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS: GLenum { 0x8A33 }
+    @inlinable public static var MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS: GLenum { 0x8A33 }
 
-    @inlinable static var UNIFORM_BUFFER_OFFSET_ALIGNMENT: GLenum { 0x8A34 }
+    @inlinable public static var UNIFORM_BUFFER_OFFSET_ALIGNMENT: GLenum { 0x8A34 }
 
-    @inlinable static var ACTIVE_UNIFORM_BLOCKS: GLenum { 0x8A36 }
+    @inlinable public static var ACTIVE_UNIFORM_BLOCKS: GLenum { 0x8A36 }
 
-    @inlinable static var UNIFORM_TYPE: GLenum { 0x8A37 }
+    @inlinable public static var UNIFORM_TYPE: GLenum { 0x8A37 }
 
-    @inlinable static var UNIFORM_SIZE: GLenum { 0x8A38 }
+    @inlinable public static var UNIFORM_SIZE: GLenum { 0x8A38 }
 
-    @inlinable static var UNIFORM_BLOCK_INDEX: GLenum { 0x8A3A }
+    @inlinable public static var UNIFORM_BLOCK_INDEX: GLenum { 0x8A3A }
 
-    @inlinable static var UNIFORM_OFFSET: GLenum { 0x8A3B }
+    @inlinable public static var UNIFORM_OFFSET: GLenum { 0x8A3B }
 
-    @inlinable static var UNIFORM_ARRAY_STRIDE: GLenum { 0x8A3C }
+    @inlinable public static var UNIFORM_ARRAY_STRIDE: GLenum { 0x8A3C }
 
-    @inlinable static var UNIFORM_MATRIX_STRIDE: GLenum { 0x8A3D }
+    @inlinable public static var UNIFORM_MATRIX_STRIDE: GLenum { 0x8A3D }
 
-    @inlinable static var UNIFORM_IS_ROW_MAJOR: GLenum { 0x8A3E }
+    @inlinable public static var UNIFORM_IS_ROW_MAJOR: GLenum { 0x8A3E }
 
-    @inlinable static var UNIFORM_BLOCK_BINDING: GLenum { 0x8A3F }
+    @inlinable public static var UNIFORM_BLOCK_BINDING: GLenum { 0x8A3F }
 
-    @inlinable static var UNIFORM_BLOCK_DATA_SIZE: GLenum { 0x8A40 }
+    @inlinable public static var UNIFORM_BLOCK_DATA_SIZE: GLenum { 0x8A40 }
 
-    @inlinable static var UNIFORM_BLOCK_ACTIVE_UNIFORMS: GLenum { 0x8A42 }
+    @inlinable public static var UNIFORM_BLOCK_ACTIVE_UNIFORMS: GLenum { 0x8A42 }
 
-    @inlinable static var UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES: GLenum { 0x8A43 }
+    @inlinable public static var UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES: GLenum { 0x8A43 }
 
-    @inlinable static var UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER: GLenum { 0x8A44 }
+    @inlinable public static var UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER: GLenum { 0x8A44 }
 
-    @inlinable static var UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER: GLenum { 0x8A46 }
+    @inlinable public static var UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER: GLenum { 0x8A46 }
 
-    @inlinable static var INVALID_INDEX: GLenum { 0xFFFF_FFFF }
+    @inlinable public static var INVALID_INDEX: GLenum { 0xFFFF_FFFF }
 
-    @inlinable static var MAX_VERTEX_OUTPUT_COMPONENTS: GLenum { 0x9122 }
+    @inlinable public static var MAX_VERTEX_OUTPUT_COMPONENTS: GLenum { 0x9122 }
 
-    @inlinable static var MAX_FRAGMENT_INPUT_COMPONENTS: GLenum { 0x9125 }
+    @inlinable public static var MAX_FRAGMENT_INPUT_COMPONENTS: GLenum { 0x9125 }
 
-    @inlinable static var MAX_SERVER_WAIT_TIMEOUT: GLenum { 0x9111 }
+    @inlinable public static var MAX_SERVER_WAIT_TIMEOUT: GLenum { 0x9111 }
 
-    @inlinable static var OBJECT_TYPE: GLenum { 0x9112 }
+    @inlinable public static var OBJECT_TYPE: GLenum { 0x9112 }
 
-    @inlinable static var SYNC_CONDITION: GLenum { 0x9113 }
+    @inlinable public static var SYNC_CONDITION: GLenum { 0x9113 }
 
-    @inlinable static var SYNC_STATUS: GLenum { 0x9114 }
+    @inlinable public static var SYNC_STATUS: GLenum { 0x9114 }
 
-    @inlinable static var SYNC_FLAGS: GLenum { 0x9115 }
+    @inlinable public static var SYNC_FLAGS: GLenum { 0x9115 }
 
-    @inlinable static var SYNC_FENCE: GLenum { 0x9116 }
+    @inlinable public static var SYNC_FENCE: GLenum { 0x9116 }
 
-    @inlinable static var SYNC_GPU_COMMANDS_COMPLETE: GLenum { 0x9117 }
+    @inlinable public static var SYNC_GPU_COMMANDS_COMPLETE: GLenum { 0x9117 }
 
-    @inlinable static var UNSIGNALED: GLenum { 0x9118 }
+    @inlinable public static var UNSIGNALED: GLenum { 0x9118 }
 
-    @inlinable static var SIGNALED: GLenum { 0x9119 }
+    @inlinable public static var SIGNALED: GLenum { 0x9119 }
 
-    @inlinable static var ALREADY_SIGNALED: GLenum { 0x911A }
+    @inlinable public static var ALREADY_SIGNALED: GLenum { 0x911A }
 
-    @inlinable static var TIMEOUT_EXPIRED: GLenum { 0x911B }
+    @inlinable public static var TIMEOUT_EXPIRED: GLenum { 0x911B }
 
-    @inlinable static var CONDITION_SATISFIED: GLenum { 0x911C }
+    @inlinable public static var CONDITION_SATISFIED: GLenum { 0x911C }
 
-    @inlinable static var WAIT_FAILED: GLenum { 0x911D }
+    @inlinable public static var WAIT_FAILED: GLenum { 0x911D }
 
-    @inlinable static var SYNC_FLUSH_COMMANDS_BIT: GLenum { 0x0000_0001 }
+    @inlinable public static var SYNC_FLUSH_COMMANDS_BIT: GLenum { 0x0000_0001 }
 
-    @inlinable static var VERTEX_ATTRIB_ARRAY_DIVISOR: GLenum { 0x88FE }
+    @inlinable public static var VERTEX_ATTRIB_ARRAY_DIVISOR: GLenum { 0x88FE }
 
-    @inlinable static var ANY_SAMPLES_PASSED: GLenum { 0x8C2F }
+    @inlinable public static var ANY_SAMPLES_PASSED: GLenum { 0x8C2F }
 
-    @inlinable static var ANY_SAMPLES_PASSED_CONSERVATIVE: GLenum { 0x8D6A }
+    @inlinable public static var ANY_SAMPLES_PASSED_CONSERVATIVE: GLenum { 0x8D6A }
 
-    @inlinable static var SAMPLER_BINDING: GLenum { 0x8919 }
+    @inlinable public static var SAMPLER_BINDING: GLenum { 0x8919 }
 
-    @inlinable static var RGB10_A2UI: GLenum { 0x906F }
+    @inlinable public static var RGB10_A2UI: GLenum { 0x906F }
 
-    @inlinable static var INT_2_10_10_10_REV: GLenum { 0x8D9F }
+    @inlinable public static var INT_2_10_10_10_REV: GLenum { 0x8D9F }
 
-    @inlinable static var TRANSFORM_FEEDBACK: GLenum { 0x8E22 }
+    @inlinable public static var TRANSFORM_FEEDBACK: GLenum { 0x8E22 }
 
-    @inlinable static var TRANSFORM_FEEDBACK_PAUSED: GLenum { 0x8E23 }
+    @inlinable public static var TRANSFORM_FEEDBACK_PAUSED: GLenum { 0x8E23 }
 
-    @inlinable static var TRANSFORM_FEEDBACK_ACTIVE: GLenum { 0x8E24 }
+    @inlinable public static var TRANSFORM_FEEDBACK_ACTIVE: GLenum { 0x8E24 }
 
-    @inlinable static var TRANSFORM_FEEDBACK_BINDING: GLenum { 0x8E25 }
+    @inlinable public static var TRANSFORM_FEEDBACK_BINDING: GLenum { 0x8E25 }
 
-    @inlinable static var TEXTURE_IMMUTABLE_FORMAT: GLenum { 0x912F }
+    @inlinable public static var TEXTURE_IMMUTABLE_FORMAT: GLenum { 0x912F }
 
-    @inlinable static var MAX_ELEMENT_INDEX: GLenum { 0x8D6B }
+    @inlinable public static var MAX_ELEMENT_INDEX: GLenum { 0x8D6B }
 
-    @inlinable static var TEXTURE_IMMUTABLE_LEVELS: GLenum { 0x82DF }
+    @inlinable public static var TEXTURE_IMMUTABLE_LEVELS: GLenum { 0x82DF }
 
-    @inlinable static var TIMEOUT_IGNORED: GLint64 { -1 }
+    @inlinable public static var TIMEOUT_IGNORED: GLint64 { -1 }
 
-    @inlinable static var MAX_CLIENT_WAIT_TIMEOUT_WEBGL: GLenum { 0x9247 }
+    @inlinable public static var MAX_CLIENT_WAIT_TIMEOUT_WEBGL: GLenum { 0x9247 }
 
-    @inlinable func copyBufferSubData(readTarget: GLenum, writeTarget: GLenum, readOffset: GLintptr, writeOffset: GLintptr, size: GLsizeiptr) {
+    @inlinable public func copyBufferSubData(
+        readTarget: GLenum,
+        writeTarget: GLenum,
+        readOffset: GLintptr,
+        writeOffset: GLintptr,
+        size: GLsizeiptr
+    ) {
         let this = jsObject
-        _ = this[Strings.copyBufferSubData].function!(this: this, arguments: [_toJSValue(readTarget), _toJSValue(writeTarget), _toJSValue(readOffset), _toJSValue(writeOffset), _toJSValue(size)])
+        _ = this[Strings.copyBufferSubData].function!(
+            this: this,
+            arguments: [
+                _toJSValue(readTarget), _toJSValue(writeTarget), _toJSValue(readOffset), _toJSValue(writeOffset),
+                _toJSValue(size),
+            ]
+        )
     }
 
-    @inlinable func getBufferSubData(target: GLenum, srcByteOffset: GLintptr, dstBuffer: ArrayBufferView, dstOffset: GLuint? = nil, length: GLuint? = nil) {
+    @inlinable public func getBufferSubData(
+        target: GLenum,
+        srcByteOffset: GLintptr,
+        dstBuffer: ArrayBufferView,
+        dstOffset: GLuint? = nil,
+        length: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.getBufferSubData].function!(this: this, arguments: [_toJSValue(target), _toJSValue(srcByteOffset), _toJSValue(dstBuffer), _toJSValue(dstOffset), _toJSValue(length)])
+        _ = this[Strings.getBufferSubData].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(srcByteOffset), _toJSValue(dstBuffer), _toJSValue(dstOffset),
+                _toJSValue(length),
+            ]
+        )
     }
 
-    @inlinable func blitFramebuffer(srcX0: GLint, srcY0: GLint, srcX1: GLint, srcY1: GLint, dstX0: GLint, dstY0: GLint, dstX1: GLint, dstY1: GLint, mask: GLbitfield, filter: GLenum) {
+    @inlinable public func blitFramebuffer(
+        srcX0: GLint,
+        srcY0: GLint,
+        srcX1: GLint,
+        srcY1: GLint,
+        dstX0: GLint,
+        dstY0: GLint,
+        dstX1: GLint,
+        dstY1: GLint,
+        mask: GLbitfield,
+        filter: GLenum
+    ) {
         let this = jsObject
-        _ = this[Strings.blitFramebuffer].function!(this: this, arguments: [_toJSValue(srcX0), _toJSValue(srcY0), _toJSValue(srcX1), _toJSValue(srcY1), _toJSValue(dstX0), _toJSValue(dstY0), _toJSValue(dstX1), _toJSValue(dstY1), _toJSValue(mask), _toJSValue(filter)])
+        _ = this[Strings.blitFramebuffer].function!(
+            this: this,
+            arguments: [
+                _toJSValue(srcX0), _toJSValue(srcY0), _toJSValue(srcX1), _toJSValue(srcY1), _toJSValue(dstX0),
+                _toJSValue(dstY0), _toJSValue(dstX1), _toJSValue(dstY1), _toJSValue(mask), _toJSValue(filter),
+            ]
+        )
     }
 
-    @inlinable func framebufferTextureLayer(target: GLenum, attachment: GLenum, texture: WebGLTexture?, level: GLint, layer: GLint) {
+    @inlinable public func framebufferTextureLayer(
+        target: GLenum,
+        attachment: GLenum,
+        texture: WebGLTexture?,
+        level: GLint,
+        layer: GLint
+    ) {
         let this = jsObject
-        _ = this[Strings.framebufferTextureLayer].function!(this: this, arguments: [_toJSValue(target), _toJSValue(attachment), _toJSValue(texture), _toJSValue(level), _toJSValue(layer)])
+        _ = this[Strings.framebufferTextureLayer].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(attachment), _toJSValue(texture), _toJSValue(level), _toJSValue(layer),
+            ]
+        )
     }
 
-    @inlinable func invalidateFramebuffer(target: GLenum, attachments: [GLenum]) {
+    @inlinable public func invalidateFramebuffer(target: GLenum, attachments: [GLenum]) {
         let this = jsObject
-        _ = this[Strings.invalidateFramebuffer].function!(this: this, arguments: [_toJSValue(target), _toJSValue(attachments)])
+        _ = this[Strings.invalidateFramebuffer].function!(
+            this: this,
+            arguments: [_toJSValue(target), _toJSValue(attachments)]
+        )
     }
 
-    @inlinable func invalidateSubFramebuffer(target: GLenum, attachments: [GLenum], x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
+    @inlinable public func invalidateSubFramebuffer(
+        target: GLenum,
+        attachments: [GLenum],
+        x: GLint,
+        y: GLint,
+        width: GLsizei,
+        height: GLsizei
+    ) {
         let this = jsObject
-        _ = this[Strings.invalidateSubFramebuffer].function!(this: this, arguments: [_toJSValue(target), _toJSValue(attachments), _toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height)])
+        _ = this[Strings.invalidateSubFramebuffer].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(attachments), _toJSValue(x), _toJSValue(y), _toJSValue(width),
+                _toJSValue(height),
+            ]
+        )
     }
 
-    @inlinable func readBuffer(src: GLenum) {
+    @inlinable public func readBuffer(src: GLenum) {
         let this = jsObject
         _ = this[Strings.readBuffer].function!(this: this, arguments: [_toJSValue(src)])
     }
 
-    @inlinable func getInternalformatParameter(target: GLenum, internalformat: GLenum, pname: GLenum) -> JSValue {
+    @inlinable public func getInternalformatParameter(target: GLenum, internalformat: GLenum, pname: GLenum) -> JSValue
+    {
         let this = jsObject
-        return this[Strings.getInternalformatParameter].function!(this: this, arguments: [_toJSValue(target), _toJSValue(internalformat), _toJSValue(pname)]).fromJSValue()!
+        return this[Strings.getInternalformatParameter].function!(
+            this: this,
+            arguments: [_toJSValue(target), _toJSValue(internalformat), _toJSValue(pname)]
+        ).fromJSValue()!
     }
 
-    @inlinable func renderbufferStorageMultisample(target: GLenum, samples: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei) {
+    @inlinable public func renderbufferStorageMultisample(
+        target: GLenum,
+        samples: GLsizei,
+        internalformat: GLenum,
+        width: GLsizei,
+        height: GLsizei
+    ) {
         let this = jsObject
-        _ = this[Strings.renderbufferStorageMultisample].function!(this: this, arguments: [_toJSValue(target), _toJSValue(samples), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height)])
+        _ = this[Strings.renderbufferStorageMultisample].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(samples), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height),
+            ]
+        )
     }
 
-    @inlinable func texStorage2D(target: GLenum, levels: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei) {
+    @inlinable public func texStorage2D(
+        target: GLenum,
+        levels: GLsizei,
+        internalformat: GLenum,
+        width: GLsizei,
+        height: GLsizei
+    ) {
         let this = jsObject
-        _ = this[Strings.texStorage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(levels), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height)])
+        _ = this[Strings.texStorage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(levels), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height),
+            ]
+        )
     }
 
-    @inlinable func texStorage3D(target: GLenum, levels: GLsizei, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei) {
+    @inlinable public func texStorage3D(
+        target: GLenum,
+        levels: GLsizei,
+        internalformat: GLenum,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei
+    ) {
         let this = jsObject
-        _ = this[Strings.texStorage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(levels), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(depth)])
+        _ = this[Strings.texStorage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(levels), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(depth),
+            ]
+        )
     }
 
-    @inlinable func texImage3D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, format: GLenum, type: GLenum, pboOffset: GLintptr) {
+    @inlinable public func texImage3D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        border: GLint,
+        format: GLenum,
+        type: GLenum,
+        pboOffset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.texImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(pboOffset)])
+        _ = this[Strings.texImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(format), _toJSValue(type),
+                _toJSValue(pboOffset),
+            ]
+        )
     }
 
-    @inlinable func texImage3D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
+    @inlinable public func texImage3D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        border: GLint,
+        format: GLenum,
+        type: GLenum,
+        source: TexImageSource
+    ) {
         let this = jsObject
-        _ = this[Strings.texImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(source)])
+        _ = this[Strings.texImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(format), _toJSValue(type),
+                _toJSValue(source),
+            ]
+        )
     }
 
-    @inlinable func texImage3D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, format: GLenum, type: GLenum, srcData: ArrayBufferView?) {
+    @inlinable public func texImage3D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        border: GLint,
+        format: GLenum,
+        type: GLenum,
+        srcData: ArrayBufferView?
+    ) {
         let this = jsObject
-        _ = this[Strings.texImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(srcData)])
+        _ = this[Strings.texImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(format), _toJSValue(type),
+                _toJSValue(srcData),
+            ]
+        )
     }
 
-    @inlinable func texImage3D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, format: GLenum, type: GLenum, srcData: ArrayBufferView, srcOffset: GLuint) {
+    @inlinable public func texImage3D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        border: GLint,
+        format: GLenum,
+        type: GLenum,
+        srcData: ArrayBufferView,
+        srcOffset: GLuint
+    ) {
         let this = jsObject
-        _ = this[Strings.texImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(srcData), _toJSValue(srcOffset)])
+        _ = this[Strings.texImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(format), _toJSValue(type),
+                _toJSValue(srcData), _toJSValue(srcOffset),
+            ]
+        )
     }
 
-    @inlinable func texSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, type: GLenum, pboOffset: GLintptr) {
+    @inlinable public func texSubImage3D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        zoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        pboOffset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.texSubImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(type), _toJSValue(pboOffset)])
+        _ = this[Strings.texSubImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset),
+                _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(type),
+                _toJSValue(pboOffset),
+            ]
+        )
     }
 
-    @inlinable func texSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, type: GLenum, source: TexImageSource) {
+    @inlinable public func texSubImage3D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        zoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        source: TexImageSource
+    ) {
         let this = jsObject
-        _ = this[Strings.texSubImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(type), _toJSValue(source)])
+        _ = this[Strings.texSubImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset),
+                _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(type),
+                _toJSValue(source),
+            ]
+        )
     }
 
-    @inlinable func texSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, type: GLenum, srcData: ArrayBufferView?, srcOffset: GLuint? = nil) {
+    @inlinable public func texSubImage3D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        zoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        srcData: ArrayBufferView?,
+        srcOffset: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.texSubImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(type), _toJSValue(srcData), _toJSValue(srcOffset)])
+        _ = this[Strings.texSubImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset),
+                _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(type),
+                _toJSValue(srcData), _toJSValue(srcOffset),
+            ]
+        )
     }
 
-    @inlinable func copyTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
+    @inlinable public func copyTexSubImage3D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        zoffset: GLint,
+        x: GLint,
+        y: GLint,
+        width: GLsizei,
+        height: GLsizei
+    ) {
         let this = jsObject
-        _ = this[Strings.copyTexSubImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset), _toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height)])
+        _ = this[Strings.copyTexSubImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset),
+                _toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height),
+            ]
+        )
     }
 
-    @inlinable func compressedTexImage3D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, imageSize: GLsizei, offset: GLintptr) {
+    @inlinable public func compressedTexImage3D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLenum,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        border: GLint,
+        imageSize: GLsizei,
+        offset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.compressedTexImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(imageSize), _toJSValue(offset)])
+        _ = this[Strings.compressedTexImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(imageSize), _toJSValue(offset),
+            ]
+        )
     }
 
-    @inlinable func compressedTexImage3D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
+    @inlinable public func compressedTexImage3D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLenum,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        border: GLint,
+        srcData: ArrayBufferView,
+        srcOffset: GLuint? = nil,
+        srcLengthOverride: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.compressedTexImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(srcData), _toJSValue(srcOffset), _toJSValue(srcLengthOverride)])
+        _ = this[Strings.compressedTexImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(depth), _toJSValue(border), _toJSValue(srcData), _toJSValue(srcOffset),
+                _toJSValue(srcLengthOverride),
+            ]
+        )
     }
 
-    @inlinable func compressedTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, imageSize: GLsizei, offset: GLintptr) {
+    @inlinable public func compressedTexSubImage3D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        zoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        format: GLenum,
+        imageSize: GLsizei,
+        offset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.compressedTexSubImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(imageSize), _toJSValue(offset)])
+        _ = this[Strings.compressedTexSubImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset),
+                _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(imageSize),
+                _toJSValue(offset),
+            ]
+        )
     }
 
-    @inlinable func compressedTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, width: GLsizei, height: GLsizei, depth: GLsizei, format: GLenum, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
+    @inlinable public func compressedTexSubImage3D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        zoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        depth: GLsizei,
+        format: GLenum,
+        srcData: ArrayBufferView,
+        srcOffset: GLuint? = nil,
+        srcLengthOverride: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.compressedTexSubImage3D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset), _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(srcData), _toJSValue(srcOffset), _toJSValue(srcLengthOverride)])
+        _ = this[Strings.compressedTexSubImage3D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(zoffset),
+                _toJSValue(width), _toJSValue(height), _toJSValue(depth), _toJSValue(format), _toJSValue(srcData),
+                _toJSValue(srcOffset), _toJSValue(srcLengthOverride),
+            ]
+        )
     }
 
-    @inlinable func getFragDataLocation(program: WebGLProgram, name: String) -> GLint {
+    @inlinable public func getFragDataLocation(program: WebGLProgram, name: String) -> GLint {
         let this = jsObject
-        return this[Strings.getFragDataLocation].function!(this: this, arguments: [_toJSValue(program), _toJSValue(name)]).fromJSValue()!
+        return this[Strings.getFragDataLocation].function!(
+            this: this,
+            arguments: [_toJSValue(program), _toJSValue(name)]
+        ).fromJSValue()!
     }
 
-    @inlinable func uniform1ui(location: WebGLUniformLocation?, v0: GLuint) {
+    @inlinable public func uniform1ui(location: WebGLUniformLocation?, v0: GLuint) {
         let this = jsObject
         _ = this[Strings.uniform1ui].function!(this: this, arguments: [_toJSValue(location), _toJSValue(v0)])
     }
 
-    @inlinable func uniform2ui(location: WebGLUniformLocation?, v0: GLuint, v1: GLuint) {
+    @inlinable public func uniform2ui(location: WebGLUniformLocation?, v0: GLuint, v1: GLuint) {
         let this = jsObject
-        _ = this[Strings.uniform2ui].function!(this: this, arguments: [_toJSValue(location), _toJSValue(v0), _toJSValue(v1)])
+        _ = this[Strings.uniform2ui].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(v0), _toJSValue(v1)]
+        )
     }
 
-    @inlinable func uniform3ui(location: WebGLUniformLocation?, v0: GLuint, v1: GLuint, v2: GLuint) {
+    @inlinable public func uniform3ui(location: WebGLUniformLocation?, v0: GLuint, v1: GLuint, v2: GLuint) {
         let this = jsObject
-        _ = this[Strings.uniform3ui].function!(this: this, arguments: [_toJSValue(location), _toJSValue(v0), _toJSValue(v1), _toJSValue(v2)])
+        _ = this[Strings.uniform3ui].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(v0), _toJSValue(v1), _toJSValue(v2)]
+        )
     }
 
-    @inlinable func uniform4ui(location: WebGLUniformLocation?, v0: GLuint, v1: GLuint, v2: GLuint, v3: GLuint) {
+    @inlinable public func uniform4ui(location: WebGLUniformLocation?, v0: GLuint, v1: GLuint, v2: GLuint, v3: GLuint) {
         let this = jsObject
-        _ = this[Strings.uniform4ui].function!(this: this, arguments: [_toJSValue(location), _toJSValue(v0), _toJSValue(v1), _toJSValue(v2), _toJSValue(v3)])
+        _ = this[Strings.uniform4ui].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(v0), _toJSValue(v1), _toJSValue(v2), _toJSValue(v3)]
+        )
     }
 
-    @inlinable func uniform1uiv(location: WebGLUniformLocation?, data: Uint32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform1uiv(
+        location: WebGLUniformLocation?,
+        data: Uint32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform1uiv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform1uiv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform2uiv(location: WebGLUniformLocation?, data: Uint32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform2uiv(
+        location: WebGLUniformLocation?,
+        data: Uint32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform2uiv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform2uiv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform3uiv(location: WebGLUniformLocation?, data: Uint32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform3uiv(
+        location: WebGLUniformLocation?,
+        data: Uint32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform3uiv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform3uiv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform4uiv(location: WebGLUniformLocation?, data: Uint32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform4uiv(
+        location: WebGLUniformLocation?,
+        data: Uint32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform4uiv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform4uiv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniformMatrix3x2fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniformMatrix3x2fv(
+        location: WebGLUniformLocation?,
+        transpose: GLboolean,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformMatrix3x2fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniformMatrix3x2fv].function!(
+            this: this,
+            arguments: [
+                _toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset),
+                _toJSValue(srcLength),
+            ]
+        )
     }
 
-    @inlinable func uniformMatrix4x2fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniformMatrix4x2fv(
+        location: WebGLUniformLocation?,
+        transpose: GLboolean,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformMatrix4x2fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniformMatrix4x2fv].function!(
+            this: this,
+            arguments: [
+                _toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset),
+                _toJSValue(srcLength),
+            ]
+        )
     }
 
-    @inlinable func uniformMatrix2x3fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniformMatrix2x3fv(
+        location: WebGLUniformLocation?,
+        transpose: GLboolean,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformMatrix2x3fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniformMatrix2x3fv].function!(
+            this: this,
+            arguments: [
+                _toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset),
+                _toJSValue(srcLength),
+            ]
+        )
     }
 
-    @inlinable func uniformMatrix4x3fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniformMatrix4x3fv(
+        location: WebGLUniformLocation?,
+        transpose: GLboolean,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformMatrix4x3fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniformMatrix4x3fv].function!(
+            this: this,
+            arguments: [
+                _toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset),
+                _toJSValue(srcLength),
+            ]
+        )
     }
 
-    @inlinable func uniformMatrix2x4fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniformMatrix2x4fv(
+        location: WebGLUniformLocation?,
+        transpose: GLboolean,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformMatrix2x4fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniformMatrix2x4fv].function!(
+            this: this,
+            arguments: [
+                _toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset),
+                _toJSValue(srcLength),
+            ]
+        )
     }
 
-    @inlinable func uniformMatrix3x4fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniformMatrix3x4fv(
+        location: WebGLUniformLocation?,
+        transpose: GLboolean,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformMatrix3x4fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniformMatrix3x4fv].function!(
+            this: this,
+            arguments: [
+                _toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset),
+                _toJSValue(srcLength),
+            ]
+        )
     }
 
-    @inlinable func vertexAttribI4i(index: GLuint, x: GLint, y: GLint, z: GLint, w: GLint) {
+    @inlinable public func vertexAttribI4i(index: GLuint, x: GLint, y: GLint, z: GLint, w: GLint) {
         let this = jsObject
-        _ = this[Strings.vertexAttribI4i].function!(this: this, arguments: [_toJSValue(index), _toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(w)])
+        _ = this[Strings.vertexAttribI4i].function!(
+            this: this,
+            arguments: [_toJSValue(index), _toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(w)]
+        )
     }
 
-    @inlinable func vertexAttribI4iv(index: GLuint, values: Int32List) {
+    @inlinable public func vertexAttribI4iv(index: GLuint, values: Int32List) {
         let this = jsObject
         _ = this[Strings.vertexAttribI4iv].function!(this: this, arguments: [_toJSValue(index), _toJSValue(values)])
     }
 
-    @inlinable func vertexAttribI4ui(index: GLuint, x: GLuint, y: GLuint, z: GLuint, w: GLuint) {
+    @inlinable public func vertexAttribI4ui(index: GLuint, x: GLuint, y: GLuint, z: GLuint, w: GLuint) {
         let this = jsObject
-        _ = this[Strings.vertexAttribI4ui].function!(this: this, arguments: [_toJSValue(index), _toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(w)])
+        _ = this[Strings.vertexAttribI4ui].function!(
+            this: this,
+            arguments: [_toJSValue(index), _toJSValue(x), _toJSValue(y), _toJSValue(z), _toJSValue(w)]
+        )
     }
 
-    @inlinable func vertexAttribI4uiv(index: GLuint, values: Uint32List) {
+    @inlinable public func vertexAttribI4uiv(index: GLuint, values: Uint32List) {
         let this = jsObject
         _ = this[Strings.vertexAttribI4uiv].function!(this: this, arguments: [_toJSValue(index), _toJSValue(values)])
     }
 
-    @inlinable func vertexAttribIPointer(index: GLuint, size: GLint, type: GLenum, stride: GLsizei, offset: GLintptr) {
+    @inlinable public func vertexAttribIPointer(
+        index: GLuint,
+        size: GLint,
+        type: GLenum,
+        stride: GLsizei,
+        offset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.vertexAttribIPointer].function!(this: this, arguments: [_toJSValue(index), _toJSValue(size), _toJSValue(type), _toJSValue(stride), _toJSValue(offset)])
+        _ = this[Strings.vertexAttribIPointer].function!(
+            this: this,
+            arguments: [_toJSValue(index), _toJSValue(size), _toJSValue(type), _toJSValue(stride), _toJSValue(offset)]
+        )
     }
 
-    @inlinable func vertexAttribDivisor(index: GLuint, divisor: GLuint) {
+    @inlinable public func vertexAttribDivisor(index: GLuint, divisor: GLuint) {
         let this = jsObject
-        _ = this[Strings.vertexAttribDivisor].function!(this: this, arguments: [_toJSValue(index), _toJSValue(divisor)])
+        _ = this[Strings.vertexAttribDivisor].function!(
+            this: this,
+            arguments: [_toJSValue(index), _toJSValue(divisor)]
+        )
     }
 
-    @inlinable func drawArraysInstanced(mode: GLenum, first: GLint, count: GLsizei, instanceCount: GLsizei) {
+    @inlinable public func drawArraysInstanced(mode: GLenum, first: GLint, count: GLsizei, instanceCount: GLsizei) {
         let this = jsObject
-        _ = this[Strings.drawArraysInstanced].function!(this: this, arguments: [_toJSValue(mode), _toJSValue(first), _toJSValue(count), _toJSValue(instanceCount)])
+        _ = this[Strings.drawArraysInstanced].function!(
+            this: this,
+            arguments: [_toJSValue(mode), _toJSValue(first), _toJSValue(count), _toJSValue(instanceCount)]
+        )
     }
 
-    @inlinable func drawElementsInstanced(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr, instanceCount: GLsizei) {
+    @inlinable public func drawElementsInstanced(
+        mode: GLenum,
+        count: GLsizei,
+        type: GLenum,
+        offset: GLintptr,
+        instanceCount: GLsizei
+    ) {
         let this = jsObject
-        _ = this[Strings.drawElementsInstanced].function!(this: this, arguments: [_toJSValue(mode), _toJSValue(count), _toJSValue(type), _toJSValue(offset), _toJSValue(instanceCount)])
+        _ = this[Strings.drawElementsInstanced].function!(
+            this: this,
+            arguments: [
+                _toJSValue(mode), _toJSValue(count), _toJSValue(type), _toJSValue(offset), _toJSValue(instanceCount),
+            ]
+        )
     }
 
-    @inlinable func drawRangeElements(mode: GLenum, start: GLuint, end: GLuint, count: GLsizei, type: GLenum, offset: GLintptr) {
+    @inlinable public func drawRangeElements(
+        mode: GLenum,
+        start: GLuint,
+        end: GLuint,
+        count: GLsizei,
+        type: GLenum,
+        offset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.drawRangeElements].function!(this: this, arguments: [_toJSValue(mode), _toJSValue(start), _toJSValue(end), _toJSValue(count), _toJSValue(type), _toJSValue(offset)])
+        _ = this[Strings.drawRangeElements].function!(
+            this: this,
+            arguments: [
+                _toJSValue(mode), _toJSValue(start), _toJSValue(end), _toJSValue(count), _toJSValue(type),
+                _toJSValue(offset),
+            ]
+        )
     }
 
-    @inlinable func drawBuffers(buffers: [GLenum]) {
+    @inlinable public func drawBuffers(buffers: [GLenum]) {
         let this = jsObject
         _ = this[Strings.drawBuffers].function!(this: this, arguments: [_toJSValue(buffers)])
     }
 
-    @inlinable func clearBufferfv(buffer: GLenum, drawbuffer: GLint, values: Float32List, srcOffset: GLuint? = nil) {
+    @inlinable public func clearBufferfv(
+        buffer: GLenum,
+        drawbuffer: GLint,
+        values: Float32List,
+        srcOffset: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.clearBufferfv].function!(this: this, arguments: [_toJSValue(buffer), _toJSValue(drawbuffer), _toJSValue(values), _toJSValue(srcOffset)])
+        _ = this[Strings.clearBufferfv].function!(
+            this: this,
+            arguments: [_toJSValue(buffer), _toJSValue(drawbuffer), _toJSValue(values), _toJSValue(srcOffset)]
+        )
     }
 
-    @inlinable func clearBufferiv(buffer: GLenum, drawbuffer: GLint, values: Int32List, srcOffset: GLuint? = nil) {
+    @inlinable public func clearBufferiv(buffer: GLenum, drawbuffer: GLint, values: Int32List, srcOffset: GLuint? = nil)
+    {
         let this = jsObject
-        _ = this[Strings.clearBufferiv].function!(this: this, arguments: [_toJSValue(buffer), _toJSValue(drawbuffer), _toJSValue(values), _toJSValue(srcOffset)])
+        _ = this[Strings.clearBufferiv].function!(
+            this: this,
+            arguments: [_toJSValue(buffer), _toJSValue(drawbuffer), _toJSValue(values), _toJSValue(srcOffset)]
+        )
     }
 
-    @inlinable func clearBufferuiv(buffer: GLenum, drawbuffer: GLint, values: Uint32List, srcOffset: GLuint? = nil) {
+    @inlinable public func clearBufferuiv(
+        buffer: GLenum,
+        drawbuffer: GLint,
+        values: Uint32List,
+        srcOffset: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.clearBufferuiv].function!(this: this, arguments: [_toJSValue(buffer), _toJSValue(drawbuffer), _toJSValue(values), _toJSValue(srcOffset)])
+        _ = this[Strings.clearBufferuiv].function!(
+            this: this,
+            arguments: [_toJSValue(buffer), _toJSValue(drawbuffer), _toJSValue(values), _toJSValue(srcOffset)]
+        )
     }
 
-    @inlinable func clearBufferfi(buffer: GLenum, drawbuffer: GLint, depth: GLfloat, stencil: GLint) {
+    @inlinable public func clearBufferfi(buffer: GLenum, drawbuffer: GLint, depth: GLfloat, stencil: GLint) {
         let this = jsObject
-        _ = this[Strings.clearBufferfi].function!(this: this, arguments: [_toJSValue(buffer), _toJSValue(drawbuffer), _toJSValue(depth), _toJSValue(stencil)])
+        _ = this[Strings.clearBufferfi].function!(
+            this: this,
+            arguments: [_toJSValue(buffer), _toJSValue(drawbuffer), _toJSValue(depth), _toJSValue(stencil)]
+        )
     }
 
-    @inlinable func createQuery() -> WebGLQuery? {
+    @inlinable public func createQuery() -> WebGLQuery? {
         let this = jsObject
         return this[Strings.createQuery].function!(this: this, arguments: []).fromJSValue()
     }
 
-    @inlinable func deleteQuery(query: WebGLQuery?) {
+    @inlinable public func deleteQuery(query: WebGLQuery?) {
         let this = jsObject
         _ = this[Strings.deleteQuery].function!(this: this, arguments: [_toJSValue(query)])
     }
 
-    @inlinable func isQuery(query: WebGLQuery?) -> GLboolean {
+    @inlinable public func isQuery(query: WebGLQuery?) -> GLboolean {
         let this = jsObject
         return this[Strings.isQuery].function!(this: this, arguments: [_toJSValue(query)]).fromJSValue()!
     }
 
-    @inlinable func beginQuery(target: GLenum, query: WebGLQuery) {
+    @inlinable public func beginQuery(target: GLenum, query: WebGLQuery) {
         let this = jsObject
         _ = this[Strings.beginQuery].function!(this: this, arguments: [_toJSValue(target), _toJSValue(query)])
     }
 
-    @inlinable func endQuery(target: GLenum) {
+    @inlinable public func endQuery(target: GLenum) {
         let this = jsObject
         _ = this[Strings.endQuery].function!(this: this, arguments: [_toJSValue(target)])
     }
 
-    @inlinable func getQuery(target: GLenum, pname: GLenum) -> WebGLQuery? {
+    @inlinable public func getQuery(target: GLenum, pname: GLenum) -> WebGLQuery? {
         let this = jsObject
-        return this[Strings.getQuery].function!(this: this, arguments: [_toJSValue(target), _toJSValue(pname)]).fromJSValue()
+        return this[Strings.getQuery].function!(this: this, arguments: [_toJSValue(target), _toJSValue(pname)])
+            .fromJSValue()
     }
 
-    @inlinable func getQueryParameter(query: WebGLQuery, pname: GLenum) -> JSValue {
+    @inlinable public func getQueryParameter(query: WebGLQuery, pname: GLenum) -> JSValue {
         let this = jsObject
-        return this[Strings.getQueryParameter].function!(this: this, arguments: [_toJSValue(query), _toJSValue(pname)]).fromJSValue()!
+        return this[Strings.getQueryParameter].function!(this: this, arguments: [_toJSValue(query), _toJSValue(pname)])
+            .fromJSValue()!
     }
 
-    @inlinable func createSampler() -> WebGLSampler? {
+    @inlinable public func createSampler() -> WebGLSampler? {
         let this = jsObject
         return this[Strings.createSampler].function!(this: this, arguments: []).fromJSValue()
     }
 
-    @inlinable func deleteSampler(sampler: WebGLSampler?) {
+    @inlinable public func deleteSampler(sampler: WebGLSampler?) {
         let this = jsObject
         _ = this[Strings.deleteSampler].function!(this: this, arguments: [_toJSValue(sampler)])
     }
 
-    @inlinable func isSampler(sampler: WebGLSampler?) -> GLboolean {
+    @inlinable public func isSampler(sampler: WebGLSampler?) -> GLboolean {
         let this = jsObject
         return this[Strings.isSampler].function!(this: this, arguments: [_toJSValue(sampler)]).fromJSValue()!
     }
 
-    @inlinable func bindSampler(unit: GLuint, sampler: WebGLSampler?) {
+    @inlinable public func bindSampler(unit: GLuint, sampler: WebGLSampler?) {
         let this = jsObject
         _ = this[Strings.bindSampler].function!(this: this, arguments: [_toJSValue(unit), _toJSValue(sampler)])
     }
 
-    @inlinable func samplerParameteri(sampler: WebGLSampler, pname: GLenum, param: GLint) {
+    @inlinable public func samplerParameteri(sampler: WebGLSampler, pname: GLenum, param: GLint) {
         let this = jsObject
-        _ = this[Strings.samplerParameteri].function!(this: this, arguments: [_toJSValue(sampler), _toJSValue(pname), _toJSValue(param)])
+        _ = this[Strings.samplerParameteri].function!(
+            this: this,
+            arguments: [_toJSValue(sampler), _toJSValue(pname), _toJSValue(param)]
+        )
     }
 
-    @inlinable func samplerParameterf(sampler: WebGLSampler, pname: GLenum, param: GLfloat) {
+    @inlinable public func samplerParameterf(sampler: WebGLSampler, pname: GLenum, param: GLfloat) {
         let this = jsObject
-        _ = this[Strings.samplerParameterf].function!(this: this, arguments: [_toJSValue(sampler), _toJSValue(pname), _toJSValue(param)])
+        _ = this[Strings.samplerParameterf].function!(
+            this: this,
+            arguments: [_toJSValue(sampler), _toJSValue(pname), _toJSValue(param)]
+        )
     }
 
-    @inlinable func getSamplerParameter(sampler: WebGLSampler, pname: GLenum) -> JSValue {
+    @inlinable public func getSamplerParameter(sampler: WebGLSampler, pname: GLenum) -> JSValue {
         let this = jsObject
-        return this[Strings.getSamplerParameter].function!(this: this, arguments: [_toJSValue(sampler), _toJSValue(pname)]).fromJSValue()!
+        return this[Strings.getSamplerParameter].function!(
+            this: this,
+            arguments: [_toJSValue(sampler), _toJSValue(pname)]
+        ).fromJSValue()!
     }
 
-    @inlinable func fenceSync(condition: GLenum, flags: GLbitfield) -> WebGLSync? {
+    @inlinable public func fenceSync(condition: GLenum, flags: GLbitfield) -> WebGLSync? {
         let this = jsObject
-        return this[Strings.fenceSync].function!(this: this, arguments: [_toJSValue(condition), _toJSValue(flags)]).fromJSValue()
+        return this[Strings.fenceSync].function!(this: this, arguments: [_toJSValue(condition), _toJSValue(flags)])
+            .fromJSValue()
     }
 
-    @inlinable func isSync(sync: WebGLSync?) -> GLboolean {
+    @inlinable public func isSync(sync: WebGLSync?) -> GLboolean {
         let this = jsObject
         return this[Strings.isSync].function!(this: this, arguments: [_toJSValue(sync)]).fromJSValue()!
     }
 
-    @inlinable func deleteSync(sync: WebGLSync?) {
+    @inlinable public func deleteSync(sync: WebGLSync?) {
         let this = jsObject
         _ = this[Strings.deleteSync].function!(this: this, arguments: [_toJSValue(sync)])
     }
 
-    @inlinable func clientWaitSync(sync: WebGLSync, flags: GLbitfield, timeout: GLuint64) -> GLenum {
+    @inlinable public func clientWaitSync(sync: WebGLSync, flags: GLbitfield, timeout: GLuint64) -> GLenum {
         let this = jsObject
-        return this[Strings.clientWaitSync].function!(this: this, arguments: [_toJSValue(sync), _toJSValue(flags), _toJSValue(timeout)]).fromJSValue()!
+        return this[Strings.clientWaitSync].function!(
+            this: this,
+            arguments: [_toJSValue(sync), _toJSValue(flags), _toJSValue(timeout)]
+        ).fromJSValue()!
     }
 
-    @inlinable func waitSync(sync: WebGLSync, flags: GLbitfield, timeout: GLint64) {
+    @inlinable public func waitSync(sync: WebGLSync, flags: GLbitfield, timeout: GLint64) {
         let this = jsObject
-        _ = this[Strings.waitSync].function!(this: this, arguments: [_toJSValue(sync), _toJSValue(flags), _toJSValue(timeout)])
+        _ = this[Strings.waitSync].function!(
+            this: this,
+            arguments: [_toJSValue(sync), _toJSValue(flags), _toJSValue(timeout)]
+        )
     }
 
-    @inlinable func getSyncParameter(sync: WebGLSync, pname: GLenum) -> JSValue {
+    @inlinable public func getSyncParameter(sync: WebGLSync, pname: GLenum) -> JSValue {
         let this = jsObject
-        return this[Strings.getSyncParameter].function!(this: this, arguments: [_toJSValue(sync), _toJSValue(pname)]).fromJSValue()!
+        return this[Strings.getSyncParameter].function!(this: this, arguments: [_toJSValue(sync), _toJSValue(pname)])
+            .fromJSValue()!
     }
 
-    @inlinable func createTransformFeedback() -> WebGLTransformFeedback? {
+    @inlinable public func createTransformFeedback() -> WebGLTransformFeedback? {
         let this = jsObject
         return this[Strings.createTransformFeedback].function!(this: this, arguments: []).fromJSValue()
     }
 
-    @inlinable func deleteTransformFeedback(tf: WebGLTransformFeedback?) {
+    @inlinable public func deleteTransformFeedback(tf: WebGLTransformFeedback?) {
         let this = jsObject
         _ = this[Strings.deleteTransformFeedback].function!(this: this, arguments: [_toJSValue(tf)])
     }
 
-    @inlinable func isTransformFeedback(tf: WebGLTransformFeedback?) -> GLboolean {
+    @inlinable public func isTransformFeedback(tf: WebGLTransformFeedback?) -> GLboolean {
         let this = jsObject
         return this[Strings.isTransformFeedback].function!(this: this, arguments: [_toJSValue(tf)]).fromJSValue()!
     }
 
-    @inlinable func bindTransformFeedback(target: GLenum, tf: WebGLTransformFeedback?) {
+    @inlinable public func bindTransformFeedback(target: GLenum, tf: WebGLTransformFeedback?) {
         let this = jsObject
         _ = this[Strings.bindTransformFeedback].function!(this: this, arguments: [_toJSValue(target), _toJSValue(tf)])
     }
 
-    @inlinable func beginTransformFeedback(primitiveMode: GLenum) {
+    @inlinable public func beginTransformFeedback(primitiveMode: GLenum) {
         let this = jsObject
         _ = this[Strings.beginTransformFeedback].function!(this: this, arguments: [_toJSValue(primitiveMode)])
     }
 
-    @inlinable func endTransformFeedback() {
+    @inlinable public func endTransformFeedback() {
         let this = jsObject
         _ = this[Strings.endTransformFeedback].function!(this: this, arguments: [])
     }
 
-    @inlinable func transformFeedbackVaryings(program: WebGLProgram, varyings: [String], bufferMode: GLenum) {
+    @inlinable public func transformFeedbackVaryings(program: WebGLProgram, varyings: [String], bufferMode: GLenum) {
         let this = jsObject
-        _ = this[Strings.transformFeedbackVaryings].function!(this: this, arguments: [_toJSValue(program), _toJSValue(varyings), _toJSValue(bufferMode)])
+        _ = this[Strings.transformFeedbackVaryings].function!(
+            this: this,
+            arguments: [_toJSValue(program), _toJSValue(varyings), _toJSValue(bufferMode)]
+        )
     }
 
-    @inlinable func getTransformFeedbackVarying(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
+    @inlinable public func getTransformFeedbackVarying(program: WebGLProgram, index: GLuint) -> WebGLActiveInfo? {
         let this = jsObject
-        return this[Strings.getTransformFeedbackVarying].function!(this: this, arguments: [_toJSValue(program), _toJSValue(index)]).fromJSValue()
+        return this[Strings.getTransformFeedbackVarying].function!(
+            this: this,
+            arguments: [_toJSValue(program), _toJSValue(index)]
+        ).fromJSValue()
     }
 
-    @inlinable func pauseTransformFeedback() {
+    @inlinable public func pauseTransformFeedback() {
         let this = jsObject
         _ = this[Strings.pauseTransformFeedback].function!(this: this, arguments: [])
     }
 
-    @inlinable func resumeTransformFeedback() {
+    @inlinable public func resumeTransformFeedback() {
         let this = jsObject
         _ = this[Strings.resumeTransformFeedback].function!(this: this, arguments: [])
     }
 
-    @inlinable func bindBufferBase(target: GLenum, index: GLuint, buffer: WebGLBuffer?) {
+    @inlinable public func bindBufferBase(target: GLenum, index: GLuint, buffer: WebGLBuffer?) {
         let this = jsObject
-        _ = this[Strings.bindBufferBase].function!(this: this, arguments: [_toJSValue(target), _toJSValue(index), _toJSValue(buffer)])
+        _ = this[Strings.bindBufferBase].function!(
+            this: this,
+            arguments: [_toJSValue(target), _toJSValue(index), _toJSValue(buffer)]
+        )
     }
 
-    @inlinable func bindBufferRange(target: GLenum, index: GLuint, buffer: WebGLBuffer?, offset: GLintptr, size: GLsizeiptr) {
+    @inlinable public func bindBufferRange(
+        target: GLenum,
+        index: GLuint,
+        buffer: WebGLBuffer?,
+        offset: GLintptr,
+        size: GLsizeiptr
+    ) {
         let this = jsObject
-        _ = this[Strings.bindBufferRange].function!(this: this, arguments: [_toJSValue(target), _toJSValue(index), _toJSValue(buffer), _toJSValue(offset), _toJSValue(size)])
+        _ = this[Strings.bindBufferRange].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(index), _toJSValue(buffer), _toJSValue(offset), _toJSValue(size),
+            ]
+        )
     }
 
-    @inlinable func getIndexedParameter(target: GLenum, index: GLuint) -> JSValue {
+    @inlinable public func getIndexedParameter(target: GLenum, index: GLuint) -> JSValue {
         let this = jsObject
-        return this[Strings.getIndexedParameter].function!(this: this, arguments: [_toJSValue(target), _toJSValue(index)]).fromJSValue()!
+        return this[Strings.getIndexedParameter].function!(
+            this: this,
+            arguments: [_toJSValue(target), _toJSValue(index)]
+        ).fromJSValue()!
     }
 
-    @inlinable func getUniformIndices(program: WebGLProgram, uniformNames: [String]) -> [GLuint]? {
+    @inlinable public func getUniformIndices(program: WebGLProgram, uniformNames: [String]) -> [GLuint]? {
         let this = jsObject
-        return this[Strings.getUniformIndices].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformNames)]).fromJSValue()
+        return this[Strings.getUniformIndices].function!(
+            this: this,
+            arguments: [_toJSValue(program), _toJSValue(uniformNames)]
+        ).fromJSValue()
     }
 
-    @inlinable func getActiveUniforms(program: WebGLProgram, uniformIndices: [GLuint], pname: GLenum) -> JSValue {
+    @inlinable public func getActiveUniforms(program: WebGLProgram, uniformIndices: [GLuint], pname: GLenum) -> JSValue
+    {
         let this = jsObject
-        return this[Strings.getActiveUniforms].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformIndices), _toJSValue(pname)]).fromJSValue()!
+        return this[Strings.getActiveUniforms].function!(
+            this: this,
+            arguments: [_toJSValue(program), _toJSValue(uniformIndices), _toJSValue(pname)]
+        ).fromJSValue()!
     }
 
-    @inlinable func getUniformBlockIndex(program: WebGLProgram, uniformBlockName: String) -> GLuint {
+    @inlinable public func getUniformBlockIndex(program: WebGLProgram, uniformBlockName: String) -> GLuint {
         let this = jsObject
-        return this[Strings.getUniformBlockIndex].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformBlockName)]).fromJSValue()!
+        return this[Strings.getUniformBlockIndex].function!(
+            this: this,
+            arguments: [_toJSValue(program), _toJSValue(uniformBlockName)]
+        ).fromJSValue()!
     }
 
-    @inlinable func getActiveUniformBlockParameter(program: WebGLProgram, uniformBlockIndex: GLuint, pname: GLenum) -> JSValue {
+    @inlinable public func getActiveUniformBlockParameter(
+        program: WebGLProgram,
+        uniformBlockIndex: GLuint,
+        pname: GLenum
+    ) -> JSValue {
         let this = jsObject
-        return this[Strings.getActiveUniformBlockParameter].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformBlockIndex), _toJSValue(pname)]).fromJSValue()!
+        return this[Strings.getActiveUniformBlockParameter].function!(
+            this: this,
+            arguments: [_toJSValue(program), _toJSValue(uniformBlockIndex), _toJSValue(pname)]
+        ).fromJSValue()!
     }
 
-    @inlinable func getActiveUniformBlockName(program: WebGLProgram, uniformBlockIndex: GLuint) -> String? {
+    @inlinable public func getActiveUniformBlockName(program: WebGLProgram, uniformBlockIndex: GLuint) -> String? {
         let this = jsObject
-        return this[Strings.getActiveUniformBlockName].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformBlockIndex)]).fromJSValue()
+        return this[Strings.getActiveUniformBlockName].function!(
+            this: this,
+            arguments: [_toJSValue(program), _toJSValue(uniformBlockIndex)]
+        ).fromJSValue()
     }
 
-    @inlinable func uniformBlockBinding(program: WebGLProgram, uniformBlockIndex: GLuint, uniformBlockBinding: GLuint) {
+    @inlinable public func uniformBlockBinding(
+        program: WebGLProgram,
+        uniformBlockIndex: GLuint,
+        uniformBlockBinding: GLuint
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformBlockBinding].function!(this: this, arguments: [_toJSValue(program), _toJSValue(uniformBlockIndex), _toJSValue(uniformBlockBinding)])
+        _ = this[Strings.uniformBlockBinding].function!(
+            this: this,
+            arguments: [_toJSValue(program), _toJSValue(uniformBlockIndex), _toJSValue(uniformBlockBinding)]
+        )
     }
 
-    @inlinable func createVertexArray() -> WebGLVertexArrayObject? {
+    @inlinable public func createVertexArray() -> WebGLVertexArrayObject? {
         let this = jsObject
         return this[Strings.createVertexArray].function!(this: this, arguments: []).fromJSValue()
     }
 
-    @inlinable func deleteVertexArray(vertexArray: WebGLVertexArrayObject?) {
+    @inlinable public func deleteVertexArray(vertexArray: WebGLVertexArrayObject?) {
         let this = jsObject
         _ = this[Strings.deleteVertexArray].function!(this: this, arguments: [_toJSValue(vertexArray)])
     }
 
-    @inlinable func isVertexArray(vertexArray: WebGLVertexArrayObject?) -> GLboolean {
+    @inlinable public func isVertexArray(vertexArray: WebGLVertexArrayObject?) -> GLboolean {
         let this = jsObject
         return this[Strings.isVertexArray].function!(this: this, arguments: [_toJSValue(vertexArray)]).fromJSValue()!
     }
 
-    @inlinable func bindVertexArray(array: WebGLVertexArrayObject?) {
+    @inlinable public func bindVertexArray(array: WebGLVertexArrayObject?) {
         let this = jsObject
         _ = this[Strings.bindVertexArray].function!(this: this, arguments: [_toJSValue(array)])
     }
 }
-
 public protocol WebGL2RenderingContextOverloads: JSBridgedClass {}
-public extension WebGL2RenderingContextOverloads {
-    @inlinable func bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum) {
+extension WebGL2RenderingContextOverloads {
+    @inlinable public func bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum) {
         let this = jsObject
-        _ = this[Strings.bufferData].function!(this: this, arguments: [_toJSValue(target), _toJSValue(size), _toJSValue(usage)])
+        _ = this[Strings.bufferData].function!(
+            this: this,
+            arguments: [_toJSValue(target), _toJSValue(size), _toJSValue(usage)]
+        )
     }
 
-    @inlinable func bufferData(target: GLenum, srcData: AllowSharedBufferSource?, usage: GLenum) {
+    @inlinable public func bufferData(target: GLenum, srcData: AllowSharedBufferSource?, usage: GLenum) {
         let this = jsObject
-        _ = this[Strings.bufferData].function!(this: this, arguments: [_toJSValue(target), _toJSValue(srcData), _toJSValue(usage)])
+        _ = this[Strings.bufferData].function!(
+            this: this,
+            arguments: [_toJSValue(target), _toJSValue(srcData), _toJSValue(usage)]
+        )
     }
 
-    @inlinable func bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: AllowSharedBufferSource) {
+    @inlinable public func bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: AllowSharedBufferSource) {
         let this = jsObject
-        _ = this[Strings.bufferSubData].function!(this: this, arguments: [_toJSValue(target), _toJSValue(dstByteOffset), _toJSValue(srcData)])
+        _ = this[Strings.bufferSubData].function!(
+            this: this,
+            arguments: [_toJSValue(target), _toJSValue(dstByteOffset), _toJSValue(srcData)]
+        )
     }
 
-    @inlinable func bufferData(target: GLenum, srcData: ArrayBufferView, usage: GLenum, srcOffset: GLuint, length: GLuint? = nil) {
+    @inlinable public func bufferData(
+        target: GLenum,
+        srcData: ArrayBufferView,
+        usage: GLenum,
+        srcOffset: GLuint,
+        length: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.bufferData].function!(this: this, arguments: [_toJSValue(target), _toJSValue(srcData), _toJSValue(usage), _toJSValue(srcOffset), _toJSValue(length)])
+        _ = this[Strings.bufferData].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(srcData), _toJSValue(usage), _toJSValue(srcOffset), _toJSValue(length),
+            ]
+        )
     }
 
-    @inlinable func bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: ArrayBufferView, srcOffset: GLuint, length: GLuint? = nil) {
+    @inlinable public func bufferSubData(
+        target: GLenum,
+        dstByteOffset: GLintptr,
+        srcData: ArrayBufferView,
+        srcOffset: GLuint,
+        length: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.bufferSubData].function!(this: this, arguments: [_toJSValue(target), _toJSValue(dstByteOffset), _toJSValue(srcData), _toJSValue(srcOffset), _toJSValue(length)])
+        _ = this[Strings.bufferSubData].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(dstByteOffset), _toJSValue(srcData), _toJSValue(srcOffset),
+                _toJSValue(length),
+            ]
+        )
     }
 
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, pixels: ArrayBufferView?) {
+    @inlinable public func texImage2D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        border: GLint,
+        format: GLenum,
+        type: GLenum,
+        pixels: ArrayBufferView?
+    ) {
         let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(pixels)])
+        _ = this[Strings.texImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(pixels),
+            ]
+        )
     }
 
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
+    @inlinable public func texImage2D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLint,
+        format: GLenum,
+        type: GLenum,
+        source: TexImageSource
+    ) {
         let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(format), _toJSValue(type), _toJSValue(source)])
+        _ = this[Strings.texImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(format), _toJSValue(type),
+                _toJSValue(source),
+            ]
+        )
     }
 
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pixels: ArrayBufferView?) {
+    @inlinable public func texSubImage2D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        pixels: ArrayBufferView?
+    ) {
         let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width), _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(pixels)])
+        _ = this[Strings.texSubImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width),
+                _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(pixels),
+            ]
+        )
     }
 
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
+    @inlinable public func texSubImage2D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        format: GLenum,
+        type: GLenum,
+        source: TexImageSource
+    ) {
         let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(format), _toJSValue(type), _toJSValue(source)])
+        _ = this[Strings.texSubImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(format),
+                _toJSValue(type), _toJSValue(source),
+            ]
+        )
     }
 
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, pboOffset: GLintptr) {
+    @inlinable public func texImage2D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        border: GLint,
+        format: GLenum,
+        type: GLenum,
+        pboOffset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(pboOffset)])
+        _ = this[Strings.texImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(pboOffset),
+            ]
+        )
     }
 
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, source: TexImageSource) {
+    @inlinable public func texImage2D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        border: GLint,
+        format: GLenum,
+        type: GLenum,
+        source: TexImageSource
+    ) {
         let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(source)])
+        _ = this[Strings.texImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(source),
+            ]
+        )
     }
 
-    @inlinable func texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, srcData: ArrayBufferView, srcOffset: GLuint) {
+    @inlinable public func texImage2D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        border: GLint,
+        format: GLenum,
+        type: GLenum,
+        srcData: ArrayBufferView,
+        srcOffset: GLuint
+    ) {
         let this = jsObject
-        _ = this[Strings.texImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(srcData), _toJSValue(srcOffset)])
+        _ = this[Strings.texImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(border), _toJSValue(format), _toJSValue(type), _toJSValue(srcData),
+                _toJSValue(srcOffset),
+            ]
+        )
     }
 
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pboOffset: GLintptr) {
+    @inlinable public func texSubImage2D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        pboOffset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width), _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(pboOffset)])
+        _ = this[Strings.texSubImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width),
+                _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(pboOffset),
+            ]
+        )
     }
 
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, source: TexImageSource) {
+    @inlinable public func texSubImage2D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        source: TexImageSource
+    ) {
         let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width), _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(source)])
+        _ = this[Strings.texSubImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width),
+                _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(source),
+            ]
+        )
     }
 
-    @inlinable func texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, srcData: ArrayBufferView, srcOffset: GLuint) {
+    @inlinable public func texSubImage2D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        srcData: ArrayBufferView,
+        srcOffset: GLuint
+    ) {
         let this = jsObject
-        _ = this[Strings.texSubImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width), _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(srcData), _toJSValue(srcOffset)])
+        _ = this[Strings.texSubImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width),
+                _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(srcData), _toJSValue(srcOffset),
+            ]
+        )
     }
 
-    @inlinable func compressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, border: GLint, imageSize: GLsizei, offset: GLintptr) {
+    @inlinable public func compressedTexImage2D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLenum,
+        width: GLsizei,
+        height: GLsizei,
+        border: GLint,
+        imageSize: GLsizei,
+        offset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.compressedTexImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(border), _toJSValue(imageSize), _toJSValue(offset)])
+        _ = this[Strings.compressedTexImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(border), _toJSValue(imageSize), _toJSValue(offset),
+            ]
+        )
     }
 
-    @inlinable func compressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, border: GLint, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
+    @inlinable public func compressedTexImage2D(
+        target: GLenum,
+        level: GLint,
+        internalformat: GLenum,
+        width: GLsizei,
+        height: GLsizei,
+        border: GLint,
+        srcData: ArrayBufferView,
+        srcOffset: GLuint? = nil,
+        srcLengthOverride: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.compressedTexImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width), _toJSValue(height), _toJSValue(border), _toJSValue(srcData), _toJSValue(srcOffset), _toJSValue(srcLengthOverride)])
+        _ = this[Strings.compressedTexImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(internalformat), _toJSValue(width),
+                _toJSValue(height), _toJSValue(border), _toJSValue(srcData), _toJSValue(srcOffset),
+                _toJSValue(srcLengthOverride),
+            ]
+        )
     }
 
-    @inlinable func compressedTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, imageSize: GLsizei, offset: GLintptr) {
+    @inlinable public func compressedTexSubImage2D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        format: GLenum,
+        imageSize: GLsizei,
+        offset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.compressedTexSubImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width), _toJSValue(height), _toJSValue(format), _toJSValue(imageSize), _toJSValue(offset)])
+        _ = this[Strings.compressedTexSubImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width),
+                _toJSValue(height), _toJSValue(format), _toJSValue(imageSize), _toJSValue(offset),
+            ]
+        )
     }
 
-    @inlinable func compressedTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, srcData: ArrayBufferView, srcOffset: GLuint? = nil, srcLengthOverride: GLuint? = nil) {
+    @inlinable public func compressedTexSubImage2D(
+        target: GLenum,
+        level: GLint,
+        xoffset: GLint,
+        yoffset: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        format: GLenum,
+        srcData: ArrayBufferView,
+        srcOffset: GLuint? = nil,
+        srcLengthOverride: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.compressedTexSubImage2D].function!(this: this, arguments: [_toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width), _toJSValue(height), _toJSValue(format), _toJSValue(srcData), _toJSValue(srcOffset), _toJSValue(srcLengthOverride)])
+        _ = this[Strings.compressedTexSubImage2D].function!(
+            this: this,
+            arguments: [
+                _toJSValue(target), _toJSValue(level), _toJSValue(xoffset), _toJSValue(yoffset), _toJSValue(width),
+                _toJSValue(height), _toJSValue(format), _toJSValue(srcData), _toJSValue(srcOffset),
+                _toJSValue(srcLengthOverride),
+            ]
+        )
     }
 
-    @inlinable func uniform1fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform1fv(
+        location: WebGLUniformLocation?,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform1fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform1fv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform2fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform2fv(
+        location: WebGLUniformLocation?,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform2fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform2fv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform3fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform3fv(
+        location: WebGLUniformLocation?,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform3fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform3fv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform4fv(location: WebGLUniformLocation?, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform4fv(
+        location: WebGLUniformLocation?,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform4fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform4fv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform1iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform1iv(
+        location: WebGLUniformLocation?,
+        data: Int32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform1iv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform1iv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform2iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform2iv(
+        location: WebGLUniformLocation?,
+        data: Int32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform2iv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform2iv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform3iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform3iv(
+        location: WebGLUniformLocation?,
+        data: Int32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform3iv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform3iv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniform4iv(location: WebGLUniformLocation?, data: Int32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniform4iv(
+        location: WebGLUniformLocation?,
+        data: Int32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniform4iv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniform4iv].function!(
+            this: this,
+            arguments: [_toJSValue(location), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)]
+        )
     }
 
-    @inlinable func uniformMatrix2fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniformMatrix2fv(
+        location: WebGLUniformLocation?,
+        transpose: GLboolean,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformMatrix2fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniformMatrix2fv].function!(
+            this: this,
+            arguments: [
+                _toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset),
+                _toJSValue(srcLength),
+            ]
+        )
     }
 
-    @inlinable func uniformMatrix3fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniformMatrix3fv(
+        location: WebGLUniformLocation?,
+        transpose: GLboolean,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformMatrix3fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniformMatrix3fv].function!(
+            this: this,
+            arguments: [
+                _toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset),
+                _toJSValue(srcLength),
+            ]
+        )
     }
 
-    @inlinable func uniformMatrix4fv(location: WebGLUniformLocation?, transpose: GLboolean, data: Float32List, srcOffset: GLuint? = nil, srcLength: GLuint? = nil) {
+    @inlinable public func uniformMatrix4fv(
+        location: WebGLUniformLocation?,
+        transpose: GLboolean,
+        data: Float32List,
+        srcOffset: GLuint? = nil,
+        srcLength: GLuint? = nil
+    ) {
         let this = jsObject
-        _ = this[Strings.uniformMatrix4fv].function!(this: this, arguments: [_toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset), _toJSValue(srcLength)])
+        _ = this[Strings.uniformMatrix4fv].function!(
+            this: this,
+            arguments: [
+                _toJSValue(location), _toJSValue(transpose), _toJSValue(data), _toJSValue(srcOffset),
+                _toJSValue(srcLength),
+            ]
+        )
     }
 
-    @inlinable func readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, dstData: ArrayBufferView?) {
+    @inlinable public func readPixels(
+        x: GLint,
+        y: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        dstData: ArrayBufferView?
+    ) {
         let this = jsObject
-        _ = this[Strings.readPixels].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(dstData)])
+        _ = this[Strings.readPixels].function!(
+            this: this,
+            arguments: [
+                _toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height), _toJSValue(format),
+                _toJSValue(type), _toJSValue(dstData),
+            ]
+        )
     }
 
-    @inlinable func readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, offset: GLintptr) {
+    @inlinable public func readPixels(
+        x: GLint,
+        y: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        offset: GLintptr
+    ) {
         let this = jsObject
-        _ = this[Strings.readPixels].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(offset)])
+        _ = this[Strings.readPixels].function!(
+            this: this,
+            arguments: [
+                _toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height), _toJSValue(format),
+                _toJSValue(type), _toJSValue(offset),
+            ]
+        )
     }
 
-    @inlinable func readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, dstData: ArrayBufferView, dstOffset: GLuint) {
+    @inlinable public func readPixels(
+        x: GLint,
+        y: GLint,
+        width: GLsizei,
+        height: GLsizei,
+        format: GLenum,
+        type: GLenum,
+        dstData: ArrayBufferView,
+        dstOffset: GLuint
+    ) {
         let this = jsObject
-        _ = this[Strings.readPixels].function!(this: this, arguments: [_toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height), _toJSValue(format), _toJSValue(type), _toJSValue(dstData), _toJSValue(dstOffset)])
+        _ = this[Strings.readPixels].function!(
+            this: this,
+            arguments: [
+                _toJSValue(x), _toJSValue(y), _toJSValue(width), _toJSValue(height), _toJSValue(format),
+                _toJSValue(type), _toJSValue(dstData), _toJSValue(dstOffset),
+            ]
+        )
     }
 }
-
 public class WebGLQuery: WebGLObject {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.WebGLQuery].function }
+    @inlinable public override class var constructor: JSFunction? { JSObject.global[Strings.WebGLQuery].function }
 
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
-    }
+    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
+
 }
 
 public class WebGLSampler: WebGLObject {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.WebGLSampler].function }
+    @inlinable public override class var constructor: JSFunction? { JSObject.global[Strings.WebGLSampler].function }
 
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
-    }
+    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
+
 }
 
 public class WebGLSync: WebGLObject {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.WebGLSync].function }
+    @inlinable public override class var constructor: JSFunction? { JSObject.global[Strings.WebGLSync].function }
 
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
-    }
+    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
+
 }
 
 public class WebGLTransformFeedback: WebGLObject {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.WebGLTransformFeedback].function }
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
+    @inlinable public override class var constructor: JSFunction? {
+        JSObject.global[Strings.WebGLTransformFeedback].function
     }
+
+    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
+
 }
 
 public class WebGLVertexArrayObject: WebGLObject {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.WebGLVertexArrayObject].function }
-
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        super.init(unsafelyWrapping: jsObject)
+    @inlinable public override class var constructor: JSFunction? {
+        JSObject.global[Strings.WebGLVertexArrayObject].function
     }
+
+    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
+
 }
 
 @usableFromInline enum Strings {
     @usableFromInline static let _self: JSString = "self"
-    @usableFromInline static let WebGL2RenderingContext: JSString = "WebGL2RenderingContext"
-    @usableFromInline static let WebGLQuery: JSString = "WebGLQuery"
-    @usableFromInline static let WebGLSampler: JSString = "WebGLSampler"
-    @usableFromInline static let WebGLSync: JSString = "WebGLSync"
-    @usableFromInline static let WebGLTransformFeedback: JSString = "WebGLTransformFeedback"
-    @usableFromInline static let WebGLVertexArrayObject: JSString = "WebGLVertexArrayObject"
-    @usableFromInline static let beginQuery: JSString = "beginQuery"
-    @usableFromInline static let beginTransformFeedback: JSString = "beginTransformFeedback"
-    @usableFromInline static let bindBufferBase: JSString = "bindBufferBase"
-    @usableFromInline static let bindBufferRange: JSString = "bindBufferRange"
-    @usableFromInline static let bindSampler: JSString = "bindSampler"
-    @usableFromInline static let bindTransformFeedback: JSString = "bindTransformFeedback"
-    @usableFromInline static let bindVertexArray: JSString = "bindVertexArray"
-    @usableFromInline static let blitFramebuffer: JSString = "blitFramebuffer"
-    @usableFromInline static let bufferData: JSString = "bufferData"
-    @usableFromInline static let bufferSubData: JSString = "bufferSubData"
-    @usableFromInline static let clearBufferfi: JSString = "clearBufferfi"
-    @usableFromInline static let clearBufferfv: JSString = "clearBufferfv"
-    @usableFromInline static let clearBufferiv: JSString = "clearBufferiv"
-    @usableFromInline static let clearBufferuiv: JSString = "clearBufferuiv"
-    @usableFromInline static let clientWaitSync: JSString = "clientWaitSync"
-    @usableFromInline static let compressedTexImage2D: JSString = "compressedTexImage2D"
-    @usableFromInline static let compressedTexImage3D: JSString = "compressedTexImage3D"
-    @usableFromInline static let compressedTexSubImage2D: JSString = "compressedTexSubImage2D"
-    @usableFromInline static let compressedTexSubImage3D: JSString = "compressedTexSubImage3D"
-    @usableFromInline static let copyBufferSubData: JSString = "copyBufferSubData"
-    @usableFromInline static let copyTexSubImage3D: JSString = "copyTexSubImage3D"
-    @usableFromInline static let createQuery: JSString = "createQuery"
-    @usableFromInline static let createSampler: JSString = "createSampler"
-    @usableFromInline static let createTransformFeedback: JSString = "createTransformFeedback"
-    @usableFromInline static let createVertexArray: JSString = "createVertexArray"
-    @usableFromInline static let deleteQuery: JSString = "deleteQuery"
-    @usableFromInline static let deleteSampler: JSString = "deleteSampler"
-    @usableFromInline static let deleteSync: JSString = "deleteSync"
-    @usableFromInline static let deleteTransformFeedback: JSString = "deleteTransformFeedback"
-    @usableFromInline static let deleteVertexArray: JSString = "deleteVertexArray"
-    @usableFromInline static let drawArraysInstanced: JSString = "drawArraysInstanced"
-    @usableFromInline static let drawBuffers: JSString = "drawBuffers"
-    @usableFromInline static let drawElementsInstanced: JSString = "drawElementsInstanced"
-    @usableFromInline static let drawRangeElements: JSString = "drawRangeElements"
-    @usableFromInline static let endQuery: JSString = "endQuery"
-    @usableFromInline static let endTransformFeedback: JSString = "endTransformFeedback"
-    @usableFromInline static let fenceSync: JSString = "fenceSync"
-    @usableFromInline static let framebufferTextureLayer: JSString = "framebufferTextureLayer"
-    @usableFromInline static let getActiveUniformBlockName: JSString = "getActiveUniformBlockName"
-    @usableFromInline static let getActiveUniformBlockParameter: JSString = "getActiveUniformBlockParameter"
-    @usableFromInline static let getActiveUniforms: JSString = "getActiveUniforms"
-    @usableFromInline static let getBufferSubData: JSString = "getBufferSubData"
-    @usableFromInline static let getFragDataLocation: JSString = "getFragDataLocation"
-    @usableFromInline static let getIndexedParameter: JSString = "getIndexedParameter"
-    @usableFromInline static let getInternalformatParameter: JSString = "getInternalformatParameter"
-    @usableFromInline static let getQuery: JSString = "getQuery"
-    @usableFromInline static let getQueryParameter: JSString = "getQueryParameter"
-    @usableFromInline static let getSamplerParameter: JSString = "getSamplerParameter"
-    @usableFromInline static let getSyncParameter: JSString = "getSyncParameter"
-    @usableFromInline static let getTransformFeedbackVarying: JSString = "getTransformFeedbackVarying"
-    @usableFromInline static let getUniformBlockIndex: JSString = "getUniformBlockIndex"
-    @usableFromInline static let getUniformIndices: JSString = "getUniformIndices"
-    @usableFromInline static let invalidateFramebuffer: JSString = "invalidateFramebuffer"
-    @usableFromInline static let invalidateSubFramebuffer: JSString = "invalidateSubFramebuffer"
-    @usableFromInline static let isQuery: JSString = "isQuery"
-    @usableFromInline static let isSampler: JSString = "isSampler"
-    @usableFromInline static let isSync: JSString = "isSync"
-    @usableFromInline static let isTransformFeedback: JSString = "isTransformFeedback"
-    @usableFromInline static let isVertexArray: JSString = "isVertexArray"
-    @usableFromInline static let pauseTransformFeedback: JSString = "pauseTransformFeedback"
-    @usableFromInline static let readBuffer: JSString = "readBuffer"
-    @usableFromInline static let readPixels: JSString = "readPixels"
-    @usableFromInline static let renderbufferStorageMultisample: JSString = "renderbufferStorageMultisample"
-    @usableFromInline static let resumeTransformFeedback: JSString = "resumeTransformFeedback"
-    @usableFromInline static let samplerParameterf: JSString = "samplerParameterf"
-    @usableFromInline static let samplerParameteri: JSString = "samplerParameteri"
-    @usableFromInline static let texImage2D: JSString = "texImage2D"
-    @usableFromInline static let texImage3D: JSString = "texImage3D"
-    @usableFromInline static let texStorage2D: JSString = "texStorage2D"
-    @usableFromInline static let texStorage3D: JSString = "texStorage3D"
-    @usableFromInline static let texSubImage2D: JSString = "texSubImage2D"
-    @usableFromInline static let texSubImage3D: JSString = "texSubImage3D"
-    @usableFromInline static let toString: JSString = "toString"
-    @usableFromInline static let transformFeedbackVaryings: JSString = "transformFeedbackVaryings"
-    @usableFromInline static let uniform1fv: JSString = "uniform1fv"
-    @usableFromInline static let uniform1iv: JSString = "uniform1iv"
-    @usableFromInline static let uniform1ui: JSString = "uniform1ui"
-    @usableFromInline static let uniform1uiv: JSString = "uniform1uiv"
-    @usableFromInline static let uniform2fv: JSString = "uniform2fv"
-    @usableFromInline static let uniform2iv: JSString = "uniform2iv"
-    @usableFromInline static let uniform2ui: JSString = "uniform2ui"
-    @usableFromInline static let uniform2uiv: JSString = "uniform2uiv"
-    @usableFromInline static let uniform3fv: JSString = "uniform3fv"
-    @usableFromInline static let uniform3iv: JSString = "uniform3iv"
-    @usableFromInline static let uniform3ui: JSString = "uniform3ui"
-    @usableFromInline static let uniform3uiv: JSString = "uniform3uiv"
-    @usableFromInline static let uniform4fv: JSString = "uniform4fv"
-    @usableFromInline static let uniform4iv: JSString = "uniform4iv"
-    @usableFromInline static let uniform4ui: JSString = "uniform4ui"
-    @usableFromInline static let uniform4uiv: JSString = "uniform4uiv"
-    @usableFromInline static let uniformBlockBinding: JSString = "uniformBlockBinding"
-    @usableFromInline static let uniformMatrix2fv: JSString = "uniformMatrix2fv"
-    @usableFromInline static let uniformMatrix2x3fv: JSString = "uniformMatrix2x3fv"
-    @usableFromInline static let uniformMatrix2x4fv: JSString = "uniformMatrix2x4fv"
-    @usableFromInline static let uniformMatrix3fv: JSString = "uniformMatrix3fv"
-    @usableFromInline static let uniformMatrix3x2fv: JSString = "uniformMatrix3x2fv"
-    @usableFromInline static let uniformMatrix3x4fv: JSString = "uniformMatrix3x4fv"
-    @usableFromInline static let uniformMatrix4fv: JSString = "uniformMatrix4fv"
-    @usableFromInline static let uniformMatrix4x2fv: JSString = "uniformMatrix4x2fv"
-    @usableFromInline static let uniformMatrix4x3fv: JSString = "uniformMatrix4x3fv"
-    @usableFromInline static let vertexAttribDivisor: JSString = "vertexAttribDivisor"
-    @usableFromInline static let vertexAttribI4i: JSString = "vertexAttribI4i"
-    @usableFromInline static let vertexAttribI4iv: JSString = "vertexAttribI4iv"
-    @usableFromInline static let vertexAttribI4ui: JSString = "vertexAttribI4ui"
-    @usableFromInline static let vertexAttribI4uiv: JSString = "vertexAttribI4uiv"
-    @usableFromInline static let vertexAttribIPointer: JSString = "vertexAttribIPointer"
-    @usableFromInline static let waitSync: JSString = "waitSync"
+    @usableFromInline static let `WebGL2RenderingContext`: JSString = "WebGL2RenderingContext"
+    @usableFromInline static let `WebGLQuery`: JSString = "WebGLQuery"
+    @usableFromInline static let `WebGLSampler`: JSString = "WebGLSampler"
+    @usableFromInline static let `WebGLSync`: JSString = "WebGLSync"
+    @usableFromInline static let `WebGLTransformFeedback`: JSString = "WebGLTransformFeedback"
+    @usableFromInline static let `WebGLVertexArrayObject`: JSString = "WebGLVertexArrayObject"
+    @usableFromInline static let `beginQuery`: JSString = "beginQuery"
+    @usableFromInline static let `beginTransformFeedback`: JSString = "beginTransformFeedback"
+    @usableFromInline static let `bindBufferBase`: JSString = "bindBufferBase"
+    @usableFromInline static let `bindBufferRange`: JSString = "bindBufferRange"
+    @usableFromInline static let `bindSampler`: JSString = "bindSampler"
+    @usableFromInline static let `bindTransformFeedback`: JSString = "bindTransformFeedback"
+    @usableFromInline static let `bindVertexArray`: JSString = "bindVertexArray"
+    @usableFromInline static let `blitFramebuffer`: JSString = "blitFramebuffer"
+    @usableFromInline static let `bufferData`: JSString = "bufferData"
+    @usableFromInline static let `bufferSubData`: JSString = "bufferSubData"
+    @usableFromInline static let `clearBufferfi`: JSString = "clearBufferfi"
+    @usableFromInline static let `clearBufferfv`: JSString = "clearBufferfv"
+    @usableFromInline static let `clearBufferiv`: JSString = "clearBufferiv"
+    @usableFromInline static let `clearBufferuiv`: JSString = "clearBufferuiv"
+    @usableFromInline static let `clientWaitSync`: JSString = "clientWaitSync"
+    @usableFromInline static let `compressedTexImage2D`: JSString = "compressedTexImage2D"
+    @usableFromInline static let `compressedTexImage3D`: JSString = "compressedTexImage3D"
+    @usableFromInline static let `compressedTexSubImage2D`: JSString = "compressedTexSubImage2D"
+    @usableFromInline static let `compressedTexSubImage3D`: JSString = "compressedTexSubImage3D"
+    @usableFromInline static let `copyBufferSubData`: JSString = "copyBufferSubData"
+    @usableFromInline static let `copyTexSubImage3D`: JSString = "copyTexSubImage3D"
+    @usableFromInline static let `createQuery`: JSString = "createQuery"
+    @usableFromInline static let `createSampler`: JSString = "createSampler"
+    @usableFromInline static let `createTransformFeedback`: JSString = "createTransformFeedback"
+    @usableFromInline static let `createVertexArray`: JSString = "createVertexArray"
+    @usableFromInline static let `deleteQuery`: JSString = "deleteQuery"
+    @usableFromInline static let `deleteSampler`: JSString = "deleteSampler"
+    @usableFromInline static let `deleteSync`: JSString = "deleteSync"
+    @usableFromInline static let `deleteTransformFeedback`: JSString = "deleteTransformFeedback"
+    @usableFromInline static let `deleteVertexArray`: JSString = "deleteVertexArray"
+    @usableFromInline static let `drawArraysInstanced`: JSString = "drawArraysInstanced"
+    @usableFromInline static let `drawBuffers`: JSString = "drawBuffers"
+    @usableFromInline static let `drawElementsInstanced`: JSString = "drawElementsInstanced"
+    @usableFromInline static let `drawRangeElements`: JSString = "drawRangeElements"
+    @usableFromInline static let `endQuery`: JSString = "endQuery"
+    @usableFromInline static let `endTransformFeedback`: JSString = "endTransformFeedback"
+    @usableFromInline static let `fenceSync`: JSString = "fenceSync"
+    @usableFromInline static let `framebufferTextureLayer`: JSString = "framebufferTextureLayer"
+    @usableFromInline static let `getActiveUniformBlockName`: JSString = "getActiveUniformBlockName"
+    @usableFromInline static let `getActiveUniformBlockParameter`: JSString = "getActiveUniformBlockParameter"
+    @usableFromInline static let `getActiveUniforms`: JSString = "getActiveUniforms"
+    @usableFromInline static let `getBufferSubData`: JSString = "getBufferSubData"
+    @usableFromInline static let `getFragDataLocation`: JSString = "getFragDataLocation"
+    @usableFromInline static let `getIndexedParameter`: JSString = "getIndexedParameter"
+    @usableFromInline static let `getInternalformatParameter`: JSString = "getInternalformatParameter"
+    @usableFromInline static let `getQuery`: JSString = "getQuery"
+    @usableFromInline static let `getQueryParameter`: JSString = "getQueryParameter"
+    @usableFromInline static let `getSamplerParameter`: JSString = "getSamplerParameter"
+    @usableFromInline static let `getSyncParameter`: JSString = "getSyncParameter"
+    @usableFromInline static let `getTransformFeedbackVarying`: JSString = "getTransformFeedbackVarying"
+    @usableFromInline static let `getUniformBlockIndex`: JSString = "getUniformBlockIndex"
+    @usableFromInline static let `getUniformIndices`: JSString = "getUniformIndices"
+    @usableFromInline static let `invalidateFramebuffer`: JSString = "invalidateFramebuffer"
+    @usableFromInline static let `invalidateSubFramebuffer`: JSString = "invalidateSubFramebuffer"
+    @usableFromInline static let `isQuery`: JSString = "isQuery"
+    @usableFromInline static let `isSampler`: JSString = "isSampler"
+    @usableFromInline static let `isSync`: JSString = "isSync"
+    @usableFromInline static let `isTransformFeedback`: JSString = "isTransformFeedback"
+    @usableFromInline static let `isVertexArray`: JSString = "isVertexArray"
+    @usableFromInline static let `pauseTransformFeedback`: JSString = "pauseTransformFeedback"
+    @usableFromInline static let `readBuffer`: JSString = "readBuffer"
+    @usableFromInline static let `readPixels`: JSString = "readPixels"
+    @usableFromInline static let `renderbufferStorageMultisample`: JSString = "renderbufferStorageMultisample"
+    @usableFromInline static let `resumeTransformFeedback`: JSString = "resumeTransformFeedback"
+    @usableFromInline static let `samplerParameterf`: JSString = "samplerParameterf"
+    @usableFromInline static let `samplerParameteri`: JSString = "samplerParameteri"
+    @usableFromInline static let `texImage2D`: JSString = "texImage2D"
+    @usableFromInline static let `texImage3D`: JSString = "texImage3D"
+    @usableFromInline static let `texStorage2D`: JSString = "texStorage2D"
+    @usableFromInline static let `texStorage3D`: JSString = "texStorage3D"
+    @usableFromInline static let `texSubImage2D`: JSString = "texSubImage2D"
+    @usableFromInline static let `texSubImage3D`: JSString = "texSubImage3D"
+    @usableFromInline static let `toString`: JSString = "toString"
+    @usableFromInline static let `transformFeedbackVaryings`: JSString = "transformFeedbackVaryings"
+    @usableFromInline static let `uniform1fv`: JSString = "uniform1fv"
+    @usableFromInline static let `uniform1iv`: JSString = "uniform1iv"
+    @usableFromInline static let `uniform1ui`: JSString = "uniform1ui"
+    @usableFromInline static let `uniform1uiv`: JSString = "uniform1uiv"
+    @usableFromInline static let `uniform2fv`: JSString = "uniform2fv"
+    @usableFromInline static let `uniform2iv`: JSString = "uniform2iv"
+    @usableFromInline static let `uniform2ui`: JSString = "uniform2ui"
+    @usableFromInline static let `uniform2uiv`: JSString = "uniform2uiv"
+    @usableFromInline static let `uniform3fv`: JSString = "uniform3fv"
+    @usableFromInline static let `uniform3iv`: JSString = "uniform3iv"
+    @usableFromInline static let `uniform3ui`: JSString = "uniform3ui"
+    @usableFromInline static let `uniform3uiv`: JSString = "uniform3uiv"
+    @usableFromInline static let `uniform4fv`: JSString = "uniform4fv"
+    @usableFromInline static let `uniform4iv`: JSString = "uniform4iv"
+    @usableFromInline static let `uniform4ui`: JSString = "uniform4ui"
+    @usableFromInline static let `uniform4uiv`: JSString = "uniform4uiv"
+    @usableFromInline static let `uniformBlockBinding`: JSString = "uniformBlockBinding"
+    @usableFromInline static let `uniformMatrix2fv`: JSString = "uniformMatrix2fv"
+    @usableFromInline static let `uniformMatrix2x3fv`: JSString = "uniformMatrix2x3fv"
+    @usableFromInline static let `uniformMatrix2x4fv`: JSString = "uniformMatrix2x4fv"
+    @usableFromInline static let `uniformMatrix3fv`: JSString = "uniformMatrix3fv"
+    @usableFromInline static let `uniformMatrix3x2fv`: JSString = "uniformMatrix3x2fv"
+    @usableFromInline static let `uniformMatrix3x4fv`: JSString = "uniformMatrix3x4fv"
+    @usableFromInline static let `uniformMatrix4fv`: JSString = "uniformMatrix4fv"
+    @usableFromInline static let `uniformMatrix4x2fv`: JSString = "uniformMatrix4x2fv"
+    @usableFromInline static let `uniformMatrix4x3fv`: JSString = "uniformMatrix4x3fv"
+    @usableFromInline static let `vertexAttribDivisor`: JSString = "vertexAttribDivisor"
+    @usableFromInline static let `vertexAttribI4i`: JSString = "vertexAttribI4i"
+    @usableFromInline static let `vertexAttribI4iv`: JSString = "vertexAttribI4iv"
+    @usableFromInline static let `vertexAttribI4ui`: JSString = "vertexAttribI4ui"
+    @usableFromInline static let `vertexAttribI4uiv`: JSString = "vertexAttribI4uiv"
+    @usableFromInline static let `vertexAttribIPointer`: JSString = "vertexAttribIPointer"
+    @usableFromInline static let `waitSync`: JSString = "waitSync"
 }
-
 public protocol Any_Uint32List: ConvertibleToJSValue {}
 extension Uint32Array: Any_Uint32List {}
 extension Array: Any_Uint32List where Element == GLuint {}
@@ -1360,12 +2344,11 @@ public enum Uint32List: JSValueCompatible, Any_Uint32List {
     case uint32Array(Uint32Array)
     case seq_of_GLuint([GLuint])
 
-    init(_ uint32Array: Uint32Array) {
+    public init(_ uint32Array: Uint32Array) {
         let val: Uint32List = .uint32Array(uint32Array)
         self = val
     }
-
-    init(_ seq_of_GLuint: [GLuint]) {
+    public init(_ seq_of_GLuint: [GLuint]) {
         let val: Uint32List = .seq_of_GLuint(seq_of_GLuint)
         self = val
     }
@@ -1376,7 +2359,6 @@ public enum Uint32List: JSValueCompatible, Any_Uint32List {
         default: return nil
         }
     }
-
     public var seq_of_GLuint: [GLuint]? {
         switch self {
         case let .seq_of_GLuint(seq_of_GLuint): return seq_of_GLuint
@@ -1385,21 +2367,15 @@ public enum Uint32List: JSValueCompatible, Any_Uint32List {
     }
 
     public static func construct(from value: JSValue) -> Self? {
-        if let uint32Array: Uint32Array = value.fromJSValue() {
-            return .uint32Array(uint32Array)
-        }
-        if let seq_of_GLuint: [GLuint] = value.fromJSValue() {
-            return .seq_of_GLuint(seq_of_GLuint)
-        }
+        if let uint32Array: Uint32Array = value.fromJSValue() { return .uint32Array(uint32Array) }
+        if let seq_of_GLuint: [GLuint] = value.fromJSValue() { return .seq_of_GLuint(seq_of_GLuint) }
         return nil
     }
 
     public var jsValue: JSValue {
         switch self {
-        case let .uint32Array(uint32Array):
-            return uint32Array.jsValue
-        case let .seq_of_GLuint(seq_of_GLuint):
-            return seq_of_GLuint.jsValue
+        case let .uint32Array(uint32Array): return uint32Array.jsValue
+        case let .seq_of_GLuint(seq_of_GLuint): return seq_of_GLuint.jsValue
         }
     }
 }

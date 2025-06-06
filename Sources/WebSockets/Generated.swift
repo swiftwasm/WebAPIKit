@@ -3,101 +3,82 @@
 import DOM
 import ECMAScript
 import JavaScriptBigIntSupport
-import JavaScriptEventLoop
 import JavaScriptKit
 import WebAPIBase
+
+#if canImport(JavaScriptEventLoop)
+    import JavaScriptEventLoop
+#endif
+#if canImport(_Concurrency)
+    import _Concurrency
+#endif
 
 public enum BinaryType: JSString, JSValueCompatible {
     case blob = "blob"
     case arraybuffer = "arraybuffer"
 
     @inlinable public static func construct(from jsValue: JSValue) -> Self? {
-        if let string = jsValue.jsString {
-            return Self(rawValue: string)
-        }
+        if let string = jsValue.jsString { return Self(rawValue: string) }
         return nil
     }
 
-    @inlinable public init?(string: String) {
-        self.init(rawValue: JSString(string))
-    }
+    @inlinable public init?(string: String) { self.init(rawValue: JSString(string)) }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
-
 public class CloseEvent: Event {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.CloseEvent].function }
+    @inlinable public override class var constructor: JSFunction? { JSObject.global[Strings.CloseEvent].function }
 
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        _wasClean = ReadonlyAttribute(jsObject: jsObject, name: Strings.wasClean)
-        _code = ReadonlyAttribute(jsObject: jsObject, name: Strings.code)
-        _reason = ReadonlyAttribute(jsObject: jsObject, name: Strings.reason)
-        super.init(unsafelyWrapping: jsObject)
-    }
+    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
 
     @inlinable public convenience init(type: String, eventInitDict: CloseEventInit? = nil) {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
     }
 
-    @ReadonlyAttribute
-    public var wasClean: Bool
+    @inlinable public var wasClean: Bool { jsObject[Strings.wasClean].fromJSValue()! }
 
-    @ReadonlyAttribute
-    public var code: UInt16
+    @inlinable public var code: UInt16 { jsObject[Strings.code].fromJSValue()! }
 
-    @ReadonlyAttribute
-    public var reason: String
+    @inlinable public var reason: String { jsObject[Strings.reason].fromJSValue()! }
 }
 
-public class CloseEventInit: BridgedDictionary {
-    public convenience init(wasClean: Bool, code: UInt16, reason: String) {
+open class CloseEventInit: EventInit {
+
+    public convenience init(wasClean: Bool? = nil, code: UInt16? = nil, reason: String? = nil) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.wasClean] = _toJSValue(wasClean)
         object[Strings.code] = _toJSValue(code)
         object[Strings.reason] = _toJSValue(reason)
+
         self.init(unsafelyWrapping: object)
     }
 
-    public required init(unsafelyWrapping object: JSObject) {
-        _wasClean = ReadWriteAttribute(jsObject: object, name: Strings.wasClean)
-        _code = ReadWriteAttribute(jsObject: object, name: Strings.code)
-        _reason = ReadWriteAttribute(jsObject: object, name: Strings.reason)
-        super.init(unsafelyWrapping: object)
+    public required init(unsafelyWrapping object: JSObject) { super.init(unsafelyWrapping: object) }
+
+    @inlinable public var wasClean: Bool {
+        get { jsObject[Strings.wasClean].fromJSValue()! }
+        set { jsObject[Strings.wasClean] = _toJSValue(newValue) }
     }
-
-    @ReadWriteAttribute
-    public var wasClean: Bool
-
-    @ReadWriteAttribute
-    public var code: UInt16
-
-    @ReadWriteAttribute
-    public var reason: String
+    @inlinable public var code: UInt16 {
+        get { jsObject[Strings.code].fromJSValue()! }
+        set { jsObject[Strings.code] = _toJSValue(newValue) }
+    }
+    @inlinable public var reason: String {
+        get { jsObject[Strings.reason].fromJSValue()! }
+        set { jsObject[Strings.reason] = _toJSValue(newValue) }
+    }
 }
 
 public class WebSocket: EventTarget {
-    @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.WebSocket].function }
+    @inlinable public override class var constructor: JSFunction? { JSObject.global[Strings.WebSocket].function }
 
-    public required init(unsafelyWrapping jsObject: JSObject) {
-        _url = ReadonlyAttribute(jsObject: jsObject, name: Strings.url)
-        _readyState = ReadonlyAttribute(jsObject: jsObject, name: Strings.readyState)
-        _bufferedAmount = ReadonlyAttribute(jsObject: jsObject, name: Strings.bufferedAmount)
-        _onopen = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onopen)
-        _onerror = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onerror)
-        _onclose = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onclose)
-        _extensions = ReadonlyAttribute(jsObject: jsObject, name: Strings.extensions)
-        _protocol = ReadonlyAttribute(jsObject: jsObject, name: Strings.protocol)
-        _onmessage = ClosureAttribute1Optional(jsObject: jsObject, name: Strings.onmessage)
-        _binaryType = ReadWriteAttribute(jsObject: jsObject, name: Strings.binaryType)
-        super.init(unsafelyWrapping: jsObject)
-    }
+    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
 
     @inlinable public convenience init(url: String, protocols: String_or_seq_of_String? = nil) {
         self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(url), _toJSValue(protocols)]))
     }
 
-    @ReadonlyAttribute
-    public var url: String
+    @inlinable public var url: String { jsObject[Strings.url].fromJSValue()! }
 
     public static let CONNECTING: UInt16 = 0
 
@@ -107,39 +88,81 @@ public class WebSocket: EventTarget {
 
     public static let CLOSED: UInt16 = 3
 
-    @ReadonlyAttribute
-    public var readyState: UInt16
+    @inlinable public var readyState: UInt16 { jsObject[Strings.readyState].fromJSValue()! }
 
-    @ReadonlyAttribute
-    public var bufferedAmount: UInt64
+    @inlinable public var bufferedAmount: UInt64 { jsObject[Strings.bufferedAmount].fromJSValue()! }
 
-    @ClosureAttribute1Optional
-    public var onopen: EventHandler
+    @inlinable public var onopen: EventHandler {
+        get {
+            guard let function = jsObject[Strings.onopen].function else { return nil }
+            return { function(_toJSValue($0)).fromJSValue()! }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[Strings.onopen] = JSClosure { _toJSValue(newValue($0[0].fromJSValue()!)) }.jsValue
+            } else {
+                jsObject[Strings.onopen] = .null
+            }
+        }
+    }
 
-    @ClosureAttribute1Optional
-    public var onerror: EventHandler
+    @inlinable public var onerror: EventHandler {
+        get {
+            guard let function = jsObject[Strings.onerror].function else { return nil }
+            return { function(_toJSValue($0)).fromJSValue()! }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[Strings.onerror] = JSClosure { _toJSValue(newValue($0[0].fromJSValue()!)) }.jsValue
+            } else {
+                jsObject[Strings.onerror] = .null
+            }
+        }
+    }
 
-    @ClosureAttribute1Optional
-    public var onclose: EventHandler
+    @inlinable public var onclose: EventHandler {
+        get {
+            guard let function = jsObject[Strings.onclose].function else { return nil }
+            return { function(_toJSValue($0)).fromJSValue()! }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[Strings.onclose] = JSClosure { _toJSValue(newValue($0[0].fromJSValue()!)) }.jsValue
+            } else {
+                jsObject[Strings.onclose] = .null
+            }
+        }
+    }
 
-    @ReadonlyAttribute
-    public var extensions: String
+    @inlinable public var extensions: String { jsObject[Strings.extensions].fromJSValue()! }
 
-    @ReadonlyAttribute
-    public var `protocol`: String
+    @inlinable public var `protocol`: String { jsObject[Strings.`protocol`].fromJSValue()! }
 
-    @inlinable public func close(code: UInt16? = nil, reason: String? = nil) {
+    @inlinable final public func close(code: UInt16? = nil, reason: String? = nil) {
         let this = jsObject
         _ = this[Strings.close].function!(this: this, arguments: [_toJSValue(code), _toJSValue(reason)])
     }
 
-    @ClosureAttribute1Optional
-    public var onmessage: EventHandler
+    @inlinable public var onmessage: EventHandler {
+        get {
+            guard let function = jsObject[Strings.onmessage].function else { return nil }
+            return { function(_toJSValue($0)).fromJSValue()! }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[Strings.onmessage] = JSClosure { _toJSValue(newValue($0[0].fromJSValue()!)) }.jsValue
+            } else {
+                jsObject[Strings.onmessage] = .null
+            }
+        }
+    }
 
-    @ReadWriteAttribute
-    public var binaryType: BinaryType
+    @inlinable public var binaryType: BinaryType {
+        get { jsObject[Strings.binaryType].fromJSValue()! }
+        set { jsObject[Strings.binaryType] = _toJSValue(newValue) }
+    }
 
-    @inlinable public func send(data: Blob_or_BufferSource_or_String) {
+    @inlinable final public func send(data: Blob_or_BufferSource_or_String) {
         let this = jsObject
         _ = this[Strings.send].function!(this: this, arguments: [_toJSValue(data)])
     }
@@ -147,27 +170,26 @@ public class WebSocket: EventTarget {
 
 @usableFromInline enum Strings {
     @usableFromInline static let _self: JSString = "self"
-    @usableFromInline static let CloseEvent: JSString = "CloseEvent"
-    @usableFromInline static let Object: JSString = "Object"
-    @usableFromInline static let WebSocket: JSString = "WebSocket"
-    @usableFromInline static let binaryType: JSString = "binaryType"
-    @usableFromInline static let bufferedAmount: JSString = "bufferedAmount"
-    @usableFromInline static let close: JSString = "close"
-    @usableFromInline static let code: JSString = "code"
-    @usableFromInline static let extensions: JSString = "extensions"
-    @usableFromInline static let onclose: JSString = "onclose"
-    @usableFromInline static let onerror: JSString = "onerror"
-    @usableFromInline static let onmessage: JSString = "onmessage"
-    @usableFromInline static let onopen: JSString = "onopen"
+    @usableFromInline static let `CloseEvent`: JSString = "CloseEvent"
+    @usableFromInline static let `Object`: JSString = "Object"
+    @usableFromInline static let `WebSocket`: JSString = "WebSocket"
+    @usableFromInline static let `binaryType`: JSString = "binaryType"
+    @usableFromInline static let `bufferedAmount`: JSString = "bufferedAmount"
+    @usableFromInline static let `close`: JSString = "close"
+    @usableFromInline static let `code`: JSString = "code"
+    @usableFromInline static let `extensions`: JSString = "extensions"
+    @usableFromInline static let `onclose`: JSString = "onclose"
+    @usableFromInline static let `onerror`: JSString = "onerror"
+    @usableFromInline static let `onmessage`: JSString = "onmessage"
+    @usableFromInline static let `onopen`: JSString = "onopen"
     @usableFromInline static let `protocol`: JSString = "protocol"
-    @usableFromInline static let readyState: JSString = "readyState"
-    @usableFromInline static let reason: JSString = "reason"
-    @usableFromInline static let send: JSString = "send"
-    @usableFromInline static let toString: JSString = "toString"
-    @usableFromInline static let url: JSString = "url"
-    @usableFromInline static let wasClean: JSString = "wasClean"
+    @usableFromInline static let `readyState`: JSString = "readyState"
+    @usableFromInline static let `reason`: JSString = "reason"
+    @usableFromInline static let `send`: JSString = "send"
+    @usableFromInline static let `toString`: JSString = "toString"
+    @usableFromInline static let `url`: JSString = "url"
+    @usableFromInline static let `wasClean`: JSString = "wasClean"
 }
-
 public protocol Any_Blob_or_BufferSource_or_String: ConvertibleToJSValue {}
 extension Blob: Any_Blob_or_BufferSource_or_String {}
 extension BufferSource: Any_Blob_or_BufferSource_or_String {}
@@ -178,27 +200,23 @@ public enum Blob_or_BufferSource_or_String: JSValueCompatible, Any_Blob_or_Buffe
     case bufferSource(BufferSource)
     case string(String)
 
-    init(_ blob: Blob) {
+    public init(_ blob: Blob) {
         let val: Blob_or_BufferSource_or_String = .blob(blob)
         self = val
     }
-
-    init(_ bufferSource: BufferSource) {
+    public init(_ bufferSource: BufferSource) {
         let val: Blob_or_BufferSource_or_String = .bufferSource(bufferSource)
         self = val
     }
-
-    init(_ arrayBuffer: ArrayBuffer) {
+    public init(_ arrayBuffer: ArrayBuffer) {
         let val: BufferSource = .arrayBuffer(arrayBuffer)
         self = .init(val)
     }
-
-    init(_ arrayBufferView: ArrayBufferView) {
+    public init(_ arrayBufferView: ArrayBufferView) {
         let val: BufferSource = .arrayBufferView(arrayBufferView)
         self = .init(val)
     }
-
-    init(_ string: String) {
+    public init(_ string: String) {
         let val: Blob_or_BufferSource_or_String = .string(string)
         self = val
     }
@@ -209,14 +227,12 @@ public enum Blob_or_BufferSource_or_String: JSValueCompatible, Any_Blob_or_Buffe
         default: return nil
         }
     }
-
     public var bufferSource: BufferSource? {
         switch self {
         case let .bufferSource(bufferSource): return bufferSource
         default: return nil
         }
     }
-
     public var string: String? {
         switch self {
         case let .string(string): return string
@@ -225,30 +241,20 @@ public enum Blob_or_BufferSource_or_String: JSValueCompatible, Any_Blob_or_Buffe
     }
 
     public static func construct(from value: JSValue) -> Self? {
-        if let blob: Blob = value.fromJSValue() {
-            return .blob(blob)
-        }
-        if let bufferSource: BufferSource = value.fromJSValue() {
-            return .bufferSource(bufferSource)
-        }
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
+        if let blob: Blob = value.fromJSValue() { return .blob(blob) }
+        if let bufferSource: BufferSource = value.fromJSValue() { return .bufferSource(bufferSource) }
+        if let string: String = value.fromJSValue() { return .string(string) }
         return nil
     }
 
     public var jsValue: JSValue {
         switch self {
-        case let .blob(blob):
-            return blob.jsValue
-        case let .bufferSource(bufferSource):
-            return bufferSource.jsValue
-        case let .string(string):
-            return string.jsValue
+        case let .blob(blob): return blob.jsValue
+        case let .bufferSource(bufferSource): return bufferSource.jsValue
+        case let .string(string): return string.jsValue
         }
     }
 }
-
 public protocol Any_String_or_seq_of_String: ConvertibleToJSValue {}
 extension String: Any_String_or_seq_of_String {}
 extension Array: Any_String_or_seq_of_String where Element == String {}
@@ -257,12 +263,11 @@ public enum String_or_seq_of_String: JSValueCompatible, Any_String_or_seq_of_Str
     case string(String)
     case seq_of_String([String])
 
-    init(_ string: String) {
+    public init(_ string: String) {
         let val: String_or_seq_of_String = .string(string)
         self = val
     }
-
-    init(_ seq_of_String: [String]) {
+    public init(_ seq_of_String: [String]) {
         let val: String_or_seq_of_String = .seq_of_String(seq_of_String)
         self = val
     }
@@ -273,7 +278,6 @@ public enum String_or_seq_of_String: JSValueCompatible, Any_String_or_seq_of_Str
         default: return nil
         }
     }
-
     public var seq_of_String: [String]? {
         switch self {
         case let .seq_of_String(seq_of_String): return seq_of_String
@@ -282,21 +286,15 @@ public enum String_or_seq_of_String: JSValueCompatible, Any_String_or_seq_of_Str
     }
 
     public static func construct(from value: JSValue) -> Self? {
-        if let string: String = value.fromJSValue() {
-            return .string(string)
-        }
-        if let seq_of_String: [String] = value.fromJSValue() {
-            return .seq_of_String(seq_of_String)
-        }
+        if let string: String = value.fromJSValue() { return .string(string) }
+        if let seq_of_String: [String] = value.fromJSValue() { return .seq_of_String(seq_of_String) }
         return nil
     }
 
     public var jsValue: JSValue {
         switch self {
-        case let .string(string):
-            return string.jsValue
-        case let .seq_of_String(seq_of_String):
-            return seq_of_String.jsValue
+        case let .string(string): return string.jsValue
+        case let .seq_of_String(seq_of_String): return seq_of_String.jsValue
         }
     }
 }
