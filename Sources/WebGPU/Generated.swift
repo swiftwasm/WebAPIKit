@@ -62,6 +62,8 @@ public class GPUAdapter: JSBridgedClass {
 
     @inlinable public var limits: GPUSupportedLimits { jsObject[Strings.limits].fromJSValue()! }
 
+    @inlinable public var info: GPUAdapterInfo { jsObject[Strings.info].fromJSValue()! }
+
     @inlinable public var isFallbackAdapter: Bool { jsObject[Strings.isFallbackAdapter].fromJSValue()! }
 
     @inlinable final public func requestDevice(descriptor: GPUDeviceDescriptor? = nil) -> JSPromise {
@@ -77,25 +79,6 @@ public class GPUAdapter: JSBridgedClass {
             let _promise: JSPromise = this[Strings.requestDevice].function!(
                 this: this,
                 arguments: [_toJSValue(descriptor)]
-            ).fromJSValue()!
-            return try await _promise.value.fromJSValue()!
-        }
-    #endif
-
-    @inlinable final public func requestAdapterInfo(unmaskHints: [String]? = nil) -> JSPromise {
-        let this = jsObject
-        return this[Strings.requestAdapterInfo].function!(this: this, arguments: [_toJSValue(unmaskHints)])
-            .fromJSValue()!
-    }
-
-    #if canImport(JavaScriptEventLoop)
-        @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *) @inlinable final public func requestAdapterInfo(
-            unmaskHints: [String]? = nil
-        ) async throws(JSException) -> GPUAdapterInfo {
-            let this = jsObject
-            let _promise: JSPromise = this[Strings.requestAdapterInfo].function!(
-                this: this,
-                arguments: [_toJSValue(unmaskHints)]
             ).fromJSValue()!
             return try await _promise.value.fromJSValue()!
         }
@@ -116,6 +99,10 @@ public class GPUAdapterInfo: JSBridgedClass {
     @inlinable public var device: String { jsObject[Strings.device].fromJSValue()! }
 
     @inlinable public var description: String { jsObject[Strings.description].fromJSValue()! }
+
+    @inlinable public var subgroupMinSize: UInt32 { jsObject[Strings.subgroupMinSize].fromJSValue()! }
+
+    @inlinable public var subgroupMaxSize: UInt32 { jsObject[Strings.subgroupMaxSize].fromJSValue()! }
 }
 
 public enum GPUAddressMode: JSString, JSValueCompatible {
@@ -354,6 +341,10 @@ public enum GPUBlendFactor: JSString, JSValueCompatible {
     case srcAlphaSaturated = "src-alpha-saturated"
     case constant = "constant"
     case oneMinusConstant = "one-minus-constant"
+    case src1 = "src1"
+    case oneMinusSrc1 = "one-minus-src1"
+    case src1Alpha = "src1-alpha"
+    case oneMinusSrc1Alpha = "one-minus-src1-alpha"
 
     @inlinable public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString { return Self(rawValue: string) }
@@ -622,6 +613,7 @@ open class GPUCanvasConfiguration: JSDictionaryCompatible {
         usage: GPUTextureUsageFlags? = nil,
         viewFormats: [GPUTextureFormat]? = nil,
         colorSpace: PredefinedColorSpace? = nil,
+        toneMapping: GPUCanvasToneMapping? = nil,
         alphaMode: GPUCanvasAlphaMode? = nil
     ) {
         let object = JSObject.global[Strings.Object].function!.new()
@@ -630,6 +622,7 @@ open class GPUCanvasConfiguration: JSDictionaryCompatible {
         object[Strings.usage] = _toJSValue(usage)
         object[Strings.viewFormats] = _toJSValue(viewFormats)
         object[Strings.colorSpace] = _toJSValue(colorSpace)
+        object[Strings.toneMapping] = _toJSValue(toneMapping)
         object[Strings.alphaMode] = _toJSValue(alphaMode)
 
         self.init(unsafelyWrapping: object)
@@ -657,6 +650,10 @@ open class GPUCanvasConfiguration: JSDictionaryCompatible {
         get { jsObject[Strings.colorSpace].fromJSValue()! }
         set { jsObject[Strings.colorSpace] = _toJSValue(newValue) }
     }
+    @inlinable public var toneMapping: GPUCanvasToneMapping {
+        get { jsObject[Strings.toneMapping].fromJSValue()! }
+        set { jsObject[Strings.toneMapping] = _toJSValue(newValue) }
+    }
     @inlinable public var alphaMode: GPUCanvasAlphaMode {
         get { jsObject[Strings.alphaMode].fromJSValue()! }
         set { jsObject[Strings.alphaMode] = _toJSValue(newValue) }
@@ -681,12 +678,47 @@ public class GPUCanvasContext: JSBridgedClass {
         _ = this[Strings.unconfigure].function!(this: this, arguments: [])
     }
 
+    @inlinable final public func getConfiguration() -> GPUCanvasConfiguration? {
+        let this = jsObject
+        return this[Strings.getConfiguration].function!(this: this, arguments: []).fromJSValue()
+    }
+
     @inlinable final public func getCurrentTexture() -> GPUTexture {
         let this = jsObject
         return this[Strings.getCurrentTexture].function!(this: this, arguments: []).fromJSValue()!
     }
 }
 
+open class GPUCanvasToneMapping: JSDictionaryCompatible {
+    public let jsObject: JSObject
+
+    public convenience init(mode: GPUCanvasToneMappingMode? = nil) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.mode] = _toJSValue(mode)
+
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
+
+    @inlinable public var mode: GPUCanvasToneMappingMode {
+        get { jsObject[Strings.mode].fromJSValue()! }
+        set { jsObject[Strings.mode] = _toJSValue(newValue) }
+    }
+}
+public enum GPUCanvasToneMappingMode: JSString, JSValueCompatible {
+    case standard = "standard"
+    case extended = "extended"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString { return Self(rawValue: string) }
+        return nil
+    }
+
+    @inlinable public init?(string: String) { self.init(rawValue: JSString(string)) }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
 open class GPUColorDict: JSDictionaryCompatible {
     public let jsObject: JSObject
 
@@ -817,8 +849,8 @@ public class GPUCommandEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMixin,
     }
 
     @inlinable final public func copyBufferToTexture(
-        source: GPUImageCopyBuffer,
-        destination: GPUImageCopyTexture,
+        source: GPUTexelCopyBufferInfo,
+        destination: GPUTexelCopyTextureInfo,
         copySize: GPUExtent3D
     ) {
         let this = jsObject
@@ -829,8 +861,8 @@ public class GPUCommandEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMixin,
     }
 
     @inlinable final public func copyTextureToBuffer(
-        source: GPUImageCopyTexture,
-        destination: GPUImageCopyBuffer,
+        source: GPUTexelCopyTextureInfo,
+        destination: GPUTexelCopyBufferInfo,
         copySize: GPUExtent3D
     ) {
         let this = jsObject
@@ -841,8 +873,8 @@ public class GPUCommandEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMixin,
     }
 
     @inlinable final public func copyTextureToTexture(
-        source: GPUImageCopyTexture,
-        destination: GPUImageCopyTexture,
+        source: GPUTexelCopyTextureInfo,
+        destination: GPUTexelCopyTextureInfo,
         copySize: GPUExtent3D
     ) {
         let this = jsObject
@@ -857,14 +889,6 @@ public class GPUCommandEncoder: JSBridgedClass, GPUObjectBase, GPUCommandsMixin,
         _ = this[Strings.clearBuffer].function!(
             this: this,
             arguments: [_toJSValue(buffer), _toJSValue(offset), _toJSValue(size)]
-        )
-    }
-
-    @inlinable final public func writeTimestamp(querySet: GPUQuerySet, queryIndex: GPUSize32) {
-        let this = jsObject
-        _ = this[Strings.writeTimestamp].function!(
-            this: this,
-            arguments: [_toJSValue(querySet), _toJSValue(queryIndex)]
         )
     }
 
@@ -1082,6 +1106,65 @@ open class GPUComputePipelineDescriptor: GPUPipelineDescriptorBase {
         set { jsObject[Strings.compute] = _toJSValue(newValue) }
     }
 }
+open class GPUCopyExternalImageDestInfo: GPUTexelCopyTextureInfo {
+
+    public convenience init(
+        texture: GPUTexture,
+        mipLevel: GPUIntegerCoordinate? = nil,
+        origin: GPUOrigin3D? = nil,
+        aspect: GPUTextureAspect? = nil,
+        colorSpace: PredefinedColorSpace? = nil,
+        premultipliedAlpha: Bool? = nil
+    ) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.texture] = _toJSValue(texture)
+        object[Strings.mipLevel] = _toJSValue(mipLevel)
+        object[Strings.origin] = _toJSValue(origin)
+        object[Strings.aspect] = _toJSValue(aspect)
+        object[Strings.colorSpace] = _toJSValue(colorSpace)
+        object[Strings.premultipliedAlpha] = _toJSValue(premultipliedAlpha)
+
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) { super.init(unsafelyWrapping: object) }
+
+    @inlinable public var colorSpace: PredefinedColorSpace {
+        get { jsObject[Strings.colorSpace].fromJSValue()! }
+        set { jsObject[Strings.colorSpace] = _toJSValue(newValue) }
+    }
+    @inlinable public var premultipliedAlpha: Bool {
+        get { jsObject[Strings.premultipliedAlpha].fromJSValue()! }
+        set { jsObject[Strings.premultipliedAlpha] = _toJSValue(newValue) }
+    }
+}
+open class GPUCopyExternalImageSourceInfo: JSDictionaryCompatible {
+    public let jsObject: JSObject
+
+    public convenience init(source: GPUCopyExternalImageSource, origin: GPUOrigin2D? = nil, flipY: Bool? = nil) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.source] = _toJSValue(source)
+        object[Strings.origin] = _toJSValue(origin)
+        object[Strings.flipY] = _toJSValue(flipY)
+
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
+
+    @inlinable public var source: GPUCopyExternalImageSource {
+        get { jsObject[Strings.source].fromJSValue()! }
+        set { jsObject[Strings.source] = _toJSValue(newValue) }
+    }
+    @inlinable public var origin: GPUOrigin2D {
+        get { jsObject[Strings.origin].fromJSValue()! }
+        set { jsObject[Strings.origin] = _toJSValue(newValue) }
+    }
+    @inlinable public var flipY: Bool {
+        get { jsObject[Strings.flipY].fromJSValue()! }
+        set { jsObject[Strings.flipY] = _toJSValue(newValue) }
+    }
+}
 public enum GPUCullMode: JSString, JSValueCompatible {
     case none = "none"
     case front = "front"
@@ -1118,8 +1201,8 @@ open class GPUDepthStencilState: JSDictionaryCompatible {
 
     public convenience init(
         format: GPUTextureFormat,
-        depthWriteEnabled: Bool,
-        depthCompare: GPUCompareFunction,
+        depthWriteEnabled: Bool? = nil,
+        depthCompare: GPUCompareFunction? = nil,
         stencilFront: GPUStencilFaceState? = nil,
         stencilBack: GPUStencilFaceState? = nil,
         stencilReadMask: GPUStencilValue? = nil,
@@ -1194,6 +1277,8 @@ public class GPUDevice: EventTarget, GPUObjectBase {
     @inlinable public var features: GPUSupportedFeatures { jsObject[Strings.features].fromJSValue()! }
 
     @inlinable public var limits: GPUSupportedLimits { jsObject[Strings.limits].fromJSValue()! }
+
+    @inlinable public var adapterInfo: GPUAdapterInfo { jsObject[Strings.adapterInfo].fromJSValue()! }
 
     @inlinable public var queue: GPUQueue { jsObject[Strings.queue].fromJSValue()! }
 
@@ -1519,14 +1604,20 @@ public enum GPUFeatureName: JSString, JSValueCompatible {
     case depthClipControl = "depth-clip-control"
     case depth32floatStencil8 = "depth32float-stencil8"
     case textureCompressionBc = "texture-compression-bc"
+    case textureCompressionBcSliced3d = "texture-compression-bc-sliced-3d"
     case textureCompressionEtc2 = "texture-compression-etc2"
     case textureCompressionAstc = "texture-compression-astc"
+    case textureCompressionAstcSliced3d = "texture-compression-astc-sliced-3d"
     case timestampQuery = "timestamp-query"
     case indirectFirstInstance = "indirect-first-instance"
     case shaderF16 = "shader-f16"
     case rg11b10ufloatRenderable = "rg11b10ufloat-renderable"
     case bgra8unormStorage = "bgra8unorm-storage"
     case float32Filterable = "float32-filterable"
+    case float32Blendable = "float32-blendable"
+    case clipDistances = "clip-distances"
+    case dualSourceBlending = "dual-source-blending"
+    case subgroups = "subgroups"
 
     @inlinable public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString { return Self(rawValue: string) }
@@ -1554,7 +1645,7 @@ open class GPUFragmentState: GPUProgrammableStage {
 
     public convenience init(
         module: GPUShaderModule,
-        entryPoint: String,
+        entryPoint: String? = nil,
         constants: JSObject? = nil,
         targets: [GPUColorTargetState?]
     ) {
@@ -1586,153 +1677,6 @@ public enum GPUFrontFace: JSString, JSValueCompatible {
     @inlinable public init?(string: String) { self.init(rawValue: JSString(string)) }
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
-}
-open class GPUImageCopyBuffer: GPUImageDataLayout {
-
-    public convenience init(
-        offset: GPUSize64? = nil,
-        bytesPerRow: GPUSize32? = nil,
-        rowsPerImage: GPUSize32? = nil,
-        buffer: GPUBuffer
-    ) {
-        let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = _toJSValue(offset)
-        object[Strings.bytesPerRow] = _toJSValue(bytesPerRow)
-        object[Strings.rowsPerImage] = _toJSValue(rowsPerImage)
-        object[Strings.buffer] = _toJSValue(buffer)
-
-        self.init(unsafelyWrapping: object)
-    }
-
-    public required init(unsafelyWrapping object: JSObject) { super.init(unsafelyWrapping: object) }
-
-    @inlinable public var buffer: GPUBuffer {
-        get { jsObject[Strings.buffer].fromJSValue()! }
-        set { jsObject[Strings.buffer] = _toJSValue(newValue) }
-    }
-}
-open class GPUImageCopyExternalImage: JSDictionaryCompatible {
-    public let jsObject: JSObject
-
-    public convenience init(source: GPUImageCopyExternalImageSource, origin: GPUOrigin2D? = nil, flipY: Bool? = nil) {
-        let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.source] = _toJSValue(source)
-        object[Strings.origin] = _toJSValue(origin)
-        object[Strings.flipY] = _toJSValue(flipY)
-
-        self.init(unsafelyWrapping: object)
-    }
-
-    public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
-
-    @inlinable public var source: GPUImageCopyExternalImageSource {
-        get { jsObject[Strings.source].fromJSValue()! }
-        set { jsObject[Strings.source] = _toJSValue(newValue) }
-    }
-    @inlinable public var origin: GPUOrigin2D {
-        get { jsObject[Strings.origin].fromJSValue()! }
-        set { jsObject[Strings.origin] = _toJSValue(newValue) }
-    }
-    @inlinable public var flipY: Bool {
-        get { jsObject[Strings.flipY].fromJSValue()! }
-        set { jsObject[Strings.flipY] = _toJSValue(newValue) }
-    }
-}
-open class GPUImageCopyTexture: JSDictionaryCompatible {
-    public let jsObject: JSObject
-
-    public convenience init(
-        texture: GPUTexture,
-        mipLevel: GPUIntegerCoordinate? = nil,
-        origin: GPUOrigin3D? = nil,
-        aspect: GPUTextureAspect? = nil
-    ) {
-        let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.texture] = _toJSValue(texture)
-        object[Strings.mipLevel] = _toJSValue(mipLevel)
-        object[Strings.origin] = _toJSValue(origin)
-        object[Strings.aspect] = _toJSValue(aspect)
-
-        self.init(unsafelyWrapping: object)
-    }
-
-    public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
-
-    @inlinable public var texture: GPUTexture {
-        get { jsObject[Strings.texture].fromJSValue()! }
-        set { jsObject[Strings.texture] = _toJSValue(newValue) }
-    }
-    @inlinable public var mipLevel: GPUIntegerCoordinate {
-        get { jsObject[Strings.mipLevel].fromJSValue()! }
-        set { jsObject[Strings.mipLevel] = _toJSValue(newValue) }
-    }
-    @inlinable public var origin: GPUOrigin3D {
-        get { jsObject[Strings.origin].fromJSValue()! }
-        set { jsObject[Strings.origin] = _toJSValue(newValue) }
-    }
-    @inlinable public var aspect: GPUTextureAspect {
-        get { jsObject[Strings.aspect].fromJSValue()! }
-        set { jsObject[Strings.aspect] = _toJSValue(newValue) }
-    }
-}
-open class GPUImageCopyTextureTagged: GPUImageCopyTexture {
-
-    public convenience init(
-        texture: GPUTexture,
-        mipLevel: GPUIntegerCoordinate? = nil,
-        origin: GPUOrigin3D? = nil,
-        aspect: GPUTextureAspect? = nil,
-        colorSpace: PredefinedColorSpace? = nil,
-        premultipliedAlpha: Bool? = nil
-    ) {
-        let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.texture] = _toJSValue(texture)
-        object[Strings.mipLevel] = _toJSValue(mipLevel)
-        object[Strings.origin] = _toJSValue(origin)
-        object[Strings.aspect] = _toJSValue(aspect)
-        object[Strings.colorSpace] = _toJSValue(colorSpace)
-        object[Strings.premultipliedAlpha] = _toJSValue(premultipliedAlpha)
-
-        self.init(unsafelyWrapping: object)
-    }
-
-    public required init(unsafelyWrapping object: JSObject) { super.init(unsafelyWrapping: object) }
-
-    @inlinable public var colorSpace: PredefinedColorSpace {
-        get { jsObject[Strings.colorSpace].fromJSValue()! }
-        set { jsObject[Strings.colorSpace] = _toJSValue(newValue) }
-    }
-    @inlinable public var premultipliedAlpha: Bool {
-        get { jsObject[Strings.premultipliedAlpha].fromJSValue()! }
-        set { jsObject[Strings.premultipliedAlpha] = _toJSValue(newValue) }
-    }
-}
-open class GPUImageDataLayout: JSDictionaryCompatible {
-    public let jsObject: JSObject
-
-    public convenience init(offset: GPUSize64? = nil, bytesPerRow: GPUSize32? = nil, rowsPerImage: GPUSize32? = nil) {
-        let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.offset] = _toJSValue(offset)
-        object[Strings.bytesPerRow] = _toJSValue(bytesPerRow)
-        object[Strings.rowsPerImage] = _toJSValue(rowsPerImage)
-
-        self.init(unsafelyWrapping: object)
-    }
-
-    public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
-
-    @inlinable public var offset: GPUSize64 {
-        get { jsObject[Strings.offset].fromJSValue()! }
-        set { jsObject[Strings.offset] = _toJSValue(newValue) }
-    }
-    @inlinable public var bytesPerRow: GPUSize32 {
-        get { jsObject[Strings.bytesPerRow].fromJSValue()! }
-        set { jsObject[Strings.bytesPerRow] = _toJSValue(newValue) }
-    }
-    @inlinable public var rowsPerImage: GPUSize32 {
-        get { jsObject[Strings.rowsPerImage].fromJSValue()! }
-        set { jsObject[Strings.rowsPerImage] = _toJSValue(newValue) }
-    }
 }
 public enum GPUIndexFormat: JSString, JSValueCompatible {
     case uint16 = "uint16"
@@ -1983,7 +1927,7 @@ public class GPUPipelineLayout: JSBridgedClass, GPUObjectBase {
 
 open class GPUPipelineLayoutDescriptor: GPUObjectDescriptorBase {
 
-    public convenience init(label: String? = nil, bindGroupLayouts: [GPUBindGroupLayout]) {
+    public convenience init(label: String? = nil, bindGroupLayouts: [GPUBindGroupLayout?]) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.label] = _toJSValue(label)
         object[Strings.bindGroupLayouts] = _toJSValue(bindGroupLayouts)
@@ -1993,7 +1937,7 @@ open class GPUPipelineLayoutDescriptor: GPUObjectDescriptorBase {
 
     public required init(unsafelyWrapping object: JSObject) { super.init(unsafelyWrapping: object) }
 
-    @inlinable public var bindGroupLayouts: [GPUBindGroupLayout] {
+    @inlinable public var bindGroupLayouts: [GPUBindGroupLayout?] {
         get { jsObject[Strings.bindGroupLayouts].fromJSValue()! }
         set { jsObject[Strings.bindGroupLayouts] = _toJSValue(newValue) }
     }
@@ -2073,7 +2017,7 @@ public enum GPUPrimitiveTopology: JSString, JSValueCompatible {
 open class GPUProgrammableStage: JSDictionaryCompatible {
     public let jsObject: JSObject
 
-    public convenience init(module: GPUShaderModule, entryPoint: String, constants: JSObject? = nil) {
+    public convenience init(module: GPUShaderModule, entryPoint: String? = nil, constants: JSObject? = nil) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.module] = _toJSValue(module)
         object[Strings.entryPoint] = _toJSValue(entryPoint)
@@ -2195,9 +2139,9 @@ public class GPUQueue: JSBridgedClass, GPUObjectBase {
     }
 
     @inlinable final public func writeTexture(
-        destination: GPUImageCopyTexture,
+        destination: GPUTexelCopyTextureInfo,
         data: AllowSharedBufferSource,
-        dataLayout: GPUImageDataLayout,
+        dataLayout: GPUTexelCopyBufferLayout,
         size: GPUExtent3D
     ) {
         let this = jsObject
@@ -2208,8 +2152,8 @@ public class GPUQueue: JSBridgedClass, GPUObjectBase {
     }
 
     @inlinable final public func copyExternalImageToTexture(
-        source: GPUImageCopyExternalImage,
-        destination: GPUImageCopyTextureTagged,
+        source: GPUCopyExternalImageSourceInfo,
+        destination: GPUCopyExternalImageDestInfo,
         copySize: GPUExtent3D
     ) {
         let this = jsObject
@@ -2384,6 +2328,7 @@ open class GPURenderPassColorAttachment: JSDictionaryCompatible {
 
     public convenience init(
         view: GPUTextureView,
+        depthSlice: GPUIntegerCoordinate? = nil,
         resolveTarget: GPUTextureView? = nil,
         clearValue: GPUColor? = nil,
         loadOp: GPULoadOp,
@@ -2391,6 +2336,7 @@ open class GPURenderPassColorAttachment: JSDictionaryCompatible {
     ) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.view] = _toJSValue(view)
+        object[Strings.depthSlice] = _toJSValue(depthSlice)
         object[Strings.resolveTarget] = _toJSValue(resolveTarget)
         object[Strings.clearValue] = _toJSValue(clearValue)
         object[Strings.loadOp] = _toJSValue(loadOp)
@@ -2404,6 +2350,10 @@ open class GPURenderPassColorAttachment: JSDictionaryCompatible {
     @inlinable public var view: GPUTextureView {
         get { jsObject[Strings.view].fromJSValue()! }
         set { jsObject[Strings.view] = _toJSValue(newValue) }
+    }
+    @inlinable public var depthSlice: GPUIntegerCoordinate {
+        get { jsObject[Strings.depthSlice].fromJSValue()! }
+        set { jsObject[Strings.depthSlice] = _toJSValue(newValue) }
     }
     @inlinable public var resolveTarget: GPUTextureView {
         get { jsObject[Strings.resolveTarget].fromJSValue()! }
@@ -2723,16 +2673,27 @@ open class GPURenderPipelineDescriptor: GPUPipelineDescriptorBase {
 open class GPURequestAdapterOptions: JSDictionaryCompatible {
     public let jsObject: JSObject
 
-    public convenience init(powerPreference: GPUPowerPreference? = nil, forceFallbackAdapter: Bool? = nil) {
+    public convenience init(
+        featureLevel: String? = nil,
+        powerPreference: GPUPowerPreference? = nil,
+        forceFallbackAdapter: Bool? = nil,
+        xrCompatible: Bool? = nil
+    ) {
         let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.featureLevel] = _toJSValue(featureLevel)
         object[Strings.powerPreference] = _toJSValue(powerPreference)
         object[Strings.forceFallbackAdapter] = _toJSValue(forceFallbackAdapter)
+        object[Strings.xrCompatible] = _toJSValue(xrCompatible)
 
         self.init(unsafelyWrapping: object)
     }
 
     public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
 
+    @inlinable public var featureLevel: String {
+        get { jsObject[Strings.featureLevel].fromJSValue()! }
+        set { jsObject[Strings.featureLevel] = _toJSValue(newValue) }
+    }
     @inlinable public var powerPreference: GPUPowerPreference {
         get { jsObject[Strings.powerPreference].fromJSValue()! }
         set { jsObject[Strings.powerPreference] = _toJSValue(newValue) }
@@ -2740,6 +2701,10 @@ open class GPURequestAdapterOptions: JSDictionaryCompatible {
     @inlinable public var forceFallbackAdapter: Bool {
         get { jsObject[Strings.forceFallbackAdapter].fromJSValue()! }
         set { jsObject[Strings.forceFallbackAdapter] = _toJSValue(newValue) }
+    }
+    @inlinable public var xrCompatible: Bool {
+        get { jsObject[Strings.xrCompatible].fromJSValue()! }
+        set { jsObject[Strings.xrCompatible] = _toJSValue(newValue) }
     }
 }
 public class GPUSampler: JSBridgedClass, GPUObjectBase {
@@ -2883,8 +2848,9 @@ public class GPUShaderModule: JSBridgedClass, GPUObjectBase {
 open class GPUShaderModuleCompilationHint: JSDictionaryCompatible {
     public let jsObject: JSObject
 
-    public convenience init(layout: GPUAutoLayoutMode_or_GPUPipelineLayout? = nil) {
+    public convenience init(entryPoint: String, layout: GPUAutoLayoutMode_or_GPUPipelineLayout? = nil) {
         let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.entryPoint] = _toJSValue(entryPoint)
         object[Strings.layout] = _toJSValue(layout)
 
         self.init(unsafelyWrapping: object)
@@ -2892,6 +2858,10 @@ open class GPUShaderModuleCompilationHint: JSDictionaryCompatible {
 
     public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
 
+    @inlinable public var entryPoint: String {
+        get { jsObject[Strings.entryPoint].fromJSValue()! }
+        set { jsObject[Strings.entryPoint] = _toJSValue(newValue) }
+    }
     @inlinable public var layout: GPUAutoLayoutMode_or_GPUPipelineLayout {
         get { jsObject[Strings.layout].fromJSValue()! }
         set { jsObject[Strings.layout] = _toJSValue(newValue) }
@@ -2899,12 +2869,15 @@ open class GPUShaderModuleCompilationHint: JSDictionaryCompatible {
 }
 open class GPUShaderModuleDescriptor: GPUObjectDescriptorBase {
 
-    public convenience init(label: String? = nil, code: String, sourceMap: JSObject? = nil, hints: JSObject? = nil) {
+    public convenience init(
+        label: String? = nil,
+        code: String,
+        compilationHints: [GPUShaderModuleCompilationHint]? = nil
+    ) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.label] = _toJSValue(label)
         object[Strings.code] = _toJSValue(code)
-        object[Strings.sourceMap] = _toJSValue(sourceMap)
-        object[Strings.hints] = _toJSValue(hints)
+        object[Strings.compilationHints] = _toJSValue(compilationHints)
 
         self.init(unsafelyWrapping: object)
     }
@@ -2915,13 +2888,9 @@ open class GPUShaderModuleDescriptor: GPUObjectDescriptorBase {
         get { jsObject[Strings.code].fromJSValue()! }
         set { jsObject[Strings.code] = _toJSValue(newValue) }
     }
-    @inlinable public var sourceMap: JSObject {
-        get { jsObject[Strings.sourceMap].fromJSValue()! }
-        set { jsObject[Strings.sourceMap] = _toJSValue(newValue) }
-    }
-    @inlinable public var hints: JSObject {
-        get { jsObject[Strings.hints].fromJSValue()! }
-        set { jsObject[Strings.hints] = _toJSValue(newValue) }
+    @inlinable public var compilationHints: [GPUShaderModuleCompilationHint] {
+        get { jsObject[Strings.compilationHints].fromJSValue()! }
+        set { jsObject[Strings.compilationHints] = _toJSValue(newValue) }
     }
 }
 public enum GPUShaderStage {
@@ -2991,6 +2960,8 @@ public enum GPUStencilOperation: JSString, JSValueCompatible {
 }
 public enum GPUStorageTextureAccess: JSString, JSValueCompatible {
     case writeOnly = "write-only"
+    case readOnly = "read-only"
+    case readWrite = "read-write"
 
     @inlinable public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString { return Self(rawValue: string) }
@@ -3132,10 +3103,6 @@ public class GPUSupportedLimits: JSBridgedClass {
         jsObject[Strings.maxVertexBufferArrayStride].fromJSValue()!
     }
 
-    @inlinable public var maxInterStageShaderComponents: UInt32 {
-        jsObject[Strings.maxInterStageShaderComponents].fromJSValue()!
-    }
-
     @inlinable public var maxInterStageShaderVariables: UInt32 {
         jsObject[Strings.maxInterStageShaderVariables].fromJSValue()!
     }
@@ -3165,6 +3132,94 @@ public class GPUSupportedLimits: JSBridgedClass {
     }
 }
 
+open class GPUTexelCopyBufferInfo: GPUTexelCopyBufferLayout {
+
+    public convenience init(
+        offset: GPUSize64? = nil,
+        bytesPerRow: GPUSize32? = nil,
+        rowsPerImage: GPUSize32? = nil,
+        buffer: GPUBuffer
+    ) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.offset] = _toJSValue(offset)
+        object[Strings.bytesPerRow] = _toJSValue(bytesPerRow)
+        object[Strings.rowsPerImage] = _toJSValue(rowsPerImage)
+        object[Strings.buffer] = _toJSValue(buffer)
+
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) { super.init(unsafelyWrapping: object) }
+
+    @inlinable public var buffer: GPUBuffer {
+        get { jsObject[Strings.buffer].fromJSValue()! }
+        set { jsObject[Strings.buffer] = _toJSValue(newValue) }
+    }
+}
+open class GPUTexelCopyBufferLayout: JSDictionaryCompatible {
+    public let jsObject: JSObject
+
+    public convenience init(offset: GPUSize64? = nil, bytesPerRow: GPUSize32? = nil, rowsPerImage: GPUSize32? = nil) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.offset] = _toJSValue(offset)
+        object[Strings.bytesPerRow] = _toJSValue(bytesPerRow)
+        object[Strings.rowsPerImage] = _toJSValue(rowsPerImage)
+
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
+
+    @inlinable public var offset: GPUSize64 {
+        get { jsObject[Strings.offset].fromJSValue()! }
+        set { jsObject[Strings.offset] = _toJSValue(newValue) }
+    }
+    @inlinable public var bytesPerRow: GPUSize32 {
+        get { jsObject[Strings.bytesPerRow].fromJSValue()! }
+        set { jsObject[Strings.bytesPerRow] = _toJSValue(newValue) }
+    }
+    @inlinable public var rowsPerImage: GPUSize32 {
+        get { jsObject[Strings.rowsPerImage].fromJSValue()! }
+        set { jsObject[Strings.rowsPerImage] = _toJSValue(newValue) }
+    }
+}
+open class GPUTexelCopyTextureInfo: JSDictionaryCompatible {
+    public let jsObject: JSObject
+
+    public convenience init(
+        texture: GPUTexture,
+        mipLevel: GPUIntegerCoordinate? = nil,
+        origin: GPUOrigin3D? = nil,
+        aspect: GPUTextureAspect? = nil
+    ) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.texture] = _toJSValue(texture)
+        object[Strings.mipLevel] = _toJSValue(mipLevel)
+        object[Strings.origin] = _toJSValue(origin)
+        object[Strings.aspect] = _toJSValue(aspect)
+
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
+
+    @inlinable public var texture: GPUTexture {
+        get { jsObject[Strings.texture].fromJSValue()! }
+        set { jsObject[Strings.texture] = _toJSValue(newValue) }
+    }
+    @inlinable public var mipLevel: GPUIntegerCoordinate {
+        get { jsObject[Strings.mipLevel].fromJSValue()! }
+        set { jsObject[Strings.mipLevel] = _toJSValue(newValue) }
+    }
+    @inlinable public var origin: GPUOrigin3D {
+        get { jsObject[Strings.origin].fromJSValue()! }
+        set { jsObject[Strings.origin] = _toJSValue(newValue) }
+    }
+    @inlinable public var aspect: GPUTextureAspect {
+        get { jsObject[Strings.aspect].fromJSValue()! }
+        set { jsObject[Strings.aspect] = _toJSValue(newValue) }
+    }
+}
 public class GPUTexture: JSBridgedClass, GPUObjectBase {
     @inlinable public class var constructor: JSFunction? { JSObject.global[Strings.GPUTexture].function }
 
@@ -3342,6 +3397,7 @@ public enum GPUTextureFormat: JSString, JSValueCompatible {
     case bgra8unorm = "bgra8unorm"
     case bgra8unormSrgb = "bgra8unorm-srgb"
     case rgb9e5ufloat = "rgb9e5ufloat"
+    case rgb10a2uint = "rgb10a2uint"
     case rgb10a2unorm = "rgb10a2unorm"
     case rg11b10ufloat = "rg11b10ufloat"
     case rg32uint = "rg32uint"
@@ -3465,6 +3521,7 @@ open class GPUTextureViewDescriptor: GPUObjectDescriptorBase {
         label: String? = nil,
         format: GPUTextureFormat? = nil,
         dimension: GPUTextureViewDimension? = nil,
+        usage: GPUTextureUsageFlags? = nil,
         aspect: GPUTextureAspect? = nil,
         baseMipLevel: GPUIntegerCoordinate? = nil,
         mipLevelCount: GPUIntegerCoordinate? = nil,
@@ -3475,6 +3532,7 @@ open class GPUTextureViewDescriptor: GPUObjectDescriptorBase {
         object[Strings.label] = _toJSValue(label)
         object[Strings.format] = _toJSValue(format)
         object[Strings.dimension] = _toJSValue(dimension)
+        object[Strings.usage] = _toJSValue(usage)
         object[Strings.aspect] = _toJSValue(aspect)
         object[Strings.baseMipLevel] = _toJSValue(baseMipLevel)
         object[Strings.mipLevelCount] = _toJSValue(mipLevelCount)
@@ -3493,6 +3551,10 @@ open class GPUTextureViewDescriptor: GPUObjectDescriptorBase {
     @inlinable public var dimension: GPUTextureViewDimension {
         get { jsObject[Strings.dimension].fromJSValue()! }
         set { jsObject[Strings.dimension] = _toJSValue(newValue) }
+    }
+    @inlinable public var usage: GPUTextureUsageFlags {
+        get { jsObject[Strings.usage].fromJSValue()! }
+        set { jsObject[Strings.usage] = _toJSValue(newValue) }
     }
     @inlinable public var aspect: GPUTextureAspect {
         get { jsObject[Strings.aspect].fromJSValue()! }
@@ -3637,22 +3699,31 @@ open class GPUVertexBufferLayout: JSDictionaryCompatible {
     }
 }
 public enum GPUVertexFormat: JSString, JSValueCompatible {
+    case uint8 = "uint8"
     case uint8x2 = "uint8x2"
     case uint8x4 = "uint8x4"
+    case sint8 = "sint8"
     case sint8x2 = "sint8x2"
     case sint8x4 = "sint8x4"
+    case unorm8 = "unorm8"
     case unorm8x2 = "unorm8x2"
     case unorm8x4 = "unorm8x4"
+    case snorm8 = "snorm8"
     case snorm8x2 = "snorm8x2"
     case snorm8x4 = "snorm8x4"
+    case uint16 = "uint16"
     case uint16x2 = "uint16x2"
     case uint16x4 = "uint16x4"
+    case sint16 = "sint16"
     case sint16x2 = "sint16x2"
     case sint16x4 = "sint16x4"
+    case unorm16 = "unorm16"
     case unorm16x2 = "unorm16x2"
     case unorm16x4 = "unorm16x4"
+    case snorm16 = "snorm16"
     case snorm16x2 = "snorm16x2"
     case snorm16x4 = "snorm16x4"
+    case float16 = "float16"
     case float16x2 = "float16x2"
     case float16x4 = "float16x4"
     case float32 = "float32"
@@ -3667,6 +3738,8 @@ public enum GPUVertexFormat: JSString, JSValueCompatible {
     case sint32x2 = "sint32x2"
     case sint32x3 = "sint32x3"
     case sint32x4 = "sint32x4"
+    case unorm1010102 = "unorm10-10-10-2"
+    case unorm8x4Bgra = "unorm8x4-bgra"
 
     @inlinable public static func construct(from jsValue: JSValue) -> Self? {
         if let string = jsValue.jsString { return Self(rawValue: string) }
@@ -3681,7 +3754,7 @@ open class GPUVertexState: GPUProgrammableStage {
 
     public convenience init(
         module: GPUShaderModule,
-        entryPoint: String,
+        entryPoint: String? = nil,
         constants: JSObject? = nil,
         buffers: [GPUVertexBufferLayout?]? = nil
     ) {
@@ -3796,6 +3869,7 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `WGSLLanguageFeatures`: JSString = "WGSLLanguageFeatures"
     @usableFromInline static let `a`: JSString = "a"
     @usableFromInline static let `access`: JSString = "access"
+    @usableFromInline static let `adapterInfo`: JSString = "adapterInfo"
     @usableFromInline static let `addressModeU`: JSString = "addressModeU"
     @usableFromInline static let `addressModeV`: JSString = "addressModeV"
     @usableFromInline static let `addressModeW`: JSString = "addressModeW"
@@ -3829,6 +3903,7 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `colorFormats`: JSString = "colorFormats"
     @usableFromInline static let `colorSpace`: JSString = "colorSpace"
     @usableFromInline static let `compare`: JSString = "compare"
+    @usableFromInline static let `compilationHints`: JSString = "compilationHints"
     @usableFromInline static let `compute`: JSString = "compute"
     @usableFromInline static let `configure`: JSString = "configure"
     @usableFromInline static let `constants`: JSString = "constants"
@@ -3864,6 +3939,7 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `depthLoadOp`: JSString = "depthLoadOp"
     @usableFromInline static let `depthOrArrayLayers`: JSString = "depthOrArrayLayers"
     @usableFromInline static let `depthReadOnly`: JSString = "depthReadOnly"
+    @usableFromInline static let `depthSlice`: JSString = "depthSlice"
     @usableFromInline static let `depthStencil`: JSString = "depthStencil"
     @usableFromInline static let `depthStencilAttachment`: JSString = "depthStencilAttachment"
     @usableFromInline static let `depthStencilFormat`: JSString = "depthStencilFormat"
@@ -3889,6 +3965,7 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `executeBundles`: JSString = "executeBundles"
     @usableFromInline static let `externalTexture`: JSString = "externalTexture"
     @usableFromInline static let `failOp`: JSString = "failOp"
+    @usableFromInline static let `featureLevel`: JSString = "featureLevel"
     @usableFromInline static let `features`: JSString = "features"
     @usableFromInline static let `finish`: JSString = "finish"
     @usableFromInline static let `flipY`: JSString = "flipY"
@@ -3899,14 +3976,15 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `g`: JSString = "g"
     @usableFromInline static let `getBindGroupLayout`: JSString = "getBindGroupLayout"
     @usableFromInline static let `getCompilationInfo`: JSString = "getCompilationInfo"
+    @usableFromInline static let `getConfiguration`: JSString = "getConfiguration"
     @usableFromInline static let `getCurrentTexture`: JSString = "getCurrentTexture"
     @usableFromInline static let `getMappedRange`: JSString = "getMappedRange"
     @usableFromInline static let `getPreferredCanvasFormat`: JSString = "getPreferredCanvasFormat"
     @usableFromInline static let `gpu`: JSString = "gpu"
     @usableFromInline static let `hasDynamicOffset`: JSString = "hasDynamicOffset"
     @usableFromInline static let `height`: JSString = "height"
-    @usableFromInline static let `hints`: JSString = "hints"
     @usableFromInline static let `importExternalTexture`: JSString = "importExternalTexture"
+    @usableFromInline static let `info`: JSString = "info"
     @usableFromInline static let `insertDebugMarker`: JSString = "insertDebugMarker"
     @usableFromInline static let `isFallbackAdapter`: JSString = "isFallbackAdapter"
     @usableFromInline static let `label`: JSString = "label"
@@ -3942,7 +4020,6 @@ public class WGSLLanguageFeatures: JSBridgedClass {
         "maxDynamicStorageBuffersPerPipelineLayout"
     @usableFromInline static let `maxDynamicUniformBuffersPerPipelineLayout`: JSString =
         "maxDynamicUniformBuffersPerPipelineLayout"
-    @usableFromInline static let `maxInterStageShaderComponents`: JSString = "maxInterStageShaderComponents"
     @usableFromInline static let `maxInterStageShaderVariables`: JSString = "maxInterStageShaderVariables"
     @usableFromInline static let `maxSampledTexturesPerShaderStage`: JSString = "maxSampledTexturesPerShaderStage"
     @usableFromInline static let `maxSamplersPerShaderStage`: JSString = "maxSamplersPerShaderStage"
@@ -3967,6 +4044,7 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `mipLevel`: JSString = "mipLevel"
     @usableFromInline static let `mipLevelCount`: JSString = "mipLevelCount"
     @usableFromInline static let `mipmapFilter`: JSString = "mipmapFilter"
+    @usableFromInline static let `mode`: JSString = "mode"
     @usableFromInline static let `module`: JSString = "module"
     @usableFromInline static let `multisample`: JSString = "multisample"
     @usableFromInline static let `multisampled`: JSString = "multisampled"
@@ -3989,7 +4067,6 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `r`: JSString = "r"
     @usableFromInline static let `reason`: JSString = "reason"
     @usableFromInline static let `requestAdapter`: JSString = "requestAdapter"
-    @usableFromInline static let `requestAdapterInfo`: JSString = "requestAdapterInfo"
     @usableFromInline static let `requestDevice`: JSString = "requestDevice"
     @usableFromInline static let `requiredFeatures`: JSString = "requiredFeatures"
     @usableFromInline static let `requiredLimits`: JSString = "requiredLimits"
@@ -4011,7 +4088,6 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `shaderLocation`: JSString = "shaderLocation"
     @usableFromInline static let `size`: JSString = "size"
     @usableFromInline static let `source`: JSString = "source"
-    @usableFromInline static let `sourceMap`: JSString = "sourceMap"
     @usableFromInline static let `srcFactor`: JSString = "srcFactor"
     @usableFromInline static let `stencilBack`: JSString = "stencilBack"
     @usableFromInline static let `stencilClearValue`: JSString = "stencilClearValue"
@@ -4025,11 +4101,14 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `storageTexture`: JSString = "storageTexture"
     @usableFromInline static let `storeOp`: JSString = "storeOp"
     @usableFromInline static let `stripIndexFormat`: JSString = "stripIndexFormat"
+    @usableFromInline static let `subgroupMaxSize`: JSString = "subgroupMaxSize"
+    @usableFromInline static let `subgroupMinSize`: JSString = "subgroupMinSize"
     @usableFromInline static let `submit`: JSString = "submit"
     @usableFromInline static let `targets`: JSString = "targets"
     @usableFromInline static let `texture`: JSString = "texture"
     @usableFromInline static let `timestampWrites`: JSString = "timestampWrites"
     @usableFromInline static let `toString`: JSString = "toString"
+    @usableFromInline static let `toneMapping`: JSString = "toneMapping"
     @usableFromInline static let `topology`: JSString = "topology"
     @usableFromInline static let `type`: JSString = "type"
     @usableFromInline static let `unclippedDepth`: JSString = "unclippedDepth"
@@ -4047,8 +4126,8 @@ public class WGSLLanguageFeatures: JSBridgedClass {
     @usableFromInline static let `writeBuffer`: JSString = "writeBuffer"
     @usableFromInline static let `writeMask`: JSString = "writeMask"
     @usableFromInline static let `writeTexture`: JSString = "writeTexture"
-    @usableFromInline static let `writeTimestamp`: JSString = "writeTimestamp"
     @usableFromInline static let `x`: JSString = "x"
+    @usableFromInline static let `xrCompatible`: JSString = "xrCompatible"
     @usableFromInline static let `y`: JSString = "y"
     @usableFromInline static let `z`: JSString = "z"
 }
@@ -4215,6 +4294,121 @@ public enum GPUColor: JSValueCompatible, Any_GPUColor {
         }
     }
 }
+public protocol Any_GPUCopyExternalImageSource: ConvertibleToJSValue {}
+extension HTMLCanvasElement: Any_GPUCopyExternalImageSource {}
+extension HTMLImageElement: Any_GPUCopyExternalImageSource {}
+extension HTMLVideoElement: Any_GPUCopyExternalImageSource {}
+extension ImageBitmap: Any_GPUCopyExternalImageSource {}
+extension ImageData: Any_GPUCopyExternalImageSource {}
+extension OffscreenCanvas: Any_GPUCopyExternalImageSource {}
+extension VideoFrame: Any_GPUCopyExternalImageSource {}
+
+public enum GPUCopyExternalImageSource: JSValueCompatible, Any_GPUCopyExternalImageSource {
+    case htmlCanvasElement(HTMLCanvasElement)
+    case htmlImageElement(HTMLImageElement)
+    case htmlVideoElement(HTMLVideoElement)
+    case imageBitmap(ImageBitmap)
+    case imageData(ImageData)
+    case offscreenCanvas(OffscreenCanvas)
+    case videoFrame(VideoFrame)
+
+    public init(_ htmlCanvasElement: HTMLCanvasElement) {
+        let val: GPUCopyExternalImageSource = .htmlCanvasElement(htmlCanvasElement)
+        self = val
+    }
+    public init(_ htmlImageElement: HTMLImageElement) {
+        let val: GPUCopyExternalImageSource = .htmlImageElement(htmlImageElement)
+        self = val
+    }
+    public init(_ htmlVideoElement: HTMLVideoElement) {
+        let val: GPUCopyExternalImageSource = .htmlVideoElement(htmlVideoElement)
+        self = val
+    }
+    public init(_ imageBitmap: ImageBitmap) {
+        let val: GPUCopyExternalImageSource = .imageBitmap(imageBitmap)
+        self = val
+    }
+    public init(_ imageData: ImageData) {
+        let val: GPUCopyExternalImageSource = .imageData(imageData)
+        self = val
+    }
+    public init(_ offscreenCanvas: OffscreenCanvas) {
+        let val: GPUCopyExternalImageSource = .offscreenCanvas(offscreenCanvas)
+        self = val
+    }
+    public init(_ videoFrame: VideoFrame) {
+        let val: GPUCopyExternalImageSource = .videoFrame(videoFrame)
+        self = val
+    }
+
+    public var htmlCanvasElement: HTMLCanvasElement? {
+        switch self {
+        case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement
+        default: return nil
+        }
+    }
+    public var htmlImageElement: HTMLImageElement? {
+        switch self {
+        case let .htmlImageElement(htmlImageElement): return htmlImageElement
+        default: return nil
+        }
+    }
+    public var htmlVideoElement: HTMLVideoElement? {
+        switch self {
+        case let .htmlVideoElement(htmlVideoElement): return htmlVideoElement
+        default: return nil
+        }
+    }
+    public var imageBitmap: ImageBitmap? {
+        switch self {
+        case let .imageBitmap(imageBitmap): return imageBitmap
+        default: return nil
+        }
+    }
+    public var imageData: ImageData? {
+        switch self {
+        case let .imageData(imageData): return imageData
+        default: return nil
+        }
+    }
+    public var offscreenCanvas: OffscreenCanvas? {
+        switch self {
+        case let .offscreenCanvas(offscreenCanvas): return offscreenCanvas
+        default: return nil
+        }
+    }
+    public var videoFrame: VideoFrame? {
+        switch self {
+        case let .videoFrame(videoFrame): return videoFrame
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
+            return .htmlCanvasElement(htmlCanvasElement)
+        }
+        if let htmlImageElement: HTMLImageElement = value.fromJSValue() { return .htmlImageElement(htmlImageElement) }
+        if let htmlVideoElement: HTMLVideoElement = value.fromJSValue() { return .htmlVideoElement(htmlVideoElement) }
+        if let imageBitmap: ImageBitmap = value.fromJSValue() { return .imageBitmap(imageBitmap) }
+        if let imageData: ImageData = value.fromJSValue() { return .imageData(imageData) }
+        if let offscreenCanvas: OffscreenCanvas = value.fromJSValue() { return .offscreenCanvas(offscreenCanvas) }
+        if let videoFrame: VideoFrame = value.fromJSValue() { return .videoFrame(videoFrame) }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement.jsValue
+        case let .htmlImageElement(htmlImageElement): return htmlImageElement.jsValue
+        case let .htmlVideoElement(htmlVideoElement): return htmlVideoElement.jsValue
+        case let .imageBitmap(imageBitmap): return imageBitmap.jsValue
+        case let .imageData(imageData): return imageData.jsValue
+        case let .offscreenCanvas(offscreenCanvas): return offscreenCanvas.jsValue
+        case let .videoFrame(videoFrame): return videoFrame.jsValue
+        }
+    }
+}
 public protocol Any_GPUExtent3D: ConvertibleToJSValue {}
 extension GPUExtent3DDict: Any_GPUExtent3D {}
 extension Array: Any_GPUExtent3D where Element == GPUIntegerCoordinate {}
@@ -4257,93 +4451,6 @@ public enum GPUExtent3D: JSValueCompatible, Any_GPUExtent3D {
         switch self {
         case let .gpuExtent3DDict(gpuExtent3DDict): return gpuExtent3DDict.jsValue
         case let .seq_of_GPUIntegerCoordinate(seq_of_GPUIntegerCoordinate): return seq_of_GPUIntegerCoordinate.jsValue
-        }
-    }
-}
-public protocol Any_GPUImageCopyExternalImageSource: ConvertibleToJSValue {}
-extension HTMLCanvasElement: Any_GPUImageCopyExternalImageSource {}
-extension HTMLVideoElement: Any_GPUImageCopyExternalImageSource {}
-extension ImageBitmap: Any_GPUImageCopyExternalImageSource {}
-extension OffscreenCanvas: Any_GPUImageCopyExternalImageSource {}
-extension VideoFrame: Any_GPUImageCopyExternalImageSource {}
-
-public enum GPUImageCopyExternalImageSource: JSValueCompatible, Any_GPUImageCopyExternalImageSource {
-    case htmlCanvasElement(HTMLCanvasElement)
-    case htmlVideoElement(HTMLVideoElement)
-    case imageBitmap(ImageBitmap)
-    case offscreenCanvas(OffscreenCanvas)
-    case videoFrame(VideoFrame)
-
-    public init(_ htmlCanvasElement: HTMLCanvasElement) {
-        let val: GPUImageCopyExternalImageSource = .htmlCanvasElement(htmlCanvasElement)
-        self = val
-    }
-    public init(_ htmlVideoElement: HTMLVideoElement) {
-        let val: GPUImageCopyExternalImageSource = .htmlVideoElement(htmlVideoElement)
-        self = val
-    }
-    public init(_ imageBitmap: ImageBitmap) {
-        let val: GPUImageCopyExternalImageSource = .imageBitmap(imageBitmap)
-        self = val
-    }
-    public init(_ offscreenCanvas: OffscreenCanvas) {
-        let val: GPUImageCopyExternalImageSource = .offscreenCanvas(offscreenCanvas)
-        self = val
-    }
-    public init(_ videoFrame: VideoFrame) {
-        let val: GPUImageCopyExternalImageSource = .videoFrame(videoFrame)
-        self = val
-    }
-
-    public var htmlCanvasElement: HTMLCanvasElement? {
-        switch self {
-        case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement
-        default: return nil
-        }
-    }
-    public var htmlVideoElement: HTMLVideoElement? {
-        switch self {
-        case let .htmlVideoElement(htmlVideoElement): return htmlVideoElement
-        default: return nil
-        }
-    }
-    public var imageBitmap: ImageBitmap? {
-        switch self {
-        case let .imageBitmap(imageBitmap): return imageBitmap
-        default: return nil
-        }
-    }
-    public var offscreenCanvas: OffscreenCanvas? {
-        switch self {
-        case let .offscreenCanvas(offscreenCanvas): return offscreenCanvas
-        default: return nil
-        }
-    }
-    public var videoFrame: VideoFrame? {
-        switch self {
-        case let .videoFrame(videoFrame): return videoFrame
-        default: return nil
-        }
-    }
-
-    public static func construct(from value: JSValue) -> Self? {
-        if let htmlCanvasElement: HTMLCanvasElement = value.fromJSValue() {
-            return .htmlCanvasElement(htmlCanvasElement)
-        }
-        if let htmlVideoElement: HTMLVideoElement = value.fromJSValue() { return .htmlVideoElement(htmlVideoElement) }
-        if let imageBitmap: ImageBitmap = value.fromJSValue() { return .imageBitmap(imageBitmap) }
-        if let offscreenCanvas: OffscreenCanvas = value.fromJSValue() { return .offscreenCanvas(offscreenCanvas) }
-        if let videoFrame: VideoFrame = value.fromJSValue() { return .videoFrame(videoFrame) }
-        return nil
-    }
-
-    public var jsValue: JSValue {
-        switch self {
-        case let .htmlCanvasElement(htmlCanvasElement): return htmlCanvasElement.jsValue
-        case let .htmlVideoElement(htmlVideoElement): return htmlVideoElement.jsValue
-        case let .imageBitmap(imageBitmap): return imageBitmap.jsValue
-        case let .offscreenCanvas(offscreenCanvas): return offscreenCanvas.jsValue
-        case let .videoFrame(videoFrame): return videoFrame.jsValue
         }
     }
 }

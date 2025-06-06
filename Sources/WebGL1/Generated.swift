@@ -162,6 +162,10 @@ open class WebGLObject: JSBridgedClass {
 
     public required init(unsafelyWrapping jsObject: JSObject) { self.jsObject = jsObject }
 
+    @inlinable public var label: String {
+        get { jsObject[Strings.label].fromJSValue()! }
+        set { jsObject[Strings.label] = _toJSValue(newValue) }
+    }
 }
 
 public enum WebGLPowerPreference: JSString, JSValueCompatible {
@@ -725,6 +729,8 @@ extension WebGLRenderingContextBase {
 
     @inlinable public static var RGB5_A1: GLenum { 0x8057 }
 
+    @inlinable public static var RGBA8: GLenum { 0x8058 }
+
     @inlinable public static var RGB565: GLenum { 0x8D62 }
 
     @inlinable public static var DEPTH_COMPONENT16: GLenum { 0x81A5 }
@@ -803,6 +809,8 @@ extension WebGLRenderingContextBase {
 
     @inlinable public var drawingBufferHeight: GLsizei { jsObject[Strings.drawingBufferHeight].fromJSValue()! }
 
+    @inlinable public var drawingBufferFormat: GLenum { jsObject[Strings.drawingBufferFormat].fromJSValue()! }
+
     @inlinable public var drawingBufferColorSpace: PredefinedColorSpace {
         get { jsObject[Strings.drawingBufferColorSpace].fromJSValue()! }
         set { jsObject[Strings.drawingBufferColorSpace] = _toJSValue(newValue) }
@@ -831,6 +839,14 @@ extension WebGLRenderingContextBase {
     @inlinable public func getExtension(name: String) -> JSObject? {
         let this = jsObject
         return this[Strings.getExtension].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
+    }
+
+    @inlinable public func drawingBufferStorage(sizedFormat: GLenum, width: UInt32, height: UInt32) {
+        let this = jsObject
+        _ = this[Strings.drawingBufferStorage].function!(
+            this: this,
+            arguments: [_toJSValue(sizedFormat), _toJSValue(width), _toJSValue(height)]
+        )
     }
 
     @inlinable public func activeTexture(texture: GLenum) {
@@ -993,24 +1009,24 @@ extension WebGLRenderingContextBase {
         )
     }
 
-    @inlinable public func createBuffer() -> WebGLBuffer? {
+    @inlinable public func createBuffer() -> WebGLBuffer {
         let this = jsObject
-        return this[Strings.createBuffer].function!(this: this, arguments: []).fromJSValue()
+        return this[Strings.createBuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    @inlinable public func createFramebuffer() -> WebGLFramebuffer? {
+    @inlinable public func createFramebuffer() -> WebGLFramebuffer {
         let this = jsObject
-        return this[Strings.createFramebuffer].function!(this: this, arguments: []).fromJSValue()
+        return this[Strings.createFramebuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    @inlinable public func createProgram() -> WebGLProgram? {
+    @inlinable public func createProgram() -> WebGLProgram {
         let this = jsObject
-        return this[Strings.createProgram].function!(this: this, arguments: []).fromJSValue()
+        return this[Strings.createProgram].function!(this: this, arguments: []).fromJSValue()!
     }
 
-    @inlinable public func createRenderbuffer() -> WebGLRenderbuffer? {
+    @inlinable public func createRenderbuffer() -> WebGLRenderbuffer {
         let this = jsObject
-        return this[Strings.createRenderbuffer].function!(this: this, arguments: []).fromJSValue()
+        return this[Strings.createRenderbuffer].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @inlinable public func createShader(type: GLenum) -> WebGLShader? {
@@ -1018,9 +1034,9 @@ extension WebGLRenderingContextBase {
         return this[Strings.createShader].function!(this: this, arguments: [_toJSValue(type)]).fromJSValue()
     }
 
-    @inlinable public func createTexture() -> WebGLTexture? {
+    @inlinable public func createTexture() -> WebGLTexture {
         let this = jsObject
-        return this[Strings.createTexture].function!(this: this, arguments: []).fromJSValue()
+        return this[Strings.createTexture].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @inlinable public func cullFace(mode: GLenum) {
@@ -1928,7 +1944,9 @@ public class WebGLUniformLocation: JSBridgedClass {
     @usableFromInline static let `drawArrays`: JSString = "drawArrays"
     @usableFromInline static let `drawElements`: JSString = "drawElements"
     @usableFromInline static let `drawingBufferColorSpace`: JSString = "drawingBufferColorSpace"
+    @usableFromInline static let `drawingBufferFormat`: JSString = "drawingBufferFormat"
     @usableFromInline static let `drawingBufferHeight`: JSString = "drawingBufferHeight"
+    @usableFromInline static let `drawingBufferStorage`: JSString = "drawingBufferStorage"
     @usableFromInline static let `drawingBufferWidth`: JSString = "drawingBufferWidth"
     @usableFromInline static let `enable`: JSString = "enable"
     @usableFromInline static let `enableVertexAttribArray`: JSString = "enableVertexAttribArray"
@@ -1971,6 +1989,7 @@ public class WebGLUniformLocation: JSBridgedClass {
     @usableFromInline static let `isRenderbuffer`: JSString = "isRenderbuffer"
     @usableFromInline static let `isShader`: JSString = "isShader"
     @usableFromInline static let `isTexture`: JSString = "isTexture"
+    @usableFromInline static let `label`: JSString = "label"
     @usableFromInline static let `lineWidth`: JSString = "lineWidth"
     @usableFromInline static let `linkProgram`: JSString = "linkProgram"
     @usableFromInline static let `name`: JSString = "name"

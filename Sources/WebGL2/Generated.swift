@@ -56,8 +56,6 @@ extension WebGL2RenderingContextBase {
 
     @inlinable public static var RGB8: GLenum { 0x8051 }
 
-    @inlinable public static var RGBA8: GLenum { 0x8058 }
-
     @inlinable public static var RGB10_A2: GLenum { 0x8059 }
 
     @inlinable public static var TEXTURE_BINDING_3D: GLenum { 0x806A }
@@ -579,7 +577,7 @@ extension WebGL2RenderingContextBase {
         target: GLenum,
         srcByteOffset: GLintptr,
         dstBuffer: ArrayBufferView,
-        dstOffset: GLuint? = nil,
+        dstOffset: UInt64? = nil,
         length: GLuint? = nil
     ) {
         let this = jsObject
@@ -802,7 +800,7 @@ extension WebGL2RenderingContextBase {
         format: GLenum,
         type: GLenum,
         srcData: ArrayBufferView,
-        srcOffset: GLuint
+        srcOffset: UInt64
     ) {
         let this = jsObject
         _ = this[Strings.texImage3D].function!(
@@ -875,7 +873,7 @@ extension WebGL2RenderingContextBase {
         format: GLenum,
         type: GLenum,
         srcData: ArrayBufferView?,
-        srcOffset: GLuint? = nil
+        srcOffset: UInt64? = nil
     ) {
         let this = jsObject
         _ = this[Strings.texSubImage3D].function!(
@@ -939,7 +937,7 @@ extension WebGL2RenderingContextBase {
         depth: GLsizei,
         border: GLint,
         srcData: ArrayBufferView,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLengthOverride: GLuint? = nil
     ) {
         let this = jsObject
@@ -988,7 +986,7 @@ extension WebGL2RenderingContextBase {
         depth: GLsizei,
         format: GLenum,
         srcData: ArrayBufferView,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLengthOverride: GLuint? = nil
     ) {
         let this = jsObject
@@ -1042,7 +1040,7 @@ extension WebGL2RenderingContextBase {
     @inlinable public func uniform1uiv(
         location: WebGLUniformLocation?,
         data: Uint32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1055,7 +1053,7 @@ extension WebGL2RenderingContextBase {
     @inlinable public func uniform2uiv(
         location: WebGLUniformLocation?,
         data: Uint32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1068,7 +1066,7 @@ extension WebGL2RenderingContextBase {
     @inlinable public func uniform3uiv(
         location: WebGLUniformLocation?,
         data: Uint32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1081,7 +1079,7 @@ extension WebGL2RenderingContextBase {
     @inlinable public func uniform4uiv(
         location: WebGLUniformLocation?,
         data: Uint32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1095,7 +1093,7 @@ extension WebGL2RenderingContextBase {
         location: WebGLUniformLocation?,
         transpose: GLboolean,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1112,7 +1110,7 @@ extension WebGL2RenderingContextBase {
         location: WebGLUniformLocation?,
         transpose: GLboolean,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1129,7 +1127,7 @@ extension WebGL2RenderingContextBase {
         location: WebGLUniformLocation?,
         transpose: GLboolean,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1146,7 +1144,7 @@ extension WebGL2RenderingContextBase {
         location: WebGLUniformLocation?,
         transpose: GLboolean,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1163,7 +1161,7 @@ extension WebGL2RenderingContextBase {
         location: WebGLUniformLocation?,
         transpose: GLboolean,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1180,7 +1178,7 @@ extension WebGL2RenderingContextBase {
         location: WebGLUniformLocation?,
         transpose: GLboolean,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1292,7 +1290,7 @@ extension WebGL2RenderingContextBase {
         buffer: GLenum,
         drawbuffer: GLint,
         values: Float32List,
-        srcOffset: GLuint? = nil
+        srcOffset: UInt64? = nil
     ) {
         let this = jsObject
         _ = this[Strings.clearBufferfv].function!(
@@ -1301,7 +1299,7 @@ extension WebGL2RenderingContextBase {
         )
     }
 
-    @inlinable public func clearBufferiv(buffer: GLenum, drawbuffer: GLint, values: Int32List, srcOffset: GLuint? = nil)
+    @inlinable public func clearBufferiv(buffer: GLenum, drawbuffer: GLint, values: Int32List, srcOffset: UInt64? = nil)
     {
         let this = jsObject
         _ = this[Strings.clearBufferiv].function!(
@@ -1314,7 +1312,7 @@ extension WebGL2RenderingContextBase {
         buffer: GLenum,
         drawbuffer: GLint,
         values: Uint32List,
-        srcOffset: GLuint? = nil
+        srcOffset: UInt64? = nil
     ) {
         let this = jsObject
         _ = this[Strings.clearBufferuiv].function!(
@@ -1331,9 +1329,9 @@ extension WebGL2RenderingContextBase {
         )
     }
 
-    @inlinable public func createQuery() -> WebGLQuery? {
+    @inlinable public func createQuery() -> WebGLQuery {
         let this = jsObject
-        return this[Strings.createQuery].function!(this: this, arguments: []).fromJSValue()
+        return this[Strings.createQuery].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @inlinable public func deleteQuery(query: WebGLQuery?) {
@@ -1368,9 +1366,9 @@ extension WebGL2RenderingContextBase {
             .fromJSValue()!
     }
 
-    @inlinable public func createSampler() -> WebGLSampler? {
+    @inlinable public func createSampler() -> WebGLSampler {
         let this = jsObject
-        return this[Strings.createSampler].function!(this: this, arguments: []).fromJSValue()
+        return this[Strings.createSampler].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @inlinable public func deleteSampler(sampler: WebGLSampler?) {
@@ -1450,9 +1448,9 @@ extension WebGL2RenderingContextBase {
             .fromJSValue()!
     }
 
-    @inlinable public func createTransformFeedback() -> WebGLTransformFeedback? {
+    @inlinable public func createTransformFeedback() -> WebGLTransformFeedback {
         let this = jsObject
-        return this[Strings.createTransformFeedback].function!(this: this, arguments: []).fromJSValue()
+        return this[Strings.createTransformFeedback].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @inlinable public func deleteTransformFeedback(tf: WebGLTransformFeedback?) {
@@ -1595,9 +1593,9 @@ extension WebGL2RenderingContextBase {
         )
     }
 
-    @inlinable public func createVertexArray() -> WebGLVertexArrayObject? {
+    @inlinable public func createVertexArray() -> WebGLVertexArrayObject {
         let this = jsObject
-        return this[Strings.createVertexArray].function!(this: this, arguments: []).fromJSValue()
+        return this[Strings.createVertexArray].function!(this: this, arguments: []).fromJSValue()!
     }
 
     @inlinable public func deleteVertexArray(vertexArray: WebGLVertexArrayObject?) {
@@ -1645,7 +1643,7 @@ extension WebGL2RenderingContextOverloads {
         target: GLenum,
         srcData: ArrayBufferView,
         usage: GLenum,
-        srcOffset: GLuint,
+        srcOffset: UInt64,
         length: GLuint? = nil
     ) {
         let this = jsObject
@@ -1661,7 +1659,7 @@ extension WebGL2RenderingContextOverloads {
         target: GLenum,
         dstByteOffset: GLintptr,
         srcData: ArrayBufferView,
-        srcOffset: GLuint,
+        srcOffset: UInt64,
         length: GLuint? = nil
     ) {
         let this = jsObject
@@ -1805,7 +1803,7 @@ extension WebGL2RenderingContextOverloads {
         format: GLenum,
         type: GLenum,
         srcData: ArrayBufferView,
-        srcOffset: GLuint
+        srcOffset: UInt64
     ) {
         let this = jsObject
         _ = this[Strings.texImage2D].function!(
@@ -1870,7 +1868,7 @@ extension WebGL2RenderingContextOverloads {
         format: GLenum,
         type: GLenum,
         srcData: ArrayBufferView,
-        srcOffset: GLuint
+        srcOffset: UInt64
     ) {
         let this = jsObject
         _ = this[Strings.texSubImage2D].function!(
@@ -1910,7 +1908,7 @@ extension WebGL2RenderingContextOverloads {
         height: GLsizei,
         border: GLint,
         srcData: ArrayBufferView,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLengthOverride: GLuint? = nil
     ) {
         let this = jsObject
@@ -1954,7 +1952,7 @@ extension WebGL2RenderingContextOverloads {
         height: GLsizei,
         format: GLenum,
         srcData: ArrayBufferView,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLengthOverride: GLuint? = nil
     ) {
         let this = jsObject
@@ -1971,7 +1969,7 @@ extension WebGL2RenderingContextOverloads {
     @inlinable public func uniform1fv(
         location: WebGLUniformLocation?,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1984,7 +1982,7 @@ extension WebGL2RenderingContextOverloads {
     @inlinable public func uniform2fv(
         location: WebGLUniformLocation?,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -1997,7 +1995,7 @@ extension WebGL2RenderingContextOverloads {
     @inlinable public func uniform3fv(
         location: WebGLUniformLocation?,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -2010,7 +2008,7 @@ extension WebGL2RenderingContextOverloads {
     @inlinable public func uniform4fv(
         location: WebGLUniformLocation?,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -2023,7 +2021,7 @@ extension WebGL2RenderingContextOverloads {
     @inlinable public func uniform1iv(
         location: WebGLUniformLocation?,
         data: Int32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -2036,7 +2034,7 @@ extension WebGL2RenderingContextOverloads {
     @inlinable public func uniform2iv(
         location: WebGLUniformLocation?,
         data: Int32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -2049,7 +2047,7 @@ extension WebGL2RenderingContextOverloads {
     @inlinable public func uniform3iv(
         location: WebGLUniformLocation?,
         data: Int32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -2062,7 +2060,7 @@ extension WebGL2RenderingContextOverloads {
     @inlinable public func uniform4iv(
         location: WebGLUniformLocation?,
         data: Int32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -2076,7 +2074,7 @@ extension WebGL2RenderingContextOverloads {
         location: WebGLUniformLocation?,
         transpose: GLboolean,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -2093,7 +2091,7 @@ extension WebGL2RenderingContextOverloads {
         location: WebGLUniformLocation?,
         transpose: GLboolean,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -2110,7 +2108,7 @@ extension WebGL2RenderingContextOverloads {
         location: WebGLUniformLocation?,
         transpose: GLboolean,
         data: Float32List,
-        srcOffset: GLuint? = nil,
+        srcOffset: UInt64? = nil,
         srcLength: GLuint? = nil
     ) {
         let this = jsObject
@@ -2169,7 +2167,7 @@ extension WebGL2RenderingContextOverloads {
         format: GLenum,
         type: GLenum,
         dstData: ArrayBufferView,
-        dstOffset: GLuint
+        dstOffset: UInt64
     ) {
         let this = jsObject
         _ = this[Strings.readPixels].function!(

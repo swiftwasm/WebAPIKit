@@ -468,9 +468,10 @@ public enum FillMode: JSString, JSValueCompatible {
 open class GetAnimationsOptions: JSDictionaryCompatible {
     public let jsObject: JSObject
 
-    public convenience init(subtree: Bool? = nil) {
+    public convenience init(subtree: Bool? = nil, pseudoElement: String?) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.subtree] = _toJSValue(subtree)
+        object[Strings.pseudoElement] = _toJSValue(pseudoElement)
 
         self.init(unsafelyWrapping: object)
     }
@@ -480,6 +481,10 @@ open class GetAnimationsOptions: JSDictionaryCompatible {
     @inlinable public var subtree: Bool {
         get { jsObject[Strings.subtree].fromJSValue()! }
         set { jsObject[Strings.subtree] = _toJSValue(newValue) }
+    }
+    @inlinable public var pseudoElement: String? {
+        get { jsObject[Strings.pseudoElement].fromJSValue() }
+        set { jsObject[Strings.pseudoElement] = _toJSValue(newValue) }
     }
 }
 open class KeyframeAnimationOptions: KeyframeEffectOptions {

@@ -53,6 +53,16 @@ public enum CSS {
         return this[Strings.percent].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
     }
 
+    @inlinable public static func cap(value: Double) -> CSSUnitValue {
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.cap].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
+    }
+
+    @inlinable public static func ch(value: Double) -> CSSUnitValue {
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.ch].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
+    }
+
     @inlinable public static func em(value: Double) -> CSSUnitValue {
         let this = JSObject.global[Strings.CSS].object!
         return this[Strings.em].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
@@ -63,14 +73,24 @@ public enum CSS {
         return this[Strings.ex].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
     }
 
-    @inlinable public static func ch(value: Double) -> CSSUnitValue {
-        let this = JSObject.global[Strings.CSS].object!
-        return this[Strings.ch].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
-    }
-
     @inlinable public static func ic(value: Double) -> CSSUnitValue {
         let this = JSObject.global[Strings.CSS].object!
         return this[Strings.ic].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
+    }
+
+    @inlinable public static func lh(value: Double) -> CSSUnitValue {
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.lh].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
+    }
+
+    @inlinable public static func rcap(value: Double) -> CSSUnitValue {
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.rcap].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
+    }
+
+    @inlinable public static func rch(value: Double) -> CSSUnitValue {
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.rch].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
     }
 
     @inlinable public static func rem(value: Double) -> CSSUnitValue {
@@ -78,9 +98,14 @@ public enum CSS {
         return this[Strings.rem].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
     }
 
-    @inlinable public static func lh(value: Double) -> CSSUnitValue {
+    @inlinable public static func rex(value: Double) -> CSSUnitValue {
         let this = JSObject.global[Strings.CSS].object!
-        return this[Strings.lh].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
+        return this[Strings.rex].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
+    }
+
+    @inlinable public static func ric(value: Double) -> CSSUnitValue {
+        let this = JSObject.global[Strings.CSS].object!
+        return this[Strings.ric].function!(this: this, arguments: [_toJSValue(value)]).fromJSValue()!
     }
 
     @inlinable public static func rlh(value: Double) -> CSSUnitValue {
@@ -1006,6 +1031,59 @@ public class CSSOKLab: CSSColorValue {
     }
 }
 
+public class CSSPageDescriptors: CSSStyleDeclaration {
+    @inlinable public override class var constructor: JSFunction? {
+        JSObject.global[Strings.CSSPageDescriptors].function
+    }
+
+    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
+
+    @inlinable public var margin: String {
+        get { jsObject[Strings.margin].fromJSValue()! }
+        set { jsObject[Strings.margin] = _toJSValue(newValue) }
+    }
+
+    @inlinable public var marginTop: String {
+        get { jsObject[Strings.marginTop].fromJSValue()! }
+        set { jsObject[Strings.marginTop] = _toJSValue(newValue) }
+    }
+
+    @inlinable public var marginRight: String {
+        get { jsObject[Strings.marginRight].fromJSValue()! }
+        set { jsObject[Strings.marginRight] = _toJSValue(newValue) }
+    }
+
+    @inlinable public var marginBottom: String {
+        get { jsObject[Strings.marginBottom].fromJSValue()! }
+        set { jsObject[Strings.marginBottom] = _toJSValue(newValue) }
+    }
+
+    @inlinable public var marginLeft: String {
+        get { jsObject[Strings.marginLeft].fromJSValue()! }
+        set { jsObject[Strings.marginLeft] = _toJSValue(newValue) }
+    }
+
+    @inlinable public var size: String {
+        get { jsObject[Strings.size].fromJSValue()! }
+        set { jsObject[Strings.size] = _toJSValue(newValue) }
+    }
+
+    @inlinable public var pageOrientation: String {
+        get { jsObject[Strings.pageOrientation].fromJSValue()! }
+        set { jsObject[Strings.pageOrientation] = _toJSValue(newValue) }
+    }
+
+    @inlinable public var marks: String {
+        get { jsObject[Strings.marks].fromJSValue()! }
+        set { jsObject[Strings.marks] = _toJSValue(newValue) }
+    }
+
+    @inlinable public var bleed: String {
+        get { jsObject[Strings.bleed].fromJSValue()! }
+        set { jsObject[Strings.bleed] = _toJSValue(newValue) }
+    }
+}
+
 public class CSSPageRule: CSSGroupingRule {
     @inlinable public override class var constructor: JSFunction? { JSObject.global[Strings.CSSPageRule].function }
 
@@ -1016,7 +1094,7 @@ public class CSSPageRule: CSSGroupingRule {
         set { jsObject[Strings.selectorText] = _toJSValue(newValue) }
     }
 
-    @inlinable public var style: CSSStyleDeclaration { jsObject[Strings.style].fromJSValue()! }
+    @inlinable public var style: CSSPageDescriptors { jsObject[Strings.style].fromJSValue()! }
 }
 
 public class CSSPerspective: CSSTransformComponent {
@@ -1283,6 +1361,14 @@ public class CSSStyleDeclaration: JSBridgedClass {
     }
 
     @inlinable public var parentRule: CSSRule? { jsObject[Strings.parentRule].fromJSValue() }
+}
+
+public class CSSStyleProperties: CSSStyleDeclaration {
+    @inlinable public override class var constructor: JSFunction? {
+        JSObject.global[Strings.CSSStyleProperties].function
+    }
+
+    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
 
     @inlinable public var cssFloat: String {
         get { jsObject[Strings.cssFloat].fromJSValue()! }
@@ -1290,7 +1376,7 @@ public class CSSStyleDeclaration: JSBridgedClass {
     }
 }
 
-public class CSSStyleRule: CSSRule {
+public class CSSStyleRule: CSSGroupingRule {
     @inlinable public override class var constructor: JSFunction? { JSObject.global[Strings.CSSStyleRule].function }
 
     public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
@@ -1300,7 +1386,7 @@ public class CSSStyleRule: CSSRule {
         set { jsObject[Strings.selectorText] = _toJSValue(newValue) }
     }
 
-    @inlinable public var style: CSSStyleDeclaration { jsObject[Strings.style].fromJSValue()! }
+    @inlinable public var style: CSSStyleProperties { jsObject[Strings.style].fromJSValue()! }
 
     @inlinable public var styleMap: StylePropertyMap { jsObject[Strings.styleMap].fromJSValue()! }
 }
@@ -1562,13 +1648,39 @@ public class CaretPosition: JSBridgedClass {
     }
 }
 
+open class CaretPositionFromPointOptions: JSDictionaryCompatible {
+    public let jsObject: JSObject
+
+    public convenience init(shadowRoots: [ShadowRoot]? = nil) {
+        let object = JSObject.global[Strings.Object].function!.new()
+        object[Strings.shadowRoots] = _toJSValue(shadowRoots)
+
+        self.init(unsafelyWrapping: object)
+    }
+
+    public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
+
+    @inlinable public var shadowRoots: [ShadowRoot] {
+        get { jsObject[Strings.shadowRoots].fromJSValue()! }
+        set { jsObject[Strings.shadowRoots] = _toJSValue(newValue) }
+    }
+}
 open class CheckVisibilityOptions: JSDictionaryCompatible {
     public let jsObject: JSObject
 
-    public convenience init(checkOpacity: Bool? = nil, checkVisibilityCSS: Bool? = nil) {
+    public convenience init(
+        checkOpacity: Bool? = nil,
+        checkVisibilityCSS: Bool? = nil,
+        contentVisibilityAuto: Bool? = nil,
+        opacityProperty: Bool? = nil,
+        visibilityProperty: Bool? = nil
+    ) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.checkOpacity] = _toJSValue(checkOpacity)
         object[Strings.checkVisibilityCSS] = _toJSValue(checkVisibilityCSS)
+        object[Strings.contentVisibilityAuto] = _toJSValue(contentVisibilityAuto)
+        object[Strings.opacityProperty] = _toJSValue(opacityProperty)
+        object[Strings.visibilityProperty] = _toJSValue(visibilityProperty)
 
         self.init(unsafelyWrapping: object)
     }
@@ -1582,6 +1694,18 @@ open class CheckVisibilityOptions: JSDictionaryCompatible {
     @inlinable public var checkVisibilityCSS: Bool {
         get { jsObject[Strings.checkVisibilityCSS].fromJSValue()! }
         set { jsObject[Strings.checkVisibilityCSS] = _toJSValue(newValue) }
+    }
+    @inlinable public var contentVisibilityAuto: Bool {
+        get { jsObject[Strings.contentVisibilityAuto].fromJSValue()! }
+        set { jsObject[Strings.contentVisibilityAuto] = _toJSValue(newValue) }
+    }
+    @inlinable public var opacityProperty: Bool {
+        get { jsObject[Strings.opacityProperty].fromJSValue()! }
+        set { jsObject[Strings.opacityProperty] = _toJSValue(newValue) }
+    }
+    @inlinable public var visibilityProperty: Bool {
+        get { jsObject[Strings.visibilityProperty].fromJSValue()! }
+        set { jsObject[Strings.visibilityProperty] = _toJSValue(newValue) }
     }
 }
 open class ConvertCoordinateOptions: JSDictionaryCompatible {
@@ -1811,17 +1935,32 @@ public enum ScrollBehavior: JSString, JSValueCompatible {
 
     @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
+public enum ScrollIntoViewContainer: JSString, JSValueCompatible {
+    case all = "all"
+    case nearest = "nearest"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString { return Self(rawValue: string) }
+        return nil
+    }
+
+    @inlinable public init?(string: String) { self.init(rawValue: JSString(string)) }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
+}
 open class ScrollIntoViewOptions: ScrollOptions {
 
     public convenience init(
         behavior: ScrollBehavior? = nil,
         block: ScrollLogicalPosition? = nil,
-        inline: ScrollLogicalPosition? = nil
+        inline: ScrollLogicalPosition? = nil,
+        container: ScrollIntoViewContainer? = nil
     ) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.behavior] = _toJSValue(behavior)
         object[Strings.block] = _toJSValue(block)
         object[Strings.inline] = _toJSValue(inline)
+        object[Strings.container] = _toJSValue(container)
 
         self.init(unsafelyWrapping: object)
     }
@@ -1835,6 +1974,10 @@ open class ScrollIntoViewOptions: ScrollOptions {
     @inlinable public var inline: ScrollLogicalPosition {
         get { jsObject[Strings.inline].fromJSValue()! }
         set { jsObject[Strings.inline] = _toJSValue(newValue) }
+    }
+    @inlinable public var container: ScrollIntoViewContainer {
+        get { jsObject[Strings.container].fromJSValue()! }
+        set { jsObject[Strings.container] = _toJSValue(newValue) }
     }
 }
 public enum ScrollLogicalPosition: JSString, JSValueCompatible {
@@ -2083,6 +2226,7 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `CSSNumericValue`: JSString = "CSSNumericValue"
     @usableFromInline static let `CSSOKLCH`: JSString = "CSSOKLCH"
     @usableFromInline static let `CSSOKLab`: JSString = "CSSOKLab"
+    @usableFromInline static let `CSSPageDescriptors`: JSString = "CSSPageDescriptors"
     @usableFromInline static let `CSSPageRule`: JSString = "CSSPageRule"
     @usableFromInline static let `CSSPerspective`: JSString = "CSSPerspective"
     @usableFromInline static let `CSSRGB`: JSString = "CSSRGB"
@@ -2094,6 +2238,7 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `CSSSkewX`: JSString = "CSSSkewX"
     @usableFromInline static let `CSSSkewY`: JSString = "CSSSkewY"
     @usableFromInline static let `CSSStyleDeclaration`: JSString = "CSSStyleDeclaration"
+    @usableFromInline static let `CSSStyleProperties`: JSString = "CSSStyleProperties"
     @usableFromInline static let `CSSStyleRule`: JSString = "CSSStyleRule"
     @usableFromInline static let `CSSStyleSheet`: JSString = "CSSStyleSheet"
     @usableFromInline static let `CSSStyleValue`: JSString = "CSSStyleValue"
@@ -2133,9 +2278,11 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `b`: JSString = "b"
     @usableFromInline static let `baseURL`: JSString = "baseURL"
     @usableFromInline static let `behavior`: JSString = "behavior"
+    @usableFromInline static let `bleed`: JSString = "bleed"
     @usableFromInline static let `block`: JSString = "block"
     @usableFromInline static let `box`: JSString = "box"
     @usableFromInline static let `c`: JSString = "c"
+    @usableFromInline static let `cap`: JSString = "cap"
     @usableFromInline static let `ch`: JSString = "ch"
     @usableFromInline static let `channels`: JSString = "channels"
     @usableFromInline static let `checkOpacity`: JSString = "checkOpacity"
@@ -2144,6 +2291,8 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `cm`: JSString = "cm"
     @usableFromInline static let `colorDepth`: JSString = "colorDepth"
     @usableFromInline static let `colorSpace`: JSString = "colorSpace"
+    @usableFromInline static let `container`: JSString = "container"
+    @usableFromInline static let `contentVisibilityAuto`: JSString = "contentVisibilityAuto"
     @usableFromInline static let `convertPointFromNode`: JSString = "convertPointFromNode"
     @usableFromInline static let `convertQuadFromNode`: JSString = "convertQuadFromNode"
     @usableFromInline static let `convertRectFromNode`: JSString = "convertRectFromNode"
@@ -2211,6 +2360,12 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `lvmax`: JSString = "lvmax"
     @usableFromInline static let `lvmin`: JSString = "lvmin"
     @usableFromInline static let `lvw`: JSString = "lvw"
+    @usableFromInline static let `margin`: JSString = "margin"
+    @usableFromInline static let `marginBottom`: JSString = "marginBottom"
+    @usableFromInline static let `marginLeft`: JSString = "marginLeft"
+    @usableFromInline static let `marginRight`: JSString = "marginRight"
+    @usableFromInline static let `marginTop`: JSString = "marginTop"
+    @usableFromInline static let `marks`: JSString = "marks"
     @usableFromInline static let `matches`: JSString = "matches"
     @usableFromInline static let `matrix`: JSString = "matrix"
     @usableFromInline static let `max`: JSString = "max"
@@ -2231,10 +2386,12 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `onresize`: JSString = "onresize"
     @usableFromInline static let `onscroll`: JSString = "onscroll"
     @usableFromInline static let `onscrollend`: JSString = "onscrollend"
+    @usableFromInline static let `opacityProperty`: JSString = "opacityProperty"
     @usableFromInline static let `operator`: JSString = "operator"
     @usableFromInline static let `ownerNode`: JSString = "ownerNode"
     @usableFromInline static let `ownerRule`: JSString = "ownerRule"
     @usableFromInline static let `pageLeft`: JSString = "pageLeft"
+    @usableFromInline static let `pageOrientation`: JSString = "pageOrientation"
     @usableFromInline static let `pageTop`: JSString = "pageTop"
     @usableFromInline static let `parentRule`: JSString = "parentRule"
     @usableFromInline static let `parentStyleSheet`: JSString = "parentStyleSheet"
@@ -2249,6 +2406,8 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `px`: JSString = "px"
     @usableFromInline static let `r`: JSString = "r"
     @usableFromInline static let `rad`: JSString = "rad"
+    @usableFromInline static let `rcap`: JSString = "rcap"
+    @usableFromInline static let `rch`: JSString = "rch"
     @usableFromInline static let `relativeTo`: JSString = "relativeTo"
     @usableFromInline static let `rem`: JSString = "rem"
     @usableFromInline static let `removeListener`: JSString = "removeListener"
@@ -2257,6 +2416,8 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `replace`: JSString = "replace"
     @usableFromInline static let `replaceSync`: JSString = "replaceSync"
     @usableFromInline static let `resolution`: JSString = "resolution"
+    @usableFromInline static let `rex`: JSString = "rex"
+    @usableFromInline static let `ric`: JSString = "ric"
     @usableFromInline static let `rlh`: JSString = "rlh"
     @usableFromInline static let `rules`: JSString = "rules"
     @usableFromInline static let `s`: JSString = "s"
@@ -2264,6 +2425,7 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `selectorText`: JSString = "selectorText"
     @usableFromInline static let `set`: JSString = "set"
     @usableFromInline static let `setProperty`: JSString = "setProperty"
+    @usableFromInline static let `shadowRoots`: JSString = "shadowRoots"
     @usableFromInline static let `sheet`: JSString = "sheet"
     @usableFromInline static let `size`: JSString = "size"
     @usableFromInline static let `style`: JSString = "style"
@@ -2296,6 +2458,7 @@ public class VisualViewport: EventTarget {
     @usableFromInline static let `vb`: JSString = "vb"
     @usableFromInline static let `vh`: JSString = "vh"
     @usableFromInline static let `vi`: JSString = "vi"
+    @usableFromInline static let `visibilityProperty`: JSString = "visibilityProperty"
     @usableFromInline static let `vmax`: JSString = "vmax"
     @usableFromInline static let `vmin`: JSString = "vmin"
     @usableFromInline static let `vw`: JSString = "vw"

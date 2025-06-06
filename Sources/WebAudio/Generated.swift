@@ -280,8 +280,6 @@ public class AudioContext: BaseAudioContext {
 
     @inlinable public var sinkId: AudioSinkInfo_or_String { jsObject[Strings.sinkId].fromJSValue()! }
 
-    @inlinable public var renderCapacity: AudioRenderCapacity { jsObject[Strings.renderCapacity].fromJSValue()! }
-
     @inlinable public var onsinkchange: EventHandler {
         get {
             guard let function = jsObject[Strings.onsinkchange].function else { return nil }
@@ -292,6 +290,20 @@ public class AudioContext: BaseAudioContext {
                 jsObject[Strings.onsinkchange] = JSClosure { _toJSValue(newValue($0[0].fromJSValue()!)) }.jsValue
             } else {
                 jsObject[Strings.onsinkchange] = .null
+            }
+        }
+    }
+
+    @inlinable public var onerror: EventHandler {
+        get {
+            guard let function = jsObject[Strings.onerror].function else { return nil }
+            return { function(_toJSValue($0)).fromJSValue()! }
+        }
+        set {
+            if let newValue = newValue {
+                jsObject[Strings.onerror] = JSClosure { _toJSValue(newValue($0[0].fromJSValue()!)) }.jsValue
+            } else {
+                jsObject[Strings.onerror] = .null
             }
         }
     }
@@ -411,12 +423,14 @@ open class AudioContextOptions: JSDictionaryCompatible {
     public convenience init(
         latencyHint: AudioContextLatencyCategory_or_Double? = nil,
         sampleRate: Float? = nil,
-        sinkId: AudioSinkOptions_or_String? = nil
+        sinkId: AudioSinkOptions_or_String? = nil,
+        renderSizeHint: AudioContextRenderSizeCategory_or_UInt32? = nil
     ) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.latencyHint] = _toJSValue(latencyHint)
         object[Strings.sampleRate] = _toJSValue(sampleRate)
         object[Strings.sinkId] = _toJSValue(sinkId)
+        object[Strings.renderSizeHint] = _toJSValue(renderSizeHint)
 
         self.init(unsafelyWrapping: object)
     }
@@ -435,6 +449,23 @@ open class AudioContextOptions: JSDictionaryCompatible {
         get { jsObject[Strings.sinkId].fromJSValue()! }
         set { jsObject[Strings.sinkId] = _toJSValue(newValue) }
     }
+    @inlinable public var renderSizeHint: AudioContextRenderSizeCategory_or_UInt32 {
+        get { jsObject[Strings.renderSizeHint].fromJSValue()! }
+        set { jsObject[Strings.renderSizeHint] = _toJSValue(newValue) }
+    }
+}
+public enum AudioContextRenderSizeCategory: JSString, JSValueCompatible {
+    case `default` = "default"
+    case hardware = "hardware"
+
+    @inlinable public static func construct(from jsValue: JSValue) -> Self? {
+        if let string = jsValue.jsString { return Self(rawValue: string) }
+        return nil
+    }
+
+    @inlinable public init?(string: String) { self.init(rawValue: JSString(string)) }
+
+    @inlinable public var jsValue: JSValue { rawValue.jsValue }
 }
 public enum AudioContextState: JSString, JSValueCompatible {
     case suspended = "suspended"
@@ -792,111 +823,6 @@ open class AudioProcessingEventInit: EventInit {
         set { jsObject[Strings.outputBuffer] = _toJSValue(newValue) }
     }
 }
-public class AudioRenderCapacity: EventTarget {
-    @inlinable public override class var constructor: JSFunction? {
-        JSObject.global[Strings.AudioRenderCapacity].function
-    }
-
-    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
-
-    @inlinable final public func start(options: AudioRenderCapacityOptions? = nil) {
-        let this = jsObject
-        _ = this[Strings.start].function!(this: this, arguments: [_toJSValue(options)])
-    }
-
-    @inlinable final public func stop() {
-        let this = jsObject
-        _ = this[Strings.stop].function!(this: this, arguments: [])
-    }
-
-    @inlinable public var onupdate: EventHandler {
-        get {
-            guard let function = jsObject[Strings.onupdate].function else { return nil }
-            return { function(_toJSValue($0)).fromJSValue()! }
-        }
-        set {
-            if let newValue = newValue {
-                jsObject[Strings.onupdate] = JSClosure { _toJSValue(newValue($0[0].fromJSValue()!)) }.jsValue
-            } else {
-                jsObject[Strings.onupdate] = .null
-            }
-        }
-    }
-}
-
-public class AudioRenderCapacityEvent: Event {
-    @inlinable public override class var constructor: JSFunction? {
-        JSObject.global[Strings.AudioRenderCapacityEvent].function
-    }
-
-    public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
-
-    @inlinable public convenience init(type: String, eventInitDict: AudioRenderCapacityEventInit? = nil) {
-        self.init(unsafelyWrapping: Self.constructor!.new(arguments: [_toJSValue(type), _toJSValue(eventInitDict)]))
-    }
-
-    @inlinable public var timestamp: Double { jsObject[Strings.timestamp].fromJSValue()! }
-
-    @inlinable public var averageLoad: Double { jsObject[Strings.averageLoad].fromJSValue()! }
-
-    @inlinable public var peakLoad: Double { jsObject[Strings.peakLoad].fromJSValue()! }
-
-    @inlinable public var underrunRatio: Double { jsObject[Strings.underrunRatio].fromJSValue()! }
-}
-
-open class AudioRenderCapacityEventInit: EventInit {
-
-    public convenience init(
-        timestamp: Double? = nil,
-        averageLoad: Double? = nil,
-        peakLoad: Double? = nil,
-        underrunRatio: Double? = nil
-    ) {
-        let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.timestamp] = _toJSValue(timestamp)
-        object[Strings.averageLoad] = _toJSValue(averageLoad)
-        object[Strings.peakLoad] = _toJSValue(peakLoad)
-        object[Strings.underrunRatio] = _toJSValue(underrunRatio)
-
-        self.init(unsafelyWrapping: object)
-    }
-
-    public required init(unsafelyWrapping object: JSObject) { super.init(unsafelyWrapping: object) }
-
-    @inlinable public var timestamp: Double {
-        get { jsObject[Strings.timestamp].fromJSValue()! }
-        set { jsObject[Strings.timestamp] = _toJSValue(newValue) }
-    }
-    @inlinable public var averageLoad: Double {
-        get { jsObject[Strings.averageLoad].fromJSValue()! }
-        set { jsObject[Strings.averageLoad] = _toJSValue(newValue) }
-    }
-    @inlinable public var peakLoad: Double {
-        get { jsObject[Strings.peakLoad].fromJSValue()! }
-        set { jsObject[Strings.peakLoad] = _toJSValue(newValue) }
-    }
-    @inlinable public var underrunRatio: Double {
-        get { jsObject[Strings.underrunRatio].fromJSValue()! }
-        set { jsObject[Strings.underrunRatio] = _toJSValue(newValue) }
-    }
-}
-open class AudioRenderCapacityOptions: JSDictionaryCompatible {
-    public let jsObject: JSObject
-
-    public convenience init(updateInterval: Double? = nil) {
-        let object = JSObject.global[Strings.Object].function!.new()
-        object[Strings.updateInterval] = _toJSValue(updateInterval)
-
-        self.init(unsafelyWrapping: object)
-    }
-
-    public required init(unsafelyWrapping object: JSObject) { self.jsObject = object }
-
-    @inlinable public var updateInterval: Double {
-        get { jsObject[Strings.updateInterval].fromJSValue()! }
-        set { jsObject[Strings.updateInterval] = _toJSValue(newValue) }
-    }
-}
 public class AudioScheduledSourceNode: AudioNode {
     @inlinable public override class var constructor: JSFunction? {
         JSObject.global[Strings.AudioScheduledSourceNode].function
@@ -1106,6 +1032,8 @@ public class BaseAudioContext: EventTarget {
     @inlinable public var listener: AudioListener { jsObject[Strings.listener].fromJSValue()! }
 
     @inlinable public var state: AudioContextState { jsObject[Strings.state].fromJSValue()! }
+
+    @inlinable public var renderQuantumSize: UInt32 { jsObject[Strings.renderQuantumSize].fromJSValue()! }
 
     @inlinable public var audioWorklet: AudioWorklet { jsObject[Strings.audioWorklet].fromJSValue()! }
 
@@ -1985,11 +1913,17 @@ public class OfflineAudioContext: BaseAudioContext {
 open class OfflineAudioContextOptions: JSDictionaryCompatible {
     public let jsObject: JSObject
 
-    public convenience init(numberOfChannels: UInt32? = nil, length: UInt32, sampleRate: Float) {
+    public convenience init(
+        numberOfChannels: UInt32? = nil,
+        length: UInt32,
+        sampleRate: Float,
+        renderSizeHint: AudioContextRenderSizeCategory_or_UInt32? = nil
+    ) {
         let object = JSObject.global[Strings.Object].function!.new()
         object[Strings.numberOfChannels] = _toJSValue(numberOfChannels)
         object[Strings.length] = _toJSValue(length)
         object[Strings.sampleRate] = _toJSValue(sampleRate)
+        object[Strings.renderSizeHint] = _toJSValue(renderSizeHint)
 
         self.init(unsafelyWrapping: object)
     }
@@ -2007,6 +1941,10 @@ open class OfflineAudioContextOptions: JSDictionaryCompatible {
     @inlinable public var sampleRate: Float {
         get { jsObject[Strings.sampleRate].fromJSValue()! }
         set { jsObject[Strings.sampleRate] = _toJSValue(newValue) }
+    }
+    @inlinable public var renderSizeHint: AudioContextRenderSizeCategory_or_UInt32 {
+        get { jsObject[Strings.renderSizeHint].fromJSValue()! }
+        set { jsObject[Strings.renderSizeHint] = _toJSValue(newValue) }
     }
 }
 public class OscillatorNode: AudioScheduledSourceNode {
@@ -2471,8 +2409,6 @@ open class WaveShaperOptions: AudioNodeOptions {
     @usableFromInline static let `AudioParam`: JSString = "AudioParam"
     @usableFromInline static let `AudioParamMap`: JSString = "AudioParamMap"
     @usableFromInline static let `AudioProcessingEvent`: JSString = "AudioProcessingEvent"
-    @usableFromInline static let `AudioRenderCapacity`: JSString = "AudioRenderCapacity"
-    @usableFromInline static let `AudioRenderCapacityEvent`: JSString = "AudioRenderCapacityEvent"
     @usableFromInline static let `AudioScheduledSourceNode`: JSString = "AudioScheduledSourceNode"
     @usableFromInline static let `AudioSinkInfo`: JSString = "AudioSinkInfo"
     @usableFromInline static let `AudioWorklet`: JSString = "AudioWorklet"
@@ -2504,7 +2440,6 @@ open class WaveShaperOptions: AudioNodeOptions {
     @usableFromInline static let `attack`: JSString = "attack"
     @usableFromInline static let `audioWorklet`: JSString = "audioWorklet"
     @usableFromInline static let `automationRate`: JSString = "automationRate"
-    @usableFromInline static let `averageLoad`: JSString = "averageLoad"
     @usableFromInline static let `baseLatency`: JSString = "baseLatency"
     @usableFromInline static let `buffer`: JSString = "buffer"
     @usableFromInline static let `bufferSize`: JSString = "bufferSize"
@@ -2601,10 +2536,10 @@ open class WaveShaperOptions: AudioNodeOptions {
     @usableFromInline static let `onaudioprocess`: JSString = "onaudioprocess"
     @usableFromInline static let `oncomplete`: JSString = "oncomplete"
     @usableFromInline static let `onended`: JSString = "onended"
+    @usableFromInline static let `onerror`: JSString = "onerror"
     @usableFromInline static let `onprocessorerror`: JSString = "onprocessorerror"
     @usableFromInline static let `onsinkchange`: JSString = "onsinkchange"
     @usableFromInline static let `onstatechange`: JSString = "onstatechange"
-    @usableFromInline static let `onupdate`: JSString = "onupdate"
     @usableFromInline static let `orientationX`: JSString = "orientationX"
     @usableFromInline static let `orientationY`: JSString = "orientationY"
     @usableFromInline static let `orientationZ`: JSString = "orientationZ"
@@ -2616,7 +2551,6 @@ open class WaveShaperOptions: AudioNodeOptions {
     @usableFromInline static let `panningModel`: JSString = "panningModel"
     @usableFromInline static let `parameterData`: JSString = "parameterData"
     @usableFromInline static let `parameters`: JSString = "parameters"
-    @usableFromInline static let `peakLoad`: JSString = "peakLoad"
     @usableFromInline static let `performanceTime`: JSString = "performanceTime"
     @usableFromInline static let `periodicWave`: JSString = "periodicWave"
     @usableFromInline static let `playbackRate`: JSString = "playbackRate"
@@ -2631,7 +2565,8 @@ open class WaveShaperOptions: AudioNodeOptions {
     @usableFromInline static let `reduction`: JSString = "reduction"
     @usableFromInline static let `refDistance`: JSString = "refDistance"
     @usableFromInline static let `release`: JSString = "release"
-    @usableFromInline static let `renderCapacity`: JSString = "renderCapacity"
+    @usableFromInline static let `renderQuantumSize`: JSString = "renderQuantumSize"
+    @usableFromInline static let `renderSizeHint`: JSString = "renderSizeHint"
     @usableFromInline static let `renderedBuffer`: JSString = "renderedBuffer"
     @usableFromInline static let `resume`: JSString = "resume"
     @usableFromInline static let `rolloffFactor`: JSString = "rolloffFactor"
@@ -2652,14 +2587,11 @@ open class WaveShaperOptions: AudioNodeOptions {
     @usableFromInline static let `stream`: JSString = "stream"
     @usableFromInline static let `suspend`: JSString = "suspend"
     @usableFromInline static let `threshold`: JSString = "threshold"
-    @usableFromInline static let `timestamp`: JSString = "timestamp"
     @usableFromInline static let `toString`: JSString = "toString"
     @usableFromInline static let `type`: JSString = "type"
-    @usableFromInline static let `underrunRatio`: JSString = "underrunRatio"
     @usableFromInline static let `upX`: JSString = "upX"
     @usableFromInline static let `upY`: JSString = "upY"
     @usableFromInline static let `upZ`: JSString = "upZ"
-    @usableFromInline static let `updateInterval`: JSString = "updateInterval"
     @usableFromInline static let `value`: JSString = "value"
 }
 public protocol Any_AudioContextLatencyCategory_or_Double: ConvertibleToJSValue {}
@@ -2704,6 +2636,54 @@ public enum AudioContextLatencyCategory_or_Double: JSValueCompatible, Any_AudioC
         switch self {
         case let .audioContextLatencyCategory(audioContextLatencyCategory): return audioContextLatencyCategory.jsValue
         case let .double(double): return double.jsValue
+        }
+    }
+}
+public protocol Any_AudioContextRenderSizeCategory_or_UInt32: ConvertibleToJSValue {}
+extension AudioContextRenderSizeCategory: Any_AudioContextRenderSizeCategory_or_UInt32 {}
+extension UInt32: Any_AudioContextRenderSizeCategory_or_UInt32 {}
+
+public enum AudioContextRenderSizeCategory_or_UInt32: JSValueCompatible, Any_AudioContextRenderSizeCategory_or_UInt32 {
+    case audioContextRenderSizeCategory(AudioContextRenderSizeCategory)
+    case uInt32(UInt32)
+
+    public init(_ audioContextRenderSizeCategory: AudioContextRenderSizeCategory) {
+        let val: AudioContextRenderSizeCategory_or_UInt32 = .audioContextRenderSizeCategory(
+            audioContextRenderSizeCategory
+        )
+        self = val
+    }
+    public init(_ uInt32: UInt32) {
+        let val: AudioContextRenderSizeCategory_or_UInt32 = .uInt32(uInt32)
+        self = val
+    }
+
+    public var audioContextRenderSizeCategory: AudioContextRenderSizeCategory? {
+        switch self {
+        case let .audioContextRenderSizeCategory(audioContextRenderSizeCategory): return audioContextRenderSizeCategory
+        default: return nil
+        }
+    }
+    public var uInt32: UInt32? {
+        switch self {
+        case let .uInt32(uInt32): return uInt32
+        default: return nil
+        }
+    }
+
+    public static func construct(from value: JSValue) -> Self? {
+        if let audioContextRenderSizeCategory: AudioContextRenderSizeCategory = value.fromJSValue() {
+            return .audioContextRenderSizeCategory(audioContextRenderSizeCategory)
+        }
+        if let uInt32: UInt32 = value.fromJSValue() { return .uInt32(uInt32) }
+        return nil
+    }
+
+    public var jsValue: JSValue {
+        switch self {
+        case let .audioContextRenderSizeCategory(audioContextRenderSizeCategory):
+            return audioContextRenderSizeCategory.jsValue
+        case let .uInt32(uInt32): return uInt32.jsValue
         }
     }
 }

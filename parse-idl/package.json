@@ -8,7 +8,7 @@
     "prettier": "2.6.1"
   },
   "dependencies": {
-    "@webref/idl": "^3.60.3",
+    "@webref/idl": "3.60.3",
     "webidl2": "^24.4.1"
   }
 }
