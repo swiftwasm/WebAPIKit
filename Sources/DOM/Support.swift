@@ -6,12 +6,6 @@ public typealias __UNSUPPORTED_BIGINT__ = JSValue
 
 public typealias WindowProxy = Window
 
-public extension HTMLElement {
-    convenience init?(from element: Element) {
-        self.init(from: .object(element.jsObject))
-    }
-}
-
 public let globalThis = Window(from: JSObject.global.jsValue)!
 
 public typealias Uint8ClampedArray = JSUInt8ClampedArray

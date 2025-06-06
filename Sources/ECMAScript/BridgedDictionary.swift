@@ -1,24 +1,21 @@
 import JavaScriptKit
 
-open class BridgedDictionary: JSValueCompatible {
-    public let jsObject: JSObject
+public protocol JSDictionaryCompatible: JSValueCompatible {
+    var jsObject: JSObject { get }
+    init(unsafelyWrapping: JSObject)
+}
 
-    @inlinable public var jsValue: JSValue {
-        jsObject.jsValue
-    }
-
-    @inlinable public required init(unsafelyWrapping jsObject: JSObject) {
-        self.jsObject = jsObject
-    }
-
-    @inlinable public static func construct(from value: JSValue) -> Self? {
+public extension JSDictionaryCompatible {
+    static func construct(from value: JSValue) -> Self? {
         if let object = value.object {
-            return Self.construct(from: object)
+            return self.init(unsafelyWrapping: object)
+        } else {
+            return nil
         }
-        return nil
     }
 
-    @inlinable public static func construct(from object: JSObject) -> Self? {
-        Self(unsafelyWrapping: object)
+    var jsValue: JSValue {
+        .object(jsObject)
     }
 }
+

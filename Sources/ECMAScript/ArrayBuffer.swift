@@ -2,8 +2,8 @@
 //  Created by Manuel Burghard. Licensed unter MIT.
 //
 
-import _CJavaScriptKit
 import JavaScriptKit
+import _CJavaScriptKit
 
 public typealias Int8Array = JSTypedArray<Int8>
 public typealias Int16Array = JSTypedArray<Int16>
@@ -30,7 +30,7 @@ public class ArrayBuffer: JSBridgedClass {
     }
 
     @inlinable
-    public static func isView(_ object: JSValueCompatible) -> Bool {
+    public static func isView(_ object: some JSValueCompatible) -> Bool {
         JSObject.global.ArrayBuffer.object!.isView!(object).fromJSValue()!
     }
 }
@@ -52,7 +52,9 @@ public class SharedArrayBuffer: JSBridgedClass {
 
     @inlinable
     public convenience init(length: Int, maxByteLength: Int) {
-        self.init(unsafelyWrapping: Self.constructor!.new(length, ["maxByteLength": maxByteLength]))
+        self.init(
+            unsafelyWrapping: Self.constructor!.new(
+                length, ["maxByteLength": maxByteLength.jsValue] as JSObject))
     }
 
     @inlinable
@@ -79,29 +81,30 @@ public class SharedArrayBuffer: JSBridgedClass {
     public func slice(begin: Int) -> SharedArrayBuffer {
         jsObject.slice!(begin).fromJSValue()!
     }
+
     @inlinable
     public func slice(begin: Int, end: Int) -> SharedArrayBuffer {
         jsObject.slice!(begin, end).fromJSValue()!
     }
 }
 
-public extension JSTypedArray {
-    convenience init(_ arrayBuffer: ArrayBuffer) {
+extension JSTypedArray {
+    public convenience init(_ arrayBuffer: ArrayBuffer) {
         self.init(unsafelyWrapping: Self.constructor!.new(arrayBuffer))
     }
 
-    convenience init(_ sharedArrayBuffer: SharedArrayBuffer) {
+    public convenience init(_ sharedArrayBuffer: SharedArrayBuffer) {
         self.init(unsafelyWrapping: Self.constructor!.new(sharedArrayBuffer))
     }
 
     // Exactly one of these two properties will be non-nil.
     @inlinable
-    var arrayBuffer: ArrayBuffer! {
+    public var arrayBuffer: ArrayBuffer! {
         ArrayBuffer(from: jsObject.buffer)
     }
 
     @inlinable
-    var sharedArrayBuffer: SharedArrayBuffer! {
+    public var sharedArrayBuffer: SharedArrayBuffer! {
         SharedArrayBuffer(from: jsObject.buffer)
     }
 }
@@ -109,14 +112,14 @@ public extension JSTypedArray {
 #if canImport(Foundation)
     import Foundation
 
-    public extension Data {
-        init(_ arrayBuffer: ArrayBuffer) {
+    extension Data {
+        public init(_ arrayBuffer: ArrayBuffer) {
             self = JSTypedArray<UInt8>(arrayBuffer).withUnsafeBytes {
                 Data(buffer: $0)
             }
         }
 
-        init(_ sharedArrayBuffer: SharedArrayBuffer) {
+        public init(_ sharedArrayBuffer: SharedArrayBuffer) {
             self = JSTypedArray<UInt8>(sharedArrayBuffer).withUnsafeBytes {
                 Data(buffer: $0)
             }

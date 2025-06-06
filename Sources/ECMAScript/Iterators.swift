@@ -1,7 +1,7 @@
-import JavaScriptEventLoop
 import JavaScriptKit
+import _Concurrency
 
-public class ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: IteratorProtocol
+public struct ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: IteratorProtocol
     where SequenceType.Element: ConstructibleFromJSValue
 {
     private let iterator: JSObject
@@ -19,8 +19,11 @@ public class ValueIterableIterator<SequenceType: JSBridgedClass & Sequence>: Ite
     }
 }
 
+#if canImport(JavaScriptEventLoop)
+import JavaScriptEventLoop
+
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public class ValueIterableAsyncIterator<SequenceType: JSBridgedClass & AsyncSequence>: AsyncIteratorProtocol
+public struct ValueIterableAsyncIterator<SequenceType: JSBridgedClass & AsyncSequence>: AsyncIteratorProtocol
     where SequenceType.Element: ConstructibleFromJSValue
 {
     private var index: Int = 0
@@ -30,7 +33,7 @@ public class ValueIterableAsyncIterator<SequenceType: JSBridgedClass & AsyncSequ
         iterator = sequence.jsObject[JSSymbol.asyncIterator].function!().object!
     }
 
-    public func next() async throws -> SequenceType.Element? {
+    public func next() async throws(JSException) -> SequenceType.Element? {
         let promise = JSPromise(from: iterator.next!())!
         let result = try await promise.value
         let done = result.done.boolean!
@@ -39,3 +42,5 @@ public class ValueIterableAsyncIterator<SequenceType: JSBridgedClass & AsyncSequ
         return result.value.fromJSValue()!
     }
 }
+
+#endif
