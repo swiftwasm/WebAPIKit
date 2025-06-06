@@ -1,21 +1,19 @@
+diff --git a/Sources/WebAudio/Generated.swift b/Sources/WebAudio/Generated.swift
+index fff1563..d672d8c 100644
 --- a/Sources/WebAudio/Generated.swift
 +++ b/Sources/WebAudio/Generated.swift
-@@ -195,7 +195,8 @@ public class AudioBufferSourceNode: AudioScheduledSourceNode {
-     @ReadWriteAttribute
-     public var loopEnd: Double
+@@ -535,11 +535,11 @@ public class AudioNode: EventTarget {
  
--    @inlinable override public func start(when: Double? = nil, offset: Double? = nil, duration: Double? = nil) {
-+    // `override` removed since the superclass function has fewer parameters
-+    @inlinable func start(when: Double? = nil, offset: Double? = nil, duration: Double? = nil) {
-         let this = jsObject
-         _ = this[Strings.start].function!(this: this, arguments: [_toJSValue(when), _toJSValue(offset), _toJSValue(duration)])
-     }
-@@ -492,7 +493,7 @@ public class AudioNode: EventTarget {
-         super.init(unsafelyWrapping: jsObject)
-     }
+     public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
  
--    @inlinable public func connect(destinationNode: AudioNode, output: UInt32? = nil, input: UInt32? = nil) -> Self {
-+    @discardableResult @inlinable public func connect<NodeType: AudioNode>(destinationNode: NodeType, output: UInt32? = nil, input: UInt32? = nil) -> NodeType {
+-    @inlinable final public func connect(
+-        destinationNode: AudioNode,
++    @discardableResult @inlinable public final func connect<NodeType: AudioNode>(
++        destinationNode: NodeType,
+         output: UInt32? = nil,
+         input: UInt32? = nil
+-    ) -> AudioNode {
++    ) -> NodeType {
          let this = jsObject
-         return this[Strings.connect].function!(this: this, arguments: [_toJSValue(destinationNode), _toJSValue(output), _toJSValue(input)]).fromJSValue()!
-     }
+         return this[Strings.connect].function!(
+             this: this,

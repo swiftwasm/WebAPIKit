@@ -27,6 +27,7 @@ let domModule = Module(
         "css-pseudo",
         "geometry",
         "cssom-view",
+        "css-view-transitions",
         "hr-time",
         "FileAPI",
         "xhr",
@@ -42,6 +43,8 @@ let domModule = Module(
         "performance-timeline",
         "permissions",
         "mathml-core",
+        "trusted-types",
+        "urlpattern",
     ],
     dependencies: ["WebAPIBase"]
 )

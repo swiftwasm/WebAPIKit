@@ -1,21 +1,15 @@
+diff --git a/Sources/SVG/Generated.swift b/Sources/SVG/Generated.swift
+index 176385b..bf8f1dd 100644
 --- a/Sources/SVG/Generated.swift
 +++ b/Sources/SVG/Generated.swift
-@@ -544,14 +544,16 @@ public class SVGElement: Element, GlobalEventHandlers, DocumentAndElementEventHa
-     @inlinable override public class var constructor: JSFunction? { JSObject.global[Strings.SVGElement].function }
+@@ -524,7 +524,9 @@ public class SVGElement: Element, GlobalEventHandlers, SVGElementInstance, HTMLO
  
-     public required init(unsafelyWrapping jsObject: JSObject) {
--        _className = ReadonlyAttribute(jsObject: jsObject, name: Strings.className)
-+        _svgClassName = ReadonlyAttribute(jsObject: jsObject, name: Strings.className)
-         _ownerSVGElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.ownerSVGElement)
-         _viewportElement = ReadonlyAttribute(jsObject: jsObject, name: Strings.viewportElement)
-         super.init(unsafelyWrapping: jsObject)
-     }
+     public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
  
+-    @inlinable public var className: SVGAnimatedString { jsObject[Strings.className].fromJSValue()! }
 +    // Renamed because superclass has a `className` property of type `String`
 +    // NOTE! Accessing `className` on an SVGElement will crash your app
-     @ReadonlyAttribute
--    public var className: SVGAnimatedString
-+    public var svgClassName: SVGAnimatedString
++    @inlinable public var svgClassName: SVGAnimatedString { jsObject[Strings.className].fromJSValue()! }
  
-     @ReadonlyAttribute
-     public var ownerSVGElement: SVGSVGElement?
+     @inlinable public var ownerSVGElement: SVGSVGElement? { jsObject[Strings.ownerSVGElement].fromJSValue() }
+ 

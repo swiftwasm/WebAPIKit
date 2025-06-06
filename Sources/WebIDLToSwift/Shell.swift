@@ -3,7 +3,7 @@ import Foundation
 enum Shell {
     static func format(source: String) {
         print("Formatting generated Swift files...")
-        run(executable: "swiftformat", arguments: ["--swiftversion", "5.5", source])
+        run(executable: "swift", arguments: ["format", "format", "--parallel", "--in-place", source])
     }
 
     private static let projectRoot = URL(fileURLWithPath: #file)

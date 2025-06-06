@@ -1,90 +1,52 @@
+diff --git a/Sources/DOM/Generated.swift b/Sources/DOM/Generated.swift
+index 9fa75ba..0339568 100644
 --- a/Sources/DOM/Generated.swift
 +++ b/Sources/DOM/Generated.swift
-@@ -1007,8 +1007,15 @@ public class BeforeUnloadEvent: Event {
-         super.init(unsafelyWrapping: jsObject)
-     }
-
+@@ -1094,6 +1094,17 @@ public class BeforeUnloadEvent: Event {
+ 
+     public required init(unsafelyWrapping jsObject: JSObject) { super.init(unsafelyWrapping: jsObject) }
+ 
 +    @available(*, unavailable)
 +    override public var returnValue: Bool {
-+        get { !_returnValue.wrappedValue.isEmpty }
++        get { !self.returnValueAsString.isEmpty }
 +        set {}
 +    }
 +
-     @usableFromInline let _returnValue: ReadWriteAttribute<String>
--    @inlinable override public var returnValue: String {
 +    // renamed because `String` is not compatible with `Bool`
 +    @inlinable public var returnValueAsString: String {
-         get { _returnValue.wrappedValue }
-         set { _returnValue.wrappedValue = newValue }
-     }
-@@ -7095,7 +7102,8 @@ public class HTMLFormControlsCollection: HTMLCollection {
-         jsObject[key].fromJSValue()
-     }
-
--    @inlinable override public func namedItem(name: String) -> Element_or_RadioNodeList? {
-+    // `override` removed since the superclass returns a more constrained type `Element`
-+    @inlinable func namedItem(name: String) -> Element_or_RadioNodeList? {
-         let this = jsObject
-         return this[Strings.namedItem].function!(this: this, arguments: [_toJSValue(name)]).fromJSValue()
-     }
-@@ -17153,7 +17161,6 @@ public class VisibilityStateEntry: PerformanceEntry {
-         _name = ReadonlyAttribute(jsObject: jsObject, name: Strings.name)
-         _entryType = ReadonlyAttribute(jsObject: jsObject, name: Strings.entryType)
-         _startTime = ReadonlyAttribute(jsObject: jsObject, name: Strings.startTime)
--        _duration = ReadonlyAttribute(jsObject: jsObject, name: Strings.duration)
-         super.init(unsafelyWrapping: jsObject)
-     }
-
-@@ -17166,8 +17173,8 @@ public class VisibilityStateEntry: PerformanceEntry {
-     @usableFromInline let _startTime: ReadonlyAttribute<DOMHighResTimeStamp>
-     @inlinable override public var startTime: DOMHighResTimeStamp { _startTime.wrappedValue }
-
--    @usableFromInline let _duration: ReadonlyAttribute<UInt32>
--    @inlinable override public var duration: UInt32 { _duration.wrappedValue }
-+    // XXX: override of property `duration` removed because the type here is UInt32 but the
-+    // type in the superclass is DOMHighResTimestamp (Double).
++        get { self.jsObject[Strings.returnValue].string! }
++        set { self.jsObject[Strings.returnValue] = .string(newValue) }
++    }
  }
-
- public class VisualViewport: EventTarget {
-@@ -20687,19 +20694,9 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
+ 
+ public enum BitrateMode: JSString, JSValueCompatible {
+@@ -24231,14 +24242,6 @@ public enum CanvasImageSource: JSValueCompatible, Any_CanvasImageSource {
+         let val: CanvasImageSource = .htmlOrSVGImageElement(htmlOrSVGImageElement)
          self = val
      }
-
--    init(_ htmlOrSVGImageElement: HTMLOrSVGImageElement) {
--        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlOrSVGImageElement)
--        self = val
--    }
--
-     init(_ htmlImageElement: HTMLImageElement) {
+-    public init(_ htmlImageElement: HTMLImageElement) {
 -        let val: HTMLOrSVGImageElement = .htmlImageElement(htmlImageElement)
 -        self = .init(val)
 -    }
--
--    init(_ svgImageElement: SVGImageElement) {
+-    public init(_ svgImageElement: SVGImageElement) {
 -        let val: HTMLOrSVGImageElement = .svgImageElement(svgImageElement)
 -        self = .init(val)
-+        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlImageElement)
-+        self = val
-     }
-
-     init(_ htmlVideoElement: HTMLVideoElement) {
-@@ -21947,18 +21944,8 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
+-    }
+     public init(_ htmlVideoElement: HTMLVideoElement) {
+         let val: CanvasImageSource = .htmlVideoElement(htmlVideoElement)
+         self = val
+@@ -25289,14 +25292,6 @@ public enum ImageBitmapSource: JSValueCompatible, Any_ImageBitmapSource {
+         let val: CanvasImageSource = .htmlOrSVGImageElement(htmlOrSVGImageElement)
          self = .init(val)
      }
-
--    init(_ htmlOrSVGImageElement: HTMLOrSVGImageElement) {
--        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlOrSVGImageElement)
--        self = .init(val)
--    }
--
-     init(_ htmlImageElement: HTMLImageElement) {
+-    public init(_ htmlImageElement: HTMLImageElement) {
 -        let val: HTMLOrSVGImageElement = .htmlImageElement(htmlImageElement)
 -        self = .init(val)
 -    }
--
--    init(_ svgImageElement: SVGImageElement) {
+-    public init(_ svgImageElement: SVGImageElement) {
 -        let val: HTMLOrSVGImageElement = .svgImageElement(svgImageElement)
-+        let val: CanvasImageSource = .htmlOrSVGImageElement(htmlImageElement)
+-        self = .init(val)
+-    }
+     public init(_ htmlVideoElement: HTMLVideoElement) {
+         let val: CanvasImageSource = .htmlVideoElement(htmlVideoElement)
          self = .init(val)
-     }
-
