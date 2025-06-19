@@ -59,6 +59,11 @@ let package = Package(
             name: "FileSystem",
             targets: ["FileSystem"]
         ),
+        // This support library should be moved to JavaScriptKit
+        .library(
+            name: "ECMAScript",
+            targets: ["ECMAScript"]
+        ),
         .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
     ],
     dependencies: [
