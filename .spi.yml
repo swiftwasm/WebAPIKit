@@ -1,0 +1,20 @@
+version: 1
+builder:
+  configs:
+    - documentation_targets:
+      - CSSOM
+      - DOM
+      - ECMAScript
+      - FileSystem
+      - Gamepad
+      - SVG
+      - WebAPIBase
+      - WebAPIKitDemo
+      - WebAnimations
+      - WebAudio
+      - WebGL1
+      - WebGL2
+      - WebGPU
+      - WebIDL
+      - WebIDLToSwift
+      - WebSockets
