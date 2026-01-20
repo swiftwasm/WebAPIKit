@@ -24,6 +24,11 @@ func generateManifest(_ modules: [Module]) -> String {
             """#
         }.joined(separator: "\n")
     )
+            // This support library should be moved to JavaScriptKit
+            .library(
+                name: "ECMAScript",
+                targets: ["ECMAScript"]
+            ),
             .executable(name: "WebIDLToSwift", targets: ["WebIDLToSwift"]),
         ],
         dependencies: [
